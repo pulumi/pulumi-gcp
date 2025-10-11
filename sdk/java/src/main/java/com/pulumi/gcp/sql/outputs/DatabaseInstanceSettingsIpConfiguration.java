@@ -22,7 +22,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     private @Nullable String allocatedIpRange;
     private @Nullable List<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork> authorizedNetworks;
     /**
-     * @return The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * @return The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
      * 
      */
     private @Nullable List<String> customSubjectAlternativeNames;
@@ -33,8 +33,8 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     private @Nullable Boolean enablePrivatePathForGoogleCloudServices;
     /**
      * @return Whether this Cloud SQL instance should be assigned
-     * a public IPV4 address. At least `ipv4_enabled` must be enabled or a
-     * `private_network` must be configured.
+     * a public IPV4 address. At least `ipv4Enabled` must be enabled or a
+     * `privateNetwork` must be configured.
      * 
      */
     private @Nullable Boolean ipv4Enabled;
@@ -42,7 +42,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
      * @return The VPC network from which the Cloud SQL
      * instance is accessible for private IP. For example, projects/myProject/global/networks/default.
      * Specifying a network enables private IP.
-     * At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
+     * At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
      * This setting can be updated, but it cannot be removed after it is set.
      * 
      */
@@ -58,7 +58,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
      */
     private @Nullable String serverCaMode;
     /**
-     * @return The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * @return The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
      * 
      */
     private @Nullable String serverCaPool;
@@ -80,7 +80,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         return this.authorizedNetworks == null ? List.of() : this.authorizedNetworks;
     }
     /**
-     * @return The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * @return The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
      * 
      */
     public List<String> customSubjectAlternativeNames() {
@@ -95,8 +95,8 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     }
     /**
      * @return Whether this Cloud SQL instance should be assigned
-     * a public IPV4 address. At least `ipv4_enabled` must be enabled or a
-     * `private_network` must be configured.
+     * a public IPV4 address. At least `ipv4Enabled` must be enabled or a
+     * `privateNetwork` must be configured.
      * 
      */
     public Optional<Boolean> ipv4Enabled() {
@@ -106,7 +106,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
      * @return The VPC network from which the Cloud SQL
      * instance is accessible for private IP. For example, projects/myProject/global/networks/default.
      * Specifying a network enables private IP.
-     * At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
+     * At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
      * This setting can be updated, but it cannot be removed after it is set.
      * 
      */
@@ -128,7 +128,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         return Optional.ofNullable(this.serverCaMode);
     }
     /**
-     * @return The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * @return The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
      * 
      */
     public Optional<String> serverCaPool() {

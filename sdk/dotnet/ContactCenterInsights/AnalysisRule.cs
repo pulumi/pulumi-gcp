@@ -190,7 +190,7 @@ namespace Pulumi.Gcp.ContactCenterInsights
         /// <summary>
         /// Percentage of conversations that we should apply this analysis setting
         /// automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
-        /// are sampled in a determenestic way. The original runtime_percentage &amp;
+        /// are sampled in a determenestic way. The original RuntimePercentage &amp;
         /// upload percentage will be replaced by defining filters on the conversation.
         /// </summary>
         [Output("analysisPercentage")]
@@ -306,7 +306,7 @@ namespace Pulumi.Gcp.ContactCenterInsights
         /// <summary>
         /// Percentage of conversations that we should apply this analysis setting
         /// automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
-        /// are sampled in a determenestic way. The original runtime_percentage &amp;
+        /// are sampled in a determenestic way. The original RuntimePercentage &amp;
         /// upload percentage will be replaced by defining filters on the conversation.
         /// </summary>
         [Input("analysisPercentage")]
@@ -366,7 +366,7 @@ namespace Pulumi.Gcp.ContactCenterInsights
         /// <summary>
         /// Percentage of conversations that we should apply this analysis setting
         /// automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
-        /// are sampled in a determenestic way. The original runtime_percentage &amp;
+        /// are sampled in a determenestic way. The original RuntimePercentage &amp;
         /// upload percentage will be replaced by defining filters on the conversation.
         /// </summary>
         [Input("analysisPercentage")]

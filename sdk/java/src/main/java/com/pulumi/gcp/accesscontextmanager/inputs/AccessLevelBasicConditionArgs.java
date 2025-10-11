@@ -162,7 +162,7 @@ public final class AccessLevelBasicConditionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
      * Structure is documented below.
      * 
      */
@@ -170,7 +170,7 @@ public final class AccessLevelBasicConditionArgs extends com.pulumi.resources.Re
     private @Nullable Output<List<AccessLevelBasicConditionVpcNetworkSourceArgs>> vpcNetworkSources;
 
     /**
-     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
      * Structure is documented below.
      * 
      */
@@ -448,7 +448,7 @@ public final class AccessLevelBasicConditionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vpcNetworkSources The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+         * @param vpcNetworkSources The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
          * Structure is documented below.
          * 
          * @return builder
@@ -460,7 +460,7 @@ public final class AccessLevelBasicConditionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vpcNetworkSources The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+         * @param vpcNetworkSources The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
          * Structure is documented below.
          * 
          * @return builder
@@ -471,7 +471,7 @@ public final class AccessLevelBasicConditionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vpcNetworkSources The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+         * @param vpcNetworkSources The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
          * Structure is documented below.
          * 
          * @return builder

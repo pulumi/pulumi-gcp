@@ -170,6 +170,8 @@ class ConsumersIamPolicy(pulumi.CustomResource):
 
         > **Note:** `endpoints.ConsumersIamBinding` resources **can be** used in conjunction with `endpoints.ConsumersIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## endpoints.ConsumersIamPolicy
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -233,6 +235,8 @@ class ConsumersIamPolicy(pulumi.CustomResource):
         > **Note:** `endpoints.ConsumersIamPolicy` **cannot** be used in conjunction with `endpoints.ConsumersIamBinding` and `endpoints.ConsumersIamMember` or they will fight over what your policy should be.
 
         > **Note:** `endpoints.ConsumersIamBinding` resources **can be** used in conjunction with `endpoints.ConsumersIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## endpoints.ConsumersIamPolicy
 
         ## Import
 

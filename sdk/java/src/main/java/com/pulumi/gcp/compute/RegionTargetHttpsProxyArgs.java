@@ -21,7 +21,7 @@ public final class RegionTargetHttpsProxyArgs extends com.pulumi.resources.Resou
     /**
      * URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
      * sslCertificates and certificateManagerCertificates can&#39;t be defined together.
-     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      * 
      */
     @Import(name="certificateManagerCertificates")
@@ -30,7 +30,7 @@ public final class RegionTargetHttpsProxyArgs extends com.pulumi.resources.Resou
     /**
      * @return URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
      * sslCertificates and certificateManagerCertificates can&#39;t be defined together.
-     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      * 
      */
     public Optional<Output<List<String>>> certificateManagerCertificates() {
@@ -266,7 +266,7 @@ public final class RegionTargetHttpsProxyArgs extends com.pulumi.resources.Resou
         /**
          * @param certificateManagerCertificates URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
          * sslCertificates and certificateManagerCertificates can&#39;t be defined together.
-         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class RegionTargetHttpsProxyArgs extends com.pulumi.resources.Resou
         /**
          * @param certificateManagerCertificates URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
          * sslCertificates and certificateManagerCertificates can&#39;t be defined together.
-         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class RegionTargetHttpsProxyArgs extends com.pulumi.resources.Resou
         /**
          * @param certificateManagerCertificates URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
          * sslCertificates and certificateManagerCertificates can&#39;t be defined together.
-         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
          * 
          * @return builder
          * 

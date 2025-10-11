@@ -136,9 +136,9 @@ public class RowAccessPolicy extends com.pulumi.resources.CustomResource {
      * References to other tables, routines, and temporary functions are not
      * supported.
      * Examples: region=&#34;EU&#34;
-     * date_field = CAST(&#39;2019-9-27&#39; as DATE)
-     * nullable_field is not NULL
-     * numeric_field BETWEEN 1.0 AND 5.0
+     * dateField = CAST(&#39;2019-9-27&#39; as DATE)
+     * nullableField is not NULL
+     * numericField BETWEEN 1.0 AND 5.0
      * 
      */
     @Export(name="filterPredicate", refs={String.class}, tree="[0]")
@@ -151,16 +151,16 @@ public class RowAccessPolicy extends com.pulumi.resources.CustomResource {
      * References to other tables, routines, and temporary functions are not
      * supported.
      * Examples: region=&#34;EU&#34;
-     * date_field = CAST(&#39;2019-9-27&#39; as DATE)
-     * nullable_field is not NULL
-     * numeric_field BETWEEN 1.0 AND 5.0
+     * dateField = CAST(&#39;2019-9-27&#39; as DATE)
+     * nullableField is not NULL
+     * numericField BETWEEN 1.0 AND 5.0
      * 
      */
     public Output<String> filterPredicate() {
         return this.filterPredicate;
     }
     /**
-     * Input only. The optional list of iam_member users or groups that specifies the initial
+     * Input only. The optional list of iamMember users or groups that specifies the initial
      * members that the row-level access policy should be created with.
      * grantees types:
      * - &#34;user:alice{@literal @}example.com&#34;: An email address that represents a specific
@@ -187,7 +187,7 @@ public class RowAccessPolicy extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> grantees;
 
     /**
-     * @return Input only. The optional list of iam_member users or groups that specifies the initial
+     * @return Input only. The optional list of iamMember users or groups that specifies the initial
      * members that the row-level access policy should be created with.
      * grantees types:
      * - &#34;user:alice{@literal @}example.com&#34;: An email address that represents a specific

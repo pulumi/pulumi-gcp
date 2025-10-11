@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// </summary>
         public readonly string? Digest;
         /// <summary>
-        /// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+        /// Specifies the algorithm used to calculate this digest. Possible values are `Sha1`, `Sha256` and `Sha384`
         /// </summary>
         public readonly string? Type;
 

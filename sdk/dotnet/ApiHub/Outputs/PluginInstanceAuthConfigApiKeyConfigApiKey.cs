@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.ApiHub.Outputs
         /// The resource name of the secret version in the format,
         /// format as: `projects/*/secrets/*/versions/*`.
         /// 
-        /// &lt;a name="nested_auth_config_oauth2_client_credentials_config"&gt;&lt;/a&gt;The `oauth2_client_credentials_config` block supports:
+        /// &lt;a name="NestedAuthConfigOauth2ClientCredentialsConfig"&gt;&lt;/a&gt;The `Oauth2ClientCredentialsConfig` block supports:
         /// </summary>
         public readonly string SecretVersion;
 

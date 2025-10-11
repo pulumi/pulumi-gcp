@@ -18,11 +18,11 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly int? Day;
         /// <summary>
-        /// Hour of day (`0-23`), ignored if `day` not set
+        /// Hour of day (`0-23`), ignored if `Day` not set
         /// </summary>
         public readonly int? Hour;
         /// <summary>
-        /// Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
+        /// Receive updates after one week (`Canary`) or after two weeks (`Stable`) or after five weeks (`Week5`) of notification.
         /// </summary>
         public readonly string? UpdateTrack;
 

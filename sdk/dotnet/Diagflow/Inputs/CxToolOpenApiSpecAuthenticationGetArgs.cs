@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
     {
         /// <summary>
         /// Config for API key auth.
-        /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        /// This field is part of a union field `AuthConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("apiKeyConfig")]
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
 
         /// <summary>
         /// Config for bearer token auth.
-        /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        /// This field is part of a union field `AuthConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("bearerTokenConfig")]
@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
 
         /// <summary>
         /// Config for OAuth.
-        /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        /// This field is part of a union field `AuthConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("oauthConfig")]
@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
 
         /// <summary>
         /// Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
-        /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        /// This field is part of a union field `AuthConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("serviceAgentAuthConfig")]

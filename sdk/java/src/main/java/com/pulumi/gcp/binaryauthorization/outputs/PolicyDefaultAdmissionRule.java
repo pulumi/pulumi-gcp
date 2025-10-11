@@ -31,7 +31,7 @@ public final class PolicyDefaultAdmissionRule {
      * Each attestor must exist before a policy can reference it. To add an
      * attestor to a policy the principal issuing the policy change
      * request must be able to read the attestor resource.
-     * Note: this field must be non-empty when the evaluation_mode field
+     * Note: this field must be non-empty when the evaluationMode field
      * specifies REQUIRE_ATTESTATION, otherwise it must be empty.
      * 
      */
@@ -61,7 +61,7 @@ public final class PolicyDefaultAdmissionRule {
      * Each attestor must exist before a policy can reference it. To add an
      * attestor to a policy the principal issuing the policy change
      * request must be able to read the attestor resource.
-     * Note: this field must be non-empty when the evaluation_mode field
+     * Note: this field must be non-empty when the evaluationMode field
      * specifies REQUIRE_ATTESTATION, otherwise it must be empty.
      * 
      */

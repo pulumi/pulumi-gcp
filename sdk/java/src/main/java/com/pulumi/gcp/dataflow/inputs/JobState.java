@@ -20,14 +20,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     public static final JobState Empty = new JobState();
 
     /**
-     * List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+     * List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
      * 
      */
     @Import(name="additionalExperiments")
     private @Nullable Output<List<String>> additionalExperiments;
 
     /**
-     * @return List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+     * @return List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
      * 
      */
     public Optional<Output<List<String>>> additionalExperiments() {
@@ -112,7 +112,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     /**
      * User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -121,7 +121,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -455,7 +455,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
          * 
          * @return builder
          * 
@@ -466,7 +466,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User labels to be specified for the job. Keys and values should follow the restrictions
          * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -606,7 +606,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User labels to be specified for the job. Keys and values should follow the restrictions
          * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

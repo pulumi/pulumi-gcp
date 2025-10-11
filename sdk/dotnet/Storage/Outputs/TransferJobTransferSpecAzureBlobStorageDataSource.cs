@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string Container;
         /// <summary>
-        /// ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+        /// ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If CredentialsSecret is specified, do not specify azure_credentials.`,
         /// </summary>
         public readonly string? CredentialsSecret;
         /// <summary>

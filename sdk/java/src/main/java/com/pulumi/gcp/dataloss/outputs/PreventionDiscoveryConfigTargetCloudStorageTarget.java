@@ -27,7 +27,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTarget {
      */
     private @Nullable PreventionDiscoveryConfigTargetCloudStorageTargetDisabled disabled;
     /**
-     * @return The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+     * @return The buckets the generationCadence applies to. The first target with a matching filter will be the one to apply to a bucket.
      * Structure is documented below.
      * 
      */
@@ -56,7 +56,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTarget {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+     * @return The buckets the generationCadence applies to. The first target with a matching filter will be the one to apply to a bucket.
      * Structure is documented below.
      * 
      */

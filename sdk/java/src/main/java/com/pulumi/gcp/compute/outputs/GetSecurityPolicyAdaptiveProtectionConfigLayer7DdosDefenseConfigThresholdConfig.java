@@ -22,7 +22,7 @@ public final class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseCon
     private Double detectionLoadThreshold;
     private Double detectionRelativeToBaselineQps;
     /**
-     * @return The name of the security policy. Provide either this or a `self_link`.
+     * @return The name of the security policy. Provide either this or a `selfLink`.
      * 
      */
     private String name;
@@ -51,7 +51,7 @@ public final class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseCon
         return this.detectionRelativeToBaselineQps;
     }
     /**
-     * @return The name of the security policy. Provide either this or a `self_link`.
+     * @return The name of the security policy. Provide either this or a `selfLink`.
      * 
      */
     public String name() {

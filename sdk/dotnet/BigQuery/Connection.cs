@@ -467,7 +467,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Optional. The Cloud KMS key that is used for encryption.
-        /// Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        /// Example: projects/[KmsProjectId]/locations/[region]/keyRings/[KeyRegion]/cryptoKeys/[key]
         /// </summary>
         [Output("kmsKeyName")]
         public Output<string?> KmsKeyName { get; private set; } = null!;
@@ -606,7 +606,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Optional. The Cloud KMS key that is used for encryption.
-        /// Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        /// Example: projects/[KmsProjectId]/locations/[region]/keyRings/[KeyRegion]/cryptoKeys/[key]
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
@@ -706,7 +706,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Optional. The Cloud KMS key that is used for encryption.
-        /// Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        /// Example: projects/[KmsProjectId]/locations/[region]/keyRings/[KeyRegion]/cryptoKeys/[key]
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }

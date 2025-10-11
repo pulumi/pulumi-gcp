@@ -37,7 +37,7 @@ public final class NetworkFirewallPolicyPacketMirroringRuleMatchArgs extends com
      * Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
      * 
      */
     @Import(name="layer4Configs", required=true)
@@ -47,7 +47,7 @@ public final class NetworkFirewallPolicyPacketMirroringRuleMatchArgs extends com
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
      * 
      */
     public Output<List<NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgs>> layer4Configs() {
@@ -130,7 +130,7 @@ public final class NetworkFirewallPolicyPacketMirroringRuleMatchArgs extends com
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class NetworkFirewallPolicyPacketMirroringRuleMatchArgs extends com
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class NetworkFirewallPolicyPacketMirroringRuleMatchArgs extends com
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
          * 
          * @return builder
          * 

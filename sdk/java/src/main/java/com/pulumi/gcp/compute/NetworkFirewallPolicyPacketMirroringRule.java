@@ -183,14 +183,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule")
 public class NetworkFirewallPolicyPacketMirroringRule extends com.pulumi.resources.CustomResource {
     /**
-     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;do_not_mirror&#34;, &#34;goto_next&#34;.
+     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;doNotMirror&#34;, &#34;gotoNext&#34;.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;do_not_mirror&#34;, &#34;goto_next&#34;.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;doNotMirror&#34;, &#34;gotoNext&#34;.
      * 
      */
     public Output<String> action() {

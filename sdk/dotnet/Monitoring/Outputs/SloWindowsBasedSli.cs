@@ -16,26 +16,26 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// <summary>
         /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
         /// with ValueType = BOOL. The window is good if any true values
-        /// appear in the window. One of `good_bad_metric_filter`,
-        /// `good_total_ratio_threshold`, `metric_mean_in_range`,
-        /// `metric_sum_in_range` must be set for `windows_based_sli`.
+        /// appear in the window. One of `GoodBadMetricFilter`,
+        /// `GoodTotalRatioThreshold`, `MetricMeanInRange`,
+        /// `MetricSumInRange` must be set for `WindowsBasedSli`.
         /// </summary>
         public readonly string? GoodBadMetricFilter;
         /// <summary>
         /// Criterion that describes a window as good if its performance is
-        /// high enough. One of `good_bad_metric_filter`,
-        /// `good_total_ratio_threshold`, `metric_mean_in_range`,
-        /// `metric_sum_in_range` must be set for `windows_based_sli`.
+        /// high enough. One of `GoodBadMetricFilter`,
+        /// `GoodTotalRatioThreshold`, `MetricMeanInRange`,
+        /// `MetricSumInRange` must be set for `WindowsBasedSli`.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SloWindowsBasedSliGoodTotalRatioThreshold? GoodTotalRatioThreshold;
         /// <summary>
         /// Criterion that describes a window as good if the metric's value
         /// is in a good range, *averaged* across returned streams.
-        /// One of `good_bad_metric_filter`,
-        /// `good_total_ratio_threshold`, `metric_mean_in_range`,
-        /// `metric_sum_in_range` must be set for `windows_based_sli`.
-        /// Average value X of `time_series` should satisfy
+        /// One of `GoodBadMetricFilter`,
+        /// `GoodTotalRatioThreshold`, `MetricMeanInRange`,
+        /// `MetricSumInRange` must be set for `WindowsBasedSli`.
+        /// Average value X of `TimeSeries` should satisfy
         /// `range.min &lt;= X &lt;= range.max` for a good window.
         /// Structure is documented below.
         /// </summary>
@@ -43,11 +43,11 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// <summary>
         /// Criterion that describes a window as good if the metric's value
         /// is in a good range, *summed* across returned streams.
-        /// Summed value `X` of `time_series` should satisfy
+        /// Summed value `X` of `TimeSeries` should satisfy
         /// `range.min &lt;= X &lt;= range.max` for a good window.
-        /// One of `good_bad_metric_filter`,
-        /// `good_total_ratio_threshold`, `metric_mean_in_range`,
-        /// `metric_sum_in_range` must be set for `windows_based_sli`.
+        /// One of `GoodBadMetricFilter`,
+        /// `GoodTotalRatioThreshold`, `MetricMeanInRange`,
+        /// `MetricSumInRange` must be set for `WindowsBasedSli`.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SloWindowsBasedSliMetricSumInRange? MetricSumInRange;

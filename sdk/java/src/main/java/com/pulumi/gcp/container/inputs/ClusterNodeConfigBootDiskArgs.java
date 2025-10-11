@@ -34,14 +34,14 @@ public final class ClusterNodeConfigBootDiskArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Configure disk IOPs. This is only valid if the `disk_type` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+     * Configure disk IOPs. This is only valid if the `diskType` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
      * 
      */
     @Import(name="provisionedIops")
     private @Nullable Output<Integer> provisionedIops;
 
     /**
-     * @return Configure disk IOPs. This is only valid if the `disk_type` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+     * @return Configure disk IOPs. This is only valid if the `diskType` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
      * 
      */
     public Optional<Output<Integer>> provisionedIops() {
@@ -49,14 +49,14 @@ public final class ClusterNodeConfigBootDiskArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Configure disk throughput. This is only valid if the `disk_type` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+     * Configure disk throughput. This is only valid if the `diskType` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
      * 
      */
     @Import(name="provisionedThroughput")
     private @Nullable Output<Integer> provisionedThroughput;
 
     /**
-     * @return Configure disk throughput. This is only valid if the `disk_type` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+     * @return Configure disk throughput. This is only valid if the `diskType` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
      * 
      */
     public Optional<Output<Integer>> provisionedThroughput() {
@@ -131,7 +131,7 @@ public final class ClusterNodeConfigBootDiskArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param provisionedIops Configure disk IOPs. This is only valid if the `disk_type` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+         * @param provisionedIops Configure disk IOPs. This is only valid if the `diskType` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClusterNodeConfigBootDiskArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param provisionedIops Configure disk IOPs. This is only valid if the `disk_type` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+         * @param provisionedIops Configure disk IOPs. This is only valid if the `diskType` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ClusterNodeConfigBootDiskArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param provisionedThroughput Configure disk throughput. This is only valid if the `disk_type` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+         * @param provisionedThroughput Configure disk throughput. This is only valid if the `diskType` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ClusterNodeConfigBootDiskArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param provisionedThroughput Configure disk throughput. This is only valid if the `disk_type` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+         * @param provisionedThroughput Configure disk throughput. This is only valid if the `diskType` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
          * 
          * @return builder
          * 

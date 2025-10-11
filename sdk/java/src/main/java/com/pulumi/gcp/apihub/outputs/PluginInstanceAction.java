@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class PluginInstanceAction {
     /**
      * @return This should map to one of the action id specified
-     * in actions_config in the plugin.
+     * in actionsConfig in the plugin.
      * 
      */
     private String actionId;
@@ -44,7 +44,7 @@ public final class PluginInstanceAction {
      * @return The time zone for the schedule cron expression. If not provided, UTC will
      * be used.
      * 
-     * &lt;a name=&#34;nested_actions_actions_hub_instance_action&#34;&gt;&lt;/a&gt;The `hub_instance_action` block contains:
+     * &lt;a name=&#34;nestedActionsActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
      * 
      */
     private @Nullable String scheduleTimeZone;
@@ -65,7 +65,7 @@ public final class PluginInstanceAction {
     private PluginInstanceAction() {}
     /**
      * @return This should map to one of the action id specified
-     * in actions_config in the plugin.
+     * in actionsConfig in the plugin.
      * 
      */
     public String actionId() {
@@ -100,7 +100,7 @@ public final class PluginInstanceAction {
      * @return The time zone for the schedule cron expression. If not provided, UTC will
      * be used.
      * 
-     * &lt;a name=&#34;nested_actions_actions_hub_instance_action&#34;&gt;&lt;/a&gt;The `hub_instance_action` block contains:
+     * &lt;a name=&#34;nestedActionsActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
      * 
      */
     public Optional<String> scheduleTimeZone() {

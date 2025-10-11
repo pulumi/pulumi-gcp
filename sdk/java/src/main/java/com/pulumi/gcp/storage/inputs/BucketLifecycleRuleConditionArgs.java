@@ -19,14 +19,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     public static final BucketLifecycleRuleConditionArgs Empty = new BucketLifecycleRuleConditionArgs();
 
     /**
-     * Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
+     * Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `sendAgeIfZero` should be set `true` otherwise `0` value of `age` field will be ignored.
      * 
      */
     @Import(name="age")
     private @Nullable Output<Integer> age;
 
     /**
-     * @return Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
+     * @return Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `sendAgeIfZero` should be set `true` otherwise `0` value of `age` field will be ignored.
      * 
      */
     public Optional<Output<Integer>> age() {
@@ -171,14 +171,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+     * While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
      * 
      */
     @Import(name="sendAgeIfZero")
     private @Nullable Output<Boolean> sendAgeIfZero;
 
     /**
-     * @return While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+     * @return While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
      * 
      */
     public Optional<Output<Boolean>> sendAgeIfZero() {
@@ -186,14 +186,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+     * While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
      * 
      */
     @Import(name="sendDaysSinceCustomTimeIfZero")
     private @Nullable Output<Boolean> sendDaysSinceCustomTimeIfZero;
 
     /**
-     * @return While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+     * @return While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
      * 
      */
     public Optional<Output<Boolean>> sendDaysSinceCustomTimeIfZero() {
@@ -201,14 +201,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+     * While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
      * 
      */
     @Import(name="sendDaysSinceNoncurrentTimeIfZero")
     private @Nullable Output<Boolean> sendDaysSinceNoncurrentTimeIfZero;
 
     /**
-     * @return While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+     * @return While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
      * 
      */
     public Optional<Output<Boolean>> sendDaysSinceNoncurrentTimeIfZero() {
@@ -216,14 +216,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+     * While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
      * 
      */
     @Import(name="sendNumNewerVersionsIfZero")
     private @Nullable Output<Boolean> sendNumNewerVersionsIfZero;
 
     /**
-     * @return While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+     * @return While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
      * 
      */
     public Optional<Output<Boolean>> sendNumNewerVersionsIfZero() {
@@ -284,7 +284,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param age Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
+         * @param age Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `sendAgeIfZero` should be set `true` otherwise `0` value of `age` field will be ignored.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param age Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
+         * @param age Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `sendAgeIfZero` should be set `true` otherwise `0` value of `age` field will be ignored.
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sendAgeIfZero While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+         * @param sendAgeIfZero While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sendAgeIfZero While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+         * @param sendAgeIfZero While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sendDaysSinceCustomTimeIfZero While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+         * @param sendDaysSinceCustomTimeIfZero While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
          * 
          * @return builder
          * 
@@ -558,7 +558,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sendDaysSinceCustomTimeIfZero While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+         * @param sendDaysSinceCustomTimeIfZero While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sendDaysSinceNoncurrentTimeIfZero While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+         * @param sendDaysSinceNoncurrentTimeIfZero While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sendDaysSinceNoncurrentTimeIfZero While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+         * @param sendDaysSinceNoncurrentTimeIfZero While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
          * 
          * @return builder
          * 
@@ -589,7 +589,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sendNumNewerVersionsIfZero While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+         * @param sendNumNewerVersionsIfZero While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
          * 
          * @return builder
          * 
@@ -600,7 +600,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sendNumNewerVersionsIfZero While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+         * @param sendNumNewerVersionsIfZero While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
          * 
          * @return builder
          * 

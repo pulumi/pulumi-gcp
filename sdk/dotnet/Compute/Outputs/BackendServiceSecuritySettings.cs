@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_security_settings_aws_v4_authentication"&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+        /// &lt;a name="NestedSecuritySettingsAwsV4Authentication"&gt;&lt;/a&gt;The `AwsV4Authentication` block supports:
         /// </summary>
         public readonly Outputs.BackendServiceSecuritySettingsAwsV4Authentication? AwsV4Authentication;
         /// <summary>

@@ -177,7 +177,7 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The identity associated with this sink. This identity must be granted write access to the configured `destination`.
+        /// The identity associated with this sink. This identity must be granted write access to the configured `Destination`.
         /// </summary>
         public readonly string WriterIdentity;
 

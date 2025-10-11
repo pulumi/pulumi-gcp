@@ -21,14 +21,14 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// The network that is allowed to connect to this service attachment.
-        /// Only one of project_id_or_num and network_url may be set.
+        /// Only one of ProjectIdOrNum and NetworkUrl may be set.
         /// </summary>
         [Input("networkUrl")]
         public Input<string>? NetworkUrl { get; set; }
 
         /// <summary>
         /// A project that is allowed to connect to this service attachment.
-        /// Only one of project_id_or_num and network_url may be set.
+        /// Only one of ProjectIdOrNum and NetworkUrl may be set.
         /// </summary>
         [Input("projectIdOrNum")]
         public Input<string>? ProjectIdOrNum { get; set; }

@@ -47,12 +47,12 @@ public final class GetInstanceNetworkInterface {
      */
     private String ipv6Address;
     /**
-     * @return The name of the instance. One of `name` or `self_link` must be provided.
+     * @return The name of the instance. One of `name` or `selfLink` must be provided.
      * 
      */
     private String name;
     /**
-     * @return The name or self_link of the network attached to this interface.
+     * @return The name or selfLink of the network attached to this interface.
      * 
      */
     private String network;
@@ -87,7 +87,7 @@ public final class GetInstanceNetworkInterface {
      */
     private String stackType;
     /**
-     * @return The name or self_link of the subnetwork attached to this interface.
+     * @return The name or selfLink of the subnetwork attached to this interface.
      * 
      */
     private String subnetwork;
@@ -142,14 +142,14 @@ public final class GetInstanceNetworkInterface {
         return this.ipv6Address;
     }
     /**
-     * @return The name of the instance. One of `name` or `self_link` must be provided.
+     * @return The name of the instance. One of `name` or `selfLink` must be provided.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The name or self_link of the network attached to this interface.
+     * @return The name or selfLink of the network attached to this interface.
      * 
      */
     public String network() {
@@ -198,7 +198,7 @@ public final class GetInstanceNetworkInterface {
         return this.stackType;
     }
     /**
-     * @return The name or self_link of the subnetwork attached to this interface.
+     * @return The name or selfLink of the subnetwork attached to this interface.
      * 
      */
     public String subnetwork() {

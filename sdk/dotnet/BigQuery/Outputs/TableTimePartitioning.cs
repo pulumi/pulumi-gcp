@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// <summary>
         /// If set to true, queries over this table
         /// require a partition filter that can be used for partition elimination to be
-        /// specified. `require_partition_filter` is deprecated and will be removed in
+        /// specified. `RequirePartitionFilter` is deprecated and will be removed in
         /// a future major release. Use the top level field with the same name instead.
         /// </summary>
         public readonly bool? RequirePartitionFilter;

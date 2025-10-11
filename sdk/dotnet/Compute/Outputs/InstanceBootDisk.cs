@@ -27,13 +27,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// A 256-bit [customer-supplied encryption key]
         /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
         /// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-        /// to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        /// to encrypt this disk. Only one of `KmsKeySelfLink`, `DiskEncryptionKeyRsa` and `DiskEncryptionKeyRaw`
         /// may be set.
         /// </summary>
         public readonly string? DiskEncryptionKeyRaw;
         /// <summary>
         /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-        /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `KmsKeySelfLink`, `DiskEncryptionKeyRsa` and `DiskEncryptionKeyRaw`
         /// </summary>
         public readonly string? DiskEncryptionKeyRsa;
         /// <summary>
@@ -58,18 +58,18 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly ImmutableArray<string> GuestOsFeatures;
         /// <summary>
         /// Parameters for a new disk that will be created
-        /// alongside the new instance. Either `initialize_params` or `source` must be set.
+        /// alongside the new instance. Either `InitializeParams` or `Source` must be set.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.InstanceBootDiskInitializeParams? InitializeParams;
         /// <summary>
-        /// The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
+        /// The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with AttachedDisk and only used for specific cases, please don't specify this field without advice from Google.)
         /// </summary>
         public readonly string? Interface;
         /// <summary>
-        /// The self_link of the encryption key that is
-        /// stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`,
-        /// `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        /// The SelfLink of the encryption key that is
+        /// stored in Google Cloud KMS to encrypt this disk. Only one of `KmsKeySelfLink`,
+        /// `DiskEncryptionKeyRsa` and `DiskEncryptionKeyRaw`
         /// may be set.
         /// </summary>
         public readonly string? KmsKeySelfLink;
@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// The name or self_link of the existing disk (such as those managed by
+        /// The name or SelfLink of the existing disk (such as those managed by
         /// `gcp.compute.Disk`) or disk image. To create an instance from a snapshot, first create a
         /// `gcp.compute.Disk` from a snapshot and reference it here.
         /// </summary>

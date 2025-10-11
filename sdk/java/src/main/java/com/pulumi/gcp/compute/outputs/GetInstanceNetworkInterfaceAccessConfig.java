@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceNetworkInterfaceAccessConfig {
     /**
-     * @return If the instance has an access config, either the given external ip (in the `nat_ip` field) or the ephemeral (generated) ip (if you didn&#39;t provide one).
+     * @return If the instance has an access config, either the given external ip (in the `natIp` field) or the ephemeral (generated) ip (if you didn&#39;t provide one).
      * 
      */
     private String natIp;
@@ -33,7 +33,7 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
 
     private GetInstanceNetworkInterfaceAccessConfig() {}
     /**
-     * @return If the instance has an access config, either the given external ip (in the `nat_ip` field) or the ephemeral (generated) ip (if you didn&#39;t provide one).
+     * @return If the instance has an access config, either the given external ip (in the `natIp` field) or the ephemeral (generated) ip (if you didn&#39;t provide one).
      * 
      */
     public String natIp() {

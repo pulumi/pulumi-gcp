@@ -19,14 +19,14 @@ public final class EnterpriseKeyWebSettingsArgs extends com.pulumi.resources.Res
     public static final EnterpriseKeyWebSettingsArgs Empty = new EnterpriseKeyWebSettingsArgs();
 
     /**
-     * If set to true, it means allowed_domains will not be enforced.
+     * If set to true, it means allowedDomains will not be enforced.
      * 
      */
     @Import(name="allowAllDomains")
     private @Nullable Output<Boolean> allowAllDomains;
 
     /**
-     * @return If set to true, it means allowed_domains will not be enforced.
+     * @return If set to true, it means allowedDomains will not be enforced.
      * 
      */
     public Optional<Output<Boolean>> allowAllDomains() {
@@ -122,7 +122,7 @@ public final class EnterpriseKeyWebSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowAllDomains If set to true, it means allowed_domains will not be enforced.
+         * @param allowAllDomains If set to true, it means allowedDomains will not be enforced.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class EnterpriseKeyWebSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowAllDomains If set to true, it means allowed_domains will not be enforced.
+         * @param allowAllDomains If set to true, it means allowedDomains will not be enforced.
          * 
          * @return builder
          * 

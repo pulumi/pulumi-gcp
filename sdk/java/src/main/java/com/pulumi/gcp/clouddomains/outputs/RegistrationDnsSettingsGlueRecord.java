@@ -19,13 +19,13 @@ public final class RegistrationDnsSettingsGlueRecord {
     private String hostName;
     /**
      * @return List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-     * At least one of ipv4_address and ipv6_address must be set.
+     * At least one of ipv4Address and ipv6Address must be set.
      * 
      */
     private @Nullable List<String> ipv4Addresses;
     /**
      * @return List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-     * At least one of ipv4_address and ipv6_address must be set.
+     * At least one of ipv4Address and ipv6Address must be set.
      * 
      */
     private @Nullable List<String> ipv6Addresses;
@@ -40,7 +40,7 @@ public final class RegistrationDnsSettingsGlueRecord {
     }
     /**
      * @return List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-     * At least one of ipv4_address and ipv6_address must be set.
+     * At least one of ipv4Address and ipv6Address must be set.
      * 
      */
     public List<String> ipv4Addresses() {
@@ -48,7 +48,7 @@ public final class RegistrationDnsSettingsGlueRecord {
     }
     /**
      * @return List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-     * At least one of ipv4_address and ipv6_address must be set.
+     * At least one of ipv4Address and ipv6Address must be set.
      * 
      */
     public List<String> ipv6Addresses() {

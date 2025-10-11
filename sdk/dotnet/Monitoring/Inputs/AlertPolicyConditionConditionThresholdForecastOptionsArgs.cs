@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// whether a timeseries will violate the threshold.
         /// If the predicted value is found to violate the
         /// threshold, and the violation is observed in all
-        /// forecasts made for the Configured `duration`,
+        /// forecasts made for the Configured `Duration`,
         /// then the timeseries is considered to be failing.
         /// </summary>
         [Input("forecastHorizon", required: true)]

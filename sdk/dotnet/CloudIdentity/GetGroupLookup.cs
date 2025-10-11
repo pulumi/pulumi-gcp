@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.CloudIdentity
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
+        /// Resource name of the Group in the format: groups/{group_id}, where `GroupId` is the unique ID assigned to the Group.
         /// </summary>
         public readonly string Name;
 

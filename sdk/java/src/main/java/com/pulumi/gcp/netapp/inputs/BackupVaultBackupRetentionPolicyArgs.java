@@ -33,14 +33,14 @@ public final class BackupVaultBackupRetentionPolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     @Import(name="dailyBackupImmutable")
     private @Nullable Output<Boolean> dailyBackupImmutable;
 
     /**
-     * @return Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * @return Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     public Optional<Output<Boolean>> dailyBackupImmutable() {
@@ -48,14 +48,14 @@ public final class BackupVaultBackupRetentionPolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     @Import(name="manualBackupImmutable")
     private @Nullable Output<Boolean> manualBackupImmutable;
 
     /**
-     * @return Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * @return Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     public Optional<Output<Boolean>> manualBackupImmutable() {
@@ -63,14 +63,14 @@ public final class BackupVaultBackupRetentionPolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     @Import(name="monthlyBackupImmutable")
     private @Nullable Output<Boolean> monthlyBackupImmutable;
 
     /**
-     * @return Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * @return Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     public Optional<Output<Boolean>> monthlyBackupImmutable() {
@@ -78,14 +78,14 @@ public final class BackupVaultBackupRetentionPolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     @Import(name="weeklyBackupImmutable")
     private @Nullable Output<Boolean> weeklyBackupImmutable;
 
     /**
-     * @return Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * @return Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     public Optional<Output<Boolean>> weeklyBackupImmutable() {
@@ -142,7 +142,7 @@ public final class BackupVaultBackupRetentionPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param dailyBackupImmutable Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+         * @param dailyBackupImmutable Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class BackupVaultBackupRetentionPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param dailyBackupImmutable Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+         * @param dailyBackupImmutable Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class BackupVaultBackupRetentionPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param manualBackupImmutable Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+         * @param manualBackupImmutable Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class BackupVaultBackupRetentionPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param manualBackupImmutable Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+         * @param manualBackupImmutable Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class BackupVaultBackupRetentionPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param monthlyBackupImmutable Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+         * @param monthlyBackupImmutable Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class BackupVaultBackupRetentionPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param monthlyBackupImmutable Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+         * @param monthlyBackupImmutable Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class BackupVaultBackupRetentionPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param weeklyBackupImmutable Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+         * @param weeklyBackupImmutable Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class BackupVaultBackupRetentionPolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param weeklyBackupImmutable Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+         * @param weeklyBackupImmutable Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
          * 
          * @return builder
          * 

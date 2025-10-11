@@ -33,7 +33,7 @@ public final class AccessLevelsAccessLevel {
      */
     private @Nullable String description;
     /**
-     * @return Resource name for the Access Level. The short_name component must begin
+     * @return Resource name for the Access Level. The shortName component must begin
      * with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      * 
@@ -71,7 +71,7 @@ public final class AccessLevelsAccessLevel {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Resource name for the Access Level. The short_name component must begin
+     * @return Resource name for the Access Level. The shortName component must begin
      * with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      * 

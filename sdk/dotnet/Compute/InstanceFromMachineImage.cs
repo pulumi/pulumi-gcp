@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
     /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
     /// 
     /// This resource is specifically to create a compute instance from a given
-    /// `source_machine_image`. To create an instance without a machine image, use the
+    /// `SourceMachineImage`. To create an instance without a machine image, use the
     /// `gcp.compute.Instance` resource.
     /// 
     /// ## Example Usage
@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool> CanIpForward { get; private set; } = null!;
 
         /// <summary>
-        /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+        /// The Confidential VM config being used by the instance.  OnHostMaintenance has to be set to TERMINATE or this will fail to create.
         /// </summary>
         [Output("confidentialInstanceConfig")]
         public Output<Outputs.InstanceFromMachineImageConfidentialInstanceConfig> ConfidentialInstanceConfig { get; private set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>> PartnerMetadata { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If SelfLink is provided, this value is ignored. If neither SelfLink nor project are provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceFromMachineImageReservationAffinity> ReservationAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+        /// A list of SelfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Output("resourcePolicies")]
         public Output<string> ResourcePolicies { get; private set; } = null!;
@@ -322,7 +322,7 @@ namespace Pulumi.Gcp.Compute
         /// as a way to override the properties in the machine image. All exported attributes
         /// from `gcp.compute.Instance` are likewise exported here.
         /// 
-        /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "boot_disk", "attached_disk", and "scratch_disk" fields.
+        /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "BootDisk", "AttachedDisk", and "ScratchDisk" fields.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -394,7 +394,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+        /// The Confidential VM config being used by the instance.  OnHostMaintenance has to be set to TERMINATE or this will fail to create.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceFromMachineImageConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
@@ -542,7 +542,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If SelfLink is provided, this value is ignored. If neither SelfLink nor project are provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -554,7 +554,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceFromMachineImageReservationAffinityArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
-        /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+        /// A list of SelfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }
@@ -612,7 +612,7 @@ namespace Pulumi.Gcp.Compute
         /// as a way to override the properties in the machine image. All exported attributes
         /// from `gcp.compute.Instance` are likewise exported here.
         /// 
-        /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "boot_disk", "attached_disk", and "scratch_disk" fields.
+        /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "BootDisk", "AttachedDisk", and "ScratchDisk" fields.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -665,7 +665,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+        /// The Confidential VM config being used by the instance.  OnHostMaintenance has to be set to TERMINATE or this will fail to create.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceFromMachineImageConfidentialInstanceConfigGetArgs>? ConfidentialInstanceConfig { get; set; }
@@ -863,7 +863,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If SelfLink is provided, this value is ignored. If neither SelfLink nor project are provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -891,7 +891,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceFromMachineImageReservationAffinityGetArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
-        /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+        /// A list of SelfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }
@@ -973,7 +973,7 @@ namespace Pulumi.Gcp.Compute
         /// as a way to override the properties in the machine image. All exported attributes
         /// from `gcp.compute.Instance` are likewise exported here.
         /// 
-        /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "boot_disk", "attached_disk", and "scratch_disk" fields.
+        /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "BootDisk", "AttachedDisk", and "ScratchDisk" fields.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

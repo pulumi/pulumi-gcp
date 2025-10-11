@@ -17,7 +17,7 @@ public final class FlexibleAppVersionManualScalingArgs extends com.pulumi.resour
     /**
      * Number of instances to assign to the service at the start.
      * **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
-     * Modules API set_num_instances() you must use `lifecycle.ignore_changes = [&#34;manual_scaling&#34;[0].instances]` to prevent drift detection.
+     * Modules API set_num_instances() you must use `lifecycle.ignore_changes = [&#34;manualScaling&#34;[0].instances]` to prevent drift detection.
      * 
      */
     @Import(name="instances", required=true)
@@ -26,7 +26,7 @@ public final class FlexibleAppVersionManualScalingArgs extends com.pulumi.resour
     /**
      * @return Number of instances to assign to the service at the start.
      * **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
-     * Modules API set_num_instances() you must use `lifecycle.ignore_changes = [&#34;manual_scaling&#34;[0].instances]` to prevent drift detection.
+     * Modules API set_num_instances() you must use `lifecycle.ignore_changes = [&#34;manualScaling&#34;[0].instances]` to prevent drift detection.
      * 
      */
     public Output<Integer> instances() {
@@ -60,7 +60,7 @@ public final class FlexibleAppVersionManualScalingArgs extends com.pulumi.resour
         /**
          * @param instances Number of instances to assign to the service at the start.
          * **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
-         * Modules API set_num_instances() you must use `lifecycle.ignore_changes = [&#34;manual_scaling&#34;[0].instances]` to prevent drift detection.
+         * Modules API set_num_instances() you must use `lifecycle.ignore_changes = [&#34;manualScaling&#34;[0].instances]` to prevent drift detection.
          * 
          * @return builder
          * 
@@ -73,7 +73,7 @@ public final class FlexibleAppVersionManualScalingArgs extends com.pulumi.resour
         /**
          * @param instances Number of instances to assign to the service at the start.
          * **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
-         * Modules API set_num_instances() you must use `lifecycle.ignore_changes = [&#34;manual_scaling&#34;[0].instances]` to prevent drift detection.
+         * Modules API set_num_instances() you must use `lifecycle.ignore_changes = [&#34;manualScaling&#34;[0].instances]` to prevent drift detection.
          * 
          * @return builder
          * 

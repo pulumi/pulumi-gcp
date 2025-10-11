@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceGroupManagerVersion
     {
         /// <summary>
-        /// The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
+        /// The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`SelfLinkUnique` attribute).
         /// </summary>
         public readonly string InstanceTemplate;
         /// <summary>
@@ -24,8 +24,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         /// 
-        /// &gt; Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
-        /// constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
+        /// &gt; Exactly one `Version` you specify must not have a `TargetSize` specified. During a rolling update, the instance group manager will fulfill the `TargetSize`
+        /// constraints of every other `Version`, and any remaining instances will be provisioned with the version where `TargetSize` is unset.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerVersionTargetSize? TargetSize;
 

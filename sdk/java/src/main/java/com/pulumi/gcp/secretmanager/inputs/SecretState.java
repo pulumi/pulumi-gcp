@@ -34,7 +34,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
      * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -53,7 +53,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
      * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -107,7 +107,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     /**
      * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
-     * Only one of `expire_time` or `ttl` can be provided.
+     * Only one of `expireTime` or `ttl` can be provided.
      * 
      */
     @Import(name="expireTime")
@@ -116,7 +116,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
-     * Only one of `expire_time` or `ttl` can be provided.
+     * Only one of `expireTime` or `ttl` can be provided.
      * 
      */
     public Optional<Output<String>> expireTime() {
@@ -134,7 +134,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
      * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -151,7 +151,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
      * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -229,7 +229,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+     * The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
      * Structure is documented below.
      * 
      */
@@ -237,7 +237,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<SecretRotationArgs> rotation;
 
     /**
-     * @return The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+     * @return The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
      * Structure is documented below.
      * 
      */
@@ -299,7 +299,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     /**
      * The TTL for the Secret.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
-     * Only one of `ttl` or `expire_time` can be provided.
+     * Only one of `ttl` or `expireTime` can be provided.
      * 
      */
     @Import(name="ttl")
@@ -308,7 +308,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The TTL for the Secret.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
-     * Only one of `ttl` or `expire_time` can be provided.
+     * Only one of `ttl` or `expireTime` can be provided.
      * 
      */
     public Optional<Output<String>> ttl() {
@@ -419,7 +419,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
          * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
          * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param expireTime Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
-         * Only one of `expire_time` or `ttl` can be provided.
+         * Only one of `expireTime` or `ttl` can be provided.
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param expireTime Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
-         * Only one of `expire_time` or `ttl` can be provided.
+         * Only one of `expireTime` or `ttl` can be provided.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
          * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
          * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -672,7 +672,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotation The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+         * @param rotation The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
          * Structure is documented below.
          * 
          * @return builder
@@ -684,7 +684,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotation The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+         * @param rotation The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
          * Structure is documented below.
          * 
          * @return builder
@@ -777,7 +777,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param ttl The TTL for the Secret.
          * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
-         * Only one of `ttl` or `expire_time` can be provided.
+         * Only one of `ttl` or `expireTime` can be provided.
          * 
          * @return builder
          * 
@@ -790,7 +790,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param ttl The TTL for the Secret.
          * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
-         * Only one of `ttl` or `expire_time` can be provided.
+         * Only one of `ttl` or `expireTime` can be provided.
          * 
          * @return builder
          * 

@@ -309,7 +309,7 @@ public class Datapolicyv2DataPolicy extends com.pulumi.resources.CustomResource 
      * syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
      * supports principal types users, groups, serviceaccounts, cloudidentity.
      * This field is supported in V2 Data Policy only. In case of V1 data policies
-     * (i.e. verion = 1 and policy_tag is set), this field is not populated.
+     * (i.e. verion = 1 and policyTag is set), this field is not populated.
      * 
      */
     @Export(name="grantees", refs={List.class,String.class}, tree="[0,1]")
@@ -322,7 +322,7 @@ public class Datapolicyv2DataPolicy extends com.pulumi.resources.CustomResource 
      * syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
      * supports principal types users, groups, serviceaccounts, cloudidentity.
      * This field is supported in V2 Data Policy only. In case of V1 data policies
-     * (i.e. verion = 1 and policy_tag is set), this field is not populated.
+     * (i.e. verion = 1 and policyTag is set), this field is not populated.
      * 
      */
     public Output<List<String>> grantees() {
@@ -361,7 +361,7 @@ public class Datapolicyv2DataPolicy extends com.pulumi.resources.CustomResource 
     /**
      * Policy tag resource name, in the format of
      * `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
-     * policy_tag is supported only for V1 data policies.
+     * policyTag is supported only for V1 data policies.
      * 
      */
     @Export(name="policyTag", refs={String.class}, tree="[0]")
@@ -370,7 +370,7 @@ public class Datapolicyv2DataPolicy extends com.pulumi.resources.CustomResource 
     /**
      * @return Policy tag resource name, in the format of
      * `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
-     * policy_tag is supported only for V1 data policies.
+     * policyTag is supported only for V1 data policies.
      * 
      */
     public Output<String> policyTag() {

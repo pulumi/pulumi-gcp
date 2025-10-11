@@ -13,14 +13,14 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class SecurityPolicyRuleRateLimitOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Can only be specified if the action for the rule is "rate_based_ban".
+        /// Can only be specified if the action for the rule is "RateBasedBan".
         /// If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         /// </summary>
         [Input("banDurationSec")]
         public Input<int>? BanDurationSec { get; set; }
 
         /// <summary>
-        /// Can only be specified if the action for the rule is "rate_based_ban".
+        /// Can only be specified if the action for the rule is "RateBasedBan".
         /// If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
         /// Structure is documented below.
         /// </summary>

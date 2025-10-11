@@ -17,7 +17,7 @@ public final class GetIstioCanonicalServicePlainArgs extends com.pulumi.resource
 
     /**
      * The name of the canonical service underlying this service.
-     * Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
+     * Corresponds to the destinationCanonicalServiceName metric label in label in Istio metrics.
      * 
      * ***
      * 
@@ -29,7 +29,7 @@ public final class GetIstioCanonicalServicePlainArgs extends com.pulumi.resource
 
     /**
      * @return The name of the canonical service underlying this service.
-     * Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
+     * Corresponds to the destinationCanonicalServiceName metric label in label in Istio metrics.
      * 
      * ***
      * 
@@ -42,7 +42,7 @@ public final class GetIstioCanonicalServicePlainArgs extends com.pulumi.resource
 
     /**
      * The namespace of the canonical service underlying this service.
-     * Corresponds to the destination_canonical_service_namespace metric label in Istio metrics.
+     * Corresponds to the destinationCanonicalServiceNamespace metric label in Istio metrics.
      * 
      */
     @Import(name="canonicalServiceNamespace", required=true)
@@ -50,7 +50,7 @@ public final class GetIstioCanonicalServicePlainArgs extends com.pulumi.resource
 
     /**
      * @return The namespace of the canonical service underlying this service.
-     * Corresponds to the destination_canonical_service_namespace metric label in Istio metrics.
+     * Corresponds to the destinationCanonicalServiceNamespace metric label in Istio metrics.
      * 
      */
     public String canonicalServiceNamespace() {
@@ -120,7 +120,7 @@ public final class GetIstioCanonicalServicePlainArgs extends com.pulumi.resource
 
         /**
          * @param canonicalService The name of the canonical service underlying this service.
-         * Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
+         * Corresponds to the destinationCanonicalServiceName metric label in label in Istio metrics.
          * 
          * ***
          * 
@@ -136,7 +136,7 @@ public final class GetIstioCanonicalServicePlainArgs extends com.pulumi.resource
 
         /**
          * @param canonicalServiceNamespace The namespace of the canonical service underlying this service.
-         * Corresponds to the destination_canonical_service_namespace metric label in Istio metrics.
+         * Corresponds to the destinationCanonicalServiceNamespace metric label in Istio metrics.
          * 
          * @return builder
          * 

@@ -263,6 +263,8 @@ class FolderNotificationConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Scc Folder Notification Config Basic
+
         ## Import
 
         FolderNotificationConfig can be imported using any of these accepted formats:
@@ -313,6 +315,8 @@ class FolderNotificationConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
+
+        ### Scc Folder Notification Config Basic
 
         ## Import
 

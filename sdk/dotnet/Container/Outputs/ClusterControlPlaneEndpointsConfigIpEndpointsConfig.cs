@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterControlPlaneEndpointsConfigIpEndpointsConfig
     {
         /// <summary>
-        /// Controls whether to allow direct IP access. Defaults to `true`.
+        /// Controls whether to allow direct IP access. Defaults to `True`.
         /// </summary>
         public readonly bool? Enabled;
 

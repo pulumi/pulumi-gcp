@@ -20,7 +20,7 @@ public final class GetBackupRunArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-     * If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
+     * If left empty and multiple backups exist for the instance, `mostRecent` must be set to `true`.
      * 
      */
     @Import(name="backupId")
@@ -28,7 +28,7 @@ public final class GetBackupRunArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-     * If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
+     * If left empty and multiple backups exist for the instance, `mostRecent` must be set to `true`.
      * 
      */
     public Optional<Output<Integer>> backupId() {
@@ -113,7 +113,7 @@ public final class GetBackupRunArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param backupId The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-         * If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
+         * If left empty and multiple backups exist for the instance, `mostRecent` must be set to `true`.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class GetBackupRunArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param backupId The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-         * If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
+         * If left empty and multiple backups exist for the instance, `mostRecent` must be set to `true`.
          * 
          * @return builder
          * 

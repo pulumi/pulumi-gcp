@@ -250,11 +250,11 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * It is disabled by default for Standard clusters; set `enabled = true` to enable.
      * It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
      * Lustre CSI Driver Config has optional subfield
-     * `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+     * `enableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
      * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
      * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
      * 
-     * This example `addons_config` disables two addons:
+     * This example `addonsConfig` disables two addons:
      * 
      */
     @Import(name="lustreCsiDriverConfig")
@@ -266,11 +266,11 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * It is disabled by default for Standard clusters; set `enabled = true` to enable.
      * It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
      * Lustre CSI Driver Config has optional subfield
-     * `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+     * `enableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
      * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
      * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
      * 
-     * This example `addons_config` disables two addons:
+     * This example `addonsConfig` disables two addons:
      * 
      */
     public Optional<Output<ClusterAddonsConfigLustreCsiDriverConfigArgs>> lustreCsiDriverConfig() {
@@ -280,7 +280,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     /**
      * Whether we should enable the network policy addon
      * for the master.  This must be enabled in order to enable network policy for the nodes.
-     * To enable this, you must also define a `network_policy` block,
+     * To enable this, you must also define a `networkPolicy` block,
      * otherwise nothing will happen.
      * It can only be disabled if the nodes already do not have network policies enabled.
      * Defaults to disabled; set `disabled = false` to enable.
@@ -292,7 +292,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     /**
      * @return Whether we should enable the network policy addon
      * for the master.  This must be enabled in order to enable network policy for the nodes.
-     * To enable this, you must also define a `network_policy` block,
+     * To enable this, you must also define a `networkPolicy` block,
      * otherwise nothing will happen.
      * It can only be disabled if the nodes already do not have network policies enabled.
      * Defaults to disabled; set `disabled = false` to enable.
@@ -705,11 +705,11 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * It is disabled by default for Standard clusters; set `enabled = true` to enable.
          * It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
          * Lustre CSI Driver Config has optional subfield
-         * `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+         * `enableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
          * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
          * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
          * 
-         * This example `addons_config` disables two addons:
+         * This example `addonsConfig` disables two addons:
          * 
          * @return builder
          * 
@@ -725,11 +725,11 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * It is disabled by default for Standard clusters; set `enabled = true` to enable.
          * It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
          * Lustre CSI Driver Config has optional subfield
-         * `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+         * `enableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
          * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
          * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
          * 
-         * This example `addons_config` disables two addons:
+         * This example `addonsConfig` disables two addons:
          * 
          * @return builder
          * 
@@ -741,7 +741,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         /**
          * @param networkPolicyConfig Whether we should enable the network policy addon
          * for the master.  This must be enabled in order to enable network policy for the nodes.
-         * To enable this, you must also define a `network_policy` block,
+         * To enable this, you must also define a `networkPolicy` block,
          * otherwise nothing will happen.
          * It can only be disabled if the nodes already do not have network policies enabled.
          * Defaults to disabled; set `disabled = false` to enable.
@@ -757,7 +757,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         /**
          * @param networkPolicyConfig Whether we should enable the network policy addon
          * for the master.  This must be enabled in order to enable network policy for the nodes.
-         * To enable this, you must also define a `network_policy` block,
+         * To enable this, you must also define a `networkPolicy` block,
          * otherwise nothing will happen.
          * It can only be disabled if the nodes already do not have network policies enabled.
          * Defaults to disabled; set `disabled = false` to enable.

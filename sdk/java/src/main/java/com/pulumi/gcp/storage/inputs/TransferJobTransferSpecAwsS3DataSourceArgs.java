@@ -64,14 +64,14 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
     }
 
     /**
-     * The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+     * The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentialsSecret is specified, do not specify roleArn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
      * 
      */
     @Import(name="credentialsSecret")
     private @Nullable Output<String> credentialsSecret;
 
     /**
-     * @return The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+     * @return The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentialsSecret is specified, do not specify roleArn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
      * 
      */
     public Optional<Output<String>> credentialsSecret() {
@@ -217,7 +217,7 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
         }
 
         /**
-         * @param credentialsSecret The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+         * @param credentialsSecret The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentialsSecret is specified, do not specify roleArn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
         }
 
         /**
-         * @param credentialsSecret The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+         * @param credentialsSecret The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentialsSecret is specified, do not specify roleArn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
          * 
          * @return builder
          * 

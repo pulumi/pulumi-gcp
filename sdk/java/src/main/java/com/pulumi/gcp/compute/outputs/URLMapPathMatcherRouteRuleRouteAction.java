@@ -32,7 +32,7 @@ public final class URLMapPathMatcherRouteRuleRouteAction {
      * when clients send requests to a backend service, delays can be introduced by
      * Loadbalancer on a percentage of requests before sending those request to the
      * backend service. Similarly requests from clients can be aborted by the
-     * Loadbalancer for a percentage of requests. timeout and retry_policy will be
+     * Loadbalancer for a percentage of requests. timeout and retryPolicy will be
      * ignored by clients that are configured with a fault_injection_policy.
      * Structure is documented below.
      * 
@@ -109,7 +109,7 @@ public final class URLMapPathMatcherRouteRuleRouteAction {
      * when clients send requests to a backend service, delays can be introduced by
      * Loadbalancer on a percentage of requests before sending those request to the
      * backend service. Similarly requests from clients can be aborted by the
-     * Loadbalancer for a percentage of requests. timeout and retry_policy will be
+     * Loadbalancer for a percentage of requests. timeout and retryPolicy will be
      * ignored by clients that are configured with a fault_injection_policy.
      * Structure is documented below.
      * 

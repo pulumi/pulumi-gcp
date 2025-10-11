@@ -20,7 +20,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     public static final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs Empty = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs();
 
     /**
-     * Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+     * Common alphabets. Only one of this, `customAlphabet` or `radix` must be specified.
      * Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
      * 
      */
@@ -28,7 +28,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     private @Nullable Output<String> commonAlphabet;
 
     /**
-     * @return Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+     * @return Common alphabets. Only one of this, `customAlphabet` or `radix` must be specified.
      * Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
      * 
      */
@@ -88,7 +88,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
     /**
      * This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
      * 
      */
     @Import(name="customAlphabet")
@@ -96,7 +96,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
     /**
      * @return This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
      * 
      */
     public Optional<Output<String>> customAlphabet() {
@@ -104,14 +104,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     }
 
     /**
-     * The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
+     * The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `customAlphabet` or `commonAlphabet` must be specified.
      * 
      */
     @Import(name="radix")
     private @Nullable Output<Integer> radix;
 
     /**
-     * @return The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
+     * @return The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `customAlphabet` or `commonAlphabet` must be specified.
      * 
      */
     public Optional<Output<Integer>> radix() {
@@ -171,7 +171,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param commonAlphabet Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+         * @param commonAlphabet Common alphabets. Only one of this, `customAlphabet` or `radix` must be specified.
          * Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
          * 
          * @return builder
@@ -183,7 +183,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param commonAlphabet Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+         * @param commonAlphabet Common alphabets. Only one of this, `customAlphabet` or `radix` must be specified.
          * Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
          * 
          * @return builder
@@ -257,7 +257,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         /**
          * @param customAlphabet This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         /**
          * @param customAlphabet This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param radix The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
+         * @param radix The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `customAlphabet` or `commonAlphabet` must be specified.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param radix The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
+         * @param radix The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `customAlphabet` or `commonAlphabet` must be specified.
          * 
          * @return builder
          * 

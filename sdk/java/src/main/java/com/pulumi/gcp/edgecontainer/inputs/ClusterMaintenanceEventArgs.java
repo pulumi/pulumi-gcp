@@ -36,7 +36,7 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
      * (Output)
      * The time when the maintenance event ended, either successfully or not. If
      * the maintenance event is split into multiple maintenance windows,
-     * end_time is only updated when the whole flow ends.
+     * endTime is only updated when the whole flow ends.
      * 
      */
     @Import(name="endTime")
@@ -46,7 +46,7 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
      * @return (Output)
      * The time when the maintenance event ended, either successfully or not. If
      * the maintenance event is split into multiple maintenance windows,
-     * end_time is only updated when the whole flow ends.
+     * endTime is only updated when the whole flow ends.
      * 
      */
     public Optional<Output<String>> endTime() {
@@ -253,7 +253,7 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
          * @param endTime (Output)
          * The time when the maintenance event ended, either successfully or not. If
          * the maintenance event is split into multiple maintenance windows,
-         * end_time is only updated when the whole flow ends.
+         * endTime is only updated when the whole flow ends.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
          * @param endTime (Output)
          * The time when the maintenance event ended, either successfully or not. If
          * the maintenance event is split into multiple maintenance windows,
-         * end_time is only updated when the whole flow ends.
+         * endTime is only updated when the whole flow ends.
          * 
          * @return builder
          * 

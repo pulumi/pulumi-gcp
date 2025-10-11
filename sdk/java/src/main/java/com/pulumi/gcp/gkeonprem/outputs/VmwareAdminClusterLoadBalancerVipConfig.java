@@ -15,7 +15,7 @@ public final class VmwareAdminClusterLoadBalancerVipConfig {
     /**
      * @return The VIP to configure the load balancer for add-ons.
      * 
-     * &lt;a name=&#34;nested_load_balancer_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
+     * &lt;a name=&#34;nestedLoadBalancerF5Config&#34;&gt;&lt;/a&gt;The `f5Config` block supports:
      * 
      */
     private @Nullable String addonsVip;
@@ -30,7 +30,7 @@ public final class VmwareAdminClusterLoadBalancerVipConfig {
     /**
      * @return The VIP to configure the load balancer for add-ons.
      * 
-     * &lt;a name=&#34;nested_load_balancer_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
+     * &lt;a name=&#34;nestedLoadBalancerF5Config&#34;&gt;&lt;/a&gt;The `f5Config` block supports:
      * 
      */
     public Optional<String> addonsVip() {

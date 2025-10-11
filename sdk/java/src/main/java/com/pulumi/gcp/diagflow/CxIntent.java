@@ -178,7 +178,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
      * The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
      * 
-     * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+     * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
      * 
      */
     @Export(name="isDefaultNegativeIntent", refs={Boolean.class}, tree="[0]")
@@ -188,7 +188,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * @return Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
      * The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
      * 
-     * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+     * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
      * 
      */
     public Output<Optional<Boolean>> isDefaultNegativeIntent() {
@@ -198,7 +198,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
      * The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
      * 
-     * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+     * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
      * 
      */
     @Export(name="isDefaultWelcomeIntent", refs={Boolean.class}, tree="[0]")
@@ -208,7 +208,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * @return Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
      * The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
      * 
-     * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+     * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
      * 
      */
     public Output<Optional<Boolean>> isDefaultWelcomeIntent() {
@@ -217,7 +217,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
     /**
      * Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
      * Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
-     * To manage the fallback intent, set `is_default_negative_intent = true`
+     * To manage the fallback intent, set `isDefaultNegativeIntent = true`
      * 
      */
     @Export(name="isFallback", refs={Boolean.class}, tree="[0]")
@@ -226,7 +226,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
     /**
      * @return Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
      * Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
-     * To manage the fallback intent, set `is_default_negative_intent = true`
+     * To manage the fallback intent, set `isDefaultNegativeIntent = true`
      * 
      */
     public Output<Optional<Boolean>> isFallback() {
@@ -238,7 +238,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -250,7 +250,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

@@ -14,14 +14,14 @@ import javax.annotation.Nullable;
 public final class TagTemplateFieldType {
     /**
      * @return Represents an enum type.
-     * Exactly one of `primitive_type` or `enum_type` must be set
+     * Exactly one of `primitiveType` or `enumType` must be set
      * Structure is documented below.
      * 
      */
     private @Nullable TagTemplateFieldTypeEnumType enumType;
     /**
      * @return Represents primitive types - string, bool etc.
-     * Exactly one of `primitive_type` or `enum_type` must be set
+     * Exactly one of `primitiveType` or `enumType` must be set
      * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
      * 
      */
@@ -30,7 +30,7 @@ public final class TagTemplateFieldType {
     private TagTemplateFieldType() {}
     /**
      * @return Represents an enum type.
-     * Exactly one of `primitive_type` or `enum_type` must be set
+     * Exactly one of `primitiveType` or `enumType` must be set
      * Structure is documented below.
      * 
      */
@@ -39,7 +39,7 @@ public final class TagTemplateFieldType {
     }
     /**
      * @return Represents primitive types - string, bool etc.
-     * Exactly one of `primitive_type` or `enum_type` must be set
+     * Exactly one of `primitiveType` or `enumType` must be set
      * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
      * 
      */

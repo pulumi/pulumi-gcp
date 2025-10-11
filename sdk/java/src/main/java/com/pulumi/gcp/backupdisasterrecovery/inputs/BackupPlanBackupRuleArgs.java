@@ -32,14 +32,14 @@ public final class BackupPlanBackupRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
+     * The unique ID of this `BackupRule`. The `ruleId` is unique per `BackupPlan`.
      * 
      */
     @Import(name="ruleId", required=true)
     private Output<String> ruleId;
 
     /**
-     * @return The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
+     * @return The unique ID of this `BackupRule`. The `ruleId` is unique per `BackupPlan`.
      * 
      */
     public Output<String> ruleId() {
@@ -111,7 +111,7 @@ public final class BackupPlanBackupRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ruleId The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
+         * @param ruleId The unique ID of this `BackupRule`. The `ruleId` is unique per `BackupPlan`.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class BackupPlanBackupRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ruleId The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
+         * @param ruleId The unique ID of this `BackupRule`. The `ruleId` is unique per `BackupPlan`.
          * 
          * @return builder
          * 

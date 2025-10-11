@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
     {
         /// <summary>
-        /// The name of the component. One of `admission` `audit` or `mutation`
+        /// The name of the component. One of `Admission` `Audit` or `Mutation`
         /// </summary>
         public readonly string ComponentName;
         /// <summary>

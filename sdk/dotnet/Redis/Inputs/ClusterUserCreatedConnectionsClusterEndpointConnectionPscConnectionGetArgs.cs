@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Redis.Inputs
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
-        /// The consumer project_id where the forwarding rule is created from.
+        /// The consumer ProjectId where the forwarding rule is created from.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

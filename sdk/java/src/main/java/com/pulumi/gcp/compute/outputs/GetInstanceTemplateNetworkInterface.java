@@ -53,12 +53,12 @@ public final class GetInstanceTemplateNetworkInterface {
      */
     private String ipv6Address;
     /**
-     * @return The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+     * @return The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
      * 
      */
     private String name;
     /**
-     * @return The name or self_link of the network to attach this interface to.
+     * @return The name or selfLink of the network to attach this interface to.
      * Use `network` attribute for Legacy or Auto subnetted networks and
      * `subnetwork` for custom subnetted networks.
      * 
@@ -155,14 +155,14 @@ public final class GetInstanceTemplateNetworkInterface {
         return this.ipv6Address;
     }
     /**
-     * @return The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+     * @return The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The name or self_link of the network to attach this interface to.
+     * @return The name or selfLink of the network to attach this interface to.
      * Use `network` attribute for Legacy or Auto subnetted networks and
      * `subnetwork` for custom subnetted networks.
      * 

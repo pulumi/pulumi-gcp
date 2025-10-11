@@ -250,9 +250,9 @@ import javax.annotation.Nullable;
  * 
  * The following write-only attributes are supported:
  * 
- * &lt;a name=&#34;nested_sensitive_params&#34;&gt;&lt;/a&gt;The `sensitive_params` block supports:
+ * &lt;a name=&#34;nestedSensitiveParams&#34;&gt;&lt;/a&gt;The `sensitiveParams` block supports:
  * 
- * * `secret_access_key_wo` -
+ * * `secretAccessKeyWo` -
  *   (Optional)
  *   The Secret Access Key of the AWS account transferring data from.
  *   **Note**: This property is write-only and will not be read from the API.

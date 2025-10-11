@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.ApiHub.Inputs
         public Input<bool>? Required { get; set; }
 
         /// <summary>
-        /// Regular expression in RE2 syntax used for validating the `value` of a
+        /// Regular expression in RE2 syntax used for validating the `Value` of a
         /// `ConfigVariable`.
         /// </summary>
         [Input("validationRegex")]

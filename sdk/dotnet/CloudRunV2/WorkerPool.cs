@@ -751,7 +751,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// All system annotations in v1 now have a corresponding field in v2 WorkerPool.
         /// This field follows Kubernetes annotations' namespacing, limits, and rules.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -863,7 +863,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         /// All system labels in v1 now have a corresponding field in v2 WorkerPool.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -1029,7 +1029,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// All system annotations in v1 now have a corresponding field in v2 WorkerPool.
         /// This field follows Kubernetes annotations' namespacing, limits, and rules.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -1100,7 +1100,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         /// All system labels in v1 now have a corresponding field in v2 WorkerPool.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1167,7 +1167,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// All system annotations in v1 now have a corresponding field in v2 WorkerPool.
         /// This field follows Kubernetes annotations' namespacing, limits, and rules.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -1324,7 +1324,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         /// All system labels in v1 now have a corresponding field in v2 WorkerPool.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

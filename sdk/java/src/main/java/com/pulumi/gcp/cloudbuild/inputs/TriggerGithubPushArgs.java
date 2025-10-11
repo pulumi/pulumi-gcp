@@ -32,14 +32,14 @@ public final class TriggerGithubPushArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+     * If true, only trigger a build if the revision regex does NOT match the gitRef regex.
      * 
      */
     @Import(name="invertRegex")
     private @Nullable Output<Boolean> invertRegex;
 
     /**
-     * @return If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+     * @return If true, only trigger a build if the revision regex does NOT match the gitRef regex.
      * 
      */
     public Optional<Output<Boolean>> invertRegex() {
@@ -109,7 +109,7 @@ public final class TriggerGithubPushArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param invertRegex If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+         * @param invertRegex If true, only trigger a build if the revision regex does NOT match the gitRef regex.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class TriggerGithubPushArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param invertRegex If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+         * @param invertRegex If true, only trigger a build if the revision regex does NOT match the gitRef regex.
          * 
          * @return builder
          * 

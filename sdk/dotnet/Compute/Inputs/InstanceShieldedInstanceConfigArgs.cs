@@ -14,21 +14,21 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
-        /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        /// **Note**: `AllowStoppingForUpdate` must be set to true or your instance must have a `DesiredStatus` of `TERMINATED` in order to update this field.
         /// </summary>
         [Input("enableIntegrityMonitoring")]
         public Input<bool>? EnableIntegrityMonitoring { get; set; }
 
         /// <summary>
         /// - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
-        /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        /// **Note**: `AllowStoppingForUpdate` must be set to true or your instance must have a `DesiredStatus` of `TERMINATED` in order to update this field.
         /// </summary>
         [Input("enableSecureBoot")]
         public Input<bool>? EnableSecureBoot { get; set; }
 
         /// <summary>
         /// - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
-        /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        /// **Note**: `AllowStoppingForUpdate` must be set to true or your instance must have a `DesiredStatus` of `TERMINATED` in order to update this field.
         /// </summary>
         [Input("enableVtpm")]
         public Input<bool>? EnableVtpm { get; set; }

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class AttachedClusterOidcConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
+        /// A JSON Web Token (JWT) issuer URI. `Issuer` must start with `https://`
         /// </summary>
         [Input("issuerUrl", required: true)]
         public Input<string> IssuerUrl { get; set; } = null!;

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SubscriptionBigqueryConfig {
     /**
-     * @return When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+     * @return When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
      * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
      * and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
      * 
@@ -34,13 +34,13 @@ public final class SubscriptionBigqueryConfig {
     private String table;
     /**
      * @return When true, use the BigQuery table&#39;s schema as the columns to write to in BigQuery. Messages
-     * must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+     * must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
      * 
      */
     private @Nullable Boolean useTableSchema;
     /**
      * @return When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
-     * Only one of use_topic_schema and use_table_schema can be set.
+     * Only one of useTopicSchema and useTableSchema can be set.
      * 
      */
     private @Nullable Boolean useTopicSchema;
@@ -53,7 +53,7 @@ public final class SubscriptionBigqueryConfig {
 
     private SubscriptionBigqueryConfig() {}
     /**
-     * @return When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+     * @return When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
      * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
      * and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
      * 
@@ -79,7 +79,7 @@ public final class SubscriptionBigqueryConfig {
     }
     /**
      * @return When true, use the BigQuery table&#39;s schema as the columns to write to in BigQuery. Messages
-     * must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+     * must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
      * 
      */
     public Optional<Boolean> useTableSchema() {
@@ -87,7 +87,7 @@ public final class SubscriptionBigqueryConfig {
     }
     /**
      * @return When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
-     * Only one of use_topic_schema and use_table_schema can be set.
+     * Only one of useTopicSchema and useTableSchema can be set.
      * 
      */
     public Optional<Boolean> useTopicSchema() {

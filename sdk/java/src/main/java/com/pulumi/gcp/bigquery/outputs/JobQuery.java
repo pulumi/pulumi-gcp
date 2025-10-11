@@ -104,7 +104,7 @@ public final class JobQuery {
     /**
      * @return SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
      * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = &#34;&#34;` and `writeDisposition = &#34;&#34;`.
      * 
      */
     private String query;
@@ -265,7 +265,7 @@ public final class JobQuery {
     /**
      * @return SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
      * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = &#34;&#34;` and `writeDisposition = &#34;&#34;`.
      * 
      */
     public String query() {

@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.OsConfig
         /// Output only. Indicates that this revision has been successfully
         /// rolled out in this zone and new VMs will be assigned OS policies from this
         /// revision. For a given OS policy assignment, there is only one revision with
-        /// a value of `true` for this field.
+        /// a value of `True` for this field.
         /// </summary>
         [Output("baseline")]
         public Output<bool> Baseline { get; private set; } = null!;
@@ -259,7 +259,7 @@ namespace Pulumi.Gcp.OsConfig
 
         /// <summary>
         /// Output only. Indicates that reconciliation is in progress
-        /// for the revision. This value is `true` when the `rollout_state` is one of:
+        /// for the revision. This value is `True` when the `RolloutState` is one of:
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
@@ -282,7 +282,7 @@ namespace Pulumi.Gcp.OsConfig
         /// Rollout to deploy the OS policy assignment. A rollout
         /// is triggered in the following situations: 1) OSPolicyAssignment is created.
         /// 2) OSPolicyAssignment is updated and the update contains changes to one of
-        /// the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+        /// the following fields: - InstanceFilter - OsPolicies 3) OSPolicyAssignment
         /// is deleted. Structure is documented below.
         /// </summary>
         [Output("rollout")]
@@ -401,7 +401,7 @@ namespace Pulumi.Gcp.OsConfig
         /// Rollout to deploy the OS policy assignment. A rollout
         /// is triggered in the following situations: 1) OSPolicyAssignment is created.
         /// 2) OSPolicyAssignment is updated and the update contains changes to one of
-        /// the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+        /// the following fields: - InstanceFilter - OsPolicies 3) OSPolicyAssignment
         /// is deleted. Structure is documented below.
         /// </summary>
         [Input("rollout", required: true)]
@@ -425,7 +425,7 @@ namespace Pulumi.Gcp.OsConfig
         /// Output only. Indicates that this revision has been successfully
         /// rolled out in this zone and new VMs will be assigned OS policies from this
         /// revision. For a given OS policy assignment, there is only one revision with
-        /// a value of `true` for this field.
+        /// a value of `True` for this field.
         /// </summary>
         [Input("baseline")]
         public Input<bool>? Baseline { get; set; }
@@ -490,7 +490,7 @@ namespace Pulumi.Gcp.OsConfig
 
         /// <summary>
         /// Output only. Indicates that reconciliation is in progress
-        /// for the revision. This value is `true` when the `rollout_state` is one of:
+        /// for the revision. This value is `True` when the `RolloutState` is one of:
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }
@@ -513,7 +513,7 @@ namespace Pulumi.Gcp.OsConfig
         /// Rollout to deploy the OS policy assignment. A rollout
         /// is triggered in the following situations: 1) OSPolicyAssignment is created.
         /// 2) OSPolicyAssignment is updated and the update contains changes to one of
-        /// the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+        /// the following fields: - InstanceFilter - OsPolicies 3) OSPolicyAssignment
         /// is deleted. Structure is documented below.
         /// </summary>
         [Input("rollout")]

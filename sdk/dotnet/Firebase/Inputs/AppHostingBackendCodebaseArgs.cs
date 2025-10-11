@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Firebase.Inputs
         public Input<string> Repository { get; set; } = null!;
 
         /// <summary>
-        /// If `repository` is provided, the directory relative to the root of the
+        /// If `Repository` is provided, the directory relative to the root of the
         /// repository to use as the root for the deployed web app.
         /// </summary>
         [Input("rootDirectory")]

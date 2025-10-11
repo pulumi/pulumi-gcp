@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_cipher_suite_phase1"&gt;&lt;/a&gt;The `phase1` block supports:
+        /// &lt;a name="NestedCipherSuitePhase1"&gt;&lt;/a&gt;The `Phase1` block supports:
         /// </summary>
         [Input("phase2")]
         public Input<Inputs.VPNTunnelCipherSuitePhase2GetArgs>? Phase2 { get; set; }

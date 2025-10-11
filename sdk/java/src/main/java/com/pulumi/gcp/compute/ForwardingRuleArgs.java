@@ -61,7 +61,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * This field is used along with the `backend_service` field for
+     * This field is used along with the `backendService` field for
      * internal load balancing or with the `target` field for internal
      * TargetInstance.
      * If the field is set to `TRUE`, clients can access ILB from all
@@ -74,7 +74,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<Boolean> allowGlobalAccess;
 
     /**
-     * @return This field is used along with the `backend_service` field for
+     * @return This field is used along with the `backendService` field for
      * internal load balancing or with the `target` field for internal
      * TargetInstance.
      * If the field is set to `TRUE`, clients can access ILB from all
@@ -331,7 +331,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      * Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -341,7 +341,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      * @return Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -848,7 +848,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allowGlobalAccess This field is used along with the `backend_service` field for
+         * @param allowGlobalAccess This field is used along with the `backendService` field for
          * internal load balancing or with the `target` field for internal
          * TargetInstance.
          * If the field is set to `TRUE`, clients can access ILB from all
@@ -865,7 +865,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allowGlobalAccess This field is used along with the `backend_service` field for
+         * @param allowGlobalAccess This field is used along with the `backendService` field for
          * internal load balancing or with the `target` field for internal
          * TargetInstance.
          * If the field is set to `TRUE`, clients can access ILB from all
@@ -1172,7 +1172,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          * @param labels Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1186,7 +1186,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          * @param labels Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

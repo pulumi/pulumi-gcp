@@ -29,12 +29,12 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string? Owner;
         /// <summary>
-        /// filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
+        /// filter to match changes in pull requests. Specify only one of `PullRequest` or `Push`.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.TriggerGithubPullRequest? PullRequest;
         /// <summary>
-        /// filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
+        /// filter to match changes in refs, like branches or tags. Specify only one of `PullRequest` or `Push`.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.TriggerGithubPush? Push;

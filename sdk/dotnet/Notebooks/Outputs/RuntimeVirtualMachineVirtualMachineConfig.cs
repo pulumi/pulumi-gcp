@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// If true, runtime will only have internal IP addresses. By default,
         /// runtimes are not restricted to internal IP addresses, and will
         /// have ephemeral external IP addresses assigned to each vm. This
-        /// `internal_ip_only` restriction can only be enabled for subnetwork
+        /// `InternalIpOnly` restriction can only be enabled for subnetwork
         /// enabled networks, and all dependencies must be configured to be
         /// accessible without external IP addresses.
         /// </summary>
@@ -71,12 +71,12 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         public readonly ImmutableDictionary<string, string>? Metadata;
         /// <summary>
         /// The Compute Engine network to be used for machine communications.
-        /// Cannot be specified with subnetwork. If neither `network` nor
-        /// `subnet` is specified, the "default" network of the project is
+        /// Cannot be specified with subnetwork. If neither `Network` nor
+        /// `Subnet` is specified, the "default" network of the project is
         /// used, if it exists. A full URL or partial URI. Examples:
-        /// * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+        /// * `https://www.googleapis.com/compute/v1/projects/[ProjectId]/
         /// regions/global/default`
-        /// * `projects/[project_id]/regions/global/default`
+        /// * `projects/[ProjectId]/regions/global/default`
         /// Runtimes are managed resources inside Google Infrastructure.
         /// Runtimes support the following network configurations:
         /// * Google Managed Network (Network &amp; subnet are empty)
@@ -106,9 +106,9 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// The Compute Engine subnetwork to be used for machine
         /// communications. Cannot be specified with network. A full URL or
         /// partial URI are valid. Examples:
-        /// * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+        /// * `https://www.googleapis.com/compute/v1/projects/[ProjectId]/
         /// regions/us-east1/subnetworks/sub0`
-        /// * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
+        /// * `projects/[ProjectId]/regions/us-east1/subnetworks/sub0`
         /// </summary>
         public readonly string? Subnet;
         /// <summary>

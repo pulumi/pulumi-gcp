@@ -33,12 +33,12 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>
         /// HCFS URI of file containing Hive script to execute as the job.
-        /// Conflicts with `query_list`
+        /// Conflicts with `QueryList`
         /// </summary>
         public readonly string? QueryFileUri;
         /// <summary>
         /// The list of Hive queries or statements to execute as part of the job.
-        /// Conflicts with `query_file_uri`
+        /// Conflicts with `QueryFileUri`
         /// </summary>
         public readonly ImmutableArray<string> QueryLists;
         /// <summary>

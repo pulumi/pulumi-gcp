@@ -22,14 +22,14 @@ public final class NetworkFirewallPolicyPacketMirroringRuleArgs extends com.pulu
     public static final NetworkFirewallPolicyPacketMirroringRuleArgs Empty = new NetworkFirewallPolicyPacketMirroringRuleArgs();
 
     /**
-     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;do_not_mirror&#34;, &#34;goto_next&#34;.
+     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;doNotMirror&#34;, &#34;gotoNext&#34;.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;do_not_mirror&#34;, &#34;goto_next&#34;.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;doNotMirror&#34;, &#34;gotoNext&#34;.
      * 
      */
     public Output<String> action() {
@@ -263,7 +263,7 @@ public final class NetworkFirewallPolicyPacketMirroringRuleArgs extends com.pulu
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;do_not_mirror&#34;, &#34;goto_next&#34;.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;doNotMirror&#34;, &#34;gotoNext&#34;.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class NetworkFirewallPolicyPacketMirroringRuleArgs extends com.pulu
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;do_not_mirror&#34;, &#34;goto_next&#34;.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;doNotMirror&#34;, &#34;gotoNext&#34;.
          * 
          * @return builder
          * 

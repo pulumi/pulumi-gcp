@@ -29,7 +29,7 @@ public final class GetClusterMaintenancePolicy {
     /**
      * @return Optional. Maintenance window that is applied to resources covered by this policy.
      * Minimum 1. For the current version, the maximum number
-     * of weekly_window is expected to be one.
+     * of weeklyWindow is expected to be one.
      * 
      */
     private List<GetClusterMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows;
@@ -56,7 +56,7 @@ public final class GetClusterMaintenancePolicy {
     /**
      * @return Optional. Maintenance window that is applied to resources covered by this policy.
      * Minimum 1. For the current version, the maximum number
-     * of weekly_window is expected to be one.
+     * of weeklyWindow is expected to be one.
      * 
      */
     public List<GetClusterMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows() {

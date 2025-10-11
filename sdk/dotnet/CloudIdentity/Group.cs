@@ -19,10 +19,10 @@ namespace Pulumi.Gcp.CloudIdentity
     ///     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/setup)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-    /// you must specify a `billing_project` and set `user_project_override` to true
+    /// you must specify a `BillingProject` and set `UserProjectOverride` to true
     /// in the provider configuration. Otherwise the Cloud Identity API will return a 403 error.
     /// Your account must have the `serviceusage.services.use` permission on the
-    /// `billing_project` you defined.
+    /// `BillingProject` you defined.
     /// 
     /// ## Example Usage
     /// 
@@ -124,7 +124,7 @@ namespace Pulumi.Gcp.CloudIdentity
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the Group in the format: groups/{group_id}, where group_id
+        /// Resource name of the Group in the format: groups/{group_id}, where GroupId
         /// is the unique ID assigned to the Group.
         /// </summary>
         [Output("name")]
@@ -322,7 +322,7 @@ namespace Pulumi.Gcp.CloudIdentity
         }
 
         /// <summary>
-        /// Resource name of the Group in the format: groups/{group_id}, where group_id
+        /// Resource name of the Group in the format: groups/{group_id}, where GroupId
         /// is the unique ID assigned to the Group.
         /// </summary>
         [Input("name")]

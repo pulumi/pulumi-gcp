@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterDnsConfig {
     /**
-     * @return This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = &#34;CLOUD_DNS&#34;` and `cluster_dns_scope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
+     * @return This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = &#34;CLOUD_DNS&#34;` and `clusterDnsScope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
      * 
      */
     private @Nullable String additiveVpcScopeDnsDomain;
@@ -27,14 +27,14 @@ public final class ClusterDnsConfig {
      */
     private @Nullable String clusterDnsDomain;
     /**
-     * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
+     * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
      * 
      */
     private @Nullable String clusterDnsScope;
 
     private ClusterDnsConfig() {}
     /**
-     * @return This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = &#34;CLOUD_DNS&#34;` and `cluster_dns_scope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
+     * @return This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = &#34;CLOUD_DNS&#34;` and `clusterDnsScope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
      * 
      */
     public Optional<String> additiveVpcScopeDnsDomain() {
@@ -55,7 +55,7 @@ public final class ClusterDnsConfig {
         return Optional.ofNullable(this.clusterDnsDomain);
     }
     /**
-     * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
+     * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
      * 
      */
     public Optional<String> clusterDnsScope() {

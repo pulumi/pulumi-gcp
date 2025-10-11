@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string IpAddress;
         /// <summary>
         /// Port number of network endpoint.
-        /// **Note** `port` is required unless the Network Endpoint Group is created
+        /// **Note** `Port` is required unless the Network Endpoint Group is created
         /// with the type of `GCE_VM_IP`
         /// </summary>
         public readonly int? Port;

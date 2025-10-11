@@ -29,7 +29,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
      * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -39,7 +39,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
      * @return Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -207,7 +207,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
      * Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -217,7 +217,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
      * @return Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -428,7 +428,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
          * @param annotations Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
          * @param annotations Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -694,7 +694,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
          * @param labels Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
          * @param labels Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

@@ -16,8 +16,8 @@ public final class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyAr
     public static final InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs Empty = new InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs();
 
     /**
-     * The self_link of the encryption key that is
-     * stored in Google Cloud KMS to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * The selfLink of the encryption key that is
+     * stored in Google Cloud KMS to decrypt the given image. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
      * may be set.
      * 
      */
@@ -25,8 +25,8 @@ public final class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyAr
     private @Nullable Output<String> kmsKeySelfLink;
 
     /**
-     * @return The self_link of the encryption key that is
-     * stored in Google Cloud KMS to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * @return The selfLink of the encryption key that is
+     * stored in Google Cloud KMS to decrypt the given image. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
      * may be set.
      * 
      */
@@ -53,7 +53,7 @@ public final class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyAr
      * A 256-bit [customer-supplied encryption key]
      * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
      * may be set.
      * 
      */
@@ -64,7 +64,7 @@ public final class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyAr
      * @return A 256-bit [customer-supplied encryption key]
      * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
      * may be set.
      * 
      */
@@ -74,7 +74,7 @@ public final class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyAr
 
     /**
      * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
      * may be set.
      * 
      */
@@ -83,7 +83,7 @@ public final class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyAr
 
     /**
      * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
      * may be set.
      * 
      */
@@ -139,8 +139,8 @@ public final class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyAr
         }
 
         /**
-         * @param kmsKeySelfLink The self_link of the encryption key that is
-         * stored in Google Cloud KMS to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * @param kmsKeySelfLink The selfLink of the encryption key that is
+         * stored in Google Cloud KMS to decrypt the given image. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
          * may be set.
          * 
          * @return builder
@@ -152,8 +152,8 @@ public final class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyAr
         }
 
         /**
-         * @param kmsKeySelfLink The self_link of the encryption key that is
-         * stored in Google Cloud KMS to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * @param kmsKeySelfLink The selfLink of the encryption key that is
+         * stored in Google Cloud KMS to decrypt the given image. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
          * may be set.
          * 
          * @return builder
@@ -188,7 +188,7 @@ public final class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyAr
          * @param rawKey A 256-bit [customer-supplied encryption key]
          * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-         * to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
          * may be set.
          * 
          * @return builder
@@ -203,7 +203,7 @@ public final class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyAr
          * @param rawKey A 256-bit [customer-supplied encryption key]
          * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-         * to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
          * may be set.
          * 
          * @return builder
@@ -215,7 +215,7 @@ public final class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyAr
 
         /**
          * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
          * may be set.
          * 
          * @return builder
@@ -228,7 +228,7 @@ public final class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyAr
 
         /**
          * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
          * may be set.
          * 
          * @return builder

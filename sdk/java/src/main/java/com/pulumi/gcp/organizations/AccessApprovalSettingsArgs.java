@@ -20,7 +20,7 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
 
     /**
      * The asymmetric crypto key version to use for signing approval requests.
-     * Empty active_key_version indicates that a Google-managed key should be used for signing.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      * 
      */
     @Import(name="activeKeyVersion")
@@ -28,7 +28,7 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The asymmetric crypto key version to use for signing approval requests.
-     * Empty active_key_version indicates that a Google-managed key should be used for signing.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      * 
      */
     public Optional<Output<String>> activeKeyVersion() {
@@ -121,7 +121,7 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param activeKeyVersion The asymmetric crypto key version to use for signing approval requests.
-         * Empty active_key_version indicates that a Google-managed key should be used for signing.
+         * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param activeKeyVersion The asymmetric crypto key version to use for signing approval requests.
-         * Empty active_key_version indicates that a Google-managed key should be used for signing.
+         * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
          * 
          * @return builder
          * 

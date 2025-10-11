@@ -228,7 +228,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The type of range for which to provide results.
         /// 
-        /// Defaults to `cloud-netblocks`. The following `range_type`s are supported:
+        /// Defaults to `cloud-netblocks`. The following `RangeType`s are supported:
         /// 
         /// * `cloud-netblocks` - Corresponds to the IP addresses used for resources on Google Cloud Platform. [More details.](https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges)
         /// 
@@ -264,7 +264,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The type of range for which to provide results.
         /// 
-        /// Defaults to `cloud-netblocks`. The following `range_type`s are supported:
+        /// Defaults to `cloud-netblocks`. The following `RangeType`s are supported:
         /// 
         /// * `cloud-netblocks` - Corresponds to the IP addresses used for resources on Google Cloud Platform. [More details.](https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges)
         /// 

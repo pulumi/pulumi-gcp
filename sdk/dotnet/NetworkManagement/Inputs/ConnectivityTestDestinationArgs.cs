@@ -27,8 +27,8 @@ namespace Pulumi.Gcp.NetworkManagement.Inputs
 
         /// <summary>
         /// A DNS endpoint of Google Kubernetes Engine cluster control plane.
-        /// Requires gke_master_cluster to be set, can't be used simultaneoulsly with
-        /// ip_address or network. Applicable only to destination endpoint.
+        /// Requires GkeMasterCluster to be set, can't be used simultaneoulsly with
+        /// IpAddress or network. Applicable only to destination endpoint.
         /// </summary>
         [Input("fqdn")]
         public Input<string>? Fqdn { get; set; }

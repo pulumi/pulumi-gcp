@@ -206,6 +206,8 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// ### Alloydb Cluster Restore
+    /// 
     /// ### Alloydb Secondary Cluster Basic
     /// 
     /// ```csharp
@@ -337,7 +339,7 @@ namespace Pulumi.Gcp.Alloydb
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -395,7 +397,7 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// Policy to determine if the cluster should be deleted forcefully.
         /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
-        /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        /// Deleting a Secondary cluster with a secondary instance REQUIRES setting DeletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
         /// Possible values: DEFAULT, FORCE
         /// </summary>
         [Output("deletionPolicy")]
@@ -450,7 +452,7 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// User-defined labels for the alloydb cluster.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -631,7 +633,7 @@ namespace Pulumi.Gcp.Alloydb
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -678,7 +680,7 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// Policy to determine if the cluster should be deleted forcefully.
         /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
-        /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        /// Deleting a Secondary cluster with a secondary instance REQUIRES setting DeletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
         /// Possible values: DEFAULT, FORCE
         /// </summary>
         [Input("deletionPolicy")]
@@ -719,7 +721,7 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// User-defined labels for the alloydb cluster.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -813,7 +815,7 @@ namespace Pulumi.Gcp.Alloydb
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -886,7 +888,7 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// Policy to determine if the cluster should be deleted forcefully.
         /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
-        /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        /// Deleting a Secondary cluster with a secondary instance REQUIRES setting DeletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
         /// Possible values: DEFAULT, FORCE
         /// </summary>
         [Input("deletionPolicy")]
@@ -965,7 +967,7 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// User-defined labels for the alloydb cluster.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

@@ -18,7 +18,7 @@ public final class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs extends com.
     /**
      * Value for the &#34;aud&#34; claim.
      * 
-     * &lt;a name=&#34;nested_auth_config_oauth2_client_credentials&#34;&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
+     * &lt;a name=&#34;nestedAuthConfigOauth2ClientCredentials&#34;&gt;&lt;/a&gt;The `oauth2ClientCredentials` block supports:
      * 
      */
     @Import(name="audience")
@@ -27,7 +27,7 @@ public final class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs extends com.
     /**
      * @return Value for the &#34;aud&#34; claim.
      * 
-     * &lt;a name=&#34;nested_auth_config_oauth2_client_credentials&#34;&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
+     * &lt;a name=&#34;nestedAuthConfigOauth2ClientCredentials&#34;&gt;&lt;/a&gt;The `oauth2ClientCredentials` block supports:
      * 
      */
     public Optional<Output<String>> audience() {
@@ -93,7 +93,7 @@ public final class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs extends com.
         /**
          * @param audience Value for the &#34;aud&#34; claim.
          * 
-         * &lt;a name=&#34;nested_auth_config_oauth2_client_credentials&#34;&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
+         * &lt;a name=&#34;nestedAuthConfigOauth2ClientCredentials&#34;&gt;&lt;/a&gt;The `oauth2ClientCredentials` block supports:
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs extends com.
         /**
          * @param audience Value for the &#34;aud&#34; claim.
          * 
-         * &lt;a name=&#34;nested_auth_config_oauth2_client_credentials&#34;&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
+         * &lt;a name=&#34;nestedAuthConfigOauth2ClientCredentials&#34;&gt;&lt;/a&gt;The `oauth2ClientCredentials` block supports:
          * 
          * @return builder
          * 

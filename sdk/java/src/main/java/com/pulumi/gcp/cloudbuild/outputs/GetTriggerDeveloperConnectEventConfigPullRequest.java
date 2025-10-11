@@ -22,7 +22,7 @@ public final class GetTriggerDeveloperConnectEventConfigPullRequest {
      */
     private String commentControl;
     /**
-     * @return If true, branches that do NOT match the git_ref will trigger a build.
+     * @return If true, branches that do NOT match the gitRef will trigger a build.
      * 
      */
     private Boolean invertRegex;
@@ -43,7 +43,7 @@ public final class GetTriggerDeveloperConnectEventConfigPullRequest {
         return this.commentControl;
     }
     /**
-     * @return If true, branches that do NOT match the git_ref will trigger a build.
+     * @return If true, branches that do NOT match the gitRef will trigger a build.
      * 
      */
     public Boolean invertRegex() {

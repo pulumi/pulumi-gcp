@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Recaptcha.Outputs
     public sealed class EnterpriseKeyWebSettings
     {
         /// <summary>
-        /// If set to true, it means allowed_domains will not be enforced.
+        /// If set to true, it means AllowedDomains will not be enforced.
         /// </summary>
         public readonly bool? AllowAllDomains;
         /// <summary>

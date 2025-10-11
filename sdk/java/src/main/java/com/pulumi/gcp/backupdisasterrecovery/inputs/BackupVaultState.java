@@ -55,7 +55,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
      * Optional. User annotations. See https://google.aip.dev/128#annotations
      * Stores small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -65,7 +65,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
      * @return Optional. User annotations. See https://google.aip.dev/128#annotations
      * Stores small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -237,13 +237,13 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      * 
-     * &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * &gt; **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
      * @deprecated
-     * `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
      */
-    @Deprecated /* `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead. */
+    @Deprecated /* `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead. */
     @Import(name="forceDelete")
     private @Nullable Output<Boolean> forceDelete;
 
@@ -253,13 +253,13 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      * 
-     * &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * &gt; **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
      * @deprecated
-     * `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
      */
-    @Deprecated /* `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead. */
+    @Deprecated /* `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead. */
     public Optional<Output<Boolean>> forceDelete() {
         return Optional.ofNullable(this.forceDelete);
     }
@@ -322,7 +322,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -331,7 +331,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Optional. Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -590,7 +590,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          * @param annotations Optional. User annotations. See https://google.aip.dev/128#annotations
          * Stores small amounts of arbitrary data.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          * @param annotations Optional. User annotations. See https://google.aip.dev/128#annotations
          * Stores small amounts of arbitrary data.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -840,15 +840,15 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
          * * deletion of a backup vault instance that is being referenced by an active backup plan.
          * 
-         * &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+         * &gt; **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+         * `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
          * 
          */
-        @Deprecated /* `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead. */
+        @Deprecated /* `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead. */
         public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
             $.forceDelete = forceDelete;
             return this;
@@ -860,15 +860,15 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
          * * deletion of a backup vault instance that is being referenced by an active backup plan.
          * 
-         * &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+         * &gt; **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+         * `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
          * 
          */
-        @Deprecated /* `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead. */
+        @Deprecated /* `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead. */
         public Builder forceDelete(Boolean forceDelete) {
             return forceDelete(Output.of(forceDelete));
         }
@@ -949,7 +949,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Optional. Resource labels to represent user provided metadata.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -962,7 +962,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Optional. Resource labels to represent user provided metadata.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

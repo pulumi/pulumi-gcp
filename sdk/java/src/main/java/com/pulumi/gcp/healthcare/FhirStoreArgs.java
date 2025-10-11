@@ -221,7 +221,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -238,7 +238,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -267,13 +267,13 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
      * A nested object resource.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * &gt; **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      * 
      * @deprecated
-     * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      * 
      */
-    @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
+    @Deprecated /* `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead. */
     @Import(name="notificationConfig")
     private @Nullable Output<FhirStoreNotificationConfigArgs> notificationConfig;
 
@@ -282,13 +282,13 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
      * A nested object resource.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * &gt; **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      * 
      * @deprecated
-     * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      * 
      */
-    @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
+    @Deprecated /* `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead. */
     public Optional<Output<FhirStoreNotificationConfigArgs>> notificationConfig() {
         return Optional.ofNullable(this.notificationConfig);
     }
@@ -664,7 +664,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
          * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -685,7 +685,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
          * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -722,15 +722,15 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
          * A nested object resource.
          * Structure is documented below.
          * 
-         * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+         * &gt; **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+         * `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
          * 
          */
-        @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
+        @Deprecated /* `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead. */
         public Builder notificationConfig(@Nullable Output<FhirStoreNotificationConfigArgs> notificationConfig) {
             $.notificationConfig = notificationConfig;
             return this;
@@ -741,15 +741,15 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
          * A nested object resource.
          * Structure is documented below.
          * 
-         * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+         * &gt; **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+         * `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
          * 
          */
-        @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
+        @Deprecated /* `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead. */
         public Builder notificationConfig(FhirStoreNotificationConfigArgs notificationConfig) {
             return notificationConfig(Output.of(notificationConfig));
         }

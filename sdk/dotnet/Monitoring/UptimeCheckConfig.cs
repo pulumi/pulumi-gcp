@@ -79,6 +79,8 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// ### Uptime Check Config Http Password Wo
+    /// 
     /// ### Uptime Check Config Status Code
     /// 
     /// ```csharp
@@ -328,7 +330,7 @@ namespace Pulumi.Gcp.Monitoring
     public partial class UptimeCheckConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
+        /// The checker type to use for the check. If the monitored resource type is `ServicedirectoryService`, `CheckerType` must be set to `VPC_CHECKERS`.
         /// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         /// </summary>
         [Output("checkerType")]
@@ -480,7 +482,7 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class UptimeCheckConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
+        /// The checker type to use for the check. If the monitored resource type is `ServicedirectoryService`, `CheckerType` must be set to `VPC_CHECKERS`.
         /// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         /// </summary>
         [Input("checkerType")]
@@ -600,7 +602,7 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class UptimeCheckConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
+        /// The checker type to use for the check. If the monitored resource type is `ServicedirectoryService`, `CheckerType` must be set to `VPC_CHECKERS`.
         /// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         /// </summary>
         [Input("checkerType")]

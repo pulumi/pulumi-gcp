@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         private InputList<Inputs.AlertPolicyAlertStrategyNotificationChannelStrategyGetArgs>? _notificationChannelStrategies;
 
         /// <summary>
-        /// Control over how the notification channels in `notification_channels`
+        /// Control over how the notification channels in `NotificationChannels`
         /// are notified when this alert fires, on a per-channel basis.
         /// Structure is documented below.
         /// </summary>

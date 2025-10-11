@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
  * Adds existing resource policies to a compute instance. You can only add one policy
  * which will be applied to this instance for scheduling start/stop operations.
  * 
- * This resource can be used instead of setting the resource_policy directly in the
+ * This resource can be used instead of setting the resourcePolicy directly in the
  * compute instance resource to avoid dependency issues when using instance-level IAM
  * permissions.
  * 

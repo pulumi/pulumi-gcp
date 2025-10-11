@@ -93,14 +93,14 @@ public final class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint
     }
 
     /**
-     * The consumer project_id where the forwarding rule is created from.
+     * The consumer projectId where the forwarding rule is created from.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return The consumer project_id where the forwarding rule is created from.
+     * @return The consumer projectId where the forwarding rule is created from.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -294,7 +294,7 @@ public final class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint
         }
 
         /**
-         * @param projectId The consumer project_id where the forwarding rule is created from.
+         * @param projectId The consumer projectId where the forwarding rule is created from.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint
         }
 
         /**
-         * @param projectId The consumer project_id where the forwarding rule is created from.
+         * @param projectId The consumer projectId where the forwarding rule is created from.
          * 
          * @return builder
          * 

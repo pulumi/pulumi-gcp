@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The name or self_link of the network attached to this interface.
+        /// The name or SelfLink of the network attached to this interface.
         /// </summary>
         public readonly string? Network;
         /// <summary>
@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? StackType;
         /// <summary>
-        /// The name or self_link of the subnetwork attached to this interface.
+        /// The name or SelfLink of the subnetwork attached to this interface.
         /// </summary>
         public readonly string? Subnetwork;
         /// <summary>

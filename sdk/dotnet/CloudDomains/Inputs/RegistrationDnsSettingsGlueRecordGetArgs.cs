@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.CloudDomains.Inputs
 
         /// <summary>
         /// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-        /// At least one of ipv4_address and ipv6_address must be set.
+        /// At least one of Ipv4Address and Ipv6Address must be set.
         /// </summary>
         public InputList<string> Ipv4Addresses
         {
@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.CloudDomains.Inputs
 
         /// <summary>
         /// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-        /// At least one of ipv4_address and ipv6_address must be set.
+        /// At least one of Ipv4Address and Ipv6Address must be set.
         /// </summary>
         public InputList<string> Ipv6Addresses
         {

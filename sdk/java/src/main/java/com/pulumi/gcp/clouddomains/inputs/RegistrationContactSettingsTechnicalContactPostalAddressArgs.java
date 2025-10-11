@@ -21,7 +21,7 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
      * Unstructured address lines describing the lower levels of an address.
      * Because values in addressLines do not have type information and may sometimes contain multiple values in a single
      * field (e.g. &#34;Austin, TX&#34;), it is important that the line order is clear. The order of address lines should be
-     * &#34;envelope order&#34; for the country/region of the address. In places where this can vary (e.g. Japan), address_language
+     * &#34;envelope order&#34; for the country/region of the address. In places where this can vary (e.g. Japan), addressLanguage
      * is used to make it explicit (e.g. &#34;ja&#34; for large-to-small ordering and &#34;ja-Latn&#34; or &#34;en&#34; for small-to-large). This way,
      * the most specific line of an address can be selected based on the language.
      * 
@@ -33,7 +33,7 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
      * @return Unstructured address lines describing the lower levels of an address.
      * Because values in addressLines do not have type information and may sometimes contain multiple values in a single
      * field (e.g. &#34;Austin, TX&#34;), it is important that the line order is clear. The order of address lines should be
-     * &#34;envelope order&#34; for the country/region of the address. In places where this can vary (e.g. Japan), address_language
+     * &#34;envelope order&#34; for the country/region of the address. In places where this can vary (e.g. Japan), addressLanguage
      * is used to make it explicit (e.g. &#34;ja&#34; for large-to-small ordering and &#34;ja-Latn&#34; or &#34;en&#34; for small-to-large). This way,
      * the most specific line of an address can be selected based on the language.
      * 
@@ -182,7 +182,7 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
          * @param addressLines Unstructured address lines describing the lower levels of an address.
          * Because values in addressLines do not have type information and may sometimes contain multiple values in a single
          * field (e.g. &#34;Austin, TX&#34;), it is important that the line order is clear. The order of address lines should be
-         * &#34;envelope order&#34; for the country/region of the address. In places where this can vary (e.g. Japan), address_language
+         * &#34;envelope order&#34; for the country/region of the address. In places where this can vary (e.g. Japan), addressLanguage
          * is used to make it explicit (e.g. &#34;ja&#34; for large-to-small ordering and &#34;ja-Latn&#34; or &#34;en&#34; for small-to-large). This way,
          * the most specific line of an address can be selected based on the language.
          * 
@@ -198,7 +198,7 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
          * @param addressLines Unstructured address lines describing the lower levels of an address.
          * Because values in addressLines do not have type information and may sometimes contain multiple values in a single
          * field (e.g. &#34;Austin, TX&#34;), it is important that the line order is clear. The order of address lines should be
-         * &#34;envelope order&#34; for the country/region of the address. In places where this can vary (e.g. Japan), address_language
+         * &#34;envelope order&#34; for the country/region of the address. In places where this can vary (e.g. Japan), addressLanguage
          * is used to make it explicit (e.g. &#34;ja&#34; for large-to-small ordering and &#34;ja-Latn&#34; or &#34;en&#34; for small-to-large). This way,
          * the most specific line of an address can be selected based on the language.
          * 
@@ -213,7 +213,7 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
          * @param addressLines Unstructured address lines describing the lower levels of an address.
          * Because values in addressLines do not have type information and may sometimes contain multiple values in a single
          * field (e.g. &#34;Austin, TX&#34;), it is important that the line order is clear. The order of address lines should be
-         * &#34;envelope order&#34; for the country/region of the address. In places where this can vary (e.g. Japan), address_language
+         * &#34;envelope order&#34; for the country/region of the address. In places where this can vary (e.g. Japan), addressLanguage
          * is used to make it explicit (e.g. &#34;ja&#34; for large-to-small ordering and &#34;ja-Latn&#34; or &#34;en&#34; for small-to-large). This way,
          * the most specific line of an address can be selected based on the language.
          * 

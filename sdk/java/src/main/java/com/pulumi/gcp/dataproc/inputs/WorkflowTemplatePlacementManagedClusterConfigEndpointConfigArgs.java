@@ -33,14 +33,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigAr
     }
 
     /**
-     * Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+     * Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
      * 
      */
     @Import(name="httpPorts")
     private @Nullable Output<Map<String,String>> httpPorts;
 
     /**
-     * @return Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+     * @return Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
      * 
      */
     public Optional<Output<Map<String,String>>> httpPorts() {
@@ -94,7 +94,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigAr
         }
 
         /**
-         * @param httpPorts Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+         * @param httpPorts Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigAr
         }
 
         /**
-         * @param httpPorts Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+         * @param httpPorts Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
          * 
          * @return builder
          * 

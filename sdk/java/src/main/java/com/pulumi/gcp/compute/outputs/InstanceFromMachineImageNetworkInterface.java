@@ -53,7 +53,7 @@ public final class InstanceFromMachineImageNetworkInterface {
      */
     private @Nullable String name;
     /**
-     * @return The name or self_link of the network attached to this interface.
+     * @return The name or selfLink of the network attached to this interface.
      * 
      */
     private @Nullable String network;
@@ -88,7 +88,7 @@ public final class InstanceFromMachineImageNetworkInterface {
      */
     private @Nullable String stackType;
     /**
-     * @return The name or self_link of the subnetwork attached to this interface.
+     * @return The name or selfLink of the subnetwork attached to this interface.
      * 
      */
     private @Nullable String subnetwork;
@@ -150,7 +150,7 @@ public final class InstanceFromMachineImageNetworkInterface {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The name or self_link of the network attached to this interface.
+     * @return The name or selfLink of the network attached to this interface.
      * 
      */
     public Optional<String> network() {
@@ -199,7 +199,7 @@ public final class InstanceFromMachineImageNetworkInterface {
         return Optional.ofNullable(this.stackType);
     }
     /**
-     * @return The name or self_link of the subnetwork attached to this interface.
+     * @return The name or selfLink of the subnetwork attached to this interface.
      * 
      */
     public Optional<String> subnetwork() {

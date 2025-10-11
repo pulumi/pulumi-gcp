@@ -51,7 +51,7 @@ public final class GetMeshIstioServicePlainArgs extends com.pulumi.resources.Inv
 
     /**
      * The name of the Istio service underlying this service.
-     * Corresponds to the destination_service_name metric label in Istio metrics.
+     * Corresponds to the destinationServiceName metric label in Istio metrics.
      * 
      * ***
      * 
@@ -63,7 +63,7 @@ public final class GetMeshIstioServicePlainArgs extends com.pulumi.resources.Inv
 
     /**
      * @return The name of the Istio service underlying this service.
-     * Corresponds to the destination_service_name metric label in Istio metrics.
+     * Corresponds to the destinationServiceName metric label in Istio metrics.
      * 
      * ***
      * 
@@ -76,7 +76,7 @@ public final class GetMeshIstioServicePlainArgs extends com.pulumi.resources.Inv
 
     /**
      * The namespace of the Istio service underlying this service.
-     * Corresponds to the destination_service_namespace metric label in Istio metrics.
+     * Corresponds to the destinationServiceNamespace metric label in Istio metrics.
      * 
      */
     @Import(name="serviceNamespace", required=true)
@@ -84,7 +84,7 @@ public final class GetMeshIstioServicePlainArgs extends com.pulumi.resources.Inv
 
     /**
      * @return The namespace of the Istio service underlying this service.
-     * Corresponds to the destination_service_namespace metric label in Istio metrics.
+     * Corresponds to the destinationServiceNamespace metric label in Istio metrics.
      * 
      */
     public String serviceNamespace() {
@@ -144,7 +144,7 @@ public final class GetMeshIstioServicePlainArgs extends com.pulumi.resources.Inv
 
         /**
          * @param serviceName The name of the Istio service underlying this service.
-         * Corresponds to the destination_service_name metric label in Istio metrics.
+         * Corresponds to the destinationServiceName metric label in Istio metrics.
          * 
          * ***
          * 
@@ -160,7 +160,7 @@ public final class GetMeshIstioServicePlainArgs extends com.pulumi.resources.Inv
 
         /**
          * @param serviceNamespace The namespace of the Istio service underlying this service.
-         * Corresponds to the destination_service_namespace metric label in Istio metrics.
+         * Corresponds to the destinationServiceNamespace metric label in Istio metrics.
          * 
          * @return builder
          * 

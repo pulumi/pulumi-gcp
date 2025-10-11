@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// <summary>
         /// Whether to enable control plane node auto resizing.
         /// 
-        /// &lt;a name="nested_control_plane_node_vsphere_config"&gt;&lt;/a&gt;The `vsphere_config` block contains:
+        /// &lt;a name="NestedControlPlaneNodeVsphereConfig"&gt;&lt;/a&gt;The `VsphereConfig` block contains:
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

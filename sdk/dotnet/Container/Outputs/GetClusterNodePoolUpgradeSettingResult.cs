@@ -18,11 +18,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolUpgradeSettingBlueGreenSettingResult> BlueGreenSettings;
         /// <summary>
-        /// The number of additional nodes that can be added to the node pool during an upgrade. Increasing max_surge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
+        /// The number of additional nodes that can be added to the node pool during an upgrade. Increasing MaxSurge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
         /// </summary>
         public readonly int MaxSurge;
         /// <summary>
-        /// The number of nodes that can be simultaneously unavailable during an upgrade. Increasing max_unavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
+        /// The number of nodes that can be simultaneously unavailable during an upgrade. Increasing MaxUnavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
         /// </summary>
         public readonly int MaxUnavailable;
         /// <summary>

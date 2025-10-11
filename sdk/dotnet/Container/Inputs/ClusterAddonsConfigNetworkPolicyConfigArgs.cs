@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
         /// 
-        /// &lt;a name="nested_cluster_telemetry"&gt;&lt;/a&gt;The `cluster_telemetry` block supports
+        /// &lt;a name="NestedClusterTelemetry"&gt;&lt;/a&gt;The `ClusterTelemetry` block supports
         /// </summary>
         [Input("disabled", required: true)]
         public Input<bool> Disabled { get; set; } = null!;

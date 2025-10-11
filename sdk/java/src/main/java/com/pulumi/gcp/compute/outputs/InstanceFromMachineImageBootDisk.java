@@ -25,12 +25,12 @@ public final class InstanceFromMachineImageBootDisk {
      */
     private @Nullable String deviceName;
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
      * 
      */
     private @Nullable String diskEncryptionKeyRaw;
     /**
-     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
      * 
      */
     private @Nullable String diskEncryptionKeyRsa;
@@ -60,12 +60,12 @@ public final class InstanceFromMachineImageBootDisk {
      */
     private @Nullable InstanceFromMachineImageBootDiskInitializeParams initializeParams;
     /**
-     * @return The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
+     * @return The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attachedDisk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
      * 
      */
     private @Nullable String interface_;
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * @return The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
      * 
      */
     private @Nullable String kmsKeySelfLink;
@@ -75,7 +75,7 @@ public final class InstanceFromMachineImageBootDisk {
      */
     private @Nullable String mode;
     /**
-     * @return The name or self_link of the disk attached to this instance.
+     * @return The name or selfLink of the disk attached to this instance.
      * 
      */
     private @Nullable String source;
@@ -96,14 +96,14 @@ public final class InstanceFromMachineImageBootDisk {
         return Optional.ofNullable(this.deviceName);
     }
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
      * 
      */
     public Optional<String> diskEncryptionKeyRaw() {
         return Optional.ofNullable(this.diskEncryptionKeyRaw);
     }
     /**
-     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
      * 
      */
     public Optional<String> diskEncryptionKeyRsa() {
@@ -145,14 +145,14 @@ public final class InstanceFromMachineImageBootDisk {
         return Optional.ofNullable(this.initializeParams);
     }
     /**
-     * @return The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
+     * @return The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attachedDisk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
      * 
      */
     public Optional<String> interface_() {
         return Optional.ofNullable(this.interface_);
     }
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * @return The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
      * 
      */
     public Optional<String> kmsKeySelfLink() {
@@ -166,7 +166,7 @@ public final class InstanceFromMachineImageBootDisk {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return The name or self_link of the disk attached to this instance.
+     * @return The name or selfLink of the disk attached to this instance.
      * 
      */
     public Optional<String> source() {

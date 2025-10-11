@@ -143,11 +143,11 @@ namespace Pulumi.Gcp.Compute
         public bool? MostRecent { get; set; }
 
         /// <summary>
-        /// , `family` or `filter` - (Required) The name of a specific image or a family.
-        /// Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
-        /// the corresponding image. If `family` is specified, it will return the latest image
-        /// that is part of an image family and is not deprecated. If you specify `filter`, your
-        /// filter must return exactly one image unless you use `most_recent`.
+        /// , `Family` or `Filter` - (Required) The name of a specific image or a family.
+        /// Exactly one of `Name`, `Family` or `Filter` must be specified. If `Name` is specified, it will fetch
+        /// the corresponding image. If `Family` is specified, it will return the latest image
+        /// that is part of an image family and is not deprecated. If you specify `Filter`, your
+        /// filter must return exactly one image unless you use `MostRecent`.
         /// Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
         /// 
         /// - - -
@@ -188,11 +188,11 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? MostRecent { get; set; }
 
         /// <summary>
-        /// , `family` or `filter` - (Required) The name of a specific image or a family.
-        /// Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
-        /// the corresponding image. If `family` is specified, it will return the latest image
-        /// that is part of an image family and is not deprecated. If you specify `filter`, your
-        /// filter must return exactly one image unless you use `most_recent`.
+        /// , `Family` or `Filter` - (Required) The name of a specific image or a family.
+        /// Exactly one of `Name`, `Family` or `Filter` must be specified. If `Name` is specified, it will fetch
+        /// the corresponding image. If `Family` is specified, it will return the latest image
+        /// that is part of an image family and is not deprecated. If you specify `Filter`, your
+        /// filter must return exactly one image unless you use `MostRecent`.
         /// Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
         /// 
         /// - - -

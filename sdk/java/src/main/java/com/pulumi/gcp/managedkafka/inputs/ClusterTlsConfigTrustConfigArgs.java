@@ -17,7 +17,7 @@ public final class ClusterTlsConfigTrustConfigArgs extends com.pulumi.resources.
     public static final ClusterTlsConfigTrustConfigArgs Empty = new ClusterTlsConfigTrustConfigArgs();
 
     /**
-     * Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
+     * Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `casConfigs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `casConfigs` blocks.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class ClusterTlsConfigTrustConfigArgs extends com.pulumi.resources.
     private @Nullable Output<List<ClusterTlsConfigTrustConfigCasConfigArgs>> casConfigs;
 
     /**
-     * @return Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
+     * @return Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `casConfigs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `casConfigs` blocks.
      * Structure is documented below.
      * 
      */
@@ -58,7 +58,7 @@ public final class ClusterTlsConfigTrustConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param casConfigs Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
+         * @param casConfigs Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `casConfigs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `casConfigs` blocks.
          * Structure is documented below.
          * 
          * @return builder
@@ -70,7 +70,7 @@ public final class ClusterTlsConfigTrustConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param casConfigs Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
+         * @param casConfigs Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `casConfigs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `casConfigs` blocks.
          * Structure is documented below.
          * 
          * @return builder
@@ -81,7 +81,7 @@ public final class ClusterTlsConfigTrustConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param casConfigs Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
+         * @param casConfigs Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `casConfigs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `casConfigs` blocks.
          * Structure is documented below.
          * 
          * @return builder

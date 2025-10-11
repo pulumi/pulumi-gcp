@@ -169,7 +169,7 @@ public final class SecurityPolicyRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * Must be specified if the action is &#34;rateBasedBan&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
      * Structure is documented below.
      * 
      */
@@ -177,7 +177,7 @@ public final class SecurityPolicyRuleState extends com.pulumi.resources.Resource
     private @Nullable Output<SecurityPolicyRuleRateLimitOptionsArgs> rateLimitOptions;
 
     /**
-     * @return Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * @return Must be specified if the action is &#34;rateBasedBan&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
      * Structure is documented below.
      * 
      */
@@ -446,7 +446,7 @@ public final class SecurityPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rateLimitOptions Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+         * @param rateLimitOptions Must be specified if the action is &#34;rateBasedBan&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
          * Structure is documented below.
          * 
          * @return builder
@@ -458,7 +458,7 @@ public final class SecurityPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rateLimitOptions Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+         * @param rateLimitOptions Must be specified if the action is &#34;rateBasedBan&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
          * Structure is documented below.
          * 
          * @return builder

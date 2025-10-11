@@ -27,8 +27,8 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
     public static final V2VmState Empty = new V2VmState();
 
     /**
-     * The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
-     * as `accelerator_type`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+     * The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
+     * as `acceleratorType`. If neither is specified, `acceleratorType` defaults to &#39;v2-8&#39;.
      * Structure is documented below.
      * 
      */
@@ -36,8 +36,8 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<V2VmAcceleratorConfigArgs> acceleratorConfig;
 
     /**
-     * @return The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
-     * as `accelerator_type`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+     * @return The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
+     * as `acceleratorType`. If neither is specified, `acceleratorType` defaults to &#39;v2-8&#39;.
      * Structure is documented below.
      * 
      */
@@ -46,16 +46,16 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
-     * `accelerator_config`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+     * TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
+     * `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to &#39;v2-8&#39;.
      * 
      */
     @Import(name="acceleratorType")
     private @Nullable Output<String> acceleratorType;
 
     /**
-     * @return TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
-     * `accelerator_config`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+     * @return TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
+     * `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to &#39;v2-8&#39;.
      * 
      */
     public Optional<Output<String>> acceleratorType() {
@@ -182,7 +182,7 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
     /**
      * Resource labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -191,7 +191,7 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Resource labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -528,8 +528,8 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acceleratorConfig The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
-         * as `accelerator_type`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+         * @param acceleratorConfig The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
+         * as `acceleratorType`. If neither is specified, `acceleratorType` defaults to &#39;v2-8&#39;.
          * Structure is documented below.
          * 
          * @return builder
@@ -541,8 +541,8 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acceleratorConfig The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
-         * as `accelerator_type`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+         * @param acceleratorConfig The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
+         * as `acceleratorType`. If neither is specified, `acceleratorType` defaults to &#39;v2-8&#39;.
          * Structure is documented below.
          * 
          * @return builder
@@ -553,8 +553,8 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acceleratorType TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
-         * `accelerator_config`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+         * @param acceleratorType TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
+         * `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to &#39;v2-8&#39;.
          * 
          * @return builder
          * 
@@ -565,8 +565,8 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acceleratorType TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
-         * `accelerator_config`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+         * @param acceleratorType TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
+         * `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to &#39;v2-8&#39;.
          * 
          * @return builder
          * 
@@ -748,7 +748,7 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Resource labels to represent user-provided metadata.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -761,7 +761,7 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Resource labels to represent user-provided metadata.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

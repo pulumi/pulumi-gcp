@@ -37,7 +37,7 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Set of label tags associated with the EdgeCache resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -46,7 +46,7 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return Set of label tags associated with the EdgeCache resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -91,9 +91,9 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * An ordered list of Ed25519 public keys to use for validating signed requests.
-     * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+     * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
      * You may specify no more than one Google-managed public key.
-     * If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
+     * If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
      * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
      * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
      * Structure is documented below.
@@ -104,9 +104,9 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return An ordered list of Ed25519 public keys to use for validating signed requests.
-     * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+     * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
      * You may specify no more than one Google-managed public key.
-     * If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
+     * If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
      * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
      * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
      * Structure is documented below.
@@ -118,9 +118,9 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * An ordered list of shared keys to use for validating signed requests.
-     * Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
-     * You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
-     * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+     * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+     * You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+     * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
      * Structure is documented below.
      * 
      */
@@ -129,9 +129,9 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return An ordered list of shared keys to use for validating signed requests.
-     * Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
-     * You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
-     * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+     * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+     * You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+     * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
      * Structure is documented below.
      * 
      */
@@ -192,7 +192,7 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels Set of label tags associated with the EdgeCache resource.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels Set of label tags associated with the EdgeCache resource.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -264,9 +264,9 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param publicKeys An ordered list of Ed25519 public keys to use for validating signed requests.
-         * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+         * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
          * You may specify no more than one Google-managed public key.
-         * If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
+         * If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
          * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
          * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
          * Structure is documented below.
@@ -281,9 +281,9 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param publicKeys An ordered list of Ed25519 public keys to use for validating signed requests.
-         * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+         * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
          * You may specify no more than one Google-managed public key.
-         * If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
+         * If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
          * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
          * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
          * Structure is documented below.
@@ -297,9 +297,9 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param publicKeys An ordered list of Ed25519 public keys to use for validating signed requests.
-         * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+         * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
          * You may specify no more than one Google-managed public key.
-         * If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
+         * If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
          * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
          * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
          * Structure is documented below.
@@ -313,9 +313,9 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param validationSharedKeys An ordered list of shared keys to use for validating signed requests.
-         * Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
-         * You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
-         * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+         * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+         * You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+         * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
          * Structure is documented below.
          * 
          * @return builder
@@ -328,9 +328,9 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param validationSharedKeys An ordered list of shared keys to use for validating signed requests.
-         * Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
-         * You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
-         * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+         * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+         * You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+         * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
          * Structure is documented below.
          * 
          * @return builder
@@ -342,9 +342,9 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param validationSharedKeys An ordered list of shared keys to use for validating signed requests.
-         * Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
-         * You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
-         * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+         * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+         * You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+         * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
          * Structure is documented below.
          * 
          * @return builder

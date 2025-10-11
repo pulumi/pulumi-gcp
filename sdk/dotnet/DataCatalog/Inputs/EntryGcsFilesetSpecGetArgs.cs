@@ -21,11 +21,11 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         /// for more information. Note that bucket wildcards are currently not supported. Examples of valid filePatterns:
         /// * gs://bucket_name/dir/*: matches all files within bucket_name/dir directory.
         /// * gs://bucket_name/dir/**: matches all files in bucket_name/dir spanning all subdirectories.
-        /// * gs://bucket_name/file*: matches files prefixed by file in bucket_name
-        /// * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucket_name
-        /// * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucket_name
-        /// * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
-        /// * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
+        /// * gs://bucket_name/file*: matches files prefixed by file in BucketName
+        /// * gs://bucket_name/??.txt: matches files with two characters followed by .txt in BucketName
+        /// * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in BucketName
+        /// * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in BucketName
+        /// * gs://bucket_name/a/*/b: matches all files in BucketName that match a/*/b pattern, such as a/c/b, a/d/b
         /// * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
         /// </summary>
         public InputList<string> FilePatterns
@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_gcs_fileset_spec_sample_gcs_file_specs"&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
+        /// &lt;a name="NestedGcsFilesetSpecSampleGcsFileSpecs"&gt;&lt;/a&gt;The `SampleGcsFileSpecs` block contains:
         /// </summary>
         public InputList<Inputs.EntryGcsFilesetSpecSampleGcsFileSpecGetArgs> SampleGcsFileSpecs
         {

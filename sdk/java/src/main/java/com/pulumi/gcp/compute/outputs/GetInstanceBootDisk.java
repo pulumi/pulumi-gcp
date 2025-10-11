@@ -25,12 +25,12 @@ public final class GetInstanceBootDisk {
      */
     private String deviceName;
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
      * 
      */
     private String diskEncryptionKeyRaw;
     /**
-     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
      * 
      */
     private String diskEncryptionKeyRsa;
@@ -68,7 +68,7 @@ public final class GetInstanceBootDisk {
      */
     private String interface_;
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * @return The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
      * 
      */
     private String kmsKeySelfLink;
@@ -78,7 +78,7 @@ public final class GetInstanceBootDisk {
      */
     private String mode;
     /**
-     * @return The self_link of the disk attached to this instance.
+     * @return The selfLink of the disk attached to this instance.
      * 
      */
     private String source;
@@ -100,14 +100,14 @@ public final class GetInstanceBootDisk {
         return this.deviceName;
     }
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
      * 
      */
     public String diskEncryptionKeyRaw() {
         return this.diskEncryptionKeyRaw;
     }
     /**
-     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
      * 
      */
     public String diskEncryptionKeyRsa() {
@@ -159,7 +159,7 @@ public final class GetInstanceBootDisk {
         return this.interface_;
     }
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * @return The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
      * 
      */
     public String kmsKeySelfLink() {
@@ -173,7 +173,7 @@ public final class GetInstanceBootDisk {
         return this.mode;
     }
     /**
-     * @return The self_link of the disk attached to this instance.
+     * @return The selfLink of the disk attached to this instance.
      * 
      */
     public String source() {

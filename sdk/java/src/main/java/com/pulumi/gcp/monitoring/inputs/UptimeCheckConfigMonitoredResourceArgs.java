@@ -16,14 +16,14 @@ public final class UptimeCheckConfigMonitoredResourceArgs extends com.pulumi.res
     public static final UptimeCheckConfigMonitoredResourceArgs Empty = new UptimeCheckConfigMonitoredResourceArgs();
 
     /**
-     * Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `project_id`, `instance_id`, and `zone`.
+     * Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `projectId`, `instanceId`, and `zone`.
      * 
      */
     @Import(name="labels", required=true)
     private Output<Map<String,String>> labels;
 
     /**
-     * @return Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `project_id`, `instance_id`, and `zone`.
+     * @return Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `projectId`, `instanceId`, and `zone`.
      * 
      */
     public Output<Map<String,String>> labels() {
@@ -31,14 +31,14 @@ public final class UptimeCheckConfigMonitoredResourceArgs extends com.pulumi.res
     }
 
     /**
-     * The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gce_instance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
+     * The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gceInstance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gce_instance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
+     * @return The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gceInstance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
      * 
      */
     public Output<String> type() {
@@ -71,7 +71,7 @@ public final class UptimeCheckConfigMonitoredResourceArgs extends com.pulumi.res
         }
 
         /**
-         * @param labels Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `project_id`, `instance_id`, and `zone`.
+         * @param labels Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `projectId`, `instanceId`, and `zone`.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class UptimeCheckConfigMonitoredResourceArgs extends com.pulumi.res
         }
 
         /**
-         * @param labels Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `project_id`, `instance_id`, and `zone`.
+         * @param labels Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `projectId`, `instanceId`, and `zone`.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class UptimeCheckConfigMonitoredResourceArgs extends com.pulumi.res
         }
 
         /**
-         * @param type The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gce_instance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
+         * @param type The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gceInstance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class UptimeCheckConfigMonitoredResourceArgs extends com.pulumi.res
         }
 
         /**
-         * @param type The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gce_instance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
+         * @param type The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gceInstance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
          * 
          * @return builder
          * 

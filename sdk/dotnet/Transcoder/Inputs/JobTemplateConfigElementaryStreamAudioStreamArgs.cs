@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Transcoder.Inputs
         }
 
         /// <summary>
-        /// The codec for this audio stream. The default is `aac`.
+        /// The codec for this audio stream. The default is `Aac`.
         /// </summary>
         [Input("codec")]
         public Input<string>? Codec { get; set; }

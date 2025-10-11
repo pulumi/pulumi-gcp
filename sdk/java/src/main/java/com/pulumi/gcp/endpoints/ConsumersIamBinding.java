@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.endpoints.ConsumersIamBinding` resources **can be** used in conjunction with `gcp.endpoints.ConsumersIamMember` resources **only if** they do not grant privilege to the same role.
  * 
+ * ## gcp.endpoints.ConsumersIamPolicy
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:

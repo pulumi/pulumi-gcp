@@ -38,7 +38,7 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
      * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
      * sourceIpRangesToNat
      * 
-     * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
+     * &lt;a name=&#34;nestedNat64Subnetwork&#34;&gt;&lt;/a&gt;The `nat64Subnetwork` block supports:
      * 
      */
     @Import(name="secondaryIpRangeNames")
@@ -50,7 +50,7 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
      * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
      * sourceIpRangesToNat
      * 
-     * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
+     * &lt;a name=&#34;nestedNat64Subnetwork&#34;&gt;&lt;/a&gt;The `nat64Subnetwork` block supports:
      * 
      */
     public Optional<Output<List<String>>> secondaryIpRangeNames() {
@@ -131,7 +131,7 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
          * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
          * sourceIpRangesToNat
          * 
-         * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
+         * &lt;a name=&#34;nestedNat64Subnetwork&#34;&gt;&lt;/a&gt;The `nat64Subnetwork` block supports:
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
          * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
          * sourceIpRangesToNat
          * 
-         * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
+         * &lt;a name=&#34;nestedNat64Subnetwork&#34;&gt;&lt;/a&gt;The `nat64Subnetwork` block supports:
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class RouterNatSubnetworkArgs extends com.pulumi.resources.Resource
          * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
          * sourceIpRangesToNat
          * 
-         * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
+         * &lt;a name=&#34;nestedNat64Subnetwork&#34;&gt;&lt;/a&gt;The `nat64Subnetwork` block supports:
          * 
          * @return builder
          * 

@@ -177,7 +177,7 @@ namespace Pulumi.Gcp.Apphub
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Part of `parent`. See documentation of `projectsId`.
+        /// Part of `Parent`. See documentation of `projectsId`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -298,7 +298,7 @@ namespace Pulumi.Gcp.Apphub
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Part of `parent`. See documentation of `projectsId`.
+        /// Part of `Parent`. See documentation of `projectsId`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -357,7 +357,7 @@ namespace Pulumi.Gcp.Apphub
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Part of `parent`. See documentation of `projectsId`.
+        /// Part of `Parent`. See documentation of `projectsId`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

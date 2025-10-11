@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Dataproc
     ///     * [Official Documentation](https://cloud.google.com/dataproc/docs)
     /// 
     /// !&gt; **Warning:** Due to limitations of the API, all arguments except
-    /// `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
+    /// `Labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
     /// whole cluster!
     /// 
     /// ## Example Usage
@@ -211,7 +211,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the `cluster` will exist. If it
+        /// The ID of the project in which the `Cluster` will exist. If it
         /// is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The region in which the cluster and associated nodes will be created in.
-        /// Defaults to `global`.
+        /// Defaults to `Global`.
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
@@ -323,7 +323,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the `cluster` will exist. If it
+        /// The ID of the project in which the `Cluster` will exist. If it
         /// is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
@@ -331,7 +331,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The region in which the cluster and associated nodes will be created in.
-        /// Defaults to `global`.
+        /// Defaults to `Global`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -404,7 +404,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the `cluster` will exist. If it
+        /// The ID of the project in which the `Cluster` will exist. If it
         /// is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
@@ -428,7 +428,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The region in which the cluster and associated nodes will be created in.
-        /// Defaults to `global`.
+        /// Defaults to `Global`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

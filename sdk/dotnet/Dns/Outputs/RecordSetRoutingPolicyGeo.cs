@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class RecordSetRoutingPolicyGeo
     {
         /// <summary>
-        /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `Rrdatas` within this item.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RecordSetRoutingPolicyGeoHealthCheckedTargets? HealthCheckedTargets;
@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// Same as `rrdatas` above.
+        /// Same as `Rrdatas` above.
         /// </summary>
         public readonly ImmutableArray<string> Rrdatas;
 

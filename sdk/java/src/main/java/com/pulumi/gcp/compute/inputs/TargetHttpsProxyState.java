@@ -21,9 +21,9 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
     /**
      * URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
      * Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
-     * For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
+     * For EXTERNAL and EXTERNAL_MANAGED, use certificateMap instead.
      * sslCertificates and certificateManagerCertificates fields can not be defined together.
-     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      * 
      */
     @Import(name="certificateManagerCertificates")
@@ -32,9 +32,9 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
     /**
      * @return URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
      * Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
-     * For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
+     * For EXTERNAL and EXTERNAL_MANAGED, use certificateMap instead.
      * sslCertificates and certificateManagerCertificates fields can not be defined together.
-     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      * 
      */
     public Optional<Output<List<String>>> certificateManagerCertificates() {
@@ -44,7 +44,7 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
     /**
      * A reference to the CertificateMap resource uri that identifies a certificate map
      * associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
-     * For INTERNAL_MANAGED, use certificate_manager_certificates instead.
+     * For INTERNAL_MANAGED, use certificateManagerCertificates instead.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
      * 
      */
@@ -54,7 +54,7 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
     /**
      * @return A reference to the CertificateMap resource uri that identifies a certificate map
      * associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
-     * For INTERNAL_MANAGED, use certificate_manager_certificates instead.
+     * For INTERNAL_MANAGED, use certificateManagerCertificates instead.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
      * 
      */
@@ -422,9 +422,9 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
         /**
          * @param certificateManagerCertificates URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
          * Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
-         * For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
+         * For EXTERNAL and EXTERNAL_MANAGED, use certificateMap instead.
          * sslCertificates and certificateManagerCertificates fields can not be defined together.
-         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
          * 
          * @return builder
          * 
@@ -437,9 +437,9 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
         /**
          * @param certificateManagerCertificates URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
          * Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
-         * For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
+         * For EXTERNAL and EXTERNAL_MANAGED, use certificateMap instead.
          * sslCertificates and certificateManagerCertificates fields can not be defined together.
-         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
          * 
          * @return builder
          * 
@@ -451,9 +451,9 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
         /**
          * @param certificateManagerCertificates URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
          * Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
-         * For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
+         * For EXTERNAL and EXTERNAL_MANAGED, use certificateMap instead.
          * sslCertificates and certificateManagerCertificates fields can not be defined together.
-         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
         /**
          * @param certificateMap A reference to the CertificateMap resource uri that identifies a certificate map
          * associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
-         * For INTERNAL_MANAGED, use certificate_manager_certificates instead.
+         * For INTERNAL_MANAGED, use certificateManagerCertificates instead.
          * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
          * 
          * @return builder
@@ -479,7 +479,7 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
         /**
          * @param certificateMap A reference to the CertificateMap resource uri that identifies a certificate map
          * associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
-         * For INTERNAL_MANAGED, use certificate_manager_certificates instead.
+         * For INTERNAL_MANAGED, use certificateManagerCertificates instead.
          * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
          * 
          * @return builder

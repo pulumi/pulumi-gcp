@@ -30,7 +30,7 @@ public final class TriggerBuildArtifactsObjects {
      * Output only. Stores timing information for pushing all artifact objects.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_build_artifacts_objects_timing&#34;&gt;&lt;/a&gt;The `timing` block contains:
+     * &lt;a name=&#34;nestedBuildArtifactsObjectsTiming&#34;&gt;&lt;/a&gt;The `timing` block contains:
      * 
      */
     private @Nullable List<TriggerBuildArtifactsObjectsTiming> timings;
@@ -57,7 +57,7 @@ public final class TriggerBuildArtifactsObjects {
      * Output only. Stores timing information for pushing all artifact objects.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_build_artifacts_objects_timing&#34;&gt;&lt;/a&gt;The `timing` block contains:
+     * &lt;a name=&#34;nestedBuildArtifactsObjectsTiming&#34;&gt;&lt;/a&gt;The `timing` block contains:
      * 
      */
     public List<TriggerBuildArtifactsObjectsTiming> timings() {

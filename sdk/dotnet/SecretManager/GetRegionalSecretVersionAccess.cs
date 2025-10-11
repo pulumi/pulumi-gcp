@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// Location of Secret Manager regional secret resource.
-        /// It must be provided when the `secret` field provided consists of only the name of the regional secret.
+        /// It must be provided when the `Secret` field provided consists of only the name of the regional secret.
         /// </summary>
         [Input("location")]
         public string? Location { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// Location of Secret Manager regional secret resource.
-        /// It must be provided when the `secret` field provided consists of only the name of the regional secret.
+        /// It must be provided when the `Secret` field provided consists of only the name of the regional secret.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

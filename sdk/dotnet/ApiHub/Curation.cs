@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.ApiHub
         public Output<string> LastExecutionState { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -260,7 +260,7 @@ namespace Pulumi.Gcp.ApiHub
         public Input<Inputs.CurationEndpointArgs> Endpoint { get; set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -351,7 +351,7 @@ namespace Pulumi.Gcp.ApiHub
         public Input<string>? LastExecutionState { get; set; }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

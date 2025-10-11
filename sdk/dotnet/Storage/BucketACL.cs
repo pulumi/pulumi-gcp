@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Storage
     /// and
     /// [API](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls).
     /// 
-    /// Bucket ACLs can be managed non authoritatively using the `storage_bucket_access_control` resource. Do not use these two resources in conjunction to manage the same bucket.
+    /// Bucket ACLs can be managed non authoritatively using the `StorageBucketAccessControl` resource. Do not use these two resources in conjunction to manage the same bucket.
     /// 
     /// Permissions can be granted either by ACLs or Cloud IAM policies. In general, permissions granted by Cloud IAM policies do not appear in ACLs, and permissions granted by ACLs do not appear in Cloud IAM policies. The only exception is for ACLs applied directly on a bucket and certain bucket-level Cloud IAM policies, as described in [Cloud IAM relation to ACLs](https://cloud.google.com/storage/docs/access-control/iam#acls).
     /// 
@@ -74,13 +74,13 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> DefaultAcl { get; private set; } = null!;
 
         /// <summary>
-        /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
+        /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `RoleEntity` is not.
         /// </summary>
         [Output("predefinedAcl")]
         public Output<string?> PredefinedAcl { get; private set; } = null!;
 
         /// <summary>
-        /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
+        /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `PredefinedAcl` is not.
         /// </summary>
         [Output("roleEntities")]
         public Output<ImmutableArray<string>> RoleEntities { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? DefaultAcl { get; set; }
 
         /// <summary>
-        /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
+        /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `RoleEntity` is not.
         /// </summary>
         [Input("predefinedAcl")]
         public Input<string>? PredefinedAcl { get; set; }
@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.Storage
         private InputList<string>? _roleEntities;
 
         /// <summary>
-        /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
+        /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `PredefinedAcl` is not.
         /// </summary>
         public InputList<string> RoleEntities
         {
@@ -186,7 +186,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? DefaultAcl { get; set; }
 
         /// <summary>
-        /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
+        /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `RoleEntity` is not.
         /// </summary>
         [Input("predefinedAcl")]
         public Input<string>? PredefinedAcl { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.Gcp.Storage
         private InputList<string>? _roleEntities;
 
         /// <summary>
-        /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
+        /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `PredefinedAcl` is not.
         /// </summary>
         public InputList<string> RoleEntities
         {

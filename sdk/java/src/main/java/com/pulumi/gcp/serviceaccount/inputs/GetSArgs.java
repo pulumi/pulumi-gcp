@@ -16,14 +16,14 @@ public final class GetSArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetSArgs Empty = new GetSArgs();
 
     /**
-     * A prefix for filtering. It&#39;s applied with the `account_id`.
+     * A prefix for filtering. It&#39;s applied with the `accountId`.
      * 
      */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
     /**
-     * @return A prefix for filtering. It&#39;s applied with the `account_id`.
+     * @return A prefix for filtering. It&#39;s applied with the `accountId`.
      * 
      */
     public Optional<Output<String>> prefix() {
@@ -87,7 +87,7 @@ public final class GetSArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param prefix A prefix for filtering. It&#39;s applied with the `account_id`.
+         * @param prefix A prefix for filtering. It&#39;s applied with the `accountId`.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class GetSArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param prefix A prefix for filtering. It&#39;s applied with the `account_id`.
+         * @param prefix A prefix for filtering. It&#39;s applied with the `accountId`.
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ public final class GetUptimeCheckIPsResult {
      */
     private String id;
     /**
-     * @return A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
+     * @return A list of uptime check IPs used by Stackdriver Monitoring. Each `uptimeCheckIp` contains:
      * 
      */
     private List<GetUptimeCheckIPsUptimeCheckIp> uptimeCheckIps;
@@ -32,7 +32,7 @@ public final class GetUptimeCheckIPsResult {
         return this.id;
     }
     /**
-     * @return A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
+     * @return A list of uptime check IPs used by Stackdriver Monitoring. Each `uptimeCheckIp` contains:
      * 
      */
     public List<GetUptimeCheckIPsUptimeCheckIp> uptimeCheckIps() {

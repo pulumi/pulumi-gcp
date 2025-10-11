@@ -270,14 +270,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigquery/datasetAccess:DatasetAccess")
 public class DatasetAccess extends com.pulumi.resources.CustomResource {
     /**
-     * If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
+     * If true, represents that that the iamMember in the config was translated to a different member type by the API, and is stored in state as a different member type
      * 
      */
     @Export(name="apiUpdatedMember", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> apiUpdatedMember;
 
     /**
-     * @return If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
+     * @return If true, represents that that the iamMember in the config was translated to a different member type by the API, and is stored in state as a different member type
      * 
      */
     public Output<Boolean> apiUpdatedMember() {

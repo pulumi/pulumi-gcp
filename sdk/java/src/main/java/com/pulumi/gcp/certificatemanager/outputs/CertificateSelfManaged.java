@@ -17,13 +17,13 @@ public final class CertificateSelfManaged {
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
-     * &gt; **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+     * &gt; **Warning:** `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
      * 
      * @deprecated
-     * `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+     * `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
      * 
      */
-    @Deprecated /* `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead. */
+    @Deprecated /* `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead. */
     private @Nullable String certificatePem;
     /**
      * @return The certificate chain in PEM-encoded form.
@@ -43,13 +43,13 @@ public final class CertificateSelfManaged {
      * The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
-     * &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+     * &gt; **Warning:** `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
      * 
      * @deprecated
-     * `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+     * `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
      * 
      */
-    @Deprecated /* `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead. */
+    @Deprecated /* `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead. */
     private @Nullable String privateKeyPem;
 
     private CertificateSelfManaged() {}
@@ -59,13 +59,13 @@ public final class CertificateSelfManaged {
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
-     * &gt; **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+     * &gt; **Warning:** `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
      * 
      * @deprecated
-     * `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+     * `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
      * 
      */
-    @Deprecated /* `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead. */
+    @Deprecated /* `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead. */
     public Optional<String> certificatePem() {
         return Optional.ofNullable(this.certificatePem);
     }
@@ -91,13 +91,13 @@ public final class CertificateSelfManaged {
      * The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
-     * &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+     * &gt; **Warning:** `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
      * 
      * @deprecated
-     * `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+     * `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
      * 
      */
-    @Deprecated /* `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead. */
+    @Deprecated /* `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead. */
     public Optional<String> privateKeyPem() {
         return Optional.ofNullable(this.privateKeyPem);
     }

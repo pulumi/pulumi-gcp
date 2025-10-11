@@ -25,8 +25,8 @@ public final class ConnectivityTestDestination {
     private @Nullable String forwardingRule;
     /**
      * @return A DNS endpoint of Google Kubernetes Engine cluster control plane.
-     * Requires gke_master_cluster to be set, can&#39;t be used simultaneoulsly with
-     * ip_address or network. Applicable only to destination endpoint.
+     * Requires gkeMasterCluster to be set, can&#39;t be used simultaneoulsly with
+     * ipAddress or network. Applicable only to destination endpoint.
      * 
      */
     private @Nullable String fqdn;
@@ -98,8 +98,8 @@ public final class ConnectivityTestDestination {
     }
     /**
      * @return A DNS endpoint of Google Kubernetes Engine cluster control plane.
-     * Requires gke_master_cluster to be set, can&#39;t be used simultaneoulsly with
-     * ip_address or network. Applicable only to destination endpoint.
+     * Requires gkeMasterCluster to be set, can&#39;t be used simultaneoulsly with
+     * ipAddress or network. Applicable only to destination endpoint.
      * 
      */
     public Optional<String> fqdn() {

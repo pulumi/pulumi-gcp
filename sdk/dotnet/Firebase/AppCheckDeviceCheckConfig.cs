@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// An app's DeviceCheck configuration object. Note that the Team ID registered with your
-    /// app is used as part of the validation process. Make sure your `gcp.firebase.AppleApp` has a team_id present.
+    /// app is used as part of the validation process. Make sure your `gcp.firebase.AppleApp` has a TeamId present.
     /// 
     /// To get more information about DeviceCheckConfig, see:
     /// 

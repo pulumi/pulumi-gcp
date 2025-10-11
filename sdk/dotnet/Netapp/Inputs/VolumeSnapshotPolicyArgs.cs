@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Netapp.Inputs
 
         /// <summary>
         /// Enables automated snapshot creation according to defined schedule. Default is false.
-        /// To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+        /// To disable automatic snapshot creation you have to remove the whole SnapshotPolicy block.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

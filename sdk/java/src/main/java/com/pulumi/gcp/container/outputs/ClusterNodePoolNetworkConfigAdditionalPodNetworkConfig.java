@@ -23,7 +23,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
      */
     private @Nullable String secondaryPodRange;
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
      */
@@ -45,7 +45,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
         return Optional.ofNullable(this.secondaryPodRange);
     }
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
      */

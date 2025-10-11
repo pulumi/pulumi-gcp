@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
     public sealed class FunctionServiceConfigSecretVolumeVersionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as '/etc/secrets' and path as secret_foo would mount the secret value file at /etc/secrets/secret_foo.
+        /// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as '/etc/secrets' and path as SecretFoo would mount the secret value file at /etc/secrets/secret_foo.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;

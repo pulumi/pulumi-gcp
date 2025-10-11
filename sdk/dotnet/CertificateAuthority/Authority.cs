@@ -545,7 +545,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-        /// Use with care. Defaults to `false`.
+        /// Use with care. Defaults to `False`.
         /// </summary>
         [Output("ignoreActiveCertificatesOnDeletion")]
         public Output<bool?> IgnoreActiveCertificatesOnDeletion { get; private set; } = null!;
@@ -565,7 +565,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -631,7 +631,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// If this flag is set, the Certificate Authority will be deleted as soon as
         /// possible without a 30-day grace period where undeletion would have been
         /// allowed. If you proceed, there will be no way to recover this CA.
-        /// Use with care. Defaults to `false`.
+        /// Use with care. Defaults to `False`.
         /// </summary>
         [Output("skipGracePeriod")]
         public Output<bool?> SkipGracePeriod { get; private set; } = null!;
@@ -762,7 +762,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-        /// Use with care. Defaults to `false`.
+        /// Use with care. Defaults to `False`.
         /// </summary>
         [Input("ignoreActiveCertificatesOnDeletion")]
         public Input<bool>? IgnoreActiveCertificatesOnDeletion { get; set; }
@@ -785,7 +785,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -831,7 +831,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// If this flag is set, the Certificate Authority will be deleted as soon as
         /// possible without a 30-day grace period where undeletion would have been
         /// allowed. If you proceed, there will be no way to recover this CA.
-        /// Use with care. Defaults to `false`.
+        /// Use with care. Defaults to `False`.
         /// </summary>
         [Input("skipGracePeriod")]
         public Input<bool>? SkipGracePeriod { get; set; }
@@ -942,7 +942,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-        /// Use with care. Defaults to `false`.
+        /// Use with care. Defaults to `False`.
         /// </summary>
         [Input("ignoreActiveCertificatesOnDeletion")]
         public Input<bool>? IgnoreActiveCertificatesOnDeletion { get; set; }
@@ -965,7 +965,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1050,7 +1050,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// If this flag is set, the Certificate Authority will be deleted as soon as
         /// possible without a 30-day grace period where undeletion would have been
         /// allowed. If you proceed, there will be no way to recover this CA.
-        /// Use with care. Defaults to `false`.
+        /// Use with care. Defaults to `False`.
         /// </summary>
         [Input("skipGracePeriod")]
         public Input<bool>? SkipGracePeriod { get; set; }

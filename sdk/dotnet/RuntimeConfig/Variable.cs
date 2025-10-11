@@ -43,10 +43,10 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// });
     /// ```
     /// 
-    /// You can also encode binary content using the `value` argument instead. The
+    /// You can also encode binary content using the `Value` argument instead. The
     /// value must be base64 encoded.
     /// 
-    /// Example of using the `value` argument.
+    /// Example of using the `Value` argument.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -121,9 +121,9 @@ namespace Pulumi.Gcp.RuntimeConfig
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// or `value` - (Required) The content to associate with the variable.
-        /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
-        /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+        /// or `Value` - (Required) The content to associate with the variable.
+        /// Exactly one of `Text` or `Variable` must be specified. If `Text` is specified,
+        /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `Value`
         /// is specified, it must be base64 encoded and less than 4096 bytes in length.
         /// 
         /// - - -
@@ -218,9 +218,9 @@ namespace Pulumi.Gcp.RuntimeConfig
         private Input<string>? _text;
 
         /// <summary>
-        /// or `value` - (Required) The content to associate with the variable.
-        /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
-        /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+        /// or `Value` - (Required) The content to associate with the variable.
+        /// Exactly one of `Text` or `Variable` must be specified. If `Text` is specified,
+        /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `Value`
         /// is specified, it must be base64 encoded and less than 4096 bytes in length.
         /// 
         /// - - -
@@ -280,9 +280,9 @@ namespace Pulumi.Gcp.RuntimeConfig
         private Input<string>? _text;
 
         /// <summary>
-        /// or `value` - (Required) The content to associate with the variable.
-        /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
-        /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+        /// or `Value` - (Required) The content to associate with the variable.
+        /// Exactly one of `Text` or `Variable` must be specified. If `Text` is specified,
+        /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `Value`
         /// is specified, it must be base64 encoded and less than 4096 bytes in length.
         /// 
         /// - - -

@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.Diagflow
     {
         /// <summary>
         /// Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
-        /// If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
+        /// If RetentionStrategy is set to REMOVE_AFTER_CONVERSATION or GcsBucket is empty, audio export is disabled.
         /// If audio export is enabled, audio is recorded and saved to gcs_bucket, subject to retention policy of gcs_bucket.
         /// This setting won't effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
         /// Structure is documented below.
@@ -243,7 +243,7 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string?> RedactionStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
+        /// Defines how long we retain persisted data that contains sensitive info. Only one of `RetentionWindowDays` and `RetentionStrategy` may be set.
         /// * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
         /// Possible values are: `REMOVE_AFTER_CONVERSATION`.
         /// </summary>
@@ -252,7 +252,7 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
-        /// Only one of `retention_window_days` and `retention_strategy` may be set.
+        /// Only one of `RetentionWindowDays` and `RetentionStrategy` may be set.
         /// </summary>
         [Output("retentionWindowDays")]
         public Output<int?> RetentionWindowDays { get; private set; } = null!;
@@ -305,7 +305,7 @@ namespace Pulumi.Gcp.Diagflow
     {
         /// <summary>
         /// Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
-        /// If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
+        /// If RetentionStrategy is set to REMOVE_AFTER_CONVERSATION or GcsBucket is empty, audio export is disabled.
         /// If audio export is enabled, audio is recorded and saved to gcs_bucket, subject to retention policy of gcs_bucket.
         /// This setting won't effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
         /// Structure is documented below.
@@ -387,7 +387,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? RedactionStrategy { get; set; }
 
         /// <summary>
-        /// Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
+        /// Defines how long we retain persisted data that contains sensitive info. Only one of `RetentionWindowDays` and `RetentionStrategy` may be set.
         /// * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
         /// Possible values are: `REMOVE_AFTER_CONVERSATION`.
         /// </summary>
@@ -396,7 +396,7 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
-        /// Only one of `retention_window_days` and `retention_strategy` may be set.
+        /// Only one of `RetentionWindowDays` and `RetentionStrategy` may be set.
         /// </summary>
         [Input("retentionWindowDays")]
         public Input<int>? RetentionWindowDays { get; set; }
@@ -411,7 +411,7 @@ namespace Pulumi.Gcp.Diagflow
     {
         /// <summary>
         /// Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
-        /// If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
+        /// If RetentionStrategy is set to REMOVE_AFTER_CONVERSATION or GcsBucket is empty, audio export is disabled.
         /// If audio export is enabled, audio is recorded and saved to gcs_bucket, subject to retention policy of gcs_bucket.
         /// This setting won't effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
         /// Structure is documented below.
@@ -500,7 +500,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? RedactionStrategy { get; set; }
 
         /// <summary>
-        /// Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
+        /// Defines how long we retain persisted data that contains sensitive info. Only one of `RetentionWindowDays` and `RetentionStrategy` may be set.
         /// * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
         /// Possible values are: `REMOVE_AFTER_CONVERSATION`.
         /// </summary>
@@ -509,7 +509,7 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
-        /// Only one of `retention_window_days` and `retention_strategy` may be set.
+        /// Only one of `RetentionWindowDays` and `RetentionStrategy` may be set.
         /// </summary>
         [Input("retentionWindowDays")]
         public Input<int>? RetentionWindowDays { get; set; }

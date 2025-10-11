@@ -415,7 +415,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<int?> DefaultTableExpirationMs { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, delete all the tables in the
+        /// If set to `True`, delete all the tables in the
         /// dataset when destroying the resource; otherwise,
         /// destroying the resource will fail if tables are present.
         /// </summary>
@@ -474,7 +474,7 @@ namespace Pulumi.Gcp.BigQuery
         /// organize and group your datasets.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -674,7 +674,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<int>? DefaultTableExpirationMs { get; set; }
 
         /// <summary>
-        /// If set to `true`, delete all the tables in the
+        /// If set to `True`, delete all the tables in the
         /// dataset when destroying the resource; otherwise,
         /// destroying the resource will fail if tables are present.
         /// </summary>
@@ -724,7 +724,7 @@ namespace Pulumi.Gcp.BigQuery
         /// organize and group your datasets.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -877,7 +877,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<int>? DefaultTableExpirationMs { get; set; }
 
         /// <summary>
-        /// If set to `true`, delete all the tables in the
+        /// If set to `True`, delete all the tables in the
         /// dataset when destroying the resource; otherwise,
         /// destroying the resource will fail if tables are present.
         /// </summary>
@@ -949,7 +949,7 @@ namespace Pulumi.Gcp.BigQuery
         /// organize and group your datasets.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

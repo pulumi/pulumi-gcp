@@ -30,7 +30,7 @@ public final class DeliveryPipelineSerialPipelineStage {
      */
     private @Nullable DeliveryPipelineSerialPipelineStageStrategy strategy;
     /**
-     * @return The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
+     * @return The targetId to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
      * 
      */
     private @Nullable String targetId;
@@ -58,7 +58,7 @@ public final class DeliveryPipelineSerialPipelineStage {
         return Optional.ofNullable(this.strategy);
     }
     /**
-     * @return The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
+     * @return The targetId to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
      * 
      */
     public Optional<String> targetId() {

@@ -36,7 +36,7 @@ public final class AzureClusterControlPlane {
      */
     private @Nullable AzureClusterControlPlaneProxyConfig proxyConfig;
     /**
-     * @return Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+     * @return Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
      * 
      */
     private @Nullable List<AzureClusterControlPlaneReplicaPlacement> replicaPlacements;
@@ -94,7 +94,7 @@ public final class AzureClusterControlPlane {
         return Optional.ofNullable(this.proxyConfig);
     }
     /**
-     * @return Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+     * @return Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
      * 
      */
     public List<AzureClusterControlPlaneReplicaPlacement> replicaPlacements() {

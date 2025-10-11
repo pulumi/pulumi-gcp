@@ -134,8 +134,8 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Policy to determine if the rule should be deleted forcefully.
-     * If deletion_policy = &#34;FORCE&#34;, any retrohunts and any detections associated with the rule
-     * will also be deleted. If deletion_policy = &#34;DEFAULT&#34;, the call will only succeed if the
+     * If deletionPolicy = &#34;FORCE&#34;, any retrohunts and any detections associated with the rule
+     * will also be deleted. If deletionPolicy = &#34;DEFAULT&#34;, the call will only succeed if the
      * rule has no associated retrohunts, including completed retrohunts, and no
      * associated detections. Regardless of this field&#39;s value, the rule
      * deployment associated with this rule will also be deleted.
@@ -147,8 +147,8 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Policy to determine if the rule should be deleted forcefully.
-     * If deletion_policy = &#34;FORCE&#34;, any retrohunts and any detections associated with the rule
-     * will also be deleted. If deletion_policy = &#34;DEFAULT&#34;, the call will only succeed if the
+     * If deletionPolicy = &#34;FORCE&#34;, any retrohunts and any detections associated with the rule
+     * will also be deleted. If deletionPolicy = &#34;DEFAULT&#34;, the call will only succeed if the
      * rule has no associated retrohunts, including completed retrohunts, and no
      * associated detections. Regardless of this field&#39;s value, the rule
      * deployment associated with this rule will also be deleted.
@@ -691,8 +691,8 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionPolicy Policy to determine if the rule should be deleted forcefully.
-         * If deletion_policy = &#34;FORCE&#34;, any retrohunts and any detections associated with the rule
-         * will also be deleted. If deletion_policy = &#34;DEFAULT&#34;, the call will only succeed if the
+         * If deletionPolicy = &#34;FORCE&#34;, any retrohunts and any detections associated with the rule
+         * will also be deleted. If deletionPolicy = &#34;DEFAULT&#34;, the call will only succeed if the
          * rule has no associated retrohunts, including completed retrohunts, and no
          * associated detections. Regardless of this field&#39;s value, the rule
          * deployment associated with this rule will also be deleted.
@@ -708,8 +708,8 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionPolicy Policy to determine if the rule should be deleted forcefully.
-         * If deletion_policy = &#34;FORCE&#34;, any retrohunts and any detections associated with the rule
-         * will also be deleted. If deletion_policy = &#34;DEFAULT&#34;, the call will only succeed if the
+         * If deletionPolicy = &#34;FORCE&#34;, any retrohunts and any detections associated with the rule
+         * will also be deleted. If deletionPolicy = &#34;DEFAULT&#34;, the call will only succeed if the
          * rule has no associated retrohunts, including completed retrohunts, and no
          * associated detections. Regardless of this field&#39;s value, the rule
          * deployment associated with this rule will also be deleted.

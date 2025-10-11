@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodePoolAutoConfig {
     /**
-     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolAutoConfigLinuxNodeConfig linuxNodeConfig;
@@ -26,7 +26,7 @@ public final class ClusterNodePoolAutoConfig {
      */
     private @Nullable ClusterNodePoolAutoConfigNetworkTags networkTags;
     /**
-     * @return Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+     * @return Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
      * Structure is documented below.
      * 
      */
@@ -39,7 +39,7 @@ public final class ClusterNodePoolAutoConfig {
 
     private ClusterNodePoolAutoConfig() {}
     /**
-     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolAutoConfigLinuxNodeConfig> linuxNodeConfig() {
@@ -53,7 +53,7 @@ public final class ClusterNodePoolAutoConfig {
         return Optional.ofNullable(this.networkTags);
     }
     /**
-     * @return Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+     * @return Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
      * Structure is documented below.
      * 
      */

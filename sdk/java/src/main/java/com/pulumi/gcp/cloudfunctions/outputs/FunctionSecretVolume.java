@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FunctionSecretVolume {
     /**
-     * @return The path within the container to mount the secret volume. For example, setting the mount_path as &#34;/etc/secrets&#34; would mount the secret value files under the &#34;/etc/secrets&#34; directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: &#34;/etc/secrets&#34; Restricted mount paths: &#34;/cloudsql&#34;, &#34;/dev/log&#34;, &#34;/pod&#34;, &#34;/proc&#34;, &#34;/var/log&#34;.
+     * @return The path within the container to mount the secret volume. For example, setting the mountPath as &#34;/etc/secrets&#34; would mount the secret value files under the &#34;/etc/secrets&#34; directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: &#34;/etc/secrets&#34; Restricted mount paths: &#34;/cloudsql&#34;, &#34;/dev/log&#34;, &#34;/pod&#34;, &#34;/proc&#34;, &#34;/var/log&#34;.
      * 
      */
     private String mountPath;
@@ -37,7 +37,7 @@ public final class FunctionSecretVolume {
 
     private FunctionSecretVolume() {}
     /**
-     * @return The path within the container to mount the secret volume. For example, setting the mount_path as &#34;/etc/secrets&#34; would mount the secret value files under the &#34;/etc/secrets&#34; directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: &#34;/etc/secrets&#34; Restricted mount paths: &#34;/cloudsql&#34;, &#34;/dev/log&#34;, &#34;/pod&#34;, &#34;/proc&#34;, &#34;/var/log&#34;.
+     * @return The path within the container to mount the secret volume. For example, setting the mountPath as &#34;/etc/secrets&#34; would mount the secret value files under the &#34;/etc/secrets&#34; directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: &#34;/etc/secrets&#34; Restricted mount paths: &#34;/cloudsql&#34;, &#34;/dev/log&#34;, &#34;/pod&#34;, &#34;/proc&#34;, &#34;/var/log&#34;.
      * 
      */
     public String mountPath() {

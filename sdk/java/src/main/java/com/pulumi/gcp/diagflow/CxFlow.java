@@ -731,7 +731,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      * Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
      * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
      * 
-     * &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+     * &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
      * 
      */
     @Export(name="isDefaultStartFlow", refs={Boolean.class}, tree="[0]")
@@ -741,7 +741,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      * @return Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
      * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
      * 
-     * &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+     * &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
      * 
      */
     public Output<Optional<Boolean>> isDefaultStartFlow() {

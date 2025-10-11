@@ -117,6 +117,8 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     current = gcp.organizations.get_client_config()
     pulumi.export("project", current.project)
     ```
+
+    ### Configure Kubernetes Provider With OAuth2 Access Token
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -140,6 +142,8 @@ def get_client_config_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.I
     current = gcp.organizations.get_client_config()
     pulumi.export("project", current.project)
     ```
+
+    ### Configure Kubernetes Provider With OAuth2 Access Token
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

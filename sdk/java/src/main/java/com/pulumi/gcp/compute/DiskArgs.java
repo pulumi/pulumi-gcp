@@ -168,7 +168,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether this disk is using confidential compute mode.
-     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      * 
      */
     @Import(name="enableConfidentialCompute")
@@ -176,7 +176,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether this disk is using confidential compute mode.
-     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      * 
      */
     public Optional<Output<Boolean>> enableConfidentialCompute() {
@@ -204,7 +204,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The image from which to initialize this disk. This can be
-     * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -219,7 +219,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The image from which to initialize this disk. This can be
-     * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -264,7 +264,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      * Labels to apply to this disk.  A list of key-&gt;value pairs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -274,7 +274,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      * @return Labels to apply to this disk.  A list of key-&gt;value pairs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -931,7 +931,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enableConfidentialCompute Whether this disk is using confidential compute mode.
-         * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+         * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
          * 
          * @return builder
          * 
@@ -943,7 +943,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enableConfidentialCompute Whether this disk is using confidential compute mode.
-         * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+         * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
          * 
          * @return builder
          * 
@@ -991,7 +991,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param image The image from which to initialize this disk. This can be
-         * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
+         * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -1010,7 +1010,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param image The image from which to initialize this disk. This can be
-         * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
+         * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -1063,7 +1063,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels Labels to apply to this disk.  A list of key-&gt;value pairs.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1077,7 +1077,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels Labels to apply to this disk.  A list of key-&gt;value pairs.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

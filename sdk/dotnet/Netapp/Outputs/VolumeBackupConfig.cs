@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Netapp.Outputs
         /// </summary>
         public readonly string? BackupVault;
         /// <summary>
-        /// When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+        /// When set to true, scheduled backup is enabled on the volume. Omit if no BackupPolicy is specified.
         /// </summary>
         public readonly bool? ScheduledBackupEnabled;
 

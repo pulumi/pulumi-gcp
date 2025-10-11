@@ -128,14 +128,14 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
     }
 
     /**
-     * The name or self_link of the network attached to this interface.
+     * The name or selfLink of the network attached to this interface.
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return The name or self_link of the network attached to this interface.
+     * @return The name or selfLink of the network attached to this interface.
      * 
      */
     public Optional<Output<String>> network() {
@@ -233,14 +233,14 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
     }
 
     /**
-     * The name or self_link of the subnetwork attached to this interface.
+     * The name or selfLink of the subnetwork attached to this interface.
      * 
      */
     @Import(name="subnetwork")
     private @Nullable Output<String> subnetwork;
 
     /**
-     * @return The name or self_link of the subnetwork attached to this interface.
+     * @return The name or selfLink of the subnetwork attached to this interface.
      * 
      */
     public Optional<Output<String>> subnetwork() {
@@ -481,7 +481,7 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
         }
 
         /**
-         * @param network The name or self_link of the network attached to this interface.
+         * @param network The name or selfLink of the network attached to this interface.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
         }
 
         /**
-         * @param network The name or self_link of the network attached to this interface.
+         * @param network The name or selfLink of the network attached to this interface.
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
         }
 
         /**
-         * @param subnetwork The name or self_link of the subnetwork attached to this interface.
+         * @param subnetwork The name or selfLink of the subnetwork attached to this interface.
          * 
          * @return builder
          * 
@@ -639,7 +639,7 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
         }
 
         /**
-         * @param subnetwork The name or self_link of the subnetwork attached to this interface.
+         * @param subnetwork The name or selfLink of the subnetwork attached to this interface.
          * 
          * @return builder
          * 

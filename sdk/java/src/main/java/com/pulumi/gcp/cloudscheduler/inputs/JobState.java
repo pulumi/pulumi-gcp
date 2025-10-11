@@ -89,7 +89,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * HTTP target.
-     * If the job providers a http_target the cron will
+     * If the job providers a httpTarget the cron will
      * send a request to the targeted url
      * Structure is documented below.
      * 
@@ -99,7 +99,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return HTTP target.
-     * If the job providers a http_target the cron will
+     * If the job providers a httpTarget the cron will
      * send a request to the targeted url
      * Structure is documented below.
      * 
@@ -382,7 +382,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param httpTarget HTTP target.
-         * If the job providers a http_target the cron will
+         * If the job providers a httpTarget the cron will
          * send a request to the targeted url
          * Structure is documented below.
          * 
@@ -396,7 +396,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param httpTarget HTTP target.
-         * If the job providers a http_target the cron will
+         * If the job providers a httpTarget the cron will
          * send a request to the targeted url
          * Structure is documented below.
          * 

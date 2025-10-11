@@ -35,6 +35,8 @@ import (
 //	}
 //
 // ```
+//
+// ### Configure Kubernetes Provider With OAuth2 Access Token
 func GetClientConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClientConfigResult

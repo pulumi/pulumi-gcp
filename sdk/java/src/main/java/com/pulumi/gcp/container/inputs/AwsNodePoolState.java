@@ -27,7 +27,7 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
      * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -37,7 +37,7 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
      * @return Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -368,7 +368,7 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
          * @param annotations Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class AwsNodePoolState extends com.pulumi.resources.ResourceArgs {
          * @param annotations Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 

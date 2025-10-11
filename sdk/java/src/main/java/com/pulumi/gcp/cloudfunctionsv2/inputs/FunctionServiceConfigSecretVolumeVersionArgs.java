@@ -15,14 +15,14 @@ public final class FunctionServiceConfigSecretVolumeVersionArgs extends com.pulu
     public static final FunctionServiceConfigSecretVolumeVersionArgs Empty = new FunctionServiceConfigSecretVolumeVersionArgs();
 
     /**
-     * Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#39;/etc/secrets&#39; and path as secret_foo would mount the secret value file at /etc/secrets/secret_foo.
+     * Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#39;/etc/secrets&#39; and path as secretFoo would mount the secret value file at /etc/secrets/secret_foo.
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#39;/etc/secrets&#39; and path as secret_foo would mount the secret value file at /etc/secrets/secret_foo.
+     * @return Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#39;/etc/secrets&#39; and path as secretFoo would mount the secret value file at /etc/secrets/secret_foo.
      * 
      */
     public Output<String> path() {
@@ -70,7 +70,7 @@ public final class FunctionServiceConfigSecretVolumeVersionArgs extends com.pulu
         }
 
         /**
-         * @param path Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#39;/etc/secrets&#39; and path as secret_foo would mount the secret value file at /etc/secrets/secret_foo.
+         * @param path Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#39;/etc/secrets&#39; and path as secretFoo would mount the secret value file at /etc/secrets/secret_foo.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class FunctionServiceConfigSecretVolumeVersionArgs extends com.pulu
         }
 
         /**
-         * @param path Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#39;/etc/secrets&#39; and path as secret_foo would mount the secret value file at /etc/secrets/secret_foo.
+         * @param path Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#39;/etc/secrets&#39; and path as secretFoo would mount the secret value file at /etc/secrets/secret_foo.
          * 
          * @return builder
          * 

@@ -21,14 +21,14 @@ public final class NetworkFirewallPolicyPacketMirroringRuleState extends com.pul
     public static final NetworkFirewallPolicyPacketMirroringRuleState Empty = new NetworkFirewallPolicyPacketMirroringRuleState();
 
     /**
-     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;do_not_mirror&#34;, &#34;goto_next&#34;.
+     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;doNotMirror&#34;, &#34;gotoNext&#34;.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;do_not_mirror&#34;, &#34;goto_next&#34;.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;doNotMirror&#34;, &#34;gotoNext&#34;.
      * 
      */
     public Optional<Output<String>> action() {
@@ -310,7 +310,7 @@ public final class NetworkFirewallPolicyPacketMirroringRuleState extends com.pul
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;do_not_mirror&#34;, &#34;goto_next&#34;.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;doNotMirror&#34;, &#34;gotoNext&#34;.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class NetworkFirewallPolicyPacketMirroringRuleState extends com.pul
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;do_not_mirror&#34;, &#34;goto_next&#34;.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;mirror&#34;, &#34;doNotMirror&#34;, &#34;gotoNext&#34;.
          * 
          * @return builder
          * 

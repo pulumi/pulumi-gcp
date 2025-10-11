@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly bool? EnableHttpPortAccess;
         /// <summary>
-        /// Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+        /// Output only. The map of port descriptions to URLs. Will only be populated if EnableHttpPortAccess is true.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? HttpPorts;
 

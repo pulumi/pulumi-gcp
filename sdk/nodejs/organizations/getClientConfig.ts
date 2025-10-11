@@ -14,6 +14,8 @@ import * as utilities from "../utilities";
  * const current = gcp.organizations.getClientConfig({});
  * export const project = current.then(current => current.project);
  * ```
+ *
+ * ### Configure Kubernetes Provider With OAuth2 Access Token
  */
 export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,6 +59,8 @@ export interface GetClientConfigResult {
  * const current = gcp.organizations.getClientConfig({});
  * export const project = current.then(current => current.project);
  * ```
+ *
+ * ### Configure Kubernetes Provider With OAuth2 Access Token
  */
 export function getClientConfigOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

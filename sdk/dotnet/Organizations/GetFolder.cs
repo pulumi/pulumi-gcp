@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.Organizations
         public string Folder { get; set; } = null!;
 
         /// <summary>
-        /// `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
+        /// `True` to find the organization that the folder belongs, `False` to avoid the lookup. It searches up the tree. (defaults to `False`)
         /// </summary>
         [Input("lookupOrganization")]
         public bool? LookupOrganization { get; set; }
@@ -141,7 +141,7 @@ namespace Pulumi.Gcp.Organizations
         public Input<string> Folder { get; set; } = null!;
 
         /// <summary>
-        /// `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
+        /// `True` to find the organization that the folder belongs, `False` to avoid the lookup. It searches up the tree. (defaults to `False`)
         /// </summary>
         [Input("lookupOrganization")]
         public Input<bool>? LookupOrganization { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// If `lookup_organization` is enable, the resource name of the Organization that the folder belongs.
+        /// If `LookupOrganization` is enable, the resource name of the Organization that the folder belongs.
         /// </summary>
         public readonly string Organization;
         /// <summary>

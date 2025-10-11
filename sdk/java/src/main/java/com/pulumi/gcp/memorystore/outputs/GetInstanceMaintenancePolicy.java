@@ -29,7 +29,7 @@ public final class GetInstanceMaintenancePolicy {
     /**
      * @return Optional. Maintenance window that is applied to resources covered by this policy.
      * Minimum 1. For the current version, the maximum number
-     * of weekly_window is expected to be one.
+     * of weeklyWindow is expected to be one.
      * 
      */
     private List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows;
@@ -56,7 +56,7 @@ public final class GetInstanceMaintenancePolicy {
     /**
      * @return Optional. Maintenance window that is applied to resources covered by this policy.
      * Minimum 1. For the current version, the maximum number
-     * of weekly_window is expected to be one.
+     * of weeklyWindow is expected to be one.
      * 
      */
     public List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows() {

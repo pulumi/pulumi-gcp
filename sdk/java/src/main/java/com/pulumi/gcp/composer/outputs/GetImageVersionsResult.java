@@ -18,7 +18,7 @@ public final class GetImageVersionsResult {
      */
     private String id;
     /**
-     * @return A list of composer image versions available in the given project and location. Each `image_version` contains:
+     * @return A list of composer image versions available in the given project and location. Each `imageVersion` contains:
      * 
      */
     private List<GetImageVersionsImageVersion> imageVersions;
@@ -34,7 +34,7 @@ public final class GetImageVersionsResult {
         return this.id;
     }
     /**
-     * @return A list of composer image versions available in the given project and location. Each `image_version` contains:
+     * @return A list of composer image versions available in the given project and location. Each `imageVersion` contains:
      * 
      */
     public List<GetImageVersionsImageVersion> imageVersions() {

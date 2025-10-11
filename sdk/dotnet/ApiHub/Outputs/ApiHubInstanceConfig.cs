@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.ApiHub.Outputs
         public readonly bool? DisableSearch;
         /// <summary>
         /// Optional. Encryption type for the region. If the encryption type is CMEK, the
-        /// cmek_key_name must be provided. If no encryption type is provided,
+        /// CmekKeyName must be provided. If no encryption type is provided,
         /// GMEK will be used.
         /// Possible values:
         /// ENCRYPTION_TYPE_UNSPECIFIED

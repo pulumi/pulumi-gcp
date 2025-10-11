@@ -46,7 +46,7 @@ public final class DatabaseInstanceSettings {
      * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
      * is set to `true`. Defaults to `ZONAL`.
      * For read pool instances, this field is read-only. The availability type is changed by specifying
-     * the number of nodes (`node_count`).
+     * the number of nodes (`nodeCount`).
      * 
      */
     private @Nullable String availabilityType;
@@ -89,7 +89,7 @@ public final class DatabaseInstanceSettings {
     private @Nullable Boolean deletionProtectionEnabled;
     private @Nullable DatabaseInstanceSettingsDenyMaintenancePeriod denyMaintenancePeriod;
     /**
-     * @return Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
+     * @return Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
      * 
      */
     private @Nullable Boolean diskAutoresize;
@@ -99,7 +99,7 @@ public final class DatabaseInstanceSettings {
      */
     private @Nullable Integer diskAutoresizeLimit;
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
      * 
      */
     private @Nullable Integer diskSize;
@@ -169,7 +169,7 @@ public final class DatabaseInstanceSettings {
      */
     private String tier;
     /**
-     * @return The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * @return The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
      * 
      */
     private @Nullable String timeZone;
@@ -208,7 +208,7 @@ public final class DatabaseInstanceSettings {
      * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
      * is set to `true`. Defaults to `ZONAL`.
      * For read pool instances, this field is read-only. The availability type is changed by specifying
-     * the number of nodes (`node_count`).
+     * the number of nodes (`nodeCount`).
      * 
      */
     public Optional<String> availabilityType() {
@@ -273,7 +273,7 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.denyMaintenancePeriod);
     }
     /**
-     * @return Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
+     * @return Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
      * 
      */
     public Optional<Boolean> diskAutoresize() {
@@ -287,7 +287,7 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.diskAutoresizeLimit);
     }
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
      * 
      */
     public Optional<Integer> diskSize() {
@@ -389,7 +389,7 @@ public final class DatabaseInstanceSettings {
         return this.tier;
     }
     /**
-     * @return The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * @return The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
      * 
      */
     public Optional<String> timeZone() {

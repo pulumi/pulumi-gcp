@@ -761,7 +761,7 @@ namespace Pulumi.Gcp.Compute
         /// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
         /// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
         /// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-        /// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
+        /// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `SendPropagatedConnectionLimitIfZero = true`.
         /// </summary>
         [Output("propagatedConnectionLimit")]
         public Output<int> PropagatedConnectionLimit { get; private set; } = null!;
@@ -795,8 +795,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Controls the behavior of propagated_connection_limit.
-        /// When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
-        /// When true, the provider will set propagated_connection_limit to zero.
+        /// When false, setting PropagatedConnectionLimit to zero causes the provider to use to the API's default value.
+        /// When true, the provider will set PropagatedConnectionLimit to zero.
         /// Defaults to false.
         /// </summary>
         [Output("sendPropagatedConnectionLimitIfZero")]
@@ -959,7 +959,7 @@ namespace Pulumi.Gcp.Compute
         /// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
         /// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
         /// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-        /// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
+        /// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `SendPropagatedConnectionLimitIfZero = true`.
         /// </summary>
         [Input("propagatedConnectionLimit")]
         public Input<int>? PropagatedConnectionLimit { get; set; }
@@ -980,8 +980,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Controls the behavior of propagated_connection_limit.
-        /// When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
-        /// When true, the provider will set propagated_connection_limit to zero.
+        /// When false, setting PropagatedConnectionLimit to zero causes the provider to use to the API's default value.
+        /// When true, the provider will set PropagatedConnectionLimit to zero.
         /// Defaults to false.
         /// </summary>
         [Input("sendPropagatedConnectionLimitIfZero")]
@@ -1127,7 +1127,7 @@ namespace Pulumi.Gcp.Compute
         /// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
         /// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
         /// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-        /// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
+        /// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `SendPropagatedConnectionLimitIfZero = true`.
         /// </summary>
         [Input("propagatedConnectionLimit")]
         public Input<int>? PropagatedConnectionLimit { get; set; }
@@ -1167,8 +1167,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Controls the behavior of propagated_connection_limit.
-        /// When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
-        /// When true, the provider will set propagated_connection_limit to zero.
+        /// When false, setting PropagatedConnectionLimit to zero causes the provider to use to the API's default value.
+        /// When true, the provider will set PropagatedConnectionLimit to zero.
         /// Defaults to false.
         /// </summary>
         [Input("sendPropagatedConnectionLimitIfZero")]

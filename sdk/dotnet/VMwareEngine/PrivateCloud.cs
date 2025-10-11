@@ -228,7 +228,7 @@ namespace Pulumi.Gcp.VMwareEngine
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+        /// While set true, DeletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the DeletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
         /// </summary>
         [Output("sendDeletionDelayHoursIfZero")]
         public Output<bool?> SendDeletionDelayHoursIfZero { get; private set; } = null!;
@@ -352,7 +352,7 @@ namespace Pulumi.Gcp.VMwareEngine
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+        /// While set true, DeletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the DeletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
         /// </summary>
         [Input("sendDeletionDelayHoursIfZero")]
         public Input<bool>? SendDeletionDelayHoursIfZero { get; set; }
@@ -444,7 +444,7 @@ namespace Pulumi.Gcp.VMwareEngine
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+        /// While set true, DeletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the DeletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
         /// </summary>
         [Input("sendDeletionDelayHoursIfZero")]
         public Input<bool>? SendDeletionDelayHoursIfZero { get; set; }

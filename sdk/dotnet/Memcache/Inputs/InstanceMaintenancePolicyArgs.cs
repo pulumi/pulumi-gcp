@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Memcache.Inputs
 
         /// <summary>
         /// Required. Maintenance window that is applied to resources covered by this policy.
-        /// Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+        /// Minimum 1. For the current version, the maximum number of WeeklyMaintenanceWindows
         /// is expected to be one.
         /// Structure is documented below.
         /// </summary>

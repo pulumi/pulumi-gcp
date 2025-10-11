@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.SecurityPosture.Inputs
         public Input<bool>? DenyAll { get; set; }
 
         /// <summary>
-        /// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
+        /// If `True`, then the policy is enforced. If `False`, then any configuration is acceptable.
         /// This field can be set only in policies for boolean constraints.
         /// </summary>
         [Input("enforce")]

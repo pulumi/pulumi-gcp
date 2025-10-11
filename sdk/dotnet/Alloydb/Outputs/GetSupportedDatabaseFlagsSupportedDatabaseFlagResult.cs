@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// </summary>
         public readonly bool AcceptsMultipleValues;
         /// <summary>
-        /// The name of the database flag, e.g. "max_allowed_packets". The is a possibly key for the Instance.database_flags map field.
+        /// The name of the database flag, e.g. "MaxAllowedPackets". The is a possibly key for the Instance.database_flags map field.
         /// </summary>
         public readonly string FlagName;
         /// <summary>

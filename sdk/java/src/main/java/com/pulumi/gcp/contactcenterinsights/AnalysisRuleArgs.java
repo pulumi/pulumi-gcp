@@ -39,7 +39,7 @@ public final class AnalysisRuleArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Percentage of conversations that we should apply this analysis setting
      * automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
-     * are sampled in a determenestic way. The original runtime_percentage &amp;
+     * are sampled in a determenestic way. The original runtimePercentage &amp;
      * upload percentage will be replaced by defining filters on the conversation.
      * 
      */
@@ -49,7 +49,7 @@ public final class AnalysisRuleArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Percentage of conversations that we should apply this analysis setting
      * automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
-     * are sampled in a determenestic way. The original runtime_percentage &amp;
+     * are sampled in a determenestic way. The original runtimePercentage &amp;
      * upload percentage will be replaced by defining filters on the conversation.
      * 
      */
@@ -200,7 +200,7 @@ public final class AnalysisRuleArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param analysisPercentage Percentage of conversations that we should apply this analysis setting
          * automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
-         * are sampled in a determenestic way. The original runtime_percentage &amp;
+         * are sampled in a determenestic way. The original runtimePercentage &amp;
          * upload percentage will be replaced by defining filters on the conversation.
          * 
          * @return builder
@@ -214,7 +214,7 @@ public final class AnalysisRuleArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param analysisPercentage Percentage of conversations that we should apply this analysis setting
          * automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
-         * are sampled in a determenestic way. The original runtime_percentage &amp;
+         * are sampled in a determenestic way. The original runtimePercentage &amp;
          * upload percentage will be replaced by defining filters on the conversation.
          * 
          * @return builder

@@ -36,7 +36,7 @@ public final class GetClusterIpAllocationPolicy {
      */
     private String clusterIpv4CidrBlock;
     /**
-     * @return The name of the existing secondary range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively, cluster_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+     * @return The name of the existing secondary range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively, clusterIpv4CidrBlock can be used to automatically create a GKE-managed one.
      * 
      */
     private String clusterSecondaryRangeName;
@@ -51,7 +51,7 @@ public final class GetClusterIpAllocationPolicy {
      */
     private String servicesIpv4CidrBlock;
     /**
-     * @return The name of the existing secondary range in the cluster&#39;s subnetwork to use for service ClusterIPs. Alternatively, services_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+     * @return The name of the existing secondary range in the cluster&#39;s subnetwork to use for service ClusterIPs. Alternatively, servicesIpv4CidrBlock can be used to automatically create a GKE-managed one.
      * 
      */
     private String servicesSecondaryRangeName;
@@ -91,7 +91,7 @@ public final class GetClusterIpAllocationPolicy {
         return this.clusterIpv4CidrBlock;
     }
     /**
-     * @return The name of the existing secondary range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively, cluster_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+     * @return The name of the existing secondary range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively, clusterIpv4CidrBlock can be used to automatically create a GKE-managed one.
      * 
      */
     public String clusterSecondaryRangeName() {
@@ -112,7 +112,7 @@ public final class GetClusterIpAllocationPolicy {
         return this.servicesIpv4CidrBlock;
     }
     /**
-     * @return The name of the existing secondary range in the cluster&#39;s subnetwork to use for service ClusterIPs. Alternatively, services_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+     * @return The name of the existing secondary range in the cluster&#39;s subnetwork to use for service ClusterIPs. Alternatively, servicesIpv4CidrBlock can be used to automatically create a GKE-managed one.
      * 
      */
     public String servicesSecondaryRangeName() {

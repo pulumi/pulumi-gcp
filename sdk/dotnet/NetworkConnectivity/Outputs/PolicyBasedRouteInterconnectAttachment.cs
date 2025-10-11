@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
     public sealed class PolicyBasedRouteInterconnectAttachment
     {
         /// <summary>
-        /// Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
+        /// Cloud region to install this policy-based route on for Interconnect attachments. Use `All` to install it on all Interconnect attachments.
         /// </summary>
         public readonly string Region;
 

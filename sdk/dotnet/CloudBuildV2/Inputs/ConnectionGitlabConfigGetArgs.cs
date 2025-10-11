@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
     public sealed class ConnectionGitlabConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. A GitLab personal access token with the `api` scope access.
+        /// Required. A GitLab personal access token with the `Api` scope access.
         /// Structure is documented below.
         /// </summary>
         [Input("authorizerCredential", required: true)]
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
         public Input<string>? HostUri { get; set; }
 
         /// <summary>
-        /// Required. A GitLab personal access token with the minimum `read_api` scope access.
+        /// Required. A GitLab personal access token with the minimum `ReadApi` scope access.
         /// Structure is documented below.
         /// </summary>
         [Input("readAuthorizerCredential", required: true)]
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
 
         /// <summary>
         /// (Output)
-        /// Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+        /// Output only. Version of the GitLab Enterprise server running on the `HostUri`.
         /// </summary>
         [Input("serverVersion")]
         public Input<string>? ServerVersion { get; set; }

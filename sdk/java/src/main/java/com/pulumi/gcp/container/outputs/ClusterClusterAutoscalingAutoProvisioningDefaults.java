@@ -49,9 +49,9 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      */
     private @Nullable String minCpuPlatform;
     /**
-     * @return Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+     * @return Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
      * 
-     * &gt; `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoring_service` and `logging_service`.
+     * &gt; `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoringService` and `loggingService`.
      * 
      */
     private @Nullable List<String> oauthScopes;
@@ -117,9 +117,9 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         return Optional.ofNullable(this.minCpuPlatform);
     }
     /**
-     * @return Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+     * @return Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
      * 
-     * &gt; `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoring_service` and `logging_service`.
+     * &gt; `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoringService` and `loggingService`.
      * 
      */
     public List<String> oauthScopes() {

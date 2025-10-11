@@ -1028,7 +1028,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
     }
     /**
      * A policy that specifies the conditions for dead lettering messages in
-     * this subscription. If dead_letter_policy is not set, dead lettering
+     * this subscription. If deadLetterPolicy is not set, dead lettering
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription&#39;s
      * parent project (i.e.,
@@ -1042,7 +1042,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A policy that specifies the conditions for dead lettering messages in
-     * this subscription. If dead_letter_policy is not set, dead lettering
+     * this subscription. If deadLetterPolicy is not set, dead lettering
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription&#39;s
      * parent project (i.e.,
@@ -1073,7 +1073,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * of a message with a given value of messageId on this Subscriptions&#39;:
      * - The message sent to a subscriber is guaranteed not to be resent before the message&#39;s acknowledgement deadline expires.
      * - An acknowledged message will not be resent to a subscriber.
-     *   Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+     *   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
      *   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
      * 
      */
@@ -1085,7 +1085,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * of a message with a given value of messageId on this Subscriptions&#39;:
      * - The message sent to a subscriber is guaranteed not to be resent before the message&#39;s acknowledgement deadline expires.
      * - An acknowledged message will not be resent to a subscriber.
-     *   Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+     *   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
      *   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
      * 
      */
@@ -1162,7 +1162,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * A set of key/value label pairs to assign to this Subscription.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -1172,7 +1172,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * @return A set of key/value label pairs to assign to this Subscription.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -1181,7 +1181,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
     /**
      * How long to retain unacknowledged messages in the subscription&#39;s
      * backlog, from the moment a message is published. If
-     * retain_acked_messages is true, then this also configures the retention
+     * retainAckedMessages is true, then this also configures the retention
      * of acknowledged messages, and thus configures how far back in time a
      * subscriptions.seek can be done. Defaults to 7 days. Cannot be more
      * than 31 days (`&#34;2678400s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
@@ -1195,7 +1195,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
     /**
      * @return How long to retain unacknowledged messages in the subscription&#39;s
      * backlog, from the moment a message is published. If
-     * retain_acked_messages is true, then this also configures the retention
+     * retainAckedMessages is true, then this also configures the retention
      * of acknowledged messages, and thus configures how far back in time a
      * subscriptions.seek can be done. Defaults to 7 days. Cannot be more
      * than 31 days (`&#34;2678400s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).

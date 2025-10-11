@@ -72,7 +72,7 @@ public final class AccessLevelsAccessLevelBasicCondition {
      */
     private @Nullable List<String> requiredAccessLevels;
     /**
-     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
      * Structure is documented below.
      * 
      */
@@ -148,7 +148,7 @@ public final class AccessLevelsAccessLevelBasicCondition {
         return this.requiredAccessLevels == null ? List.of() : this.requiredAccessLevels;
     }
     /**
-     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
      * Structure is documented below.
      * 
      */

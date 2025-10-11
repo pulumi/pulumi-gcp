@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are "manual" and "automatic". If not provided, it defaults to "automatic".
         /// - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -86,7 +86,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// (scope and select) objects. May match selectors of replication controllers
         /// and routes.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

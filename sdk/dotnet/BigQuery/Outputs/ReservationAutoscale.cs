@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     {
         /// <summary>
         /// (Output)
-        /// The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
+        /// The slot capacity added to this reservation when autoscale happens. Will be between [0, MaxSlots].
         /// </summary>
         public readonly int? CurrentSlots;
         /// <summary>

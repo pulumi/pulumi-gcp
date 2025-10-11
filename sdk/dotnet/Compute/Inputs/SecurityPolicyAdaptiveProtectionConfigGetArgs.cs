@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
         /// 
-        /// &lt;a name="nested_layer_7_ddos_defense_config"&gt;&lt;/a&gt;The `layer_7_ddos_defense_config` block supports:
+        /// &lt;a name="NestedLayer7DdosDefenseConfig"&gt;&lt;/a&gt;The `Layer7DdosDefenseConfig` block supports:
         /// </summary>
         [Input("autoDeployConfig")]
         public Input<Inputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigGetArgs>? AutoDeployConfig { get; set; }

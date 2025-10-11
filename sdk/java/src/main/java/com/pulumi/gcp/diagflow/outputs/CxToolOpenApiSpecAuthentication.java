@@ -16,28 +16,28 @@ import javax.annotation.Nullable;
 public final class CxToolOpenApiSpecAuthentication {
     /**
      * @return Config for API key auth.
-     * This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+     * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
      * Structure is documented below.
      * 
      */
     private @Nullable CxToolOpenApiSpecAuthenticationApiKeyConfig apiKeyConfig;
     /**
      * @return Config for bearer token auth.
-     * This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+     * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
      * Structure is documented below.
      * 
      */
     private @Nullable CxToolOpenApiSpecAuthenticationBearerTokenConfig bearerTokenConfig;
     /**
      * @return Config for OAuth.
-     * This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+     * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
      * Structure is documented below.
      * 
      */
     private @Nullable CxToolOpenApiSpecAuthenticationOauthConfig oauthConfig;
     /**
      * @return Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
-     * This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+     * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
      * Structure is documented below.
      * 
      */
@@ -46,7 +46,7 @@ public final class CxToolOpenApiSpecAuthentication {
     private CxToolOpenApiSpecAuthentication() {}
     /**
      * @return Config for API key auth.
-     * This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+     * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
      * Structure is documented below.
      * 
      */
@@ -55,7 +55,7 @@ public final class CxToolOpenApiSpecAuthentication {
     }
     /**
      * @return Config for bearer token auth.
-     * This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+     * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
      * Structure is documented below.
      * 
      */
@@ -64,7 +64,7 @@ public final class CxToolOpenApiSpecAuthentication {
     }
     /**
      * @return Config for OAuth.
-     * This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+     * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
      * Structure is documented below.
      * 
      */
@@ -73,7 +73,7 @@ public final class CxToolOpenApiSpecAuthentication {
     }
     /**
      * @return Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
-     * This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+     * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
      * Structure is documented below.
      * 
      */

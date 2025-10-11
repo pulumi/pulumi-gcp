@@ -181,7 +181,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// 
     /// ### With EnforceOnKey Value As Empty String
-    /// A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
+    /// A scenario example that won't cause any conflict between `EnforceOnKey` and `EnforceOnKeyConfigs`, because `EnforceOnKey` was specified as an empty string:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -310,7 +310,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Labels to apply to this address. A list of key-&gt;value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -445,7 +445,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Labels to apply to this address. A list of key-&gt;value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -562,7 +562,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Labels to apply to this address. A list of key-&gt;value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

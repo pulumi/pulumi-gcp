@@ -24,13 +24,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly ImmutableArray<int> DaysOfMonths;
         /// <summary>
-        /// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
+        /// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `RecurrenceType`, `WEEKLY` and is not applicable otherwise.
         /// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         /// </summary>
         public readonly ImmutableArray<string> DaysOfWeeks;
         /// <summary>
         /// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
-        /// This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
+        /// This is required for `RecurrenceType`, `HOURLY` and is not applicable otherwise.
         /// </summary>
         public readonly int? HourlyFrequency;
         /// <summary>

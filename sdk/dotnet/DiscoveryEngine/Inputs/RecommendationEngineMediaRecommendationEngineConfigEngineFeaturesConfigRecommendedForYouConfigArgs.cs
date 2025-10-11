@@ -14,12 +14,12 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
     {
         /// <summary>
         /// The type of event with which the engine is queried at prediction time.
-        /// If set to `generic`, only `view-item`, `media-play`,and
+        /// If set to `Generic`, only `view-item`, `media-play`,and
         /// `media-complete` will be used as `context-event` in engine training. If
         /// set to `view-home-page`, `view-home-page` will also be used as
         /// `context-events` in addition to `view-item`, `media-play`, and
         /// `media-complete`. Currently supported for the `recommended-for-you`
-        /// engine. Currently supported values: `view-home-page`, `generic`.
+        /// engine. Currently supported values: `view-home-page`, `Generic`.
         /// </summary>
         [Input("contextEventType")]
         public Input<string>? ContextEventType { get; set; }

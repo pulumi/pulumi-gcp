@@ -25,14 +25,14 @@ public final class CertificateTemplatePredefinedValuesCaOptions {
     private @Nullable Integer maxIssuerPathLength;
     /**
      * @return Optional. When true, the &#34;CA&#34; in Basic Constraints extension will be set to null and omitted from the CA certificate.
-     * If both `is_ca` and `null_ca` are unset, the &#34;CA&#34; in Basic Constraints extension will be set to false.
-     * Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+     * If both `isCa` and `nullCa` are unset, the &#34;CA&#34; in Basic Constraints extension will be set to false.
+     * Note that the behavior when `isCa = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
      * 
      */
     private @Nullable Boolean nullCa;
     /**
      * @return Optional. When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-     * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
      * the max path length will be omitted from the CA certificate.
      * 
      */
@@ -56,8 +56,8 @@ public final class CertificateTemplatePredefinedValuesCaOptions {
     }
     /**
      * @return Optional. When true, the &#34;CA&#34; in Basic Constraints extension will be set to null and omitted from the CA certificate.
-     * If both `is_ca` and `null_ca` are unset, the &#34;CA&#34; in Basic Constraints extension will be set to false.
-     * Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+     * If both `isCa` and `nullCa` are unset, the &#34;CA&#34; in Basic Constraints extension will be set to false.
+     * Note that the behavior when `isCa = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
      * 
      */
     public Optional<Boolean> nullCa() {
@@ -65,7 +65,7 @@ public final class CertificateTemplatePredefinedValuesCaOptions {
     }
     /**
      * @return Optional. When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-     * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
      * the max path length will be omitted from the CA certificate.
      * 
      */

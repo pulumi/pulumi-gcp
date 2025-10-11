@@ -23,7 +23,7 @@ public final class PacketMirroringState extends com.pulumi.resources.ResourceArg
     /**
      * The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
      * that will be used as collector for mirrored traffic. The
-     * specified forwarding rule must have is_mirroring_collector
+     * specified forwarding rule must have isMirroringCollector
      * set to true.
      * Structure is documented below.
      * 
@@ -34,7 +34,7 @@ public final class PacketMirroringState extends com.pulumi.resources.ResourceArg
     /**
      * @return The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
      * that will be used as collector for mirrored traffic. The
-     * specified forwarding rule must have is_mirroring_collector
+     * specified forwarding rule must have isMirroringCollector
      * set to true.
      * Structure is documented below.
      * 
@@ -216,7 +216,7 @@ public final class PacketMirroringState extends com.pulumi.resources.ResourceArg
         /**
          * @param collectorIlb The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
          * that will be used as collector for mirrored traffic. The
-         * specified forwarding rule must have is_mirroring_collector
+         * specified forwarding rule must have isMirroringCollector
          * set to true.
          * Structure is documented below.
          * 
@@ -231,7 +231,7 @@ public final class PacketMirroringState extends com.pulumi.resources.ResourceArg
         /**
          * @param collectorIlb The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
          * that will be used as collector for mirrored traffic. The
-         * specified forwarding rule must have is_mirroring_collector
+         * specified forwarding rule must have isMirroringCollector
          * set to true.
          * Structure is documented below.
          * 

@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
 
         /// <summary>
         /// (Output)
-        /// If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+        /// If true, the container of the DeployedModel instances will send `Stderr` and `Stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
         /// </summary>
         [Input("enableContainerLogging")]
         public Input<bool>? EnableContainerLogging { get; set; }

@@ -41,7 +41,7 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
     /**
      * (Output)
      * The Cloud KMS CryptoKeyVersion currently in use for protecting control
-     * plane disks. Only applicable if kms_key is set.
+     * plane disks. Only applicable if kmsKey is set.
      * 
      */
     @Import(name="kmsKeyActiveVersion")
@@ -50,7 +50,7 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
     /**
      * @return (Output)
      * The Cloud KMS CryptoKeyVersion currently in use for protecting control
-     * plane disks. Only applicable if kms_key is set.
+     * plane disks. Only applicable if kmsKey is set.
      * 
      */
     public Optional<Output<String>> kmsKeyActiveVersion() {
@@ -83,11 +83,11 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
     /**
      * (Output)
      * Error status returned by Cloud KMS when using this key. This field may be
-     * populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
+     * populated only if `kmsKeyState` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
      * If populated, this field contains the error status reported by Cloud KMS.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+     * &lt;a name=&#34;nestedControlPlaneEncryptionKmsStatus&#34;&gt;&lt;/a&gt;The `kmsStatus` block contains:
      * 
      */
     @Import(name="kmsStatuses")
@@ -96,11 +96,11 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
     /**
      * @return (Output)
      * Error status returned by Cloud KMS when using this key. This field may be
-     * populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
+     * populated only if `kmsKeyState` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
      * If populated, this field contains the error status reported by Cloud KMS.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+     * &lt;a name=&#34;nestedControlPlaneEncryptionKmsStatus&#34;&gt;&lt;/a&gt;The `kmsStatus` block contains:
      * 
      */
     public Optional<Output<List<ClusterControlPlaneEncryptionKmsStatusArgs>>> kmsStatuses() {
@@ -164,7 +164,7 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
         /**
          * @param kmsKeyActiveVersion (Output)
          * The Cloud KMS CryptoKeyVersion currently in use for protecting control
-         * plane disks. Only applicable if kms_key is set.
+         * plane disks. Only applicable if kmsKey is set.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
         /**
          * @param kmsKeyActiveVersion (Output)
          * The Cloud KMS CryptoKeyVersion currently in use for protecting control
-         * plane disks. Only applicable if kms_key is set.
+         * plane disks. Only applicable if kmsKey is set.
          * 
          * @return builder
          * 
@@ -218,11 +218,11 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
         /**
          * @param kmsStatuses (Output)
          * Error status returned by Cloud KMS when using this key. This field may be
-         * populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
+         * populated only if `kmsKeyState` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
          * If populated, this field contains the error status reported by Cloud KMS.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+         * &lt;a name=&#34;nestedControlPlaneEncryptionKmsStatus&#34;&gt;&lt;/a&gt;The `kmsStatus` block contains:
          * 
          * @return builder
          * 
@@ -235,11 +235,11 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
         /**
          * @param kmsStatuses (Output)
          * Error status returned by Cloud KMS when using this key. This field may be
-         * populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
+         * populated only if `kmsKeyState` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
          * If populated, this field contains the error status reported by Cloud KMS.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+         * &lt;a name=&#34;nestedControlPlaneEncryptionKmsStatus&#34;&gt;&lt;/a&gt;The `kmsStatus` block contains:
          * 
          * @return builder
          * 
@@ -251,11 +251,11 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
         /**
          * @param kmsStatuses (Output)
          * Error status returned by Cloud KMS when using this key. This field may be
-         * populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
+         * populated only if `kmsKeyState` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
          * If populated, this field contains the error status reported by Cloud KMS.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+         * &lt;a name=&#34;nestedControlPlaneEncryptionKmsStatus&#34;&gt;&lt;/a&gt;The `kmsStatus` block contains:
          * 
          * @return builder
          * 

@@ -313,7 +313,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
     }
     /**
      * Output only. Indicates that reconciliation is in progress
-     * for the revision. This value is `true` when the `rollout_state` is one of:
+     * for the revision. This value is `true` when the `rolloutState` is one of:
      * 
      */
     @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
@@ -321,7 +321,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Output only. Indicates that reconciliation is in progress
-     * for the revision. This value is `true` when the `rollout_state` is one of:
+     * for the revision. This value is `true` when the `rolloutState` is one of:
      * 
      */
     public Output<Boolean> reconciling() {
@@ -363,7 +363,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * Rollout to deploy the OS policy assignment. A rollout
      * is triggered in the following situations: 1) OSPolicyAssignment is created.
      * 2) OSPolicyAssignment is updated and the update contains changes to one of
-     * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+     * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
      * is deleted. Structure is documented below.
      * 
      */
@@ -374,7 +374,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * @return Rollout to deploy the OS policy assignment. A rollout
      * is triggered in the following situations: 1) OSPolicyAssignment is created.
      * 2) OSPolicyAssignment is updated and the update contains changes to one of
-     * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+     * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
      * is deleted. Structure is documented below.
      * 
      */

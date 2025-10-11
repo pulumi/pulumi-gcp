@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// resource or when aggregating streams across
         /// all members of a group of resources).When
         /// computing ratios, the aggregations and
-        /// denominator_aggregations fields must use the
+        /// DenominatorAggregations fields must use the
         /// same alignment period and produce time
         /// series that have the same periodicity and
         /// labels.This field is similar to the one in
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// A filter that identifies a time series that
         /// should be used as the denominator of a ratio
         /// that will be compared with the threshold. If
-        /// a denominator_filter is specified, the time
+        /// a DenominatorFilter is specified, the time
         /// series specified by the filter field will be
         /// used as the numerator.The filter is similar
         /// to the one that is specified in the
@@ -171,8 +171,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// the condition will trigger if the comparison
         /// is true for any of the time series that have
         /// been identified by filter and aggregations,
-        /// or by the ratio, if denominator_filter and
-        /// denominator_aggregations are specified.
+        /// or by the ratio, if DenominatorFilter and
+        /// DenominatorAggregations are specified.
         /// Structure is documented below.
         /// </summary>
         [Input("trigger")]

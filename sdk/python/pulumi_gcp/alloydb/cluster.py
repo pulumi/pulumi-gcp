@@ -1223,6 +1223,8 @@ class Cluster(pulumi.CustomResource):
             deletion_protection=False)
         project = gcp.organizations.get_project()
         ```
+        ### Alloydb Cluster Restore
+
         ### Alloydb Secondary Cluster Basic
 
         ```python
@@ -1480,6 +1482,8 @@ class Cluster(pulumi.CustomResource):
             deletion_protection=False)
         project = gcp.organizations.get_project()
         ```
+        ### Alloydb Cluster Restore
+
         ### Alloydb Secondary Cluster Basic
 
         ```python

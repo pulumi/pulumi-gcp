@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Scc Folder Notification Config Basic
+ * 
  * ## Import
  * 
  * FolderNotificationConfig can be imported using any of these accepted formats:
@@ -113,7 +115,7 @@ public class FolderNotificationConfig extends com.pulumi.resources.CustomResourc
     }
     /**
      * The Pub/Sub topic to send notifications to. Its format is
-     * &#34;projects/[project_id]/topics/[topic]&#34;.
+     * &#34;projects/[projectId]/topics/[topic]&#34;.
      * 
      */
     @Export(name="pubsubTopic", refs={String.class}, tree="[0]")
@@ -121,7 +123,7 @@ public class FolderNotificationConfig extends com.pulumi.resources.CustomResourc
 
     /**
      * @return The Pub/Sub topic to send notifications to. Its format is
-     * &#34;projects/[project_id]/topics/[topic]&#34;.
+     * &#34;projects/[projectId]/topics/[topic]&#34;.
      * 
      */
     public Output<String> pubsubTopic() {

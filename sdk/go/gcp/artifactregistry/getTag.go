@@ -12,6 +12,8 @@ import (
 )
 
 // This data source fetches information of a tag from a provided Artifact Registry repository.
+//
+// ## Example Usage
 func GetTag(ctx *pulumi.Context, args *GetTagArgs, opts ...pulumi.InvokeOption) (*GetTagResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTagResult

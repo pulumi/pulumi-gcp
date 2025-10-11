@@ -15,14 +15,14 @@ public final class GetSecurityPolicyPlainArgs extends com.pulumi.resources.Invok
     public static final GetSecurityPolicyPlainArgs Empty = new GetSecurityPolicyPlainArgs();
 
     /**
-     * The name of the security policy. Provide either this or a `self_link`.
+     * The name of the security policy. Provide either this or a `selfLink`.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the security policy. Provide either this or a `self_link`.
+     * @return The name of the security policy. Provide either this or a `selfLink`.
      * 
      */
     public Optional<String> name() {
@@ -45,14 +45,14 @@ public final class GetSecurityPolicyPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The self_link of the security policy. Provide either this or a `name`
+     * The selfLink of the security policy. Provide either this or a `name`
      * 
      */
     @Import(name="selfLink")
     private @Nullable String selfLink;
 
     /**
-     * @return The self_link of the security policy. Provide either this or a `name`
+     * @return The selfLink of the security policy. Provide either this or a `name`
      * 
      */
     public Optional<String> selfLink() {
@@ -86,7 +86,7 @@ public final class GetSecurityPolicyPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param name The name of the security policy. Provide either this or a `self_link`.
+         * @param name The name of the security policy. Provide either this or a `selfLink`.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class GetSecurityPolicyPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param selfLink The self_link of the security policy. Provide either this or a `name`
+         * @param selfLink The selfLink of the security policy. Provide either this or a `name`
          * 
          * @return builder
          * 

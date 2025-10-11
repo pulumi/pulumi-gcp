@@ -138,7 +138,7 @@ public class V2OrganizationSccBigQueryExports extends com.pulumi.resources.Custo
     }
     /**
      * The dataset to write findings&#39; updates to.
-     * Its format is &#34;projects/[projectId]/datasets/[bigquery_dataset_id]&#34;.
+     * Its format is &#34;projects/[projectId]/datasets/[bigqueryDatasetId]&#34;.
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      * 
      */
@@ -147,7 +147,7 @@ public class V2OrganizationSccBigQueryExports extends com.pulumi.resources.Custo
 
     /**
      * @return The dataset to write findings&#39; updates to.
-     * Its format is &#34;projects/[projectId]/datasets/[bigquery_dataset_id]&#34;.
+     * Its format is &#34;projects/[projectId]/datasets/[bigqueryDatasetId]&#34;.
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      * 
      */

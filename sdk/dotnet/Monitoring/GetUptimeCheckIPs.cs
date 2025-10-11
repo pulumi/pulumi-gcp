@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
+        /// A list of uptime check IPs used by Stackdriver Monitoring. Each `UptimeCheckIp` contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetUptimeCheckIPsUptimeCheckIpResult> UptimeCheckIps;
 

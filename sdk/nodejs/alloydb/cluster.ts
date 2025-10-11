@@ -135,6 +135,8 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * ### Alloydb Cluster Restore
+ *
  * ### Alloydb Secondary Cluster Basic
  *
  * ```typescript

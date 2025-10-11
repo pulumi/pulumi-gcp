@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// It is expected
         /// that the system will manipulate this based on routability and load.
         /// 
-        /// &gt; **Warning:** `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+        /// &gt; **Warning:** `ServingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
         [Input("servingState")]
         public Input<string>? ServingState { get; set; }

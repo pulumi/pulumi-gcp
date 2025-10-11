@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Iap
         public string Brand { get; set; } = null!;
 
         /// <summary>
-        /// The client_id of the brand.
+        /// The ClientId of the brand.
         /// </summary>
         [Input("clientId", required: true)]
         public string ClientId { get; set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.Iap
         public Input<string> Brand { get; set; } = null!;
 
         /// <summary>
-        /// The client_id of the brand.
+        /// The ClientId of the brand.
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;

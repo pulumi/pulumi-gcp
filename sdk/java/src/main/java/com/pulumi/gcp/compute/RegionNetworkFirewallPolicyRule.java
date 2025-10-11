@@ -284,14 +284,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule")
 public class RegionNetworkFirewallPolicyRule extends com.pulumi.resources.CustomResource {
     /**
-     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;goto_next&#34; and &#34;apply_security_profile_group&#34;.
+     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;gotoNext&#34; and &#34;applySecurityProfileGroup&#34;.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;goto_next&#34; and &#34;apply_security_profile_group&#34;.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;gotoNext&#34; and &#34;applySecurityProfileGroup&#34;.
      * 
      */
     public Output<String> action() {
@@ -363,7 +363,7 @@ public class RegionNetworkFirewallPolicyRule extends com.pulumi.resources.Custom
      * Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
      * Logs may be exported to BigQuery or Pub/Sub.
-     * Note: you cannot enable logging on &#34;goto_next&#34; rules.
+     * Note: you cannot enable logging on &#34;gotoNext&#34; rules.
      * 
      */
     @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
@@ -373,7 +373,7 @@ public class RegionNetworkFirewallPolicyRule extends com.pulumi.resources.Custom
      * @return Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
      * Logs may be exported to BigQuery or Pub/Sub.
-     * Note: you cannot enable logging on &#34;goto_next&#34; rules.
+     * Note: you cannot enable logging on &#34;gotoNext&#34; rules.
      * 
      */
     public Output<Optional<Boolean>> enableLogging() {

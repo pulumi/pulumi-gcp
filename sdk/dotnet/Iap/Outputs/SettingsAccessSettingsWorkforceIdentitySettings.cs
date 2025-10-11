@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Iap.Outputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_access_settings_workforce_identity_settings_oauth2"&gt;&lt;/a&gt;The `oauth2` block supports:
+        /// &lt;a name="NestedAccessSettingsWorkforceIdentitySettingsOauth2"&gt;&lt;/a&gt;The `Oauth2` block supports:
         /// </summary>
         public readonly Outputs.SettingsAccessSettingsWorkforceIdentitySettingsOauth2? Oauth2;
         /// <summary>

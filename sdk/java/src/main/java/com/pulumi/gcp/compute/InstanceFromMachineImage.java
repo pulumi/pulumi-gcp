@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
  * 
  * This resource is specifically to create a compute instance from a given
- * `source_machine_image`. To create an instance without a machine image, use the
+ * `sourceMachineImage`. To create an instance without a machine image, use the
  * `gcp.compute.Instance` resource.
  * 
  * ## Example Usage
@@ -145,14 +145,14 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.canIpForward;
     }
     /**
-     * The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+     * The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      * 
      */
     @Export(name="confidentialInstanceConfig", refs={InstanceFromMachineImageConfidentialInstanceConfig.class}, tree="[0]")
     private Output<InstanceFromMachineImageConfidentialInstanceConfig> confidentialInstanceConfig;
 
     /**
-     * @return The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+     * @return The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      * 
      */
     public Output<InstanceFromMachineImageConfidentialInstanceConfig> confidentialInstanceConfig() {
@@ -513,14 +513,14 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.partnerMetadata;
     }
     /**
-     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+     * @return The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      * 
      */
     public Output<String> project() {
@@ -555,14 +555,14 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.reservationAffinity;
     }
     /**
-     * A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
     @Export(name="resourcePolicies", refs={String.class}, tree="[0]")
     private Output<String> resourcePolicies;
 
     /**
-     * @return A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+     * @return A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
     public Output<String> resourcePolicies() {
@@ -708,7 +708,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * as a way to override the properties in the machine image. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
      * 
-     * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
+     * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;bootDisk&#34;, &#34;attachedDisk&#34;, and &#34;scratchDisk&#34; fields.
      * 
      */
     @Export(name="zone", refs={String.class}, tree="[0]")
@@ -722,7 +722,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * as a way to override the properties in the machine image. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
      * 
-     * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
+     * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;bootDisk&#34;, &#34;attachedDisk&#34;, and &#34;scratchDisk&#34; fields.
      * 
      */
     public Output<String> zone() {

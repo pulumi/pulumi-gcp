@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_managed_provisioning_issue"&gt;&lt;/a&gt;The `provisioning_issue` block contains:
+        /// &lt;a name="NestedManagedProvisioningIssue"&gt;&lt;/a&gt;The `ProvisioningIssue` block contains:
         /// </summary>
         public InputList<Inputs.CertificateManagedAuthorizationAttemptInfoGetArgs> AuthorizationAttemptInfos
         {

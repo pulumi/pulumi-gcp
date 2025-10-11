@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// Retrieve the ancestors for a project.
         /// See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetAncestryResult> InvokeAsync(GetAncestryArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAncestryResult>("gcp:projects/getAncestry:getAncestry", args ?? new GetAncestryArgs(), options.WithDefaults());
@@ -21,6 +23,8 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// Retrieve the ancestors for a project.
         /// See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetAncestryResult> Invoke(GetAncestryInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAncestryResult>("gcp:projects/getAncestry:getAncestry", args ?? new GetAncestryInvokeArgs(), options.WithDefaults());
@@ -28,6 +32,8 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// Retrieve the ancestors for a project.
         /// See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetAncestryResult> Invoke(GetAncestryInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAncestryResult>("gcp:projects/getAncestry:getAncestry", args ?? new GetAncestryInvokeArgs(), options.WithDefaults());

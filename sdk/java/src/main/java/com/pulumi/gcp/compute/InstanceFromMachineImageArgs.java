@@ -69,14 +69,14 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+     * The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      * 
      */
     @Import(name="confidentialInstanceConfig")
     private @Nullable Output<InstanceFromMachineImageConfidentialInstanceConfigArgs> confidentialInstanceConfig;
 
     /**
-     * @return The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+     * @return The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      * 
      */
     public Optional<Output<InstanceFromMachineImageConfidentialInstanceConfigArgs>> confidentialInstanceConfig() {
@@ -362,14 +362,14 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+     * @return The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -392,14 +392,14 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<String> resourcePolicies;
 
     /**
-     * @return A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+     * @return A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<Output<String>> resourcePolicies() {
@@ -510,7 +510,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
      * as a way to override the properties in the machine image. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
      * 
-     * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
+     * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;bootDisk&#34;, &#34;attachedDisk&#34;, and &#34;scratchDisk&#34; fields.
      * 
      */
     @Import(name="zone")
@@ -524,7 +524,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
      * as a way to override the properties in the machine image. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
      * 
-     * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
+     * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;bootDisk&#34;, &#34;attachedDisk&#34;, and &#34;scratchDisk&#34; fields.
      * 
      */
     public Optional<Output<String>> zone() {
@@ -638,7 +638,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param confidentialInstanceConfig The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+         * @param confidentialInstanceConfig The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
          * 
          * @return builder
          * 
@@ -649,7 +649,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param confidentialInstanceConfig The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+         * @param confidentialInstanceConfig The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
          * 
          * @return builder
          * 
@@ -1065,7 +1065,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+         * @param project The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -1076,7 +1076,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+         * @param project The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -1107,7 +1107,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param resourcePolicies A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -1118,7 +1118,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param resourcePolicies A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -1277,7 +1277,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
          * as a way to override the properties in the machine image. All exported attributes
          * from `gcp.compute.Instance` are likewise exported here.
          * 
-         * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
+         * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;bootDisk&#34;, &#34;attachedDisk&#34;, and &#34;scratchDisk&#34; fields.
          * 
          * @return builder
          * 
@@ -1295,7 +1295,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
          * as a way to override the properties in the machine image. All exported attributes
          * from `gcp.compute.Instance` are likewise exported here.
          * 
-         * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
+         * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;bootDisk&#34;, &#34;attachedDisk&#34;, and &#34;scratchDisk&#34; fields.
          * 
          * @return builder
          * 

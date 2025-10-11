@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceInstanceEncryptionKey
     {
         /// <summary>
-        /// The self_link of the encryption key that is
+        /// The SelfLink of the encryption key that is
         /// stored in Google Cloud KMS to encrypt the data on this instance.
         /// </summary>
         public readonly string? KmsKeySelfLink;

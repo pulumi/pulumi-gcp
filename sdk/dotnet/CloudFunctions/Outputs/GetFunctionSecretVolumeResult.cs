@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudFunctions.Outputs
     public sealed class GetFunctionSecretVolumeResult
     {
         /// <summary>
-        /// The path within the container to mount the secret volume. For example, setting the mount_path as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
+        /// The path within the container to mount the secret volume. For example, setting the MountPath as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
         /// </summary>
         public readonly string MountPath;
         /// <summary>

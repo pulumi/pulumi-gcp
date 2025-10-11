@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.BlockchainNodeEngine.Inputs
         /// Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
         /// Possible values are: `FULL`, `ARCHIVE`.
         /// 
-        /// &lt;a name="nested_ethereum_details_additional_endpoints"&gt;&lt;/a&gt;The `additional_endpoints` block contains:
+        /// &lt;a name="NestedEthereumDetailsAdditionalEndpoints"&gt;&lt;/a&gt;The `AdditionalEndpoints` block contains:
         /// </summary>
         [Input("garbageCollectionMode")]
         public Input<string>? GarbageCollectionMode { get; set; }

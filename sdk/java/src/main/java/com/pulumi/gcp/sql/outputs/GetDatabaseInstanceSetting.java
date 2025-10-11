@@ -113,7 +113,7 @@ public final class GetDatabaseInstanceSetting {
     /**
      * @return The availability type of the Cloud SQL instance, high availability
      * (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
-     * API (for read pools, effective_availability_type may differ from availability_type).
+     * API (for read pools, effectiveAvailabilityType may differ from availability_type).
      * 
      */
     private String effectiveAvailabilityType;
@@ -162,7 +162,7 @@ public final class GetDatabaseInstanceSetting {
      */
     private String tier;
     /**
-     * @return The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * @return The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
      * 
      */
     private String timeZone;
@@ -301,7 +301,7 @@ public final class GetDatabaseInstanceSetting {
     /**
      * @return The availability type of the Cloud SQL instance, high availability
      * (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
-     * API (for read pools, effective_availability_type may differ from availability_type).
+     * API (for read pools, effectiveAvailabilityType may differ from availability_type).
      * 
      */
     public String effectiveAvailabilityType() {
@@ -376,7 +376,7 @@ public final class GetDatabaseInstanceSetting {
         return this.tier;
     }
     /**
-     * @return The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * @return The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
      * 
      */
     public String timeZone() {

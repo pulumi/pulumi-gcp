@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// associated with the zone. This should be formatted like
         /// `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
         /// or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
-        /// Ignored for `public` visibility zones.
+        /// Ignored for `Public` visibility zones.
         /// </summary>
         public readonly string NamespaceUrl;
 

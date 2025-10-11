@@ -39,9 +39,9 @@ public final class RowAccessPolicyArgs extends com.pulumi.resources.ResourceArgs
      * References to other tables, routines, and temporary functions are not
      * supported.
      * Examples: region=&#34;EU&#34;
-     * date_field = CAST(&#39;2019-9-27&#39; as DATE)
-     * nullable_field is not NULL
-     * numeric_field BETWEEN 1.0 AND 5.0
+     * dateField = CAST(&#39;2019-9-27&#39; as DATE)
+     * nullableField is not NULL
+     * numericField BETWEEN 1.0 AND 5.0
      * 
      */
     @Import(name="filterPredicate", required=true)
@@ -54,9 +54,9 @@ public final class RowAccessPolicyArgs extends com.pulumi.resources.ResourceArgs
      * References to other tables, routines, and temporary functions are not
      * supported.
      * Examples: region=&#34;EU&#34;
-     * date_field = CAST(&#39;2019-9-27&#39; as DATE)
-     * nullable_field is not NULL
-     * numeric_field BETWEEN 1.0 AND 5.0
+     * dateField = CAST(&#39;2019-9-27&#39; as DATE)
+     * nullableField is not NULL
+     * numericField BETWEEN 1.0 AND 5.0
      * 
      */
     public Output<String> filterPredicate() {
@@ -64,7 +64,7 @@ public final class RowAccessPolicyArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Input only. The optional list of iam_member users or groups that specifies the initial
+     * Input only. The optional list of iamMember users or groups that specifies the initial
      * members that the row-level access policy should be created with.
      * grantees types:
      * - &#34;user:alice{@literal @}example.com&#34;: An email address that represents a specific
@@ -91,7 +91,7 @@ public final class RowAccessPolicyArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<List<String>> grantees;
 
     /**
-     * @return Input only. The optional list of iam_member users or groups that specifies the initial
+     * @return Input only. The optional list of iamMember users or groups that specifies the initial
      * members that the row-level access policy should be created with.
      * grantees types:
      * - &#34;user:alice{@literal @}example.com&#34;: An email address that represents a specific
@@ -226,9 +226,9 @@ public final class RowAccessPolicyArgs extends com.pulumi.resources.ResourceArgs
          * References to other tables, routines, and temporary functions are not
          * supported.
          * Examples: region=&#34;EU&#34;
-         * date_field = CAST(&#39;2019-9-27&#39; as DATE)
-         * nullable_field is not NULL
-         * numeric_field BETWEEN 1.0 AND 5.0
+         * dateField = CAST(&#39;2019-9-27&#39; as DATE)
+         * nullableField is not NULL
+         * numericField BETWEEN 1.0 AND 5.0
          * 
          * @return builder
          * 
@@ -245,9 +245,9 @@ public final class RowAccessPolicyArgs extends com.pulumi.resources.ResourceArgs
          * References to other tables, routines, and temporary functions are not
          * supported.
          * Examples: region=&#34;EU&#34;
-         * date_field = CAST(&#39;2019-9-27&#39; as DATE)
-         * nullable_field is not NULL
-         * numeric_field BETWEEN 1.0 AND 5.0
+         * dateField = CAST(&#39;2019-9-27&#39; as DATE)
+         * nullableField is not NULL
+         * numericField BETWEEN 1.0 AND 5.0
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class RowAccessPolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param grantees Input only. The optional list of iam_member users or groups that specifies the initial
+         * @param grantees Input only. The optional list of iamMember users or groups that specifies the initial
          * members that the row-level access policy should be created with.
          * grantees types:
          * - &#34;user:alice{@literal @}example.com&#34;: An email address that represents a specific
@@ -288,7 +288,7 @@ public final class RowAccessPolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param grantees Input only. The optional list of iam_member users or groups that specifies the initial
+         * @param grantees Input only. The optional list of iamMember users or groups that specifies the initial
          * members that the row-level access policy should be created with.
          * grantees types:
          * - &#34;user:alice{@literal @}example.com&#34;: An email address that represents a specific
@@ -318,7 +318,7 @@ public final class RowAccessPolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param grantees Input only. The optional list of iam_member users or groups that specifies the initial
+         * @param grantees Input only. The optional list of iamMember users or groups that specifies the initial
          * members that the row-level access policy should be created with.
          * grantees types:
          * - &#34;user:alice{@literal @}example.com&#34;: An email address that represents a specific

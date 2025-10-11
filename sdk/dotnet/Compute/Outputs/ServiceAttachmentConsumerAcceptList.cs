@@ -20,12 +20,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly int ConnectionLimit;
         /// <summary>
         /// The network that is allowed to connect to this service attachment.
-        /// Only one of project_id_or_num and network_url may be set.
+        /// Only one of ProjectIdOrNum and NetworkUrl may be set.
         /// </summary>
         public readonly string? NetworkUrl;
         /// <summary>
         /// A project that is allowed to connect to this service attachment.
-        /// Only one of project_id_or_num and network_url may be set.
+        /// Only one of ProjectIdOrNum and NetworkUrl may be set.
         /// </summary>
         public readonly string? ProjectIdOrNum;
 

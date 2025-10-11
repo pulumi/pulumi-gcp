@@ -19,7 +19,7 @@ public final class GetHealthCheckTcpHealthCheck {
     private Integer port;
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
-     * port_name are defined, port takes precedence.
+     * portName are defined, port takes precedence.
      * 
      */
     private String portName;
@@ -74,7 +74,7 @@ public final class GetHealthCheckTcpHealthCheck {
     }
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
-     * port_name are defined, port takes precedence.
+     * portName are defined, port takes precedence.
      * 
      */
     public String portName() {

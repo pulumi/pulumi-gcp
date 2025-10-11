@@ -13,8 +13,8 @@ namespace Pulumi.Gcp.Compute
     /// A resource used to set the list of IP addresses to be used in a NAT service and manage the draining of destroyed IPs.
     /// 
     /// &gt; **Note:** This resource is to be used alongside a `gcp.compute.RouterNat` resource,
-    /// the router nat resource must have no defined `nat_ips` or `drain_nat_ips` parameters,
-    /// instead using the `initial_nat_ips` parameter to set at least one IP for the creation of the resource.
+    /// the router nat resource must have no defined `NatIps` or `DrainNatIps` parameters,
+    /// instead using the `InitialNatIps` parameter to set at least one IP for the creation of the resource.
     /// 
     /// To get more information about RouterNatAddress, see:
     /// 

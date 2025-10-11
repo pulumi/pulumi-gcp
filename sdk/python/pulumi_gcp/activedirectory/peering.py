@@ -340,6 +340,12 @@ class Peering(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Active Directory Peering Basic
+
+        ## Import
+
+        This resource does not support import.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authorized_network: The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
@@ -369,6 +375,12 @@ class Peering(pulumi.CustomResource):
             * [Active Directory Domain Peering](https://cloud.google.com/managed-microsoft-ad/docs/domain-peering)
 
         ## Example Usage
+
+        ### Active Directory Peering Basic
+
+        ## Import
+
+        This resource does not support import.
 
         :param str resource_name: The name of the resource.
         :param PeeringArgs args: The arguments to use to populate this resource's properties.

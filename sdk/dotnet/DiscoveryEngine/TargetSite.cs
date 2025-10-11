@@ -126,11 +126,11 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<string> DataStoreId { get; private set; } = null!;
 
         /// <summary>
-        /// If set to false, a uri_pattern is generated to include all pages whose
-        /// address contains the provided_uri_pattern. If set to true, an uri_pattern
-        /// is generated to try to be an exact match of the provided_uri_pattern or
-        /// just the specific page if the provided_uri_pattern is a specific one.
-        /// provided_uri_pattern is always normalized to generate the URI pattern to
+        /// If set to false, a UriPattern is generated to include all pages whose
+        /// address contains the provided_uri_pattern. If set to true, an UriPattern
+        /// is generated to try to be an exact match of the ProvidedUriPattern or
+        /// just the specific page if the ProvidedUriPattern is a specific one.
+        /// ProvidedUriPattern is always normalized to generate the URI pattern to
         /// be used by the search engine.
         /// </summary>
         [Output("exactMatch")]
@@ -144,7 +144,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<ImmutableArray<Outputs.TargetSiteFailureReason>> FailureReasons { get; private set; } = null!;
 
         /// <summary>
-        /// This is system-generated based on the `provided_uri_pattern`.
+        /// This is system-generated based on the `ProvidedUriPattern`.
         /// </summary>
         [Output("generatedUriPattern")]
         public Output<string> GeneratedUriPattern { get; private set; } = null!;
@@ -179,14 +179,14 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The user provided URI pattern from which the `generated_uri_pattern` is
+        /// The user provided URI pattern from which the `GeneratedUriPattern` is
         /// generated.
         /// </summary>
         [Output("providedUriPattern")]
         public Output<string> ProvidedUriPattern { get; private set; } = null!;
 
         /// <summary>
-        /// Root domain of the `provided_uri_pattern`.
+        /// Root domain of the `ProvidedUriPattern`.
         /// </summary>
         [Output("rootDomainUri")]
         public Output<string> RootDomainUri { get; private set; } = null!;
@@ -270,11 +270,11 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Input<string> DataStoreId { get; set; } = null!;
 
         /// <summary>
-        /// If set to false, a uri_pattern is generated to include all pages whose
-        /// address contains the provided_uri_pattern. If set to true, an uri_pattern
-        /// is generated to try to be an exact match of the provided_uri_pattern or
-        /// just the specific page if the provided_uri_pattern is a specific one.
-        /// provided_uri_pattern is always normalized to generate the URI pattern to
+        /// If set to false, a UriPattern is generated to include all pages whose
+        /// address contains the provided_uri_pattern. If set to true, an UriPattern
+        /// is generated to try to be an exact match of the ProvidedUriPattern or
+        /// just the specific page if the ProvidedUriPattern is a specific one.
+        /// ProvidedUriPattern is always normalized to generate the URI pattern to
         /// be used by the search engine.
         /// </summary>
         [Input("exactMatch")]
@@ -295,7 +295,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The user provided URI pattern from which the `generated_uri_pattern` is
+        /// The user provided URI pattern from which the `GeneratedUriPattern` is
         /// generated.
         /// </summary>
         [Input("providedUriPattern", required: true)]
@@ -323,11 +323,11 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Input<string>? DataStoreId { get; set; }
 
         /// <summary>
-        /// If set to false, a uri_pattern is generated to include all pages whose
-        /// address contains the provided_uri_pattern. If set to true, an uri_pattern
-        /// is generated to try to be an exact match of the provided_uri_pattern or
-        /// just the specific page if the provided_uri_pattern is a specific one.
-        /// provided_uri_pattern is always normalized to generate the URI pattern to
+        /// If set to false, a UriPattern is generated to include all pages whose
+        /// address contains the provided_uri_pattern. If set to true, an UriPattern
+        /// is generated to try to be an exact match of the ProvidedUriPattern or
+        /// just the specific page if the ProvidedUriPattern is a specific one.
+        /// ProvidedUriPattern is always normalized to generate the URI pattern to
         /// be used by the search engine.
         /// </summary>
         [Input("exactMatch")]
@@ -347,7 +347,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         }
 
         /// <summary>
-        /// This is system-generated based on the `provided_uri_pattern`.
+        /// This is system-generated based on the `ProvidedUriPattern`.
         /// </summary>
         [Input("generatedUriPattern")]
         public Input<string>? GeneratedUriPattern { get; set; }
@@ -382,14 +382,14 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The user provided URI pattern from which the `generated_uri_pattern` is
+        /// The user provided URI pattern from which the `GeneratedUriPattern` is
         /// generated.
         /// </summary>
         [Input("providedUriPattern")]
         public Input<string>? ProvidedUriPattern { get; set; }
 
         /// <summary>
-        /// Root domain of the `provided_uri_pattern`.
+        /// Root domain of the `ProvidedUriPattern`.
         /// </summary>
         [Input("rootDomainUri")]
         public Input<string>? RootDomainUri { get; set; }

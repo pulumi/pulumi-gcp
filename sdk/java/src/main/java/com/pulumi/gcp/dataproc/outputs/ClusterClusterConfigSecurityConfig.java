@@ -13,30 +13,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterConfigSecurityConfig {
     /**
-     * @return Identity Configuration. At least one of `identity_config`
-     * or `kerberos_config` is required.
+     * @return Identity Configuration. At least one of `identityConfig`
+     * or `kerberosConfig` is required.
      * 
      */
     private @Nullable ClusterClusterConfigSecurityConfigIdentityConfig identityConfig;
     /**
-     * @return Kerberos Configuration. At least one of `identity_config`
-     * or `kerberos_config` is required.
+     * @return Kerberos Configuration. At least one of `identityConfig`
+     * or `kerberosConfig` is required.
      * 
      */
     private @Nullable ClusterClusterConfigSecurityConfigKerberosConfig kerberosConfig;
 
     private ClusterClusterConfigSecurityConfig() {}
     /**
-     * @return Identity Configuration. At least one of `identity_config`
-     * or `kerberos_config` is required.
+     * @return Identity Configuration. At least one of `identityConfig`
+     * or `kerberosConfig` is required.
      * 
      */
     public Optional<ClusterClusterConfigSecurityConfigIdentityConfig> identityConfig() {
         return Optional.ofNullable(this.identityConfig);
     }
     /**
-     * @return Kerberos Configuration. At least one of `identity_config`
-     * or `kerberos_config` is required.
+     * @return Kerberos Configuration. At least one of `identityConfig`
+     * or `kerberosConfig` is required.
      * 
      */
     public Optional<ClusterClusterConfigSecurityConfigKerberosConfig> kerberosConfig() {

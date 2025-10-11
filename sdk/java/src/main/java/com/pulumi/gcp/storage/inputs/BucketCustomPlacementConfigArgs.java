@@ -16,14 +16,14 @@ public final class BucketCustomPlacementConfigArgs extends com.pulumi.resources.
     public static final BucketCustomPlacementConfigArgs Empty = new BucketCustomPlacementConfigArgs();
 
     /**
-     * The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+     * The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the dataLocations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
      * 
      */
     @Import(name="dataLocations", required=true)
     private Output<List<String>> dataLocations;
 
     /**
-     * @return The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+     * @return The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the dataLocations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
      * 
      */
     public Output<List<String>> dataLocations() {
@@ -55,7 +55,7 @@ public final class BucketCustomPlacementConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param dataLocations The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+         * @param dataLocations The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the dataLocations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class BucketCustomPlacementConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param dataLocations The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+         * @param dataLocations The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the dataLocations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class BucketCustomPlacementConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param dataLocations The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+         * @param dataLocations The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the dataLocations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
          * 
          * @return builder
          * 

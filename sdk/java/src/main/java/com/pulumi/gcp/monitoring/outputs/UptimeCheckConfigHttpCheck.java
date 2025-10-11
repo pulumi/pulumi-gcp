@@ -32,7 +32,7 @@ public final class UptimeCheckConfigHttpCheck {
      */
     private @Nullable UptimeCheckConfigHttpCheckAuthInfo authInfo;
     /**
-     * @return The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
+     * @return The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
      * 
      */
     private @Nullable String body;
@@ -43,7 +43,7 @@ public final class UptimeCheckConfigHttpCheck {
      */
     private @Nullable String contentType;
     /**
-     * @return A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type` , as well as the following 1.  `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
+     * @return A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType` , as well as the following 1.  `contentType`is`URL_ENCODED`and`customContentType`is set. 2.`contentType`is`USER_PROVIDED`and`customContentType` is not set.
      * 
      */
     private @Nullable String customContentType;
@@ -53,7 +53,7 @@ public final class UptimeCheckConfigHttpCheck {
      */
     private @Nullable Map<String,String> headers;
     /**
-     * @return Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `mask_headers` is set to `true` then the headers will be obscured with `******`.
+     * @return Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `maskHeaders` is set to `true` then the headers will be obscured with `******`.
      * 
      */
     private @Nullable Boolean maskHeaders;
@@ -69,12 +69,12 @@ public final class UptimeCheckConfigHttpCheck {
      */
     private @Nullable UptimeCheckConfigHttpCheckPingConfig pingConfig;
     /**
-     * @return The port to the page to run the check against. Will be combined with `host` (specified within the `monitored_resource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+     * @return The port to the page to run the check against. Will be combined with `host` (specified within the `monitoredResource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
      * 
      */
     private @Nullable Integer port;
     /**
-     * @return The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `request_method` defaults to `GET`.
+     * @return The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `requestMethod` defaults to `GET`.
      * Default value is `GET`.
      * Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
      * 
@@ -92,7 +92,7 @@ public final class UptimeCheckConfigHttpCheck {
      */
     private @Nullable Boolean useSsl;
     /**
-     * @return Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`, setting `validate_ssl` to `true` has no effect.
+     * @return Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitoredResource` is set to `uptimeUrl`. If `useSsl` is `false`, setting `validateSsl` to `true` has no effect.
      * 
      */
     private @Nullable Boolean validateSsl;
@@ -115,7 +115,7 @@ public final class UptimeCheckConfigHttpCheck {
         return Optional.ofNullable(this.authInfo);
     }
     /**
-     * @return The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
+     * @return The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
      * 
      */
     public Optional<String> body() {
@@ -130,7 +130,7 @@ public final class UptimeCheckConfigHttpCheck {
         return Optional.ofNullable(this.contentType);
     }
     /**
-     * @return A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type` , as well as the following 1.  `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
+     * @return A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType` , as well as the following 1.  `contentType`is`URL_ENCODED`and`customContentType`is set. 2.`contentType`is`USER_PROVIDED`and`customContentType` is not set.
      * 
      */
     public Optional<String> customContentType() {
@@ -144,7 +144,7 @@ public final class UptimeCheckConfigHttpCheck {
         return this.headers == null ? Map.of() : this.headers;
     }
     /**
-     * @return Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `mask_headers` is set to `true` then the headers will be obscured with `******`.
+     * @return Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `maskHeaders` is set to `true` then the headers will be obscured with `******`.
      * 
      */
     public Optional<Boolean> maskHeaders() {
@@ -166,14 +166,14 @@ public final class UptimeCheckConfigHttpCheck {
         return Optional.ofNullable(this.pingConfig);
     }
     /**
-     * @return The port to the page to run the check against. Will be combined with `host` (specified within the `monitored_resource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+     * @return The port to the page to run the check against. Will be combined with `host` (specified within the `monitoredResource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
      * 
      */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `request_method` defaults to `GET`.
+     * @return The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `requestMethod` defaults to `GET`.
      * Default value is `GET`.
      * Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
      * 
@@ -197,7 +197,7 @@ public final class UptimeCheckConfigHttpCheck {
         return Optional.ofNullable(this.useSsl);
     }
     /**
-     * @return Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`, setting `validate_ssl` to `true` has no effect.
+     * @return Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitoredResource` is set to `uptimeUrl`. If `useSsl` is `false`, setting `validateSsl` to `true` has no effect.
      * 
      */
     public Optional<Boolean> validateSsl() {

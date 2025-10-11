@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * network to which the cluster is connected. For Shared VPC, set this to the self link of the
      * shared network.
      * 
      */
     private @Nullable String network;
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
      */
@@ -27,7 +27,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
 
     private ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig() {}
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * network to which the cluster is connected. For Shared VPC, set this to the self link of the
      * shared network.
      * 
@@ -36,7 +36,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
      */

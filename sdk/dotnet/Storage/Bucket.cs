@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Storage
     /// ```
     /// 
     /// ### Life Cycle Settings For Storage Bucket Objects With `Send_age_if_zero` Disabled
-    /// When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `send_age_if_zero` flag to `false` to prevent this and avoid any potentially unintended interactions.
+    /// When creating a life cycle condition that does not also include an `Age` field, a default `Age` of 0 will be set. Set the `SendAgeIfZero` flag to `False` to prevent this and avoid any potentially unintended interactions.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -299,7 +299,7 @@ namespace Pulumi.Gcp.Storage
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
+        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `UniformBucketLevelAccess` must be enabled on bucket.
         /// </summary>
         [Output("hierarchicalNamespace")]
         public Output<Outputs.BucketHierarchicalNamespace?> HierarchicalNamespace { get; private set; } = null!;
@@ -541,7 +541,7 @@ namespace Pulumi.Gcp.Storage
         public Input<bool>? ForceDestroy { get; set; }
 
         /// <summary>
-        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
+        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `UniformBucketLevelAccess` must be enabled on bucket.
         /// </summary>
         [Input("hierarchicalNamespace")]
         public Input<Inputs.BucketHierarchicalNamespaceArgs>? HierarchicalNamespace { get; set; }
@@ -728,7 +728,7 @@ namespace Pulumi.Gcp.Storage
         public Input<bool>? ForceDestroy { get; set; }
 
         /// <summary>
-        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
+        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `UniformBucketLevelAccess` must be enabled on bucket.
         /// </summary>
         [Input("hierarchicalNamespace")]
         public Input<Inputs.BucketHierarchicalNamespaceGetArgs>? HierarchicalNamespace { get; set; }

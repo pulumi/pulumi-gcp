@@ -234,7 +234,7 @@ public class AnalysisRule extends com.pulumi.resources.CustomResource {
     /**
      * Percentage of conversations that we should apply this analysis setting
      * automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
-     * are sampled in a determenestic way. The original runtime_percentage &amp;
+     * are sampled in a determenestic way. The original runtimePercentage &amp;
      * upload percentage will be replaced by defining filters on the conversation.
      * 
      */
@@ -244,7 +244,7 @@ public class AnalysisRule extends com.pulumi.resources.CustomResource {
     /**
      * @return Percentage of conversations that we should apply this analysis setting
      * automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
-     * are sampled in a determenestic way. The original runtime_percentage &amp;
+     * are sampled in a determenestic way. The original runtimePercentage &amp;
      * upload percentage will be replaced by defining filters on the conversation.
      * 
      */

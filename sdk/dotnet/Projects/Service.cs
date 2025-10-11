@@ -56,16 +56,16 @@ namespace Pulumi.Gcp.Projects
     {
         /// <summary>
         /// Beta
-        /// If `true`, the usage of the service to be disabled will be checked and an error
+        /// If `True`, the usage of the service to be disabled will be checked and an error
         /// will be returned if the service to be disabled has usage in last 30 days.
         /// </summary>
         [Output("checkIfServiceHasUsageOnDestroy")]
         public Output<bool?> CheckIfServiceHasUsageOnDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, services that are enabled
+        /// If `True`, services that are enabled
         /// and which depend on this service should also be disabled when this service is
-        /// destroyed. If `false` or unset, an error will be generated if any enabled
+        /// destroyed. If `False` or unset, an error will be generated if any enabled
         /// services depend on this service when destroying it.
         /// </summary>
         [Output("disableDependentServices")]
@@ -135,16 +135,16 @@ namespace Pulumi.Gcp.Projects
     {
         /// <summary>
         /// Beta
-        /// If `true`, the usage of the service to be disabled will be checked and an error
+        /// If `True`, the usage of the service to be disabled will be checked and an error
         /// will be returned if the service to be disabled has usage in last 30 days.
         /// </summary>
         [Input("checkIfServiceHasUsageOnDestroy")]
         public Input<bool>? CheckIfServiceHasUsageOnDestroy { get; set; }
 
         /// <summary>
-        /// If `true`, services that are enabled
+        /// If `True`, services that are enabled
         /// and which depend on this service should also be disabled when this service is
-        /// destroyed. If `false` or unset, an error will be generated if any enabled
+        /// destroyed. If `False` or unset, an error will be generated if any enabled
         /// services depend on this service when destroying it.
         /// </summary>
         [Input("disableDependentServices")]
@@ -176,16 +176,16 @@ namespace Pulumi.Gcp.Projects
     {
         /// <summary>
         /// Beta
-        /// If `true`, the usage of the service to be disabled will be checked and an error
+        /// If `True`, the usage of the service to be disabled will be checked and an error
         /// will be returned if the service to be disabled has usage in last 30 days.
         /// </summary>
         [Input("checkIfServiceHasUsageOnDestroy")]
         public Input<bool>? CheckIfServiceHasUsageOnDestroy { get; set; }
 
         /// <summary>
-        /// If `true`, services that are enabled
+        /// If `True`, services that are enabled
         /// and which depend on this service should also be disabled when this service is
-        /// destroyed. If `false` or unset, an error will be generated if any enabled
+        /// destroyed. If `False` or unset, an error will be generated if any enabled
         /// services depend on this service when destroying it.
         /// </summary>
         [Input("disableDependentServices")]

@@ -59,14 +59,14 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
+     * (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
      * 
      */
     @Import(name="md5hash")
     private @Nullable Output<String> md5hash;
 
     /**
-     * @return (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
+     * @return (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
      * 
      */
     public Optional<Output<String>> md5hash() {
@@ -222,7 +222,7 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param md5hash (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
+         * @param md5hash (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param md5hash (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
+         * @param md5hash (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
          * 
          * @return builder
          * 

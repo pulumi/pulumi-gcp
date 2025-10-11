@@ -233,7 +233,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -244,7 +244,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -456,7 +456,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * User-defined labels for the alloydb backup. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -466,7 +466,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * @return User-defined labels for the alloydb backup. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

@@ -1385,30 +1385,30 @@ public final class OracledatabaseFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `db_nodes` - List of dbNodes. Structure is documented below.
+     * * `dbNodes` - List of dbNodes. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_dbnodes&#34;&gt;&lt;/a&gt; The `db_nodes` block supports:
+     * &lt;a name=&#34;nestedDbnodes&#34;&gt;&lt;/a&gt; The `dbNodes` block supports:
      * 
      * * `name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
      * 
      * * `properties` - Various properties of the database node. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_properties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
      * 
      * * `ocid`- OCID of database node.
      * 
-     * * `ocpu_count` - OCPU count per database node.
+     * * `ocpuCount` - OCPU count per database node.
      * 
-     * * `memory_size_gb` - The allocated memory in GBs on the database node.
+     * * `memorySizeGb` - The allocated memory in GBs on the database node.
      * 
-     * * `db_node_storage_size_gb` - The allocated local node storage in GBs on the database node.
+     * * `dbNodeStorageSizeGb` - The allocated local node storage in GBs on the database node.
      * 
-     * * `db_server_ocid` - The OCID of the Database server associated with the database node.
+     * * `dbServerOcid` - The OCID of the Database server associated with the database node.
      * 
      * * `hostname` - The host name for the database node.
      * 
      * * `state` - State of the database node.
-     * &lt;a name=&#34;nested_states&#34;&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
+     * &lt;a name=&#34;nestedStates&#34;&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
      * `PROVISIONING` - Indicates that the resource is being provisioned.&lt;br&gt;
      * `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
      * `UPDATING` - Indicates that the resource is being updated.&lt;br&gt;
@@ -1419,7 +1419,7 @@ public final class OracledatabaseFunctions {
      * `TERMINATED` - Indicates that the resource is terminated.&lt;br&gt;
      * `FAILED` - Indicates that the resource has failed.&lt;br&gt;
      * 
-     * * `total_cpu_core_count` - The total number of CPU cores reserved on the database node.
+     * * `totalCpuCoreCount` - The total number of CPU cores reserved on the database node.
      * 
      */
     public static Output<GetDbNodesResult> getDbNodes(GetDbNodesArgs args) {
@@ -1469,30 +1469,30 @@ public final class OracledatabaseFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `db_nodes` - List of dbNodes. Structure is documented below.
+     * * `dbNodes` - List of dbNodes. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_dbnodes&#34;&gt;&lt;/a&gt; The `db_nodes` block supports:
+     * &lt;a name=&#34;nestedDbnodes&#34;&gt;&lt;/a&gt; The `dbNodes` block supports:
      * 
      * * `name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
      * 
      * * `properties` - Various properties of the database node. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_properties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
      * 
      * * `ocid`- OCID of database node.
      * 
-     * * `ocpu_count` - OCPU count per database node.
+     * * `ocpuCount` - OCPU count per database node.
      * 
-     * * `memory_size_gb` - The allocated memory in GBs on the database node.
+     * * `memorySizeGb` - The allocated memory in GBs on the database node.
      * 
-     * * `db_node_storage_size_gb` - The allocated local node storage in GBs on the database node.
+     * * `dbNodeStorageSizeGb` - The allocated local node storage in GBs on the database node.
      * 
-     * * `db_server_ocid` - The OCID of the Database server associated with the database node.
+     * * `dbServerOcid` - The OCID of the Database server associated with the database node.
      * 
      * * `hostname` - The host name for the database node.
      * 
      * * `state` - State of the database node.
-     * &lt;a name=&#34;nested_states&#34;&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
+     * &lt;a name=&#34;nestedStates&#34;&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
      * `PROVISIONING` - Indicates that the resource is being provisioned.&lt;br&gt;
      * `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
      * `UPDATING` - Indicates that the resource is being updated.&lt;br&gt;
@@ -1503,7 +1503,7 @@ public final class OracledatabaseFunctions {
      * `TERMINATED` - Indicates that the resource is terminated.&lt;br&gt;
      * `FAILED` - Indicates that the resource has failed.&lt;br&gt;
      * 
-     * * `total_cpu_core_count` - The total number of CPU cores reserved on the database node.
+     * * `totalCpuCoreCount` - The total number of CPU cores reserved on the database node.
      * 
      */
     public static CompletableFuture<GetDbNodesResult> getDbNodesPlain(GetDbNodesPlainArgs args) {
@@ -1553,30 +1553,30 @@ public final class OracledatabaseFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `db_nodes` - List of dbNodes. Structure is documented below.
+     * * `dbNodes` - List of dbNodes. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_dbnodes&#34;&gt;&lt;/a&gt; The `db_nodes` block supports:
+     * &lt;a name=&#34;nestedDbnodes&#34;&gt;&lt;/a&gt; The `dbNodes` block supports:
      * 
      * * `name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
      * 
      * * `properties` - Various properties of the database node. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_properties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
      * 
      * * `ocid`- OCID of database node.
      * 
-     * * `ocpu_count` - OCPU count per database node.
+     * * `ocpuCount` - OCPU count per database node.
      * 
-     * * `memory_size_gb` - The allocated memory in GBs on the database node.
+     * * `memorySizeGb` - The allocated memory in GBs on the database node.
      * 
-     * * `db_node_storage_size_gb` - The allocated local node storage in GBs on the database node.
+     * * `dbNodeStorageSizeGb` - The allocated local node storage in GBs on the database node.
      * 
-     * * `db_server_ocid` - The OCID of the Database server associated with the database node.
+     * * `dbServerOcid` - The OCID of the Database server associated with the database node.
      * 
      * * `hostname` - The host name for the database node.
      * 
      * * `state` - State of the database node.
-     * &lt;a name=&#34;nested_states&#34;&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
+     * &lt;a name=&#34;nestedStates&#34;&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
      * `PROVISIONING` - Indicates that the resource is being provisioned.&lt;br&gt;
      * `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
      * `UPDATING` - Indicates that the resource is being updated.&lt;br&gt;
@@ -1587,7 +1587,7 @@ public final class OracledatabaseFunctions {
      * `TERMINATED` - Indicates that the resource is terminated.&lt;br&gt;
      * `FAILED` - Indicates that the resource has failed.&lt;br&gt;
      * 
-     * * `total_cpu_core_count` - The total number of CPU cores reserved on the database node.
+     * * `totalCpuCoreCount` - The total number of CPU cores reserved on the database node.
      * 
      */
     public static Output<GetDbNodesResult> getDbNodes(GetDbNodesArgs args, InvokeOptions options) {
@@ -1637,30 +1637,30 @@ public final class OracledatabaseFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `db_nodes` - List of dbNodes. Structure is documented below.
+     * * `dbNodes` - List of dbNodes. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_dbnodes&#34;&gt;&lt;/a&gt; The `db_nodes` block supports:
+     * &lt;a name=&#34;nestedDbnodes&#34;&gt;&lt;/a&gt; The `dbNodes` block supports:
      * 
      * * `name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
      * 
      * * `properties` - Various properties of the database node. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_properties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
      * 
      * * `ocid`- OCID of database node.
      * 
-     * * `ocpu_count` - OCPU count per database node.
+     * * `ocpuCount` - OCPU count per database node.
      * 
-     * * `memory_size_gb` - The allocated memory in GBs on the database node.
+     * * `memorySizeGb` - The allocated memory in GBs on the database node.
      * 
-     * * `db_node_storage_size_gb` - The allocated local node storage in GBs on the database node.
+     * * `dbNodeStorageSizeGb` - The allocated local node storage in GBs on the database node.
      * 
-     * * `db_server_ocid` - The OCID of the Database server associated with the database node.
+     * * `dbServerOcid` - The OCID of the Database server associated with the database node.
      * 
      * * `hostname` - The host name for the database node.
      * 
      * * `state` - State of the database node.
-     * &lt;a name=&#34;nested_states&#34;&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
+     * &lt;a name=&#34;nestedStates&#34;&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
      * `PROVISIONING` - Indicates that the resource is being provisioned.&lt;br&gt;
      * `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
      * `UPDATING` - Indicates that the resource is being updated.&lt;br&gt;
@@ -1671,7 +1671,7 @@ public final class OracledatabaseFunctions {
      * `TERMINATED` - Indicates that the resource is terminated.&lt;br&gt;
      * `FAILED` - Indicates that the resource has failed.&lt;br&gt;
      * 
-     * * `total_cpu_core_count` - The total number of CPU cores reserved on the database node.
+     * * `totalCpuCoreCount` - The total number of CPU cores reserved on the database node.
      * 
      */
     public static Output<GetDbNodesResult> getDbNodes(GetDbNodesArgs args, InvokeOutputOptions options) {
@@ -1721,30 +1721,30 @@ public final class OracledatabaseFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `db_nodes` - List of dbNodes. Structure is documented below.
+     * * `dbNodes` - List of dbNodes. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_dbnodes&#34;&gt;&lt;/a&gt; The `db_nodes` block supports:
+     * &lt;a name=&#34;nestedDbnodes&#34;&gt;&lt;/a&gt; The `dbNodes` block supports:
      * 
      * * `name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
      * 
      * * `properties` - Various properties of the database node. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_properties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
      * 
      * * `ocid`- OCID of database node.
      * 
-     * * `ocpu_count` - OCPU count per database node.
+     * * `ocpuCount` - OCPU count per database node.
      * 
-     * * `memory_size_gb` - The allocated memory in GBs on the database node.
+     * * `memorySizeGb` - The allocated memory in GBs on the database node.
      * 
-     * * `db_node_storage_size_gb` - The allocated local node storage in GBs on the database node.
+     * * `dbNodeStorageSizeGb` - The allocated local node storage in GBs on the database node.
      * 
-     * * `db_server_ocid` - The OCID of the Database server associated with the database node.
+     * * `dbServerOcid` - The OCID of the Database server associated with the database node.
      * 
      * * `hostname` - The host name for the database node.
      * 
      * * `state` - State of the database node.
-     * &lt;a name=&#34;nested_states&#34;&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
+     * &lt;a name=&#34;nestedStates&#34;&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
      * `PROVISIONING` - Indicates that the resource is being provisioned.&lt;br&gt;
      * `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
      * `UPDATING` - Indicates that the resource is being updated.&lt;br&gt;
@@ -1755,7 +1755,7 @@ public final class OracledatabaseFunctions {
      * `TERMINATED` - Indicates that the resource is terminated.&lt;br&gt;
      * `FAILED` - Indicates that the resource has failed.&lt;br&gt;
      * 
-     * * `total_cpu_core_count` - The total number of CPU cores reserved on the database node.
+     * * `totalCpuCoreCount` - The total number of CPU cores reserved on the database node.
      * 
      */
     public static CompletableFuture<GetDbNodesResult> getDbNodesPlain(GetDbNodesPlainArgs args, InvokeOptions options) {
@@ -1805,41 +1805,41 @@ public final class OracledatabaseFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `db_servers` - List of dbServers. Structure is documented below.
+     * * `dbServers` - List of dbServers. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_dbservers&#34;&gt;&lt;/a&gt; The `db_servers` block supports:
+     * &lt;a name=&#34;nestedDbservers&#34;&gt;&lt;/a&gt; The `dbServers` block supports:
      * 
-     * * `display_name` - User friendly name for the resource.
+     * * `displayName` - User friendly name for the resource.
      * 
      * * `properties` - Various properties of the databse server. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_properties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
      * 
      * * `ocid` - The OCID of database server.
      * 
-     * * `ocpu_count` - The OCPU count per database.
+     * * `ocpuCount` - The OCPU count per database.
      * 
-     * * `max_ocpu_count` - The total number of CPU cores available.
+     * * `maxOcpuCount` - The total number of CPU cores available.
      * 
-     * * `memory_size_gb` - The allocated memory in gigabytes on the database server.
+     * * `memorySizeGb` - The allocated memory in gigabytes on the database server.
      * 
-     * * `max_memory_size_gb` - The total memory available in gigabytes.
+     * * `maxMemorySizeGb` - The total memory available in gigabytes.
      * 
-     * * `db_node_storage_size_gb` - The local storage per VM.
+     * * `dbNodeStorageSizeGb` - The local storage per VM.
      * 
-     * * `max_db_node_storage_size_gb` - The total local node storage available in GBs.
+     * * `maxDbNodeStorageSizeGb` - The total local node storage available in GBs.
      * 
-     * * `vm_count` - The VM count per database.
+     * * `vmCount` - The VM count per database.
      * 
      * * `state` - The current state of the database server.
-     * &lt;a name=&#34;nested_states&#34;&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
+     * &lt;a name=&#34;nestedStates&#34;&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
      * `CREATING` - Indicates that the resource is being created.&lt;br&gt;
      * `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
      * `UNAVAILABLE` - Indicates that the resource is unavailable.&lt;br&gt;
      * `DELETING` - Indicates that the resource is being deleted.&lt;br&gt;
      * `DELETED` - Indicates that the resource has been deleted.&lt;br&gt;
      * 
-     * * `db_node_ids` - The OCID of database nodes associated with the database server.
+     * * `dbNodeIds` - The OCID of database nodes associated with the database server.
      * 
      */
     public static Output<GetDbServersResult> getDbServers(GetDbServersArgs args) {
@@ -1889,41 +1889,41 @@ public final class OracledatabaseFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `db_servers` - List of dbServers. Structure is documented below.
+     * * `dbServers` - List of dbServers. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_dbservers&#34;&gt;&lt;/a&gt; The `db_servers` block supports:
+     * &lt;a name=&#34;nestedDbservers&#34;&gt;&lt;/a&gt; The `dbServers` block supports:
      * 
-     * * `display_name` - User friendly name for the resource.
+     * * `displayName` - User friendly name for the resource.
      * 
      * * `properties` - Various properties of the databse server. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_properties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
      * 
      * * `ocid` - The OCID of database server.
      * 
-     * * `ocpu_count` - The OCPU count per database.
+     * * `ocpuCount` - The OCPU count per database.
      * 
-     * * `max_ocpu_count` - The total number of CPU cores available.
+     * * `maxOcpuCount` - The total number of CPU cores available.
      * 
-     * * `memory_size_gb` - The allocated memory in gigabytes on the database server.
+     * * `memorySizeGb` - The allocated memory in gigabytes on the database server.
      * 
-     * * `max_memory_size_gb` - The total memory available in gigabytes.
+     * * `maxMemorySizeGb` - The total memory available in gigabytes.
      * 
-     * * `db_node_storage_size_gb` - The local storage per VM.
+     * * `dbNodeStorageSizeGb` - The local storage per VM.
      * 
-     * * `max_db_node_storage_size_gb` - The total local node storage available in GBs.
+     * * `maxDbNodeStorageSizeGb` - The total local node storage available in GBs.
      * 
-     * * `vm_count` - The VM count per database.
+     * * `vmCount` - The VM count per database.
      * 
      * * `state` - The current state of the database server.
-     * &lt;a name=&#34;nested_states&#34;&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
+     * &lt;a name=&#34;nestedStates&#34;&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
      * `CREATING` - Indicates that the resource is being created.&lt;br&gt;
      * `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
      * `UNAVAILABLE` - Indicates that the resource is unavailable.&lt;br&gt;
      * `DELETING` - Indicates that the resource is being deleted.&lt;br&gt;
      * `DELETED` - Indicates that the resource has been deleted.&lt;br&gt;
      * 
-     * * `db_node_ids` - The OCID of database nodes associated with the database server.
+     * * `dbNodeIds` - The OCID of database nodes associated with the database server.
      * 
      */
     public static CompletableFuture<GetDbServersResult> getDbServersPlain(GetDbServersPlainArgs args) {
@@ -1973,41 +1973,41 @@ public final class OracledatabaseFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `db_servers` - List of dbServers. Structure is documented below.
+     * * `dbServers` - List of dbServers. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_dbservers&#34;&gt;&lt;/a&gt; The `db_servers` block supports:
+     * &lt;a name=&#34;nestedDbservers&#34;&gt;&lt;/a&gt; The `dbServers` block supports:
      * 
-     * * `display_name` - User friendly name for the resource.
+     * * `displayName` - User friendly name for the resource.
      * 
      * * `properties` - Various properties of the databse server. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_properties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
      * 
      * * `ocid` - The OCID of database server.
      * 
-     * * `ocpu_count` - The OCPU count per database.
+     * * `ocpuCount` - The OCPU count per database.
      * 
-     * * `max_ocpu_count` - The total number of CPU cores available.
+     * * `maxOcpuCount` - The total number of CPU cores available.
      * 
-     * * `memory_size_gb` - The allocated memory in gigabytes on the database server.
+     * * `memorySizeGb` - The allocated memory in gigabytes on the database server.
      * 
-     * * `max_memory_size_gb` - The total memory available in gigabytes.
+     * * `maxMemorySizeGb` - The total memory available in gigabytes.
      * 
-     * * `db_node_storage_size_gb` - The local storage per VM.
+     * * `dbNodeStorageSizeGb` - The local storage per VM.
      * 
-     * * `max_db_node_storage_size_gb` - The total local node storage available in GBs.
+     * * `maxDbNodeStorageSizeGb` - The total local node storage available in GBs.
      * 
-     * * `vm_count` - The VM count per database.
+     * * `vmCount` - The VM count per database.
      * 
      * * `state` - The current state of the database server.
-     * &lt;a name=&#34;nested_states&#34;&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
+     * &lt;a name=&#34;nestedStates&#34;&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
      * `CREATING` - Indicates that the resource is being created.&lt;br&gt;
      * `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
      * `UNAVAILABLE` - Indicates that the resource is unavailable.&lt;br&gt;
      * `DELETING` - Indicates that the resource is being deleted.&lt;br&gt;
      * `DELETED` - Indicates that the resource has been deleted.&lt;br&gt;
      * 
-     * * `db_node_ids` - The OCID of database nodes associated with the database server.
+     * * `dbNodeIds` - The OCID of database nodes associated with the database server.
      * 
      */
     public static Output<GetDbServersResult> getDbServers(GetDbServersArgs args, InvokeOptions options) {
@@ -2057,41 +2057,41 @@ public final class OracledatabaseFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `db_servers` - List of dbServers. Structure is documented below.
+     * * `dbServers` - List of dbServers. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_dbservers&#34;&gt;&lt;/a&gt; The `db_servers` block supports:
+     * &lt;a name=&#34;nestedDbservers&#34;&gt;&lt;/a&gt; The `dbServers` block supports:
      * 
-     * * `display_name` - User friendly name for the resource.
+     * * `displayName` - User friendly name for the resource.
      * 
      * * `properties` - Various properties of the databse server. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_properties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
      * 
      * * `ocid` - The OCID of database server.
      * 
-     * * `ocpu_count` - The OCPU count per database.
+     * * `ocpuCount` - The OCPU count per database.
      * 
-     * * `max_ocpu_count` - The total number of CPU cores available.
+     * * `maxOcpuCount` - The total number of CPU cores available.
      * 
-     * * `memory_size_gb` - The allocated memory in gigabytes on the database server.
+     * * `memorySizeGb` - The allocated memory in gigabytes on the database server.
      * 
-     * * `max_memory_size_gb` - The total memory available in gigabytes.
+     * * `maxMemorySizeGb` - The total memory available in gigabytes.
      * 
-     * * `db_node_storage_size_gb` - The local storage per VM.
+     * * `dbNodeStorageSizeGb` - The local storage per VM.
      * 
-     * * `max_db_node_storage_size_gb` - The total local node storage available in GBs.
+     * * `maxDbNodeStorageSizeGb` - The total local node storage available in GBs.
      * 
-     * * `vm_count` - The VM count per database.
+     * * `vmCount` - The VM count per database.
      * 
      * * `state` - The current state of the database server.
-     * &lt;a name=&#34;nested_states&#34;&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
+     * &lt;a name=&#34;nestedStates&#34;&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
      * `CREATING` - Indicates that the resource is being created.&lt;br&gt;
      * `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
      * `UNAVAILABLE` - Indicates that the resource is unavailable.&lt;br&gt;
      * `DELETING` - Indicates that the resource is being deleted.&lt;br&gt;
      * `DELETED` - Indicates that the resource has been deleted.&lt;br&gt;
      * 
-     * * `db_node_ids` - The OCID of database nodes associated with the database server.
+     * * `dbNodeIds` - The OCID of database nodes associated with the database server.
      * 
      */
     public static Output<GetDbServersResult> getDbServers(GetDbServersArgs args, InvokeOutputOptions options) {
@@ -2141,41 +2141,41 @@ public final class OracledatabaseFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `db_servers` - List of dbServers. Structure is documented below.
+     * * `dbServers` - List of dbServers. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_dbservers&#34;&gt;&lt;/a&gt; The `db_servers` block supports:
+     * &lt;a name=&#34;nestedDbservers&#34;&gt;&lt;/a&gt; The `dbServers` block supports:
      * 
-     * * `display_name` - User friendly name for the resource.
+     * * `displayName` - User friendly name for the resource.
      * 
      * * `properties` - Various properties of the databse server. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_properties&#34;&gt;&lt;/a&gt; The `properties` block supports:
+     * &lt;a name=&#34;nestedProperties&#34;&gt;&lt;/a&gt; The `properties` block supports:
      * 
      * * `ocid` - The OCID of database server.
      * 
-     * * `ocpu_count` - The OCPU count per database.
+     * * `ocpuCount` - The OCPU count per database.
      * 
-     * * `max_ocpu_count` - The total number of CPU cores available.
+     * * `maxOcpuCount` - The total number of CPU cores available.
      * 
-     * * `memory_size_gb` - The allocated memory in gigabytes on the database server.
+     * * `memorySizeGb` - The allocated memory in gigabytes on the database server.
      * 
-     * * `max_memory_size_gb` - The total memory available in gigabytes.
+     * * `maxMemorySizeGb` - The total memory available in gigabytes.
      * 
-     * * `db_node_storage_size_gb` - The local storage per VM.
+     * * `dbNodeStorageSizeGb` - The local storage per VM.
      * 
-     * * `max_db_node_storage_size_gb` - The total local node storage available in GBs.
+     * * `maxDbNodeStorageSizeGb` - The total local node storage available in GBs.
      * 
-     * * `vm_count` - The VM count per database.
+     * * `vmCount` - The VM count per database.
      * 
      * * `state` - The current state of the database server.
-     * &lt;a name=&#34;nested_states&#34;&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
+     * &lt;a name=&#34;nestedStates&#34;&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
      * `CREATING` - Indicates that the resource is being created.&lt;br&gt;
      * `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
      * `UNAVAILABLE` - Indicates that the resource is unavailable.&lt;br&gt;
      * `DELETING` - Indicates that the resource is being deleted.&lt;br&gt;
      * `DELETED` - Indicates that the resource has been deleted.&lt;br&gt;
      * 
-     * * `db_node_ids` - The OCID of database nodes associated with the database server.
+     * * `dbNodeIds` - The OCID of database nodes associated with the database server.
      * 
      */
     public static CompletableFuture<GetDbServersResult> getDbServersPlain(GetDbServersPlainArgs args, InvokeOptions options) {

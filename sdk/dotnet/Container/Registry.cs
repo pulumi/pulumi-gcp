@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Container
     /// });
     /// ```
     /// 
-    /// The `id` field of the `gcp.container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
+    /// The `Id` field of the `gcp.container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

@@ -473,7 +473,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -575,7 +575,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _members;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -648,7 +648,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _members;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.

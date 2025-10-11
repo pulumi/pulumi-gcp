@@ -13,8 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
     /**
-     * @return Used when good_service is defined by a count of values aggregated in a
-     * Distribution that fall into a good range. The total_service is the
+     * @return Used when goodService is defined by a count of values aggregated in a
+     * Distribution that fall into a good range. The totalService is the
      * total count of all values aggregated in the Distribution.
      * Defines a distribution TimeSeries filter and thresholds used for
      * measuring good service and total service.
@@ -23,10 +23,10 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
      */
     private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut distributionCut;
     /**
-     * @return A means to compute a ratio of `good_service` to `total_service`.
+     * @return A means to compute a ratio of `goodService` to `totalService`.
      * Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
      * Must specify exactly two of good, bad, and total service filters.
-     * The relationship good_service + bad_service = total_service
+     * The relationship goodService + badService = totalService
      * will be assumed.
      * Structure is documented below.
      * 
@@ -35,8 +35,8 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
 
     private SloWindowsBasedSliGoodTotalRatioThresholdPerformance() {}
     /**
-     * @return Used when good_service is defined by a count of values aggregated in a
-     * Distribution that fall into a good range. The total_service is the
+     * @return Used when goodService is defined by a count of values aggregated in a
+     * Distribution that fall into a good range. The totalService is the
      * total count of all values aggregated in the Distribution.
      * Defines a distribution TimeSeries filter and thresholds used for
      * measuring good service and total service.
@@ -47,10 +47,10 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
         return Optional.ofNullable(this.distributionCut);
     }
     /**
-     * @return A means to compute a ratio of `good_service` to `total_service`.
+     * @return A means to compute a ratio of `goodService` to `totalService`.
      * Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
      * Must specify exactly two of good, bad, and total service filters.
-     * The relationship good_service + bad_service = total_service
+     * The relationship goodService + badService = totalService
      * will be assumed.
      * Structure is documented below.
      * 

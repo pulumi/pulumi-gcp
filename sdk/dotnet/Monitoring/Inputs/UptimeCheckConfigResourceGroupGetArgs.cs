@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     public sealed class UptimeCheckConfigResourceGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The group of resources being monitored. Should be the `name` of a group
+        /// The group of resources being monitored. Should be the `Name` of a group
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }

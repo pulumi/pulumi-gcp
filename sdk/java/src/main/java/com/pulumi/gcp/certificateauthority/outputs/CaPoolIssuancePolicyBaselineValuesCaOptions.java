@@ -25,13 +25,13 @@ public final class CaPoolIssuancePolicyBaselineValuesCaOptions {
     private @Nullable Integer maxIssuerPathLength;
     /**
      * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
-     * If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+     * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
      * 
      */
     private @Nullable Boolean nonCa;
     /**
      * @return When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-     * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
      * the max path length will be omitted from the CA certificate.
      * 
      */
@@ -55,7 +55,7 @@ public final class CaPoolIssuancePolicyBaselineValuesCaOptions {
     }
     /**
      * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
-     * If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+     * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
      * 
      */
     public Optional<Boolean> nonCa() {
@@ -63,7 +63,7 @@ public final class CaPoolIssuancePolicyBaselineValuesCaOptions {
     }
     /**
      * @return When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-     * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
      * the max path length will be omitted from the CA certificate.
      * 
      */

@@ -142,14 +142,14 @@ public class GdcServiceInstance extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Effective service account associated with ServiceInstance. This will be the service_account if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
+     * Effective service account associated with ServiceInstance. This will be the serviceAccount if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
      * 
      */
     @Export(name="effectiveServiceAccount", refs={String.class}, tree="[0]")
     private Output<String> effectiveServiceAccount;
 
     /**
-     * @return Effective service account associated with ServiceInstance. This will be the service_account if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
+     * @return Effective service account associated with ServiceInstance. This will be the serviceAccount if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
      * 
      */
     public Output<String> effectiveServiceAccount() {
@@ -174,7 +174,7 @@ public class GdcServiceInstance extends com.pulumi.resources.CustomResource {
     /**
      * The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -183,7 +183,7 @@ public class GdcServiceInstance extends com.pulumi.resources.CustomResource {
     /**
      * @return The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

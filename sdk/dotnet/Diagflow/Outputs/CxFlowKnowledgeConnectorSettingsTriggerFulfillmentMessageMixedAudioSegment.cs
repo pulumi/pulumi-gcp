@@ -21,12 +21,12 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// <summary>
         /// Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
         /// A base64-encoded string.
-        /// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+        /// This field is part of a union field `Content`: Only one of `Audio` or `Uri` may be set.
         /// </summary>
         public readonly string? Audio;
         /// <summary>
         /// Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
-        /// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+        /// This field is part of a union field `Content`: Only one of `Audio` or `Uri` may be set.
         /// </summary>
         public readonly string? Uri;
 

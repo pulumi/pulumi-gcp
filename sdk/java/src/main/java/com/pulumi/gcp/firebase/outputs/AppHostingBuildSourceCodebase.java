@@ -29,7 +29,7 @@ public final class AppHostingBuildSourceCodebase {
     /**
      * @return The commit in the codebase to build from.
      * 
-     * &lt;a name=&#34;nested_source_codebase_author&#34;&gt;&lt;/a&gt;The `author` block contains:
+     * &lt;a name=&#34;nestedSourceCodebaseAuthor&#34;&gt;&lt;/a&gt;The `author` block contains:
      * 
      */
     private @Nullable String commit;
@@ -87,7 +87,7 @@ public final class AppHostingBuildSourceCodebase {
     /**
      * @return The commit in the codebase to build from.
      * 
-     * &lt;a name=&#34;nested_source_codebase_author&#34;&gt;&lt;/a&gt;The `author` block contains:
+     * &lt;a name=&#34;nestedSourceCodebaseAuthor&#34;&gt;&lt;/a&gt;The `author` block contains:
      * 
      */
     public Optional<String> commit() {

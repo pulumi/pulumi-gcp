@@ -187,7 +187,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Properties relevant to a managed certificate.  These will be used if the
-        /// certificate is managed (as indicated by a value of `MANAGED` in `type`).
+        /// certificate is managed (as indicated by a value of `MANAGED` in `Type`).
         /// Structure is documented below.
         /// </summary>
         [Output("managed")]
@@ -288,7 +288,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Properties relevant to a managed certificate.  These will be used if the
-        /// certificate is managed (as indicated by a value of `MANAGED` in `type`).
+        /// certificate is managed (as indicated by a value of `MANAGED` in `Type`).
         /// Structure is documented below.
         /// </summary>
         [Input("managed")]
@@ -357,7 +357,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Properties relevant to a managed certificate.  These will be used if the
-        /// certificate is managed (as indicated by a value of `MANAGED` in `type`).
+        /// certificate is managed (as indicated by a value of `MANAGED` in `Type`).
         /// Structure is documented below.
         /// </summary>
         [Input("managed")]

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class GetKeysKeySigningKeyResult
     {
         /// <summary>
-        /// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+        /// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `Ecdsap256sha256`, `Ecdsap384sha384`, `Rsasha1`, `Rsasha256`, and `Rsasha512`.
         /// </summary>
         public readonly string Algorithm;
         /// <summary>

@@ -248,7 +248,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Whether this disk is using confidential compute mode.
-        /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+        /// Note: Only supported on hyperdisk skus, DiskEncryptionKey is required when setting to true
         /// </summary>
         [Output("enableConfidentialCompute")]
         public Output<bool> EnableConfidentialCompute { get; private set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The image from which to initialize this disk. This can be
-        /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+        /// one of: the image's `SelfLink`, `projects/{project}/global/images/{image}`,
         /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
         /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
         /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
-        /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+        /// &gt; **Warning:** `Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         /// </summary>
         [Output("interface")]
         public Output<string?> Interface { get; private set; } = null!;
@@ -294,7 +294,7 @@ namespace Pulumi.Gcp.Compute
         /// Labels to apply to this disk.  A list of key-&gt;value pairs.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -401,10 +401,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Size of the persistent disk, specified in GB. You can specify this
-        /// field when creating a persistent disk using the `image` or
-        /// `snapshot` parameter, or specify it alone to create an empty
+        /// field when creating a persistent disk using the `Image` or
+        /// `Snapshot` parameter, or specify it alone to create an empty
         /// persistent disk.
-        /// If you specify this field along with `image` or `snapshot`,
+        /// If you specify this field along with `Image` or `Snapshot`,
         /// the value must not be less than the size of the image
         /// or the size of the snapshot.
         /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
@@ -660,7 +660,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Whether this disk is using confidential compute mode.
-        /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+        /// Note: Only supported on hyperdisk skus, DiskEncryptionKey is required when setting to true
         /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }
@@ -681,7 +681,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The image from which to initialize this disk. This can be
-        /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+        /// one of: the image's `SelfLink`, `projects/{project}/global/images/{image}`,
         /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
         /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
         /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -696,7 +696,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
-        /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+        /// &gt; **Warning:** `Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -708,7 +708,7 @@ namespace Pulumi.Gcp.Compute
         /// Labels to apply to this disk.  A list of key-&gt;value pairs.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -805,10 +805,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Size of the persistent disk, specified in GB. You can specify this
-        /// field when creating a persistent disk using the `image` or
-        /// `snapshot` parameter, or specify it alone to create an empty
+        /// field when creating a persistent disk using the `Image` or
+        /// `Snapshot` parameter, or specify it alone to create an empty
         /// persistent disk.
-        /// If you specify this field along with `image` or `snapshot`,
+        /// If you specify this field along with `Image` or `Snapshot`,
         /// the value must not be less than the size of the image
         /// or the size of the snapshot.
         /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
@@ -1003,7 +1003,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Whether this disk is using confidential compute mode.
-        /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+        /// Note: Only supported on hyperdisk skus, DiskEncryptionKey is required when setting to true
         /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }
@@ -1024,7 +1024,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The image from which to initialize this disk. This can be
-        /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+        /// one of: the image's `SelfLink`, `projects/{project}/global/images/{image}`,
         /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
         /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
         /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -1039,7 +1039,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
-        /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+        /// &gt; **Warning:** `Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -1058,7 +1058,7 @@ namespace Pulumi.Gcp.Compute
         /// Labels to apply to this disk.  A list of key-&gt;value pairs.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1190,10 +1190,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Size of the persistent disk, specified in GB. You can specify this
-        /// field when creating a persistent disk using the `image` or
-        /// `snapshot` parameter, or specify it alone to create an empty
+        /// field when creating a persistent disk using the `Image` or
+        /// `Snapshot` parameter, or specify it alone to create an empty
         /// persistent disk.
-        /// If you specify this field along with `image` or `snapshot`,
+        /// If you specify this field along with `Image` or `Snapshot`,
         /// the value must not be less than the size of the image
         /// or the size of the snapshot.
         /// ~&gt;**NOTE** If you change the size, the provider updates the disk size

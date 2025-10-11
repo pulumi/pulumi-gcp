@@ -19,22 +19,22 @@ public final class BackupVaultBackupRetentionPolicy {
      */
     private Integer backupMinimumEnforcedRetentionDays;
     /**
-     * @return Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * @return Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     private @Nullable Boolean dailyBackupImmutable;
     /**
-     * @return Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * @return Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     private @Nullable Boolean manualBackupImmutable;
     /**
-     * @return Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * @return Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     private @Nullable Boolean monthlyBackupImmutable;
     /**
-     * @return Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * @return Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     private @Nullable Boolean weeklyBackupImmutable;
@@ -48,28 +48,28 @@ public final class BackupVaultBackupRetentionPolicy {
         return this.backupMinimumEnforcedRetentionDays;
     }
     /**
-     * @return Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * @return Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     public Optional<Boolean> dailyBackupImmutable() {
         return Optional.ofNullable(this.dailyBackupImmutable);
     }
     /**
-     * @return Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * @return Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     public Optional<Boolean> manualBackupImmutable() {
         return Optional.ofNullable(this.manualBackupImmutable);
     }
     /**
-     * @return Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * @return Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     public Optional<Boolean> monthlyBackupImmutable() {
         return Optional.ofNullable(this.monthlyBackupImmutable);
     }
     /**
-     * @return Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+     * @return Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
      * 
      */
     public Optional<Boolean> weeklyBackupImmutable() {

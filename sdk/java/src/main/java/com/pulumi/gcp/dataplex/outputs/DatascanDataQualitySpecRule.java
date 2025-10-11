@@ -106,7 +106,7 @@ public final class DatascanDataQualitySpecRule {
      */
     private @Nullable DatascanDataQualitySpecRuleTableConditionExpectation tableConditionExpectation;
     /**
-     * @return The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+     * @return The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
      * 
      */
     private @Nullable Double threshold;
@@ -228,7 +228,7 @@ public final class DatascanDataQualitySpecRule {
         return Optional.ofNullable(this.tableConditionExpectation);
     }
     /**
-     * @return The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+     * @return The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
      * 
      */
     public Optional<Double> threshold() {

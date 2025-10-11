@@ -615,7 +615,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// All system annotations in v1 now have a corresponding field in v2 Job.
         /// This field follows Kubernetes annotations' namespacing, limits, and rules.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -640,7 +640,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string?> ClientVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+        /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `Reconciliation` process in Cloud Run.
         /// Structure is documented below.
         /// </summary>
         [Output("conditions")]
@@ -708,7 +708,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         /// All system labels in v1 now have a corresponding field in v2 Job.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -770,8 +770,8 @@ namespace Pulumi.Gcp.CloudRunV2
         /// <summary>
         /// Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
         /// When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
-        /// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
-        /// If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
+        /// If reconciliation succeeded, the following fields will match: observedGeneration and generation, LatestSucceededExecution and latestCreatedExecution.
+        /// If reconciliation failed, observedGeneration and LatestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
@@ -876,7 +876,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// All system annotations in v1 now have a corresponding field in v2 Job.
         /// This field follows Kubernetes annotations' namespacing, limits, and rules.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -915,7 +915,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         /// All system labels in v1 now have a corresponding field in v2 Job.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -989,7 +989,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// All system annotations in v1 now have a corresponding field in v2 Job.
         /// This field follows Kubernetes annotations' namespacing, limits, and rules.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -1020,7 +1020,7 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputList<Inputs.JobConditionGetArgs>? _conditions;
 
         /// <summary>
-        /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+        /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `Reconciliation` process in Cloud Run.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.JobConditionGetArgs> Conditions
@@ -1109,7 +1109,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         /// All system labels in v1 now have a corresponding field in v2 Job.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1190,8 +1190,8 @@ namespace Pulumi.Gcp.CloudRunV2
         /// <summary>
         /// Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
         /// When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
-        /// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
-        /// If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
+        /// If reconciliation succeeded, the following fields will match: observedGeneration and generation, LatestSucceededExecution and latestCreatedExecution.
+        /// If reconciliation failed, observedGeneration and LatestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }

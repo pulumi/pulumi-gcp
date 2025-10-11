@@ -21,6 +21,12 @@ import (
 //   - [Active Directory Domain Peering](https://cloud.google.com/managed-microsoft-ad/docs/domain-peering)
 //
 // ## Example Usage
+//
+// ### Active Directory Peering Basic
+//
+// ## Import
+//
+// This resource does not support import.
 type Peering struct {
 	pulumi.CustomResourceState
 

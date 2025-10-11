@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// &gt; **Warning:** This resource creates a Firestore Single Field override on a project that
     ///  already has a Firestore database. If you haven't already created it, you may
-    /// create a `gcp.firestore.Database` resource with `location_id` set to your
+    /// create a `gcp.firestore.Database` resource with `LocationId` set to your
     /// chosen location.
     /// 
     /// ## Example Usage
@@ -256,7 +256,7 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        /// The TTL configuration for this Field. If set to an empty block (i.e. `TtlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         /// Structure is documented below.
         /// </summary>
         [Output("ttlConfig")]
@@ -344,7 +344,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        /// The TTL configuration for this Field. If set to an empty block (i.e. `TtlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         /// Structure is documented below.
         /// </summary>
         [Input("ttlConfig")]
@@ -401,7 +401,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        /// The TTL configuration for this Field. If set to an empty block (i.e. `TtlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         /// Structure is documented below.
         /// </summary>
         [Input("ttlConfig")]

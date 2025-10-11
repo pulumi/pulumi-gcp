@@ -184,8 +184,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Direction of traffic to which this firewall applies; default is
-        /// INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
-        /// `source_tags` or `source_service_accounts` is required.
+        /// INGRESS. Note: For INGRESS traffic, one of `SourceRanges`,
+        /// `SourceTags` or `SourceServiceAccounts` is required.
         /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
         [Output("direction")]
@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This field denotes whether to enable logging for a particular firewall rule.
-        /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
+        /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `LogConfig`
         /// </summary>
         [Output("enableLogging")]
         public Output<bool> EnableLogging { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name or self_link of the network to attach this firewall to.
+        /// The name or SelfLink of the network to attach this firewall to.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -273,7 +273,7 @@ namespace Pulumi.Gcp.Compute
         /// source IP that belongs to a tag listed in the sourceTags property. The
         /// connection does not need to match both properties for the firewall to
         /// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
-        /// `source_ranges`, `source_tags` or `source_service_accounts` is required.
+        /// `SourceRanges`, `SourceTags` or `SourceServiceAccounts` is required.
         /// </summary>
         [Output("sourceRanges")]
         public Output<ImmutableArray<string>> SourceRanges { get; private set; } = null!;
@@ -290,7 +290,7 @@ namespace Pulumi.Gcp.Compute
         /// sourceServiceAccount. The connection does not need to match both
         /// properties for the firewall to apply. sourceServiceAccounts cannot be
         /// used at the same time as sourceTags or targetTags. For INGRESS traffic,
-        /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+        /// one of `SourceRanges`, `SourceTags` or `SourceServiceAccounts` is required.
         /// </summary>
         [Output("sourceServiceAccounts")]
         public Output<ImmutableArray<string>> SourceServiceAccounts { get; private set; } = null!;
@@ -305,7 +305,7 @@ namespace Pulumi.Gcp.Compute
         /// source IP address within sourceRanges OR the source IP that belongs to
         /// a tag listed in the sourceTags property. The connection does not need
         /// to match both properties for the firewall to apply. For INGRESS traffic,
-        /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+        /// one of `SourceRanges`, `SourceTags` or `SourceServiceAccounts` is required.
         /// </summary>
         [Output("sourceTags")]
         public Output<ImmutableArray<string>> SourceTags { get; private set; } = null!;
@@ -428,8 +428,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Direction of traffic to which this firewall applies; default is
-        /// INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
-        /// `source_tags` or `source_service_accounts` is required.
+        /// INGRESS. Note: For INGRESS traffic, one of `SourceRanges`,
+        /// `SourceTags` or `SourceServiceAccounts` is required.
         /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
         [Input("direction")]
@@ -446,7 +446,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This field denotes whether to enable logging for a particular firewall rule.
-        /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
+        /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `LogConfig`
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
@@ -472,7 +472,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name or self_link of the network to attach this firewall to.
+        /// The name or SelfLink of the network to attach this firewall to.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -514,7 +514,7 @@ namespace Pulumi.Gcp.Compute
         /// source IP that belongs to a tag listed in the sourceTags property. The
         /// connection does not need to match both properties for the firewall to
         /// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
-        /// `source_ranges`, `source_tags` or `source_service_accounts` is required.
+        /// `SourceRanges`, `SourceTags` or `SourceServiceAccounts` is required.
         /// </summary>
         public InputList<string> SourceRanges
         {
@@ -537,7 +537,7 @@ namespace Pulumi.Gcp.Compute
         /// sourceServiceAccount. The connection does not need to match both
         /// properties for the firewall to apply. sourceServiceAccounts cannot be
         /// used at the same time as sourceTags or targetTags. For INGRESS traffic,
-        /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+        /// one of `SourceRanges`, `SourceTags` or `SourceServiceAccounts` is required.
         /// </summary>
         public InputList<string> SourceServiceAccounts
         {
@@ -558,7 +558,7 @@ namespace Pulumi.Gcp.Compute
         /// source IP address within sourceRanges OR the source IP that belongs to
         /// a tag listed in the sourceTags property. The connection does not need
         /// to match both properties for the firewall to apply. For INGRESS traffic,
-        /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+        /// one of `SourceRanges`, `SourceTags` or `SourceServiceAccounts` is required.
         /// </summary>
         public InputList<string> SourceTags
         {
@@ -664,8 +664,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Direction of traffic to which this firewall applies; default is
-        /// INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
-        /// `source_tags` or `source_service_accounts` is required.
+        /// INGRESS. Note: For INGRESS traffic, one of `SourceRanges`,
+        /// `SourceTags` or `SourceServiceAccounts` is required.
         /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
         [Input("direction")]
@@ -682,7 +682,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This field denotes whether to enable logging for a particular firewall rule.
-        /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
+        /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `LogConfig`
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
@@ -708,7 +708,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name or self_link of the network to attach this firewall to.
+        /// The name or SelfLink of the network to attach this firewall to.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -756,7 +756,7 @@ namespace Pulumi.Gcp.Compute
         /// source IP that belongs to a tag listed in the sourceTags property. The
         /// connection does not need to match both properties for the firewall to
         /// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
-        /// `source_ranges`, `source_tags` or `source_service_accounts` is required.
+        /// `SourceRanges`, `SourceTags` or `SourceServiceAccounts` is required.
         /// </summary>
         public InputList<string> SourceRanges
         {
@@ -779,7 +779,7 @@ namespace Pulumi.Gcp.Compute
         /// sourceServiceAccount. The connection does not need to match both
         /// properties for the firewall to apply. sourceServiceAccounts cannot be
         /// used at the same time as sourceTags or targetTags. For INGRESS traffic,
-        /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+        /// one of `SourceRanges`, `SourceTags` or `SourceServiceAccounts` is required.
         /// </summary>
         public InputList<string> SourceServiceAccounts
         {
@@ -800,7 +800,7 @@ namespace Pulumi.Gcp.Compute
         /// source IP address within sourceRanges OR the source IP that belongs to
         /// a tag listed in the sourceTags property. The connection does not need
         /// to match both properties for the firewall to apply. For INGRESS traffic,
-        /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+        /// one of `SourceRanges`, `SourceTags` or `SourceServiceAccounts` is required.
         /// </summary>
         public InputList<string> SourceTags
         {

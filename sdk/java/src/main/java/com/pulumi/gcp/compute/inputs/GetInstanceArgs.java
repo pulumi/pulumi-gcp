@@ -16,14 +16,14 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetInstanceArgs Empty = new GetInstanceArgs();
 
     /**
-     * The name of the instance. One of `name` or `self_link` must be provided.
+     * The name of the instance. One of `name` or `selfLink` must be provided.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the instance. One of `name` or `self_link` must be provided.
+     * @return The name of the instance. One of `name` or `selfLink` must be provided.
      * 
      */
     public Optional<Output<String>> name() {
@@ -32,7 +32,7 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The ID of the project in which the resource belongs.
-     * If `self_link` is provided, this value is ignored.  If neither `self_link`
+     * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      * 
      */
@@ -41,7 +41,7 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The ID of the project in which the resource belongs.
-     * If `self_link` is provided, this value is ignored.  If neither `self_link`
+     * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      * 
      */
@@ -50,14 +50,14 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The self link of the instance. One of `name` or `self_link` must be provided.
+     * The self link of the instance. One of `name` or `selfLink` must be provided.
      * 
      */
     @Import(name="selfLink")
     private @Nullable Output<String> selfLink;
 
     /**
-     * @return The self link of the instance. One of `name` or `self_link` must be provided.
+     * @return The self link of the instance. One of `name` or `selfLink` must be provided.
      * 
      */
     public Optional<Output<String>> selfLink() {
@@ -65,8 +65,8 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The zone of the instance. If `self_link` is provided, this
-     * value is ignored.  If neither `self_link` nor `zone` are provided, the
+     * The zone of the instance. If `selfLink` is provided, this
+     * value is ignored.  If neither `selfLink` nor `zone` are provided, the
      * provider zone is used.
      * 
      */
@@ -74,8 +74,8 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> zone;
 
     /**
-     * @return The zone of the instance. If `self_link` is provided, this
-     * value is ignored.  If neither `self_link` nor `zone` are provided, the
+     * @return The zone of the instance. If `selfLink` is provided, this
+     * value is ignored.  If neither `selfLink` nor `zone` are provided, the
      * provider zone is used.
      * 
      */
@@ -111,7 +111,7 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the instance. One of `name` or `self_link` must be provided.
+         * @param name The name of the instance. One of `name` or `selfLink` must be provided.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the instance. One of `name` or `self_link` must be provided.
+         * @param name The name of the instance. One of `name` or `selfLink` must be provided.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param project The ID of the project in which the resource belongs.
-         * If `self_link` is provided, this value is ignored.  If neither `self_link`
+         * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
          * nor `project` are provided, the provider project is used.
          * 
          * @return builder
@@ -146,7 +146,7 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param project The ID of the project in which the resource belongs.
-         * If `self_link` is provided, this value is ignored.  If neither `self_link`
+         * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
          * nor `project` are provided, the provider project is used.
          * 
          * @return builder
@@ -157,7 +157,7 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param selfLink The self link of the instance. One of `name` or `self_link` must be provided.
+         * @param selfLink The self link of the instance. One of `name` or `selfLink` must be provided.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param selfLink The self link of the instance. One of `name` or `self_link` must be provided.
+         * @param selfLink The self link of the instance. One of `name` or `selfLink` must be provided.
          * 
          * @return builder
          * 
@@ -178,8 +178,8 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zone The zone of the instance. If `self_link` is provided, this
-         * value is ignored.  If neither `self_link` nor `zone` are provided, the
+         * @param zone The zone of the instance. If `selfLink` is provided, this
+         * value is ignored.  If neither `selfLink` nor `zone` are provided, the
          * provider zone is used.
          * 
          * @return builder
@@ -191,8 +191,8 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zone The zone of the instance. If `self_link` is provided, this
-         * value is ignored.  If neither `self_link` nor `zone` are provided, the
+         * @param zone The zone of the instance. If `selfLink` is provided, this
+         * value is ignored.  If neither `selfLink` nor `zone` are provided, the
          * provider zone is used.
          * 
          * @return builder

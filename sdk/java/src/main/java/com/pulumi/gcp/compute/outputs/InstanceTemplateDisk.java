@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceTemplateDisk {
     /**
-     * @return The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * @return The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
      * 
      */
     private @Nullable String architecture;
@@ -122,18 +122,18 @@ public final class InstanceTemplateDisk {
     /**
      * @return The name (**not self_link**)
      * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     private @Nullable String source;
     /**
      * @return The image from which to
-     * initialize this disk. This can be one of: the image&#39;s `self_link`,
+     * initialize this disk. This can be one of: the image&#39;s `selfLink`,
      * `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`.
-     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     private @Nullable String sourceImage;
@@ -151,7 +151,7 @@ public final class InstanceTemplateDisk {
     private @Nullable InstanceTemplateDiskSourceImageEncryptionKey sourceImageEncryptionKey;
     /**
      * @return The source snapshot to create this disk.
-     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     private @Nullable String sourceSnapshot;
@@ -171,7 +171,7 @@ public final class InstanceTemplateDisk {
 
     private InstanceTemplateDisk() {}
     /**
-     * @return The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * @return The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
      * 
      */
     public Optional<String> architecture() {
@@ -306,7 +306,7 @@ public final class InstanceTemplateDisk {
     /**
      * @return The name (**not self_link**)
      * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     public Optional<String> source() {
@@ -314,12 +314,12 @@ public final class InstanceTemplateDisk {
     }
     /**
      * @return The image from which to
-     * initialize this disk. This can be one of: the image&#39;s `self_link`,
+     * initialize this disk. This can be one of: the image&#39;s `selfLink`,
      * `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`.
-     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     public Optional<String> sourceImage() {
@@ -341,7 +341,7 @@ public final class InstanceTemplateDisk {
     }
     /**
      * @return The source snapshot to create this disk.
-     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     public Optional<String> sourceSnapshot() {

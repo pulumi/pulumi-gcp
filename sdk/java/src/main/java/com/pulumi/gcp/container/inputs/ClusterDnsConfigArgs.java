@@ -16,14 +16,14 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterDnsConfigArgs Empty = new ClusterDnsConfigArgs();
 
     /**
-     * This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = &#34;CLOUD_DNS&#34;` and `cluster_dns_scope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
+     * This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = &#34;CLOUD_DNS&#34;` and `clusterDnsScope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
      * 
      */
     @Import(name="additiveVpcScopeDnsDomain")
     private @Nullable Output<String> additiveVpcScopeDnsDomain;
 
     /**
-     * @return This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = &#34;CLOUD_DNS&#34;` and `cluster_dns_scope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
+     * @return This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = &#34;CLOUD_DNS&#34;` and `clusterDnsScope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
      * 
      */
     public Optional<Output<String>> additiveVpcScopeDnsDomain() {
@@ -61,14 +61,14 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
+     * The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
      * 
      */
     @Import(name="clusterDnsScope")
     private @Nullable Output<String> clusterDnsScope;
 
     /**
-     * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
+     * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
      * 
      */
     public Optional<Output<String>> clusterDnsScope() {
@@ -103,7 +103,7 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additiveVpcScopeDnsDomain This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = &#34;CLOUD_DNS&#34;` and `cluster_dns_scope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
+         * @param additiveVpcScopeDnsDomain This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = &#34;CLOUD_DNS&#34;` and `clusterDnsScope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additiveVpcScopeDnsDomain This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = &#34;CLOUD_DNS&#34;` and `cluster_dns_scope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
+         * @param additiveVpcScopeDnsDomain This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = &#34;CLOUD_DNS&#34;` and `clusterDnsScope = &#34;CLUSTER_SCOPE&#34;` must both be set as well.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clusterDnsScope The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
+         * @param clusterDnsScope The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clusterDnsScope The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
+         * @param clusterDnsScope The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
          * 
          * @return builder
          * 

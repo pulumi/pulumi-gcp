@@ -18,13 +18,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SecurityPolicyRuleRateLimitOptions {
     /**
-     * @return Can only be specified if the action for the rule is &#34;rate_based_ban&#34;.
+     * @return Can only be specified if the action for the rule is &#34;rateBasedBan&#34;.
      * If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
      * 
      */
     private @Nullable Integer banDurationSec;
     /**
-     * @return Can only be specified if the action for the rule is &#34;rate_based_ban&#34;.
+     * @return Can only be specified if the action for the rule is &#34;rateBasedBan&#34;.
      * If specified, the key will be banned for the configured &#39;banDurationSec&#39; when the number of requests that exceed the &#39;rateLimitThreshold&#39; also exceed this &#39;banThreshold&#39;.
      * Structure is documented below.
      * 
@@ -89,7 +89,7 @@ public final class SecurityPolicyRuleRateLimitOptions {
 
     private SecurityPolicyRuleRateLimitOptions() {}
     /**
-     * @return Can only be specified if the action for the rule is &#34;rate_based_ban&#34;.
+     * @return Can only be specified if the action for the rule is &#34;rateBasedBan&#34;.
      * If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
      * 
      */
@@ -97,7 +97,7 @@ public final class SecurityPolicyRuleRateLimitOptions {
         return Optional.ofNullable(this.banDurationSec);
     }
     /**
-     * @return Can only be specified if the action for the rule is &#34;rate_based_ban&#34;.
+     * @return Can only be specified if the action for the rule is &#34;rateBasedBan&#34;.
      * If specified, the key will be banned for the configured &#39;banDurationSec&#39; when the number of requests that exceed the &#39;rateLimitThreshold&#39; also exceed this &#39;banThreshold&#39;.
      * Structure is documented below.
      * 

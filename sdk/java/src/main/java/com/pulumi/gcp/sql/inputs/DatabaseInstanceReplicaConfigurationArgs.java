@@ -72,7 +72,7 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
     /**
      * PEM representation of the replica&#39;s private key. The
-     * corresponding public key in encoded in the `client_certificate`.
+     * corresponding public key in encoded in the `clientCertificate`.
      * 
      */
     @Import(name="clientKey")
@@ -80,7 +80,7 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
     /**
      * @return PEM representation of the replica&#39;s private key. The
-     * corresponding public key in encoded in the `client_certificate`.
+     * corresponding public key in encoded in the `clientCertificate`.
      * 
      */
     public Optional<Output<String>> clientKey() {
@@ -333,7 +333,7 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
         /**
          * @param clientKey PEM representation of the replica&#39;s private key. The
-         * corresponding public key in encoded in the `client_certificate`.
+         * corresponding public key in encoded in the `clientCertificate`.
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
         /**
          * @param clientKey PEM representation of the replica&#39;s private key. The
-         * corresponding public key in encoded in the `client_certificate`.
+         * corresponding public key in encoded in the `clientCertificate`.
          * 
          * @return builder
          * 

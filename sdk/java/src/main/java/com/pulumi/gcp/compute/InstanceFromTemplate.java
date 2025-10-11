@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
  * 
  * This resource is specifically to create a compute instance from a given
- * `source_instance_template`. To create an instance without a template, use the
+ * `sourceInstanceTemplate`. To create an instance without a template, use the
  * `gcp.compute.Instance` resource.
  * 
  * ## Example Usage
@@ -167,14 +167,14 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
         return this.canIpForward;
     }
     /**
-     * The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+     * The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      * 
      */
     @Export(name="confidentialInstanceConfig", refs={InstanceFromTemplateConfidentialInstanceConfig.class}, tree="[0]")
     private Output<InstanceFromTemplateConfidentialInstanceConfig> confidentialInstanceConfig;
 
     /**
-     * @return The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+     * @return The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      * 
      */
     public Output<InstanceFromTemplateConfidentialInstanceConfig> confidentialInstanceConfig() {
@@ -535,14 +535,14 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
         return this.partnerMetadata;
     }
     /**
-     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+     * @return The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      * 
      */
     public Output<String> project() {
@@ -577,14 +577,14 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
         return this.reservationAffinity;
     }
     /**
-     * A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
     @Export(name="resourcePolicies", refs={String.class}, tree="[0]")
     private Output<String> resourcePolicies;
 
     /**
-     * @return A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+     * @return A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
     public Output<String> resourcePolicies() {
@@ -663,7 +663,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
     /**
      * Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
-     * instance templates through their unique id (`self_link_unique` attribute).
+     * instance templates through their unique id (`selfLinkUnique` attribute).
      * 
      * ***
      * 
@@ -674,7 +674,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
     /**
      * @return Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
-     * instance templates through their unique id (`self_link_unique` attribute).
+     * instance templates through their unique id (`selfLinkUnique` attribute).
      * 
      * ***
      * 

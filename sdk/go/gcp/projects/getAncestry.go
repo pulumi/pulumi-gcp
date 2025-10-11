@@ -13,6 +13,8 @@ import (
 
 // Retrieve the ancestors for a project.
 // See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+//
+// ## Example Usage
 func GetAncestry(ctx *pulumi.Context, args *GetAncestryArgs, opts ...pulumi.InvokeOption) (*GetAncestryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAncestryResult

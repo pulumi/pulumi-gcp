@@ -262,7 +262,7 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Location of the membership.
-        /// The default value is `global`.
+        /// The default value is `Global`.
         /// Used to find the parent resource to bind the IAM policy to. If not specified,
         /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
         /// location is specified, it is taken from the provider configuration.
@@ -271,7 +271,7 @@ namespace Pulumi.Gcp.GkeHub
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -359,7 +359,7 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Location of the membership.
-        /// The default value is `global`.
+        /// The default value is `Global`.
         /// Used to find the parent resource to bind the IAM policy to. If not specified,
         /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
         /// location is specified, it is taken from the provider configuration.
@@ -371,7 +371,7 @@ namespace Pulumi.Gcp.GkeHub
         private InputList<string>? _members;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -430,7 +430,7 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Location of the membership.
-        /// The default value is `global`.
+        /// The default value is `Global`.
         /// Used to find the parent resource to bind the IAM policy to. If not specified,
         /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
         /// location is specified, it is taken from the provider configuration.
@@ -442,7 +442,7 @@ namespace Pulumi.Gcp.GkeHub
         private InputList<string>? _members;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.

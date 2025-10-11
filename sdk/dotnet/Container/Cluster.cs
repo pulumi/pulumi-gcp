@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container
     ///     * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
     ///     * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
     /// 
-    /// &gt; On version 5.0.0+ of the provider, you must explicitly set `deletion_protection = false`
+    /// &gt; On version 5.0.0+ of the provider, you must explicitly set `DeletionProtection = false`
     /// and run `pulumi up` to write the field to state in order to destroy a cluster.
     /// 
     /// &gt; All arguments and attributes (including certificate outputs) will be stored in the raw state as
@@ -188,8 +188,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Enable NET_ADMIN for the cluster. Defaults to
-        /// `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
-        /// set to `true`).
+        /// `False`. This field should only be enabled for Autopilot clusters (`EnableAutopilot`
+        /// set to `True`).
         /// </summary>
         [Output("allowNetAdmin")]
         public Output<bool?> AllowNetAdmin { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.Gcp.Container
         /// The IP address range of the Kubernetes pods
         /// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
         /// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-        /// default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
+        /// default a new cluster to routes-based, where `IpAllocationPolicy` is not defined.
         /// </summary>
         [Output("clusterIpv4Cidr")]
         public Output<string> ClusterIpv4Cidr { get; private set; } = null!;
@@ -318,7 +318,7 @@ namespace Pulumi.Gcp.Container
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Enable Autopilot for this cluster. Defaults to `false`.
+        /// Enable Autopilot for this cluster. Defaults to `False`.
         /// Note that when this option is enabled, certain features of Standard GKE are not available.
         /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
         /// for available features.
@@ -333,7 +333,7 @@ namespace Pulumi.Gcp.Container
         public Output<bool?> EnableCiliumClusterwideNetworkPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+        /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `Anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         /// </summary>
         [Output("enableFqdnNetworkPolicy")]
         public Output<bool?> EnableFqdnNetworkPolicy { get; private set; } = null!;
@@ -369,7 +369,7 @@ namespace Pulumi.Gcp.Container
         /// Whether the ABAC authorizer is enabled for this cluster.
         /// When enabled, identities in the system, including service accounts, nodes, and controllers,
         /// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
-        /// Defaults to `false`
+        /// Defaults to `False`
         /// </summary>
         [Output("enableLegacyAbac")]
         public Output<bool?> EnableLegacyAbac { get; private set; } = null!;
@@ -381,7 +381,7 @@ namespace Pulumi.Gcp.Container
         public Output<bool?> EnableMultiNetworking { get; private set; } = null!;
 
         /// <summary>
-        /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
+        /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `True`.
         /// </summary>
         [Output("enableShieldedNodes")]
         public Output<bool?> EnableShieldedNodes { get; private set; } = null!;
@@ -439,10 +439,10 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-        /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+        /// number of nodes per zone. Must be set if `NodePool` is not set. If you're using
         /// `gcp.container.NodePool` objects with no default node pool, you'll need to
         /// set this to a value of at least `1`, alongside setting
-        /// `remove_default_node_pool` to `true`.
+        /// `RemoveDefaultNodePool` to `True`.
         /// </summary>
         [Output("initialNodeCount")]
         public Output<int?> InitialNodeCount { get; private set; } = null!;
@@ -482,7 +482,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The logging service that the cluster should
         /// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
-        /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
+        /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `None`. Defaults to `logging.googleapis.com/kubernetes`
         /// </summary>
         [Output("loggingService")]
         public Output<string> LoggingService { get; private set; } = null!;
@@ -508,7 +508,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The desired
         /// configuration options for master authorized networks. Omit the
-        /// nested `cidr_blocks` attribute to disallow external access (except
+        /// nested `CidrBlocks` attribute to disallow external access (except
         /// the cluster node IPs, which GKE automatically whitelists).
         /// Structure is documented below.
         /// </summary>
@@ -517,7 +517,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The current version of the master in the cluster. This may
-        /// be different than the `min_master_version` set in the config if the master
+        /// be different than the `MinMasterVersion` set in the config if the master
         /// has been updated by GKE.
         /// </summary>
         [Output("masterVersion")]
@@ -532,7 +532,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The minimum version of the master. GKE
         /// will auto-update the master to new versions, so this does not guarantee the
-        /// current master version--use the read-only `master_version` field to obtain that.
+        /// current master version--use the read-only `MasterVersion` field to obtain that.
         /// If unset, the cluster's version will be set by GKE to the version of the most recent
         /// official release (which is not necessarily the latest version).  Most users will find
         /// the `gcp.container.getEngineVersions` data source useful - it indicates which versions
@@ -540,7 +540,7 @@ namespace Pulumi.Gcp.Container
         /// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         /// describe the various acceptable formats for this field.
         /// 
-        /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
+        /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `Location`
         /// to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
         /// region are guaranteed to support the same version.
         /// </summary>
@@ -560,7 +560,7 @@ namespace Pulumi.Gcp.Container
         /// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
         /// VM metrics will be collected by Google Compute Engine regardless of this setting
         /// Available options include
-        /// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
+        /// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `None`.
         /// Defaults to `monitoring.googleapis.com/kubernetes`
         /// </summary>
         [Output("monitoringService")]
@@ -576,7 +576,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
+        /// The name or SelfLink of the Google Compute Engine
         /// network to which the cluster is connected. For Shared VPC, set this to the self link of the
         /// shared network.
         /// </summary>
@@ -607,7 +607,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Parameters used in creating the default node pool.
         /// Generally, this field should not be used at the same time as a
-        /// `gcp.container.NodePool` or a `node_pool` block; this configuration
+        /// `gcp.container.NodePool` or a `NodePool` block; this configuration
         /// manages the default node pool, which isn't recommended to be used.
         /// Structure is documented below.
         /// </summary>
@@ -657,13 +657,13 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Kubernetes version on the nodes. Must either be unset
-        /// or set to the same value as `min_master_version` on create. Defaults to the default
+        /// or set to the same value as `MinMasterVersion` on create. Defaults to the default
         /// version set by GKE which is not necessarily the latest version. This only affects
         /// nodes in the default node pool. While a fuzzy version can be specified, it's
         /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions.
-        /// To update nodes in other node pools, use the `version` attribute on the node pool.
+        /// `VersionPrefix` field to approximate fuzzy versions.
+        /// To update nodes in other node pools, use the `Version` attribute on the node pool.
         /// </summary>
         [Output("nodeVersion")]
         public Output<string> NodeVersion { get; private set; } = null!;
@@ -727,7 +727,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
         /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// &lt;a name="NestedDefaultSnatStatus"&gt;&lt;/a&gt;The `DefaultSnatStatus` block supports
         /// </summary>
         [Output("rbacBindingConfig")]
         public Output<Outputs.ClusterRbacBindingConfig> RbacBindingConfig { get; private set; } = null!;
@@ -738,7 +738,7 @@ namespace Pulumi.Gcp.Container
         /// When updating this field, GKE imposes specific version requirements. See
         /// [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
         /// for more details; the `gcp.container.getEngineVersions` datasource can provide
-        /// the default version for a channel. Note that removing the `release_channel`
+        /// the default version for a channel. Note that removing the `ReleaseChannel`
         /// field from your config will cause the provider to stop managing your cluster's
         /// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
         /// channel. Structure is documented below.
@@ -747,10 +747,10 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterReleaseChannel> ReleaseChannel { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, deletes the default node
+        /// If `True`, deletes the default node
         /// pool upon cluster creation. If you're using `gcp.container.NodePool`
-        /// resources with no default node pool, this should be set to `true`, alongside
-        /// setting `initial_node_count` to at least `1`.
+        /// resources with no default node pool, this should be set to `True`, alongside
+        /// setting `InitialNodeCount` to at least `1`.
         /// </summary>
         [Output("removeDefaultNodePool")]
         public Output<bool?> RemoveDefaultNodePool { get; private set; } = null!;
@@ -808,7 +808,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> ServicesIpv4Cidr { get; private set; } = null!;
 
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
+        /// The name or SelfLink of the Google Compute Engine
         /// subnetwork in which the cluster's instances are launched.
         /// </summary>
         [Output("subnetwork")]
@@ -915,8 +915,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Enable NET_ADMIN for the cluster. Defaults to
-        /// `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
-        /// set to `true`).
+        /// `False`. This field should only be enabled for Autopilot clusters (`EnableAutopilot`
+        /// set to `True`).
         /// </summary>
         [Input("allowNetAdmin")]
         public Input<bool>? AllowNetAdmin { get; set; }
@@ -956,7 +956,7 @@ namespace Pulumi.Gcp.Container
         /// The IP address range of the Kubernetes pods
         /// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
         /// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-        /// default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
+        /// default a new cluster to routes-based, where `IpAllocationPolicy` is not defined.
         /// </summary>
         [Input("clusterIpv4Cidr")]
         public Input<string>? ClusterIpv4Cidr { get; set; }
@@ -1039,7 +1039,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterDnsConfigArgs>? DnsConfig { get; set; }
 
         /// <summary>
-        /// Enable Autopilot for this cluster. Defaults to `false`.
+        /// Enable Autopilot for this cluster. Defaults to `False`.
         /// Note that when this option is enabled, certain features of Standard GKE are not available.
         /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
         /// for available features.
@@ -1054,7 +1054,7 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableCiliumClusterwideNetworkPolicy { get; set; }
 
         /// <summary>
-        /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+        /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `Anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         /// </summary>
         [Input("enableFqdnNetworkPolicy")]
         public Input<bool>? EnableFqdnNetworkPolicy { get; set; }
@@ -1090,7 +1090,7 @@ namespace Pulumi.Gcp.Container
         /// Whether the ABAC authorizer is enabled for this cluster.
         /// When enabled, identities in the system, including service accounts, nodes, and controllers,
         /// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
-        /// Defaults to `false`
+        /// Defaults to `False`
         /// </summary>
         [Input("enableLegacyAbac")]
         public Input<bool>? EnableLegacyAbac { get; set; }
@@ -1102,7 +1102,7 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableMultiNetworking { get; set; }
 
         /// <summary>
-        /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
+        /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `True`.
         /// </summary>
         [Input("enableShieldedNodes")]
         public Input<bool>? EnableShieldedNodes { get; set; }
@@ -1154,10 +1154,10 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-        /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+        /// number of nodes per zone. Must be set if `NodePool` is not set. If you're using
         /// `gcp.container.NodePool` objects with no default node pool, you'll need to
         /// set this to a value of at least `1`, alongside setting
-        /// `remove_default_node_pool` to `true`.
+        /// `RemoveDefaultNodePool` to `True`.
         /// </summary>
         [Input("initialNodeCount")]
         public Input<int>? InitialNodeCount { get; set; }
@@ -1191,7 +1191,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The logging service that the cluster should
         /// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
-        /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
+        /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `None`. Defaults to `logging.googleapis.com/kubernetes`
         /// </summary>
         [Input("loggingService")]
         public Input<string>? LoggingService { get; set; }
@@ -1217,7 +1217,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The desired
         /// configuration options for master authorized networks. Omit the
-        /// nested `cidr_blocks` attribute to disallow external access (except
+        /// nested `CidrBlocks` attribute to disallow external access (except
         /// the cluster node IPs, which GKE automatically whitelists).
         /// Structure is documented below.
         /// </summary>
@@ -1233,7 +1233,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The minimum version of the master. GKE
         /// will auto-update the master to new versions, so this does not guarantee the
-        /// current master version--use the read-only `master_version` field to obtain that.
+        /// current master version--use the read-only `MasterVersion` field to obtain that.
         /// If unset, the cluster's version will be set by GKE to the version of the most recent
         /// official release (which is not necessarily the latest version).  Most users will find
         /// the `gcp.container.getEngineVersions` data source useful - it indicates which versions
@@ -1241,7 +1241,7 @@ namespace Pulumi.Gcp.Container
         /// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         /// describe the various acceptable formats for this field.
         /// 
-        /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
+        /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `Location`
         /// to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
         /// region are guaranteed to support the same version.
         /// </summary>
@@ -1261,7 +1261,7 @@ namespace Pulumi.Gcp.Container
         /// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
         /// VM metrics will be collected by Google Compute Engine regardless of this setting
         /// Available options include
-        /// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
+        /// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `None`.
         /// Defaults to `monitoring.googleapis.com/kubernetes`
         /// </summary>
         [Input("monitoringService")]
@@ -1277,7 +1277,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
+        /// The name or SelfLink of the Google Compute Engine
         /// network to which the cluster is connected. For Shared VPC, set this to the self link of the
         /// shared network.
         /// </summary>
@@ -1308,7 +1308,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Parameters used in creating the default node pool.
         /// Generally, this field should not be used at the same time as a
-        /// `gcp.container.NodePool` or a `node_pool` block; this configuration
+        /// `gcp.container.NodePool` or a `NodePool` block; this configuration
         /// manages the default node pool, which isn't recommended to be used.
         /// Structure is documented below.
         /// </summary>
@@ -1370,13 +1370,13 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Kubernetes version on the nodes. Must either be unset
-        /// or set to the same value as `min_master_version` on create. Defaults to the default
+        /// or set to the same value as `MinMasterVersion` on create. Defaults to the default
         /// version set by GKE which is not necessarily the latest version. This only affects
         /// nodes in the default node pool. While a fuzzy version can be specified, it's
         /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions.
-        /// To update nodes in other node pools, use the `version` attribute on the node pool.
+        /// `VersionPrefix` field to approximate fuzzy versions.
+        /// To update nodes in other node pools, use the `Version` attribute on the node pool.
         /// </summary>
         [Input("nodeVersion")]
         public Input<string>? NodeVersion { get; set; }
@@ -1431,7 +1431,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
         /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// &lt;a name="NestedDefaultSnatStatus"&gt;&lt;/a&gt;The `DefaultSnatStatus` block supports
         /// </summary>
         [Input("rbacBindingConfig")]
         public Input<Inputs.ClusterRbacBindingConfigArgs>? RbacBindingConfig { get; set; }
@@ -1442,7 +1442,7 @@ namespace Pulumi.Gcp.Container
         /// When updating this field, GKE imposes specific version requirements. See
         /// [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
         /// for more details; the `gcp.container.getEngineVersions` datasource can provide
-        /// the default version for a channel. Note that removing the `release_channel`
+        /// the default version for a channel. Note that removing the `ReleaseChannel`
         /// field from your config will cause the provider to stop managing your cluster's
         /// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
         /// channel. Structure is documented below.
@@ -1451,10 +1451,10 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterReleaseChannelArgs>? ReleaseChannel { get; set; }
 
         /// <summary>
-        /// If `true`, deletes the default node
+        /// If `True`, deletes the default node
         /// pool upon cluster creation. If you're using `gcp.container.NodePool`
-        /// resources with no default node pool, this should be set to `true`, alongside
-        /// setting `initial_node_count` to at least `1`.
+        /// resources with no default node pool, this should be set to `True`, alongside
+        /// setting `InitialNodeCount` to at least `1`.
         /// </summary>
         [Input("removeDefaultNodePool")]
         public Input<bool>? RemoveDefaultNodePool { get; set; }
@@ -1503,7 +1503,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterServiceExternalIpsConfigArgs>? ServiceExternalIpsConfig { get; set; }
 
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
+        /// The name or SelfLink of the Google Compute Engine
         /// subnetwork in which the cluster's instances are launched.
         /// </summary>
         [Input("subnetwork")]
@@ -1559,8 +1559,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Enable NET_ADMIN for the cluster. Defaults to
-        /// `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
-        /// set to `true`).
+        /// `False`. This field should only be enabled for Autopilot clusters (`EnableAutopilot`
+        /// set to `True`).
         /// </summary>
         [Input("allowNetAdmin")]
         public Input<bool>? AllowNetAdmin { get; set; }
@@ -1600,7 +1600,7 @@ namespace Pulumi.Gcp.Container
         /// The IP address range of the Kubernetes pods
         /// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
         /// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-        /// default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
+        /// default a new cluster to routes-based, where `IpAllocationPolicy` is not defined.
         /// </summary>
         [Input("clusterIpv4Cidr")]
         public Input<string>? ClusterIpv4Cidr { get; set; }
@@ -1699,7 +1699,7 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// Enable Autopilot for this cluster. Defaults to `false`.
+        /// Enable Autopilot for this cluster. Defaults to `False`.
         /// Note that when this option is enabled, certain features of Standard GKE are not available.
         /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
         /// for available features.
@@ -1714,7 +1714,7 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableCiliumClusterwideNetworkPolicy { get; set; }
 
         /// <summary>
-        /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+        /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `Anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         /// </summary>
         [Input("enableFqdnNetworkPolicy")]
         public Input<bool>? EnableFqdnNetworkPolicy { get; set; }
@@ -1750,7 +1750,7 @@ namespace Pulumi.Gcp.Container
         /// Whether the ABAC authorizer is enabled for this cluster.
         /// When enabled, identities in the system, including service accounts, nodes, and controllers,
         /// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
-        /// Defaults to `false`
+        /// Defaults to `False`
         /// </summary>
         [Input("enableLegacyAbac")]
         public Input<bool>? EnableLegacyAbac { get; set; }
@@ -1762,7 +1762,7 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableMultiNetworking { get; set; }
 
         /// <summary>
-        /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
+        /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `True`.
         /// </summary>
         [Input("enableShieldedNodes")]
         public Input<bool>? EnableShieldedNodes { get; set; }
@@ -1820,10 +1820,10 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-        /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+        /// number of nodes per zone. Must be set if `NodePool` is not set. If you're using
         /// `gcp.container.NodePool` objects with no default node pool, you'll need to
         /// set this to a value of at least `1`, alongside setting
-        /// `remove_default_node_pool` to `true`.
+        /// `RemoveDefaultNodePool` to `True`.
         /// </summary>
         [Input("initialNodeCount")]
         public Input<int>? InitialNodeCount { get; set; }
@@ -1863,7 +1863,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The logging service that the cluster should
         /// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
-        /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
+        /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `None`. Defaults to `logging.googleapis.com/kubernetes`
         /// </summary>
         [Input("loggingService")]
         public Input<string>? LoggingService { get; set; }
@@ -1889,7 +1889,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The desired
         /// configuration options for master authorized networks. Omit the
-        /// nested `cidr_blocks` attribute to disallow external access (except
+        /// nested `CidrBlocks` attribute to disallow external access (except
         /// the cluster node IPs, which GKE automatically whitelists).
         /// Structure is documented below.
         /// </summary>
@@ -1898,7 +1898,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The current version of the master in the cluster. This may
-        /// be different than the `min_master_version` set in the config if the master
+        /// be different than the `MinMasterVersion` set in the config if the master
         /// has been updated by GKE.
         /// </summary>
         [Input("masterVersion")]
@@ -1913,7 +1913,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The minimum version of the master. GKE
         /// will auto-update the master to new versions, so this does not guarantee the
-        /// current master version--use the read-only `master_version` field to obtain that.
+        /// current master version--use the read-only `MasterVersion` field to obtain that.
         /// If unset, the cluster's version will be set by GKE to the version of the most recent
         /// official release (which is not necessarily the latest version).  Most users will find
         /// the `gcp.container.getEngineVersions` data source useful - it indicates which versions
@@ -1921,7 +1921,7 @@ namespace Pulumi.Gcp.Container
         /// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         /// describe the various acceptable formats for this field.
         /// 
-        /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
+        /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `Location`
         /// to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
         /// region are guaranteed to support the same version.
         /// </summary>
@@ -1941,7 +1941,7 @@ namespace Pulumi.Gcp.Container
         /// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
         /// VM metrics will be collected by Google Compute Engine regardless of this setting
         /// Available options include
-        /// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
+        /// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `None`.
         /// Defaults to `monitoring.googleapis.com/kubernetes`
         /// </summary>
         [Input("monitoringService")]
@@ -1957,7 +1957,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
+        /// The name or SelfLink of the Google Compute Engine
         /// network to which the cluster is connected. For Shared VPC, set this to the self link of the
         /// shared network.
         /// </summary>
@@ -1988,7 +1988,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Parameters used in creating the default node pool.
         /// Generally, this field should not be used at the same time as a
-        /// `gcp.container.NodePool` or a `node_pool` block; this configuration
+        /// `gcp.container.NodePool` or a `NodePool` block; this configuration
         /// manages the default node pool, which isn't recommended to be used.
         /// Structure is documented below.
         /// </summary>
@@ -2050,13 +2050,13 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Kubernetes version on the nodes. Must either be unset
-        /// or set to the same value as `min_master_version` on create. Defaults to the default
+        /// or set to the same value as `MinMasterVersion` on create. Defaults to the default
         /// version set by GKE which is not necessarily the latest version. This only affects
         /// nodes in the default node pool. While a fuzzy version can be specified, it's
         /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions.
-        /// To update nodes in other node pools, use the `version` attribute on the node pool.
+        /// `VersionPrefix` field to approximate fuzzy versions.
+        /// To update nodes in other node pools, use the `Version` attribute on the node pool.
         /// </summary>
         [Input("nodeVersion")]
         public Input<string>? NodeVersion { get; set; }
@@ -2130,7 +2130,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
         /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// &lt;a name="NestedDefaultSnatStatus"&gt;&lt;/a&gt;The `DefaultSnatStatus` block supports
         /// </summary>
         [Input("rbacBindingConfig")]
         public Input<Inputs.ClusterRbacBindingConfigGetArgs>? RbacBindingConfig { get; set; }
@@ -2141,7 +2141,7 @@ namespace Pulumi.Gcp.Container
         /// When updating this field, GKE imposes specific version requirements. See
         /// [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
         /// for more details; the `gcp.container.getEngineVersions` datasource can provide
-        /// the default version for a channel. Note that removing the `release_channel`
+        /// the default version for a channel. Note that removing the `ReleaseChannel`
         /// field from your config will cause the provider to stop managing your cluster's
         /// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
         /// channel. Structure is documented below.
@@ -2150,10 +2150,10 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterReleaseChannelGetArgs>? ReleaseChannel { get; set; }
 
         /// <summary>
-        /// If `true`, deletes the default node
+        /// If `True`, deletes the default node
         /// pool upon cluster creation. If you're using `gcp.container.NodePool`
-        /// resources with no default node pool, this should be set to `true`, alongside
-        /// setting `initial_node_count` to at least `1`.
+        /// resources with no default node pool, this should be set to `True`, alongside
+        /// setting `InitialNodeCount` to at least `1`.
         /// </summary>
         [Input("removeDefaultNodePool")]
         public Input<bool>? RemoveDefaultNodePool { get; set; }
@@ -2217,7 +2217,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? ServicesIpv4Cidr { get; set; }
 
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
+        /// The name or SelfLink of the Google Compute Engine
         /// subnetwork in which the cluster's instances are launched.
         /// </summary>
         [Input("subnetwork")]

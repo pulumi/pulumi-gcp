@@ -24,7 +24,7 @@ public final class ClusterControlPlaneEncryption {
     /**
      * @return (Output)
      * The Cloud KMS CryptoKeyVersion currently in use for protecting control
-     * plane disks. Only applicable if kms_key is set.
+     * plane disks. Only applicable if kmsKey is set.
      * 
      */
     private @Nullable String kmsKeyActiveVersion;
@@ -40,11 +40,11 @@ public final class ClusterControlPlaneEncryption {
     /**
      * @return (Output)
      * Error status returned by Cloud KMS when using this key. This field may be
-     * populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
+     * populated only if `kmsKeyState` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
      * If populated, this field contains the error status reported by Cloud KMS.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+     * &lt;a name=&#34;nestedControlPlaneEncryptionKmsStatus&#34;&gt;&lt;/a&gt;The `kmsStatus` block contains:
      * 
      */
     private @Nullable List<ClusterControlPlaneEncryptionKmsStatus> kmsStatuses;
@@ -63,7 +63,7 @@ public final class ClusterControlPlaneEncryption {
     /**
      * @return (Output)
      * The Cloud KMS CryptoKeyVersion currently in use for protecting control
-     * plane disks. Only applicable if kms_key is set.
+     * plane disks. Only applicable if kmsKey is set.
      * 
      */
     public Optional<String> kmsKeyActiveVersion() {
@@ -83,11 +83,11 @@ public final class ClusterControlPlaneEncryption {
     /**
      * @return (Output)
      * Error status returned by Cloud KMS when using this key. This field may be
-     * populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
+     * populated only if `kmsKeyState` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
      * If populated, this field contains the error status reported by Cloud KMS.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+     * &lt;a name=&#34;nestedControlPlaneEncryptionKmsStatus&#34;&gt;&lt;/a&gt;The `kmsStatus` block contains:
      * 
      */
     public List<ClusterControlPlaneEncryptionKmsStatus> kmsStatuses() {

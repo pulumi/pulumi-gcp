@@ -237,7 +237,7 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -319,7 +319,7 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// User-defined labels for the alloydb instance.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -490,7 +490,7 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -563,7 +563,7 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// User-defined labels for the alloydb instance.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -641,7 +641,7 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -750,7 +750,7 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// User-defined labels for the alloydb instance.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

@@ -18,7 +18,7 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
     public static final CertificateTemplatePassthroughExtensionsArgs Empty = new CertificateTemplatePassthroughExtensionsArgs();
 
     /**
-     * Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+     * Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
     private @Nullable Output<List<CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs>> additionalExtensions;
 
     /**
-     * @return Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+     * @return Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
      * Structure is documented below.
      * 
      */
@@ -35,14 +35,14 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
     }
 
     /**
-     * Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+     * Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
      * 
      */
     @Import(name="knownExtensions")
     private @Nullable Output<List<String>> knownExtensions;
 
     /**
-     * @return Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+     * @return Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
      * 
      */
     public Optional<Output<List<String>>> knownExtensions() {
@@ -75,7 +75,7 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
         }
 
         /**
-         * @param additionalExtensions Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+         * @param additionalExtensions Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
          * Structure is documented below.
          * 
          * @return builder
@@ -87,7 +87,7 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
         }
 
         /**
-         * @param additionalExtensions Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+         * @param additionalExtensions Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
          * Structure is documented below.
          * 
          * @return builder
@@ -98,7 +98,7 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
         }
 
         /**
-         * @param additionalExtensions Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+         * @param additionalExtensions Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
          * Structure is documented below.
          * 
          * @return builder
@@ -109,7 +109,7 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
         }
 
         /**
-         * @param knownExtensions Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+         * @param knownExtensions Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
         }
 
         /**
-         * @param knownExtensions Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+         * @param knownExtensions Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
         }
 
         /**
-         * @param knownExtensions Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+         * @param knownExtensions Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
          * 
          * @return builder
          * 

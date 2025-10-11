@@ -21,9 +21,9 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         /// Leaf certificate comes first, followed by intermediate ones if any.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// 
-        /// &gt; **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+        /// &gt; **Warning:** `CertificatePem` is deprecated and will be removed in a future major release. Use `PemCertificate` instead.
         /// </summary>
-        [Obsolete(@"`certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.")]
+        [Obsolete(@"`CertificatePem` is deprecated and will be removed in a future major release. Use `PemCertificate` instead.")]
         public Input<string>? CertificatePem
         {
             get => _certificatePem;
@@ -67,9 +67,9 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         /// The private key of the leaf certificate in PEM-encoded form.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// 
-        /// &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+        /// &gt; **Warning:** `PrivateKeyPem` is deprecated and will be removed in a future major release. Use `PemPrivateKey` instead.
         /// </summary>
-        [Obsolete(@"`private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.")]
+        [Obsolete(@"`PrivateKeyPem` is deprecated and will be removed in a future major release. Use `PemPrivateKey` instead.")]
         public Input<string>? PrivateKeyPem
         {
             get => _privateKeyPem;

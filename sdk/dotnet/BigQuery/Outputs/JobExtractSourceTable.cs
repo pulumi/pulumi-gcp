@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+        /// The table. Can be specified `{{table_id}}` if `ProjectId` and `DatasetId` are also set,
         /// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
         /// </summary>
         public readonly string TableId;

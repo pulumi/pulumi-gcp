@@ -21,10 +21,10 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// The number of nodes to create in this
         /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-        /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+        /// number of nodes per zone. Must be set if `NodePool` is not set. If you're using
         /// `gcp.container.NodePool` objects with no default node pool, you'll need to
         /// set this to a value of at least `1`, alongside setting
-        /// `remove_default_node_pool` to `true`.
+        /// `RemoveDefaultNodePool` to `True`.
         /// </summary>
         [Input("initialNodeCount")]
         public Input<int>? InitialNodeCount { get; set; }
@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// Parameters used in creating the default node pool.
         /// Generally, this field should not be used at the same time as a
-        /// `gcp.container.NodePool` or a `node_pool` block; this configuration
+        /// `gcp.container.NodePool` or a `NodePool` block; this configuration
         /// manages the default node pool, which isn't recommended to be used.
         /// Structure is documented below.
         /// </summary>
@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodePoolQueuedProvisioningGetArgs>? QueuedProvisioning { get; set; }
 
         /// <summary>
-        /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+        /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of MaxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
         /// </summary>
         [Input("upgradeSettings")]
         public Input<Inputs.ClusterNodePoolUpgradeSettingsGetArgs>? UpgradeSettings { get; set; }

@@ -86,7 +86,7 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * The OS image to be used for each node in a node pool.
-     * Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
+     * Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
      * 
      */
     @Import(name="imageType", required=true)
@@ -94,7 +94,7 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The OS image to be used for each node in a node pool.
-     * Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
+     * Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
      * 
      */
     public Output<String> imageType() {
@@ -311,7 +311,7 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param imageType The OS image to be used for each node in a node pool.
-         * Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
+         * Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param imageType The OS image to be used for each node in a node pool.
-         * Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
+         * Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
          * 
          * @return builder
          * 

@@ -59,15 +59,15 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly bool SendAgeIfZero;
         /// <summary>
-        /// While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
+        /// While set true, DaysSinceCustomTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the DaysSinceCustomTime field. It can be used alone or together with days_since_custom_time.
         /// </summary>
         public readonly bool SendDaysSinceCustomTimeIfZero;
         /// <summary>
-        /// While set true, days_since_noncurrent_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_noncurrent_time field. It can be used alone or together with days_since_noncurrent_time.
+        /// While set true, DaysSinceNoncurrentTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the DaysSinceNoncurrentTime field. It can be used alone or together with days_since_noncurrent_time.
         /// </summary>
         public readonly bool SendDaysSinceNoncurrentTimeIfZero;
         /// <summary>
-        /// While set true, num_newer_versions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the num_newer_versions field. It can be used alone or together with num_newer_versions.
+        /// While set true, NumNewerVersions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the NumNewerVersions field. It can be used alone or together with num_newer_versions.
         /// </summary>
         public readonly bool SendNumNewerVersionsIfZero;
         /// <summary>

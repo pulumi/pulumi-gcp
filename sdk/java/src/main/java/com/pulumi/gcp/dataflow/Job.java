@@ -133,9 +133,9 @@ import javax.annotation.Nullable;
  * 
  * The Dataflow resource is considered &#39;existing&#39; while it is in a nonterminal state.  If it reaches a terminal state (e.g. &#39;FAILED&#39;, &#39;COMPLETE&#39;, &#39;CANCELLED&#39;), it will be recreated on the next &#39;apply&#39;.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
  * 
- * A Dataflow job which is &#39;destroyed&#39; may be &#34;cancelled&#34; or &#34;drained&#34;.  If &#34;cancelled&#34;, the job terminates - any data written remains where it is, but no new data will be processed.  If &#34;drained&#34;, no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is &#34;drain&#34;. When `on_delete` is set to `&#34;drain&#34;` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
+ * A Dataflow job which is &#39;destroyed&#39; may be &#34;cancelled&#34; or &#34;drained&#34;.  If &#34;cancelled&#34;, the job terminates - any data written remains where it is, but no new data will be processed.  If &#34;drained&#34;, no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is &#34;drain&#34;. When `onDelete` is set to `&#34;drain&#34;` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
  * 
- * You can potentially short-circuit the wait by setting `skip_wait_on_job_termination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a random_id resource, for example:
+ * You can potentially short-circuit the wait by setting `skipWaitOnJobTermination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a randomId resource, for example:
  * 
  * <pre>
  * {@code
@@ -200,14 +200,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:dataflow/job:Job")
 public class Job extends com.pulumi.resources.CustomResource {
     /**
-     * List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+     * List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
      * 
      */
     @Export(name="additionalExperiments", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> additionalExperiments;
 
     /**
-     * @return List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+     * @return List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
      * 
      */
     public Output<List<String>> additionalExperiments() {
@@ -286,7 +286,7 @@ public class Job extends com.pulumi.resources.CustomResource {
     /**
      * User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -295,7 +295,7 @@ public class Job extends com.pulumi.resources.CustomResource {
     /**
      * @return User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

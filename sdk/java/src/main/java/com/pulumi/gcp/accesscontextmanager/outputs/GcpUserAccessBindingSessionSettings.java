@@ -18,7 +18,7 @@ public final class GcpUserAccessBindingSessionSettings {
      */
     private @Nullable String maxInactivity;
     /**
-     * @return Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+     * @return Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
      * 
      */
     private @Nullable String sessionLength;
@@ -34,7 +34,7 @@ public final class GcpUserAccessBindingSessionSettings {
      */
     private @Nullable String sessionReauthMethod;
     /**
-     * @return Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the max_age OIDC param.
+     * @return Optional. Only useful for OIDC apps. When false, the OIDC maxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the maxAge OIDC param.
      * 
      */
     private @Nullable Boolean useOidcMaxAge;
@@ -48,7 +48,7 @@ public final class GcpUserAccessBindingSessionSettings {
         return Optional.ofNullable(this.maxInactivity);
     }
     /**
-     * @return Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+     * @return Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
      * 
      */
     public Optional<String> sessionLength() {
@@ -70,7 +70,7 @@ public final class GcpUserAccessBindingSessionSettings {
         return Optional.ofNullable(this.sessionReauthMethod);
     }
     /**
-     * @return Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the max_age OIDC param.
+     * @return Optional. Only useful for OIDC apps. When false, the OIDC maxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the maxAge OIDC param.
      * 
      */
     public Optional<Boolean> useOidcMaxAge() {

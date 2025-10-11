@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
     public sealed class InterceptEndpointGroupConnectedDeploymentGroupLocation
     {
         /// <summary>
-        /// The cloud location of the endpoint group, currently restricted to `global`.
+        /// The cloud location of the endpoint group, currently restricted to `Global`.
         /// </summary>
         public readonly string? Location;
         /// <summary>

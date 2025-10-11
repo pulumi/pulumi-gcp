@@ -40,7 +40,7 @@ public final class WorkflowTemplateJobSparkJob {
      */
     private @Nullable WorkflowTemplateJobSparkJobLoggingConfig loggingConfig;
     /**
-     * @return The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+     * @return The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
      * 
      */
     private @Nullable String mainClass;
@@ -92,7 +92,7 @@ public final class WorkflowTemplateJobSparkJob {
         return Optional.ofNullable(this.loggingConfig);
     }
     /**
-     * @return The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+     * @return The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
      * 
      */
     public Optional<String> mainClass() {

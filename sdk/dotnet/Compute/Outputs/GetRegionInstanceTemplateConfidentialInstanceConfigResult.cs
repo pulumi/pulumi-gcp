@@ -16,12 +16,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The confidential computing technology the instance uses.
         /// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
-        /// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+        /// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, MinCpuPlatform =
         /// 								"AMD Milan" is currently required.
         /// </summary>
         public readonly string ConfidentialInstanceType;
         /// <summary>
-        /// Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        /// Defines whether the instance should have confidential compute enabled. `OnHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
         /// </summary>
         public readonly bool EnableConfidentialCompute;
 

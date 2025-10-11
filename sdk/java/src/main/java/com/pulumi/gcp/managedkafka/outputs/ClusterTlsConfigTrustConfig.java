@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterTlsConfigTrustConfig {
     /**
-     * @return Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
+     * @return Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `casConfigs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `casConfigs` blocks.
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class ClusterTlsConfigTrustConfig {
 
     private ClusterTlsConfigTrustConfig() {}
     /**
-     * @return Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
+     * @return Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `casConfigs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `casConfigs` blocks.
      * Structure is documented below.
      * 
      */

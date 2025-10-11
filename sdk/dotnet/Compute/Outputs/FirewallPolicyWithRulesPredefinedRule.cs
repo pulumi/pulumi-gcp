@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// (Output)
         /// The Action to perform when the client connection triggers the rule. Can currently be either
-        /// "allow", "deny", "apply_security_profile_group" or "goto_next".
+        /// "allow", "deny", "ApplySecurityProfileGroup" or "GotoNext".
         /// </summary>
         public readonly string? Action;
         /// <summary>
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// A list of secure tags that controls which instances the firewall rule
         /// applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
         /// firewall rule applies only to instances in the VPC network that have one
-        /// of those EFFECTIVE secure tags, if all the target_secure_tag are in
+        /// of those EFFECTIVE secure tags, if all the TargetSecureTag are in
         /// INEFFECTIVE state, then this rule will be ignored.
         /// &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
         /// &lt;code&gt;targetServiceAccounts&lt;/code&gt;.

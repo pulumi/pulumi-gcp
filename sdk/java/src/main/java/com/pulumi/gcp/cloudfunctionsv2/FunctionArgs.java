@@ -94,7 +94,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
      * A set of key/value label pairs associated with this Cloud Function.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -104,7 +104,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
      * @return A set of key/value label pairs associated with this Cloud Function.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -307,7 +307,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels A set of key/value label pairs associated with this Cloud Function.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels A set of key/value label pairs associated with this Cloud Function.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

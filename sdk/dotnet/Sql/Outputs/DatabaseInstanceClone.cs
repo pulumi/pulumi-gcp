@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? AllocatedIpRange;
         /// <summary>
-        /// (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+        /// (SQL Server only, use with `PointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
         /// </summary>
         public readonly ImmutableArray<string> DatabaseNames;
         /// <summary>

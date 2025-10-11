@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// The confidential computing technology the instance uses.
         /// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
-        /// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+        /// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, MinCpuPlatform =
         /// 								"AMD Milan" is currently required.
         /// </summary>
         [Input("confidentialInstanceType")]

@@ -119,7 +119,7 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
      * Rollout to deploy the OS policy assignment. A rollout
      * is triggered in the following situations: 1) OSPolicyAssignment is created.
      * 2) OSPolicyAssignment is updated and the update contains changes to one of
-     * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+     * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
      * is deleted. Structure is documented below.
      * 
      */
@@ -130,7 +130,7 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
      * @return Rollout to deploy the OS policy assignment. A rollout
      * is triggered in the following situations: 1) OSPolicyAssignment is created.
      * 2) OSPolicyAssignment is updated and the update contains changes to one of
-     * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+     * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
      * is deleted. Structure is documented below.
      * 
      */
@@ -329,7 +329,7 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
          * @param rollout Rollout to deploy the OS policy assignment. A rollout
          * is triggered in the following situations: 1) OSPolicyAssignment is created.
          * 2) OSPolicyAssignment is updated and the update contains changes to one of
-         * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+         * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
          * is deleted. Structure is documented below.
          * 
          * @return builder
@@ -344,7 +344,7 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
          * @param rollout Rollout to deploy the OS policy assignment. A rollout
          * is triggered in the following situations: 1) OSPolicyAssignment is created.
          * 2) OSPolicyAssignment is updated and the update contains changes to one of
-         * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+         * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
          * is deleted. Structure is documented below.
          * 
          * @return builder

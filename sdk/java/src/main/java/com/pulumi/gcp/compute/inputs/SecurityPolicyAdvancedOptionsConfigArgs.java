@@ -19,7 +19,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
     /**
      * Custom configuration to apply the JSON parsing. Only applicable when
-     * `json_parsing` is set to `STANDARD`. Structure is documented below.
+     * `jsonParsing` is set to `STANDARD`. Structure is documented below.
      * 
      */
     @Import(name="jsonCustomConfig")
@@ -27,7 +27,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
     /**
      * @return Custom configuration to apply the JSON parsing. Only applicable when
-     * `json_parsing` is set to `STANDARD`. Structure is documented below.
+     * `jsonParsing` is set to `STANDARD`. Structure is documented below.
      * 
      */
     public Optional<Output<SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs>> jsonCustomConfig() {
@@ -134,7 +134,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
         /**
          * @param jsonCustomConfig Custom configuration to apply the JSON parsing. Only applicable when
-         * `json_parsing` is set to `STANDARD`. Structure is documented below.
+         * `jsonParsing` is set to `STANDARD`. Structure is documented below.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
         /**
          * @param jsonCustomConfig Custom configuration to apply the JSON parsing. Only applicable when
-         * `json_parsing` is set to `STANDARD`. Structure is documented below.
+         * `jsonParsing` is set to `STANDARD`. Structure is documented below.
          * 
          * @return builder
          * 

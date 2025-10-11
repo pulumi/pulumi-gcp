@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Resource name for the ServicePerimeter. The short_name component must
+        /// Resource name for the ServicePerimeter. The ShortName component must
         /// begin with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
         /// </summary>

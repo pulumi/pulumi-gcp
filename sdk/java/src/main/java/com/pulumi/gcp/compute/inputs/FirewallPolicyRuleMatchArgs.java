@@ -224,7 +224,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
      * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
      * 
      */
     @Import(name="srcSecureTags")
@@ -234,7 +234,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
      * @return List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
      * 
      */
     public Optional<Output<List<FirewallPolicyRuleMatchSrcSecureTagArgs>>> srcSecureTags() {
@@ -688,7 +688,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
          * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
          * 
          * @return builder
          * 
@@ -702,7 +702,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
          * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
          * 
          * @return builder
          * 
@@ -715,7 +715,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
          * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
          * 
          * @return builder
          * 

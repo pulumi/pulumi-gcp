@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         public readonly ImmutableArray<string> Identities;
         /// <summary>
         /// Specifies the type of identities that are allowed access from outside the
-        /// perimeter. If left unspecified, then members of `identities` field will be
+        /// perimeter. If left unspecified, then members of `Identities` field will be
         /// allowed access.
         /// Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         /// </summary>

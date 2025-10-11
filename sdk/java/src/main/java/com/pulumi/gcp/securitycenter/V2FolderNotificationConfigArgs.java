@@ -79,7 +79,7 @@ public final class V2FolderNotificationConfigArgs extends com.pulumi.resources.R
 
     /**
      * The Pub/Sub topic to send notifications to. Its format is
-     * &#34;projects/[project_id]/topics/[topic]&#34;.
+     * &#34;projects/[projectId]/topics/[topic]&#34;.
      * 
      */
     @Import(name="pubsubTopic", required=true)
@@ -87,7 +87,7 @@ public final class V2FolderNotificationConfigArgs extends com.pulumi.resources.R
 
     /**
      * @return The Pub/Sub topic to send notifications to. Its format is
-     * &#34;projects/[project_id]/topics/[topic]&#34;.
+     * &#34;projects/[projectId]/topics/[topic]&#34;.
      * 
      */
     public Output<String> pubsubTopic() {
@@ -226,7 +226,7 @@ public final class V2FolderNotificationConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param pubsubTopic The Pub/Sub topic to send notifications to. Its format is
-         * &#34;projects/[project_id]/topics/[topic]&#34;.
+         * &#34;projects/[projectId]/topics/[topic]&#34;.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class V2FolderNotificationConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param pubsubTopic The Pub/Sub topic to send notifications to. Its format is
-         * &#34;projects/[project_id]/topics/[topic]&#34;.
+         * &#34;projects/[projectId]/topics/[topic]&#34;.
          * 
          * @return builder
          * 

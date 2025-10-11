@@ -773,7 +773,7 @@ namespace Pulumi.Gcp.Redis
         public Output<Outputs.ClusterManagedBackupSource?> ManagedBackupSource { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+        /// Cluster's Certificate Authority. This field will only be populated if Redis Cluster's TransitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
         /// Structure is documented below.
         /// </summary>
         [Output("managedServerCas")]
@@ -1211,7 +1211,7 @@ namespace Pulumi.Gcp.Redis
         private InputList<Inputs.ClusterManagedServerCaGetArgs>? _managedServerCas;
 
         /// <summary>
-        /// Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+        /// Cluster's Certificate Authority. This field will only be populated if Redis Cluster's TransitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ClusterManagedServerCaGetArgs> ManagedServerCas

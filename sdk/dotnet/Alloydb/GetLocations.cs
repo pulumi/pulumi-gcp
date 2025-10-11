@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Contains a list of `location`, which contains the details about a particular location.
+        /// Contains a list of `Location`, which contains the details about a particular location.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLocationsLocationResult> Locations;
         public readonly string? Project;

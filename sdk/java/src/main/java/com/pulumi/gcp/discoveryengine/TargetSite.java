@@ -169,11 +169,11 @@ public class TargetSite extends com.pulumi.resources.CustomResource {
         return this.dataStoreId;
     }
     /**
-     * If set to false, a uri_pattern is generated to include all pages whose
-     * address contains the provided_uri_pattern. If set to true, an uri_pattern
-     * is generated to try to be an exact match of the provided_uri_pattern or
-     * just the specific page if the provided_uri_pattern is a specific one.
-     * provided_uri_pattern is always normalized to generate the URI pattern to
+     * If set to false, a uriPattern is generated to include all pages whose
+     * address contains the provided_uri_pattern. If set to true, an uriPattern
+     * is generated to try to be an exact match of the providedUriPattern or
+     * just the specific page if the providedUriPattern is a specific one.
+     * providedUriPattern is always normalized to generate the URI pattern to
      * be used by the search engine.
      * 
      */
@@ -181,11 +181,11 @@ public class TargetSite extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> exactMatch;
 
     /**
-     * @return If set to false, a uri_pattern is generated to include all pages whose
-     * address contains the provided_uri_pattern. If set to true, an uri_pattern
-     * is generated to try to be an exact match of the provided_uri_pattern or
-     * just the specific page if the provided_uri_pattern is a specific one.
-     * provided_uri_pattern is always normalized to generate the URI pattern to
+     * @return If set to false, a uriPattern is generated to include all pages whose
+     * address contains the provided_uri_pattern. If set to true, an uriPattern
+     * is generated to try to be an exact match of the providedUriPattern or
+     * just the specific page if the providedUriPattern is a specific one.
+     * providedUriPattern is always normalized to generate the URI pattern to
      * be used by the search engine.
      * 
      */
@@ -209,14 +209,14 @@ public class TargetSite extends com.pulumi.resources.CustomResource {
         return this.failureReasons;
     }
     /**
-     * This is system-generated based on the `provided_uri_pattern`.
+     * This is system-generated based on the `providedUriPattern`.
      * 
      */
     @Export(name="generatedUriPattern", refs={String.class}, tree="[0]")
     private Output<String> generatedUriPattern;
 
     /**
-     * @return This is system-generated based on the `provided_uri_pattern`.
+     * @return This is system-generated based on the `providedUriPattern`.
      * 
      */
     public Output<String> generatedUriPattern() {
@@ -289,7 +289,7 @@ public class TargetSite extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The user provided URI pattern from which the `generated_uri_pattern` is
+     * The user provided URI pattern from which the `generatedUriPattern` is
      * generated.
      * 
      */
@@ -297,7 +297,7 @@ public class TargetSite extends com.pulumi.resources.CustomResource {
     private Output<String> providedUriPattern;
 
     /**
-     * @return The user provided URI pattern from which the `generated_uri_pattern` is
+     * @return The user provided URI pattern from which the `generatedUriPattern` is
      * generated.
      * 
      */
@@ -305,14 +305,14 @@ public class TargetSite extends com.pulumi.resources.CustomResource {
         return this.providedUriPattern;
     }
     /**
-     * Root domain of the `provided_uri_pattern`.
+     * Root domain of the `providedUriPattern`.
      * 
      */
     @Export(name="rootDomainUri", refs={String.class}, tree="[0]")
     private Output<String> rootDomainUri;
 
     /**
-     * @return Root domain of the `provided_uri_pattern`.
+     * @return Root domain of the `providedUriPattern`.
      * 
      */
     public Output<String> rootDomainUri() {

@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// Not all storage formats support hive partitioning. Requesting hive
         /// partitioning on an unsupported format will lead to an error.
         /// Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
-        /// * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+        /// * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `SourceUriPrefix` by setting `SourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// `gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro` When hive
         /// partitioning is requested with either AUTO or STRINGS detection, the common prefix
         /// can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
-        /// Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+        /// Note that when `Mode` is set to `CUSTOM`, you must encode the partition key schema within the `SourceUriPrefix` by setting `SourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
         /// </summary>
         [Input("sourceUriPrefix")]
         public Input<string>? SourceUriPrefix { get; set; }

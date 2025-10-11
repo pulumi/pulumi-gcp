@@ -80,7 +80,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The full text of the Service Config YAML file (Example located [here](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/main/endpoints/bookstore-grpc/api_config.yaml)).
-     * If provided, must also provide `protoc_output_base64`.  `open_api` config must *not* be provided.
+     * If provided, must also provide `protocOutputBase64`.  `openApi` config must *not* be provided.
      * 
      */
     @Import(name="grpcConfig")
@@ -88,7 +88,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The full text of the Service Config YAML file (Example located [here](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/main/endpoints/bookstore-grpc/api_config.yaml)).
-     * If provided, must also provide `protoc_output_base64`.  `open_api` config must *not* be provided.
+     * If provided, must also provide `protocOutputBase64`.  `openApi` config must *not* be provided.
      * 
      */
     public Optional<Output<String>> grpcConfig() {
@@ -97,7 +97,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The full text of the OpenAPI YAML configuration as described [here](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md).
-     * Either this, or *both* of `grpc_config` and `protoc_output_base64` must be specified.
+     * Either this, or *both* of `grpcConfig` and `protocOutputBase64` must be specified.
      * 
      */
     @Import(name="openapiConfig")
@@ -105,7 +105,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The full text of the OpenAPI YAML configuration as described [here](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md).
-     * Either this, or *both* of `grpc_config` and `protoc_output_base64` must be specified.
+     * Either this, or *both* of `grpcConfig` and `protocOutputBase64` must be specified.
      * 
      */
     public Optional<Output<String>> openapiConfig() {
@@ -299,7 +299,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param grpcConfig The full text of the Service Config YAML file (Example located [here](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/main/endpoints/bookstore-grpc/api_config.yaml)).
-         * If provided, must also provide `protoc_output_base64`.  `open_api` config must *not* be provided.
+         * If provided, must also provide `protocOutputBase64`.  `openApi` config must *not* be provided.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param grpcConfig The full text of the Service Config YAML file (Example located [here](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/main/endpoints/bookstore-grpc/api_config.yaml)).
-         * If provided, must also provide `protoc_output_base64`.  `open_api` config must *not* be provided.
+         * If provided, must also provide `protocOutputBase64`.  `openApi` config must *not* be provided.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param openapiConfig The full text of the OpenAPI YAML configuration as described [here](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md).
-         * Either this, or *both* of `grpc_config` and `protoc_output_base64` must be specified.
+         * Either this, or *both* of `grpcConfig` and `protocOutputBase64` must be specified.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param openapiConfig The full text of the OpenAPI YAML configuration as described [here](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md).
-         * Either this, or *both* of `grpc_config` and `protoc_output_base64` must be specified.
+         * Either this, or *both* of `grpcConfig` and `protocOutputBase64` must be specified.
          * 
          * @return builder
          * 

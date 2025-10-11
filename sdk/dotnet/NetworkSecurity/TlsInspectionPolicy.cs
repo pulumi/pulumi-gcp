@@ -346,7 +346,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+        /// List of custom TLS cipher suites selected. This field is valid only if the selected TlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
         /// </summary>
         [Output("customTlsFeatures")]
         public Output<ImmutableArray<string>> CustomTlsFeatures { get; private set; } = null!;
@@ -466,7 +466,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<string>? _customTlsFeatures;
 
         /// <summary>
-        /// List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+        /// List of custom TLS cipher suites selected. This field is valid only if the selected TlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
         /// </summary>
         public InputList<string> CustomTlsFeatures
         {
@@ -551,7 +551,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<string>? _customTlsFeatures;
 
         /// <summary>
-        /// List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+        /// List of custom TLS cipher suites selected. This field is valid only if the selected TlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
         /// </summary>
         public InputList<string> CustomTlsFeatures
         {

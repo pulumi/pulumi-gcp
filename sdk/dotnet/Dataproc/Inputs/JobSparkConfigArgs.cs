@@ -68,14 +68,14 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// The class containing the main method of the driver. Must be in a
-        /// provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
+        /// provided jar or jar that is already on the classpath. Conflicts with `MainJarFileUri`
         /// </summary>
         [Input("mainClass")]
         public Input<string>? MainClass { get; set; }
 
         /// <summary>
         /// The HCFS URI of jar file containing
-        /// the driver jar. Conflicts with `main_class`
+        /// the driver jar. Conflicts with `MainClass`
         /// </summary>
         [Input("mainJarFileUri")]
         public Input<string>? MainJarFileUri { get; set; }

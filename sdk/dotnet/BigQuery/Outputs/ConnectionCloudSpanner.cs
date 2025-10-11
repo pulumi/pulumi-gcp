@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly int? MaxParallelism;
         /// <summary>
-        /// If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+        /// If set, the request will be executed via Spanner independent compute resources. `UseParallelism` must be set when using data boost.
         /// </summary>
         public readonly bool? UseDataBoost;
         /// <summary>

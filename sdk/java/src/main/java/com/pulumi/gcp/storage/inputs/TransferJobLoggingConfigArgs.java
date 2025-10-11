@@ -33,14 +33,14 @@ public final class TransferJobLoggingConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+     * States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
      * 
      */
     @Import(name="logActionStates")
     private @Nullable Output<List<String>> logActionStates;
 
     /**
-     * @return States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+     * @return States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
      * 
      */
     public Optional<Output<List<String>>> logActionStates() {
@@ -48,14 +48,14 @@ public final class TransferJobLoggingConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+     * Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
      * 
      */
     @Import(name="logActions")
     private @Nullable Output<List<String>> logActions;
 
     /**
-     * @return Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+     * @return Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
      * 
      */
     public Optional<Output<List<String>>> logActions() {
@@ -110,7 +110,7 @@ public final class TransferJobLoggingConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param logActionStates States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+         * @param logActionStates States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class TransferJobLoggingConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param logActionStates States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+         * @param logActionStates States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class TransferJobLoggingConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param logActionStates States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+         * @param logActionStates States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class TransferJobLoggingConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param logActions Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+         * @param logActions Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class TransferJobLoggingConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param logActions Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+         * @param logActions Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class TransferJobLoggingConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param logActions Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+         * @param logActions Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
          * 
          * @return builder
          * 

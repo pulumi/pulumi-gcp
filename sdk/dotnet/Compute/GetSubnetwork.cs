@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetSubnetworkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the subnetwork. One of `name` or `self_link`
+        /// The name of the subnetwork. One of `Name` or `SelfLink`
         /// must be specified.
         /// </summary>
         [Input("name")]
@@ -112,8 +112,8 @@ namespace Pulumi.Gcp.Compute
         public string? Region { get; set; }
 
         /// <summary>
-        /// The self link of the subnetwork. If `self_link` is
-        /// specified, `name`, `project`, and `region` are ignored.
+        /// The self link of the subnetwork. If `SelfLink` is
+        /// specified, `Name`, `Project`, and `Region` are ignored.
         /// </summary>
         [Input("selfLink")]
         public string? SelfLink { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetSubnetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the subnetwork. One of `name` or `self_link`
+        /// The name of the subnetwork. One of `Name` or `SelfLink`
         /// must be specified.
         /// </summary>
         [Input("name")]
@@ -148,8 +148,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The self link of the subnetwork. If `self_link` is
-        /// specified, `name`, `project`, and `region` are ignored.
+        /// The self link of the subnetwork. If `SelfLink` is
+        /// specified, `Name`, `Project`, and `Region` are ignored.
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }

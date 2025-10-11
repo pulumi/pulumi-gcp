@@ -49,14 +49,14 @@ public final class TransferJobReplicationSpecArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+     * Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
      * 
      */
     @Import(name="objectConditions")
     private @Nullable Output<TransferJobReplicationSpecObjectConditionsArgs> objectConditions;
 
     /**
-     * @return Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+     * @return Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
      * 
      */
     public Optional<Output<TransferJobReplicationSpecObjectConditionsArgs>> objectConditions() {
@@ -64,14 +64,14 @@ public final class TransferJobReplicationSpecArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects&#39; `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+     * Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects&#39; `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
      * 
      */
     @Import(name="transferOptions")
     private @Nullable Output<TransferJobReplicationSpecTransferOptionsArgs> transferOptions;
 
     /**
-     * @return Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects&#39; `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+     * @return Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects&#39; `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
      * 
      */
     public Optional<Output<TransferJobReplicationSpecTransferOptionsArgs>> transferOptions() {
@@ -148,7 +148,7 @@ public final class TransferJobReplicationSpecArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param objectConditions Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+         * @param objectConditions Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class TransferJobReplicationSpecArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param objectConditions Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+         * @param objectConditions Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class TransferJobReplicationSpecArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param transferOptions Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects&#39; `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+         * @param transferOptions Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects&#39; `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class TransferJobReplicationSpecArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param transferOptions Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects&#39; `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+         * @param transferOptions Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects&#39; `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
          * 
          * @return builder
          * 

@@ -33,7 +33,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -44,7 +44,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -141,7 +141,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
-     * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
      * Possible values: DEFAULT, FORCE
      * 
      */
@@ -151,7 +151,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
-     * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
      * Possible values: DEFAULT, FORCE
      * 
      */
@@ -233,7 +233,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * User-defined labels for the alloydb cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -242,7 +242,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return User-defined labels for the alloydb cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -470,7 +470,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -614,7 +614,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
          * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
-         * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+         * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
          * Possible values: DEFAULT, FORCE
          * 
          * @return builder
@@ -628,7 +628,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
          * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
-         * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+         * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
          * Possible values: DEFAULT, FORCE
          * 
          * @return builder
@@ -738,7 +738,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User-defined labels for the alloydb cluster.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -751,7 +751,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User-defined labels for the alloydb cluster.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

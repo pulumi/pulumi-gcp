@@ -16,14 +16,14 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsSourceImageEn
     public static final InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKeyArgs Empty = new InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKeyArgs();
 
     /**
-     * The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+     * The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
      * 
      */
     @Import(name="kmsKeySelfLink")
     private @Nullable Output<String> kmsKeySelfLink;
 
     /**
-     * @return The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+     * @return The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
      * 
      */
     public Optional<Output<String>> kmsKeySelfLink() {
@@ -46,14 +46,14 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsSourceImageEn
     }
 
     /**
-     * Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+     * Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
      * 
      */
     @Import(name="rawKey")
     private @Nullable Output<String> rawKey;
 
     /**
-     * @return Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
      * 
      */
     public Optional<Output<String>> rawKey() {
@@ -61,14 +61,14 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsSourceImageEn
     }
 
     /**
-     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
      * 
      */
     @Import(name="rsaEncryptedKey")
     private @Nullable Output<String> rsaEncryptedKey;
 
     /**
-     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
      * 
      */
     public Optional<Output<String>> rsaEncryptedKey() {
@@ -119,7 +119,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsSourceImageEn
         }
 
         /**
-         * @param kmsKeySelfLink The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+         * @param kmsKeySelfLink The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsSourceImageEn
         }
 
         /**
-         * @param kmsKeySelfLink The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+         * @param kmsKeySelfLink The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsSourceImageEn
         }
 
         /**
-         * @param rawKey Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+         * @param rawKey Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsSourceImageEn
         }
 
         /**
-         * @param rawKey Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+         * @param rawKey Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsSourceImageEn
         }
 
         /**
-         * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+         * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsSourceImageEn
         }
 
         /**
-         * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+         * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
          * 
          * @return builder
          * 

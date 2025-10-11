@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Workbench.Outputs
         public readonly string? DiskType;
         /// <summary>
         /// 'Optional. The KMS key used to encrypt the disks, only
-        /// applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
+        /// applicable if DiskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
         /// Learn more about using your own encryption keys.'
         /// </summary>
         public readonly string? KmsKey;

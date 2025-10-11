@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
  *     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
  * 
- * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `shared_secret_wo`.
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `sharedSecretWo`.
  * Read more about Write-only Attributes.
  * 
  * ## Example Usage
@@ -246,7 +246,7 @@ import javax.annotation.Nullable;
  * 
  * The following write-only attributes are supported:
  * 
- * * `shared_secret_wo` -
+ * * `sharedSecretWo` -
  *   (Optional)
  *   Shared secret used to set the secure session between the Cloud VPN
  *   gateway and the peer VPN gateway.
@@ -395,7 +395,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
     /**
      * Labels to apply to this VpnTunnel.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -404,7 +404,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
     /**
      * @return Labels to apply to this VpnTunnel.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -486,7 +486,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
     }
     /**
      * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
-     * If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+     * If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
      * ID in the peer GCP VPN gateway.
      * This field must reference a `gcp.compute.HaVpnGateway` resource.
      * 
@@ -496,7 +496,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
 
     /**
      * @return URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
-     * If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+     * If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
      * ID in the peer GCP VPN gateway.
      * This field must reference a `gcp.compute.HaVpnGateway` resource.
      * 
@@ -551,14 +551,14 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
+     * The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
+     * @return The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      * 
      */
     public Output<String> region() {
@@ -645,14 +645,14 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
         return this.sharedSecretHash;
     }
     /**
-     * Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      * 
      */
     @Export(name="sharedSecretWoVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sharedSecretWoVersion;
 
     /**
-     * @return Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * @return Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      * 
      */
     public Output<Optional<String>> sharedSecretWoVersion() {

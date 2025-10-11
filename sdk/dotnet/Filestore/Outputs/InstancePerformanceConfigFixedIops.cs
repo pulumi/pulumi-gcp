@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Filestore.Outputs
     {
         /// <summary>
         /// The number of IOPS to provision for the instance.
-        /// max_iops must be in multiple of 1000.
+        /// MaxIops must be in multiple of 1000.
         /// </summary>
         public readonly int? MaxIops;
 

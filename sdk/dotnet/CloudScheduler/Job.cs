@@ -301,7 +301,7 @@ namespace Pulumi.Gcp.CloudScheduler
 
         /// <summary>
         /// HTTP target.
-        /// If the job providers a http_target the cron will
+        /// If the job providers a HttpTarget the cron will
         /// send a request to the targeted url
         /// Structure is documented below.
         /// </summary>
@@ -447,7 +447,7 @@ namespace Pulumi.Gcp.CloudScheduler
 
         /// <summary>
         /// HTTP target.
-        /// If the job providers a http_target the cron will
+        /// If the job providers a HttpTarget the cron will
         /// send a request to the targeted url
         /// Structure is documented below.
         /// </summary>
@@ -549,7 +549,7 @@ namespace Pulumi.Gcp.CloudScheduler
 
         /// <summary>
         /// HTTP target.
-        /// If the job providers a http_target the cron will
+        /// If the job providers a HttpTarget the cron will
         /// send a request to the targeted url
         /// Structure is documented below.
         /// </summary>

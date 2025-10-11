@@ -98,7 +98,7 @@ public final class GetDataQualityRulesRule {
      */
     private List<GetDataQualityRulesRuleTableConditionExpectation> tableConditionExpectations;
     /**
-     * @return The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
+     * @return The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
      * 
      */
     private Double threshold;
@@ -213,7 +213,7 @@ public final class GetDataQualityRulesRule {
         return this.tableConditionExpectations;
     }
     /**
-     * @return The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
+     * @return The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
      * 
      */
     public Double threshold() {

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
     public sealed class CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
+        /// Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `Token` field will be ignored.
         /// Format: projects/{project}/secrets/{secret}/versions/{version}
         /// </summary>
         [Input("secretVersionForToken")]

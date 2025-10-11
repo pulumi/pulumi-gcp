@@ -476,7 +476,7 @@ namespace Pulumi.Gcp.PubSub
         /// A set of key/value label pairs to assign to this Topic.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -489,7 +489,7 @@ namespace Pulumi.Gcp.PubSub
         /// that is up to messageRetentionDuration in the past. If this field is not
         /// set, message retention is controlled by settings on individual subscriptions.
         /// The rotation period has the format of a decimal number, followed by the
-        /// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
+        /// letter `S` (seconds). Cannot be more than 31 days or less than 10 minutes.
         /// </summary>
         [Output("messageRetentionDuration")]
         public Output<string?> MessageRetentionDuration { get; private set; } = null!;
@@ -626,7 +626,7 @@ namespace Pulumi.Gcp.PubSub
         /// A set of key/value label pairs to assign to this Topic.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -642,7 +642,7 @@ namespace Pulumi.Gcp.PubSub
         /// that is up to messageRetentionDuration in the past. If this field is not
         /// set, message retention is controlled by settings on individual subscriptions.
         /// The rotation period has the format of a decimal number, followed by the
-        /// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
+        /// letter `S` (seconds). Cannot be more than 31 days or less than 10 minutes.
         /// </summary>
         [Input("messageRetentionDuration")]
         public Input<string>? MessageRetentionDuration { get; set; }
@@ -757,7 +757,7 @@ namespace Pulumi.Gcp.PubSub
         /// A set of key/value label pairs to assign to this Topic.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -773,7 +773,7 @@ namespace Pulumi.Gcp.PubSub
         /// that is up to messageRetentionDuration in the past. If this field is not
         /// set, message retention is controlled by settings on individual subscriptions.
         /// The rotation period has the format of a decimal number, followed by the
-        /// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
+        /// letter `S` (seconds). Cannot be more than 31 days or less than 10 minutes.
         /// </summary>
         [Input("messageRetentionDuration")]
         public Input<string>? MessageRetentionDuration { get; set; }

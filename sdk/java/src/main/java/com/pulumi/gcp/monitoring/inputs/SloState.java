@@ -27,7 +27,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
      * SLIs are used to measure and calculate the quality of the Service&#39;s
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basic_sli`, `request_based_sli`, `windows_based_sli`
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      * 
      */
@@ -40,7 +40,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
      * SLIs are used to measure and calculate the quality of the Service&#39;s
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basic_sli`, `request_based_sli`, `windows_based_sli`
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      * 
      */
@@ -140,7 +140,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
      * It is used to measure and calculate the quality of the Service&#39;s
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basic_sli`, `request_based_sli`, `windows_based_sli`
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      * 
      */
@@ -154,7 +154,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
      * It is used to measure and calculate the quality of the Service&#39;s
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basic_sli`, `request_based_sli`, `windows_based_sli`
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      * 
      */
@@ -234,13 +234,13 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A windows-based SLI defines the criteria for time windows.
-     * good_service is defined based off the count of these time windows
+     * goodService is defined based off the count of these time windows
      * for which the provided service was of good quality.
      * A SLI describes a good service. It is used to measure and calculate
      * the quality of the Service&#39;s performance with respect to a single
      * aspect of service quality.
      * Exactly one of the following must be set:
-     * `basic_sli`, `request_based_sli`, `windows_based_sli`
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      * 
      */
@@ -249,13 +249,13 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A windows-based SLI defines the criteria for time windows.
-     * good_service is defined based off the count of these time windows
+     * goodService is defined based off the count of these time windows
      * for which the provided service was of good quality.
      * A SLI describes a good service. It is used to measure and calculate
      * the quality of the Service&#39;s performance with respect to a single
      * aspect of service quality.
      * Exactly one of the following must be set:
-     * `basic_sli`, `request_based_sli`, `windows_based_sli`
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      * 
      */
@@ -304,7 +304,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
          * SLIs are used to measure and calculate the quality of the Service&#39;s
          * performance with respect to a single aspect of service quality.
          * Exactly one of the following must be set:
-         * `basic_sli`, `request_based_sli`, `windows_based_sli`
+         * `basicSli`, `requestBasedSli`, `windowsBasedSli`
          * Structure is documented below.
          * 
          * @return builder
@@ -321,7 +321,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
          * SLIs are used to measure and calculate the quality of the Service&#39;s
          * performance with respect to a single aspect of service quality.
          * Exactly one of the following must be set:
-         * `basic_sli`, `request_based_sli`, `windows_based_sli`
+         * `basicSli`, `requestBasedSli`, `windowsBasedSli`
          * Structure is documented below.
          * 
          * @return builder
@@ -453,7 +453,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
          * It is used to measure and calculate the quality of the Service&#39;s
          * performance with respect to a single aspect of service quality.
          * Exactly one of the following must be set:
-         * `basic_sli`, `request_based_sli`, `windows_based_sli`
+         * `basicSli`, `requestBasedSli`, `windowsBasedSli`
          * Structure is documented below.
          * 
          * @return builder
@@ -471,7 +471,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
          * It is used to measure and calculate the quality of the Service&#39;s
          * performance with respect to a single aspect of service quality.
          * Exactly one of the following must be set:
-         * `basic_sli`, `request_based_sli`, `windows_based_sli`
+         * `basicSli`, `requestBasedSli`, `windowsBasedSli`
          * Structure is documented below.
          * 
          * @return builder
@@ -577,13 +577,13 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param windowsBasedSli A windows-based SLI defines the criteria for time windows.
-         * good_service is defined based off the count of these time windows
+         * goodService is defined based off the count of these time windows
          * for which the provided service was of good quality.
          * A SLI describes a good service. It is used to measure and calculate
          * the quality of the Service&#39;s performance with respect to a single
          * aspect of service quality.
          * Exactly one of the following must be set:
-         * `basic_sli`, `request_based_sli`, `windows_based_sli`
+         * `basicSli`, `requestBasedSli`, `windowsBasedSli`
          * Structure is documented below.
          * 
          * @return builder
@@ -596,13 +596,13 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param windowsBasedSli A windows-based SLI defines the criteria for time windows.
-         * good_service is defined based off the count of these time windows
+         * goodService is defined based off the count of these time windows
          * for which the provided service was of good quality.
          * A SLI describes a good service. It is used to measure and calculate
          * the quality of the Service&#39;s performance with respect to a single
          * aspect of service quality.
          * Exactly one of the following must be set:
-         * `basic_sli`, `request_based_sli`, `windows_based_sli`
+         * `basicSli`, `requestBasedSli`, `windowsBasedSli`
          * Structure is documented below.
          * 
          * @return builder

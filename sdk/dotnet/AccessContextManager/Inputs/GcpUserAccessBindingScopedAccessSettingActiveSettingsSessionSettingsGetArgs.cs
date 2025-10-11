@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public Input<string>? MaxInactivity { get; set; }
 
         /// <summary>
-        /// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+        /// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC MaxAge param.
         /// </summary>
         [Input("sessionLength")]
         public Input<string>? SessionLength { get; set; }
@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public Input<string>? SessionReauthMethod { get; set; }
 
         /// <summary>
-        /// Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the max_age OIDC param.
+        /// Optional. Only useful for OIDC apps. When false, the OIDC MaxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the MaxAge OIDC param.
         /// </summary>
         [Input("useOidcMaxAge")]
         public Input<bool>? UseOidcMaxAge { get; set; }

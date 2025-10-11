@@ -145,7 +145,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> ServingStatus { get; private set; } = null!;
 
         /// <summary>
-        /// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+        /// A list of dispatch rule blocks. Each block has a `Domain`, `Path`, and `Service` field.
         /// </summary>
         [Output("urlDispatchRules")]
         public Output<ImmutableArray<Outputs.ApplicationUrlDispatchRule>> UrlDispatchRules { get; private set; } = null!;
@@ -344,7 +344,7 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<Inputs.ApplicationUrlDispatchRuleGetArgs>? _urlDispatchRules;
 
         /// <summary>
-        /// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+        /// A list of dispatch rule blocks. Each block has a `Domain`, `Path`, and `Service` field.
         /// </summary>
         public InputList<Inputs.ApplicationUrlDispatchRuleGetArgs> UrlDispatchRules
         {

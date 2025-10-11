@@ -54,7 +54,7 @@ public final class GetSecurityPolicyRule {
      */
     private Integer priority;
     /**
-     * @return Rate limit threshold for this security policy. Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * @return Rate limit threshold for this security policy. Must be specified if the action is &#34;rateBasedBan&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
      * 
      */
     private List<GetSecurityPolicyRuleRateLimitOption> rateLimitOptions;
@@ -115,7 +115,7 @@ public final class GetSecurityPolicyRule {
         return this.priority;
     }
     /**
-     * @return Rate limit threshold for this security policy. Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * @return Rate limit threshold for this security policy. Must be specified if the action is &#34;rateBasedBan&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
      * 
      */
     public List<GetSecurityPolicyRuleRateLimitOption> rateLimitOptions() {

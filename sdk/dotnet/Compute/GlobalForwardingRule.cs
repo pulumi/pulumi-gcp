@@ -700,13 +700,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// IP address for which this forwarding rule accepts traffic. When a client
         /// sends traffic to this IP address, the forwarding rule directs the traffic
-        /// to the referenced `target`.
+        /// to the referenced `Target`.
         /// While creating a forwarding rule, specifying an `IPAddress` is
         /// required under the following circumstances:
-        /// * When the `target` is set to `targetGrpcProxy` and
-        /// `validateForProxyless` is set to `true`, the
+        /// * When the `Target` is set to `targetGrpcProxy` and
+        /// `validateForProxyless` is set to `True`, the
         /// `IPAddress` should be set to `0.0.0.0`.
-        /// * When the `target` is a Private Service Connect Google APIs
+        /// * When the `Target` is a Private Service Connect Google APIs
         /// bundle, you must specify an `IPAddress`.
         /// Otherwise, you can optionally specify an IP address that references an
         /// existing static (reserved) IP address resource. When omitted, Google Cloud
@@ -722,7 +722,7 @@ namespace Pulumi.Gcp.Compute
         /// * `regions/region/addresses/address-name`
         /// * `global/addresses/address-name`
         /// * `address-name`
-        /// The forwarding rule's `target`,
+        /// The forwarding rule's `Target`,
         /// and in most cases, also the `loadBalancingScheme`, determine the
         /// type of IP address that you can use. For detailed information, see
         /// [IP address
@@ -765,7 +765,7 @@ namespace Pulumi.Gcp.Compute
         /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -1038,13 +1038,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// IP address for which this forwarding rule accepts traffic. When a client
         /// sends traffic to this IP address, the forwarding rule directs the traffic
-        /// to the referenced `target`.
+        /// to the referenced `Target`.
         /// While creating a forwarding rule, specifying an `IPAddress` is
         /// required under the following circumstances:
-        /// * When the `target` is set to `targetGrpcProxy` and
-        /// `validateForProxyless` is set to `true`, the
+        /// * When the `Target` is set to `targetGrpcProxy` and
+        /// `validateForProxyless` is set to `True`, the
         /// `IPAddress` should be set to `0.0.0.0`.
-        /// * When the `target` is a Private Service Connect Google APIs
+        /// * When the `Target` is a Private Service Connect Google APIs
         /// bundle, you must specify an `IPAddress`.
         /// Otherwise, you can optionally specify an IP address that references an
         /// existing static (reserved) IP address resource. When omitted, Google Cloud
@@ -1060,7 +1060,7 @@ namespace Pulumi.Gcp.Compute
         /// * `regions/region/addresses/address-name`
         /// * `global/addresses/address-name`
         /// * `address-name`
-        /// The forwarding rule's `target`,
+        /// The forwarding rule's `Target`,
         /// and in most cases, also the `loadBalancingScheme`, determine the
         /// type of IP address that you can use. For detailed information, see
         /// [IP address
@@ -1099,7 +1099,7 @@ namespace Pulumi.Gcp.Compute
         /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1347,13 +1347,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// IP address for which this forwarding rule accepts traffic. When a client
         /// sends traffic to this IP address, the forwarding rule directs the traffic
-        /// to the referenced `target`.
+        /// to the referenced `Target`.
         /// While creating a forwarding rule, specifying an `IPAddress` is
         /// required under the following circumstances:
-        /// * When the `target` is set to `targetGrpcProxy` and
-        /// `validateForProxyless` is set to `true`, the
+        /// * When the `Target` is set to `targetGrpcProxy` and
+        /// `validateForProxyless` is set to `True`, the
         /// `IPAddress` should be set to `0.0.0.0`.
-        /// * When the `target` is a Private Service Connect Google APIs
+        /// * When the `Target` is a Private Service Connect Google APIs
         /// bundle, you must specify an `IPAddress`.
         /// Otherwise, you can optionally specify an IP address that references an
         /// existing static (reserved) IP address resource. When omitted, Google Cloud
@@ -1369,7 +1369,7 @@ namespace Pulumi.Gcp.Compute
         /// * `regions/region/addresses/address-name`
         /// * `global/addresses/address-name`
         /// * `address-name`
-        /// The forwarding rule's `target`,
+        /// The forwarding rule's `Target`,
         /// and in most cases, also the `loadBalancingScheme`, determine the
         /// type of IP address that you can use. For detailed information, see
         /// [IP address
@@ -1415,7 +1415,7 @@ namespace Pulumi.Gcp.Compute
         /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

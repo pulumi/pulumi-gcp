@@ -19,7 +19,7 @@ public final class DatabaseInstanceClone {
      */
     private @Nullable String allocatedIpRange;
     /**
-     * @return (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+     * @return (SQL Server only, use with `pointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
      * 
      */
     private @Nullable List<String> databaseNames;
@@ -50,7 +50,7 @@ public final class DatabaseInstanceClone {
         return Optional.ofNullable(this.allocatedIpRange);
     }
     /**
-     * @return (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+     * @return (SQL Server only, use with `pointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
      * 
      */
     public List<String> databaseNames() {

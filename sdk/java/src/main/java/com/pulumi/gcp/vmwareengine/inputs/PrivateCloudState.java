@@ -169,14 +169,14 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+     * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
      * 
      */
     @Import(name="sendDeletionDelayHoursIfZero")
     private @Nullable Output<Boolean> sendDeletionDelayHoursIfZero;
 
     /**
-     * @return While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+     * @return While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
      * 
      */
     public Optional<Output<Boolean>> sendDeletionDelayHoursIfZero() {
@@ -508,7 +508,7 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sendDeletionDelayHoursIfZero While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+         * @param sendDeletionDelayHoursIfZero While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
          * 
          * @return builder
          * 
@@ -519,7 +519,7 @@ public final class PrivateCloudState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sendDeletionDelayHoursIfZero While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+         * @param sendDeletionDelayHoursIfZero While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
          * 
          * @return builder
          * 

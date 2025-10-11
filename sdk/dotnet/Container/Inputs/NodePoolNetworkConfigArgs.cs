@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
-        /// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        /// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `PodRange` and `PodIpv4CidrBlock` if they are not specified.
         /// </summary>
         [Input("createPodRange")]
         public Input<bool>? CreatePodRange { get; set; }
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? PodIpv4CidrBlock { get; set; }
 
         /// <summary>
-        /// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        /// The ID of the secondary range for pod IPs. If `CreatePodRange` is true, this ID is used for the new range. If `CreatePodRange` is false, uses an existing secondary range with this ID.
         /// </summary>
         [Input("podRange")]
         public Input<string>? PodRange { get; set; }

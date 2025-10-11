@@ -29,7 +29,7 @@ public final class ApiHubInstanceConfig {
     private @Nullable Boolean disableSearch;
     /**
      * @return Optional. Encryption type for the region. If the encryption type is CMEK, the
-     * cmek_key_name must be provided. If no encryption type is provided,
+     * cmekKeyName must be provided. If no encryption type is provided,
      * GMEK will be used.
      * Possible values:
      * ENCRYPTION_TYPE_UNSPECIFIED
@@ -66,7 +66,7 @@ public final class ApiHubInstanceConfig {
     }
     /**
      * @return Optional. Encryption type for the region. If the encryption type is CMEK, the
-     * cmek_key_name must be provided. If no encryption type is provided,
+     * cmekKeyName must be provided. If no encryption type is provided,
      * GMEK will be used.
      * Possible values:
      * ENCRYPTION_TYPE_UNSPECIFIED

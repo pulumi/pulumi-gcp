@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EnterpriseKeyWebSettings {
     /**
-     * @return If set to true, it means allowed_domains will not be enforced.
+     * @return If set to true, it means allowedDomains will not be enforced.
      * 
      */
     private @Nullable Boolean allowAllDomains;
@@ -42,7 +42,7 @@ public final class EnterpriseKeyWebSettings {
 
     private EnterpriseKeyWebSettings() {}
     /**
-     * @return If set to true, it means allowed_domains will not be enforced.
+     * @return If set to true, it means allowedDomains will not be enforced.
      * 
      */
     public Optional<Boolean> allowAllDomains() {

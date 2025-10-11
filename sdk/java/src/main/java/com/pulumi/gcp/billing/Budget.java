@@ -29,10 +29,10 @@ import javax.annotation.Nullable;
  *     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
- * you must specify a `billing_project` and set `user_project_override` to true
+ * you must specify a `billingProject` and set `userProjectOverride` to true
  * in the provider configuration. Otherwise the Billing Budgets API will return a 403 error.
  * Your account must have the `serviceusage.services.use` permission on the
- * `billing_project` you defined.
+ * `billingProject` you defined.
  * 
  * ## Example Usage
  * 

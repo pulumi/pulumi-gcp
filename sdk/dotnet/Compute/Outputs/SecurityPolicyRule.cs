@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class SecurityPolicyRule
     {
         /// <summary>
-        /// Action to take when `match` matches the request. Valid values:
+        /// Action to take when `Match` matches the request. Valid values:
         /// </summary>
         public readonly string Action;
         /// <summary>
@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly Outputs.SecurityPolicyRuleHeaderAction? HeaderAction;
         /// <summary>
         /// A match condition that incoming traffic is evaluated against.
-        /// If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
+        /// If it evaluates to true, the corresponding `Action` is enforced. Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleMatch Match;
         /// <summary>
@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.SecurityPolicyRulePreconfiguredWafConfig? PreconfiguredWafConfig;
         /// <summary>
-        /// When set to true, the `action` specified above is not enforced.
+        /// When set to true, the `Action` specified above is not enforced.
         /// Stackdriver logs for requests that trigger a preview action are annotated as such.
         /// </summary>
         public readonly bool? Preview;
@@ -45,11 +45,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int Priority;
         /// <summary>
-        /// Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
+        /// Must be specified if the `Action` is `RateBasedBan` or `Throttle`. Cannot be specified for other actions. Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRateLimitOptions? RateLimitOptions;
         /// <summary>
-        /// Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
+        /// Can be specified if the `Action` is `Redirect`. Cannot be specified for other actions. Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRedirectOptions? RedirectOptions;
 

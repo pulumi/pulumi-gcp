@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.Logging
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `Filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         [Output("exclusions")]
         public Output<ImmutableArray<Outputs.ProjectSinkExclusion>> Exclusions { get; private set; } = null!;
@@ -94,16 +94,16 @@ namespace Pulumi.Gcp.Logging
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
+        /// Whether or not to create a unique identity associated with this sink. If `False`, then the `WriterIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `True` (the default),
         /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-        /// `bigquery_options`, you must set `unique_writer_identity` to true.
+        /// `BigqueryOptions`, you must set `UniqueWriterIdentity` to true.
         /// </summary>
         [Output("uniqueWriterIdentity")]
         public Output<bool?> UniqueWriterIdentity { get; private set; } = null!;
 
         /// <summary>
         /// The identity associated with this sink. This identity must be granted write access to the
-        /// configured `destination`.
+        /// configured `Destination`.
         /// </summary>
         [Output("writerIdentity")]
         public Output<string> WriterIdentity { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.Gcp.Logging
         private InputList<Inputs.ProjectSinkExclusionArgs>? _exclusions;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `Filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         public InputList<Inputs.ProjectSinkExclusionArgs> Exclusions
         {
@@ -229,9 +229,9 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
+        /// Whether or not to create a unique identity associated with this sink. If `False`, then the `WriterIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `True` (the default),
         /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-        /// `bigquery_options`, you must set `unique_writer_identity` to true.
+        /// `BigqueryOptions`, you must set `UniqueWriterIdentity` to true.
         /// </summary>
         [Input("uniqueWriterIdentity")]
         public Input<bool>? UniqueWriterIdentity { get; set; }
@@ -289,7 +289,7 @@ namespace Pulumi.Gcp.Logging
         private InputList<Inputs.ProjectSinkExclusionGetArgs>? _exclusions;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `Filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         public InputList<Inputs.ProjectSinkExclusionGetArgs> Exclusions
         {
@@ -319,16 +319,16 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
+        /// Whether or not to create a unique identity associated with this sink. If `False`, then the `WriterIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `True` (the default),
         /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-        /// `bigquery_options`, you must set `unique_writer_identity` to true.
+        /// `BigqueryOptions`, you must set `UniqueWriterIdentity` to true.
         /// </summary>
         [Input("uniqueWriterIdentity")]
         public Input<bool>? UniqueWriterIdentity { get; set; }
 
         /// <summary>
         /// The identity associated with this sink. This identity must be granted write access to the
-        /// configured `destination`.
+        /// configured `Destination`.
         /// </summary>
         [Input("writerIdentity")]
         public Input<string>? WriterIdentity { get; set; }

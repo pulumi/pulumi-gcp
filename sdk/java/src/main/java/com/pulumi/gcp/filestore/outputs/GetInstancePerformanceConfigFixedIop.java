@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class GetInstancePerformanceConfigFixedIop {
     /**
      * @return The number of IOPS to provision for the instance.
-     * max_iops must be in multiple of 1000.
+     * maxIops must be in multiple of 1000.
      * 
      */
     private Integer maxIops;
@@ -20,7 +20,7 @@ public final class GetInstancePerformanceConfigFixedIop {
     private GetInstancePerformanceConfigFixedIop() {}
     /**
      * @return The number of IOPS to provision for the instance.
-     * max_iops must be in multiple of 1000.
+     * maxIops must be in multiple of 1000.
      * 
      */
     public Integer maxIops() {

@@ -482,7 +482,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// This field is only used for SERVERLESS NEGs.
-        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+        /// Only one of cloud_run, app_engine, CloudFunction or ServerlessDeployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Output("appEngine")]
@@ -490,7 +490,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This field is only used for SERVERLESS NEGs.
-        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+        /// Only one of cloud_run, app_engine, CloudFunction or ServerlessDeployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Output("cloudFunction")]
@@ -498,7 +498,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This field is only used for SERVERLESS NEGs.
-        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+        /// Only one of cloud_run, app_engine, CloudFunction or ServerlessDeployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Output("cloudRun")]
@@ -636,7 +636,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// This field is only used for SERVERLESS NEGs.
-        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+        /// Only one of cloud_run, app_engine, CloudFunction or ServerlessDeployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("appEngine")]
@@ -644,7 +644,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This field is only used for SERVERLESS NEGs.
-        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+        /// Only one of cloud_run, app_engine, CloudFunction or ServerlessDeployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudFunction")]
@@ -652,7 +652,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This field is only used for SERVERLESS NEGs.
-        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+        /// Only one of cloud_run, app_engine, CloudFunction or ServerlessDeployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudRun")]
@@ -746,7 +746,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// This field is only used for SERVERLESS NEGs.
-        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+        /// Only one of cloud_run, app_engine, CloudFunction or ServerlessDeployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("appEngine")]
@@ -754,7 +754,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This field is only used for SERVERLESS NEGs.
-        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+        /// Only one of cloud_run, app_engine, CloudFunction or ServerlessDeployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudFunction")]
@@ -762,7 +762,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// This field is only used for SERVERLESS NEGs.
-        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+        /// Only one of cloud_run, app_engine, CloudFunction or ServerlessDeployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudRun")]

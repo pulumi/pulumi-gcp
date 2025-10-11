@@ -15,7 +15,7 @@ public final class ClusterClusterConfigMetastoreConfig {
      * 
      * Only resource names including projectid and location (region) are valid. Examples:
      * 
-     * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
+     * `projects/[projectId]/locations/[dataprocRegion]/services/[service-name]`
      * 
      */
     private String dataprocMetastoreService;
@@ -26,7 +26,7 @@ public final class ClusterClusterConfigMetastoreConfig {
      * 
      * Only resource names including projectid and location (region) are valid. Examples:
      * 
-     * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
+     * `projects/[projectId]/locations/[dataprocRegion]/services/[service-name]`
      * 
      */
     public String dataprocMetastoreService() {

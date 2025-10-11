@@ -337,7 +337,7 @@ public class BareMetalNodePool extends com.pulumi.resources.CustomResource {
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -354,7 +354,7 @@ public class BareMetalNodePool extends com.pulumi.resources.CustomResource {
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {

@@ -27,14 +27,14 @@ public final class ConnectionGitlabConfig {
      */
     private @Nullable String hostUri;
     /**
-     * @return Required. A GitLab personal access token with the minimum `read_api` scope access.
+     * @return Required. A GitLab personal access token with the minimum `readApi` scope access.
      * Structure is documented below.
      * 
      */
     private ConnectionGitlabConfigReadAuthorizerCredential readAuthorizerCredential;
     /**
      * @return (Output)
-     * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+     * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
      * 
      */
     private @Nullable String serverVersion;
@@ -72,7 +72,7 @@ public final class ConnectionGitlabConfig {
         return Optional.ofNullable(this.hostUri);
     }
     /**
-     * @return Required. A GitLab personal access token with the minimum `read_api` scope access.
+     * @return Required. A GitLab personal access token with the minimum `readApi` scope access.
      * Structure is documented below.
      * 
      */
@@ -81,7 +81,7 @@ public final class ConnectionGitlabConfig {
     }
     /**
      * @return (Output)
-     * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+     * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
      * 
      */
     public Optional<String> serverVersion() {

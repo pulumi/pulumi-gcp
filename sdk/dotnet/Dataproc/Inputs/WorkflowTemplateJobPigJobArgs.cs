@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplateJobPigJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        /// Whether to continue executing queries if a query fails. The default value is `False`. Setting to `True` can be useful when executing independent parallel queries.
         /// </summary>
         [Input("continueOnFailure")]
         public Input<bool>? ContinueOnFailure { get; set; }

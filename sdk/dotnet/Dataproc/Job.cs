@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<Outputs.JobPrestoConfig?> PrestoConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The project in which the `cluster` can be found and jobs
+        /// The project in which the `Cluster` can be found and jobs
         /// subsequently run against. If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
@@ -194,7 +194,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The Cloud Dataproc region. This essentially determines which clusters are available
-        /// for this job to be submitted to. If not specified, defaults to `global`.
+        /// for this job to be submitted to. If not specified, defaults to `Global`.
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
@@ -327,7 +327,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.JobPrestoConfigArgs>? PrestoConfig { get; set; }
 
         /// <summary>
-        /// The project in which the `cluster` can be found and jobs
+        /// The project in which the `Cluster` can be found and jobs
         /// subsequently run against. If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
@@ -347,7 +347,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The Cloud Dataproc region. This essentially determines which clusters are available
-        /// for this job to be submitted to. If not specified, defaults to `global`.
+        /// for this job to be submitted to. If not specified, defaults to `Global`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -463,7 +463,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.JobPrestoConfigGetArgs>? PrestoConfig { get; set; }
 
         /// <summary>
-        /// The project in which the `cluster` can be found and jobs
+        /// The project in which the `Cluster` can be found and jobs
         /// subsequently run against. If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
@@ -499,7 +499,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The Cloud Dataproc region. This essentially determines which clusters are available
-        /// for this job to be submitted to. If not specified, defaults to `global`.
+        /// for this job to be submitted to. If not specified, defaults to `Global`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

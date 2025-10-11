@@ -15,14 +15,14 @@ public final class PacketMirroringNetworkArgs extends com.pulumi.resources.Resou
     public static final PacketMirroringNetworkArgs Empty = new PacketMirroringNetworkArgs();
 
     /**
-     * The full self_link URL of the network where this rule is active.
+     * The full selfLink URL of the network where this rule is active.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return The full self_link URL of the network where this rule is active.
+     * @return The full selfLink URL of the network where this rule is active.
      * 
      */
     public Output<String> url() {
@@ -54,7 +54,7 @@ public final class PacketMirroringNetworkArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param url The full self_link URL of the network where this rule is active.
+         * @param url The full selfLink URL of the network where this rule is active.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class PacketMirroringNetworkArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param url The full self_link URL of the network where this rule is active.
+         * @param url The full selfLink URL of the network where this rule is active.
          * 
          * @return builder
          * 

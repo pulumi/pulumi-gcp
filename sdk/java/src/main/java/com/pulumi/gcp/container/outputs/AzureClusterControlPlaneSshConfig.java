@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class AzureClusterControlPlaneSshConfig {
     /**
-     * @return The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+     * @return The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
      * 
      */
     private String authorizedKey;
 
     private AzureClusterControlPlaneSshConfig() {}
     /**
-     * @return The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+     * @return The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
      * 
      */
     public String authorizedKey() {

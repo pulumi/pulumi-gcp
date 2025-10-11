@@ -175,7 +175,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string? NetworkProfile;
         /// <summary>
-        /// (Deprecated) The numeric unique identifier for the resource. `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
+        /// (Deprecated) The numeric unique identifier for the resource. `NumericId` is deprecated and will be removed in a future major release. Use `NetworkId` instead.
         /// </summary>
         public readonly string NumericId;
         public readonly string? Project;

@@ -13,15 +13,15 @@ namespace Pulumi.Gcp.PubSub.Inputs
     public sealed class TopicMessageTransformArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Controls whether or not to use this transform. If not set or `false`,
-        /// the transform will be applied to messages. Default: `true`.
+        /// Controls whether or not to use this transform. If not set or `False`,
+        /// the transform will be applied to messages. Default: `True`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
         /// Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-        /// each one must have a unique `function_name`.
+        /// each one must have a unique `FunctionName`.
         /// Structure is documented below.
         /// </summary>
         [Input("javascriptUdf")]

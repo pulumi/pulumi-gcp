@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// 
         /// Only resource names including projectid and location (region) are valid. Examples:
         /// 
-        /// `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
+        /// `projects/[projectId]/locations/[DataprocRegion]/services/[service-name]`
         /// </summary>
         [Input("dataprocMetastoreService", required: true)]
         public Input<string> DataprocMetastoreService { get; set; } = null!;

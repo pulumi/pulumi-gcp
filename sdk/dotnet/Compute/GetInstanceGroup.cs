@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetInstanceGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the instance group. Either `name` or `self_link` must be provided.
+        /// The name of the instance group. Either `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -104,14 +104,14 @@ namespace Pulumi.Gcp.Compute
         public string? Project { get; set; }
 
         /// <summary>
-        /// The self link of the instance group. Either `name` or `self_link` must be provided.
+        /// The self link of the instance group. Either `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("selfLink")]
         public string? SelfLink { get; set; }
 
         /// <summary>
         /// The zone of the instance group. If referencing the instance group by name
-        /// and `zone` is not provided, the provider zone is used.
+        /// and `Zone` is not provided, the provider zone is used.
         /// </summary>
         [Input("zone")]
         public string? Zone { get; set; }
@@ -125,7 +125,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetInstanceGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the instance group. Either `name` or `self_link` must be provided.
+        /// The name of the instance group. Either `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -138,14 +138,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The self link of the instance group. Either `name` or `self_link` must be provided.
+        /// The self link of the instance group. Either `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
         /// The zone of the instance group. If referencing the instance group by name
-        /// and `zone` is not provided, the provider zone is used.
+        /// and `Zone` is not provided, the provider zone is used.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

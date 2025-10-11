@@ -46,13 +46,13 @@ public final class GetNetworkResult {
      */
     private @Nullable String networkProfile;
     /**
-     * @return (Deprecated) The numeric unique identifier for the resource. `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
+     * @return (Deprecated) The numeric unique identifier for the resource. `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      * 
      * @deprecated
-     * `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
+     * `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      * 
      */
-    @Deprecated /* `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead. */
+    @Deprecated /* `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead. */
     private String numericId;
     private @Nullable String project;
     /**
@@ -113,13 +113,13 @@ public final class GetNetworkResult {
         return Optional.ofNullable(this.networkProfile);
     }
     /**
-     * @return (Deprecated) The numeric unique identifier for the resource. `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
+     * @return (Deprecated) The numeric unique identifier for the resource. `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      * 
      * @deprecated
-     * `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
+     * `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      * 
      */
-    @Deprecated /* `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead. */
+    @Deprecated /* `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead. */
     public String numericId() {
         return this.numericId;
     }

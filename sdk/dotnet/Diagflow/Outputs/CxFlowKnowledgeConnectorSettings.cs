@@ -24,13 +24,13 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         public readonly bool? Enabled;
         /// <summary>
         /// The target flow to transition to. Format: projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/flows/&lt;FlowID&gt;.
-        /// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+        /// This field is part of a union field `Target`: Only one of `targetPage` or `targetFlow` may be set.
         /// </summary>
         public readonly string? TargetFlow;
         /// <summary>
         /// The target page to transition to. Format: projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/flows/&lt;FlowID&gt;/pages/&lt;PageID&gt;.
         /// The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
-        /// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+        /// This field is part of a union field `Target`: Only one of `targetPage` or `targetFlow` may be set.
         /// </summary>
         public readonly string? TargetPage;
         /// <summary>

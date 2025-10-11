@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string EnforceOnKeyName;
         /// <summary>
-        /// Determines the key to enforce the rate_limit_threshold on
+        /// Determines the key to enforce the RateLimitThreshold on
         /// </summary>
         public readonly string EnforceOnKeyType;
 

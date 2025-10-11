@@ -96,7 +96,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
     }
 
     /**
-     * The source VPC network for `ip_ranges`.
+     * The source VPC network for `ipRanges`.
      * Required for instances using Private Service Connect, optional otherwise.
      * 
      */
@@ -104,7 +104,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
     private @Nullable Output<String> network;
 
     /**
-     * @return The source VPC network for `ip_ranges`.
+     * @return The source VPC network for `ipRanges`.
      * Required for instances using Private Service Connect, optional otherwise.
      * 
      */
@@ -277,7 +277,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param network The source VPC network for `ip_ranges`.
+         * @param network The source VPC network for `ipRanges`.
          * Required for instances using Private Service Connect, optional otherwise.
          * 
          * @return builder
@@ -289,7 +289,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param network The source VPC network for `ip_ranges`.
+         * @param network The source VPC network for `ipRanges`.
          * Required for instances using Private Service Connect, optional otherwise.
          * 
          * @return builder

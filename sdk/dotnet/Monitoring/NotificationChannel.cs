@@ -15,15 +15,15 @@ namespace Pulumi.Gcp.Monitoring
     /// and third-party messaging applications. Fields containing sensitive information
     /// like authentication tokens or contact info are only partially populated on retrieval.
     /// 
-    /// Notification Channels are designed to be flexible and are made up of a supported `type`
-    /// and labels to configure that channel. Each `type` has specific labels that need to be
+    /// Notification Channels are designed to be flexible and are made up of a supported `Type`
+    /// and labels to configure that channel. Each `Type` has specific labels that need to be
     /// present for that channel to be correctly configured. The labels that are required to be
-    /// present for one channel `type` are often different than those required for another.
+    /// present for one channel `Type` are often different than those required for another.
     /// Due to these loose constraints it's often best to set up a channel through the UI
     /// and import it to the provider when setting up a brand new channel type to determine which
     /// labels are required.
     /// 
-    /// A list of supported channels per project the `list` endpoint can be
+    /// A list of supported channels per project the `List` endpoint can be
     /// accessed programmatically or through the api explorer at  https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list .
     /// This provides the channel type and all of the required labels that must be passed.
     /// 
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Monitoring
         /// NotificationChannelDescriptor corresponding to the type field.
         /// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
         /// determine if there are upstream changes to these fields. They can also be configured via
-        /// the sensitive_labels block, but cannot be configured in both places.
+        /// the SensitiveLabels block, but cannot be configured in both places.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -156,10 +156,10 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Different notification type behaviors are configured primarily using the the `labels` field on this
+        /// Different notification type behaviors are configured primarily using the the `Labels` field on this
         /// resource. This block contains the labels which contain secrets or passwords so that they can be marked
         /// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
-        /// in the `labels` map in the api request.
+        /// in the `Labels` map in the api request.
         /// Credentials may not be specified in both locations and will cause an error. Changing from one location
         /// to a different credential configuration in the config will require an apply to update state.
         /// Structure is documented below.
@@ -268,7 +268,7 @@ namespace Pulumi.Gcp.Monitoring
         /// NotificationChannelDescriptor corresponding to the type field.
         /// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
         /// determine if there are upstream changes to these fields. They can also be configured via
-        /// the sensitive_labels block, but cannot be configured in both places.
+        /// the SensitiveLabels block, but cannot be configured in both places.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -284,10 +284,10 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Different notification type behaviors are configured primarily using the the `labels` field on this
+        /// Different notification type behaviors are configured primarily using the the `Labels` field on this
         /// resource. This block contains the labels which contain secrets or passwords so that they can be marked
         /// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
-        /// in the `labels` map in the api request.
+        /// in the `Labels` map in the api request.
         /// Credentials may not be specified in both locations and will cause an error. Changing from one location
         /// to a different credential configuration in the config will require an apply to update state.
         /// Structure is documented below.
@@ -358,7 +358,7 @@ namespace Pulumi.Gcp.Monitoring
         /// NotificationChannelDescriptor corresponding to the type field.
         /// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
         /// determine if there are upstream changes to these fields. They can also be configured via
-        /// the sensitive_labels block, but cannot be configured in both places.
+        /// the SensitiveLabels block, but cannot be configured in both places.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -382,10 +382,10 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Different notification type behaviors are configured primarily using the the `labels` field on this
+        /// Different notification type behaviors are configured primarily using the the `Labels` field on this
         /// resource. This block contains the labels which contain secrets or passwords so that they can be marked
         /// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
-        /// in the `labels` map in the api request.
+        /// in the `Labels` map in the api request.
         /// Credentials may not be specified in both locations and will cause an error. Changing from one location
         /// to a different credential configuration in the config will require an apply to update state.
         /// Structure is documented below.

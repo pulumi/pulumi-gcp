@@ -77,15 +77,15 @@ import javax.annotation.Nullable;
  * &#34;cancelled&#34;, the job terminates - any data written remains where it is, but no
  * new data will be processed.  If &#34;drained&#34;, no new data will enter the pipeline,
  * but any data currently in the pipeline will finish being processed.  The default
- * is &#34;cancelled&#34;, but if a user sets `on_delete` to `&#34;drain&#34;` in the
+ * is &#34;cancelled&#34;, but if a user sets `onDelete` to `&#34;drain&#34;` in the
  * configuration, you may experience a long wait for your `pulumi destroy` to
  * complete.
  * 
- * You can potentially short-circuit the wait by setting `skip_wait_on_job_termination`
+ * You can potentially short-circuit the wait by setting `skipWaitOnJobTermination`
  * to `true`, but beware that unless you take active steps to ensure that the job
  * `name` parameter changes between instances, the name will conflict and the launch
  * of the new job will fail. One way to do this is with a
- * random_id
+ * randomId
  * resource, for example:
  * 
  * <pre>
@@ -143,14 +143,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:dataflow/flexTemplateJob:FlexTemplateJob")
 public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     /**
-     * List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+     * List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
      * 
      */
     @Export(name="additionalExperiments", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> additionalExperiments;
 
     /**
-     * @return List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+     * @return List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
      * 
      */
     public Output<List<String>> additionalExperiments() {

@@ -29,14 +29,14 @@ public final class TableExternalDataConfiguration {
      */
     private Boolean autodetect;
     /**
-     * @return Additional options if `source_format` is set to
+     * @return Additional options if `sourceFormat` is set to
      * &#34;AVRO&#34;.  Structure is documented below.
      * 
      */
     private @Nullable TableExternalDataConfigurationAvroOptions avroOptions;
     /**
      * @return Additional properties to set if
-     * `source_format` is set to &#34;BIGTABLE&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;BIGTABLE&#34;. Structure is documented below.
      * 
      */
     private @Nullable TableExternalDataConfigurationBigtableOptions bigtableOptions;
@@ -48,7 +48,7 @@ public final class TableExternalDataConfiguration {
     private @Nullable String compression;
     /**
      * @return The connection specifying the credentials to be used to read
-     * external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+     * external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
      * the form `{{project}}.{{location}}.{{connection_id}}`
      * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
      * 
@@ -60,7 +60,7 @@ public final class TableExternalDataConfiguration {
     private @Nullable String connectionId;
     /**
      * @return Additional properties to set if
-     * `source_format` is set to &#34;CSV&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;CSV&#34;. Structure is documented below.
      * 
      */
     private @Nullable TableExternalDataConfigurationCsvOptions csvOptions;
@@ -73,7 +73,7 @@ public final class TableExternalDataConfiguration {
     private @Nullable String fileSetSpecType;
     /**
      * @return Additional options if
-     * `source_format` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
+     * `sourceFormat` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
      * documented below.
      * 
      */
@@ -103,7 +103,7 @@ public final class TableExternalDataConfiguration {
     private @Nullable String jsonExtension;
     /**
      * @return Additional properties to set if
-     * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;JSON&#34;. Structure is documented below.
      * 
      */
     private @Nullable TableExternalDataConfigurationJsonOptions jsonOptions;
@@ -119,13 +119,13 @@ public final class TableExternalDataConfiguration {
      */
     private @Nullable String metadataCacheMode;
     /**
-     * @return Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+     * @return Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
      * 
      */
     private @Nullable String objectMetadata;
     /**
      * @return Additional properties to set if
-     * `source_format` is set to &#34;PARQUET&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;PARQUET&#34;. Structure is documented below.
      * 
      */
     private @Nullable TableExternalDataConfigurationParquetOptions parquetOptions;
@@ -178,7 +178,7 @@ public final class TableExternalDataConfiguration {
         return this.autodetect;
     }
     /**
-     * @return Additional options if `source_format` is set to
+     * @return Additional options if `sourceFormat` is set to
      * &#34;AVRO&#34;.  Structure is documented below.
      * 
      */
@@ -187,7 +187,7 @@ public final class TableExternalDataConfiguration {
     }
     /**
      * @return Additional properties to set if
-     * `source_format` is set to &#34;BIGTABLE&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;BIGTABLE&#34;. Structure is documented below.
      * 
      */
     public Optional<TableExternalDataConfigurationBigtableOptions> bigtableOptions() {
@@ -203,7 +203,7 @@ public final class TableExternalDataConfiguration {
     }
     /**
      * @return The connection specifying the credentials to be used to read
-     * external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+     * external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
      * the form `{{project}}.{{location}}.{{connection_id}}`
      * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
      * 
@@ -217,7 +217,7 @@ public final class TableExternalDataConfiguration {
     }
     /**
      * @return Additional properties to set if
-     * `source_format` is set to &#34;CSV&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;CSV&#34;. Structure is documented below.
      * 
      */
     public Optional<TableExternalDataConfigurationCsvOptions> csvOptions() {
@@ -234,7 +234,7 @@ public final class TableExternalDataConfiguration {
     }
     /**
      * @return Additional options if
-     * `source_format` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
+     * `sourceFormat` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
      * documented below.
      * 
      */
@@ -272,7 +272,7 @@ public final class TableExternalDataConfiguration {
     }
     /**
      * @return Additional properties to set if
-     * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;JSON&#34;. Structure is documented below.
      * 
      */
     public Optional<TableExternalDataConfigurationJsonOptions> jsonOptions() {
@@ -294,7 +294,7 @@ public final class TableExternalDataConfiguration {
         return Optional.ofNullable(this.metadataCacheMode);
     }
     /**
-     * @return Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+     * @return Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
      * 
      */
     public Optional<String> objectMetadata() {
@@ -302,7 +302,7 @@ public final class TableExternalDataConfiguration {
     }
     /**
      * @return Additional properties to set if
-     * `source_format` is set to &#34;PARQUET&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;PARQUET&#34;. Structure is documented below.
      * 
      */
     public Optional<TableExternalDataConfigurationParquetOptions> parquetOptions() {

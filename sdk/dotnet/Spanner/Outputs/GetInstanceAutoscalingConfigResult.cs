@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Spanner.Outputs
         /// maximum compute capacity allocated to the instance, and the autoscaler will
         /// only scale within that range. Users can either use nodes or processing
         /// units to specify the limits, but should use the same unit to set both the
-        /// min_limit and max_limit.
+        /// MinLimit and max_limit.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceAutoscalingConfigAutoscalingLimitResult> AutoscalingLimits;
         /// <summary>

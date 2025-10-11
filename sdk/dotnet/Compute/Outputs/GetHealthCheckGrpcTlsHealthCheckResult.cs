@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string GrpcServiceName;
         /// <summary>
         /// The port number for the health check request.
-        /// Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        /// Must be specified if PortSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
         /// </summary>
         public readonly int Port;
         /// <summary>

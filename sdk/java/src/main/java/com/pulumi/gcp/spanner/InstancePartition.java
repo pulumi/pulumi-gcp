@@ -167,7 +167,7 @@ public class InstancePartition extends com.pulumi.resources.CustomResource {
     }
     /**
      * The number of nodes allocated to this instance partition. One node equals
-     * 1000 processing units. Exactly one of either node_count or processing_units
+     * 1000 processing units. Exactly one of either nodeCount or processingUnits
      * must be present.
      * 
      */
@@ -176,7 +176,7 @@ public class InstancePartition extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The number of nodes allocated to this instance partition. One node equals
-     * 1000 processing units. Exactly one of either node_count or processing_units
+     * 1000 processing units. Exactly one of either nodeCount or processingUnits
      * must be present.
      * 
      */
@@ -185,7 +185,7 @@ public class InstancePartition extends com.pulumi.resources.CustomResource {
     }
     /**
      * The number of processing units allocated to this instance partition.
-     * Exactly one of either node_count or processing_units must be present.
+     * Exactly one of either nodeCount or processingUnits must be present.
      * 
      */
     @Export(name="processingUnits", refs={Integer.class}, tree="[0]")
@@ -193,7 +193,7 @@ public class InstancePartition extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The number of processing units allocated to this instance partition.
-     * Exactly one of either node_count or processing_units must be present.
+     * Exactly one of either nodeCount or processingUnits must be present.
      * 
      */
     public Output<Optional<Integer>> processingUnits() {

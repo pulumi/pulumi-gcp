@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class BucketVersioning
     {
         /// <summary>
-        /// While set to `true`, versioning is fully enabled for this bucket.
+        /// While set to `True`, versioning is fully enabled for this bucket.
         /// </summary>
         public readonly bool Enabled;
 

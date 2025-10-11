@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Storage.Inputs
     public sealed class BucketVersioningGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// While set to `true`, versioning is fully enabled for this bucket.
+        /// While set to `True`, versioning is fully enabled for this bucket.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

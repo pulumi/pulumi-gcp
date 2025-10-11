@@ -265,14 +265,14 @@ public class Key extends com.pulumi.resources.CustomResource {
         return this.publicKey;
     }
     /**
-     * Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+     * Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
      * 
      */
     @Export(name="publicKeyData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> publicKeyData;
 
     /**
-     * @return Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+     * @return Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
      * 
      */
     public Output<Optional<String>> publicKeyData() {

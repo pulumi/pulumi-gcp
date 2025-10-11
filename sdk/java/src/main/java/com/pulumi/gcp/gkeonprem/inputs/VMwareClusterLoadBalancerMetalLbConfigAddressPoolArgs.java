@@ -59,7 +59,7 @@ public final class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs extends
     /**
      * If true, prevent IP addresses from being automatically assigned.
      * 
-     * &lt;a name=&#34;nested_dataplane_v2&#34;&gt;&lt;/a&gt;The `dataplane_v2` block supports:
+     * &lt;a name=&#34;nestedDataplaneV2&#34;&gt;&lt;/a&gt;The `dataplaneV2` block supports:
      * 
      */
     @Import(name="manualAssign")
@@ -68,7 +68,7 @@ public final class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs extends
     /**
      * @return If true, prevent IP addresses from being automatically assigned.
      * 
-     * &lt;a name=&#34;nested_dataplane_v2&#34;&gt;&lt;/a&gt;The `dataplane_v2` block supports:
+     * &lt;a name=&#34;nestedDataplaneV2&#34;&gt;&lt;/a&gt;The `dataplaneV2` block supports:
      * 
      */
     public Optional<Output<Boolean>> manualAssign() {
@@ -182,7 +182,7 @@ public final class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs extends
         /**
          * @param manualAssign If true, prevent IP addresses from being automatically assigned.
          * 
-         * &lt;a name=&#34;nested_dataplane_v2&#34;&gt;&lt;/a&gt;The `dataplane_v2` block supports:
+         * &lt;a name=&#34;nestedDataplaneV2&#34;&gt;&lt;/a&gt;The `dataplaneV2` block supports:
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs extends
         /**
          * @param manualAssign If true, prevent IP addresses from being automatically assigned.
          * 
-         * &lt;a name=&#34;nested_dataplane_v2&#34;&gt;&lt;/a&gt;The `dataplane_v2` block supports:
+         * &lt;a name=&#34;nestedDataplaneV2&#34;&gt;&lt;/a&gt;The `dataplaneV2` block supports:
          * 
          * @return builder
          * 

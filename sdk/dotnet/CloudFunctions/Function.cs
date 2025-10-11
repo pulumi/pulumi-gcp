@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.CloudFunctions
     public partial class Function : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+        /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `OnDeployUpdatePolicy`.
         /// </summary>
         [Output("automaticUpdatePolicy")]
         public Output<Outputs.FunctionAutomaticUpdatePolicy> AutomaticUpdatePolicy { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string> DockerRegistry { get; private set; } = null!;
 
         /// <summary>
-        /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
+        /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `DockerRegistry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         /// </summary>
         [Output("dockerRepository")]
         public Output<string?> DockerRepository { get; private set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<ImmutableDictionary<string, string>?> EnvironmentVariables { get; private set; } = null!;
 
         /// <summary>
-        /// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        /// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `TriggerHttp`.
         /// </summary>
         [Output("eventTrigger")]
         public Output<Outputs.FunctionEventTrigger> EventTrigger { get; private set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string> HttpsTriggerSecurityLevel { get; private set; } = null!;
 
         /// <summary>
-        /// URL which triggers function execution. Returned only if `trigger_http` is used.
+        /// URL which triggers function execution. Returned only if `TriggerHttp` is used.
         /// </summary>
         [Output("httpsTriggerUrl")]
         public Output<string> HttpsTriggerUrl { get; private set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-        /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+        /// If specified, you must also provide an artifact registry repository using the `DockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
         /// </summary>
         [Output("kmsKeyName")]
         public Output<string?> KmsKeyName { get; private set; } = null!;
@@ -279,7 +279,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+        /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `AutomaticUpdatePolicy`. Structure is documented below.
         /// </summary>
         [Output("onDeployUpdatePolicy")]
         public Output<Outputs.FunctionOnDeployUpdatePolicy?> OnDeployUpdatePolicy { get; private set; } = null!;
@@ -343,7 +343,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Represents parameters related to source repository where a function is hosted.
-        /// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
+        /// Cannot be set alongside `SourceArchiveBucket` or `SourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         /// </summary>
         [Output("sourceRepository")]
         public Output<Outputs.FunctionSourceRepository?> SourceRepository { get; private set; } = null!;
@@ -361,7 +361,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<int?> Timeout { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
+        /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `HttpsTriggerUrl`. Cannot be used with `EventTrigger`.
         /// </summary>
         [Output("triggerHttp")]
         public Output<bool?> TriggerHttp { get; private set; } = null!;
@@ -436,7 +436,7 @@ namespace Pulumi.Gcp.CloudFunctions
     public sealed class FunctionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+        /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `OnDeployUpdatePolicy`.
         /// </summary>
         [Input("automaticUpdatePolicy")]
         public Input<Inputs.FunctionAutomaticUpdatePolicyArgs>? AutomaticUpdatePolicy { get; set; }
@@ -484,7 +484,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? DockerRegistry { get; set; }
 
         /// <summary>
-        /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
+        /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `DockerRegistry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         /// </summary>
         [Input("dockerRepository")]
         public Input<string>? DockerRepository { get; set; }
@@ -508,7 +508,7 @@ namespace Pulumi.Gcp.CloudFunctions
         }
 
         /// <summary>
-        /// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        /// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `TriggerHttp`.
         /// </summary>
         [Input("eventTrigger")]
         public Input<Inputs.FunctionEventTriggerArgs>? EventTrigger { get; set; }
@@ -523,7 +523,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? HttpsTriggerSecurityLevel { get; set; }
 
         /// <summary>
-        /// URL which triggers function execution. Returned only if `trigger_http` is used.
+        /// URL which triggers function execution. Returned only if `TriggerHttp` is used.
         /// </summary>
         [Input("httpsTriggerUrl")]
         public Input<string>? HttpsTriggerUrl { get; set; }
@@ -536,7 +536,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-        /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+        /// If specified, you must also provide an artifact registry repository using the `DockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
@@ -575,7 +575,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+        /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `AutomaticUpdatePolicy`. Structure is documented below.
         /// </summary>
         [Input("onDeployUpdatePolicy")]
         public Input<Inputs.FunctionOnDeployUpdatePolicyArgs>? OnDeployUpdatePolicy { get; set; }
@@ -645,7 +645,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Represents parameters related to source repository where a function is hosted.
-        /// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
+        /// Cannot be set alongside `SourceArchiveBucket` or `SourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         /// </summary>
         [Input("sourceRepository")]
         public Input<Inputs.FunctionSourceRepositoryArgs>? SourceRepository { get; set; }
@@ -657,7 +657,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
+        /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `HttpsTriggerUrl`. Cannot be used with `EventTrigger`.
         /// </summary>
         [Input("triggerHttp")]
         public Input<bool>? TriggerHttp { get; set; }
@@ -683,7 +683,7 @@ namespace Pulumi.Gcp.CloudFunctions
     public sealed class FunctionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+        /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `OnDeployUpdatePolicy`.
         /// </summary>
         [Input("automaticUpdatePolicy")]
         public Input<Inputs.FunctionAutomaticUpdatePolicyGetArgs>? AutomaticUpdatePolicy { get; set; }
@@ -731,7 +731,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? DockerRegistry { get; set; }
 
         /// <summary>
-        /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
+        /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `DockerRegistry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         /// </summary>
         [Input("dockerRepository")]
         public Input<string>? DockerRepository { get; set; }
@@ -771,7 +771,7 @@ namespace Pulumi.Gcp.CloudFunctions
         }
 
         /// <summary>
-        /// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        /// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `TriggerHttp`.
         /// </summary>
         [Input("eventTrigger")]
         public Input<Inputs.FunctionEventTriggerGetArgs>? EventTrigger { get; set; }
@@ -786,7 +786,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? HttpsTriggerSecurityLevel { get; set; }
 
         /// <summary>
-        /// URL which triggers function execution. Returned only if `trigger_http` is used.
+        /// URL which triggers function execution. Returned only if `TriggerHttp` is used.
         /// </summary>
         [Input("httpsTriggerUrl")]
         public Input<string>? HttpsTriggerUrl { get; set; }
@@ -799,7 +799,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-        /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+        /// If specified, you must also provide an artifact registry repository using the `DockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
@@ -838,7 +838,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+        /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `AutomaticUpdatePolicy`. Structure is documented below.
         /// </summary>
         [Input("onDeployUpdatePolicy")]
         public Input<Inputs.FunctionOnDeployUpdatePolicyGetArgs>? OnDeployUpdatePolicy { get; set; }
@@ -924,7 +924,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Represents parameters related to source repository where a function is hosted.
-        /// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
+        /// Cannot be set alongside `SourceArchiveBucket` or `SourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         /// </summary>
         [Input("sourceRepository")]
         public Input<Inputs.FunctionSourceRepositoryGetArgs>? SourceRepository { get; set; }
@@ -942,7 +942,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
+        /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `HttpsTriggerUrl`. Cannot be used with `EventTrigger`.
         /// </summary>
         [Input("triggerHttp")]
         public Input<bool>? TriggerHttp { get; set; }

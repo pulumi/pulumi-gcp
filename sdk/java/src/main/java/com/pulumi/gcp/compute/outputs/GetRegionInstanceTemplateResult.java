@@ -57,7 +57,7 @@ public final class GetRegionInstanceTemplateResult {
     private Map<String,String> effectiveLabels;
     /**
      * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      * 
      */
     private Boolean enableDisplay;
@@ -107,7 +107,7 @@ public final class GetRegionInstanceTemplateResult {
     private String metadataFingerprint;
     /**
      * @return An alternative to using the
-     * startup-script metadata key, mostly to match the compute_instance resource.
+     * startup-script metadata key, mostly to match the computeInstance resource.
      * This replaces the startup-script metadata key on the created instance and
      * thus the two mechanisms are not allowed to be used simultaneously.
      * 
@@ -175,7 +175,7 @@ public final class GetRegionInstanceTemplateResult {
     private List<GetRegionInstanceTemplateServiceAccount> serviceAccounts;
     /**
      * @return Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      * 
      */
     private List<GetRegionInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs;
@@ -237,7 +237,7 @@ public final class GetRegionInstanceTemplateResult {
     }
     /**
      * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      * 
      */
     public Boolean enableDisplay() {
@@ -307,7 +307,7 @@ public final class GetRegionInstanceTemplateResult {
     }
     /**
      * @return An alternative to using the
-     * startup-script metadata key, mostly to match the compute_instance resource.
+     * startup-script metadata key, mostly to match the computeInstance resource.
      * This replaces the startup-script metadata key on the created instance and
      * thus the two mechanisms are not allowed to be used simultaneously.
      * 
@@ -411,7 +411,7 @@ public final class GetRegionInstanceTemplateResult {
     }
     /**
      * @return Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      * 
      */
     public List<GetRegionInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs() {

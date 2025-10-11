@@ -54,8 +54,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// the condition will trigger if the comparison
         /// is true for any of the time series that have
         /// been identified by filter and aggregations,
-        /// or by the ratio, if denominator_filter and
-        /// denominator_aggregations are specified.
+        /// or by the ratio, if DenominatorFilter and
+        /// DenominatorAggregations are specified.
         /// Structure is documented below.
         /// </summary>
         [Input("trigger")]

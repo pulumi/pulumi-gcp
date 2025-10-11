@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpRanges;
         /// <summary>
-        /// The source VPC network for `ip_ranges`.
+        /// The source VPC network for `IpRanges`.
         /// Required for instances using Private Service Connect, optional otherwise.
         /// </summary>
         public readonly string? Network;

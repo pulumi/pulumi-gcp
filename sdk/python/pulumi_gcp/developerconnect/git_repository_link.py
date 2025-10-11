@@ -492,6 +492,8 @@ class GitRepositoryLink(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Developer Connect Git Repository Link Github Doc
+
         ## Import
 
         GitRepositoryLink can be imported using any of these accepted formats:
@@ -552,6 +554,8 @@ class GitRepositoryLink(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/developer-connect/docs/overview)
 
         ## Example Usage
+
+        ### Developer Connect Git Repository Link Github Doc
 
         ## Import
 

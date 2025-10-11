@@ -50,7 +50,7 @@ public final class CertificateConfigX509ConfigCaOptionsArgs extends com.pulumi.r
 
     /**
      * When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
-     * If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+     * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
      * 
      */
     @Import(name="nonCa")
@@ -58,7 +58,7 @@ public final class CertificateConfigX509ConfigCaOptionsArgs extends com.pulumi.r
 
     /**
      * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
-     * If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+     * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
      * 
      */
     public Optional<Output<Boolean>> nonCa() {
@@ -67,7 +67,7 @@ public final class CertificateConfigX509ConfigCaOptionsArgs extends com.pulumi.r
 
     /**
      * When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-     * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
      * the max path length will be omitted from the CA certificate.
      * 
      */
@@ -76,7 +76,7 @@ public final class CertificateConfigX509ConfigCaOptionsArgs extends com.pulumi.r
 
     /**
      * @return When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-     * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
      * the max path length will be omitted from the CA certificate.
      * 
      */
@@ -157,7 +157,7 @@ public final class CertificateConfigX509ConfigCaOptionsArgs extends com.pulumi.r
 
         /**
          * @param nonCa When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
-         * If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+         * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class CertificateConfigX509ConfigCaOptionsArgs extends com.pulumi.r
 
         /**
          * @param nonCa When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
-         * If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+         * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class CertificateConfigX509ConfigCaOptionsArgs extends com.pulumi.r
 
         /**
          * @param zeroMaxIssuerPathLength When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-         * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+         * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
          * the max path length will be omitted from the CA certificate.
          * 
          * @return builder
@@ -193,7 +193,7 @@ public final class CertificateConfigX509ConfigCaOptionsArgs extends com.pulumi.r
 
         /**
          * @param zeroMaxIssuerPathLength When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-         * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+         * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
          * the max path length will be omitted from the CA certificate.
          * 
          * @return builder

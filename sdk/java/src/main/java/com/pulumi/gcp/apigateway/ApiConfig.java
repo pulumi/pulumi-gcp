@@ -88,7 +88,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * Creates a unique name beginning with the
-     * specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
+     * specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
      * 
      */
     @Export(name="apiConfigIdPrefix", refs={String.class}, tree="[0]")
@@ -96,7 +96,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Creates a unique name beginning with the
-     * specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
+     * specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
      * 
      */
     public Output<String> apiConfigIdPrefix() {
@@ -168,7 +168,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user-provided metadata.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -178,7 +178,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * @return Resource labels to represent user-provided metadata.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

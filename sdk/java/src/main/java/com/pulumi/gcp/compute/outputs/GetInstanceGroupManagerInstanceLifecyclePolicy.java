@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceGroupManagerInstanceLifecyclePolicy {
     /**
-     * @return Specifies the action that a MIG performs on a failed VM. If the value of the &#34;on_failed_health_check&#34; field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
+     * @return Specifies the action that a MIG performs on a failed VM. If the value of the &#34;onFailedHealthCheck&#34; field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
      * 
      */
     private String defaultActionOnFailure;
@@ -21,14 +21,14 @@ public final class GetInstanceGroupManagerInstanceLifecyclePolicy {
      */
     private String forceUpdateOnRepair;
     /**
-     * @return Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  &#34;default_action_on_failure&#34; field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+     * @return Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  &#34;defaultActionOnFailure&#34; field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
      * 
      */
     private String onFailedHealthCheck;
 
     private GetInstanceGroupManagerInstanceLifecyclePolicy() {}
     /**
-     * @return Specifies the action that a MIG performs on a failed VM. If the value of the &#34;on_failed_health_check&#34; field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
+     * @return Specifies the action that a MIG performs on a failed VM. If the value of the &#34;onFailedHealthCheck&#34; field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
      * 
      */
     public String defaultActionOnFailure() {
@@ -42,7 +42,7 @@ public final class GetInstanceGroupManagerInstanceLifecyclePolicy {
         return this.forceUpdateOnRepair;
     }
     /**
-     * @return Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  &#34;default_action_on_failure&#34; field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+     * @return Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  &#34;defaultActionOnFailure&#34; field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
      * 
      */
     public String onFailedHealthCheck() {

@@ -36,7 +36,7 @@ public final class RouterPeerBfd {
      * BFD declares that a peer is unavailable. If set, the value must
      * be a value between 5 and 16.
      * 
-     * &lt;a name=&#34;nested_md5_authentication_key&#34;&gt;&lt;/a&gt;The `md5_authentication_key` block supports:
+     * &lt;a name=&#34;nestedMd5AuthenticationKey&#34;&gt;&lt;/a&gt;The `md5AuthenticationKey` block supports:
      * 
      */
     private @Nullable Integer multiplier;
@@ -79,7 +79,7 @@ public final class RouterPeerBfd {
      * BFD declares that a peer is unavailable. If set, the value must
      * be a value between 5 and 16.
      * 
-     * &lt;a name=&#34;nested_md5_authentication_key&#34;&gt;&lt;/a&gt;The `md5_authentication_key` block supports:
+     * &lt;a name=&#34;nestedMd5AuthenticationKey&#34;&gt;&lt;/a&gt;The `md5AuthenticationKey` block supports:
      * 
      */
     public Optional<Integer> multiplier() {

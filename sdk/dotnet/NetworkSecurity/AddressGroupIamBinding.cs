@@ -24,6 +24,8 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// &gt; **Note:** `gcp.networksecurity.AddressGroupIamBinding` resources **can be** used in conjunction with `gcp.networksecurity.AddressGroupIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
+    /// ## gcp.networksecurity.AddressGroupIamPolicy
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -84,7 +86,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -183,7 +185,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<string>? _members;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -253,7 +255,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<string>? _members;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.

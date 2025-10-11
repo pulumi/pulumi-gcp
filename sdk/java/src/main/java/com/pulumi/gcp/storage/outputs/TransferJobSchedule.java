@@ -21,12 +21,12 @@ public final class TransferJobSchedule {
      */
     private @Nullable String repeatInterval;
     /**
-     * @return The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
+     * @return The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
      * 
      */
     private @Nullable TransferJobScheduleScheduleEndDate scheduleEndDate;
     /**
-     * @return The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+     * @return The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past, the transfer will run for the first time on the following day. Structure documented below.
      * 
      */
     private TransferJobScheduleScheduleStartDate scheduleStartDate;
@@ -45,14 +45,14 @@ public final class TransferJobSchedule {
         return Optional.ofNullable(this.repeatInterval);
     }
     /**
-     * @return The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
+     * @return The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
      * 
      */
     public Optional<TransferJobScheduleScheduleEndDate> scheduleEndDate() {
         return Optional.ofNullable(this.scheduleEndDate);
     }
     /**
-     * @return The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+     * @return The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past, the transfer will run for the first time on the following day. Structure documented below.
      * 
      */
     public TransferJobScheduleScheduleStartDate scheduleStartDate() {

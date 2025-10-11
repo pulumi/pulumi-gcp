@@ -384,7 +384,7 @@ public class SecurityPolicyRule extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * Must be specified if the action is &#34;rateBasedBan&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
      * Structure is documented below.
      * 
      */
@@ -392,7 +392,7 @@ public class SecurityPolicyRule extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ SecurityPolicyRuleRateLimitOptions> rateLimitOptions;
 
     /**
-     * @return Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * @return Must be specified if the action is &#34;rateBasedBan&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
      * Structure is documented below.
      * 
      */

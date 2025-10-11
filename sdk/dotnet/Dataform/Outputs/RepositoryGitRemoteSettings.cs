@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataform.Outputs
     public sealed class RepositoryGitRemoteSettings
     {
         /// <summary>
-        /// The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
+        /// The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `SshAuthenticationConfig`). Must be in the format projects/*/secrets/*/versions/*.
         /// </summary>
         public readonly string? AuthenticationTokenSecretVersion;
         /// <summary>

@@ -235,8 +235,8 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:tpu/v2Vm:V2Vm")
 public class V2Vm extends com.pulumi.resources.CustomResource {
     /**
-     * The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
-     * as `accelerator_type`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+     * The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
+     * as `acceleratorType`. If neither is specified, `acceleratorType` defaults to &#39;v2-8&#39;.
      * Structure is documented below.
      * 
      */
@@ -244,8 +244,8 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
     private Output<V2VmAcceleratorConfig> acceleratorConfig;
 
     /**
-     * @return The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
-     * as `accelerator_type`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+     * @return The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
+     * as `acceleratorType`. If neither is specified, `acceleratorType` defaults to &#39;v2-8&#39;.
      * Structure is documented below.
      * 
      */
@@ -253,16 +253,16 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
         return this.acceleratorConfig;
     }
     /**
-     * TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
-     * `accelerator_config`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+     * TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
+     * `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to &#39;v2-8&#39;.
      * 
      */
     @Export(name="acceleratorType", refs={String.class}, tree="[0]")
     private Output<String> acceleratorType;
 
     /**
-     * @return TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
-     * `accelerator_config`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+     * @return TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
+     * `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to &#39;v2-8&#39;.
      * 
      */
     public Output<String> acceleratorType() {
@@ -381,7 +381,7 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
     /**
      * Resource labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -390,7 +390,7 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
     /**
      * @return Resource labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Recaptcha.Inputs
     public sealed class EnterpriseKeyIosSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to true, it means allowed_bundle_ids will not be enforced.
+        /// If set to true, it means AllowedBundleIds will not be enforced.
         /// </summary>
         [Input("allowAllBundleIds")]
         public Input<bool>? AllowAllBundleIds { get; set; }

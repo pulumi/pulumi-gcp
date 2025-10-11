@@ -158,7 +158,7 @@ public final class ConversationProfileArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participant_id&#34; - &#34;participantRole&#34; - &#34;message_id&#34;
+     * Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participantId&#34; - &#34;participantRole&#34; - &#34;messageId&#34;
      * Structure is documented below.
      * 
      */
@@ -166,7 +166,7 @@ public final class ConversationProfileArgs extends com.pulumi.resources.Resource
     private @Nullable Output<ConversationProfileNewRecognitionResultNotificationConfigArgs> newRecognitionResultNotificationConfig;
 
     /**
-     * @return Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participant_id&#34; - &#34;participantRole&#34; - &#34;message_id&#34;
+     * @return Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participantId&#34; - &#34;participantRole&#34; - &#34;messageId&#34;
      * Structure is documented below.
      * 
      */
@@ -493,7 +493,7 @@ public final class ConversationProfileArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param newRecognitionResultNotificationConfig Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participant_id&#34; - &#34;participantRole&#34; - &#34;message_id&#34;
+         * @param newRecognitionResultNotificationConfig Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participantId&#34; - &#34;participantRole&#34; - &#34;messageId&#34;
          * Structure is documented below.
          * 
          * @return builder
@@ -505,7 +505,7 @@ public final class ConversationProfileArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param newRecognitionResultNotificationConfig Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participant_id&#34; - &#34;participantRole&#34; - &#34;message_id&#34;
+         * @param newRecognitionResultNotificationConfig Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participantId&#34; - &#34;participantRole&#34; - &#34;messageId&#34;
          * Structure is documented below.
          * 
          * @return builder

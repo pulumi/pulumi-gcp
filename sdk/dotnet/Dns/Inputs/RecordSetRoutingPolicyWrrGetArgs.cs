@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dns.Inputs
     public sealed class RecordSetRoutingPolicyWrrGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+        /// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `Rrdatas` or `HealthCheckedTargets` can be set.
         /// Structure is documented below.
         /// </summary>
         [Input("healthCheckedTargets")]
@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Dns.Inputs
         private InputList<string>? _rrdatas;
 
         /// <summary>
-        /// Same as `rrdatas` above.
+        /// Same as `Rrdatas` above.
         /// </summary>
         public InputList<string> Rrdatas
         {

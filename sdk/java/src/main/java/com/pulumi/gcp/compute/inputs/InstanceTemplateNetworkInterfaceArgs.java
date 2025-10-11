@@ -26,7 +26,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
      * is not accessible from the Internet (this means that ssh provisioners will
      * not work unless you can send traffic to the instance&#39;s
      * network (e.g. via tunnel or because it is running on another cloud instance
-     * on that network). This block can be specified once per `network_interface`. Structure documented below.
+     * on that network). This block can be specified once per `networkInterface`. Structure documented below.
      * 
      */
     @Import(name="accessConfigs")
@@ -38,7 +38,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
      * is not accessible from the Internet (this means that ssh provisioners will
      * not work unless you can send traffic to the instance&#39;s
      * network (e.g. via tunnel or because it is running on another cloud instance
-     * on that network). This block can be specified once per `network_interface`. Structure documented below.
+     * on that network). This block can be specified once per `networkInterface`. Structure documented below.
      * 
      */
     public Optional<Output<List<InstanceTemplateNetworkInterfaceAccessConfigArgs>>> accessConfigs() {
@@ -146,7 +146,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
     }
 
     /**
-     * The name or self_link of the network to attach this interface to.
+     * The name or selfLink of the network to attach this interface to.
      * Use `network` attribute for Legacy or Auto subnetted networks and
      * `subnetwork` for custom subnetted networks.
      * 
@@ -155,7 +155,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
     private @Nullable Output<String> network;
 
     /**
-     * @return The name or self_link of the network to attach this interface to.
+     * @return The name or selfLink of the network to attach this interface to.
      * Use `network` attribute for Legacy or Auto subnetted networks and
      * `subnetwork` for custom subnetted networks.
      * 
@@ -321,7 +321,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
          * is not accessible from the Internet (this means that ssh provisioners will
          * not work unless you can send traffic to the instance&#39;s
          * network (e.g. via tunnel or because it is running on another cloud instance
-         * on that network). This block can be specified once per `network_interface`. Structure documented below.
+         * on that network). This block can be specified once per `networkInterface`. Structure documented below.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
          * is not accessible from the Internet (this means that ssh provisioners will
          * not work unless you can send traffic to the instance&#39;s
          * network (e.g. via tunnel or because it is running on another cloud instance
-         * on that network). This block can be specified once per `network_interface`. Structure documented below.
+         * on that network). This block can be specified once per `networkInterface`. Structure documented below.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
          * is not accessible from the Internet (this means that ssh provisioners will
          * not work unless you can send traffic to the instance&#39;s
          * network (e.g. via tunnel or because it is running on another cloud instance
-         * on that network). This block can be specified once per `network_interface`. Structure documented below.
+         * on that network). This block can be specified once per `networkInterface`. Structure documented below.
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         }
 
         /**
-         * @param network The name or self_link of the network to attach this interface to.
+         * @param network The name or selfLink of the network to attach this interface to.
          * Use `network` attribute for Legacy or Auto subnetted networks and
          * `subnetwork` for custom subnetted networks.
          * 
@@ -535,7 +535,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         }
 
         /**
-         * @param network The name or self_link of the network to attach this interface to.
+         * @param network The name or selfLink of the network to attach this interface to.
          * Use `network` attribute for Legacy or Auto subnetted networks and
          * `subnetwork` for custom subnetted networks.
          * 

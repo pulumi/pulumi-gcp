@@ -740,7 +740,7 @@ namespace Pulumi.Gcp.Workstations
         /// <summary>
         /// Client-specified annotations. This is distinct from labels.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -793,7 +793,7 @@ namespace Pulumi.Gcp.Workstations
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+        /// Whether to enable Linux `Auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         /// </summary>
         [Output("enableAuditAgent")]
         public Output<bool?> EnableAuditAgent { get; private set; } = null!;
@@ -839,7 +839,7 @@ namespace Pulumi.Gcp.Workstations
         /// <summary>
         /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -898,7 +898,7 @@ namespace Pulumi.Gcp.Workstations
         public Output<ImmutableArray<string>> ReplicaZones { get; private set; } = null!;
 
         /// <summary>
-        /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+        /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `EncryptionKey` is set. Defaults to 12 hours.
         /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         /// </summary>
         [Output("runningTimeout")]
@@ -992,7 +992,7 @@ namespace Pulumi.Gcp.Workstations
         /// <summary>
         /// Client-specified annotations. This is distinct from labels.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -1020,7 +1020,7 @@ namespace Pulumi.Gcp.Workstations
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+        /// Whether to enable Linux `Auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         /// </summary>
         [Input("enableAuditAgent")]
         public Input<bool>? EnableAuditAgent { get; set; }
@@ -1068,7 +1068,7 @@ namespace Pulumi.Gcp.Workstations
         /// <summary>
         /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1135,7 +1135,7 @@ namespace Pulumi.Gcp.Workstations
         }
 
         /// <summary>
-        /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+        /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `EncryptionKey` is set. Defaults to 12 hours.
         /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         /// </summary>
         [Input("runningTimeout")]
@@ -1180,7 +1180,7 @@ namespace Pulumi.Gcp.Workstations
         /// <summary>
         /// Client-specified annotations. This is distinct from labels.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -1257,7 +1257,7 @@ namespace Pulumi.Gcp.Workstations
         }
 
         /// <summary>
-        /// Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+        /// Whether to enable Linux `Auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         /// </summary>
         [Input("enableAuditAgent")]
         public Input<bool>? EnableAuditAgent { get; set; }
@@ -1312,7 +1312,7 @@ namespace Pulumi.Gcp.Workstations
         /// <summary>
         /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1402,7 +1402,7 @@ namespace Pulumi.Gcp.Workstations
         }
 
         /// <summary>
-        /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+        /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `EncryptionKey` is set. Defaults to 12 hours.
         /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         /// </summary>
         [Input("runningTimeout")]

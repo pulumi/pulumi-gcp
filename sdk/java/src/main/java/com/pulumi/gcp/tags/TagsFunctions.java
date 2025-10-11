@@ -31,7 +31,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class TagsFunctions {
     /**
-     * Get a tag key by org or project `parent` and `short_name`.
+     * Get a tag key by org or project `parent` and `shortName`.
      * 
      * ## Example Usage
      * 
@@ -103,7 +103,7 @@ public final class TagsFunctions {
         return getTagKey(args, InvokeOptions.Empty);
     }
     /**
-     * Get a tag key by org or project `parent` and `short_name`.
+     * Get a tag key by org or project `parent` and `shortName`.
      * 
      * ## Example Usage
      * 
@@ -175,7 +175,7 @@ public final class TagsFunctions {
         return getTagKeyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get a tag key by org or project `parent` and `short_name`.
+     * Get a tag key by org or project `parent` and `shortName`.
      * 
      * ## Example Usage
      * 
@@ -247,7 +247,7 @@ public final class TagsFunctions {
         return Deployment.getInstance().invoke("gcp:tags/getTagKey:getTagKey", TypeShape.of(GetTagKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a tag key by org or project `parent` and `short_name`.
+     * Get a tag key by org or project `parent` and `shortName`.
      * 
      * ## Example Usage
      * 
@@ -319,7 +319,7 @@ public final class TagsFunctions {
         return Deployment.getInstance().invoke("gcp:tags/getTagKey:getTagKey", TypeShape.of(GetTagKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a tag key by org or project `parent` and `short_name`.
+     * Get a tag key by org or project `parent` and `shortName`.
      * 
      * ## Example Usage
      * 
@@ -941,7 +941,7 @@ public final class TagsFunctions {
         return Deployment.getInstance().invokeAsync("gcp:tags/getTagKeys:getTagKeys", TypeShape.of(GetTagKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a tag value by `parent` key and `short_name`.
+     * Get a tag value by `parent` key and `shortName`.
      * 
      * ## Example Usage
      * 
@@ -982,7 +982,7 @@ public final class TagsFunctions {
         return getTagValue(args, InvokeOptions.Empty);
     }
     /**
-     * Get a tag value by `parent` key and `short_name`.
+     * Get a tag value by `parent` key and `shortName`.
      * 
      * ## Example Usage
      * 
@@ -1023,7 +1023,7 @@ public final class TagsFunctions {
         return getTagValuePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get a tag value by `parent` key and `short_name`.
+     * Get a tag value by `parent` key and `shortName`.
      * 
      * ## Example Usage
      * 
@@ -1064,7 +1064,7 @@ public final class TagsFunctions {
         return Deployment.getInstance().invoke("gcp:tags/getTagValue:getTagValue", TypeShape.of(GetTagValueResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a tag value by `parent` key and `short_name`.
+     * Get a tag value by `parent` key and `shortName`.
      * 
      * ## Example Usage
      * 
@@ -1105,7 +1105,7 @@ public final class TagsFunctions {
         return Deployment.getInstance().invoke("gcp:tags/getTagValue:getTagValue", TypeShape.of(GetTagValueResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a tag value by `parent` key and `short_name`.
+     * Get a tag value by `parent` key and `shortName`.
      * 
      * ## Example Usage
      * 

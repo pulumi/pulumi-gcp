@@ -38,7 +38,7 @@ public final class GetInstanceNetwork {
     private String network;
     /**
      * @return Private Service Connect configuration.
-     * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+     * Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
      * 
      */
     private List<GetInstanceNetworkPscConfig> pscConfigs;
@@ -84,7 +84,7 @@ public final class GetInstanceNetwork {
     }
     /**
      * @return Private Service Connect configuration.
-     * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+     * Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
      * 
      */
     public List<GetInstanceNetworkPscConfig> pscConfigs() {

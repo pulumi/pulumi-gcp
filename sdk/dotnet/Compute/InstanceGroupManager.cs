@@ -480,7 +480,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> WaitForInstances { get; private set; } = null!;
 
         /// <summary>
-        /// When used with `wait_for_instances` it specifies the status to wait for.
+        /// When used with `WaitForInstances` it specifies the status to wait for.
         /// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
         /// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
         /// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
@@ -739,7 +739,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? WaitForInstances { get; set; }
 
         /// <summary>
-        /// When used with `wait_for_instances` it specifies the status to wait for.
+        /// When used with `WaitForInstances` it specifies the status to wait for.
         /// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
         /// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
         /// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
@@ -1005,7 +1005,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? WaitForInstances { get; set; }
 
         /// <summary>
-        /// When used with `wait_for_instances` it specifies the status to wait for.
+        /// When used with `WaitForInstances` it specifies the status to wait for.
         /// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
         /// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
         /// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`

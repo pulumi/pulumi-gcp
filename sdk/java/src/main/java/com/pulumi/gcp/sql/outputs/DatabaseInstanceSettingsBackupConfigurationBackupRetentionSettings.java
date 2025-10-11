@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
     /**
-     * @return Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+     * @return Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
      * is &#39;COUNT&#39;, we will retain this many backups.
      * 
      */
@@ -27,7 +27,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSet
 
     private DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings() {}
     /**
-     * @return Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+     * @return Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
      * is &#39;COUNT&#39;, we will retain this many backups.
      * 
      */

@@ -17,7 +17,7 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs ext
 
     /**
      * The self link of the encryption key that is
-     * stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
      * may be set.
      * 
      */
@@ -26,7 +26,7 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs ext
 
     /**
      * @return The self link of the encryption key that is
-     * stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
      * may be set.
      * 
      */
@@ -57,7 +57,7 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs ext
      * A 256-bit [customer-supplied encryption key]
      * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
      * may be set.
      * 
      */
@@ -68,7 +68,7 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs ext
      * @return A 256-bit [customer-supplied encryption key]
      * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
      * may be set.
      * 
      */
@@ -78,7 +78,7 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs ext
 
     /**
      * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
      * may be set.
      * 
      */
@@ -87,7 +87,7 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs ext
 
     /**
      * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
      * may be set.
      * 
      */
@@ -124,7 +124,7 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs ext
 
         /**
          * @param kmsKeySelfLink The self link of the encryption key that is
-         * stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
          * may be set.
          * 
          * @return builder
@@ -137,7 +137,7 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs ext
 
         /**
          * @param kmsKeySelfLink The self link of the encryption key that is
-         * stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
          * may be set.
          * 
          * @return builder
@@ -176,7 +176,7 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs ext
          * @param rawKey A 256-bit [customer-supplied encryption key]
          * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-         * to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
          * may be set.
          * 
          * @return builder
@@ -191,7 +191,7 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs ext
          * @param rawKey A 256-bit [customer-supplied encryption key]
          * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-         * to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
          * may be set.
          * 
          * @return builder
@@ -203,7 +203,7 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs ext
 
         /**
          * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
          * may be set.
          * 
          * @return builder
@@ -216,7 +216,7 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs ext
 
         /**
          * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
          * may be set.
          * 
          * @return builder

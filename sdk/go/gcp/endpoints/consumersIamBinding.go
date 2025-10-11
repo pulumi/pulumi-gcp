@@ -26,6 +26,8 @@ import (
 //
 // > **Note:** `endpoints.ConsumersIamBinding` resources **can be** used in conjunction with `endpoints.ConsumersIamMember` resources **only if** they do not grant privilege to the same role.
 //
+// ## endpoints.ConsumersIamPolicy
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:

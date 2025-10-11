@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class ProjectSinkBigqueryOptions {
     /**
      * @return Whether to use [BigQuery&#39;s partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-     * By default, Logging creates dated tables based on the log entries&#39; timestamps, e.g. `syslog_20170523`. With partitioned
+     * By default, Logging creates dated tables based on the log entries&#39; timestamps, e.g. `syslog20170523`. With partitioned
      * tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
      * has to be used instead. In both cases, tables are sharded based on UTC timezone.
      * 
@@ -22,7 +22,7 @@ public final class ProjectSinkBigqueryOptions {
     private ProjectSinkBigqueryOptions() {}
     /**
      * @return Whether to use [BigQuery&#39;s partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-     * By default, Logging creates dated tables based on the log entries&#39; timestamps, e.g. `syslog_20170523`. With partitioned
+     * By default, Logging creates dated tables based on the log entries&#39; timestamps, e.g. `syslog20170523`. With partitioned
      * tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
      * has to be used instead. In both cases, tables are sharded based on UTC timezone.
      * 

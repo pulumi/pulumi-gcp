@@ -56,7 +56,7 @@ public final class GetGroupsGroup {
      */
     private Map<String,String> labels;
     /**
-     * @return Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
+     * @return Resource name of the Group in the format: groups/{group_id}, where `groupId` is the unique ID assigned to the Group.
      * 
      */
     private String name;
@@ -128,7 +128,7 @@ public final class GetGroupsGroup {
         return this.labels;
     }
     /**
-     * @return Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
+     * @return Resource name of the Group in the format: groups/{group_id}, where `groupId` is the unique ID assigned to the Group.
      * 
      */
     public String name() {

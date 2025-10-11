@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Apphub.Inputs
         public Input<string>? GcpProject { get; set; }
 
         /// <summary>
-        /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+        /// Part of `Parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly double DetectionLoadThreshold;
         public readonly double DetectionRelativeToBaselineQps;
         /// <summary>
-        /// The name of the security policy. Provide either this or a `self_link`.
+        /// The name of the security policy. Provide either this or a `SelfLink`.
         /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResult> TrafficGranularityConfigs;

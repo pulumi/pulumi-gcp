@@ -58,7 +58,7 @@ public final class ClusterNodePoolNodeConfigKubeletConfigArgs extends com.pulumi
      * container log file before it is rotated. Specified as a positive number and a
      * unit suffix, such as `&#34;100Ki&#34;`, `&#34;10Mi&#34;`. Valid units are &#34;Ki&#34;, &#34;Mi&#34;, &#34;Gi&#34;.
      * The value must be between `&#34;10Mi&#34;` and `&#34;500Mi&#34;`, inclusive. And the total container log size
-     * (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
+     * (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
      * 
      */
     @Import(name="containerLogMaxSize")
@@ -69,7 +69,7 @@ public final class ClusterNodePoolNodeConfigKubeletConfigArgs extends com.pulumi
      * container log file before it is rotated. Specified as a positive number and a
      * unit suffix, such as `&#34;100Ki&#34;`, `&#34;10Mi&#34;`. Valid units are &#34;Ki&#34;, &#34;Mi&#34;, &#34;Gi&#34;.
      * The value must be between `&#34;10Mi&#34;` and `&#34;500Mi&#34;`, inclusive. And the total container log size
-     * (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
+     * (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
      * 
      */
     public Optional<Output<String>> containerLogMaxSize() {
@@ -451,7 +451,7 @@ public final class ClusterNodePoolNodeConfigKubeletConfigArgs extends com.pulumi
          * container log file before it is rotated. Specified as a positive number and a
          * unit suffix, such as `&#34;100Ki&#34;`, `&#34;10Mi&#34;`. Valid units are &#34;Ki&#34;, &#34;Mi&#34;, &#34;Gi&#34;.
          * The value must be between `&#34;10Mi&#34;` and `&#34;500Mi&#34;`, inclusive. And the total container log size
-         * (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
+         * (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
          * 
          * @return builder
          * 
@@ -466,7 +466,7 @@ public final class ClusterNodePoolNodeConfigKubeletConfigArgs extends com.pulumi
          * container log file before it is rotated. Specified as a positive number and a
          * unit suffix, such as `&#34;100Ki&#34;`, `&#34;10Mi&#34;`. Valid units are &#34;Ki&#34;, &#34;Mi&#34;, &#34;Gi&#34;.
          * The value must be between `&#34;10Mi&#34;` and `&#34;500Mi&#34;`, inclusive. And the total container log size
-         * (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
+         * (`containerLogMaxSize` * `containerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
          * 
          * @return builder
          * 

@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.PubSub.Outputs
         public readonly ImmutableDictionary<string, string>? Attributes;
         /// <summary>
         /// When set, the payload to the push endpoint is not wrapped.Sets the
-        /// `data` field as the HTTP body for delivery.
+        /// `Data` field as the HTTP body for delivery.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SubscriptionPushConfigNoWrapper? NoWrapper;

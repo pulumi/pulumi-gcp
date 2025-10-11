@@ -52,14 +52,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
     }
 
     /**
-     * Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+     * Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+     * @return Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
      * 
      */
     public Optional<Output<String>> image() {
@@ -67,14 +67,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
     }
 
     /**
-     * Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+     * Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
      * 
      */
     @Import(name="instanceNames")
     private @Nullable Output<List<String>> instanceNames;
 
     /**
-     * @return Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+     * @return Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
      * 
      */
     public Optional<Output<List<String>>> instanceNames() {
@@ -97,14 +97,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
     }
 
     /**
-     * Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+     * Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
      * 
      */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
 
     /**
-     * @return Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+     * @return Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -142,14 +142,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
     }
 
     /**
-     * Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+     * Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
      * 
      */
     @Import(name="numInstances")
     private @Nullable Output<Integer> numInstances;
 
     /**
-     * @return Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+     * @return Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
      * 
      */
     public Optional<Output<Integer>> numInstances() {
@@ -257,7 +257,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
         }
 
         /**
-         * @param image Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+         * @param image Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
         }
 
         /**
-         * @param image Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+         * @param image Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
         }
 
         /**
-         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
         }
 
         /**
-         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
         }
 
         /**
-         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
         }
 
         /**
-         * @param machineType Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+         * @param machineType Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
         }
 
         /**
-         * @param machineType Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+         * @param machineType Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
         }
 
         /**
-         * @param numInstances Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+         * @param numInstances Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
         }
 
         /**
-         * @param numInstances Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+         * @param numInstances Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
          * 
          * @return builder
          * 

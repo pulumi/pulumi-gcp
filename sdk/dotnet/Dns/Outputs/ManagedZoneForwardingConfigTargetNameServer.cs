@@ -18,10 +18,10 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// </summary>
         public readonly string? DomainName;
         /// <summary>
-        /// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+        /// Forwarding path for this TargetNameServer. If unset or `Default` Cloud DNS will make forwarding
         /// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-        /// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-        /// Possible values are: `default`, `private`.
+        /// to the Internet. When set to `Private`, Cloud DNS will always send queries through VPC for this target
+        /// Possible values are: `Default`, `Private`.
         /// </summary>
         public readonly string? ForwardingPath;
         /// <summary>

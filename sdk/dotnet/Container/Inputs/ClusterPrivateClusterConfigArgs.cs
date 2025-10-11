@@ -13,10 +13,10 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterPrivateClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When `true`, the cluster's private
+        /// When `True`, the cluster's private
         /// endpoint is used as the cluster endpoint and access through the public endpoint
-        /// is disabled. When `false`, either endpoint can be used. This field only applies
-        /// to private clusters, when `enable_private_nodes` is `true`.
+        /// is disabled. When `False`, either endpoint can be used. This field only applies
+        /// to private clusters, when `EnablePrivateNodes` is `True`.
         /// </summary>
         [Input("enablePrivateEndpoint")]
         public Input<bool>? EnablePrivateEndpoint { get; set; }
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// with any other ranges in use within the cluster's network, and it must be a /28
         /// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
         /// for more details. This field only applies to private clusters, when
-        /// `enable_private_nodes` is `true`.
+        /// `EnablePrivateNodes` is `True`.
         /// </summary>
         [Input("masterIpv4CidrBlock")]
         public Input<string>? MasterIpv4CidrBlock { get; set; }
@@ -72,8 +72,8 @@ namespace Pulumi.Gcp.Container.Inputs
         /// The external IP address of this cluster's master endpoint.
         /// 
         /// !&gt; The Google provider is unable to validate certain configurations of
-        /// `private_cluster_config` when `enable_private_nodes` is `false`. It's
-        /// recommended that you omit the block entirely if the field is not set to `true`.
+        /// `PrivateClusterConfig` when `EnablePrivateNodes` is `False`. It's
+        /// recommended that you omit the block entirely if the field is not set to `True`.
         /// </summary>
         [Input("publicEndpoint")]
         public Input<string>? PublicEndpoint { get; set; }

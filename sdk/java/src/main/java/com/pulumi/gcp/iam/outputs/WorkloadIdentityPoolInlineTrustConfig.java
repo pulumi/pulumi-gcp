@@ -17,8 +17,8 @@ public final class WorkloadIdentityPoolInlineTrustConfig {
      * maximum of `10` trust domain entries in this map.
      * Note that a trust domain automatically trusts itself and don&#39;t need to be specified here.
      * If however, this `WorkloadIdentityPool`&#39;s trust domain contains any trust anchors in the
-     * `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
-     * automatically derived from your `InlineCertificateIssuanceConfig`&#39;s `ca_pools`.
+     * `additionalTrustBundles` map, those trust anchors will be *appended to* the Trust Bundle
+     * automatically derived from your `InlineCertificateIssuanceConfig`&#39;s `caPools`.
      * Structure is documented below.
      * 
      */
@@ -31,8 +31,8 @@ public final class WorkloadIdentityPoolInlineTrustConfig {
      * maximum of `10` trust domain entries in this map.
      * Note that a trust domain automatically trusts itself and don&#39;t need to be specified here.
      * If however, this `WorkloadIdentityPool`&#39;s trust domain contains any trust anchors in the
-     * `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
-     * automatically derived from your `InlineCertificateIssuanceConfig`&#39;s `ca_pools`.
+     * `additionalTrustBundles` map, those trust anchors will be *appended to* the Trust Bundle
+     * automatically derived from your `InlineCertificateIssuanceConfig`&#39;s `caPools`.
      * Structure is documented below.
      * 
      */

@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Extracted short name of the package (last part of `name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
+        /// Extracted short name of the package (last part of `Name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
         /// </summary>
         public readonly string PackageName;
         /// <summary>

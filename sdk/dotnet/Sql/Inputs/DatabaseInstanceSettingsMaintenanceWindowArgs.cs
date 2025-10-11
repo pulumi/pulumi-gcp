@@ -19,13 +19,13 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<int>? Day { get; set; }
 
         /// <summary>
-        /// Hour of day (`0-23`), ignored if `day` not set
+        /// Hour of day (`0-23`), ignored if `Day` not set
         /// </summary>
         [Input("hour")]
         public Input<int>? Hour { get; set; }
 
         /// <summary>
-        /// Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
+        /// Receive updates after one week (`Canary`) or after two weeks (`Stable`) or after five weeks (`Week5`) of notification.
         /// </summary>
         [Input("updateTrack")]
         public Input<string>? UpdateTrack { get; set; }

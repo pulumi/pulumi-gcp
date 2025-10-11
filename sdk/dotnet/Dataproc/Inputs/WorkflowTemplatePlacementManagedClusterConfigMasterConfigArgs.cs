@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _instanceNames;
 
         /// <summary>
-        /// Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+        /// Output only. The list of instance names. Dataproc derives the names from `ClusterName`, `NumInstances`, and the instance group.
         /// </summary>
         public InputList<string> InstanceNames
         {

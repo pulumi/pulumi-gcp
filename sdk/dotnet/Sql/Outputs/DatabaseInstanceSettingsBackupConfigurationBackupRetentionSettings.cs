@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings
     {
         /// <summary>
-        /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+        /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If RetentionUnit
         /// is 'COUNT', we will retain this many backups.
         /// </summary>
         public readonly int RetainedBackups;

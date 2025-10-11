@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.ContactCenterInsights.Outputs
         /// <summary>
         /// The issue model to run. If not provided, the most recently deployed topic
         /// model will be used. The provided issue model will only be used for
-        /// inference if the issue model is deployed and if run_issue_model_annotator
+        /// inference if the issue model is deployed and if RunIssueModelAnnotator
         /// is set to true. If more than one issue model is provided, only the first
         /// provided issue model will be used for inference.
         /// </summary>
@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.ContactCenterInsights.Outputs
         /// The list of phrase matchers to run. If not provided, all active phrase
         /// matchers will be used. If inactive phrase matchers are provided, they will
         /// not be used. Phrase matchers will be run only if
-        /// run_phrase_matcher_annotator is set to true. Format:
+        /// RunPhraseMatcherAnnotator is set to true. Format:
         /// projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
         /// </summary>
         public readonly ImmutableArray<string> PhraseMatchers;

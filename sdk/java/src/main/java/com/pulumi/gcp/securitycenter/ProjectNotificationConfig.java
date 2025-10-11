@@ -155,7 +155,7 @@ public class ProjectNotificationConfig extends com.pulumi.resources.CustomResour
     }
     /**
      * The Pub/Sub topic to send notifications to. Its format is
-     * &#34;projects/[project_id]/topics/[topic]&#34;.
+     * &#34;projects/[projectId]/topics/[topic]&#34;.
      * 
      */
     @Export(name="pubsubTopic", refs={String.class}, tree="[0]")
@@ -163,7 +163,7 @@ public class ProjectNotificationConfig extends com.pulumi.resources.CustomResour
 
     /**
      * @return The Pub/Sub topic to send notifications to. Its format is
-     * &#34;projects/[project_id]/topics/[topic]&#34;.
+     * &#34;projects/[projectId]/topics/[topic]&#34;.
      * 
      */
     public Output<String> pubsubTopic() {

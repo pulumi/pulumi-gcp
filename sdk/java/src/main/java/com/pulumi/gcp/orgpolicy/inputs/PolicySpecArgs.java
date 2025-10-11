@@ -36,14 +36,14 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
+     * Determines the inheritance behavior for this `Policy`. If `inheritFromParent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
      * 
      */
     @Import(name="inheritFromParent")
     private @Nullable Output<Boolean> inheritFromParent;
 
     /**
-     * @return Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
+     * @return Determines the inheritance behavior for this `Policy`. If `inheritFromParent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
      * 
      */
     public Optional<Output<Boolean>> inheritFromParent() {
@@ -51,14 +51,14 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+     * Ignores policies set above this resource and restores the `constraintDefault` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inheritFromParent` must be set to false.
      * 
      */
     @Import(name="reset")
     private @Nullable Output<Boolean> reset;
 
     /**
-     * @return Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+     * @return Ignores policies set above this resource and restores the `constraintDefault` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inheritFromParent` must be set to false.
      * 
      */
     public Optional<Output<Boolean>> reset() {
@@ -151,7 +151,7 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inheritFromParent Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
+         * @param inheritFromParent Determines the inheritance behavior for this `Policy`. If `inheritFromParent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inheritFromParent Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
+         * @param inheritFromParent Determines the inheritance behavior for this `Policy`. If `inheritFromParent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reset Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+         * @param reset Ignores policies set above this resource and restores the `constraintDefault` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inheritFromParent` must be set to false.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reset Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+         * @param reset Ignores policies set above this resource and restores the `constraintDefault` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inheritFromParent` must be set to false.
          * 
          * @return builder
          * 
