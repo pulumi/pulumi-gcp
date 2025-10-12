@@ -109,6 +109,25 @@ public final class RegionBackendServiceBackend {
      */
     private @Nullable Integer maxConnectionsPerInstance;
     /**
+     * @return Defines a maximum number of in-flight requests for the whole NEG
+     * or instance group. Not available if backend&#39;s balancingMode is RATE
+     * or CONNECTION.
+     * 
+     */
+    private @Nullable Integer maxInFlightRequests;
+    /**
+     * @return Defines a maximum number of in-flight requests for a single endpoint.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    private @Nullable Integer maxInFlightRequestsPerEndpoint;
+    /**
+     * @return Defines a maximum number of in-flight requests for a single VM.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    private @Nullable Integer maxInFlightRequestsPerInstance;
+    /**
      * @return The max requests per second (RPS) of the group. Cannot be set
      * for INTERNAL backend services.
      * Can be used with either RATE or UTILIZATION balancing modes,
@@ -143,6 +162,15 @@ public final class RegionBackendServiceBackend {
      * 
      */
     private @Nullable Double maxUtilization;
+    /**
+     * @return This field specifies how long a connection should be kept alive for:
+     * - LONG: Most of the requests are expected to take more than multiple
+     *   seconds to finish.
+     * - SHORT: Most requests are expected to finish with a sub-second latency.
+     *   Possible values are: `LONG`, `SHORT`.
+     * 
+     */
+    private @Nullable String trafficDuration;
 
     private RegionBackendServiceBackend() {}
     /**
@@ -255,6 +283,31 @@ public final class RegionBackendServiceBackend {
         return Optional.ofNullable(this.maxConnectionsPerInstance);
     }
     /**
+     * @return Defines a maximum number of in-flight requests for the whole NEG
+     * or instance group. Not available if backend&#39;s balancingMode is RATE
+     * or CONNECTION.
+     * 
+     */
+    public Optional<Integer> maxInFlightRequests() {
+        return Optional.ofNullable(this.maxInFlightRequests);
+    }
+    /**
+     * @return Defines a maximum number of in-flight requests for a single endpoint.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    public Optional<Integer> maxInFlightRequestsPerEndpoint() {
+        return Optional.ofNullable(this.maxInFlightRequestsPerEndpoint);
+    }
+    /**
+     * @return Defines a maximum number of in-flight requests for a single VM.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    public Optional<Integer> maxInFlightRequestsPerInstance() {
+        return Optional.ofNullable(this.maxInFlightRequestsPerInstance);
+    }
+    /**
      * @return The max requests per second (RPS) of the group. Cannot be set
      * for INTERNAL backend services.
      * Can be used with either RATE or UTILIZATION balancing modes,
@@ -297,6 +350,17 @@ public final class RegionBackendServiceBackend {
     public Optional<Double> maxUtilization() {
         return Optional.ofNullable(this.maxUtilization);
     }
+    /**
+     * @return This field specifies how long a connection should be kept alive for:
+     * - LONG: Most of the requests are expected to take more than multiple
+     *   seconds to finish.
+     * - SHORT: Most requests are expected to finish with a sub-second latency.
+     *   Possible values are: `LONG`, `SHORT`.
+     * 
+     */
+    public Optional<String> trafficDuration() {
+        return Optional.ofNullable(this.trafficDuration);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -316,10 +380,14 @@ public final class RegionBackendServiceBackend {
         private @Nullable Integer maxConnections;
         private @Nullable Integer maxConnectionsPerEndpoint;
         private @Nullable Integer maxConnectionsPerInstance;
+        private @Nullable Integer maxInFlightRequests;
+        private @Nullable Integer maxInFlightRequestsPerEndpoint;
+        private @Nullable Integer maxInFlightRequestsPerInstance;
         private @Nullable Integer maxRate;
         private @Nullable Double maxRatePerEndpoint;
         private @Nullable Double maxRatePerInstance;
         private @Nullable Double maxUtilization;
+        private @Nullable String trafficDuration;
         public Builder() {}
         public Builder(RegionBackendServiceBackend defaults) {
     	      Objects.requireNonNull(defaults);
@@ -332,10 +400,14 @@ public final class RegionBackendServiceBackend {
     	      this.maxConnections = defaults.maxConnections;
     	      this.maxConnectionsPerEndpoint = defaults.maxConnectionsPerEndpoint;
     	      this.maxConnectionsPerInstance = defaults.maxConnectionsPerInstance;
+    	      this.maxInFlightRequests = defaults.maxInFlightRequests;
+    	      this.maxInFlightRequestsPerEndpoint = defaults.maxInFlightRequestsPerEndpoint;
+    	      this.maxInFlightRequestsPerInstance = defaults.maxInFlightRequestsPerInstance;
     	      this.maxRate = defaults.maxRate;
     	      this.maxRatePerEndpoint = defaults.maxRatePerEndpoint;
     	      this.maxRatePerInstance = defaults.maxRatePerInstance;
     	      this.maxUtilization = defaults.maxUtilization;
+    	      this.trafficDuration = defaults.trafficDuration;
         }
 
         @CustomType.Setter
@@ -398,6 +470,24 @@ public final class RegionBackendServiceBackend {
             return this;
         }
         @CustomType.Setter
+        public Builder maxInFlightRequests(@Nullable Integer maxInFlightRequests) {
+
+            this.maxInFlightRequests = maxInFlightRequests;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxInFlightRequestsPerEndpoint(@Nullable Integer maxInFlightRequestsPerEndpoint) {
+
+            this.maxInFlightRequestsPerEndpoint = maxInFlightRequestsPerEndpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxInFlightRequestsPerInstance(@Nullable Integer maxInFlightRequestsPerInstance) {
+
+            this.maxInFlightRequestsPerInstance = maxInFlightRequestsPerInstance;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxRate(@Nullable Integer maxRate) {
 
             this.maxRate = maxRate;
@@ -421,6 +511,12 @@ public final class RegionBackendServiceBackend {
             this.maxUtilization = maxUtilization;
             return this;
         }
+        @CustomType.Setter
+        public Builder trafficDuration(@Nullable String trafficDuration) {
+
+            this.trafficDuration = trafficDuration;
+            return this;
+        }
         public RegionBackendServiceBackend build() {
             final var _resultValue = new RegionBackendServiceBackend();
             _resultValue.balancingMode = balancingMode;
@@ -432,10 +528,14 @@ public final class RegionBackendServiceBackend {
             _resultValue.maxConnections = maxConnections;
             _resultValue.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
             _resultValue.maxConnectionsPerInstance = maxConnectionsPerInstance;
+            _resultValue.maxInFlightRequests = maxInFlightRequests;
+            _resultValue.maxInFlightRequestsPerEndpoint = maxInFlightRequestsPerEndpoint;
+            _resultValue.maxInFlightRequestsPerInstance = maxInFlightRequestsPerInstance;
             _resultValue.maxRate = maxRate;
             _resultValue.maxRatePerEndpoint = maxRatePerEndpoint;
             _resultValue.maxRatePerInstance = maxRatePerInstance;
             _resultValue.maxUtilization = maxUtilization;
+            _resultValue.trafficDuration = trafficDuration;
             return _resultValue;
         }
     }

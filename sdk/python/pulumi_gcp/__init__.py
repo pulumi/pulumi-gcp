@@ -7129,6 +7129,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "kms/folderKajPolicyConfig",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig": "FolderKajPolicyConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "kms/keyHandle",
   "fqn": "pulumi_gcp.kms",
   "classes": {
@@ -9809,6 +9817,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiCacheConfig",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiCacheConfig:AiCacheConfig": "AiCacheConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiDataset",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -10077,6 +10093,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig": "AiRagEngineConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiReasoningEngine",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiReasoningEngine:AiReasoningEngine": "AiReasoningEngine"
   }
  },
  {

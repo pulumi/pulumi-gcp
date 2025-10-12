@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EkmConnectionIamMember{}
 	case "gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy":
 		r = &EkmConnectionIamPolicy{}
+	case "gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig":
+		r = &FolderKajPolicyConfig{}
 	case "gcp:kms/keyHandle:KeyHandle":
 		r = &KeyHandle{}
 	case "gcp:kms/keyRing:KeyRing":
@@ -118,6 +120,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"kms/ekmConnectionIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"kms/folderKajPolicyConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

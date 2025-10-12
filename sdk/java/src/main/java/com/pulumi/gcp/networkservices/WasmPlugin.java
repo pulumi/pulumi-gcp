@@ -30,6 +30,113 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Wasm Plugin Basic Docker Repository
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.networkservices.WasmPlugin;
+ * import com.pulumi.gcp.networkservices.WasmPluginArgs;
+ * import com.pulumi.gcp.networkservices.inputs.WasmPluginLogConfigArgs;
+ * import com.pulumi.gcp.networkservices.inputs.WasmPluginVersionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var wasmPlugin = new WasmPlugin("wasmPlugin", WasmPluginArgs.builder()
+ *             .name("my-wasm-plugin")
+ *             .description("my wasm plugin from a docker repository")
+ *             .mainVersionId("v1")
+ *             .labels(Map.of("test_label", "test_value"))
+ *             .logConfig(WasmPluginLogConfigArgs.builder()
+ *                 .enable(true)
+ *                 .sampleRate(1.0)
+ *                 .minLogLevel("WARN")
+ *                 .build())
+ *             .versions(WasmPluginVersionArgs.builder()
+ *                 .versionName("v1")
+ *                 .description("v1 version of my wasm plugin")
+ *                 .imageUri(String.format("us-central1-docker.pkg.dev/%s/my-artifact-registry-docker-repository/my-wasm-plugin-data:prod", project.name()))
+ *                 .labels(Map.of("test_label", "test_value"))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Wasm Plugin Basic Generic Repository
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.networkservices.WasmPlugin;
+ * import com.pulumi.gcp.networkservices.WasmPluginArgs;
+ * import com.pulumi.gcp.networkservices.inputs.WasmPluginLogConfigArgs;
+ * import com.pulumi.gcp.networkservices.inputs.WasmPluginVersionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var wasmPlugin = new WasmPlugin("wasmPlugin", WasmPluginArgs.builder()
+ *             .name("my-wasm-plugin")
+ *             .description("my wasm plugin from a generic repository")
+ *             .mainVersionId("v1")
+ *             .labels(Map.of("test_label", "test_value"))
+ *             .logConfig(WasmPluginLogConfigArgs.builder()
+ *                 .enable(true)
+ *                 .sampleRate(1.0)
+ *                 .minLogLevel("WARN")
+ *                 .build())
+ *             .versions(WasmPluginVersionArgs.builder()
+ *                 .versionName("v1")
+ *                 .description("v1 version of my wasm plugin")
+ *                 .imageUri(String.format("projects/%s/locations/us-central1/repositories/my-artifact-registry-generic-repository/genericArtifacts/my-wasm-plugin-data:v1", project.name()))
+ *                 .labels(Map.of("test_label", "test_value"))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * WasmPlugin can be imported using any of these accepted formats:

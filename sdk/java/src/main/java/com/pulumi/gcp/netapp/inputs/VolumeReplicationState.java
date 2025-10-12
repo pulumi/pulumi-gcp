@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.netapp.inputs.VolumeReplicationDestinationVolumeParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeReplicationHybridPeeringDetailArgs;
+import com.pulumi.gcp.netapp.inputs.VolumeReplicationHybridReplicationUserCommandArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeReplicationTransferStatArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -175,6 +176,23 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> hybridReplicationType() {
         return Optional.ofNullable(this.hybridReplicationType);
+    }
+
+    /**
+     * Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="hybridReplicationUserCommands")
+    private @Nullable Output<List<VolumeReplicationHybridReplicationUserCommandArgs>> hybridReplicationUserCommands;
+
+    /**
+     * @return Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<VolumeReplicationHybridReplicationUserCommandArgs>>> hybridReplicationUserCommands() {
+        return Optional.ofNullable(this.hybridReplicationUserCommands);
     }
 
     /**
@@ -437,6 +455,7 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
         this.healthy = $.healthy;
         this.hybridPeeringDetails = $.hybridPeeringDetails;
         this.hybridReplicationType = $.hybridReplicationType;
+        this.hybridReplicationUserCommands = $.hybridReplicationUserCommands;
         this.labels = $.labels;
         this.location = $.location;
         this.mirrorState = $.mirrorState;
@@ -693,6 +712,40 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
          */
         public Builder hybridReplicationType(String hybridReplicationType) {
             return hybridReplicationType(Output.of(hybridReplicationType));
+        }
+
+        /**
+         * @param hybridReplicationUserCommands Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridReplicationUserCommands(@Nullable Output<List<VolumeReplicationHybridReplicationUserCommandArgs>> hybridReplicationUserCommands) {
+            $.hybridReplicationUserCommands = hybridReplicationUserCommands;
+            return this;
+        }
+
+        /**
+         * @param hybridReplicationUserCommands Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridReplicationUserCommands(List<VolumeReplicationHybridReplicationUserCommandArgs> hybridReplicationUserCommands) {
+            return hybridReplicationUserCommands(Output.of(hybridReplicationUserCommands));
+        }
+
+        /**
+         * @param hybridReplicationUserCommands Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridReplicationUserCommands(VolumeReplicationHybridReplicationUserCommandArgs... hybridReplicationUserCommands) {
+            return hybridReplicationUserCommands(List.of(hybridReplicationUserCommands));
         }
 
         /**

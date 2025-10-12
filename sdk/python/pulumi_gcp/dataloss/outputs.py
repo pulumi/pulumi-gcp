@@ -339,6 +339,7 @@ __all__ = [
     'PreventionJobTriggerInspectJobActionPublishToStackdriver',
     'PreventionJobTriggerInspectJobActionSaveFindings',
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig',
+    'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath',
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable',
     'PreventionJobTriggerInspectJobInspectConfig',
     'PreventionJobTriggerInspectJobInspectConfigCustomInfoType',
@@ -11688,7 +11689,7 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore(di
                  score: _builtins.str):
         """
         :param _builtins.str score: The sensitivity score applied to the resource.
-               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
         """
         pulumi.set(__self__, "score", score)
 
@@ -11697,7 +11698,7 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore(di
     def score(self) -> _builtins.str:
         """
         The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
         """
         return pulumi.get(self, "score")
 
@@ -16857,6 +16858,8 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
         suggest = None
         if key == "outputSchema":
             suggest = "output_schema"
+        elif key == "storagePath":
+            suggest = "storage_path"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig. Access the value via the '{suggest}' property getter instead.")
@@ -16870,11 +16873,10 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 table: 'outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable',
-                 output_schema: Optional[_builtins.str] = None):
+                 output_schema: Optional[_builtins.str] = None,
+                 storage_path: Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath'] = None,
+                 table: Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable'] = None):
         """
-        :param 'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs' table: Information on the location of the target BigQuery Table.
-               Structure is documented below.
         :param _builtins.str output_schema: Schema used for writing the findings for Inspect jobs. This field is only used for
                Inspect and must be unspecified for Risk jobs. Columns are derived from the Finding
                object. If appending to an existing table, any columns from the predefined schema
@@ -16883,19 +16885,21 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
                table with no schema, and no changes will be made to an existing table that has a schema.
                Only for use with external storage.
                Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
+        :param 'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgs' storage_path: Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
+               as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
+               the naming convention <job_id>-<shard_number>, for example: my-job-id-2.
+               Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
+               Cloud Storage, the output schema field should not be set. If set, it will be ignored.
+               Structure is documented below.
+        :param 'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs' table: Information on the location of the target BigQuery Table.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
         if output_schema is not None:
             pulumi.set(__self__, "output_schema", output_schema)
-
-    @_builtins.property
-    @pulumi.getter
-    def table(self) -> 'outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable':
-        """
-        Information on the location of the target BigQuery Table.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "table")
+        if storage_path is not None:
+            pulumi.set(__self__, "storage_path", storage_path)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
 
     @_builtins.property
     @pulumi.getter(name="outputSchema")
@@ -16911,6 +16915,48 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
         Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
         """
         return pulumi.get(self, "output_schema")
+
+    @_builtins.property
+    @pulumi.getter(name="storagePath")
+    def storage_path(self) -> Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath']:
+        """
+        Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
+        as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
+        the naming convention <job_id>-<shard_number>, for example: my-job-id-2.
+        Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
+        Cloud Storage, the output schema field should not be set. If set, it will be ignored.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "storage_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable']:
+        """
+        Information on the location of the target BigQuery Table.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str):
+        """
+        :param _builtins.str path: A URL representing a file or path (no wildcards) in Cloud Storage.
+               Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+        pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        A URL representing a file or path (no wildcards) in Cloud Storage.
+        Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type

@@ -15,23 +15,53 @@ public final class GetBackupPlanAssociationsPlainArgs extends com.pulumi.resourc
 
     public static final GetBackupPlanAssociationsPlainArgs Empty = new GetBackupPlanAssociationsPlainArgs();
 
+    /**
+     * The location where the Backup Plan Association resources reside.
+     * 
+     */
     @Import(name="location", required=true)
     private String location;
 
+    /**
+     * @return The location where the Backup Plan Association resources reside.
+     * 
+     */
     public String location() {
         return this.location;
     }
 
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable String project;
 
+    /**
+     * @return The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+     * 
+     * ***
+     * 
+     */
     @Import(name="resourceType", required=true)
     private String resourceType;
 
+    /**
+     * @return The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+     * 
+     * ***
+     * 
+     */
     public String resourceType() {
         return this.resourceType;
     }
@@ -62,16 +92,37 @@ public final class GetBackupPlanAssociationsPlainArgs extends com.pulumi.resourc
             $ = new GetBackupPlanAssociationsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param location The location where the Backup Plan Association resources reside.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param project The project in which the resource belongs. If it
+         * is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param resourceType The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceType(String resourceType) {
             $.resourceType = resourceType;
             return this;

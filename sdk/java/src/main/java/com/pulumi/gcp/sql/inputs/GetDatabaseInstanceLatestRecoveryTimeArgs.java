@@ -46,11 +46,19 @@ public final class GetDatabaseInstanceLatestRecoveryTimeArgs extends com.pulumi.
         return Optional.ofNullable(this.project);
     }
 
+    @Import(name="sourceInstanceDeletionTime")
+    private @Nullable Output<String> sourceInstanceDeletionTime;
+
+    public Optional<Output<String>> sourceInstanceDeletionTime() {
+        return Optional.ofNullable(this.sourceInstanceDeletionTime);
+    }
+
     private GetDatabaseInstanceLatestRecoveryTimeArgs() {}
 
     private GetDatabaseInstanceLatestRecoveryTimeArgs(GetDatabaseInstanceLatestRecoveryTimeArgs $) {
         this.instance = $.instance;
         this.project = $.project;
+        this.sourceInstanceDeletionTime = $.sourceInstanceDeletionTime;
     }
 
     public static Builder builder() {
@@ -111,6 +119,15 @@ public final class GetDatabaseInstanceLatestRecoveryTimeArgs extends com.pulumi.
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        public Builder sourceInstanceDeletionTime(@Nullable Output<String> sourceInstanceDeletionTime) {
+            $.sourceInstanceDeletionTime = sourceInstanceDeletionTime;
+            return this;
+        }
+
+        public Builder sourceInstanceDeletionTime(String sourceInstanceDeletionTime) {
+            return sourceInstanceDeletionTime(Output.of(sourceInstanceDeletionTime));
         }
 
         public GetDatabaseInstanceLatestRecoveryTimeArgs build() {

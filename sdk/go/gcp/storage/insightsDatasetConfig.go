@@ -92,11 +92,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewInsightsDatasetConfig(ctx, "config_excludes", &storage.InsightsDatasetConfigArgs{
-//				Location:                        pulumi.String("us-central1"),
-//				DatasetConfigId:                 pulumi.String("my_config_excludes"),
-//				RetentionPeriodDays:             pulumi.Int(1),
-//				ActivityDataRetentionPeriodDays: pulumi.Int(2),
-//				OrganizationScope:               pulumi.Bool(true),
+//				Location:            pulumi.String("us-central1"),
+//				DatasetConfigId:     pulumi.String("my_config_excludes"),
+//				RetentionPeriodDays: pulumi.Int(1),
+//				OrganizationScope:   pulumi.Bool(true),
 //				Identity: &storage.InsightsDatasetConfigIdentityArgs{
 //					Type: pulumi.String("IDENTITY_TYPE_PER_PROJECT"),
 //				},
@@ -151,8 +150,6 @@ import (
 type InsightsDatasetConfig struct {
 	pulumi.CustomResourceState
 
-	// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-	ActivityDataRetentionPeriodDays pulumi.IntPtrOutput `pulumi:"activityDataRetentionPeriodDays"`
 	// The UTC time at which the DatasetConfig was created. This is auto-populated.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-defined ID of the DatasetConfig
@@ -250,8 +247,6 @@ func GetInsightsDatasetConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InsightsDatasetConfig resources.
 type insightsDatasetConfigState struct {
-	// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-	ActivityDataRetentionPeriodDays *int `pulumi:"activityDataRetentionPeriodDays"`
 	// The UTC time at which the DatasetConfig was created. This is auto-populated.
 	CreateTime *string `pulumi:"createTime"`
 	// The user-defined ID of the DatasetConfig
@@ -308,8 +303,6 @@ type insightsDatasetConfigState struct {
 }
 
 type InsightsDatasetConfigState struct {
-	// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-	ActivityDataRetentionPeriodDays pulumi.IntPtrInput
 	// The UTC time at which the DatasetConfig was created. This is auto-populated.
 	CreateTime pulumi.StringPtrInput
 	// The user-defined ID of the DatasetConfig
@@ -370,8 +363,6 @@ func (InsightsDatasetConfigState) ElementType() reflect.Type {
 }
 
 type insightsDatasetConfigArgs struct {
-	// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-	ActivityDataRetentionPeriodDays *int `pulumi:"activityDataRetentionPeriodDays"`
 	// The user-defined ID of the DatasetConfig
 	DatasetConfigId string `pulumi:"datasetConfigId"`
 	// An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
@@ -416,8 +407,6 @@ type insightsDatasetConfigArgs struct {
 
 // The set of arguments for constructing a InsightsDatasetConfig resource.
 type InsightsDatasetConfigArgs struct {
-	// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-	ActivityDataRetentionPeriodDays pulumi.IntPtrInput
 	// The user-defined ID of the DatasetConfig
 	DatasetConfigId pulumi.StringInput
 	// An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
@@ -545,11 +534,6 @@ func (o InsightsDatasetConfigOutput) ToInsightsDatasetConfigOutput() InsightsDat
 
 func (o InsightsDatasetConfigOutput) ToInsightsDatasetConfigOutputWithContext(ctx context.Context) InsightsDatasetConfigOutput {
 	return o
-}
-
-// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-func (o InsightsDatasetConfigOutput) ActivityDataRetentionPeriodDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InsightsDatasetConfig) pulumi.IntPtrOutput { return v.ActivityDataRetentionPeriodDays }).(pulumi.IntPtrOutput)
 }
 
 // The UTC time at which the DatasetConfig was created. This is auto-populated.

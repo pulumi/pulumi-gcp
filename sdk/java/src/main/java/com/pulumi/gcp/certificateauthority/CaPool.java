@@ -118,14 +118,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var privatecaSaKeyuserEncrypterdecrypter = new CryptoKeyIAMMember("privatecaSaKeyuserEncrypterdecrypter", CryptoKeyIAMMemberArgs.builder()
- *             .cryptoKeyId("projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key")
+ *             .cryptoKeyId("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(privatecaSa.member())
  *             .build());
  * 
  *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .name("my-pool")
- *             .location("asia-east1")
+ *             .location("us-central1")
  *             .tier("ENTERPRISE")
  *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
  *                 .publishCaCert(false)
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .labels(Map.of("foo", "bar"))
  *             .encryptionSpec(CaPoolEncryptionSpecArgs.builder()
- *                 .cloudKmsKey("projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key")
+ *                 .cloudKmsKey("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key")
  *                 .build())
  *             .issuancePolicy(CaPoolIssuancePolicyArgs.builder()
  *                 .allowedKeyTypes(                

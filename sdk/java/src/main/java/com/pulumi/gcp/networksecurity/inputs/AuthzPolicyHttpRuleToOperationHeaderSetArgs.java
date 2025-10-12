@@ -17,7 +17,7 @@ public final class AuthzPolicyHttpRuleToOperationHeaderSetArgs extends com.pulum
     public static final AuthzPolicyHttpRuleToOperationHeaderSetArgs Empty = new AuthzPolicyHttpRuleToOperationHeaderSetArgs();
 
     /**
-     * A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+     * A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class AuthzPolicyHttpRuleToOperationHeaderSetArgs extends com.pulum
     private @Nullable Output<List<AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs>> headers;
 
     /**
-     * @return A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+     * @return A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
      * Structure is documented below.
      * 
      */
@@ -58,7 +58,7 @@ public final class AuthzPolicyHttpRuleToOperationHeaderSetArgs extends com.pulum
         }
 
         /**
-         * @param headers A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+         * @param headers A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
          * Structure is documented below.
          * 
          * @return builder
@@ -70,7 +70,7 @@ public final class AuthzPolicyHttpRuleToOperationHeaderSetArgs extends com.pulum
         }
 
         /**
-         * @param headers A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+         * @param headers A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
          * Structure is documented below.
          * 
          * @return builder
@@ -81,7 +81,7 @@ public final class AuthzPolicyHttpRuleToOperationHeaderSetArgs extends com.pulum
         }
 
         /**
-         * @param headers A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+         * @param headers A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
          * Structure is documented below.
          * 
          * @return builder

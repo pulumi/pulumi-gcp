@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore {
     /**
      * @return The sensitivity score applied to the resource.
-     * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+     * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
      * 
      */
     private String score;
@@ -20,7 +20,7 @@ public final class PreventionDiscoveryConfigActionTagResourcesTagConditionSensit
     private PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore() {}
     /**
      * @return The sensitivity score applied to the resource.
-     * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+     * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
      * 
      */
     public String score() {
