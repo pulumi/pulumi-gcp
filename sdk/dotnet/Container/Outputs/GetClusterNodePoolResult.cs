@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int NodeCount;
         /// <summary>
-        /// The list of zones in which the node pool's nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster's zone for zonal clusters. If unspecified, the cluster-level node_locations will be used.
+        /// The list of zones in which the node pool's nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster's zone for zonal clusters. If unspecified, the cluster-level NodeLocations will be used.
         /// </summary>
         public readonly ImmutableArray<string> NodeLocations;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolQueuedProvisioningResult> QueuedProvisionings;
         /// <summary>
-        /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+        /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of MaxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolUpgradeSettingResult> UpgradeSettings;
         public readonly string Version;

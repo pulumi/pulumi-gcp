@@ -19,7 +19,7 @@ public final class ClusterDatabaseEncryptionArgs extends com.pulumi.resources.Re
     /**
      * the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
      * 
-     * &lt;a name=&#34;nested_enable_k8s_beta_apis&#34;&gt;&lt;/a&gt;The `enable_k8s_beta_apis` block supports:
+     * &lt;a name=&#34;nestedEnableK8sBetaApis&#34;&gt;&lt;/a&gt;The `enableK8sBetaApis` block supports:
      * 
      */
     @Import(name="keyName")
@@ -28,7 +28,7 @@ public final class ClusterDatabaseEncryptionArgs extends com.pulumi.resources.Re
     /**
      * @return the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
      * 
-     * &lt;a name=&#34;nested_enable_k8s_beta_apis&#34;&gt;&lt;/a&gt;The `enable_k8s_beta_apis` block supports:
+     * &lt;a name=&#34;nestedEnableK8sBetaApis&#34;&gt;&lt;/a&gt;The `enableK8sBetaApis` block supports:
      * 
      */
     public Optional<Output<String>> keyName() {
@@ -78,7 +78,7 @@ public final class ClusterDatabaseEncryptionArgs extends com.pulumi.resources.Re
         /**
          * @param keyName the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
          * 
-         * &lt;a name=&#34;nested_enable_k8s_beta_apis&#34;&gt;&lt;/a&gt;The `enable_k8s_beta_apis` block supports:
+         * &lt;a name=&#34;nestedEnableK8sBetaApis&#34;&gt;&lt;/a&gt;The `enableK8sBetaApis` block supports:
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class ClusterDatabaseEncryptionArgs extends com.pulumi.resources.Re
         /**
          * @param keyName the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
          * 
-         * &lt;a name=&#34;nested_enable_k8s_beta_apis&#34;&gt;&lt;/a&gt;The `enable_k8s_beta_apis` block supports:
+         * &lt;a name=&#34;nestedEnableK8sBetaApis&#34;&gt;&lt;/a&gt;The `enableK8sBetaApis` block supports:
          * 
          * @return builder
          * 

@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? MinCpuPlatform;
         /// <summary>
-        /// The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+        /// The minimum number of primary worker instances to create.  If `MinNumInstances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `MinNumInstances` number.
         /// </summary>
         public readonly int? MinNumInstances;
         /// <summary>

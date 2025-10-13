@@ -75,7 +75,7 @@ public final class GetClusterNodePool {
      */
     private Integer nodeCount;
     /**
-     * @return The list of zones in which the node pool&#39;s nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level node_locations will be used.
+     * @return The list of zones in which the node pool&#39;s nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level nodeLocations will be used.
      * 
      */
     private List<String> nodeLocations;
@@ -90,7 +90,7 @@ public final class GetClusterNodePool {
      */
     private List<GetClusterNodePoolQueuedProvisioning> queuedProvisionings;
     /**
-     * @return Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+     * @return Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of maxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
      * 
      */
     private List<GetClusterNodePoolUpgradeSetting> upgradeSettings;
@@ -175,7 +175,7 @@ public final class GetClusterNodePool {
         return this.nodeCount;
     }
     /**
-     * @return The list of zones in which the node pool&#39;s nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level node_locations will be used.
+     * @return The list of zones in which the node pool&#39;s nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level nodeLocations will be used.
      * 
      */
     public List<String> nodeLocations() {
@@ -196,7 +196,7 @@ public final class GetClusterNodePool {
         return this.queuedProvisionings;
     }
     /**
-     * @return Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+     * @return Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of maxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
      * 
      */
     public List<GetClusterNodePoolUpgradeSetting> upgradeSettings() {

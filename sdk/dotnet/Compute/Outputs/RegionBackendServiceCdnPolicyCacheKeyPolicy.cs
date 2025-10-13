@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly bool? IncludeProtocol;
         /// <summary>
         /// If true, include query string parameters in the cache key
-        /// according to query_string_whitelist and
+        /// according to QueryStringWhitelist and
         /// query_string_blacklist. If neither is set, the entire query
         /// string will be included.
         /// If false, the query string will be excluded from the cache
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Names of query string parameters to exclude in cache keys.
         /// All other parameters will be included. Either specify
-        /// query_string_whitelist or query_string_blacklist, not both.
+        /// QueryStringWhitelist or query_string_blacklist, not both.
         /// '&amp;' and '=' will be percent encoded and not treated as
         /// delimiters.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Names of query string parameters to include in cache keys.
         /// All other parameters will be excluded. Either specify
-        /// query_string_whitelist or query_string_blacklist, not both.
+        /// QueryStringWhitelist or query_string_blacklist, not both.
         /// '&amp;' and '=' will be percent encoded and not treated as
         /// delimiters.
         /// </summary>

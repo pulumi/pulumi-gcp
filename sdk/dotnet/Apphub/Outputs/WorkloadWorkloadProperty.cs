@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Apphub.Outputs
         /// </summary>
         public readonly string? GcpProject;
         /// <summary>
-        /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+        /// Part of `Parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         /// </summary>
         public readonly string? Location;
         /// <summary>

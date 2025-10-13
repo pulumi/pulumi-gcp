@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// <summary>
         /// The VIP to configure the load balancer for add-ons.
         /// 
-        /// &lt;a name="nested_load_balancer_f5_config"&gt;&lt;/a&gt;The `f5_config` block supports:
+        /// &lt;a name="NestedLoadBalancerF5Config"&gt;&lt;/a&gt;The `F5Config` block supports:
         /// </summary>
         public readonly string? AddonsVip;
         /// <summary>

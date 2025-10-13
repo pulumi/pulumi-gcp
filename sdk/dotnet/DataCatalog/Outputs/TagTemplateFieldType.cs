@@ -15,13 +15,13 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
     {
         /// <summary>
         /// Represents an enum type.
-        /// Exactly one of `primitive_type` or `enum_type` must be set
+        /// Exactly one of `PrimitiveType` or `EnumType` must be set
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.TagTemplateFieldTypeEnumType? EnumType;
         /// <summary>
         /// Represents primitive types - string, bool etc.
-        /// Exactly one of `primitive_type` or `enum_type` must be set
+        /// Exactly one of `PrimitiveType` or `EnumType` must be set
         /// Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
         /// </summary>
         public readonly string? PrimitiveType;

@@ -528,7 +528,7 @@ public class HostingCustomDomain extends com.pulumi.resources.CustomResource {
      * if true, indicates that Hosting&#39;s systems are attempting to
      * make the `CustomDomain`&#39;s state match your preferred state. This is most
      * frequently `true` when initially provisioning a `CustomDomain` or when creating
-     * a new SSL certificate to match an updated `cert_preference`
+     * a new SSL certificate to match an updated `certPreference`
      * 
      */
     @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
@@ -538,7 +538,7 @@ public class HostingCustomDomain extends com.pulumi.resources.CustomResource {
      * @return if true, indicates that Hosting&#39;s systems are attempting to
      * make the `CustomDomain`&#39;s state match your preferred state. This is most
      * frequently `true` when initially provisioning a `CustomDomain` or when creating
-     * a new SSL certificate to match an updated `cert_preference`
+     * a new SSL certificate to match an updated `certPreference`
      * 
      */
     public Output<Boolean> reconciling() {
@@ -547,7 +547,7 @@ public class HostingCustomDomain extends com.pulumi.resources.CustomResource {
     /**
      * A domain name that this CustomDomain should direct traffic towards. If
      * specified, Hosting will respond to requests against this CustomDomain
-     * with an HTTP 301 code, and route traffic to the specified `redirect_target`
+     * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
      * instead.
      * 
      */
@@ -557,7 +557,7 @@ public class HostingCustomDomain extends com.pulumi.resources.CustomResource {
     /**
      * @return A domain name that this CustomDomain should direct traffic towards. If
      * specified, Hosting will respond to requests against this CustomDomain
-     * with an HTTP 301 code, and route traffic to the specified `redirect_target`
+     * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
      * instead.
      * 
      */

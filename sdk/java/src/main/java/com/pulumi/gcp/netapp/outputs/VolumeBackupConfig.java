@@ -25,7 +25,7 @@ public final class VolumeBackupConfig {
      */
     private @Nullable String backupVault;
     /**
-     * @return When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+     * @return When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
      * 
      */
     private @Nullable Boolean scheduledBackupEnabled;
@@ -47,7 +47,7 @@ public final class VolumeBackupConfig {
         return Optional.ofNullable(this.backupVault);
     }
     /**
-     * @return When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+     * @return When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
      * 
      */
     public Optional<Boolean> scheduledBackupEnabled() {

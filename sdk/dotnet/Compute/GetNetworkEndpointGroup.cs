@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Use this data source to access a Network Endpoint Group's attributes.
         /// 
-        /// The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+        /// The NEG may be found by providing either a `SelfLink`, or a `Name` and a `Zone`.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Use this data source to access a Network Endpoint Group's attributes.
         /// 
-        /// The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+        /// The NEG may be found by providing either a `SelfLink`, or a `Name` and a `Zone`.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Use this data source to access a Network Endpoint Group's attributes.
         /// 
-        /// The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+        /// The NEG may be found by providing either a `SelfLink`, or a `Name` and a `Zone`.
         /// 
         /// ## Example Usage
         /// 
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The Network Endpoint Group name.
-        /// Provide either this or a `self_link`.
+        /// Provide either this or a `SelfLink`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The Network Endpoint Group name.
-        /// Provide either this or a `self_link`.
+        /// Provide either this or a `SelfLink`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -514,7 +514,7 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Maps attributes from the authentication credentials issued by an external identity provider
-        /// to Google Cloud attributes, such as `subject` and `segment`.
+        /// to Google Cloud attributes, such as `Subject` and `Segment`.
         /// Each key must be a string specifying the Google Cloud IAM attribute to map to.
         /// The following keys are supported:
         /// * `google.subject`: The principal IAM is authenticating. You can reference this value in IAM bindings.
@@ -543,12 +543,12 @@ namespace Pulumi.Gcp.Iam
         /// Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
         /// function that maps an identity provider credential to the normalized attribute specified
         /// by the corresponding map key.
-        /// You can use the `assertion` keyword in the expression to access a JSON representation of
+        /// You can use the `Assertion` keyword in the expression to access a JSON representation of
         /// the authentication credential issued by the provider.
         /// The maximum length of an attribute mapping expression is 2048 characters. When evaluated,
         /// the total size of all mapped attributes must not exceed 8KB.
         /// For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
-        /// For example, the following maps the sub claim of the incoming credential to the `subject` attribute
+        /// For example, the following maps the sub claim of the incoming credential to the `Subject` attribute
         /// on a Google token:
         /// ```
         /// {"google.subject": "assertion.sub"}
@@ -720,7 +720,7 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Maps attributes from the authentication credentials issued by an external identity provider
-        /// to Google Cloud attributes, such as `subject` and `segment`.
+        /// to Google Cloud attributes, such as `Subject` and `Segment`.
         /// Each key must be a string specifying the Google Cloud IAM attribute to map to.
         /// The following keys are supported:
         /// * `google.subject`: The principal IAM is authenticating. You can reference this value in IAM bindings.
@@ -749,12 +749,12 @@ namespace Pulumi.Gcp.Iam
         /// Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
         /// function that maps an identity provider credential to the normalized attribute specified
         /// by the corresponding map key.
-        /// You can use the `assertion` keyword in the expression to access a JSON representation of
+        /// You can use the `Assertion` keyword in the expression to access a JSON representation of
         /// the authentication credential issued by the provider.
         /// The maximum length of an attribute mapping expression is 2048 characters. When evaluated,
         /// the total size of all mapped attributes must not exceed 8KB.
         /// For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
-        /// For example, the following maps the sub claim of the incoming credential to the `subject` attribute
+        /// For example, the following maps the sub claim of the incoming credential to the `Subject` attribute
         /// on a Google token:
         /// ```
         /// {"google.subject": "assertion.sub"}
@@ -873,7 +873,7 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Maps attributes from the authentication credentials issued by an external identity provider
-        /// to Google Cloud attributes, such as `subject` and `segment`.
+        /// to Google Cloud attributes, such as `Subject` and `Segment`.
         /// Each key must be a string specifying the Google Cloud IAM attribute to map to.
         /// The following keys are supported:
         /// * `google.subject`: The principal IAM is authenticating. You can reference this value in IAM bindings.
@@ -902,12 +902,12 @@ namespace Pulumi.Gcp.Iam
         /// Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
         /// function that maps an identity provider credential to the normalized attribute specified
         /// by the corresponding map key.
-        /// You can use the `assertion` keyword in the expression to access a JSON representation of
+        /// You can use the `Assertion` keyword in the expression to access a JSON representation of
         /// the authentication credential issued by the provider.
         /// The maximum length of an attribute mapping expression is 2048 characters. When evaluated,
         /// the total size of all mapped attributes must not exceed 8KB.
         /// For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
-        /// For example, the following maps the sub claim of the incoming credential to the `subject` attribute
+        /// For example, the following maps the sub claim of the incoming credential to the `Subject` attribute
         /// on a Google token:
         /// ```
         /// {"google.subject": "assertion.sub"}

@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * Get information about a Google Compute Regional Persistent disks.
  *
  * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
+ *
+ * ## Example Usage
  */
 export function getRegionDisk(args: GetRegionDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionDiskResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -87,6 +89,8 @@ export interface GetRegionDiskResult {
  * Get information about a Google Compute Regional Persistent disks.
  *
  * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
+ *
+ * ## Example Usage
  */
 export function getRegionDiskOutput(args: GetRegionDiskOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionDiskResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -14,14 +14,14 @@ public final class GetHostingChannelPlainArgs extends com.pulumi.resources.Invok
     public static final GetHostingChannelPlainArgs Empty = new GetHostingChannelPlainArgs();
 
     /**
-     * The ID of the channel. Use `channel_id = &#34;live&#34;` for the default channel of a site.
+     * The ID of the channel. Use `channelId = &#34;live&#34;` for the default channel of a site.
      * 
      */
     @Import(name="channelId", required=true)
     private String channelId;
 
     /**
-     * @return The ID of the channel. Use `channel_id = &#34;live&#34;` for the default channel of a site.
+     * @return The ID of the channel. Use `channelId = &#34;live&#34;` for the default channel of a site.
      * 
      */
     public String channelId() {
@@ -69,7 +69,7 @@ public final class GetHostingChannelPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param channelId The ID of the channel. Use `channel_id = &#34;live&#34;` for the default channel of a site.
+         * @param channelId The ID of the channel. Use `channelId = &#34;live&#34;` for the default channel of a site.
          * 
          * @return builder
          * 

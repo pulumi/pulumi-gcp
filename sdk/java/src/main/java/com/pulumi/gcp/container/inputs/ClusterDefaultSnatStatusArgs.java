@@ -17,7 +17,7 @@ public final class ClusterDefaultSnatStatusArgs extends com.pulumi.resources.Res
     /**
      * Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
      * 
-     * &lt;a name=&#34;nested_cluster_telemetry&#34;&gt;&lt;/a&gt;The `cluster_telemetry` block supports
+     * &lt;a name=&#34;nestedClusterTelemetry&#34;&gt;&lt;/a&gt;The `clusterTelemetry` block supports
      * 
      */
     @Import(name="disabled", required=true)
@@ -26,7 +26,7 @@ public final class ClusterDefaultSnatStatusArgs extends com.pulumi.resources.Res
     /**
      * @return Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
      * 
-     * &lt;a name=&#34;nested_cluster_telemetry&#34;&gt;&lt;/a&gt;The `cluster_telemetry` block supports
+     * &lt;a name=&#34;nestedClusterTelemetry&#34;&gt;&lt;/a&gt;The `clusterTelemetry` block supports
      * 
      */
     public Output<Boolean> disabled() {
@@ -60,7 +60,7 @@ public final class ClusterDefaultSnatStatusArgs extends com.pulumi.resources.Res
         /**
          * @param disabled Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
          * 
-         * &lt;a name=&#34;nested_cluster_telemetry&#34;&gt;&lt;/a&gt;The `cluster_telemetry` block supports
+         * &lt;a name=&#34;nestedClusterTelemetry&#34;&gt;&lt;/a&gt;The `clusterTelemetry` block supports
          * 
          * @return builder
          * 
@@ -73,7 +73,7 @@ public final class ClusterDefaultSnatStatusArgs extends com.pulumi.resources.Res
         /**
          * @param disabled Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
          * 
-         * &lt;a name=&#34;nested_cluster_telemetry&#34;&gt;&lt;/a&gt;The `cluster_telemetry` block supports
+         * &lt;a name=&#34;nestedClusterTelemetry&#34;&gt;&lt;/a&gt;The `clusterTelemetry` block supports
          * 
          * @return builder
          * 

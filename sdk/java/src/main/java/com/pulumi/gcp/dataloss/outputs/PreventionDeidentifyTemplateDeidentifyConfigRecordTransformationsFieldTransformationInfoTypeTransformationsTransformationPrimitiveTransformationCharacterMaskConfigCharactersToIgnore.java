@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
     /**
-     * @return Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
+     * @return Characters to not transform when masking. Only one of this or `commonCharactersToIgnore` must be specified.
      * 
      */
     private @Nullable String charactersToSkip;
     /**
-     * @return Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
+     * @return Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `charactersToSkip` must be specified.
      * Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
      * 
      */
@@ -25,14 +25,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
     private PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore() {}
     /**
-     * @return Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
+     * @return Characters to not transform when masking. Only one of this or `commonCharactersToIgnore` must be specified.
      * 
      */
     public Optional<String> charactersToSkip() {
         return Optional.ofNullable(this.charactersToSkip);
     }
     /**
-     * @return Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
+     * @return Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `charactersToSkip` must be specified.
      * Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
      * 
      */

@@ -272,14 +272,14 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionPolicy);
     }
     /**
-     * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+     * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
      * 
      */
     @Export(name="gcRules", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gcRules;
 
     /**
-     * @return Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+     * @return Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
      * 
      */
     public Output<Optional<String>> gcRules() {

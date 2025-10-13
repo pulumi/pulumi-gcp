@@ -422,7 +422,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// The resource name of the tag in URL format. Example:
         /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
         /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
-        /// where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
+        /// where TagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -567,7 +567,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// The resource name of the tag in URL format. Example:
         /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
         /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
-        /// where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
+        /// where TagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

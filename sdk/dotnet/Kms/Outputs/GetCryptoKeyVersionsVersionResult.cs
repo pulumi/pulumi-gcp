@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Kms.Outputs
         /// </summary>
         public readonly string Algorithm;
         /// <summary>
-        /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+        /// The `Id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `Id` field of the 
         /// `gcp.kms.CryptoKey` resource/datasource.
         /// </summary>
         public readonly string CryptoKey;

@@ -14,7 +14,7 @@ public final class ConnectionAuthConfigSshPublicKeySshClientCertPass {
      * @return The resource name of the secret version in the format,
      * format as: projects/*&#47;secrets/*&#47;versions/*.
      * 
-     * &lt;a name=&#34;nested_auth_config_oauth2_auth_code_flow&#34;&gt;&lt;/a&gt;The `oauth2_auth_code_flow` block supports:
+     * &lt;a name=&#34;nestedAuthConfigOauth2AuthCodeFlow&#34;&gt;&lt;/a&gt;The `oauth2AuthCodeFlow` block supports:
      * 
      */
     private String secretVersion;
@@ -24,7 +24,7 @@ public final class ConnectionAuthConfigSshPublicKeySshClientCertPass {
      * @return The resource name of the secret version in the format,
      * format as: projects/*&#47;secrets/*&#47;versions/*.
      * 
-     * &lt;a name=&#34;nested_auth_config_oauth2_auth_code_flow&#34;&gt;&lt;/a&gt;The `oauth2_auth_code_flow` block supports:
+     * &lt;a name=&#34;nestedAuthConfigOauth2AuthCodeFlow&#34;&gt;&lt;/a&gt;The `oauth2AuthCodeFlow` block supports:
      * 
      */
     public String secretVersion() {

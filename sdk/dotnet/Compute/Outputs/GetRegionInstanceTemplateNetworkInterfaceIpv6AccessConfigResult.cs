@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string ExternalIpv6PrefixLength;
         /// <summary>
-        /// The name of the instance template. One of `name` or `filter` must be provided.
+        /// The name of the instance template. One of `Name` or `Filter` must be provided.
         /// </summary>
         public readonly string Name;
         /// <summary>

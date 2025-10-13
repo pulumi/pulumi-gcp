@@ -70,17 +70,17 @@ public final class GetBucketLifecycleRuleCondition {
      */
     private Boolean sendAgeIfZero;
     /**
-     * @return While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
+     * @return While set true, daysSinceCustomTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceCustomTime field. It can be used alone or together with days_since_custom_time.
      * 
      */
     private Boolean sendDaysSinceCustomTimeIfZero;
     /**
-     * @return While set true, days_since_noncurrent_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_noncurrent_time field. It can be used alone or together with days_since_noncurrent_time.
+     * @return While set true, daysSinceNoncurrentTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceNoncurrentTime field. It can be used alone or together with days_since_noncurrent_time.
      * 
      */
     private Boolean sendDaysSinceNoncurrentTimeIfZero;
     /**
-     * @return While set true, num_newer_versions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the num_newer_versions field. It can be used alone or together with num_newer_versions.
+     * @return While set true, numNewerVersions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the numNewerVersions field. It can be used alone or together with num_newer_versions.
      * 
      */
     private Boolean sendNumNewerVersionsIfZero;
@@ -170,21 +170,21 @@ public final class GetBucketLifecycleRuleCondition {
         return this.sendAgeIfZero;
     }
     /**
-     * @return While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.
+     * @return While set true, daysSinceCustomTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceCustomTime field. It can be used alone or together with days_since_custom_time.
      * 
      */
     public Boolean sendDaysSinceCustomTimeIfZero() {
         return this.sendDaysSinceCustomTimeIfZero;
     }
     /**
-     * @return While set true, days_since_noncurrent_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_noncurrent_time field. It can be used alone or together with days_since_noncurrent_time.
+     * @return While set true, daysSinceNoncurrentTime value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the daysSinceNoncurrentTime field. It can be used alone or together with days_since_noncurrent_time.
      * 
      */
     public Boolean sendDaysSinceNoncurrentTimeIfZero() {
         return this.sendDaysSinceNoncurrentTimeIfZero;
     }
     /**
-     * @return While set true, num_newer_versions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the num_newer_versions field. It can be used alone or together with num_newer_versions.
+     * @return While set true, numNewerVersions value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the numNewerVersions field. It can be used alone or together with num_newer_versions.
      * 
      */
     public Boolean sendNumNewerVersionsIfZero() {

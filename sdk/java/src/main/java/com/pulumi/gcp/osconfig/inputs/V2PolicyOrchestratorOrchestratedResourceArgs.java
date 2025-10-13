@@ -29,7 +29,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceArgs extends com.pulu
      *   For DELETE action, ID must be specified explicitly during
      *   PolicyOrchestrator creation.
      * 
-     * &lt;a name=&#34;nested_orchestrated_resource_os_policy_assignment_v1_payload&#34;&gt;&lt;/a&gt;The `os_policy_assignment_v1_payload` block supports:
+     * &lt;a name=&#34;nestedOrchestratedResourceOsPolicyAssignmentV1Payload&#34;&gt;&lt;/a&gt;The `osPolicyAssignmentV1Payload` block supports:
      * 
      */
     @Import(name="id")
@@ -48,7 +48,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceArgs extends com.pulu
      *   For DELETE action, ID must be specified explicitly during
      *   PolicyOrchestrator creation.
      * 
-     * &lt;a name=&#34;nested_orchestrated_resource_os_policy_assignment_v1_payload&#34;&gt;&lt;/a&gt;The `os_policy_assignment_v1_payload` block supports:
+     * &lt;a name=&#34;nestedOrchestratedResourceOsPolicyAssignmentV1Payload&#34;&gt;&lt;/a&gt;The `osPolicyAssignmentV1Payload` block supports:
      * 
      */
     public Optional<Output<String>> id() {
@@ -130,7 +130,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceArgs extends com.pulu
          *   For DELETE action, ID must be specified explicitly during
          *   PolicyOrchestrator creation.
          * 
-         * &lt;a name=&#34;nested_orchestrated_resource_os_policy_assignment_v1_payload&#34;&gt;&lt;/a&gt;The `os_policy_assignment_v1_payload` block supports:
+         * &lt;a name=&#34;nestedOrchestratedResourceOsPolicyAssignmentV1Payload&#34;&gt;&lt;/a&gt;The `osPolicyAssignmentV1Payload` block supports:
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceArgs extends com.pulu
          *   For DELETE action, ID must be specified explicitly during
          *   PolicyOrchestrator creation.
          * 
-         * &lt;a name=&#34;nested_orchestrated_resource_os_policy_assignment_v1_payload&#34;&gt;&lt;/a&gt;The `os_policy_assignment_v1_payload` block supports:
+         * &lt;a name=&#34;nestedOrchestratedResourceOsPolicyAssignmentV1Payload&#34;&gt;&lt;/a&gt;The `osPolicyAssignmentV1Payload` block supports:
          * 
          * @return builder
          * 

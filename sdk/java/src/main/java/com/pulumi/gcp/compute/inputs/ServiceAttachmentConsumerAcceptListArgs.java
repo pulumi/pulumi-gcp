@@ -36,7 +36,7 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
 
     /**
      * The network that is allowed to connect to this service attachment.
-     * Only one of project_id_or_num and network_url may be set.
+     * Only one of projectIdOrNum and networkUrl may be set.
      * 
      */
     @Import(name="networkUrl")
@@ -44,7 +44,7 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
 
     /**
      * @return The network that is allowed to connect to this service attachment.
-     * Only one of project_id_or_num and network_url may be set.
+     * Only one of projectIdOrNum and networkUrl may be set.
      * 
      */
     public Optional<Output<String>> networkUrl() {
@@ -53,7 +53,7 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
 
     /**
      * A project that is allowed to connect to this service attachment.
-     * Only one of project_id_or_num and network_url may be set.
+     * Only one of projectIdOrNum and networkUrl may be set.
      * 
      */
     @Import(name="projectIdOrNum")
@@ -61,7 +61,7 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
 
     /**
      * @return A project that is allowed to connect to this service attachment.
-     * Only one of project_id_or_num and network_url may be set.
+     * Only one of projectIdOrNum and networkUrl may be set.
      * 
      */
     public Optional<Output<String>> projectIdOrNum() {
@@ -119,7 +119,7 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
 
         /**
          * @param networkUrl The network that is allowed to connect to this service attachment.
-         * Only one of project_id_or_num and network_url may be set.
+         * Only one of projectIdOrNum and networkUrl may be set.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
 
         /**
          * @param networkUrl The network that is allowed to connect to this service attachment.
-         * Only one of project_id_or_num and network_url may be set.
+         * Only one of projectIdOrNum and networkUrl may be set.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
 
         /**
          * @param projectIdOrNum A project that is allowed to connect to this service attachment.
-         * Only one of project_id_or_num and network_url may be set.
+         * Only one of projectIdOrNum and networkUrl may be set.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
 
         /**
          * @param projectIdOrNum A project that is allowed to connect to this service attachment.
-         * Only one of project_id_or_num and network_url may be set.
+         * Only one of projectIdOrNum and networkUrl may be set.
          * 
          * @return builder
          * 

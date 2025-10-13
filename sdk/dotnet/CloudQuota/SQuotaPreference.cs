@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.CloudQuota
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+        /// The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "NetworkId", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
         /// NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
         /// Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
         /// </summary>
@@ -209,7 +209,7 @@ namespace Pulumi.Gcp.CloudQuota
         private InputMap<string>? _dimensions;
 
         /// <summary>
-        /// The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+        /// The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "NetworkId", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
         /// NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
         /// Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
         /// </summary>
@@ -291,7 +291,7 @@ namespace Pulumi.Gcp.CloudQuota
         private InputMap<string>? _dimensions;
 
         /// <summary>
-        /// The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+        /// The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "NetworkId", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
         /// NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
         /// Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
         /// </summary>

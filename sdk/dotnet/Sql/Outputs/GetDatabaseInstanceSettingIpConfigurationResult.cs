@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string AllocatedIpRange;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult> AuthorizedNetworks;
         /// <summary>
-        /// The custom subject alternative names for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
+        /// The custom subject alternative names for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "ServerCaMode".
         /// </summary>
         public readonly ImmutableArray<string> CustomSubjectAlternativeNames;
         /// <summary>
@@ -27,11 +27,11 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly bool EnablePrivatePathForGoogleCloudServices;
         /// <summary>
-        /// Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4_enabled must be enabled or a private_network must be configured.
+        /// Whether this Cloud SQL instance should be assigned a public IPV4 address. At least Ipv4Enabled must be enabled or a PrivateNetwork must be configured.
         /// </summary>
         public readonly bool Ipv4Enabled;
         /// <summary>
-        /// The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
+        /// The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least Ipv4Enabled must be enabled or a PrivateNetwork must be configured. This setting can be updated, but it cannot be removed after it is set.
         /// </summary>
         public readonly string PrivateNetwork;
         /// <summary>
@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string ServerCaMode;
         /// <summary>
-        /// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
+        /// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "ServerCaMode".
         /// </summary>
         public readonly string ServerCaPool;
         /// <summary>

@@ -924,7 +924,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/backendService:BackendService")
 public class BackendService extends com.pulumi.resources.CustomResource {
     /**
-     * Lifetime of cookies in seconds if session_affinity is
+     * Lifetime of cookies in seconds if sessionAffinity is
      * GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
      * only until the end of the browser session (or equivalent). The
      * maximum allowed value for TTL is one day.
@@ -935,7 +935,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> affinityCookieTtlSec;
 
     /**
-     * @return Lifetime of cookies in seconds if session_affinity is
+     * @return Lifetime of cookies in seconds if sessionAffinity is
      * GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
      * only until the end of the browser session (or equivalent). The
      * maximum allowed value for TTL is one day.
@@ -979,7 +979,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     }
     /**
      * Settings controlling the volume of connections to a backend service. This field
-     * is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+     * is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
      * 
      */
@@ -988,7 +988,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Settings controlling the volume of connections to a backend service. This field
-     * is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+     * is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
      * 
      */
@@ -1033,8 +1033,8 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * policy is applicable only for HTTP connections. The affinity to a particular
      * destination host will be lost when one or more hosts are added/removed from the
      * destination service. This field specifies parameters that control consistent
-     * hashing. This field only applies if the load_balancing_scheme is set to
-     * INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is
+     * hashing. This field only applies if the loadBalancingScheme is set to
+     * INTERNAL_SELF_MANAGED. This field is only applicable when localityLbPolicy is
      * set to MAGLEV or RING_HASH.
      * Structure is documented below.
      * 
@@ -1048,8 +1048,8 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * policy is applicable only for HTTP connections. The affinity to a particular
      * destination host will be lost when one or more hosts are added/removed from the
      * destination service. This field specifies parameters that control consistent
-     * hashing. This field only applies if the load_balancing_scheme is set to
-     * INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is
+     * hashing. This field only applies if the loadBalancingScheme is set to
+     * INTERNAL_SELF_MANAGED. This field is only applicable when localityLbPolicy is
      * set to MAGLEV or RING_HASH.
      * Structure is documented below.
      * 
@@ -1417,17 +1417,17 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      *   X-Endpoint-Load-Metrics. The reported metrics
      *   to use for computing the weights are specified via the
      *   backends[].customMetrics fields.
-     *   locality_lb_policy is applicable to either:
-     * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
+     *   localityLbPolicy is applicable to either:
+     * * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
-     * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     * * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
      *   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
      *   Network Load Balancing. The default is MAGLEV.
-     *   If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
+     *   If sessionAffinity is not NONE, and localityLbPolicy is not set to MAGLEV, WEIGHTED_MAGLEV,
      *   or RING_HASH, session affinity settings will not take effect.
      *   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-     *   by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+     *   by a URL map that is bound to target gRPC proxy that has validateForProxyless
      *   field set to true.
      *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      * 
@@ -1475,17 +1475,17 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      *   X-Endpoint-Load-Metrics. The reported metrics
      *   to use for computing the weights are specified via the
      *   backends[].customMetrics fields.
-     *   locality_lb_policy is applicable to either:
-     * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
+     *   localityLbPolicy is applicable to either:
+     * * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
-     * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     * * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
      *   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
      *   Network Load Balancing. The default is MAGLEV.
-     *   If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
+     *   If sessionAffinity is not NONE, and localityLbPolicy is not set to MAGLEV, WEIGHTED_MAGLEV,
      *   or RING_HASH, session affinity settings will not take effect.
      *   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-     *   by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+     *   by a URL map that is bound to target gRPC proxy that has validateForProxyless
      *   field set to true.
      *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      * 
@@ -1689,9 +1689,9 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     }
     /**
      * The security settings that apply to this backend service. This field is applicable to either
-     * a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
-     * load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
-     * load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     * a regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C, and
+     * loadBalancingScheme set to INTERNAL_MANAGED; or a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
      * 
      */
@@ -1700,9 +1700,9 @@ public class BackendService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The security settings that apply to this backend service. This field is applicable to either
-     * a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
-     * load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
-     * load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     * a regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C, and
+     * loadBalancingScheme set to INTERNAL_MANAGED; or a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
      * 
      */

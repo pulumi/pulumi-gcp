@@ -213,7 +213,7 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
      * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
      * * `projects/project/zones/zone/instances/instance`
      * * `zones/zone/instances/instance`
-     * * Just the instance name, with the zone in `next_hop_instance_zone`.
+     * * Just the instance name, with the zone in `nextHopInstanceZone`.
      * 
      */
     @Import(name="nextHopInstance")
@@ -225,7 +225,7 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
      * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
      * * `projects/project/zones/zone/instances/instance`
      * * `zones/zone/instances/instance`
-     * * Just the instance name, with the zone in `next_hop_instance_zone`.
+     * * Just the instance name, with the zone in `nextHopInstanceZone`.
      * 
      */
     public Optional<Output<String>> nextHopInstance() {
@@ -233,9 +233,9 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional when `next_hop_instance` is
+     * (Optional when `nextHopInstance` is
      * specified)  The zone of the instance specified in
-     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+     * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
      * a URL.
      * 
      */
@@ -243,9 +243,9 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> nextHopInstanceZone;
 
     /**
-     * @return (Optional when `next_hop_instance` is
+     * @return (Optional when `nextHopInstance` is
      * specified)  The zone of the instance specified in
-     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+     * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
      * a URL.
      * 
      */
@@ -810,7 +810,7 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
          * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
          * * `projects/project/zones/zone/instances/instance`
          * * `zones/zone/instances/instance`
-         * * Just the instance name, with the zone in `next_hop_instance_zone`.
+         * * Just the instance name, with the zone in `nextHopInstanceZone`.
          * 
          * @return builder
          * 
@@ -826,7 +826,7 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
          * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
          * * `projects/project/zones/zone/instances/instance`
          * * `zones/zone/instances/instance`
-         * * Just the instance name, with the zone in `next_hop_instance_zone`.
+         * * Just the instance name, with the zone in `nextHopInstanceZone`.
          * 
          * @return builder
          * 
@@ -836,9 +836,9 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nextHopInstanceZone (Optional when `next_hop_instance` is
+         * @param nextHopInstanceZone (Optional when `nextHopInstance` is
          * specified)  The zone of the instance specified in
-         * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+         * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
          * a URL.
          * 
          * @return builder
@@ -850,9 +850,9 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nextHopInstanceZone (Optional when `next_hop_instance` is
+         * @param nextHopInstanceZone (Optional when `nextHopInstance` is
          * specified)  The zone of the instance specified in
-         * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+         * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
          * a URL.
          * 
          * @return builder

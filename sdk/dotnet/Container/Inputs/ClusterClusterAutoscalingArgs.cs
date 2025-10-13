@@ -50,8 +50,8 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? DefaultComputeClassEnabled { get; set; }
 
         /// <summary>
-        /// Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
-        /// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+        /// Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `True` is implied
+        /// for autopilot clusters. Resource limits for `Cpu` and `Memory` must be defined to enable node auto-provisioning for GKE Standard.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// Global constraints for machine resources in the
-        /// cluster. Configuring the `cpu` and `memory` types is required if node
+        /// cluster. Configuring the `Cpu` and `Memory` types is required if node
         /// auto-provisioning is enabled. These limits will apply to node pool autoscaling
         /// in addition to node auto-provisioning. Structure is documented below.
         /// </summary>

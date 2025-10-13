@@ -183,7 +183,7 @@ public final class EntryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
      * When creating an entry, users should check the enum values first, if nothing matches the entry
-     * to be created, then provide a custom value, for example &#34;my_special_type&#34;.
+     * to be created, then provide a custom value, for example &#34;mySpecialType&#34;.
      * userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
      * numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
      * 
@@ -194,7 +194,7 @@ public final class EntryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
      * When creating an entry, users should check the enum values first, if nothing matches the entry
-     * to be created, then provide a custom value, for example &#34;my_special_type&#34;.
+     * to be created, then provide a custom value, for example &#34;mySpecialType&#34;.
      * userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
      * numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
      * 
@@ -456,7 +456,7 @@ public final class EntryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param userSpecifiedType Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
          * When creating an entry, users should check the enum values first, if nothing matches the entry
-         * to be created, then provide a custom value, for example &#34;my_special_type&#34;.
+         * to be created, then provide a custom value, for example &#34;mySpecialType&#34;.
          * userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
          * numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
          * 
@@ -471,7 +471,7 @@ public final class EntryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param userSpecifiedType Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
          * When creating an entry, users should check the enum values first, if nothing matches the entry
-         * to be created, then provide a custom value, for example &#34;my_special_type&#34;.
+         * to be created, then provide a custom value, for example &#34;mySpecialType&#34;.
          * userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
          * numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
          * 

@@ -33,7 +33,7 @@ public final class PluginInstanceAuthConfigApiKeyConfig {
     /**
      * @return The parameter name of the API key.
      * E.g. If the API request is &#34;https://example.com/act?api_key=&#34;,
-     * &#34;api_key&#34; would be the parameter name.
+     * &#34;apiKey&#34; would be the parameter name.
      * 
      */
     private String name;
@@ -65,7 +65,7 @@ public final class PluginInstanceAuthConfigApiKeyConfig {
     /**
      * @return The parameter name of the API key.
      * E.g. If the API request is &#34;https://example.com/act?api_key=&#34;,
-     * &#34;api_key&#34; would be the parameter name.
+     * &#34;apiKey&#34; would be the parameter name.
      * 
      */
     public String name() {

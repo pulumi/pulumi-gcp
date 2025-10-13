@@ -22,7 +22,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      * A CalendarPeriod represents the abstract concept of a recurring time period that has a
      * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
      * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
-     * Exactly one of `calendar_period`, `custom_period` must be provided.
+     * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
      * Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
      * 
      */
@@ -33,7 +33,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      * @return A CalendarPeriod represents the abstract concept of a recurring time period that has a
      * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
      * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
-     * Exactly one of `calendar_period`, `custom_period` must be provided.
+     * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
      * Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
      * 
      */
@@ -84,7 +84,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
     /**
      * Specifies to track usage from any start date (required) to any end date (optional).
      * This time period is static, it does not recur.
-     * Exactly one of `calendar_period`, `custom_period` must be provided.
+     * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
      * Structure is documented below.
      * 
      */
@@ -94,7 +94,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
     /**
      * @return Specifies to track usage from any start date (required) to any end date (optional).
      * This time period is static, it does not recur.
-     * Exactly one of `calendar_period`, `custom_period` must be provided.
+     * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
      * Structure is documented below.
      * 
      */
@@ -249,7 +249,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * @param calendarPeriod A CalendarPeriod represents the abstract concept of a recurring time period that has a
          * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
          * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
-         * Exactly one of `calendar_period`, `custom_period` must be provided.
+         * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
          * Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
          * 
          * @return builder
@@ -264,7 +264,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * @param calendarPeriod A CalendarPeriod represents the abstract concept of a recurring time period that has a
          * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
          * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
-         * Exactly one of `calendar_period`, `custom_period` must be provided.
+         * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
          * Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
          * 
          * @return builder
@@ -341,7 +341,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
         /**
          * @param customPeriod Specifies to track usage from any start date (required) to any end date (optional).
          * This time period is static, it does not recur.
-         * Exactly one of `calendar_period`, `custom_period` must be provided.
+         * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
          * Structure is documented below.
          * 
          * @return builder
@@ -355,7 +355,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
         /**
          * @param customPeriod Specifies to track usage from any start date (required) to any end date (optional).
          * This time period is static, it does not recur.
-         * Exactly one of `calendar_period`, `custom_period` must be provided.
+         * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
          * Structure is documented below.
          * 
          * @return builder

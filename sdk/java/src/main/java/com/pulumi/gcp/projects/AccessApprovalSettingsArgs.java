@@ -20,7 +20,7 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
 
     /**
      * The asymmetric crypto key version to use for signing approval requests.
-     * Empty active_key_version indicates that a Google-managed key should be used for signing.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      * 
      */
@@ -29,7 +29,7 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The asymmetric crypto key version to use for signing approval requests.
-     * Empty active_key_version indicates that a Google-managed key should be used for signing.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      * 
      */
@@ -83,13 +83,13 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
      * (Optional, Deprecated)
      * Project id.
      * 
-     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      * 
      * @deprecated
-     * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+     * `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      * 
      */
-    @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `project_id` instead. */
+    @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `projectId` instead. */
     @Import(name="project")
     private @Nullable Output<String> project;
 
@@ -97,13 +97,13 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
      * @return (Optional, Deprecated)
      * Project id.
      * 
-     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      * 
      * @deprecated
-     * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+     * `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      * 
      */
-    @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `project_id` instead. */
+    @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `projectId` instead. */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -153,7 +153,7 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param activeKeyVersion The asymmetric crypto key version to use for signing approval requests.
-         * Empty active_key_version indicates that a Google-managed key should be used for signing.
+         * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
          * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
          * 
          * @return builder
@@ -166,7 +166,7 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param activeKeyVersion The asymmetric crypto key version to use for signing approval requests.
-         * Empty active_key_version indicates that a Google-managed key should be used for signing.
+         * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
          * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
          * 
          * @return builder
@@ -260,15 +260,15 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
          * @param project (Optional, Deprecated)
          * Project id.
          * 
-         * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+         * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+         * `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
          * 
          */
-        @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `project_id` instead. */
+        @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `projectId` instead. */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
@@ -278,15 +278,15 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
          * @param project (Optional, Deprecated)
          * Project id.
          * 
-         * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+         * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+         * `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
          * 
          */
-        @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `project_id` instead. */
+        @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `projectId` instead. */
         public Builder project(String project) {
             return project(Output.of(project));
         }

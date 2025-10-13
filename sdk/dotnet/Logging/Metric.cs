@@ -263,7 +263,7 @@ namespace Pulumi.Gcp.Logging
         public Output<Outputs.MetricMetricDescriptor> MetricDescriptor { get; private set; } = null!;
 
         /// <summary>
-        /// The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
+        /// The client-assigned metric identifier. Examples - "ErrorCount", "nginx/requests".
         /// Metric identifiers are limited to 100 characters and can include only the following
         /// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
         /// character (/) denotes a hierarchy of name pieces, and it cannot be the first character
@@ -398,7 +398,7 @@ namespace Pulumi.Gcp.Logging
         public Input<Inputs.MetricMetricDescriptorArgs>? MetricDescriptor { get; set; }
 
         /// <summary>
-        /// The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
+        /// The client-assigned metric identifier. Examples - "ErrorCount", "nginx/requests".
         /// Metric identifiers are limited to 100 characters and can include only the following
         /// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
         /// character (/) denotes a hierarchy of name pieces, and it cannot be the first character
@@ -495,7 +495,7 @@ namespace Pulumi.Gcp.Logging
         public Input<Inputs.MetricMetricDescriptorGetArgs>? MetricDescriptor { get; set; }
 
         /// <summary>
-        /// The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
+        /// The client-assigned metric identifier. Examples - "ErrorCount", "nginx/requests".
         /// Metric identifiers are limited to 100 characters and can include only the following
         /// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
         /// character (/) denotes a hierarchy of name pieces, and it cannot be the first character

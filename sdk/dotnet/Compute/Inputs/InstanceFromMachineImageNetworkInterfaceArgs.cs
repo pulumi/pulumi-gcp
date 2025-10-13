@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name or self_link of the network attached to this interface.
+        /// The name or SelfLink of the network attached to this interface.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -116,7 +116,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? StackType { get; set; }
 
         /// <summary>
-        /// The name or self_link of the subnetwork attached to this interface.
+        /// The name or SelfLink of the subnetwork attached to this interface.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }

@@ -171,7 +171,7 @@ import javax.annotation.Nullable;
 public class ManagementProjectSecurityHealthAnalyticsCustomModule extends com.pulumi.resources.CustomResource {
     /**
      * If empty, indicates that the custom module was created in the organization,folder,
-     * or project in which you are viewing the custom module. Otherwise, ancestor_module
+     * or project in which you are viewing the custom module. Otherwise, ancestorModule
      * specifies the organization or folder from which the custom module is inherited.
      * 
      */
@@ -180,7 +180,7 @@ public class ManagementProjectSecurityHealthAnalyticsCustomModule extends com.pu
 
     /**
      * @return If empty, indicates that the custom module was created in the organization,folder,
-     * or project in which you are viewing the custom module. Otherwise, ancestor_module
+     * or project in which you are viewing the custom module. Otherwise, ancestorModule
      * specifies the organization or folder from which the custom module is inherited.
      * 
      */

@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// The following write-only attributes are supported:
     /// 
-    /// * `password_wo` - (Optional) The password for the user. Can be updated. For Postgres
+    /// * `PasswordWo` - (Optional) The password for the user. Can be updated. For Postgres
     ///     instances this is a Required field, unless type is set to either CLOUD_IAM_USER
     ///     or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
     ///     and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.

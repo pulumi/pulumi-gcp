@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string? CloudfrontDomain;
         /// <summary>
-        /// The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+        /// The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If CredentialsSecret is specified, do not specify RoleArn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
         /// </summary>
         public readonly string? CredentialsSecret;
         /// <summary>

@@ -789,6 +789,8 @@ import (
 //	}
 //
 // ```
+// ### Datastream Stream Mysql Gtid
+//
 // ### Datastream Stream Postgresql Bigquery Dataset Id
 //
 // ```go

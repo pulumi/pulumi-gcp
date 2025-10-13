@@ -51,7 +51,7 @@ public final class InstanceEndpointConnectionPscAutoConnection {
     private @Nullable Integer port;
     /**
      * @return (Output)
-     * Output only. The consumer project_id where the forwarding rule is created from.
+     * Output only. The consumer projectId where the forwarding rule is created from.
      * 
      */
     private @Nullable String projectId;
@@ -119,7 +119,7 @@ public final class InstanceEndpointConnectionPscAutoConnection {
     }
     /**
      * @return (Output)
-     * Output only. The consumer project_id where the forwarding rule is created from.
+     * Output only. The consumer projectId where the forwarding rule is created from.
      * 
      */
     public Optional<String> projectId() {

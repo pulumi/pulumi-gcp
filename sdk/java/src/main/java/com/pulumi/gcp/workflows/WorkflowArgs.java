@@ -102,7 +102,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
      * A set of key/value label pairs to assign to this Workflow.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -112,7 +112,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
      * @return A set of key/value label pairs to assign to this Workflow.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -188,7 +188,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
      * account represents the identity of the workflow and determines what permissions the workflow has.
      * Format: projects/{project}/serviceAccounts/{account} or {account}.
      * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
-     * The {account} value can be the email address or the unique_id of the service account.
+     * The {account} value can be the email address or the uniqueId of the service account.
      * If not provided, workflow will use the project&#39;s default service account.
      * Modifying this field for an existing workflow results in a new workflow revision.
      * 
@@ -201,7 +201,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
      * account represents the identity of the workflow and determines what permissions the workflow has.
      * Format: projects/{project}/serviceAccounts/{account} or {account}.
      * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
-     * The {account} value can be the email address or the unique_id of the service account.
+     * The {account} value can be the email address or the uniqueId of the service account.
      * If not provided, workflow will use the project&#39;s default service account.
      * Modifying this field for an existing workflow results in a new workflow revision.
      * 
@@ -407,7 +407,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels A set of key/value label pairs to assign to this Workflow.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels A set of key/value label pairs to assign to this Workflow.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
          * account represents the identity of the workflow and determines what permissions the workflow has.
          * Format: projects/{project}/serviceAccounts/{account} or {account}.
          * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
-         * The {account} value can be the email address or the unique_id of the service account.
+         * The {account} value can be the email address or the uniqueId of the service account.
          * If not provided, workflow will use the project&#39;s default service account.
          * Modifying this field for an existing workflow results in a new workflow revision.
          * 
@@ -540,7 +540,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
          * account represents the identity of the workflow and determines what permissions the workflow has.
          * Format: projects/{project}/serviceAccounts/{account} or {account}.
          * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
-         * The {account} value can be the email address or the unique_id of the service account.
+         * The {account} value can be the email address or the uniqueId of the service account.
          * If not provided, workflow will use the project&#39;s default service account.
          * Modifying this field for an existing workflow results in a new workflow revision.
          * 

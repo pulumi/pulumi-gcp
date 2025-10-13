@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.ManagedKafka
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the connector. The `connector` segment is used when connecting directly to the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER/connectors/CONNECTOR_ID`.
+        /// The name of the connector. The `Connector` segment is used when connecting directly to the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER/connectors/CONNECTOR_ID`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -354,7 +354,7 @@ namespace Pulumi.Gcp.ManagedKafka
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of the connector. The `connector` segment is used when connecting directly to the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER/connectors/CONNECTOR_ID`.
+        /// The name of the connector. The `Connector` segment is used when connecting directly to the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER/connectors/CONNECTOR_ID`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

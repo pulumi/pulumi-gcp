@@ -103,9 +103,9 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// (Optional, Deprecated)
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `Global`.
         /// 
-        /// &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
+        /// &gt; **Warning:** `Location` is deprecated and will be removed in a future major release.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -221,9 +221,9 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// (Optional, Deprecated)
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `Global`.
         /// 
-        /// &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
+        /// &gt; **Warning:** `Location` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -300,9 +300,9 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// (Optional, Deprecated)
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `Global`.
         /// 
-        /// &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
+        /// &gt; **Warning:** `Location` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

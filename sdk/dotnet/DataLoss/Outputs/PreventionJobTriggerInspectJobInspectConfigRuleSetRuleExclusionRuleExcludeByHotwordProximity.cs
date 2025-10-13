@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity
     {
         /// <summary>
-        /// Number of characters after the finding to consider. Either this or window_before must be specified
+        /// Number of characters after the finding to consider. Either this or WindowBefore must be specified
         /// </summary>
         public readonly int? WindowAfter;
         /// <summary>
-        /// Number of characters before the finding to consider. Either this or window_after must be specified
+        /// Number of characters before the finding to consider. Either this or WindowAfter must be specified
         /// </summary>
         public readonly int? WindowBefore;
 

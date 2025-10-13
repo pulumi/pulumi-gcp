@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetAppleAppArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The app_id of name of the Firebase iosApp.
+        /// The AppId of name of the Firebase iosApp.
         /// 
         /// 
         /// - - -
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetAppleAppInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The app_id of name of the Firebase iosApp.
+        /// The AppId of name of the Firebase iosApp.
         /// 
         /// 
         /// - - -

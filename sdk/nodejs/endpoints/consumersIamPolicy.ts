@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.endpoints.ConsumersIamBinding` resources **can be** used in conjunction with `gcp.endpoints.ConsumersIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * ## gcp.endpoints.ConsumersIamPolicy
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:

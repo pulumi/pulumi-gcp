@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         public readonly string? Image;
         /// <summary>
         /// The OS image to be used for each node in a node pool.
-        /// Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
+        /// Currently `Cos`, `CosCgv2`, `Ubuntu`, `UbuntuCgv2`, `UbuntuContainerd` and `Windows` are supported.
         /// </summary>
         public readonly string ImageType;
         /// <summary>

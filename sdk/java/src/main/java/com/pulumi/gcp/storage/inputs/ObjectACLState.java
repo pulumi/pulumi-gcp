@@ -51,14 +51,14 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+     * The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
      * 
      */
     @Import(name="predefinedAcl")
     private @Nullable Output<String> predefinedAcl;
 
     /**
-     * @return The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+     * @return The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
      * 
      */
     public Optional<Output<String>> predefinedAcl() {
@@ -67,7 +67,7 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefined_acl` is not.
+     * Must be set if `predefinedAcl` is not.
      * 
      */
     @Import(name="roleEntities")
@@ -75,7 +75,7 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefined_acl` is not.
+     * Must be set if `predefinedAcl` is not.
      * 
      */
     public Optional<Output<List<String>>> roleEntities() {
@@ -156,7 +156,7 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param predefinedAcl The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+         * @param predefinedAcl The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param predefinedAcl The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+         * @param predefinedAcl The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param roleEntities List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-         * Must be set if `predefined_acl` is not.
+         * Must be set if `predefinedAcl` is not.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param roleEntities List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-         * Must be set if `predefined_acl` is not.
+         * Must be set if `predefinedAcl` is not.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param roleEntities List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-         * Must be set if `predefined_acl` is not.
+         * Must be set if `predefinedAcl` is not.
          * 
          * @return builder
          * 

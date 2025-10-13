@@ -16,9 +16,9 @@ namespace Pulumi.Gcp.BigQuery
     /// * `gcp.bigquery.DatasetIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataset are preserved.
     /// * `gcp.bigquery.DatasetIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataset are preserved.
     /// 
-    /// These resources are intended to convert the permissions system for BigQuery datasets to the standard IAM interface. For advanced usages, including [creating authorized views](https://cloud.google.com/bigquery/docs/share-access-views), please use either `gcp.bigquery.DatasetAccess` or the `access` field on `gcp.bigquery.Dataset`.
+    /// These resources are intended to convert the permissions system for BigQuery datasets to the standard IAM interface. For advanced usages, including [creating authorized views](https://cloud.google.com/bigquery/docs/share-access-views), please use either `gcp.bigquery.DatasetAccess` or the `Access` field on `gcp.bigquery.Dataset`.
     /// 
-    /// &gt; **Note:** These resources **cannot** be used with `gcp.bigquery.DatasetAccess` resources or the `access` field on `gcp.bigquery.Dataset` or they will fight over what the policy should be.
+    /// &gt; **Note:** These resources **cannot** be used with `gcp.bigquery.DatasetAccess` resources or the `Access` field on `gcp.bigquery.Dataset` or they will fight over what the policy should be.
     /// 
     /// &gt; **Note:** Using any of these resources will remove any authorized view permissions from the dataset. To assign and preserve authorized view permissions use the `gcp.bigquery.DatasetAccess` instead.
     /// 
@@ -257,7 +257,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -347,7 +347,7 @@ namespace Pulumi.Gcp.BigQuery
         private InputList<string>? _members;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -408,7 +408,7 @@ namespace Pulumi.Gcp.BigQuery
         private InputList<string>? _members;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.

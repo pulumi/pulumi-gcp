@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         private InputList<string>? _logActionStates;
 
         /// <summary>
-        /// States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        /// States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use EnableOnPremGcsTransferLogs instead.
         /// </summary>
         public InputList<string> LogActionStates
         {
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         private InputList<string>? _logActions;
 
         /// <summary>
-        /// Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        /// Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use EnableOnPremGcsTransferLogs instead.
         /// </summary>
         public InputList<string> LogActions
         {

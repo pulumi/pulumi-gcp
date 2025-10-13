@@ -107,7 +107,7 @@ public class OrganizationsPolicyBinding extends com.pulumi.resources.CustomResou
      * Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -117,7 +117,7 @@ public class OrganizationsPolicyBinding extends com.pulumi.resources.CustomResou
      * @return Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {

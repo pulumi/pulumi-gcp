@@ -59,6 +59,8 @@ import * as utilities from "../utilities";
  *     checkerType: "STATIC_IP_CHECKERS",
  * });
  * ```
+ * ### Uptime Check Config Http Password Wo
+ *
  * ### Uptime Check Config Status Code
  *
  * ```typescript

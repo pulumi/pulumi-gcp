@@ -33,13 +33,13 @@ public final class JobSparksqlConfig {
     private @Nullable Map<String,String> properties;
     /**
      * @return The HCFS URI of the script that contains SQL queries.
-     * Conflicts with `query_list`
+     * Conflicts with `queryList`
      * 
      */
     private @Nullable String queryFileUri;
     /**
      * @return The list of SQL queries or statements to execute as part of the job.
-     * Conflicts with `query_file_uri`
+     * Conflicts with `queryFileUri`
      * 
      */
     private @Nullable List<String> queryLists;
@@ -75,7 +75,7 @@ public final class JobSparksqlConfig {
     }
     /**
      * @return The HCFS URI of the script that contains SQL queries.
-     * Conflicts with `query_list`
+     * Conflicts with `queryList`
      * 
      */
     public Optional<String> queryFileUri() {
@@ -83,7 +83,7 @@ public final class JobSparksqlConfig {
     }
     /**
      * @return The list of SQL queries or statements to execute as part of the job.
-     * Conflicts with `query_file_uri`
+     * Conflicts with `queryFileUri`
      * 
      */
     public List<String> queryLists() {

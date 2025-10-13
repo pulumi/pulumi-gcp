@@ -16,14 +16,14 @@ public final class TargetMultiTargetArgs extends com.pulumi.resources.ResourceAr
     public static final TargetMultiTargetArgs Empty = new TargetMultiTargetArgs();
 
     /**
-     * Required. The target_ids of this multiTarget.
+     * Required. The targetIds of this multiTarget.
      * 
      */
     @Import(name="targetIds", required=true)
     private Output<List<String>> targetIds;
 
     /**
-     * @return Required. The target_ids of this multiTarget.
+     * @return Required. The targetIds of this multiTarget.
      * 
      */
     public Output<List<String>> targetIds() {
@@ -55,7 +55,7 @@ public final class TargetMultiTargetArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param targetIds Required. The target_ids of this multiTarget.
+         * @param targetIds Required. The targetIds of this multiTarget.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class TargetMultiTargetArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param targetIds Required. The target_ids of this multiTarget.
+         * @param targetIds Required. The targetIds of this multiTarget.
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class TargetMultiTargetArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param targetIds Required. The target_ids of this multiTarget.
+         * @param targetIds Required. The targetIds of this multiTarget.
          * 
          * @return builder
          * 

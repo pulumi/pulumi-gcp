@@ -38,8 +38,8 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
         /// <summary>
         /// Attributes for indexing.
         /// Key: Field name.
-        /// Value: The key property to map a field to, such as `title`, and
-        /// `description`. Supported key properties:
+        /// Value: The key property to map a field to, such as `Title`, and
+        /// `Description`. Supported key properties:
         /// </summary>
         public InputMap<string> KeyPropertyMappings
         {

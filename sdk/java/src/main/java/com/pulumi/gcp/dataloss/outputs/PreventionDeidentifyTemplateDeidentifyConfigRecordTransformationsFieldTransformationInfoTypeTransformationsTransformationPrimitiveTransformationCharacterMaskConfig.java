@@ -30,12 +30,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     private @Nullable String maskingCharacter;
     /**
      * @return Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
-     * If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
+     * If numberToMask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
      * 
      */
     private @Nullable Integer numberToMask;
     /**
-     * @return Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+     * @return Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
      * input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
      * 
      */
@@ -61,14 +61,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     }
     /**
      * @return Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
-     * If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
+     * If numberToMask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
      * 
      */
     public Optional<Integer> numberToMask() {
         return Optional.ofNullable(this.numberToMask);
     }
     /**
-     * @return Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+     * @return Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
      * input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
      * 
      */

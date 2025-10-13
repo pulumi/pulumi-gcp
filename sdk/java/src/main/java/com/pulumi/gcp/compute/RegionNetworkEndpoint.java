@@ -273,7 +273,7 @@ public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
     }
     /**
      * Fully qualified domain name of network endpoint.
-     * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      * 
      */
     @Export(name="fqdn", refs={String.class}, tree="[0]")
@@ -281,7 +281,7 @@ public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Fully qualified domain name of network endpoint.
-     * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      * 
      */
     public Output<Optional<String>> fqdn() {
@@ -305,7 +305,7 @@ public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
     }
     /**
      * IPv4 address external endpoint.
-     * This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
      * 
      */
     @Export(name="ipAddress", refs={String.class}, tree="[0]")
@@ -313,7 +313,7 @@ public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
 
     /**
      * @return IPv4 address external endpoint.
-     * This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
      * 
      */
     public Output<Optional<String>> ipAddress() {

@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// All the information related to Auto IPAM. Structure is documented below
         /// 
-        /// &lt;a name="nested_auto_ipam_config"&gt;&lt;/a&gt;The auto ipam config supports:
+        /// &lt;a name="NestedAutoIpamConfig"&gt;&lt;/a&gt;The auto ipam config supports:
         /// </summary>
         public readonly Outputs.ClusterIpAllocationPolicyAutoIpamConfig? AutoIpamConfig;
         /// <summary>
@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// The name of the existing secondary
         /// range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
-        /// `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
+        /// `ClusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
         /// </summary>
         public readonly string? ClusterSecondaryRangeName;
         /// <summary>
@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// The name of the existing
         /// secondary range in the cluster's subnetwork to use for service `ClusterIP`s.
-        /// Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
+        /// Alternatively, `ServicesIpv4CidrBlock` can be used to automatically create a
         /// GKE-managed one.
         /// </summary>
         public readonly string? ServicesSecondaryRangeName;

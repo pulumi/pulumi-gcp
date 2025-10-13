@@ -35,7 +35,7 @@ public final class GetInstanceMaintenancePolicy {
     private String updateTime;
     /**
      * @return Required. Maintenance window that is applied to resources covered by this policy.
-     * Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+     * Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
      * is expected to be one.
      * 
      */
@@ -71,7 +71,7 @@ public final class GetInstanceMaintenancePolicy {
     }
     /**
      * @return Required. Maintenance window that is applied to resources covered by this policy.
-     * Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+     * Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
      * is expected to be one.
      * 
      */

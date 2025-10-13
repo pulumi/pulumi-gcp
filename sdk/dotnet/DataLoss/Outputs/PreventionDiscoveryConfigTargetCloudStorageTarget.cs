@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetCloudStorageTargetDisabled? Disabled;
         /// <summary>
-        /// The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+        /// The buckets the GenerationCadence applies to. The first target with a matching filter will be the one to apply to a bucket.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetCloudStorageTargetFilter Filter;

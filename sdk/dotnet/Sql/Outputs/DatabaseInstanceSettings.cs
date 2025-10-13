@@ -23,12 +23,12 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// <summary>
         /// The availability type of the Cloud SQL
         /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
-        /// `settings.backup_configuration.enabled` is set to `true`.
-        /// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
+        /// `settings.backup_configuration.enabled` is set to `True`.
+        /// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `True`.
         /// For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-        /// is set to `true`. Defaults to `ZONAL`.
+        /// is set to `True`. Defaults to `ZONAL`.
         /// For read pool instances, this field is read-only. The availability type is changed by specifying
-        /// the number of nodes (`node_count`).
+        /// the number of nodes (`NodeCount`).
         /// </summary>
         public readonly string? AvailabilityType;
         public readonly Outputs.DatabaseInstanceSettingsBackupConfiguration? BackupConfiguration;
@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly bool? DeletionProtectionEnabled;
         public readonly Outputs.DatabaseInstanceSettingsDenyMaintenancePeriod? DenyMaintenancePeriod;
         /// <summary>
-        /// Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
+        /// Enables auto-resizing of the storage size. Defaults to `True`. Note that if `DiskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in DiskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `DiskSize`.
         /// </summary>
         public readonly bool? DiskAutoresize;
         /// <summary>
@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly int? DiskAutoresizeLimit;
         /// <summary>
-        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `DiskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         /// </summary>
         public readonly int? DiskSize;
         /// <summary>
@@ -91,11 +91,11 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? EffectiveAvailabilityType;
         /// <summary>
-        /// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
+        /// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `False`.
         /// </summary>
         public readonly bool? EnableDataplexIntegration;
         /// <summary>
-        /// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+        /// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `False`.
         /// </summary>
         public readonly bool? EnableGoogleMlIntegration;
         /// <summary>
@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string Tier;
         /// <summary>
-        /// The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+        /// The TimeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         /// </summary>
         public readonly string? TimeZone;
         /// <summary>
@@ -137,7 +137,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? UserLabels;
         /// <summary>
-        /// Used to make sure changes to the `settings` block are
+        /// Used to make sure changes to the `Settings` block are
         /// atomic.
         /// </summary>
         public readonly int? Version;

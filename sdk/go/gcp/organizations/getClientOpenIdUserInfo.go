@@ -49,6 +49,8 @@ import (
 //	}
 //
 // ```
+//
+// ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
 func GetClientOpenIdUserInfo(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientOpenIdUserInfoResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClientOpenIdUserInfoResult

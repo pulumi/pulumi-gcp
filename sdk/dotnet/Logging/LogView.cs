@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Logging
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+        /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "GceInstance" AND LOG_ID("stdout")
         /// </summary>
         [Output("filter")]
         public Output<string?> Filter { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+        /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "GceInstance" AND LOG_ID("stdout")
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
@@ -221,7 +221,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+        /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "GceInstance" AND LOG_ID("stdout")
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }

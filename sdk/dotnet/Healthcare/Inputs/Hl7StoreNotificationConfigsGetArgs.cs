@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         /// are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
         /// Fields/functions available for filtering are:
         /// * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
-        /// * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, send_date &lt; "2017-01-02".
+        /// * SendDate or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, SendDate &lt; "2017-01-02".
         /// * sendTime, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, sendTime &lt; "2017-01-02T00:00:00-05:00".
         /// * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
         /// * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").

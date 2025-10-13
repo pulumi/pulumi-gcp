@@ -32,7 +32,7 @@ public final class ClusterIpAllocationPolicy {
     /**
      * @return All the information related to Auto IPAM. Structure is documented below
      * 
-     * &lt;a name=&#34;nested_auto_ipam_config&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
      * 
      */
     private @Nullable ClusterIpAllocationPolicyAutoIpamConfig autoIpamConfig;
@@ -48,7 +48,7 @@ public final class ClusterIpAllocationPolicy {
     /**
      * @return The name of the existing secondary
      * range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively,
-     * `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
+     * `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
      * 
      */
     private @Nullable String clusterSecondaryRangeName;
@@ -69,7 +69,7 @@ public final class ClusterIpAllocationPolicy {
     /**
      * @return The name of the existing
      * secondary range in the cluster&#39;s subnetwork to use for service `ClusterIP`s.
-     * Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
+     * Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
      * GKE-managed one.
      * 
      */
@@ -103,7 +103,7 @@ public final class ClusterIpAllocationPolicy {
     /**
      * @return All the information related to Auto IPAM. Structure is documented below
      * 
-     * &lt;a name=&#34;nested_auto_ipam_config&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
      * 
      */
     public Optional<ClusterIpAllocationPolicyAutoIpamConfig> autoIpamConfig() {
@@ -123,7 +123,7 @@ public final class ClusterIpAllocationPolicy {
     /**
      * @return The name of the existing secondary
      * range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively,
-     * `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
+     * `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
      * 
      */
     public Optional<String> clusterSecondaryRangeName() {
@@ -150,7 +150,7 @@ public final class ClusterIpAllocationPolicy {
     /**
      * @return The name of the existing
      * secondary range in the cluster&#39;s subnetwork to use for service `ClusterIP`s.
-     * Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
+     * Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
      * GKE-managed one.
      * 
      */

@@ -35,7 +35,7 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
     /**
      * Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
      * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
-     * requires setting `zero_max_issuer_path_length = true`.
+     * requires setting `zeroMaxIssuerPathLength = true`.
      * 
      */
     @Import(name="maxIssuerPathLength")
@@ -44,7 +44,7 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
     /**
      * @return Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
      * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
-     * requires setting `zero_max_issuer_path_length = true`.
+     * requires setting `zeroMaxIssuerPathLength = true`.
      * 
      */
     public Optional<Output<Integer>> maxIssuerPathLength() {
@@ -53,7 +53,7 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
 
     /**
      * When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
-     * If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+     * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
      * 
      */
     @Import(name="nonCa")
@@ -61,7 +61,7 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
 
     /**
      * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
-     * If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+     * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
      * 
      */
     public Optional<Output<Boolean>> nonCa() {
@@ -70,7 +70,7 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
 
     /**
      * When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-     * If both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * If both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
      * the max path length will be omitted from the CA certificate.
      * 
      */
@@ -79,7 +79,7 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
 
     /**
      * @return When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-     * If both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * If both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
      * the max path length will be omitted from the CA certificate.
      * 
      */
@@ -138,7 +138,7 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
         /**
          * @param maxIssuerPathLength Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
          * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
-         * requires setting `zero_max_issuer_path_length = true`.
+         * requires setting `zeroMaxIssuerPathLength = true`.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
         /**
          * @param maxIssuerPathLength Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
          * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
-         * requires setting `zero_max_issuer_path_length = true`.
+         * requires setting `zeroMaxIssuerPathLength = true`.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
 
         /**
          * @param nonCa When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
-         * If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+         * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
 
         /**
          * @param nonCa When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
-         * If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+         * If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
 
         /**
          * @param zeroMaxIssuerPathLength When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-         * If both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+         * If both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
          * the max path length will be omitted from the CA certificate.
          * 
          * @return builder
@@ -198,7 +198,7 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
 
         /**
          * @param zeroMaxIssuerPathLength When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-         * If both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+         * If both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
          * the max path length will be omitted from the CA certificate.
          * 
          * @return builder

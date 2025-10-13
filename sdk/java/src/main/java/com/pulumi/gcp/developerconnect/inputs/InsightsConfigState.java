@@ -25,7 +25,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
      * User specified annotations. See https://google.aip.dev/148#annotations
      * for more details such as format and size limitations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -35,7 +35,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
      * @return User specified annotations. See https://google.aip.dev/148#annotations
      * for more details such as format and size limitations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -117,7 +117,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
 
     /**
      * Any errors that occurred while setting up the InsightsConfig.
-     * Each error will be in the format: `field_name: error_message`, e.g.
+     * Each error will be in the format: `field_name: errorMessage`, e.g.
      * GetAppHubApplication: Permission denied while getting App Hub
      * application. Please grant permissions to the P4SA.
      * Structure is documented below.
@@ -128,7 +128,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Any errors that occurred while setting up the InsightsConfig.
-     * Each error will be in the format: `field_name: error_message`, e.g.
+     * Each error will be in the format: `field_name: errorMessage`, e.g.
      * GetAppHubApplication: Permission denied while getting App Hub
      * application. Please grant permissions to the P4SA.
      * Structure is documented below.
@@ -156,7 +156,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
     /**
      * Set of labels associated with an InsightsConfig.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -165,7 +165,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
     /**
      * @return Set of labels associated with an InsightsConfig.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -364,7 +364,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
          * @param annotations User specified annotations. See https://google.aip.dev/148#annotations
          * for more details such as format and size limitations.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
          * @param annotations User specified annotations. See https://google.aip.dev/148#annotations
          * for more details such as format and size limitations.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -499,7 +499,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param errors Any errors that occurred while setting up the InsightsConfig.
-         * Each error will be in the format: `field_name: error_message`, e.g.
+         * Each error will be in the format: `field_name: errorMessage`, e.g.
          * GetAppHubApplication: Permission denied while getting App Hub
          * application. Please grant permissions to the P4SA.
          * Structure is documented below.
@@ -514,7 +514,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param errors Any errors that occurred while setting up the InsightsConfig.
-         * Each error will be in the format: `field_name: error_message`, e.g.
+         * Each error will be in the format: `field_name: errorMessage`, e.g.
          * GetAppHubApplication: Permission denied while getting App Hub
          * application. Please grant permissions to the P4SA.
          * Structure is documented below.
@@ -528,7 +528,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param errors Any errors that occurred while setting up the InsightsConfig.
-         * Each error will be in the format: `field_name: error_message`, e.g.
+         * Each error will be in the format: `field_name: errorMessage`, e.g.
          * GetAppHubApplication: Permission denied while getting App Hub
          * application. Please grant permissions to the P4SA.
          * Structure is documented below.
@@ -564,7 +564,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels Set of labels associated with an InsightsConfig.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -577,7 +577,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels Set of labels associated with an InsightsConfig.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

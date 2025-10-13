@@ -32,8 +32,8 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
         /// <summary>
         /// Attributes for indexing.
         /// Key: Field name.
-        /// Value: The key property to map a field to, such as `title`, and
-        /// `description`. Supported key properties:
+        /// Value: The key property to map a field to, such as `Title`, and
+        /// `Description`. Supported key properties:
         /// </summary>
         public readonly ImmutableDictionary<string, string>? KeyPropertyMappings;
         /// <summary>

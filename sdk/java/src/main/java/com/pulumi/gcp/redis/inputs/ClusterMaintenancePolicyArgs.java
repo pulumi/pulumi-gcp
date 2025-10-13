@@ -62,7 +62,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
     /**
      * Optional. Maintenance window that is applied to resources covered by this policy.
      * Minimum 1. For the current version, the maximum number
-     * of weekly_window is expected to be one.
+     * of weeklyWindow is expected to be one.
      * Structure is documented below.
      * 
      */
@@ -72,7 +72,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
     /**
      * @return Optional. Maintenance window that is applied to resources covered by this policy.
      * Minimum 1. For the current version, the maximum number
-     * of weekly_window is expected to be one.
+     * of weeklyWindow is expected to be one.
      * Structure is documented below.
      * 
      */
@@ -163,7 +163,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         /**
          * @param weeklyMaintenanceWindows Optional. Maintenance window that is applied to resources covered by this policy.
          * Minimum 1. For the current version, the maximum number
-         * of weekly_window is expected to be one.
+         * of weeklyWindow is expected to be one.
          * Structure is documented below.
          * 
          * @return builder
@@ -177,7 +177,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         /**
          * @param weeklyMaintenanceWindows Optional. Maintenance window that is applied to resources covered by this policy.
          * Minimum 1. For the current version, the maximum number
-         * of weekly_window is expected to be one.
+         * of weeklyWindow is expected to be one.
          * Structure is documented below.
          * 
          * @return builder
@@ -190,7 +190,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         /**
          * @param weeklyMaintenanceWindows Optional. Maintenance window that is applied to resources covered by this policy.
          * Minimum 1. For the current version, the maximum number
-         * of weekly_window is expected to be one.
+         * of weeklyWindow is expected to be one.
          * Structure is documented below.
          * 
          * @return builder

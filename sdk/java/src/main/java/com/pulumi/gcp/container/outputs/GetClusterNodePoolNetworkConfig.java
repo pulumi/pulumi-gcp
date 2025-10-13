@@ -27,7 +27,7 @@ public final class GetClusterNodePoolNetworkConfig {
      */
     private List<GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs;
     /**
-     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
+     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
      * 
      */
     private Boolean createPodRange;
@@ -47,12 +47,12 @@ public final class GetClusterNodePoolNetworkConfig {
      */
     private List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
     /**
-     * @return The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+     * @return The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
      * 
      */
     private String podIpv4CidrBlock;
     /**
-     * @return The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
+     * @return The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
      * 
      */
     private String podRange;
@@ -78,7 +78,7 @@ public final class GetClusterNodePoolNetworkConfig {
         return this.additionalPodNetworkConfigs;
     }
     /**
-     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
+     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
      * 
      */
     public Boolean createPodRange() {
@@ -106,14 +106,14 @@ public final class GetClusterNodePoolNetworkConfig {
         return this.podCidrOverprovisionConfigs;
     }
     /**
-     * @return The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+     * @return The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
      * 
      */
     public String podIpv4CidrBlock() {
         return this.podIpv4CidrBlock;
     }
     /**
-     * @return The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
+     * @return The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
      * 
      */
     public String podRange() {

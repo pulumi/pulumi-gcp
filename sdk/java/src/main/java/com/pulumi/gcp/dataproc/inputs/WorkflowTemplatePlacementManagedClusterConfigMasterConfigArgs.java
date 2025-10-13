@@ -67,14 +67,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
     }
 
     /**
-     * Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+     * Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
      * 
      */
     @Import(name="instanceNames")
     private @Nullable Output<List<String>> instanceNames;
 
     /**
-     * @return Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+     * @return Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
      * 
      */
     public Optional<Output<List<String>>> instanceNames() {
@@ -278,7 +278,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
         }
 
         /**
-         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
         }
 
         /**
-         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
         }
 
         /**
-         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
          * 
          * @return builder
          * 

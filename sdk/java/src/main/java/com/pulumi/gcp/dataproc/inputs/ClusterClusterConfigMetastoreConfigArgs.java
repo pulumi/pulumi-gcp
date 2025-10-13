@@ -19,7 +19,7 @@ public final class ClusterClusterConfigMetastoreConfigArgs extends com.pulumi.re
      * 
      * Only resource names including projectid and location (region) are valid. Examples:
      * 
-     * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
+     * `projects/[projectId]/locations/[dataprocRegion]/services/[service-name]`
      * 
      */
     @Import(name="dataprocMetastoreService", required=true)
@@ -30,7 +30,7 @@ public final class ClusterClusterConfigMetastoreConfigArgs extends com.pulumi.re
      * 
      * Only resource names including projectid and location (region) are valid. Examples:
      * 
-     * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
+     * `projects/[projectId]/locations/[dataprocRegion]/services/[service-name]`
      * 
      */
     public Output<String> dataprocMetastoreService() {
@@ -66,7 +66,7 @@ public final class ClusterClusterConfigMetastoreConfigArgs extends com.pulumi.re
          * 
          * Only resource names including projectid and location (region) are valid. Examples:
          * 
-         * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
+         * `projects/[projectId]/locations/[dataprocRegion]/services/[service-name]`
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ClusterClusterConfigMetastoreConfigArgs extends com.pulumi.re
          * 
          * Only resource names including projectid and location (region) are valid. Examples:
          * 
-         * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
+         * `projects/[projectId]/locations/[dataprocRegion]/services/[service-name]`
          * 
          * @return builder
          * 

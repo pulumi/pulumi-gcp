@@ -264,7 +264,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
         /// When creating an entry, users should check the enum values first, if nothing matches the entry
-        /// to be created, then provide a custom value, for example "my_special_type".
+        /// to be created, then provide a custom value, for example "MySpecialType".
         /// userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
         /// numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
         /// </summary>
@@ -388,7 +388,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
         /// When creating an entry, users should check the enum values first, if nothing matches the entry
-        /// to be created, then provide a custom value, for example "my_special_type".
+        /// to be created, then provide a custom value, for example "MySpecialType".
         /// userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
         /// numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
         /// </summary>
@@ -515,7 +515,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
         /// When creating an entry, users should check the enum values first, if nothing matches the entry
-        /// to be created, then provide a custom value, for example "my_special_type".
+        /// to be created, then provide a custom value, for example "MySpecialType".
         /// userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
         /// numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
         /// </summary>

@@ -21,7 +21,7 @@ public final class GetDatabaseInstanceSettingDenyMaintenancePeriod {
      */
     private String startDate;
     /**
-     * @return Time in UTC when the &#34;deny maintenance period&#34; starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+     * @return Time in UTC when the &#34;deny maintenance period&#34; starts on startDate and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
      * 
      */
     private String time;
@@ -42,7 +42,7 @@ public final class GetDatabaseInstanceSettingDenyMaintenancePeriod {
         return this.startDate;
     }
     /**
-     * @return Time in UTC when the &#34;deny maintenance period&#34; starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+     * @return Time in UTC when the &#34;deny maintenance period&#34; starts on startDate and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
      * 
      */
     public String time() {

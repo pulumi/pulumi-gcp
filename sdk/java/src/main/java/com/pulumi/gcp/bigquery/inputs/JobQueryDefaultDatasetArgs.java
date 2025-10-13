@@ -17,7 +17,7 @@ public final class JobQueryDefaultDatasetArgs extends com.pulumi.resources.Resou
     public static final JobQueryDefaultDatasetArgs Empty = new JobQueryDefaultDatasetArgs();
 
     /**
-     * The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+     * The dataset. Can be specified `{{dataset_id}}` if `projectId` is also set,
      * or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
      * 
      */
@@ -25,7 +25,7 @@ public final class JobQueryDefaultDatasetArgs extends com.pulumi.resources.Resou
     private Output<String> datasetId;
 
     /**
-     * @return The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+     * @return The dataset. Can be specified `{{dataset_id}}` if `projectId` is also set,
      * or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
      * 
      */
@@ -74,7 +74,7 @@ public final class JobQueryDefaultDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param datasetId The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+         * @param datasetId The dataset. Can be specified `{{dataset_id}}` if `projectId` is also set,
          * or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
          * 
          * @return builder
@@ -86,7 +86,7 @@ public final class JobQueryDefaultDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param datasetId The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+         * @param datasetId The dataset. Can be specified `{{dataset_id}}` if `projectId` is also set,
          * or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
          * 
          * @return builder

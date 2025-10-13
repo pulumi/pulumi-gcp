@@ -12,8 +12,8 @@ namespace Pulumi.Gcp.Projects
     /// <summary>
     /// Ensures that a member:role pairing does not exist in a project's IAM policy.
     /// 
-    /// On create, this resource will modify the policy to remove the `member` from the
-    /// `role`. If the membership is ever re-added, the next refresh will clear this
+    /// On create, this resource will modify the policy to remove the `Member` from the
+    /// `Role`. If the membership is ever re-added, the next refresh will clear this
     /// resource from state, proposing re-adding it to correct the membership. Import is
     /// not supported- this resource will acquire the current policy and modify it as
     /// part of creating the resource.

@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_managed_provisioning_issue"&gt;&lt;/a&gt;The `provisioning_issue` block contains:
+        /// &lt;a name="NestedManagedProvisioningIssue"&gt;&lt;/a&gt;The `ProvisioningIssue` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateManagedAuthorizationAttemptInfo> AuthorizationAttemptInfos;
         /// <summary>

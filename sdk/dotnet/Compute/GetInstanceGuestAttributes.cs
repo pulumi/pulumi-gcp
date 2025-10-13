@@ -181,22 +181,22 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetInstanceGuestAttributesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name or self_link of the instance.
+        /// The name or SelfLink of the instance.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
-        /// If `self_link` is provided, this value is ignored.  If neither `self_link`
-        /// nor `project` are provided, the provider project is used.
+        /// If `SelfLink` is provided, this value is ignored.  If neither `SelfLink`
+        /// nor `Project` are provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
         /// <summary>
         /// Path to query for the guest attributes. Consists of
-        /// `namespace` name for the attributes followed with a `/`.
+        /// `Namespace` name for the attributes followed with a `/`.
         /// </summary>
         [Input("queryPath")]
         public string? QueryPath { get; set; }
@@ -206,14 +206,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Key of a variable to get the value of. Consists of
-        /// `namespace` name and `key` name for the variable separated by a `/`.
+        /// `Namespace` name and `Key` name for the variable separated by a `/`.
         /// </summary>
         [Input("variableKey")]
         public string? VariableKey { get; set; }
 
         /// <summary>
-        /// The zone of the instance. If `self_link` is provided, this
-        /// value is ignored.  If neither `self_link` nor `zone` are provided, the
+        /// The zone of the instance. If `SelfLink` is provided, this
+        /// value is ignored.  If neither `SelfLink` nor `Zone` are provided, the
         /// provider zone is used.
         /// </summary>
         [Input("zone")]
@@ -228,22 +228,22 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetInstanceGuestAttributesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name or self_link of the instance.
+        /// The name or SelfLink of the instance.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
-        /// If `self_link` is provided, this value is ignored.  If neither `self_link`
-        /// nor `project` are provided, the provider project is used.
+        /// If `SelfLink` is provided, this value is ignored.  If neither `SelfLink`
+        /// nor `Project` are provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Path to query for the guest attributes. Consists of
-        /// `namespace` name for the attributes followed with a `/`.
+        /// `Namespace` name for the attributes followed with a `/`.
         /// </summary>
         [Input("queryPath")]
         public Input<string>? QueryPath { get; set; }
@@ -253,14 +253,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Key of a variable to get the value of. Consists of
-        /// `namespace` name and `key` name for the variable separated by a `/`.
+        /// `Namespace` name and `Key` name for the variable separated by a `/`.
         /// </summary>
         [Input("variableKey")]
         public Input<string>? VariableKey { get; set; }
 
         /// <summary>
-        /// The zone of the instance. If `self_link` is provided, this
-        /// value is ignored.  If neither `self_link` nor `zone` are provided, the
+        /// The zone of the instance. If `SelfLink` is provided, this
+        /// value is ignored.  If neither `SelfLink` nor `Zone` are provided, the
         /// provider zone is used.
         /// </summary>
         [Input("zone")]

@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<Inputs.WorkflowTemplateJobHadoopJobLoggingConfigGetArgs>? LoggingConfig { get; set; }
 
         /// <summary>
-        /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+        /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `JarFileUris`.
         /// </summary>
         [Input("mainClass")]
         public Input<string>? MainClass { get; set; }

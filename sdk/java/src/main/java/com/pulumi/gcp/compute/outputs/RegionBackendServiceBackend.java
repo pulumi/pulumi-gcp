@@ -32,7 +32,7 @@ public final class RegionBackendServiceBackend {
      * ~&gt;**NOTE**: This field cannot be set for
      * INTERNAL region backend services (default loadBalancingScheme),
      * but is required for non-INTERNAL backend service. The total
-     * capacity_scaler for all backends must be non-zero.
+     * capacityScaler for all backends must be non-zero.
      * A setting of 0 means the group is completely drained, offering
      * 0% of its available Capacity. Valid range is [0.0,1.0].
      * 
@@ -68,7 +68,7 @@ public final class RegionBackendServiceBackend {
      * located in the same zone as the Network Endpoint Group.
      * Backend services cannot mix Instance Group and
      * Network Endpoint Group backends.
-     * When the `load_balancing_scheme` is INTERNAL, only instance groups
+     * When the `loadBalancingScheme` is INTERNAL, only instance groups
      * are supported.
      * Note that you must specify an Instance Group or Network Endpoint
      * Group resource using the fully-qualified URL, rather than a
@@ -162,7 +162,7 @@ public final class RegionBackendServiceBackend {
      * ~&gt;**NOTE**: This field cannot be set for
      * INTERNAL region backend services (default loadBalancingScheme),
      * but is required for non-INTERNAL backend service. The total
-     * capacity_scaler for all backends must be non-zero.
+     * capacityScaler for all backends must be non-zero.
      * A setting of 0 means the group is completely drained, offering
      * 0% of its available Capacity. Valid range is [0.0,1.0].
      * 
@@ -206,7 +206,7 @@ public final class RegionBackendServiceBackend {
      * located in the same zone as the Network Endpoint Group.
      * Backend services cannot mix Instance Group and
      * Network Endpoint Group backends.
-     * When the `load_balancing_scheme` is INTERNAL, only instance groups
+     * When the `loadBalancingScheme` is INTERNAL, only instance groups
      * are supported.
      * Note that you must specify an Instance Group or Network Endpoint
      * Group resource using the fully-qualified URL, rather than a

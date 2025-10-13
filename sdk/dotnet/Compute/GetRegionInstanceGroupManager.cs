@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetRegionInstanceGroupManagerArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the instance group. Either `name` or `self_link` must be provided.
+        /// The name of the instance group. Either `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.Compute
         public string? Region { get; set; }
 
         /// <summary>
-        /// The self link of the instance group. Either `name` or `self_link` must be provided.
+        /// The self link of the instance group. Either `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("selfLink")]
         public string? SelfLink { get; set; }
@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetRegionInstanceGroupManagerInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the instance group. Either `name` or `self_link` must be provided.
+        /// The name of the instance group. Either `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -145,7 +145,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The self link of the instance group. Either `name` or `self_link` must be provided.
+        /// The self link of the instance group. Either `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }

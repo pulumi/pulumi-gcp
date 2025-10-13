@@ -14,7 +14,7 @@ public final class AuthConfigDecryptedCredentialUsernameAndPassword {
     /**
      * @return Password to be used.
      * 
-     * &lt;a name=&#34;nested_decrypted_credential_oauth2_authorization_code&#34;&gt;&lt;/a&gt;The `oauth2_authorization_code` block supports:
+     * &lt;a name=&#34;nestedDecryptedCredentialOauth2AuthorizationCode&#34;&gt;&lt;/a&gt;The `oauth2AuthorizationCode` block supports:
      * 
      */
     private @Nullable String password;
@@ -28,7 +28,7 @@ public final class AuthConfigDecryptedCredentialUsernameAndPassword {
     /**
      * @return Password to be used.
      * 
-     * &lt;a name=&#34;nested_decrypted_credential_oauth2_authorization_code&#34;&gt;&lt;/a&gt;The `oauth2_authorization_code` block supports:
+     * &lt;a name=&#34;nestedDecryptedCredentialOauth2AuthorizationCode&#34;&gt;&lt;/a&gt;The `oauth2AuthorizationCode` block supports:
      * 
      */
     public Optional<String> password() {

@@ -32,14 +32,14 @@ public final class TargetGkeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+     * Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dnsEndpoint` and `internalIp` cannot be set to true.
      * 
      */
     @Import(name="dnsEndpoint")
     private @Nullable Output<Boolean> dnsEndpoint;
 
     /**
-     * @return Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+     * @return Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dnsEndpoint` and `internalIp` cannot be set to true.
      * 
      */
     public Optional<Output<Boolean>> dnsEndpoint() {
@@ -125,7 +125,7 @@ public final class TargetGkeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsEndpoint Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+         * @param dnsEndpoint Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dnsEndpoint` and `internalIp` cannot be set to true.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class TargetGkeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsEndpoint Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+         * @param dnsEndpoint Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dnsEndpoint` and `internalIp` cannot be set to true.
          * 
          * @return builder
          * 

@@ -46,7 +46,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class OrganizationsFunctions {
     /**
-     * Get an active folder within GCP by `display_name` and `parent`.
+     * Get an active folder within GCP by `displayName` and `parent`.
      * 
      * ## Example Usage
      * 
@@ -87,7 +87,7 @@ public final class OrganizationsFunctions {
         return getActiveFolder(args, InvokeOptions.Empty);
     }
     /**
-     * Get an active folder within GCP by `display_name` and `parent`.
+     * Get an active folder within GCP by `displayName` and `parent`.
      * 
      * ## Example Usage
      * 
@@ -128,7 +128,7 @@ public final class OrganizationsFunctions {
         return getActiveFolderPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get an active folder within GCP by `display_name` and `parent`.
+     * Get an active folder within GCP by `displayName` and `parent`.
      * 
      * ## Example Usage
      * 
@@ -169,7 +169,7 @@ public final class OrganizationsFunctions {
         return Deployment.getInstance().invoke("gcp:organizations/getActiveFolder:getActiveFolder", TypeShape.of(GetActiveFolderResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get an active folder within GCP by `display_name` and `parent`.
+     * Get an active folder within GCP by `displayName` and `parent`.
      * 
      * ## Example Usage
      * 
@@ -210,7 +210,7 @@ public final class OrganizationsFunctions {
         return Deployment.getInstance().invoke("gcp:organizations/getActiveFolder:getActiveFolder", TypeShape.of(GetActiveFolderResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get an active folder within GCP by `display_name` and `parent`.
+     * Get an active folder within GCP by `displayName` and `parent`.
      * 
      * ## Example Usage
      * 
@@ -618,6 +618,8 @@ public final class OrganizationsFunctions {
      * }
      * </pre>
      * 
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
+     * 
      */
     public static Output<GetClientConfigResult> getClientConfig() {
         return getClientConfig(InvokeArgs.Empty, InvokeOptions.Empty);
@@ -653,6 +655,8 @@ public final class OrganizationsFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
      * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain() {
@@ -690,6 +694,8 @@ public final class OrganizationsFunctions {
      * }
      * </pre>
      * 
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
+     * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args) {
         return getClientConfig(args, InvokeOptions.Empty);
@@ -725,6 +731,8 @@ public final class OrganizationsFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
      * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args) {
@@ -762,6 +770,8 @@ public final class OrganizationsFunctions {
      * }
      * </pre>
      * 
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
+     * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:organizations/getClientConfig:getClientConfig", TypeShape.of(GetClientConfigResult.class), args, Utilities.withVersion(options));
@@ -797,6 +807,8 @@ public final class OrganizationsFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args, InvokeOutputOptions options) {
@@ -834,6 +846,8 @@ public final class OrganizationsFunctions {
      * }
      * </pre>
      * 
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
+     * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getClientConfig:getClientConfig", TypeShape.of(GetClientConfigResult.class), args, Utilities.withVersion(options));
@@ -844,7 +858,7 @@ public final class OrganizationsFunctions {
      * 
      * This datasource enables you to export the email of the account you&#39;ve
      * authenticated the provider with; this can be used alongside
-     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * `data.google_client_config`&#39;s `accessToken` to perform OpenID Connect
      * authentication with GKE and configure an RBAC role for the email used.
      * 
      * &gt; This resource will only work as expected if the provider is configured to
@@ -883,6 +897,8 @@ public final class OrganizationsFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo() {
@@ -894,7 +910,7 @@ public final class OrganizationsFunctions {
      * 
      * This datasource enables you to export the email of the account you&#39;ve
      * authenticated the provider with; this can be used alongside
-     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * `data.google_client_config`&#39;s `accessToken` to perform OpenID Connect
      * authentication with GKE and configure an RBAC role for the email used.
      * 
      * &gt; This resource will only work as expected if the provider is configured to
@@ -933,6 +949,8 @@ public final class OrganizationsFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain() {
@@ -944,7 +962,7 @@ public final class OrganizationsFunctions {
      * 
      * This datasource enables you to export the email of the account you&#39;ve
      * authenticated the provider with; this can be used alongside
-     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * `data.google_client_config`&#39;s `accessToken` to perform OpenID Connect
      * authentication with GKE and configure an RBAC role for the email used.
      * 
      * &gt; This resource will only work as expected if the provider is configured to
@@ -983,6 +1001,8 @@ public final class OrganizationsFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args) {
@@ -994,7 +1014,7 @@ public final class OrganizationsFunctions {
      * 
      * This datasource enables you to export the email of the account you&#39;ve
      * authenticated the provider with; this can be used alongside
-     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * `data.google_client_config`&#39;s `accessToken` to perform OpenID Connect
      * authentication with GKE and configure an RBAC role for the email used.
      * 
      * &gt; This resource will only work as expected if the provider is configured to
@@ -1033,6 +1053,8 @@ public final class OrganizationsFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain(InvokeArgs args) {
@@ -1044,7 +1066,7 @@ public final class OrganizationsFunctions {
      * 
      * This datasource enables you to export the email of the account you&#39;ve
      * authenticated the provider with; this can be used alongside
-     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * `data.google_client_config`&#39;s `accessToken` to perform OpenID Connect
      * authentication with GKE and configure an RBAC role for the email used.
      * 
      * &gt; This resource will only work as expected if the provider is configured to
@@ -1083,6 +1105,8 @@ public final class OrganizationsFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args, InvokeOptions options) {
@@ -1094,7 +1118,7 @@ public final class OrganizationsFunctions {
      * 
      * This datasource enables you to export the email of the account you&#39;ve
      * authenticated the provider with; this can be used alongside
-     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * `data.google_client_config`&#39;s `accessToken` to perform OpenID Connect
      * authentication with GKE and configure an RBAC role for the email used.
      * 
      * &gt; This resource will only work as expected if the provider is configured to
@@ -1133,6 +1157,8 @@ public final class OrganizationsFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args, InvokeOutputOptions options) {
@@ -1144,7 +1170,7 @@ public final class OrganizationsFunctions {
      * 
      * This datasource enables you to export the email of the account you&#39;ve
      * authenticated the provider with; this can be used alongside
-     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * `data.google_client_config`&#39;s `accessToken` to perform OpenID Connect
      * authentication with GKE and configure an RBAC role for the email used.
      * 
      * &gt; This resource will only work as expected if the provider is configured to
@@ -1183,6 +1209,8 @@ public final class OrganizationsFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain(InvokeArgs args, InvokeOptions options) {

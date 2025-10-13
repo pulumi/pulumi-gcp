@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AzureNodePoolConfigSshConfig
     {
         /// <summary>
-        /// The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+        /// The SSH public key data for VMs managed by Anthos. This accepts the AuthorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
         /// </summary>
         public readonly string AuthorizedKey;
 

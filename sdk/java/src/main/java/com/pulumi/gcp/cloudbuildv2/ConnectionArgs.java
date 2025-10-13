@@ -26,7 +26,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Allows clients to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -35,7 +35,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Allows clients to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -225,7 +225,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param annotations Allows clients to store small amounts of arbitrary data.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param annotations Allows clients to store small amounts of arbitrary data.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 

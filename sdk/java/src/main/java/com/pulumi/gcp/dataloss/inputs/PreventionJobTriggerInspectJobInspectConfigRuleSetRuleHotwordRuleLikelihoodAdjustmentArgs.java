@@ -17,7 +17,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
     public static final PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs Empty = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs();
 
     /**
-     * Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+     * Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
      * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
      */
@@ -25,7 +25,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
     private @Nullable Output<String> fixedLikelihood;
 
     /**
-     * @return Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+     * @return Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
      * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
      */
@@ -39,7 +39,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
      * then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
      * Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
      * adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
-     * will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
+     * will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
      * 
      */
     @Import(name="relativeLikelihood")
@@ -51,7 +51,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
      * then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
      * Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
      * adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
-     * will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
+     * will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
      * 
      */
     public Optional<Output<Integer>> relativeLikelihood() {
@@ -84,7 +84,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
         }
 
         /**
-         * @param fixedLikelihood Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+         * @param fixedLikelihood Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
          * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          * 
          * @return builder
@@ -96,7 +96,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
         }
 
         /**
-         * @param fixedLikelihood Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+         * @param fixedLikelihood Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
          * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          * 
          * @return builder
@@ -112,7 +112,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
          * then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
          * Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
          * adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
-         * will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
+         * will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
          * then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
          * Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
          * adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
-         * will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
+         * will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
          * 
          * @return builder
          * 

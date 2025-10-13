@@ -291,7 +291,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -306,7 +306,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -543,9 +543,9 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * validate KSA tokens in order to allow system workloads (such as GKE Connect
      * and telemetry agents) to authenticate back to GCP.
      * Both clusters with public and private issuer URLs are supported.
-     * Clusters with public issuers only need to specify the `issuer_url` field
+     * Clusters with public issuers only need to specify the `issuerUrl` field
      * while clusters with private issuers need to provide both
-     * `issuer_url` and `jwks`.
+     * `issuerUrl` and `jwks`.
      * Structure is documented below.
      * 
      */
@@ -559,9 +559,9 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * validate KSA tokens in order to allow system workloads (such as GKE Connect
      * and telemetry agents) to authenticate back to GCP.
      * Both clusters with public and private issuer URLs are supported.
-     * Clusters with public issuers only need to specify the `issuer_url` field
+     * Clusters with public issuers only need to specify the `issuerUrl` field
      * while clusters with private issuers need to provide both
-     * `issuer_url` and `jwks`.
+     * `issuerUrl` and `jwks`.
      * Structure is documented below.
      * 
      */
@@ -633,13 +633,13 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * Enable/Disable Security Posture API features for the cluster.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
+     * &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
      * @deprecated
-     * `security_posture_config` is deprecated and will be removed in a future major release.
+     * `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `security_posture_config` is deprecated and will be removed in a future major release. */
+    @Deprecated /* `securityPostureConfig` is deprecated and will be removed in a future major release. */
     @Export(name="securityPostureConfig", refs={AttachedClusterSecurityPostureConfig.class}, tree="[0]")
     private Output<AttachedClusterSecurityPostureConfig> securityPostureConfig;
 
@@ -648,7 +648,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * Enable/Disable Security Posture API features for the cluster.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
+     * &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
      */
     public Output<AttachedClusterSecurityPostureConfig> securityPostureConfig() {

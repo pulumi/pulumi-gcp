@@ -54,6 +54,8 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// ### Secret Version Basic Write Only
+    /// 
     /// ### Secret Version Deletion Policy Abandon
     /// 
     /// ```csharp
@@ -169,6 +171,24 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// ### Secret Version With Base64 String Secret Data Write Only
+    /// 
+    /// ## Ephemeral Attributes Reference
+    /// 
+    /// The following write-only attributes are supported:
+    /// 
+    /// * `SecretDataWo` -
+    ///   (Optional)
+    ///   The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+    ///   **Note**: This property is write-only and will not be read from the API.
+    /// 
+    /// &lt;a name="NestedPayload"&gt;&lt;/a&gt;The `Payload` block supports:
+    /// 
+    /// * `SecretDataWo` -
+    ///   (Optional)
+    ///   The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+    ///   **Note**: This property is write-only and will not be read from the API.
+    /// 
     /// ## Import
     /// 
     /// SecretVersion can be imported using any of these accepted formats:

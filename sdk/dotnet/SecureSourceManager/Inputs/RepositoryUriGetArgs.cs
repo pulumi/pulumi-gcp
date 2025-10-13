@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.SecureSourceManager.Inputs
 
         /// <summary>
         /// (Output)
-        /// git_https is the git HTTPS URI for git operations.
+        /// GitHttps is the git HTTPS URI for git operations.
         /// </summary>
         [Input("gitHttps")]
         public Input<string>? GitHttps { get; set; }

@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// 
         /// Only resource names including projectid and location (region) are valid. Examples:
         /// 
-        /// `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
+        /// `projects/[projectId]/locations/[DataprocRegion]/services/[service-name]`
         /// </summary>
         public readonly string DataprocMetastoreService;
 

@@ -18,14 +18,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProjectArgs Empty = new ProjectArgs();
 
     /**
-     * Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
+     * Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
      * 
      */
     @Import(name="autoCreateNetwork")
     private @Nullable Output<Boolean> autoCreateNetwork;
 
     /**
-     * @return Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
+     * @return Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
      * 
      */
     public Optional<Output<Boolean>> autoCreateNetwork() {
@@ -64,8 +64,8 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The numeric ID of the folder this project should be
-     * created under. Only one of `org_id` or `folder_id` may be
-     * specified. If the `folder_id` is specified, then the project is
+     * created under. Only one of `orgId` or `folderId` may be
+     * specified. If the `folderId` is specified, then the project is
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      * 
@@ -75,8 +75,8 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The numeric ID of the folder this project should be
-     * created under. Only one of `org_id` or `folder_id` may be
-     * specified. If the `folder_id` is specified, then the project is
+     * created under. Only one of `orgId` or `folderId` may be
+     * specified. If the `folderId` is specified, then the project is
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      * 
@@ -122,7 +122,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
-     * `org_id` or `folder_id` may be specified. If the `org_id` is
+     * `orgId` or `folderId` may be specified. If the `orgId` is
      * specified then the project is created at the top level. Changing
      * this forces the project to be migrated to the newly specified
      * organization.
@@ -134,7 +134,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
-     * `org_id` or `folder_id` may be specified. If the `org_id` is
+     * `orgId` or `folderId` may be specified. If the `orgId` is
      * specified then the project is created at the top level. Changing
      * this forces the project to be migrated to the newly specified
      * organization.
@@ -207,7 +207,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoCreateNetwork Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
+         * @param autoCreateNetwork Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoCreateNetwork Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
+         * @param autoCreateNetwork Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
          * 
          * @return builder
          * 
@@ -267,8 +267,8 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param folderId The numeric ID of the folder this project should be
-         * created under. Only one of `org_id` or `folder_id` may be
-         * specified. If the `folder_id` is specified, then the project is
+         * created under. Only one of `orgId` or `folderId` may be
+         * specified. If the `folderId` is specified, then the project is
          * created under the specified folder. Changing this forces the
          * project to be migrated to the newly specified folder.
          * 
@@ -282,8 +282,8 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param folderId The numeric ID of the folder this project should be
-         * created under. Only one of `org_id` or `folder_id` may be
-         * specified. If the `folder_id` is specified, then the project is
+         * created under. Only one of `orgId` or `folderId` may be
+         * specified. If the `folderId` is specified, then the project is
          * created under the specified folder. Changing this forces the
          * project to be migrated to the newly specified folder.
          * 
@@ -343,7 +343,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param orgId The numeric ID of the organization this project belongs to.
          * Changing this forces a new project to be created.  Only one of
-         * `org_id` or `folder_id` may be specified. If the `org_id` is
+         * `orgId` or `folderId` may be specified. If the `orgId` is
          * specified then the project is created at the top level. Changing
          * this forces the project to be migrated to the newly specified
          * organization.
@@ -359,7 +359,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param orgId The numeric ID of the organization this project belongs to.
          * Changing this forces a new project to be created.  Only one of
-         * `org_id` or `folder_id` may be specified. If the `org_id` is
+         * `orgId` or `folderId` may be specified. If the `orgId` is
          * specified then the project is created at the top level. Changing
          * this forces the project to be migrated to the newly specified
          * organization.

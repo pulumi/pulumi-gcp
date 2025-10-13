@@ -244,7 +244,7 @@ public class SSLPolicy extends com.pulumi.resources.CustomResource {
      * `customFeatures` field.
      * See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
      * for information on what cipher suites each profile provides. If
-     * `CUSTOM` is used, the `custom_features` attribute **must be set**.
+     * `CUSTOM` is used, the `customFeatures` attribute **must be set**.
      * Default value is `COMPATIBLE`.
      * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
      * 
@@ -259,7 +259,7 @@ public class SSLPolicy extends com.pulumi.resources.CustomResource {
      * `customFeatures` field.
      * See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
      * for information on what cipher suites each profile provides. If
-     * `CUSTOM` is used, the `custom_features` attribute **must be set**.
+     * `CUSTOM` is used, the `customFeatures` attribute **must be set**.
      * Default value is `COMPATIBLE`.
      * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
      * 

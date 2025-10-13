@@ -21,9 +21,9 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// &gt; **Note:** By default, updates to this resource will remove the EgressPolicy from the
     /// from the perimeter and add it back in a non-atomic manner. To ensure that the new EgressPolicy
-    /// is added before the old one is removed, add a `lifecycle` block with `create_before_destroy = true` to this resource.
+    /// is added before the old one is removed, add a `Lifecycle` block with `CreateBeforeDestroy = true` to this resource.
     /// **Note:** If this resource is used alongside a `gcp.accesscontextmanager.ServicePerimeter` resource,
-    /// the service perimeter resource must have a `lifecycle` block with `ignore_changes = [status[0].egress_policies]` so
+    /// the service perimeter resource must have a `Lifecycle` block with `IgnoreChanges = [status[0].egress_policies]` so
     /// they don't fight over which egress rules should be in the policy.
     /// 
     /// To get more information about ServicePerimeterEgressPolicy, see:

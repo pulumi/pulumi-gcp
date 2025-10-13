@@ -16,14 +16,14 @@ public final class GetRegionNetworkEndpointGroupArgs extends com.pulumi.resource
     public static final GetRegionNetworkEndpointGroupArgs Empty = new GetRegionNetworkEndpointGroupArgs();
 
     /**
-     * The Network Endpoint Group name. Provide either this or a `self_link`.
+     * The Network Endpoint Group name. Provide either this or a `selfLink`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The Network Endpoint Group name. Provide either this or a `self_link`.
+     * @return The Network Endpoint Group name. Provide either this or a `selfLink`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -46,14 +46,14 @@ public final class GetRegionNetworkEndpointGroupArgs extends com.pulumi.resource
     }
 
     /**
-     * A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
+     * A reference to the region where the Serverless REGs Reside. Provide either this or a `selfLink`.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
+     * @return A reference to the region where the Serverless REGs Reside. Provide either this or a `selfLink`.
      * 
      */
     public Optional<Output<String>> region() {
@@ -103,7 +103,7 @@ public final class GetRegionNetworkEndpointGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The Network Endpoint Group name. Provide either this or a `self_link`.
+         * @param name The Network Endpoint Group name. Provide either this or a `selfLink`.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class GetRegionNetworkEndpointGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The Network Endpoint Group name. Provide either this or a `self_link`.
+         * @param name The Network Endpoint Group name. Provide either this or a `selfLink`.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class GetRegionNetworkEndpointGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param region A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
+         * @param region A reference to the region where the Serverless REGs Reside. Provide either this or a `selfLink`.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class GetRegionNetworkEndpointGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param region A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
+         * @param region A reference to the region where the Serverless REGs Reside. Provide either this or a `selfLink`.
          * 
          * @return builder
          * 

@@ -64,14 +64,14 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+     * If set, the request will be executed via Spanner independent compute resources. `useParallelism` must be set when using data boost.
      * 
      */
     @Import(name="useDataBoost")
     private @Nullable Output<Boolean> useDataBoost;
 
     /**
-     * @return If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+     * @return If set, the request will be executed via Spanner independent compute resources. `useParallelism` must be set when using data boost.
      * 
      */
     public Optional<Output<Boolean>> useDataBoost() {
@@ -215,7 +215,7 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param useDataBoost If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+         * @param useDataBoost If set, the request will be executed via Spanner independent compute resources. `useParallelism` must be set when using data boost.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param useDataBoost If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+         * @param useDataBoost If set, the request will be executed via Spanner independent compute resources. `useParallelism` must be set when using data boost.
          * 
          * @return builder
          * 

@@ -27,6 +27,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Scc Organization Big Query Export Config Basic
+//
 // ## Import
 //
 // OrganizationSccBigQueryExport can be imported using any of these accepted formats:

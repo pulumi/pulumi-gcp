@@ -143,7 +143,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * Labels for this Scope.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -153,7 +153,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * @return Labels for this Scope.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -177,7 +177,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * Scope-level cluster namespace labels. For the member clusters bound
      * to the Scope, these labels are applied to each namespace under the
      * Scope. Scope-level labels take precedence over Namespace-level
-     * labels (`namespace_labels` in the Fleet Namespace resource) if they
+     * labels (`namespaceLabels` in the Fleet Namespace resource) if they
      * share a key. Keys and values must be Kubernetes-conformant.
      * 
      */
@@ -188,7 +188,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * @return Scope-level cluster namespace labels. For the member clusters bound
      * to the Scope, these labels are applied to each namespace under the
      * Scope. Scope-level labels take precedence over Namespace-level
-     * labels (`namespace_labels` in the Fleet Namespace resource) if they
+     * labels (`namespaceLabels` in the Fleet Namespace resource) if they
      * share a key. Keys and values must be Kubernetes-conformant.
      * 
      */

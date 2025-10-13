@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string? AuthToken;
         /// <summary>
-        /// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+        /// An password for a notification channel. Channel types that support this field include: WebhookBasicauth
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? Password;

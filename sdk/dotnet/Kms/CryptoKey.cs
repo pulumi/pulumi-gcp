@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Kms
         /// Labels with user-defined metadata to apply to this resource.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.Kms
         /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
         /// The first rotation will take place after the specified period. The rotation period has
         /// the format of a decimal number with up to 9 fractional digits, followed by the
-        /// letter `s` (seconds). It must be greater than a day (ie, 86400).
+        /// letter `S` (seconds). It must be greater than a day (ie, 86400).
         /// </summary>
         [Output("rotationPeriod")]
         public Output<string?> RotationPeriod { get; private set; } = null!;
@@ -313,7 +313,7 @@ namespace Pulumi.Gcp.Kms
         /// Labels with user-defined metadata to apply to this resource.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -340,7 +340,7 @@ namespace Pulumi.Gcp.Kms
         /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
         /// The first rotation will take place after the specified period. The rotation period has
         /// the format of a decimal number with up to 9 fractional digits, followed by the
-        /// letter `s` (seconds). It must be greater than a day (ie, 86400).
+        /// letter `S` (seconds). It must be greater than a day (ie, 86400).
         /// </summary>
         [Input("rotationPeriod")]
         public Input<string>? RotationPeriod { get; set; }
@@ -433,7 +433,7 @@ namespace Pulumi.Gcp.Kms
         /// Labels with user-defined metadata to apply to this resource.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -491,7 +491,7 @@ namespace Pulumi.Gcp.Kms
         /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
         /// The first rotation will take place after the specified period. The rotation period has
         /// the format of a decimal number with up to 9 fractional digits, followed by the
-        /// letter `s` (seconds). It must be greater than a day (ie, 86400).
+        /// letter `S` (seconds). It must be greater than a day (ie, 86400).
         /// </summary>
         [Input("rotationPeriod")]
         public Input<string>? RotationPeriod { get; set; }

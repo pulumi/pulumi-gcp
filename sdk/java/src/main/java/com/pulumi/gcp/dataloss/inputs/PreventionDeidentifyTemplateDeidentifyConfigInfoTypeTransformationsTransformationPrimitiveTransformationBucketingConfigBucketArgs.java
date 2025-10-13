@@ -20,7 +20,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
     /**
      * Upper bound of the range, exclusive; type must match min.
-     * The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+     * The `max` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
      * Structure is documented below.
      * 
      */
@@ -29,7 +29,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
     /**
      * @return Upper bound of the range, exclusive; type must match min.
-     * The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+     * The `max` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
      * Structure is documented below.
      * 
      */
@@ -39,7 +39,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
     /**
      * Lower bound of the range, inclusive. Type should be the same as max if used.
-     * The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+     * The `min` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
      * Structure is documented below.
      * 
      */
@@ -48,7 +48,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
     /**
      * @return Lower bound of the range, inclusive. Type should be the same as max if used.
-     * The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+     * The `min` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
      * Structure is documented below.
      * 
      */
@@ -58,7 +58,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
     /**
      * Replacement value for this bucket.
-     * The `replacement_value` block must only contain one argument.
+     * The `replacementValue` block must only contain one argument.
      * Structure is documented below.
      * 
      */
@@ -67,7 +67,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
     /**
      * @return Replacement value for this bucket.
-     * The `replacement_value` block must only contain one argument.
+     * The `replacementValue` block must only contain one argument.
      * Structure is documented below.
      * 
      */
@@ -103,7 +103,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         /**
          * @param max Upper bound of the range, exclusive; type must match min.
-         * The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+         * The `max` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
          * Structure is documented below.
          * 
          * @return builder
@@ -116,7 +116,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         /**
          * @param max Upper bound of the range, exclusive; type must match min.
-         * The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+         * The `max` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
          * Structure is documented below.
          * 
          * @return builder
@@ -128,7 +128,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         /**
          * @param min Lower bound of the range, inclusive. Type should be the same as max if used.
-         * The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+         * The `min` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
          * Structure is documented below.
          * 
          * @return builder
@@ -141,7 +141,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         /**
          * @param min Lower bound of the range, inclusive. Type should be the same as max if used.
-         * The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+         * The `min` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
          * Structure is documented below.
          * 
          * @return builder
@@ -153,7 +153,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         /**
          * @param replacementValue Replacement value for this bucket.
-         * The `replacement_value` block must only contain one argument.
+         * The `replacementValue` block must only contain one argument.
          * Structure is documented below.
          * 
          * @return builder
@@ -166,7 +166,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         /**
          * @param replacementValue Replacement value for this bucket.
-         * The `replacement_value` block must only contain one argument.
+         * The `replacementValue` block must only contain one argument.
          * Structure is documented below.
          * 
          * @return builder

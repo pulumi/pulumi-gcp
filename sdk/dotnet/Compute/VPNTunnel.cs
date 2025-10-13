@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute
     ///     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
     ///     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
     /// 
-    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `shared_secret_wo`.
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `SharedSecretWo`.
     /// Read more about Write-only Attributes.
     /// 
     /// ## Example Usage
@@ -232,7 +232,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// The following write-only attributes are supported:
     /// 
-    /// * `shared_secret_wo` -
+    /// * `SharedSecretWo` -
     ///   (Optional)
     ///   Shared secret used to set the secure session between the Cloud VPN
     ///   gateway and the peer VPN gateway.
@@ -321,7 +321,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Labels to apply to this VpnTunnel.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -361,7 +361,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
-        /// If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+        /// If provided, the VPN tunnel will automatically use the same VpnGatewayInterface
         /// ID in the peer GCP VPN gateway.
         /// This field must reference a `gcp.compute.HaVpnGateway` resource.
         /// </summary>
@@ -389,7 +389,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
+        /// The region where the tunnel is located. If unset, is set to the region of `TargetVpnGateway`.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -430,7 +430,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SharedSecretHash { get; private set; } = null!;
 
         /// <summary>
-        /// Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        /// Triggers update of SharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         /// </summary>
         [Output("sharedSecretWoVersion")]
         public Output<string?> SharedSecretWoVersion { get; private set; } = null!;
@@ -541,7 +541,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Labels to apply to this VpnTunnel.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -590,7 +590,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
-        /// If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+        /// If provided, the VPN tunnel will automatically use the same VpnGatewayInterface
         /// ID in the peer GCP VPN gateway.
         /// This field must reference a `gcp.compute.HaVpnGateway` resource.
         /// </summary>
@@ -611,7 +611,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
+        /// The region where the tunnel is located. If unset, is set to the region of `TargetVpnGateway`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -656,7 +656,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        /// Triggers update of SharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         /// </summary>
         [Input("sharedSecretWoVersion")]
         public Input<string>? SharedSecretWoVersion { get; set; }
@@ -752,7 +752,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Labels to apply to this VpnTunnel.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -801,7 +801,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
-        /// If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+        /// If provided, the VPN tunnel will automatically use the same VpnGatewayInterface
         /// ID in the peer GCP VPN gateway.
         /// This field must reference a `gcp.compute.HaVpnGateway` resource.
         /// </summary>
@@ -839,7 +839,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
+        /// The region where the tunnel is located. If unset, is set to the region of `TargetVpnGateway`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -896,7 +896,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SharedSecretHash { get; set; }
 
         /// <summary>
-        /// Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        /// Triggers update of SharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         /// </summary>
         [Input("sharedSecretWoVersion")]
         public Input<string>? SharedSecretWoVersion { get; set; }

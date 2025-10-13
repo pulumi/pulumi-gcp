@@ -203,13 +203,13 @@ namespace Pulumi.Gcp.BigQuery
         /// syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
         /// supports principal types users, groups, serviceaccounts, cloudidentity.
         /// This field is supported in V2 Data Policy only. In case of V1 data policies
-        /// (i.e. verion = 1 and policy_tag is set), this field is not populated.
+        /// (i.e. verion = 1 and PolicyTag is set), this field is not populated.
         /// </summary>
         [Output("grantees")]
         public Output<ImmutableArray<string>> Grantees { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// Policy tag resource name, in the format of
         /// `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
-        /// policy_tag is supported only for V1 data policies.
+        /// PolicyTag is supported only for V1 data policies.
         /// </summary>
         [Output("policyTag")]
         public Output<string> PolicyTag { get; private set; } = null!;
@@ -336,7 +336,7 @@ namespace Pulumi.Gcp.BigQuery
         /// syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
         /// supports principal types users, groups, serviceaccounts, cloudidentity.
         /// This field is supported in V2 Data Policy only. In case of V1 data policies
-        /// (i.e. verion = 1 and policy_tag is set), this field is not populated.
+        /// (i.e. verion = 1 and PolicyTag is set), this field is not populated.
         /// </summary>
         public InputList<string> Grantees
         {
@@ -345,7 +345,7 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -410,7 +410,7 @@ namespace Pulumi.Gcp.BigQuery
         /// syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
         /// supports principal types users, groups, serviceaccounts, cloudidentity.
         /// This field is supported in V2 Data Policy only. In case of V1 data policies
-        /// (i.e. verion = 1 and policy_tag is set), this field is not populated.
+        /// (i.e. verion = 1 and PolicyTag is set), this field is not populated.
         /// </summary>
         public InputList<string> Grantees
         {
@@ -419,7 +419,7 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -434,7 +434,7 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// Policy tag resource name, in the format of
         /// `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
-        /// policy_tag is supported only for V1 data policies.
+        /// PolicyTag is supported only for V1 data policies.
         /// </summary>
         [Input("policyTag")]
         public Input<string>? PolicyTag { get; set; }

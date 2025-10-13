@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Port number of network endpoint.
-        /// **Note** `port` is required unless the Network Endpoint Group is created
+        /// **Note** `Port` is required unless the Network Endpoint Group is created
         /// with the type of `GCE_VM_IP`
         /// </summary>
         [Input("port")]

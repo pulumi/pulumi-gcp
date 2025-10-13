@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager
 {
     /// <summary>
-    /// Allows configuring a single GCP resource that should be inside the `status` block of a service perimeter.
+    /// Allows configuring a single GCP resource that should be inside the `Status` block of a service perimeter.
     /// This resource is intended to be used in cases where it is not possible to compile a full list
     /// of projects to include in a `gcp.accesscontextmanager.ServicePerimeter` resource,
     /// to enable them to be added separately.
     /// If your perimeter is in dry-run mode use `gcp.accesscontextmanager.ServicePerimeterDryRunResource` instead.
     /// 
     /// &gt; **Note:** If this resource is used alongside a `gcp.accesscontextmanager.ServicePerimeter` resource,
-    /// the service perimeter resource must have a `lifecycle` block with `ignore_changes = [status[0].resources]` so
+    /// the service perimeter resource must have a `Lifecycle` block with `IgnoreChanges = [status[0].resources]` so
     /// they don't fight over which resources should be in the policy.
     /// 
     /// To get more information about ServicePerimeterResource, see:
@@ -27,10 +27,10 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-    /// you must specify a `billing_project` and set `user_project_override` to true
+    /// you must specify a `BillingProject` and set `UserProjectOverride` to true
     /// in the provider configuration. Otherwise the ACM API will return a 403 error.
     /// Your account must have the `serviceusage.services.use` permission on the
-    /// `billing_project` you defined.
+    /// `BillingProject` you defined.
     /// 
     /// ## Example Usage
     /// 

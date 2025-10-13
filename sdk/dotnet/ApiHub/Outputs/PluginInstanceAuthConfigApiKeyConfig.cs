@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.ApiHub.Outputs
         /// <summary>
         /// The parameter name of the API key.
         /// E.g. If the API request is "https://example.com/act?api_key=",
-        /// "api_key" would be the parameter name.
+        /// "ApiKey" would be the parameter name.
         /// </summary>
         public readonly string Name;
 

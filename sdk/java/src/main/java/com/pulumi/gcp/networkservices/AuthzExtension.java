@@ -206,7 +206,7 @@ public class AuthzExtension extends com.pulumi.resources.CustomResource {
      * Set of labels associated with the AuthzExtension resource.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -216,7 +216,7 @@ public class AuthzExtension extends com.pulumi.resources.CustomResource {
      * @return Set of labels associated with the AuthzExtension resource.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -255,7 +255,7 @@ public class AuthzExtension extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The metadata provided here is included as part of the metadata_context (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.&lt;resourceName&gt;. The following variables are supported in the metadata Struct:
+     * The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.&lt;resourceName&gt;. The following variables are supported in the metadata Struct:
      * {forwarding_rule_id} - substituted with the forwarding rule&#39;s fully qualified resource name.
      * 
      */
@@ -263,7 +263,7 @@ public class AuthzExtension extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
-     * @return The metadata provided here is included as part of the metadata_context (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.&lt;resourceName&gt;. The following variables are supported in the metadata Struct:
+     * @return The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.&lt;resourceName&gt;. The following variables are supported in the metadata Struct:
      * {forwarding_rule_id} - substituted with the forwarding rule&#39;s fully qualified resource name.
      * 
      */

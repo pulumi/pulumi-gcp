@@ -21,14 +21,14 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     public static final InstanceBootDiskInitializeParamsArgs Empty = new InstanceBootDiskInitializeParamsArgs();
 
     /**
-     * The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
      * 
      */
     @Import(name="architecture")
     private @Nullable Output<String> architecture;
 
     /**
-     * @return The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * @return The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
      * 
      */
     public Optional<Output<String>> architecture() {
@@ -37,7 +37,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
 
     /**
      * Whether this disk is using confidential compute mode.
-     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true.
      * 
      */
     @Import(name="enableConfidentialCompute")
@@ -45,7 +45,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
 
     /**
      * @return Whether this disk is using confidential compute mode.
-     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true.
      * 
      */
     public Optional<Output<Boolean>> enableConfidentialCompute() {
@@ -54,7 +54,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
 
     /**
      * The image from which to initialize this disk. This can be
-     * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -69,7 +69,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
 
     /**
      * @return The image from which to initialize this disk. This can be
-     * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -170,14 +170,14 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     }
 
     /**
-     * A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
      * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<String> resourcePolicies;
 
     /**
-     * @return A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
+     * @return A list of selfLinks of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<Output<String>> resourcePolicies() {
@@ -324,7 +324,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param architecture The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+         * @param architecture The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param architecture The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+         * @param architecture The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
 
         /**
          * @param enableConfidentialCompute Whether this disk is using confidential compute mode.
-         * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
+         * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
 
         /**
          * @param enableConfidentialCompute Whether this disk is using confidential compute mode.
-         * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
+         * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
 
         /**
          * @param image The image from which to initialize this disk. This can be
-         * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
+         * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -388,7 +388,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
 
         /**
          * @param image The image from which to initialize this disk. This can be
-         * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
+         * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -515,7 +515,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param resourcePolicies A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of selfLinks of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param resourcePolicies A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of selfLinks of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 

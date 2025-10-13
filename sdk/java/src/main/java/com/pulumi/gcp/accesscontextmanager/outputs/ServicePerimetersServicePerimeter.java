@@ -28,7 +28,7 @@ public final class ServicePerimetersServicePerimeter {
      */
     private @Nullable String description;
     /**
-     * @return Resource name for the ServicePerimeter. The short_name component must
+     * @return Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      * 
@@ -114,7 +114,7 @@ public final class ServicePerimetersServicePerimeter {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Resource name for the ServicePerimeter. The short_name component must
+     * @return Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      * 

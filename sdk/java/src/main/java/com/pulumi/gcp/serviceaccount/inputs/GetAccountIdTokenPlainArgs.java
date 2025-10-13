@@ -48,14 +48,14 @@ public final class GetAccountIdTokenPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The audience claim for the `id_token`.
+     * The audience claim for the `idToken`.
      * 
      */
     @Import(name="targetAudience", required=true)
     private String targetAudience;
 
     /**
-     * @return The audience claim for the `id_token`.
+     * @return The audience claim for the `idToken`.
      * 
      */
     public String targetAudience() {
@@ -137,7 +137,7 @@ public final class GetAccountIdTokenPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param targetAudience The audience claim for the `id_token`.
+         * @param targetAudience The audience claim for the `idToken`.
          * 
          * @return builder
          * 

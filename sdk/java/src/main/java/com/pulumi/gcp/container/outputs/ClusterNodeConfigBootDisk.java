@@ -19,12 +19,12 @@ public final class ClusterNodeConfigBootDisk {
      */
     private @Nullable String diskType;
     /**
-     * @return Configure disk IOPs. This is only valid if the `disk_type` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+     * @return Configure disk IOPs. This is only valid if the `diskType` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
      * 
      */
     private @Nullable Integer provisionedIops;
     /**
-     * @return Configure disk throughput. This is only valid if the `disk_type` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+     * @return Configure disk throughput. This is only valid if the `diskType` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
      * 
      */
     private @Nullable Integer provisionedThroughput;
@@ -45,14 +45,14 @@ public final class ClusterNodeConfigBootDisk {
         return Optional.ofNullable(this.diskType);
     }
     /**
-     * @return Configure disk IOPs. This is only valid if the `disk_type` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+     * @return Configure disk IOPs. This is only valid if the `diskType` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
      * 
      */
     public Optional<Integer> provisionedIops() {
         return Optional.ofNullable(this.provisionedIops);
     }
     /**
-     * @return Configure disk throughput. This is only valid if the `disk_type` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+     * @return Configure disk throughput. This is only valid if the `diskType` is &#39;hyperdisk-balanced&#39;. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
      * 
      */
     public Optional<Integer> provisionedThroughput() {

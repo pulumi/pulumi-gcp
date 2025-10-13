@@ -149,8 +149,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * &#39;Output only. Additional information about instance health. Example:
-     * healthInfo&#34;: { &#34;docker_proxy_agent_status&#34;: &#34;1&#34;, &#34;docker_status&#34;: &#34;1&#34;, &#34;jupyterlab_api_status&#34;:
-     * &#34;-1&#34;, &#34;jupyterlab_status&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
+     * healthInfo&#34;: { &#34;dockerProxyAgentStatus&#34;: &#34;1&#34;, &#34;dockerStatus&#34;: &#34;1&#34;, &#34;jupyterlabApiStatus&#34;:
+     * &#34;-1&#34;, &#34;jupyterlabStatus&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
      * 
      */
     @Import(name="healthInfos")
@@ -158,8 +158,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return &#39;Output only. Additional information about instance health. Example:
-     * healthInfo&#34;: { &#34;docker_proxy_agent_status&#34;: &#34;1&#34;, &#34;docker_status&#34;: &#34;1&#34;, &#34;jupyterlab_api_status&#34;:
-     * &#34;-1&#34;, &#34;jupyterlab_status&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
+     * healthInfo&#34;: { &#34;dockerProxyAgentStatus&#34;: &#34;1&#34;, &#34;dockerStatus&#34;: &#34;1&#34;, &#34;jupyterlabApiStatus&#34;:
+     * &#34;-1&#34;, &#34;jupyterlabStatus&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
      * 
      */
     public Optional<Output<List<InstanceHealthInfoArgs>>> healthInfos() {
@@ -224,7 +224,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * by the UpdateInstance method.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -235,7 +235,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * by the UpdateInstance method.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -592,8 +592,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param healthInfos &#39;Output only. Additional information about instance health. Example:
-         * healthInfo&#34;: { &#34;docker_proxy_agent_status&#34;: &#34;1&#34;, &#34;docker_status&#34;: &#34;1&#34;, &#34;jupyterlab_api_status&#34;:
-         * &#34;-1&#34;, &#34;jupyterlab_status&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
+         * healthInfo&#34;: { &#34;dockerProxyAgentStatus&#34;: &#34;1&#34;, &#34;dockerStatus&#34;: &#34;1&#34;, &#34;jupyterlabApiStatus&#34;:
+         * &#34;-1&#34;, &#34;jupyterlabStatus&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
          * 
          * @return builder
          * 
@@ -605,8 +605,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param healthInfos &#39;Output only. Additional information about instance health. Example:
-         * healthInfo&#34;: { &#34;docker_proxy_agent_status&#34;: &#34;1&#34;, &#34;docker_status&#34;: &#34;1&#34;, &#34;jupyterlab_api_status&#34;:
-         * &#34;-1&#34;, &#34;jupyterlab_status&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
+         * healthInfo&#34;: { &#34;dockerProxyAgentStatus&#34;: &#34;1&#34;, &#34;dockerStatus&#34;: &#34;1&#34;, &#34;jupyterlabApiStatus&#34;:
+         * &#34;-1&#34;, &#34;jupyterlabStatus&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
          * 
          * @return builder
          * 
@@ -617,8 +617,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param healthInfos &#39;Output only. Additional information about instance health. Example:
-         * healthInfo&#34;: { &#34;docker_proxy_agent_status&#34;: &#34;1&#34;, &#34;docker_status&#34;: &#34;1&#34;, &#34;jupyterlab_api_status&#34;:
-         * &#34;-1&#34;, &#34;jupyterlab_status&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
+         * healthInfo&#34;: { &#34;dockerProxyAgentStatus&#34;: &#34;1&#34;, &#34;dockerStatus&#34;: &#34;1&#34;, &#34;jupyterlabApiStatus&#34;:
+         * &#34;-1&#34;, &#34;jupyterlabStatus&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
          * 
          * @return builder
          * 
@@ -717,7 +717,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * by the UpdateInstance method.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -732,7 +732,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * by the UpdateInstance method.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

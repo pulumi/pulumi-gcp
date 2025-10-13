@@ -52,7 +52,7 @@ public final class RegionInstanceTemplateNetworkInterface {
      */
     private @Nullable String name;
     /**
-     * @return The name or self_link of the network to attach this interface to.
+     * @return The name or selfLink of the network to attach this interface to.
      * Use `network` attribute for Legacy or Auto subnetted networks and
      * `subnetwork` for custom subnetted networks.
      * 
@@ -144,7 +144,7 @@ public final class RegionInstanceTemplateNetworkInterface {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The name or self_link of the network to attach this interface to.
+     * @return The name or selfLink of the network to attach this interface to.
      * Use `network` attribute for Legacy or Auto subnetted networks and
      * `subnetwork` for custom subnetted networks.
      * 

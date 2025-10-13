@@ -70,14 +70,14 @@ public final class AzureClusterControlPlaneArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+     * Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
      * 
      */
     @Import(name="replicaPlacements")
     private @Nullable Output<List<AzureClusterControlPlaneReplicaPlacementArgs>> replicaPlacements;
 
     /**
-     * @return Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+     * @return Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
      * 
      */
     public Optional<Output<List<AzureClusterControlPlaneReplicaPlacementArgs>>> replicaPlacements() {
@@ -271,7 +271,7 @@ public final class AzureClusterControlPlaneArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param replicaPlacements Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+         * @param replicaPlacements Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class AzureClusterControlPlaneArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param replicaPlacements Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+         * @param replicaPlacements Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class AzureClusterControlPlaneArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param replicaPlacements Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+         * @param replicaPlacements Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
          * 
          * @return builder
          * 

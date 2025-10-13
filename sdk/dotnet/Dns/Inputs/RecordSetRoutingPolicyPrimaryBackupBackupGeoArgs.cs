@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dns.Inputs
     public sealed class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `Rrdatas` within this item.
         /// </summary>
         [Input("healthCheckedTargets")]
         public Input<Inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs>? HealthCheckedTargets { get; set; }

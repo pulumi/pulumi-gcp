@@ -240,7 +240,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
     /**
      * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
      * 
-     * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
      * 
      */
     @Import(name="srcThreatIntelligences")
@@ -249,7 +249,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
     /**
      * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
      * 
-     * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
      * 
      */
     public Optional<Output<List<String>>> srcThreatIntelligences() {
@@ -721,7 +721,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         /**
          * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          * 
-         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
          * 
          * @return builder
          * 
@@ -734,7 +734,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         /**
          * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          * 
-         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
          * 
          * @return builder
          * 
@@ -746,7 +746,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         /**
          * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          * 
-         * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
          * 
          * @return builder
          * 

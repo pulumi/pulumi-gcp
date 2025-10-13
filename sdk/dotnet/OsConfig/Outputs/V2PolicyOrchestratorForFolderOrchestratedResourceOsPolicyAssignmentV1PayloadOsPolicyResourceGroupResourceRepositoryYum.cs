@@ -27,8 +27,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         public readonly ImmutableArray<string> GpgKeys;
         /// <summary>
         /// A one word, unique name for this repository. This is  the `repo
-        /// id` in the yum config file and also the `display_name` if
-        /// `display_name` is omitted. This id is also used as the unique
+        /// id` in the yum config file and also the `DisplayName` if
+        /// `DisplayName` is omitted. This id is also used as the unique
         /// identifier when checking for resource conflicts.
         /// </summary>
         public readonly string Id;

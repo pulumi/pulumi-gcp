@@ -23,7 +23,7 @@ public final class VolumeSnapshotPolicy {
     private @Nullable VolumeSnapshotPolicyDailySchedule dailySchedule;
     /**
      * @return Enables automated snapshot creation according to defined schedule. Default is false.
-     * To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+     * To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
      * 
      */
     private @Nullable Boolean enabled;
@@ -57,7 +57,7 @@ public final class VolumeSnapshotPolicy {
     }
     /**
      * @return Enables automated snapshot creation according to defined schedule. Default is false.
-     * To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+     * To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
      * 
      */
     public Optional<Boolean> enabled() {

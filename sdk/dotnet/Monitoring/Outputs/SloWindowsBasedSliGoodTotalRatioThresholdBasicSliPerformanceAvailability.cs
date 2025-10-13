@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability
     {
         /// <summary>
-        /// Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+        /// Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `True`.
         /// </summary>
         public readonly bool? Enabled;
 

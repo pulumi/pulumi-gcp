@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetInstanceGroupManagerNamedPortResult
     {
         /// <summary>
-        /// The name of the instance group. Either `name` or `self_link` must be provided.
+        /// The name of the instance group. Either `Name` or `SelfLink` must be provided.
         /// </summary>
         public readonly string Name;
         /// <summary>

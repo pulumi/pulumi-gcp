@@ -52,7 +52,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetArgs extends
     }
 
     /**
-     * The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+     * The buckets the generationCadence applies to. The first target with a matching filter will be the one to apply to a bucket.
      * Structure is documented below.
      * 
      */
@@ -60,7 +60,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetArgs extends
     private Output<PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs> filter;
 
     /**
-     * @return The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+     * @return The buckets the generationCadence applies to. The first target with a matching filter will be the one to apply to a bucket.
      * Structure is documented below.
      * 
      */
@@ -157,7 +157,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetArgs extends
         }
 
         /**
-         * @param filter The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+         * @param filter The buckets the generationCadence applies to. The first target with a matching filter will be the one to apply to a bucket.
          * Structure is documented below.
          * 
          * @return builder
@@ -169,7 +169,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetArgs extends
         }
 
         /**
-         * @param filter The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+         * @param filter The buckets the generationCadence applies to. The first target with a matching filter will be the one to apply to a bucket.
          * Structure is documented below.
          * 
          * @return builder

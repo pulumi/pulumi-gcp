@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Billing
         public Output<string> BillingAccountId { get; private set; } = null!;
 
         /// <summary>
-        /// If set to "RENAME_ON_DESTROY" the billing account display_name
+        /// If set to "RENAME_ON_DESTROY" the billing account DisplayName
         /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
         /// Default is "".
         /// </summary>
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.Billing
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// `true` if the billing account is open, `false` if the billing account is closed.
+        /// `True` if the billing account is open, `False` if the billing account is closed.
         /// </summary>
         [Output("open")]
         public Output<bool> Open { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.Billing
     public sealed class SubAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to "RENAME_ON_DESTROY" the billing account display_name
+        /// If set to "RENAME_ON_DESTROY" the billing account DisplayName
         /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
         /// Default is "".
         /// </summary>
@@ -167,7 +167,7 @@ namespace Pulumi.Gcp.Billing
         public Input<string>? BillingAccountId { get; set; }
 
         /// <summary>
-        /// If set to "RENAME_ON_DESTROY" the billing account display_name
+        /// If set to "RENAME_ON_DESTROY" the billing account DisplayName
         /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
         /// Default is "".
         /// </summary>
@@ -194,7 +194,7 @@ namespace Pulumi.Gcp.Billing
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// `true` if the billing account is open, `false` if the billing account is closed.
+        /// `True` if the billing account is open, `False` if the billing account is closed.
         /// </summary>
         [Input("open")]
         public Input<bool>? Open { get; set; }

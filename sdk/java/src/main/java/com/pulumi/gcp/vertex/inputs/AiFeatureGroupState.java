@@ -18,7 +18,7 @@ public final class AiFeatureGroupState extends com.pulumi.resources.ResourceArgs
     public static final AiFeatureGroupState Empty = new AiFeatureGroupState();
 
     /**
-     * Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+     * Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a featureTimestamp column in the source.
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class AiFeatureGroupState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<AiFeatureGroupBigQueryArgs> bigQuery;
 
     /**
-     * @return Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+     * @return Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a featureTimestamp column in the source.
      * Structure is documented below.
      * 
      */
@@ -97,7 +97,7 @@ public final class AiFeatureGroupState extends com.pulumi.resources.ResourceArgs
     /**
      * The labels with user-defined metadata to organize your FeatureGroup.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -106,7 +106,7 @@ public final class AiFeatureGroupState extends com.pulumi.resources.ResourceArgs
     /**
      * @return The labels with user-defined metadata to organize your FeatureGroup.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -227,7 +227,7 @@ public final class AiFeatureGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bigQuery Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+         * @param bigQuery Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a featureTimestamp column in the source.
          * Structure is documented below.
          * 
          * @return builder
@@ -239,7 +239,7 @@ public final class AiFeatureGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bigQuery Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+         * @param bigQuery Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a featureTimestamp column in the source.
          * Structure is documented below.
          * 
          * @return builder
@@ -336,7 +336,7 @@ public final class AiFeatureGroupState extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels The labels with user-defined metadata to organize your FeatureGroup.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class AiFeatureGroupState extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels The labels with user-defined metadata to organize your FeatureGroup.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

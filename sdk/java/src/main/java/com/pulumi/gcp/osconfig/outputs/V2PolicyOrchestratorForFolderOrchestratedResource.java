@@ -25,7 +25,7 @@ public final class V2PolicyOrchestratorForFolderOrchestratedResource {
      *   For DELETE action, ID must be specified explicitly during
      *   PolicyOrchestrator creation.
      * 
-     * &lt;a name=&#34;nested_orchestrated_resource_os_policy_assignment_v1_payload&#34;&gt;&lt;/a&gt;The `os_policy_assignment_v1_payload` block supports:
+     * &lt;a name=&#34;nestedOrchestratedResourceOsPolicyAssignmentV1Payload&#34;&gt;&lt;/a&gt;The `osPolicyAssignmentV1Payload` block supports:
      * 
      */
     private @Nullable String id;
@@ -60,7 +60,7 @@ public final class V2PolicyOrchestratorForFolderOrchestratedResource {
      *   For DELETE action, ID must be specified explicitly during
      *   PolicyOrchestrator creation.
      * 
-     * &lt;a name=&#34;nested_orchestrated_resource_os_policy_assignment_v1_payload&#34;&gt;&lt;/a&gt;The `os_policy_assignment_v1_payload` block supports:
+     * &lt;a name=&#34;nestedOrchestratedResourceOsPolicyAssignmentV1Payload&#34;&gt;&lt;/a&gt;The `osPolicyAssignmentV1Payload` block supports:
      * 
      */
     public Optional<String> id() {

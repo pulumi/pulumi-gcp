@@ -20,7 +20,7 @@ public final class AlertPolicyAlertStrategy {
      */
     private @Nullable String autoClose;
     /**
-     * @return Control over how the notification channels in `notification_channels`
+     * @return Control over how the notification channels in `notificationChannels`
      * are notified when this alert fires, on a per-channel basis.
      * Structure is documented below.
      * 
@@ -49,7 +49,7 @@ public final class AlertPolicyAlertStrategy {
         return Optional.ofNullable(this.autoClose);
     }
     /**
-     * @return Control over how the notification channels in `notification_channels`
+     * @return Control over how the notification channels in `notificationChannels`
      * are notified when this alert fires, on a per-channel basis.
      * Structure is documented below.
      * 

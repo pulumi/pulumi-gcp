@@ -115,7 +115,7 @@ public final class AuthorizedOrgsDescState extends com.pulumi.resources.Resource
     /**
      * Resource name for the `AuthorizedOrgsDesc`. Format:
      * `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
-     * The `authorized_orgs_desc` component must begin with a letter, followed by
+     * The `authorizedOrgsDesc` component must begin with a letter, followed by
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
      * 
@@ -126,7 +126,7 @@ public final class AuthorizedOrgsDescState extends com.pulumi.resources.Resource
     /**
      * @return Resource name for the `AuthorizedOrgsDesc`. Format:
      * `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
-     * The `authorized_orgs_desc` component must begin with a letter, followed by
+     * The `authorizedOrgsDesc` component must begin with a letter, followed by
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
      * 
@@ -338,7 +338,7 @@ public final class AuthorizedOrgsDescState extends com.pulumi.resources.Resource
         /**
          * @param name Resource name for the `AuthorizedOrgsDesc`. Format:
          * `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
-         * The `authorized_orgs_desc` component must begin with a letter, followed by
+         * The `authorizedOrgsDesc` component must begin with a letter, followed by
          * alphanumeric characters or `_`.
          * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
          * 
@@ -353,7 +353,7 @@ public final class AuthorizedOrgsDescState extends com.pulumi.resources.Resource
         /**
          * @param name Resource name for the `AuthorizedOrgsDesc`. Format:
          * `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
-         * The `authorized_orgs_desc` component must begin with a letter, followed by
+         * The `authorizedOrgsDesc` component must begin with a letter, followed by
          * alphanumeric characters or `_`.
          * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
          * 

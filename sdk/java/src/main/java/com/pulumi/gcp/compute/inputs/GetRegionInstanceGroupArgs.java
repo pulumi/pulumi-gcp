@@ -16,14 +16,14 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
     public static final GetRegionInstanceGroupArgs Empty = new GetRegionInstanceGroupArgs();
 
     /**
-     * The name of the instance group.  One of `name` or `self_link` must be provided.
+     * The name of the instance group.  One of `name` or `selfLink` must be provided.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the instance group.  One of `name` or `self_link` must be provided.
+     * @return The name of the instance group.  One of `name` or `selfLink` must be provided.
      * 
      */
     public Optional<Output<String>> name() {
@@ -32,7 +32,7 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
 
     /**
      * The ID of the project in which the resource belongs.
-     * If `self_link` is provided, this value is ignored.  If neither `self_link`
+     * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      * 
      */
@@ -41,7 +41,7 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
 
     /**
      * @return The ID of the project in which the resource belongs.
-     * If `self_link` is provided, this value is ignored.  If neither `self_link`
+     * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      * 
      */
@@ -50,8 +50,8 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The region in which the resource belongs.  If `self_link`
-     * is provided, this value is ignored.  If neither `self_link` nor `region` are
+     * The region in which the resource belongs.  If `selfLink`
+     * is provided, this value is ignored.  If neither `selfLink` nor `region` are
      * provided, the provider region is used.
      * 
      */
@@ -59,8 +59,8 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
     private @Nullable Output<String> region;
 
     /**
-     * @return The region in which the resource belongs.  If `self_link`
-     * is provided, this value is ignored.  If neither `self_link` nor `region` are
+     * @return The region in which the resource belongs.  If `selfLink`
+     * is provided, this value is ignored.  If neither `selfLink` nor `region` are
      * provided, the provider region is used.
      * 
      */
@@ -69,7 +69,7 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The link to the instance group.  One of `name` or `self_link` must be provided.
+     * The link to the instance group.  One of `name` or `selfLink` must be provided.
      * 
      * ***
      * 
@@ -78,7 +78,7 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
     private @Nullable Output<String> selfLink;
 
     /**
-     * @return The link to the instance group.  One of `name` or `self_link` must be provided.
+     * @return The link to the instance group.  One of `name` or `selfLink` must be provided.
      * 
      * ***
      * 
@@ -115,7 +115,7 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param name The name of the instance group.  One of `name` or `self_link` must be provided.
+         * @param name The name of the instance group.  One of `name` or `selfLink` must be provided.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param name The name of the instance group.  One of `name` or `self_link` must be provided.
+         * @param name The name of the instance group.  One of `name` or `selfLink` must be provided.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
 
         /**
          * @param project The ID of the project in which the resource belongs.
-         * If `self_link` is provided, this value is ignored.  If neither `self_link`
+         * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
          * nor `project` are provided, the provider project is used.
          * 
          * @return builder
@@ -150,7 +150,7 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
 
         /**
          * @param project The ID of the project in which the resource belongs.
-         * If `self_link` is provided, this value is ignored.  If neither `self_link`
+         * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
          * nor `project` are provided, the provider project is used.
          * 
          * @return builder
@@ -161,8 +161,8 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param region The region in which the resource belongs.  If `self_link`
-         * is provided, this value is ignored.  If neither `self_link` nor `region` are
+         * @param region The region in which the resource belongs.  If `selfLink`
+         * is provided, this value is ignored.  If neither `selfLink` nor `region` are
          * provided, the provider region is used.
          * 
          * @return builder
@@ -174,8 +174,8 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param region The region in which the resource belongs.  If `self_link`
-         * is provided, this value is ignored.  If neither `self_link` nor `region` are
+         * @param region The region in which the resource belongs.  If `selfLink`
+         * is provided, this value is ignored.  If neither `selfLink` nor `region` are
          * provided, the provider region is used.
          * 
          * @return builder
@@ -186,7 +186,7 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param selfLink The link to the instance group.  One of `name` or `self_link` must be provided.
+         * @param selfLink The link to the instance group.  One of `name` or `selfLink` must be provided.
          * 
          * ***
          * 
@@ -199,7 +199,7 @@ public final class GetRegionInstanceGroupArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param selfLink The link to the instance group.  One of `name` or `self_link` must be provided.
+         * @param selfLink The link to the instance group.  One of `name` or `selfLink` must be provided.
          * 
          * ***
          * 

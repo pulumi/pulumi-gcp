@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.ServiceAccount
     public static class GetAccountAccessToken
     {
         /// <summary>
-        /// This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+        /// This data source provides a google `Oauth2` `AccessToken` for a different service account than the one initially running the script.
         /// 
         /// For more information see
         /// [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
@@ -78,13 +78,13 @@ namespace Pulumi.Gcp.ServiceAccount
         /// });
         /// ```
         /// 
-        /// &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
+        /// &gt; *Note*: the generated token is non-refreshable and can have a maximum `Lifetime` of `3600` seconds.
         /// </summary>
         public static Task<GetAccountAccessTokenResult> InvokeAsync(GetAccountAccessTokenArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountAccessTokenResult>("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+        /// This data source provides a google `Oauth2` `AccessToken` for a different service account than the one initially running the script.
         /// 
         /// For more information see
         /// [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
@@ -150,13 +150,13 @@ namespace Pulumi.Gcp.ServiceAccount
         /// });
         /// ```
         /// 
-        /// &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
+        /// &gt; *Note*: the generated token is non-refreshable and can have a maximum `Lifetime` of `3600` seconds.
         /// </summary>
         public static Output<GetAccountAccessTokenResult> Invoke(GetAccountAccessTokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAccessTokenResult>("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+        /// This data source provides a google `Oauth2` `AccessToken` for a different service account than the one initially running the script.
         /// 
         /// For more information see
         /// [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
@@ -222,7 +222,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// });
         /// ```
         /// 
-        /// &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
+        /// &gt; *Note*: the generated token is non-refreshable and can have a maximum `Lifetime` of `3600` seconds.
         /// </summary>
         public static Output<GetAccountAccessTokenResult> Invoke(GetAccountAccessTokenInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAccessTokenResult>("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenInvokeArgs(), options.WithDefaults());
@@ -322,7 +322,7 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class GetAccountAccessTokenResult
     {
         /// <summary>
-        /// The `access_token` representing the new generated identity.
+        /// The `AccessToken` representing the new generated identity.
         /// </summary>
         public readonly string AccessToken;
         public readonly ImmutableArray<string> Delegates;

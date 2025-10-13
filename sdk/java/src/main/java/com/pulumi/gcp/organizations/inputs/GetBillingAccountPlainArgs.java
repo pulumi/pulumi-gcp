@@ -49,7 +49,7 @@ public final class GetBillingAccountPlainArgs extends com.pulumi.resources.Invok
      * `true` if projects associated with the billing account should be read, `false` if this step
      * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
      * 
-     * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+     * &gt; **NOTE:** One of `billingAccount` or `displayName` must be specified.
      * 
      */
     @Import(name="lookupProjects")
@@ -59,7 +59,7 @@ public final class GetBillingAccountPlainArgs extends com.pulumi.resources.Invok
      * @return `true` if projects associated with the billing account should be read, `false` if this step
      * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
      * 
-     * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+     * &gt; **NOTE:** One of `billingAccount` or `displayName` must be specified.
      * 
      */
     public Optional<Boolean> lookupProjects() {
@@ -134,7 +134,7 @@ public final class GetBillingAccountPlainArgs extends com.pulumi.resources.Invok
          * @param lookupProjects `true` if projects associated with the billing account should be read, `false` if this step
          * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
          * 
-         * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+         * &gt; **NOTE:** One of `billingAccount` or `displayName` must be specified.
          * 
          * @return builder
          * 

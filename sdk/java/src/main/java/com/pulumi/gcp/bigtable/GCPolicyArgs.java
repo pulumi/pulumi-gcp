@@ -57,14 +57,14 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+     * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
      * 
      */
     @Import(name="gcRules")
     private @Nullable Output<String> gcRules;
 
     /**
-     * @return Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+     * @return Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
      * 
      */
     public Optional<Output<String>> gcRules() {
@@ -266,7 +266,7 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gcRules Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+         * @param gcRules Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gcRules Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+         * @param gcRules Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
          * 
          * @return builder
          * 

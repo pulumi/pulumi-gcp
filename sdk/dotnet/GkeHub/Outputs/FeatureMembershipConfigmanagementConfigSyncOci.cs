@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipConfigmanagementConfigSyncOci
     {
         /// <summary>
-        /// The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+        /// The GCP Service Account Email used for auth when SecretType is gcpserviceaccount.
         /// </summary>
         public readonly string? GcpServiceAccountEmail;
         /// <summary>

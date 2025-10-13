@@ -716,7 +716,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// IP address of the BGP interface outside Google Cloud Platform.
-        /// Only IPv4 is supported. Required if `ip_address` is set.
+        /// Only IPv4 is supported. Required if `IpAddress` is set.
         /// </summary>
         [Output("peerIpAddress")]
         public Output<string> PeerIpAddress { get; private set; } = null!;
@@ -770,14 +770,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
-        /// This value has to be set true to force the advertised_route_priority to be 0.
+        /// This value has to be set true to force the AdvertisedRoutePriority to be 0.
         /// </summary>
         [Output("zeroAdvertisedRoutePriority")]
         public Output<bool?> ZeroAdvertisedRoutePriority { get; private set; } = null!;
 
         /// <summary>
         /// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-        /// This value has to be set true to force the custom_learned_route_priority to be 0.
+        /// This value has to be set true to force the CustomLearnedRoutePriority to be 0.
         /// </summary>
         [Output("zeroCustomLearnedRoutePriority")]
         public Output<bool?> ZeroCustomLearnedRoutePriority { get; private set; } = null!;
@@ -1016,7 +1016,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// IP address of the BGP interface outside Google Cloud Platform.
-        /// Only IPv4 is supported. Required if `ip_address` is set.
+        /// Only IPv4 is supported. Required if `IpAddress` is set.
         /// </summary>
         [Input("peerIpAddress")]
         public Input<string>? PeerIpAddress { get; set; }
@@ -1070,14 +1070,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
-        /// This value has to be set true to force the advertised_route_priority to be 0.
+        /// This value has to be set true to force the AdvertisedRoutePriority to be 0.
         /// </summary>
         [Input("zeroAdvertisedRoutePriority")]
         public Input<bool>? ZeroAdvertisedRoutePriority { get; set; }
 
         /// <summary>
         /// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-        /// This value has to be set true to force the custom_learned_route_priority to be 0.
+        /// This value has to be set true to force the CustomLearnedRoutePriority to be 0.
         /// </summary>
         [Input("zeroCustomLearnedRoutePriority")]
         public Input<bool>? ZeroCustomLearnedRoutePriority { get; set; }
@@ -1304,7 +1304,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// IP address of the BGP interface outside Google Cloud Platform.
-        /// Only IPv4 is supported. Required if `ip_address` is set.
+        /// Only IPv4 is supported. Required if `IpAddress` is set.
         /// </summary>
         [Input("peerIpAddress")]
         public Input<string>? PeerIpAddress { get; set; }
@@ -1358,14 +1358,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
-        /// This value has to be set true to force the advertised_route_priority to be 0.
+        /// This value has to be set true to force the AdvertisedRoutePriority to be 0.
         /// </summary>
         [Input("zeroAdvertisedRoutePriority")]
         public Input<bool>? ZeroAdvertisedRoutePriority { get; set; }
 
         /// <summary>
         /// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-        /// This value has to be set true to force the custom_learned_route_priority to be 0.
+        /// This value has to be set true to force the CustomLearnedRoutePriority to be 0.
         /// </summary>
         [Input("zeroCustomLearnedRoutePriority")]
         public Input<bool>? ZeroCustomLearnedRoutePriority { get; set; }

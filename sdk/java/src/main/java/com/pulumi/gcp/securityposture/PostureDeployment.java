@@ -18,8 +18,8 @@ import javax.annotation.Nullable;
 /**
  * Represents a deployment of a security posture on a resource. A posture contains user curated policy sets. A posture can
  * be deployed on a project or on a folder or on an organization. To deploy a posture we need to populate the posture&#39;s name
- * and its revision_id in the posture deployment configuration. Every update to a deployed posture generates a new revision_id.
- * Thus, the updated revision_id should be used in the respective posture deployment&#39;s configuration to deploy that posture
+ * and its revisionId in the posture deployment configuration. Every update to a deployed posture generates a new revision_id.
+ * Thus, the updated revisionId should be used in the respective posture deployment&#39;s configuration to deploy that posture
  * on a resource.
  * 
  * To get more information about PostureDeployment, see:
@@ -92,7 +92,7 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired posture revision_id to be deployed.
+     * It denotes the desired posture revisionId to be deployed.
      * 
      */
     @Export(name="desiredPostureRevisionId", refs={String.class}, tree="[0]")
@@ -101,7 +101,7 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
     /**
      * @return This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired posture revision_id to be deployed.
+     * It denotes the desired posture revisionId to be deployed.
      * 
      */
     public Output<String> desiredPostureRevisionId() {

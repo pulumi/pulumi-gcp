@@ -18,7 +18,7 @@ public final class UptimeCheckConfigSyntheticMonitorArgs extends com.pulumi.reso
      * Target a Synthetic Monitor GCFv2 Instance
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_synthetic_monitor_cloud_function_v2&#34;&gt;&lt;/a&gt;The `cloud_function_v2` block supports:
+     * &lt;a name=&#34;nestedSyntheticMonitorCloudFunctionV2&#34;&gt;&lt;/a&gt;The `cloudFunctionV2` block supports:
      * 
      */
     @Import(name="cloudFunctionV2", required=true)
@@ -28,7 +28,7 @@ public final class UptimeCheckConfigSyntheticMonitorArgs extends com.pulumi.reso
      * @return Target a Synthetic Monitor GCFv2 Instance
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_synthetic_monitor_cloud_function_v2&#34;&gt;&lt;/a&gt;The `cloud_function_v2` block supports:
+     * &lt;a name=&#34;nestedSyntheticMonitorCloudFunctionV2&#34;&gt;&lt;/a&gt;The `cloudFunctionV2` block supports:
      * 
      */
     public Output<UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args> cloudFunctionV2() {
@@ -63,7 +63,7 @@ public final class UptimeCheckConfigSyntheticMonitorArgs extends com.pulumi.reso
          * @param cloudFunctionV2 Target a Synthetic Monitor GCFv2 Instance
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_synthetic_monitor_cloud_function_v2&#34;&gt;&lt;/a&gt;The `cloud_function_v2` block supports:
+         * &lt;a name=&#34;nestedSyntheticMonitorCloudFunctionV2&#34;&gt;&lt;/a&gt;The `cloudFunctionV2` block supports:
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class UptimeCheckConfigSyntheticMonitorArgs extends com.pulumi.reso
          * @param cloudFunctionV2 Target a Synthetic Monitor GCFv2 Instance
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_synthetic_monitor_cloud_function_v2&#34;&gt;&lt;/a&gt;The `cloud_function_v2` block supports:
+         * &lt;a name=&#34;nestedSyntheticMonitorCloudFunctionV2&#34;&gt;&lt;/a&gt;The `cloudFunctionV2` block supports:
          * 
          * @return builder
          * 

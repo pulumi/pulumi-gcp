@@ -17,17 +17,17 @@ public final class SloWindowsBasedSli {
     /**
      * @return A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
      * with ValueType = BOOL. The window is good if any true values
-     * appear in the window. One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
+     * appear in the window. One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
      * 
      */
     private @Nullable String goodBadMetricFilter;
     /**
      * @return Criterion that describes a window as good if its performance is
-     * high enough. One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
+     * high enough. One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
      * Structure is documented below.
      * 
      */
@@ -35,10 +35,10 @@ public final class SloWindowsBasedSli {
     /**
      * @return Criterion that describes a window as good if the metric&#39;s value
      * is in a good range, *averaged* across returned streams.
-     * One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
-     * Average value X of `time_series` should satisfy
+     * One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
+     * Average value X of `timeSeries` should satisfy
      * `range.min &lt;= X &lt;= range.max` for a good window.
      * Structure is documented below.
      * 
@@ -47,11 +47,11 @@ public final class SloWindowsBasedSli {
     /**
      * @return Criterion that describes a window as good if the metric&#39;s value
      * is in a good range, *summed* across returned streams.
-     * Summed value `X` of `time_series` should satisfy
+     * Summed value `X` of `timeSeries` should satisfy
      * `range.min &lt;= X &lt;= range.max` for a good window.
-     * One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
+     * One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
      * Structure is documented below.
      * 
      */
@@ -68,9 +68,9 @@ public final class SloWindowsBasedSli {
     /**
      * @return A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
      * with ValueType = BOOL. The window is good if any true values
-     * appear in the window. One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
+     * appear in the window. One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
      * 
      */
     public Optional<String> goodBadMetricFilter() {
@@ -78,9 +78,9 @@ public final class SloWindowsBasedSli {
     }
     /**
      * @return Criterion that describes a window as good if its performance is
-     * high enough. One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
+     * high enough. One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
      * Structure is documented below.
      * 
      */
@@ -90,10 +90,10 @@ public final class SloWindowsBasedSli {
     /**
      * @return Criterion that describes a window as good if the metric&#39;s value
      * is in a good range, *averaged* across returned streams.
-     * One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
-     * Average value X of `time_series` should satisfy
+     * One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
+     * Average value X of `timeSeries` should satisfy
      * `range.min &lt;= X &lt;= range.max` for a good window.
      * Structure is documented below.
      * 
@@ -104,11 +104,11 @@ public final class SloWindowsBasedSli {
     /**
      * @return Criterion that describes a window as good if the metric&#39;s value
      * is in a good range, *summed* across returned streams.
-     * Summed value `X` of `time_series` should satisfy
+     * Summed value `X` of `timeSeries` should satisfy
      * `range.min &lt;= X &lt;= range.max` for a good window.
-     * One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
+     * One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
      * Structure is documented below.
      * 
      */

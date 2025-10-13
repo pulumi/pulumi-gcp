@@ -80,7 +80,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Policy to determine if the cluster should be deleted forcefully.
-     * If setting deletion_policy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
+     * If setting deletionPolicy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
      * of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
      * nested resources will return an error. Possible values: DEFAULT, FORCE
      * 
@@ -90,7 +90,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Policy to determine if the cluster should be deleted forcefully.
-     * If setting deletion_policy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
+     * If setting deletionPolicy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
      * of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
      * nested resources will return an error. Possible values: DEFAULT, FORCE
      * 
@@ -519,7 +519,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
-         * If setting deletion_policy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
+         * If setting deletionPolicy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
          * of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
          * nested resources will return an error. Possible values: DEFAULT, FORCE
          * 
@@ -533,7 +533,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
-         * If setting deletion_policy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
+         * If setting deletionPolicy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
          * of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
          * nested resources will return an error. Possible values: DEFAULT, FORCE
          * 

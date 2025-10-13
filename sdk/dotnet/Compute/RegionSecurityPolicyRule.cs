@@ -424,8 +424,8 @@ namespace Pulumi.Gcp.Compute
         /// Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
         /// For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
         /// Example:
-        /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
-        /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
+        /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "Ipv4FragmentOffset" values: - "1-0x1fff"
+        /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "Ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
         /// Structure is documented below.
         /// </summary>
         [Output("networkMatch")]
@@ -461,7 +461,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Must be specified if the action is "RateBasedBan" or "throttle". Cannot be specified for any other actions.
         /// Structure is documented below.
         /// </summary>
         [Output("rateLimitOptions")]
@@ -557,8 +557,8 @@ namespace Pulumi.Gcp.Compute
         /// Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
         /// For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
         /// Example:
-        /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
-        /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
+        /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "Ipv4FragmentOffset" values: - "1-0x1fff"
+        /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "Ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
         /// Structure is documented below.
         /// </summary>
         [Input("networkMatch")]
@@ -594,7 +594,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Must be specified if the action is "RateBasedBan" or "throttle". Cannot be specified for any other actions.
         /// Structure is documented below.
         /// </summary>
         [Input("rateLimitOptions")]
@@ -652,8 +652,8 @@ namespace Pulumi.Gcp.Compute
         /// Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
         /// For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
         /// Example:
-        /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
-        /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
+        /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "Ipv4FragmentOffset" values: - "1-0x1fff"
+        /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "Ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
         /// Structure is documented below.
         /// </summary>
         [Input("networkMatch")]
@@ -689,7 +689,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Must be specified if the action is "RateBasedBan" or "throttle". Cannot be specified for any other actions.
         /// Structure is documented below.
         /// </summary>
         [Input("rateLimitOptions")]

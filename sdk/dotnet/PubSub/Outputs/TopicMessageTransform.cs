@@ -14,13 +14,13 @@ namespace Pulumi.Gcp.PubSub.Outputs
     public sealed class TopicMessageTransform
     {
         /// <summary>
-        /// Controls whether or not to use this transform. If not set or `false`,
-        /// the transform will be applied to messages. Default: `true`.
+        /// Controls whether or not to use this transform. If not set or `False`,
+        /// the transform will be applied to messages. Default: `True`.
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
         /// Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-        /// each one must have a unique `function_name`.
+        /// each one must have a unique `FunctionName`.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.TopicMessageTransformJavascriptUdf? JavascriptUdf;

@@ -85,13 +85,13 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
      * (Optional, Deprecated)
      * User input run-as service account, if empty, will bring up a new default service account.
      * 
-     * &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
+     * &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
      * 
      * @deprecated
-     * `run_as_service_account` is deprecated and will be removed in a future major release.
+     * `runAsServiceAccount` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `run_as_service_account` is deprecated and will be removed in a future major release. */
+    @Deprecated /* `runAsServiceAccount` is deprecated and will be removed in a future major release. */
     @Import(name="runAsServiceAccount")
     private @Nullable Output<String> runAsServiceAccount;
 
@@ -99,13 +99,13 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
      * @return (Optional, Deprecated)
      * User input run-as service account, if empty, will bring up a new default service account.
      * 
-     * &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
+     * &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
      * 
      * @deprecated
-     * `run_as_service_account` is deprecated and will be removed in a future major release.
+     * `runAsServiceAccount` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `run_as_service_account` is deprecated and will be removed in a future major release. */
+    @Deprecated /* `runAsServiceAccount` is deprecated and will be removed in a future major release. */
     public Optional<Output<String>> runAsServiceAccount() {
         return Optional.ofNullable(this.runAsServiceAccount);
     }
@@ -230,15 +230,15 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          * @param runAsServiceAccount (Optional, Deprecated)
          * User input run-as service account, if empty, will bring up a new default service account.
          * 
-         * &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
+         * &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
          * @deprecated
-         * `run_as_service_account` is deprecated and will be removed in a future major release.
+         * `runAsServiceAccount` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `run_as_service_account` is deprecated and will be removed in a future major release. */
+        @Deprecated /* `runAsServiceAccount` is deprecated and will be removed in a future major release. */
         public Builder runAsServiceAccount(@Nullable Output<String> runAsServiceAccount) {
             $.runAsServiceAccount = runAsServiceAccount;
             return this;
@@ -248,15 +248,15 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          * @param runAsServiceAccount (Optional, Deprecated)
          * User input run-as service account, if empty, will bring up a new default service account.
          * 
-         * &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
+         * &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
          * @deprecated
-         * `run_as_service_account` is deprecated and will be removed in a future major release.
+         * `runAsServiceAccount` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `run_as_service_account` is deprecated and will be removed in a future major release. */
+        @Deprecated /* `runAsServiceAccount` is deprecated and will be removed in a future major release. */
         public Builder runAsServiceAccount(String runAsServiceAccount) {
             return runAsServiceAccount(Output.of(runAsServiceAccount));
         }

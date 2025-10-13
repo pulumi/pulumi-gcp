@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceTemplateSchedulingOnInstanceStopAction {
     /**
-     * @return Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+     * @return Whether to discard local SSDs attached to the VM while terminating using `maxRunDuration`. Only supports `true` at this point.
      * 
      */
     private @Nullable Boolean discardLocalSsd;
 
     private InstanceTemplateSchedulingOnInstanceStopAction() {}
     /**
-     * @return Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+     * @return Whether to discard local SSDs attached to the VM while terminating using `maxRunDuration`. Only supports `true` at this point.
      * 
      */
     public Optional<Boolean> discardLocalSsd() {

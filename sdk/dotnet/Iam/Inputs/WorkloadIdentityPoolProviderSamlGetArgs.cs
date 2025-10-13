@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// <summary>
         /// SAML Identity provider configuration metadata xml doc.
         /// 
-        /// &lt;a name="nested_x509"&gt;&lt;/a&gt;The `x509` block supports:
+        /// &lt;a name="NestedX509"&gt;&lt;/a&gt;The `X509` block supports:
         /// </summary>
         [Input("idpMetadataXml", required: true)]
         public Input<string> IdpMetadataXml { get; set; } = null!;

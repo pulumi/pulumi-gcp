@@ -159,7 +159,7 @@ namespace Pulumi.Gcp.Folder
     {
         /// <summary>
         /// The asymmetric crypto key version to use for signing approval requests.
-        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// Empty ActiveKeyVersion indicates that a Google-managed key should be used for signing.
         /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
         /// </summary>
         [Output("activeKeyVersion")]
@@ -194,7 +194,7 @@ namespace Pulumi.Gcp.Folder
         public Output<string> FolderId { get; private set; } = null!;
 
         /// <summary>
-        /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+        /// If the field is true, that indicates that there is some configuration issue with the ActiveKeyVersion
         /// configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
         /// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
         /// as key versions are inherited top-down.
@@ -264,7 +264,7 @@ namespace Pulumi.Gcp.Folder
     {
         /// <summary>
         /// The asymmetric crypto key version to use for signing approval requests.
-        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// Empty ActiveKeyVersion indicates that a Google-managed key should be used for signing.
         /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
         /// </summary>
         [Input("activeKeyVersion")]
@@ -316,7 +316,7 @@ namespace Pulumi.Gcp.Folder
     {
         /// <summary>
         /// The asymmetric crypto key version to use for signing approval requests.
-        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// Empty ActiveKeyVersion indicates that a Google-managed key should be used for signing.
         /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
         /// </summary>
         [Input("activeKeyVersion")]
@@ -357,7 +357,7 @@ namespace Pulumi.Gcp.Folder
         public Input<string>? FolderId { get; set; }
 
         /// <summary>
-        /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+        /// If the field is true, that indicates that there is some configuration issue with the ActiveKeyVersion
         /// configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
         /// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
         /// as key versions are inherited top-down.

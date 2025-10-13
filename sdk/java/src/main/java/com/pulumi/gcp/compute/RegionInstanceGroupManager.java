@@ -555,14 +555,14 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
         return this.standbyPolicy;
     }
     /**
-     * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+     * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
      * 
      */
     @Export(name="statefulDisks", refs={List.class,RegionInstanceGroupManagerStatefulDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RegionInstanceGroupManagerStatefulDisk>> statefulDisks;
 
     /**
-     * @return Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+     * @return Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
      * 
      */
     public Output<Optional<List<RegionInstanceGroupManagerStatefulDisk>>> statefulDisks() {
@@ -721,7 +721,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.waitForInstances);
     }
     /**
-     * When used with `wait_for_instances` it specifies the status to wait for.
+     * When used with `waitForInstances` it specifies the status to wait for.
      * When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
      * set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
      * instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
@@ -731,7 +731,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ String> waitForInstancesStatus;
 
     /**
-     * @return When used with `wait_for_instances` it specifies the status to wait for.
+     * @return When used with `waitForInstances` it specifies the status to wait for.
      * When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
      * set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
      * instances to be stable before returning. The possible values are `STABLE` and `UPDATED`

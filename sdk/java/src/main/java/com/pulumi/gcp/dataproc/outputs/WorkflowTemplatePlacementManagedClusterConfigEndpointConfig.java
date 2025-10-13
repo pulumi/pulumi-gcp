@@ -19,7 +19,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
      */
     private @Nullable Boolean enableHttpPortAccess;
     /**
-     * @return Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+     * @return Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
      * 
      */
     private @Nullable Map<String,String> httpPorts;
@@ -33,7 +33,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
         return Optional.ofNullable(this.enableHttpPortAccess);
     }
     /**
-     * @return Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+     * @return Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
      * 
      */
     public Map<String,String> httpPorts() {

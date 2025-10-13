@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// <summary>
         /// The availability type of the Cloud SQL instance, high availability
         /// (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
-        /// API (for read pools, effective_availability_type may differ from availability_type).
+        /// API (for read pools, EffectiveAvailabilityType may differ from availability_type).
         /// </summary>
         public readonly string EffectiveAvailabilityType;
         /// <summary>
@@ -124,7 +124,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string Tier;
         /// <summary>
-        /// The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+        /// The TimeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         /// </summary>
         public readonly string TimeZone;
         /// <summary>

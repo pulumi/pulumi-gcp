@@ -17,7 +17,7 @@ public final class ReservationAutoscaleArgs extends com.pulumi.resources.Resourc
 
     /**
      * (Output)
-     * The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
+     * The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
      * 
      */
     @Import(name="currentSlots")
@@ -25,7 +25,7 @@ public final class ReservationAutoscaleArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return (Output)
-     * The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
+     * The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
      * 
      */
     public Optional<Output<Integer>> currentSlots() {
@@ -74,7 +74,7 @@ public final class ReservationAutoscaleArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param currentSlots (Output)
-         * The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
+         * The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class ReservationAutoscaleArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param currentSlots (Output)
-         * The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
+         * The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
          * 
          * @return builder
          * 

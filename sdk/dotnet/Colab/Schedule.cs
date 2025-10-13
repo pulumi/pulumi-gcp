@@ -402,7 +402,7 @@ namespace Pulumi.Gcp.Colab
     public partial class Schedule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
+        /// Whether new scheduled runs can be queued when MaxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         /// </summary>
         [Output("allowQueueing")]
         public Output<bool?> AllowQueueing { get; private set; } = null!;
@@ -433,7 +433,7 @@ namespace Pulumi.Gcp.Colab
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either EndTime is reached or when ScheduledRunCount &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         /// </summary>
         [Output("endTime")]
         public Output<string?> EndTime { get; private set; } = null!;
@@ -528,7 +528,7 @@ namespace Pulumi.Gcp.Colab
     public sealed class ScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
+        /// Whether new scheduled runs can be queued when MaxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         /// </summary>
         [Input("allowQueueing")]
         public Input<bool>? AllowQueueing { get; set; }
@@ -559,7 +559,7 @@ namespace Pulumi.Gcp.Colab
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either EndTime is reached or when ScheduledRunCount &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
@@ -604,7 +604,7 @@ namespace Pulumi.Gcp.Colab
     public sealed class ScheduleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
+        /// Whether new scheduled runs can be queued when MaxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         /// </summary>
         [Input("allowQueueing")]
         public Input<bool>? AllowQueueing { get; set; }
@@ -635,7 +635,7 @@ namespace Pulumi.Gcp.Colab
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either EndTime is reached or when ScheduledRunCount &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }

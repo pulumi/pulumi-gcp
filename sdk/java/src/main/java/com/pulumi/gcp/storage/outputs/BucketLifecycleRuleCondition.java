@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketLifecycleRuleCondition {
     /**
-     * @return Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
+     * @return Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `sendAgeIfZero` should be set `true` otherwise `0` value of `age` field will be ignored.
      * 
      */
     private @Nullable Integer age;
@@ -66,22 +66,22 @@ public final class BucketLifecycleRuleCondition {
      */
     private @Nullable Integer numNewerVersions;
     /**
-     * @return While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+     * @return While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
      * 
      */
     private @Nullable Boolean sendAgeIfZero;
     /**
-     * @return While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+     * @return While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
      * 
      */
     private @Nullable Boolean sendDaysSinceCustomTimeIfZero;
     /**
-     * @return While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+     * @return While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
      * 
      */
     private @Nullable Boolean sendDaysSinceNoncurrentTimeIfZero;
     /**
-     * @return While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+     * @return While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
      * 
      */
     private @Nullable Boolean sendNumNewerVersionsIfZero;
@@ -93,7 +93,7 @@ public final class BucketLifecycleRuleCondition {
 
     private BucketLifecycleRuleCondition() {}
     /**
-     * @return Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
+     * @return Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `sendAgeIfZero` should be set `true` otherwise `0` value of `age` field will be ignored.
      * 
      */
     public Optional<Integer> age() {
@@ -164,28 +164,28 @@ public final class BucketLifecycleRuleCondition {
         return Optional.ofNullable(this.numNewerVersions);
     }
     /**
-     * @return While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+     * @return While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
      * 
      */
     public Optional<Boolean> sendAgeIfZero() {
         return Optional.ofNullable(this.sendAgeIfZero);
     }
     /**
-     * @return While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+     * @return While set true, `daysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceCustomTime` field. It can be used alone or together with `daysSinceCustomTime`.
      * 
      */
     public Optional<Boolean> sendDaysSinceCustomTimeIfZero() {
         return Optional.ofNullable(this.sendDaysSinceCustomTimeIfZero);
     }
     /**
-     * @return While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+     * @return While set true, `daysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `daysSinceNoncurrentTime` field. It can be used alone or together with `daysSinceNoncurrentTime`.
      * 
      */
     public Optional<Boolean> sendDaysSinceNoncurrentTimeIfZero() {
         return Optional.ofNullable(this.sendDaysSinceNoncurrentTimeIfZero);
     }
     /**
-     * @return While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+     * @return While set true, `numNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `numNewerVersions` field. It can be used alone or together with `numNewerVersions`.
      * 
      */
     public Optional<Boolean> sendNumNewerVersionsIfZero() {

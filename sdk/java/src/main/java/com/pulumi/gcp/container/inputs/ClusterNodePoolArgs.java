@@ -42,10 +42,10 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
-     * number of nodes per zone. Must be set if `node_pool` is not set. If you&#39;re using
+     * number of nodes per zone. Must be set if `nodePool` is not set. If you&#39;re using
      * `gcp.container.NodePool` objects with no default node pool, you&#39;ll need to
      * set this to a value of at least `1`, alongside setting
-     * `remove_default_node_pool` to `true`.
+     * `removeDefaultNodePool` to `true`.
      * 
      */
     @Import(name="initialNodeCount")
@@ -54,10 +54,10 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
-     * number of nodes per zone. Must be set if `node_pool` is not set. If you&#39;re using
+     * number of nodes per zone. Must be set if `nodePool` is not set. If you&#39;re using
      * `gcp.container.NodePool` objects with no default node pool, you&#39;ll need to
      * set this to a value of at least `1`, alongside setting
-     * `remove_default_node_pool` to `true`.
+     * `removeDefaultNodePool` to `true`.
      * 
      */
     public Optional<Output<Integer>> initialNodeCount() {
@@ -180,7 +180,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `node_pool` block; this configuration
+     * `gcp.container.NodePool` or a `nodePool` block; this configuration
      * manages the default node pool, which isn&#39;t recommended to be used.
      * Structure is documented below.
      * 
@@ -191,7 +191,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `node_pool` block; this configuration
+     * `gcp.container.NodePool` or a `nodePool` block; this configuration
      * manages the default node pool, which isn&#39;t recommended to be used.
      * Structure is documented below.
      * 
@@ -281,14 +281,14 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+     * Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of maxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
      * 
      */
     @Import(name="upgradeSettings")
     private @Nullable Output<ClusterNodePoolUpgradeSettingsArgs> upgradeSettings;
 
     /**
-     * @return Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+     * @return Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of maxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
      * 
      */
     public Optional<Output<ClusterNodePoolUpgradeSettingsArgs>> upgradeSettings() {
@@ -365,10 +365,10 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param initialNodeCount The number of nodes to create in this
          * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
-         * number of nodes per zone. Must be set if `node_pool` is not set. If you&#39;re using
+         * number of nodes per zone. Must be set if `nodePool` is not set. If you&#39;re using
          * `gcp.container.NodePool` objects with no default node pool, you&#39;ll need to
          * set this to a value of at least `1`, alongside setting
-         * `remove_default_node_pool` to `true`.
+         * `removeDefaultNodePool` to `true`.
          * 
          * @return builder
          * 
@@ -381,10 +381,10 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param initialNodeCount The number of nodes to create in this
          * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
-         * number of nodes per zone. Must be set if `node_pool` is not set. If you&#39;re using
+         * number of nodes per zone. Must be set if `nodePool` is not set. If you&#39;re using
          * `gcp.container.NodePool` objects with no default node pool, you&#39;ll need to
          * set this to a value of at least `1`, alongside setting
-         * `remove_default_node_pool` to `true`.
+         * `removeDefaultNodePool` to `true`.
          * 
          * @return builder
          * 
@@ -571,7 +571,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param nodeConfig Parameters used in creating the default node pool.
          * Generally, this field should not be used at the same time as a
-         * `gcp.container.NodePool` or a `node_pool` block; this configuration
+         * `gcp.container.NodePool` or a `nodePool` block; this configuration
          * manages the default node pool, which isn&#39;t recommended to be used.
          * Structure is documented below.
          * 
@@ -586,7 +586,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param nodeConfig Parameters used in creating the default node pool.
          * Generally, this field should not be used at the same time as a
-         * `gcp.container.NodePool` or a `node_pool` block; this configuration
+         * `gcp.container.NodePool` or a `nodePool` block; this configuration
          * manages the default node pool, which isn&#39;t recommended to be used.
          * Structure is documented below.
          * 
@@ -722,7 +722,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param upgradeSettings Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+         * @param upgradeSettings Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of maxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
          * 
          * @return builder
          * 
@@ -733,7 +733,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param upgradeSettings Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+         * @param upgradeSettings Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of maxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
          * 
          * @return builder
          * 

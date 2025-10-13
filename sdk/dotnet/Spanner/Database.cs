@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Spanner
     /// &gt; **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
     /// (and run `pulumi up` to write the field to state) in order to destroy an instance.
     /// It is recommended to not set this field (or set it to true) until you're ready to destroy.
-    /// On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
+    /// On older versions, it is strongly recommended to set `lifecycle { PreventDestroy = true }`
     /// on databases in order to prevent accidental data loss.
     /// 
     /// ## Example Usage
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `destroy` or `update` that would delete the instance will fail.
+        /// in state, a `Destroy` or `Update` that would delete the instance will fail.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Spanner
         /// The retention period for the database. The retention period must be between 1 hour
         /// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
         /// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
-        /// If this property is used, you must avoid adding new DDL statements to `ddl` that
+        /// If this property is used, you must avoid adding new DDL statements to `Ddl` that
         /// update the database's version_retention_period.
         /// </summary>
         [Output("versionRetentionPeriod")]
@@ -235,7 +235,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `destroy` or `update` that would delete the instance will fail.
+        /// in state, a `Destroy` or `Update` that would delete the instance will fail.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.Gcp.Spanner
         /// The retention period for the database. The retention period must be between 1 hour
         /// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
         /// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
-        /// If this property is used, you must avoid adding new DDL statements to `ddl` that
+        /// If this property is used, you must avoid adding new DDL statements to `Ddl` that
         /// update the database's version_retention_period.
         /// </summary>
         [Input("versionRetentionPeriod")]
@@ -313,7 +313,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `destroy` or `update` that would delete the instance will fail.
+        /// in state, a `Destroy` or `Update` that would delete the instance will fail.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -358,7 +358,7 @@ namespace Pulumi.Gcp.Spanner
         /// The retention period for the database. The retention period must be between 1 hour
         /// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
         /// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
-        /// If this property is used, you must avoid adding new DDL statements to `ddl` that
+        /// If this property is used, you must avoid adding new DDL statements to `Ddl` that
         /// update the database's version_retention_period.
         /// </summary>
         [Input("versionRetentionPeriod")]

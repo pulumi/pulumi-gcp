@@ -50,8 +50,8 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
     /**
      * The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      * 
-     * &gt; Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
-     * constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
+     * &gt; Exactly one `version` you specify must not have a `targetSize` specified. During a rolling update, the instance group manager will fulfill the `targetSize`
+     * constraints of every other `version`, and any remaining instances will be provisioned with the version where `targetSize` is unset.
      * 
      */
     @Import(name="targetSize")
@@ -60,8 +60,8 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
     /**
      * @return The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      * 
-     * &gt; Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
-     * constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
+     * &gt; Exactly one `version` you specify must not have a `targetSize` specified. During a rolling update, the instance group manager will fulfill the `targetSize`
+     * constraints of every other `version`, and any remaining instances will be provisioned with the version where `targetSize` is unset.
      * 
      */
     public Optional<Output<RegionInstanceGroupManagerVersionTargetSizeArgs>> targetSize() {
@@ -139,8 +139,8 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
         /**
          * @param targetSize The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
          * 
-         * &gt; Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
-         * constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
+         * &gt; Exactly one `version` you specify must not have a `targetSize` specified. During a rolling update, the instance group manager will fulfill the `targetSize`
+         * constraints of every other `version`, and any remaining instances will be provisioned with the version where `targetSize` is unset.
          * 
          * @return builder
          * 
@@ -153,8 +153,8 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
         /**
          * @param targetSize The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
          * 
-         * &gt; Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
-         * constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
+         * &gt; Exactly one `version` you specify must not have a `targetSize` specified. During a rolling update, the instance group manager will fulfill the `targetSize`
+         * constraints of every other `version`, and any remaining instances will be provisioned with the version where `targetSize` is unset.
          * 
          * @return builder
          * 

@@ -296,7 +296,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the release; indicates what happened to the content of the site. There is no need to specify
-     * `DEPLOY` or `ROLLBACK` type if a `version_name` is provided.
+     * `DEPLOY` or `ROLLBACK` type if a `versionName` is provided.
      * DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
      * ROLLBACK: The release points back to a previously deployed version. Output only.
      * SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
@@ -308,7 +308,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the release; indicates what happened to the content of the site. There is no need to specify
-     * `DEPLOY` or `ROLLBACK` type if a `version_name` is provided.
+     * `DEPLOY` or `ROLLBACK` type if a `versionName` is provided.
      * DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
      * ROLLBACK: The release points back to a previously deployed version. Output only.
      * SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
@@ -321,7 +321,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
     /**
      * The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
      * The content of the version specified will be actively displayed on the appropriate URL.
-     * The Version must belong to the same site as in the `site_id`.
+     * The Version must belong to the same site as in the `siteId`.
      * This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
      * 
      */
@@ -331,7 +331,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
     /**
      * @return The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
      * The content of the version specified will be actively displayed on the appropriate URL.
-     * The Version must belong to the same site as in the `site_id`.
+     * The Version must belong to the same site as in the `siteId`.
      * This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
      * 
      */

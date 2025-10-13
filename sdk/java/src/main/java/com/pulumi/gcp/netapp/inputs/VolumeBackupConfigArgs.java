@@ -50,14 +50,14 @@ public final class VolumeBackupConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+     * When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
      * 
      */
     @Import(name="scheduledBackupEnabled")
     private @Nullable Output<Boolean> scheduledBackupEnabled;
 
     /**
-     * @return When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+     * @return When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
      * 
      */
     public Optional<Output<Boolean>> scheduledBackupEnabled() {
@@ -145,7 +145,7 @@ public final class VolumeBackupConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scheduledBackupEnabled When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+         * @param scheduledBackupEnabled When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class VolumeBackupConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scheduledBackupEnabled When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+         * @param scheduledBackupEnabled When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
          * 
          * @return builder
          * 

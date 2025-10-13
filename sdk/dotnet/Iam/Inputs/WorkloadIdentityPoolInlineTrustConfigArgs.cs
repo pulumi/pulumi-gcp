@@ -21,8 +21,8 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// maximum of `10` trust domain entries in this map.
         /// Note that a trust domain automatically trusts itself and don't need to be specified here.
         /// If however, this `WorkloadIdentityPool`'s trust domain contains any trust anchors in the
-        /// `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
-        /// automatically derived from your `InlineCertificateIssuanceConfig`'s `ca_pools`.
+        /// `AdditionalTrustBundles` map, those trust anchors will be *appended to* the Trust Bundle
+        /// automatically derived from your `InlineCertificateIssuanceConfig`'s `CaPools`.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs> AdditionalTrustBundles

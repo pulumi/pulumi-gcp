@@ -17,7 +17,7 @@ public final class GetTriggerDeveloperConnectEventConfigPush {
      */
     private String branch;
     /**
-     * @return If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+     * @return If true, only trigger a build if the revision regex does NOT match the gitRef regex.
      * 
      */
     private Boolean invertRegex;
@@ -36,7 +36,7 @@ public final class GetTriggerDeveloperConnectEventConfigPush {
         return this.branch;
     }
     /**
-     * @return If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+     * @return If true, only trigger a build if the revision regex does NOT match the gitRef regex.
      * 
      */
     public Boolean invertRegex() {

@@ -52,7 +52,7 @@ public final class BackupPlanRetentionPolicyArgs extends com.pulumi.resources.Re
      * will automatically pick up the new value.
      * NOTE: backupRetainDays must be &gt;= backupDeleteLockDays.
      * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.
-     * If rpo_config is defined, then this must be
+     * If rpoConfig is defined, then this must be
      * &lt;= 360 * targetRpoMinutes/(1440minutes/day)
      * 
      */
@@ -70,7 +70,7 @@ public final class BackupPlanRetentionPolicyArgs extends com.pulumi.resources.Re
      * will automatically pick up the new value.
      * NOTE: backupRetainDays must be &gt;= backupDeleteLockDays.
      * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.
-     * If rpo_config is defined, then this must be
+     * If rpoConfig is defined, then this must be
      * &lt;= 360 * targetRpoMinutes/(1440minutes/day)
      * 
      */
@@ -165,7 +165,7 @@ public final class BackupPlanRetentionPolicyArgs extends com.pulumi.resources.Re
          * will automatically pick up the new value.
          * NOTE: backupRetainDays must be &gt;= backupDeleteLockDays.
          * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.
-         * If rpo_config is defined, then this must be
+         * If rpoConfig is defined, then this must be
          * &lt;= 360 * targetRpoMinutes/(1440minutes/day)
          * 
          * @return builder
@@ -187,7 +187,7 @@ public final class BackupPlanRetentionPolicyArgs extends com.pulumi.resources.Re
          * will automatically pick up the new value.
          * NOTE: backupRetainDays must be &gt;= backupDeleteLockDays.
          * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.
-         * If rpo_config is defined, then this must be
+         * If rpoConfig is defined, then this must be
          * &lt;= 360 * targetRpoMinutes/(1440minutes/day)
          * 
          * @return builder

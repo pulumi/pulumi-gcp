@@ -184,7 +184,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
     /**
      * Text labels used for extra metadata and/or filtering
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -193,7 +193,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
     /**
      * @return Text labels used for extra metadata and/or filtering
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -262,7 +262,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
         return this.siteId;
     }
     /**
-     * Input only. A time-to-live for this channel. Sets `expire_time` to the provided
+     * Input only. A time-to-live for this channel. Sets `expireTime` to the provided
      * duration past the time of the request. A duration in seconds with up to nine fractional
      * digits, terminated by &#39;s&#39;. Example: &#34;86400s&#34; (one day).
      * 
@@ -271,7 +271,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> ttl;
 
     /**
-     * @return Input only. A time-to-live for this channel. Sets `expire_time` to the provided
+     * @return Input only. A time-to-live for this channel. Sets `expireTime` to the provided
      * duration past the time of the request. A duration in seconds with up to nine fractional
      * digits, terminated by &#39;s&#39;. Example: &#34;86400s&#34; (one day).
      * 

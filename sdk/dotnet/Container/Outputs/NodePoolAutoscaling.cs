@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly int? MaxNodeCount;
         /// <summary>
         /// Minimum number of nodes per zone in the NodePool.
-        /// Must be &gt;=0 and &lt;= `max_node_count`. Cannot be used with total limits.
+        /// Must be &gt;=0 and &lt;= `MaxNodeCount`. Cannot be used with total limits.
         /// </summary>
         public readonly int? MinNodeCount;
         /// <summary>
@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly int? TotalMaxNodeCount;
         /// <summary>
         /// Total minimum number of nodes in the NodePool.
-        /// Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+        /// Must be &gt;=0 and &lt;= `TotalMaxNodeCount`. Cannot be used with per zone limits.
         /// Total size limits are supported only in 1.24.1+ clusters.
         /// </summary>
         public readonly int? TotalMinNodeCount;

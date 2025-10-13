@@ -21,7 +21,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
      * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
-     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
      * should be set to `my-ca`.
      * 
      */
@@ -31,7 +31,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
      * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
-     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
      * should be set to `my-ca`.
      * 
      */
@@ -83,7 +83,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
      * Labels with user-defined metadata to apply to this resource.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -93,7 +93,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
      * @return Labels with user-defined metadata to apply to this resource.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -234,7 +234,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param certificateAuthority The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
          * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
-         * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+         * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
          * should be set to `my-ca`.
          * 
          * @return builder
@@ -248,7 +248,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param certificateAuthority The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
          * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
-         * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+         * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
          * should be set to `my-ca`.
          * 
          * @return builder
@@ -314,7 +314,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels Labels with user-defined metadata to apply to this resource.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels Labels with user-defined metadata to apply to this resource.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

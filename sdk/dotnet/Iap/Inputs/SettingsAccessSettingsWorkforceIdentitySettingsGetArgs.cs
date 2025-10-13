@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Iap.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_access_settings_workforce_identity_settings_oauth2"&gt;&lt;/a&gt;The `oauth2` block supports:
+        /// &lt;a name="NestedAccessSettingsWorkforceIdentitySettingsOauth2"&gt;&lt;/a&gt;The `Oauth2` block supports:
         /// </summary>
         [Input("oauth2")]
         public Input<Inputs.SettingsAccessSettingsWorkforceIdentitySettingsOauth2GetArgs>? Oauth2 { get; set; }

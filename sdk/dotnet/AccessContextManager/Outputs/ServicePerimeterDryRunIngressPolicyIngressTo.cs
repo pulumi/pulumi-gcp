@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// a resource in this list. If `*` is specified for resources,
         /// then this `IngressTo` rule will authorize access to all
         /// resources inside the perimeter, provided that the request
-        /// also matches the `operations` field.
+        /// also matches the `Operations` field.
         /// </summary>
         public readonly ImmutableArray<string> Resources;
         /// <summary>

@@ -19,12 +19,12 @@ public final class TransferJobLoggingConfig {
      */
     private @Nullable Boolean enableOnPremGcsTransferLogs;
     /**
-     * @return States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+     * @return States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
      * 
      */
     private @Nullable List<String> logActionStates;
     /**
-     * @return Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+     * @return Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
      * 
      */
     private @Nullable List<String> logActions;
@@ -38,14 +38,14 @@ public final class TransferJobLoggingConfig {
         return Optional.ofNullable(this.enableOnPremGcsTransferLogs);
     }
     /**
-     * @return States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+     * @return States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
      * 
      */
     public List<String> logActionStates() {
         return this.logActionStates == null ? List.of() : this.logActionStates;
     }
     /**
-     * @return Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+     * @return Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
      * 
      */
     public List<String> logActions() {

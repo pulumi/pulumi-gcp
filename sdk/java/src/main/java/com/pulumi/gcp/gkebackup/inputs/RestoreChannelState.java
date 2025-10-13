@@ -51,7 +51,7 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The project_id where Backups will be restored.
+     * The projectId where Backups will be restored.
      * Example Project ID: &#34;my-project-id&#34;.
      * 
      */
@@ -59,7 +59,7 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> destinationProjectId;
 
     /**
-     * @return The project_id where Backups will be restored.
+     * @return The projectId where Backups will be restored.
      * Example Project ID: &#34;my-project-id&#34;.
      * 
      */
@@ -113,7 +113,7 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -125,7 +125,7 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -292,7 +292,7 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param destinationProjectId The project_id where Backups will be restored.
+         * @param destinationProjectId The projectId where Backups will be restored.
          * Example Project ID: &#34;my-project-id&#34;.
          * 
          * @return builder
@@ -304,7 +304,7 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param destinationProjectId The project_id where Backups will be restored.
+         * @param destinationProjectId The projectId where Backups will be restored.
          * Example Project ID: &#34;my-project-id&#34;.
          * 
          * @return builder
@@ -372,7 +372,7 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
          * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
          * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

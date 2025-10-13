@@ -286,7 +286,7 @@ public class ConversationProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.newMessageEventNotificationConfig);
     }
     /**
-     * Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participant_id&#34; - &#34;participantRole&#34; - &#34;message_id&#34;
+     * Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participantId&#34; - &#34;participantRole&#34; - &#34;messageId&#34;
      * Structure is documented below.
      * 
      */
@@ -294,7 +294,7 @@ public class ConversationProfile extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ConversationProfileNewRecognitionResultNotificationConfig> newRecognitionResultNotificationConfig;
 
     /**
-     * @return Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participant_id&#34; - &#34;participantRole&#34; - &#34;message_id&#34;
+     * @return Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participantId&#34; - &#34;participantRole&#34; - &#34;messageId&#34;
      * Structure is documented below.
      * 
      */

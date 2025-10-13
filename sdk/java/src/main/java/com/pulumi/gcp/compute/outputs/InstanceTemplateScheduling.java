@@ -60,7 +60,7 @@ public final class InstanceTemplateScheduling {
      */
     private @Nullable String maintenanceInterval;
     /**
-     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
+     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Structure is documented below.
      * 
      */
     private @Nullable InstanceTemplateSchedulingMaxRunDuration maxRunDuration;
@@ -85,7 +85,7 @@ public final class InstanceTemplateScheduling {
      */
     private @Nullable String onHostMaintenance;
     /**
-     * @return Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+     * @return Specifies the action to be performed when the instance is terminated using `maxRunDuration` and `STOP` `instanceTerminationAction`. Only support `true` `discardLocalSsd` at this point. Structure is documented below.
      * 
      */
     private @Nullable InstanceTemplateSchedulingOnInstanceStopAction onInstanceStopAction;
@@ -98,7 +98,7 @@ public final class InstanceTemplateScheduling {
     private @Nullable Boolean preemptible;
     /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-     * `preemptible` should be `true` and `automatic_restart` should be
+     * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
      * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
      * 
@@ -171,7 +171,7 @@ public final class InstanceTemplateScheduling {
         return Optional.ofNullable(this.maintenanceInterval);
     }
     /**
-     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
+     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Structure is documented below.
      * 
      */
     public Optional<InstanceTemplateSchedulingMaxRunDuration> maxRunDuration() {
@@ -204,7 +204,7 @@ public final class InstanceTemplateScheduling {
         return Optional.ofNullable(this.onHostMaintenance);
     }
     /**
-     * @return Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+     * @return Specifies the action to be performed when the instance is terminated using `maxRunDuration` and `STOP` `instanceTerminationAction`. Only support `true` `discardLocalSsd` at this point. Structure is documented below.
      * 
      */
     public Optional<InstanceTemplateSchedulingOnInstanceStopAction> onInstanceStopAction() {
@@ -221,7 +221,7 @@ public final class InstanceTemplateScheduling {
     }
     /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-     * `preemptible` should be `true` and `automatic_restart` should be
+     * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
      * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
      * 

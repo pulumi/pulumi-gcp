@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> ResourceManagerTags;
         /// <summary>
-        /// A list of self_links to resource policies attached to the selected `boot_disk`
+        /// A list of SelfLinks to resource policies attached to the selected `BootDisk`
         /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>

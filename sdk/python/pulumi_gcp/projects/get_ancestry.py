@@ -113,6 +113,8 @@ def get_ancestry(project: Optional[_builtins.str] = None,
     Retrieve the ancestors for a project.
     See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
 
+    ## Example Usage
+
 
     :param _builtins.str project: The ID of the project. If it is not provided, the provider project is used.
     """
@@ -133,6 +135,8 @@ def get_ancestry_output(project: Optional[pulumi.Input[Optional[_builtins.str]]]
     """
     Retrieve the ancestors for a project.
     See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+
+    ## Example Usage
 
 
     :param _builtins.str project: The ID of the project. If it is not provided, the provider project is used.

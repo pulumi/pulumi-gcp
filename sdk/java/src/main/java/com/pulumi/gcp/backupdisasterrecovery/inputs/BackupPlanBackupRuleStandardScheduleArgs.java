@@ -55,7 +55,7 @@ public final class BackupPlanBackupRuleStandardScheduleArgs extends com.pulumi.r
     }
 
     /**
-     * Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
+     * Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
      * Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
@@ -63,7 +63,7 @@ public final class BackupPlanBackupRuleStandardScheduleArgs extends com.pulumi.r
     private @Nullable Output<List<String>> daysOfWeeks;
 
     /**
-     * @return Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
+     * @return Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
      * Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
@@ -73,7 +73,7 @@ public final class BackupPlanBackupRuleStandardScheduleArgs extends com.pulumi.r
 
     /**
      * Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
-     * This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
+     * This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
      * 
      */
     @Import(name="hourlyFrequency")
@@ -81,7 +81,7 @@ public final class BackupPlanBackupRuleStandardScheduleArgs extends com.pulumi.r
 
     /**
      * @return Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
-     * This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
+     * This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
      * 
      */
     public Optional<Output<Integer>> hourlyFrequency() {
@@ -242,7 +242,7 @@ public final class BackupPlanBackupRuleStandardScheduleArgs extends com.pulumi.r
         }
 
         /**
-         * @param daysOfWeeks Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
+         * @param daysOfWeeks Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
          * Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
@@ -254,7 +254,7 @@ public final class BackupPlanBackupRuleStandardScheduleArgs extends com.pulumi.r
         }
 
         /**
-         * @param daysOfWeeks Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
+         * @param daysOfWeeks Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
          * Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
@@ -265,7 +265,7 @@ public final class BackupPlanBackupRuleStandardScheduleArgs extends com.pulumi.r
         }
 
         /**
-         * @param daysOfWeeks Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
+         * @param daysOfWeeks Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
          * Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
@@ -277,7 +277,7 @@ public final class BackupPlanBackupRuleStandardScheduleArgs extends com.pulumi.r
 
         /**
          * @param hourlyFrequency Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
-         * This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
+         * This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class BackupPlanBackupRuleStandardScheduleArgs extends com.pulumi.r
 
         /**
          * @param hourlyFrequency Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
-         * This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
+         * This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
          * 
          * @return builder
          * 

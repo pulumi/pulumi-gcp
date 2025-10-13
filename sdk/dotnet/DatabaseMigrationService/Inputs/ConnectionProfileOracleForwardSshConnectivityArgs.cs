@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// Input only. SSH password. Only one of `password` and `private_key` can be configured.
+        /// Input only. SSH password. Only one of `Password` and `PrivateKey` can be configured.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public Input<string>? Password
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Inputs
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+        /// Input only. SSH private key. Only one of `Password` and `PrivateKey` can be configured.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public Input<string>? PrivateKey

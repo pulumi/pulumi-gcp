@@ -183,18 +183,18 @@ public final class ProjectSinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
+     * Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-     * `bigquery_options`, you must set `unique_writer_identity` to true.
+     * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
      * 
      */
     @Import(name="uniqueWriterIdentity")
     private @Nullable Output<Boolean> uniqueWriterIdentity;
 
     /**
-     * @return Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
+     * @return Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-     * `bigquery_options`, you must set `unique_writer_identity` to true.
+     * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
      * 
      */
     public Optional<Output<Boolean>> uniqueWriterIdentity() {
@@ -480,9 +480,9 @@ public final class ProjectSinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uniqueWriterIdentity Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
+         * @param uniqueWriterIdentity Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
          * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-         * `bigquery_options`, you must set `unique_writer_identity` to true.
+         * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
          * 
          * @return builder
          * 
@@ -493,9 +493,9 @@ public final class ProjectSinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uniqueWriterIdentity Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
+         * @param uniqueWriterIdentity Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
          * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-         * `bigquery_options`, you must set `unique_writer_identity` to true.
+         * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
          * 
          * @return builder
          * 

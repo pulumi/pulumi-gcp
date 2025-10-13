@@ -15,7 +15,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSecurityPolicyRuleMatch {
     /**
-     * @return The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+     * @return The configuration options available when specifying versioned_expr. This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
      * 
      */
     private List<GetSecurityPolicyRuleMatchConfig> configs;
@@ -30,14 +30,14 @@ public final class GetSecurityPolicyRuleMatch {
      */
     private List<GetSecurityPolicyRuleMatchExpr> exprs;
     /**
-     * @return Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding src_ip_ranges field in config.
+     * @return Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding srcIpRanges field in config.
      * 
      */
     private String versionedExpr;
 
     private GetSecurityPolicyRuleMatch() {}
     /**
-     * @return The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+     * @return The configuration options available when specifying versioned_expr. This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
      * 
      */
     public List<GetSecurityPolicyRuleMatchConfig> configs() {
@@ -58,7 +58,7 @@ public final class GetSecurityPolicyRuleMatch {
         return this.exprs;
     }
     /**
-     * @return Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding src_ip_ranges field in config.
+     * @return Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding srcIpRanges field in config.
      * 
      */
     public String versionedExpr() {

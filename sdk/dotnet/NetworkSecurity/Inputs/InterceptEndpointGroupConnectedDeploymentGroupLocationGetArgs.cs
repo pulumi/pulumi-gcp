@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
     public sealed class InterceptEndpointGroupConnectedDeploymentGroupLocationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloud location of the endpoint group, currently restricted to `global`.
+        /// The cloud location of the endpoint group, currently restricted to `Global`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

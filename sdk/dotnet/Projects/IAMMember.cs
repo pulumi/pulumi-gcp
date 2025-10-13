@@ -495,7 +495,7 @@ namespace Pulumi.Gcp.Projects
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
+        /// Identities that will be granted the privilege in `Role`. gcp.projects.IAMBinding expects `Members` field while gcp.projects.IAMMember expects `Member` field.
         /// Each entry can have one of the following values:
         /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -574,7 +574,7 @@ namespace Pulumi.Gcp.Projects
         public Input<Inputs.IAMMemberConditionArgs>? Condition { get; set; }
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
+        /// Identities that will be granted the privilege in `Role`. gcp.projects.IAMBinding expects `Members` field while gcp.projects.IAMMember expects `Member` field.
         /// Each entry can have one of the following values:
         /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -621,7 +621,7 @@ namespace Pulumi.Gcp.Projects
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
+        /// Identities that will be granted the privilege in `Role`. gcp.projects.IAMBinding expects `Members` field while gcp.projects.IAMMember expects `Member` field.
         /// Each entry can have one of the following values:
         /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.

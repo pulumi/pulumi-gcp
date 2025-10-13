@@ -57,7 +57,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
     /**
      * Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
-     * If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
+     * If numberToMask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
      * 
      */
     @Import(name="numberToMask")
@@ -65,7 +65,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
     /**
      * @return Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
-     * If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
+     * If numberToMask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
      * 
      */
     public Optional<Output<Integer>> numberToMask() {
@@ -73,7 +73,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     }
 
     /**
-     * Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+     * Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
      * input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
      * 
      */
@@ -81,7 +81,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     private @Nullable Output<Boolean> reverseOrder;
 
     /**
-     * @return Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+     * @return Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
      * input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
      * 
      */
@@ -177,7 +177,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         /**
          * @param numberToMask Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
-         * If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
+         * If numberToMask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         /**
          * @param numberToMask Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
-         * If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
+         * If numberToMask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param reverseOrder Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+         * @param reverseOrder Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
          * input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
          * 
          * @return builder
@@ -211,7 +211,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param reverseOrder Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+         * @param reverseOrder Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
          * input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
          * 
          * @return builder

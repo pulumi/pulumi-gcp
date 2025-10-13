@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.PubSub.Inputs
     {
         /// <summary>
         /// Configuration for reading Cloud Storage data in Avro binary format. The
-        /// bytes of each object will be set to the `data` field of a Pub/Sub message.
+        /// bytes of each object will be set to the `Data` field of a Pub/Sub message.
         /// </summary>
         [Input("avroFormat")]
         public Input<Inputs.TopicIngestionDataSourceSettingsCloudStorageAvroFormatGetArgs>? AvroFormat { get; set; }
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.PubSub.Inputs
 
         /// <summary>
         /// Configuration for reading Cloud Storage data in text format. Each line of
-        /// text as specified by the delimiter will be set to the `data` field of a
+        /// text as specified by the delimiter will be set to the `Data` field of a
         /// Pub/Sub message.
         /// Structure is documented below.
         /// </summary>

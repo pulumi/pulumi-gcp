@@ -215,14 +215,14 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.serviceProject);
     }
     /**
-     * Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
+     * Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
      * 
      */
     @Export(name="serviceProjectAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> serviceProjectAttachmentId;
 
     /**
-     * @return Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
+     * @return Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
      * 
      */
     public Output<String> serviceProjectAttachmentId() {

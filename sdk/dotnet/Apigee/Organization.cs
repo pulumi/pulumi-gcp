@@ -337,7 +337,7 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// Flag that specifies whether the VPC Peering through Private Google Access should be
         /// disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
-        /// on the consumer project is not provided, in which case the flag should be set to `true`.
+        /// on the consumer project is not provided, in which case the flag should be set to `True`.
         /// Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
         /// of any Apigee runtime instance and can be updated only when there are no runtime instances.
         /// </summary>
@@ -500,7 +500,7 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// Flag that specifies whether the VPC Peering through Private Google Access should be
         /// disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
-        /// on the consumer project is not provided, in which case the flag should be set to `true`.
+        /// on the consumer project is not provided, in which case the flag should be set to `True`.
         /// Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
         /// of any Apigee runtime instance and can be updated only when there are no runtime instances.
         /// </summary>
@@ -625,7 +625,7 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// Flag that specifies whether the VPC Peering through Private Google Access should be
         /// disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
-        /// on the consumer project is not provided, in which case the flag should be set to `true`.
+        /// on the consumer project is not provided, in which case the flag should be set to `True`.
         /// Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
         /// of any Apigee runtime instance and can be updated only when there are no runtime instances.
         /// </summary>

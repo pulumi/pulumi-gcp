@@ -27,7 +27,7 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
      * They are not queryable and should be preserved when modifying objects.
      * More info: https://kubernetes.io/docs/user-guide/annotations
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -39,7 +39,7 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
      * They are not queryable and should be preserved when modifying objects.
      * More info: https://kubernetes.io/docs/user-guide/annotations
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -90,7 +90,7 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -100,7 +100,7 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
      * @return The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -230,7 +230,7 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
          * They are not queryable and should be preserved when modifying objects.
          * More info: https://kubernetes.io/docs/user-guide/annotations
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
          * They are not queryable and should be preserved when modifying objects.
          * More info: https://kubernetes.io/docs/user-guide/annotations
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels The labels on the resource, which can be used for categorization.
          * similar to Kubernetes resource labels.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels The labels on the resource, which can be used for categorization.
          * similar to Kubernetes resource labels.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

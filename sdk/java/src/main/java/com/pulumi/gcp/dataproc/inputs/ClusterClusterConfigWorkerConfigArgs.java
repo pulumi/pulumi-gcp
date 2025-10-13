@@ -124,14 +124,14 @@ public final class ClusterClusterConfigWorkerConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+     * The minimum number of primary worker instances to create.  If `minNumInstances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `minNumInstances` number.
      * 
      */
     @Import(name="minNumInstances")
     private @Nullable Output<Integer> minNumInstances;
 
     /**
-     * @return The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+     * @return The minimum number of primary worker instances to create.  If `minNumInstances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `minNumInstances` number.
      * 
      */
     public Optional<Output<Integer>> minNumInstances() {
@@ -358,7 +358,7 @@ public final class ClusterClusterConfigWorkerConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param minNumInstances The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+         * @param minNumInstances The minimum number of primary worker instances to create.  If `minNumInstances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `minNumInstances` number.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class ClusterClusterConfigWorkerConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param minNumInstances The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+         * @param minNumInstances The minimum number of primary worker instances to create.  If `minNumInstances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `minNumInstances` number.
          * 
          * @return builder
          * 

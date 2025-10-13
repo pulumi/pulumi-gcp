@@ -12,14 +12,14 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// Represents the Instance membership to the Instance Group.
     /// 
-    /// &gt; **NOTE** You can use this resource instead of the `instances` field in the
+    /// &gt; **NOTE** You can use this resource instead of the `Instances` field in the
     /// `gcp.compute.InstanceGroup`, however it's not recommended to use it alongside this field.
     /// It might cause inconsistencies, as they can end up competing over control.
     /// 
     /// &gt; **NOTE** This resource has been added to avoid a situation, where after
     /// Instance is recreated, it's removed from Instance Group and it's needed to
-    /// perform `apply` twice. To avoid situations like this, please use this resource
-    /// with the lifecycle `replace_triggered_by` method, with the passed Instance's ID.
+    /// perform `Apply` twice. To avoid situations like this, please use this resource
+    /// with the lifecycle `ReplaceTriggeredBy` method, with the passed Instance's ID.
     /// 
     /// To get more information about InstanceGroupMembership, see:
     /// 

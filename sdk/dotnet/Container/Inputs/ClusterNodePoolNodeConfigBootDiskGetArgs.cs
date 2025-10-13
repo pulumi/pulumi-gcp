@@ -20,13 +20,13 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// Configure disk IOPs. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+        /// Configure disk IOPs. This is only valid if the `DiskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
         /// </summary>
         [Input("provisionedIops")]
         public Input<int>? ProvisionedIops { get; set; }
 
         /// <summary>
-        /// Configure disk throughput. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+        /// Configure disk throughput. This is only valid if the `DiskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
         /// </summary>
         [Input("provisionedThroughput")]
         public Input<int>? ProvisionedThroughput { get; set; }

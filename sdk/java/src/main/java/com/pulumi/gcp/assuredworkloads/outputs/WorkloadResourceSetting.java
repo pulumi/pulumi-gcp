@@ -17,7 +17,7 @@ public final class WorkloadResourceSetting {
      */
     private @Nullable String displayName;
     /**
-     * @return Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
+     * @return Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folderId is assigned by Google.
      * 
      */
     private @Nullable String resourceId;
@@ -36,7 +36,7 @@ public final class WorkloadResourceSetting {
         return Optional.ofNullable(this.displayName);
     }
     /**
-     * @return Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
+     * @return Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folderId is assigned by Google.
      * 
      */
     public Optional<String> resourceId() {

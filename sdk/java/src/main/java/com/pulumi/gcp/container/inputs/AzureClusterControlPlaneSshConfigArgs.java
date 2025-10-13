@@ -15,14 +15,14 @@ public final class AzureClusterControlPlaneSshConfigArgs extends com.pulumi.reso
     public static final AzureClusterControlPlaneSshConfigArgs Empty = new AzureClusterControlPlaneSshConfigArgs();
 
     /**
-     * The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+     * The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
      * 
      */
     @Import(name="authorizedKey", required=true)
     private Output<String> authorizedKey;
 
     /**
-     * @return The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+     * @return The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
      * 
      */
     public Output<String> authorizedKey() {
@@ -54,7 +54,7 @@ public final class AzureClusterControlPlaneSshConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param authorizedKey The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+         * @param authorizedKey The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class AzureClusterControlPlaneSshConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param authorizedKey The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+         * @param authorizedKey The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
          * 
          * @return builder
          * 

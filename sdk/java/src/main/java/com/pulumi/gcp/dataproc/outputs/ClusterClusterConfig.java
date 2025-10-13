@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
 public final class ClusterClusterConfig {
     /**
      * @return The autoscaling policy config associated with the cluster.
-     * Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
-     * only be removed by setting `policy_uri = &#34;&#34;`, rather than removing the whole block.
+     * Note that once set, if `autoscalingConfig` is the only field set in `clusterConfig`, it can
+     * only be removed by setting `policyUri = &#34;&#34;`, rather than removing the whole block.
      * Structure defined below.
      * 
      */
@@ -42,7 +42,7 @@ public final class ClusterClusterConfig {
     private @Nullable List<ClusterClusterConfigAuxiliaryNodeGroup> auxiliaryNodeGroups;
     /**
      * @return The name of the cloud storage bucket ultimately used to house the staging data
-     * for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+     * for the cluster. If `stagingBucket` is specified, it will contain this value, otherwise
      * it will be the auto generated name.
      * 
      */
@@ -104,7 +104,7 @@ public final class ClusterClusterConfig {
     /**
      * @return The Google Compute Engine config settings for the additional
      * instances in a cluster. Structure defined below.
-     * * **NOTE** : `preemptible_worker_config` is
+     * * **NOTE** : `preemptibleWorkerConfig` is
      *   an alias for the api&#39;s [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn&#39;t necessarily mean it is preemptible and is named as
      *   such for legacy/compatibility reasons.
      * 
@@ -124,7 +124,7 @@ public final class ClusterClusterConfig {
     /**
      * @return The Cloud Storage staging bucket used to stage files,
      * such as Hadoop jars, between client machines and the cluster.
-     * Note: If you don&#39;t explicitly specify a `staging_bucket`
+     * Note: If you don&#39;t explicitly specify a `stagingBucket`
      * then GCP will auto create / assign one for you. However, you are not guaranteed
      * an auto generated bucket which is solely dedicated to your cluster; it may be shared
      * with other clusters in the same region/zone also choosing to use the auto generation
@@ -135,7 +135,7 @@ public final class ClusterClusterConfig {
     /**
      * @return The Cloud Storage temp bucket used to store ephemeral cluster
      * and jobs data, such as Spark and MapReduce history files.
-     * Note: If you don&#39;t explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
+     * Note: If you don&#39;t explicitly specify a `tempBucket` then GCP will auto create / assign one for you.
      * 
      */
     private @Nullable String tempBucket;
@@ -149,8 +149,8 @@ public final class ClusterClusterConfig {
     private ClusterClusterConfig() {}
     /**
      * @return The autoscaling policy config associated with the cluster.
-     * Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
-     * only be removed by setting `policy_uri = &#34;&#34;`, rather than removing the whole block.
+     * Note that once set, if `autoscalingConfig` is the only field set in `clusterConfig`, it can
+     * only be removed by setting `policyUri = &#34;&#34;`, rather than removing the whole block.
      * Structure defined below.
      * 
      */
@@ -167,7 +167,7 @@ public final class ClusterClusterConfig {
     }
     /**
      * @return The name of the cloud storage bucket ultimately used to house the staging data
-     * for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+     * for the cluster. If `stagingBucket` is specified, it will contain this value, otherwise
      * it will be the auto generated name.
      * 
      */
@@ -249,7 +249,7 @@ public final class ClusterClusterConfig {
     /**
      * @return The Google Compute Engine config settings for the additional
      * instances in a cluster. Structure defined below.
-     * * **NOTE** : `preemptible_worker_config` is
+     * * **NOTE** : `preemptibleWorkerConfig` is
      *   an alias for the api&#39;s [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn&#39;t necessarily mean it is preemptible and is named as
      *   such for legacy/compatibility reasons.
      * 
@@ -275,7 +275,7 @@ public final class ClusterClusterConfig {
     /**
      * @return The Cloud Storage staging bucket used to stage files,
      * such as Hadoop jars, between client machines and the cluster.
-     * Note: If you don&#39;t explicitly specify a `staging_bucket`
+     * Note: If you don&#39;t explicitly specify a `stagingBucket`
      * then GCP will auto create / assign one for you. However, you are not guaranteed
      * an auto generated bucket which is solely dedicated to your cluster; it may be shared
      * with other clusters in the same region/zone also choosing to use the auto generation
@@ -288,7 +288,7 @@ public final class ClusterClusterConfig {
     /**
      * @return The Cloud Storage temp bucket used to store ephemeral cluster
      * and jobs data, such as Spark and MapReduce history files.
-     * Note: If you don&#39;t explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
+     * Note: If you don&#39;t explicitly specify a `tempBucket` then GCP will auto create / assign one for you.
      * 
      */
     public Optional<String> tempBucket() {

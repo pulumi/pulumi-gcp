@@ -81,7 +81,7 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
 
     /**
      * Required. Maintenance window that is applied to resources covered by this policy.
-     * Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+     * Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
      * is expected to be one.
      * Structure is documented below.
      * 
@@ -91,7 +91,7 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
 
     /**
      * @return Required. Maintenance window that is applied to resources covered by this policy.
-     * Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+     * Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
      * is expected to be one.
      * Structure is documented below.
      * 
@@ -208,7 +208,7 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
 
         /**
          * @param weeklyMaintenanceWindows Required. Maintenance window that is applied to resources covered by this policy.
-         * Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+         * Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
          * is expected to be one.
          * Structure is documented below.
          * 
@@ -222,7 +222,7 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
 
         /**
          * @param weeklyMaintenanceWindows Required. Maintenance window that is applied to resources covered by this policy.
-         * Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+         * Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
          * is expected to be one.
          * Structure is documented below.
          * 
@@ -235,7 +235,7 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
 
         /**
          * @param weeklyMaintenanceWindows Required. Maintenance window that is applied to resources covered by this policy.
-         * Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+         * Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
          * is expected to be one.
          * Structure is documented below.
          * 

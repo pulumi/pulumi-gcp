@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_sp_config_sp_certificates"&gt;&lt;/a&gt;The `sp_certificates` block contains:
+        /// &lt;a name="NestedSpConfigSpCertificates"&gt;&lt;/a&gt;The `SpCertificates` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.InboundSamlConfigSpConfigSpCertificate> SpCertificates;
         /// <summary>

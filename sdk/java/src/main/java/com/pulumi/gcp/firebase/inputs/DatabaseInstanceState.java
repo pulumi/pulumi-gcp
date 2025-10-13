@@ -120,14 +120,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+     * The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+     * @return The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
      * 
      */
     public Optional<Output<String>> state() {
@@ -331,7 +331,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param state The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+         * @param state The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param state The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+         * @param state The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
          * 
          * @return builder
          * 

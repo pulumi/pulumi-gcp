@@ -21,7 +21,7 @@ public final class GetAccountIdTokenResult {
      */
     private String id;
     /**
-     * @return The `id_token` representing the new generated identity.
+     * @return The `idToken` representing the new generated identity.
      * 
      */
     private String idToken;
@@ -41,7 +41,7 @@ public final class GetAccountIdTokenResult {
         return this.id;
     }
     /**
-     * @return The `id_token` representing the new generated identity.
+     * @return The `idToken` representing the new generated identity.
      * 
      */
     public String idToken() {

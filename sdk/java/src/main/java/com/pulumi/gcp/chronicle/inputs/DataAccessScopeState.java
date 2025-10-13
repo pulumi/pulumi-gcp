@@ -20,12 +20,12 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
     public static final DataAccessScopeState Empty = new DataAccessScopeState();
 
     /**
-     * Optional. Whether or not the scope allows all labels, allow_all and
-     * allowed_data_access_labels are mutually exclusive and one of them must be
-     * present. denied_data_access_labels can still be used along with allow_all.
+     * Optional. Whether or not the scope allows all labels, allowAll and
+     * allowedDataAccessLabels are mutually exclusive and one of them must be
+     * present. deniedDataAccessLabels can still be used along with allow_all.
      * When combined with denied_data_access_labels, access will be granted to all
      * data that doesn&#39;t have labels mentioned in denied_data_access_labels. E.g.:
-     * A customer with scope with denied labels A and B and allow_all will be able
+     * A customer with scope with denied labels A and B and allowAll will be able
      * to see all data except data labeled with A and data labeled with B and data
      * with labels A and B.
      * 
@@ -34,12 +34,12 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Boolean> allowAll;
 
     /**
-     * @return Optional. Whether or not the scope allows all labels, allow_all and
-     * allowed_data_access_labels are mutually exclusive and one of them must be
-     * present. denied_data_access_labels can still be used along with allow_all.
+     * @return Optional. Whether or not the scope allows all labels, allowAll and
+     * allowedDataAccessLabels are mutually exclusive and one of them must be
+     * present. deniedDataAccessLabels can still be used along with allow_all.
      * When combined with denied_data_access_labels, access will be granted to all
      * data that doesn&#39;t have labels mentioned in denied_data_access_labels. E.g.:
-     * A customer with scope with denied labels A and B and allow_all will be able
+     * A customer with scope with denied labels A and B and allowAll will be able
      * to see all data except data labeled with A and data labeled with B and data
      * with labels A and B.
      * 
@@ -52,7 +52,7 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
      * The allowed labels for the scope. There has to be at
      * least one label allowed for the scope to be valid.
      * The logical operator for evaluation of the allowed labels is OR.
-     * Either allow_all or allowed_data_access_labels needs to be provided.
+     * Either allowAll or allowedDataAccessLabels needs to be provided.
      * E.g.: A customer with scope with allowed labels A and B will be able
      * to see data with labeled with A or B or (A and B).
      * Structure is documented below.
@@ -65,7 +65,7 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
      * @return The allowed labels for the scope. There has to be at
      * least one label allowed for the scope to be valid.
      * The logical operator for evaluation of the allowed labels is OR.
-     * Either allow_all or allowed_data_access_labels needs to be provided.
+     * Either allowAll or allowedDataAccessLabels needs to be provided.
      * E.g.: A customer with scope with allowed labels A and B will be able
      * to see data with labeled with A or B or (A and B).
      * Structure is documented below.
@@ -313,12 +313,12 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowAll Optional. Whether or not the scope allows all labels, allow_all and
-         * allowed_data_access_labels are mutually exclusive and one of them must be
-         * present. denied_data_access_labels can still be used along with allow_all.
+         * @param allowAll Optional. Whether or not the scope allows all labels, allowAll and
+         * allowedDataAccessLabels are mutually exclusive and one of them must be
+         * present. deniedDataAccessLabels can still be used along with allow_all.
          * When combined with denied_data_access_labels, access will be granted to all
          * data that doesn&#39;t have labels mentioned in denied_data_access_labels. E.g.:
-         * A customer with scope with denied labels A and B and allow_all will be able
+         * A customer with scope with denied labels A and B and allowAll will be able
          * to see all data except data labeled with A and data labeled with B and data
          * with labels A and B.
          * 
@@ -331,12 +331,12 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowAll Optional. Whether or not the scope allows all labels, allow_all and
-         * allowed_data_access_labels are mutually exclusive and one of them must be
-         * present. denied_data_access_labels can still be used along with allow_all.
+         * @param allowAll Optional. Whether or not the scope allows all labels, allowAll and
+         * allowedDataAccessLabels are mutually exclusive and one of them must be
+         * present. deniedDataAccessLabels can still be used along with allow_all.
          * When combined with denied_data_access_labels, access will be granted to all
          * data that doesn&#39;t have labels mentioned in denied_data_access_labels. E.g.:
-         * A customer with scope with denied labels A and B and allow_all will be able
+         * A customer with scope with denied labels A and B and allowAll will be able
          * to see all data except data labeled with A and data labeled with B and data
          * with labels A and B.
          * 
@@ -351,7 +351,7 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
          * @param allowedDataAccessLabels The allowed labels for the scope. There has to be at
          * least one label allowed for the scope to be valid.
          * The logical operator for evaluation of the allowed labels is OR.
-         * Either allow_all or allowed_data_access_labels needs to be provided.
+         * Either allowAll or allowedDataAccessLabels needs to be provided.
          * E.g.: A customer with scope with allowed labels A and B will be able
          * to see data with labeled with A or B or (A and B).
          * Structure is documented below.
@@ -368,7 +368,7 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
          * @param allowedDataAccessLabels The allowed labels for the scope. There has to be at
          * least one label allowed for the scope to be valid.
          * The logical operator for evaluation of the allowed labels is OR.
-         * Either allow_all or allowed_data_access_labels needs to be provided.
+         * Either allowAll or allowedDataAccessLabels needs to be provided.
          * E.g.: A customer with scope with allowed labels A and B will be able
          * to see data with labeled with A or B or (A and B).
          * Structure is documented below.
@@ -384,7 +384,7 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
          * @param allowedDataAccessLabels The allowed labels for the scope. There has to be at
          * least one label allowed for the scope to be valid.
          * The logical operator for evaluation of the allowed labels is OR.
-         * Either allow_all or allowed_data_access_labels needs to be provided.
+         * Either allowAll or allowedDataAccessLabels needs to be provided.
          * E.g.: A customer with scope with allowed labels A and B will be able
          * to see data with labeled with A or B or (A and B).
          * Structure is documented below.

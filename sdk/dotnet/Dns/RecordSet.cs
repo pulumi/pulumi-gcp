@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ### Adding an SPF record
     /// 
-    /// Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
+    /// Quotes (`""`) must be added around your `Rrdatas` for a SPF record. Otherwise `Rrdatas` string gets split on spaces.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -169,7 +169,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ### Adding a CNAME record
     /// 
-    ///  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
+    ///  The list of `Rrdatas` should only contain a single string corresponding to the Canonical Name intended.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

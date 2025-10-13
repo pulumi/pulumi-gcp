@@ -151,7 +151,7 @@ namespace Pulumi.Gcp.ApplicationIntegration
         /// (Optional, Deprecated)
         /// User input run-as service account, if empty, will bring up a new default service account.
         /// 
-        /// &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
+        /// &gt; **Warning:** `RunAsServiceAccount` is deprecated and will be removed in a future major release.
         /// </summary>
         [Output("runAsServiceAccount")]
         public Output<string?> RunAsServiceAccount { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.Gcp.ApplicationIntegration
         /// (Optional, Deprecated)
         /// User input run-as service account, if empty, will bring up a new default service account.
         /// 
-        /// &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
+        /// &gt; **Warning:** `RunAsServiceAccount` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("runAsServiceAccount")]
         public Input<string>? RunAsServiceAccount { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.Gcp.ApplicationIntegration
         /// (Optional, Deprecated)
         /// User input run-as service account, if empty, will bring up a new default service account.
         /// 
-        /// &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
+        /// &gt; **Warning:** `RunAsServiceAccount` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("runAsServiceAccount")]
         public Input<string>? RunAsServiceAccount { get; set; }

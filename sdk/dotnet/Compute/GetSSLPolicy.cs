@@ -140,8 +140,8 @@ namespace Pulumi.Gcp.Compute
     {
         public readonly string CreationTimestamp;
         /// <summary>
-        /// If the `profile` is `CUSTOM`, these are the custom encryption
-        /// ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
+        /// If the `Profile` is `CUSTOM`, these are the custom encryption
+        /// ciphers supported by the profile. If the `Profile` is *not* `CUSTOM`, this
         /// attribute will be empty.
         /// </summary>
         public readonly ImmutableArray<string> CustomFeatures;

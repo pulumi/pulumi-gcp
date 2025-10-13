@@ -783,7 +783,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     /**
      * The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
      * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
-     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
      * should be set to `my-ca`.
      * 
      */
@@ -793,7 +793,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     /**
      * @return The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
      * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
-     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
      * should be set to `my-ca`.
      * 
      */
@@ -902,7 +902,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Labels with user-defined metadata to apply to this resource.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -912,7 +912,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * @return Labels with user-defined metadata to apply to this resource.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

@@ -33,7 +33,7 @@ public final class RegionNetworkEndpointState extends com.pulumi.resources.Resou
 
     /**
      * Fully qualified domain name of network endpoint.
-     * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      * 
      */
     @Import(name="fqdn")
@@ -41,7 +41,7 @@ public final class RegionNetworkEndpointState extends com.pulumi.resources.Resou
 
     /**
      * @return Fully qualified domain name of network endpoint.
-     * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      * 
      */
     public Optional<Output<String>> fqdn() {
@@ -67,7 +67,7 @@ public final class RegionNetworkEndpointState extends com.pulumi.resources.Resou
 
     /**
      * IPv4 address external endpoint.
-     * This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
      * 
      */
     @Import(name="ipAddress")
@@ -75,7 +75,7 @@ public final class RegionNetworkEndpointState extends com.pulumi.resources.Resou
 
     /**
      * @return IPv4 address external endpoint.
-     * This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -214,7 +214,7 @@ public final class RegionNetworkEndpointState extends com.pulumi.resources.Resou
 
         /**
          * @param fqdn Fully qualified domain name of network endpoint.
-         * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+         * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class RegionNetworkEndpointState extends com.pulumi.resources.Resou
 
         /**
          * @param fqdn Fully qualified domain name of network endpoint.
-         * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+         * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class RegionNetworkEndpointState extends com.pulumi.resources.Resou
 
         /**
          * @param ipAddress IPv4 address external endpoint.
-         * This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+         * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class RegionNetworkEndpointState extends com.pulumi.resources.Resou
 
         /**
          * @param ipAddress IPv4 address external endpoint.
-         * This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+         * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
          * 
          * @return builder
          * 

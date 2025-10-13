@@ -402,7 +402,7 @@ namespace Pulumi.Gcp.Looker
 
         /// <summary>
         /// Policy to determine if the cluster should be deleted forcefully.
-        /// If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+        /// If setting DeletionPolicy = "FORCE", the Looker instance will be deleted regardless
         /// of its nested resources. If set to "DEFAULT", Looker instances that still have
         /// nested resources will return an error. Possible values: DEFAULT, FORCE
         /// </summary>
@@ -644,7 +644,7 @@ namespace Pulumi.Gcp.Looker
 
         /// <summary>
         /// Policy to determine if the cluster should be deleted forcefully.
-        /// If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+        /// If setting DeletionPolicy = "FORCE", the Looker instance will be deleted regardless
         /// of its nested resources. If set to "DEFAULT", Looker instances that still have
         /// nested resources will return an error. Possible values: DEFAULT, FORCE
         /// </summary>
@@ -818,7 +818,7 @@ namespace Pulumi.Gcp.Looker
 
         /// <summary>
         /// Policy to determine if the cluster should be deleted forcefully.
-        /// If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+        /// If setting DeletionPolicy = "FORCE", the Looker instance will be deleted regardless
         /// of its nested resources. If set to "DEFAULT", Looker instances that still have
         /// nested resources will return an error. Possible values: DEFAULT, FORCE
         /// </summary>

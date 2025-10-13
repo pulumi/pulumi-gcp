@@ -17,7 +17,7 @@ public final class ClusterPrivateClusterConfig {
      * @return When `true`, the cluster&#39;s private
      * endpoint is used as the cluster endpoint and access through the public endpoint
      * is disabled. When `false`, either endpoint can be used. This field only applies
-     * to private clusters, when `enable_private_nodes` is `true`.
+     * to private clusters, when `enablePrivateNodes` is `true`.
      * 
      */
     private @Nullable Boolean enablePrivateEndpoint;
@@ -43,7 +43,7 @@ public final class ClusterPrivateClusterConfig {
      * with any other ranges in use within the cluster&#39;s network, and it must be a /28
      * subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
      * for more details. This field only applies to private clusters, when
-     * `enable_private_nodes` is `true`.
+     * `enablePrivateNodes` is `true`.
      * 
      */
     private @Nullable String masterIpv4CidrBlock;
@@ -66,7 +66,7 @@ public final class ClusterPrivateClusterConfig {
      * @return The external IP address of this cluster&#39;s master endpoint.
      * 
      * !&gt; The Google provider is unable to validate certain configurations of
-     * `private_cluster_config` when `enable_private_nodes` is `false`. It&#39;s
+     * `privateClusterConfig` when `enablePrivateNodes` is `false`. It&#39;s
      * recommended that you omit the block entirely if the field is not set to `true`.
      * 
      */
@@ -77,7 +77,7 @@ public final class ClusterPrivateClusterConfig {
      * @return When `true`, the cluster&#39;s private
      * endpoint is used as the cluster endpoint and access through the public endpoint
      * is disabled. When `false`, either endpoint can be used. This field only applies
-     * to private clusters, when `enable_private_nodes` is `true`.
+     * to private clusters, when `enablePrivateNodes` is `true`.
      * 
      */
     public Optional<Boolean> enablePrivateEndpoint() {
@@ -109,7 +109,7 @@ public final class ClusterPrivateClusterConfig {
      * with any other ranges in use within the cluster&#39;s network, and it must be a /28
      * subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
      * for more details. This field only applies to private clusters, when
-     * `enable_private_nodes` is `true`.
+     * `enablePrivateNodes` is `true`.
      * 
      */
     public Optional<String> masterIpv4CidrBlock() {
@@ -140,7 +140,7 @@ public final class ClusterPrivateClusterConfig {
      * @return The external IP address of this cluster&#39;s master endpoint.
      * 
      * !&gt; The Google provider is unable to validate certain configurations of
-     * `private_cluster_config` when `enable_private_nodes` is `false`. It&#39;s
+     * `privateClusterConfig` when `enablePrivateNodes` is `false`. It&#39;s
      * recommended that you omit the block entirely if the field is not set to `true`.
      * 
      */

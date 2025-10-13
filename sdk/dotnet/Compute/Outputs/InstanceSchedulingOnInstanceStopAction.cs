@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceSchedulingOnInstanceStopAction
     {
         /// <summary>
-        /// Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+        /// Whether to discard local SSDs attached to the VM while terminating using `MaxRunDuration`. Only supports `True` at this point.
         /// </summary>
         public readonly bool? DiscardLocalSsd;
 

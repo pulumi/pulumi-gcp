@@ -16,14 +16,14 @@ public final class GetRegionInstanceGroupManagerArgs extends com.pulumi.resource
     public static final GetRegionInstanceGroupManagerArgs Empty = new GetRegionInstanceGroupManagerArgs();
 
     /**
-     * The name of the instance group. Either `name` or `self_link` must be provided.
+     * The name of the instance group. Either `name` or `selfLink` must be provided.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the instance group. Either `name` or `self_link` must be provided.
+     * @return The name of the instance group. Either `name` or `selfLink` must be provided.
      * 
      */
     public Optional<Output<String>> name() {
@@ -57,14 +57,14 @@ public final class GetRegionInstanceGroupManagerArgs extends com.pulumi.resource
     }
 
     /**
-     * The self link of the instance group. Either `name` or `self_link` must be provided.
+     * The self link of the instance group. Either `name` or `selfLink` must be provided.
      * 
      */
     @Import(name="selfLink")
     private @Nullable Output<String> selfLink;
 
     /**
-     * @return The self link of the instance group. Either `name` or `self_link` must be provided.
+     * @return The self link of the instance group. Either `name` or `selfLink` must be provided.
      * 
      */
     public Optional<Output<String>> selfLink() {
@@ -99,7 +99,7 @@ public final class GetRegionInstanceGroupManagerArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the instance group. Either `name` or `self_link` must be provided.
+         * @param name The name of the instance group. Either `name` or `selfLink` must be provided.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class GetRegionInstanceGroupManagerArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the instance group. Either `name` or `self_link` must be provided.
+         * @param name The name of the instance group. Either `name` or `selfLink` must be provided.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class GetRegionInstanceGroupManagerArgs extends com.pulumi.resource
         }
 
         /**
-         * @param selfLink The self link of the instance group. Either `name` or `self_link` must be provided.
+         * @param selfLink The self link of the instance group. Either `name` or `selfLink` must be provided.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class GetRegionInstanceGroupManagerArgs extends com.pulumi.resource
         }
 
         /**
-         * @param selfLink The self link of the instance group. Either `name` or `self_link` must be provided.
+         * @param selfLink The self link of the instance group. Either `name` or `selfLink` must be provided.
          * 
          * @return builder
          * 

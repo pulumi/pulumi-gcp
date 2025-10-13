@@ -54,7 +54,7 @@ public final class GetFolderResult {
      */
     private String name;
     /**
-     * @return If `lookup_organization` is enable, the resource name of the Organization that the folder belongs.
+     * @return If `lookupOrganization` is enable, the resource name of the Organization that the folder belongs.
      * 
      */
     private String organization;
@@ -127,7 +127,7 @@ public final class GetFolderResult {
         return this.name;
     }
     /**
-     * @return If `lookup_organization` is enable, the resource name of the Organization that the folder belongs.
+     * @return If `lookupOrganization` is enable, the resource name of the Organization that the folder belongs.
      * 
      */
     public String organization() {

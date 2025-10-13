@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class FunctionServiceConfigSecretVolumeVersion {
     /**
-     * @return Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#39;/etc/secrets&#39; and path as secret_foo would mount the secret value file at /etc/secrets/secret_foo.
+     * @return Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#39;/etc/secrets&#39; and path as secretFoo would mount the secret value file at /etc/secrets/secret_foo.
      * 
      */
     private String path;
@@ -23,7 +23,7 @@ public final class FunctionServiceConfigSecretVolumeVersion {
 
     private FunctionServiceConfigSecretVolumeVersion() {}
     /**
-     * @return Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#39;/etc/secrets&#39; and path as secret_foo would mount the secret value file at /etc/secrets/secret_foo.
+     * @return Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#39;/etc/secrets&#39; and path as secretFoo would mount the secret value file at /etc/secrets/secret_foo.
      * 
      */
     public String path() {

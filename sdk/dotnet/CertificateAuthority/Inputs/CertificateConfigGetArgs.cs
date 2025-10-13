@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_config_x509_config"&gt;&lt;/a&gt;The `x509_config` block supports:
+        /// &lt;a name="NestedConfigX509Config"&gt;&lt;/a&gt;The `X509Config` block supports:
         /// </summary>
         [Input("publicKey", required: true)]
         public Input<Inputs.CertificateConfigPublicKeyGetArgs> PublicKey { get; set; } = null!;

@@ -52,7 +52,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
      */
     private @Nullable Map<String,String> resourceManagerTags;
     /**
-     * @return A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * @return A list of selfLinks of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     private @Nullable String resourcePolicies;
@@ -138,7 +138,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
     /**
-     * @return A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * @return A list of selfLinks of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<String> resourcePolicies() {

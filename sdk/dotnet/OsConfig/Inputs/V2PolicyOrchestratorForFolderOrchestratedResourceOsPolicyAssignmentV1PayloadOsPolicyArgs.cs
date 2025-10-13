@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// <summary>
         /// This flag determines the OS policy compliance status when none of the
         /// resource groups within the policy are applicable for a VM. Set this value
-        /// to `true` if the policy needs to be reported as compliant even if the
+        /// to `True` if the policy needs to be reported as compliant even if the
         /// policy has nothing to validate or enforce.
         /// </summary>
         [Input("allowNoResourceGroupMatch")]
@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// are ignored.
         /// If none of the resource groups are applicable for a VM, the VM is
         /// considered to be non-compliant w.r.t this policy. This behavior can be
-        /// toggled by the flag `allow_no_resource_group_match`
+        /// toggled by the flag `AllowNoResourceGroupMatch`
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs> ResourceGroups

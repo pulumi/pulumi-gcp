@@ -23,13 +23,13 @@ public final class GetHealthCheckGrpcHealthCheck {
     /**
      * @return The port number for the health check request.
      * Must be specified if portName and portSpecification are not set
-     * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
      * 
      */
     private Integer port;
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
-     * port_name are defined, port takes precedence.
+     * portName are defined, port takes precedence.
      * 
      */
     private String portName;
@@ -67,7 +67,7 @@ public final class GetHealthCheckGrpcHealthCheck {
     /**
      * @return The port number for the health check request.
      * Must be specified if portName and portSpecification are not set
-     * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
      * 
      */
     public Integer port() {
@@ -75,7 +75,7 @@ public final class GetHealthCheckGrpcHealthCheck {
     }
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
-     * port_name are defined, port takes precedence.
+     * portName are defined, port takes precedence.
      * 
      */
     public String portName() {

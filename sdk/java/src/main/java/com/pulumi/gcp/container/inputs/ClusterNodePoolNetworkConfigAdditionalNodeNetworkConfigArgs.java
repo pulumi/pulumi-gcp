@@ -16,7 +16,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs e
     public static final ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs Empty = new ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs();
 
     /**
-     * The name or self_link of the Google Compute Engine
+     * The name or selfLink of the Google Compute Engine
      * network to which the cluster is connected. For Shared VPC, set this to the self link of the
      * shared network.
      * 
@@ -25,7 +25,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs e
     private @Nullable Output<String> network;
 
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * network to which the cluster is connected. For Shared VPC, set this to the self link of the
      * shared network.
      * 
@@ -35,7 +35,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs e
     }
 
     /**
-     * The name or self_link of the Google Compute Engine
+     * The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
      */
@@ -43,7 +43,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs e
     private @Nullable Output<String> subnetwork;
 
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
      */
@@ -77,7 +77,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs e
         }
 
         /**
-         * @param network The name or self_link of the Google Compute Engine
+         * @param network The name or selfLink of the Google Compute Engine
          * network to which the cluster is connected. For Shared VPC, set this to the self link of the
          * shared network.
          * 
@@ -90,7 +90,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs e
         }
 
         /**
-         * @param network The name or self_link of the Google Compute Engine
+         * @param network The name or selfLink of the Google Compute Engine
          * network to which the cluster is connected. For Shared VPC, set this to the self link of the
          * shared network.
          * 
@@ -102,7 +102,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs e
         }
 
         /**
-         * @param subnetwork The name or self_link of the Google Compute Engine
+         * @param subnetwork The name or selfLink of the Google Compute Engine
          * subnetwork in which the cluster&#39;s instances are launched.
          * 
          * @return builder
@@ -114,7 +114,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs e
         }
 
         /**
-         * @param subnetwork The name or self_link of the Google Compute Engine
+         * @param subnetwork The name or selfLink of the Google Compute Engine
          * subnetwork in which the cluster&#39;s instances are launched.
          * 
          * @return builder

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     public sealed class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+        /// Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

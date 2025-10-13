@@ -47,7 +47,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs ex
     }
 
     /**
-     * The name or self_link of the Google Compute Engine
+     * The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
      */
@@ -55,7 +55,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs ex
     private @Nullable Output<String> subnetwork;
 
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
      */
@@ -132,7 +132,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs ex
         }
 
         /**
-         * @param subnetwork The name or self_link of the Google Compute Engine
+         * @param subnetwork The name or selfLink of the Google Compute Engine
          * subnetwork in which the cluster&#39;s instances are launched.
          * 
          * @return builder
@@ -144,7 +144,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs ex
         }
 
         /**
-         * @param subnetwork The name or self_link of the Google Compute Engine
+         * @param subnetwork The name or selfLink of the Google Compute Engine
          * subnetwork in which the cluster&#39;s instances are launched.
          * 
          * @return builder

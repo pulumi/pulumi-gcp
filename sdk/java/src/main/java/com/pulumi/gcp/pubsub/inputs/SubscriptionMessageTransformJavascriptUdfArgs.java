@@ -15,7 +15,7 @@ public final class SubscriptionMessageTransformJavascriptUdfArgs extends com.pul
     public static final SubscriptionMessageTransformJavascriptUdfArgs Empty = new SubscriptionMessageTransformJavascriptUdfArgs();
 
     /**
-     * JavaScript code that contains a function `function_name` with the
+     * JavaScript code that contains a function `functionName` with the
      * following signature:
      * 
      */
@@ -23,7 +23,7 @@ public final class SubscriptionMessageTransformJavascriptUdfArgs extends com.pul
     private Output<String> code;
 
     /**
-     * @return JavaScript code that contains a function `function_name` with the
+     * @return JavaScript code that contains a function `functionName` with the
      * following signature:
      * 
      */
@@ -72,7 +72,7 @@ public final class SubscriptionMessageTransformJavascriptUdfArgs extends com.pul
         }
 
         /**
-         * @param code JavaScript code that contains a function `function_name` with the
+         * @param code JavaScript code that contains a function `functionName` with the
          * following signature:
          * 
          * @return builder
@@ -84,7 +84,7 @@ public final class SubscriptionMessageTransformJavascriptUdfArgs extends com.pul
         }
 
         /**
-         * @param code JavaScript code that contains a function `function_name` with the
+         * @param code JavaScript code that contains a function `functionName` with the
          * following signature:
          * 
          * @return builder

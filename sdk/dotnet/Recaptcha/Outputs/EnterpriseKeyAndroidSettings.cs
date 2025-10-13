@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Recaptcha.Outputs
     public sealed class EnterpriseKeyAndroidSettings
     {
         /// <summary>
-        /// If set to true, it means allowed_package_names will not be enforced.
+        /// If set to true, it means AllowedPackageNames will not be enforced.
         /// </summary>
         public readonly bool? AllowAllPackageNames;
         /// <summary>

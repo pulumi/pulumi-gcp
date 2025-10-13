@@ -176,14 +176,14 @@ namespace Pulumi.Gcp.ServiceUsage
 
         /// <summary>
         /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
-        /// If `force` is `true`, that safety check is ignored.
+        /// If `Force` is `True`, that safety check is ignored.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
         /// The limit on the metric, e.g. `/project/region`.
-        /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+        /// &gt; Make sure that `Limit` is in a format that doesn't start with `1/` or contain curly braces.
         /// E.g. use `/project/user` instead of `1/{project}/{user}`.
         /// </summary>
         [Output("limit")]
@@ -280,14 +280,14 @@ namespace Pulumi.Gcp.ServiceUsage
 
         /// <summary>
         /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
-        /// If `force` is `true`, that safety check is ignored.
+        /// If `Force` is `True`, that safety check is ignored.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
         /// The limit on the metric, e.g. `/project/region`.
-        /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+        /// &gt; Make sure that `Limit` is in a format that doesn't start with `1/` or contain curly braces.
         /// E.g. use `/project/user` instead of `1/{project}/{user}`.
         /// </summary>
         [Input("limit", required: true)]
@@ -340,14 +340,14 @@ namespace Pulumi.Gcp.ServiceUsage
 
         /// <summary>
         /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
-        /// If `force` is `true`, that safety check is ignored.
+        /// If `Force` is `True`, that safety check is ignored.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
         /// The limit on the metric, e.g. `/project/region`.
-        /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+        /// &gt; Make sure that `Limit` is in a format that doesn't start with `1/` or contain curly braces.
         /// E.g. use `/project/user` instead of `1/{project}/{user}`.
         /// </summary>
         [Input("limit")]

@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         private InputList<string>? _databaseNames;
 
         /// <summary>
-        /// (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+        /// (SQL Server only, use with `PointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
         /// </summary>
         public InputList<string> DatabaseNames
         {

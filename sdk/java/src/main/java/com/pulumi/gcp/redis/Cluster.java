@@ -902,7 +902,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.managedBackupSource);
     }
     /**
-     * Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+     * Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
      * Structure is documented below.
      * 
      */
@@ -910,7 +910,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<List<ClusterManagedServerCa>> managedServerCas;
 
     /**
-     * @return Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+     * @return Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
      * Structure is documented below.
      * 
      */

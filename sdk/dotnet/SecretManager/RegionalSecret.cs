@@ -264,7 +264,7 @@ namespace Pulumi.Gcp.SecretManager
         /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -298,7 +298,7 @@ namespace Pulumi.Gcp.SecretManager
         /// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
         /// output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
         /// nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
-        /// "2014-10-02T15:01:23.045123456Z". Only one of `expire_time` or `ttl` can be provided.
+        /// "2014-10-02T15:01:23.045123456Z". Only one of `ExpireTime` or `Ttl` can be provided.
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
@@ -314,7 +314,7 @@ namespace Pulumi.Gcp.SecretManager
         /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -347,8 +347,8 @@ namespace Pulumi.Gcp.SecretManager
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
-        /// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
+        /// The rotation time and period for a regional secret. At `NextRotationTime`, Secret Manager
+        /// will send a Pub/Sub notification to the topics configured on the Secret. `Topics` must be
         /// set to configure rotation.
         /// Structure is documented below.
         /// </summary>
@@ -379,7 +379,7 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
-        /// terminated by 's'. Example: "3.5s". Only one of `ttl` or `expire_time` can be provided.
+        /// terminated by 's'. Example: "3.5s". Only one of `Ttl` or `ExpireTime` can be provided.
         /// </summary>
         [Output("ttl")]
         public Output<string?> Ttl { get; private set; } = null!;
@@ -473,7 +473,7 @@ namespace Pulumi.Gcp.SecretManager
         /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -495,7 +495,7 @@ namespace Pulumi.Gcp.SecretManager
         /// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
         /// output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
         /// nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
-        /// "2014-10-02T15:01:23.045123456Z". Only one of `expire_time` or `ttl` can be provided.
+        /// "2014-10-02T15:01:23.045123456Z". Only one of `ExpireTime` or `Ttl` can be provided.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
@@ -514,7 +514,7 @@ namespace Pulumi.Gcp.SecretManager
         /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -536,8 +536,8 @@ namespace Pulumi.Gcp.SecretManager
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
-        /// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
+        /// The rotation time and period for a regional secret. At `NextRotationTime`, Secret Manager
+        /// will send a Pub/Sub notification to the topics configured on the Secret. `Topics` must be
         /// set to configure rotation.
         /// Structure is documented below.
         /// </summary>
@@ -580,7 +580,7 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
-        /// terminated by 's'. Example: "3.5s". Only one of `ttl` or `expire_time` can be provided.
+        /// terminated by 's'. Example: "3.5s". Only one of `Ttl` or `ExpireTime` can be provided.
         /// </summary>
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }
@@ -637,7 +637,7 @@ namespace Pulumi.Gcp.SecretManager
         /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -689,7 +689,7 @@ namespace Pulumi.Gcp.SecretManager
         /// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
         /// output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
         /// nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
-        /// "2014-10-02T15:01:23.045123456Z". Only one of `expire_time` or `ttl` can be provided.
+        /// "2014-10-02T15:01:23.045123456Z". Only one of `ExpireTime` or `Ttl` can be provided.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
@@ -708,7 +708,7 @@ namespace Pulumi.Gcp.SecretManager
         /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -754,8 +754,8 @@ namespace Pulumi.Gcp.SecretManager
         }
 
         /// <summary>
-        /// The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
-        /// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
+        /// The rotation time and period for a regional secret. At `NextRotationTime`, Secret Manager
+        /// will send a Pub/Sub notification to the topics configured on the Secret. `Topics` must be
         /// set to configure rotation.
         /// Structure is documented below.
         /// </summary>
@@ -798,7 +798,7 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
-        /// terminated by 's'. Example: "3.5s". Only one of `ttl` or `expire_time` can be provided.
+        /// terminated by 's'. Example: "3.5s". Only one of `Ttl` or `ExpireTime` can be provided.
         /// </summary>
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }

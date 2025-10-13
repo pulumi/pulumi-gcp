@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 
 /**
  * Bucket ACLs can be managed authoritatively using the
- * `storage_bucket_acl` resource. Do not use these two resources in conjunction to manage the same bucket.
+ * `storageBucketAcl` resource. Do not use these two resources in conjunction to manage the same bucket.
  * 
  * The BucketAccessControls resource manages the Access Control List
  * (ACLs) for a single entity/role pairing on a bucket. ACLs let you specify who

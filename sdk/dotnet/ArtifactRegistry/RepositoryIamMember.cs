@@ -262,7 +262,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// The name of the repository's location. In addition to specific regions,
-        /// special values for multi-region locations are `asia`, `europe`, and `us`.
+        /// special values for multi-region locations are `Asia`, `Europe`, and `Us`.
         /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
         /// or use the
         /// gcp.artifactregistry.getLocations
@@ -274,7 +274,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -362,7 +362,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// The name of the repository's location. In addition to specific regions,
-        /// special values for multi-region locations are `asia`, `europe`, and `us`.
+        /// special values for multi-region locations are `Asia`, `Europe`, and `Us`.
         /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
         /// or use the
         /// gcp.artifactregistry.getLocations
@@ -374,7 +374,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -430,7 +430,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// The name of the repository's location. In addition to specific regions,
-        /// special values for multi-region locations are `asia`, `europe`, and `us`.
+        /// special values for multi-region locations are `Asia`, `Europe`, and `Us`.
         /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
         /// or use the
         /// gcp.artifactregistry.getLocations
@@ -442,7 +442,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.

@@ -17,7 +17,7 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsA
     /**
      * The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
      * 
-     * Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
+     * Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
      * the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
      * [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
      * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
@@ -31,7 +31,7 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsA
     /**
      * @return The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
      * 
-     * Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
+     * Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
      * the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
      * [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
      * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
@@ -70,7 +70,7 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsA
         /**
          * @param scope The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
          * 
-         * Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
+         * Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
          * the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
          * [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
          * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
@@ -88,7 +88,7 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsA
         /**
          * @param scope The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
          * 
-         * Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
+         * Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
          * the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
          * [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
          * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.

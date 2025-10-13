@@ -52,7 +52,7 @@ public final class OsPolicyAssignmentOsPolicy {
      * first resource group that is applicable is selected and the rest are
      * ignored. If none of the resource groups are applicable for a VM, the VM is
      * considered to be non-compliant w.r.t this policy. This behavior can be
-     * toggled by the flag `allow_no_resource_group_match` Structure is
+     * toggled by the flag `allowNoResourceGroupMatch` Structure is
      * documented below.
      * 
      */
@@ -104,7 +104,7 @@ public final class OsPolicyAssignmentOsPolicy {
      * first resource group that is applicable is selected and the rest are
      * ignored. If none of the resource groups are applicable for a VM, the VM is
      * considered to be non-compliant w.r.t this policy. This behavior can be
-     * toggled by the flag `allow_no_resource_group_match` Structure is
+     * toggled by the flag `allowNoResourceGroupMatch` Structure is
      * documented below.
      * 
      */

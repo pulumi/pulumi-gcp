@@ -95,7 +95,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The class containing the main method of the driver. Must be in a
-     * provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
+     * provided jar or jar that is already on the classpath. Conflicts with `mainJarFileUri`
      * 
      */
     @Import(name="mainClass")
@@ -103,7 +103,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The class containing the main method of the driver. Must be in a
-     * provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
+     * provided jar or jar that is already on the classpath. Conflicts with `mainJarFileUri`
      * 
      */
     public Optional<Output<String>> mainClass() {
@@ -112,7 +112,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The HCFS URI of jar file containing
-     * the driver jar. Conflicts with `main_class`
+     * the driver jar. Conflicts with `mainClass`
      * 
      */
     @Import(name="mainJarFileUri")
@@ -120,7 +120,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The HCFS URI of jar file containing
-     * the driver jar. Conflicts with `main_class`
+     * the driver jar. Conflicts with `mainClass`
      * 
      */
     public Optional<Output<String>> mainJarFileUri() {
@@ -324,7 +324,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param mainClass The class containing the main method of the driver. Must be in a
-         * provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
+         * provided jar or jar that is already on the classpath. Conflicts with `mainJarFileUri`
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param mainClass The class containing the main method of the driver. Must be in a
-         * provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
+         * provided jar or jar that is already on the classpath. Conflicts with `mainJarFileUri`
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param mainJarFileUri The HCFS URI of jar file containing
-         * the driver jar. Conflicts with `main_class`
+         * the driver jar. Conflicts with `mainClass`
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param mainJarFileUri The HCFS URI of jar file containing
-         * the driver jar. Conflicts with `main_class`
+         * the driver jar. Conflicts with `mainClass`
          * 
          * @return builder
          * 

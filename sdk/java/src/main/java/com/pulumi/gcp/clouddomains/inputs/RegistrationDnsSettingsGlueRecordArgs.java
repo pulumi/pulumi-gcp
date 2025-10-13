@@ -34,7 +34,7 @@ public final class RegistrationDnsSettingsGlueRecordArgs extends com.pulumi.reso
 
     /**
      * List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-     * At least one of ipv4_address and ipv6_address must be set.
+     * At least one of ipv4Address and ipv6Address must be set.
      * 
      */
     @Import(name="ipv4Addresses")
@@ -42,7 +42,7 @@ public final class RegistrationDnsSettingsGlueRecordArgs extends com.pulumi.reso
 
     /**
      * @return List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-     * At least one of ipv4_address and ipv6_address must be set.
+     * At least one of ipv4Address and ipv6Address must be set.
      * 
      */
     public Optional<Output<List<String>>> ipv4Addresses() {
@@ -51,7 +51,7 @@ public final class RegistrationDnsSettingsGlueRecordArgs extends com.pulumi.reso
 
     /**
      * List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-     * At least one of ipv4_address and ipv6_address must be set.
+     * At least one of ipv4Address and ipv6Address must be set.
      * 
      */
     @Import(name="ipv6Addresses")
@@ -59,7 +59,7 @@ public final class RegistrationDnsSettingsGlueRecordArgs extends com.pulumi.reso
 
     /**
      * @return List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-     * At least one of ipv4_address and ipv6_address must be set.
+     * At least one of ipv4Address and ipv6Address must be set.
      * 
      */
     public Optional<Output<List<String>>> ipv6Addresses() {
@@ -115,7 +115,7 @@ public final class RegistrationDnsSettingsGlueRecordArgs extends com.pulumi.reso
 
         /**
          * @param ipv4Addresses List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-         * At least one of ipv4_address and ipv6_address must be set.
+         * At least one of ipv4Address and ipv6Address must be set.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class RegistrationDnsSettingsGlueRecordArgs extends com.pulumi.reso
 
         /**
          * @param ipv4Addresses List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-         * At least one of ipv4_address and ipv6_address must be set.
+         * At least one of ipv4Address and ipv6Address must be set.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class RegistrationDnsSettingsGlueRecordArgs extends com.pulumi.reso
 
         /**
          * @param ipv4Addresses List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-         * At least one of ipv4_address and ipv6_address must be set.
+         * At least one of ipv4Address and ipv6Address must be set.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class RegistrationDnsSettingsGlueRecordArgs extends com.pulumi.reso
 
         /**
          * @param ipv6Addresses List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-         * At least one of ipv4_address and ipv6_address must be set.
+         * At least one of ipv4Address and ipv6Address must be set.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class RegistrationDnsSettingsGlueRecordArgs extends com.pulumi.reso
 
         /**
          * @param ipv6Addresses List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-         * At least one of ipv4_address and ipv6_address must be set.
+         * At least one of ipv4Address and ipv6Address must be set.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class RegistrationDnsSettingsGlueRecordArgs extends com.pulumi.reso
 
         /**
          * @param ipv6Addresses List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-         * At least one of ipv4_address and ipv6_address must be set.
+         * At least one of ipv4Address and ipv6Address must be set.
          * 
          * @return builder
          * 

@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<Inputs.AzureClusterControlPlaneReplicaPlacementArgs>? _replicaPlacements;
 
         /// <summary>
-        /// Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+        /// Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If ReplicaPlacements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
         /// </summary>
         public InputList<Inputs.AzureClusterControlPlaneReplicaPlacementArgs> ReplicaPlacements
         {

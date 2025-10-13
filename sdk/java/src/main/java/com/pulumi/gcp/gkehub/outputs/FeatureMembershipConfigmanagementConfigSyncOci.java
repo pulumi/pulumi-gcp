@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureMembershipConfigmanagementConfigSyncOci {
     /**
-     * @return The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+     * @return The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
      * 
      */
     private @Nullable String gcpServiceAccountEmail;
@@ -39,7 +39,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncOci {
 
     private FeatureMembershipConfigmanagementConfigSyncOci() {}
     /**
-     * @return The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+     * @return The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
      * 
      */
     public Optional<String> gcpServiceAccountEmail() {

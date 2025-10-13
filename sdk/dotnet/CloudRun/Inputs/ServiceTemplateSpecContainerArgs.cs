@@ -50,9 +50,9 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// precedence.
         /// Structure is documented below.
         /// 
-        /// &gt; **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+        /// &gt; **Warning:** `EnvFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
-        [Obsolete(@"`env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.")]
+        [Obsolete(@"`EnvFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.")]
         public InputList<Inputs.ServiceTemplateSpecContainerEnvFromArgs> EnvFroms
         {
             get => _envFroms ?? (_envFroms = new InputList<Inputs.ServiceTemplateSpecContainerEnvFromArgs>());
@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// If not specified, the container runtime's default will be used, which
         /// might be configured in the container image.
         /// 
-        /// &gt; **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+        /// &gt; **Warning:** `WorkingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
         [Input("workingDir")]
         public Input<string>? WorkingDir { get; set; }

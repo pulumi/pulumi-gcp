@@ -24,13 +24,13 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         public readonly int? MaxIssuerPathLength;
         /// <summary>
         /// Optional. When true, the "CA" in Basic Constraints extension will be set to null and omitted from the CA certificate.
-        /// If both `is_ca` and `null_ca` are unset, the "CA" in Basic Constraints extension will be set to false.
-        /// Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+        /// If both `IsCa` and `NullCa` are unset, the "CA" in Basic Constraints extension will be set to false.
+        /// Note that the behavior when `IsCa = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
         /// </summary>
         public readonly bool? NullCa;
         /// <summary>
         /// Optional. When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-        /// if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+        /// if both `MaxIssuerPathLength` and `ZeroMaxIssuerPathLength` are unset,
         /// the max path length will be omitted from the CA certificate.
         /// </summary>
         public readonly bool? ZeroMaxIssuerPathLength;

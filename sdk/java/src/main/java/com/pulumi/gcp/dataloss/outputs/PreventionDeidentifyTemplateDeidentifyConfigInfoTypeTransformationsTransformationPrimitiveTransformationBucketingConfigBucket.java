@@ -16,21 +16,21 @@ import javax.annotation.Nullable;
 public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket {
     /**
      * @return Upper bound of the range, exclusive; type must match min.
-     * The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+     * The `max` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
      * Structure is documented below.
      * 
      */
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax max;
     /**
      * @return Lower bound of the range, inclusive. Type should be the same as max if used.
-     * The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+     * The `min` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
      * Structure is documented below.
      * 
      */
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin min;
     /**
      * @return Replacement value for this bucket.
-     * The `replacement_value` block must only contain one argument.
+     * The `replacementValue` block must only contain one argument.
      * Structure is documented below.
      * 
      */
@@ -39,7 +39,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket() {}
     /**
      * @return Upper bound of the range, exclusive; type must match min.
-     * The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+     * The `max` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
      * Structure is documented below.
      * 
      */
@@ -48,7 +48,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     }
     /**
      * @return Lower bound of the range, inclusive. Type should be the same as max if used.
-     * The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+     * The `min` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     }
     /**
      * @return Replacement value for this bucket.
-     * The `replacement_value` block must only contain one argument.
+     * The `replacementValue` block must only contain one argument.
      * Structure is documented below.
      * 
      */

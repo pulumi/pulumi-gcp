@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// PolicyOrchestrator creation.
         /// 
         /// 
-        /// &lt;a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"&gt;&lt;/a&gt;The `os_policy_assignment_v1_payload` block supports:
+        /// &lt;a name="NestedOrchestratedResourceOsPolicyAssignmentV1Payload"&gt;&lt;/a&gt;The `OsPolicyAssignmentV1Payload` block supports:
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

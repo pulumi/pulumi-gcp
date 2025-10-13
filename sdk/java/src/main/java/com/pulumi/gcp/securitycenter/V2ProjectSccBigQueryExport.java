@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Scc V2 Project Big Query Export Config Basic
+ * 
  * ## Import
  * 
  * ProjectSccBigQueryExport can be imported using any of these accepted formats:
@@ -91,7 +93,7 @@ public class V2ProjectSccBigQueryExport extends com.pulumi.resources.CustomResou
     }
     /**
      * The dataset to write findings&#39; updates to.
-     * Its format is &#34;projects/[projectId]/datasets/[bigquery_dataset_id]&#34;.
+     * Its format is &#34;projects/[projectId]/datasets/[bigqueryDatasetId]&#34;.
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      * 
      */
@@ -100,7 +102,7 @@ public class V2ProjectSccBigQueryExport extends com.pulumi.resources.CustomResou
 
     /**
      * @return The dataset to write findings&#39; updates to.
-     * Its format is &#34;projects/[projectId]/datasets/[bigquery_dataset_id]&#34;.
+     * Its format is &#34;projects/[projectId]/datasets/[bigqueryDatasetId]&#34;.
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      * 
      */

@@ -225,12 +225,12 @@ namespace Pulumi.Gcp.Chronicle
     public partial class DataAccessScope : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. Whether or not the scope allows all labels, allow_all and
-        /// allowed_data_access_labels are mutually exclusive and one of them must be
-        /// present. denied_data_access_labels can still be used along with allow_all.
+        /// Optional. Whether or not the scope allows all labels, AllowAll and
+        /// AllowedDataAccessLabels are mutually exclusive and one of them must be
+        /// present. DeniedDataAccessLabels can still be used along with allow_all.
         /// When combined with denied_data_access_labels, access will be granted to all
         /// data that doesn't have labels mentioned in denied_data_access_labels. E.g.:
-        /// A customer with scope with denied labels A and B and allow_all will be able
+        /// A customer with scope with denied labels A and B and AllowAll will be able
         /// to see all data except data labeled with A and data labeled with B and data
         /// with labels A and B.
         /// </summary>
@@ -241,7 +241,7 @@ namespace Pulumi.Gcp.Chronicle
         /// The allowed labels for the scope. There has to be at
         /// least one label allowed for the scope to be valid.
         /// The logical operator for evaluation of the allowed labels is OR.
-        /// Either allow_all or allowed_data_access_labels needs to be provided.
+        /// Either AllowAll or AllowedDataAccessLabels needs to be provided.
         /// E.g.: A customer with scope with allowed labels A and B will be able
         /// to see data with labeled with A or B or (A and B).
         /// Structure is documented below.
@@ -378,12 +378,12 @@ namespace Pulumi.Gcp.Chronicle
     public sealed class DataAccessScopeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Whether or not the scope allows all labels, allow_all and
-        /// allowed_data_access_labels are mutually exclusive and one of them must be
-        /// present. denied_data_access_labels can still be used along with allow_all.
+        /// Optional. Whether or not the scope allows all labels, AllowAll and
+        /// AllowedDataAccessLabels are mutually exclusive and one of them must be
+        /// present. DeniedDataAccessLabels can still be used along with allow_all.
         /// When combined with denied_data_access_labels, access will be granted to all
         /// data that doesn't have labels mentioned in denied_data_access_labels. E.g.:
-        /// A customer with scope with denied labels A and B and allow_all will be able
+        /// A customer with scope with denied labels A and B and AllowAll will be able
         /// to see all data except data labeled with A and data labeled with B and data
         /// with labels A and B.
         /// </summary>
@@ -397,7 +397,7 @@ namespace Pulumi.Gcp.Chronicle
         /// The allowed labels for the scope. There has to be at
         /// least one label allowed for the scope to be valid.
         /// The logical operator for evaluation of the allowed labels is OR.
-        /// Either allow_all or allowed_data_access_labels needs to be provided.
+        /// Either AllowAll or AllowedDataAccessLabels needs to be provided.
         /// E.g.: A customer with scope with allowed labels A and B will be able
         /// to see data with labeled with A or B or (A and B).
         /// Structure is documented below.
@@ -467,12 +467,12 @@ namespace Pulumi.Gcp.Chronicle
     public sealed class DataAccessScopeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Whether or not the scope allows all labels, allow_all and
-        /// allowed_data_access_labels are mutually exclusive and one of them must be
-        /// present. denied_data_access_labels can still be used along with allow_all.
+        /// Optional. Whether or not the scope allows all labels, AllowAll and
+        /// AllowedDataAccessLabels are mutually exclusive and one of them must be
+        /// present. DeniedDataAccessLabels can still be used along with allow_all.
         /// When combined with denied_data_access_labels, access will be granted to all
         /// data that doesn't have labels mentioned in denied_data_access_labels. E.g.:
-        /// A customer with scope with denied labels A and B and allow_all will be able
+        /// A customer with scope with denied labels A and B and AllowAll will be able
         /// to see all data except data labeled with A and data labeled with B and data
         /// with labels A and B.
         /// </summary>
@@ -486,7 +486,7 @@ namespace Pulumi.Gcp.Chronicle
         /// The allowed labels for the scope. There has to be at
         /// least one label allowed for the scope to be valid.
         /// The logical operator for evaluation of the allowed labels is OR.
-        /// Either allow_all or allowed_data_access_labels needs to be provided.
+        /// Either AllowAll or AllowedDataAccessLabels needs to be provided.
         /// E.g.: A customer with scope with allowed labels A and B will be able
         /// to see data with labeled with A or B or (A and B).
         /// Structure is documented below.

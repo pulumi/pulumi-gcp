@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? MaintenanceInterval { get; set; }
 
         /// <summary>
-        /// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        /// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `InstanceTerminationAction`. Only support `DELETE` `InstanceTerminationAction` at this point. Structure is documented below.
         /// </summary>
         [Input("maxRunDuration")]
         public Input<Inputs.RegionInstanceTemplateSchedulingMaxRunDurationGetArgs>? MaxRunDuration { get; set; }
@@ -116,8 +116,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-        /// `preemptible` should be `true` and `automatic_restart` should be
-        /// `false`. For more info about
+        /// `Preemptible` should be `True` and `AutomaticRestart` should be
+        /// `False`. For more info about
         /// `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         /// </summary>
         [Input("provisioningModel")]

@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.OsConfig
         /// <summary>
         /// Required. Action to be done by the orchestrator in
         /// `projects/{project_id}/zones/{zone_id}` locations defined by the
-        /// `orchestration_scope`. Allowed values:
+        /// `OrchestrationScope`. Allowed values:
         /// - `UPSERT` - Orchestrator will create or update target resources.
         /// - `DELETE` - Orchestrator will delete target resources, if they exist
         /// </summary>
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.OsConfig
         /// <summary>
         /// Optional. Labels as key value pairs
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.Gcp.OsConfig
         /// <summary>
         /// Required. Action to be done by the orchestrator in
         /// `projects/{project_id}/zones/{zone_id}` locations defined by the
-        /// `orchestration_scope`. Allowed values:
+        /// `OrchestrationScope`. Allowed values:
         /// - `UPSERT` - Orchestrator will create or update target resources.
         /// - `DELETE` - Orchestrator will delete target resources, if they exist
         /// </summary>
@@ -310,7 +310,7 @@ namespace Pulumi.Gcp.OsConfig
         /// <summary>
         /// Optional. Labels as key value pairs
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -375,7 +375,7 @@ namespace Pulumi.Gcp.OsConfig
         /// <summary>
         /// Required. Action to be done by the orchestrator in
         /// `projects/{project_id}/zones/{zone_id}` locations defined by the
-        /// `orchestration_scope`. Allowed values:
+        /// `OrchestrationScope`. Allowed values:
         /// - `UPSERT` - Orchestrator will create or update target resources.
         /// - `DELETE` - Orchestrator will delete target resources, if they exist
         /// </summary>
@@ -416,7 +416,7 @@ namespace Pulumi.Gcp.OsConfig
         /// <summary>
         /// Optional. Labels as key value pairs
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

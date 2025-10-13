@@ -18,7 +18,7 @@ public final class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanc
      */
     private List<String> machineTypes;
     /**
-     * @return The name of the instance group. Either `name` or `self_link` must be provided.
+     * @return The name of the instance group. Either `name` or `selfLink` must be provided.
      * 
      */
     private String name;
@@ -37,7 +37,7 @@ public final class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanc
         return this.machineTypes;
     }
     /**
-     * @return The name of the instance group. Either `name` or `self_link` must be provided.
+     * @return The name of the instance group. Either `name` or `selfLink` must be provided.
      * 
      */
     public String name() {

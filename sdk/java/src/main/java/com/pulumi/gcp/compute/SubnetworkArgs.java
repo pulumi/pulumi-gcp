@@ -81,7 +81,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
      * non-overlapping within a network. Only IPv4 is supported.
-     * Field is optional when `reserved_internal_range` is defined, otherwise required.
+     * Field is optional when `reservedInternalRange` is defined, otherwise required.
      * 
      */
     @Import(name="ipCidrRange")
@@ -92,7 +92,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
      * non-overlapping within a network. Only IPv4 is supported.
-     * Field is optional when `reserved_internal_range` is defined, otherwise required.
+     * Field is optional when `reservedInternalRange` is defined, otherwise required.
      * 
      */
     public Optional<Output<String>> ipCidrRange() {
@@ -132,7 +132,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
-     * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+     * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
      * cannot enable direct path.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
@@ -142,7 +142,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
-     * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+     * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
      * cannot enable direct path.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
@@ -395,9 +395,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Controls the removal behavior of secondary_ip_range.
-     * When false, removing secondary_ip_range from config will not produce a diff as
+     * When false, removing secondaryIpRange from config will not produce a diff as
      * the provider will default to the API&#39;s value.
-     * When true, the provider will treat removing secondary_ip_range as sending an
+     * When true, the provider will treat removing secondaryIpRange as sending an
      * empty list of secondary IP ranges to the API.
      * Defaults to false.
      * 
@@ -407,9 +407,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Controls the removal behavior of secondary_ip_range.
-     * When false, removing secondary_ip_range from config will not produce a diff as
+     * When false, removing secondaryIpRange from config will not produce a diff as
      * the provider will default to the API&#39;s value.
-     * When true, the provider will treat removing secondary_ip_range as sending an
+     * When true, the provider will treat removing secondaryIpRange as sending an
      * empty list of secondary IP ranges to the API.
      * Defaults to false.
      * 
@@ -558,7 +558,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
          * Provide this property when you create the subnetwork. For example,
          * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
          * non-overlapping within a network. Only IPv4 is supported.
-         * Field is optional when `reserved_internal_range` is defined, otherwise required.
+         * Field is optional when `reservedInternalRange` is defined, otherwise required.
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
          * Provide this property when you create the subnetwork. For example,
          * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
          * non-overlapping within a network. Only IPv4 is supported.
-         * Field is optional when `reserved_internal_range` is defined, otherwise required.
+         * Field is optional when `reservedInternalRange` is defined, otherwise required.
          * 
          * @return builder
          * 
@@ -621,7 +621,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipv6AccessType The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
-         * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+         * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
          * cannot enable direct path.
          * Possible values are: `EXTERNAL`, `INTERNAL`.
          * 
@@ -635,7 +635,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipv6AccessType The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
-         * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+         * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
          * cannot enable direct path.
          * Possible values are: `EXTERNAL`, `INTERNAL`.
          * 
@@ -976,9 +976,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sendSecondaryIpRangeIfEmpty Controls the removal behavior of secondary_ip_range.
-         * When false, removing secondary_ip_range from config will not produce a diff as
+         * When false, removing secondaryIpRange from config will not produce a diff as
          * the provider will default to the API&#39;s value.
-         * When true, the provider will treat removing secondary_ip_range as sending an
+         * When true, the provider will treat removing secondaryIpRange as sending an
          * empty list of secondary IP ranges to the API.
          * Defaults to false.
          * 
@@ -992,9 +992,9 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sendSecondaryIpRangeIfEmpty Controls the removal behavior of secondary_ip_range.
-         * When false, removing secondary_ip_range from config will not produce a diff as
+         * When false, removing secondaryIpRange from config will not produce a diff as
          * the provider will default to the API&#39;s value.
-         * When true, the provider will treat removing secondary_ip_range as sending an
+         * When true, the provider will treat removing secondaryIpRange as sending an
          * empty list of secondary IP ranges to the API.
          * Defaults to false.
          * 

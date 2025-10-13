@@ -56,14 +56,14 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+     * Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
      * 
      */
     @Import(name="createPodRange")
     private @Nullable Output<Boolean> createPodRange;
 
     /**
-     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
      * 
      */
     public Optional<Output<Boolean>> createPodRange() {
@@ -131,14 +131,14 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+     * The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
      * 
      */
     @Import(name="podRange")
     private @Nullable Output<String> podRange;
 
     /**
-     * @return The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+     * @return The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
      * 
      */
     public Optional<Output<String>> podRange() {
@@ -261,7 +261,7 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param createPodRange Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+         * @param createPodRange Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param createPodRange Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+         * @param createPodRange Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param podRange The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+         * @param podRange The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param podRange The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+         * @param podRange The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
          * 
          * @return builder
          * 

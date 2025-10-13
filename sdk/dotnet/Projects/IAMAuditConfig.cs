@@ -501,7 +501,7 @@ namespace Pulumi.Gcp.Projects
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `LogTypes` specified in each `AuditLogConfig` are enabled, and the `ExemptedMembers` in each `AuditLogConfig` are exempted.
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
@@ -572,7 +572,7 @@ namespace Pulumi.Gcp.Projects
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `LogTypes` specified in each `AuditLogConfig` are enabled, and the `ExemptedMembers` in each `AuditLogConfig` are exempted.
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
@@ -611,7 +611,7 @@ namespace Pulumi.Gcp.Projects
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `LogTypes` specified in each `AuditLogConfig` are enabled, and the `ExemptedMembers` in each `AuditLogConfig` are exempted.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }

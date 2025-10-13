@@ -18,7 +18,7 @@ public final class TargetGke {
      */
     private @Nullable String cluster;
     /**
-     * @return Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+     * @return Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dnsEndpoint` and `internalIp` cannot be set to true.
      * 
      */
     private @Nullable Boolean dnsEndpoint;
@@ -42,7 +42,7 @@ public final class TargetGke {
         return Optional.ofNullable(this.cluster);
     }
     /**
-     * @return Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+     * @return Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dnsEndpoint` and `internalIp` cannot be set to true.
      * 
      */
     public Optional<Boolean> dnsEndpoint() {

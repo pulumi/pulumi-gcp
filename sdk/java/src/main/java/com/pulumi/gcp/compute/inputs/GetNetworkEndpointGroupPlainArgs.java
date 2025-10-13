@@ -16,7 +16,7 @@ public final class GetNetworkEndpointGroupPlainArgs extends com.pulumi.resources
 
     /**
      * The Network Endpoint Group name.
-     * Provide either this or a `self_link`.
+     * Provide either this or a `selfLink`.
      * 
      */
     @Import(name="name")
@@ -24,7 +24,7 @@ public final class GetNetworkEndpointGroupPlainArgs extends com.pulumi.resources
 
     /**
      * @return The Network Endpoint Group name.
-     * Provide either this or a `self_link`.
+     * Provide either this or a `selfLink`.
      * 
      */
     public Optional<String> name() {
@@ -107,7 +107,7 @@ public final class GetNetworkEndpointGroupPlainArgs extends com.pulumi.resources
 
         /**
          * @param name The Network Endpoint Group name.
-         * Provide either this or a `self_link`.
+         * Provide either this or a `selfLink`.
          * 
          * @return builder
          * 

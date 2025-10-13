@@ -73,7 +73,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
      * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
      * is set to `true`. Defaults to `ZONAL`.
      * For read pool instances, this field is read-only. The availability type is changed by specifying
-     * the number of nodes (`node_count`).
+     * the number of nodes (`nodeCount`).
      * 
      */
     @Import(name="availabilityType")
@@ -87,7 +87,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
      * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
      * is set to `true`. Defaults to `ZONAL`.
      * For read pool instances, this field is read-only. The availability type is changed by specifying
-     * the number of nodes (`node_count`).
+     * the number of nodes (`nodeCount`).
      * 
      */
     public Optional<Output<String>> availabilityType() {
@@ -221,14 +221,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
+     * Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
      * 
      */
     @Import(name="diskAutoresize")
     private @Nullable Output<Boolean> diskAutoresize;
 
     /**
-     * @return Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
+     * @return Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
      * 
      */
     public Optional<Output<Boolean>> diskAutoresize() {
@@ -251,14 +251,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+     * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<Integer> diskSize;
 
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
      * 
      */
     public Optional<Output<Integer>> diskSize() {
@@ -471,14 +471,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
      * 
      */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
     /**
-     * @return The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * @return The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
      * 
      */
     public Optional<Output<String>> timeZone() {
@@ -624,7 +624,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
          * is set to `true`. Defaults to `ZONAL`.
          * For read pool instances, this field is read-only. The availability type is changed by specifying
-         * the number of nodes (`node_count`).
+         * the number of nodes (`nodeCount`).
          * 
          * @return builder
          * 
@@ -642,7 +642,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
          * is set to `true`. Defaults to `ZONAL`.
          * For read pool instances, this field is read-only. The availability type is changed by specifying
-         * the number of nodes (`node_count`).
+         * the number of nodes (`nodeCount`).
          * 
          * @return builder
          * 
@@ -840,7 +840,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskAutoresize Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
+         * @param diskAutoresize Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
          * 
          * @return builder
          * 
@@ -851,7 +851,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskAutoresize Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
+         * @param diskAutoresize Enables auto-resizing of the storage size. Defaults to `true`. Note that if `diskSize` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in diskSize if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `diskSize`.
          * 
          * @return builder
          * 
@@ -882,7 +882,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
          * 
          * @return builder
          * 
@@ -893,7 +893,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
          * 
          * @return builder
          * 
@@ -1182,7 +1182,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param timeZone The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+         * @param timeZone The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
          * 
          * @return builder
          * 
@@ -1193,7 +1193,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param timeZone The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+         * @param timeZone The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
          * 
          * @return builder
          * 

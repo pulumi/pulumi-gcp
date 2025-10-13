@@ -31,18 +31,18 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? CacheMode;
         /// <summary>
         /// Specifies the maximum allowed TTL for cached content served by this origin. When the
-        /// `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
+        /// `CacheMode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
         /// </summary>
         public readonly int? ClientTtl;
         /// <summary>
         /// Specifies the default TTL for cached content served by this origin for responses
-        /// that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
+        /// that do not have an existing valid TTL (max-age or s-max-age). When the `CacheMode`
         /// is set to "USE_ORIGIN_HEADERS", you must omit this field.
         /// </summary>
         public readonly int? DefaultTtl;
         /// <summary>
         /// Specifies the maximum allowed TTL for cached content served by this origin. When the
-        /// `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
+        /// `CacheMode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
         /// </summary>
         public readonly int? MaxTtl;
         /// <summary>

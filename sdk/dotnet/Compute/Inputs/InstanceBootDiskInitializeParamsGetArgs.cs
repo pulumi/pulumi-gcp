@@ -13,21 +13,21 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceBootDiskInitializeParamsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+        /// The architecture of the attached disk. Valid values are `ARM64` or `X8664`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
 
         /// <summary>
         /// Whether this disk is using confidential compute mode.
-        /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
+        /// Note: Only supported on hyperdisk skus, DiskEncryptionKey is required when setting to true.
         /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }
 
         /// <summary>
         /// The image from which to initialize this disk. This can be
-        /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+        /// one of: the image's `SelfLink`, `projects/{project}/global/images/{image}`,
         /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
         /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
         /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
-        /// A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
+        /// A list of SelfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }

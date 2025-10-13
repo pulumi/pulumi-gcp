@@ -16,7 +16,7 @@ public final class GetAppleAppPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetAppleAppPlainArgs Empty = new GetAppleAppPlainArgs();
 
     /**
-     * The app_id of name of the Firebase iosApp.
+     * The appId of name of the Firebase iosApp.
      * 
      * ***
      * 
@@ -25,7 +25,7 @@ public final class GetAppleAppPlainArgs extends com.pulumi.resources.InvokeArgs 
     private String appId;
 
     /**
-     * @return The app_id of name of the Firebase iosApp.
+     * @return The appId of name of the Firebase iosApp.
      * 
      * ***
      * 
@@ -77,7 +77,7 @@ public final class GetAppleAppPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param appId The app_id of name of the Firebase iosApp.
+         * @param appId The appId of name of the Firebase iosApp.
          * 
          * ***
          * 

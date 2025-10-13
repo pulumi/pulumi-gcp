@@ -23,7 +23,7 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_match_config_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+     * &lt;a name=&#34;nestedMatchConfigLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
     private List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs;
@@ -47,7 +47,7 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_match_config_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+     * &lt;a name=&#34;nestedMatchConfigLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
     public List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs() {

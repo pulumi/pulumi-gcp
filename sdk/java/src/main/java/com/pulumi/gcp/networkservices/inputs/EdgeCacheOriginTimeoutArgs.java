@@ -59,7 +59,7 @@ public final class EdgeCacheOriginTimeoutArgs extends com.pulumi.resources.Resou
      * The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
      * If the response headers have already been written to the connection, the response will be truncated and logged.
      * 
-     * &lt;a name=&#34;nested_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+     * &lt;a name=&#34;nestedAwsV4Authentication&#34;&gt;&lt;/a&gt;The `awsV4Authentication` block supports:
      * 
      */
     @Import(name="readTimeout")
@@ -71,7 +71,7 @@ public final class EdgeCacheOriginTimeoutArgs extends com.pulumi.resources.Resou
      * The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
      * If the response headers have already been written to the connection, the response will be truncated and logged.
      * 
-     * &lt;a name=&#34;nested_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+     * &lt;a name=&#34;nestedAwsV4Authentication&#34;&gt;&lt;/a&gt;The `awsV4Authentication` block supports:
      * 
      */
     public Optional<Output<String>> readTimeout() {
@@ -184,7 +184,7 @@ public final class EdgeCacheOriginTimeoutArgs extends com.pulumi.resources.Resou
          * The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
          * If the response headers have already been written to the connection, the response will be truncated and logged.
          * 
-         * &lt;a name=&#34;nested_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+         * &lt;a name=&#34;nestedAwsV4Authentication&#34;&gt;&lt;/a&gt;The `awsV4Authentication` block supports:
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class EdgeCacheOriginTimeoutArgs extends com.pulumi.resources.Resou
          * The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
          * If the response headers have already been written to the connection, the response will be truncated and logged.
          * 
-         * &lt;a name=&#34;nested_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+         * &lt;a name=&#34;nestedAwsV4Authentication&#34;&gt;&lt;/a&gt;The `awsV4Authentication` block supports:
          * 
          * @return builder
          * 

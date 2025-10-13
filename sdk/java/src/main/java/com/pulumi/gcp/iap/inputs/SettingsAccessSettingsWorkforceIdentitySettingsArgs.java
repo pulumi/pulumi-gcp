@@ -21,7 +21,7 @@ public final class SettingsAccessSettingsWorkforceIdentitySettingsArgs extends c
      * federation services.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_access_settings_workforce_identity_settings_oauth2&#34;&gt;&lt;/a&gt;The `oauth2` block supports:
+     * &lt;a name=&#34;nestedAccessSettingsWorkforceIdentitySettingsOauth2&#34;&gt;&lt;/a&gt;The `oauth2` block supports:
      * 
      */
     @Import(name="oauth2")
@@ -32,7 +32,7 @@ public final class SettingsAccessSettingsWorkforceIdentitySettingsArgs extends c
      * federation services.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_access_settings_workforce_identity_settings_oauth2&#34;&gt;&lt;/a&gt;The `oauth2` block supports:
+     * &lt;a name=&#34;nestedAccessSettingsWorkforceIdentitySettingsOauth2&#34;&gt;&lt;/a&gt;The `oauth2` block supports:
      * 
      */
     public Optional<Output<SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args>> oauth2() {
@@ -84,7 +84,7 @@ public final class SettingsAccessSettingsWorkforceIdentitySettingsArgs extends c
          * federation services.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_access_settings_workforce_identity_settings_oauth2&#34;&gt;&lt;/a&gt;The `oauth2` block supports:
+         * &lt;a name=&#34;nestedAccessSettingsWorkforceIdentitySettingsOauth2&#34;&gt;&lt;/a&gt;The `oauth2` block supports:
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class SettingsAccessSettingsWorkforceIdentitySettingsArgs extends c
          * federation services.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_access_settings_workforce_identity_settings_oauth2&#34;&gt;&lt;/a&gt;The `oauth2` block supports:
+         * &lt;a name=&#34;nestedAccessSettingsWorkforceIdentitySettingsOauth2&#34;&gt;&lt;/a&gt;The `oauth2` block supports:
          * 
          * @return builder
          * 

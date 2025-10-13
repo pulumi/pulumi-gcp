@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The number of nodes allocated to this instance partition. One node equals
-        /// 1000 processing units. Exactly one of either node_count or processing_units
+        /// 1000 processing units. Exactly one of either NodeCount or ProcessingUnits
         /// must be present.
         /// </summary>
         [Output("nodeCount")]
@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The number of processing units allocated to this instance partition.
-        /// Exactly one of either node_count or processing_units must be present.
+        /// Exactly one of either NodeCount or ProcessingUnits must be present.
         /// </summary>
         [Output("processingUnits")]
         public Output<int?> ProcessingUnits { get; private set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The number of nodes allocated to this instance partition. One node equals
-        /// 1000 processing units. Exactly one of either node_count or processing_units
+        /// 1000 processing units. Exactly one of either NodeCount or ProcessingUnits
         /// must be present.
         /// </summary>
         [Input("nodeCount")]
@@ -222,7 +222,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The number of processing units allocated to this instance partition.
-        /// Exactly one of either node_count or processing_units must be present.
+        /// Exactly one of either NodeCount or ProcessingUnits must be present.
         /// </summary>
         [Input("processingUnits")]
         public Input<int>? ProcessingUnits { get; set; }
@@ -272,7 +272,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The number of nodes allocated to this instance partition. One node equals
-        /// 1000 processing units. Exactly one of either node_count or processing_units
+        /// 1000 processing units. Exactly one of either NodeCount or ProcessingUnits
         /// must be present.
         /// </summary>
         [Input("nodeCount")]
@@ -280,7 +280,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The number of processing units allocated to this instance partition.
-        /// Exactly one of either node_count or processing_units must be present.
+        /// Exactly one of either NodeCount or ProcessingUnits must be present.
         /// </summary>
         [Input("processingUnits")]
         public Input<int>? ProcessingUnits { get; set; }

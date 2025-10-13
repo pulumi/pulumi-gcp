@@ -36,7 +36,7 @@ public final class InstanceGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The list of instances in the group, in `self_link` format.
+     * The list of instances in the group, in `selfLink` format.
      * When adding instances they must all be in the same network and zone as the instance group.
      * 
      */
@@ -44,7 +44,7 @@ public final class InstanceGroupState extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<List<String>> instances;
 
     /**
-     * @return The list of instances in the group, in `self_link` format.
+     * @return The list of instances in the group, in `selfLink` format.
      * When adding instances they must all be in the same network and zone as the instance group.
      * 
      */
@@ -233,7 +233,7 @@ public final class InstanceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instances The list of instances in the group, in `self_link` format.
+         * @param instances The list of instances in the group, in `selfLink` format.
          * When adding instances they must all be in the same network and zone as the instance group.
          * 
          * @return builder
@@ -245,7 +245,7 @@ public final class InstanceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instances The list of instances in the group, in `self_link` format.
+         * @param instances The list of instances in the group, in `selfLink` format.
          * When adding instances they must all be in the same network and zone as the instance group.
          * 
          * @return builder
@@ -256,7 +256,7 @@ public final class InstanceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instances The list of instances in the group, in `self_link` format.
+         * @param instances The list of instances in the group, in `selfLink` format.
          * When adding instances they must all be in the same network and zone as the instance group.
          * 
          * @return builder

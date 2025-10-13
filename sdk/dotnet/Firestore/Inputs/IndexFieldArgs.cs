@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Firestore.Inputs
     public sealed class IndexFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+        /// Indicates that this field supports operations on arrayValues. Only one of `Order`, `arrayConfig`, and
         /// `vectorConfig` can be specified.
         /// Possible values are: `CONTAINS`.
         /// </summary>
@@ -28,14 +28,14 @@ namespace Pulumi.Gcp.Firestore.Inputs
 
         /// <summary>
         /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-        /// Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
+        /// Only one of `Order`, `arrayConfig`, and `vectorConfig` can be specified.
         /// Possible values are: `ASCENDING`, `DESCENDING`.
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
         /// <summary>
-        /// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+        /// Indicates that this field supports vector search operations. Only one of `Order`, `arrayConfig`, and
         /// `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
         /// Structure is documented below.
         /// </summary>

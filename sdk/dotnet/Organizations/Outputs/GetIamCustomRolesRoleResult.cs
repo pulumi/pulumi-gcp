@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Organizations.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+        /// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `Id`, this field can be used as a reference in other resources such as IAM role bindings.
         /// </summary>
         public readonly string Name;
         /// <summary>

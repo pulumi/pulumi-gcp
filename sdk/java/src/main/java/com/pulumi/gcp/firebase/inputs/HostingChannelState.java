@@ -69,7 +69,7 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
     /**
      * Text labels used for extra metadata and/or filtering
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -78,7 +78,7 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
     /**
      * @return Text labels used for extra metadata and/or filtering
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -152,7 +152,7 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Input only. A time-to-live for this channel. Sets `expire_time` to the provided
+     * Input only. A time-to-live for this channel. Sets `expireTime` to the provided
      * duration past the time of the request. A duration in seconds with up to nine fractional
      * digits, terminated by &#39;s&#39;. Example: &#34;86400s&#34; (one day).
      * 
@@ -161,7 +161,7 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> ttl;
 
     /**
-     * @return Input only. A time-to-live for this channel. Sets `expire_time` to the provided
+     * @return Input only. A time-to-live for this channel. Sets `expireTime` to the provided
      * duration past the time of the request. A duration in seconds with up to nine fractional
      * digits, terminated by &#39;s&#39;. Example: &#34;86400s&#34; (one day).
      * 
@@ -272,7 +272,7 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels Text labels used for extra metadata and/or filtering
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels Text labels used for extra metadata and/or filtering
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ttl Input only. A time-to-live for this channel. Sets `expire_time` to the provided
+         * @param ttl Input only. A time-to-live for this channel. Sets `expireTime` to the provided
          * duration past the time of the request. A duration in seconds with up to nine fractional
          * digits, terminated by &#39;s&#39;. Example: &#34;86400s&#34; (one day).
          * 
@@ -398,7 +398,7 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ttl Input only. A time-to-live for this channel. Sets `expire_time` to the provided
+         * @param ttl Input only. A time-to-live for this channel. Sets `expireTime` to the provided
          * duration past the time of the request. A duration in seconds with up to nine fractional
          * digits, terminated by &#39;s&#39;. Example: &#34;86400s&#34; (one day).
          * 

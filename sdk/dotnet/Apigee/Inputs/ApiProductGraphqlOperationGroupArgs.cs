@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Apigee.Inputs
     {
         /// <summary>
         /// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
-        /// Possible values are: `proxy`, `remoteservice`.
+        /// Possible values are: `Proxy`, `Remoteservice`.
         /// </summary>
         [Input("operationConfigType")]
         public Input<string>? OperationConfigType { get; set; }

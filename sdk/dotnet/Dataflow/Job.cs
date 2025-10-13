@@ -96,9 +96,9 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
     /// 
-    /// A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "drain". When `on_delete` is set to `"drain"` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
+    /// A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "drain". When `OnDelete` is set to `"drain"` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
     /// 
-    /// You can potentially short-circuit the wait by setting `skip_wait_on_job_termination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a random_id resource, for example:
+    /// You can potentially short-circuit the wait by setting `SkipWaitOnJobTermination` to `True`, but beware that unless you take active steps to ensure that the job `Name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a RandomId resource, for example:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.Dataflow
     public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        /// List of experiments that should be used by the job. An example value is `["EnableStackdriverAgentMetrics"]`.
         /// </summary>
         [Output("additionalExperiments")]
         public Output<ImmutableArray<string>> AdditionalExperiments { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// User labels to be specified for the job. Keys and values should follow the restrictions
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -258,7 +258,7 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string?> ServiceAccountEmail { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+        /// If set to `True`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         /// </summary>
         [Output("skipWaitOnJobTermination")]
         public Output<bool?> SkipWaitOnJobTermination { get; private set; } = null!;
@@ -362,7 +362,7 @@ namespace Pulumi.Gcp.Dataflow
         private InputList<string>? _additionalExperiments;
 
         /// <summary>
-        /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        /// List of experiments that should be used by the job. An example value is `["EnableStackdriverAgentMetrics"]`.
         /// </summary>
         public InputList<string> AdditionalExperiments
         {
@@ -394,7 +394,7 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// User labels to be specified for the job. Keys and values should follow the restrictions
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -465,7 +465,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? ServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+        /// If set to `True`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         /// </summary>
         [Input("skipWaitOnJobTermination")]
         public Input<bool>? SkipWaitOnJobTermination { get; set; }
@@ -520,7 +520,7 @@ namespace Pulumi.Gcp.Dataflow
         private InputList<string>? _additionalExperiments;
 
         /// <summary>
-        /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        /// List of experiments that should be used by the job. An example value is `["EnableStackdriverAgentMetrics"]`.
         /// </summary>
         public InputList<string> AdditionalExperiments
         {
@@ -574,7 +574,7 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// User labels to be specified for the job. Keys and values should follow the restrictions
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -661,7 +661,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? ServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+        /// If set to `True`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         /// </summary>
         [Input("skipWaitOnJobTermination")]
         public Input<bool>? SkipWaitOnJobTermination { get; set; }

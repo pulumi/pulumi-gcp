@@ -21,9 +21,9 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
     /**
      * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
      * with ValueType = BOOL. The window is good if any true values
-     * appear in the window. One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
+     * appear in the window. One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
      * 
      */
     @Import(name="goodBadMetricFilter")
@@ -32,9 +32,9 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
     /**
      * @return A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
      * with ValueType = BOOL. The window is good if any true values
-     * appear in the window. One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
+     * appear in the window. One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
      * 
      */
     public Optional<Output<String>> goodBadMetricFilter() {
@@ -43,9 +43,9 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Criterion that describes a window as good if its performance is
-     * high enough. One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
+     * high enough. One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
      * Structure is documented below.
      * 
      */
@@ -54,9 +54,9 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Criterion that describes a window as good if its performance is
-     * high enough. One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
+     * high enough. One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
      * Structure is documented below.
      * 
      */
@@ -67,10 +67,10 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
     /**
      * Criterion that describes a window as good if the metric&#39;s value
      * is in a good range, *averaged* across returned streams.
-     * One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
-     * Average value X of `time_series` should satisfy
+     * One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
+     * Average value X of `timeSeries` should satisfy
      * `range.min &lt;= X &lt;= range.max` for a good window.
      * Structure is documented below.
      * 
@@ -81,10 +81,10 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
     /**
      * @return Criterion that describes a window as good if the metric&#39;s value
      * is in a good range, *averaged* across returned streams.
-     * One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
-     * Average value X of `time_series` should satisfy
+     * One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
+     * Average value X of `timeSeries` should satisfy
      * `range.min &lt;= X &lt;= range.max` for a good window.
      * Structure is documented below.
      * 
@@ -96,11 +96,11 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
     /**
      * Criterion that describes a window as good if the metric&#39;s value
      * is in a good range, *summed* across returned streams.
-     * Summed value `X` of `time_series` should satisfy
+     * Summed value `X` of `timeSeries` should satisfy
      * `range.min &lt;= X &lt;= range.max` for a good window.
-     * One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
+     * One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
      * Structure is documented below.
      * 
      */
@@ -110,11 +110,11 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
     /**
      * @return Criterion that describes a window as good if the metric&#39;s value
      * is in a good range, *summed* across returned streams.
-     * Summed value `X` of `time_series` should satisfy
+     * Summed value `X` of `timeSeries` should satisfy
      * `range.min &lt;= X &lt;= range.max` for a good window.
-     * One of `good_bad_metric_filter`,
-     * `good_total_ratio_threshold`, `metric_mean_in_range`,
-     * `metric_sum_in_range` must be set for `windows_based_sli`.
+     * One of `goodBadMetricFilter`,
+     * `goodTotalRatioThreshold`, `metricMeanInRange`,
+     * `metricSumInRange` must be set for `windowsBasedSli`.
      * Structure is documented below.
      * 
      */
@@ -172,9 +172,9 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
         /**
          * @param goodBadMetricFilter A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
          * with ValueType = BOOL. The window is good if any true values
-         * appear in the window. One of `good_bad_metric_filter`,
-         * `good_total_ratio_threshold`, `metric_mean_in_range`,
-         * `metric_sum_in_range` must be set for `windows_based_sli`.
+         * appear in the window. One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.
          * 
          * @return builder
          * 
@@ -187,9 +187,9 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
         /**
          * @param goodBadMetricFilter A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
          * with ValueType = BOOL. The window is good if any true values
-         * appear in the window. One of `good_bad_metric_filter`,
-         * `good_total_ratio_threshold`, `metric_mean_in_range`,
-         * `metric_sum_in_range` must be set for `windows_based_sli`.
+         * appear in the window. One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.
          * 
          * @return builder
          * 
@@ -200,9 +200,9 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param goodTotalRatioThreshold Criterion that describes a window as good if its performance is
-         * high enough. One of `good_bad_metric_filter`,
-         * `good_total_ratio_threshold`, `metric_mean_in_range`,
-         * `metric_sum_in_range` must be set for `windows_based_sli`.
+         * high enough. One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.
          * Structure is documented below.
          * 
          * @return builder
@@ -215,9 +215,9 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param goodTotalRatioThreshold Criterion that describes a window as good if its performance is
-         * high enough. One of `good_bad_metric_filter`,
-         * `good_total_ratio_threshold`, `metric_mean_in_range`,
-         * `metric_sum_in_range` must be set for `windows_based_sli`.
+         * high enough. One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.
          * Structure is documented below.
          * 
          * @return builder
@@ -230,10 +230,10 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
         /**
          * @param metricMeanInRange Criterion that describes a window as good if the metric&#39;s value
          * is in a good range, *averaged* across returned streams.
-         * One of `good_bad_metric_filter`,
-         * `good_total_ratio_threshold`, `metric_mean_in_range`,
-         * `metric_sum_in_range` must be set for `windows_based_sli`.
-         * Average value X of `time_series` should satisfy
+         * One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.
+         * Average value X of `timeSeries` should satisfy
          * `range.min &lt;= X &lt;= range.max` for a good window.
          * Structure is documented below.
          * 
@@ -248,10 +248,10 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
         /**
          * @param metricMeanInRange Criterion that describes a window as good if the metric&#39;s value
          * is in a good range, *averaged* across returned streams.
-         * One of `good_bad_metric_filter`,
-         * `good_total_ratio_threshold`, `metric_mean_in_range`,
-         * `metric_sum_in_range` must be set for `windows_based_sli`.
-         * Average value X of `time_series` should satisfy
+         * One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.
+         * Average value X of `timeSeries` should satisfy
          * `range.min &lt;= X &lt;= range.max` for a good window.
          * Structure is documented below.
          * 
@@ -265,11 +265,11 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
         /**
          * @param metricSumInRange Criterion that describes a window as good if the metric&#39;s value
          * is in a good range, *summed* across returned streams.
-         * Summed value `X` of `time_series` should satisfy
+         * Summed value `X` of `timeSeries` should satisfy
          * `range.min &lt;= X &lt;= range.max` for a good window.
-         * One of `good_bad_metric_filter`,
-         * `good_total_ratio_threshold`, `metric_mean_in_range`,
-         * `metric_sum_in_range` must be set for `windows_based_sli`.
+         * One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.
          * Structure is documented below.
          * 
          * @return builder
@@ -283,11 +283,11 @@ public final class SloWindowsBasedSliArgs extends com.pulumi.resources.ResourceA
         /**
          * @param metricSumInRange Criterion that describes a window as good if the metric&#39;s value
          * is in a good range, *summed* across returned streams.
-         * Summed value `X` of `time_series` should satisfy
+         * Summed value `X` of `timeSeries` should satisfy
          * `range.min &lt;= X &lt;= range.max` for a good window.
-         * One of `good_bad_metric_filter`,
-         * `good_total_ratio_threshold`, `metric_mean_in_range`,
-         * `metric_sum_in_range` must be set for `windows_based_sli`.
+         * One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.
          * Structure is documented below.
          * 
          * @return builder

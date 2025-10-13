@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class SloWindowsBasedSliMetricSumInRange
     {
         /// <summary>
-        /// Range of numerical values. The computed good_service
+        /// Range of numerical values. The computed GoodService
         /// will be the count of values x in the Distribution such
         /// that range.min &lt;= x &lt;= range.max. inclusive of min and
         /// max. Open ranges can be defined by setting

@@ -18,14 +18,14 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
     public static final ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs Empty = new ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs();
 
     /**
-     * Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+     * Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
      * 
      */
     @Import(name="batchNodeCount")
     private @Nullable Output<Integer> batchNodeCount;
 
     /**
-     * @return Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+     * @return Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
      * 
      */
     public Optional<Output<Integer>> batchNodeCount() {
@@ -33,14 +33,14 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
     }
 
     /**
-     * Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+     * Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batchPercentage or batchNodeCount can be specified.
      * 
      */
     @Import(name="batchPercentage")
     private @Nullable Output<Double> batchPercentage;
 
     /**
-     * @return Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+     * @return Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batchPercentage or batchNodeCount can be specified.
      * 
      */
     public Optional<Output<Double>> batchPercentage() {
@@ -89,7 +89,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
         }
 
         /**
-         * @param batchNodeCount Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+         * @param batchNodeCount Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
         }
 
         /**
-         * @param batchNodeCount Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+         * @param batchNodeCount Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
         }
 
         /**
-         * @param batchPercentage Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+         * @param batchPercentage Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batchPercentage or batchNodeCount can be specified.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
         }
 
         /**
-         * @param batchPercentage Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+         * @param batchPercentage Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batchPercentage or batchNodeCount can be specified.
          * 
          * @return builder
          * 

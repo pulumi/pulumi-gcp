@@ -20,23 +20,23 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
         public Input<Inputs.RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs>? EngineFeaturesConfig { get; set; }
 
         /// <summary>
-        /// The optimization objective. e.g., `cvr`.
+        /// The optimization objective. e.g., `Cvr`.
         /// This field together with MediaRecommendationEngineConfig.type describes
         /// engine metadata to use to control engine training and serving.
-        /// Currently supported values: `ctr`, `cvr`.
+        /// Currently supported values: `Ctr`, `Cvr`.
         /// If not specified, we choose default based on engine type. Default depends on type of recommendation:
-        /// `recommended-for-you` =&gt; `ctr`
-        /// `others-you-may-like` =&gt; `ctr`
+        /// `recommended-for-you` =&gt; `Ctr`
+        /// `others-you-may-like` =&gt; `Ctr`
         /// </summary>
         [Input("optimizationObjective")]
         public Input<string>? OptimizationObjective { get; set; }
 
         /// <summary>
         /// Name and value of the custom threshold for cvr optimization_objective.
-        /// For target_field `watch-time`, target_field_value must be an integer
+        /// For TargetField `watch-time`, TargetFieldValue must be an integer
         /// value indicating the media progress time in seconds between (0, 86400]
         /// (excludes 0, includes 86400) (e.g., 90).
-        /// For target_field `watch-percentage`, the target_field_value must be a
+        /// For TargetField `watch-percentage`, the TargetFieldValue must be a
         /// valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
         /// Structure is documented below.
         /// </summary>

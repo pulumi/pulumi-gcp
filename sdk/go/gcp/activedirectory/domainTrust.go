@@ -22,6 +22,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Active Directory Domain Trust Basic
+//
 // ## Import
 //
 // DomainTrust can be imported using any of these accepted formats:

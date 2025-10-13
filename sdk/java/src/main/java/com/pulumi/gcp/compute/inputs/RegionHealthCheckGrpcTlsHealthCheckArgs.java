@@ -41,7 +41,7 @@ public final class RegionHealthCheckGrpcTlsHealthCheckArgs extends com.pulumi.re
 
     /**
      * The port number for the health check request.
-     * Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * Must be specified if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
      * 
      */
     @Import(name="port")
@@ -49,7 +49,7 @@ public final class RegionHealthCheckGrpcTlsHealthCheckArgs extends com.pulumi.re
 
     /**
      * @return The port number for the health check request.
-     * Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * Must be specified if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -146,7 +146,7 @@ public final class RegionHealthCheckGrpcTlsHealthCheckArgs extends com.pulumi.re
 
         /**
          * @param port The port number for the health check request.
-         * Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         * Must be specified if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class RegionHealthCheckGrpcTlsHealthCheckArgs extends com.pulumi.re
 
         /**
          * @param port The port number for the health check request.
-         * Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         * Must be specified if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          * 
          * @return builder
          * 

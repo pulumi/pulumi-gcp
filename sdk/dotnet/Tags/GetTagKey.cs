@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Tags
     public static class GetTagKey
     {
         /// <summary>
-        /// Get a tag key by org or project `parent` and `short_name`.
+        /// Get a tag key by org or project `Parent` and `ShortName`.
         /// 
         /// ## Example Usage
         /// 
@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Tags
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagKeyResult>("gcp:tags/getTagKey:getTagKey", args ?? new GetTagKeyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get a tag key by org or project `parent` and `short_name`.
+        /// Get a tag key by org or project `Parent` and `ShortName`.
         /// 
         /// ## Example Usage
         /// 
@@ -94,7 +94,7 @@ namespace Pulumi.Gcp.Tags
             => global::Pulumi.Deployment.Instance.Invoke<GetTagKeyResult>("gcp:tags/getTagKey:getTagKey", args ?? new GetTagKeyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get a tag key by org or project `parent` and `short_name`.
+        /// Get a tag key by org or project `Parent` and `ShortName`.
         /// 
         /// ## Example Usage
         /// 

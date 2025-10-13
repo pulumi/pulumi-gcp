@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The domain name of the Organization.
         /// 
-        /// &gt; **NOTE:** One of `organization` or `domain` must be specified.
+        /// &gt; **NOTE:** One of `Organization` or `Domain` must be specified.
         /// </summary>
         [Input("domain")]
         public string? Domain { get; set; }
@@ -124,7 +124,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The domain name of the Organization.
         /// 
-        /// &gt; **NOTE:** One of `organization` or `domain` must be specified.
+        /// &gt; **NOTE:** One of `Organization` or `Domain` must be specified.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }

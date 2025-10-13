@@ -13,20 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateTemplatePassthroughExtensions {
     /**
-     * @return Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+     * @return Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
      * Structure is documented below.
      * 
      */
     private @Nullable List<CertificateTemplatePassthroughExtensionsAdditionalExtension> additionalExtensions;
     /**
-     * @return Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+     * @return Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
      * 
      */
     private @Nullable List<String> knownExtensions;
 
     private CertificateTemplatePassthroughExtensions() {}
     /**
-     * @return Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+     * @return Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
      * Structure is documented below.
      * 
      */
@@ -34,7 +34,7 @@ public final class CertificateTemplatePassthroughExtensions {
         return this.additionalExtensions == null ? List.of() : this.additionalExtensions;
     }
     /**
-     * @return Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+     * @return Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
      * 
      */
     public List<String> knownExtensions() {

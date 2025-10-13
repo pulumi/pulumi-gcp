@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.CloudAsset.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+        /// Location can be `Global`, regional like `us-east1`, or zonal like `us-west1-b`.
         /// </summary>
         public readonly string Location;
         /// <summary>

@@ -261,7 +261,7 @@ namespace Pulumi.Gcp.Diagflow
         /// (Optional, Deprecated)
         /// Determines whether this agent should log conversation queries.
         /// 
-        /// &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+        /// &gt; **Warning:** `EnableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         /// </summary>
         [Output("enableStackdriverLogging")]
         public Output<bool?> EnableStackdriverLogging { get; private set; } = null!;
@@ -484,7 +484,7 @@ namespace Pulumi.Gcp.Diagflow
         /// (Optional, Deprecated)
         /// Determines whether this agent should log conversation queries.
         /// 
-        /// &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+        /// &gt; **Warning:** `EnableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         /// </summary>
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }
@@ -651,7 +651,7 @@ namespace Pulumi.Gcp.Diagflow
         /// (Optional, Deprecated)
         /// Determines whether this agent should log conversation queries.
         /// 
-        /// &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+        /// &gt; **Warning:** `EnableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         /// </summary>
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }

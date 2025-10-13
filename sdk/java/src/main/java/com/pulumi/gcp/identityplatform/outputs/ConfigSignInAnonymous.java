@@ -13,7 +13,7 @@ public final class ConfigSignInAnonymous {
     /**
      * @return Whether anonymous user auth is enabled for the project or not.
      * 
-     * &lt;a name=&#34;nested_sign_in_hash_config&#34;&gt;&lt;/a&gt;The `hash_config` block contains:
+     * &lt;a name=&#34;nestedSignInHashConfig&#34;&gt;&lt;/a&gt;The `hashConfig` block contains:
      * 
      */
     private Boolean enabled;
@@ -22,7 +22,7 @@ public final class ConfigSignInAnonymous {
     /**
      * @return Whether anonymous user auth is enabled for the project or not.
      * 
-     * &lt;a name=&#34;nested_sign_in_hash_config&#34;&gt;&lt;/a&gt;The `hash_config` block contains:
+     * &lt;a name=&#34;nestedSignInHashConfig&#34;&gt;&lt;/a&gt;The `hashConfig` block contains:
      * 
      */
     public Boolean enabled() {

@@ -1232,12 +1232,16 @@ public final class ArtifactregistryFunctions {
     /**
      * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetMavenArtifactResult> getMavenArtifact(GetMavenArtifactArgs args) {
         return getMavenArtifact(args, InvokeOptions.Empty);
     }
     /**
      * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetMavenArtifactResult> getMavenArtifactPlain(GetMavenArtifactPlainArgs args) {
@@ -1246,6 +1250,8 @@ public final class ArtifactregistryFunctions {
     /**
      * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetMavenArtifactResult> getMavenArtifact(GetMavenArtifactArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", TypeShape.of(GetMavenArtifactResult.class), args, Utilities.withVersion(options));
@@ -1253,12 +1259,16 @@ public final class ArtifactregistryFunctions {
     /**
      * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetMavenArtifactResult> getMavenArtifact(GetMavenArtifactArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", TypeShape.of(GetMavenArtifactResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetMavenArtifactResult> getMavenArtifactPlain(GetMavenArtifactPlainArgs args, InvokeOptions options) {
@@ -3092,12 +3102,16 @@ public final class ArtifactregistryFunctions {
     /**
      * This data source fetches information of a tag from a provided Artifact Registry repository.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetTagResult> getTag(GetTagArgs args) {
         return getTag(args, InvokeOptions.Empty);
     }
     /**
      * This data source fetches information of a tag from a provided Artifact Registry repository.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetTagResult> getTagPlain(GetTagPlainArgs args) {
@@ -3106,6 +3120,8 @@ public final class ArtifactregistryFunctions {
     /**
      * This data source fetches information of a tag from a provided Artifact Registry repository.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetTagResult> getTag(GetTagArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:artifactregistry/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
@@ -3113,12 +3129,16 @@ public final class ArtifactregistryFunctions {
     /**
      * This data source fetches information of a tag from a provided Artifact Registry repository.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetTagResult> getTag(GetTagArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:artifactregistry/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source fetches information of a tag from a provided Artifact Registry repository.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetTagResult> getTagPlain(GetTagPlainArgs args, InvokeOptions options) {

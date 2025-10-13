@@ -22,7 +22,7 @@ public final class PolicyAlternativeNameServerConfigTargetNameServerArgs extends
      * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
      * Possible values are: `default`, `private`.
      * 
-     * &lt;a name=&#34;nested_dns64_config&#34;&gt;&lt;/a&gt;The `dns64_config` block supports:
+     * &lt;a name=&#34;nestedDns64Config&#34;&gt;&lt;/a&gt;The `dns64Config` block supports:
      * 
      */
     @Import(name="forwardingPath")
@@ -34,7 +34,7 @@ public final class PolicyAlternativeNameServerConfigTargetNameServerArgs extends
      * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
      * Possible values are: `default`, `private`.
      * 
-     * &lt;a name=&#34;nested_dns64_config&#34;&gt;&lt;/a&gt;The `dns64_config` block supports:
+     * &lt;a name=&#34;nestedDns64Config&#34;&gt;&lt;/a&gt;The `dns64Config` block supports:
      * 
      */
     public Optional<Output<String>> forwardingPath() {
@@ -87,7 +87,7 @@ public final class PolicyAlternativeNameServerConfigTargetNameServerArgs extends
          * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
          * Possible values are: `default`, `private`.
          * 
-         * &lt;a name=&#34;nested_dns64_config&#34;&gt;&lt;/a&gt;The `dns64_config` block supports:
+         * &lt;a name=&#34;nestedDns64Config&#34;&gt;&lt;/a&gt;The `dns64Config` block supports:
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class PolicyAlternativeNameServerConfigTargetNameServerArgs extends
          * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
          * Possible values are: `default`, `private`.
          * 
-         * &lt;a name=&#34;nested_dns64_config&#34;&gt;&lt;/a&gt;The `dns64_config` block supports:
+         * &lt;a name=&#34;nestedDns64Config&#34;&gt;&lt;/a&gt;The `dns64Config` block supports:
          * 
          * @return builder
          * 

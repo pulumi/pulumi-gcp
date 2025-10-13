@@ -14,14 +14,14 @@ namespace Pulumi.Gcp.Firestore.Outputs
     public sealed class FieldIndexConfigIndex
     {
         /// <summary>
-        /// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+        /// Indicates that this field supports operations on arrayValues. Only one of `Order` and `arrayConfig` can
         /// be specified.
         /// Possible values are: `CONTAINS`.
         /// </summary>
         public readonly string? ArrayConfig;
         /// <summary>
         /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=, !=.
-        /// Only one of `order` and `arrayConfig` can be specified.
+        /// Only one of `Order` and `arrayConfig` can be specified.
         /// Possible values are: `ASCENDING`, `DESCENDING`.
         /// </summary>
         public readonly string? Order;

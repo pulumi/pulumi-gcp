@@ -187,7 +187,7 @@ namespace Pulumi.Gcp.Netapp
         /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> ReplicationSchedule { get; private set; } = null!;
 
         /// <summary>
-        /// Reverting a replication can swap source and destination volume roles. This field indicates if the `location` hosts
+        /// Reverting a replication can swap source and destination volume roles. This field indicates if the `Location` hosts
         /// the source or destination volume. For resume and revert and resume operations it is critical to understand
         /// which volume is the source volume, since it will overwrite changes done to the destination volume.
         /// </summary>
@@ -368,7 +368,7 @@ namespace Pulumi.Gcp.Netapp
         /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -515,7 +515,7 @@ namespace Pulumi.Gcp.Netapp
         /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -585,7 +585,7 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? ReplicationSchedule { get; set; }
 
         /// <summary>
-        /// Reverting a replication can swap source and destination volume roles. This field indicates if the `location` hosts
+        /// Reverting a replication can swap source and destination volume roles. This field indicates if the `Location` hosts
         /// the source or destination volume. For resume and revert and resume operations it is critical to understand
         /// which volume is the source volume, since it will overwrite changes done to the destination volume.
         /// </summary>

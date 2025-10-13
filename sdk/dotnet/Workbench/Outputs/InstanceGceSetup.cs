@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Workbench.Outputs
     {
         /// <summary>
         /// The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has
-        /// [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
+        /// [enough vCPUs and memory to support the `MachineType` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
         /// Currently supports only one accelerator configuration.
         /// Structure is documented below.
         /// </summary>

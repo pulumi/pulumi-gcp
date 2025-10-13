@@ -238,6 +238,8 @@ import (
 //	}
 //
 // ```
+// ### Alloydb Cluster Restore
+//
 // ### Alloydb Secondary Cluster Basic
 //
 // ```go

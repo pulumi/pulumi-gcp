@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> CacheControl { get; private set; } = null!;
 
         /// <summary>
-        /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+        /// Data as `String` to be uploaded. Must be defined if `Source` is not. **Note**: The `Content` field is marked as sensitive.
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.Gcp.Storage
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+        /// The name of the object. If you're interpolating the name of this object, see `OutputName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -209,7 +209,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// A path to the data you want to upload. Must be defined
-        /// if `content` is not.
+        /// if `Content` is not.
         /// 
         /// - - -
         /// </summary>
@@ -304,7 +304,7 @@ namespace Pulumi.Gcp.Storage
         private Input<string>? _content;
 
         /// <summary>
-        /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+        /// Data as `String` to be uploaded. Must be defined if `Source` is not. **Note**: The `Content` field is marked as sensitive.
         /// </summary>
         public Input<string>? Content
         {
@@ -396,7 +396,7 @@ namespace Pulumi.Gcp.Storage
         }
 
         /// <summary>
-        /// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+        /// The name of the object. If you're interpolating the name of this object, see `OutputName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -409,7 +409,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// A path to the data you want to upload. Must be defined
-        /// if `content` is not.
+        /// if `Content` is not.
         /// 
         /// - - -
         /// </summary>
@@ -461,7 +461,7 @@ namespace Pulumi.Gcp.Storage
         private Input<string>? _content;
 
         /// <summary>
-        /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+        /// Data as `String` to be uploaded. Must be defined if `Source` is not. **Note**: The `Content` field is marked as sensitive.
         /// </summary>
         public Input<string>? Content
         {
@@ -583,7 +583,7 @@ namespace Pulumi.Gcp.Storage
         }
 
         /// <summary>
-        /// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+        /// The name of the object. If you're interpolating the name of this object, see `OutputName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -609,7 +609,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// A path to the data you want to upload. Must be defined
-        /// if `content` is not.
+        /// if `Content` is not.
         /// 
         /// - - -
         /// </summary>

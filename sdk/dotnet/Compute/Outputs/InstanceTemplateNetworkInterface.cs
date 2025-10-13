@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// is not accessible from the Internet (this means that ssh provisioners will
         /// not work unless you can send traffic to the instance's
         /// network (e.g. via tunnel or because it is running on another cloud instance
-        /// on that network). This block can be specified once per `network_interface`. Structure documented below.
+        /// on that network). This block can be specified once per `NetworkInterface`. Structure documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceTemplateNetworkInterfaceAccessConfig> AccessConfigs;
         /// <summary>
@@ -52,9 +52,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The name or self_link of the network to attach this interface to.
-        /// Use `network` attribute for Legacy or Auto subnetted networks and
-        /// `subnetwork` for custom subnetted networks.
+        /// The name or SelfLink of the network to attach this interface to.
+        /// Use `Network` attribute for Legacy or Auto subnetted networks and
+        /// `Subnetwork` for custom subnetted networks.
         /// </summary>
         public readonly string? Network;
         /// <summary>
@@ -80,8 +80,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? StackType;
         /// <summary>
         /// the name of the subnetwork to attach this interface
-        /// to. The subnetwork must exist in the same `region` this instance will be
-        /// created in. Either `network` or `subnetwork` must be provided.
+        /// to. The subnetwork must exist in the same `Region` this instance will be
+        /// created in. Either `Network` or `Subnetwork` must be provided.
         /// </summary>
         public readonly string? Subnetwork;
         /// <summary>

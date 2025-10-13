@@ -566,7 +566,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
     /**
      * The path to the dump file in Google Cloud Storage,
      * in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
-     * This field and the &#34;dump_flags&#34; field are mutually exclusive.
+     * This field and the &#34;dumpFlags&#34; field are mutually exclusive.
      * 
      */
     @Export(name="dumpPath", refs={String.class}, tree="[0]")
@@ -575,7 +575,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
     /**
      * @return The path to the dump file in Google Cloud Storage,
      * in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
-     * This field and the &#34;dump_flags&#34; field are mutually exclusive.
+     * This field and the &#34;dumpFlags&#34; field are mutually exclusive.
      * 
      */
     public Output<Optional<String>> dumpPath() {
@@ -633,7 +633,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -643,7 +643,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * @return The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

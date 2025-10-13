@@ -624,8 +624,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * &#39;Output only. Additional information about instance health. Example:
-     * healthInfo&#34;: { &#34;docker_proxy_agent_status&#34;: &#34;1&#34;, &#34;docker_status&#34;: &#34;1&#34;, &#34;jupyterlab_api_status&#34;:
-     * &#34;-1&#34;, &#34;jupyterlab_status&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
+     * healthInfo&#34;: { &#34;dockerProxyAgentStatus&#34;: &#34;1&#34;, &#34;dockerStatus&#34;: &#34;1&#34;, &#34;jupyterlabApiStatus&#34;:
+     * &#34;-1&#34;, &#34;jupyterlabStatus&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
      * 
      */
     @Export(name="healthInfos", refs={List.class,InstanceHealthInfo.class}, tree="[0,1]")
@@ -633,8 +633,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return &#39;Output only. Additional information about instance health. Example:
-     * healthInfo&#34;: { &#34;docker_proxy_agent_status&#34;: &#34;1&#34;, &#34;docker_status&#34;: &#34;1&#34;, &#34;jupyterlab_api_status&#34;:
-     * &#34;-1&#34;, &#34;jupyterlab_status&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
+     * healthInfo&#34;: { &#34;dockerProxyAgentStatus&#34;: &#34;1&#34;, &#34;dockerStatus&#34;: &#34;1&#34;, &#34;jupyterlabApiStatus&#34;:
+     * &#34;-1&#34;, &#34;jupyterlabStatus&#34;: &#34;-1&#34;, &#34;updated&#34;: &#34;2020-10-18 09:40:03.573409&#34; }&#39;
      * 
      */
     public Output<List<InstanceHealthInfo>> healthInfos() {
@@ -695,7 +695,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * by the UpdateInstance method.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -706,7 +706,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * by the UpdateInstance method.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

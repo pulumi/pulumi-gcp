@@ -175,8 +175,8 @@ namespace Pulumi.Gcp.Chronicle
 
         /// <summary>
         /// Policy to determine if the rule should be deleted forcefully.
-        /// If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
-        /// will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
+        /// If DeletionPolicy = "FORCE", any retrohunts and any detections associated with the rule
+        /// will also be deleted. If DeletionPolicy = "DEFAULT", the call will only succeed if the
         /// rule has no associated retrohunts, including completed retrohunts, and no
         /// associated detections. Regardless of this field's value, the rule
         /// deployment associated with this rule will also be deleted.
@@ -360,8 +360,8 @@ namespace Pulumi.Gcp.Chronicle
     {
         /// <summary>
         /// Policy to determine if the rule should be deleted forcefully.
-        /// If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
-        /// will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
+        /// If DeletionPolicy = "FORCE", any retrohunts and any detections associated with the rule
+        /// will also be deleted. If DeletionPolicy = "DEFAULT", the call will only succeed if the
         /// rule has no associated retrohunts, including completed retrohunts, and no
         /// associated detections. Regardless of this field's value, the rule
         /// deployment associated with this rule will also be deleted.
@@ -499,8 +499,8 @@ namespace Pulumi.Gcp.Chronicle
 
         /// <summary>
         /// Policy to determine if the rule should be deleted forcefully.
-        /// If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
-        /// will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
+        /// If DeletionPolicy = "FORCE", any retrohunts and any detections associated with the rule
+        /// will also be deleted. If DeletionPolicy = "DEFAULT", the call will only succeed if the
         /// rule has no associated retrohunts, including completed retrohunts, and no
         /// associated detections. Regardless of this field's value, the rule
         /// deployment associated with this rule will also be deleted.

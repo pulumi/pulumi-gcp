@@ -31,7 +31,7 @@ public final class VMwareClusterLoadBalancerMetalLbConfigAddressPool {
     /**
      * @return If true, prevent IP addresses from being automatically assigned.
      * 
-     * &lt;a name=&#34;nested_dataplane_v2&#34;&gt;&lt;/a&gt;The `dataplane_v2` block supports:
+     * &lt;a name=&#34;nestedDataplaneV2&#34;&gt;&lt;/a&gt;The `dataplaneV2` block supports:
      * 
      */
     private @Nullable Boolean manualAssign;
@@ -63,7 +63,7 @@ public final class VMwareClusterLoadBalancerMetalLbConfigAddressPool {
     /**
      * @return If true, prevent IP addresses from being automatically assigned.
      * 
-     * &lt;a name=&#34;nested_dataplane_v2&#34;&gt;&lt;/a&gt;The `dataplane_v2` block supports:
+     * &lt;a name=&#34;nestedDataplaneV2&#34;&gt;&lt;/a&gt;The `dataplaneV2` block supports:
      * 
      */
     public Optional<Boolean> manualAssign() {

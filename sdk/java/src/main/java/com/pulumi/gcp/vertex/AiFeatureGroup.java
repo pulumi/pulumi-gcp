@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:vertex/aiFeatureGroup:AiFeatureGroup")
 public class AiFeatureGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+     * Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a featureTimestamp column in the source.
      * Structure is documented below.
      * 
      */
@@ -150,7 +150,7 @@ public class AiFeatureGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ AiFeatureGroupBigQuery> bigQuery;
 
     /**
-     * @return Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+     * @return Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a featureTimestamp column in the source.
      * Structure is documented below.
      * 
      */
@@ -216,7 +216,7 @@ public class AiFeatureGroup extends com.pulumi.resources.CustomResource {
     /**
      * The labels with user-defined metadata to organize your FeatureGroup.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -225,7 +225,7 @@ public class AiFeatureGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return The labels with user-defined metadata to organize your FeatureGroup.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

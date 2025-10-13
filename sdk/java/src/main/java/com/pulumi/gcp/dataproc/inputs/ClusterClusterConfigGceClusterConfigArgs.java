@@ -78,7 +78,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
     }
 
     /**
-     * The name or self_link of the Google Compute Engine
+     * The name or selfLink of the Google Compute Engine
      * network to the cluster will be part of. Conflicts with `subnetwork`.
      * If neither is specified, this defaults to the &#34;default&#34; network.
      * 
@@ -87,7 +87,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
     private @Nullable Output<String> network;
 
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * network to the cluster will be part of. Conflicts with `subnetwork`.
      * If neither is specified, this defaults to the &#34;default&#34; network.
      * 
@@ -145,7 +145,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
 
     /**
      * The set of Google API scopes
-     * to be made available on all of the node VMs under the `service_account`
+     * to be made available on all of the node VMs under the `serviceAccount`
      * specified. Both OAuth2 URLs and gcloud
      * short names are supported. To allow full access to all Cloud APIs, use the
      * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
@@ -156,7 +156,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
 
     /**
      * @return The set of Google API scopes
-     * to be made available on all of the node VMs under the `service_account`
+     * to be made available on all of the node VMs under the `serviceAccount`
      * specified. Both OAuth2 URLs and gcloud
      * short names are supported. To allow full access to all Cloud APIs, use the
      * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
@@ -186,7 +186,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
     }
 
     /**
-     * The name or self_link of the Google Compute Engine
+     * The name or selfLink of the Google Compute Engine
      * subnetwork the cluster will be part of. Conflicts with `network`.
      * 
      */
@@ -194,7 +194,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
     private @Nullable Output<String> subnetwork;
 
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * subnetwork the cluster will be part of. Conflicts with `network`.
      * 
      */
@@ -355,7 +355,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param network The name or self_link of the Google Compute Engine
+         * @param network The name or selfLink of the Google Compute Engine
          * network to the cluster will be part of. Conflicts with `subnetwork`.
          * If neither is specified, this defaults to the &#34;default&#34; network.
          * 
@@ -368,7 +368,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param network The name or self_link of the Google Compute Engine
+         * @param network The name or selfLink of the Google Compute Engine
          * network to the cluster will be part of. Conflicts with `subnetwork`.
          * If neither is specified, this defaults to the &#34;default&#34; network.
          * 
@@ -446,7 +446,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
 
         /**
          * @param serviceAccountScopes The set of Google API scopes
-         * to be made available on all of the node VMs under the `service_account`
+         * to be made available on all of the node VMs under the `serviceAccount`
          * specified. Both OAuth2 URLs and gcloud
          * short names are supported. To allow full access to all Cloud APIs, use the
          * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
@@ -461,7 +461,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
 
         /**
          * @param serviceAccountScopes The set of Google API scopes
-         * to be made available on all of the node VMs under the `service_account`
+         * to be made available on all of the node VMs under the `serviceAccount`
          * specified. Both OAuth2 URLs and gcloud
          * short names are supported. To allow full access to all Cloud APIs, use the
          * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
@@ -475,7 +475,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
 
         /**
          * @param serviceAccountScopes The set of Google API scopes
-         * to be made available on all of the node VMs under the `service_account`
+         * to be made available on all of the node VMs under the `serviceAccount`
          * specified. Both OAuth2 URLs and gcloud
          * short names are supported. To allow full access to all Cloud APIs, use the
          * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
@@ -513,7 +513,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param subnetwork The name or self_link of the Google Compute Engine
+         * @param subnetwork The name or selfLink of the Google Compute Engine
          * subnetwork the cluster will be part of. Conflicts with `network`.
          * 
          * @return builder
@@ -525,7 +525,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param subnetwork The name or self_link of the Google Compute Engine
+         * @param subnetwork The name or selfLink of the Google Compute Engine
          * subnetwork the cluster will be part of. Conflicts with `network`.
          * 
          * @return builder

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.SiteVerification
     /// ownership is verified you will be able to manage your website in the
     /// [Google Search Console](https://www.google.com/webmasters/tools/).
     /// 
-    /// &gt; **Note:** The verification data (DNS `TXT` record, HTML file, `meta` tag, etc.)
+    /// &gt; **Note:** The verification data (DNS `TXT` record, HTML file, `Meta` tag, etc.)
     /// must already exist before the web resource is created, and must be deleted before
     /// the web resource is destroyed. The Google Site Verification API checks that the
     /// verification data exists at creation time and does not exist at destruction time

@@ -37,6 +37,8 @@ public final class ProjectsFunctions {
      * Retrieve the ancestors for a project.
      * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAncestryResult> getAncestry() {
         return getAncestry(GetAncestryArgs.Empty, InvokeOptions.Empty);
@@ -44,6 +46,8 @@ public final class ProjectsFunctions {
     /**
      * Retrieve the ancestors for a project.
      * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAncestryResult> getAncestryPlain() {
@@ -53,6 +57,8 @@ public final class ProjectsFunctions {
      * Retrieve the ancestors for a project.
      * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAncestryResult> getAncestry(GetAncestryArgs args) {
         return getAncestry(args, InvokeOptions.Empty);
@@ -60,6 +66,8 @@ public final class ProjectsFunctions {
     /**
      * Retrieve the ancestors for a project.
      * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAncestryResult> getAncestryPlain(GetAncestryPlainArgs args) {
@@ -69,6 +77,8 @@ public final class ProjectsFunctions {
      * Retrieve the ancestors for a project.
      * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAncestryResult> getAncestry(GetAncestryArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:projects/getAncestry:getAncestry", TypeShape.of(GetAncestryResult.class), args, Utilities.withVersion(options));
@@ -77,6 +87,8 @@ public final class ProjectsFunctions {
      * Retrieve the ancestors for a project.
      * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAncestryResult> getAncestry(GetAncestryArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:projects/getAncestry:getAncestry", TypeShape.of(GetAncestryResult.class), args, Utilities.withVersion(options));
@@ -84,6 +96,8 @@ public final class ProjectsFunctions {
     /**
      * Retrieve the ancestors for a project.
      * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAncestryResult> getAncestryPlain(GetAncestryPlainArgs args, InvokeOptions options) {

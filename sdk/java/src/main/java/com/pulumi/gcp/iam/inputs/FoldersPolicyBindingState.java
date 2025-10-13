@@ -22,7 +22,7 @@ public final class FoldersPolicyBindingState extends com.pulumi.resources.Resour
      * Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -32,7 +32,7 @@ public final class FoldersPolicyBindingState extends com.pulumi.resources.Resour
      * @return Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -351,7 +351,7 @@ public final class FoldersPolicyBindingState extends com.pulumi.resources.Resour
          * @param annotations Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class FoldersPolicyBindingState extends com.pulumi.resources.Resour
          * @param annotations Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 

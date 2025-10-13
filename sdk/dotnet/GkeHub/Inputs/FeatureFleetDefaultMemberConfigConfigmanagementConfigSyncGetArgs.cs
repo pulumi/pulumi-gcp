@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public Input<Inputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitGetArgs>? Git { get; set; }
 
         /// <summary>
-        /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+        /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `Default` in the namespace `config-management-monitoring` should be bound to the GSA.
         /// </summary>
         [Input("metricsGcpServiceAccountEmail")]
         public Input<string>? MetricsGcpServiceAccountEmail { get; set; }
@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public Input<Inputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciGetArgs>? Oci { get; set; }
 
         /// <summary>
-        /// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+        /// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `False`, disables the Config Sync admission webhook and does not prevent drifts.
         /// </summary>
         [Input("preventDrift")]
         public Input<bool>? PreventDrift { get; set; }

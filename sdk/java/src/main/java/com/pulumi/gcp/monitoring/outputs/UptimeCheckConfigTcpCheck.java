@@ -20,7 +20,7 @@ public final class UptimeCheckConfigTcpCheck {
      */
     private @Nullable UptimeCheckConfigTcpCheckPingConfig pingConfig;
     /**
-     * @return The port to the page to run the check against. Will be combined with host (specified within the `monitored_resource`) to construct the full URL.
+     * @return The port to the page to run the check against. Will be combined with host (specified within the `monitoredResource`) to construct the full URL.
      * 
      */
     private Integer port;
@@ -35,7 +35,7 @@ public final class UptimeCheckConfigTcpCheck {
         return Optional.ofNullable(this.pingConfig);
     }
     /**
-     * @return The port to the page to run the check against. Will be combined with host (specified within the `monitored_resource`) to construct the full URL.
+     * @return The port to the page to run the check against. Will be combined with host (specified within the `monitoredResource`) to construct the full URL.
      * 
      */
     public Integer port() {

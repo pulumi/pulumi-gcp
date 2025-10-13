@@ -19,13 +19,13 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<string>? RepeatInterval { get; set; }
 
         /// <summary>
-        /// The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
+        /// The last day the recurring transfer will be run. If `ScheduleEndDate` is the same as `ScheduleStartDate`, the transfer will be executed only once. Structure documented below.
         /// </summary>
         [Input("scheduleEndDate")]
         public Input<Inputs.TransferJobScheduleScheduleEndDateGetArgs>? ScheduleEndDate { get; set; }
 
         /// <summary>
-        /// The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+        /// The first day the recurring transfer is scheduled to run. If `ScheduleStartDate` is in the past, the transfer will run for the first time on the following day. Structure documented below.
         /// </summary>
         [Input("scheduleStartDate", required: true)]
         public Input<Inputs.TransferJobScheduleScheduleStartDateGetArgs> ScheduleStartDate { get; set; } = null!;

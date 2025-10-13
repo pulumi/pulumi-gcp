@@ -545,7 +545,7 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<ImmutableArray<Outputs.InstanceDesiredAutoCreatedEndpoint>> DesiredAutoCreatedEndpoints { get; private set; } = null!;
 
         /// <summary>
-        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+        /// `DesiredPscAutoConnections` is deprecated  Use `DesiredAutoCreatedEndpoints` instead `pulumi import` will only work with DesiredAutoCreatedEndpoints`.
         /// </summary>
         [Output("desiredPscAutoConnections")]
         public Output<ImmutableArray<Outputs.InstanceDesiredPscAutoConnection>> DesiredPscAutoConnections { get; private set; } = null!;
@@ -612,13 +612,13 @@ namespace Pulumi.Gcp.MemoryStore
         /// <summary>
         /// Optional. Labels to represent user-provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -645,7 +645,7 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<Outputs.InstanceManagedBackupSource?> ManagedBackupSource { get; private set; } = null!;
 
         /// <summary>
-        /// Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
+        /// Instance's Certificate Authority. This field will only be populated if instance's TransitEncryptionMode is SERVER_AUTHENTICATION
         /// Structure is documented below.
         /// </summary>
         [Output("managedServerCas")]
@@ -875,9 +875,9 @@ namespace Pulumi.Gcp.MemoryStore
         private InputList<Inputs.InstanceDesiredPscAutoConnectionArgs>? _desiredPscAutoConnections;
 
         /// <summary>
-        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+        /// `DesiredPscAutoConnections` is deprecated  Use `DesiredAutoCreatedEndpoints` instead `pulumi import` will only work with DesiredAutoCreatedEndpoints`.
         /// </summary>
-        [Obsolete(@"`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.")]
+        [Obsolete(@"`DesiredPscAutoConnections` is deprecated. Use `DesiredAutoCreatedEndpoints` instead. `terraform import` will only work with DesiredAutoCreatedEndpoints`.")]
         public InputList<Inputs.InstanceDesiredPscAutoConnectionArgs> DesiredPscAutoConnections
         {
             get => _desiredPscAutoConnections ?? (_desiredPscAutoConnections = new InputList<Inputs.InstanceDesiredPscAutoConnectionArgs>());
@@ -934,7 +934,7 @@ namespace Pulumi.Gcp.MemoryStore
         /// <summary>
         /// Optional. Labels to represent user-provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -943,7 +943,7 @@ namespace Pulumi.Gcp.MemoryStore
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -1090,9 +1090,9 @@ namespace Pulumi.Gcp.MemoryStore
         private InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs>? _desiredPscAutoConnections;
 
         /// <summary>
-        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+        /// `DesiredPscAutoConnections` is deprecated  Use `DesiredAutoCreatedEndpoints` instead `pulumi import` will only work with DesiredAutoCreatedEndpoints`.
         /// </summary>
-        [Obsolete(@"`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.")]
+        [Obsolete(@"`DesiredPscAutoConnections` is deprecated. Use `DesiredAutoCreatedEndpoints` instead. `terraform import` will only work with DesiredAutoCreatedEndpoints`.")]
         public InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs> DesiredPscAutoConnections
         {
             get => _desiredPscAutoConnections ?? (_desiredPscAutoConnections = new InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs>());
@@ -1107,7 +1107,7 @@ namespace Pulumi.Gcp.MemoryStore
         /// Deprecated. Output only. Endpoints clients can connect to the instance through.
         /// Structure is documented below.
         /// </summary>
-        [Obsolete(@"This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.")]
+        [Obsolete(@"This field is deprecated. As a result it will not be populated if the connections are created using `DesiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.")]
         public InputList<Inputs.InstanceDiscoveryEndpointGetArgs> DiscoveryEndpoints
         {
             get => _discoveryEndpoints ?? (_discoveryEndpoints = new InputList<Inputs.InstanceDiscoveryEndpointGetArgs>());
@@ -1193,7 +1193,7 @@ namespace Pulumi.Gcp.MemoryStore
         /// <summary>
         /// Optional. Labels to represent user-provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1202,7 +1202,7 @@ namespace Pulumi.Gcp.MemoryStore
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -1238,7 +1238,7 @@ namespace Pulumi.Gcp.MemoryStore
         private InputList<Inputs.InstanceManagedServerCaGetArgs>? _managedServerCas;
 
         /// <summary>
-        /// Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
+        /// Instance's Certificate Authority. This field will only be populated if instance's TransitEncryptionMode is SERVER_AUTHENTICATION
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceManagedServerCaGetArgs> ManagedServerCas
@@ -1323,7 +1323,7 @@ namespace Pulumi.Gcp.MemoryStore
         /// Output only. User inputs and resource details of the auto-created PSC connections.
         /// Structure is documented below.
         /// </summary>
-        [Obsolete(@"`psc_auto_connections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.")]
+        [Obsolete(@"`PscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.")]
         public InputList<Inputs.InstancePscAutoConnectionGetArgs> PscAutoConnections
         {
             get => _pscAutoConnections ?? (_pscAutoConnections = new InputList<Inputs.InstancePscAutoConnectionGetArgs>());

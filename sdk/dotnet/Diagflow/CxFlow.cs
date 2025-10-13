@@ -885,7 +885,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
         /// The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
         /// 
-        /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+        /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `IsDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
         /// </summary>
         [Output("isDefaultStartFlow")]
         public Output<bool?> IsDefaultStartFlow { get; private set; } = null!;
@@ -1037,7 +1037,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
         /// The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
         /// 
-        /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+        /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `IsDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
         /// </summary>
         [Input("isDefaultStartFlow")]
         public Input<bool>? IsDefaultStartFlow { get; set; }
@@ -1156,7 +1156,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
         /// The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
         /// 
-        /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+        /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `IsDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
         /// </summary>
         [Input("isDefaultStartFlow")]
         public Input<bool>? IsDefaultStartFlow { get; set; }

@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Iam.Outputs
         public readonly string? KeyAlgorithm;
         /// <summary>
         /// Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
-        /// `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
+        /// `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`S`" (indicating seconds)
         /// and is preceded by the number of seconds. If unspecified, this will be defaulted to
         /// `86400s` (24 hours).
         /// </summary>

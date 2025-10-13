@@ -34,7 +34,7 @@ public final class InternalRangeAllocationOptionsArgs extends com.pulumi.resourc
     }
 
     /**
-     * Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+     * Must be set when allocationStrategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
      * in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
      * 
      */
@@ -42,7 +42,7 @@ public final class InternalRangeAllocationOptionsArgs extends com.pulumi.resourc
     private @Nullable Output<Integer> firstAvailableRangesLookupSize;
 
     /**
-     * @return Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+     * @return Must be set when allocationStrategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
      * in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
      * 
      */
@@ -99,7 +99,7 @@ public final class InternalRangeAllocationOptionsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param firstAvailableRangesLookupSize Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+         * @param firstAvailableRangesLookupSize Must be set when allocationStrategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
          * in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
          * 
          * @return builder
@@ -111,7 +111,7 @@ public final class InternalRangeAllocationOptionsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param firstAvailableRangesLookupSize Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+         * @param firstAvailableRangesLookupSize Must be set when allocationStrategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
          * in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
          * 
          * @return builder

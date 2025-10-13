@@ -35,7 +35,7 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
      * The operation type. Allowed values are (case insensitive): ALL, READ,
      * WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
      * ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols
-     * for valid combinations of resource_type and operation for different Kafka API requests.
+     * for valid combinations of resourceType and operation for different Kafka API requests.
      * 
      */
     @Import(name="operation", required=true)
@@ -45,7 +45,7 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
      * @return The operation type. Allowed values are (case insensitive): ALL, READ,
      * WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
      * ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols
-     * for valid combinations of resource_type and operation for different Kafka API requests.
+     * for valid combinations of resourceType and operation for different Kafka API requests.
      * 
      */
     public Output<String> operation() {
@@ -134,7 +134,7 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
          * @param operation The operation type. Allowed values are (case insensitive): ALL, READ,
          * WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
          * ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols
-         * for valid combinations of resource_type and operation for different Kafka API requests.
+         * for valid combinations of resourceType and operation for different Kafka API requests.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
          * @param operation The operation type. Allowed values are (case insensitive): ALL, READ,
          * WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
          * ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols
-         * for valid combinations of resource_type and operation for different Kafka API requests.
+         * for valid combinations of resourceType and operation for different Kafka API requests.
          * 
          * @return builder
          * 

@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Chronicle
         /// archiving requires a two-step process: first, disable the rule by
         /// setting 'enabled' to false, then set 'archive' to true.
         /// If set to true, alerting will automatically be set to false.
-        /// If currently set to true, enabled, alerting, and run_frequency cannot be
+        /// If currently set to true, enabled, alerting, and RunFrequency cannot be
         /// updated.
         /// </summary>
         [Output("archived")]
@@ -217,7 +217,7 @@ namespace Pulumi.Gcp.Chronicle
         /// archiving requires a two-step process: first, disable the rule by
         /// setting 'enabled' to false, then set 'archive' to true.
         /// If set to true, alerting will automatically be set to false.
-        /// If currently set to true, enabled, alerting, and run_frequency cannot be
+        /// If currently set to true, enabled, alerting, and RunFrequency cannot be
         /// updated.
         /// </summary>
         [Input("archived")]
@@ -291,7 +291,7 @@ namespace Pulumi.Gcp.Chronicle
         /// archiving requires a two-step process: first, disable the rule by
         /// setting 'enabled' to false, then set 'archive' to true.
         /// If set to true, alerting will automatically be set to false.
-        /// If currently set to true, enabled, alerting, and run_frequency cannot be
+        /// If currently set to true, enabled, alerting, and RunFrequency cannot be
         /// updated.
         /// </summary>
         [Input("archived")]

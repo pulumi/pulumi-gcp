@@ -171,7 +171,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
 
     /**
      * Output only. Indicates that reconciliation is in progress
-     * for the revision. This value is `true` when the `rollout_state` is one of:
+     * for the revision. This value is `true` when the `rolloutState` is one of:
      * 
      */
     @Import(name="reconciling")
@@ -179,7 +179,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
 
     /**
      * @return Output only. Indicates that reconciliation is in progress
-     * for the revision. This value is `true` when the `rollout_state` is one of:
+     * for the revision. This value is `true` when the `rolloutState` is one of:
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -224,7 +224,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
      * Rollout to deploy the OS policy assignment. A rollout
      * is triggered in the following situations: 1) OSPolicyAssignment is created.
      * 2) OSPolicyAssignment is updated and the update contains changes to one of
-     * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+     * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
      * is deleted. Structure is documented below.
      * 
      */
@@ -235,7 +235,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
      * @return Rollout to deploy the OS policy assignment. A rollout
      * is triggered in the following situations: 1) OSPolicyAssignment is created.
      * 2) OSPolicyAssignment is updated and the update contains changes to one of
-     * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+     * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
      * is deleted. Structure is documented below.
      * 
      */
@@ -545,7 +545,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
 
         /**
          * @param reconciling Output only. Indicates that reconciliation is in progress
-         * for the revision. This value is `true` when the `rollout_state` is one of:
+         * for the revision. This value is `true` when the `rolloutState` is one of:
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
 
         /**
          * @param reconciling Output only. Indicates that reconciliation is in progress
-         * for the revision. This value is `true` when the `rollout_state` is one of:
+         * for the revision. This value is `true` when the `rolloutState` is one of:
          * 
          * @return builder
          * 
@@ -616,7 +616,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
          * @param rollout Rollout to deploy the OS policy assignment. A rollout
          * is triggered in the following situations: 1) OSPolicyAssignment is created.
          * 2) OSPolicyAssignment is updated and the update contains changes to one of
-         * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+         * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
          * is deleted. Structure is documented below.
          * 
          * @return builder
@@ -631,7 +631,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
          * @param rollout Rollout to deploy the OS policy assignment. A rollout
          * is triggered in the following situations: 1) OSPolicyAssignment is created.
          * 2) OSPolicyAssignment is updated and the update contains changes to one of
-         * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+         * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
          * is deleted. Structure is documented below.
          * 
          * @return builder

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// Custom configuration to apply the JSON parsing. Only applicable when
-        /// `json_parsing` is set to `STANDARD`. Structure is documented below.
+        /// `JsonParsing` is set to `STANDARD`. Structure is documented below.
         /// </summary>
         [Input("jsonCustomConfig")]
         public Input<Inputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigGetArgs>? JsonCustomConfig { get; set; }

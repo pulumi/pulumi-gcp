@@ -149,7 +149,7 @@ public final class GetInstanceResult {
     private Map<String,String> pulumiLabels;
     private List<GetInstanceReservationAffinity> reservationAffinities;
     /**
-     * @return A list of self_links to resource policies attached to the selected `boot_disk`
+     * @return A list of selfLinks to resource policies attached to the selected `bootDisk`
      * 
      */
     private List<String> resourcePolicies;
@@ -381,7 +381,7 @@ public final class GetInstanceResult {
         return this.reservationAffinities;
     }
     /**
-     * @return A list of self_links to resource policies attached to the selected `boot_disk`
+     * @return A list of selfLinks to resource policies attached to the selected `bootDisk`
      * 
      */
     public List<String> resourcePolicies() {

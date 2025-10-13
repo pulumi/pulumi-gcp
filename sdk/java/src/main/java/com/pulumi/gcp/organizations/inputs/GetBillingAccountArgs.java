@@ -50,7 +50,7 @@ public final class GetBillingAccountArgs extends com.pulumi.resources.InvokeArgs
      * `true` if projects associated with the billing account should be read, `false` if this step
      * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
      * 
-     * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+     * &gt; **NOTE:** One of `billingAccount` or `displayName` must be specified.
      * 
      */
     @Import(name="lookupProjects")
@@ -60,7 +60,7 @@ public final class GetBillingAccountArgs extends com.pulumi.resources.InvokeArgs
      * @return `true` if projects associated with the billing account should be read, `false` if this step
      * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
      * 
-     * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+     * &gt; **NOTE:** One of `billingAccount` or `displayName` must be specified.
      * 
      */
     public Optional<Output<Boolean>> lookupProjects() {
@@ -155,7 +155,7 @@ public final class GetBillingAccountArgs extends com.pulumi.resources.InvokeArgs
          * @param lookupProjects `true` if projects associated with the billing account should be read, `false` if this step
          * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
          * 
-         * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+         * &gt; **NOTE:** One of `billingAccount` or `displayName` must be specified.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class GetBillingAccountArgs extends com.pulumi.resources.InvokeArgs
          * @param lookupProjects `true` if projects associated with the billing account should be read, `false` if this step
          * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
          * 
-         * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+         * &gt; **NOTE:** One of `billingAccount` or `displayName` must be specified.
          * 
          * @return builder
          * 

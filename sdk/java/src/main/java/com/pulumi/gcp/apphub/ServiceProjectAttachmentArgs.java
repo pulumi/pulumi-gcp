@@ -53,14 +53,14 @@ public final class ServiceProjectAttachmentArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
+     * Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
      * 
      */
     @Import(name="serviceProjectAttachmentId", required=true)
     private Output<String> serviceProjectAttachmentId;
 
     /**
-     * @return Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
+     * @return Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
      * 
      */
     public Output<String> serviceProjectAttachmentId() {
@@ -142,7 +142,7 @@ public final class ServiceProjectAttachmentArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param serviceProjectAttachmentId Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
+         * @param serviceProjectAttachmentId Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ServiceProjectAttachmentArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param serviceProjectAttachmentId Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
+         * @param serviceProjectAttachmentId Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
          * 
          * @return builder
          * 

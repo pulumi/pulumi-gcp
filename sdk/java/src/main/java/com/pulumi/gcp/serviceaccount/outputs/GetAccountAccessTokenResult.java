@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountAccessTokenResult {
     /**
-     * @return The `access_token` representing the new generated identity.
+     * @return The `accessToken` representing the new generated identity.
      * 
      */
     private String accessToken;
@@ -30,7 +30,7 @@ public final class GetAccountAccessTokenResult {
 
     private GetAccountAccessTokenResult() {}
     /**
-     * @return The `access_token` representing the new generated identity.
+     * @return The `accessToken` representing the new generated identity.
      * 
      */
     public String accessToken() {

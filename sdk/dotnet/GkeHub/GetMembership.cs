@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.GkeHub
     {
         /// <summary>
         /// The location for the GKE Hub Membership.
-        /// Currently only `global` is supported.
+        /// Currently only `Global` is supported.
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Gcp.GkeHub
     {
         /// <summary>
         /// The location for the GKE Hub Membership.
-        /// Currently only `global` is supported.
+        /// Currently only `Global` is supported.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

@@ -20,14 +20,14 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
     public static final ClusterNodePoolAutoConfigArgs Empty = new ClusterNodePoolAutoConfigArgs();
 
     /**
-     * Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+     * Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
      * 
      */
     @Import(name="linuxNodeConfig")
     private @Nullable Output<ClusterNodePoolAutoConfigLinuxNodeConfigArgs> linuxNodeConfig;
 
     /**
-     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolAutoConfigLinuxNodeConfigArgs>> linuxNodeConfig() {
@@ -50,7 +50,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+     * Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
      * Structure is documented below.
      * 
      */
@@ -58,7 +58,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
     private @Nullable Output<ClusterNodePoolAutoConfigNodeKubeletConfigArgs> nodeKubeletConfig;
 
     /**
-     * @return Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+     * @return Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
      * Structure is documented below.
      * 
      */
@@ -109,7 +109,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param linuxNodeConfig Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+         * @param linuxNodeConfig Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param linuxNodeConfig Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+         * @param linuxNodeConfig Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeKubeletConfig Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+         * @param nodeKubeletConfig Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
          * Structure is documented below.
          * 
          * @return builder
@@ -163,7 +163,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeKubeletConfig Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+         * @param nodeKubeletConfig Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
          * Structure is documented below.
          * 
          * @return builder

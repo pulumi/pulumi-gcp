@@ -17,19 +17,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceBootDiskInitializeParams {
     /**
-     * @return The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * @return The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
      * 
      */
     private @Nullable String architecture;
     /**
      * @return Whether this disk is using confidential compute mode.
-     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true.
      * 
      */
     private @Nullable Boolean enableConfidentialCompute;
     /**
      * @return The image from which to initialize this disk. This can be
-     * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -74,7 +74,7 @@ public final class InstanceBootDiskInitializeParams {
      */
     private @Nullable Map<String,String> resourceManagerTags;
     /**
-     * @return A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
+     * @return A list of selfLinks of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
      * 
      */
     private @Nullable String resourcePolicies;
@@ -117,7 +117,7 @@ public final class InstanceBootDiskInitializeParams {
 
     private InstanceBootDiskInitializeParams() {}
     /**
-     * @return The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * @return The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
      * 
      */
     public Optional<String> architecture() {
@@ -125,7 +125,7 @@ public final class InstanceBootDiskInitializeParams {
     }
     /**
      * @return Whether this disk is using confidential compute mode.
-     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true.
      * 
      */
     public Optional<Boolean> enableConfidentialCompute() {
@@ -133,7 +133,7 @@ public final class InstanceBootDiskInitializeParams {
     }
     /**
      * @return The image from which to initialize this disk. This can be
-     * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -188,7 +188,7 @@ public final class InstanceBootDiskInitializeParams {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
     /**
-     * @return A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
+     * @return A list of selfLinks of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<String> resourcePolicies() {

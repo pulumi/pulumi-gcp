@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
         /// The email address used by Oracle to send notifications regarding databases
         /// and infrastructure.
         /// 
-        /// &lt;a name="nested_properties_apex_details"&gt;&lt;/a&gt;The `apex_details` block contains:
+        /// &lt;a name="NestedPropertiesApexDetails"&gt;&lt;/a&gt;The `ApexDetails` block contains:
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;

@@ -23,7 +23,7 @@ public final class RouterNatSubnetwork {
      * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
      * sourceIpRangesToNat
      * 
-     * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
+     * &lt;a name=&#34;nestedNat64Subnetwork&#34;&gt;&lt;/a&gt;The `nat64Subnetwork` block supports:
      * 
      */
     private @Nullable List<String> secondaryIpRangeNames;
@@ -50,7 +50,7 @@ public final class RouterNatSubnetwork {
      * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
      * sourceIpRangesToNat
      * 
-     * &lt;a name=&#34;nested_nat64_subnetwork&#34;&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
+     * &lt;a name=&#34;nestedNat64Subnetwork&#34;&gt;&lt;/a&gt;The `nat64Subnetwork` block supports:
      * 
      */
     public List<String> secondaryIpRangeNames() {

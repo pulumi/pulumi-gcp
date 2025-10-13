@@ -13,14 +13,14 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
     public sealed class ConnectionBitbucketCloudConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+        /// Required. An access token with the `Webhook`, `Repository`, `repository:admin` and `Pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
         /// Structure is documented below.
         /// </summary>
         [Input("authorizerCredential", required: true)]
         public Input<Inputs.ConnectionBitbucketCloudConfigAuthorizerCredentialArgs> AuthorizerCredential { get; set; } = null!;
 
         /// <summary>
-        /// Required. An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+        /// Required. An access token with the `Repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
         /// Structure is documented below.
         /// </summary>
         [Input("readAuthorizerCredential", required: true)]

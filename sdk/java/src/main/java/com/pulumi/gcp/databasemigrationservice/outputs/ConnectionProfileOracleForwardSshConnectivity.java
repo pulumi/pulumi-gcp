@@ -19,7 +19,7 @@ public final class ConnectionProfileOracleForwardSshConnectivity {
      */
     private String hostname;
     /**
-     * @return Input only. SSH password. Only one of `password` and `private_key` can be configured.
+     * @return Input only. SSH password. Only one of `password` and `privateKey` can be configured.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -30,7 +30,7 @@ public final class ConnectionProfileOracleForwardSshConnectivity {
      */
     private Integer port;
     /**
-     * @return Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+     * @return Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -50,7 +50,7 @@ public final class ConnectionProfileOracleForwardSshConnectivity {
         return this.hostname;
     }
     /**
-     * @return Input only. SSH password. Only one of `password` and `private_key` can be configured.
+     * @return Input only. SSH password. Only one of `password` and `privateKey` can be configured.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -65,7 +65,7 @@ public final class ConnectionProfileOracleForwardSshConnectivity {
         return this.port;
     }
     /**
-     * @return Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+     * @return Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */

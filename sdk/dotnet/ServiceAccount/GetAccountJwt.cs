@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+        /// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `TargetServiceAccount`.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+        /// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `TargetServiceAccount`.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+        /// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `TargetServiceAccount`.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.ServiceAccount
         }
 
         /// <summary>
-        /// Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+        /// Number of seconds until the JWT expires. If set and non-zero an `Exp` claim will be added to the payload derived from the current timestamp plus ExpiresIn seconds.
         /// </summary>
         [Input("expiresIn")]
         public int? ExpiresIn { get; set; }
@@ -177,7 +177,7 @@ namespace Pulumi.Gcp.ServiceAccount
         }
 
         /// <summary>
-        /// Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+        /// Number of seconds until the JWT expires. If set and non-zero an `Exp` claim will be added to the payload derived from the current timestamp plus ExpiresIn seconds.
         /// </summary>
         [Input("expiresIn")]
         public Input<int>? ExpiresIn { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The signed JWT containing the JWT Claims Set from the `payload`.
+        /// The signed JWT containing the JWT Claims Set from the `Payload`.
         /// </summary>
         public readonly string Jwt;
         public readonly string Payload;

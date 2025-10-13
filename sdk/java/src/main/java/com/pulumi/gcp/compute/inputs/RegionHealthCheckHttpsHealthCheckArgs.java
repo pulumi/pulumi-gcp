@@ -54,7 +54,7 @@ public final class RegionHealthCheckHttpsHealthCheckArgs extends com.pulumi.reso
 
     /**
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
-     * port_name are defined, port takes precedence.
+     * portName are defined, port takes precedence.
      * 
      */
     @Import(name="portName")
@@ -62,7 +62,7 @@ public final class RegionHealthCheckHttpsHealthCheckArgs extends com.pulumi.reso
 
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
-     * port_name are defined, port takes precedence.
+     * portName are defined, port takes precedence.
      * 
      */
     public Optional<Output<String>> portName() {
@@ -241,7 +241,7 @@ public final class RegionHealthCheckHttpsHealthCheckArgs extends com.pulumi.reso
 
         /**
          * @param portName Port name as defined in InstanceGroup#NamedPort#name. If both port and
-         * port_name are defined, port takes precedence.
+         * portName are defined, port takes precedence.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class RegionHealthCheckHttpsHealthCheckArgs extends com.pulumi.reso
 
         /**
          * @param portName Port name as defined in InstanceGroup#NamedPort#name. If both port and
-         * port_name are defined, port takes precedence.
+         * portName are defined, port takes precedence.
          * 
          * @return builder
          * 

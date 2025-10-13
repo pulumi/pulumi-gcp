@@ -65,14 +65,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+     * AUTH String set on the instance. This field will only be populated if authEnabled is true.
      * 
      */
     @Import(name="authString")
     private @Nullable Output<String> authString;
 
     /**
-     * @return AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+     * @return AUTH String set on the instance. This field will only be populated if authEnabled is true.
      * 
      */
     public Optional<Output<String>> authString() {
@@ -247,7 +247,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -256,7 +256,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -824,7 +824,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authString AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+         * @param authString AUTH String set on the instance. This field will only be populated if authEnabled is true.
          * 
          * @return builder
          * 
@@ -835,7 +835,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authString AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+         * @param authString AUTH String set on the instance. This field will only be populated if authEnabled is true.
          * 
          * @return builder
          * 
@@ -1066,7 +1066,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Resource labels to represent user provided metadata.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1079,7 +1079,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Resource labels to represent user provided metadata.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

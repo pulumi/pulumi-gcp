@@ -50,14 +50,14 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+     * An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
      * 
      */
     @Import(name="anonUid")
     private @Nullable Output<Integer> anonUid;
 
     /**
-     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
      * 
      */
     public Optional<Output<Integer>> anonUid() {
@@ -297,7 +297,7 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param anonUid An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+         * @param anonUid An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param anonUid An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+         * @param anonUid An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
          * 
          * @return builder
          * 

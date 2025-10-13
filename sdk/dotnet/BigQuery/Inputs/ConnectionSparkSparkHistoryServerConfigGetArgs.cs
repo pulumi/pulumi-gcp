@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class ConnectionSparkSparkHistoryServerConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
+        /// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[ClusterName].
         /// </summary>
         [Input("dataprocCluster")]
         public Input<string>? DataprocCluster { get; set; }

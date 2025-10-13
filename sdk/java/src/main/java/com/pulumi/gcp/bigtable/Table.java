@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigtable/table:Table")
 public class Table extends com.pulumi.resources.CustomResource {
     /**
-     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automated_backup_policy argument, or set both Retention Period and Frequency properties to &#34;0&#34;. To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to &#34;0&#34;. When updating an existing table, to modify the Retention Period or Frequency properties of the resource&#39;s automated backup policy, set the respective property to a non-zero value. If the automated_backup_policy argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
+     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to &#34;0&#34;. To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to &#34;0&#34;. When updating an existing table, to modify the Retention Period or Frequency properties of the resource&#39;s automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
      * 
      * ***
      * 
@@ -144,7 +144,7 @@ public class Table extends com.pulumi.resources.CustomResource {
     private Output<TableAutomatedBackupPolicy> automatedBackupPolicy;
 
     /**
-     * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automated_backup_policy argument, or set both Retention Period and Frequency properties to &#34;0&#34;. To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to &#34;0&#34;. When updating an existing table, to modify the Retention Period or Frequency properties of the resource&#39;s automated backup policy, set the respective property to a non-zero value. If the automated_backup_policy argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
+     * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to &#34;0&#34;. To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to &#34;0&#34;. When updating an existing table, to modify the Retention Period or Frequency properties of the resource&#39;s automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
      * 
      * ***
      * 
@@ -264,7 +264,7 @@ public class Table extends com.pulumi.resources.CustomResource {
     }
     /**
      * A list of predefined keys to split the table on.
-     * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+     * !&gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
      * 
      */
@@ -273,7 +273,7 @@ public class Table extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A list of predefined keys to split the table on.
-     * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+     * !&gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
      * 
      */

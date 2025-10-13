@@ -16,7 +16,7 @@ public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources
     public static final ClusterGcpConfigAccessConfigArgs Empty = new ClusterGcpConfigAccessConfigArgs();
 
     /**
-     * Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
+     * Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources
     private Output<List<ClusterGcpConfigAccessConfigNetworkConfigArgs>> networkConfigs;
 
     /**
-     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
+     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
+         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
+         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
          * Structure is documented below.
          * 
          * @return builder
@@ -80,7 +80,7 @@ public final class ClusterGcpConfigAccessConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
+         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
          * Structure is documented below.
          * 
          * @return builder

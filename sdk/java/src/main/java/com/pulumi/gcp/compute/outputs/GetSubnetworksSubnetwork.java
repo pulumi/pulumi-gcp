@@ -37,13 +37,13 @@ public final class GetSubnetworksSubnetwork {
      */
     private String networkName;
     /**
-     * @return (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `network_name` instead.)
+     * @return (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `networkName` instead.)
      * 
      * @deprecated
-     * Use `network_name` instead. This field will be removed in a future major release.
+     * Use `networkName` instead. This field will be removed in a future major release.
      * 
      */
-    @Deprecated /* Use `network_name` instead. This field will be removed in a future major release. */
+    @Deprecated /* Use `networkName` instead. This field will be removed in a future major release. */
     private String networkSelfLink;
     /**
      * @return Whether the VMs in the subnet can access Google services without assigned external IP addresses.
@@ -93,13 +93,13 @@ public final class GetSubnetworksSubnetwork {
         return this.networkName;
     }
     /**
-     * @return (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `network_name` instead.)
+     * @return (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `networkName` instead.)
      * 
      * @deprecated
-     * Use `network_name` instead. This field will be removed in a future major release.
+     * Use `networkName` instead. This field will be removed in a future major release.
      * 
      */
-    @Deprecated /* Use `network_name` instead. This field will be removed in a future major release. */
+    @Deprecated /* Use `networkName` instead. This field will be removed in a future major release. */
     public String networkSelfLink() {
         return this.networkSelfLink;
     }

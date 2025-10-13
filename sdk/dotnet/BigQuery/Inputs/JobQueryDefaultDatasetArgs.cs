@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class JobQueryDefaultDatasetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+        /// The dataset. Can be specified `{{dataset_id}}` if `ProjectId` is also set,
         /// or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
         /// </summary>
         [Input("datasetId", required: true)]

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class InstancePerformanceConfigFixedIops {
     /**
      * @return The number of IOPS to provision for the instance.
-     * max_iops must be in multiple of 1000.
+     * maxIops must be in multiple of 1000.
      * 
      */
     private @Nullable Integer maxIops;
@@ -21,7 +21,7 @@ public final class InstancePerformanceConfigFixedIops {
     private InstancePerformanceConfigFixedIops() {}
     /**
      * @return The number of IOPS to provision for the instance.
-     * max_iops must be in multiple of 1000.
+     * maxIops must be in multiple of 1000.
      * 
      */
     public Optional<Integer> maxIops() {

@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<int>? MaxParallelism { get; set; }
 
         /// <summary>
-        /// If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+        /// If set, the request will be executed via Spanner independent compute resources. `UseParallelism` must be set when using data boost.
         /// </summary>
         [Input("useDataBoost")]
         public Input<bool>? UseDataBoost { get; set; }

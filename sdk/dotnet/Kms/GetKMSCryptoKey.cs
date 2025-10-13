@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class GetKMSCryptoKeyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The `id` of the Google Cloud Platform KeyRing to which the key belongs.
+        /// The `Id` of the Google Cloud Platform KeyRing to which the key belongs.
         /// </summary>
         [Input("keyRing", required: true)]
         public string KeyRing { get; set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class GetKMSCryptoKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The `id` of the Google Cloud Platform KeyRing to which the key belongs.
+        /// The `Id` of the Google Cloud Platform KeyRing to which the key belongs.
         /// </summary>
         [Input("keyRing", required: true)]
         public Input<string> KeyRing { get; set; } = null!;

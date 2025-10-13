@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Projects.Inputs
         private InputList<string>? _exemptedMembers;
 
         /// <summary>
-        /// Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+        /// Identities that do not cause logging for this type of permission.  The format is the same as that for `Members`.
         /// </summary>
         public InputList<string> ExemptedMembers
         {

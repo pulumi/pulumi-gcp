@@ -16,7 +16,7 @@ public final class GetAndroidAppPlainArgs extends com.pulumi.resources.InvokeArg
     public static final GetAndroidAppPlainArgs Empty = new GetAndroidAppPlainArgs();
 
     /**
-     * The app_id of name of the Firebase androidApp.
+     * The appId of name of the Firebase androidApp.
      * 
      * ***
      * 
@@ -25,7 +25,7 @@ public final class GetAndroidAppPlainArgs extends com.pulumi.resources.InvokeArg
     private String appId;
 
     /**
-     * @return The app_id of name of the Firebase androidApp.
+     * @return The appId of name of the Firebase androidApp.
      * 
      * ***
      * 
@@ -77,7 +77,7 @@ public final class GetAndroidAppPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param appId The app_id of name of the Firebase androidApp.
+         * @param appId The appId of name of the Firebase androidApp.
          * 
          * ***
          * 

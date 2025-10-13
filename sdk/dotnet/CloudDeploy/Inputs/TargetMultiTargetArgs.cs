@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         private InputList<string>? _targetIds;
 
         /// <summary>
-        /// Required. The target_ids of this multiTarget.
+        /// Required. The TargetIds of this multiTarget.
         /// </summary>
         public InputList<string> TargetIds
         {

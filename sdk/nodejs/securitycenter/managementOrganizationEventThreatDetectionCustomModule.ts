@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Scc Management Organization Event Threat Detection Custom Module
+ *
  * ## Import
  *
  * OrganizationEventThreatDetectionCustomModule can be imported using any of these accepted formats:

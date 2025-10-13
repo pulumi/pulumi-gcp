@@ -117,7 +117,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
      * If true, runtime will only have internal IP addresses. By default,
      * runtimes are not restricted to internal IP addresses, and will
      * have ephemeral external IP addresses assigned to each vm. This
-     * `internal_ip_only` restriction can only be enabled for subnetwork
+     * `internalIpOnly` restriction can only be enabled for subnetwork
      * enabled networks, and all dependencies must be configured to be
      * accessible without external IP addresses.
      * 
@@ -129,7 +129,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
      * @return If true, runtime will only have internal IP addresses. By default,
      * runtimes are not restricted to internal IP addresses, and will
      * have ephemeral external IP addresses assigned to each vm. This
-     * `internal_ip_only` restriction can only be enabled for subnetwork
+     * `internalIpOnly` restriction can only be enabled for subnetwork
      * enabled networks, and all dependencies must be configured to be
      * accessible without external IP addresses.
      * 
@@ -204,9 +204,9 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
      * Cannot be specified with subnetwork. If neither `network` nor
      * `subnet` is specified, the &#34;default&#34; network of the project is
      * used, if it exists. A full URL or partial URI. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+     * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
      *   regions/global/default`
-     * * `projects/[project_id]/regions/global/default`
+     * * `projects/[projectId]/regions/global/default`
      *   Runtimes are managed resources inside Google Infrastructure.
      *   Runtimes support the following network configurations:
      * * Google Managed Network (Network &amp; subnet are empty)
@@ -224,9 +224,9 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
      * Cannot be specified with subnetwork. If neither `network` nor
      * `subnet` is specified, the &#34;default&#34; network of the project is
      * used, if it exists. A full URL or partial URI. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+     * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
      *   regions/global/default`
-     * * `projects/[project_id]/regions/global/default`
+     * * `projects/[projectId]/regions/global/default`
      *   Runtimes are managed resources inside Google Infrastructure.
      *   Runtimes support the following network configurations:
      * * Google Managed Network (Network &amp; subnet are empty)
@@ -297,9 +297,9 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
      * The Compute Engine subnetwork to be used for machine
      * communications. Cannot be specified with network. A full URL or
      * partial URI are valid. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+     * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
      *   regions/us-east1/subnetworks/sub0`
-     * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
+     * * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
      * 
      */
     @Import(name="subnet")
@@ -309,9 +309,9 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
      * @return The Compute Engine subnetwork to be used for machine
      * communications. Cannot be specified with network. A full URL or
      * partial URI are valid. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+     * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
      *   regions/us-east1/subnetworks/sub0`
-     * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
+     * * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
      * 
      */
     public Optional<Output<String>> subnet() {
@@ -527,7 +527,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
          * @param internalIpOnly If true, runtime will only have internal IP addresses. By default,
          * runtimes are not restricted to internal IP addresses, and will
          * have ephemeral external IP addresses assigned to each vm. This
-         * `internal_ip_only` restriction can only be enabled for subnetwork
+         * `internalIpOnly` restriction can only be enabled for subnetwork
          * enabled networks, and all dependencies must be configured to be
          * accessible without external IP addresses.
          * 
@@ -543,7 +543,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
          * @param internalIpOnly If true, runtime will only have internal IP addresses. By default,
          * runtimes are not restricted to internal IP addresses, and will
          * have ephemeral external IP addresses assigned to each vm. This
-         * `internal_ip_only` restriction can only be enabled for subnetwork
+         * `internalIpOnly` restriction can only be enabled for subnetwork
          * enabled networks, and all dependencies must be configured to be
          * accessible without external IP addresses.
          * 
@@ -638,9 +638,9 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
          * Cannot be specified with subnetwork. If neither `network` nor
          * `subnet` is specified, the &#34;default&#34; network of the project is
          * used, if it exists. A full URL or partial URI. Examples:
-         * * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+         * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
          *   regions/global/default`
-         * * `projects/[project_id]/regions/global/default`
+         * * `projects/[projectId]/regions/global/default`
          *   Runtimes are managed resources inside Google Infrastructure.
          *   Runtimes support the following network configurations:
          * * Google Managed Network (Network &amp; subnet are empty)
@@ -662,9 +662,9 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
          * Cannot be specified with subnetwork. If neither `network` nor
          * `subnet` is specified, the &#34;default&#34; network of the project is
          * used, if it exists. A full URL or partial URI. Examples:
-         * * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+         * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
          *   regions/global/default`
-         * * `projects/[project_id]/regions/global/default`
+         * * `projects/[projectId]/regions/global/default`
          *   Runtimes are managed resources inside Google Infrastructure.
          *   Runtimes support the following network configurations:
          * * Google Managed Network (Network &amp; subnet are empty)
@@ -755,9 +755,9 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
          * @param subnet The Compute Engine subnetwork to be used for machine
          * communications. Cannot be specified with network. A full URL or
          * partial URI are valid. Examples:
-         * * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+         * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
          *   regions/us-east1/subnetworks/sub0`
-         * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
+         * * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
          * 
          * @return builder
          * 
@@ -771,9 +771,9 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
          * @param subnet The Compute Engine subnetwork to be used for machine
          * communications. Cannot be specified with network. A full URL or
          * partial URI are valid. Examples:
-         * * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+         * * `https://www.googleapis.com/compute/v1/projects/[projectId]/
          *   regions/us-east1/subnetworks/sub0`
-         * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
+         * * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
          * 
          * @return builder
          * 

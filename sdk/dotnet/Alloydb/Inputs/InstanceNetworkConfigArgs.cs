@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Alloydb.Inputs
 
         /// <summary>
         /// A list of external networks authorized to access this instance. This
-        /// field is only allowed to be set when `enable_public_ip` is set to
+        /// field is only allowed to be set when `EnablePublicIp` is set to
         /// true.
         /// Structure is documented below.
         /// </summary>

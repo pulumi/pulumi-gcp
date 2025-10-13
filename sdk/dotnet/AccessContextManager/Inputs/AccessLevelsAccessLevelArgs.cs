@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Resource name for the Access Level. The short_name component must begin
+        /// Resource name for the Access Level. The ShortName component must begin
         /// with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         /// </summary>

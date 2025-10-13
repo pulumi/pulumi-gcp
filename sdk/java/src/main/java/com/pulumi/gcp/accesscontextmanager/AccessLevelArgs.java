@@ -70,7 +70,7 @@ public final class AccessLevelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource name for the Access Level. The short_name component must begin
+     * Resource name for the Access Level. The shortName component must begin
      * with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      * 
@@ -79,7 +79,7 @@ public final class AccessLevelArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Resource name for the Access Level. The short_name component must begin
+     * @return Resource name for the Access Level. The shortName component must begin
      * with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      * 
@@ -219,7 +219,7 @@ public final class AccessLevelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Resource name for the Access Level. The short_name component must begin
+         * @param name Resource name for the Access Level. The shortName component must begin
          * with a letter and only include alphanumeric and &#39;_&#39;.
          * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
          * 
@@ -232,7 +232,7 @@ public final class AccessLevelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Resource name for the Access Level. The short_name component must begin
+         * @param name Resource name for the Access Level. The shortName component must begin
          * with a letter and only include alphanumeric and &#39;_&#39;.
          * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
          * 

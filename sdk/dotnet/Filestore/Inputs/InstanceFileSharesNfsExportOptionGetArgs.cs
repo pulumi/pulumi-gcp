@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Filestore.Inputs
         }
 
         /// <summary>
-        /// The source VPC network for `ip_ranges`.
+        /// The source VPC network for `IpRanges`.
         /// Required for instances using Private Service Connect, optional otherwise.
         /// </summary>
         [Input("network")]

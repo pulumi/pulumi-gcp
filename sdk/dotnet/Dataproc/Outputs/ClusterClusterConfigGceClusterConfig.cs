@@ -31,8 +31,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
-        /// network to the cluster will be part of. Conflicts with `subnetwork`.
+        /// The name or SelfLink of the Google Compute Engine
+        /// network to the cluster will be part of. Conflicts with `Subnetwork`.
         /// If neither is specified, this defaults to the "default" network.
         /// </summary>
         public readonly string? Network;
@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly string? ServiceAccount;
         /// <summary>
         /// The set of Google API scopes
-        /// to be made available on all of the node VMs under the `service_account`
+        /// to be made available on all of the node VMs under the `ServiceAccount`
         /// specified. Both OAuth2 URLs and gcloud
         /// short names are supported. To allow full access to all Cloud APIs, use the
         /// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
@@ -64,8 +64,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig? ShieldedInstanceConfig;
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
-        /// subnetwork the cluster will be part of. Conflicts with `network`.
+        /// The name or SelfLink of the Google Compute Engine
+        /// subnetwork the cluster will be part of. Conflicts with `Network`.
         /// </summary>
         public readonly string? Subnetwork;
         /// <summary>
@@ -75,8 +75,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly ImmutableArray<string> Tags;
         /// <summary>
         /// The GCP zone where your data is stored and used (i.e. where
-        /// the master and the worker nodes will be created in). If `region` is set to 'global' (default)
-        /// then `zone` is mandatory, otherwise GCP is able to make use of [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/auto-zone)
+        /// the master and the worker nodes will be created in). If `Region` is set to 'global' (default)
+        /// then `Zone` is mandatory, otherwise GCP is able to make use of [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/auto-zone)
         /// to determine this automatically for you.
         /// Note: This setting additionally determines and restricts
         /// which computing resources are available for use with other configs such as

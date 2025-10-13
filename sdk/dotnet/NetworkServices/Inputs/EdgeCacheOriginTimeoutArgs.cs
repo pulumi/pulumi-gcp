@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
         /// If the response headers have already been written to the connection, the response will be truncated and logged.
         /// 
-        /// &lt;a name="nested_aws_v4_authentication"&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+        /// &lt;a name="NestedAwsV4Authentication"&gt;&lt;/a&gt;The `AwsV4Authentication` block supports:
         /// </summary>
         [Input("readTimeout")]
         public Input<string>? ReadTimeout { get; set; }

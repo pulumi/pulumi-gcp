@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
  * 
- * &gt; It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
+ * &gt; It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `autoCreateNetwork` to false, when possible.
  * 
  * &gt; It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
  * 
@@ -169,14 +169,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:organizations/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
     /**
-     * Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
+     * Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
      * 
      */
     @Export(name="autoCreateNetwork", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoCreateNetwork;
 
     /**
-     * @return Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
+     * @return Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
      * 
      */
     public Output<Optional<Boolean>> autoCreateNetwork() {
@@ -226,8 +226,8 @@ public class Project extends com.pulumi.resources.CustomResource {
     }
     /**
      * The numeric ID of the folder this project should be
-     * created under. Only one of `org_id` or `folder_id` may be
-     * specified. If the `folder_id` is specified, then the project is
+     * created under. Only one of `orgId` or `folderId` may be
+     * specified. If the `folderId` is specified, then the project is
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      * 
@@ -237,8 +237,8 @@ public class Project extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The numeric ID of the folder this project should be
-     * created under. Only one of `org_id` or `folder_id` may be
-     * specified. If the `folder_id` is specified, then the project is
+     * created under. Only one of `orgId` or `folderId` may be
+     * specified. If the `folderId` is specified, then the project is
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      * 
@@ -295,7 +295,7 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
-     * `org_id` or `folder_id` may be specified. If the `org_id` is
+     * `orgId` or `folderId` may be specified. If the `orgId` is
      * specified then the project is created at the top level. Changing
      * this forces the project to be migrated to the newly specified
      * organization.
@@ -307,7 +307,7 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * @return The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
-     * `org_id` or `folder_id` may be specified. If the `org_id` is
+     * `orgId` or `folderId` may be specified. If the `orgId` is
      * specified then the project is created at the top level. Changing
      * this forces the project to be migrated to the newly specified
      * organization.

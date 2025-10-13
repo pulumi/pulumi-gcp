@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Firebase.Outputs
         /// The commit in the codebase to build from.
         /// 
         /// 
-        /// &lt;a name="nested_source_codebase_author"&gt;&lt;/a&gt;The `author` block contains:
+        /// &lt;a name="NestedSourceCodebaseAuthor"&gt;&lt;/a&gt;The `Author` block contains:
         /// </summary>
         public readonly string? Commit;
         /// <summary>

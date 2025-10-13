@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade {
     /**
-     * @return Name of the upgrade, e.g., &#34;k8s_control_plane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
+     * @return Name of the upgrade, e.g., &#34;k8sControlPlane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
      * 
      */
     private String name;
@@ -23,7 +23,7 @@ public final class FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade {
 
     private FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade() {}
     /**
-     * @return Name of the upgrade, e.g., &#34;k8s_control_plane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
+     * @return Name of the upgrade, e.g., &#34;k8sControlPlane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
      * 
      */
     public String name() {

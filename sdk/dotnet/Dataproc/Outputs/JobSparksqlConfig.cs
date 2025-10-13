@@ -29,12 +29,12 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>
         /// The HCFS URI of the script that contains SQL queries.
-        /// Conflicts with `query_list`
+        /// Conflicts with `QueryList`
         /// </summary>
         public readonly string? QueryFileUri;
         /// <summary>
         /// The list of SQL queries or statements to execute as part of the job.
-        /// Conflicts with `query_file_uri`
+        /// Conflicts with `QueryFileUri`
         /// </summary>
         public readonly ImmutableArray<string> QueryLists;
         /// <summary>

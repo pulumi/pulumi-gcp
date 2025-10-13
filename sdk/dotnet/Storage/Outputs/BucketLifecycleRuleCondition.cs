@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class BucketLifecycleRuleCondition
     {
         /// <summary>
-        /// Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
+        /// Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `Age`, `SendAgeIfZero` should be set `True` otherwise `0` value of `Age` field will be ignored.
         /// </summary>
         public readonly int? Age;
         /// <summary>
@@ -55,19 +55,19 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly int? NumNewerVersions;
         /// <summary>
-        /// While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
+        /// While set true, `Age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `Age` field. It can be used alone or together with `Age` attribute. **NOTE** `Age` attibute with `0` value will be ommitted from the API request if `SendAgeIfZero` field is having `False` value.
         /// </summary>
         public readonly bool? SendAgeIfZero;
         /// <summary>
-        /// While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+        /// While set true, `DaysSinceCustomTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `DaysSinceCustomTime` field. It can be used alone or together with `DaysSinceCustomTime`.
         /// </summary>
         public readonly bool? SendDaysSinceCustomTimeIfZero;
         /// <summary>
-        /// While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+        /// While set true, `DaysSinceNoncurrentTime` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `DaysSinceNoncurrentTime` field. It can be used alone or together with `DaysSinceNoncurrentTime`.
         /// </summary>
         public readonly bool? SendDaysSinceNoncurrentTimeIfZero;
         /// <summary>
-        /// While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+        /// While set true, `NumNewerVersions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `NumNewerVersions` field. It can be used alone or together with `NumNewerVersions`.
         /// </summary>
         public readonly bool? SendNumNewerVersionsIfZero;
         /// <summary>

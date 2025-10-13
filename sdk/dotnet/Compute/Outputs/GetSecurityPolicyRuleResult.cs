@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int Priority;
         /// <summary>
-        /// Rate limit threshold for this security policy. Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Rate limit threshold for this security policy. Must be specified if the action is "RateBasedBan" or "throttle". Cannot be specified for any other actions.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecurityPolicyRuleRateLimitOptionResult> RateLimitOptions;
         /// <summary>

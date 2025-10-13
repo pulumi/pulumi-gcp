@@ -100,7 +100,7 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The HCFS URI of the script that contains SQL queries.
-     * Conflicts with `query_list`
+     * Conflicts with `queryList`
      * 
      */
     @Import(name="queryFileUri")
@@ -108,7 +108,7 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The HCFS URI of the script that contains SQL queries.
-     * Conflicts with `query_list`
+     * Conflicts with `queryList`
      * 
      */
     public Optional<Output<String>> queryFileUri() {
@@ -117,7 +117,7 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The list of SQL queries or statements to execute as part of the job.
-     * Conflicts with `query_file_uri`
+     * Conflicts with `queryFileUri`
      * 
      */
     @Import(name="queryLists")
@@ -125,7 +125,7 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The list of SQL queries or statements to execute as part of the job.
-     * Conflicts with `query_file_uri`
+     * Conflicts with `queryFileUri`
      * 
      */
     public Optional<Output<List<String>>> queryLists() {
@@ -283,7 +283,7 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param queryFileUri The HCFS URI of the script that contains SQL queries.
-         * Conflicts with `query_list`
+         * Conflicts with `queryList`
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param queryFileUri The HCFS URI of the script that contains SQL queries.
-         * Conflicts with `query_list`
+         * Conflicts with `queryList`
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param queryLists The list of SQL queries or statements to execute as part of the job.
-         * Conflicts with `query_file_uri`
+         * Conflicts with `queryFileUri`
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param queryLists The list of SQL queries or statements to execute as part of the job.
-         * Conflicts with `query_file_uri`
+         * Conflicts with `queryFileUri`
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param queryLists The list of SQL queries or statements to execute as part of the job.
-         * Conflicts with `query_file_uri`
+         * Conflicts with `queryFileUri`
          * 
          * @return builder
          * 

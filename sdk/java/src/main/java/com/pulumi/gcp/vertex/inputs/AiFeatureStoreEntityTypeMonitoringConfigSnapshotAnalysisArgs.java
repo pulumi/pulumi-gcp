@@ -36,13 +36,13 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
      * Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
-     * &gt; **Warning:** `monitoring_interval` is deprecated and will be removed in a future release.
+     * &gt; **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
      * 
      * @deprecated
-     * `monitoring_interval` is deprecated and will be removed in a future release.
+     * `monitoringInterval` is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* `monitoring_interval` is deprecated and will be removed in a future release. */
+    @Deprecated /* `monitoringInterval` is deprecated and will be removed in a future release. */
     @Import(name="monitoringInterval")
     private @Nullable Output<String> monitoringInterval;
 
@@ -50,13 +50,13 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
      * @return Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
-     * &gt; **Warning:** `monitoring_interval` is deprecated and will be removed in a future release.
+     * &gt; **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
      * 
      * @deprecated
-     * `monitoring_interval` is deprecated and will be removed in a future release.
+     * `monitoringInterval` is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* `monitoring_interval` is deprecated and will be removed in a future release. */
+    @Deprecated /* `monitoringInterval` is deprecated and will be removed in a future release. */
     public Optional<Output<String>> monitoringInterval() {
         return Optional.ofNullable(this.monitoringInterval);
     }
@@ -145,15 +145,15 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
          * @param monitoringInterval Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
          * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
          * 
-         * &gt; **Warning:** `monitoring_interval` is deprecated and will be removed in a future release.
+         * &gt; **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
          * 
          * @return builder
          * 
          * @deprecated
-         * `monitoring_interval` is deprecated and will be removed in a future release.
+         * `monitoringInterval` is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* `monitoring_interval` is deprecated and will be removed in a future release. */
+        @Deprecated /* `monitoringInterval` is deprecated and will be removed in a future release. */
         public Builder monitoringInterval(@Nullable Output<String> monitoringInterval) {
             $.monitoringInterval = monitoringInterval;
             return this;
@@ -163,15 +163,15 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
          * @param monitoringInterval Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
          * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
          * 
-         * &gt; **Warning:** `monitoring_interval` is deprecated and will be removed in a future release.
+         * &gt; **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
          * 
          * @return builder
          * 
          * @deprecated
-         * `monitoring_interval` is deprecated and will be removed in a future release.
+         * `monitoringInterval` is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* `monitoring_interval` is deprecated and will be removed in a future release. */
+        @Deprecated /* `monitoringInterval` is deprecated and will be removed in a future release. */
         public Builder monitoringInterval(String monitoringInterval) {
             return monitoringInterval(Output.of(monitoringInterval));
         }

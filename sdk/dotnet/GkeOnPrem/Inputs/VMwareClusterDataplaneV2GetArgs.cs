@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
     public sealed class VMwareClusterDataplaneV2GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable advanced networking which requires dataplane_v2_enabled to be set true.
+        /// Enable advanced networking which requires DataplaneV2Enabled to be set true.
         /// </summary>
         [Input("advancedNetworking")]
         public Input<bool>? AdvancedNetworking { get; set; }

@@ -76,7 +76,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
     /**
      * Specifies the maximum allowed TTL for cached content served by this origin. When the
-     * `cache_mode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
+     * `cacheMode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     @Import(name="clientTtl")
@@ -84,7 +84,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Specifies the maximum allowed TTL for cached content served by this origin. When the
-     * `cache_mode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
+     * `cacheMode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     public Optional<Output<Integer>> clientTtl() {
@@ -93,7 +93,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
     /**
      * Specifies the default TTL for cached content served by this origin for responses
-     * that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
+     * that do not have an existing valid TTL (max-age or s-max-age). When the `cacheMode`
      * is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
@@ -102,7 +102,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Specifies the default TTL for cached content served by this origin for responses
-     * that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
+     * that do not have an existing valid TTL (max-age or s-max-age). When the `cacheMode`
      * is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
@@ -112,7 +112,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
     /**
      * Specifies the maximum allowed TTL for cached content served by this origin. When the
-     * `cache_mode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
+     * `cacheMode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     @Import(name="maxTtl")
@@ -120,7 +120,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Specifies the maximum allowed TTL for cached content served by this origin. When the
-     * `cache_mode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
+     * `cacheMode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     public Optional<Output<Integer>> maxTtl() {
@@ -338,7 +338,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param clientTtl Specifies the maximum allowed TTL for cached content served by this origin. When the
-         * `cache_mode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
+         * `cacheMode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param clientTtl Specifies the maximum allowed TTL for cached content served by this origin. When the
-         * `cache_mode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
+         * `cacheMode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param defaultTtl Specifies the default TTL for cached content served by this origin for responses
-         * that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
+         * that do not have an existing valid TTL (max-age or s-max-age). When the `cacheMode`
          * is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
          * 
          * @return builder
@@ -374,7 +374,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param defaultTtl Specifies the default TTL for cached content served by this origin for responses
-         * that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
+         * that do not have an existing valid TTL (max-age or s-max-age). When the `cacheMode`
          * is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
          * 
          * @return builder
@@ -386,7 +386,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param maxTtl Specifies the maximum allowed TTL for cached content served by this origin. When the
-         * `cache_mode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
+         * `cacheMode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param maxTtl Specifies the maximum allowed TTL for cached content served by this origin. When the
-         * `cache_mode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
+         * `cacheMode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
          * 
          * @return builder
          * 

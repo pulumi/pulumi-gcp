@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig {
     /**
-     * @return Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+     * @return Common alphabets. Only one of this, `customAlphabet` or `radix` must be specified.
      * Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
      * 
      */
@@ -44,12 +44,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     private PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey cryptoKey;
     /**
      * @return This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
      * 
      */
     private @Nullable String customAlphabet;
     /**
-     * @return The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
+     * @return The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `customAlphabet` or `commonAlphabet` must be specified.
      * 
      */
     private @Nullable Integer radix;
@@ -65,7 +65,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
     private PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig() {}
     /**
-     * @return Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+     * @return Common alphabets. Only one of this, `customAlphabet` or `radix` must be specified.
      * Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
      * 
      */
@@ -98,14 +98,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     }
     /**
      * @return This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!{@literal @}#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
      * 
      */
     public Optional<String> customAlphabet() {
         return Optional.ofNullable(this.customAlphabet);
     }
     /**
-     * @return The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
+     * @return The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `customAlphabet` or `commonAlphabet` must be specified.
      * 
      */
     public Optional<Integer> radix() {

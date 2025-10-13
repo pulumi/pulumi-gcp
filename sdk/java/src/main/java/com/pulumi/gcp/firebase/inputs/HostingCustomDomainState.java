@@ -334,7 +334,7 @@ public final class HostingCustomDomainState extends com.pulumi.resources.Resourc
      * if true, indicates that Hosting&#39;s systems are attempting to
      * make the `CustomDomain`&#39;s state match your preferred state. This is most
      * frequently `true` when initially provisioning a `CustomDomain` or when creating
-     * a new SSL certificate to match an updated `cert_preference`
+     * a new SSL certificate to match an updated `certPreference`
      * 
      */
     @Import(name="reconciling")
@@ -344,7 +344,7 @@ public final class HostingCustomDomainState extends com.pulumi.resources.Resourc
      * @return if true, indicates that Hosting&#39;s systems are attempting to
      * make the `CustomDomain`&#39;s state match your preferred state. This is most
      * frequently `true` when initially provisioning a `CustomDomain` or when creating
-     * a new SSL certificate to match an updated `cert_preference`
+     * a new SSL certificate to match an updated `certPreference`
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -354,7 +354,7 @@ public final class HostingCustomDomainState extends com.pulumi.resources.Resourc
     /**
      * A domain name that this CustomDomain should direct traffic towards. If
      * specified, Hosting will respond to requests against this CustomDomain
-     * with an HTTP 301 code, and route traffic to the specified `redirect_target`
+     * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
      * instead.
      * 
      */
@@ -364,7 +364,7 @@ public final class HostingCustomDomainState extends com.pulumi.resources.Resourc
     /**
      * @return A domain name that this CustomDomain should direct traffic towards. If
      * specified, Hosting will respond to requests against this CustomDomain
-     * with an HTTP 301 code, and route traffic to the specified `redirect_target`
+     * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
      * instead.
      * 
      */
@@ -882,7 +882,7 @@ public final class HostingCustomDomainState extends com.pulumi.resources.Resourc
          * @param reconciling if true, indicates that Hosting&#39;s systems are attempting to
          * make the `CustomDomain`&#39;s state match your preferred state. This is most
          * frequently `true` when initially provisioning a `CustomDomain` or when creating
-         * a new SSL certificate to match an updated `cert_preference`
+         * a new SSL certificate to match an updated `certPreference`
          * 
          * @return builder
          * 
@@ -896,7 +896,7 @@ public final class HostingCustomDomainState extends com.pulumi.resources.Resourc
          * @param reconciling if true, indicates that Hosting&#39;s systems are attempting to
          * make the `CustomDomain`&#39;s state match your preferred state. This is most
          * frequently `true` when initially provisioning a `CustomDomain` or when creating
-         * a new SSL certificate to match an updated `cert_preference`
+         * a new SSL certificate to match an updated `certPreference`
          * 
          * @return builder
          * 
@@ -908,7 +908,7 @@ public final class HostingCustomDomainState extends com.pulumi.resources.Resourc
         /**
          * @param redirectTarget A domain name that this CustomDomain should direct traffic towards. If
          * specified, Hosting will respond to requests against this CustomDomain
-         * with an HTTP 301 code, and route traffic to the specified `redirect_target`
+         * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
          * instead.
          * 
          * @return builder
@@ -922,7 +922,7 @@ public final class HostingCustomDomainState extends com.pulumi.resources.Resourc
         /**
          * @param redirectTarget A domain name that this CustomDomain should direct traffic towards. If
          * specified, Hosting will respond to requests against this CustomDomain
-         * with an HTTP 301 code, and route traffic to the specified `redirect_target`
+         * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
          * instead.
          * 
          * @return builder

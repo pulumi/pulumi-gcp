@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// 
-        /// * &lt;a name="schema"&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+        /// * &lt;a name="schema"&gt;&lt;/a&gt;`Schema` - (Optional) A JSON schema for the table.
         /// 
         /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
         /// string will create a diff, even if the JSON itself hasn't changed.
@@ -172,7 +172,7 @@ namespace Pulumi.Gcp.BigQuery
         /// the recurring diff this causes. As a workaround, we recommend using the
         /// schema as returned by the API.
         /// 
-        /// ~&gt;**NOTE:**  If you use `external_data_configuration`
+        /// ~&gt;**NOTE:**  If you use `ExternalDataConfiguration`
         /// documented below and do **not** set
         /// `external_data_configuration.connection_id`, schemas must be specified
         /// with `external_data_configuration.schema`. Otherwise, schemas must be
@@ -378,7 +378,7 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// Replication info of a table created
         /// using "AS REPLICA" DDL like:
-        /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+        /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF SrcMv`.
         /// Structure is documented below.
         /// </summary>
         [Output("tableReplicationInfo")]
@@ -656,7 +656,7 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// Replication info of a table created
         /// using "AS REPLICA" DDL like:
-        /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+        /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF SrcMv`.
         /// Structure is documented below.
         /// </summary>
         [Input("tableReplicationInfo")]
@@ -736,7 +736,7 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// 
-        /// * &lt;a name="schema"&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+        /// * &lt;a name="schema"&gt;&lt;/a&gt;`Schema` - (Optional) A JSON schema for the table.
         /// 
         /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
         /// string will create a diff, even if the JSON itself hasn't changed.
@@ -746,7 +746,7 @@ namespace Pulumi.Gcp.BigQuery
         /// the recurring diff this causes. As a workaround, we recommend using the
         /// schema as returned by the API.
         /// 
-        /// ~&gt;**NOTE:**  If you use `external_data_configuration`
+        /// ~&gt;**NOTE:**  If you use `ExternalDataConfiguration`
         /// documented below and do **not** set
         /// `external_data_configuration.connection_id`, schemas must be specified
         /// with `external_data_configuration.schema`. Otherwise, schemas must be
@@ -987,7 +987,7 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// Replication info of a table created
         /// using "AS REPLICA" DDL like:
-        /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+        /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF SrcMv`.
         /// Structure is documented below.
         /// </summary>
         [Input("tableReplicationInfo")]
