@@ -16,7 +16,7 @@ public final class GetSubnetworkArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetSubnetworkArgs Empty = new GetSubnetworkArgs();
 
     /**
-     * The name of the subnetwork. One of `name` or `self_link`
+     * The name of the subnetwork. One of `name` or `selfLink`
      * must be specified.
      * 
      */
@@ -24,7 +24,7 @@ public final class GetSubnetworkArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the subnetwork. One of `name` or `self_link`
+     * @return The name of the subnetwork. One of `name` or `selfLink`
      * must be specified.
      * 
      */
@@ -67,7 +67,7 @@ public final class GetSubnetworkArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The self link of the subnetwork. If `self_link` is
+     * The self link of the subnetwork. If `selfLink` is
      * specified, `name`, `project`, and `region` are ignored.
      * 
      */
@@ -75,7 +75,7 @@ public final class GetSubnetworkArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> selfLink;
 
     /**
-     * @return The self link of the subnetwork. If `self_link` is
+     * @return The self link of the subnetwork. If `selfLink` is
      * specified, `name`, `project`, and `region` are ignored.
      * 
      */
@@ -111,7 +111,7 @@ public final class GetSubnetworkArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the subnetwork. One of `name` or `self_link`
+         * @param name The name of the subnetwork. One of `name` or `selfLink`
          * must be specified.
          * 
          * @return builder
@@ -123,7 +123,7 @@ public final class GetSubnetworkArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the subnetwork. One of `name` or `self_link`
+         * @param name The name of the subnetwork. One of `name` or `selfLink`
          * must be specified.
          * 
          * @return builder
@@ -180,7 +180,7 @@ public final class GetSubnetworkArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param selfLink The self link of the subnetwork. If `self_link` is
+         * @param selfLink The self link of the subnetwork. If `selfLink` is
          * specified, `name`, `project`, and `region` are ignored.
          * 
          * @return builder
@@ -192,7 +192,7 @@ public final class GetSubnetworkArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param selfLink The self link of the subnetwork. If `self_link` is
+         * @param selfLink The self link of the subnetwork. If `selfLink` is
          * specified, `name`, `project`, and `region` are ignored.
          * 
          * @return builder

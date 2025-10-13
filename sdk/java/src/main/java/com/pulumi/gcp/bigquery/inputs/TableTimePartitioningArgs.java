@@ -57,7 +57,7 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
     /**
      * If set to true, queries over this table
      * require a partition filter that can be used for partition elimination to be
-     * specified. `require_partition_filter` is deprecated and will be removed in
+     * specified. `requirePartitionFilter` is deprecated and will be removed in
      * a future major release. Use the top level field with the same name instead.
      * 
      * @deprecated
@@ -71,7 +71,7 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
     /**
      * @return If set to true, queries over this table
      * require a partition filter that can be used for partition elimination to be
-     * specified. `require_partition_filter` is deprecated and will be removed in
+     * specified. `requirePartitionFilter` is deprecated and will be removed in
      * a future major release. Use the top level field with the same name instead.
      * 
      * @deprecated
@@ -178,7 +178,7 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
         /**
          * @param requirePartitionFilter If set to true, queries over this table
          * require a partition filter that can be used for partition elimination to be
-         * specified. `require_partition_filter` is deprecated and will be removed in
+         * specified. `requirePartitionFilter` is deprecated and will be removed in
          * a future major release. Use the top level field with the same name instead.
          * 
          * @return builder
@@ -196,7 +196,7 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
         /**
          * @param requirePartitionFilter If set to true, queries over this table
          * require a partition filter that can be used for partition elimination to be
-         * specified. `require_partition_filter` is deprecated and will be removed in
+         * specified. `requirePartitionFilter` is deprecated and will be removed in
          * a future major release. Use the top level field with the same name instead.
          * 
          * @return builder

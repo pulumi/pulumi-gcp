@@ -20,25 +20,25 @@ namespace Pulumi.Gcp.Eventarc.Outputs
         /// is treated as a CloudEvent and is mapped to the HTTP request according
         /// to the CloudEvent HTTP Protocol Binding Binary Content Mode
         /// (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode).
-        /// In this representation, all fields except the `data` and
-        /// `datacontenttype` field on the message are mapped to HTTP request
+        /// In this representation, all fields except the `Data` and
+        /// `Datacontenttype` field on the message are mapped to HTTP request
         /// headers with a prefix of `ce-`.
         /// To construct the HTTP request payload and the value of the content-type
         /// HTTP header, the payload format is defined as follows:
-        /// 1) Use the output_payload_format_type on the Pipeline.Destination if it
+        /// 1) Use the OutputPayloadFormatType on the Pipeline.Destination if it
         /// is set, else:
-        /// 2) Use the input_payload_format_type on the Pipeline if it is set,
+        /// 2) Use the InputPayloadFormatType on the Pipeline if it is set,
         /// else:
         /// 3) Treat the payload as opaque binary data.
-        /// The `data` field of the message is converted to the payload format or
+        /// The `Data` field of the message is converted to the payload format or
         /// left as-is for case 3) and then attached as the payload of the HTTP
         /// request. The `content-type` header on the HTTP request is set to the
         /// payload format type or left empty for case 3). However, if a mediation
-        /// has updated the `datacontenttype` field on the message so that it is
+        /// has updated the `Datacontenttype` field on the message so that it is
         /// not the same as the payload format type but it is still a prefix of the
         /// payload format type, then the `content-type` header on the HTTP request
-        /// is set to this `datacontenttype` value. For example, if the
-        /// `datacontenttype` is "application/json" and the payload format type is
+        /// is set to this `Datacontenttype` value. For example, if the
+        /// `Datacontenttype` is "application/json" and the payload format type is
         /// "application/json; charset=utf-8", then the `content-type` header on
         /// the HTTP request is set to "application/json; charset=utf-8".
         /// If a non-empty binding expression is specified then this expression is
@@ -46,20 +46,20 @@ namespace Pulumi.Gcp.Eventarc.Outputs
         /// Content representation.
         /// The result of the CEL expression must be a map of key/value pairs
         /// which is used as follows:
-        /// - If a map named `headers` exists on the result of the expression,
+        /// - If a map named `Headers` exists on the result of the expression,
         /// then its key/value pairs are directly mapped to the HTTP request
         /// headers. The headers values are constructed from the corresponding
-        /// value type's canonical representation. If the `headers` field doesn't
+        /// value type's canonical representation. If the `Headers` field doesn't
         /// exist then the resulting HTTP request will be the headers of the
         /// CloudEvent HTTP Binding Binary Content Mode representation of the final
         /// message. Note: If the specified binding expression, has updated the
-        /// `datacontenttype` field on the message so that it is not the same as
+        /// `Datacontenttype` field on the message so that it is not the same as
         /// the payload format type but it is still a prefix of the payload format
-        /// type, then the `content-type` header in the `headers` map is set to
-        /// this `datacontenttype` value.
-        /// - If a field named `body` exists on the result of the expression then
+        /// type, then the `content-type` header in the `Headers` map is set to
+        /// this `Datacontenttype` value.
+        /// - If a field named `Body` exists on the result of the expression then
         /// its value is directly mapped to the body of the request. If the value
-        /// of the `body` field is of type bytes or string then it is used for
+        /// of the `Body` field is of type bytes or string then it is used for
         /// the HTTP request body as-is, with no conversion. If the body field is
         /// of any other type then it is converted to a JSON string. If the body
         /// field does not exist then the resulting payload of the HTTP request
@@ -68,14 +68,14 @@ namespace Pulumi.Gcp.Eventarc.Outputs
         /// - Any other fields in the resulting expression will be ignored.
         /// The CEL expression may access the incoming CloudEvent message in its
         /// definition, as follows:
-        /// - The `data` field of the incoming CloudEvent message can be accessed
+        /// - The `Data` field of the incoming CloudEvent message can be accessed
         /// using the `message.data` value. Subfields of `message.data` may also be
-        /// accessed if an input_payload_format has been specified on the Pipeline.
+        /// accessed if an InputPayloadFormat has been specified on the Pipeline.
         /// - Each attribute of the incoming CloudEvent message can be accessed
         /// using the `message.` value, where  is replaced with the
         /// name of the attribute.
         /// - Existing headers can be accessed in the CEL expression using the
-        /// `headers` variable. The `headers` variable defines a map of key/value
+        /// `Headers` variable. The `Headers` variable defines a map of key/value
         /// pairs corresponding to the HTTP headers of the CloudEvent HTTP Binding
         /// Binary Content Mode representation of the final message as described
         /// earlier. For example, the following CEL expression can be used to
@@ -90,9 +90,9 @@ namespace Pulumi.Gcp.Eventarc.Outputs
         /// }
         /// ```
         /// - The default binding for the message payload can be accessed using the
-        /// `body` variable. It conatins a string representation of the message
-        /// payload in the format specified by the `output_payload_format` field.
-        /// If the `input_payload_format` field is not set, the `body`
+        /// `Body` variable. It conatins a string representation of the message
+        /// payload in the format specified by the `OutputPayloadFormat` field.
+        /// If the `InputPayloadFormat` field is not set, the `Body`
         /// variable contains the same message payload bytes that were published.
         /// Additionally, the following CEL extension functions are provided for
         /// use in this CEL expression:
@@ -154,13 +154,13 @@ namespace Pulumi.Gcp.Eventarc.Outputs
         /// message.toCloudEventJsonWithPayloadFormat() &gt; map
         /// - Converts a message to the corresponding structure of JSON
         /// format for CloudEvents.
-        /// - It converts `data` to destination payload format
-        /// specified in `output_payload_format`. If `output_payload_format` is
+        /// - It converts `Data` to destination payload format
+        /// specified in `OutputPayloadFormat`. If `OutputPayloadFormat` is
         /// not set, the data will remain unchanged.
         /// - It also sets the corresponding datacontenttype of
         /// the CloudEvent, as indicated by
-        /// `output_payload_format`. If no
-        /// `output_payload_format` is set it will use the value of the
+        /// `OutputPayloadFormat`. If no
+        /// `OutputPayloadFormat` is set it will use the value of the
         /// "datacontenttype" attribute on the CloudEvent if present, else
         /// remove "datacontenttype" attribute.
         /// - This function expects that the content of the message will

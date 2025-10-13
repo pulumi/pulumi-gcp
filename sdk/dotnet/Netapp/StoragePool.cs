@@ -189,7 +189,7 @@ namespace Pulumi.Gcp.Netapp
         /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> QosType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        /// Specifies the replica zone for regional Flex pools. `Zone` and `ReplicaZone` values can be swapped to initiate a
         /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         /// </summary>
         [Output("replicaZone")]
@@ -280,9 +280,9 @@ namespace Pulumi.Gcp.Netapp
         public Output<int> VolumeCount { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        /// Specifies the active zone for regional Flex pools. `Zone` and `ReplicaZone` values can be swapped to initiate a
         /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
-        /// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+        /// If you want to create a zonal Flex pool, specify a zone name for `Location` and omit `Zone`.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -398,7 +398,7 @@ namespace Pulumi.Gcp.Netapp
         /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -447,7 +447,7 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? QosType { get; set; }
 
         /// <summary>
-        /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        /// Specifies the replica zone for regional Flex pools. `Zone` and `ReplicaZone` values can be swapped to initiate a
         /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         /// </summary>
         [Input("replicaZone")]
@@ -473,9 +473,9 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? TotalThroughputMibps { get; set; }
 
         /// <summary>
-        /// Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        /// Specifies the active zone for regional Flex pools. `Zone` and `ReplicaZone` values can be swapped to initiate a
         /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
-        /// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+        /// If you want to create a zonal Flex pool, specify a zone name for `Location` and omit `Zone`.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -588,7 +588,7 @@ namespace Pulumi.Gcp.Netapp
         /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -654,7 +654,7 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? QosType { get; set; }
 
         /// <summary>
-        /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        /// Specifies the replica zone for regional Flex pools. `Zone` and `ReplicaZone` values can be swapped to initiate a
         /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         /// </summary>
         [Input("replicaZone")]
@@ -692,9 +692,9 @@ namespace Pulumi.Gcp.Netapp
         public Input<int>? VolumeCount { get; set; }
 
         /// <summary>
-        /// Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        /// Specifies the active zone for regional Flex pools. `Zone` and `ReplicaZone` values can be swapped to initiate a
         /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
-        /// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+        /// If you want to create a zonal Flex pool, specify a zone name for `Location` and omit `Zone`.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

@@ -18,7 +18,7 @@ public final class OrganizationCustomModuleState extends com.pulumi.resources.Re
 
     /**
      * If empty, indicates that the custom module was created in the organization, folder,
-     * or project in which you are viewing the custom module. Otherwise, ancestor_module
+     * or project in which you are viewing the custom module. Otherwise, ancestorModule
      * specifies the organization or folder from which the custom module is inherited.
      * 
      */
@@ -27,7 +27,7 @@ public final class OrganizationCustomModuleState extends com.pulumi.resources.Re
 
     /**
      * @return If empty, indicates that the custom module was created in the organization, folder,
-     * or project in which you are viewing the custom module. Otherwise, ancestor_module
+     * or project in which you are viewing the custom module. Otherwise, ancestorModule
      * specifies the organization or folder from which the custom module is inherited.
      * 
      */
@@ -191,7 +191,7 @@ public final class OrganizationCustomModuleState extends com.pulumi.resources.Re
 
         /**
          * @param ancestorModule If empty, indicates that the custom module was created in the organization, folder,
-         * or project in which you are viewing the custom module. Otherwise, ancestor_module
+         * or project in which you are viewing the custom module. Otherwise, ancestorModule
          * specifies the organization or folder from which the custom module is inherited.
          * 
          * @return builder
@@ -204,7 +204,7 @@ public final class OrganizationCustomModuleState extends com.pulumi.resources.Re
 
         /**
          * @param ancestorModule If empty, indicates that the custom module was created in the organization, folder,
-         * or project in which you are viewing the custom module. Otherwise, ancestor_module
+         * or project in which you are viewing the custom module. Otherwise, ancestorModule
          * specifies the organization or folder from which the custom module is inherited.
          * 
          * @return builder

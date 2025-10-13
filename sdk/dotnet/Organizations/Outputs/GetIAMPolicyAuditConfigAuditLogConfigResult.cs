@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Organizations.Outputs
     public sealed class GetIAMPolicyAuditConfigAuditLogConfigResult
     {
         /// <summary>
-        /// Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+        /// Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `Members` array for `Binding`.
         /// </summary>
         public readonly ImmutableArray<string> ExemptedMembers;
         /// <summary>

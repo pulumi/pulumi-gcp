@@ -41,7 +41,7 @@ public final class VmwareAdminClusterPlatformConfig {
      * ResourceStatus representing detailed cluster state.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_platform_config_bundles_bundles_status&#34;&gt;&lt;/a&gt;The `status` block contains:
+     * &lt;a name=&#34;nestedPlatformConfigBundlesBundlesStatus&#34;&gt;&lt;/a&gt;The `status` block contains:
      * 
      */
     private @Nullable List<VmwareAdminClusterPlatformConfigStatus> statuses;
@@ -80,7 +80,7 @@ public final class VmwareAdminClusterPlatformConfig {
      * ResourceStatus representing detailed cluster state.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_platform_config_bundles_bundles_status&#34;&gt;&lt;/a&gt;The `status` block contains:
+     * &lt;a name=&#34;nestedPlatformConfigBundlesBundlesStatus&#34;&gt;&lt;/a&gt;The `status` block contains:
      * 
      */
     public List<VmwareAdminClusterPlatformConfigStatus> statuses() {

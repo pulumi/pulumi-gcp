@@ -1374,8 +1374,8 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     }
     /**
      * Path, from the source root, to a file whose contents is used for the template.
-     * Either a filename or build template must be provided. Set this only when using trigger_template or github.
-     * When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
+     * Either a filename or build template must be provided. Set this only when using triggerTemplate or github.
+     * When using Pub/Sub, Webhook or Manual set the file name using gitFileSource instead.
      * 
      */
     @Export(name="filename", refs={String.class}, tree="[0]")
@@ -1383,8 +1383,8 @@ public class Trigger extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Path, from the source root, to a file whose contents is used for the template.
-     * Either a filename or build template must be provided. Set this only when using trigger_template or github.
-     * When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
+     * Either a filename or build template must be provided. Set this only when using triggerTemplate or github.
+     * When using Pub/Sub, Webhook or Manual set the file name using gitFileSource instead.
      * 
      */
     public Output<Optional<String>> filename() {
@@ -1422,7 +1422,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     }
     /**
      * Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-     * One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+     * One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
      * Structure is documented below.
      * 
      */
@@ -1431,7 +1431,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-     * One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+     * One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
      * Structure is documented below.
      * 
      */
@@ -1444,7 +1444,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * If ignoredFiles and changed files are both empty, then they are not
      * used to determine whether or not to trigger a build.
      * If ignoredFiles is not empty, then we ignore any files that match any
-     * of the ignored_file globs. If the change has no files that are outside
+     * of the ignoredFile globs. If the change has no files that are outside
      * of the ignoredFiles globs, then we do not trigger a build.
      * 
      */
@@ -1457,7 +1457,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * If ignoredFiles and changed files are both empty, then they are not
      * used to determine whether or not to trigger a build.
      * If ignoredFiles is not empty, then we ignore any files that match any
-     * of the ignored_file globs. If the change has no files that are outside
+     * of the ignoredFile globs. If the change has no files that are outside
      * of the ignoredFiles globs, then we do not trigger a build.
      * 
      */
@@ -1563,7 +1563,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     /**
      * PubsubConfig describes the configuration of a trigger that creates
      * a build whenever a Pub/Sub message is published.
-     * One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
+     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -1573,7 +1573,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     /**
      * @return PubsubConfig describes the configuration of a trigger that creates
      * a build whenever a Pub/Sub message is published.
-     * One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
+     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -1623,7 +1623,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * This field is used only for those triggers that do not respond to SCM events.
      * Triggers that respond to such events build source at whatever commit caused the event.
      * This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-     * One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
+     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -1635,7 +1635,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * This field is used only for those triggers that do not respond to SCM events.
      * Triggers that respond to such events build source at whatever commit caused the event.
      * This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-     * One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
+     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -1689,7 +1689,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Branch and tag names in trigger templates are interpreted as regular
      * expressions. Any branch or tag change that matches that regular
      * expression will trigger a build.
-     * One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
+     * One of `triggerTemplate`, `github`, `pubsubConfig`, `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -1701,7 +1701,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Branch and tag names in trigger templates are interpreted as regular
      * expressions. Any branch or tag change that matches that regular
      * expression will trigger a build.
-     * One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
+     * One of `triggerTemplate`, `github`, `pubsubConfig`, `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -1711,7 +1711,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     /**
      * WebhookConfig describes the configuration of a trigger that creates
      * a build whenever a webhook is sent to a trigger&#39;s webhook URL.
-     * One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
+     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -1721,7 +1721,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     /**
      * @return WebhookConfig describes the configuration of a trigger that creates
      * a build whenever a webhook is sent to a trigger&#39;s webhook URL.
-     * One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
+     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */

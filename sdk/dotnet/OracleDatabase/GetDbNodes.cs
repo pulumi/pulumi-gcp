@@ -40,30 +40,30 @@ namespace Pulumi.Gcp.OracleDatabase
         /// 
         /// The following attributes are exported:
         /// 
-        /// * `db_nodes` - List of dbNodes. Structure is documented below.
+        /// * `DbNodes` - List of dbNodes. Structure is documented below.
         /// 
-        /// &lt;a name="nested_dbnodes"&gt;&lt;/a&gt; The `db_nodes` block supports:
+        /// &lt;a name="NestedDbnodes"&gt;&lt;/a&gt; The `DbNodes` block supports:
         /// 
-        /// * `name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
+        /// * `Name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
         /// 
-        /// * `properties` - Various properties of the database node. Structure is documented below.
+        /// * `Properties` - Various properties of the database node. Structure is documented below.
         /// 
-        /// &lt;a name="nested_properties"&gt;&lt;/a&gt; The `properties` block supports:
+        /// &lt;a name="NestedProperties"&gt;&lt;/a&gt; The `Properties` block supports:
         /// 
-        /// * `ocid`- OCID of database node.
+        /// * `Ocid`- OCID of database node.
         /// 
-        /// * `ocpu_count` - OCPU count per database node.
+        /// * `OcpuCount` - OCPU count per database node.
         /// 
-        /// * `memory_size_gb` - The allocated memory in GBs on the database node.
+        /// * `MemorySizeGb` - The allocated memory in GBs on the database node.
         /// 
-        /// * `db_node_storage_size_gb` - The allocated local node storage in GBs on the database node.
+        /// * `DbNodeStorageSizeGb` - The allocated local node storage in GBs on the database node.
         /// 
-        /// * `db_server_ocid` - The OCID of the Database server associated with the database node.
+        /// * `DbServerOcid` - The OCID of the Database server associated with the database node.
         /// 
-        /// * `hostname` - The host name for the database node.
+        /// * `Hostname` - The host name for the database node.
         /// 
-        /// * `state` - State of the database node.
-        /// &lt;a name="nested_states"&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
+        /// * `State` - State of the database node.
+        /// &lt;a name="NestedStates"&gt;&lt;/a&gt;Possible values for `State` are:&lt;br&gt;
         /// `PROVISIONING` - Indicates that the resource is being provisioned.&lt;br&gt;
         /// `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
         /// `UPDATING` - Indicates that the resource is being updated.&lt;br&gt;
@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// `TERMINATED` - Indicates that the resource is terminated.&lt;br&gt;
         /// `FAILED` - Indicates that the resource has failed.&lt;br&gt;
         /// 
-        /// * `total_cpu_core_count` - The total number of CPU cores reserved on the database node.
+        /// * `TotalCpuCoreCount` - The total number of CPU cores reserved on the database node.
         /// </summary>
         public static Task<GetDbNodesResult> InvokeAsync(GetDbNodesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbNodesResult>("gcp:oracledatabase/getDbNodes:getDbNodes", args ?? new GetDbNodesArgs(), options.WithDefaults());
@@ -108,30 +108,30 @@ namespace Pulumi.Gcp.OracleDatabase
         /// 
         /// The following attributes are exported:
         /// 
-        /// * `db_nodes` - List of dbNodes. Structure is documented below.
+        /// * `DbNodes` - List of dbNodes. Structure is documented below.
         /// 
-        /// &lt;a name="nested_dbnodes"&gt;&lt;/a&gt; The `db_nodes` block supports:
+        /// &lt;a name="NestedDbnodes"&gt;&lt;/a&gt; The `DbNodes` block supports:
         /// 
-        /// * `name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
+        /// * `Name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
         /// 
-        /// * `properties` - Various properties of the database node. Structure is documented below.
+        /// * `Properties` - Various properties of the database node. Structure is documented below.
         /// 
-        /// &lt;a name="nested_properties"&gt;&lt;/a&gt; The `properties` block supports:
+        /// &lt;a name="NestedProperties"&gt;&lt;/a&gt; The `Properties` block supports:
         /// 
-        /// * `ocid`- OCID of database node.
+        /// * `Ocid`- OCID of database node.
         /// 
-        /// * `ocpu_count` - OCPU count per database node.
+        /// * `OcpuCount` - OCPU count per database node.
         /// 
-        /// * `memory_size_gb` - The allocated memory in GBs on the database node.
+        /// * `MemorySizeGb` - The allocated memory in GBs on the database node.
         /// 
-        /// * `db_node_storage_size_gb` - The allocated local node storage in GBs on the database node.
+        /// * `DbNodeStorageSizeGb` - The allocated local node storage in GBs on the database node.
         /// 
-        /// * `db_server_ocid` - The OCID of the Database server associated with the database node.
+        /// * `DbServerOcid` - The OCID of the Database server associated with the database node.
         /// 
-        /// * `hostname` - The host name for the database node.
+        /// * `Hostname` - The host name for the database node.
         /// 
-        /// * `state` - State of the database node.
-        /// &lt;a name="nested_states"&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
+        /// * `State` - State of the database node.
+        /// &lt;a name="NestedStates"&gt;&lt;/a&gt;Possible values for `State` are:&lt;br&gt;
         /// `PROVISIONING` - Indicates that the resource is being provisioned.&lt;br&gt;
         /// `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
         /// `UPDATING` - Indicates that the resource is being updated.&lt;br&gt;
@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// `TERMINATED` - Indicates that the resource is terminated.&lt;br&gt;
         /// `FAILED` - Indicates that the resource has failed.&lt;br&gt;
         /// 
-        /// * `total_cpu_core_count` - The total number of CPU cores reserved on the database node.
+        /// * `TotalCpuCoreCount` - The total number of CPU cores reserved on the database node.
         /// </summary>
         public static Output<GetDbNodesResult> Invoke(GetDbNodesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbNodesResult>("gcp:oracledatabase/getDbNodes:getDbNodes", args ?? new GetDbNodesInvokeArgs(), options.WithDefaults());
@@ -176,30 +176,30 @@ namespace Pulumi.Gcp.OracleDatabase
         /// 
         /// The following attributes are exported:
         /// 
-        /// * `db_nodes` - List of dbNodes. Structure is documented below.
+        /// * `DbNodes` - List of dbNodes. Structure is documented below.
         /// 
-        /// &lt;a name="nested_dbnodes"&gt;&lt;/a&gt; The `db_nodes` block supports:
+        /// &lt;a name="NestedDbnodes"&gt;&lt;/a&gt; The `DbNodes` block supports:
         /// 
-        /// * `name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
+        /// * `Name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
         /// 
-        /// * `properties` - Various properties of the database node. Structure is documented below.
+        /// * `Properties` - Various properties of the database node. Structure is documented below.
         /// 
-        /// &lt;a name="nested_properties"&gt;&lt;/a&gt; The `properties` block supports:
+        /// &lt;a name="NestedProperties"&gt;&lt;/a&gt; The `Properties` block supports:
         /// 
-        /// * `ocid`- OCID of database node.
+        /// * `Ocid`- OCID of database node.
         /// 
-        /// * `ocpu_count` - OCPU count per database node.
+        /// * `OcpuCount` - OCPU count per database node.
         /// 
-        /// * `memory_size_gb` - The allocated memory in GBs on the database node.
+        /// * `MemorySizeGb` - The allocated memory in GBs on the database node.
         /// 
-        /// * `db_node_storage_size_gb` - The allocated local node storage in GBs on the database node.
+        /// * `DbNodeStorageSizeGb` - The allocated local node storage in GBs on the database node.
         /// 
-        /// * `db_server_ocid` - The OCID of the Database server associated with the database node.
+        /// * `DbServerOcid` - The OCID of the Database server associated with the database node.
         /// 
-        /// * `hostname` - The host name for the database node.
+        /// * `Hostname` - The host name for the database node.
         /// 
-        /// * `state` - State of the database node.
-        /// &lt;a name="nested_states"&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
+        /// * `State` - State of the database node.
+        /// &lt;a name="NestedStates"&gt;&lt;/a&gt;Possible values for `State` are:&lt;br&gt;
         /// `PROVISIONING` - Indicates that the resource is being provisioned.&lt;br&gt;
         /// `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
         /// `UPDATING` - Indicates that the resource is being updated.&lt;br&gt;
@@ -210,7 +210,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// `TERMINATED` - Indicates that the resource is terminated.&lt;br&gt;
         /// `FAILED` - Indicates that the resource has failed.&lt;br&gt;
         /// 
-        /// * `total_cpu_core_count` - The total number of CPU cores reserved on the database node.
+        /// * `TotalCpuCoreCount` - The total number of CPU cores reserved on the database node.
         /// </summary>
         public static Output<GetDbNodesResult> Invoke(GetDbNodesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbNodesResult>("gcp:oracledatabase/getDbNodes:getDbNodes", args ?? new GetDbNodesInvokeArgs(), options.WithDefaults());

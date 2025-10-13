@@ -25,7 +25,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     public static final UptimeCheckConfigState Empty = new UptimeCheckConfigState();
 
     /**
-     * The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
+     * The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */
@@ -33,7 +33,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> checkerType;
 
     /**
-     * @return The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
+     * @return The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */
@@ -324,7 +324,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param checkerType The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
+         * @param checkerType The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
          * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
          * 
          * @return builder
@@ -336,7 +336,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param checkerType The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
+         * @param checkerType The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
          * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
          * 
          * @return builder

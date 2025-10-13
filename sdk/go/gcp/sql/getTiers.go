@@ -15,6 +15,8 @@ import (
 // [official documentation](https://cloud.google.com/sql/)
 // and
 // [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+//
+// ## Example Usage
 func GetTiers(ctx *pulumi.Context, args *GetTiersArgs, opts ...pulumi.InvokeOption) (*GetTiersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTiersResult

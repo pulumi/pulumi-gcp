@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// <summary>
         /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
         /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-        /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `CreateDisposition = ""` and `WriteDisposition = ""`.
         /// </summary>
         public readonly string Query;
         /// <summary>

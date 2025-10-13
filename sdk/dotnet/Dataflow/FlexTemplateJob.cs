@@ -56,15 +56,15 @@ namespace Pulumi.Gcp.Dataflow
     /// "cancelled", the job terminates - any data written remains where it is, but no
     /// new data will be processed.  If "drained", no new data will enter the pipeline,
     /// but any data currently in the pipeline will finish being processed.  The default
-    /// is "cancelled", but if a user sets `on_delete` to `"drain"` in the
+    /// is "cancelled", but if a user sets `OnDelete` to `"drain"` in the
     /// configuration, you may experience a long wait for your `pulumi destroy` to
     /// complete.
     /// 
-    /// You can potentially short-circuit the wait by setting `skip_wait_on_job_termination`
-    /// to `true`, but beware that unless you take active steps to ensure that the job
-    /// `name` parameter changes between instances, the name will conflict and the launch
+    /// You can potentially short-circuit the wait by setting `SkipWaitOnJobTermination`
+    /// to `True`, but beware that unless you take active steps to ensure that the job
+    /// `Name` parameter changes between instances, the name will conflict and the launch
     /// of the new job will fail. One way to do this is with a
-    /// random_id
+    /// RandomId
     /// resource, for example:
     /// 
     /// ```csharp
@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.Dataflow
     public partial class FlexTemplateJob : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        /// List of experiments that should be used by the job. An example value is `["EnableStackdriverAgentMetrics"]`.
         /// </summary>
         [Output("additionalExperiments")]
         public Output<ImmutableArray<string>> AdditionalExperiments { get; private set; } = null!;
@@ -352,7 +352,7 @@ namespace Pulumi.Gcp.Dataflow
         private InputList<string>? _additionalExperiments;
 
         /// <summary>
-        /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        /// List of experiments that should be used by the job. An example value is `["EnableStackdriverAgentMetrics"]`.
         /// </summary>
         public InputList<string> AdditionalExperiments
         {
@@ -550,7 +550,7 @@ namespace Pulumi.Gcp.Dataflow
         private InputList<string>? _additionalExperiments;
 
         /// <summary>
-        /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        /// List of experiments that should be used by the job. An example value is `["EnableStackdriverAgentMetrics"]`.
         /// </summary>
         public InputList<string> AdditionalExperiments
         {

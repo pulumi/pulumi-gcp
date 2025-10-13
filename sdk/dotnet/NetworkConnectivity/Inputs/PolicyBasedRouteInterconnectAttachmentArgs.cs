@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
     public sealed class PolicyBasedRouteInterconnectAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
+        /// Cloud region to install this policy-based route on for Interconnect attachments. Use `All` to install it on all Interconnect attachments.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;

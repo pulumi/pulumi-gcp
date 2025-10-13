@@ -16,14 +16,14 @@ public final class VMwareClusterDataplaneV2Args extends com.pulumi.resources.Res
     public static final VMwareClusterDataplaneV2Args Empty = new VMwareClusterDataplaneV2Args();
 
     /**
-     * Enable advanced networking which requires dataplane_v2_enabled to be set true.
+     * Enable advanced networking which requires dataplaneV2Enabled to be set true.
      * 
      */
     @Import(name="advancedNetworking")
     private @Nullable Output<Boolean> advancedNetworking;
 
     /**
-     * @return Enable advanced networking which requires dataplane_v2_enabled to be set true.
+     * @return Enable advanced networking which requires dataplaneV2Enabled to be set true.
      * 
      */
     public Optional<Output<Boolean>> advancedNetworking() {
@@ -87,7 +87,7 @@ public final class VMwareClusterDataplaneV2Args extends com.pulumi.resources.Res
         }
 
         /**
-         * @param advancedNetworking Enable advanced networking which requires dataplane_v2_enabled to be set true.
+         * @param advancedNetworking Enable advanced networking which requires dataplaneV2Enabled to be set true.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class VMwareClusterDataplaneV2Args extends com.pulumi.resources.Res
         }
 
         /**
-         * @param advancedNetworking Enable advanced networking which requires dataplane_v2_enabled to be set true.
+         * @param advancedNetworking Enable advanced networking which requires dataplaneV2Enabled to be set true.
          * 
          * @return builder
          * 

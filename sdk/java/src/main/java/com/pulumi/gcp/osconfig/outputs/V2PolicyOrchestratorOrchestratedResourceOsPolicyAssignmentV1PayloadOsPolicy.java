@@ -55,7 +55,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
      * are ignored.
      * If none of the resource groups are applicable for a VM, the VM is
      * considered to be non-compliant w.r.t this policy. This behavior can be
-     * toggled by the flag `allow_no_resource_group_match`
+     * toggled by the flag `allowNoResourceGroupMatch`
      * Structure is documented below.
      * 
      */
@@ -110,7 +110,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
      * are ignored.
      * If none of the resource groups are applicable for a VM, the VM is
      * considered to be non-compliant w.r.t this policy. This behavior can be
-     * toggled by the flag `allow_no_resource_group_match`
+     * toggled by the flag `allowNoResourceGroupMatch`
      * Structure is documented below.
      * 
      */

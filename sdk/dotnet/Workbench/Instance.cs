@@ -507,8 +507,8 @@ namespace Pulumi.Gcp.Workbench
 
         /// <summary>
         /// 'Output only. Additional information about instance health. Example:
-        /// healthInfo": { "docker_proxy_agent_status": "1", "docker_status": "1", "jupyterlab_api_status":
-        /// "-1", "jupyterlab_status": "-1", "updated": "2020-10-18 09:40:03.573409" }'
+        /// healthInfo": { "DockerProxyAgentStatus": "1", "DockerStatus": "1", "JupyterlabApiStatus":
+        /// "-1", "JupyterlabStatus": "-1", "updated": "2020-10-18 09:40:03.573409" }'
         /// </summary>
         [Output("healthInfos")]
         public Output<ImmutableArray<Outputs.InstanceHealthInfo>> HealthInfos { get; private set; } = null!;
@@ -540,13 +540,13 @@ namespace Pulumi.Gcp.Workbench
         /// by the UpdateInstance method.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Part of `parent`. See documentation of `projectsId`.
+        /// Part of `Parent`. See documentation of `projectsId`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -711,7 +711,7 @@ namespace Pulumi.Gcp.Workbench
         /// by the UpdateInstance method.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -720,7 +720,7 @@ namespace Pulumi.Gcp.Workbench
         }
 
         /// <summary>
-        /// Part of `parent`. See documentation of `projectsId`.
+        /// Part of `Parent`. See documentation of `projectsId`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -812,8 +812,8 @@ namespace Pulumi.Gcp.Workbench
 
         /// <summary>
         /// 'Output only. Additional information about instance health. Example:
-        /// healthInfo": { "docker_proxy_agent_status": "1", "docker_status": "1", "jupyterlab_api_status":
-        /// "-1", "jupyterlab_status": "-1", "updated": "2020-10-18 09:40:03.573409" }'
+        /// healthInfo": { "DockerProxyAgentStatus": "1", "DockerStatus": "1", "JupyterlabApiStatus":
+        /// "-1", "JupyterlabStatus": "-1", "updated": "2020-10-18 09:40:03.573409" }'
         /// </summary>
         public InputList<Inputs.InstanceHealthInfoGetArgs> HealthInfos
         {
@@ -857,7 +857,7 @@ namespace Pulumi.Gcp.Workbench
         /// by the UpdateInstance method.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -866,7 +866,7 @@ namespace Pulumi.Gcp.Workbench
         }
 
         /// <summary>
-        /// Part of `parent`. See documentation of `projectsId`.
+        /// Part of `Parent`. See documentation of `projectsId`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

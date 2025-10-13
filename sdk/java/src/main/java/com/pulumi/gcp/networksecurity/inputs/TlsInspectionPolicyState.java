@@ -48,14 +48,14 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+     * List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
      * 
      */
     @Import(name="customTlsFeatures")
     private @Nullable Output<List<String>> customTlsFeatures;
 
     /**
-     * @return List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+     * @return List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
      * 
      */
     public Optional<Output<List<String>>> customTlsFeatures() {
@@ -285,7 +285,7 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customTlsFeatures List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+         * @param customTlsFeatures List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customTlsFeatures List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+         * @param customTlsFeatures List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customTlsFeatures List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+         * @param customTlsFeatures List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
          * 
          * @return builder
          * 

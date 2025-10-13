@@ -18,7 +18,7 @@ public final class NotificationChannelSensitiveLabels {
      */
     private @Nullable String authToken;
     /**
-     * @return An password for a notification channel. Channel types that support this field include: webhook_basicauth
+     * @return An password for a notification channel. Channel types that support this field include: webhookBasicauth
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -40,7 +40,7 @@ public final class NotificationChannelSensitiveLabels {
         return Optional.ofNullable(this.authToken);
     }
     /**
-     * @return An password for a notification channel. Channel types that support this field include: webhook_basicauth
+     * @return An password for a notification channel. Channel types that support this field include: webhookBasicauth
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */

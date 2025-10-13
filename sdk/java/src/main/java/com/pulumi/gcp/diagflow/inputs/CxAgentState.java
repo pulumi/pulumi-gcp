@@ -181,13 +181,13 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
      * (Optional, Deprecated)
      * Determines whether this agent should log conversation queries.
      * 
-     * &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+     * &gt; **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      * 
      * @deprecated
-     * `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+     * `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      * 
      */
-    @Deprecated /* `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
+    @Deprecated /* `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
     @Import(name="enableStackdriverLogging")
     private @Nullable Output<Boolean> enableStackdriverLogging;
 
@@ -195,13 +195,13 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
      * @return (Optional, Deprecated)
      * Determines whether this agent should log conversation queries.
      * 
-     * &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+     * &gt; **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      * 
      * @deprecated
-     * `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+     * `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      * 
      */
-    @Deprecated /* `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
+    @Deprecated /* `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
     public Optional<Output<Boolean>> enableStackdriverLogging() {
         return Optional.ofNullable(this.enableStackdriverLogging);
     }
@@ -728,15 +728,15 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
          * @param enableStackdriverLogging (Optional, Deprecated)
          * Determines whether this agent should log conversation queries.
          * 
-         * &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+         * &gt; **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+         * `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
          * 
          */
-        @Deprecated /* `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
+        @Deprecated /* `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
         public Builder enableStackdriverLogging(@Nullable Output<Boolean> enableStackdriverLogging) {
             $.enableStackdriverLogging = enableStackdriverLogging;
             return this;
@@ -746,15 +746,15 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
          * @param enableStackdriverLogging (Optional, Deprecated)
          * Determines whether this agent should log conversation queries.
          * 
-         * &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+         * &gt; **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+         * `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
          * 
          */
-        @Deprecated /* `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
+        @Deprecated /* `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
         public Builder enableStackdriverLogging(Boolean enableStackdriverLogging) {
             return enableStackdriverLogging(Output.of(enableStackdriverLogging));
         }

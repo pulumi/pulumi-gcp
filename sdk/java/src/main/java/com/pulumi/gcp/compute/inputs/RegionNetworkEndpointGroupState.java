@@ -22,7 +22,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
     /**
      * This field is only used for SERVERLESS NEGs.
-     * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
      */
@@ -31,7 +31,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
     /**
      * @return This field is only used for SERVERLESS NEGs.
-     * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
      */
@@ -41,7 +41,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
     /**
      * This field is only used for SERVERLESS NEGs.
-     * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
      */
@@ -50,7 +50,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
     /**
      * @return This field is only used for SERVERLESS NEGs.
-     * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
      */
@@ -60,7 +60,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
     /**
      * This field is only used for SERVERLESS NEGs.
-     * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
      */
@@ -69,7 +69,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
     /**
      * @return This field is only used for SERVERLESS NEGs.
-     * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
      */
@@ -317,7 +317,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
         /**
          * @param appEngine This field is only used for SERVERLESS NEGs.
-         * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+         * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -330,7 +330,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
         /**
          * @param appEngine This field is only used for SERVERLESS NEGs.
-         * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+         * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -342,7 +342,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
         /**
          * @param cloudFunction This field is only used for SERVERLESS NEGs.
-         * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+         * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -355,7 +355,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
         /**
          * @param cloudFunction This field is only used for SERVERLESS NEGs.
-         * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+         * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -367,7 +367,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
         /**
          * @param cloudRun This field is only used for SERVERLESS NEGs.
-         * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+         * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -380,7 +380,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
         /**
          * @param cloudRun This field is only used for SERVERLESS NEGs.
-         * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+         * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
          * Structure is documented below.
          * 
          * @return builder

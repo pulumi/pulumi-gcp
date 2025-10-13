@@ -21,7 +21,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
 
     /**
      * The fields to exclude from data profile.
-     * If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
+     * If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
      * Structure is documented below.
      * 
      */
@@ -30,7 +30,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
 
     /**
      * @return The fields to exclude from data profile.
-     * If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
+     * If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
      * Structure is documented below.
      * 
      */
@@ -40,7 +40,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
 
     /**
      * The fields to include in data profile.
-     * If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
+     * If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
      * Structure is documented below.
      * 
      */
@@ -49,7 +49,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
 
     /**
      * @return The fields to include in data profile.
-     * If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
+     * If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
      * Structure is documented below.
      * 
      */
@@ -92,7 +92,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
     /**
      * The percentage of the records to be selected from the dataset for DataScan.
      * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
-     * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
+     * Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
      * 
      */
     @Import(name="samplingPercent")
@@ -101,7 +101,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
     /**
      * @return The percentage of the records to be selected from the dataset for DataScan.
      * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
-     * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
+     * Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
      * 
      */
     public Optional<Output<Double>> samplingPercent() {
@@ -138,7 +138,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
 
         /**
          * @param excludeFields The fields to exclude from data profile.
-         * If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
+         * If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
          * Structure is documented below.
          * 
          * @return builder
@@ -151,7 +151,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
 
         /**
          * @param excludeFields The fields to exclude from data profile.
-         * If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
+         * If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
          * Structure is documented below.
          * 
          * @return builder
@@ -163,7 +163,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
 
         /**
          * @param includeFields The fields to include in data profile.
-         * If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
+         * If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
          * Structure is documented below.
          * 
          * @return builder
@@ -176,7 +176,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
 
         /**
          * @param includeFields The fields to include in data profile.
-         * If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
+         * If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
          * Structure is documented below.
          * 
          * @return builder
@@ -233,7 +233,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
         /**
          * @param samplingPercent The percentage of the records to be selected from the dataset for DataScan.
          * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
-         * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
+         * Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
         /**
          * @param samplingPercent The percentage of the records to be selected from the dataset for DataScan.
          * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
-         * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
+         * Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
          * 
          * @return builder
          * 

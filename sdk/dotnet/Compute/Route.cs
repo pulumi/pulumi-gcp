@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Compute
     /// the route with the smallest priority value. If there is still a tie, it
     /// uses the layer three and four packet headers to select just one of the
     /// remaining matching routes. The packet is then forwarded as specified by
-    /// the next_hop field of the winning route -- either to another virtual
+    /// the NextHop field of the winning route -- either to another virtual
     /// machine destination, a virtual machine gateway or a Compute
     /// Engine-operated gateway. Packets that do not match any route in the
     /// sending virtual machine's routing table will be dropped.
@@ -349,15 +349,15 @@ namespace Pulumi.Gcp.Compute
         /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
         /// * `projects/project/zones/zone/instances/instance`
         /// * `zones/zone/instances/instance`
-        /// * Just the instance name, with the zone in `next_hop_instance_zone`.
+        /// * Just the instance name, with the zone in `NextHopInstanceZone`.
         /// </summary>
         [Output("nextHopInstance")]
         public Output<string?> NextHopInstance { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional when `next_hop_instance` is
+        /// (Optional when `NextHopInstance` is
         /// specified)  The zone of the instance specified in
-        /// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+        /// `NextHopInstance`.  Omit if `NextHopInstance` is specified as
         /// a URL.
         /// </summary>
         [Output("nextHopInstanceZone")]
@@ -580,15 +580,15 @@ namespace Pulumi.Gcp.Compute
         /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
         /// * `projects/project/zones/zone/instances/instance`
         /// * `zones/zone/instances/instance`
-        /// * Just the instance name, with the zone in `next_hop_instance_zone`.
+        /// * Just the instance name, with the zone in `NextHopInstanceZone`.
         /// </summary>
         [Input("nextHopInstance")]
         public Input<string>? NextHopInstance { get; set; }
 
         /// <summary>
-        /// (Optional when `next_hop_instance` is
+        /// (Optional when `NextHopInstance` is
         /// specified)  The zone of the instance specified in
-        /// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+        /// `NextHopInstance`.  Omit if `NextHopInstance` is specified as
         /// a URL.
         /// </summary>
         [Input("nextHopInstanceZone")]
@@ -742,15 +742,15 @@ namespace Pulumi.Gcp.Compute
         /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
         /// * `projects/project/zones/zone/instances/instance`
         /// * `zones/zone/instances/instance`
-        /// * Just the instance name, with the zone in `next_hop_instance_zone`.
+        /// * Just the instance name, with the zone in `NextHopInstanceZone`.
         /// </summary>
         [Input("nextHopInstance")]
         public Input<string>? NextHopInstance { get; set; }
 
         /// <summary>
-        /// (Optional when `next_hop_instance` is
+        /// (Optional when `NextHopInstance` is
         /// specified)  The zone of the instance specified in
-        /// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+        /// `NextHopInstance`.  Omit if `NextHopInstance` is specified as
         /// a URL.
         /// </summary>
         [Input("nextHopInstanceZone")]

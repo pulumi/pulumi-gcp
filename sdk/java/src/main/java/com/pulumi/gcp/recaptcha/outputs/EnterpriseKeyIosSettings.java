@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EnterpriseKeyIosSettings {
     /**
-     * @return If set to true, it means allowed_bundle_ids will not be enforced.
+     * @return If set to true, it means allowedBundleIds will not be enforced.
      * 
      */
     private @Nullable Boolean allowAllBundleIds;
@@ -26,7 +26,7 @@ public final class EnterpriseKeyIosSettings {
 
     private EnterpriseKeyIosSettings() {}
     /**
-     * @return If set to true, it means allowed_bundle_ids will not be enforced.
+     * @return If set to true, it means allowedBundleIds will not be enforced.
      * 
      */
     public Optional<Boolean> allowAllBundleIds() {

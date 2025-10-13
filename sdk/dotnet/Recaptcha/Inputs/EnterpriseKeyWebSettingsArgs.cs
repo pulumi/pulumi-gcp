@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Recaptcha.Inputs
     public sealed class EnterpriseKeyWebSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to true, it means allowed_domains will not be enforced.
+        /// If set to true, it means AllowedDomains will not be enforced.
         /// </summary>
         [Input("allowAllDomains")]
         public Input<bool>? AllowAllDomains { get; set; }

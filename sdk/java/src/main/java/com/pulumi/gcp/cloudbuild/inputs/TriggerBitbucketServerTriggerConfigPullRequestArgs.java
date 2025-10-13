@@ -50,14 +50,14 @@ public final class TriggerBitbucketServerTriggerConfigPullRequestArgs extends co
     }
 
     /**
-     * If true, branches that do NOT match the git_ref will trigger a build.
+     * If true, branches that do NOT match the gitRef will trigger a build.
      * 
      */
     @Import(name="invertRegex")
     private @Nullable Output<Boolean> invertRegex;
 
     /**
-     * @return If true, branches that do NOT match the git_ref will trigger a build.
+     * @return If true, branches that do NOT match the gitRef will trigger a build.
      * 
      */
     public Optional<Output<Boolean>> invertRegex() {
@@ -135,7 +135,7 @@ public final class TriggerBitbucketServerTriggerConfigPullRequestArgs extends co
         }
 
         /**
-         * @param invertRegex If true, branches that do NOT match the git_ref will trigger a build.
+         * @param invertRegex If true, branches that do NOT match the gitRef will trigger a build.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class TriggerBitbucketServerTriggerConfigPullRequestArgs extends co
         }
 
         /**
-         * @param invertRegex If true, branches that do NOT match the git_ref will trigger a build.
+         * @param invertRegex If true, branches that do NOT match the gitRef will trigger a build.
          * 
          * @return builder
          * 

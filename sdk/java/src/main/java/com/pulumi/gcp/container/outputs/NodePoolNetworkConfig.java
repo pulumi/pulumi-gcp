@@ -30,7 +30,7 @@ public final class NodePoolNetworkConfig {
      */
     private @Nullable List<NodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs;
     /**
-     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
      * 
      */
     private @Nullable Boolean createPodRange;
@@ -55,7 +55,7 @@ public final class NodePoolNetworkConfig {
      */
     private @Nullable String podIpv4CidrBlock;
     /**
-     * @return The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+     * @return The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
      * 
      */
     private @Nullable String podRange;
@@ -83,7 +83,7 @@ public final class NodePoolNetworkConfig {
         return this.additionalPodNetworkConfigs == null ? List.of() : this.additionalPodNetworkConfigs;
     }
     /**
-     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
      * 
      */
     public Optional<Boolean> createPodRange() {
@@ -118,7 +118,7 @@ public final class NodePoolNetworkConfig {
         return Optional.ofNullable(this.podIpv4CidrBlock);
     }
     /**
-     * @return The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+     * @return The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
      * 
      */
     public Optional<String> podRange() {

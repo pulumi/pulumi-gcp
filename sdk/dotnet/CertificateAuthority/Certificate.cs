@@ -772,7 +772,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// <summary>
         /// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
         /// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
-        /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+        /// argument `Pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `CertificateAuthority`
         /// should be set to `my-ca`.
         /// </summary>
         [Output("certificateAuthority")]
@@ -825,7 +825,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// Labels with user-defined metadata to apply to this resource.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -958,7 +958,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// <summary>
         /// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
         /// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
-        /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+        /// argument `Pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `CertificateAuthority`
         /// should be set to `my-ca`.
         /// </summary>
         [Input("certificateAuthority")]
@@ -988,7 +988,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// Labels with user-defined metadata to apply to this resource.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1047,7 +1047,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// <summary>
         /// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
         /// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
-        /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+        /// argument `Pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `CertificateAuthority`
         /// should be set to `my-ca`.
         /// </summary>
         [Input("certificateAuthority")]
@@ -1119,7 +1119,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// Labels with user-defined metadata to apply to this resource.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

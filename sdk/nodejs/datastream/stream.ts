@@ -563,6 +563,8 @@ import * as utilities from "../utilities";
  *     backfillNone: {},
  * });
  * ```
+ * ### Datastream Stream Mysql Gtid
+ *
  * ### Datastream Stream Postgresql Bigquery Dataset Id
  *
  * ```typescript

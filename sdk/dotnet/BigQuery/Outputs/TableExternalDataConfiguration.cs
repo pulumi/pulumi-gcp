@@ -19,13 +19,13 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly bool Autodetect;
         /// <summary>
-        /// Additional options if `source_format` is set to
+        /// Additional options if `SourceFormat` is set to
         /// "AVRO".  Structure is documented below.
         /// </summary>
         public readonly Outputs.TableExternalDataConfigurationAvroOptions? AvroOptions;
         /// <summary>
         /// Additional properties to set if
-        /// `source_format` is set to "BIGTABLE". Structure is documented below.
+        /// `SourceFormat` is set to "BIGTABLE". Structure is documented below.
         /// </summary>
         public readonly Outputs.TableExternalDataConfigurationBigtableOptions? BigtableOptions;
         /// <summary>
@@ -35,18 +35,18 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         public readonly string? Compression;
         /// <summary>
         /// The connection specifying the credentials to be used to read
-        /// external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+        /// external storage, such as Azure Blob, Cloud Storage, or S3. The `ConnectionId` can have
         /// the form `{{project}}.{{location}}.{{connection_id}}`
         /// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
         /// 
         /// ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-        /// table schema must be specified using the top-level `schema` field
+        /// table schema must be specified using the top-level `Schema` field
         /// documented above.
         /// </summary>
         public readonly string? ConnectionId;
         /// <summary>
         /// Additional properties to set if
-        /// `source_format` is set to "CSV". Structure is documented below.
+        /// `SourceFormat` is set to "CSV". Structure is documented below.
         /// </summary>
         public readonly Outputs.TableExternalDataConfigurationCsvOptions? CsvOptions;
         /// <summary>
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         public readonly string? FileSetSpecType;
         /// <summary>
         /// Additional options if
-        /// `source_format` is set to "GOOGLE_SHEETS". Structure is
+        /// `SourceFormat` is set to "GOOGLE_SHEETS". Structure is
         /// documented below.
         /// </summary>
         public readonly Outputs.TableExternalDataConfigurationGoogleSheetsOptions? GoogleSheetsOptions;
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         public readonly string? JsonExtension;
         /// <summary>
         /// Additional properties to set if
-        /// `source_format` is set to "JSON". Structure is documented below.
+        /// `SourceFormat` is set to "JSON". Structure is documented below.
         /// </summary>
         public readonly Outputs.TableExternalDataConfigurationJsonOptions? JsonOptions;
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string? MetadataCacheMode;
         /// <summary>
-        /// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+        /// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `ObjectMetadata` is set, `SourceFormat` should be omitted.
         /// </summary>
         public readonly string? ObjectMetadata;
         /// <summary>
         /// Additional properties to set if
-        /// `source_format` is set to "PARQUET". Structure is documented below.
+        /// `SourceFormat` is set to "PARQUET". Structure is documented below.
         /// </summary>
         public readonly Outputs.TableExternalDataConfigurationParquetOptions? ParquetOptions;
         /// <summary>
@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// `google_bigquery_table.schema`
         /// 
         /// ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-        /// table schema must be specified using the top-level `schema` field
+        /// table schema must be specified using the top-level `Schema` field
         /// documented above.
         /// </summary>
         public readonly string? Schema;
@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// The data format. Please see sourceFormat under
         /// [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
         /// in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
-        /// the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
+        /// the `Scopes` must include "https://www.googleapis.com/auth/drive.readonly".
         /// </summary>
         public readonly string? SourceFormat;
         /// <summary>

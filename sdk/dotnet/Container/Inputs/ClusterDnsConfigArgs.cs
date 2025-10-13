@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterDnsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = "CLOUD_DNS"` and `cluster_dns_scope = "CLUSTER_SCOPE"` must both be set as well.
+        /// This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `ClusterDns = "CLOUD_DNS"` and `ClusterDnsScope = "CLUSTER_SCOPE"` must both be set as well.
         /// </summary>
         [Input("additiveVpcScopeDnsDomain")]
         public Input<string>? AdditiveVpcScopeDnsDomain { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? ClusterDnsDomain { get; set; }
 
         /// <summary>
-        /// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
+        /// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `ClusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
         /// </summary>
         [Input("clusterDnsScope")]
         public Input<string>? ClusterDnsScope { get; set; }

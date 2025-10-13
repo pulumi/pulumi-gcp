@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.Storage
         public Output<Outputs.BatchOperationsJobDeleteObject?> DeleteObject { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
+        /// If set to `True`, the storage batch operation job will not be deleted and new job will be created.
         /// </summary>
         [Output("deleteProtection")]
         public Output<bool?> DeleteProtection { get; private set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.BatchOperationsJobDeleteObjectArgs>? DeleteObject { get; set; }
 
         /// <summary>
-        /// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
+        /// If set to `True`, the storage batch operation job will not be deleted and new job will be created.
         /// </summary>
         [Input("deleteProtection")]
         public Input<bool>? DeleteProtection { get; set; }
@@ -309,7 +309,7 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.BatchOperationsJobDeleteObjectGetArgs>? DeleteObject { get; set; }
 
         /// <summary>
-        /// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
+        /// If set to `True`, the storage batch operation job will not be deleted and new job will be created.
         /// </summary>
         [Input("deleteProtection")]
         public Input<bool>? DeleteProtection { get; set; }

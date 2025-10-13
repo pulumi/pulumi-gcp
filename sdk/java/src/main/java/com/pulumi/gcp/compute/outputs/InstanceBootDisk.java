@@ -30,14 +30,14 @@ public final class InstanceBootDisk {
      * @return A 256-bit [customer-supplied encryption key]
      * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+     * to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
      * may be set.
      * 
      */
     private @Nullable String diskEncryptionKeyRaw;
     /**
      * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
      * 
      */
     private @Nullable String diskEncryptionKeyRsa;
@@ -67,20 +67,20 @@ public final class InstanceBootDisk {
     private @Nullable List<String> guestOsFeatures;
     /**
      * @return Parameters for a new disk that will be created
-     * alongside the new instance. Either `initialize_params` or `source` must be set.
+     * alongside the new instance. Either `initializeParams` or `source` must be set.
      * Structure is documented below.
      * 
      */
     private @Nullable InstanceBootDiskInitializeParams initializeParams;
     /**
-     * @return The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
+     * @return The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attachedDisk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
      * 
      */
     private @Nullable String interface_;
     /**
-     * @return The self_link of the encryption key that is
-     * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`,
-     * `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+     * @return The selfLink of the encryption key that is
+     * stored in Google Cloud KMS to encrypt this disk. Only one of `kmsKeySelfLink`,
+     * `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
      * may be set.
      * 
      */
@@ -92,7 +92,7 @@ public final class InstanceBootDisk {
      */
     private @Nullable String mode;
     /**
-     * @return The name or self_link of the existing disk (such as those managed by
+     * @return The name or selfLink of the existing disk (such as those managed by
      * `gcp.compute.Disk`) or disk image. To create an instance from a snapshot, first create a
      * `gcp.compute.Disk` from a snapshot and reference it here.
      * 
@@ -120,7 +120,7 @@ public final class InstanceBootDisk {
      * @return A 256-bit [customer-supplied encryption key]
      * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+     * to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
      * may be set.
      * 
      */
@@ -129,7 +129,7 @@ public final class InstanceBootDisk {
     }
     /**
      * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
      * 
      */
     public Optional<String> diskEncryptionKeyRsa() {
@@ -169,7 +169,7 @@ public final class InstanceBootDisk {
     }
     /**
      * @return Parameters for a new disk that will be created
-     * alongside the new instance. Either `initialize_params` or `source` must be set.
+     * alongside the new instance. Either `initializeParams` or `source` must be set.
      * Structure is documented below.
      * 
      */
@@ -177,16 +177,16 @@ public final class InstanceBootDisk {
         return Optional.ofNullable(this.initializeParams);
     }
     /**
-     * @return The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
+     * @return The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attachedDisk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
      * 
      */
     public Optional<String> interface_() {
         return Optional.ofNullable(this.interface_);
     }
     /**
-     * @return The self_link of the encryption key that is
-     * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`,
-     * `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+     * @return The selfLink of the encryption key that is
+     * stored in Google Cloud KMS to encrypt this disk. Only one of `kmsKeySelfLink`,
+     * `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
      * may be set.
      * 
      */
@@ -202,7 +202,7 @@ public final class InstanceBootDisk {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return The name or self_link of the existing disk (such as those managed by
+     * @return The name or selfLink of the existing disk (such as those managed by
      * `gcp.compute.Disk`) or disk image. To create an instance from a snapshot, first create a
      * `gcp.compute.Disk` from a snapshot and reference it here.
      * 

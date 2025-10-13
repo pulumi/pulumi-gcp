@@ -19,10 +19,10 @@ namespace Pulumi.Gcp.EssentialContacts
     ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-    /// you must specify a `billing_project` and set `user_project_override` to true
+    /// you must specify a `BillingProject` and set `UserProjectOverride` to true
     /// in the provider configuration. Otherwise the Essential Contacts API will return a 403 error.
     /// Your account must have the `serviceusage.services.use` permission on the
-    /// `billing_project` you defined.
+    /// `BillingProject` you defined.
     /// 
     /// ## Example Usage
     /// 

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.ManagedKafka.Inputs
         private InputList<Inputs.ClusterTlsConfigTrustConfigCasConfigArgs>? _casConfigs;
 
         /// <summary>
-        /// Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
+        /// Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `CasConfigs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `CasConfigs` blocks.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ClusterTlsConfigTrustConfigCasConfigArgs> CasConfigs

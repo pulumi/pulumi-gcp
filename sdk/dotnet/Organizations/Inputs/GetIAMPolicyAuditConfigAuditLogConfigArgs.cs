@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Organizations.Inputs
         private InputList<string>? _exemptedMembers;
 
         /// <summary>
-        /// Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+        /// Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `Members` array for `Binding`.
         /// </summary>
         public InputList<string> ExemptedMembers
         {

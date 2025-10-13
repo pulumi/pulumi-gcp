@@ -94,14 +94,14 @@ public final class WorkflowTemplateJobSparkJobArgs extends com.pulumi.resources.
     }
 
     /**
-     * The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+     * The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
      * 
      */
     @Import(name="mainClass")
     private @Nullable Output<String> mainClass;
 
     /**
-     * @return The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+     * @return The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
      * 
      */
     public Optional<Output<String>> mainClass() {
@@ -315,7 +315,7 @@ public final class WorkflowTemplateJobSparkJobArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param mainClass The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+         * @param mainClass The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class WorkflowTemplateJobSparkJobArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param mainClass The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+         * @param mainClass The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jarFileUris`.
          * 
          * @return builder
          * 

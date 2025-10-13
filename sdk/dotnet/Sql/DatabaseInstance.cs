@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Sql
     /// ```
     /// 
     /// ### Private IP Instance
-    /// &gt; **NOTE:** For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
+    /// &gt; **NOTE:** For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `DependsOn`reference as shown below.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -115,7 +115,7 @@ namespace Pulumi.Gcp.Sql
     /// });
     /// ```
     /// 
-    /// ### ENTERPRISE_PLUS Instance with data_cache_config
+    /// ### ENTERPRISE_PLUS Instance with DataCacheConfig
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -335,30 +335,30 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// MySQL/PostgreSQL: Create a cross-region, Enterprise Plus edition primary and replica pair, then set the value of primary's `replication_cluster.failover_dr_replica_name` as the replica.
     /// 
-    /// SQL Server: Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
+    /// SQL Server: Create a `Cascadable` replica in a different region from the primary (`CascadableReplica` is set to true in `ReplicaConfiguration`)
     /// 
     /// #### Invoking switchover in the replica resource:
-    /// 1. Change instance_type from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
-    /// 2. Remove `master_instance_name`
-    /// 3. (SQL Server) Remove `replica_configuration`
-    /// 4. Add current primary's name to the replica's `replica_names` list
+    /// 1. Change InstanceType from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
+    /// 2. Remove `MasterInstanceName`
+    /// 3. (SQL Server) Remove `ReplicaConfiguration`
+    /// 4. Add current primary's name to the replica's `ReplicaNames` list
     /// 5. (MySQL/PostgreSQL) Add current primary's name to the replica's `replication_cluster.failover_dr_replica_name`.
-    /// 6. (MySQL/PostgreSQL) Adjust `backup_configuration`. See Switchover Guide for details.
+    /// 6. (MySQL/PostgreSQL) Adjust `BackupConfiguration`. See Switchover Guide for details.
     /// 
     /// #### Updating the primary resource:
-    /// 1. Change `instance_type` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
-    /// 2. Set `master_instance_name` to the original replica (which will be primary after switchover)
-    /// 3. (SQL Server) Set `replica_configuration` and set `cascadable_replica` to `true`
-    /// 4. Remove original replica from `replica_names`
-    ///    * **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
+    /// 1. Change `InstanceType` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
+    /// 2. Set `MasterInstanceName` to the original replica (which will be primary after switchover)
+    /// 3. (SQL Server) Set `ReplicaConfiguration` and set `CascadableReplica` to `True`
+    /// 4. Remove original replica from `ReplicaNames`
+    ///    * **NOTE**: Do **not** delete the ReplicaNames field, even if it has no replicas remaining. Set ReplicaNames = [ ] to indicate it having no replicas.
     /// 5. (MySQL/PostgreSQL) Set `replication_cluster.failover_dr_replica_name` as the empty string.
-    /// 6. (MySQL/PostgreSQL) Adjust `backup_configuration`. See Switchover Guide for details.
+    /// 6. (MySQL/PostgreSQL) Adjust `BackupConfiguration`. See Switchover Guide for details.
     /// #### Plan and verify that:
     /// - `pulumi preview` outputs **"0 to add, 0 to destroy"**
     /// - `pulumi preview` does not say **"must be replaced"** for any resource
     /// - Every resource **"will be updated in-place"**
     /// - Only the 2 instances involved in switchover have planned changes
-    /// - (Recommended) Use `deletion_protection` on instances as a safety measure
+    /// - (Recommended) Use `DeletionProtection` on instances as a safety measure
     /// 
     /// ## Import
     /// 
@@ -436,7 +436,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+        /// in state, a `Destroy` or `Update` command that deletes the instance will fail. Defaults to `True`.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -488,7 +488,7 @@ namespace Pulumi.Gcp.Sql
         public Output<ImmutableArray<Outputs.DatabaseInstanceIpAddress>> IpAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+        /// The current software version on the instance. This attribute can not be set during creation. Refer to `AvailableMaintenanceVersions` attribute to see what `MaintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `MaintenanceVersion` value that is older than the current one on the instance will be ignored.
         /// </summary>
         [Output("maintenanceVersion")]
         public Output<string> MaintenanceVersion { get; private set; } = null!;
@@ -496,7 +496,7 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The name of the existing instance that will
         /// act as the master in the replication setup. Note, this requires the master to
-        /// have `binary_log_enabled` set, as well as existing backups.
+        /// have `BinaryLogEnabled` set, as well as existing backups.
         /// </summary>
         [Output("masterInstanceName")]
         public Output<string> MasterInstanceName { get; private set; } = null!;
@@ -608,7 +608,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The settings to use for the database. The
-        /// configuration is detailed below. Required if `clone` is not set.
+        /// configuration is detailed below. Required if `Clone` is not set.
         /// </summary>
         [Output("settings")]
         public Output<Outputs.DatabaseInstanceSettings> Settings { get; private set; } = null!;
@@ -695,7 +695,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+        /// in state, a `Destroy` or `Update` command that deletes the instance will fail. Defaults to `True`.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -726,7 +726,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+        /// The current software version on the instance. This attribute can not be set during creation. Refer to `AvailableMaintenanceVersions` attribute to see what `MaintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `MaintenanceVersion` value that is older than the current one on the instance will be ignored.
         /// </summary>
         [Input("maintenanceVersion")]
         public Input<string>? MaintenanceVersion { get; set; }
@@ -734,7 +734,7 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The name of the existing instance that will
         /// act as the master in the replication setup. Note, this requires the master to
-        /// have `binary_log_enabled` set, as well as existing backups.
+        /// have `BinaryLogEnabled` set, as well as existing backups.
         /// </summary>
         [Input("masterInstanceName")]
         public Input<string>? MasterInstanceName { get; set; }
@@ -838,7 +838,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The settings to use for the database. The
-        /// configuration is detailed below. Required if `clone` is not set.
+        /// configuration is detailed below. Required if `Clone` is not set.
         /// </summary>
         [Input("settings")]
         public Input<Inputs.DatabaseInstanceSettingsArgs>? Settings { get; set; }
@@ -900,7 +900,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+        /// in state, a `Destroy` or `Update` command that deletes the instance will fail. Defaults to `True`.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -963,7 +963,7 @@ namespace Pulumi.Gcp.Sql
         }
 
         /// <summary>
-        /// The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+        /// The current software version on the instance. This attribute can not be set during creation. Refer to `AvailableMaintenanceVersions` attribute to see what `MaintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `MaintenanceVersion` value that is older than the current one on the instance will be ignored.
         /// </summary>
         [Input("maintenanceVersion")]
         public Input<string>? MaintenanceVersion { get; set; }
@@ -971,7 +971,7 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The name of the existing instance that will
         /// act as the master in the replication setup. Note, this requires the master to
-        /// have `binary_log_enabled` set, as well as existing backups.
+        /// have `BinaryLogEnabled` set, as well as existing backups.
         /// </summary>
         [Input("masterInstanceName")]
         public Input<string>? MasterInstanceName { get; set; }
@@ -1118,7 +1118,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The settings to use for the database. The
-        /// configuration is detailed below. Required if `clone` is not set.
+        /// configuration is detailed below. Required if `Clone` is not set.
         /// </summary>
         [Input("settings")]
         public Input<Inputs.DatabaseInstanceSettingsGetArgs>? Settings { get; set; }

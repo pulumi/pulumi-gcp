@@ -17,7 +17,7 @@ public final class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBu
 
     /**
      * The list of cloud storage bucket names to exclude in the DatasetConfig.
-     * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+     * Exactly one of the bucketName and bucketPrefixRegex should be specified.
      * 
      */
     @Import(name="bucketName")
@@ -25,7 +25,7 @@ public final class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBu
 
     /**
      * @return The list of cloud storage bucket names to exclude in the DatasetConfig.
-     * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+     * Exactly one of the bucketName and bucketPrefixRegex should be specified.
      * 
      */
     public Optional<Output<String>> bucketName() {
@@ -35,7 +35,7 @@ public final class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBu
     /**
      * The list of regex patterns for bucket names matching the regex.
      * Regex should follow the syntax specified in google/re2 on GitHub.
-     * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+     * Exactly one of the bucketName and bucketPrefixRegex should be specified.
      * 
      */
     @Import(name="bucketPrefixRegex")
@@ -44,7 +44,7 @@ public final class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBu
     /**
      * @return The list of regex patterns for bucket names matching the regex.
      * Regex should follow the syntax specified in google/re2 on GitHub.
-     * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+     * Exactly one of the bucketName and bucketPrefixRegex should be specified.
      * 
      */
     public Optional<Output<String>> bucketPrefixRegex() {
@@ -78,7 +78,7 @@ public final class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBu
 
         /**
          * @param bucketName The list of cloud storage bucket names to exclude in the DatasetConfig.
-         * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+         * Exactly one of the bucketName and bucketPrefixRegex should be specified.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBu
 
         /**
          * @param bucketName The list of cloud storage bucket names to exclude in the DatasetConfig.
-         * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+         * Exactly one of the bucketName and bucketPrefixRegex should be specified.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBu
         /**
          * @param bucketPrefixRegex The list of regex patterns for bucket names matching the regex.
          * Regex should follow the syntax specified in google/re2 on GitHub.
-         * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+         * Exactly one of the bucketName and bucketPrefixRegex should be specified.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBu
         /**
          * @param bucketPrefixRegex The list of regex patterns for bucket names matching the regex.
          * Regex should follow the syntax specified in google/re2 on GitHub.
-         * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+         * Exactly one of the bucketName and bucketPrefixRegex should be specified.
          * 
          * @return builder
          * 

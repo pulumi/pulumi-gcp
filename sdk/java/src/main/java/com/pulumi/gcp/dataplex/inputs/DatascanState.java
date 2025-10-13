@@ -204,7 +204,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
      * User-defined labels for the scan. A list of key-&gt;value pairs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -214,7 +214,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
      * @return User-defined labels for the scan. A list of key-&gt;value pairs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -237,14 +237,14 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
+     * The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
+     * @return The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
      * 
      */
     public Optional<Output<String>> name() {
@@ -646,7 +646,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
          * @param labels User-defined labels for the scan. A list of key-&gt;value pairs.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -660,7 +660,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
          * @param labels User-defined labels for the scan. A list of key-&gt;value pairs.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -691,7 +691,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
+         * @param name The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
          * 
          * @return builder
          * 
@@ -702,7 +702,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
+         * @param name The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
          * 
          * @return builder
          * 

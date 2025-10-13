@@ -248,7 +248,7 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
      * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = &#34;&#34;` and `writeDisposition = &#34;&#34;`.
      * 
      */
     @Import(name="query", required=true)
@@ -257,7 +257,7 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
      * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = &#34;&#34;` and `writeDisposition = &#34;&#34;`.
      * 
      */
     public Output<String> query() {
@@ -740,7 +740,7 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param query SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
          * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-         * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
+         * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = &#34;&#34;` and `writeDisposition = &#34;&#34;`.
          * 
          * @return builder
          * 
@@ -753,7 +753,7 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param query SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
          * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-         * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
+         * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = &#34;&#34;` and `writeDisposition = &#34;&#34;`.
          * 
          * @return builder
          * 

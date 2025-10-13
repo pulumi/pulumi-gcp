@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 
 /**
  * An app&#39;s DeviceCheck configuration object. Note that the Team ID registered with your
- * app is used as part of the validation process. Make sure your `gcp.firebase.AppleApp` has a team_id present.
+ * app is used as part of the validation process. Make sure your `gcp.firebase.AppleApp` has a teamId present.
  * 
  * To get more information about DeviceCheckConfig, see:
  * 

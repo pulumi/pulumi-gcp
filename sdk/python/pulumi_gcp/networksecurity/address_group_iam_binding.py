@@ -328,6 +328,8 @@ class AddressGroupIamBinding(pulumi.CustomResource):
 
         > **Note:** `networksecurity.AddressGroupIamBinding` resources **can be** used in conjunction with `networksecurity.AddressGroupIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## networksecurity.AddressGroupIamPolicy
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -411,6 +413,8 @@ class AddressGroupIamBinding(pulumi.CustomResource):
         > **Note:** `networksecurity.AddressGroupIamPolicy` **cannot** be used in conjunction with `networksecurity.AddressGroupIamBinding` and `networksecurity.AddressGroupIamMember` or they will fight over what your policy should be.
 
         > **Note:** `networksecurity.AddressGroupIamBinding` resources **can be** used in conjunction with `networksecurity.AddressGroupIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## networksecurity.AddressGroupIamPolicy
 
         ## Import
 

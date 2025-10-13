@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// </summary>
         public readonly string BuildTime;
         /// <summary>
-        /// Extracted short name of the image (last part of `name`, without tag or digest). For example, from `.../nginx@sha256:...` → `nginx`.
+        /// Extracted short name of the image (last part of `Name`, without tag or digest). For example, from `.../nginx@sha256:...` → `Nginx`.
         /// </summary>
         public readonly string ImageName;
         /// <summary>

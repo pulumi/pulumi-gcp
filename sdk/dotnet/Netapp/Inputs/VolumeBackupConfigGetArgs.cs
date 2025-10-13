@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Netapp.Inputs
         public Input<string>? BackupVault { get; set; }
 
         /// <summary>
-        /// When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+        /// When set to true, scheduled backup is enabled on the volume. Omit if no BackupPolicy is specified.
         /// </summary>
         [Input("scheduledBackupEnabled")]
         public Input<bool>? ScheduledBackupEnabled { get; set; }

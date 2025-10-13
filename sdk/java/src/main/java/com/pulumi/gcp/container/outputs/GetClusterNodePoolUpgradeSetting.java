@@ -19,12 +19,12 @@ public final class GetClusterNodePoolUpgradeSetting {
      */
     private List<GetClusterNodePoolUpgradeSettingBlueGreenSetting> blueGreenSettings;
     /**
-     * @return The number of additional nodes that can be added to the node pool during an upgrade. Increasing max_surge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
+     * @return The number of additional nodes that can be added to the node pool during an upgrade. Increasing maxSurge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
      * 
      */
     private Integer maxSurge;
     /**
-     * @return The number of nodes that can be simultaneously unavailable during an upgrade. Increasing max_unavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
+     * @return The number of nodes that can be simultaneously unavailable during an upgrade. Increasing maxUnavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
      * 
      */
     private Integer maxUnavailable;
@@ -43,14 +43,14 @@ public final class GetClusterNodePoolUpgradeSetting {
         return this.blueGreenSettings;
     }
     /**
-     * @return The number of additional nodes that can be added to the node pool during an upgrade. Increasing max_surge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
+     * @return The number of additional nodes that can be added to the node pool during an upgrade. Increasing maxSurge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
      * 
      */
     public Integer maxSurge() {
         return this.maxSurge;
     }
     /**
-     * @return The number of nodes that can be simultaneously unavailable during an upgrade. Increasing max_unavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
+     * @return The number of nodes that can be simultaneously unavailable during an upgrade. Increasing maxUnavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
      * 
      */
     public Integer maxUnavailable() {

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Transcoder.Outputs
     public sealed class JobConfigMuxStream
     {
         /// <summary>
-        /// The container format. The default is `mp4`.
+        /// The container format. The default is `Mp4`.
         /// </summary>
         public readonly string? Container;
         /// <summary>

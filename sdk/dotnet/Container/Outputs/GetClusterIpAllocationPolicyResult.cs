@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string ClusterIpv4CidrBlock;
         /// <summary>
-        /// The name of the existing secondary range in the cluster's subnetwork to use for pod IP addresses. Alternatively, cluster_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+        /// The name of the existing secondary range in the cluster's subnetwork to use for pod IP addresses. Alternatively, ClusterIpv4CidrBlock can be used to automatically create a GKE-managed one.
         /// </summary>
         public readonly string ClusterSecondaryRangeName;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string ServicesIpv4CidrBlock;
         /// <summary>
-        /// The name of the existing secondary range in the cluster's subnetwork to use for service ClusterIPs. Alternatively, services_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+        /// The name of the existing secondary range in the cluster's subnetwork to use for service ClusterIPs. Alternatively, ServicesIpv4CidrBlock can be used to automatically create a GKE-managed one.
         /// </summary>
         public readonly string ServicesSecondaryRangeName;
         /// <summary>

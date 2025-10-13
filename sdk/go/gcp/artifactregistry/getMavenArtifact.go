@@ -12,6 +12,8 @@ import (
 )
 
 // This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
+//
+// ## Example Usage
 func GetMavenArtifact(ctx *pulumi.Context, args *GetMavenArtifactArgs, opts ...pulumi.InvokeOption) (*GetMavenArtifactResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMavenArtifactResult

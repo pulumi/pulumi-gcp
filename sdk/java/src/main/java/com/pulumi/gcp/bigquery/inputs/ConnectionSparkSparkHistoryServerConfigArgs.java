@@ -16,14 +16,14 @@ public final class ConnectionSparkSparkHistoryServerConfigArgs extends com.pulum
     public static final ConnectionSparkSparkHistoryServerConfigArgs Empty = new ConnectionSparkSparkHistoryServerConfigArgs();
 
     /**
-     * Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
+     * Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[clusterName].
      * 
      */
     @Import(name="dataprocCluster")
     private @Nullable Output<String> dataprocCluster;
 
     /**
-     * @return Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
+     * @return Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[clusterName].
      * 
      */
     public Optional<Output<String>> dataprocCluster() {
@@ -55,7 +55,7 @@ public final class ConnectionSparkSparkHistoryServerConfigArgs extends com.pulum
         }
 
         /**
-         * @param dataprocCluster Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
+         * @param dataprocCluster Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[clusterName].
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ConnectionSparkSparkHistoryServerConfigArgs extends com.pulum
         }
 
         /**
-         * @param dataprocCluster Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
+         * @param dataprocCluster Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[clusterName].
          * 
          * @return builder
          * 

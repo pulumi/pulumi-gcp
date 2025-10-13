@@ -18,19 +18,19 @@ namespace Pulumi.Gcp.Netapp.Outputs
         /// </summary>
         public readonly int BackupMinimumEnforcedRetentionDays;
         /// <summary>
-        /// Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        /// Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, MonthlyBackupImmutable and ManualBackupImmutable must be true.
         /// </summary>
         public readonly bool? DailyBackupImmutable;
         /// <summary>
-        /// Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        /// Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, MonthlyBackupImmutable and ManualBackupImmutable must be true.
         /// </summary>
         public readonly bool? ManualBackupImmutable;
         /// <summary>
-        /// Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        /// Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, MonthlyBackupImmutable and ManualBackupImmutable must be true.
         /// </summary>
         public readonly bool? MonthlyBackupImmutable;
         /// <summary>
-        /// Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        /// Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, MonthlyBackupImmutable and ManualBackupImmutable must be true.
         /// </summary>
         public readonly bool? WeeklyBackupImmutable;
 

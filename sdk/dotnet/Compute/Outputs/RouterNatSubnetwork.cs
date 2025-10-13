@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
         /// sourceIpRangesToNat
         /// 
-        /// &lt;a name="nested_nat64_subnetwork"&gt;&lt;/a&gt;The `nat64_subnetwork` block supports:
+        /// &lt;a name="NestedNat64Subnetwork"&gt;&lt;/a&gt;The `Nat64Subnetwork` block supports:
         /// </summary>
         public readonly ImmutableArray<string> SecondaryIpRangeNames;
         /// <summary>

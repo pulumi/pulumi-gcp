@@ -27,7 +27,7 @@ public final class RegionHealthCheckHttpHealthCheck {
     private @Nullable Integer port;
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
-     * port_name are defined, port takes precedence.
+     * portName are defined, port takes precedence.
      * 
      */
     private @Nullable String portName;
@@ -88,7 +88,7 @@ public final class RegionHealthCheckHttpHealthCheck {
     }
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
-     * port_name are defined, port takes precedence.
+     * portName are defined, port takes precedence.
      * 
      */
     public Optional<String> portName() {

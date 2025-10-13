@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Workbench
     public sealed class GetInstanceIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// Part of `Parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to. If not specified,
         /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
         /// location is specified, it is taken from the provider configuration.
         /// </summary>
@@ -126,7 +126,7 @@ namespace Pulumi.Gcp.Workbench
     public sealed class GetInstanceIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// Part of `Parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to. If not specified,
         /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
         /// location is specified, it is taken from the provider configuration.
         /// </summary>

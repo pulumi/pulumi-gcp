@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.DataCatalog
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+        /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of FieldId will be resulting in re-creating of field. The change of PrimitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
         /// Structure is documented below.
         /// </summary>
         [Output("fields")]
@@ -207,7 +207,7 @@ namespace Pulumi.Gcp.DataCatalog
         private InputList<Inputs.TagTemplateFieldArgs>? _fields;
 
         /// <summary>
-        /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+        /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of FieldId will be resulting in re-creating of field. The change of PrimitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.TagTemplateFieldArgs> Fields
@@ -259,7 +259,7 @@ namespace Pulumi.Gcp.DataCatalog
         private InputList<Inputs.TagTemplateFieldGetArgs>? _fields;
 
         /// <summary>
-        /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+        /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of FieldId will be resulting in re-creating of field. The change of PrimitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.TagTemplateFieldGetArgs> Fields

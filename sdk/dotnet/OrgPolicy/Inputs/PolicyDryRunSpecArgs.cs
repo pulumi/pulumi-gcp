@@ -14,19 +14,19 @@ namespace Pulumi.Gcp.OrgPolicy.Inputs
     {
         /// <summary>
         /// (Output)
-        /// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        /// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `Etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `Etag` will be unset.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+        /// Determines the inheritance behavior for this policy. If `InheritFromParent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
         /// </summary>
         [Input("inheritFromParent")]
         public Input<bool>? InheritFromParent { get; set; }
 
         /// <summary>
-        /// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+        /// Ignores policies set above this resource and restores the `ConstraintDefault` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `Rules` must be empty and `InheritFromParent` must be set to false.
         /// </summary>
         [Input("reset")]
         public Input<bool>? Reset { get; set; }
@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.OrgPolicy.Inputs
         private InputList<Inputs.PolicyDryRunSpecRuleArgs>? _rules;
 
         /// <summary>
-        /// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+        /// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `Enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PolicyDryRunSpecRuleArgs> Rules

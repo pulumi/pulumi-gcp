@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> KeyId { get; private set; } = null!;
 
         /// <summary>
-        /// Location for the externalAccountKey. Currently only `global` is supported.
+        /// Location for the externalAccountKey. Currently only `Global` is supported.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class CaExternalAccountKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Location for the externalAccountKey. Currently only `global` is supported.
+        /// Location for the externalAccountKey. Currently only `Global` is supported.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.Gcp.Compute
         /// when the ExternalAccountKey is created.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Obsolete(@"`b64_mac_key` is deprecated and will be removed in a future major release. Use `b64url_mac_key` instead.")]
+        [Obsolete(@"`B64MacKey` is deprecated and will be removed in a future major release. Use `B64urlMacKey` instead.")]
         public Input<string>? B64MacKey
         {
             get => _b64MacKey;
@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Location for the externalAccountKey. Currently only `global` is supported.
+        /// Location for the externalAccountKey. Currently only `Global` is supported.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

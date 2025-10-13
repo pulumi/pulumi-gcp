@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
     {
         /// <summary>
         /// Represents an enum type.
-        /// Exactly one of `primitive_type` or `enum_type` must be set
+        /// Exactly one of `PrimitiveType` or `EnumType` must be set
         /// Structure is documented below.
         /// </summary>
         [Input("enumType")]
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
 
         /// <summary>
         /// Represents primitive types - string, bool etc.
-        /// Exactly one of `primitive_type` or `enum_type` must be set
+        /// Exactly one of `PrimitiveType` or `EnumType` must be set
         /// Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
         /// </summary>
         [Input("primitiveType")]

@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         private InputList<string>? _customSubjectAlternativeNames;
 
         /// <summary>
-        /// The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+        /// The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `ServerCaMode`.
         /// </summary>
         public InputList<string> CustomSubjectAlternativeNames
         {
@@ -46,8 +46,8 @@ namespace Pulumi.Gcp.Sql.Inputs
 
         /// <summary>
         /// Whether this Cloud SQL instance should be assigned
-        /// a public IPV4 address. At least `ipv4_enabled` must be enabled or a
-        /// `private_network` must be configured.
+        /// a public IPV4 address. At least `Ipv4Enabled` must be enabled or a
+        /// `PrivateNetwork` must be configured.
         /// </summary>
         [Input("ipv4Enabled")]
         public Input<bool>? Ipv4Enabled { get; set; }
@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         /// The VPC network from which the Cloud SQL
         /// instance is accessible for private IP. For example, projects/myProject/global/networks/default.
         /// Specifying a network enables private IP.
-        /// At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
+        /// At least `Ipv4Enabled` must be enabled or a `PrivateNetwork` must be configured.
         /// This setting can be updated, but it cannot be removed after it is set.
         /// </summary>
         [Input("privateNetwork")]
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? ServerCaMode { get; set; }
 
         /// <summary>
-        /// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+        /// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `ServerCaMode`.
         /// </summary>
         [Input("serverCaPool")]
         public Input<string>? ServerCaPool { get; set; }

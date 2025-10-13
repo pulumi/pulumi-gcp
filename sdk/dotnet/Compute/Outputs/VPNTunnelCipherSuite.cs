@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_cipher_suite_phase1"&gt;&lt;/a&gt;The `phase1` block supports:
+        /// &lt;a name="NestedCipherSuitePhase1"&gt;&lt;/a&gt;The `Phase1` block supports:
         /// </summary>
         public readonly Outputs.VPNTunnelCipherSuitePhase2? Phase2;
 

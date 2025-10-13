@@ -31,10 +31,10 @@ import javax.annotation.Nullable;
  *     * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
- * you must specify a `billing_project_id` and set `user_project_override` to true
+ * you must specify a `billingProjectId` and set `userProjectOverride` to true
  * in the provider configuration. Otherwise the ACM API will return a 403 error.
  * Your account must have the `serviceusage.services.use` permission on the
- * `billing_project_id` you defined.
+ * `billingProjectId` you defined.
  * 
  * ## Example Usage
  * 
@@ -117,7 +117,7 @@ public class FirewallEndpointAssociation extends com.pulumi.resources.CustomReso
      * A map of key/value label pairs to assign to the resource.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -127,7 +127,7 @@ public class FirewallEndpointAssociation extends com.pulumi.resources.CustomReso
      * @return A map of key/value label pairs to assign to the resource.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

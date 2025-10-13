@@ -34,7 +34,7 @@ public final class GetBillingAccountResult {
     private String name;
     private Boolean open;
     /**
-     * @return The IDs of any projects associated with the billing account. `lookup_projects` must not be false
+     * @return The IDs of any projects associated with the billing account. `lookupProjects` must not be false
      * for this to be populated.
      * 
      */
@@ -75,7 +75,7 @@ public final class GetBillingAccountResult {
         return this.open;
     }
     /**
-     * @return The IDs of any projects associated with the billing account. `lookup_projects` must not be false
+     * @return The IDs of any projects associated with the billing account. `lookupProjects` must not be false
      * for this to be populated.
      * 
      */

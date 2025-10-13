@@ -96,7 +96,7 @@ public final class GetCloudVmClustersCloudVmCluster {
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}
      * It is optional but if specified, this should match the parent ODBNetwork of
-     * the odb_subnet and backup_odb_subnet.
+     * the odbSubnet and backup_odb_subnet.
      * 
      */
     private String odbNetwork;
@@ -236,7 +236,7 @@ public final class GetCloudVmClustersCloudVmCluster {
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}
      * It is optional but if specified, this should match the parent ODBNetwork of
-     * the odb_subnet and backup_odb_subnet.
+     * the odbSubnet and backup_odb_subnet.
      * 
      */
     public String odbNetwork() {

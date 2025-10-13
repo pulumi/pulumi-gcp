@@ -22,7 +22,7 @@ public final class NetworkFirewallPolicyPacketMirroringRuleMatch {
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
      * 
      */
     private List<NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config> layer4Configs;
@@ -44,7 +44,7 @@ public final class NetworkFirewallPolicyPacketMirroringRuleMatch {
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_match_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * &lt;a name=&#34;nestedMatchLayer4Configs&#34;&gt;&lt;/a&gt;The `layer4Configs` block supports:
      * 
      */
     public List<NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config> layer4Configs() {

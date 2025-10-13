@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     public sealed class FeatureMembershipConfigmanagementConfigSyncOciArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+        /// The GCP Service Account Email used for auth when SecretType is gcpserviceaccount.
         /// </summary>
         [Input("gcpServiceAccountEmail")]
         public Input<string>? GcpServiceAccountEmail { get; set; }

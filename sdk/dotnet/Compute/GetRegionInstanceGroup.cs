@@ -91,29 +91,29 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetRegionInstanceGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the instance group.  One of `name` or `self_link` must be provided.
+        /// The name of the instance group.  One of `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
-        /// If `self_link` is provided, this value is ignored.  If neither `self_link`
-        /// nor `project` are provided, the provider project is used.
+        /// If `SelfLink` is provided, this value is ignored.  If neither `SelfLink`
+        /// nor `Project` are provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
         /// <summary>
-        /// The region in which the resource belongs.  If `self_link`
-        /// is provided, this value is ignored.  If neither `self_link` nor `region` are
+        /// The region in which the resource belongs.  If `SelfLink`
+        /// is provided, this value is ignored.  If neither `SelfLink` nor `Region` are
         /// provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
         /// <summary>
-        /// The link to the instance group.  One of `name` or `self_link` must be provided.
+        /// The link to the instance group.  One of `Name` or `SelfLink` must be provided.
         /// 
         /// - - -
         /// </summary>
@@ -129,29 +129,29 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetRegionInstanceGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the instance group.  One of `name` or `self_link` must be provided.
+        /// The name of the instance group.  One of `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
-        /// If `self_link` is provided, this value is ignored.  If neither `self_link`
-        /// nor `project` are provided, the provider project is used.
+        /// If `SelfLink` is provided, this value is ignored.  If neither `SelfLink`
+        /// nor `Project` are provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The region in which the resource belongs.  If `self_link`
-        /// is provided, this value is ignored.  If neither `self_link` nor `region` are
+        /// The region in which the resource belongs.  If `SelfLink`
+        /// is provided, this value is ignored.  If neither `SelfLink` nor `Region` are
         /// provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The link to the instance group.  One of `name` or `self_link` must be provided.
+        /// The link to the instance group.  One of `Name` or `SelfLink` must be provided.
         /// 
         /// - - -
         /// </summary>

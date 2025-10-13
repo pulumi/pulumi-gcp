@@ -127,6 +127,8 @@ def get_tag(location: Optional[_builtins.str] = None,
     """
     This data source fetches information of a tag from a provided Artifact Registry repository.
 
+    ## Example Usage
+
 
     :param _builtins.str location: The location of the artifact registry.
     :param _builtins.str package_name: The name of the package.
@@ -160,6 +162,8 @@ def get_tag_output(location: Optional[pulumi.Input[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagResult]:
     """
     This data source fetches information of a tag from a provided Artifact Registry repository.
+
+    ## Example Usage
 
 
     :param _builtins.str location: The location of the artifact registry.

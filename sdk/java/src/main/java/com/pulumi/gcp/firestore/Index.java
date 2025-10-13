@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Warning:** This resource creates a Firestore Index on a project that already has
  * a Firestore database. If you haven&#39;t already created it, you may
- * create a `gcp.firestore.Database` resource and `location_id` set
+ * create a `gcp.firestore.Database` resource and `locationId` set
  * to your chosen location. If you wish to use App Engine, you may
  * instead create a `gcp.appengine.Application` resource.
  * Your Firestore location will be the same as the App Engine location specified.

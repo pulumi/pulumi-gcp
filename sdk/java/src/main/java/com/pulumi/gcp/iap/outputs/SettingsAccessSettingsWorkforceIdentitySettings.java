@@ -17,7 +17,7 @@ public final class SettingsAccessSettingsWorkforceIdentitySettings {
      * federation services.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_access_settings_workforce_identity_settings_oauth2&#34;&gt;&lt;/a&gt;The `oauth2` block supports:
+     * &lt;a name=&#34;nestedAccessSettingsWorkforceIdentitySettingsOauth2&#34;&gt;&lt;/a&gt;The `oauth2` block supports:
      * 
      */
     private @Nullable SettingsAccessSettingsWorkforceIdentitySettingsOauth2 oauth2;
@@ -33,7 +33,7 @@ public final class SettingsAccessSettingsWorkforceIdentitySettings {
      * federation services.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_access_settings_workforce_identity_settings_oauth2&#34;&gt;&lt;/a&gt;The `oauth2` block supports:
+     * &lt;a name=&#34;nestedAccessSettingsWorkforceIdentitySettingsOauth2&#34;&gt;&lt;/a&gt;The `oauth2` block supports:
      * 
      */
     public Optional<SettingsAccessSettingsWorkforceIdentitySettingsOauth2> oauth2() {

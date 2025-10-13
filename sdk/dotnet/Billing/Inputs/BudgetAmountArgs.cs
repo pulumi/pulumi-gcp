@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Billing.Inputs
         /// Configures a budget amount that is automatically set to 100% of
         /// last period's spend.
         /// Boolean. Set value to true to use. Do not set to false, instead
-        /// use the `specified_amount` block.
+        /// use the `SpecifiedAmount` block.
         /// </summary>
         [Input("lastPeriodAmount")]
         public Input<bool>? LastPeriodAmount { get; set; }

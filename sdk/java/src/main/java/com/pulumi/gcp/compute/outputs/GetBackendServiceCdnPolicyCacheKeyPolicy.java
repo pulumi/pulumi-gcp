@@ -35,7 +35,7 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
     private Boolean includeProtocol;
     /**
      * @return If true, include query string parameters in the cache key
-     * according to query_string_whitelist and
+     * according to queryStringWhitelist and
      * query_string_blacklist. If neither is set, the entire query
      * string will be included.
      * 
@@ -48,7 +48,7 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
      * @return Names of query string parameters to exclude in cache keys.
      * 
      * All other parameters will be included. Either specify
-     * query_string_whitelist or query_string_blacklist, not both.
+     * queryStringWhitelist or query_string_blacklist, not both.
      * &#39;&amp;&#39; and &#39;=&#39; will be percent encoded and not treated as
      * delimiters.
      * 
@@ -58,7 +58,7 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
      * @return Names of query string parameters to include in cache keys.
      * 
      * All other parameters will be excluded. Either specify
-     * query_string_whitelist or query_string_blacklist, not both.
+     * queryStringWhitelist or query_string_blacklist, not both.
      * &#39;&amp;&#39; and &#39;=&#39; will be percent encoded and not treated as
      * delimiters.
      * 
@@ -97,7 +97,7 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
     }
     /**
      * @return If true, include query string parameters in the cache key
-     * according to query_string_whitelist and
+     * according to queryStringWhitelist and
      * query_string_blacklist. If neither is set, the entire query
      * string will be included.
      * 
@@ -112,7 +112,7 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
      * @return Names of query string parameters to exclude in cache keys.
      * 
      * All other parameters will be included. Either specify
-     * query_string_whitelist or query_string_blacklist, not both.
+     * queryStringWhitelist or query_string_blacklist, not both.
      * &#39;&amp;&#39; and &#39;=&#39; will be percent encoded and not treated as
      * delimiters.
      * 
@@ -124,7 +124,7 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
      * @return Names of query string parameters to include in cache keys.
      * 
      * All other parameters will be excluded. Either specify
-     * query_string_whitelist or query_string_blacklist, not both.
+     * queryStringWhitelist or query_string_blacklist, not both.
      * &#39;&amp;&#39; and &#39;=&#39; will be percent encoded and not treated as
      * delimiters.
      * 

@@ -37,7 +37,7 @@ public final class ClusterClusterConfigEndpointConfigArgs extends com.pulumi.res
 
     /**
      * The map of port descriptions to URLs. Will only be populated if
-     * `enable_http_port_access` is true.
+     * `enableHttpPortAccess` is true.
      * 
      */
     @Import(name="httpPorts")
@@ -45,7 +45,7 @@ public final class ClusterClusterConfigEndpointConfigArgs extends com.pulumi.res
 
     /**
      * @return The map of port descriptions to URLs. Will only be populated if
-     * `enable_http_port_access` is true.
+     * `enableHttpPortAccess` is true.
      * 
      */
     public Optional<Output<Map<String,String>>> httpPorts() {
@@ -102,7 +102,7 @@ public final class ClusterClusterConfigEndpointConfigArgs extends com.pulumi.res
 
         /**
          * @param httpPorts The map of port descriptions to URLs. Will only be populated if
-         * `enable_http_port_access` is true.
+         * `enableHttpPortAccess` is true.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ClusterClusterConfigEndpointConfigArgs extends com.pulumi.res
 
         /**
          * @param httpPorts The map of port descriptions to URLs. Will only be populated if
-         * `enable_http_port_access` is true.
+         * `enableHttpPortAccess` is true.
          * 
          * @return builder
          * 

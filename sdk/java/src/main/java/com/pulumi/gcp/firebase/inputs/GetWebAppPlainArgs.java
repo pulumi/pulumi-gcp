@@ -16,7 +16,7 @@ public final class GetWebAppPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetWebAppPlainArgs Empty = new GetWebAppPlainArgs();
 
     /**
-     * The app_ip of name of the Firebase webApp.
+     * The appIp of name of the Firebase webApp.
      * 
      * ***
      * 
@@ -25,7 +25,7 @@ public final class GetWebAppPlainArgs extends com.pulumi.resources.InvokeArgs {
     private String appId;
 
     /**
-     * @return The app_ip of name of the Firebase webApp.
+     * @return The appIp of name of the Firebase webApp.
      * 
      * ***
      * 
@@ -77,7 +77,7 @@ public final class GetWebAppPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param appId The app_ip of name of the Firebase webApp.
+         * @param appId The appIp of name of the Firebase webApp.
          * 
          * ***
          * 

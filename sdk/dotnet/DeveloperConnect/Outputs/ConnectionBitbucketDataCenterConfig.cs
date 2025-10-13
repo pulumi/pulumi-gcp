@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.DeveloperConnect.Outputs
         public readonly Outputs.ConnectionBitbucketDataCenterConfigReadAuthorizerCredential ReadAuthorizerCredential;
         /// <summary>
         /// (Output)
-        /// Output only. Version of the Bitbucket Data Center server running on the `host_uri`.
+        /// Output only. Version of the Bitbucket Data Center server running on the `HostUri`.
         /// </summary>
         public readonly string? ServerVersion;
         /// <summary>

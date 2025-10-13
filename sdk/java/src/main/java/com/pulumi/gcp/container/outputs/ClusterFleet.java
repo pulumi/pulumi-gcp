@@ -18,12 +18,12 @@ public final class ClusterFleet {
      */
     private @Nullable String membership;
     /**
-     * @return The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
+     * @return The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
      * 
      */
     private @Nullable String membershipId;
     /**
-     * @return The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
+     * @return The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
      * 
      */
     private @Nullable String membershipLocation;
@@ -47,14 +47,14 @@ public final class ClusterFleet {
         return Optional.ofNullable(this.membership);
     }
     /**
-     * @return The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
+     * @return The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
      * 
      */
     public Optional<String> membershipId() {
         return Optional.ofNullable(this.membershipId);
     }
     /**
-     * @return The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
+     * @return The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
      * 
      */
     public Optional<String> membershipLocation() {

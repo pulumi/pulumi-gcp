@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
     public sealed class MirroringEndpointGroupAssociationLocationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloud location of the association, currently restricted to `global`.
+        /// The cloud location of the association, currently restricted to `Global`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.Dns
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The user assigned name for this Response Policy, such as `myresponsepolicy`.
+        /// The user assigned name for this Response Policy, such as `Myresponsepolicy`.
         /// </summary>
         [Output("responsePolicyName")]
         public Output<string> ResponsePolicyName { get; private set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The user assigned name for this Response Policy, such as `myresponsepolicy`.
+        /// The user assigned name for this Response Policy, such as `Myresponsepolicy`.
         /// </summary>
         [Input("responsePolicyName", required: true)]
         public Input<string> ResponsePolicyName { get; set; } = null!;
@@ -315,7 +315,7 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The user assigned name for this Response Policy, such as `myresponsepolicy`.
+        /// The user assigned name for this Response Policy, such as `Myresponsepolicy`.
         /// </summary>
         [Input("responsePolicyName")]
         public Input<string>? ResponsePolicyName { get; set; }

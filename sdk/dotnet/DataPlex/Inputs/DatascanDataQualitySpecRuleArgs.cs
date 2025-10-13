@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public Input<Inputs.DatascanDataQualitySpecRuleTableConditionExpectationArgs>? TableConditionExpectation { get; set; }
 
         /// <summary>
-        /// The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+        /// The minimum ratio of PassingRows / TotalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
         /// </summary>
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }

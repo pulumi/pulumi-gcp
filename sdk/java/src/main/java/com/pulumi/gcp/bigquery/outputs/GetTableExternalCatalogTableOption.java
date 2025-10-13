@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetTableExternalCatalogTableOption {
     /**
-     * @return The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form &lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt; or projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;.
+     * @return The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connectionId can have the form &lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt; or projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;.
      * 
      */
     private String connectionId;
@@ -31,7 +31,7 @@ public final class GetTableExternalCatalogTableOption {
 
     private GetTableExternalCatalogTableOption() {}
     /**
-     * @return The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form &lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt; or projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;.
+     * @return The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connectionId can have the form &lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt; or projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;.
      * 
      */
     public String connectionId() {

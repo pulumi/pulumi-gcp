@@ -59,9 +59,9 @@ public final class SettingsApplicationSettingsAttributePropagationSettingsArgs e
      * Possible values are:
      * * `HEADER`: Propagate attributes in the headers with &#34;x-goog-iap-attr-&#34; prefix.
      * * `JWT`: Propagate attributes in the JWT of the form:
-     *   &#34;additional_claims&#34;: { &#34;my_attribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
+     *   &#34;additionalClaims&#34;: { &#34;myAttribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
      * * `RCTOKEN`: Propagate attributes in the RCToken of the form: &#34;
-     *   additional_claims&#34;: { &#34;my_attribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
+     *   additionalClaims&#34;: { &#34;myAttribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
      *   Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
      * 
      */
@@ -74,9 +74,9 @@ public final class SettingsApplicationSettingsAttributePropagationSettingsArgs e
      * Possible values are:
      * * `HEADER`: Propagate attributes in the headers with &#34;x-goog-iap-attr-&#34; prefix.
      * * `JWT`: Propagate attributes in the JWT of the form:
-     *   &#34;additional_claims&#34;: { &#34;my_attribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
+     *   &#34;additionalClaims&#34;: { &#34;myAttribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
      * * `RCTOKEN`: Propagate attributes in the RCToken of the form: &#34;
-     *   additional_claims&#34;: { &#34;my_attribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
+     *   additionalClaims&#34;: { &#34;myAttribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
      *   Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
      * 
      */
@@ -164,9 +164,9 @@ public final class SettingsApplicationSettingsAttributePropagationSettingsArgs e
          * Possible values are:
          * * `HEADER`: Propagate attributes in the headers with &#34;x-goog-iap-attr-&#34; prefix.
          * * `JWT`: Propagate attributes in the JWT of the form:
-         *   &#34;additional_claims&#34;: { &#34;my_attribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
+         *   &#34;additionalClaims&#34;: { &#34;myAttribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
          * * `RCTOKEN`: Propagate attributes in the RCToken of the form: &#34;
-         *   additional_claims&#34;: { &#34;my_attribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
+         *   additionalClaims&#34;: { &#34;myAttribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
          *   Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
          * 
          * @return builder
@@ -183,9 +183,9 @@ public final class SettingsApplicationSettingsAttributePropagationSettingsArgs e
          * Possible values are:
          * * `HEADER`: Propagate attributes in the headers with &#34;x-goog-iap-attr-&#34; prefix.
          * * `JWT`: Propagate attributes in the JWT of the form:
-         *   &#34;additional_claims&#34;: { &#34;my_attribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
+         *   &#34;additionalClaims&#34;: { &#34;myAttribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
          * * `RCTOKEN`: Propagate attributes in the RCToken of the form: &#34;
-         *   additional_claims&#34;: { &#34;my_attribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
+         *   additionalClaims&#34;: { &#34;myAttribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
          *   Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
          * 
          * @return builder
@@ -201,9 +201,9 @@ public final class SettingsApplicationSettingsAttributePropagationSettingsArgs e
          * Possible values are:
          * * `HEADER`: Propagate attributes in the headers with &#34;x-goog-iap-attr-&#34; prefix.
          * * `JWT`: Propagate attributes in the JWT of the form:
-         *   &#34;additional_claims&#34;: { &#34;my_attribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
+         *   &#34;additionalClaims&#34;: { &#34;myAttribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
          * * `RCTOKEN`: Propagate attributes in the RCToken of the form: &#34;
-         *   additional_claims&#34;: { &#34;my_attribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
+         *   additionalClaims&#34;: { &#34;myAttribute&#34;: [&#34;value1&#34;, &#34;value2&#34;] }
          *   Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
          * 
          * @return builder

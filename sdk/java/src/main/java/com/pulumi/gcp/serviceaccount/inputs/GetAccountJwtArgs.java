@@ -34,14 +34,14 @@ public final class GetAccountJwtArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+     * Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
      * 
      */
     @Import(name="expiresIn")
     private @Nullable Output<Integer> expiresIn;
 
     /**
-     * @return Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+     * @return Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
      * 
      */
     public Optional<Output<Integer>> expiresIn() {
@@ -137,7 +137,7 @@ public final class GetAccountJwtArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param expiresIn Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+         * @param expiresIn Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class GetAccountJwtArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param expiresIn Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+         * @param expiresIn Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
          * 
          * @return builder
          * 

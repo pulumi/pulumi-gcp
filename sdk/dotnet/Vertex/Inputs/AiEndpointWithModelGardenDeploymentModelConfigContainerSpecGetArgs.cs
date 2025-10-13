@@ -23,11 +23,11 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// `CMD`'s "default parameters" form.
         /// If you don't specify this field but do specify the
         /// command field, then the command from the
-        /// `command` field runs without any additional arguments. See the
+        /// `Command` field runs without any additional arguments. See the
         /// [Kubernetes documentation about how the
-        /// `command` and `args` fields interact with a container's `ENTRYPOINT` and
+        /// `Command` and `Args` fields interact with a container's `ENTRYPOINT` and
         /// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
-        /// If you don't specify this field and don't specify the `command` field,
+        /// If you don't specify this field and don't specify the `Command` field,
         /// then the container's
         /// [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and
         /// `CMD` determine what runs based on their default behavior. See the Docker
@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// parentheses. If a variable cannot be resolved, the reference in the input
         /// string is used unchanged. To avoid variable expansion, you can escape this
         /// syntax with `$$`; for example:$$(VARIABLE_NAME)
-        /// This field corresponds to the `args` field of the Kubernetes Containers
+        /// This field corresponds to the `Args` field of the Kubernetes Containers
         /// [v1 core
         /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
         /// </summary>
@@ -70,11 +70,11 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// have an `ENTRYPOINT`, then refer to the Docker documentation about [how
         /// `CMD` and `ENTRYPOINT`
         /// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
-        /// If you specify this field, then you can also specify the `args` field to
+        /// If you specify this field, then you can also specify the `Args` field to
         /// provide additional arguments for this command. However, if you specify this
         /// field, then the container's `CMD` is ignored. See the
         /// [Kubernetes documentation about how the
-        /// `command` and `args` fields interact with a container's `ENTRYPOINT` and
+        /// `Command` and `Args` fields interact with a container's `ENTRYPOINT` and
         /// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
         /// In this field, you can reference [environment variables set by Vertex
         /// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
@@ -86,7 +86,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// parentheses. If a variable cannot be resolved, the reference in the input
         /// string is used unchanged. To avoid variable expansion, you can escape this
         /// syntax with `$$`; for example:$$(VARIABLE_NAME)
-        /// This field corresponds to the `command` field of the Kubernetes Containers
+        /// This field corresponds to the `Command` field of the Kubernetes Containers
         /// [v1 core
         /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
         /// </summary>
@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// ```
         /// If you switch the order of the variables in the example, then the expansion
         /// does not occur.
-        /// This field corresponds to the `env` field of the Kubernetes Containers
+        /// This field corresponds to the `Env` field of the Kubernetes Containers
         /// [v1 core
         /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
         /// Structure is documented below.
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// If you do not specify this field, gRPC requests to the container will be
         /// disabled.
         /// Vertex AI does not use ports other than the first one listed. This field
-        /// corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+        /// corresponds to the `Ports` field of the Kubernetes Containers v1 core API.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortGetArgs> GrpcPorts
@@ -237,7 +237,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// ]
         /// ```
         /// Vertex AI does not use ports other than the first one listed. This field
-        /// corresponds to the `ports` field of the Kubernetes Containers
+        /// corresponds to the `Ports` field of the Kubernetes Containers
         /// [v1 core
         /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
         /// Structure is documented below.

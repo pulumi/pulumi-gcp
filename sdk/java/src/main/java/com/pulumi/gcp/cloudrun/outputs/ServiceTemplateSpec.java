@@ -51,13 +51,13 @@ public final class ServiceTemplateSpec {
      * It is expected
      * that the system will manipulate this based on routability and load.
      * 
-     * &gt; **Warning:** `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * &gt; **Warning:** `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      * @deprecated
-     * `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated /* `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     private @Nullable String servingState;
     /**
      * @return TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
@@ -115,13 +115,13 @@ public final class ServiceTemplateSpec {
      * It is expected
      * that the system will manipulate this based on routability and load.
      * 
-     * &gt; **Warning:** `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * &gt; **Warning:** `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      * @deprecated
-     * `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated /* `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     public Optional<String> servingState() {
         return Optional.ofNullable(this.servingState);
     }

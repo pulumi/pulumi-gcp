@@ -33,14 +33,14 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+     * (SQL Server only, use with `pointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
      * 
      */
     @Import(name="databaseNames")
     private @Nullable Output<List<String>> databaseNames;
 
     /**
-     * @return (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+     * @return (SQL Server only, use with `pointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
      * 
      */
     public Optional<Output<List<String>>> databaseNames() {
@@ -146,7 +146,7 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param databaseNames (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+         * @param databaseNames (SQL Server only, use with `pointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param databaseNames (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+         * @param databaseNames (SQL Server only, use with `pointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param databaseNames (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+         * @param databaseNames (SQL Server only, use with `pointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
          * 
          * @return builder
          * 

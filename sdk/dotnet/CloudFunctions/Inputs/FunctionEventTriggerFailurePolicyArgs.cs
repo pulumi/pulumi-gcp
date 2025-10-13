@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudFunctions.Inputs
     public sealed class FunctionEventTriggerFailurePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the function should be retried on failure. Defaults to `false`.
+        /// Whether the function should be retried on failure. Defaults to `False`.
         /// </summary>
         [Input("retry", required: true)]
         public Input<bool> Retry { get; set; } = null!;

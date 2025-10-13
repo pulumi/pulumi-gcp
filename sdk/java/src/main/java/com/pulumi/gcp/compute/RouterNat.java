@@ -524,7 +524,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
     }
     /**
      * One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
-     * Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+     * Only used if `sourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
      * Structure is documented below.
      * 
      */
@@ -533,7 +533,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
 
     /**
      * @return One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
-     * Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+     * Only used if `sourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
      * Structure is documented below.
      * 
      */
@@ -564,7 +564,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      * Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
      * If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
-     * the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+     * the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
      * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      * 
      */
@@ -575,7 +575,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      * @return Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
      * If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
-     * the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+     * the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
      * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      * 
      */
@@ -702,7 +702,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
     }
     /**
      * One or more subnetwork NAT configurations. Only used if
-     * `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
+     * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
      * Structure is documented below.
      * 
      */
@@ -711,7 +711,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
 
     /**
      * @return One or more subnetwork NAT configurations. Only used if
-     * `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
+     * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
      * Structure is documented below.
      * 
      */

@@ -37,13 +37,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Ipv6Address;
         /// <summary>
-        /// The name of the instance template. One of `name` or `filter` must be provided.
+        /// The name of the instance template. One of `Name` or `Filter` must be provided.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The name or self_link of the network to attach this interface to.
-        /// Use `network` attribute for Legacy or Auto subnetted networks and
-        /// `subnetwork` for custom subnetted networks.
+        /// The name or SelfLink of the network to attach this interface to.
+        /// Use `Network` attribute for Legacy or Auto subnetted networks and
+        /// `Subnetwork` for custom subnetted networks.
         /// </summary>
         public readonly string Network;
         /// <summary>
@@ -65,8 +65,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string StackType;
         /// <summary>
         /// the name of the subnetwork to attach this interface
-        /// to. The subnetwork must exist in the same `region` this instance will be
-        /// created in. Either `network` or `subnetwork` must be provided.
+        /// to. The subnetwork must exist in the same `Region` this instance will be
+        /// created in. Either `Network` or `Subnetwork` must be provided.
         /// </summary>
         public readonly string Subnetwork;
         /// <summary>

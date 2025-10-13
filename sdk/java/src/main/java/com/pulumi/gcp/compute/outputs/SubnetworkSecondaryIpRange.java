@@ -17,7 +17,7 @@ public final class SubnetworkSecondaryIpRange {
      * range. Provide this property when you create the subnetwork.
      * Ranges must be unique and non-overlapping with all primary and
      * secondary IP ranges within a network. Only IPv4 is supported.
-     * Field is optional when `reserved_internal_range` is defined, otherwise required.
+     * Field is optional when `reservedInternalRange` is defined, otherwise required.
      * 
      */
     private @Nullable String ipCidrRange;
@@ -42,7 +42,7 @@ public final class SubnetworkSecondaryIpRange {
      * range. Provide this property when you create the subnetwork.
      * Ranges must be unique and non-overlapping with all primary and
      * secondary IP ranges within a network. Only IPv4 is supported.
-     * Field is optional when `reserved_internal_range` is defined, otherwise required.
+     * Field is optional when `reservedInternalRange` is defined, otherwise required.
      * 
      */
     public Optional<String> ipCidrRange() {

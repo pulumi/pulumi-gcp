@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_match_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
+        /// &lt;a name="NestedMatchLayer4Configs"&gt;&lt;/a&gt;The `Layer4Configs` block supports:
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleMatchSrcSecureTag> SrcSecureTags;
         /// <summary>

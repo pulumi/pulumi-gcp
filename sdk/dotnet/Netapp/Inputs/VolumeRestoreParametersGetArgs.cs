@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Netapp.Inputs
     {
         /// <summary>
         /// Full name of the backup to use for creating this volume.
-        /// `source_snapshot` and `source_backup` cannot be used simultaneously.
+        /// `SourceSnapshot` and `SourceBackup` cannot be used simultaneously.
         /// Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
         /// </summary>
         [Input("sourceBackup")]
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Netapp.Inputs
 
         /// <summary>
         /// Full name of the snapshot to use for creating this volume.
-        /// `source_snapshot` and `source_backup` cannot be used simultaneously.
+        /// `SourceSnapshot` and `SourceBackup` cannot be used simultaneously.
         /// Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
         /// </summary>
         [Input("sourceSnapshot")]

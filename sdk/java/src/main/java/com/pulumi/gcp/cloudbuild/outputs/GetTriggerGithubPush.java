@@ -17,7 +17,7 @@ public final class GetTriggerGithubPush {
      */
     private String branch;
     /**
-     * @return When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+     * @return When true, only trigger a build if the revision regex does NOT match the gitRef regex.
      * 
      */
     private Boolean invertRegex;
@@ -36,7 +36,7 @@ public final class GetTriggerGithubPush {
         return this.branch;
     }
     /**
-     * @return When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+     * @return When true, only trigger a build if the revision regex does NOT match the gitRef regex.
      * 
      */
     public Boolean invertRegex() {

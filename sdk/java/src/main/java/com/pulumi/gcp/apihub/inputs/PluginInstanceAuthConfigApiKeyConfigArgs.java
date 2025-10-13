@@ -66,7 +66,7 @@ public final class PluginInstanceAuthConfigApiKeyConfigArgs extends com.pulumi.r
     /**
      * The parameter name of the API key.
      * E.g. If the API request is &#34;https://example.com/act?api_key=&#34;,
-     * &#34;api_key&#34; would be the parameter name.
+     * &#34;apiKey&#34; would be the parameter name.
      * 
      */
     @Import(name="name", required=true)
@@ -75,7 +75,7 @@ public final class PluginInstanceAuthConfigApiKeyConfigArgs extends com.pulumi.r
     /**
      * @return The parameter name of the API key.
      * E.g. If the API request is &#34;https://example.com/act?api_key=&#34;,
-     * &#34;api_key&#34; would be the parameter name.
+     * &#34;apiKey&#34; would be the parameter name.
      * 
      */
     public Output<String> name() {
@@ -171,7 +171,7 @@ public final class PluginInstanceAuthConfigApiKeyConfigArgs extends com.pulumi.r
         /**
          * @param name The parameter name of the API key.
          * E.g. If the API request is &#34;https://example.com/act?api_key=&#34;,
-         * &#34;api_key&#34; would be the parameter name.
+         * &#34;apiKey&#34; would be the parameter name.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class PluginInstanceAuthConfigApiKeyConfigArgs extends com.pulumi.r
         /**
          * @param name The parameter name of the API key.
          * E.g. If the API request is &#34;https://example.com/act?api_key=&#34;,
-         * &#34;api_key&#34; would be the parameter name.
+         * &#34;apiKey&#34; would be the parameter name.
          * 
          * @return builder
          * 

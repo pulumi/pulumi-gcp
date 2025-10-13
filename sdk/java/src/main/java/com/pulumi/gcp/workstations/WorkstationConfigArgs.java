@@ -47,7 +47,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
     /**
      * Client-specified annotations. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -56,7 +56,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
     /**
      * @return Client-specified annotations. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -202,7 +202,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -211,7 +211,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
     /**
      * @return Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -317,7 +317,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+     * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
@@ -325,7 +325,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> runningTimeout;
 
     /**
-     * @return How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+     * @return How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
@@ -443,7 +443,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param annotations Client-specified annotations. This is distinct from labels.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param annotations Client-specified annotations. This is distinct from labels.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -663,7 +663,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param labels Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -676,7 +676,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param labels Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -853,7 +853,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param runningTimeout How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+         * @param runningTimeout How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
          * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
          * 
          * @return builder
@@ -865,7 +865,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param runningTimeout How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+         * @param runningTimeout How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
          * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
          * 
          * @return builder

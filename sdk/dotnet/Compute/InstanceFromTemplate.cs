@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
     /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
     /// 
     /// This resource is specifically to create a compute instance from a given
-    /// `source_instance_template`. To create an instance without a template, use the
+    /// `SourceInstanceTemplate`. To create an instance without a template, use the
     /// `gcp.compute.Instance` resource.
     /// 
     /// ## Example Usage
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool> CanIpForward { get; private set; } = null!;
 
         /// <summary>
-        /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+        /// The Confidential VM config being used by the instance.  OnHostMaintenance has to be set to TERMINATE or this will fail to create.
         /// </summary>
         [Output("confidentialInstanceConfig")]
         public Output<Outputs.InstanceFromTemplateConfidentialInstanceConfig> ConfidentialInstanceConfig { get; private set; } = null!;
@@ -266,7 +266,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>> PartnerMetadata { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If SelfLink is provided, this value is ignored. If neither SelfLink nor project are provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -284,7 +284,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceFromTemplateReservationAffinity> ReservationAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+        /// A list of SelfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Output("resourcePolicies")]
         public Output<string> ResourcePolicies { get; private set; } = null!;
@@ -322,7 +322,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Name or self link of an instance
         /// template to create the instance based on. It is recommended to reference
-        /// instance templates through their unique id (`self_link_unique` attribute).
+        /// instance templates through their unique id (`SelfLinkUnique` attribute).
         /// 
         /// - - -
         /// </summary>
@@ -437,7 +437,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+        /// The Confidential VM config being used by the instance.  OnHostMaintenance has to be set to TERMINATE or this will fail to create.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceFromTemplateConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
@@ -585,7 +585,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If SelfLink is provided, this value is ignored. If neither SelfLink nor project are provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -597,7 +597,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceFromTemplateReservationAffinityArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
-        /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+        /// A list of SelfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }
@@ -635,7 +635,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Name or self link of an instance
         /// template to create the instance based on. It is recommended to reference
-        /// instance templates through their unique id (`self_link_unique` attribute).
+        /// instance templates through their unique id (`SelfLinkUnique` attribute).
         /// 
         /// - - -
         /// </summary>
@@ -707,7 +707,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+        /// The Confidential VM config being used by the instance.  OnHostMaintenance has to be set to TERMINATE or this will fail to create.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceFromTemplateConfidentialInstanceConfigGetArgs>? ConfidentialInstanceConfig { get; set; }
@@ -905,7 +905,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If SelfLink is provided, this value is ignored. If neither SelfLink nor project are provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -933,7 +933,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceFromTemplateReservationAffinityGetArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
-        /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+        /// A list of SelfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }
@@ -977,7 +977,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Name or self link of an instance
         /// template to create the instance based on. It is recommended to reference
-        /// instance templates through their unique id (`self_link_unique` attribute).
+        /// instance templates through their unique id (`SelfLinkUnique` attribute).
         /// 
         /// - - -
         /// </summary>

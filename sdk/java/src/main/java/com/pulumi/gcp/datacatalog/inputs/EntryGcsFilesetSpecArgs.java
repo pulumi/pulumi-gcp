@@ -24,11 +24,11 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
      * for more information. Note that bucket wildcards are currently not supported. Examples of valid filePatterns:
      * * gs://bucket_name/dir/*: matches all files within bucket_name/dir directory.
      * * gs://bucket_name/dir/**: matches all files in bucket_name/dir spanning all subdirectories.
-     * * gs://bucket_name/file*: matches files prefixed by file in bucket_name
-     * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucket_name
-     * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucket_name
-     * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
-     * * gs://bucket_name/a/*&#47;b: matches all files in bucket_name that match a/*&#47;b pattern, such as a/c/b, a/d/b
+     * * gs://bucket_name/file*: matches files prefixed by file in bucketName
+     * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucketName
+     * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucketName
+     * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucketName
+     * * gs://bucket_name/a/*&#47;b: matches all files in bucketName that match a/*&#47;b pattern, such as a/c/b, a/d/b
      * * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
      * 
      */
@@ -41,11 +41,11 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
      * for more information. Note that bucket wildcards are currently not supported. Examples of valid filePatterns:
      * * gs://bucket_name/dir/*: matches all files within bucket_name/dir directory.
      * * gs://bucket_name/dir/**: matches all files in bucket_name/dir spanning all subdirectories.
-     * * gs://bucket_name/file*: matches files prefixed by file in bucket_name
-     * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucket_name
-     * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucket_name
-     * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
-     * * gs://bucket_name/a/*&#47;b: matches all files in bucket_name that match a/*&#47;b pattern, such as a/c/b, a/d/b
+     * * gs://bucket_name/file*: matches files prefixed by file in bucketName
+     * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucketName
+     * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucketName
+     * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucketName
+     * * gs://bucket_name/a/*&#47;b: matches all files in bucketName that match a/*&#47;b pattern, such as a/c/b, a/d/b
      * * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
      * 
      */
@@ -58,7 +58,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
      * Sample files contained in this fileset, not all files contained in this fileset are represented here.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_gcs_fileset_spec_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
+     * &lt;a name=&#34;nestedGcsFilesetSpecSampleGcsFileSpecs&#34;&gt;&lt;/a&gt;The `sampleGcsFileSpecs` block contains:
      * 
      */
     @Import(name="sampleGcsFileSpecs")
@@ -69,7 +69,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
      * Sample files contained in this fileset, not all files contained in this fileset are represented here.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_gcs_fileset_spec_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
+     * &lt;a name=&#34;nestedGcsFilesetSpecSampleGcsFileSpecs&#34;&gt;&lt;/a&gt;The `sampleGcsFileSpecs` block contains:
      * 
      */
     public Optional<Output<List<EntryGcsFilesetSpecSampleGcsFileSpecArgs>>> sampleGcsFileSpecs() {
@@ -107,11 +107,11 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
          * for more information. Note that bucket wildcards are currently not supported. Examples of valid filePatterns:
          * * gs://bucket_name/dir/*: matches all files within bucket_name/dir directory.
          * * gs://bucket_name/dir/**: matches all files in bucket_name/dir spanning all subdirectories.
-         * * gs://bucket_name/file*: matches files prefixed by file in bucket_name
-         * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucket_name
-         * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucket_name
-         * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
-         * * gs://bucket_name/a/*&#47;b: matches all files in bucket_name that match a/*&#47;b pattern, such as a/c/b, a/d/b
+         * * gs://bucket_name/file*: matches files prefixed by file in bucketName
+         * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucketName
+         * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucketName
+         * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucketName
+         * * gs://bucket_name/a/*&#47;b: matches all files in bucketName that match a/*&#47;b pattern, such as a/c/b, a/d/b
          * * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
          * 
          * @return builder
@@ -128,11 +128,11 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
          * for more information. Note that bucket wildcards are currently not supported. Examples of valid filePatterns:
          * * gs://bucket_name/dir/*: matches all files within bucket_name/dir directory.
          * * gs://bucket_name/dir/**: matches all files in bucket_name/dir spanning all subdirectories.
-         * * gs://bucket_name/file*: matches files prefixed by file in bucket_name
-         * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucket_name
-         * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucket_name
-         * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
-         * * gs://bucket_name/a/*&#47;b: matches all files in bucket_name that match a/*&#47;b pattern, such as a/c/b, a/d/b
+         * * gs://bucket_name/file*: matches files prefixed by file in bucketName
+         * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucketName
+         * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucketName
+         * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucketName
+         * * gs://bucket_name/a/*&#47;b: matches all files in bucketName that match a/*&#47;b pattern, such as a/c/b, a/d/b
          * * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
          * 
          * @return builder
@@ -148,11 +148,11 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
          * for more information. Note that bucket wildcards are currently not supported. Examples of valid filePatterns:
          * * gs://bucket_name/dir/*: matches all files within bucket_name/dir directory.
          * * gs://bucket_name/dir/**: matches all files in bucket_name/dir spanning all subdirectories.
-         * * gs://bucket_name/file*: matches files prefixed by file in bucket_name
-         * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucket_name
-         * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucket_name
-         * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
-         * * gs://bucket_name/a/*&#47;b: matches all files in bucket_name that match a/*&#47;b pattern, such as a/c/b, a/d/b
+         * * gs://bucket_name/file*: matches files prefixed by file in bucketName
+         * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucketName
+         * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucketName
+         * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucketName
+         * * gs://bucket_name/a/*&#47;b: matches all files in bucketName that match a/*&#47;b pattern, such as a/c/b, a/d/b
          * * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
          * 
          * @return builder
@@ -167,7 +167,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
          * Sample files contained in this fileset, not all files contained in this fileset are represented here.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_gcs_fileset_spec_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
+         * &lt;a name=&#34;nestedGcsFilesetSpecSampleGcsFileSpecs&#34;&gt;&lt;/a&gt;The `sampleGcsFileSpecs` block contains:
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
          * Sample files contained in this fileset, not all files contained in this fileset are represented here.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_gcs_fileset_spec_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
+         * &lt;a name=&#34;nestedGcsFilesetSpecSampleGcsFileSpecs&#34;&gt;&lt;/a&gt;The `sampleGcsFileSpecs` block contains:
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
          * Sample files contained in this fileset, not all files contained in this fileset are represented here.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_gcs_fileset_spec_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
+         * &lt;a name=&#34;nestedGcsFilesetSpecSampleGcsFileSpecs&#34;&gt;&lt;/a&gt;The `sampleGcsFileSpecs` block contains:
          * 
          * @return builder
          * 

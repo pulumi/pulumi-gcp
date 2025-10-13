@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// to enable them to be added separately.
     /// 
     /// &gt; **Note:** If this resource is used alongside a `gcp.accesscontextmanager.AccessLevel` resource,
-    /// the access level resource must have a `lifecycle` block with `ignore_changes = [basic[0].conditions]` so
+    /// the access level resource must have a `Lifecycle` block with `IgnoreChanges = [basic[0].conditions]` so
     /// they don't fight over which service accounts should be included.
     /// 
     /// To get more information about AccessLevelCondition, see:
@@ -26,10 +26,10 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-    /// you must specify a `billing_project` and set `user_project_override` to true
+    /// you must specify a `BillingProject` and set `UserProjectOverride` to true
     /// in the provider configuration. Otherwise the ACM API will return a 403 error.
     /// Your account must have the `serviceusage.services.use` permission on the
-    /// `billing_project` you defined.
+    /// `BillingProject` you defined.
     /// 
     /// ## Example Usage
     /// 
@@ -206,7 +206,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<ImmutableArray<string>> RequiredAccessLevels { get; private set; } = null!;
 
         /// <summary>
-        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `IpSubnetworks`.
         /// Structure is documented below.
         /// </summary>
         [Output("vpcNetworkSources")]
@@ -354,7 +354,7 @@ namespace Pulumi.Gcp.AccessContextManager
         private InputList<Inputs.AccessLevelConditionVpcNetworkSourceArgs>? _vpcNetworkSources;
 
         /// <summary>
-        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `IpSubnetworks`.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AccessLevelConditionVpcNetworkSourceArgs> VpcNetworkSources
@@ -473,7 +473,7 @@ namespace Pulumi.Gcp.AccessContextManager
         private InputList<Inputs.AccessLevelConditionVpcNetworkSourceGetArgs>? _vpcNetworkSources;
 
         /// <summary>
-        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `IpSubnetworks`.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AccessLevelConditionVpcNetworkSourceGetArgs> VpcNetworkSources

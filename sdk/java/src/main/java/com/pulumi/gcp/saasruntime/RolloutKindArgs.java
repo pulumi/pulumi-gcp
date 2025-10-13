@@ -24,7 +24,7 @@ public final class RolloutKindArgs extends com.pulumi.resources.ResourceArgs {
      * They are not queryable and should be preserved when modifying objects.
      * More info: https://kubernetes.io/docs/user-guide/annotations
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -36,7 +36,7 @@ public final class RolloutKindArgs extends com.pulumi.resources.ResourceArgs {
      * They are not queryable and should be preserved when modifying objects.
      * More info: https://kubernetes.io/docs/user-guide/annotations
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -45,7 +45,7 @@ public final class RolloutKindArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The configuration for error budget. If the number of failed units exceeds
-     * max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
+     * max(allowed_count, allowedRatio * total_units), the rollout will be paused.
      * Structure is documented below.
      * 
      */
@@ -54,7 +54,7 @@ public final class RolloutKindArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The configuration for error budget. If the number of failed units exceeds
-     * max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
+     * max(allowed_count, allowedRatio * total_units), the rollout will be paused.
      * Structure is documented below.
      * 
      */
@@ -66,7 +66,7 @@ public final class RolloutKindArgs extends com.pulumi.resources.ResourceArgs {
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -76,7 +76,7 @@ public final class RolloutKindArgs extends com.pulumi.resources.ResourceArgs {
      * @return The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -257,7 +257,7 @@ public final class RolloutKindArgs extends com.pulumi.resources.ResourceArgs {
          * They are not queryable and should be preserved when modifying objects.
          * More info: https://kubernetes.io/docs/user-guide/annotations
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class RolloutKindArgs extends com.pulumi.resources.ResourceArgs {
          * They are not queryable and should be preserved when modifying objects.
          * More info: https://kubernetes.io/docs/user-guide/annotations
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class RolloutKindArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param errorBudget The configuration for error budget. If the number of failed units exceeds
-         * max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
+         * max(allowed_count, allowedRatio * total_units), the rollout will be paused.
          * Structure is documented below.
          * 
          * @return builder
@@ -297,7 +297,7 @@ public final class RolloutKindArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param errorBudget The configuration for error budget. If the number of failed units exceeds
-         * max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
+         * max(allowed_count, allowedRatio * total_units), the rollout will be paused.
          * Structure is documented below.
          * 
          * @return builder
@@ -311,7 +311,7 @@ public final class RolloutKindArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels The labels on the resource, which can be used for categorization.
          * similar to Kubernetes resource labels.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class RolloutKindArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels The labels on the resource, which can be used for categorization.
          * similar to Kubernetes resource labels.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

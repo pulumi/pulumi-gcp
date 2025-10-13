@@ -1062,6 +1062,8 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+        ### Datastream Stream Mysql Gtid
+
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
         ```python
@@ -2116,6 +2118,8 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+        ### Datastream Stream Mysql Gtid
+
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
         ```python

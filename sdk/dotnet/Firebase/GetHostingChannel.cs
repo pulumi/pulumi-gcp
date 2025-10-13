@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetHostingChannelArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the channel. Use `channel_id = "live"` for the default channel of a site.
+        /// The ID of the channel. Use `ChannelId = "live"` for the default channel of a site.
         /// </summary>
         [Input("channelId", required: true)]
         public string ChannelId { get; set; } = null!;
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetHostingChannelInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the channel. Use `channel_id = "live"` for the default channel of a site.
+        /// The ID of the channel. Use `ChannelId = "live"` for the default channel of a site.
         /// </summary>
         [Input("channelId", required: true)]
         public Input<string> ChannelId { get; set; } = null!;

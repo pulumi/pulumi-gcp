@@ -123,33 +123,33 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A filter to retrieve the instance templates.
         /// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
-        /// If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+        /// If multiple instance templates match, either adjust the filter or specify `MostRecent`. One of `Name` or `Filter` must be provided.
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
 
         /// <summary>
-        /// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
+        /// If `Filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `Name` or `Filter` must be provided.
         /// </summary>
         [Input("mostRecent")]
         public bool? MostRecent { get; set; }
 
         /// <summary>
-        /// The name of the instance template. One of `name` or `filter` must be provided.
+        /// The name of the instance template. One of `Name` or `Filter` must be provided.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
-        /// If `project` is not provided, the provider project is used.
+        /// If `Project` is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
         /// <summary>
         /// The Region in which the resource belongs.
-        /// If `region` is not provided, the provider region is used.
+        /// If `Region` is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -165,33 +165,33 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A filter to retrieve the instance templates.
         /// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
-        /// If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+        /// If multiple instance templates match, either adjust the filter or specify `MostRecent`. One of `Name` or `Filter` must be provided.
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
+        /// If `Filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `Name` or `Filter` must be provided.
         /// </summary>
         [Input("mostRecent")]
         public Input<bool>? MostRecent { get; set; }
 
         /// <summary>
-        /// The name of the instance template. One of `name` or `filter` must be provided.
+        /// The name of the instance template. One of `Name` or `Filter` must be provided.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
-        /// If `project` is not provided, the provider project is used.
+        /// If `Project` is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The Region in which the resource belongs.
-        /// If `region` is not provided, the provider region is used.
+        /// If `Region` is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `AllowStoppingForUpdate` must be set to true in order to update this field.
         /// </summary>
         public readonly bool EnableDisplay;
         public readonly string? Filter;
@@ -274,7 +274,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string MetadataFingerprint;
         /// <summary>
         /// An alternative to using the
-        /// startup-script metadata key, mostly to match the compute_instance resource.
+        /// startup-script metadata key, mostly to match the ComputeInstance resource.
         /// This replaces the startup-script metadata key on the created instance and
         /// thus the two mechanisms are not allowed to be used simultaneously.
         /// </summary>
@@ -288,7 +288,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Name;
         /// <summary>
         /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`.
+        /// prefix. Conflicts with `Name`.
         /// </summary>
         public readonly string NamePrefix;
         /// <summary>
@@ -332,7 +332,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateServiceAccountResult> ServiceAccounts;
         /// <summary>
         /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-        /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+        /// **Note**: `ShieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateShieldedInstanceConfigResult> ShieldedInstanceConfigs;
         /// <summary>

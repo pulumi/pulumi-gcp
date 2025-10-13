@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// consumption metering on this cluster. When enabled, a table will be created in
         /// the resource export BigQuery dataset to store resource consumption data. The
         /// resulting table can be joined with the resource usage table or with BigQuery
-        /// billing export. Defaults to `true`.
+        /// billing export. Defaults to `True`.
         /// </summary>
         [Input("enableResourceConsumptionMetering")]
         public Input<bool>? EnableResourceConsumptionMetering { get; set; }

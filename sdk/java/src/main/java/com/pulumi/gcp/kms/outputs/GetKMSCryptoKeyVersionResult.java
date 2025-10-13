@@ -32,7 +32,7 @@ public final class GetKMSCryptoKeyVersionResult {
      */
     private String name;
     /**
-     * @return The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protection_level reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
+     * @return The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protectionLevel reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
      * 
      */
     private String protectionLevel;
@@ -74,7 +74,7 @@ public final class GetKMSCryptoKeyVersionResult {
         return this.name;
     }
     /**
-     * @return The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protection_level reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
+     * @return The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protectionLevel reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
      * 
      */
     public String protectionLevel() {

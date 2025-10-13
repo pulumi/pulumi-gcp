@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         public readonly int? NumRetries;
         /// <summary>
         /// Specifies one or more conditions when this retry policy applies.
-        /// Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
+        /// Each value may be one of: `connect-failure`, `refused-stream`, `Cancelled`, `deadline-exceeded`, `resource-exhausted`, `Unavailable`.
         /// </summary>
         public readonly ImmutableArray<string> RetryConditions;
 

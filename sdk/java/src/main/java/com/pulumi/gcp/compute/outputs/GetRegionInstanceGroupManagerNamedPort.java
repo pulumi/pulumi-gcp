@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionInstanceGroupManagerNamedPort {
     /**
-     * @return The name of the instance group. Either `name` or `self_link` must be provided.
+     * @return The name of the instance group. Either `name` or `selfLink` must be provided.
      * 
      */
     private String name;
@@ -24,7 +24,7 @@ public final class GetRegionInstanceGroupManagerNamedPort {
 
     private GetRegionInstanceGroupManagerNamedPort() {}
     /**
-     * @return The name of the instance group. Either `name` or `self_link` must be provided.
+     * @return The name of the instance group. Either `name` or `selfLink` must be provided.
      * 
      */
     public String name() {

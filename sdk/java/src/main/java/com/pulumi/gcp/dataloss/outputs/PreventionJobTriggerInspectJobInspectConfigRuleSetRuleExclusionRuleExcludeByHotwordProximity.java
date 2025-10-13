@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
     /**
-     * @return Number of characters after the finding to consider. Either this or window_before must be specified
+     * @return Number of characters after the finding to consider. Either this or windowBefore must be specified
      * 
      */
     private @Nullable Integer windowAfter;
     /**
-     * @return Number of characters before the finding to consider. Either this or window_after must be specified
+     * @return Number of characters before the finding to consider. Either this or windowAfter must be specified
      * 
      */
     private @Nullable Integer windowBefore;
 
     private PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity() {}
     /**
-     * @return Number of characters after the finding to consider. Either this or window_before must be specified
+     * @return Number of characters after the finding to consider. Either this or windowBefore must be specified
      * 
      */
     public Optional<Integer> windowAfter() {
         return Optional.ofNullable(this.windowAfter);
     }
     /**
-     * @return Number of characters before the finding to consider. Either this or window_after must be specified
+     * @return Number of characters before the finding to consider. Either this or windowAfter must be specified
      * 
      */
     public Optional<Integer> windowBefore() {

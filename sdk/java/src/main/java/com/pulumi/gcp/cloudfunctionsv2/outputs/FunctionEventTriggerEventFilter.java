@@ -15,7 +15,7 @@ public final class FunctionEventTriggerEventFilter {
     /**
      * @return &#39;Required. The name of a CloudEvents attribute.
      * Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
-     * Do not filter for the &#39;type&#39; attribute here, as this is already achieved by the resource&#39;s `event_type` attribute.
+     * Do not filter for the &#39;type&#39; attribute here, as this is already achieved by the resource&#39;s `eventType` attribute.
      * 
      */
     private String attribute;
@@ -39,7 +39,7 @@ public final class FunctionEventTriggerEventFilter {
     /**
      * @return &#39;Required. The name of a CloudEvents attribute.
      * Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
-     * Do not filter for the &#39;type&#39; attribute here, as this is already achieved by the resource&#39;s `event_type` attribute.
+     * Do not filter for the &#39;type&#39; attribute here, as this is already achieved by the resource&#39;s `eventType` attribute.
      * 
      */
     public String attribute() {

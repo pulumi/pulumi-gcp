@@ -20,10 +20,10 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-    /// you must specify a `billing_project` and set `user_project_override` to true
+    /// you must specify a `BillingProject` and set `UserProjectOverride` to true
     /// in the provider configuration. Otherwise the ACM API will return a 403 error.
     /// Your account must have the `serviceusage.services.use` permission on the
-    /// `billing_project` you defined.
+    /// `BillingProject` you defined.
     /// 
     /// ## Example Usage
     /// 
@@ -116,7 +116,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name for the Access Level. The short_name component must begin
+        /// Resource name for the Access Level. The ShortName component must begin
         /// with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         /// </summary>
@@ -204,7 +204,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Resource name for the Access Level. The short_name component must begin
+        /// Resource name for the Access Level. The ShortName component must begin
         /// with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         /// </summary>
@@ -254,7 +254,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Resource name for the Access Level. The short_name component must begin
+        /// Resource name for the Access Level. The ShortName component must begin
         /// with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         /// </summary>

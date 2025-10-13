@@ -31,14 +31,14 @@ public final class WorkloadResourceSettingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
+     * Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folderId is assigned by Google.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
 
     /**
-     * @return Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
+     * @return Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folderId is assigned by Google.
      * 
      */
     public Optional<Output<String>> resourceId() {
@@ -108,7 +108,7 @@ public final class WorkloadResourceSettingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceId Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
+         * @param resourceId Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folderId is assigned by Google.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class WorkloadResourceSettingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceId Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
+         * @param resourceId Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folderId is assigned by Google.
          * 
          * @return builder
          * 

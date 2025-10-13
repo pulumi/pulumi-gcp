@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class ClusterGcpConfigAccessConfig {
     /**
-     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
+     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class ClusterGcpConfigAccessConfig {
 
     private ClusterGcpConfigAccessConfig() {}
     /**
-     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
+     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
      * Structure is documented below.
      * 
      */

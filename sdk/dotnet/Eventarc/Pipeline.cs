@@ -417,7 +417,7 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// User-defined annotations. See https://google.aip.dev/128#annotations.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -483,13 +483,13 @@ namespace Pulumi.Gcp.Eventarc
         /// resources. An object containing a list of "key": value pairs. Example: {
         /// "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -546,7 +546,7 @@ namespace Pulumi.Gcp.Eventarc
         /// The backoff starts with a 5 second delay and doubles the
         /// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
         /// The delay is capped at 60 seconds by default.
-        /// Please note that if you set the min_retry_delay and max_retry_delay fields
+        /// Please note that if you set the MinRetryDelay and MaxRetryDelay fields
         /// to the same value this will make the duration between retries constant.
         /// Structure is documented below.
         /// </summary>
@@ -627,7 +627,7 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// User-defined annotations. See https://google.aip.dev/128#annotations.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -679,7 +679,7 @@ namespace Pulumi.Gcp.Eventarc
         /// resources. An object containing a list of "key": value pairs. Example: {
         /// "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -688,7 +688,7 @@ namespace Pulumi.Gcp.Eventarc
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -736,7 +736,7 @@ namespace Pulumi.Gcp.Eventarc
         /// The backoff starts with a 5 second delay and doubles the
         /// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
         /// The delay is capped at 60 seconds by default.
-        /// Please note that if you set the min_retry_delay and max_retry_delay fields
+        /// Please note that if you set the MinRetryDelay and MaxRetryDelay fields
         /// to the same value this will make the duration between retries constant.
         /// Structure is documented below.
         /// </summary>
@@ -757,7 +757,7 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// User-defined annotations. See https://google.aip.dev/128#annotations.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -850,7 +850,7 @@ namespace Pulumi.Gcp.Eventarc
         /// resources. An object containing a list of "key": value pairs. Example: {
         /// "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -859,7 +859,7 @@ namespace Pulumi.Gcp.Eventarc
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -932,7 +932,7 @@ namespace Pulumi.Gcp.Eventarc
         /// The backoff starts with a 5 second delay and doubles the
         /// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
         /// The delay is capped at 60 seconds by default.
-        /// Please note that if you set the min_retry_delay and max_retry_delay fields
+        /// Please note that if you set the MinRetryDelay and MaxRetryDelay fields
         /// to the same value this will make the duration between retries constant.
         /// Structure is documented below.
         /// </summary>

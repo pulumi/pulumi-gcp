@@ -18,7 +18,7 @@ public final class AutonomousDatabasePropertiesCustomerContactArgs extends com.p
      * The email address used by Oracle to send notifications regarding databases
      * and infrastructure.
      * 
-     * &lt;a name=&#34;nested_properties_apex_details&#34;&gt;&lt;/a&gt;The `apex_details` block contains:
+     * &lt;a name=&#34;nestedPropertiesApexDetails&#34;&gt;&lt;/a&gt;The `apexDetails` block contains:
      * 
      */
     @Import(name="email", required=true)
@@ -28,7 +28,7 @@ public final class AutonomousDatabasePropertiesCustomerContactArgs extends com.p
      * @return The email address used by Oracle to send notifications regarding databases
      * and infrastructure.
      * 
-     * &lt;a name=&#34;nested_properties_apex_details&#34;&gt;&lt;/a&gt;The `apex_details` block contains:
+     * &lt;a name=&#34;nestedPropertiesApexDetails&#34;&gt;&lt;/a&gt;The `apexDetails` block contains:
      * 
      */
     public Output<String> email() {
@@ -63,7 +63,7 @@ public final class AutonomousDatabasePropertiesCustomerContactArgs extends com.p
          * @param email The email address used by Oracle to send notifications regarding databases
          * and infrastructure.
          * 
-         * &lt;a name=&#34;nested_properties_apex_details&#34;&gt;&lt;/a&gt;The `apex_details` block contains:
+         * &lt;a name=&#34;nestedPropertiesApexDetails&#34;&gt;&lt;/a&gt;The `apexDetails` block contains:
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class AutonomousDatabasePropertiesCustomerContactArgs extends com.p
          * @param email The email address used by Oracle to send notifications regarding databases
          * and infrastructure.
          * 
-         * &lt;a name=&#34;nested_properties_apex_details&#34;&gt;&lt;/a&gt;The `apex_details` block contains:
+         * &lt;a name=&#34;nestedPropertiesApexDetails&#34;&gt;&lt;/a&gt;The `apexDetails` block contains:
          * 
          * @return builder
          * 

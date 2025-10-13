@@ -65,7 +65,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
-     * higher than the value specified by min_instances. Required alongside `min_instances` if not using `min_throughput`/`max_throughput`.
+     * higher than the value specified by min_instances. Required alongside `minInstances` if not using `minThroughput`/`maxThroughput`.
      * 
      */
     @Import(name="maxInstances")
@@ -73,7 +73,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
-     * higher than the value specified by min_instances. Required alongside `min_instances` if not using `min_throughput`/`max_throughput`.
+     * higher than the value specified by min_instances. Required alongside `minInstances` if not using `minThroughput`/`maxThroughput`.
      * 
      */
     public Optional<Output<Integer>> maxInstances() {
@@ -81,18 +81,18 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
+     * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300. Refers to the expected throughput
      * when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
-     * min_throughput. Only one of `max_throughput` and `max_instances` can be specified. The use of max_throughput is discouraged in favor of max_instances.
+     * min_throughput. Only one of `maxThroughput` and `maxInstances` can be specified. The use of maxThroughput is discouraged in favor of max_instances.
      * 
      */
     @Import(name="maxThroughput")
     private @Nullable Output<Integer> maxThroughput;
 
     /**
-     * @return Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
+     * @return Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300. Refers to the expected throughput
      * when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
-     * min_throughput. Only one of `max_throughput` and `max_instances` can be specified. The use of max_throughput is discouraged in favor of max_instances.
+     * min_throughput. Only one of `maxThroughput` and `maxInstances` can be specified. The use of maxThroughput is discouraged in favor of max_instances.
      * 
      */
     public Optional<Output<Integer>> maxThroughput() {
@@ -101,7 +101,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
-     * lower than the value specified by max_instances. Required alongside `max_instances` if not using `min_throughput`/`max_throughput`.
+     * lower than the value specified by max_instances. Required alongside `maxInstances` if not using `minThroughput`/`maxThroughput`.
      * 
      */
     @Import(name="minInstances")
@@ -109,7 +109,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
-     * lower than the value specified by max_instances. Required alongside `max_instances` if not using `min_throughput`/`max_throughput`.
+     * lower than the value specified by max_instances. Required alongside `maxInstances` if not using `minThroughput`/`maxThroughput`.
      * 
      */
     public Optional<Output<Integer>> minInstances() {
@@ -119,7 +119,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
      * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
-     * Only one of `min_throughput` and `min_instances` can be specified. The use of min_throughput is discouraged in favor of min_instances.
+     * Only one of `minThroughput` and `minInstances` can be specified. The use of minThroughput is discouraged in favor of min_instances.
      * 
      */
     @Import(name="minThroughput")
@@ -128,7 +128,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
      * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
-     * Only one of `min_throughput` and `min_instances` can be specified. The use of min_throughput is discouraged in favor of min_instances.
+     * Only one of `minThroughput` and `minInstances` can be specified. The use of minThroughput is discouraged in favor of min_instances.
      * 
      */
     public Optional<Output<Integer>> minThroughput() {
@@ -151,14 +151,14 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
+     * Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
+     * @return Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
      * 
      */
     public Optional<Output<String>> network() {
@@ -356,7 +356,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maxInstances Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
-         * higher than the value specified by min_instances. Required alongside `min_instances` if not using `min_throughput`/`max_throughput`.
+         * higher than the value specified by min_instances. Required alongside `minInstances` if not using `minThroughput`/`maxThroughput`.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maxInstances Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
-         * higher than the value specified by min_instances. Required alongside `min_instances` if not using `min_throughput`/`max_throughput`.
+         * higher than the value specified by min_instances. Required alongside `minInstances` if not using `minThroughput`/`maxThroughput`.
          * 
          * @return builder
          * 
@@ -378,9 +378,9 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxThroughput Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
+         * @param maxThroughput Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300. Refers to the expected throughput
          * when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
-         * min_throughput. Only one of `max_throughput` and `max_instances` can be specified. The use of max_throughput is discouraged in favor of max_instances.
+         * min_throughput. Only one of `maxThroughput` and `maxInstances` can be specified. The use of maxThroughput is discouraged in favor of max_instances.
          * 
          * @return builder
          * 
@@ -391,9 +391,9 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxThroughput Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
+         * @param maxThroughput Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300. Refers to the expected throughput
          * when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
-         * min_throughput. Only one of `max_throughput` and `max_instances` can be specified. The use of max_throughput is discouraged in favor of max_instances.
+         * min_throughput. Only one of `maxThroughput` and `maxInstances` can be specified. The use of maxThroughput is discouraged in favor of max_instances.
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param minInstances Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
-         * lower than the value specified by max_instances. Required alongside `max_instances` if not using `min_throughput`/`max_throughput`.
+         * lower than the value specified by max_instances. Required alongside `maxInstances` if not using `minThroughput`/`maxThroughput`.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param minInstances Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
-         * lower than the value specified by max_instances. Required alongside `max_instances` if not using `min_throughput`/`max_throughput`.
+         * lower than the value specified by max_instances. Required alongside `maxInstances` if not using `minThroughput`/`maxThroughput`.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param minThroughput Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
          * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
-         * Only one of `min_throughput` and `min_instances` can be specified. The use of min_throughput is discouraged in favor of min_instances.
+         * Only one of `minThroughput` and `minInstances` can be specified. The use of minThroughput is discouraged in favor of min_instances.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param minThroughput Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
          * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
-         * Only one of `min_throughput` and `min_instances` can be specified. The use of min_throughput is discouraged in favor of min_instances.
+         * Only one of `minThroughput` and `minInstances` can be specified. The use of minThroughput is discouraged in favor of min_instances.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
+         * @param network Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
+         * @param network Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
          * 
          * @return builder
          * 

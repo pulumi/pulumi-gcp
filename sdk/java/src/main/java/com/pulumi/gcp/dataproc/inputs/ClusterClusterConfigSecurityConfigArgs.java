@@ -17,16 +17,16 @@ public final class ClusterClusterConfigSecurityConfigArgs extends com.pulumi.res
     public static final ClusterClusterConfigSecurityConfigArgs Empty = new ClusterClusterConfigSecurityConfigArgs();
 
     /**
-     * Identity Configuration. At least one of `identity_config`
-     * or `kerberos_config` is required.
+     * Identity Configuration. At least one of `identityConfig`
+     * or `kerberosConfig` is required.
      * 
      */
     @Import(name="identityConfig")
     private @Nullable Output<ClusterClusterConfigSecurityConfigIdentityConfigArgs> identityConfig;
 
     /**
-     * @return Identity Configuration. At least one of `identity_config`
-     * or `kerberos_config` is required.
+     * @return Identity Configuration. At least one of `identityConfig`
+     * or `kerberosConfig` is required.
      * 
      */
     public Optional<Output<ClusterClusterConfigSecurityConfigIdentityConfigArgs>> identityConfig() {
@@ -34,16 +34,16 @@ public final class ClusterClusterConfigSecurityConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Kerberos Configuration. At least one of `identity_config`
-     * or `kerberos_config` is required.
+     * Kerberos Configuration. At least one of `identityConfig`
+     * or `kerberosConfig` is required.
      * 
      */
     @Import(name="kerberosConfig")
     private @Nullable Output<ClusterClusterConfigSecurityConfigKerberosConfigArgs> kerberosConfig;
 
     /**
-     * @return Kerberos Configuration. At least one of `identity_config`
-     * or `kerberos_config` is required.
+     * @return Kerberos Configuration. At least one of `identityConfig`
+     * or `kerberosConfig` is required.
      * 
      */
     public Optional<Output<ClusterClusterConfigSecurityConfigKerberosConfigArgs>> kerberosConfig() {
@@ -76,8 +76,8 @@ public final class ClusterClusterConfigSecurityConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param identityConfig Identity Configuration. At least one of `identity_config`
-         * or `kerberos_config` is required.
+         * @param identityConfig Identity Configuration. At least one of `identityConfig`
+         * or `kerberosConfig` is required.
          * 
          * @return builder
          * 
@@ -88,8 +88,8 @@ public final class ClusterClusterConfigSecurityConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param identityConfig Identity Configuration. At least one of `identity_config`
-         * or `kerberos_config` is required.
+         * @param identityConfig Identity Configuration. At least one of `identityConfig`
+         * or `kerberosConfig` is required.
          * 
          * @return builder
          * 
@@ -99,8 +99,8 @@ public final class ClusterClusterConfigSecurityConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param kerberosConfig Kerberos Configuration. At least one of `identity_config`
-         * or `kerberos_config` is required.
+         * @param kerberosConfig Kerberos Configuration. At least one of `identityConfig`
+         * or `kerberosConfig` is required.
          * 
          * @return builder
          * 
@@ -111,8 +111,8 @@ public final class ClusterClusterConfigSecurityConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param kerberosConfig Kerberos Configuration. At least one of `identity_config`
-         * or `kerberos_config` is required.
+         * @param kerberosConfig Kerberos Configuration. At least one of `identityConfig`
+         * or `kerberosConfig` is required.
          * 
          * @return builder
          * 

@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * Retrieve the ancestors for a project.
  * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+ *
+ * ## Example Usage
  */
 export function getAncestry(args?: GetAncestryArgs, opts?: pulumi.InvokeOptions): Promise<GetAncestryResult> {
     args = args || {};
@@ -57,6 +59,8 @@ export interface GetAncestryResult {
 /**
  * Retrieve the ancestors for a project.
  * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+ *
+ * ## Example Usage
  */
 export function getAncestryOutput(args?: GetAncestryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAncestryResult> {
     args = args || {};

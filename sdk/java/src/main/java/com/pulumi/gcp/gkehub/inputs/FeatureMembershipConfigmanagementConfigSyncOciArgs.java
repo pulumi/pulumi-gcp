@@ -16,14 +16,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncOciArgs extends co
     public static final FeatureMembershipConfigmanagementConfigSyncOciArgs Empty = new FeatureMembershipConfigmanagementConfigSyncOciArgs();
 
     /**
-     * The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+     * The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
      * 
      */
     @Import(name="gcpServiceAccountEmail")
     private @Nullable Output<String> gcpServiceAccountEmail;
 
     /**
-     * @return The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+     * @return The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
      * 
      */
     public Optional<Output<String>> gcpServiceAccountEmail() {
@@ -119,7 +119,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncOciArgs extends co
         }
 
         /**
-         * @param gcpServiceAccountEmail The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+         * @param gcpServiceAccountEmail The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncOciArgs extends co
         }
 
         /**
-         * @param gcpServiceAccountEmail The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+         * @param gcpServiceAccountEmail The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
          * 
          * @return builder
          * 

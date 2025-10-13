@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? DeleteRule { get; set; }
 
         /// <summary>
-        /// , The network interface name of the external Ip. Possible value: `nic0`
+        /// , The network interface name of the external Ip. Possible value: `Nic0`
         /// </summary>
         [Input("interfaceName")]
         public Input<string>? InterfaceName { get; set; }

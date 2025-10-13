@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Netapp.Outputs
         public readonly Outputs.VolumeSnapshotPolicyDailySchedule? DailySchedule;
         /// <summary>
         /// Enables automated snapshot creation according to defined schedule. Default is false.
-        /// To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+        /// To disable automatic snapshot creation you have to remove the whole SnapshotPolicy block.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

@@ -20,7 +20,7 @@ public final class GetSupportedDatabaseFlagsSupportedDatabaseFlag {
      */
     private Boolean acceptsMultipleValues;
     /**
-     * @return The name of the database flag, e.g. &#34;max_allowed_packets&#34;. The is a possibly key for the Instance.database_flags map field.
+     * @return The name of the database flag, e.g. &#34;maxAllowedPackets&#34;. The is a possibly key for the Instance.database_flags map field.
      * 
      */
     private String flagName;
@@ -64,7 +64,7 @@ public final class GetSupportedDatabaseFlagsSupportedDatabaseFlag {
         return this.acceptsMultipleValues;
     }
     /**
-     * @return The name of the database flag, e.g. &#34;max_allowed_packets&#34;. The is a possibly key for the Instance.database_flags map field.
+     * @return The name of the database flag, e.g. &#34;maxAllowedPackets&#34;. The is a possibly key for the Instance.database_flags map field.
      * 
      */
     public String flagName() {

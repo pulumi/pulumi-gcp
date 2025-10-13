@@ -42,7 +42,7 @@ public final class RegionHealthCheckGrpcHealthCheckArgs extends com.pulumi.resou
     /**
      * The port number for the health check request.
      * Must be specified if portName and portSpecification are not set
-     * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
      * 
      */
     @Import(name="port")
@@ -51,7 +51,7 @@ public final class RegionHealthCheckGrpcHealthCheckArgs extends com.pulumi.resou
     /**
      * @return The port number for the health check request.
      * Must be specified if portName and portSpecification are not set
-     * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -60,7 +60,7 @@ public final class RegionHealthCheckGrpcHealthCheckArgs extends com.pulumi.resou
 
     /**
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
-     * port_name are defined, port takes precedence.
+     * portName are defined, port takes precedence.
      * 
      */
     @Import(name="portName")
@@ -68,7 +68,7 @@ public final class RegionHealthCheckGrpcHealthCheckArgs extends com.pulumi.resou
 
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
-     * port_name are defined, port takes precedence.
+     * portName are defined, port takes precedence.
      * 
      */
     public Optional<Output<String>> portName() {
@@ -169,7 +169,7 @@ public final class RegionHealthCheckGrpcHealthCheckArgs extends com.pulumi.resou
         /**
          * @param port The port number for the health check request.
          * Must be specified if portName and portSpecification are not set
-         * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class RegionHealthCheckGrpcHealthCheckArgs extends com.pulumi.resou
         /**
          * @param port The port number for the health check request.
          * Must be specified if portName and portSpecification are not set
-         * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class RegionHealthCheckGrpcHealthCheckArgs extends com.pulumi.resou
 
         /**
          * @param portName Port name as defined in InstanceGroup#NamedPort#name. If both port and
-         * port_name are defined, port takes precedence.
+         * portName are defined, port takes precedence.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class RegionHealthCheckGrpcHealthCheckArgs extends com.pulumi.resou
 
         /**
          * @param portName Port name as defined in InstanceGroup#NamedPort#name. If both port and
-         * port_name are defined, port takes precedence.
+         * portName are defined, port takes precedence.
          * 
          * @return builder
          * 

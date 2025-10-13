@@ -13,11 +13,11 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     public sealed class SloWindowsBasedSliMetricMeanInRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Range of numerical values. The computed good_service
+        /// Range of numerical values. The computed GoodService
         /// will be the count of values x in the Distribution such
         /// that range.min &lt;= x &lt;= range.max. inclusive of min and
         /// max. Open ranges can be defined by setting
-        /// just one of min or max. Mean value `X` of `time_series`
+        /// just one of min or max. Mean value `X` of `TimeSeries`
         /// values should satisfy `range.min &lt;= X &lt;= range.max` for a
         /// good service.
         /// Structure is documented below.

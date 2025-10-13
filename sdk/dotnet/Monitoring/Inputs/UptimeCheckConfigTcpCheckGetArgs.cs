@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<Inputs.UptimeCheckConfigTcpCheckPingConfigGetArgs>? PingConfig { get; set; }
 
         /// <summary>
-        /// The port to the page to run the check against. Will be combined with host (specified within the `monitored_resource`) to construct the full URL.
+        /// The port to the page to run the check against. Will be combined with host (specified within the `MonitoredResource`) to construct the full URL.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;

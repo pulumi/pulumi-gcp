@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     public sealed class CxToolOpenApiSpecAuthenticationBearerTokenConfig
     {
         /// <summary>
-        /// Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
+        /// Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `Token` field will be ignored.
         /// Format: projects/{project}/secrets/{secret}/versions/{version}
         /// </summary>
         public readonly string? SecretVersionForToken;

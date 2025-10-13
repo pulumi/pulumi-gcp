@@ -24,12 +24,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The port number for the health check request.
         /// Must be specified if portName and portSpecification are not set
-        /// or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        /// or if PortSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
         /// </summary>
         public readonly int Port;
         /// <summary>
         /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        /// port_name are defined, port takes precedence.
+        /// PortName are defined, port takes precedence.
         /// </summary>
         public readonly string PortName;
         /// <summary>

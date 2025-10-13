@@ -19,7 +19,7 @@ public final class GlobalNetworkEndpointArgs extends com.pulumi.resources.Resour
 
     /**
      * Fully qualified domain name of network endpoint.
-     * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      * 
      */
     @Import(name="fqdn")
@@ -27,7 +27,7 @@ public final class GlobalNetworkEndpointArgs extends com.pulumi.resources.Resour
 
     /**
      * @return Fully qualified domain name of network endpoint.
-     * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      * 
      */
     public Optional<Output<String>> fqdn() {
@@ -126,7 +126,7 @@ public final class GlobalNetworkEndpointArgs extends com.pulumi.resources.Resour
 
         /**
          * @param fqdn Fully qualified domain name of network endpoint.
-         * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+         * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class GlobalNetworkEndpointArgs extends com.pulumi.resources.Resour
 
         /**
          * @param fqdn Fully qualified domain name of network endpoint.
-         * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+         * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
          * 
          * @return builder
          * 

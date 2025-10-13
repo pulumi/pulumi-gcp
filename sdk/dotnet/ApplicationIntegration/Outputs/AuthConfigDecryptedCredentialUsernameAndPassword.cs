@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.ApplicationIntegration.Outputs
         /// <summary>
         /// Password to be used.
         /// 
-        /// &lt;a name="nested_decrypted_credential_oauth2_authorization_code"&gt;&lt;/a&gt;The `oauth2_authorization_code` block supports:
+        /// &lt;a name="NestedDecryptedCredentialOauth2AuthorizationCode"&gt;&lt;/a&gt;The `Oauth2AuthorizationCode` block supports:
         /// </summary>
         public readonly string? Password;
         /// <summary>

@@ -13,14 +13,14 @@ namespace Pulumi.Gcp.Storage.Inputs
     public sealed class TransferJobTransferSpecTransferOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+        /// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `DeleteObjectsUniqueInSink` are mutually exclusive.
         /// </summary>
         [Input("deleteObjectsFromSourceAfterTransfer")]
         public Input<bool>? DeleteObjectsFromSourceAfterTransfer { get; set; }
 
         /// <summary>
         /// Whether objects that exist only in the sink should be deleted. Note that this option and
-        /// `delete_objects_from_source_after_transfer` are mutually exclusive.
+        /// `DeleteObjectsFromSourceAfterTransfer` are mutually exclusive.
         /// </summary>
         [Input("deleteObjectsUniqueInSink")]
         public Input<bool>? DeleteObjectsUniqueInSink { get; set; }
@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<bool>? OverwriteObjectsAlreadyExistingInSink { get; set; }
 
         /// <summary>
-        /// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+        /// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `OverwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
         /// </summary>
         [Input("overwriteWhen")]
         public Input<string>? OverwriteWhen { get; set; }

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class ReservationAutoscale {
     /**
      * @return (Output)
-     * The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
+     * The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
      * 
      */
     private @Nullable Integer currentSlots;
@@ -26,7 +26,7 @@ public final class ReservationAutoscale {
     private ReservationAutoscale() {}
     /**
      * @return (Output)
-     * The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
+     * The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
      * 
      */
     public Optional<Integer> currentSlots() {

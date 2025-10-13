@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string NextHopInstance;
         /// <summary>
-        /// The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
+        /// The zone of the instance specified in next_hop_instance. Omit if NextHopInstance is specified as a URL.
         /// </summary>
         public readonly string NextHopInstanceZone;
         /// <summary>

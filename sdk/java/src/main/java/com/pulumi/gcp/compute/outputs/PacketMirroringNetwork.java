@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class PacketMirroringNetwork {
     /**
-     * @return The full self_link URL of the network where this rule is active.
+     * @return The full selfLink URL of the network where this rule is active.
      * 
      */
     private String url;
 
     private PacketMirroringNetwork() {}
     /**
-     * @return The full self_link URL of the network where this rule is active.
+     * @return The full selfLink URL of the network where this rule is active.
      * 
      */
     public String url() {

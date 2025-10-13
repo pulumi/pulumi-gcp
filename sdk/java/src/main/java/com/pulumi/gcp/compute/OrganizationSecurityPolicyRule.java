@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
 public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomResource {
     /**
      * The Action to perform when the client connection triggers the rule. Can currently be either
-     * &#34;allow&#34;, &#34;deny&#34; or &#34;goto_next&#34;.
+     * &#34;allow&#34;, &#34;deny&#34; or &#34;gotoNext&#34;.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
@@ -115,7 +115,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
 
     /**
      * @return The Action to perform when the client connection triggers the rule. Can currently be either
-     * &#34;allow&#34;, &#34;deny&#34; or &#34;goto_next&#34;.
+     * &#34;allow&#34;, &#34;deny&#34; or &#34;gotoNext&#34;.
      * 
      */
     public Output<String> action() {

@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.GkeBackup
         public Output<string> DestinationProject { get; private set; } = null!;
 
         /// <summary>
-        /// The project_id where Backups will be restored.
+        /// The ProjectId where Backups will be restored.
         /// Example Project ID: "my-project-id".
         /// </summary>
         [Output("destinationProjectId")]
@@ -119,7 +119,7 @@ namespace Pulumi.Gcp.GkeBackup
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -230,7 +230,7 @@ namespace Pulumi.Gcp.GkeBackup
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -280,7 +280,7 @@ namespace Pulumi.Gcp.GkeBackup
         public Input<string>? DestinationProject { get; set; }
 
         /// <summary>
-        /// The project_id where Backups will be restored.
+        /// The ProjectId where Backups will be restored.
         /// Example Project ID: "my-project-id".
         /// </summary>
         [Input("destinationProjectId")]
@@ -322,7 +322,7 @@ namespace Pulumi.Gcp.GkeBackup
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

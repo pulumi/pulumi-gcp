@@ -17,8 +17,8 @@ namespace Pulumi.Gcp.Compute
     /// network endpoint group.
     /// 
     /// &gt; **NOTE** In case the Endpoint's Instance is recreated, it's needed to
-    /// perform `apply` twice. To avoid situations like this, please use this resource
-    /// with the lifecycle `replace_triggered_by` method, with the passed Instance's ID.
+    /// perform `Apply` twice. To avoid situations like this, please use this resource
+    /// with the lifecycle `ReplaceTriggeredBy` method, with the passed Instance's ID.
     /// 
     /// To get more information about NetworkEndpoint, see:
     /// 
@@ -159,7 +159,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Port number of network endpoint.
-        /// **Note** `port` is required unless the Network Endpoint Group is created
+        /// **Note** `Port` is required unless the Network Endpoint Group is created
         /// with the type of `GCE_VM_IP`
         /// </summary>
         [Output("port")]
@@ -248,7 +248,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Port number of network endpoint.
-        /// **Note** `port` is required unless the Network Endpoint Group is created
+        /// **Note** `Port` is required unless the Network Endpoint Group is created
         /// with the type of `GCE_VM_IP`
         /// </summary>
         [Input("port")]
@@ -299,7 +299,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Port number of network endpoint.
-        /// **Note** `port` is required unless the Network Endpoint Group is created
+        /// **Note** `Port` is required unless the Network Endpoint Group is created
         /// with the type of `GCE_VM_IP`
         /// </summary>
         [Input("port")]

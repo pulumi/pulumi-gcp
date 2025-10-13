@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Netapp.Outputs
         /// </summary>
         public readonly string? AllowedClients;
         /// <summary>
-        /// An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+        /// An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `SquashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
         /// </summary>
         public readonly int? AnonUid;
         /// <summary>

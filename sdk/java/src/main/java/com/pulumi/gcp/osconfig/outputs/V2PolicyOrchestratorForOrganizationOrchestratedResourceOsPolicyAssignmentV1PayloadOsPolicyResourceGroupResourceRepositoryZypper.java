@@ -30,8 +30,8 @@ public final class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPoli
     private @Nullable List<String> gpgKeys;
     /**
      * @return Required. A one word, unique name for this repository. This is the `repo
-     * id` in the zypper config file and also the `display_name` if
-     * `display_name` is omitted. This id is also used as the unique
+     * id` in the zypper config file and also the `displayName` if
+     * `displayName` is omitted. This id is also used as the unique
      * identifier when checking for GuestPolicy conflicts.
      * 
      */
@@ -61,8 +61,8 @@ public final class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPoli
     }
     /**
      * @return Required. A one word, unique name for this repository. This is the `repo
-     * id` in the zypper config file and also the `display_name` if
-     * `display_name` is omitted. This id is also used as the unique
+     * id` in the zypper config file and also the `displayName` if
+     * `displayName` is omitted. This id is also used as the unique
      * identifier when checking for GuestPolicy conflicts.
      * 
      */

@@ -335,14 +335,14 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+     * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
      * 
      */
     @Export(name="sendDeletionDelayHoursIfZero", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sendDeletionDelayHoursIfZero;
 
     /**
-     * @return While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+     * @return While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
      * 
      */
     public Output<Optional<Boolean>> sendDeletionDelayHoursIfZero() {

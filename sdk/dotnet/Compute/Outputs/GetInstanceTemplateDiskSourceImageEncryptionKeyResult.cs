@@ -24,11 +24,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string KmsKeyServiceAccount;
         /// <summary>
-        /// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        /// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, RsaEncryptedKey and RawKey may be set.
         /// </summary>
         public readonly string RawKey;
         /// <summary>
-        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, RsaEncryptedKey and RawKey may be set.
         /// </summary>
         public readonly string RsaEncryptedKey;
 

@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The  location where the autoscaling policy should reside.
-        /// The default value is `global`.
+        /// The default value is `Global`.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The  location where the autoscaling policy should reside.
-        /// The default value is `global`.
+        /// The default value is `Global`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -241,7 +241,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The  location where the autoscaling policy should reside.
-        /// The default value is `global`.
+        /// The default value is `Global`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

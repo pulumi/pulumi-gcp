@@ -481,7 +481,7 @@ namespace Pulumi.Gcp.Kms
         public string Ciphertext { get; set; } = null!;
 
         /// <summary>
-        /// The crc32 checksum of the `ciphertext` in hexadecimal notation. If not specified, it will be computed.
+        /// The crc32 checksum of the `Ciphertext` in hexadecimal notation. If not specified, it will be computed.
         /// </summary>
         [Input("crc32")]
         public string? Crc32 { get; set; }
@@ -509,7 +509,7 @@ namespace Pulumi.Gcp.Kms
         public Input<string> Ciphertext { get; set; } = null!;
 
         /// <summary>
-        /// The crc32 checksum of the `ciphertext` in hexadecimal notation. If not specified, it will be computed.
+        /// The crc32 checksum of the `Ciphertext` in hexadecimal notation. If not specified, it will be computed.
         /// </summary>
         [Input("crc32")]
         public Input<string>? Crc32 { get; set; }

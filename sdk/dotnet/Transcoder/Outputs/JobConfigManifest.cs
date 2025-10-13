@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Transcoder.Outputs
     public sealed class JobConfigManifest
     {
         /// <summary>
-        /// The name of the generated file. The default is `manifest`.
+        /// The name of the generated file. The default is `Manifest`.
         /// </summary>
         public readonly string? FileName;
         /// <summary>

@@ -27,9 +27,9 @@ import javax.annotation.Nullable;
  * &gt; **Warning:** This resource creates a Firestore Document on a project that already has
  * a Firestore database. If you haven&#39;t already created it, you may
  * create a `gcp.firestore.Database` resource with `type` set to
- * `&#34;FIRESTORE_NATIVE&#34;` and `location_id` set to your chosen location.
+ * `&#34;FIRESTORE_NATIVE&#34;` and `locationId` set to your chosen location.
  * If you wish to use App Engine, you may instead create a
- * `gcp.appengine.Application` resource with `database_type` set to
+ * `gcp.appengine.Application` resource with `databaseType` set to
  * `&#34;CLOUD_FIRESTORE&#34;`. Your Firestore location will be the same as
  * the App Engine location specified.
  * 

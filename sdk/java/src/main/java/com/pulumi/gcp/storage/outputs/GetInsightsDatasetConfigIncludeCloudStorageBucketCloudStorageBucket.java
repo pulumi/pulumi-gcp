@@ -12,14 +12,14 @@ import java.util.Objects;
 public final class GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket {
     /**
      * @return The list of cloud storage bucket names to include in the DatasetConfig.
-     * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+     * Exactly one of the bucketName and bucketPrefixRegex should be specified.
      * 
      */
     private String bucketName;
     /**
      * @return The list of regex patterns for bucket names matching the regex.
      * Regex should follow the syntax specified in google/re2 on GitHub.
-     * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+     * Exactly one of the bucketName and bucketPrefixRegex should be specified.
      * 
      */
     private String bucketPrefixRegex;
@@ -27,7 +27,7 @@ public final class GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorage
     private GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket() {}
     /**
      * @return The list of cloud storage bucket names to include in the DatasetConfig.
-     * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+     * Exactly one of the bucketName and bucketPrefixRegex should be specified.
      * 
      */
     public String bucketName() {
@@ -36,7 +36,7 @@ public final class GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorage
     /**
      * @return The list of regex patterns for bucket names matching the regex.
      * Regex should follow the syntax specified in google/re2 on GitHub.
-     * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+     * Exactly one of the bucketName and bucketPrefixRegex should be specified.
      * 
      */
     public String bucketPrefixRegex() {

@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Logging.Inputs
         /// `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]'`
         /// For example:
         /// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
-        /// This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+        /// This is a read-only field used to convey the specific configured CryptoKeyVersion of KmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
         /// </summary>
         [Input("kmsKeyVersionName")]
         public Input<string>? KmsKeyVersionName { get; set; }

@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetAndroidAppArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The app_id of name of the Firebase androidApp.
+        /// The AppId of name of the Firebase androidApp.
         /// 
         /// 
         /// - - -
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetAndroidAppInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The app_id of name of the Firebase androidApp.
+        /// The AppId of name of the Firebase androidApp.
         /// 
         /// 
         /// - - -

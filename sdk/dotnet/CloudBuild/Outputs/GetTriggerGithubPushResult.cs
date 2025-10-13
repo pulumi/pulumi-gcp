@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string Branch;
         /// <summary>
-        /// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        /// When true, only trigger a build if the revision regex does NOT match the GitRef regex.
         /// </summary>
         public readonly bool InvertRegex;
         /// <summary>

@@ -454,7 +454,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported. Required if `ip_address` is set.
+     * Only IPv4 is supported. Required if `ipAddress` is set.
      * 
      */
     @Import(name="peerIpAddress")
@@ -462,7 +462,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported. Required if `ip_address` is set.
+     * Only IPv4 is supported. Required if `ipAddress` is set.
      * 
      */
     public Optional<Output<String>> peerIpAddress() {
@@ -581,7 +581,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
-     * This value has to be set true to force the advertised_route_priority to be 0.
+     * This value has to be set true to force the advertisedRoutePriority to be 0.
      * 
      */
     @Import(name="zeroAdvertisedRoutePriority")
@@ -589,7 +589,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
-     * This value has to be set true to force the advertised_route_priority to be 0.
+     * This value has to be set true to force the advertisedRoutePriority to be 0.
      * 
      */
     public Optional<Output<Boolean>> zeroAdvertisedRoutePriority() {
@@ -598,7 +598,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-     * This value has to be set true to force the custom_learned_route_priority to be 0.
+     * This value has to be set true to force the customLearnedRoutePriority to be 0.
      * 
      */
     @Import(name="zeroCustomLearnedRoutePriority")
@@ -606,7 +606,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-     * This value has to be set true to force the custom_learned_route_priority to be 0.
+     * This value has to be set true to force the customLearnedRoutePriority to be 0.
      * 
      */
     public Optional<Output<Boolean>> zeroCustomLearnedRoutePriority() {
@@ -1300,7 +1300,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param peerIpAddress IP address of the BGP interface outside Google Cloud Platform.
-         * Only IPv4 is supported. Required if `ip_address` is set.
+         * Only IPv4 is supported. Required if `ipAddress` is set.
          * 
          * @return builder
          * 
@@ -1312,7 +1312,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param peerIpAddress IP address of the BGP interface outside Google Cloud Platform.
-         * Only IPv4 is supported. Required if `ip_address` is set.
+         * Only IPv4 is supported. Required if `ipAddress` is set.
          * 
          * @return builder
          * 
@@ -1469,7 +1469,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zeroAdvertisedRoutePriority The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
-         * This value has to be set true to force the advertised_route_priority to be 0.
+         * This value has to be set true to force the advertisedRoutePriority to be 0.
          * 
          * @return builder
          * 
@@ -1481,7 +1481,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zeroAdvertisedRoutePriority The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
-         * This value has to be set true to force the advertised_route_priority to be 0.
+         * This value has to be set true to force the advertisedRoutePriority to be 0.
          * 
          * @return builder
          * 
@@ -1492,7 +1492,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zeroCustomLearnedRoutePriority The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-         * This value has to be set true to force the custom_learned_route_priority to be 0.
+         * This value has to be set true to force the customLearnedRoutePriority to be 0.
          * 
          * @return builder
          * 
@@ -1504,7 +1504,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zeroCustomLearnedRoutePriority The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-         * This value has to be set true to force the custom_learned_route_priority to be 0.
+         * This value has to be set true to force the customLearnedRoutePriority to be 0.
          * 
          * @return builder
          * 

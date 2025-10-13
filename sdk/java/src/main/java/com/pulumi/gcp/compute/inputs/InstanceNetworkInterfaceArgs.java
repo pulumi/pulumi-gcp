@@ -138,7 +138,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The name or self_link of the network to attach this interface to.
+     * The name or selfLink of the network to attach this interface to.
      * Either `network` or `subnetwork` must be provided. If network isn&#39;t provided it will
      * be inferred from the subnetwork.
      * 
@@ -147,7 +147,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> network;
 
     /**
-     * @return The name or self_link of the network to attach this interface to.
+     * @return The name or selfLink of the network to attach this interface to.
      * Either `network` or `subnetwork` must be provided. If network isn&#39;t provided it will
      * be inferred from the subnetwork.
      * 
@@ -249,7 +249,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The name or self_link of the subnetwork to attach this
+     * The name or selfLink of the subnetwork to attach this
      * interface to. Either `network` or `subnetwork` must be provided. If network isn&#39;t provided
      * it will be inferred from the subnetwork. The subnetwork must exist in the same region this
      * instance will be created in. If the network resource is in
@@ -262,7 +262,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> subnetwork;
 
     /**
-     * @return The name or self_link of the subnetwork to attach this
+     * @return The name or selfLink of the subnetwork to attach this
      * interface to. Either `network` or `subnetwork` must be provided. If network isn&#39;t provided
      * it will be inferred from the subnetwork. The subnetwork must exist in the same region this
      * instance will be created in. If the network resource is in
@@ -529,7 +529,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param network The name or self_link of the network to attach this interface to.
+         * @param network The name or selfLink of the network to attach this interface to.
          * Either `network` or `subnetwork` must be provided. If network isn&#39;t provided it will
          * be inferred from the subnetwork.
          * 
@@ -542,7 +542,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param network The name or self_link of the network to attach this interface to.
+         * @param network The name or selfLink of the network to attach this interface to.
          * Either `network` or `subnetwork` must be provided. If network isn&#39;t provided it will
          * be inferred from the subnetwork.
          * 
@@ -682,7 +682,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param subnetwork The name or self_link of the subnetwork to attach this
+         * @param subnetwork The name or selfLink of the subnetwork to attach this
          * interface to. Either `network` or `subnetwork` must be provided. If network isn&#39;t provided
          * it will be inferred from the subnetwork. The subnetwork must exist in the same region this
          * instance will be created in. If the network resource is in
@@ -699,7 +699,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param subnetwork The name or self_link of the subnetwork to attach this
+         * @param subnetwork The name or selfLink of the subnetwork to attach this
          * interface to. Either `network` or `subnetwork` must be provided. If network isn&#39;t provided
          * it will be inferred from the subnetwork. The subnetwork must exist in the same region this
          * instance will be created in. If the network resource is in

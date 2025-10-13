@@ -232,7 +232,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * such as Compute Engine VMs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -243,7 +243,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * such as Compute Engine VMs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -384,10 +384,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
-     * `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
+     * `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
      * 
      */
-    @Deprecated /* `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID. */
+    @Deprecated /* `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID. */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
@@ -395,10 +395,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
-     * `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
+     * `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
      * 
      */
-    @Deprecated /* `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID. */
+    @Deprecated /* `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID. */
     public Optional<Output<String>> serviceAccount() {
         return Optional.ofNullable(this.serviceAccount);
     }
@@ -932,7 +932,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * such as Compute Engine VMs.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -947,7 +947,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * such as Compute Engine VMs.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1140,10 +1140,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
+         * `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
          * 
          */
-        @Deprecated /* `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID. */
+        @Deprecated /* `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID. */
         public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
             $.serviceAccount = serviceAccount;
             return this;
@@ -1155,10 +1155,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
+         * `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
          * 
          */
-        @Deprecated /* `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID. */
+        @Deprecated /* `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID. */
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
         }

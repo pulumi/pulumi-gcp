@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Filestore.Inputs
     {
         /// <summary>
         /// The number of IOPS to provision for the instance.
-        /// max_iops must be in multiple of 1000.
+        /// MaxIops must be in multiple of 1000.
         /// </summary>
         [Input("maxIops")]
         public Input<int>? MaxIops { get; set; }

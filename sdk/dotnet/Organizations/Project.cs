@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// &gt; This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
     /// 
-    /// &gt; It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
+    /// &gt; It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `AutoCreateNetwork` to false, when possible.
     /// 
     /// &gt; It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
     /// 
@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Organizations
     public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
+        /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set AutoCreateNetwork to false, since the network will exist momentarily.
         /// </summary>
         [Output("autoCreateNetwork")]
         public Output<bool?> AutoCreateNetwork { get; private set; } = null!;
@@ -144,8 +144,8 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// The numeric ID of the folder this project should be
-        /// created under. Only one of `org_id` or `folder_id` may be
-        /// specified. If the `folder_id` is specified, then the project is
+        /// created under. Only one of `OrgId` or `FolderId` may be
+        /// specified. If the `FolderId` is specified, then the project is
         /// created under the specified folder. Changing this forces the
         /// project to be migrated to the newly specified folder.
         /// </summary>
@@ -175,7 +175,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The numeric ID of the organization this project belongs to.
         /// Changing this forces a new project to be created.  Only one of
-        /// `org_id` or `folder_id` may be specified. If the `org_id` is
+        /// `OrgId` or `FolderId` may be specified. If the `OrgId` is
         /// specified then the project is created at the top level. Changing
         /// this forces the project to be migrated to the newly specified
         /// organization.
@@ -253,7 +253,7 @@ namespace Pulumi.Gcp.Organizations
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
+        /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set AutoCreateNetwork to false, since the network will exist momentarily.
         /// </summary>
         [Input("autoCreateNetwork")]
         public Input<bool>? AutoCreateNetwork { get; set; }
@@ -273,8 +273,8 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// The numeric ID of the folder this project should be
-        /// created under. Only one of `org_id` or `folder_id` may be
-        /// specified. If the `folder_id` is specified, then the project is
+        /// created under. Only one of `OrgId` or `FolderId` may be
+        /// specified. If the `FolderId` is specified, then the project is
         /// created under the specified folder. Changing this forces the
         /// project to be migrated to the newly specified folder.
         /// </summary>
@@ -304,7 +304,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The numeric ID of the organization this project belongs to.
         /// Changing this forces a new project to be created.  Only one of
-        /// `org_id` or `folder_id` may be specified. If the `org_id` is
+        /// `OrgId` or `FolderId` may be specified. If the `OrgId` is
         /// specified then the project is created at the top level. Changing
         /// this forces the project to be migrated to the newly specified
         /// organization.
@@ -339,7 +339,7 @@ namespace Pulumi.Gcp.Organizations
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
+        /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set AutoCreateNetwork to false, since the network will exist momentarily.
         /// </summary>
         [Input("autoCreateNetwork")]
         public Input<bool>? AutoCreateNetwork { get; set; }
@@ -375,8 +375,8 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// The numeric ID of the folder this project should be
-        /// created under. Only one of `org_id` or `folder_id` may be
-        /// specified. If the `folder_id` is specified, then the project is
+        /// created under. Only one of `OrgId` or `FolderId` may be
+        /// specified. If the `FolderId` is specified, then the project is
         /// created under the specified folder. Changing this forces the
         /// project to be migrated to the newly specified folder.
         /// </summary>
@@ -412,7 +412,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The numeric ID of the organization this project belongs to.
         /// Changing this forces a new project to be created.  Only one of
-        /// `org_id` or `folder_id` may be specified. If the `org_id` is
+        /// `OrgId` or `FolderId` may be specified. If the `OrgId` is
         /// specified then the project is created at the top level. Changing
         /// this forces the project to be migrated to the newly specified
         /// organization.

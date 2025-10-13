@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Firebase.Outputs
         /// </summary>
         public readonly string Repository;
         /// <summary>
-        /// If `repository` is provided, the directory relative to the root of the
+        /// If `Repository` is provided, the directory relative to the root of the
         /// repository to use as the root for the deployed web app.
         /// </summary>
         public readonly string? RootDirectory;

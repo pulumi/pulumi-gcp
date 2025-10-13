@@ -262,14 +262,14 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
     }
 
     /**
-     * The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+     * The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<Double> threshold;
 
     /**
-     * @return The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+     * @return The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
      * 
      */
     public Optional<Output<Double>> threshold() {
@@ -649,7 +649,7 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param threshold The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+         * @param threshold The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
          * 
          * @return builder
          * 
@@ -660,7 +660,7 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param threshold The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+         * @param threshold The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
          * 
          * @return builder
          * 

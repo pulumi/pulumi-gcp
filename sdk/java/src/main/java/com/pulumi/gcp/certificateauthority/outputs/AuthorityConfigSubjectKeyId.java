@@ -14,7 +14,7 @@ public final class AuthorityConfigSubjectKeyId {
     /**
      * @return The value of the KeyId in lowercase hexadecimal.
      * 
-     * &lt;a name=&#34;nested_config_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
+     * &lt;a name=&#34;nestedConfigX509Config&#34;&gt;&lt;/a&gt;The `x509Config` block supports:
      * 
      */
     private @Nullable String keyId;
@@ -23,7 +23,7 @@ public final class AuthorityConfigSubjectKeyId {
     /**
      * @return The value of the KeyId in lowercase hexadecimal.
      * 
-     * &lt;a name=&#34;nested_config_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
+     * &lt;a name=&#34;nestedConfigX509Config&#34;&gt;&lt;/a&gt;The `x509Config` block supports:
      * 
      */
     public Optional<String> keyId() {

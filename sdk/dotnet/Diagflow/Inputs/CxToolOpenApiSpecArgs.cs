@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
 
         /// <summary>
         /// The OpenAPI schema specified as a text.
-        /// This field is part of a union field `schema`: only one of `textSchema` may be set.
+        /// This field is part of a union field `Schema`: only one of `textSchema` may be set.
         /// </summary>
         [Input("textSchema", required: true)]
         public Input<string> TextSchema { get; set; } = null!;

@@ -83,14 +83,14 @@ public class Api extends com.pulumi.resources.CustomResource {
         return this.latestRevisionId;
     }
     /**
-     * (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
+     * (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
      * 
      */
     @Export(name="md5hash", refs={String.class}, tree="[0]")
     private Output<String> md5hash;
 
     /**
-     * @return (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
+     * @return (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
      * 
      */
     public Output<String> md5hash() {

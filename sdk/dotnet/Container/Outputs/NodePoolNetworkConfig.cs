@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NodePoolNetworkConfigAdditionalPodNetworkConfig> AdditionalPodNetworkConfigs;
         /// <summary>
-        /// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        /// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `PodRange` and `PodIpv4CidrBlock` if they are not specified.
         /// </summary>
         public readonly bool? CreatePodRange;
         /// <summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? PodIpv4CidrBlock;
         /// <summary>
-        /// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        /// The ID of the secondary range for pod IPs. If `CreatePodRange` is true, this ID is used for the new range. If `CreatePodRange` is false, uses an existing secondary range with this ID.
         /// </summary>
         public readonly string? PodRange;
         /// <summary>

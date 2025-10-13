@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     public sealed class GetTagsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are `name` and `version`. Further information can be found in the [REST API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages.tags/list#query-parameters).
+        /// An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are `Name` and `Version`. Further information can be found in the [REST API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages.tags/list#query-parameters).
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     public sealed class GetTagsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are `name` and `version`. Further information can be found in the [REST API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages.tags/list#query-parameters).
+        /// An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are `Name` and `Version`. Further information can be found in the [REST API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages.tags/list#query-parameters).
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }

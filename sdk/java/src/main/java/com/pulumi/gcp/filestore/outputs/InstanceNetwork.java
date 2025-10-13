@@ -44,7 +44,7 @@ public final class InstanceNetwork {
     private String network;
     /**
      * @return Private Service Connect configuration.
-     * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+     * Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
      * Structure is documented below.
      * 
      */
@@ -95,7 +95,7 @@ public final class InstanceNetwork {
     }
     /**
      * @return Private Service Connect configuration.
-     * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+     * Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
      * Structure is documented below.
      * 
      */

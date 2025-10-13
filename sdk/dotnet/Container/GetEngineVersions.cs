@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container
         ///   * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations/getServerConfig)
         /// 
         /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a
-        /// regional cluster, ensure that you have provided a region as the `location` to
+        /// regional cluster, ensure that you have provided a region as the `Location` to
         /// the datasource. A region can have a different set of supported versions than
         /// its component zones, and not all zones in a region are guaranteed to
         /// support the same version.
@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.Container
         ///   * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations/getServerConfig)
         /// 
         /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a
-        /// regional cluster, ensure that you have provided a region as the `location` to
+        /// regional cluster, ensure that you have provided a region as the `Location` to
         /// the datasource. A region can have a different set of supported versions than
         /// its component zones, and not all zones in a region are guaranteed to
         /// support the same version.
@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Container
         ///   * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations/getServerConfig)
         /// 
         /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a
-        /// regional cluster, ensure that you have provided a region as the `location` to
+        /// regional cluster, ensure that you have provided a region as the `Location` to
         /// the datasource. A region can have a different set of supported versions than
         /// its component zones, and not all zones in a region are guaranteed to
         /// support the same version.
@@ -159,7 +159,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The location (region or zone) to list versions for.
         /// Must exactly match the location the cluster will be deployed in, or listed
-        /// versions may not be available. If `location`, `region`, and `zone` are not
+        /// versions may not be available. If `Location`, `Region`, and `Zone` are not
         /// specified, the provider-level zone must be set and is used instead.
         /// </summary>
         [Input("location")]
@@ -194,7 +194,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The location (region or zone) to list versions for.
         /// Must exactly match the location the cluster will be deployed in, or listed
-        /// versions may not be available. If `location`, `region`, and `zone` are not
+        /// versions may not be available. If `Location`, `Region`, and `Zone` are not
         /// specified, the provider-level zone must be set and is used instead.
         /// </summary>
         [Input("location")]

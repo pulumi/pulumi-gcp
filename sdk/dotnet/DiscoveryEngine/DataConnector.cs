@@ -159,7 +159,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The name of the data source.
-        /// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        /// Supported values: `Salesforce`, `Jira`, `Confluence`, `Bigquery`.
         /// </summary>
         [Output("dataSource")]
         public Output<string> DataSource { get; private set; } = null!;
@@ -358,7 +358,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The name of the data source.
-        /// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        /// Supported values: `Salesforce`, `Jira`, `Confluence`, `Bigquery`.
         /// </summary>
         [Input("dataSource", required: true)]
         public Input<string> DataSource { get; set; } = null!;
@@ -503,7 +503,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The name of the data source.
-        /// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        /// Supported values: `Salesforce`, `Jira`, `Confluence`, `Bigquery`.
         /// </summary>
         [Input("dataSource")]
         public Input<string>? DataSource { get; set; }

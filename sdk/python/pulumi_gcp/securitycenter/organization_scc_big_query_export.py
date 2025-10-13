@@ -396,6 +396,8 @@ class OrganizationSccBigQueryExport(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Scc Organization Big Query Export Config Basic
+
         ## Import
 
         OrganizationSccBigQueryExport can be imported using any of these accepted formats:
@@ -464,6 +466,8 @@ class OrganizationSccBigQueryExport(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/security-command-center/docs/how-to-analyze-findings-in-big-query)
 
         ## Example Usage
+
+        ### Scc Organization Big Query Export Config Basic
 
         ## Import
 

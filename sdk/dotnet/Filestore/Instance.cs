@@ -290,7 +290,7 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// Replication configuration, once set, this cannot be updated.
-        /// Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+        /// Additionally this should be specified on the replica instance only, indicating the active as the PeerInstance
         /// Structure is documented below.
         /// </summary>
         [Output("initialReplication")]
@@ -306,7 +306,7 @@ namespace Pulumi.Gcp.Filestore
         /// Resource labels to represent user-provided metadata.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -389,7 +389,7 @@ namespace Pulumi.Gcp.Filestore
         /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
         /// 
-        /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+        /// &gt; **Warning:** `Zone` is deprecated and will be removed in a future major release. Use `Location` instead.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -481,7 +481,7 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// Replication configuration, once set, this cannot be updated.
-        /// Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+        /// Additionally this should be specified on the replica instance only, indicating the active as the PeerInstance
         /// Structure is documented below.
         /// </summary>
         [Input("initialReplication")]
@@ -500,7 +500,7 @@ namespace Pulumi.Gcp.Filestore
         /// Resource labels to represent user-provided metadata.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -591,7 +591,7 @@ namespace Pulumi.Gcp.Filestore
         /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
         /// 
-        /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+        /// &gt; **Warning:** `Zone` is deprecated and will be removed in a future major release. Use `Location` instead.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -682,7 +682,7 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// Replication configuration, once set, this cannot be updated.
-        /// Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+        /// Additionally this should be specified on the replica instance only, indicating the active as the PeerInstance
         /// Structure is documented below.
         /// </summary>
         [Input("initialReplication")]
@@ -701,7 +701,7 @@ namespace Pulumi.Gcp.Filestore
         /// Resource labels to represent user-provided metadata.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -809,7 +809,7 @@ namespace Pulumi.Gcp.Filestore
         /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
         /// 
-        /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+        /// &gt; **Warning:** `Zone` is deprecated and will be removed in a future major release. Use `Location` instead.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

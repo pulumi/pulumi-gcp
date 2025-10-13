@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         /// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
         /// If this is not specified, the default behavior is defined by gRPC.
         /// 
-        /// &lt;a name="nested_template_containers_containers_build_info"&gt;&lt;/a&gt;The `build_info` block contains:
+        /// &lt;a name="NestedTemplateContainersContainersBuildInfo"&gt;&lt;/a&gt;The `BuildInfo` block contains:
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }

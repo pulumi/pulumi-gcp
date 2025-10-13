@@ -17,7 +17,7 @@ public final class GetSecretVersionPlainArgs extends com.pulumi.resources.Invoke
     public static final GetSecretVersionPlainArgs Empty = new GetSecretVersionPlainArgs();
 
     /**
-     * If set to `false`, the `secret_data`
+     * If set to `false`, the `secretData`
      * will not be fetched. Default is `true`.
      * 
      */
@@ -25,7 +25,7 @@ public final class GetSecretVersionPlainArgs extends com.pulumi.resources.Invoke
     private @Nullable Boolean fetchSecretData;
 
     /**
-     * @return If set to `false`, the `secret_data`
+     * @return If set to `false`, the `secretData`
      * will not be fetched. Default is `true`.
      * 
      */
@@ -128,7 +128,7 @@ public final class GetSecretVersionPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param fetchSecretData If set to `false`, the `secret_data`
+         * @param fetchSecretData If set to `false`, the `secretData`
          * will not be fetched. Default is `true`.
          * 
          * @return builder

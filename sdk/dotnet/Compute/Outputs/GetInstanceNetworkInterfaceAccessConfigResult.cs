@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetInstanceNetworkInterfaceAccessConfigResult
     {
         /// <summary>
-        /// If the instance has an access config, either the given external ip (in the `nat_ip` field) or the ephemeral (generated) ip (if you didn't provide one).
+        /// If the instance has an access config, either the given external ip (in the `NatIp` field) or the ephemeral (generated) ip (if you didn't provide one).
         /// </summary>
         public readonly string NatIp;
         /// <summary>

@@ -16,7 +16,7 @@ public final class SloWindowsBasedSliMetricSumInRangeArgs extends com.pulumi.res
     public static final SloWindowsBasedSliMetricSumInRangeArgs Empty = new SloWindowsBasedSliMetricSumInRangeArgs();
 
     /**
-     * Range of numerical values. The computed good_service
+     * Range of numerical values. The computed goodService
      * will be the count of values x in the Distribution such
      * that range.min &lt;= x &lt;= range.max. inclusive of min and
      * max. Open ranges can be defined by setting
@@ -29,7 +29,7 @@ public final class SloWindowsBasedSliMetricSumInRangeArgs extends com.pulumi.res
     private Output<SloWindowsBasedSliMetricSumInRangeRangeArgs> range;
 
     /**
-     * @return Range of numerical values. The computed good_service
+     * @return Range of numerical values. The computed goodService
      * will be the count of values x in the Distribution such
      * that range.min &lt;= x &lt;= range.max. inclusive of min and
      * max. Open ranges can be defined by setting
@@ -95,7 +95,7 @@ public final class SloWindowsBasedSliMetricSumInRangeArgs extends com.pulumi.res
         }
 
         /**
-         * @param range Range of numerical values. The computed good_service
+         * @param range Range of numerical values. The computed goodService
          * will be the count of values x in the Distribution such
          * that range.min &lt;= x &lt;= range.max. inclusive of min and
          * max. Open ranges can be defined by setting
@@ -112,7 +112,7 @@ public final class SloWindowsBasedSliMetricSumInRangeArgs extends com.pulumi.res
         }
 
         /**
-         * @param range Range of numerical values. The computed good_service
+         * @param range Range of numerical values. The computed goodService
          * will be the count of values x in the Distribution such
          * that range.min &lt;= x &lt;= range.max. inclusive of min and
          * max. Open ranges can be defined by setting

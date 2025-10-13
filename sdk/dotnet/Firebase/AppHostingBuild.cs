@@ -156,6 +156,8 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// ### Firebase App Hosting Build Github
+    /// 
     /// ## Import
     /// 
     /// Build can be imported using any of these accepted formats:
@@ -188,7 +190,7 @@ namespace Pulumi.Gcp.Firebase
         /// store and arbitrary metadata. They are not queryable and should be
         /// preserved when modifying objects.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -273,7 +275,7 @@ namespace Pulumi.Gcp.Firebase
         /// [container
         /// image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
         /// URI, used by the Cloud Run
-        /// [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
+        /// [`Revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
         /// for this build.
         /// </summary>
         [Output("image")]
@@ -283,7 +285,7 @@ namespace Pulumi.Gcp.Firebase
         /// Unstructured key value map that can be used to organize and categorize
         /// objects.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -406,7 +408,7 @@ namespace Pulumi.Gcp.Firebase
         /// store and arbitrary metadata. They are not queryable and should be
         /// preserved when modifying objects.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -439,7 +441,7 @@ namespace Pulumi.Gcp.Firebase
         /// Unstructured key value map that can be used to organize and categorize
         /// objects.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -483,7 +485,7 @@ namespace Pulumi.Gcp.Firebase
         /// store and arbitrary metadata. They are not queryable and should be
         /// preserved when modifying objects.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -592,7 +594,7 @@ namespace Pulumi.Gcp.Firebase
         /// [container
         /// image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
         /// URI, used by the Cloud Run
-        /// [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
+        /// [`Revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
         /// for this build.
         /// </summary>
         [Input("image")]
@@ -605,7 +607,7 @@ namespace Pulumi.Gcp.Firebase
         /// Unstructured key value map that can be used to organize and categorize
         /// objects.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

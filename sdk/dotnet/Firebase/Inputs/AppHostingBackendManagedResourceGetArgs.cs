@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Firebase.Inputs
         /// <summary>
         /// (Output)
         /// A managed Cloud Run
-        /// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
+        /// [`Service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AppHostingBackendManagedResourceRunServiceGetArgs> RunServices

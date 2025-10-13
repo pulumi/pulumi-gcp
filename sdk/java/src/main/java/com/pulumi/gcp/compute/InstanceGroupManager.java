@@ -785,7 +785,7 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.waitForInstances);
     }
     /**
-     * When used with `wait_for_instances` it specifies the status to wait for.
+     * When used with `waitForInstances` it specifies the status to wait for.
      * When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
      * set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
      * instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
@@ -795,7 +795,7 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> waitForInstancesStatus;
 
     /**
-     * @return When used with `wait_for_instances` it specifies the status to wait for.
+     * @return When used with `waitForInstances` it specifies the status to wait for.
      * When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
      * set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
      * instances to be stable before returning. The possible values are `STABLE` and `UPDATED`

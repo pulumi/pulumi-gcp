@@ -18,11 +18,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? Membership;
         /// <summary>
-        /// The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
+        /// The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `MembershipId` under google_gkehub_feature_membership.
         /// </summary>
         public readonly string? MembershipId;
         /// <summary>
-        /// The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
+        /// The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `MembershipLocation` under google_gkehub_feature_membership.
         /// </summary>
         public readonly string? MembershipLocation;
         /// <summary>

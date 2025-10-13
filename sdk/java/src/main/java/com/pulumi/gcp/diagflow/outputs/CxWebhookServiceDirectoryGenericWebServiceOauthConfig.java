@@ -20,7 +20,7 @@ public final class CxWebhookServiceDirectoryGenericWebServiceOauthConfig {
     private String clientId;
     /**
      * @return The client secret provided by the 3rd party platform.  If the
-     * `secret_version_for_client_secret` field is set, this field will be
+     * `secretVersionForClientSecret` field is set, this field will be
      * ignored.
      * 
      */
@@ -32,7 +32,7 @@ public final class CxWebhookServiceDirectoryGenericWebServiceOauthConfig {
     private @Nullable List<String> scopes;
     /**
      * @return The name of the SecretManager secret version resource storing the
-     * client secret. If this field is set, the `client_secret` field will be
+     * client secret. If this field is set, the `clientSecret` field will be
      * ignored.
      * Format: `projects/{project}/secrets/{secret}/versions/{version}`
      * 
@@ -55,7 +55,7 @@ public final class CxWebhookServiceDirectoryGenericWebServiceOauthConfig {
     }
     /**
      * @return The client secret provided by the 3rd party platform.  If the
-     * `secret_version_for_client_secret` field is set, this field will be
+     * `secretVersionForClientSecret` field is set, this field will be
      * ignored.
      * 
      */
@@ -71,7 +71,7 @@ public final class CxWebhookServiceDirectoryGenericWebServiceOauthConfig {
     }
     /**
      * @return The name of the SecretManager secret version resource storing the
-     * client secret. If this field is set, the `client_secret` field will be
+     * client secret. If this field is set, the `clientSecret` field will be
      * ignored.
      * Format: `projects/{project}/secrets/{secret}/versions/{version}`
      * 

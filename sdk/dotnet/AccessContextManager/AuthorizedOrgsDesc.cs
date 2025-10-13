@@ -23,10 +23,10 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     * [gcloud docs](https://cloud.google.com/beyondcorp-enterprise/docs/cross-org-authorization)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-    /// you must specify a `billing_project` and set `user_project_override` to true
+    /// you must specify a `BillingProject` and set `UserProjectOverride` to true
     /// in the provider configuration. Otherwise the ACM API will return a 403 error.
     /// Your account must have the `serviceusage.services.use` permission on the
-    /// `billing_project` you defined.
+    /// `BillingProject` you defined.
     /// 
     /// ## Example Usage
     /// 
@@ -92,8 +92,8 @@ namespace Pulumi.Gcp.AccessContextManager
         /// and the organizations listed in the "orgs" field. The valid values for this
         /// field include the following:
         /// AUTHORIZATION_DIRECTION_FROM: Allows this organization to evaluate traffic
-        /// in the organizations listed in the `orgs` field.
-        /// AUTHORIZATION_DIRECTION_TO: Allows the organizations listed in the `orgs`
+        /// in the organizations listed in the `Orgs` field.
+        /// AUTHORIZATION_DIRECTION_TO: Allows the organizations listed in the `Orgs`
         /// field to evaluate the traffic in this organization.
         /// For the authorization relationship to take effect, all of the organizations
         /// must authorize and specify the appropriate relationship direction. For
@@ -123,9 +123,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <summary>
         /// Resource name for the `AuthorizedOrgsDesc`. Format:
         /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
-        /// The `authorized_orgs_desc` component must begin with a letter, followed by
+        /// The `AuthorizedOrgsDesc` component must begin with a letter, followed by
         /// alphanumeric characters or `_`.
-        /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
+        /// After you create an `AuthorizedOrgsDesc`, you cannot change its `Name`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -210,8 +210,8 @@ namespace Pulumi.Gcp.AccessContextManager
         /// and the organizations listed in the "orgs" field. The valid values for this
         /// field include the following:
         /// AUTHORIZATION_DIRECTION_FROM: Allows this organization to evaluate traffic
-        /// in the organizations listed in the `orgs` field.
-        /// AUTHORIZATION_DIRECTION_TO: Allows the organizations listed in the `orgs`
+        /// in the organizations listed in the `Orgs` field.
+        /// AUTHORIZATION_DIRECTION_TO: Allows the organizations listed in the `Orgs`
         /// field to evaluate the traffic in this organization.
         /// For the authorization relationship to take effect, all of the organizations
         /// must authorize and specify the appropriate relationship direction. For
@@ -235,9 +235,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <summary>
         /// Resource name for the `AuthorizedOrgsDesc`. Format:
         /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
-        /// The `authorized_orgs_desc` component must begin with a letter, followed by
+        /// The `AuthorizedOrgsDesc` component must begin with a letter, followed by
         /// alphanumeric characters or `_`.
-        /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
+        /// After you create an `AuthorizedOrgsDesc`, you cannot change its `Name`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -284,8 +284,8 @@ namespace Pulumi.Gcp.AccessContextManager
         /// and the organizations listed in the "orgs" field. The valid values for this
         /// field include the following:
         /// AUTHORIZATION_DIRECTION_FROM: Allows this organization to evaluate traffic
-        /// in the organizations listed in the `orgs` field.
-        /// AUTHORIZATION_DIRECTION_TO: Allows the organizations listed in the `orgs`
+        /// in the organizations listed in the `Orgs` field.
+        /// AUTHORIZATION_DIRECTION_TO: Allows the organizations listed in the `Orgs`
         /// field to evaluate the traffic in this organization.
         /// For the authorization relationship to take effect, all of the organizations
         /// must authorize and specify the appropriate relationship direction. For
@@ -315,9 +315,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <summary>
         /// Resource name for the `AuthorizedOrgsDesc`. Format:
         /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
-        /// The `authorized_orgs_desc` component must begin with a letter, followed by
+        /// The `AuthorizedOrgsDesc` component must begin with a letter, followed by
         /// alphanumeric characters or `_`.
-        /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
+        /// After you create an `AuthorizedOrgsDesc`, you cannot change its `Name`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -60,7 +60,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -77,7 +77,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -477,7 +477,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
          * with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -498,7 +498,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
          * with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 

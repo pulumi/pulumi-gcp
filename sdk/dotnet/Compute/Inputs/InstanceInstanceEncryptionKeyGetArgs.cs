@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceInstanceEncryptionKeyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The self_link of the encryption key that is
+        /// The SelfLink of the encryption key that is
         /// stored in Google Cloud KMS to encrypt the data on this instance.
         /// </summary>
         [Input("kmsKeySelfLink")]

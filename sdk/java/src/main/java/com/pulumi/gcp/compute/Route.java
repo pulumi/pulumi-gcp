@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * the route with the smallest priority value. If there is still a tie, it
  * uses the layer three and four packet headers to select just one of the
  * remaining matching routes. The packet is then forwarded as specified by
- * the next_hop field of the winning route -- either to another virtual
+ * the nextHop field of the winning route -- either to another virtual
  * machine destination, a virtual machine gateway or a Compute
  * Engine-operated gateway. Packets that do not match any route in the
  * sending virtual machine&#39;s routing table will be dropped.
@@ -507,7 +507,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
      * * `projects/project/zones/zone/instances/instance`
      * * `zones/zone/instances/instance`
-     * * Just the instance name, with the zone in `next_hop_instance_zone`.
+     * * Just the instance name, with the zone in `nextHopInstanceZone`.
      * 
      */
     @Export(name="nextHopInstance", refs={String.class}, tree="[0]")
@@ -519,16 +519,16 @@ public class Route extends com.pulumi.resources.CustomResource {
      * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
      * * `projects/project/zones/zone/instances/instance`
      * * `zones/zone/instances/instance`
-     * * Just the instance name, with the zone in `next_hop_instance_zone`.
+     * * Just the instance name, with the zone in `nextHopInstanceZone`.
      * 
      */
     public Output<Optional<String>> nextHopInstance() {
         return Codegen.optional(this.nextHopInstance);
     }
     /**
-     * (Optional when `next_hop_instance` is
+     * (Optional when `nextHopInstance` is
      * specified)  The zone of the instance specified in
-     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+     * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
      * a URL.
      * 
      */
@@ -536,9 +536,9 @@ public class Route extends com.pulumi.resources.CustomResource {
     private Output<String> nextHopInstanceZone;
 
     /**
-     * @return (Optional when `next_hop_instance` is
+     * @return (Optional when `nextHopInstance` is
      * specified)  The zone of the instance specified in
-     * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
+     * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
      * a URL.
      * 
      */

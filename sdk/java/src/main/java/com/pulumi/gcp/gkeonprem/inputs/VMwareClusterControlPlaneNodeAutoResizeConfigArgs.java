@@ -17,7 +17,7 @@ public final class VMwareClusterControlPlaneNodeAutoResizeConfigArgs extends com
     /**
      * Whether to enable control plane node auto resizing.
      * 
-     * &lt;a name=&#34;nested_control_plane_node_vsphere_config&#34;&gt;&lt;/a&gt;The `vsphere_config` block contains:
+     * &lt;a name=&#34;nestedControlPlaneNodeVsphereConfig&#34;&gt;&lt;/a&gt;The `vsphereConfig` block contains:
      * 
      */
     @Import(name="enabled", required=true)
@@ -26,7 +26,7 @@ public final class VMwareClusterControlPlaneNodeAutoResizeConfigArgs extends com
     /**
      * @return Whether to enable control plane node auto resizing.
      * 
-     * &lt;a name=&#34;nested_control_plane_node_vsphere_config&#34;&gt;&lt;/a&gt;The `vsphere_config` block contains:
+     * &lt;a name=&#34;nestedControlPlaneNodeVsphereConfig&#34;&gt;&lt;/a&gt;The `vsphereConfig` block contains:
      * 
      */
     public Output<Boolean> enabled() {
@@ -60,7 +60,7 @@ public final class VMwareClusterControlPlaneNodeAutoResizeConfigArgs extends com
         /**
          * @param enabled Whether to enable control plane node auto resizing.
          * 
-         * &lt;a name=&#34;nested_control_plane_node_vsphere_config&#34;&gt;&lt;/a&gt;The `vsphere_config` block contains:
+         * &lt;a name=&#34;nestedControlPlaneNodeVsphereConfig&#34;&gt;&lt;/a&gt;The `vsphereConfig` block contains:
          * 
          * @return builder
          * 
@@ -73,7 +73,7 @@ public final class VMwareClusterControlPlaneNodeAutoResizeConfigArgs extends com
         /**
          * @param enabled Whether to enable control plane node auto resizing.
          * 
-         * &lt;a name=&#34;nested_control_plane_node_vsphere_config&#34;&gt;&lt;/a&gt;The `vsphere_config` block contains:
+         * &lt;a name=&#34;nestedControlPlaneNodeVsphereConfig&#34;&gt;&lt;/a&gt;The `vsphereConfig` block contains:
          * 
          * @return builder
          * 

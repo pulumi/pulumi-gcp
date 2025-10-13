@@ -34,7 +34,7 @@ public final class DiskAsyncReplicationState extends com.pulumi.resources.Resour
     /**
      * The secondary disk (target of replication). You can specify only one value. Structure is documented below.
      * 
-     * The `secondary_disk` block includes:
+     * The `secondaryDisk` block includes:
      * 
      */
     @Import(name="secondaryDisk")
@@ -43,7 +43,7 @@ public final class DiskAsyncReplicationState extends com.pulumi.resources.Resour
     /**
      * @return The secondary disk (target of replication). You can specify only one value. Structure is documented below.
      * 
-     * The `secondary_disk` block includes:
+     * The `secondaryDisk` block includes:
      * 
      */
     public Optional<Output<DiskAsyncReplicationSecondaryDiskArgs>> secondaryDisk() {
@@ -99,7 +99,7 @@ public final class DiskAsyncReplicationState extends com.pulumi.resources.Resour
         /**
          * @param secondaryDisk The secondary disk (target of replication). You can specify only one value. Structure is documented below.
          * 
-         * The `secondary_disk` block includes:
+         * The `secondaryDisk` block includes:
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class DiskAsyncReplicationState extends com.pulumi.resources.Resour
         /**
          * @param secondaryDisk The secondary disk (target of replication). You can specify only one value. Structure is documented below.
          * 
-         * The `secondary_disk` block includes:
+         * The `secondaryDisk` block includes:
          * 
          * @return builder
          * 

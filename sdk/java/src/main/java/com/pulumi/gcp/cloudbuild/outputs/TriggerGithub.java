@@ -32,13 +32,13 @@ public final class TriggerGithub {
      */
     private @Nullable String owner;
     /**
-     * @return filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
+     * @return filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
      * Structure is documented below.
      * 
      */
     private @Nullable TriggerGithubPullRequest pullRequest;
     /**
-     * @return filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
+     * @return filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
      * Structure is documented below.
      * 
      */
@@ -70,7 +70,7 @@ public final class TriggerGithub {
         return Optional.ofNullable(this.owner);
     }
     /**
-     * @return filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
+     * @return filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
      * Structure is documented below.
      * 
      */
@@ -78,7 +78,7 @@ public final class TriggerGithub {
         return Optional.ofNullable(this.pullRequest);
     }
     /**
-     * @return filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
+     * @return filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
      * Structure is documented below.
      * 
      */

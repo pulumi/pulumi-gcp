@@ -115,14 +115,14 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+     * Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
      * 
      */
     @Import(name="publicKeyData")
     private @Nullable Output<String> publicKeyData;
 
     /**
-     * @return Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+     * @return Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
      * 
      */
     public Optional<Output<String>> publicKeyData() {
@@ -370,7 +370,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKeyData Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+         * @param publicKeyData Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKeyData Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
+         * @param publicKeyData Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
          * 
          * @return builder
          * 

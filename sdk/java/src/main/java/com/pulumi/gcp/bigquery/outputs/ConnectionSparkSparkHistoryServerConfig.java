@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionSparkSparkHistoryServerConfig {
     /**
-     * @return Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
+     * @return Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[clusterName].
      * 
      */
     private @Nullable String dataprocCluster;
 
     private ConnectionSparkSparkHistoryServerConfig() {}
     /**
-     * @return Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
+     * @return Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[clusterName].
      * 
      */
     public Optional<String> dataprocCluster() {

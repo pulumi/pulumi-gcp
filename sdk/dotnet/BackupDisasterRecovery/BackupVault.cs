@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// Optional. User annotations. See https://google.aip.dev/128#annotations
         /// Stores small amounts of arbitrary data.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         /// * deletion of a backup vault instance that is being referenced by an active backup plan.
         /// 
-        /// &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+        /// &gt; **Warning:** `ForceDelete` is deprecated and will be removed in a future major release. Use `IgnoreInactiveDatasources` instead.
         /// </summary>
         [Output("forceDelete")]
         public Output<bool?> ForceDelete { get; private set; } = null!;
@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// <summary>
         /// Optional. Resource labels to represent user provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -341,7 +341,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// Optional. User annotations. See https://google.aip.dev/128#annotations
         /// Stores small amounts of arbitrary data.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -386,7 +386,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         /// * deletion of a backup vault instance that is being referenced by an active backup plan.
         /// 
-        /// &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+        /// &gt; **Warning:** `ForceDelete` is deprecated and will be removed in a future major release. Use `IgnoreInactiveDatasources` instead.
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
@@ -420,7 +420,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// <summary>
         /// Optional. Resource labels to represent user provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -470,7 +470,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// Optional. User annotations. See https://google.aip.dev/128#annotations
         /// Stores small amounts of arbitrary data.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -563,7 +563,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         /// * deletion of a backup vault instance that is being referenced by an active backup plan.
         /// 
-        /// &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+        /// &gt; **Warning:** `ForceDelete` is deprecated and will be removed in a future major release. Use `IgnoreInactiveDatasources` instead.
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
@@ -597,7 +597,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// <summary>
         /// Optional. Resource labels to represent user provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

@@ -374,7 +374,7 @@ namespace Pulumi.Gcp.Firestore
         /// Output only. The keyPrefix for this database.
         /// This keyPrefix is used, in combination with the project id ("~") to construct the application id
         /// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-        /// This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+        /// This value may be empty in which case the appid to use for URL-encoded keys is the ProjectId (eg: foo instead of v~foo).
         /// </summary>
         [Output("keyPrefix")]
         public Output<string> KeyPrefix { get; private set; } = null!;
@@ -672,7 +672,7 @@ namespace Pulumi.Gcp.Firestore
         /// Output only. The keyPrefix for this database.
         /// This keyPrefix is used, in combination with the project id ("~") to construct the application id
         /// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-        /// This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+        /// This value may be empty in which case the appid to use for URL-encoded keys is the ProjectId (eg: foo instead of v~foo).
         /// </summary>
         [Input("keyPrefix")]
         public Input<string>? KeyPrefix { get; set; }

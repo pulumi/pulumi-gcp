@@ -47,7 +47,7 @@ public final class GetEnvironmentConfigPrivateEnvironmentConfig {
      */
     private String masterIpv4CidrBlock;
     /**
-     * @return The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * @return The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
      * 
      */
     private String webServerIpv4CidrBlock;
@@ -103,7 +103,7 @@ public final class GetEnvironmentConfigPrivateEnvironmentConfig {
         return this.masterIpv4CidrBlock;
     }
     /**
-     * @return The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * @return The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
      * 
      */
     public String webServerIpv4CidrBlock() {

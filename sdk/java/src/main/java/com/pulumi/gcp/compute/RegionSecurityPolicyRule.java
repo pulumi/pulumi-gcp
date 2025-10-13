@@ -492,8 +492,8 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      * Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it&#39;s not required to be present. For strings specifying &#39;*&#39; is also equivalent to match all.
      * For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
      * Example:
-     * networkMatch: srcIpRanges: - &#34;192.0.2.0/24&#34; - &#34;198.51.100.0/24&#34; userDefinedFields: - name: &#34;ipv4_fragment_offset&#34; values: - &#34;1-0x1fff&#34;
-     * The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named &#34;ipv4_fragment_offset&#34; with a value between 1 and 0x1fff inclusive
+     * networkMatch: srcIpRanges: - &#34;192.0.2.0/24&#34; - &#34;198.51.100.0/24&#34; userDefinedFields: - name: &#34;ipv4FragmentOffset&#34; values: - &#34;1-0x1fff&#34;
+     * The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named &#34;ipv4FragmentOffset&#34; with a value between 1 and 0x1fff inclusive
      * Structure is documented below.
      * 
      */
@@ -507,8 +507,8 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      * Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it&#39;s not required to be present. For strings specifying &#39;*&#39; is also equivalent to match all.
      * For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
      * Example:
-     * networkMatch: srcIpRanges: - &#34;192.0.2.0/24&#34; - &#34;198.51.100.0/24&#34; userDefinedFields: - name: &#34;ipv4_fragment_offset&#34; values: - &#34;1-0x1fff&#34;
-     * The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named &#34;ipv4_fragment_offset&#34; with a value between 1 and 0x1fff inclusive
+     * networkMatch: srcIpRanges: - &#34;192.0.2.0/24&#34; - &#34;198.51.100.0/24&#34; userDefinedFields: - name: &#34;ipv4FragmentOffset&#34; values: - &#34;1-0x1fff&#34;
+     * The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named &#34;ipv4FragmentOffset&#34; with a value between 1 and 0x1fff inclusive
      * Structure is documented below.
      * 
      */
@@ -582,7 +582,7 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
         return this.project;
     }
     /**
-     * Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * Must be specified if the action is &#34;rateBasedBan&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
      * Structure is documented below.
      * 
      */
@@ -590,7 +590,7 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
     private Output</* @Nullable */ RegionSecurityPolicyRuleRateLimitOptions> rateLimitOptions;
 
     /**
-     * @return Must be specified if the action is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
+     * @return Must be specified if the action is &#34;rateBasedBan&#34; or &#34;throttle&#34;. Cannot be specified for any other actions.
      * Structure is documented below.
      * 
      */

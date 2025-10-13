@@ -587,7 +587,7 @@ namespace Pulumi.Gcp.DataPlex
         /// User-defined labels for the scan. A list of key-&gt;value pairs.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -599,7 +599,7 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
+        /// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a ProjectId or ProjectNumber and locationId refers to a GCP region.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -753,7 +753,7 @@ namespace Pulumi.Gcp.DataPlex
         /// User-defined labels for the scan. A list of key-&gt;value pairs.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -877,7 +877,7 @@ namespace Pulumi.Gcp.DataPlex
         /// User-defined labels for the scan. A list of key-&gt;value pairs.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -892,7 +892,7 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
+        /// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a ProjectId or ProjectNumber and locationId refers to a GCP region.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

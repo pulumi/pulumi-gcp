@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudFunctions.Outputs
     public sealed class FunctionEventTriggerFailurePolicy
     {
         /// <summary>
-        /// Whether the function should be retried on failure. Defaults to `false`.
+        /// Whether the function should be retried on failure. Defaults to `False`.
         /// </summary>
         public readonly bool Retry;
 

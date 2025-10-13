@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name or resource link to the
         /// VLAN interconnect for this interface. Changing this forces a new interface to
-        /// be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        /// be created. Only one of `VpnTunnel`, `InterconnectAttachment` or `Subnetwork` can be specified.
         /// </summary>
         [Output("interconnectAttachment")]
         public Output<string?> InterconnectAttachment { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Compute
         /// The name of the router this interface will be attached to.
         /// Changing this forces a new interface to be created.
         /// 
-        /// In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+        /// In addition to the above required fields, a router interface must have specified either `IpRange` or exactly one of `VpnTunnel`, `InterconnectAttachment` or `Subnetwork`, or both.
         /// 
         /// - - -
         /// </summary>
@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URI of the subnetwork resource that this interface
-        /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `VpnTunnel`, `InterconnectAttachment` or `Subnetwork` can be specified.
         /// </summary>
         [Output("subnetwork")]
         public Output<string?> Subnetwork { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name or resource link to the VPN tunnel this
         /// interface will be linked to. Changing this forces a new interface to be created. Only
-        /// one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        /// one of `VpnTunnel`, `InterconnectAttachment` or `Subnetwork` can be specified.
         /// </summary>
         [Output("vpnTunnel")]
         public Output<string?> VpnTunnel { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name or resource link to the
         /// VLAN interconnect for this interface. Changing this forces a new interface to
-        /// be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        /// be created. Only one of `VpnTunnel`, `InterconnectAttachment` or `Subnetwork` can be specified.
         /// </summary>
         [Input("interconnectAttachment")]
         public Input<string>? InterconnectAttachment { get; set; }
@@ -246,7 +246,7 @@ namespace Pulumi.Gcp.Compute
         /// The name of the router this interface will be attached to.
         /// Changing this forces a new interface to be created.
         /// 
-        /// In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+        /// In addition to the above required fields, a router interface must have specified either `IpRange` or exactly one of `VpnTunnel`, `InterconnectAttachment` or `Subnetwork`, or both.
         /// 
         /// - - -
         /// </summary>
@@ -255,7 +255,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URI of the subnetwork resource that this interface
-        /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `VpnTunnel`, `InterconnectAttachment` or `Subnetwork` can be specified.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name or resource link to the VPN tunnel this
         /// interface will be linked to. Changing this forces a new interface to be created. Only
-        /// one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        /// one of `VpnTunnel`, `InterconnectAttachment` or `Subnetwork` can be specified.
         /// </summary>
         [Input("vpnTunnel")]
         public Input<string>? VpnTunnel { get; set; }
@@ -279,7 +279,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name or resource link to the
         /// VLAN interconnect for this interface. Changing this forces a new interface to
-        /// be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        /// be created. Only one of `VpnTunnel`, `InterconnectAttachment` or `Subnetwork` can be specified.
         /// </summary>
         [Input("interconnectAttachment")]
         public Input<string>? InterconnectAttachment { get; set; }
@@ -336,7 +336,7 @@ namespace Pulumi.Gcp.Compute
         /// The name of the router this interface will be attached to.
         /// Changing this forces a new interface to be created.
         /// 
-        /// In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+        /// In addition to the above required fields, a router interface must have specified either `IpRange` or exactly one of `VpnTunnel`, `InterconnectAttachment` or `Subnetwork`, or both.
         /// 
         /// - - -
         /// </summary>
@@ -345,7 +345,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URI of the subnetwork resource that this interface
-        /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `VpnTunnel`, `InterconnectAttachment` or `Subnetwork` can be specified.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
@@ -353,7 +353,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name or resource link to the VPN tunnel this
         /// interface will be linked to. Changing this forces a new interface to be created. Only
-        /// one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        /// one of `VpnTunnel`, `InterconnectAttachment` or `Subnetwork` can be specified.
         /// </summary>
         [Input("vpnTunnel")]
         public Input<string>? VpnTunnel { get; set; }

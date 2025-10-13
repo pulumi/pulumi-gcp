@@ -392,7 +392,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether this disk is using confidential compute mode.
-     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      * 
      */
     @Export(name="enableConfidentialCompute", refs={Boolean.class}, tree="[0]")
@@ -400,7 +400,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether this disk is using confidential compute mode.
-     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      * 
      */
     public Output<Boolean> enableConfidentialCompute() {
@@ -426,7 +426,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
     }
     /**
      * The image from which to initialize this disk. This can be
-     * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -441,7 +441,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The image from which to initialize this disk. This can be
-     * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -496,7 +496,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Labels to apply to this disk.  A list of key-&gt;value pairs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -506,7 +506,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * @return Labels to apply to this disk.  A list of key-&gt;value pairs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

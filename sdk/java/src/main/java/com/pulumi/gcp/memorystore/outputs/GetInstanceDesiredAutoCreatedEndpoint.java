@@ -17,7 +17,7 @@ public final class GetInstanceDesiredAutoCreatedEndpoint {
      */
     private String network;
     /**
-     * @return Required. The consumer project_id where the forwarding rule is created from.
+     * @return Required. The consumer projectId where the forwarding rule is created from.
      * 
      */
     private String projectId;
@@ -32,7 +32,7 @@ public final class GetInstanceDesiredAutoCreatedEndpoint {
         return this.network;
     }
     /**
-     * @return Required. The consumer project_id where the forwarding rule is created from.
+     * @return Required. The consumer projectId where the forwarding rule is created from.
      * 
      */
     public String projectId() {

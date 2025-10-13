@@ -271,13 +271,13 @@ namespace Pulumi.Gcp.OracleDatabase
         /// <summary>
         /// The labels or tags associated with the Autonomous Database.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
+        /// Resource ID segment making up resource `Name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -301,7 +301,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// Format:
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
         /// It is optional but if specified, this should match the parent ODBNetwork of
-        /// the odb_subnet and backup_odb_subnet.
+        /// the OdbSubnet and backup_odb_subnet.
         /// </summary>
         [Output("odbNetwork")]
         public Output<string> OdbNetwork { get; private set; } = null!;
@@ -431,7 +431,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// <summary>
         /// The labels or tags associated with the Autonomous Database.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -440,7 +440,7 @@ namespace Pulumi.Gcp.OracleDatabase
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
+        /// Resource ID segment making up resource `Name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -457,7 +457,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// Format:
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
         /// It is optional but if specified, this should match the parent ODBNetwork of
-        /// the odb_subnet and backup_odb_subnet.
+        /// the OdbSubnet and backup_odb_subnet.
         /// </summary>
         [Input("odbNetwork")]
         public Input<string>? OdbNetwork { get; set; }
@@ -566,7 +566,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// <summary>
         /// The labels or tags associated with the Autonomous Database.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -575,7 +575,7 @@ namespace Pulumi.Gcp.OracleDatabase
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
+        /// Resource ID segment making up resource `Name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -599,7 +599,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// Format:
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
         /// It is optional but if specified, this should match the parent ODBNetwork of
-        /// the odb_subnet and backup_odb_subnet.
+        /// the OdbSubnet and backup_odb_subnet.
         /// </summary>
         [Input("odbNetwork")]
         public Input<string>? OdbNetwork { get; set; }

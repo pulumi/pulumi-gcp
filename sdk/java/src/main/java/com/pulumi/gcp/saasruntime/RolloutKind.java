@@ -115,7 +115,7 @@ public class RolloutKind extends com.pulumi.resources.CustomResource {
      * They are not queryable and should be preserved when modifying objects.
      * More info: https://kubernetes.io/docs/user-guide/annotations
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -127,7 +127,7 @@ public class RolloutKind extends com.pulumi.resources.CustomResource {
      * They are not queryable and should be preserved when modifying objects.
      * More info: https://kubernetes.io/docs/user-guide/annotations
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -169,7 +169,7 @@ public class RolloutKind extends com.pulumi.resources.CustomResource {
     }
     /**
      * The configuration for error budget. If the number of failed units exceeds
-     * max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
+     * max(allowed_count, allowedRatio * total_units), the rollout will be paused.
      * Structure is documented below.
      * 
      */
@@ -178,7 +178,7 @@ public class RolloutKind extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The configuration for error budget. If the number of failed units exceeds
-     * max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
+     * max(allowed_count, allowedRatio * total_units), the rollout will be paused.
      * Structure is documented below.
      * 
      */
@@ -189,7 +189,7 @@ public class RolloutKind extends com.pulumi.resources.CustomResource {
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -199,7 +199,7 @@ public class RolloutKind extends com.pulumi.resources.CustomResource {
      * @return The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

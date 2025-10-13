@@ -33,7 +33,7 @@ public final class InstanceGceSetupDataDisks {
     private @Nullable String diskType;
     /**
      * @return &#39;Optional. The KMS key used to encrypt the disks,
-     * only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
+     * only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
      * Learn more about using your own encryption keys.&#39;
      * 
      */
@@ -68,7 +68,7 @@ public final class InstanceGceSetupDataDisks {
     }
     /**
      * @return &#39;Optional. The KMS key used to encrypt the disks,
-     * only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
+     * only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
      * Learn more about using your own encryption keys.&#39;
      * 
      */

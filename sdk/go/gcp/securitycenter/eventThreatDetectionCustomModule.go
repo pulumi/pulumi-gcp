@@ -24,6 +24,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Scc Event Threat Detection Custom Module
+//
 // ## Import
 //
 // EventThreatDetectionCustomModule can be imported using any of these accepted formats:

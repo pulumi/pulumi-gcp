@@ -92,7 +92,7 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
      * NotificationChannelDescriptor corresponding to the type field.
      * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
      * determine if there are upstream changes to these fields. They can also be configured via
-     * the sensitive_labels block, but cannot be configured in both places.
+     * the sensitiveLabels block, but cannot be configured in both places.
      * 
      */
     @Import(name="labels")
@@ -104,7 +104,7 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
      * NotificationChannelDescriptor corresponding to the type field.
      * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
      * determine if there are upstream changes to these fields. They can also be configured via
-     * the sensitive_labels block, but cannot be configured in both places.
+     * the sensitiveLabels block, but cannot be configured in both places.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -351,7 +351,7 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
          * NotificationChannelDescriptor corresponding to the type field.
          * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
          * determine if there are upstream changes to these fields. They can also be configured via
-         * the sensitive_labels block, but cannot be configured in both places.
+         * the sensitiveLabels block, but cannot be configured in both places.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
          * NotificationChannelDescriptor corresponding to the type field.
          * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
          * determine if there are upstream changes to these fields. They can also be configured via
-         * the sensitive_labels block, but cannot be configured in both places.
+         * the sensitiveLabels block, but cannot be configured in both places.
          * 
          * @return builder
          * 

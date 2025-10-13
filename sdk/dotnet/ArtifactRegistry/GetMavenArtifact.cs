@@ -13,18 +13,24 @@ namespace Pulumi.Gcp.ArtifactRegistry
     {
         /// <summary>
         /// This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetMavenArtifactResult> InvokeAsync(GetMavenArtifactArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMavenArtifactResult>("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", args ?? new GetMavenArtifactArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetMavenArtifactResult> Invoke(GetMavenArtifactInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMavenArtifactResult>("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", args ?? new GetMavenArtifactInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetMavenArtifactResult> Invoke(GetMavenArtifactInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMavenArtifactResult>("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", args ?? new GetMavenArtifactInvokeArgs(), options.WithDefaults());

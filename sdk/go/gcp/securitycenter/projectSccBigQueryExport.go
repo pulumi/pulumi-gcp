@@ -27,6 +27,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Scc Project Big Query Export Config Basic
+//
 // ## Import
 //
 // ProjectSccBigQueryExport can be imported using any of these accepted formats:

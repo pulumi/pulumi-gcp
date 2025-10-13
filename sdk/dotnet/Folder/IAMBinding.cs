@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Folder
         public Output<string> Folder { get; private set; } = null!;
 
         /// <summary>
-        /// An array of identities that will be granted the privilege in the `role`.
+        /// An array of identities that will be granted the privilege in the `Role`.
         /// Each entry can have one of the following values:
         /// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -159,7 +159,7 @@ namespace Pulumi.Gcp.Folder
         private InputList<string>? _members;
 
         /// <summary>
-        /// An array of identities that will be granted the privilege in the `role`.
+        /// An array of identities that will be granted the privilege in the `Role`.
         /// Each entry can have one of the following values:
         /// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -208,7 +208,7 @@ namespace Pulumi.Gcp.Folder
         private InputList<string>? _members;
 
         /// <summary>
-        /// An array of identities that will be granted the privilege in the `role`.
+        /// An array of identities that will be granted the privilege in the `Role`.
         /// Each entry can have one of the following values:
         /// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.

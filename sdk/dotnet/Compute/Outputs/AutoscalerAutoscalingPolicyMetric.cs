@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// If not specified, the type defaults to gce_instance.
         /// You should provide a filter that is selective enough to pick just
         /// one TimeSeries for the autoscaled group or for each of the instances
-        /// (if you are using gce_instance resource type). If multiple
+        /// (if you are using GceInstance resource type). If multiple
         /// TimeSeries are returned upon the query execution, the autoscaler
         /// will sum their respective values to obtain its scaling value.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// your instances.
         /// A bad example would be a metric exporting an average or median
         /// latency, since this value can't include a chunk assignable to a
-        /// single instance, it could be better used with utilization_target
+        /// single instance, it could be better used with UtilizationTarget
         /// instead.
         /// </summary>
         public readonly double? SingleInstanceAssignment;

@@ -15,7 +15,7 @@ public final class TopicMessageTransformJavascriptUdfArgs extends com.pulumi.res
     public static final TopicMessageTransformJavascriptUdfArgs Empty = new TopicMessageTransformJavascriptUdfArgs();
 
     /**
-     * JavaScript code that contains a function `function_name` with the
+     * JavaScript code that contains a function `functionName` with the
      * following signature:
      * 
      */
@@ -23,7 +23,7 @@ public final class TopicMessageTransformJavascriptUdfArgs extends com.pulumi.res
     private Output<String> code;
 
     /**
-     * @return JavaScript code that contains a function `function_name` with the
+     * @return JavaScript code that contains a function `functionName` with the
      * following signature:
      * 
      */
@@ -72,7 +72,7 @@ public final class TopicMessageTransformJavascriptUdfArgs extends com.pulumi.res
         }
 
         /**
-         * @param code JavaScript code that contains a function `function_name` with the
+         * @param code JavaScript code that contains a function `functionName` with the
          * following signature:
          * 
          * @return builder
@@ -84,7 +84,7 @@ public final class TopicMessageTransformJavascriptUdfArgs extends com.pulumi.res
         }
 
         /**
-         * @param code JavaScript code that contains a function `function_name` with the
+         * @param code JavaScript code that contains a function `functionName` with the
          * following signature:
          * 
          * @return builder

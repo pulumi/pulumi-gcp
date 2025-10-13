@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Effective service account associated with ServiceInstance. This will be the service_account if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
+        /// Effective service account associated with ServiceInstance. This will be the ServiceAccount if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
         /// </summary>
         [Output("effectiveServiceAccount")]
         public Output<string> EffectiveServiceAccount { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -284,7 +284,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -360,7 +360,7 @@ namespace Pulumi.Gcp.Dataproc
         }
 
         /// <summary>
-        /// Effective service account associated with ServiceInstance. This will be the service_account if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
+        /// Effective service account associated with ServiceInstance. This will be the ServiceAccount if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
         /// </summary>
         [Input("effectiveServiceAccount")]
         public Input<string>? EffectiveServiceAccount { get; set; }
@@ -378,7 +378,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

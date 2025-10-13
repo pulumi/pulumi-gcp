@@ -570,7 +570,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Output only. The keyPrefix for this database.
      * This keyPrefix is used, in combination with the project id (&#34;~&#34;) to construct the application id
      * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-     * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+     * This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v~foo).
      * 
      */
     @Export(name="keyPrefix", refs={String.class}, tree="[0]")
@@ -580,7 +580,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * @return Output only. The keyPrefix for this database.
      * This keyPrefix is used, in combination with the project id (&#34;~&#34;) to construct the application id
      * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-     * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+     * This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v~foo).
      * 
      */
     public Output<String> keyPrefix() {

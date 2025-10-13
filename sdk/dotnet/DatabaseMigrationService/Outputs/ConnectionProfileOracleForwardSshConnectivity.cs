@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// Input only. SSH password. Only one of `password` and `private_key` can be configured.
+        /// Input only. SSH password. Only one of `Password` and `PrivateKey` can be configured.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? Password;
@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+        /// Input only. SSH private key. Only one of `Password` and `PrivateKey` can be configured.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? PrivateKey;

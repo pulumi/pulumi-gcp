@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterControlPlaneEndpointsConfigIpEndpointsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Controls whether to allow direct IP access. Defaults to `true`.
+        /// Controls whether to allow direct IP access. Defaults to `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

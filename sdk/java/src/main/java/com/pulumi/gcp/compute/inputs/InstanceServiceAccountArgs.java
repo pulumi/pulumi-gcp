@@ -19,7 +19,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
 
     /**
      * The service account e-mail address.
-     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      * 
      */
     @Import(name="email")
@@ -27,7 +27,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The service account e-mail address.
-     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      * 
      */
     public Optional<Output<String>> email() {
@@ -38,7 +38,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
      * A list of service scopes. Both OAuth2 URLs and gcloud
      * short names are supported. To allow full access to all Cloud APIs, use the
      * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
-     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      * 
      */
     @Import(name="scopes", required=true)
@@ -48,7 +48,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
      * @return A list of service scopes. Both OAuth2 URLs and gcloud
      * short names are supported. To allow full access to all Cloud APIs, use the
      * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
-     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      * 
      */
     public Output<List<String>> scopes() {
@@ -82,7 +82,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
 
         /**
          * @param email The service account e-mail address.
-         * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+         * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
 
         /**
          * @param email The service account e-mail address.
-         * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+         * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
          * @param scopes A list of service scopes. Both OAuth2 URLs and gcloud
          * short names are supported. To allow full access to all Cloud APIs, use the
          * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
-         * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+         * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
          * @param scopes A list of service scopes. Both OAuth2 URLs and gcloud
          * short names are supported. To allow full access to all Cloud APIs, use the
          * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
-         * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+         * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
          * @param scopes A list of service scopes. Both OAuth2 URLs and gcloud
          * short names are supported. To allow full access to all Cloud APIs, use the
          * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
-         * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+         * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
          * 
          * @return builder
          * 

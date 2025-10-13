@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+        /// Number of blue nodes to drain in a batch. Only one of the BatchPercentage or BatchNodeCount can be specified.
         /// </summary>
         [Input("batchNodeCount")]
         public Input<int>? BatchNodeCount { get; set; }
 
         /// <summary>
-        /// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+        /// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the BatchPercentage or BatchNodeCount can be specified.
         /// </summary>
         [Input("batchPercentage")]
         public Input<double>? BatchPercentage { get; set; }

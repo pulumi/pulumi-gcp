@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class DatabaseInstanceSettingsDataCacheConfig
     {
         /// <summary>
-        /// Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
+        /// Whether data cache is enabled for the instance. Defaults to `True` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `False`.
         /// </summary>
         public readonly bool? DataCacheEnabled;
 

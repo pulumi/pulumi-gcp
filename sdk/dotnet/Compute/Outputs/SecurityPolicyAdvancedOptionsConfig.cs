@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// Custom configuration to apply the JSON parsing. Only applicable when
-        /// `json_parsing` is set to `STANDARD`. Structure is documented below.
+        /// `JsonParsing` is set to `STANDARD`. Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig? JsonCustomConfig;
         /// <summary>

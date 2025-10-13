@@ -18,7 +18,7 @@ public final class BackupPlanBackupRule {
      */
     private Integer backupRetentionDays;
     /**
-     * @return The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
+     * @return The unique ID of this `BackupRule`. The `ruleId` is unique per `BackupPlan`.
      * 
      */
     private String ruleId;
@@ -38,7 +38,7 @@ public final class BackupPlanBackupRule {
         return this.backupRetentionDays;
     }
     /**
-     * @return The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
+     * @return The unique ID of this `BackupRule`. The `ruleId` is unique per `BackupPlan`.
      * 
      */
     public String ruleId() {

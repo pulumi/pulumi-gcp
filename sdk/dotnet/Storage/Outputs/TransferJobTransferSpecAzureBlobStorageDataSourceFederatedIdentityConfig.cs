@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// <summary>
         /// The client (directory) ID of the application with federated credentials.
         /// 
-        /// &lt;a name="nested_schedule_start_end_date"&gt;&lt;/a&gt;The `schedule_start_date` and `schedule_end_date` blocks support:
+        /// &lt;a name="NestedScheduleStartEndDate"&gt;&lt;/a&gt;The `ScheduleStartDate` and `ScheduleEndDate` blocks support:
         /// </summary>
         public readonly string TenantId;
 

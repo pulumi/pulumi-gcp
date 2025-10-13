@@ -12,8 +12,8 @@ namespace Pulumi.Gcp.SecurityPosture
     /// <summary>
     /// Represents a deployment of a security posture on a resource. A posture contains user curated policy sets. A posture can
     /// be deployed on a project or on a folder or on an organization. To deploy a posture we need to populate the posture's name
-    /// and its revision_id in the posture deployment configuration. Every update to a deployed posture generates a new revision_id.
-    /// Thus, the updated revision_id should be used in the respective posture deployment's configuration to deploy that posture
+    /// and its RevisionId in the posture deployment configuration. Every update to a deployed posture generates a new revision_id.
+    /// Thus, the updated RevisionId should be used in the respective posture deployment's configuration to deploy that posture
     /// on a resource.
     /// 
     /// To get more information about PostureDeployment, see:
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.SecurityPosture
         /// <summary>
         /// This is an output only optional field which will be filled in case when
         /// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-        /// It denotes the desired posture revision_id to be deployed.
+        /// It denotes the desired posture RevisionId to be deployed.
         /// </summary>
         [Output("desiredPostureRevisionId")]
         public Output<string> DesiredPostureRevisionId { get; private set; } = null!;
@@ -268,7 +268,7 @@ namespace Pulumi.Gcp.SecurityPosture
         /// <summary>
         /// This is an output only optional field which will be filled in case when
         /// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-        /// It denotes the desired posture revision_id to be deployed.
+        /// It denotes the desired posture RevisionId to be deployed.
         /// </summary>
         [Input("desiredPostureRevisionId")]
         public Input<string>? DesiredPostureRevisionId { get; set; }

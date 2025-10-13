@@ -14,15 +14,15 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class BucketIpFilter
     {
         /// <summary>
-        /// While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
+        /// While set `True`, allows all service agents to access the bucket regardless of the IP filter configuration.
         /// </summary>
         public readonly bool? AllowAllServiceAgentAccess;
         /// <summary>
-        /// While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
+        /// While set `True`, allows cross-org VPCs in the bucket's IP filter configuration.
         /// </summary>
         public readonly bool? AllowCrossOrgVpcs;
         /// <summary>
-        /// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
+        /// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `AllowAllServiceAgentAccess` must be supplied when `Mode` is set to `Enabled`, it can be ommited for other values.
         /// </summary>
         public readonly string Mode;
         /// <summary>

@@ -24,7 +24,7 @@ public final class V2PolicyOrchestratorState extends com.pulumi.resources.Resour
     /**
      * Required. Action to be done by the orchestrator in
      * `projects/{project_id}/zones/{zone_id}` locations defined by the
-     * `orchestration_scope`. Allowed values:
+     * `orchestrationScope`. Allowed values:
      * - `UPSERT` - Orchestrator will create or update target resources.
      * - `DELETE` - Orchestrator will delete target resources, if they exist
      * 
@@ -35,7 +35,7 @@ public final class V2PolicyOrchestratorState extends com.pulumi.resources.Resour
     /**
      * @return Required. Action to be done by the orchestrator in
      * `projects/{project_id}/zones/{zone_id}` locations defined by the
-     * `orchestration_scope`. Allowed values:
+     * `orchestrationScope`. Allowed values:
      * - `UPSERT` - Orchestrator will create or update target resources.
      * - `DELETE` - Orchestrator will delete target resources, if they exist
      * 
@@ -92,7 +92,7 @@ public final class V2PolicyOrchestratorState extends com.pulumi.resources.Resour
     /**
      * Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -101,7 +101,7 @@ public final class V2PolicyOrchestratorState extends com.pulumi.resources.Resour
     /**
      * @return Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -343,7 +343,7 @@ public final class V2PolicyOrchestratorState extends com.pulumi.resources.Resour
         /**
          * @param action Required. Action to be done by the orchestrator in
          * `projects/{project_id}/zones/{zone_id}` locations defined by the
-         * `orchestration_scope`. Allowed values:
+         * `orchestrationScope`. Allowed values:
          * - `UPSERT` - Orchestrator will create or update target resources.
          * - `DELETE` - Orchestrator will delete target resources, if they exist
          * 
@@ -358,7 +358,7 @@ public final class V2PolicyOrchestratorState extends com.pulumi.resources.Resour
         /**
          * @param action Required. Action to be done by the orchestrator in
          * `projects/{project_id}/zones/{zone_id}` locations defined by the
-         * `orchestration_scope`. Allowed values:
+         * `orchestrationScope`. Allowed values:
          * - `UPSERT` - Orchestrator will create or update target resources.
          * - `DELETE` - Orchestrator will delete target resources, if they exist
          * 
@@ -435,7 +435,7 @@ public final class V2PolicyOrchestratorState extends com.pulumi.resources.Resour
         /**
          * @param labels Optional. Labels as key value pairs
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class V2PolicyOrchestratorState extends com.pulumi.resources.Resour
         /**
          * @param labels Optional. Labels as key value pairs
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

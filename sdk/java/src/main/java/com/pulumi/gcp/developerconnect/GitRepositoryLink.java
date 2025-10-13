@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Developer Connect Git Repository Link Github Doc
+ * 
  * ## Import
  * 
  * GitRepositoryLink can be imported using any of these accepted formats:
@@ -58,7 +60,7 @@ public class GitRepositoryLink extends com.pulumi.resources.CustomResource {
     /**
      * Optional. Allows clients to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -67,7 +69,7 @@ public class GitRepositoryLink extends com.pulumi.resources.CustomResource {
     /**
      * @return Optional. Allows clients to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -174,7 +176,7 @@ public class GitRepositoryLink extends com.pulumi.resources.CustomResource {
     /**
      * Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -183,7 +185,7 @@ public class GitRepositoryLink extends com.pulumi.resources.CustomResource {
     /**
      * @return Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

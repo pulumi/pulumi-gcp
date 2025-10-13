@@ -153,7 +153,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. The Cloud KMS key that is used for encryption.
-     * Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+     * Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
      * 
      */
     @Import(name="kmsKeyName")
@@ -161,7 +161,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. The Cloud KMS key that is used for encryption.
-     * Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+     * Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
      * 
      */
     public Optional<Output<String>> kmsKeyName() {
@@ -444,7 +444,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kmsKeyName Optional. The Cloud KMS key that is used for encryption.
-         * Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+         * Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kmsKeyName Optional. The Cloud KMS key that is used for encryption.
-         * Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+         * Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
          * 
          * @return builder
          * 

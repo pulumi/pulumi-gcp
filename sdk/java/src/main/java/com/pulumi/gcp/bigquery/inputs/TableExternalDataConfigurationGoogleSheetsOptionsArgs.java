@@ -18,7 +18,7 @@ public final class TableExternalDataConfigurationGoogleSheetsOptionsArgs extends
 
     /**
      * Range of a sheet to query from. Only used when
-     * non-empty. At least one of `range` or `skip_leading_rows` must be set.
+     * non-empty. At least one of `range` or `skipLeadingRows` must be set.
      * Typical format: &#34;sheet_name!top_left_cell_id:bottom_right_cell_id&#34;
      * For example: &#34;sheet1!A1:B20&#34;
      * 
@@ -28,7 +28,7 @@ public final class TableExternalDataConfigurationGoogleSheetsOptionsArgs extends
 
     /**
      * @return Range of a sheet to query from. Only used when
-     * non-empty. At least one of `range` or `skip_leading_rows` must be set.
+     * non-empty. At least one of `range` or `skipLeadingRows` must be set.
      * Typical format: &#34;sheet_name!top_left_cell_id:bottom_right_cell_id&#34;
      * For example: &#34;sheet1!A1:B20&#34;
      * 
@@ -40,7 +40,7 @@ public final class TableExternalDataConfigurationGoogleSheetsOptionsArgs extends
     /**
      * The number of rows at the top of the sheet
      * that BigQuery will skip when reading the data. At least one of `range` or
-     * `skip_leading_rows` must be set.
+     * `skipLeadingRows` must be set.
      * 
      */
     @Import(name="skipLeadingRows")
@@ -49,7 +49,7 @@ public final class TableExternalDataConfigurationGoogleSheetsOptionsArgs extends
     /**
      * @return The number of rows at the top of the sheet
      * that BigQuery will skip when reading the data. At least one of `range` or
-     * `skip_leading_rows` must be set.
+     * `skipLeadingRows` must be set.
      * 
      */
     public Optional<Output<Integer>> skipLeadingRows() {
@@ -83,7 +83,7 @@ public final class TableExternalDataConfigurationGoogleSheetsOptionsArgs extends
 
         /**
          * @param range Range of a sheet to query from. Only used when
-         * non-empty. At least one of `range` or `skip_leading_rows` must be set.
+         * non-empty. At least one of `range` or `skipLeadingRows` must be set.
          * Typical format: &#34;sheet_name!top_left_cell_id:bottom_right_cell_id&#34;
          * For example: &#34;sheet1!A1:B20&#34;
          * 
@@ -97,7 +97,7 @@ public final class TableExternalDataConfigurationGoogleSheetsOptionsArgs extends
 
         /**
          * @param range Range of a sheet to query from. Only used when
-         * non-empty. At least one of `range` or `skip_leading_rows` must be set.
+         * non-empty. At least one of `range` or `skipLeadingRows` must be set.
          * Typical format: &#34;sheet_name!top_left_cell_id:bottom_right_cell_id&#34;
          * For example: &#34;sheet1!A1:B20&#34;
          * 
@@ -111,7 +111,7 @@ public final class TableExternalDataConfigurationGoogleSheetsOptionsArgs extends
         /**
          * @param skipLeadingRows The number of rows at the top of the sheet
          * that BigQuery will skip when reading the data. At least one of `range` or
-         * `skip_leading_rows` must be set.
+         * `skipLeadingRows` must be set.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class TableExternalDataConfigurationGoogleSheetsOptionsArgs extends
         /**
          * @param skipLeadingRows The number of rows at the top of the sheet
          * that BigQuery will skip when reading the data. At least one of `range` or
-         * `skip_leading_rows` must be set.
+         * `skipLeadingRows` must be set.
          * 
          * @return builder
          * 

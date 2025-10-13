@@ -700,7 +700,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
     }
     /**
      * Optional. The Cloud KMS key that is used for encryption.
-     * Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+     * Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
      * 
      */
     @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
@@ -708,7 +708,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. The Cloud KMS key that is used for encryption.
-     * Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+     * Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
      * 
      */
     public Output<Optional<String>> kmsKeyName() {

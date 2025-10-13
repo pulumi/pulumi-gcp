@@ -18,7 +18,7 @@ public final class TagTemplateFieldTypeArgs extends com.pulumi.resources.Resourc
 
     /**
      * Represents an enum type.
-     * Exactly one of `primitive_type` or `enum_type` must be set
+     * Exactly one of `primitiveType` or `enumType` must be set
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class TagTemplateFieldTypeArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Represents an enum type.
-     * Exactly one of `primitive_type` or `enum_type` must be set
+     * Exactly one of `primitiveType` or `enumType` must be set
      * Structure is documented below.
      * 
      */
@@ -37,7 +37,7 @@ public final class TagTemplateFieldTypeArgs extends com.pulumi.resources.Resourc
 
     /**
      * Represents primitive types - string, bool etc.
-     * Exactly one of `primitive_type` or `enum_type` must be set
+     * Exactly one of `primitiveType` or `enumType` must be set
      * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
      * 
      */
@@ -46,7 +46,7 @@ public final class TagTemplateFieldTypeArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Represents primitive types - string, bool etc.
-     * Exactly one of `primitive_type` or `enum_type` must be set
+     * Exactly one of `primitiveType` or `enumType` must be set
      * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
      * 
      */
@@ -81,7 +81,7 @@ public final class TagTemplateFieldTypeArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param enumType Represents an enum type.
-         * Exactly one of `primitive_type` or `enum_type` must be set
+         * Exactly one of `primitiveType` or `enumType` must be set
          * Structure is documented below.
          * 
          * @return builder
@@ -94,7 +94,7 @@ public final class TagTemplateFieldTypeArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param enumType Represents an enum type.
-         * Exactly one of `primitive_type` or `enum_type` must be set
+         * Exactly one of `primitiveType` or `enumType` must be set
          * Structure is documented below.
          * 
          * @return builder
@@ -106,7 +106,7 @@ public final class TagTemplateFieldTypeArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param primitiveType Represents primitive types - string, bool etc.
-         * Exactly one of `primitive_type` or `enum_type` must be set
+         * Exactly one of `primitiveType` or `enumType` must be set
          * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
          * 
          * @return builder
@@ -119,7 +119,7 @@ public final class TagTemplateFieldTypeArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param primitiveType Represents primitive types - string, bool etc.
-         * Exactly one of `primitive_type` or `enum_type` must be set
+         * Exactly one of `primitiveType` or `enumType` must be set
          * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
          * 
          * @return builder

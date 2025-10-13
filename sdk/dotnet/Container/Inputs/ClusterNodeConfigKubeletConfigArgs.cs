@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// container log file before it is rotated. Specified as a positive number and a
         /// unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
         /// The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
-        /// (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
+        /// (`ContainerLogMaxSize` * `ContainerLogMaxFiles`) cannot exceed 1% of the total storage of the node.
         /// </summary>
         [Input("containerLogMaxSize")]
         public Input<string>? ContainerLogMaxSize { get; set; }

@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.Projects
         public Output<string?> RestorePolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
+        /// The Service Accounts changed by this resource. It is used for `REVERT` the `Action` on the destroy.
         /// </summary>
         [Output("serviceAccounts")]
         public Output<ImmutableDictionary<string, string>> ServiceAccounts { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.Projects
         private InputMap<string>? _serviceAccounts;
 
         /// <summary>
-        /// The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
+        /// The Service Accounts changed by this resource. It is used for `REVERT` the `Action` on the destroy.
         /// </summary>
         public InputMap<string> ServiceAccounts
         {

@@ -34,7 +34,7 @@ public final class AlertPolicyAlertStrategyArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Control over how the notification channels in `notification_channels`
+     * Control over how the notification channels in `notificationChannels`
      * are notified when this alert fires, on a per-channel basis.
      * Structure is documented below.
      * 
@@ -43,7 +43,7 @@ public final class AlertPolicyAlertStrategyArgs extends com.pulumi.resources.Res
     private @Nullable Output<List<AlertPolicyAlertStrategyNotificationChannelStrategyArgs>> notificationChannelStrategies;
 
     /**
-     * @return Control over how the notification channels in `notification_channels`
+     * @return Control over how the notification channels in `notificationChannels`
      * are notified when this alert fires, on a per-channel basis.
      * Structure is documented below.
      * 
@@ -137,7 +137,7 @@ public final class AlertPolicyAlertStrategyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param notificationChannelStrategies Control over how the notification channels in `notification_channels`
+         * @param notificationChannelStrategies Control over how the notification channels in `notificationChannels`
          * are notified when this alert fires, on a per-channel basis.
          * Structure is documented below.
          * 
@@ -150,7 +150,7 @@ public final class AlertPolicyAlertStrategyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param notificationChannelStrategies Control over how the notification channels in `notification_channels`
+         * @param notificationChannelStrategies Control over how the notification channels in `notificationChannels`
          * are notified when this alert fires, on a per-channel basis.
          * Structure is documented below.
          * 
@@ -162,7 +162,7 @@ public final class AlertPolicyAlertStrategyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param notificationChannelStrategies Control over how the notification channels in `notification_channels`
+         * @param notificationChannelStrategies Control over how the notification channels in `notificationChannels`
          * are notified when this alert fires, on a per-channel basis.
          * Structure is documented below.
          * 

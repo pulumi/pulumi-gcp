@@ -248,7 +248,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// The KMS key to be used to protect this DataStore at creation time. Must be
         /// set for requests that need to comply with CMEK Org Policy protections.
         /// If this field is set and processed successfully, the DataStore will be
-        /// protected by the KMS key, as indicated in the cmek_config field.
+        /// protected by the KMS key, as indicated in the CmekConfig field.
         /// </summary>
         [Output("kmsKeyName")]
         public Output<string?> KmsKeyName { get; private set; } = null!;
@@ -396,7 +396,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// The KMS key to be used to protect this DataStore at creation time. Must be
         /// set for requests that need to comply with CMEK Org Policy protections.
         /// If this field is set and processed successfully, the DataStore will be
-        /// protected by the KMS key, as indicated in the cmek_config field.
+        /// protected by the KMS key, as indicated in the CmekConfig field.
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
@@ -515,7 +515,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// The KMS key to be used to protect this DataStore at creation time. Must be
         /// set for requests that need to comply with CMEK Org Policy protections.
         /// If this field is set and processed successfully, the DataStore will be
-        /// protected by the KMS key, as indicated in the cmek_config field.
+        /// protected by the KMS key, as indicated in the CmekConfig field.
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }

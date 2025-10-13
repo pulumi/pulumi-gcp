@@ -14,7 +14,7 @@ public final class UptimeCheckConfigSyntheticMonitor {
      * @return Target a Synthetic Monitor GCFv2 Instance
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_synthetic_monitor_cloud_function_v2&#34;&gt;&lt;/a&gt;The `cloud_function_v2` block supports:
+     * &lt;a name=&#34;nestedSyntheticMonitorCloudFunctionV2&#34;&gt;&lt;/a&gt;The `cloudFunctionV2` block supports:
      * 
      */
     private UptimeCheckConfigSyntheticMonitorCloudFunctionV2 cloudFunctionV2;
@@ -24,7 +24,7 @@ public final class UptimeCheckConfigSyntheticMonitor {
      * @return Target a Synthetic Monitor GCFv2 Instance
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_synthetic_monitor_cloud_function_v2&#34;&gt;&lt;/a&gt;The `cloud_function_v2` block supports:
+     * &lt;a name=&#34;nestedSyntheticMonitorCloudFunctionV2&#34;&gt;&lt;/a&gt;The `cloudFunctionV2` block supports:
      * 
      */
     public UptimeCheckConfigSyntheticMonitorCloudFunctionV2 cloudFunctionV2() {

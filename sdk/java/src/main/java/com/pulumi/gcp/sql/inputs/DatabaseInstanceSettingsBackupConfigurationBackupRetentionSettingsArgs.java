@@ -18,7 +18,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSet
     public static final DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs Empty = new DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs();
 
     /**
-     * Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+     * Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
      * is &#39;COUNT&#39;, we will retain this many backups.
      * 
      */
@@ -26,7 +26,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSet
     private Output<Integer> retainedBackups;
 
     /**
-     * @return Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+     * @return Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
      * is &#39;COUNT&#39;, we will retain this many backups.
      * 
      */
@@ -75,7 +75,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSet
         }
 
         /**
-         * @param retainedBackups Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+         * @param retainedBackups Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
          * is &#39;COUNT&#39;, we will retain this many backups.
          * 
          * @return builder
@@ -87,7 +87,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSet
         }
 
         /**
-         * @param retainedBackups Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+         * @param retainedBackups Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
          * is &#39;COUNT&#39;, we will retain this many backups.
          * 
          * @return builder

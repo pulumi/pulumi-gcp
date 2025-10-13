@@ -33,14 +33,14 @@ public final class GetAccountJwtPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+     * Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
      * 
      */
     @Import(name="expiresIn")
     private @Nullable Integer expiresIn;
 
     /**
-     * @return Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+     * @return Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
      * 
      */
     public Optional<Integer> expiresIn() {
@@ -126,7 +126,7 @@ public final class GetAccountJwtPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param expiresIn Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+         * @param expiresIn Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
          * 
          * @return builder
          * 

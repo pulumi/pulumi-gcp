@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
 public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
     /**
      * Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
-     * If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
+     * If retentionStrategy is set to REMOVE_AFTER_CONVERSATION or gcsBucket is empty, audio export is disabled.
      * If audio export is enabled, audio is recorded and saved to gcs_bucket, subject to retention policy of gcs_bucket.
      * This setting won&#39;t effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
      * Structure is documented below.
@@ -199,7 +199,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
-     * If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
+     * If retentionStrategy is set to REMOVE_AFTER_CONVERSATION or gcsBucket is empty, audio export is disabled.
      * If audio export is enabled, audio is recorded and saved to gcs_bucket, subject to retention policy of gcs_bucket.
      * This setting won&#39;t effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
      * Structure is documented below.
@@ -377,7 +377,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.redactionStrategy);
     }
     /**
-     * Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
+     * Defines how long we retain persisted data that contains sensitive info. Only one of `retentionWindowDays` and `retentionStrategy` may be set.
      * * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
      *   Possible values are: `REMOVE_AFTER_CONVERSATION`.
      * 
@@ -386,7 +386,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> retentionStrategy;
 
     /**
-     * @return Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
+     * @return Defines how long we retain persisted data that contains sensitive info. Only one of `retentionWindowDays` and `retentionStrategy` may be set.
      * * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
      *   Possible values are: `REMOVE_AFTER_CONVERSATION`.
      * 
@@ -396,7 +396,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
     }
     /**
      * Retains the data for the specified number of days. User must set a value lower than Dialogflow&#39;s default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
-     * Only one of `retention_window_days` and `retention_strategy` may be set.
+     * Only one of `retentionWindowDays` and `retentionStrategy` may be set.
      * 
      */
     @Export(name="retentionWindowDays", refs={Integer.class}, tree="[0]")
@@ -404,7 +404,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Retains the data for the specified number of days. User must set a value lower than Dialogflow&#39;s default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
-     * Only one of `retention_window_days` and `retention_strategy` may be set.
+     * Only one of `retentionWindowDays` and `retentionStrategy` may be set.
      * 
      */
     public Output<Optional<Integer>> retentionWindowDays() {

@@ -20,13 +20,13 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         public readonly ImmutableArray<Outputs.CertificateMapGclbTargetIpConfig> IpConfigs;
         /// <summary>
         /// Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
-        /// This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+        /// This field is part of a union field `TargetProxy`: Only one of `targetHttpsProxy` or
         /// `targetSslProxy` may be set.
         /// </summary>
         public readonly string? TargetHttpsProxy;
         /// <summary>
         /// Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
-        /// This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+        /// This field is part of a union field `TargetProxy`: Only one of `targetHttpsProxy` or
         /// `targetSslProxy` may be set.
         /// </summary>
         public readonly string? TargetSslProxy;

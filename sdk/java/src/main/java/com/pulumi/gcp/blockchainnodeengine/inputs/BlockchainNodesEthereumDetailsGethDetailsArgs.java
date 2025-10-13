@@ -19,7 +19,7 @@ public final class BlockchainNodesEthereumDetailsGethDetailsArgs extends com.pul
      * Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
      * Possible values are: `FULL`, `ARCHIVE`.
      * 
-     * &lt;a name=&#34;nested_ethereum_details_additional_endpoints&#34;&gt;&lt;/a&gt;The `additional_endpoints` block contains:
+     * &lt;a name=&#34;nestedEthereumDetailsAdditionalEndpoints&#34;&gt;&lt;/a&gt;The `additionalEndpoints` block contains:
      * 
      */
     @Import(name="garbageCollectionMode")
@@ -29,7 +29,7 @@ public final class BlockchainNodesEthereumDetailsGethDetailsArgs extends com.pul
      * @return Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
      * Possible values are: `FULL`, `ARCHIVE`.
      * 
-     * &lt;a name=&#34;nested_ethereum_details_additional_endpoints&#34;&gt;&lt;/a&gt;The `additional_endpoints` block contains:
+     * &lt;a name=&#34;nestedEthereumDetailsAdditionalEndpoints&#34;&gt;&lt;/a&gt;The `additionalEndpoints` block contains:
      * 
      */
     public Optional<Output<String>> garbageCollectionMode() {
@@ -64,7 +64,7 @@ public final class BlockchainNodesEthereumDetailsGethDetailsArgs extends com.pul
          * @param garbageCollectionMode Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
          * Possible values are: `FULL`, `ARCHIVE`.
          * 
-         * &lt;a name=&#34;nested_ethereum_details_additional_endpoints&#34;&gt;&lt;/a&gt;The `additional_endpoints` block contains:
+         * &lt;a name=&#34;nestedEthereumDetailsAdditionalEndpoints&#34;&gt;&lt;/a&gt;The `additionalEndpoints` block contains:
          * 
          * @return builder
          * 
@@ -78,7 +78,7 @@ public final class BlockchainNodesEthereumDetailsGethDetailsArgs extends com.pul
          * @param garbageCollectionMode Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
          * Possible values are: `FULL`, `ARCHIVE`.
          * 
-         * &lt;a name=&#34;nested_ethereum_details_additional_endpoints&#34;&gt;&lt;/a&gt;The `additional_endpoints` block contains:
+         * &lt;a name=&#34;nestedEthereumDetailsAdditionalEndpoints&#34;&gt;&lt;/a&gt;The `additionalEndpoints` block contains:
          * 
          * @return builder
          * 

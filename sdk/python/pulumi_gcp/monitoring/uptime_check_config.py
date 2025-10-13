@@ -625,6 +625,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
             }],
             checker_type="STATIC_IP_CHECKERS")
         ```
+        ### Uptime Check Config Http Password Wo
+
         ### Uptime Check Config Status Code
 
         ```python
@@ -881,6 +883,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
             }],
             checker_type="STATIC_IP_CHECKERS")
         ```
+        ### Uptime Check Config Http Password Wo
+
         ### Uptime Check Config Status Code
 
         ```python

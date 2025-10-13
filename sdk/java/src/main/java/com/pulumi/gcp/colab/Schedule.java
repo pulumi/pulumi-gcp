@@ -455,14 +455,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:colab/schedule:Schedule")
 public class Schedule extends com.pulumi.resources.CustomResource {
     /**
-     * Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
+     * Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
      * 
      */
     @Export(name="allowQueueing", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowQueueing;
 
     /**
-     * @return Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
+     * @return Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
      * 
      */
     public Output<Optional<Boolean>> allowQueueing() {
@@ -527,14 +527,14 @@ public class Schedule extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+     * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is reached or when scheduledRunCount &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      * 
      */
     @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endTime;
 
     /**
-     * @return Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+     * @return Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is reached or when scheduledRunCount &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      * 
      */
     public Output<Optional<String>> endTime() {

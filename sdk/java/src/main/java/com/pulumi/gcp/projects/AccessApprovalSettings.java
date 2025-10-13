@@ -170,7 +170,7 @@ import javax.annotation.Nullable;
 public class AccessApprovalSettings extends com.pulumi.resources.CustomResource {
     /**
      * The asymmetric crypto key version to use for signing approval requests.
-     * Empty active_key_version indicates that a Google-managed key should be used for signing.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      * 
      */
@@ -179,7 +179,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
 
     /**
      * @return The asymmetric crypto key version to use for signing approval requests.
-     * Empty active_key_version indicates that a Google-managed key should be used for signing.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      * 
      */
@@ -237,7 +237,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
         return this.enrolledServices;
     }
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
      * configured on this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
      * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
      * as key versions are inherited top-down.
@@ -247,7 +247,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
     private Output<Boolean> invalidKeyVersion;
 
     /**
-     * @return If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * @return If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
      * configured on this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
      * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
      * as key versions are inherited top-down.
@@ -292,13 +292,13 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * (Optional, Deprecated)
      * Project id.
      * 
-     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      * 
      * @deprecated
-     * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+     * `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      * 
      */
-    @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `project_id` instead. */
+    @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `projectId` instead. */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> project;
 
@@ -306,7 +306,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * @return (Optional, Deprecated)
      * Project id.
      * 
-     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      * 
      */
     public Output<Optional<String>> project() {

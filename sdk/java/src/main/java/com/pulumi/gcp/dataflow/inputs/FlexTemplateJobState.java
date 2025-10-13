@@ -20,14 +20,14 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     public static final FlexTemplateJobState Empty = new FlexTemplateJobState();
 
     /**
-     * List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+     * List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
      * 
      */
     @Import(name="additionalExperiments")
     private @Nullable Output<List<String>> additionalExperiments;
 
     /**
-     * @return List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+     * @return List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
      * 
      */
     public Optional<Output<List<String>>> additionalExperiments() {
@@ -533,7 +533,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
+         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enableStackdriverAgentMetrics&#34;]`.
          * 
          * @return builder
          * 

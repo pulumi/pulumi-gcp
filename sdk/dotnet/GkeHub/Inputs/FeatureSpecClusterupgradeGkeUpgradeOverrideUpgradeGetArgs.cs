@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     public sealed class FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        /// Name of the upgrade, e.g., "K8sControlPlane". It should be a valid upgrade name. It must not exceet 99 characters.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

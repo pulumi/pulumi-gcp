@@ -14,13 +14,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TransferJobTransferSpecTransferOptions {
     /**
-     * @return Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+     * @return Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
      * 
      */
     private @Nullable Boolean deleteObjectsFromSourceAfterTransfer;
     /**
      * @return Whether objects that exist only in the sink should be deleted. Note that this option and
-     * `delete_objects_from_source_after_transfer` are mutually exclusive.
+     * `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
      * 
      */
     private @Nullable Boolean deleteObjectsUniqueInSink;
@@ -35,14 +35,14 @@ public final class TransferJobTransferSpecTransferOptions {
      */
     private @Nullable Boolean overwriteObjectsAlreadyExistingInSink;
     /**
-     * @return When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+     * @return When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
      * 
      */
     private @Nullable String overwriteWhen;
 
     private TransferJobTransferSpecTransferOptions() {}
     /**
-     * @return Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+     * @return Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
      * 
      */
     public Optional<Boolean> deleteObjectsFromSourceAfterTransfer() {
@@ -50,7 +50,7 @@ public final class TransferJobTransferSpecTransferOptions {
     }
     /**
      * @return Whether objects that exist only in the sink should be deleted. Note that this option and
-     * `delete_objects_from_source_after_transfer` are mutually exclusive.
+     * `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
      * 
      */
     public Optional<Boolean> deleteObjectsUniqueInSink() {
@@ -71,7 +71,7 @@ public final class TransferJobTransferSpecTransferOptions {
         return Optional.ofNullable(this.overwriteObjectsAlreadyExistingInSink);
     }
     /**
-     * @return When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+     * @return When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
      * 
      */
     public Optional<String> overwriteWhen() {

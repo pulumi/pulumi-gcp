@@ -47,7 +47,7 @@ public final class FolderBucketConfigCmekSettingsArgs extends com.pulumi.resourc
      * &#34;projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]&#34;
      * For example:
      * &#34;projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1&#34;
-     * This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+     * This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
      * 
      */
     @Import(name="kmsKeyVersionName")
@@ -59,7 +59,7 @@ public final class FolderBucketConfigCmekSettingsArgs extends com.pulumi.resourc
      * &#34;projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]&#34;
      * For example:
      * &#34;projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1&#34;
-     * This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+     * This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
      * 
      */
     public Optional<Output<String>> kmsKeyVersionName() {
@@ -164,7 +164,7 @@ public final class FolderBucketConfigCmekSettingsArgs extends com.pulumi.resourc
          * &#34;projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]&#34;
          * For example:
          * &#34;projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1&#34;
-         * This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+         * This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class FolderBucketConfigCmekSettingsArgs extends com.pulumi.resourc
          * &#34;projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]&#34;
          * For example:
          * &#34;projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1&#34;
-         * This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+         * This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
          * 
          * @return builder
          * 

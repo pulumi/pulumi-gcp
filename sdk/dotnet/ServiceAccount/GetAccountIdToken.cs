@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.ServiceAccount
     public static class GetAccountIdToken
     {
         /// <summary>
-        /// This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+        /// This data source provides a Google OpenID Connect (`Oidc`) `IdToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
         /// 
         /// For more information see
         /// [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ### Service Account Impersonation.
         ///   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
         /// 
-        ///   Note: to use the following, you must grant `target_service_account` the
+        ///   Note: to use the following, you must grant `TargetServiceAccount` the
         ///   `roles/iam.serviceAccountTokenCreator` role on itself.
         /// 
         ///   ```csharp
@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.ServiceAccount
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIdTokenResult>("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+        /// This data source provides a Google OpenID Connect (`Oidc`) `IdToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
         /// 
         /// For more information see
         /// [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ### Service Account Impersonation.
         ///   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
         /// 
-        ///   Note: to use the following, you must grant `target_service_account` the
+        ///   Note: to use the following, you must grant `TargetServiceAccount` the
         ///   `roles/iam.serviceAccountTokenCreator` role on itself.
         /// 
         ///   ```csharp
@@ -230,7 +230,7 @@ namespace Pulumi.Gcp.ServiceAccount
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIdTokenResult>("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+        /// This data source provides a Google OpenID Connect (`Oidc`) `IdToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
         /// 
         /// For more information see
         /// [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
@@ -263,7 +263,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ### Service Account Impersonation.
         ///   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
         /// 
-        ///   Note: to use the following, you must grant `target_service_account` the
+        ///   Note: to use the following, you must grant `TargetServiceAccount` the
         ///   `roles/iam.serviceAccountTokenCreator` role on itself.
         /// 
         ///   ```csharp
@@ -361,7 +361,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public bool? IncludeEmail { get; set; }
 
         /// <summary>
-        /// The audience claim for the `id_token`.
+        /// The audience claim for the `IdToken`.
         /// </summary>
         [Input("targetAudience", required: true)]
         public string TargetAudience { get; set; } = null!;
@@ -399,7 +399,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<bool>? IncludeEmail { get; set; }
 
         /// <summary>
-        /// The audience claim for the `id_token`.
+        /// The audience claim for the `IdToken`.
         /// </summary>
         [Input("targetAudience", required: true)]
         public Input<string> TargetAudience { get; set; } = null!;
@@ -426,7 +426,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The `id_token` representing the new generated identity.
+        /// The `IdToken` representing the new generated identity.
         /// </summary>
         public readonly string IdToken;
         public readonly bool? IncludeEmail;

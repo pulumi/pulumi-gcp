@@ -90,7 +90,7 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
      * The value that is used to quote data sections in a
      * CSV file. If your data does not contain quoted sections, set the
      * property value to an empty string. If your data contains quoted newline
-     * characters, you must also set the `allow_quoted_newlines` property to true.
+     * characters, you must also set the `allowQuotedNewlines` property to true.
      * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
      * limitations with default values, this value is required to be
      * explicitly set.
@@ -103,7 +103,7 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
      * @return The value that is used to quote data sections in a
      * CSV file. If your data does not contain quoted sections, set the
      * property value to an empty string. If your data contains quoted newline
-     * characters, you must also set the `allow_quoted_newlines` property to true.
+     * characters, you must also set the `allowQuotedNewlines` property to true.
      * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
      * limitations with default values, this value is required to be
      * explicitly set.
@@ -255,7 +255,7 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
          * @param quote The value that is used to quote data sections in a
          * CSV file. If your data does not contain quoted sections, set the
          * property value to an empty string. If your data contains quoted newline
-         * characters, you must also set the `allow_quoted_newlines` property to true.
+         * characters, you must also set the `allowQuotedNewlines` property to true.
          * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
          * limitations with default values, this value is required to be
          * explicitly set.
@@ -272,7 +272,7 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
          * @param quote The value that is used to quote data sections in a
          * CSV file. If your data does not contain quoted sections, set the
          * property value to an empty string. If your data contains quoted newline
-         * characters, you must also set the `allow_quoted_newlines` property to true.
+         * characters, you must also set the `allowQuotedNewlines` property to true.
          * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
          * limitations with default values, this value is required to be
          * explicitly set.

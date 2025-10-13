@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetTableBiglakeConfiguration {
     /**
-     * @return The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connection_id can have the form &#34;&amp;lt;project\_id&amp;gt;.&amp;lt;location\_id&amp;gt;.&amp;lt;connection\_id&amp;gt;&#34; or &#34;projects/&amp;lt;project\_id&amp;gt;/locations/&amp;lt;location\_id&amp;gt;/connections/&amp;lt;connection\_id&amp;gt;&#34;.
+     * @return The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connectionId can have the form &#34;&amp;lt;project\_id&amp;gt;.&amp;lt;location\_id&amp;gt;.&amp;lt;connection\_id&amp;gt;&#34; or &#34;projects/&amp;lt;project\_id&amp;gt;/locations/&amp;lt;location\_id&amp;gt;/connections/&amp;lt;connection\_id&amp;gt;&#34;.
      * 
      */
     private String connectionId;
@@ -33,7 +33,7 @@ public final class GetTableBiglakeConfiguration {
 
     private GetTableBiglakeConfiguration() {}
     /**
-     * @return The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connection_id can have the form &#34;&amp;lt;project\_id&amp;gt;.&amp;lt;location\_id&amp;gt;.&amp;lt;connection\_id&amp;gt;&#34; or &#34;projects/&amp;lt;project\_id&amp;gt;/locations/&amp;lt;location\_id&amp;gt;/connections/&amp;lt;connection\_id&amp;gt;&#34;.
+     * @return The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connectionId can have the form &#34;&amp;lt;project\_id&amp;gt;.&amp;lt;location\_id&amp;gt;.&amp;lt;connection\_id&amp;gt;&#34; or &#34;projects/&amp;lt;project\_id&amp;gt;/locations/&amp;lt;location\_id&amp;gt;/connections/&amp;lt;connection\_id&amp;gt;&#34;.
      * 
      */
     public String connectionId() {

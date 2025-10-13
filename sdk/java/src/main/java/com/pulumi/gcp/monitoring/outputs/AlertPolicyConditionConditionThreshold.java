@@ -59,7 +59,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * resource or when aggregating streams across
      * all members of a group of resources).When
      * computing ratios, the aggregations and
-     * denominator_aggregations fields must use the
+     * denominatorAggregations fields must use the
      * same alignment period and produce time
      * series that have the same periodicity and
      * labels.This field is similar to the one in
@@ -74,7 +74,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * @return A filter that identifies a time series that
      * should be used as the denominator of a ratio
      * that will be compared with the threshold. If
-     * a denominator_filter is specified, the time
+     * a denominatorFilter is specified, the time
      * series specified by the filter field will be
      * used as the numerator.The filter is similar
      * to the one that is specified in the
@@ -156,8 +156,8 @@ public final class AlertPolicyConditionConditionThreshold {
      * the condition will trigger if the comparison
      * is true for any of the time series that have
      * been identified by filter and aggregations,
-     * or by the ratio, if denominator_filter and
-     * denominator_aggregations are specified.
+     * or by the ratio, if denominatorFilter and
+     * denominatorAggregations are specified.
      * Structure is documented below.
      * 
      */
@@ -209,7 +209,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * resource or when aggregating streams across
      * all members of a group of resources).When
      * computing ratios, the aggregations and
-     * denominator_aggregations fields must use the
+     * denominatorAggregations fields must use the
      * same alignment period and produce time
      * series that have the same periodicity and
      * labels.This field is similar to the one in
@@ -226,7 +226,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * @return A filter that identifies a time series that
      * should be used as the denominator of a ratio
      * that will be compared with the threshold. If
-     * a denominator_filter is specified, the time
+     * a denominatorFilter is specified, the time
      * series specified by the filter field will be
      * used as the numerator.The filter is similar
      * to the one that is specified in the
@@ -320,8 +320,8 @@ public final class AlertPolicyConditionConditionThreshold {
      * the condition will trigger if the comparison
      * is true for any of the time series that have
      * been identified by filter and aggregations,
-     * or by the ratio, if denominator_filter and
-     * denominator_aggregations are specified.
+     * or by the ratio, if denominatorFilter and
+     * denominatorAggregations are specified.
      * Structure is documented below.
      * 
      */

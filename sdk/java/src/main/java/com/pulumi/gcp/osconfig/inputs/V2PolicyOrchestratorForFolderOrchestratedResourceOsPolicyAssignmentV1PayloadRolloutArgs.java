@@ -37,7 +37,7 @@ public final class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssi
     /**
      * This determines the minimum duration of time to wait after the
      * configuration changes are applied through the current rollout. A
-     * VM continues to count towards the `disruption_budget` at least
+     * VM continues to count towards the `disruptionBudget` at least
      * until this duration of time has passed after configuration changes are
      * applied.
      * 
@@ -48,7 +48,7 @@ public final class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssi
     /**
      * @return This determines the minimum duration of time to wait after the
      * configuration changes are applied through the current rollout. A
-     * VM continues to count towards the `disruption_budget` at least
+     * VM continues to count towards the `disruptionBudget` at least
      * until this duration of time has passed after configuration changes are
      * applied.
      * 
@@ -110,7 +110,7 @@ public final class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssi
         /**
          * @param minWaitDuration This determines the minimum duration of time to wait after the
          * configuration changes are applied through the current rollout. A
-         * VM continues to count towards the `disruption_budget` at least
+         * VM continues to count towards the `disruptionBudget` at least
          * until this duration of time has passed after configuration changes are
          * applied.
          * 
@@ -125,7 +125,7 @@ public final class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssi
         /**
          * @param minWaitDuration This determines the minimum duration of time to wait after the
          * configuration changes are applied through the current rollout. A
-         * VM continues to count towards the `disruption_budget` at least
+         * VM continues to count towards the `disruptionBudget` at least
          * until this duration of time has passed after configuration changes are
          * applied.
          * 

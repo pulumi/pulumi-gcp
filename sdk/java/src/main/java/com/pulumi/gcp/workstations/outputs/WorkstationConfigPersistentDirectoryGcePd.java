@@ -37,8 +37,8 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
     /**
      * @return Name of the snapshot to use as the source for the disk.
      * Must be empty if `sourceImage` is set.
-     * Must be empty if `read_only` is false.
-     * Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
+     * Must be empty if `readOnly` is false.
+     * Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
      * 
      */
     private @Nullable String sourceSnapshot;
@@ -77,8 +77,8 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
     /**
      * @return Name of the snapshot to use as the source for the disk.
      * Must be empty if `sourceImage` is set.
-     * Must be empty if `read_only` is false.
-     * Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
+     * Must be empty if `readOnly` is false.
+     * Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
      * 
      */
     public Optional<String> sourceSnapshot() {

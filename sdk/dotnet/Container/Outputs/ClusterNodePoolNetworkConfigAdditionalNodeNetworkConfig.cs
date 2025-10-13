@@ -14,13 +14,13 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig
     {
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
+        /// The name or SelfLink of the Google Compute Engine
         /// network to which the cluster is connected. For Shared VPC, set this to the self link of the
         /// shared network.
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
+        /// The name or SelfLink of the Google Compute Engine
         /// subnetwork in which the cluster's instances are launched.
         /// </summary>
         public readonly string? Subnetwork;

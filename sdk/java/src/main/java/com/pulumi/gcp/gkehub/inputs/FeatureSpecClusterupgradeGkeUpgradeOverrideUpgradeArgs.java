@@ -15,14 +15,14 @@ public final class FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs extend
     public static final FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs Empty = new FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs();
 
     /**
-     * Name of the upgrade, e.g., &#34;k8s_control_plane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
+     * Name of the upgrade, e.g., &#34;k8sControlPlane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the upgrade, e.g., &#34;k8s_control_plane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
+     * @return Name of the upgrade, e.g., &#34;k8sControlPlane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
      * 
      */
     public Output<String> name() {
@@ -70,7 +70,7 @@ public final class FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs extend
         }
 
         /**
-         * @param name Name of the upgrade, e.g., &#34;k8s_control_plane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
+         * @param name Name of the upgrade, e.g., &#34;k8sControlPlane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs extend
         }
 
         /**
-         * @param name Name of the upgrade, e.g., &#34;k8s_control_plane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
+         * @param name Name of the upgrade, e.g., &#34;k8sControlPlane&#34;. It should be a valid upgrade name. It must not exceet 99 characters.
          * 
          * @return builder
          * 

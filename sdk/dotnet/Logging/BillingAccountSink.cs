@@ -110,7 +110,7 @@ namespace Pulumi.Gcp.Logging
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `Filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         [Output("exclusions")]
         public Output<ImmutableArray<Outputs.BillingAccountSinkExclusion>> Exclusions { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The identity associated with this sink. This identity must be granted write access to the
-        /// configured `destination`.
+        /// configured `Destination`.
         /// </summary>
         [Output("writerIdentity")]
         public Output<string> WriterIdentity { get; private set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.Gcp.Logging
         private InputList<Inputs.BillingAccountSinkExclusionArgs>? _exclusions;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `Filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         public InputList<Inputs.BillingAccountSinkExclusionArgs> Exclusions
         {
@@ -296,7 +296,7 @@ namespace Pulumi.Gcp.Logging
         private InputList<Inputs.BillingAccountSinkExclusionGetArgs>? _exclusions;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `Filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         public InputList<Inputs.BillingAccountSinkExclusionGetArgs> Exclusions
         {
@@ -320,7 +320,7 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The identity associated with this sink. This identity must be granted write access to the
-        /// configured `destination`.
+        /// configured `Destination`.
         /// </summary>
         [Input("writerIdentity")]
         public Input<string>? WriterIdentity { get; set; }

@@ -338,7 +338,7 @@ namespace Pulumi.Gcp.Redis
         public Output<bool?> AuthEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+        /// AUTH String set on the instance. This field will only be populated if AuthEnabled is true.
         /// </summary>
         [Output("authString")]
         public Output<string> AuthString { get; private set; } = null!;
@@ -415,7 +415,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// Resource labels to represent user provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -712,7 +712,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// Resource labels to represent user provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -885,7 +885,7 @@ namespace Pulumi.Gcp.Redis
         private Input<string>? _authString;
 
         /// <summary>
-        /// AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+        /// AUTH String set on the instance. This field will only be populated if AuthEnabled is true.
         /// </summary>
         public Input<string>? AuthString
         {
@@ -982,7 +982,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// Resource labels to represent user provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

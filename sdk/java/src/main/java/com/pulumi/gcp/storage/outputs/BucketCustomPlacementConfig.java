@@ -12,14 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class BucketCustomPlacementConfig {
     /**
-     * @return The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+     * @return The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the dataLocations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
      * 
      */
     private List<String> dataLocations;
 
     private BucketCustomPlacementConfig() {}
     /**
-     * @return The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+     * @return The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the dataLocations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
      * 
      */
     public List<String> dataLocations() {

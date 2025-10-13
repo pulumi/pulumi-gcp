@@ -19,7 +19,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The name or resource link to the
      * VLAN interconnect for this interface. Changing this forces a new interface to
-     * be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+     * be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      * 
      */
     @Import(name="interconnectAttachment")
@@ -28,7 +28,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return The name or resource link to the
      * VLAN interconnect for this interface. Changing this forces a new interface to
-     * be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+     * be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      * 
      */
     public Optional<Output<String>> interconnectAttachment() {
@@ -156,7 +156,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
      * The name of the router this interface will be attached to.
      * Changing this forces a new interface to be created.
      * 
-     * In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+     * In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
      * 
      * ***
      * 
@@ -168,7 +168,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
      * @return The name of the router this interface will be attached to.
      * Changing this forces a new interface to be created.
      * 
-     * In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+     * In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
      * 
      * ***
      * 
@@ -179,7 +179,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The URI of the subnetwork resource that this interface
-     * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+     * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      * 
      */
     @Import(name="subnetwork")
@@ -187,7 +187,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The URI of the subnetwork resource that this interface
-     * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+     * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      * 
      */
     public Optional<Output<String>> subnetwork() {
@@ -197,7 +197,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The name or resource link to the VPN tunnel this
      * interface will be linked to. Changing this forces a new interface to be created. Only
-     * one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+     * one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      * 
      */
     @Import(name="vpnTunnel")
@@ -206,7 +206,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return The name or resource link to the VPN tunnel this
      * interface will be linked to. Changing this forces a new interface to be created. Only
-     * one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+     * one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      * 
      */
     public Optional<Output<String>> vpnTunnel() {
@@ -250,7 +250,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param interconnectAttachment The name or resource link to the
          * VLAN interconnect for this interface. Changing this forces a new interface to
-         * be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+         * be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param interconnectAttachment The name or resource link to the
          * VLAN interconnect for this interface. Changing this forces a new interface to
-         * be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+         * be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
          * @param router The name of the router this interface will be attached to.
          * Changing this forces a new interface to be created.
          * 
-         * In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+         * In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
          * 
          * ***
          * 
@@ -451,7 +451,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
          * @param router The name of the router this interface will be attached to.
          * Changing this forces a new interface to be created.
          * 
-         * In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+         * In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
          * 
          * ***
          * 
@@ -464,7 +464,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param subnetwork The URI of the subnetwork resource that this interface
-         * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+         * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param subnetwork The URI of the subnetwork resource that this interface
-         * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+         * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
          * 
          * @return builder
          * 
@@ -488,7 +488,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param vpnTunnel The name or resource link to the VPN tunnel this
          * interface will be linked to. Changing this forces a new interface to be created. Only
-         * one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+         * one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param vpnTunnel The name or resource link to the VPN tunnel this
          * interface will be linked to. Changing this forces a new interface to be created. Only
-         * one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+         * one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
          * 
          * @return builder
          * 

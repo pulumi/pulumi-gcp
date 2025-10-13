@@ -188,13 +188,13 @@ namespace Pulumi.Gcp.OracleDatabase
         /// <summary>
         /// Labels or tags associated with the resource.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
+        /// Resource ID segment making up resource `Name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -308,7 +308,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// <summary>
         /// Labels or tags associated with the resource.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -317,7 +317,7 @@ namespace Pulumi.Gcp.OracleDatabase
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
+        /// Resource ID segment making up resource `Name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -403,7 +403,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// <summary>
         /// Labels or tags associated with the resource.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -412,7 +412,7 @@ namespace Pulumi.Gcp.OracleDatabase
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
+        /// Resource ID segment making up resource `Name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

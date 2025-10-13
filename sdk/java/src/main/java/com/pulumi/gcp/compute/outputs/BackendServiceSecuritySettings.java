@@ -18,7 +18,7 @@ public final class BackendServiceSecuritySettings {
      * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_security_settings_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+     * &lt;a name=&#34;nestedSecuritySettingsAwsV4Authentication&#34;&gt;&lt;/a&gt;The `awsV4Authentication` block supports:
      * 
      */
     private @Nullable BackendServiceSecuritySettingsAwsV4Authentication awsV4Authentication;
@@ -43,7 +43,7 @@ public final class BackendServiceSecuritySettings {
      * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_security_settings_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+     * &lt;a name=&#34;nestedSecuritySettingsAwsV4Authentication&#34;&gt;&lt;/a&gt;The `awsV4Authentication` block supports:
      * 
      */
     public Optional<BackendServiceSecuritySettingsAwsV4Authentication> awsV4Authentication() {

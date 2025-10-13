@@ -41,7 +41,7 @@ public final class RoutineSparkOptions {
     private @Nullable List<String> jarUris;
     /**
      * @return The fully qualified name of a class in jarUris, for example, com.example.wordcount.
-     * Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
+     * Exactly one of mainClass and mainJarUri field should be set for Java/Scala language type.
      * 
      */
     private @Nullable String mainClass;
@@ -109,7 +109,7 @@ public final class RoutineSparkOptions {
     }
     /**
      * @return The fully qualified name of a class in jarUris, for example, com.example.wordcount.
-     * Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
+     * Exactly one of mainClass and mainJarUri field should be set for Java/Scala language type.
      * 
      */
     public Optional<String> mainClass() {

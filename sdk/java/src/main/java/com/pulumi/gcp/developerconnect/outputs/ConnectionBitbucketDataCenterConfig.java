@@ -36,7 +36,7 @@ public final class ConnectionBitbucketDataCenterConfig {
     private ConnectionBitbucketDataCenterConfigReadAuthorizerCredential readAuthorizerCredential;
     /**
      * @return (Output)
-     * Output only. Version of the Bitbucket Data Center server running on the `host_uri`.
+     * Output only. Version of the Bitbucket Data Center server running on the `hostUri`.
      * 
      */
     private @Nullable String serverVersion;
@@ -89,7 +89,7 @@ public final class ConnectionBitbucketDataCenterConfig {
     }
     /**
      * @return (Output)
-     * Output only. Version of the Bitbucket Data Center server running on the `host_uri`.
+     * Output only. Version of the Bitbucket Data Center server running on the `hostUri`.
      * 
      */
     public Optional<String> serverVersion() {

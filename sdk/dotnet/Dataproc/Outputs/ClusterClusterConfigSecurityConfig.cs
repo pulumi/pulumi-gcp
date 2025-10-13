@@ -14,13 +14,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigSecurityConfig
     {
         /// <summary>
-        /// Identity Configuration. At least one of `identity_config`
-        /// or `kerberos_config` is required.
+        /// Identity Configuration. At least one of `IdentityConfig`
+        /// or `KerberosConfig` is required.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigSecurityConfigIdentityConfig? IdentityConfig;
         /// <summary>
-        /// Kerberos Configuration. At least one of `identity_config`
-        /// or `kerberos_config` is required.
+        /// Kerberos Configuration. At least one of `IdentityConfig`
+        /// or `KerberosConfig` is required.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigSecurityConfigKerberosConfig? KerberosConfig;
 

@@ -179,7 +179,7 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// });
     /// ```
-    /// This is equivalent to running the following `cbt` command:
+    /// This is equivalent to running the following `Cbt` command:
     /// 
     /// ## Import
     /// 
@@ -204,14 +204,14 @@ namespace Pulumi.Gcp.BigTable
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+        /// Serialized JSON object to represent a more complex GC policy. Conflicts with `Mode`, `MaxAge` and `MaxVersion`. Conflicts with `Mode`, `MaxAge` and `MaxVersion`.
         /// </summary>
         [Output("gcRules")]
         public Output<string?> GcRules { get; private set; } = null!;
 
         /// <summary>
         /// Boolean for whether to allow ignoring warnings when updating the gc policy.
-        /// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+        /// Setting this to `True` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
         /// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
         /// 
         /// -----
@@ -317,14 +317,14 @@ namespace Pulumi.Gcp.BigTable
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
-        /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+        /// Serialized JSON object to represent a more complex GC policy. Conflicts with `Mode`, `MaxAge` and `MaxVersion`. Conflicts with `Mode`, `MaxAge` and `MaxVersion`.
         /// </summary>
         [Input("gcRules")]
         public Input<string>? GcRules { get; set; }
 
         /// <summary>
         /// Boolean for whether to allow ignoring warnings when updating the gc policy.
-        /// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+        /// Setting this to `True` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
         /// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
         /// 
         /// -----
@@ -398,14 +398,14 @@ namespace Pulumi.Gcp.BigTable
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
-        /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+        /// Serialized JSON object to represent a more complex GC policy. Conflicts with `Mode`, `MaxAge` and `MaxVersion`. Conflicts with `Mode`, `MaxAge` and `MaxVersion`.
         /// </summary>
         [Input("gcRules")]
         public Input<string>? GcRules { get; set; }
 
         /// <summary>
         /// Boolean for whether to allow ignoring warnings when updating the gc policy.
-        /// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+        /// Setting this to `True` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
         /// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
         /// 
         /// -----

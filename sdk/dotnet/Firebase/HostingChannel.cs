@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// A `Channel` represents a stream of releases for a site. All sites have a default
-    /// `live` channel that serves content to the Firebase-provided subdomains and any
+    /// `Live` channel that serves content to the Firebase-provided subdomains and any
     /// connected custom domains.
     /// 
     /// To get more information about Channel, see:
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The time at which the channel will be automatically deleted. If null, the channel
         /// will not be automatically deleted. This field is present in the output whether it's
-        /// set directly or via the `ttl` field.
+        /// set directly or via the `Ttl` field.
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Text labels used for extra metadata and/or filtering
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided
+        /// Input only. A time-to-live for this channel. Sets `ExpireTime` to the provided
         /// duration past the time of the request. A duration in seconds with up to nine fractional
         /// digits, terminated by 's'. Example: "86400s" (one day).
         /// </summary>
@@ -221,7 +221,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The time at which the channel will be automatically deleted. If null, the channel
         /// will not be automatically deleted. This field is present in the output whether it's
-        /// set directly or via the `ttl` field.
+        /// set directly or via the `Ttl` field.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Text labels used for extra metadata and/or filtering
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -254,7 +254,7 @@ namespace Pulumi.Gcp.Firebase
         public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided
+        /// Input only. A time-to-live for this channel. Sets `ExpireTime` to the provided
         /// duration past the time of the request. A duration in seconds with up to nine fractional
         /// digits, terminated by 's'. Example: "86400s" (one day).
         /// </summary>
@@ -294,7 +294,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The time at which the channel will be automatically deleted. If null, the channel
         /// will not be automatically deleted. This field is present in the output whether it's
-        /// set directly or via the `ttl` field.
+        /// set directly or via the `Ttl` field.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
@@ -305,7 +305,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Text labels used for extra metadata and/or filtering
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -351,7 +351,7 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided
+        /// Input only. A time-to-live for this channel. Sets `ExpireTime` to the provided
         /// duration past the time of the request. A duration in seconds with up to nine fractional
         /// digits, terminated by 's'. Example: "86400s" (one day).
         /// </summary>

@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string MaintenanceVersion;
         /// <summary>
-        /// The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
+        /// The name of the instance that will act as the master in the replication setup. Note, this requires the master to have BinaryLogEnabled set, as well as existing backups.
         /// </summary>
         public readonly string MasterInstanceName;
         public readonly string Name;

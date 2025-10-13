@@ -226,7 +226,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The type of address to reserve.
-        /// Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
+        /// Note: if you set this argument's value as `INTERNAL` you need to leave the `NetworkTier` argument unset in that resource block.
         /// Default value is `EXTERNAL`.
         /// Possible values are: `INTERNAL`, `EXTERNAL`.
         /// </summary>
@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.Compute
         /// Labels to apply to this address.  A list of key-&gt;value pairs.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -438,7 +438,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The type of address to reserve.
-        /// Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
+        /// Note: if you set this argument's value as `INTERNAL` you need to leave the `NetworkTier` argument unset in that resource block.
         /// Default value is `EXTERNAL`.
         /// Possible values are: `INTERNAL`, `EXTERNAL`.
         /// </summary>
@@ -474,7 +474,7 @@ namespace Pulumi.Gcp.Compute
         /// Labels to apply to this address.  A list of key-&gt;value pairs.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -575,7 +575,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The type of address to reserve.
-        /// Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
+        /// Note: if you set this argument's value as `INTERNAL` you need to leave the `NetworkTier` argument unset in that resource block.
         /// Default value is `EXTERNAL`.
         /// Possible values are: `INTERNAL`, `EXTERNAL`.
         /// </summary>
@@ -640,7 +640,7 @@ namespace Pulumi.Gcp.Compute
         /// Labels to apply to this address.  A list of key-&gt;value pairs.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

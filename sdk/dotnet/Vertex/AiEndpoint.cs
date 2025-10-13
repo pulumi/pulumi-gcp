@@ -273,7 +273,7 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -297,7 +297,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
+        /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `Network` or `privateServiceConnectConfig`, can be set.
         /// </summary>
         [Output("network")]
         public Output<string?> Network { get; private set; } = null!;
@@ -310,7 +310,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<Outputs.AiEndpointPredictRequestResponseLoggingConfig?> PredictRequestResponseLoggingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        /// Configuration for private service connect. `Network` and `privateServiceConnectConfig` are mutually exclusive.
         /// Structure is documented below.
         /// </summary>
         [Output("privateServiceConnectConfig")]
@@ -435,7 +435,7 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -456,7 +456,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
+        /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `Network` or `privateServiceConnectConfig`, can be set.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -469,7 +469,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiEndpointPredictRequestResponseLoggingConfigArgs>? PredictRequestResponseLoggingConfig { get; set; }
 
         /// <summary>
-        /// Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        /// Configuration for private service connect. `Network` and `privateServiceConnectConfig` are mutually exclusive.
         /// Structure is documented below.
         /// </summary>
         [Input("privateServiceConnectConfig")]
@@ -586,7 +586,7 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -613,7 +613,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
+        /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `Network` or `privateServiceConnectConfig`, can be set.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -626,7 +626,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiEndpointPredictRequestResponseLoggingConfigGetArgs>? PredictRequestResponseLoggingConfig { get; set; }
 
         /// <summary>
-        /// Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        /// Configuration for private service connect. `Network` and `privateServiceConnectConfig` are mutually exclusive.
         /// Structure is documented below.
         /// </summary>
         [Input("privateServiceConnectConfig")]

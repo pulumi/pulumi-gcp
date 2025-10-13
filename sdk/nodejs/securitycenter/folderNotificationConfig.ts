@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Scc Folder Notification Config Basic
+ *
  * ## Import
  *
  * FolderNotificationConfig can be imported using any of these accepted formats:

@@ -21,7 +21,7 @@ public final class OrganizationSecurityPolicyRuleState extends com.pulumi.resour
 
     /**
      * The Action to perform when the client connection triggers the rule. Can currently be either
-     * &#34;allow&#34;, &#34;deny&#34; or &#34;goto_next&#34;.
+     * &#34;allow&#34;, &#34;deny&#34; or &#34;gotoNext&#34;.
      * 
      */
     @Import(name="action")
@@ -29,7 +29,7 @@ public final class OrganizationSecurityPolicyRuleState extends com.pulumi.resour
 
     /**
      * @return The Action to perform when the client connection triggers the rule. Can currently be either
-     * &#34;allow&#34;, &#34;deny&#34; or &#34;goto_next&#34;.
+     * &#34;allow&#34;, &#34;deny&#34; or &#34;gotoNext&#34;.
      * 
      */
     public Optional<Output<String>> action() {
@@ -226,7 +226,7 @@ public final class OrganizationSecurityPolicyRuleState extends com.pulumi.resour
 
         /**
          * @param action The Action to perform when the client connection triggers the rule. Can currently be either
-         * &#34;allow&#34;, &#34;deny&#34; or &#34;goto_next&#34;.
+         * &#34;allow&#34;, &#34;deny&#34; or &#34;gotoNext&#34;.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class OrganizationSecurityPolicyRuleState extends com.pulumi.resour
 
         /**
          * @param action The Action to perform when the client connection triggers the rule. Can currently be either
-         * &#34;allow&#34;, &#34;deny&#34; or &#34;goto_next&#34;.
+         * &#34;allow&#34;, &#34;deny&#34; or &#34;gotoNext&#34;.
          * 
          * @return builder
          * 

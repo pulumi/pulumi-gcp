@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Recaptcha.Outputs
     public sealed class EnterpriseKeyIosSettings
     {
         /// <summary>
-        /// If set to true, it means allowed_bundle_ids will not be enforced.
+        /// If set to true, it means AllowedBundleIds will not be enforced.
         /// </summary>
         public readonly bool? AllowAllBundleIds;
         /// <summary>

@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.Alloydb
         public readonly string Location;
         public readonly string? Project;
         /// <summary>
-        /// Contains a list of `flag`, which contains the details about a particular flag.
+        /// Contains a list of `Flag`, which contains the details about a particular flag.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSupportedDatabaseFlagsSupportedDatabaseFlagResult> SupportedDatabaseFlags;
 

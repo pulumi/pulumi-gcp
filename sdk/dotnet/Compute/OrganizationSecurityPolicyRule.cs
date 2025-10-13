@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The Action to perform when the client connection triggers the rule. Can currently be either
-        /// "allow", "deny" or "goto_next".
+        /// "allow", "deny" or "GotoNext".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The Action to perform when the client connection triggers the rule. Can currently be either
-        /// "allow", "deny" or "goto_next".
+        /// "allow", "deny" or "GotoNext".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -299,7 +299,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The Action to perform when the client connection triggers the rule. Can currently be either
-        /// "allow", "deny" or "goto_next".
+        /// "allow", "deny" or "GotoNext".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

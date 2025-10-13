@@ -96,7 +96,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Private Service Connect configuration.
-     * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+     * Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
      * Structure is documented below.
      * 
      */
@@ -105,7 +105,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Private Service Connect configuration.
-     * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+     * Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
      * Structure is documented below.
      * 
      */
@@ -284,7 +284,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param pscConfig Private Service Connect configuration.
-         * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+         * Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
          * Structure is documented below.
          * 
          * @return builder
@@ -297,7 +297,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param pscConfig Private Service Connect configuration.
-         * Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+         * Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
          * Structure is documented below.
          * 
          * @return builder

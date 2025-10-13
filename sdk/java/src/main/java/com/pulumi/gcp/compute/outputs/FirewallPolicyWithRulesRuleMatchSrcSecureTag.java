@@ -23,7 +23,7 @@ public final class FirewallPolicyWithRulesRuleMatchSrcSecureTag {
      * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
      * or its network is deleted.
      * 
-     * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+     * &lt;a name=&#34;nestedRuleRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
     private @Nullable String state;
@@ -43,7 +43,7 @@ public final class FirewallPolicyWithRulesRuleMatchSrcSecureTag {
      * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
      * or its network is deleted.
      * 
-     * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+     * &lt;a name=&#34;nestedRuleRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
     public Optional<String> state() {

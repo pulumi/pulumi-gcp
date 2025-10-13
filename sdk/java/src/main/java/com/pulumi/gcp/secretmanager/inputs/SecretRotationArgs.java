@@ -34,7 +34,7 @@ public final class SecretRotationArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
-     * If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
+     * If rotationPeriod is set, `nextRotationTime` must be set. `nextRotationTime` will be advanced by this period when the service automatically sends rotation notifications.
      * 
      */
     @Import(name="rotationPeriod")
@@ -42,7 +42,7 @@ public final class SecretRotationArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
-     * If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
+     * If rotationPeriod is set, `nextRotationTime` must be set. `nextRotationTime` will be advanced by this period when the service automatically sends rotation notifications.
      * 
      */
     public Optional<Output<String>> rotationPeriod() {
@@ -99,7 +99,7 @@ public final class SecretRotationArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param rotationPeriod The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
-         * If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
+         * If rotationPeriod is set, `nextRotationTime` must be set. `nextRotationTime` will be advanced by this period when the service automatically sends rotation notifications.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class SecretRotationArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param rotationPeriod The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
-         * If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
+         * If rotationPeriod is set, `nextRotationTime` must be set. `nextRotationTime` will be advanced by this period when the service automatically sends rotation notifications.
          * 
          * @return builder
          * 

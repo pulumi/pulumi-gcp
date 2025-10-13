@@ -37,7 +37,7 @@ public final class VPNTunnelCipherSuiteArgs extends com.pulumi.resources.Resourc
      * Cipher configuration for phase 2 of the IKE protocol.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_cipher_suite_phase1&#34;&gt;&lt;/a&gt;The `phase1` block supports:
+     * &lt;a name=&#34;nestedCipherSuitePhase1&#34;&gt;&lt;/a&gt;The `phase1` block supports:
      * 
      */
     @Import(name="phase2")
@@ -47,7 +47,7 @@ public final class VPNTunnelCipherSuiteArgs extends com.pulumi.resources.Resourc
      * @return Cipher configuration for phase 2 of the IKE protocol.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_cipher_suite_phase1&#34;&gt;&lt;/a&gt;The `phase1` block supports:
+     * &lt;a name=&#34;nestedCipherSuitePhase1&#34;&gt;&lt;/a&gt;The `phase1` block supports:
      * 
      */
     public Optional<Output<VPNTunnelCipherSuitePhase2Args>> phase2() {
@@ -106,7 +106,7 @@ public final class VPNTunnelCipherSuiteArgs extends com.pulumi.resources.Resourc
          * @param phase2 Cipher configuration for phase 2 of the IKE protocol.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_cipher_suite_phase1&#34;&gt;&lt;/a&gt;The `phase1` block supports:
+         * &lt;a name=&#34;nestedCipherSuitePhase1&#34;&gt;&lt;/a&gt;The `phase1` block supports:
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class VPNTunnelCipherSuiteArgs extends com.pulumi.resources.Resourc
          * @param phase2 Cipher configuration for phase 2 of the IKE protocol.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_cipher_suite_phase1&#34;&gt;&lt;/a&gt;The `phase1` block supports:
+         * &lt;a name=&#34;nestedCipherSuitePhase1&#34;&gt;&lt;/a&gt;The `phase1` block supports:
          * 
          * @return builder
          * 

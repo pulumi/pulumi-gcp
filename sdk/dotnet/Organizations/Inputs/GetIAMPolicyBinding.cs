@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Organizations.Inputs
         private List<string>? _members;
 
         /// <summary>
-        /// An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        /// An array of identities that will be granted the privilege in the `Role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.

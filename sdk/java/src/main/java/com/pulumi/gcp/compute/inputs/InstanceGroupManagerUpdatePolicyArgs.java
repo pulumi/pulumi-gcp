@@ -18,14 +18,14 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
     public static final InstanceGroupManagerUpdatePolicyArgs Empty = new InstanceGroupManagerUpdatePolicyArgs();
 
     /**
-     * , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
+     * , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
      * 
      */
     @Import(name="maxSurgeFixed")
     private @Nullable Output<Integer> maxSurgeFixed;
 
     /**
-     * @return , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
+     * @return , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
      * 
      */
     public Optional<Output<Integer>> maxSurgeFixed() {
@@ -33,14 +33,14 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
+     * , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `maxSurgeFixed`.
      * 
      */
     @Import(name="maxSurgePercent")
     private @Nullable Output<Integer> maxSurgePercent;
 
     /**
-     * @return , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
+     * @return , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `maxSurgeFixed`.
      * 
      */
     public Optional<Output<Integer>> maxSurgePercent() {
@@ -123,7 +123,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+     * , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
      * ***
      * 
      */
@@ -131,7 +131,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
     private @Nullable Output<String> replacementMethod;
 
     /**
-     * @return , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+     * @return , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
      * ***
      * 
      */
@@ -187,7 +187,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxSurgeFixed , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
+         * @param maxSurgeFixed , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxSurgeFixed , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
+         * @param maxSurgeFixed , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxSurgePercent , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
+         * @param maxSurgePercent , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `maxSurgeFixed`.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxSurgePercent , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
+         * @param maxSurgePercent , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `maxSurgeFixed`.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param replacementMethod , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+         * @param replacementMethod , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
          * ***
          * 
          * @return builder
@@ -346,7 +346,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param replacementMethod , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+         * @param replacementMethod , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
          * ***
          * 
          * @return builder

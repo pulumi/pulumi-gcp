@@ -22,14 +22,14 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
     public static final RegionNetworkFirewallPolicyRuleArgs Empty = new RegionNetworkFirewallPolicyRuleArgs();
 
     /**
-     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;goto_next&#34; and &#34;apply_security_profile_group&#34;.
+     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;gotoNext&#34; and &#34;applySecurityProfileGroup&#34;.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;goto_next&#34; and &#34;apply_security_profile_group&#34;.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;gotoNext&#34; and &#34;applySecurityProfileGroup&#34;.
      * 
      */
     public Output<String> action() {
@@ -91,7 +91,7 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
      * Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
      * Logs may be exported to BigQuery or Pub/Sub.
-     * Note: you cannot enable logging on &#34;goto_next&#34; rules.
+     * Note: you cannot enable logging on &#34;gotoNext&#34; rules.
      * 
      */
     @Import(name="enableLogging")
@@ -101,7 +101,7 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
      * @return Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
      * Logs may be exported to BigQuery or Pub/Sub.
-     * Note: you cannot enable logging on &#34;goto_next&#34; rules.
+     * Note: you cannot enable logging on &#34;gotoNext&#34; rules.
      * 
      */
     public Optional<Output<Boolean>> enableLogging() {
@@ -319,7 +319,7 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;goto_next&#34; and &#34;apply_security_profile_group&#34;.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;gotoNext&#34; and &#34;applySecurityProfileGroup&#34;.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;goto_next&#34; and &#34;apply_security_profile_group&#34;.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34;, &#34;gotoNext&#34; and &#34;applySecurityProfileGroup&#34;.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
          * @param enableLogging Denotes whether to enable logging for a particular rule.
          * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
          * Logs may be exported to BigQuery or Pub/Sub.
-         * Note: you cannot enable logging on &#34;goto_next&#34; rules.
+         * Note: you cannot enable logging on &#34;gotoNext&#34; rules.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
          * @param enableLogging Denotes whether to enable logging for a particular rule.
          * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
          * Logs may be exported to BigQuery or Pub/Sub.
-         * Note: you cannot enable logging on &#34;goto_next&#34; rules.
+         * Note: you cannot enable logging on &#34;gotoNext&#34; rules.
          * 
          * @return builder
          * 

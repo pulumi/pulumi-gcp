@@ -52,7 +52,7 @@ public final class GetInstanceBootDiskInitializeParam {
      */
     private Map<String,String> resourceManagerTags;
     /**
-     * @return A list of self_links to resource policies attached to the selected `boot_disk`
+     * @return A list of selfLinks to resource policies attached to the selected `bootDisk`
      * 
      */
     private List<String> resourcePolicies;
@@ -138,7 +138,7 @@ public final class GetInstanceBootDiskInitializeParam {
         return this.resourceManagerTags;
     }
     /**
-     * @return A list of self_links to resource policies attached to the selected `boot_disk`
+     * @return A list of selfLinks to resource policies attached to the selected `bootDisk`
      * 
      */
     public List<String> resourcePolicies() {

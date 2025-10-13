@@ -358,6 +358,8 @@ class SecretVersion(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         ```
+        ### Secret Version Basic Write Only
+
         ### Secret Version Deletion Policy Abandon
 
         ```python
@@ -419,6 +421,24 @@ class SecretVersion(pulumi.CustomResource):
             is_secret_data_base64=True,
             secret_data=std.filebase64(input="secret-data.pfx").result)
         ```
+        ### Secret Version With Base64 String Secret Data Write Only
+
+        ## Ephemeral Attributes Reference
+
+        The following write-only attributes are supported:
+
+        * `secret_data_wo` -
+          (Optional)
+          The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+          **Note**: This property is write-only and will not be read from the API.
+
+        <a name="nested_payload"></a>The `payload` block supports:
+
+        * `secret_data_wo` -
+          (Optional)
+          The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+          **Note**: This property is write-only and will not be read from the API.
+
         ## Import
 
         SecretVersion can be imported using any of these accepted formats:
@@ -484,6 +504,8 @@ class SecretVersion(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         ```
+        ### Secret Version Basic Write Only
+
         ### Secret Version Deletion Policy Abandon
 
         ```python
@@ -545,6 +567,24 @@ class SecretVersion(pulumi.CustomResource):
             is_secret_data_base64=True,
             secret_data=std.filebase64(input="secret-data.pfx").result)
         ```
+        ### Secret Version With Base64 String Secret Data Write Only
+
+        ## Ephemeral Attributes Reference
+
+        The following write-only attributes are supported:
+
+        * `secret_data_wo` -
+          (Optional)
+          The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+          **Note**: This property is write-only and will not be read from the API.
+
+        <a name="nested_payload"></a>The `payload` block supports:
+
+        * `secret_data_wo` -
+          (Optional)
+          The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+          **Note**: This property is write-only and will not be read from the API.
+
         ## Import
 
         SecretVersion can be imported using any of these accepted formats:

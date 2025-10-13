@@ -203,7 +203,7 @@ public class NotificationChannel extends com.pulumi.resources.CustomResource {
      * NotificationChannelDescriptor corresponding to the type field.
      * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
      * determine if there are upstream changes to these fields. They can also be configured via
-     * the sensitive_labels block, but cannot be configured in both places.
+     * the sensitiveLabels block, but cannot be configured in both places.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -215,7 +215,7 @@ public class NotificationChannel extends com.pulumi.resources.CustomResource {
      * NotificationChannelDescriptor corresponding to the type field.
      * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
      * determine if there are upstream changes to these fields. They can also be configured via
-     * the sensitive_labels block, but cannot be configured in both places.
+     * the sensitiveLabels block, but cannot be configured in both places.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

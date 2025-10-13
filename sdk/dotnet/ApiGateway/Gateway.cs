@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.ApiGateway
         /// <summary>
         /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
         /// When changing api configs please ensure the new config is a new resource and the
-        /// lifecycle rule `create_before_destroy` is set.
+        /// lifecycle rule `CreateBeforeDestroy` is set.
         /// </summary>
         [Output("apiConfig")]
         public Output<string> ApiConfig { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.ApiGateway
         /// Resource labels to represent user-provided metadata.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.Gcp.ApiGateway
         /// <summary>
         /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
         /// When changing api configs please ensure the new config is a new resource and the
-        /// lifecycle rule `create_before_destroy` is set.
+        /// lifecycle rule `CreateBeforeDestroy` is set.
         /// </summary>
         [Input("apiConfig", required: true)]
         public Input<string> ApiConfig { get; set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.ApiGateway
         /// Resource labels to represent user-provided metadata.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -230,7 +230,7 @@ namespace Pulumi.Gcp.ApiGateway
         /// <summary>
         /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
         /// When changing api configs please ensure the new config is a new resource and the
-        /// lifecycle rule `create_before_destroy` is set.
+        /// lifecycle rule `CreateBeforeDestroy` is set.
         /// </summary>
         [Input("apiConfig")]
         public Input<string>? ApiConfig { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.Gcp.ApiGateway
         /// Resource labels to represent user-provided metadata.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

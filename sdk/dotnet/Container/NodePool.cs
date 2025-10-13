@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.NodePoolAutoscaling?> Autoscaling { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        /// The cluster to create the node pool for. Cluster must be present in `Location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         /// 
         /// - - -
         /// </summary>
@@ -217,7 +217,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Creates a unique name for the node pool beginning
-        /// with the specified prefix. Conflicts with `name`.
+        /// with the specified prefix. Conflicts with `Name`.
         /// </summary>
         [Output("namePrefix")]
         public Output<string> NamePrefix { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The number of nodes per instance group. This field can be used to
-        /// update the number of nodes per instance group but should not be used alongside `autoscaling`.
+        /// update the number of nodes per instance group but should not be used alongside `Autoscaling`.
         /// </summary>
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
@@ -248,9 +248,9 @@ namespace Pulumi.Gcp.Container
         /// The list of zones in which the node pool's nodes should be located. Nodes must
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level
-        /// `node_locations` will be used.
+        /// `NodeLocations` will be used.
         /// 
-        /// &gt; Note: `node_locations` will not revert to the cluster's default set of zones
+        /// &gt; Note: `NodeLocations` will not revert to the cluster's default set of zones
         /// upon being unset. You must manually reconcile the list of zones with your
         /// cluster.
         /// </summary>
@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.Container
         /// Specifies node pool-level settings of queued provisioning.
         /// Structure is documented below.
         /// 
-        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Output("queuedProvisioning")]
         public Output<Outputs.NodePoolQueuedProvisioning?> QueuedProvisioning { get; private set; } = null!;
@@ -292,11 +292,11 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Kubernetes version for the nodes in this pool. Note that if this field
-        /// and `auto_upgrade` are both specified, they will fight each other for what the node version should
+        /// and `AutoUpgrade` are both specified, they will fight each other for what the node version should
         /// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
         /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+        /// `VersionPrefix` field to approximate fuzzy versions in a provider-compatible way.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -355,7 +355,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolAutoscalingArgs>? Autoscaling { get; set; }
 
         /// <summary>
-        /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        /// The cluster to create the node pool for. Cluster must be present in `Location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         /// 
         /// - - -
         /// </summary>
@@ -408,7 +408,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Creates a unique name for the node pool beginning
-        /// with the specified prefix. Conflicts with `name`.
+        /// with the specified prefix. Conflicts with `Name`.
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
@@ -430,7 +430,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The number of nodes per instance group. This field can be used to
-        /// update the number of nodes per instance group but should not be used alongside `autoscaling`.
+        /// update the number of nodes per instance group but should not be used alongside `Autoscaling`.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -442,9 +442,9 @@ namespace Pulumi.Gcp.Container
         /// The list of zones in which the node pool's nodes should be located. Nodes must
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level
-        /// `node_locations` will be used.
+        /// `NodeLocations` will be used.
         /// 
-        /// &gt; Note: `node_locations` will not revert to the cluster's default set of zones
+        /// &gt; Note: `NodeLocations` will not revert to the cluster's default set of zones
         /// upon being unset. You must manually reconcile the list of zones with your
         /// cluster.
         /// </summary>
@@ -472,7 +472,7 @@ namespace Pulumi.Gcp.Container
         /// Specifies node pool-level settings of queued provisioning.
         /// Structure is documented below.
         /// 
-        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("queuedProvisioning")]
         public Input<Inputs.NodePoolQueuedProvisioningArgs>? QueuedProvisioning { get; set; }
@@ -486,11 +486,11 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Kubernetes version for the nodes in this pool. Note that if this field
-        /// and `auto_upgrade` are both specified, they will fight each other for what the node version should
+        /// and `AutoUpgrade` are both specified, they will fight each other for what the node version should
         /// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
         /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+        /// `VersionPrefix` field to approximate fuzzy versions in a provider-compatible way.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -511,7 +511,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolAutoscalingGetArgs>? Autoscaling { get; set; }
 
         /// <summary>
-        /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        /// The cluster to create the node pool for. Cluster must be present in `Location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         /// 
         /// - - -
         /// </summary>
@@ -588,7 +588,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Creates a unique name for the node pool beginning
-        /// with the specified prefix. Conflicts with `name`.
+        /// with the specified prefix. Conflicts with `Name`.
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
@@ -610,7 +610,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The number of nodes per instance group. This field can be used to
-        /// update the number of nodes per instance group but should not be used alongside `autoscaling`.
+        /// update the number of nodes per instance group but should not be used alongside `Autoscaling`.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -622,9 +622,9 @@ namespace Pulumi.Gcp.Container
         /// The list of zones in which the node pool's nodes should be located. Nodes must
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level
-        /// `node_locations` will be used.
+        /// `NodeLocations` will be used.
         /// 
-        /// &gt; Note: `node_locations` will not revert to the cluster's default set of zones
+        /// &gt; Note: `NodeLocations` will not revert to the cluster's default set of zones
         /// upon being unset. You must manually reconcile the list of zones with your
         /// cluster.
         /// </summary>
@@ -655,7 +655,7 @@ namespace Pulumi.Gcp.Container
         /// Specifies node pool-level settings of queued provisioning.
         /// Structure is documented below.
         /// 
-        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("queuedProvisioning")]
         public Input<Inputs.NodePoolQueuedProvisioningGetArgs>? QueuedProvisioning { get; set; }
@@ -669,11 +669,11 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Kubernetes version for the nodes in this pool. Note that if this field
-        /// and `auto_upgrade` are both specified, they will fight each other for what the node version should
+        /// and `AutoUpgrade` are both specified, they will fight each other for what the node version should
         /// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
         /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+        /// `VersionPrefix` field to approximate fuzzy versions in a provider-compatible way.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Transcoder.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ChannelLayouts;
         /// <summary>
-        /// The codec for this audio stream. The default is `aac`.
+        /// The codec for this audio stream. The default is `Aac`.
         /// </summary>
         public readonly string? Codec;
         /// <summary>

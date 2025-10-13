@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
     /**
-     * @return Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+     * @return Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
      * 
      */
     private @Nullable Integer batchNodeCount;
     /**
-     * @return Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+     * @return Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batchPercentage or batchNodeCount can be specified.
      * 
      */
     private @Nullable Double batchPercentage;
@@ -31,14 +31,14 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
 
     private ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy() {}
     /**
-     * @return Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+     * @return Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
      * 
      */
     public Optional<Integer> batchNodeCount() {
         return Optional.ofNullable(this.batchNodeCount);
     }
     /**
-     * @return Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+     * @return Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batchPercentage or batchNodeCount can be specified.
      * 
      */
     public Optional<Double> batchPercentage() {

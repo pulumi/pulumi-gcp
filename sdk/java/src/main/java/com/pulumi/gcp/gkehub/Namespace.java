@@ -154,7 +154,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Labels for this Namespace.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -164,7 +164,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * @return Labels for this Namespace.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -187,7 +187,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
     /**
      * Namespace-level cluster namespace labels. These labels are applied
      * to the related namespace of the member clusters bound to the parent
-     * Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+     * Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
      * resource) take precedence over Namespace-level labels if they share
      * a key. Keys and values must be Kubernetes-conformant.
      * 
@@ -198,7 +198,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
     /**
      * @return Namespace-level cluster namespace labels. These labels are applied
      * to the related namespace of the member clusters bound to the parent
-     * Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+     * Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
      * resource) take precedence over Namespace-level labels if they share
      * a key. Keys and values must be Kubernetes-conformant.
      * 

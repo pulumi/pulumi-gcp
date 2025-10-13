@@ -37,7 +37,7 @@ public final class ServicePerimeterArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Resource name for the ServicePerimeter. The short_name component must
+     * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      * 
@@ -46,7 +46,7 @@ public final class ServicePerimeterArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> name;
 
     /**
-     * @return Resource name for the ServicePerimeter. The short_name component must
+     * @return Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      * 
@@ -262,7 +262,7 @@ public final class ServicePerimeterArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Resource name for the ServicePerimeter. The short_name component must
+         * @param name Resource name for the ServicePerimeter. The shortName component must
          * begin with a letter and only include alphanumeric and &#39;_&#39;.
          * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
          * 
@@ -275,7 +275,7 @@ public final class ServicePerimeterArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Resource name for the ServicePerimeter. The short_name component must
+         * @param name Resource name for the ServicePerimeter. The shortName component must
          * begin with a letter and only include alphanumeric and &#39;_&#39;.
          * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
          * 

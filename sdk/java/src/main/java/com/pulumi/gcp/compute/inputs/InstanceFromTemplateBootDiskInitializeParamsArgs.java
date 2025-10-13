@@ -126,14 +126,14 @@ public final class InstanceFromTemplateBootDiskInitializeParamsArgs extends com.
     }
 
     /**
-     * A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<String> resourcePolicies;
 
     /**
-     * @return A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * @return A list of selfLinks of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<Output<String>> resourcePolicies() {
@@ -415,7 +415,7 @@ public final class InstanceFromTemplateBootDiskInitializeParamsArgs extends com.
         }
 
         /**
-         * @param resourcePolicies A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of selfLinks of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class InstanceFromTemplateBootDiskInitializeParamsArgs extends com.
         }
 
         /**
-         * @param resourcePolicies A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of selfLinks of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 

@@ -15,14 +15,14 @@ public final class GetRegionNetworkEndpointGroupPlainArgs extends com.pulumi.res
     public static final GetRegionNetworkEndpointGroupPlainArgs Empty = new GetRegionNetworkEndpointGroupPlainArgs();
 
     /**
-     * The Network Endpoint Group name. Provide either this or a `self_link`.
+     * The Network Endpoint Group name. Provide either this or a `selfLink`.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The Network Endpoint Group name. Provide either this or a `self_link`.
+     * @return The Network Endpoint Group name. Provide either this or a `selfLink`.
      * 
      */
     public Optional<String> name() {
@@ -45,14 +45,14 @@ public final class GetRegionNetworkEndpointGroupPlainArgs extends com.pulumi.res
     }
 
     /**
-     * A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
+     * A reference to the region where the Serverless REGs Reside. Provide either this or a `selfLink`.
      * 
      */
     @Import(name="region")
     private @Nullable String region;
 
     /**
-     * @return A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
+     * @return A reference to the region where the Serverless REGs Reside. Provide either this or a `selfLink`.
      * 
      */
     public Optional<String> region() {
@@ -102,7 +102,7 @@ public final class GetRegionNetworkEndpointGroupPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The Network Endpoint Group name. Provide either this or a `self_link`.
+         * @param name The Network Endpoint Group name. Provide either this or a `selfLink`.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class GetRegionNetworkEndpointGroupPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param region A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
+         * @param region A reference to the region where the Serverless REGs Reside. Provide either this or a `selfLink`.
          * 
          * @return builder
          * 

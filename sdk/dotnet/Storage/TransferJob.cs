@@ -194,7 +194,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+        /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `EventStream` or `Schedule` must be set.
         /// </summary>
         [Output("eventStream")]
         public Output<Outputs.TransferJobEventStream?> EventStream { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.Gcp.Storage
         public Output<Outputs.TransferJobLoggingConfig?> LoggingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
+        /// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `Name` is a numeric value.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+        /// Replication specification. Structure documented below. User should not configure `Schedule`, `EventStream` with this argument. One of `TransferSpec`, or `ReplicationSpec` must be specified.
         /// 
         /// - - -
         /// </summary>
@@ -239,7 +239,7 @@ namespace Pulumi.Gcp.Storage
         public Output<Outputs.TransferJobReplicationSpec?> ReplicationSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `Schedule` or `EventStream` must be set.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.TransferJobSchedule?> Schedule { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
+        /// Transfer specification. Structure documented below. One of `TransferSpec`, or `ReplicationSpec` can be specified.
         /// </summary>
         [Output("transferSpec")]
         public Output<Outputs.TransferJobTransferSpec?> TransferSpec { get; private set; } = null!;
@@ -315,7 +315,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+        /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `EventStream` or `Schedule` must be set.
         /// </summary>
         [Input("eventStream")]
         public Input<Inputs.TransferJobEventStreamArgs>? EventStream { get; set; }
@@ -327,7 +327,7 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.TransferJobLoggingConfigArgs>? LoggingConfig { get; set; }
 
         /// <summary>
-        /// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
+        /// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `Name` is a numeric value.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -346,7 +346,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+        /// Replication specification. Structure documented below. User should not configure `Schedule`, `EventStream` with this argument. One of `TransferSpec`, or `ReplicationSpec` must be specified.
         /// 
         /// - - -
         /// </summary>
@@ -354,7 +354,7 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.TransferJobReplicationSpecArgs>? ReplicationSpec { get; set; }
 
         /// <summary>
-        /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `Schedule` or `EventStream` must be set.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.TransferJobScheduleArgs>? Schedule { get; set; }
@@ -372,7 +372,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
+        /// Transfer specification. Structure documented below. One of `TransferSpec`, or `ReplicationSpec` can be specified.
         /// </summary>
         [Input("transferSpec")]
         public Input<Inputs.TransferJobTransferSpecArgs>? TransferSpec { get; set; }
@@ -404,7 +404,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+        /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `EventStream` or `Schedule` must be set.
         /// </summary>
         [Input("eventStream")]
         public Input<Inputs.TransferJobEventStreamGetArgs>? EventStream { get; set; }
@@ -422,7 +422,7 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.TransferJobLoggingConfigGetArgs>? LoggingConfig { get; set; }
 
         /// <summary>
-        /// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
+        /// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `Name` is a numeric value.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -441,7 +441,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+        /// Replication specification. Structure documented below. User should not configure `Schedule`, `EventStream` with this argument. One of `TransferSpec`, or `ReplicationSpec` must be specified.
         /// 
         /// - - -
         /// </summary>
@@ -449,7 +449,7 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.TransferJobReplicationSpecGetArgs>? ReplicationSpec { get; set; }
 
         /// <summary>
-        /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `Schedule` or `EventStream` must be set.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.TransferJobScheduleGetArgs>? Schedule { get; set; }
@@ -467,7 +467,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
+        /// Transfer specification. Structure documented below. One of `TransferSpec`, or `ReplicationSpec` can be specified.
         /// </summary>
         [Input("transferSpec")]
         public Input<Inputs.TransferJobTransferSpecGetArgs>? TransferSpec { get; set; }

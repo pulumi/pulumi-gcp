@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.ParameterManager
     {
         /// <summary>
         /// Location of Parameter Manager regional Parameter resource.
-        /// It must be provided when the `parameter` field provided consists of only the name of the regional parameter.
+        /// It must be provided when the `Parameter` field provided consists of only the name of the regional parameter.
         /// </summary>
         [Input("location")]
         public string? Location { get; set; }
@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.ParameterManager
     {
         /// <summary>
         /// Location of Parameter Manager regional Parameter resource.
-        /// It must be provided when the `parameter` field provided consists of only the name of the regional parameter.
+        /// It must be provided when the `Parameter` field provided consists of only the name of the regional parameter.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.ParameterManager
         public readonly string ParameterVersionId;
         public readonly string Project;
         /// <summary>
-        /// The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `parameter_data`.
+        /// The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `ParameterData`.
         /// </summary>
         public readonly string RenderedParameterData;
 

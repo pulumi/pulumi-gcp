@@ -1046,7 +1046,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
     }
     /**
      * IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported. Required if `ip_address` is set.
+     * Only IPv4 is supported. Required if `ipAddress` is set.
      * 
      */
     @Export(name="peerIpAddress", refs={String.class}, tree="[0]")
@@ -1054,7 +1054,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported. Required if `ip_address` is set.
+     * Only IPv4 is supported. Required if `ipAddress` is set.
      * 
      */
     public Output<String> peerIpAddress() {
@@ -1166,7 +1166,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
     }
     /**
      * The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
-     * This value has to be set true to force the advertised_route_priority to be 0.
+     * This value has to be set true to force the advertisedRoutePriority to be 0.
      * 
      */
     @Export(name="zeroAdvertisedRoutePriority", refs={Boolean.class}, tree="[0]")
@@ -1174,7 +1174,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
-     * This value has to be set true to force the advertised_route_priority to be 0.
+     * This value has to be set true to force the advertisedRoutePriority to be 0.
      * 
      */
     public Output<Optional<Boolean>> zeroAdvertisedRoutePriority() {
@@ -1182,7 +1182,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
     }
     /**
      * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-     * This value has to be set true to force the custom_learned_route_priority to be 0.
+     * This value has to be set true to force the customLearnedRoutePriority to be 0.
      * 
      */
     @Export(name="zeroCustomLearnedRoutePriority", refs={Boolean.class}, tree="[0]")
@@ -1190,7 +1190,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-     * This value has to be set true to force the custom_learned_route_priority to be 0.
+     * This value has to be set true to force the customLearnedRoutePriority to be 0.
      * 
      */
     public Output<Optional<Boolean>> zeroCustomLearnedRoutePriority() {

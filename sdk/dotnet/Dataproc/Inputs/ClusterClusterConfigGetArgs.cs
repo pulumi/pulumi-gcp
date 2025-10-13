@@ -14,8 +14,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     {
         /// <summary>
         /// The autoscaling policy config associated with the cluster.
-        /// Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
-        /// only be removed by setting `policy_uri = ""`, rather than removing the whole block.
+        /// Note that once set, if `AutoscalingConfig` is the only field set in `ClusterConfig`, it can
+        /// only be removed by setting `PolicyUri = ""`, rather than removing the whole block.
         /// Structure defined below.
         /// </summary>
         [Input("autoscalingConfig")]
@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// The name of the cloud storage bucket ultimately used to house the staging data
-        /// for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+        /// for the cluster. If `StagingBucket` is specified, it will contain this value, otherwise
         /// it will be the auto generated name.
         /// </summary>
         [Input("bucket")]
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The Google Compute Engine config settings for the additional
         /// instances in a cluster. Structure defined below.
-        /// * **NOTE** : `preemptible_worker_config` is
+        /// * **NOTE** : `PreemptibleWorkerConfig` is
         /// an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
         /// such for legacy/compatibility reasons.
         /// </summary>
@@ -137,7 +137,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The Cloud Storage staging bucket used to stage files,
         /// such as Hadoop jars, between client machines and the cluster.
-        /// Note: If you don't explicitly specify a `staging_bucket`
+        /// Note: If you don't explicitly specify a `StagingBucket`
         /// then GCP will auto create / assign one for you. However, you are not guaranteed
         /// an auto generated bucket which is solely dedicated to your cluster; it may be shared
         /// with other clusters in the same region/zone also choosing to use the auto generation
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The Cloud Storage temp bucket used to store ephemeral cluster
         /// and jobs data, such as Spark and MapReduce history files.
-        /// Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
+        /// Note: If you don't explicitly specify a `TempBucket` then GCP will auto create / assign one for you.
         /// </summary>
         [Input("tempBucket")]
         public Input<string>? TempBucket { get; set; }

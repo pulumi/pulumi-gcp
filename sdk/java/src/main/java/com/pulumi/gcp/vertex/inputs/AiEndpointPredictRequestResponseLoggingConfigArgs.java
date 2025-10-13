@@ -18,7 +18,7 @@ public final class AiEndpointPredictRequestResponseLoggingConfigArgs extends com
     public static final AiEndpointPredictRequestResponseLoggingConfigArgs Empty = new AiEndpointPredictRequestResponseLoggingConfigArgs();
 
     /**
-     * BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_&lt;endpoint-display-name&gt;_&lt;endpoint-id&gt;` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
+     * BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_&lt;endpoint-display-name&gt;_&lt;endpoint-id&gt;` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `requestResponseLogging`
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class AiEndpointPredictRequestResponseLoggingConfigArgs extends com
     private @Nullable Output<AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs> bigqueryDestination;
 
     /**
-     * @return BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_&lt;endpoint-display-name&gt;_&lt;endpoint-id&gt;` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
+     * @return BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_&lt;endpoint-display-name&gt;_&lt;endpoint-id&gt;` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `requestResponseLogging`
      * Structure is documented below.
      * 
      */
@@ -91,7 +91,7 @@ public final class AiEndpointPredictRequestResponseLoggingConfigArgs extends com
         }
 
         /**
-         * @param bigqueryDestination BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_&lt;endpoint-display-name&gt;_&lt;endpoint-id&gt;` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
+         * @param bigqueryDestination BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_&lt;endpoint-display-name&gt;_&lt;endpoint-id&gt;` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `requestResponseLogging`
          * Structure is documented below.
          * 
          * @return builder
@@ -103,7 +103,7 @@ public final class AiEndpointPredictRequestResponseLoggingConfigArgs extends com
         }
 
         /**
-         * @param bigqueryDestination BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_&lt;endpoint-display-name&gt;_&lt;endpoint-id&gt;` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
+         * @param bigqueryDestination BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_&lt;endpoint-display-name&gt;_&lt;endpoint-id&gt;` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `requestResponseLogging`
          * Structure is documented below.
          * 
          * @return builder

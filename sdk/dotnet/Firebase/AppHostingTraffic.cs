@@ -262,7 +262,7 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Current state of traffic allocation for the backend.
-        /// When setting `target`, this field may differ for some time until the desired state is reached.
+        /// When setting `Target`, this field may differ for some time until the desired state is reached.
         /// Structure is documented below.
         /// </summary>
         [Output("currents")]
@@ -436,7 +436,7 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Current state of traffic allocation for the backend.
-        /// When setting `target`, this field may differ for some time until the desired state is reached.
+        /// When setting `Target`, this field may differ for some time until the desired state is reached.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AppHostingTrafficCurrentGetArgs> Currents

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     public sealed class TargetMultiTarget
     {
         /// <summary>
-        /// Required. The target_ids of this multiTarget.
+        /// Required. The TargetIds of this multiTarget.
         /// </summary>
         public readonly ImmutableArray<string> TargetIds;
 

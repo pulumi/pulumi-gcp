@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
         /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         /// 
-        /// &gt; **Warning:** `monitoring_interval` is deprecated and will be removed in a future release.
+        /// &gt; **Warning:** `MonitoringInterval` is deprecated and will be removed in a future release.
         /// </summary>
         public readonly string? MonitoringInterval;
         /// <summary>

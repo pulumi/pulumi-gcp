@@ -73,7 +73,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Labels to apply to this VpnTunnel.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -82,7 +82,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Labels to apply to this VpnTunnel.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -169,7 +169,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
-     * If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+     * If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
      * ID in the peer GCP VPN gateway.
      * This field must reference a `gcp.compute.HaVpnGateway` resource.
      * 
@@ -179,7 +179,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
-     * If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+     * If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
      * ID in the peer GCP VPN gateway.
      * This field must reference a `gcp.compute.HaVpnGateway` resource.
      * 
@@ -221,14 +221,14 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
+     * The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
+     * @return The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      * 
      */
     public Optional<Output<String>> region() {
@@ -291,14 +291,14 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      * 
      */
     @Import(name="sharedSecretWoVersion")
     private @Nullable Output<String> sharedSecretWoVersion;
 
     /**
-     * @return Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * @return Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      * 
      */
     public Optional<Output<String>> sharedSecretWoVersion() {
@@ -470,7 +470,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Labels to apply to this VpnTunnel.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Labels to apply to this VpnTunnel.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -609,7 +609,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param peerGcpGateway URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
-         * If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+         * If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
          * ID in the peer GCP VPN gateway.
          * This field must reference a `gcp.compute.HaVpnGateway` resource.
          * 
@@ -623,7 +623,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param peerGcpGateway URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
-         * If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+         * If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
          * ID in the peer GCP VPN gateway.
          * This field must reference a `gcp.compute.HaVpnGateway` resource.
          * 
@@ -679,7 +679,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
+         * @param region The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
          * 
          * @return builder
          * 
@@ -690,7 +690,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
+         * @param region The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
          * 
          * @return builder
          * 
@@ -786,7 +786,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sharedSecretWoVersion Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * @param sharedSecretWoVersion Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
          * 
          * @return builder
          * 
@@ -797,7 +797,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sharedSecretWoVersion Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * @param sharedSecretWoVersion Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
          * 
          * @return builder
          * 

@@ -109,7 +109,7 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
      * User-defined labels.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -119,7 +119,7 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
      * @return User-defined labels.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -210,7 +210,7 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
      * If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
-     * NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+     * NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
      * a redundant parameter.
      * 
      */
@@ -220,7 +220,7 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
      * If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
-     * NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+     * NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
      * a redundant parameter.
      * 
      */
@@ -445,7 +445,7 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels User-defined labels.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels User-defined labels.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param prefixLength An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
          * If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
-         * NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+         * NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
          * a redundant parameter.
          * 
          * @return builder
@@ -607,7 +607,7 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param prefixLength An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
          * If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
-         * NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+         * NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
          * a redundant parameter.
          * 
          * @return builder

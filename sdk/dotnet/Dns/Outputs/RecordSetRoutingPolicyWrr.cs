@@ -14,12 +14,12 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class RecordSetRoutingPolicyWrr
     {
         /// <summary>
-        /// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+        /// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `Rrdatas` or `HealthCheckedTargets` can be set.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RecordSetRoutingPolicyWrrHealthCheckedTargets? HealthCheckedTargets;
         /// <summary>
-        /// Same as `rrdatas` above.
+        /// Same as `Rrdatas` above.
         /// </summary>
         public readonly ImmutableArray<string> Rrdatas;
         /// <summary>

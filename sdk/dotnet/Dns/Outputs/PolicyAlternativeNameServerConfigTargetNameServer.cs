@@ -14,12 +14,12 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class PolicyAlternativeNameServerConfigTargetNameServer
     {
         /// <summary>
-        /// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+        /// Forwarding path for this TargetNameServer. If unset or `Default` Cloud DNS will make forwarding
         /// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-        /// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-        /// Possible values are: `default`, `private`.
+        /// to the Internet. When set to `Private`, Cloud DNS will always send queries through VPC for this target
+        /// Possible values are: `Default`, `Private`.
         /// 
-        /// &lt;a name="nested_dns64_config"&gt;&lt;/a&gt;The `dns64_config` block supports:
+        /// &lt;a name="NestedDns64Config"&gt;&lt;/a&gt;The `Dns64Config` block supports:
         /// </summary>
         public readonly string? ForwardingPath;
         /// <summary>

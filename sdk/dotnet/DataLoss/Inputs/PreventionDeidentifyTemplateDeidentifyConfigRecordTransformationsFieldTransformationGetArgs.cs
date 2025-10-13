@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
         /// <summary>
         /// Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
-        /// Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+        /// Only one of `PrimitiveTransformation` or `InfoTypeTransformations` must be specified.
         /// Structure is documented below.
         /// </summary>
         [Input("infoTypeTransformations")]
@@ -46,8 +46,8 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
         /// <summary>
         /// Apply the transformation to the entire field.
-        /// The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
-        /// Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+        /// The `PrimitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
+        /// Only one of `PrimitiveTransformation` or `InfoTypeTransformations` must be specified.
         /// Structure is documented below.
         /// </summary>
         [Input("primitiveTransformation")]

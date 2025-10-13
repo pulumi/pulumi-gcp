@@ -210,7 +210,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Fully qualified domain name of network endpoint.
-        /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+        /// This can only be specified when NetworkEndpointType of the NEG is INTERNET_FQDN_PORT.
         /// </summary>
         [Output("fqdn")]
         public Output<string?> Fqdn { get; private set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// IPv4 address external endpoint.
-        /// This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+        /// This can only be specified when NetworkEndpointType of the NEG is INTERNET_IP_PORT.
         /// </summary>
         [Output("ipAddress")]
         public Output<string?> IpAddress { get; private set; } = null!;
@@ -314,7 +314,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Fully qualified domain name of network endpoint.
-        /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+        /// This can only be specified when NetworkEndpointType of the NEG is INTERNET_FQDN_PORT.
         /// </summary>
         [Input("fqdn")]
         public Input<string>? Fqdn { get; set; }
@@ -328,7 +328,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// IPv4 address external endpoint.
-        /// This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+        /// This can only be specified when NetworkEndpointType of the NEG is INTERNET_IP_PORT.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -374,7 +374,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Fully qualified domain name of network endpoint.
-        /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+        /// This can only be specified when NetworkEndpointType of the NEG is INTERNET_FQDN_PORT.
         /// </summary>
         [Input("fqdn")]
         public Input<string>? Fqdn { get; set; }
@@ -388,7 +388,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// IPv4 address external endpoint.
-        /// This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+        /// This can only be specified when NetworkEndpointType of the NEG is INTERNET_IP_PORT.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }

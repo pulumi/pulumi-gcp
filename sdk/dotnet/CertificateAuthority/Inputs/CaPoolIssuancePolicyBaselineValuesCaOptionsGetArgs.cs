@@ -27,14 +27,14 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// When true, the "CA" in Basic Constraints extension will be set to false.
-        /// If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+        /// If both `IsCa` and `NonCa` are unset, the extension will be omitted from the CA certificate.
         /// </summary>
         [Input("nonCa")]
         public Input<bool>? NonCa { get; set; }
 
         /// <summary>
         /// When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-        /// if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+        /// if both `MaxIssuerPathLength` and `ZeroMaxIssuerPathLength` are unset,
         /// the max path length will be omitted from the CA certificate.
         /// </summary>
         [Input("zeroMaxIssuerPathLength")]

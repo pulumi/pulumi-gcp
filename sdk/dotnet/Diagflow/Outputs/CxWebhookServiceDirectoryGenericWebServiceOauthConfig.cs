@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         public readonly string ClientId;
         /// <summary>
         /// The client secret provided by the 3rd party platform.  If the
-        /// `secret_version_for_client_secret` field is set, this field will be
+        /// `SecretVersionForClientSecret` field is set, this field will be
         /// ignored.
         /// </summary>
         public readonly string? ClientSecret;
@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         public readonly ImmutableArray<string> Scopes;
         /// <summary>
         /// The name of the SecretManager secret version resource storing the
-        /// client secret. If this field is set, the `client_secret` field will be
+        /// client secret. If this field is set, the `ClientSecret` field will be
         /// ignored.
         /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
         /// </summary>

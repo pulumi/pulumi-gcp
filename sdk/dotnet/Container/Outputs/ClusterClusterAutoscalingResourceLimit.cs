@@ -22,8 +22,8 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int? Minimum;
         /// <summary>
-        /// The type of the resource. For example, `cpu` and
-        /// `memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+        /// The type of the resource. For example, `Cpu` and
+        /// `Memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
         /// for a list of types.
         /// </summary>
         public readonly string ResourceType;

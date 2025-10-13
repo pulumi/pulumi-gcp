@@ -13,18 +13,24 @@ namespace Pulumi.Gcp.ArtifactRegistry
     {
         /// <summary>
         /// This data source fetches information of a tag from a provided Artifact Registry repository.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("gcp:artifactregistry/getTag:getTag", args ?? new GetTagArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source fetches information of a tag from a provided Artifact Registry repository.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("gcp:artifactregistry/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source fetches information of a tag from a provided Artifact Registry repository.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("gcp:artifactregistry/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());

@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// to the response or request headers with the
         /// same field names. The added values are
         /// separated by commas.
-        /// To overwrite existing values, set `replace` to `true`.
+        /// To overwrite existing values, set `Replace` to `True`.
         /// </summary>
         [Input("replace")]
         public Input<bool>? Replace { get; set; }

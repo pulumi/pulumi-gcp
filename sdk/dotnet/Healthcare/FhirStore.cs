@@ -424,7 +424,7 @@ namespace Pulumi.Gcp.Healthcare
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -441,7 +441,7 @@ namespace Pulumi.Gcp.Healthcare
         /// A nested object resource.
         /// Structure is documented below.
         /// 
-        /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+        /// &gt; **Warning:** `NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.FhirStoreNotificationConfig?> NotificationConfig { get; private set; } = null!;
@@ -638,7 +638,7 @@ namespace Pulumi.Gcp.Healthcare
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -658,7 +658,7 @@ namespace Pulumi.Gcp.Healthcare
         /// A nested object resource.
         /// Structure is documented below.
         /// 
-        /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+        /// &gt; **Warning:** `NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.FhirStoreNotificationConfigArgs>? NotificationConfig { get; set; }
@@ -827,7 +827,7 @@ namespace Pulumi.Gcp.Healthcare
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -847,7 +847,7 @@ namespace Pulumi.Gcp.Healthcare
         /// A nested object resource.
         /// Structure is documented below.
         /// 
-        /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+        /// &gt; **Warning:** `NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.FhirStoreNotificationConfigGetArgs>? NotificationConfig { get; set; }

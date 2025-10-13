@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     public sealed class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the component. One of `admission` `audit` or `mutation`
+        /// The name of the component. One of `Admission` `Audit` or `Mutation`
         /// </summary>
         [Input("componentName", required: true)]
         public Input<string> ComponentName { get; set; } = null!;

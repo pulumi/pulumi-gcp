@@ -96,7 +96,7 @@ public final class RoutineSparkOptionsArgs extends com.pulumi.resources.Resource
 
     /**
      * The fully qualified name of a class in jarUris, for example, com.example.wordcount.
-     * Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
+     * Exactly one of mainClass and mainJarUri field should be set for Java/Scala language type.
      * 
      */
     @Import(name="mainClass")
@@ -104,7 +104,7 @@ public final class RoutineSparkOptionsArgs extends com.pulumi.resources.Resource
 
     /**
      * @return The fully qualified name of a class in jarUris, for example, com.example.wordcount.
-     * Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
+     * Exactly one of mainClass and mainJarUri field should be set for Java/Scala language type.
      * 
      */
     public Optional<Output<String>> mainClass() {
@@ -351,7 +351,7 @@ public final class RoutineSparkOptionsArgs extends com.pulumi.resources.Resource
 
         /**
          * @param mainClass The fully qualified name of a class in jarUris, for example, com.example.wordcount.
-         * Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
+         * Exactly one of mainClass and mainJarUri field should be set for Java/Scala language type.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class RoutineSparkOptionsArgs extends com.pulumi.resources.Resource
 
         /**
          * @param mainClass The fully qualified name of a class in jarUris, for example, com.example.wordcount.
-         * Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
+         * Exactly one of mainClass and mainJarUri field should be set for Java/Scala language type.
          * 
          * @return builder
          * 

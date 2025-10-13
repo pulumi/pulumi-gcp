@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// Output only. The consumer project_id where the forwarding rule is created from.
+        /// Output only. The consumer ProjectId where the forwarding rule is created from.
         /// </summary>
         public readonly string ProjectId;
         /// <summary>

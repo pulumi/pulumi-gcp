@@ -44,7 +44,7 @@ public final class GetInstancePscAutoConnection {
      */
     private Integer port;
     /**
-     * @return Output only. The consumer project_id where the forwarding rule is created from.
+     * @return Output only. The consumer projectId where the forwarding rule is created from.
      * 
      */
     private String projectId;
@@ -112,7 +112,7 @@ public final class GetInstancePscAutoConnection {
         return this.port;
     }
     /**
-     * @return Output only. The consumer project_id where the forwarding rule is created from.
+     * @return Output only. The consumer projectId where the forwarding rule is created from.
      * 
      */
     public String projectId() {

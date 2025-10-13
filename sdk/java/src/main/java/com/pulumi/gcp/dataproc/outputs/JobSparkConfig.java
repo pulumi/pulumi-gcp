@@ -41,13 +41,13 @@ public final class JobSparkConfig {
     private @Nullable JobSparkConfigLoggingConfig loggingConfig;
     /**
      * @return The class containing the main method of the driver. Must be in a
-     * provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
+     * provided jar or jar that is already on the classpath. Conflicts with `mainJarFileUri`
      * 
      */
     private @Nullable String mainClass;
     /**
      * @return The HCFS URI of jar file containing
-     * the driver jar. Conflicts with `main_class`
+     * the driver jar. Conflicts with `mainClass`
      * 
      */
     private @Nullable String mainJarFileUri;
@@ -97,7 +97,7 @@ public final class JobSparkConfig {
     }
     /**
      * @return The class containing the main method of the driver. Must be in a
-     * provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
+     * provided jar or jar that is already on the classpath. Conflicts with `mainJarFileUri`
      * 
      */
     public Optional<String> mainClass() {
@@ -105,7 +105,7 @@ public final class JobSparkConfig {
     }
     /**
      * @return The HCFS URI of jar file containing
-     * the driver jar. Conflicts with `main_class`
+     * the driver jar. Conflicts with `mainClass`
      * 
      */
     public Optional<String> mainJarFileUri() {

@@ -187,7 +187,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The SSL certificate Hosting has for this `CustomDomain`'s domain name.
         /// For new `CustomDomain`s, this often represents Hosting's intent to create
-        /// a certificate, rather than an actual cert. Check the `state` field for
+        /// a certificate, rather than an actual cert. Check the `State` field for
         /// more.
         /// Structure is documented below.
         /// </summary>
@@ -237,7 +237,7 @@ namespace Pulumi.Gcp.Firebase
         /// HOST_UNREACHABLE:
         /// Your `CustomDomain`'s domain name can't be reached. Hosting services' DNS
         /// queries to find your domain name's IP addresses resulted in errors. See
-        /// your `CustomDomain`'s `issues` field for more details.
+        /// your `CustomDomain`'s `Issues` field for more details.
         /// HOST_MISMATCH:
         /// Your `CustomDomain`'s domain name has IP addresses that don't ultimately
         /// resolve to Hosting.
@@ -285,7 +285,7 @@ namespace Pulumi.Gcp.Firebase
         /// OWNERSHIP_UNREACHABLE:
         /// Your `CustomDomain`'s domain name can't be reached. Hosting services' DNS
         /// queries to find your domain name's ownership records resulted in errors.
-        /// See your `CustomDomain`'s `issues` field for more details.
+        /// See your `CustomDomain`'s `Issues` field for more details.
         /// OWNERSHIP_MISMATCH:
         /// Your `CustomDomain`'s domain name is owned by another Firebase project.
         /// Remove the conflicting `TXT` records and replace them with project-specific
@@ -315,8 +315,8 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// if true, indicates that Hosting's systems are attempting to
         /// make the `CustomDomain`'s state match your preferred state. This is most
-        /// frequently `true` when initially provisioning a `CustomDomain` or when creating
-        /// a new SSL certificate to match an updated `cert_preference`
+        /// frequently `True` when initially provisioning a `CustomDomain` or when creating
+        /// a new SSL certificate to match an updated `CertPreference`
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
@@ -324,7 +324,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// A domain name that this CustomDomain should direct traffic towards. If
         /// specified, Hosting will respond to requests against this CustomDomain
-        /// with an HTTP 301 code, and route traffic to the specified `redirect_target`
+        /// with an HTTP 301 code, and route traffic to the specified `RedirectTarget`
         /// instead.
         /// </summary>
         [Output("redirectTarget")]
@@ -424,7 +424,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// A domain name that this CustomDomain should direct traffic towards. If
         /// specified, Hosting will respond to requests against this CustomDomain
-        /// with an HTTP 301 code, and route traffic to the specified `redirect_target`
+        /// with an HTTP 301 code, and route traffic to the specified `RedirectTarget`
         /// instead.
         /// </summary>
         [Input("redirectTarget")]
@@ -462,7 +462,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The SSL certificate Hosting has for this `CustomDomain`'s domain name.
         /// For new `CustomDomain`s, this often represents Hosting's intent to create
-        /// a certificate, rather than an actual cert. Check the `state` field for
+        /// a certificate, rather than an actual cert. Check the `State` field for
         /// more.
         /// Structure is documented below.
         /// </summary>
@@ -515,7 +515,7 @@ namespace Pulumi.Gcp.Firebase
         /// HOST_UNREACHABLE:
         /// Your `CustomDomain`'s domain name can't be reached. Hosting services' DNS
         /// queries to find your domain name's IP addresses resulted in errors. See
-        /// your `CustomDomain`'s `issues` field for more details.
+        /// your `CustomDomain`'s `Issues` field for more details.
         /// HOST_MISMATCH:
         /// Your `CustomDomain`'s domain name has IP addresses that don't ultimately
         /// resolve to Hosting.
@@ -569,7 +569,7 @@ namespace Pulumi.Gcp.Firebase
         /// OWNERSHIP_UNREACHABLE:
         /// Your `CustomDomain`'s domain name can't be reached. Hosting services' DNS
         /// queries to find your domain name's ownership records resulted in errors.
-        /// See your `CustomDomain`'s `issues` field for more details.
+        /// See your `CustomDomain`'s `Issues` field for more details.
         /// OWNERSHIP_MISMATCH:
         /// Your `CustomDomain`'s domain name is owned by another Firebase project.
         /// Remove the conflicting `TXT` records and replace them with project-specific
@@ -599,8 +599,8 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// if true, indicates that Hosting's systems are attempting to
         /// make the `CustomDomain`'s state match your preferred state. This is most
-        /// frequently `true` when initially provisioning a `CustomDomain` or when creating
-        /// a new SSL certificate to match an updated `cert_preference`
+        /// frequently `True` when initially provisioning a `CustomDomain` or when creating
+        /// a new SSL certificate to match an updated `CertPreference`
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }
@@ -608,7 +608,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// A domain name that this CustomDomain should direct traffic towards. If
         /// specified, Hosting will respond to requests against this CustomDomain
-        /// with an HTTP 301 code, and route traffic to the specified `redirect_target`
+        /// with an HTTP 301 code, and route traffic to the specified `RedirectTarget`
         /// instead.
         /// </summary>
         [Input("redirectTarget")]

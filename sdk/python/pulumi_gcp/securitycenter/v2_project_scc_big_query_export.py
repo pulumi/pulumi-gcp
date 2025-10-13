@@ -430,6 +430,8 @@ class V2ProjectSccBigQueryExport(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Scc V2 Project Big Query Export Config Basic
+
         ## Import
 
         ProjectSccBigQueryExport can be imported using any of these accepted formats:
@@ -505,6 +507,8 @@ class V2ProjectSccBigQueryExport(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/security-command-center/docs/how-to-analyze-findings-in-big-query)
 
         ## Example Usage
+
+        ### Scc V2 Project Big Query Export Config Basic
 
         ## Import
 

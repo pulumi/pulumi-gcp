@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        /// port_name are defined, port takes precedence.
+        /// PortName are defined, port takes precedence.
         /// </summary>
         [Input("portName")]
         public Input<string>? PortName { get; set; }

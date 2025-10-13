@@ -69,7 +69,7 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The HCFS URI of the script that contains SQL queries.
-     * Conflicts with `query_list`
+     * Conflicts with `queryList`
      * 
      */
     @Import(name="queryFileUri")
@@ -77,7 +77,7 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The HCFS URI of the script that contains SQL queries.
-     * Conflicts with `query_list`
+     * Conflicts with `queryList`
      * 
      */
     public Optional<Output<String>> queryFileUri() {
@@ -86,7 +86,7 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The list of SQL queries or statements to execute as part of the job.
-     * Conflicts with `query_file_uri`
+     * Conflicts with `queryFileUri`
      * 
      */
     @Import(name="queryLists")
@@ -94,7 +94,7 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The list of SQL queries or statements to execute as part of the job.
-     * Conflicts with `query_file_uri`
+     * Conflicts with `queryFileUri`
      * 
      */
     public Optional<Output<List<String>>> queryLists() {
@@ -226,7 +226,7 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param queryFileUri The HCFS URI of the script that contains SQL queries.
-         * Conflicts with `query_list`
+         * Conflicts with `queryList`
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param queryFileUri The HCFS URI of the script that contains SQL queries.
-         * Conflicts with `query_list`
+         * Conflicts with `queryList`
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param queryLists The list of SQL queries or statements to execute as part of the job.
-         * Conflicts with `query_file_uri`
+         * Conflicts with `queryFileUri`
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param queryLists The list of SQL queries or statements to execute as part of the job.
-         * Conflicts with `query_file_uri`
+         * Conflicts with `queryFileUri`
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param queryLists The list of SQL queries or statements to execute as part of the job.
-         * Conflicts with `query_file_uri`
+         * Conflicts with `queryFileUri`
          * 
          * @return builder
          * 

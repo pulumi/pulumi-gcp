@@ -52,7 +52,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Required. A GitLab personal access token with the minimum `read_api` scope access.
+     * Required. A GitLab personal access token with the minimum `readApi` scope access.
      * Structure is documented below.
      * 
      */
@@ -60,7 +60,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
     private Output<ConnectionGitlabConfigReadAuthorizerCredentialArgs> readAuthorizerCredential;
 
     /**
-     * @return Required. A GitLab personal access token with the minimum `read_api` scope access.
+     * @return Required. A GitLab personal access token with the minimum `readApi` scope access.
      * Structure is documented below.
      * 
      */
@@ -70,7 +70,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * (Output)
-     * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+     * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
      * 
      */
     @Import(name="serverVersion")
@@ -78,7 +78,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * @return (Output)
-     * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+     * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
      * 
      */
     public Optional<Output<String>> serverVersion() {
@@ -207,7 +207,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param readAuthorizerCredential Required. A GitLab personal access token with the minimum `read_api` scope access.
+         * @param readAuthorizerCredential Required. A GitLab personal access token with the minimum `readApi` scope access.
          * Structure is documented below.
          * 
          * @return builder
@@ -219,7 +219,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param readAuthorizerCredential Required. A GitLab personal access token with the minimum `read_api` scope access.
+         * @param readAuthorizerCredential Required. A GitLab personal access token with the minimum `readApi` scope access.
          * Structure is documented below.
          * 
          * @return builder
@@ -231,7 +231,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param serverVersion (Output)
-         * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+         * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param serverVersion (Output)
-         * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+         * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
          * 
          * @return builder
          * 

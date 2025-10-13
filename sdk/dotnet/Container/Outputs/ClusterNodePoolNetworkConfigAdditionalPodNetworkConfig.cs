@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? SecondaryPodRange;
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
+        /// The name or SelfLink of the Google Compute Engine
         /// subnetwork in which the cluster's instances are launched.
         /// </summary>
         public readonly string? Subnetwork;

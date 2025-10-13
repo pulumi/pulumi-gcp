@@ -77,7 +77,7 @@ public final class GetDatabaseInstancesInstance {
      */
     private String maintenanceVersion;
     /**
-     * @return The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
+     * @return The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binaryLogEnabled set, as well as existing backups.
      * 
      */
     private String masterInstanceName;
@@ -231,7 +231,7 @@ public final class GetDatabaseInstancesInstance {
         return this.maintenanceVersion;
     }
     /**
-     * @return The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
+     * @return The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binaryLogEnabled set, as well as existing backups.
      * 
      */
     public String masterInstanceName() {

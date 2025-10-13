@@ -265,7 +265,7 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class GetSArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A prefix for filtering. It's applied with the `account_id`.
+        /// A prefix for filtering. It's applied with the `AccountId`.
         /// </summary>
         [Input("prefix")]
         public string? Prefix { get; set; }
@@ -277,7 +277,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public string? Project { get; set; }
 
         /// <summary>
-        /// A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
+        /// A regular expression for filtering. It's applied with the `Email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
         /// </summary>
         [Input("regex")]
         public string? Regex { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class GetSInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A prefix for filtering. It's applied with the `account_id`.
+        /// A prefix for filtering. It's applied with the `AccountId`.
         /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
@@ -303,7 +303,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
+        /// A regular expression for filtering. It's applied with the `Email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
         /// </summary>
         [Input("regex")]
         public Input<string>? Regex { get; set; }

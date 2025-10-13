@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterMaintenancePolicyResult
     {
         /// <summary>
-        /// Time window specified for daily maintenance operations. Specify start_time in RFC3339 format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+        /// Time window specified for daily maintenance operations. Specify StartTime in RFC3339 format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyDailyMaintenanceWindowResult> DailyMaintenanceWindows;
         /// <summary>

@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Tags
     public static class GetTagValue
     {
         /// <summary>
-        /// Get a tag value by `parent` key and `short_name`.
+        /// Get a tag value by `Parent` key and `ShortName`.
         /// 
         /// ## Example Usage
         /// 
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Tags
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagValueResult>("gcp:tags/getTagValue:getTagValue", args ?? new GetTagValueArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get a tag value by `parent` key and `short_name`.
+        /// Get a tag value by `Parent` key and `ShortName`.
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Tags
             => global::Pulumi.Deployment.Instance.Invoke<GetTagValueResult>("gcp:tags/getTagValue:getTagValue", args ?? new GetTagValueInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get a tag value by `parent` key and `short_name`.
+        /// Get a tag value by `Parent` key and `ShortName`.
         /// 
         /// ## Example Usage
         /// 

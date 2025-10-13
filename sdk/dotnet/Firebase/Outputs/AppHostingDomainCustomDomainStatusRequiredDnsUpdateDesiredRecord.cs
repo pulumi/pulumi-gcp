@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Firebase.Outputs
         /// (Output)
         /// An enum that indicates the a required action for this record. Populated
         /// when the record is part of a required change in a  `DnsUpdates`
-        /// `discovered` or `desired` record set.
+        /// `Discovered` or `Desired` record set.
         /// Possible values:
         /// NONE
         /// ADD

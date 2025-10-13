@@ -280,7 +280,7 @@ namespace Pulumi.Gcp.Diagflow
     {
         /// <summary>
         /// Data store search tool specification.
-        /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+        /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
         /// Structure is documented below.
         /// </summary>
         [Output("dataStoreSpec")]
@@ -300,7 +300,7 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// Client side executed function specification.
-        /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+        /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
         /// Structure is documented below.
         /// </summary>
         [Output("functionSpec")]
@@ -315,7 +315,7 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// OpenAPI specification of the Tool.
-        /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+        /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
         /// Structure is documented below.
         /// </summary>
         [Output("openApiSpec")]
@@ -382,7 +382,7 @@ namespace Pulumi.Gcp.Diagflow
     {
         /// <summary>
         /// Data store search tool specification.
-        /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+        /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("dataStoreSpec")]
@@ -402,7 +402,7 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// Client side executed function specification.
-        /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+        /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("functionSpec")]
@@ -410,7 +410,7 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// OpenAPI specification of the Tool.
-        /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+        /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("openApiSpec")]
@@ -433,7 +433,7 @@ namespace Pulumi.Gcp.Diagflow
     {
         /// <summary>
         /// Data store search tool specification.
-        /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+        /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("dataStoreSpec")]
@@ -453,7 +453,7 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// Client side executed function specification.
-        /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+        /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("functionSpec")]
@@ -468,7 +468,7 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// OpenAPI specification of the Tool.
-        /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+        /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("openApiSpec")]

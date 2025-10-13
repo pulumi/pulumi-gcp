@@ -17,14 +17,14 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
     public static final EnvironmentConfigNodeConfigIpAllocationPolicyArgs Empty = new EnvironmentConfigNodeConfigIpAllocationPolicyArgs();
 
     /**
-     * The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both.
+     * The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
      * 
      */
     @Import(name="clusterIpv4CidrBlock")
     private @Nullable Output<String> clusterIpv4CidrBlock;
 
     /**
-     * @return The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both.
+     * @return The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
      * 
      */
     public Optional<Output<String>> clusterIpv4CidrBlock() {
@@ -32,14 +32,14 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
     }
 
     /**
-     * The name of the cluster&#39;s secondary range used to allocate IP addresses to pods. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.
+     * The name of the cluster&#39;s secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
      * 
      */
     @Import(name="clusterSecondaryRangeName")
     private @Nullable Output<String> clusterSecondaryRangeName;
 
     /**
-     * @return The name of the cluster&#39;s secondary range used to allocate IP addresses to pods. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.
+     * @return The name of the cluster&#39;s secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
      * 
      */
     public Optional<Output<String>> clusterSecondaryRangeName() {
@@ -47,14 +47,14 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
     }
 
     /**
-     * The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both.
+     * The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
      * 
      */
     @Import(name="servicesIpv4CidrBlock")
     private @Nullable Output<String> servicesIpv4CidrBlock;
 
     /**
-     * @return The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both.
+     * @return The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
      * 
      */
     public Optional<Output<String>> servicesIpv4CidrBlock() {
@@ -62,14 +62,14 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
     }
 
     /**
-     * The name of the services&#39; secondary range used to allocate IP addresses to the cluster. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.
+     * The name of the services&#39; secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
      * 
      */
     @Import(name="servicesSecondaryRangeName")
     private @Nullable Output<String> servicesSecondaryRangeName;
 
     /**
-     * @return The name of the services&#39; secondary range used to allocate IP addresses to the cluster. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.
+     * @return The name of the services&#39; secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
      * 
      */
     public Optional<Output<String>> servicesSecondaryRangeName() {
@@ -77,14 +77,14 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
     }
 
     /**
-     * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ip_allocation_policy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
+     * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
      * 
      */
     @Import(name="useIpAliases")
     private @Nullable Output<Boolean> useIpAliases;
 
     /**
-     * @return Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ip_allocation_policy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
+     * @return Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
      * 
      */
     public Optional<Output<Boolean>> useIpAliases() {
@@ -120,7 +120,7 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
         }
 
         /**
-         * @param clusterIpv4CidrBlock The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both.
+         * @param clusterIpv4CidrBlock The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
         }
 
         /**
-         * @param clusterIpv4CidrBlock The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both.
+         * @param clusterIpv4CidrBlock The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
         }
 
         /**
-         * @param clusterSecondaryRangeName The name of the cluster&#39;s secondary range used to allocate IP addresses to pods. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.
+         * @param clusterSecondaryRangeName The name of the cluster&#39;s secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
         }
 
         /**
-         * @param clusterSecondaryRangeName The name of the cluster&#39;s secondary range used to allocate IP addresses to pods. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.
+         * @param clusterSecondaryRangeName The name of the cluster&#39;s secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
         }
 
         /**
-         * @param servicesIpv4CidrBlock The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both.
+         * @param servicesIpv4CidrBlock The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
         }
 
         /**
-         * @param servicesIpv4CidrBlock The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both.
+         * @param servicesIpv4CidrBlock The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
         }
 
         /**
-         * @param servicesSecondaryRangeName The name of the services&#39; secondary range used to allocate IP addresses to the cluster. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.
+         * @param servicesSecondaryRangeName The name of the services&#39; secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
         }
 
         /**
-         * @param servicesSecondaryRangeName The name of the services&#39; secondary range used to allocate IP addresses to the cluster. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.
+         * @param servicesSecondaryRangeName The name of the services&#39; secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
         }
 
         /**
-         * @param useIpAliases Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ip_allocation_policy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
+         * @param useIpAliases Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicyArgs extends com
         }
 
         /**
-         * @param useIpAliases Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ip_allocation_policy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
+         * @param useIpAliases Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
          * 
          * @return builder
          * 

@@ -21,8 +21,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
-        /// Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
-        /// with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
+        /// Specify `COLLOCATED` to enable collocation. Can only be specified with `VmCount`. If compute instances are created
+        /// with a COLLOCATED policy, then exactly `VmCount` instances must be created at the same time with the resource policy
         /// attached.
         /// Possible values are: `COLLOCATED`.
         /// </summary>

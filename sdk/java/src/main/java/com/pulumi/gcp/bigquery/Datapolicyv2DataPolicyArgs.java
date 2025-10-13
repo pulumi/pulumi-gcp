@@ -107,7 +107,7 @@ public final class Datapolicyv2DataPolicyArgs extends com.pulumi.resources.Resou
      * syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
      * supports principal types users, groups, serviceaccounts, cloudidentity.
      * This field is supported in V2 Data Policy only. In case of V1 data policies
-     * (i.e. verion = 1 and policy_tag is set), this field is not populated.
+     * (i.e. verion = 1 and policyTag is set), this field is not populated.
      * 
      */
     @Import(name="grantees")
@@ -120,7 +120,7 @@ public final class Datapolicyv2DataPolicyArgs extends com.pulumi.resources.Resou
      * syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
      * supports principal types users, groups, serviceaccounts, cloudidentity.
      * This field is supported in V2 Data Policy only. In case of V1 data policies
-     * (i.e. verion = 1 and policy_tag is set), this field is not populated.
+     * (i.e. verion = 1 and policyTag is set), this field is not populated.
      * 
      */
     public Optional<Output<List<String>>> grantees() {
@@ -302,7 +302,7 @@ public final class Datapolicyv2DataPolicyArgs extends com.pulumi.resources.Resou
          * syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
          * supports principal types users, groups, serviceaccounts, cloudidentity.
          * This field is supported in V2 Data Policy only. In case of V1 data policies
-         * (i.e. verion = 1 and policy_tag is set), this field is not populated.
+         * (i.e. verion = 1 and policyTag is set), this field is not populated.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class Datapolicyv2DataPolicyArgs extends com.pulumi.resources.Resou
          * syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
          * supports principal types users, groups, serviceaccounts, cloudidentity.
          * This field is supported in V2 Data Policy only. In case of V1 data policies
-         * (i.e. verion = 1 and policy_tag is set), this field is not populated.
+         * (i.e. verion = 1 and policyTag is set), this field is not populated.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class Datapolicyv2DataPolicyArgs extends com.pulumi.resources.Resou
          * syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
          * supports principal types users, groups, serviceaccounts, cloudidentity.
          * This field is supported in V2 Data Policy only. In case of V1 data policies
-         * (i.e. verion = 1 and policy_tag is set), this field is not populated.
+         * (i.e. verion = 1 and policyTag is set), this field is not populated.
          * 
          * @return builder
          * 

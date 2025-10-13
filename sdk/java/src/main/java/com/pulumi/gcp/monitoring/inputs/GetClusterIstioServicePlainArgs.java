@@ -17,7 +17,7 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
 
     /**
      * The name of the Kubernetes cluster in which this Istio service
-     * is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
+     * is defined. Corresponds to the clusterName resource label in k8sCluster resources.
      * 
      */
     @Import(name="clusterName", required=true)
@@ -25,7 +25,7 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
 
     /**
      * @return The name of the Kubernetes cluster in which this Istio service
-     * is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
+     * is defined. Corresponds to the clusterName resource label in k8sCluster resources.
      * 
      */
     public String clusterName() {
@@ -34,7 +34,7 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
 
     /**
      * The location of the Kubernetes cluster in which this Istio service
-     * is defined. Corresponds to the location resource label in k8s_cluster resources.
+     * is defined. Corresponds to the location resource label in k8sCluster resources.
      * 
      */
     @Import(name="location", required=true)
@@ -42,7 +42,7 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
 
     /**
      * @return The location of the Kubernetes cluster in which this Istio service
-     * is defined. Corresponds to the location resource label in k8s_cluster resources.
+     * is defined. Corresponds to the location resource label in k8sCluster resources.
      * 
      */
     public String location() {
@@ -68,7 +68,7 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
 
     /**
      * The name of the Istio service underlying this service.
-     * Corresponds to the destination_service_name metric label in Istio metrics.
+     * Corresponds to the destinationServiceName metric label in Istio metrics.
      * 
      * ***
      * 
@@ -80,7 +80,7 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
 
     /**
      * @return The name of the Istio service underlying this service.
-     * Corresponds to the destination_service_name metric label in Istio metrics.
+     * Corresponds to the destinationServiceName metric label in Istio metrics.
      * 
      * ***
      * 
@@ -93,7 +93,7 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
 
     /**
      * The namespace of the Istio service underlying this service.
-     * Corresponds to the destination_service_namespace metric label in Istio metrics.
+     * Corresponds to the destinationServiceNamespace metric label in Istio metrics.
      * 
      */
     @Import(name="serviceNamespace", required=true)
@@ -101,7 +101,7 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
 
     /**
      * @return The namespace of the Istio service underlying this service.
-     * Corresponds to the destination_service_namespace metric label in Istio metrics.
+     * Corresponds to the destinationServiceNamespace metric label in Istio metrics.
      * 
      */
     public String serviceNamespace() {
@@ -138,7 +138,7 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
 
         /**
          * @param clusterName The name of the Kubernetes cluster in which this Istio service
-         * is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
+         * is defined. Corresponds to the clusterName resource label in k8sCluster resources.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
 
         /**
          * @param location The location of the Kubernetes cluster in which this Istio service
-         * is defined. Corresponds to the location resource label in k8s_cluster resources.
+         * is defined. Corresponds to the location resource label in k8sCluster resources.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
 
         /**
          * @param serviceName The name of the Istio service underlying this service.
-         * Corresponds to the destination_service_name metric label in Istio metrics.
+         * Corresponds to the destinationServiceName metric label in Istio metrics.
          * 
          * ***
          * 
@@ -190,7 +190,7 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
 
         /**
          * @param serviceNamespace The namespace of the Istio service underlying this service.
-         * Corresponds to the destination_service_namespace metric label in Istio metrics.
+         * Corresponds to the destinationServiceNamespace metric label in Istio metrics.
          * 
          * @return builder
          * 

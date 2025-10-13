@@ -26,11 +26,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         public readonly string? MaskingCharacter;
         /// <summary>
         /// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
-        /// If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
+        /// If NumberToMask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
         /// </summary>
         public readonly int? NumberToMask;
         /// <summary>
-        /// Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+        /// Mask characters in reverse order. For example, if MaskingCharacter is 0, NumberToMask is 14, and ReverseOrder is `False`, then the
         /// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
         /// </summary>
         public readonly bool? ReverseOrder;

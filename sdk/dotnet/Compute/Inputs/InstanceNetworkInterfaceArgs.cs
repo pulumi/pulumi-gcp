@@ -79,8 +79,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name or self_link of the network to attach this interface to.
-        /// Either `network` or `subnetwork` must be provided. If network isn't provided it will
+        /// The name or SelfLink of the network to attach this interface to.
+        /// Either `Network` or `Subnetwork` must be provided. If network isn't provided it will
         /// be inferred from the subnetwork.
         /// </summary>
         [Input("network")]
@@ -124,8 +124,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? StackType { get; set; }
 
         /// <summary>
-        /// The name or self_link of the subnetwork to attach this
-        /// interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
+        /// The name or SelfLink of the subnetwork to attach this
+        /// interface to. Either `Network` or `Subnetwork` must be provided. If network isn't provided
         /// it will be inferred from the subnetwork. The subnetwork must exist in the same region this
         /// instance will be created in. If the network resource is in
         /// [legacy](https://cloud.google.com/vpc/docs/legacy) mode, do not specify this field. If the
@@ -137,8 +137,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// The project in which the subnetwork belongs.
-        /// If the `subnetwork` is a self_link, this field is set to the project
-        /// defined in the subnetwork self_link. If the `subnetwork` is a name and this
+        /// If the `Subnetwork` is a self_link, this field is set to the project
+        /// defined in the subnetwork self_link. If the `Subnetwork` is a name and this
         /// field is not provided, the provider project is used.
         /// </summary>
         [Input("subnetworkProject")]

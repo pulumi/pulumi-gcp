@@ -41,7 +41,7 @@ public final class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConn
      */
     private String network;
     /**
-     * @return The consumer project_id where the forwarding rule is created from.
+     * @return The consumer projectId where the forwarding rule is created from.
      * 
      */
     private @Nullable String projectId;
@@ -104,7 +104,7 @@ public final class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConn
         return this.network;
     }
     /**
-     * @return The consumer project_id where the forwarding rule is created from.
+     * @return The consumer projectId where the forwarding rule is created from.
      * 
      */
     public Optional<String> projectId() {

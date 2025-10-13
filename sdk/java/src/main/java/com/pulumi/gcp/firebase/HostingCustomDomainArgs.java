@@ -73,7 +73,7 @@ public final class HostingCustomDomainArgs extends com.pulumi.resources.Resource
     /**
      * A domain name that this CustomDomain should direct traffic towards. If
      * specified, Hosting will respond to requests against this CustomDomain
-     * with an HTTP 301 code, and route traffic to the specified `redirect_target`
+     * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
      * instead.
      * 
      */
@@ -83,7 +83,7 @@ public final class HostingCustomDomainArgs extends com.pulumi.resources.Resource
     /**
      * @return A domain name that this CustomDomain should direct traffic towards. If
      * specified, Hosting will respond to requests against this CustomDomain
-     * with an HTTP 301 code, and route traffic to the specified `redirect_target`
+     * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
      * instead.
      * 
      */
@@ -216,7 +216,7 @@ public final class HostingCustomDomainArgs extends com.pulumi.resources.Resource
         /**
          * @param redirectTarget A domain name that this CustomDomain should direct traffic towards. If
          * specified, Hosting will respond to requests against this CustomDomain
-         * with an HTTP 301 code, and route traffic to the specified `redirect_target`
+         * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
          * instead.
          * 
          * @return builder
@@ -230,7 +230,7 @@ public final class HostingCustomDomainArgs extends com.pulumi.resources.Resource
         /**
          * @param redirectTarget A domain name that this CustomDomain should direct traffic towards. If
          * specified, Hosting will respond to requests against this CustomDomain
-         * with an HTTP 301 code, and route traffic to the specified `redirect_target`
+         * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
          * instead.
          * 
          * @return builder

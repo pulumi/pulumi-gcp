@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// The map of port descriptions to URLs. Will only be populated if
-        /// `enable_http_port_access` is true.
+        /// `EnableHttpPortAccess` is true.
         /// </summary>
         public InputMap<string> HttpPorts
         {

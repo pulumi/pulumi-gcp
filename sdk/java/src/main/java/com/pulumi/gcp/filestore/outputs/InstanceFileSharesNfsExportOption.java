@@ -43,7 +43,7 @@ public final class InstanceFileSharesNfsExportOption {
      */
     private @Nullable List<String> ipRanges;
     /**
-     * @return The source VPC network for `ip_ranges`.
+     * @return The source VPC network for `ipRanges`.
      * Required for instances using Private Service Connect, optional otherwise.
      * 
      */
@@ -96,7 +96,7 @@ public final class InstanceFileSharesNfsExportOption {
         return this.ipRanges == null ? List.of() : this.ipRanges;
     }
     /**
-     * @return The source VPC network for `ip_ranges`.
+     * @return The source VPC network for `ipRanges`.
      * Required for instances using Private Service Connect, optional otherwise.
      * 
      */

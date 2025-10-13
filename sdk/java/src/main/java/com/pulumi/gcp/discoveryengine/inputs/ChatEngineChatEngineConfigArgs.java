@@ -19,7 +19,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
 
     /**
      * The configuration to generate the Dialogflow agent that is associated to this Engine.
-     * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+     * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
      * Structure is documented below.
      * 
      */
@@ -28,7 +28,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
 
     /**
      * @return The configuration to generate the Dialogflow agent that is associated to this Engine.
-     * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+     * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
      * Structure is documented below.
      * 
      */
@@ -40,7 +40,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
      * If the flag set to true, we allow the agent and engine are in
      * different locations, otherwise the agent and engine are required to be
      * in the same location. The flag is set to false by default.
-     * Note that the `allow_cross_region` are one-time consumed by and passed
+     * Note that the `allowCrossRegion` are one-time consumed by and passed
      * to EngineService.CreateEngine. It means they cannot be retrieved using
      * EngineService.GetEngine or EngineService.ListEngines API after engine
      * creation.
@@ -53,7 +53,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
      * @return If the flag set to true, we allow the agent and engine are in
      * different locations, otherwise the agent and engine are required to be
      * in the same location. The flag is set to false by default.
-     * Note that the `allow_cross_region` are one-time consumed by and passed
+     * Note that the `allowCrossRegion` are one-time consumed by and passed
      * to EngineService.CreateEngine. It means they cannot be retrieved using
      * EngineService.GetEngine or EngineService.ListEngines API after engine
      * creation.
@@ -65,7 +65,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
 
     /**
      * The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
-     * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+     * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
      * 
      */
     @Import(name="dialogflowAgentToLink")
@@ -73,7 +73,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
 
     /**
      * @return The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
-     * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+     * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
      * 
      */
     public Optional<Output<String>> dialogflowAgentToLink() {
@@ -108,7 +108,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param agentCreationConfig The configuration to generate the Dialogflow agent that is associated to this Engine.
-         * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+         * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -121,7 +121,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param agentCreationConfig The configuration to generate the Dialogflow agent that is associated to this Engine.
-         * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+         * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -135,7 +135,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
          * @param allowCrossRegion If the flag set to true, we allow the agent and engine are in
          * different locations, otherwise the agent and engine are required to be
          * in the same location. The flag is set to false by default.
-         * Note that the `allow_cross_region` are one-time consumed by and passed
+         * Note that the `allowCrossRegion` are one-time consumed by and passed
          * to EngineService.CreateEngine. It means they cannot be retrieved using
          * EngineService.GetEngine or EngineService.ListEngines API after engine
          * creation.
@@ -152,7 +152,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
          * @param allowCrossRegion If the flag set to true, we allow the agent and engine are in
          * different locations, otherwise the agent and engine are required to be
          * in the same location. The flag is set to false by default.
-         * Note that the `allow_cross_region` are one-time consumed by and passed
+         * Note that the `allowCrossRegion` are one-time consumed by and passed
          * to EngineService.CreateEngine. It means they cannot be retrieved using
          * EngineService.GetEngine or EngineService.ListEngines API after engine
          * creation.
@@ -166,7 +166,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param dialogflowAgentToLink The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
-         * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+         * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param dialogflowAgentToLink The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
-         * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+         * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
          * 
          * @return builder
          * 

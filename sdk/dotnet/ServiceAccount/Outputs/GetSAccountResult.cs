@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.ServiceAccount.Outputs
     public sealed class GetSAccountResult
     {
         /// <summary>
-        /// The Google service account ID (the part before the `@` sign in the `email`)
+        /// The Google service account ID (the part before the `@` sign in the `Email`)
         /// </summary>
         public readonly string AccountId;
         /// <summary>

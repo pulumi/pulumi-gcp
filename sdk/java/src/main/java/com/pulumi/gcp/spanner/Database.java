@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * &gt; **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
  * (and run `pulumi up` to write the field to state) in order to destroy an instance.
  * It is recommended to not set this field (or set it to true) until you&#39;re ready to destroy.
- * On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
+ * On older versions, it is strongly recommended to set `lifecycle { preventDestroy = true }`
  * on databases in order to prevent accidental data loss.
  * 
  * ## Example Usage

@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.Folder
         public Output<string> Constraint { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
+        /// (Computed) The etag of the organization policy. `Etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.Gcp.Folder
         /// <summary>
         /// A restore policy is a constraint to restore the default policy. Structure is documented below.
         /// 
-        /// &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+        /// &gt; **Note:** If none of [`BooleanPolicy`, `ListPolicy`, `RestorePolicy`] are defined the policy for a given constraint will
         /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
         /// 
         /// - - -
@@ -277,7 +277,7 @@ namespace Pulumi.Gcp.Folder
         /// <summary>
         /// A restore policy is a constraint to restore the default policy. Structure is documented below.
         /// 
-        /// &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+        /// &gt; **Note:** If none of [`BooleanPolicy`, `ListPolicy`, `RestorePolicy`] are defined the policy for a given constraint will
         /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
         /// 
         /// - - -
@@ -314,7 +314,7 @@ namespace Pulumi.Gcp.Folder
         public Input<string>? Constraint { get; set; }
 
         /// <summary>
-        /// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
+        /// (Computed) The etag of the organization policy. `Etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -335,7 +335,7 @@ namespace Pulumi.Gcp.Folder
         /// <summary>
         /// A restore policy is a constraint to restore the default policy. Structure is documented below.
         /// 
-        /// &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+        /// &gt; **Note:** If none of [`BooleanPolicy`, `ListPolicy`, `RestorePolicy`] are defined the policy for a given constraint will
         /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
         /// 
         /// - - -

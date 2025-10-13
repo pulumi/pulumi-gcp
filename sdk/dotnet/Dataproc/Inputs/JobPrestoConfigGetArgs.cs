@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// The HCFS URI of the script that contains SQL queries.
-        /// Conflicts with `query_list`
+        /// Conflicts with `QueryList`
         /// </summary>
         [Input("queryFileUri")]
         public Input<string>? QueryFileUri { get; set; }
@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// The list of SQL queries or statements to execute as part of the job.
-        /// Conflicts with `query_file_uri`
+        /// Conflicts with `QueryFileUri`
         /// </summary>
         public InputList<string> QueryLists
         {

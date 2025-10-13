@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Composer.Inputs
         public Input<string>? MasterIpv4CidrBlock { get; set; }
 
         /// <summary>
-        /// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from MasterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("webServerIpv4CidrBlock")]
         public Input<string>? WebServerIpv4CidrBlock { get; set; }

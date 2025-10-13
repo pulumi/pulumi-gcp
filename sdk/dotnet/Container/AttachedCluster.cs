@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.Container
         /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -335,9 +335,9 @@ namespace Pulumi.Gcp.Container
         /// validate KSA tokens in order to allow system workloads (such as GKE Connect
         /// and telemetry agents) to authenticate back to GCP.
         /// Both clusters with public and private issuer URLs are supported.
-        /// Clusters with public issuers only need to specify the `issuer_url` field
+        /// Clusters with public issuers only need to specify the `IssuerUrl` field
         /// while clusters with private issuers need to provide both
-        /// `issuer_url` and `jwks`.
+        /// `IssuerUrl` and `Jwks`.
         /// Structure is documented below.
         /// </summary>
         [Output("oidcConfig")]
@@ -374,7 +374,7 @@ namespace Pulumi.Gcp.Container
         /// Enable/Disable Security Posture API features for the cluster.
         /// Structure is documented below.
         /// 
-        /// &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
+        /// &gt; **Warning:** `SecurityPostureConfig` is deprecated and will be removed in a future major release.
         /// </summary>
         [Output("securityPostureConfig")]
         public Output<Outputs.AttachedClusterSecurityPostureConfig> SecurityPostureConfig { get; private set; } = null!;
@@ -464,7 +464,7 @@ namespace Pulumi.Gcp.Container
         /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -547,9 +547,9 @@ namespace Pulumi.Gcp.Container
         /// validate KSA tokens in order to allow system workloads (such as GKE Connect
         /// and telemetry agents) to authenticate back to GCP.
         /// Both clusters with public and private issuer URLs are supported.
-        /// Clusters with public issuers only need to specify the `issuer_url` field
+        /// Clusters with public issuers only need to specify the `IssuerUrl` field
         /// while clusters with private issuers need to provide both
-        /// `issuer_url` and `jwks`.
+        /// `IssuerUrl` and `Jwks`.
         /// Structure is documented below.
         /// </summary>
         [Input("oidcConfig", required: true)]
@@ -580,7 +580,7 @@ namespace Pulumi.Gcp.Container
         /// Enable/Disable Security Posture API features for the cluster.
         /// Structure is documented below.
         /// 
-        /// &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
+        /// &gt; **Warning:** `SecurityPostureConfig` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("securityPostureConfig")]
         public Input<Inputs.AttachedClusterSecurityPostureConfigArgs>? SecurityPostureConfig { get; set; }
@@ -605,7 +605,7 @@ namespace Pulumi.Gcp.Container
         /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -729,9 +729,9 @@ namespace Pulumi.Gcp.Container
         /// validate KSA tokens in order to allow system workloads (such as GKE Connect
         /// and telemetry agents) to authenticate back to GCP.
         /// Both clusters with public and private issuer URLs are supported.
-        /// Clusters with public issuers only need to specify the `issuer_url` field
+        /// Clusters with public issuers only need to specify the `IssuerUrl` field
         /// while clusters with private issuers need to provide both
-        /// `issuer_url` and `jwks`.
+        /// `IssuerUrl` and `Jwks`.
         /// Structure is documented below.
         /// </summary>
         [Input("oidcConfig")]
@@ -768,7 +768,7 @@ namespace Pulumi.Gcp.Container
         /// Enable/Disable Security Posture API features for the cluster.
         /// Structure is documented below.
         /// 
-        /// &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
+        /// &gt; **Warning:** `SecurityPostureConfig` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("securityPostureConfig")]
         public Input<Inputs.AttachedClusterSecurityPostureConfigGetArgs>? SecurityPostureConfig { get; set; }

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly int Port;
         /// <summary>
         /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        /// port_name are defined, port takes precedence.
+        /// PortName are defined, port takes precedence.
         /// </summary>
         public readonly string PortName;
         /// <summary>

@@ -33,7 +33,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
      */
     private @Nullable String image;
     /**
-     * @return Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+     * @return Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
      * 
      */
     private @Nullable List<String> instanceNames;
@@ -91,7 +91,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+     * @return Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
      * 
      */
     public List<String> instanceNames() {

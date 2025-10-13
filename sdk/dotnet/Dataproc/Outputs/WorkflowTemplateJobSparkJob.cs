@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobSparkJobLoggingConfig? LoggingConfig;
         /// <summary>
-        /// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+        /// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `JarFileUris`.
         /// </summary>
         public readonly string? MainClass;
         /// <summary>

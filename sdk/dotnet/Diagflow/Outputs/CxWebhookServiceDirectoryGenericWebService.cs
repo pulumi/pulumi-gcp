@@ -63,9 +63,9 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// <summary>
         /// The HTTP request headers to send together with webhook requests. Header
         /// values are stored in SecretManager secret versions.
-        /// When the same header name is specified in both `request_headers` and
-        /// `secret_versions_for_request_headers`, the value in
-        /// `secret_versions_for_request_headers` will be used.
+        /// When the same header name is specified in both `RequestHeaders` and
+        /// `SecretVersionsForRequestHeaders`, the value in
+        /// `SecretVersionsForRequestHeaders` will be used.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader> SecretVersionsForRequestHeaders;

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class ChatEngineChatEngineConfig {
     /**
      * @return The configuration to generate the Dialogflow agent that is associated to this Engine.
-     * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+     * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class ChatEngineChatEngineConfig {
      * @return If the flag set to true, we allow the agent and engine are in
      * different locations, otherwise the agent and engine are required to be
      * in the same location. The flag is set to false by default.
-     * Note that the `allow_cross_region` are one-time consumed by and passed
+     * Note that the `allowCrossRegion` are one-time consumed by and passed
      * to EngineService.CreateEngine. It means they cannot be retrieved using
      * EngineService.GetEngine or EngineService.ListEngines API after engine
      * creation.
@@ -33,7 +33,7 @@ public final class ChatEngineChatEngineConfig {
     private @Nullable Boolean allowCrossRegion;
     /**
      * @return The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
-     * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+     * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
      * 
      */
     private @Nullable String dialogflowAgentToLink;
@@ -41,7 +41,7 @@ public final class ChatEngineChatEngineConfig {
     private ChatEngineChatEngineConfig() {}
     /**
      * @return The configuration to generate the Dialogflow agent that is associated to this Engine.
-     * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+     * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
      * Structure is documented below.
      * 
      */
@@ -52,7 +52,7 @@ public final class ChatEngineChatEngineConfig {
      * @return If the flag set to true, we allow the agent and engine are in
      * different locations, otherwise the agent and engine are required to be
      * in the same location. The flag is set to false by default.
-     * Note that the `allow_cross_region` are one-time consumed by and passed
+     * Note that the `allowCrossRegion` are one-time consumed by and passed
      * to EngineService.CreateEngine. It means they cannot be retrieved using
      * EngineService.GetEngine or EngineService.ListEngines API after engine
      * creation.
@@ -63,7 +63,7 @@ public final class ChatEngineChatEngineConfig {
     }
     /**
      * @return The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
-     * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+     * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
      * 
      */
     public Optional<String> dialogflowAgentToLink() {

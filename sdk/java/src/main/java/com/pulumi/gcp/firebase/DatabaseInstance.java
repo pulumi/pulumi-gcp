@@ -300,14 +300,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+     * The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+     * @return The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
      * 
      */
     public Output<String> state() {

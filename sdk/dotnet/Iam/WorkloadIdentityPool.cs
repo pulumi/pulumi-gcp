@@ -217,7 +217,7 @@ namespace Pulumi.Gcp.Iam
         /// &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
         /// `pulumi preview` may show an update if you change this field's value, `pulumi up`
         /// **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
-        /// To specify a different `mode`, please create a new Workload Identity Pool resource.
+        /// To specify a different `Mode`, please create a new Workload Identity Pool resource.
         /// * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
         /// Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
         /// workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
@@ -362,7 +362,7 @@ namespace Pulumi.Gcp.Iam
         /// &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
         /// `pulumi preview` may show an update if you change this field's value, `pulumi up`
         /// **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
-        /// To specify a different `mode`, please create a new Workload Identity Pool resource.
+        /// To specify a different `Mode`, please create a new Workload Identity Pool resource.
         /// * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
         /// Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
         /// workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
@@ -448,7 +448,7 @@ namespace Pulumi.Gcp.Iam
         /// &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
         /// `pulumi preview` may show an update if you change this field's value, `pulumi up`
         /// **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
-        /// To specify a different `mode`, please create a new Workload Identity Pool resource.
+        /// To specify a different `Mode`, please create a new Workload Identity Pool resource.
         /// * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
         /// Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
         /// workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources

@@ -516,8 +516,8 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Flag that specifies how API keys are approved to access the APIs defined by the API product.
-        /// Valid values are `auto` or `manual`.
-        /// Possible values are: `auto`, `manual`.
+        /// Valid values are `Auto` or `Manual`.
+        /// Possible values are: `Auto`, `Manual`.
         /// </summary>
         [Output("approvalType")]
         public Output<string?> ApprovalType { get; private set; } = null!;
@@ -702,8 +702,8 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Flag that specifies how API keys are approved to access the APIs defined by the API product.
-        /// Valid values are `auto` or `manual`.
-        /// Possible values are: `auto`, `manual`.
+        /// Valid values are `Auto` or `Manual`.
+        /// Possible values are: `Auto`, `Manual`.
         /// </summary>
         [Input("approvalType")]
         public Input<string>? ApprovalType { get; set; }
@@ -862,8 +862,8 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Flag that specifies how API keys are approved to access the APIs defined by the API product.
-        /// Valid values are `auto` or `manual`.
-        /// Possible values are: `auto`, `manual`.
+        /// Valid values are `Auto` or `Manual`.
+        /// Possible values are: `Auto`, `Manual`.
         /// </summary>
         [Input("approvalType")]
         public Input<string>? ApprovalType { get; set; }

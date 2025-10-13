@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// Leaf certificate comes first, followed by intermediate ones if any.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// 
-        /// &gt; **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+        /// &gt; **Warning:** `CertificatePem` is deprecated and will be removed in a future major release. Use `PemCertificate` instead.
         /// </summary>
         public readonly string? CertificatePem;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// The private key of the leaf certificate in PEM-encoded form.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// 
-        /// &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+        /// &gt; **Warning:** `PrivateKeyPem` is deprecated and will be removed in a future major release. Use `PemPrivateKey` instead.
         /// </summary>
         public readonly string? PrivateKeyPem;
 

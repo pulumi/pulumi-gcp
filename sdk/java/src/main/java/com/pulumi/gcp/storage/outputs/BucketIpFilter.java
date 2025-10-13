@@ -27,7 +27,7 @@ public final class BucketIpFilter {
      */
     private @Nullable Boolean allowCrossOrgVpcs;
     /**
-     * @return The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
+     * @return The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allowAllServiceAgentAccess` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
      * 
      */
     private String mode;
@@ -58,7 +58,7 @@ public final class BucketIpFilter {
         return Optional.ofNullable(this.allowCrossOrgVpcs);
     }
     /**
-     * @return The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
+     * @return The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allowAllServiceAgentAccess` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
      * 
      */
     public String mode() {

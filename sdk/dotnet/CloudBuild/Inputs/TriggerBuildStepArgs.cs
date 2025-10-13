@@ -57,10 +57,10 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         /// If this value is a relative path, it is relative to the build's working
         /// directory. If this value is absolute, it may be outside the build's working
         /// directory, in which case the contents of the path may not be persisted
-        /// across build step executions, unless a `volume` for that path is specified.
-        /// If the build specifies a `RepoSource` with `dir` and a step with a
-        /// `dir`,
-        /// which specifies an absolute path, the `RepoSource` `dir` is ignored
+        /// across build step executions, unless a `Volume` for that path is specified.
+        /// If the build specifies a `RepoSource` with `Dir` and a step with a
+        /// `Dir`,
+        /// which specifies an absolute path, the `RepoSource` `Dir` is ignored
         /// for the step's execution.
         /// </summary>
         [Input("dir")]
@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         }
 
         /// <summary>
-        /// Unique identifier for this build step, used in `wait_for` to
+        /// Unique identifier for this build step, used in `WaitFor` to
         /// reference this build step as a dependency.
         /// </summary>
         [Input("id")]
@@ -175,8 +175,8 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
 
         /// <summary>
         /// The ID(s) of the step(s) that this build step depends on.
-        /// This build step will not start until all the build steps in `wait_for`
-        /// have completed successfully. If `wait_for` is empty, this build step
+        /// This build step will not start until all the build steps in `WaitFor`
+        /// have completed successfully. If `WaitFor` is empty, this build step
         /// will start when all previous build steps in the `Build.Steps` list
         /// have completed successfully.
         /// </summary>

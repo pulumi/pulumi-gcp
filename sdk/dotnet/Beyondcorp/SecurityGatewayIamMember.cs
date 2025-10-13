@@ -467,7 +467,7 @@ namespace Pulumi.Gcp.Beyondcorp
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `Global`. Used to find the parent resource to bind the IAM policy to. If not specified,
         /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
         /// location is specified, it is taken from the provider configuration.
         /// </summary>
@@ -475,7 +475,7 @@ namespace Pulumi.Gcp.Beyondcorp
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -566,7 +566,7 @@ namespace Pulumi.Gcp.Beyondcorp
         public Input<Inputs.SecurityGatewayIamMemberConditionArgs>? Condition { get; set; }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `Global`. Used to find the parent resource to bind the IAM policy to. If not specified,
         /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
         /// location is specified, it is taken from the provider configuration.
         /// </summary>
@@ -574,7 +574,7 @@ namespace Pulumi.Gcp.Beyondcorp
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -633,7 +633,7 @@ namespace Pulumi.Gcp.Beyondcorp
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `Global`. Used to find the parent resource to bind the IAM policy to. If not specified,
         /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
         /// location is specified, it is taken from the provider configuration.
         /// </summary>
@@ -641,7 +641,7 @@ namespace Pulumi.Gcp.Beyondcorp
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.

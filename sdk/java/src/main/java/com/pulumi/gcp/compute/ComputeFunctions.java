@@ -10084,7 +10084,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Network Endpoint Group&#39;s attributes.
      * 
-     * The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+     * The NEG may be found by providing either a `selfLink`, or a `name` and a `zone`.
      * 
      * ## Example Usage
      * 
@@ -10131,7 +10131,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Network Endpoint Group&#39;s attributes.
      * 
-     * The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+     * The NEG may be found by providing either a `selfLink`, or a `name` and a `zone`.
      * 
      * ## Example Usage
      * 
@@ -10178,7 +10178,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Network Endpoint Group&#39;s attributes.
      * 
-     * The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+     * The NEG may be found by providing either a `selfLink`, or a `name` and a `zone`.
      * 
      * ## Example Usage
      * 
@@ -10225,7 +10225,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Network Endpoint Group&#39;s attributes.
      * 
-     * The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+     * The NEG may be found by providing either a `selfLink`, or a `name` and a `zone`.
      * 
      * ## Example Usage
      * 
@@ -10272,7 +10272,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Network Endpoint Group&#39;s attributes.
      * 
-     * The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+     * The NEG may be found by providing either a `selfLink`, or a `name` and a `zone`.
      * 
      * ## Example Usage
      * 
@@ -10319,7 +10319,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Network Endpoint Group&#39;s attributes.
      * 
-     * The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+     * The NEG may be found by providing either a `selfLink`, or a `name` and a `zone`.
      * 
      * ## Example Usage
      * 
@@ -10366,7 +10366,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Network Endpoint Group&#39;s attributes.
      * 
-     * The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+     * The NEG may be found by providing either a `selfLink`, or a `name` and a `zone`.
      * 
      * ## Example Usage
      * 
@@ -11803,6 +11803,8 @@ public final class ComputeFunctions {
      * 
      * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetRegionDiskResult> getRegionDisk(GetRegionDiskArgs args) {
         return getRegionDisk(args, InvokeOptions.Empty);
@@ -11811,6 +11813,8 @@ public final class ComputeFunctions {
      * Get information about a Google Compute Regional Persistent disks.
      * 
      * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetRegionDiskResult> getRegionDiskPlain(GetRegionDiskPlainArgs args) {
@@ -11821,6 +11825,8 @@ public final class ComputeFunctions {
      * 
      * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetRegionDiskResult> getRegionDisk(GetRegionDiskArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getRegionDisk:getRegionDisk", TypeShape.of(GetRegionDiskResult.class), args, Utilities.withVersion(options));
@@ -11830,6 +11836,8 @@ public final class ComputeFunctions {
      * 
      * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetRegionDiskResult> getRegionDisk(GetRegionDiskArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getRegionDisk:getRegionDisk", TypeShape.of(GetRegionDiskResult.class), args, Utilities.withVersion(options));
@@ -11838,6 +11846,8 @@ public final class ComputeFunctions {
      * Get information about a Google Compute Regional Persistent disks.
      * 
      * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetRegionDiskResult> getRegionDiskPlain(GetRegionDiskPlainArgs args, InvokeOptions options) {
@@ -12994,7 +13004,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
      * 
-     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
      * 
      * ## Example Usage
      * 
@@ -13041,7 +13051,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
      * 
-     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
      * 
      * ## Example Usage
      * 
@@ -13088,7 +13098,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
      * 
-     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
      * 
      * ## Example Usage
      * 
@@ -13135,7 +13145,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
      * 
-     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
      * 
      * ## Example Usage
      * 
@@ -13182,7 +13192,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
      * 
-     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
      * 
      * ## Example Usage
      * 
@@ -13229,7 +13239,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
      * 
-     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
      * 
      * ## Example Usage
      * 
@@ -13276,7 +13286,7 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
      * 
-     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
      * 
      * ## Example Usage
      * 

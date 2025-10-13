@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionDiscoveryConfigTargetCloudStorageTargetDisabledGetArgs>? Disabled { get; set; }
 
         /// <summary>
-        /// The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+        /// The buckets the GenerationCadence applies to. The first target with a matching filter will be the one to apply to a bucket.
         /// Structure is documented below.
         /// </summary>
         [Input("filter", required: true)]

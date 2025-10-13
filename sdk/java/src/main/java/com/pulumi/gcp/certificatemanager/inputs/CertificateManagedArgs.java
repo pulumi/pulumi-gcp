@@ -24,7 +24,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
      * specified for this Managed Certificate.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_managed_provisioning_issue&#34;&gt;&lt;/a&gt;The `provisioning_issue` block contains:
+     * &lt;a name=&#34;nestedManagedProvisioningIssue&#34;&gt;&lt;/a&gt;The `provisioningIssue` block contains:
      * 
      */
     @Import(name="authorizationAttemptInfos")
@@ -36,7 +36,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
      * specified for this Managed Certificate.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_managed_provisioning_issue&#34;&gt;&lt;/a&gt;The `provisioning_issue` block contains:
+     * &lt;a name=&#34;nestedManagedProvisioningIssue&#34;&gt;&lt;/a&gt;The `provisioningIssue` block contains:
      * 
      */
     public Optional<Output<List<CertificateManagedAuthorizationAttemptInfoArgs>>> authorizationAttemptInfos() {
@@ -165,7 +165,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
          * specified for this Managed Certificate.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_managed_provisioning_issue&#34;&gt;&lt;/a&gt;The `provisioning_issue` block contains:
+         * &lt;a name=&#34;nestedManagedProvisioningIssue&#34;&gt;&lt;/a&gt;The `provisioningIssue` block contains:
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
          * specified for this Managed Certificate.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_managed_provisioning_issue&#34;&gt;&lt;/a&gt;The `provisioning_issue` block contains:
+         * &lt;a name=&#34;nestedManagedProvisioningIssue&#34;&gt;&lt;/a&gt;The `provisioningIssue` block contains:
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
          * specified for this Managed Certificate.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_managed_provisioning_issue&#34;&gt;&lt;/a&gt;The `provisioning_issue` block contains:
+         * &lt;a name=&#34;nestedManagedProvisioningIssue&#34;&gt;&lt;/a&gt;The `provisioningIssue` block contains:
          * 
          * @return builder
          * 

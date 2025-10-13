@@ -13,14 +13,14 @@ import javax.annotation.Nullable;
 public final class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket {
     /**
      * @return The list of cloud storage bucket names to exclude in the DatasetConfig.
-     * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+     * Exactly one of the bucketName and bucketPrefixRegex should be specified.
      * 
      */
     private @Nullable String bucketName;
     /**
      * @return The list of regex patterns for bucket names matching the regex.
      * Regex should follow the syntax specified in google/re2 on GitHub.
-     * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+     * Exactly one of the bucketName and bucketPrefixRegex should be specified.
      * 
      */
     private @Nullable String bucketPrefixRegex;
@@ -28,7 +28,7 @@ public final class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBu
     private InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket() {}
     /**
      * @return The list of cloud storage bucket names to exclude in the DatasetConfig.
-     * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+     * Exactly one of the bucketName and bucketPrefixRegex should be specified.
      * 
      */
     public Optional<String> bucketName() {
@@ -37,7 +37,7 @@ public final class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBu
     /**
      * @return The list of regex patterns for bucket names matching the regex.
      * Regex should follow the syntax specified in google/re2 on GitHub.
-     * Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+     * Exactly one of the bucketName and bucketPrefixRegex should be specified.
      * 
      */
     public Optional<String> bucketPrefixRegex() {

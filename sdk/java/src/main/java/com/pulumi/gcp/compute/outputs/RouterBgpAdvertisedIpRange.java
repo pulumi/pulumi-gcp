@@ -15,7 +15,7 @@ public final class RouterBgpAdvertisedIpRange {
     /**
      * @return User-specified description for the IP range.
      * 
-     * &lt;a name=&#34;nested_md5_authentication_keys&#34;&gt;&lt;/a&gt;The `md5_authentication_keys` block supports:
+     * &lt;a name=&#34;nestedMd5AuthenticationKeys&#34;&gt;&lt;/a&gt;The `md5AuthenticationKeys` block supports:
      * 
      */
     private @Nullable String description;
@@ -30,7 +30,7 @@ public final class RouterBgpAdvertisedIpRange {
     /**
      * @return User-specified description for the IP range.
      * 
-     * &lt;a name=&#34;nested_md5_authentication_keys&#34;&gt;&lt;/a&gt;The `md5_authentication_keys` block supports:
+     * &lt;a name=&#34;nestedMd5AuthenticationKeys&#34;&gt;&lt;/a&gt;The `md5AuthenticationKeys` block supports:
      * 
      */
     public Optional<String> description() {

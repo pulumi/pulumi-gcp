@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.PubSub.Inputs
     public sealed class SubscriptionBigqueryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+        /// When true and UseTopicSchema or UseTableSchema is true, any fields that are a part of the topic schema or message schema that
         /// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
         /// and any messages with extra fields are not written and remain in the subscription's backlog.
         /// </summary>
@@ -36,14 +36,14 @@ namespace Pulumi.Gcp.PubSub.Inputs
 
         /// <summary>
         /// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
-        /// must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+        /// must be published in JSON format. Only one of UseTopicSchema and UseTableSchema can be set.
         /// </summary>
         [Input("useTableSchema")]
         public Input<bool>? UseTableSchema { get; set; }
 
         /// <summary>
         /// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
-        /// Only one of use_topic_schema and use_table_schema can be set.
+        /// Only one of UseTopicSchema and UseTableSchema can be set.
         /// </summary>
         [Input("useTopicSchema")]
         public Input<bool>? UseTopicSchema { get; set; }

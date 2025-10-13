@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VMwareClusterDataplaneV2 {
     /**
-     * @return Enable advanced networking which requires dataplane_v2_enabled to be set true.
+     * @return Enable advanced networking which requires dataplaneV2Enabled to be set true.
      * 
      */
     private @Nullable Boolean advancedNetworking;
@@ -29,7 +29,7 @@ public final class VMwareClusterDataplaneV2 {
 
     private VMwareClusterDataplaneV2() {}
     /**
-     * @return Enable advanced networking which requires dataplane_v2_enabled to be set true.
+     * @return Enable advanced networking which requires dataplaneV2Enabled to be set true.
      * 
      */
     public Optional<Boolean> advancedNetworking() {

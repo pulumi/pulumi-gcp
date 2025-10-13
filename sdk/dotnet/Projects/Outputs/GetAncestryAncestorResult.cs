@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Projects.Outputs
     public sealed class GetAncestryAncestorResult
     {
         /// <summary>
-        /// If it's a project, the `project_id` is exported, else the numeric folder id or organization id.
+        /// If it's a project, the `ProjectId` is exported, else the numeric folder id or organization id.
         /// </summary>
         public readonly string Id;
         /// <summary>

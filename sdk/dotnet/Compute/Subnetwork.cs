@@ -433,7 +433,7 @@ namespace Pulumi.Gcp.Compute
         /// Provide this property when you create the subnetwork. For example,
         /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
         /// non-overlapping within a network. Only IPv4 is supported.
-        /// Field is optional when `reserved_internal_range` is defined, otherwise required.
+        /// Field is optional when `ReservedInternalRange` is defined, otherwise required.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
@@ -454,7 +454,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
-        /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+        /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the Ipv6Type is EXTERNAL then this subnet
         /// cannot enable direct path.
         /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
@@ -480,7 +480,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// This field denotes the VPC flow logging options for this subnetwork. If
         /// logging is enabled, logs are exported to Cloud Logging. Flow logging
-        /// isn't supported if the subnet `purpose` field is set to subnetwork is
+        /// isn't supported if the subnet `Purpose` field is set to subnetwork is
         /// `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         /// Structure is documented below.
         /// </summary>
@@ -561,7 +561,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The role of subnetwork.
-        /// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+        /// Currently, this field is only used when `Purpose` is `REGIONAL_MANAGED_PROXY`.
         /// The value can be set to `ACTIVE` or `BACKUP`.
         /// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
         /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -588,9 +588,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Controls the removal behavior of secondary_ip_range.
-        /// When false, removing secondary_ip_range from config will not produce a diff as
+        /// When false, removing SecondaryIpRange from config will not produce a diff as
         /// the provider will default to the API's value.
-        /// When true, the provider will treat removing secondary_ip_range as sending an
+        /// When true, the provider will treat removing SecondaryIpRange as sending an
         /// empty list of secondary IP ranges to the API.
         /// Defaults to false.
         /// </summary>
@@ -694,7 +694,7 @@ namespace Pulumi.Gcp.Compute
         /// Provide this property when you create the subnetwork. For example,
         /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
         /// non-overlapping within a network. Only IPv4 is supported.
-        /// Field is optional when `reserved_internal_range` is defined, otherwise required.
+        /// Field is optional when `ReservedInternalRange` is defined, otherwise required.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
@@ -715,7 +715,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
-        /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+        /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the Ipv6Type is EXTERNAL then this subnet
         /// cannot enable direct path.
         /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
@@ -725,7 +725,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// This field denotes the VPC flow logging options for this subnetwork. If
         /// logging is enabled, logs are exported to Cloud Logging. Flow logging
-        /// isn't supported if the subnet `purpose` field is set to subnetwork is
+        /// isn't supported if the subnet `Purpose` field is set to subnetwork is
         /// `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         /// Structure is documented below.
         /// </summary>
@@ -806,7 +806,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The role of subnetwork.
-        /// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+        /// Currently, this field is only used when `Purpose` is `REGIONAL_MANAGED_PROXY`.
         /// The value can be set to `ACTIVE` or `BACKUP`.
         /// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
         /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -833,9 +833,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Controls the removal behavior of secondary_ip_range.
-        /// When false, removing secondary_ip_range from config will not produce a diff as
+        /// When false, removing SecondaryIpRange from config will not produce a diff as
         /// the provider will default to the API's value.
-        /// When true, the provider will treat removing secondary_ip_range as sending an
+        /// When true, the provider will treat removing SecondaryIpRange as sending an
         /// empty list of secondary IP ranges to the API.
         /// Defaults to false.
         /// </summary>
@@ -911,7 +911,7 @@ namespace Pulumi.Gcp.Compute
         /// Provide this property when you create the subnetwork. For example,
         /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
         /// non-overlapping within a network. Only IPv4 is supported.
-        /// Field is optional when `reserved_internal_range` is defined, otherwise required.
+        /// Field is optional when `ReservedInternalRange` is defined, otherwise required.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
@@ -932,7 +932,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
-        /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+        /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the Ipv6Type is EXTERNAL then this subnet
         /// cannot enable direct path.
         /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
@@ -958,7 +958,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// This field denotes the VPC flow logging options for this subnetwork. If
         /// logging is enabled, logs are exported to Cloud Logging. Flow logging
-        /// isn't supported if the subnet `purpose` field is set to subnetwork is
+        /// isn't supported if the subnet `Purpose` field is set to subnetwork is
         /// `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         /// Structure is documented below.
         /// </summary>
@@ -1039,7 +1039,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The role of subnetwork.
-        /// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
+        /// Currently, this field is only used when `Purpose` is `REGIONAL_MANAGED_PROXY`.
         /// The value can be set to `ACTIVE` or `BACKUP`.
         /// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
         /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -1072,9 +1072,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Controls the removal behavior of secondary_ip_range.
-        /// When false, removing secondary_ip_range from config will not produce a diff as
+        /// When false, removing SecondaryIpRange from config will not produce a diff as
         /// the provider will default to the API's value.
-        /// When true, the provider will treat removing secondary_ip_range as sending an
+        /// When true, the provider will treat removing SecondaryIpRange as sending an
         /// empty list of secondary IP ranges to the API.
         /// Defaults to false.
         /// </summary>

@@ -58,7 +58,7 @@ public final class InstanceNetworkInterface {
      */
     private @Nullable String name;
     /**
-     * @return The name or self_link of the network to attach this interface to.
+     * @return The name or selfLink of the network to attach this interface to.
      * Either `network` or `subnetwork` must be provided. If network isn&#39;t provided it will
      * be inferred from the subnetwork.
      * 
@@ -96,7 +96,7 @@ public final class InstanceNetworkInterface {
      */
     private @Nullable String stackType;
     /**
-     * @return The name or self_link of the subnetwork to attach this
+     * @return The name or selfLink of the subnetwork to attach this
      * interface to. Either `network` or `subnetwork` must be provided. If network isn&#39;t provided
      * it will be inferred from the subnetwork. The subnetwork must exist in the same region this
      * instance will be created in. If the network resource is in
@@ -172,7 +172,7 @@ public final class InstanceNetworkInterface {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The name or self_link of the network to attach this interface to.
+     * @return The name or selfLink of the network to attach this interface to.
      * Either `network` or `subnetwork` must be provided. If network isn&#39;t provided it will
      * be inferred from the subnetwork.
      * 
@@ -224,7 +224,7 @@ public final class InstanceNetworkInterface {
         return Optional.ofNullable(this.stackType);
     }
     /**
-     * @return The name or self_link of the subnetwork to attach this
+     * @return The name or selfLink of the subnetwork to attach this
      * interface to. Either `network` or `subnetwork` must be provided. If network isn&#39;t provided
      * it will be inferred from the subnetwork. The subnetwork must exist in the same region this
      * instance will be created in. If the network resource is in

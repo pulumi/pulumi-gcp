@@ -30,6 +30,9 @@ namespace Pulumi.Gcp.Organizations
         ///     };
         /// });
         /// ```
+        /// 
+        /// 
+        /// ### Configure Kubernetes Provider With OAuth2 Access Token
         /// </summary>
         public static Task<GetClientConfigResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
@@ -53,6 +56,9 @@ namespace Pulumi.Gcp.Organizations
         ///     };
         /// });
         /// ```
+        /// 
+        /// 
+        /// ### Configure Kubernetes Provider With OAuth2 Access Token
         /// </summary>
         public static Output<GetClientConfigResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
@@ -76,6 +82,9 @@ namespace Pulumi.Gcp.Organizations
         ///     };
         /// });
         /// ```
+        /// 
+        /// 
+        /// ### Configure Kubernetes Provider With OAuth2 Access Token
         /// </summary>
         public static Output<GetClientConfigResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());

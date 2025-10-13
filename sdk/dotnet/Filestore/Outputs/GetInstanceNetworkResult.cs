@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Filestore.Outputs
         public readonly string Network;
         /// <summary>
         /// Private Service Connect configuration.
-        /// Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+        /// Should only be set when ConnectMode is PRIVATE_SERVICE_CONNECT.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceNetworkPscConfigResult> PscConfigs;
         /// <summary>

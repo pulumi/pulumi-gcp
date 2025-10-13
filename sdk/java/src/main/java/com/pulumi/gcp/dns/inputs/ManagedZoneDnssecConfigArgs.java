@@ -21,7 +21,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
      * Specifies parameters that will be used for generating initial DnsKeys
      * for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
      * you must also provide one for the other.
-     * default_key_specs can only be updated when the state is `off`.
+     * defaultKeySpecs can only be updated when the state is `off`.
      * Structure is documented below.
      * 
      */
@@ -32,7 +32,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
      * @return Specifies parameters that will be used for generating initial DnsKeys
      * for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
      * you must also provide one for the other.
-     * default_key_specs can only be updated when the state is `off`.
+     * defaultKeySpecs can only be updated when the state is `off`.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
 
     /**
      * Specifies the mechanism used to provide authenticated denial-of-existence responses.
-     * non_existence can only be updated when the state is `off`.
+     * nonExistence can only be updated when the state is `off`.
      * Possible values are: `nsec`, `nsec3`.
      * 
      */
@@ -66,7 +66,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Specifies the mechanism used to provide authenticated denial-of-existence responses.
-     * non_existence can only be updated when the state is `off`.
+     * nonExistence can only be updated when the state is `off`.
      * Possible values are: `nsec`, `nsec3`.
      * 
      */
@@ -122,7 +122,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
          * @param defaultKeySpecs Specifies parameters that will be used for generating initial DnsKeys
          * for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
          * you must also provide one for the other.
-         * default_key_specs can only be updated when the state is `off`.
+         * defaultKeySpecs can only be updated when the state is `off`.
          * Structure is documented below.
          * 
          * @return builder
@@ -137,7 +137,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
          * @param defaultKeySpecs Specifies parameters that will be used for generating initial DnsKeys
          * for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
          * you must also provide one for the other.
-         * default_key_specs can only be updated when the state is `off`.
+         * defaultKeySpecs can only be updated when the state is `off`.
          * Structure is documented below.
          * 
          * @return builder
@@ -151,7 +151,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
          * @param defaultKeySpecs Specifies parameters that will be used for generating initial DnsKeys
          * for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
          * you must also provide one for the other.
-         * default_key_specs can only be updated when the state is `off`.
+         * defaultKeySpecs can only be updated when the state is `off`.
          * Structure is documented below.
          * 
          * @return builder
@@ -184,7 +184,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param nonExistence Specifies the mechanism used to provide authenticated denial-of-existence responses.
-         * non_existence can only be updated when the state is `off`.
+         * nonExistence can only be updated when the state is `off`.
          * Possible values are: `nsec`, `nsec3`.
          * 
          * @return builder
@@ -197,7 +197,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param nonExistence Specifies the mechanism used to provide authenticated denial-of-existence responses.
-         * non_existence can only be updated when the state is `off`.
+         * nonExistence can only be updated when the state is `off`.
          * Possible values are: `nsec`, `nsec3`.
          * 
          * @return builder

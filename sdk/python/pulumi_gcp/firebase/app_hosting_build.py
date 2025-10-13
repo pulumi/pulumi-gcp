@@ -700,6 +700,8 @@ class AppHostingBuild(pulumi.CustomResource):
             role="roles/firebaseapphosting.computeRunner",
             member=service_account.member)
         ```
+        ### Firebase App Hosting Build Github
+
         ## Import
 
         Build can be imported using any of these accepted formats:
@@ -841,6 +843,8 @@ class AppHostingBuild(pulumi.CustomResource):
             role="roles/firebaseapphosting.computeRunner",
             member=service_account.member)
         ```
+        ### Firebase App Hosting Build Github
+
         ## Import
 
         Build can be imported using any of these accepted formats:

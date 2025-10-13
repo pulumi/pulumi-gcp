@@ -54,9 +54,9 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<string>? _oauthScopes;
 
         /// <summary>
-        /// Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+        /// Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `ServiceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         /// 
-        /// &gt; `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoring_service` and `logging_service`.
+        /// &gt; `monitoring.write` is always enabled regardless of user input.  `Monitoring` and `logging.write` may also be enabled depending on the values for `MonitoringService` and `LoggingService`.
         /// </summary>
         public InputList<string> OauthScopes
         {
@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
-        /// The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+        /// The `Email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }

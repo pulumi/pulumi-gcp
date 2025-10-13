@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_match_config_layer4_config"&gt;&lt;/a&gt;The `layer4_config` block supports:
+        /// &lt;a name="NestedMatchConfigLayer4Config"&gt;&lt;/a&gt;The `Layer4Config` block supports:
         /// </summary>
         public InputList<Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigGetArgs> Layer4Configs
         {

@@ -22,6 +22,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Developer Connect Git Repository Link Github Doc
+//
 // ## Import
 //
 // GitRepositoryLink can be imported using any of these accepted formats:

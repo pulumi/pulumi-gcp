@@ -33,14 +33,14 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
     }
 
     /**
-     * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+     * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
      * 
      */
     @Import(name="diskEncryptionKeyRaw")
     private @Nullable Output<String> diskEncryptionKeyRaw;
 
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
      * 
      */
     public Optional<Output<String>> diskEncryptionKeyRaw() {
@@ -48,14 +48,14 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
     }
 
     /**
-     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
      * 
      */
     @Import(name="diskEncryptionKeyRsa")
     private @Nullable Output<String> diskEncryptionKeyRsa;
 
     /**
-     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
      * 
      */
     public Optional<Output<String>> diskEncryptionKeyRsa() {
@@ -108,14 +108,14 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
     }
 
     /**
-     * The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+     * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
      * 
      */
     @Import(name="kmsKeySelfLink")
     private @Nullable Output<String> kmsKeySelfLink;
 
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+     * @return The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
      * 
      */
     public Optional<Output<String>> kmsKeySelfLink() {
@@ -138,14 +138,14 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
     }
 
     /**
-     * The name or self_link of the disk attached to this instance.
+     * The name or selfLink of the disk attached to this instance.
      * 
      */
     @Import(name="source", required=true)
     private Output<String> source;
 
     /**
-     * @return The name or self_link of the disk attached to this instance.
+     * @return The name or selfLink of the disk attached to this instance.
      * 
      */
     public Output<String> source() {
@@ -206,7 +206,7 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
         }
 
         /**
-         * @param diskEncryptionKeyRaw A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+         * @param diskEncryptionKeyRaw A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
         }
 
         /**
-         * @param diskEncryptionKeyRaw A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+         * @param diskEncryptionKeyRaw A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
         }
 
         /**
-         * @param diskEncryptionKeyRsa Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+         * @param diskEncryptionKeyRsa Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
         }
 
         /**
-         * @param diskEncryptionKeyRsa Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+         * @param diskEncryptionKeyRsa Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
         }
 
         /**
-         * @param kmsKeySelfLink The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+         * @param kmsKeySelfLink The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
         }
 
         /**
-         * @param kmsKeySelfLink The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+         * @param kmsKeySelfLink The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
         }
 
         /**
-         * @param source The name or self_link of the disk attached to this instance.
+         * @param source The name or selfLink of the disk attached to this instance.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
         }
 
         /**
-         * @param source The name or self_link of the disk attached to this instance.
+         * @param source The name or selfLink of the disk attached to this instance.
          * 
          * @return builder
          * 

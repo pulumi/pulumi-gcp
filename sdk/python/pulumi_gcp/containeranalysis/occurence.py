@@ -335,6 +335,8 @@ class Occurence(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Container Analysis Occurrence Kms
+
         ## Import
 
         Occurrence can be imported using any of these accepted formats:
@@ -397,6 +399,8 @@ class Occurence(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/container-analysis/)
 
         ## Example Usage
+
+        ### Container Analysis Occurrence Kms
 
         ## Import
 

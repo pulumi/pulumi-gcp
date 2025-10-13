@@ -30,16 +30,16 @@ public final class InstanceCluster {
      */
     private @Nullable String kmsKeyName;
     /**
-     * @return The node scaling factor for this cluster. One of `&#34;NodeScalingFactor1X&#34;` or `&#34;NodeScalingFactor2X&#34;`. Defaults to `&#34;NodeScalingFactor1X&#34;`. If `&#34;NodeScalingFactor2X&#34;` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
+     * @return The node scaling factor for this cluster. One of `&#34;NodeScalingFactor1X&#34;` or `&#34;NodeScalingFactor2X&#34;`. Defaults to `&#34;NodeScalingFactor1X&#34;`. If `&#34;NodeScalingFactor2X&#34;` is specified, then `numNodes`, `minNodes`, and `maxNodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
      * 
      * &gt; **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
      * 
      * !&gt; **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
      * 
-     * !&gt; **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
-     * `cluster_id`) will cause the provider to delete/recreate the entire
+     * !&gt; **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
+     * `clusterId`) will cause the provider to delete/recreate the entire
      * `gcp.bigtable.Instance` resource. If these values are changing, use a new
-     * `cluster_id`.
+     * `clusterId`.
      * 
      */
     private @Nullable String nodeScalingFactor;
@@ -91,16 +91,16 @@ public final class InstanceCluster {
         return Optional.ofNullable(this.kmsKeyName);
     }
     /**
-     * @return The node scaling factor for this cluster. One of `&#34;NodeScalingFactor1X&#34;` or `&#34;NodeScalingFactor2X&#34;`. Defaults to `&#34;NodeScalingFactor1X&#34;`. If `&#34;NodeScalingFactor2X&#34;` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
+     * @return The node scaling factor for this cluster. One of `&#34;NodeScalingFactor1X&#34;` or `&#34;NodeScalingFactor2X&#34;`. Defaults to `&#34;NodeScalingFactor1X&#34;`. If `&#34;NodeScalingFactor2X&#34;` is specified, then `numNodes`, `minNodes`, and `maxNodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
      * 
      * &gt; **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
      * 
      * !&gt; **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
      * 
-     * !&gt; **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
-     * `cluster_id`) will cause the provider to delete/recreate the entire
+     * !&gt; **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
+     * `clusterId`) will cause the provider to delete/recreate the entire
      * `gcp.bigtable.Instance` resource. If these values are changing, use a new
-     * `cluster_id`.
+     * `clusterId`.
      * 
      */
     public Optional<String> nodeScalingFactor() {

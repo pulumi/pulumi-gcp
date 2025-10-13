@@ -16,7 +16,7 @@ public final class InstanceInstanceEncryptionKeyArgs extends com.pulumi.resource
     public static final InstanceInstanceEncryptionKeyArgs Empty = new InstanceInstanceEncryptionKeyArgs();
 
     /**
-     * The self_link of the encryption key that is
+     * The selfLink of the encryption key that is
      * stored in Google Cloud KMS to encrypt the data on this instance.
      * 
      */
@@ -24,7 +24,7 @@ public final class InstanceInstanceEncryptionKeyArgs extends com.pulumi.resource
     private @Nullable Output<String> kmsKeySelfLink;
 
     /**
-     * @return The self_link of the encryption key that is
+     * @return The selfLink of the encryption key that is
      * stored in Google Cloud KMS to encrypt the data on this instance.
      * 
      */
@@ -89,7 +89,7 @@ public final class InstanceInstanceEncryptionKeyArgs extends com.pulumi.resource
         }
 
         /**
-         * @param kmsKeySelfLink The self_link of the encryption key that is
+         * @param kmsKeySelfLink The selfLink of the encryption key that is
          * stored in Google Cloud KMS to encrypt the data on this instance.
          * 
          * @return builder
@@ -101,7 +101,7 @@ public final class InstanceInstanceEncryptionKeyArgs extends com.pulumi.resource
         }
 
         /**
-         * @param kmsKeySelfLink The self_link of the encryption key that is
+         * @param kmsKeySelfLink The selfLink of the encryption key that is
          * stored in Google Cloud KMS to encrypt the data on this instance.
          * 
          * @return builder

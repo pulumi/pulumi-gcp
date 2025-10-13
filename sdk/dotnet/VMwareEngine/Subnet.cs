@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.VMwareEngine
 {
     /// <summary>
-    /// Subnet in a private cloud. A Private Cloud contains two types of subnets: `management` subnets (such as vMotion) that
+    /// Subnet in a private cloud. A Private Cloud contains two types of subnets: `Management` subnets (such as vMotion) that
     /// are read-only,and `userDefined`, which can also be updated. This resource should be used to read and update `userDefined`
-    /// subnets. To read `management` subnets, please utilize the subnet data source.
+    /// subnets. To read `Management` subnets, please utilize the subnet data source.
     /// 
     /// To get more information about Subnet, see:
     /// 

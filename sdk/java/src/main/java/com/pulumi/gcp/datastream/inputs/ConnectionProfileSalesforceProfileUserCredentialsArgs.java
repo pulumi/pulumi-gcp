@@ -48,7 +48,7 @@ public final class ConnectionProfileSalesforceProfileUserCredentialsArgs extends
     /**
      * A reference to a Secret Manager resource name storing the user&#39;s security token.
      * 
-     * &lt;a name=&#34;nested_salesforce_profile_oauth2_client_credentials&#34;&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
+     * &lt;a name=&#34;nestedSalesforceProfileOauth2ClientCredentials&#34;&gt;&lt;/a&gt;The `oauth2ClientCredentials` block supports:
      * 
      */
     @Import(name="secretManagerStoredSecurityToken")
@@ -57,7 +57,7 @@ public final class ConnectionProfileSalesforceProfileUserCredentialsArgs extends
     /**
      * @return A reference to a Secret Manager resource name storing the user&#39;s security token.
      * 
-     * &lt;a name=&#34;nested_salesforce_profile_oauth2_client_credentials&#34;&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
+     * &lt;a name=&#34;nestedSalesforceProfileOauth2ClientCredentials&#34;&gt;&lt;/a&gt;The `oauth2ClientCredentials` block supports:
      * 
      */
     public Optional<Output<String>> secretManagerStoredSecurityToken() {
@@ -167,7 +167,7 @@ public final class ConnectionProfileSalesforceProfileUserCredentialsArgs extends
         /**
          * @param secretManagerStoredSecurityToken A reference to a Secret Manager resource name storing the user&#39;s security token.
          * 
-         * &lt;a name=&#34;nested_salesforce_profile_oauth2_client_credentials&#34;&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
+         * &lt;a name=&#34;nestedSalesforceProfileOauth2ClientCredentials&#34;&gt;&lt;/a&gt;The `oauth2ClientCredentials` block supports:
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ConnectionProfileSalesforceProfileUserCredentialsArgs extends
         /**
          * @param secretManagerStoredSecurityToken A reference to a Secret Manager resource name storing the user&#39;s security token.
          * 
-         * &lt;a name=&#34;nested_salesforce_profile_oauth2_client_credentials&#34;&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
+         * &lt;a name=&#34;nestedSalesforceProfileOauth2ClientCredentials&#34;&gt;&lt;/a&gt;The `oauth2ClientCredentials` block supports:
          * 
          * @return builder
          * 

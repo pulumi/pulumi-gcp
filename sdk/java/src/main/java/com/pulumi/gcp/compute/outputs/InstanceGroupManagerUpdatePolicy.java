@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceGroupManagerUpdatePolicy {
     /**
-     * @return , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
+     * @return , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
      * 
      */
     private @Nullable Integer maxSurgeFixed;
     /**
-     * @return , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
+     * @return , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `maxSurgeFixed`.
      * 
      */
     private @Nullable Integer maxSurgePercent;
@@ -49,7 +49,7 @@ public final class InstanceGroupManagerUpdatePolicy {
      */
     private @Nullable String mostDisruptiveAllowedAction;
     /**
-     * @return , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+     * @return , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
      * ***
      * 
      */
@@ -62,14 +62,14 @@ public final class InstanceGroupManagerUpdatePolicy {
 
     private InstanceGroupManagerUpdatePolicy() {}
     /**
-     * @return , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
+     * @return , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
      * 
      */
     public Optional<Integer> maxSurgeFixed() {
         return Optional.ofNullable(this.maxSurgeFixed);
     }
     /**
-     * @return , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
+     * @return , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `maxSurgeFixed`.
      * 
      */
     public Optional<Integer> maxSurgePercent() {
@@ -111,7 +111,7 @@ public final class InstanceGroupManagerUpdatePolicy {
         return Optional.ofNullable(this.mostDisruptiveAllowedAction);
     }
     /**
-     * @return , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+     * @return , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
      * ***
      * 
      */

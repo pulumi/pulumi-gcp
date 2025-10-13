@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     {
         /// <summary>
         /// The connection specifying the credentials to be used to
-        /// read and write to external storage, such as Cloud Storage. The connection_id can
+        /// read and write to external storage, such as Cloud Storage. The ConnectionId can
         /// have the form "&amp;lt;project\_id&amp;gt;.&amp;lt;location\_id&amp;gt;.&amp;lt;connection\_id&amp;gt;" or
         /// projects/&amp;lt;project\_id&amp;gt;/locations/&amp;lt;location\_id&amp;gt;/connections/&amp;lt;connection\_id&amp;gt;".
         /// </summary>

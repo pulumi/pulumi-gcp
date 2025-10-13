@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.ManagedKafka.Inputs
         /// The operation type. Allowed values are (case insensitive): ALL, READ,
         /// WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
         /// ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols
-        /// for valid combinations of resource_type and operation for different Kafka API requests.
+        /// for valid combinations of ResourceType and operation for different Kafka API requests.
         /// </summary>
         [Input("operation", required: true)]
         public Input<string> Operation { get; set; } = null!;

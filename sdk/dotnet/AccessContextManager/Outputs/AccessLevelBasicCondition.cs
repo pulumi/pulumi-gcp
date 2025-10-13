@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// </summary>
         public readonly ImmutableArray<string> RequiredAccessLevels;
         /// <summary>
-        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `IpSubnetworks`.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessLevelBasicConditionVpcNetworkSource> VpcNetworkSources;

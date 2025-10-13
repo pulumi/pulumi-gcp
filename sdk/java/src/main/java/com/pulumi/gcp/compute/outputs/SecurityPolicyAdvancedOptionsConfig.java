@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class SecurityPolicyAdvancedOptionsConfig {
     /**
      * @return Custom configuration to apply the JSON parsing. Only applicable when
-     * `json_parsing` is set to `STANDARD`. Structure is documented below.
+     * `jsonParsing` is set to `STANDARD`. Structure is documented below.
      * 
      */
     private @Nullable SecurityPolicyAdvancedOptionsConfigJsonCustomConfig jsonCustomConfig;
@@ -48,7 +48,7 @@ public final class SecurityPolicyAdvancedOptionsConfig {
     private SecurityPolicyAdvancedOptionsConfig() {}
     /**
      * @return Custom configuration to apply the JSON parsing. Only applicable when
-     * `json_parsing` is set to `STANDARD`. Structure is documented below.
+     * `jsonParsing` is set to `STANDARD`. Structure is documented below.
      * 
      */
     public Optional<SecurityPolicyAdvancedOptionsConfigJsonCustomConfig> jsonCustomConfig() {

@@ -149,7 +149,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource name of the Group in the format: groups/{group_id}, where group_id
+     * Resource name of the Group in the format: groups/{group_id}, where groupId
      * is the unique ID assigned to the Group.
      * 
      */
@@ -157,7 +157,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Resource name of the Group in the format: groups/{group_id}, where group_id
+     * @return Resource name of the Group in the format: groups/{group_id}, where groupId
      * is the unique ID assigned to the Group.
      * 
      */
@@ -417,7 +417,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Resource name of the Group in the format: groups/{group_id}, where group_id
+         * @param name Resource name of the Group in the format: groups/{group_id}, where groupId
          * is the unique ID assigned to the Group.
          * 
          * @return builder
@@ -429,7 +429,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Resource name of the Group in the format: groups/{group_id}, where group_id
+         * @param name Resource name of the Group in the format: groups/{group_id}, where groupId
          * is the unique ID assigned to the Group.
          * 
          * @return builder

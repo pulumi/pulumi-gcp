@@ -437,7 +437,7 @@ public class Job extends com.pulumi.resources.CustomResource {
     }
     /**
      * HTTP target.
-     * If the job providers a http_target the cron will
+     * If the job providers a httpTarget the cron will
      * send a request to the targeted url
      * Structure is documented below.
      * 
@@ -447,7 +447,7 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return HTTP target.
-     * If the job providers a http_target the cron will
+     * If the job providers a httpTarget the cron will
      * send a request to the targeted url
      * Structure is documented below.
      * 

@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.Diagflow
         public Output<Outputs.ConversationProfileNewMessageEventNotificationConfig?> NewMessageEventNotificationConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+        /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "ParticipantId" - "participantRole" - "MessageId"
         /// Structure is documented below.
         /// </summary>
         [Output("newRecognitionResultNotificationConfig")]
@@ -310,7 +310,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<Inputs.ConversationProfileNewMessageEventNotificationConfigArgs>? NewMessageEventNotificationConfig { get; set; }
 
         /// <summary>
-        /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+        /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "ParticipantId" - "participantRole" - "MessageId"
         /// Structure is documented below.
         /// </summary>
         [Input("newRecognitionResultNotificationConfig")]
@@ -426,7 +426,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<Inputs.ConversationProfileNewMessageEventNotificationConfigGetArgs>? NewMessageEventNotificationConfig { get; set; }
 
         /// <summary>
-        /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+        /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "ParticipantId" - "participantRole" - "MessageId"
         /// Structure is documented below.
         /// </summary>
         [Input("newRecognitionResultNotificationConfig")]

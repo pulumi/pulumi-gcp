@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class GetCryptoKeyVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+        /// The `Id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `Id` field of the 
         /// `gcp.kms.CryptoKey` resource/datasource.
         /// </summary>
         [Input("cryptoKey", required: true)]
@@ -164,7 +164,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class GetCryptoKeyVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+        /// The `Id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `Id` field of the 
         /// `gcp.kms.CryptoKey` resource/datasource.
         /// </summary>
         [Input("cryptoKey", required: true)]

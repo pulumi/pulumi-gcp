@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetSecurityPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the security policy. Provide either this or a `self_link`.
+        /// The name of the security policy. Provide either this or a `SelfLink`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.Compute
         public string? Project { get; set; }
 
         /// <summary>
-        /// The self_link of the security policy. Provide either this or a `name`
+        /// The SelfLink of the security policy. Provide either this or a `Name`
         /// </summary>
         [Input("selfLink")]
         public string? SelfLink { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetSecurityPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the security policy. Provide either this or a `self_link`.
+        /// The name of the security policy. Provide either this or a `SelfLink`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -156,7 +156,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The self_link of the security policy. Provide either this or a `name`
+        /// The SelfLink of the security policy. Provide either this or a `Name`
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }

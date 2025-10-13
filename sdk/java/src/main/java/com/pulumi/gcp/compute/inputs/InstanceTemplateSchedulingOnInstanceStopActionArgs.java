@@ -16,14 +16,14 @@ public final class InstanceTemplateSchedulingOnInstanceStopActionArgs extends co
     public static final InstanceTemplateSchedulingOnInstanceStopActionArgs Empty = new InstanceTemplateSchedulingOnInstanceStopActionArgs();
 
     /**
-     * Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+     * Whether to discard local SSDs attached to the VM while terminating using `maxRunDuration`. Only supports `true` at this point.
      * 
      */
     @Import(name="discardLocalSsd")
     private @Nullable Output<Boolean> discardLocalSsd;
 
     /**
-     * @return Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+     * @return Whether to discard local SSDs attached to the VM while terminating using `maxRunDuration`. Only supports `true` at this point.
      * 
      */
     public Optional<Output<Boolean>> discardLocalSsd() {
@@ -55,7 +55,7 @@ public final class InstanceTemplateSchedulingOnInstanceStopActionArgs extends co
         }
 
         /**
-         * @param discardLocalSsd Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+         * @param discardLocalSsd Whether to discard local SSDs attached to the VM while terminating using `maxRunDuration`. Only supports `true` at this point.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class InstanceTemplateSchedulingOnInstanceStopActionArgs extends co
         }
 
         /**
-         * @param discardLocalSsd Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+         * @param discardLocalSsd Whether to discard local SSDs attached to the VM while terminating using `maxRunDuration`. Only supports `true` at this point.
          * 
          * @return builder
          * 

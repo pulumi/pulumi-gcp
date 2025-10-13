@@ -33,7 +33,7 @@ public final class V2ProjectSccBigQueryExportArgs extends com.pulumi.resources.R
 
     /**
      * The dataset to write findings&#39; updates to.
-     * Its format is &#34;projects/[projectId]/datasets/[bigquery_dataset_id]&#34;.
+     * Its format is &#34;projects/[projectId]/datasets/[bigqueryDatasetId]&#34;.
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      * 
      */
@@ -42,7 +42,7 @@ public final class V2ProjectSccBigQueryExportArgs extends com.pulumi.resources.R
 
     /**
      * @return The dataset to write findings&#39; updates to.
-     * Its format is &#34;projects/[projectId]/datasets/[bigquery_dataset_id]&#34;.
+     * Its format is &#34;projects/[projectId]/datasets/[bigqueryDatasetId]&#34;.
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      * 
      */
@@ -200,7 +200,7 @@ public final class V2ProjectSccBigQueryExportArgs extends com.pulumi.resources.R
 
         /**
          * @param dataset The dataset to write findings&#39; updates to.
-         * Its format is &#34;projects/[projectId]/datasets/[bigquery_dataset_id]&#34;.
+         * Its format is &#34;projects/[projectId]/datasets/[bigqueryDatasetId]&#34;.
          * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
          * 
          * @return builder
@@ -213,7 +213,7 @@ public final class V2ProjectSccBigQueryExportArgs extends com.pulumi.resources.R
 
         /**
          * @param dataset The dataset to write findings&#39; updates to.
-         * Its format is &#34;projects/[projectId]/datasets/[bigquery_dataset_id]&#34;.
+         * Its format is &#34;projects/[projectId]/datasets/[bigqueryDatasetId]&#34;.
          * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
          * 
          * @return builder

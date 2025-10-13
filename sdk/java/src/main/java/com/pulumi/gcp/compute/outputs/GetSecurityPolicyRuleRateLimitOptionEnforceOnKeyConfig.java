@@ -16,7 +16,7 @@ public final class GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
      */
     private String enforceOnKeyName;
     /**
-     * @return Determines the key to enforce the rate_limit_threshold on
+     * @return Determines the key to enforce the rateLimitThreshold on
      * 
      */
     private String enforceOnKeyType;
@@ -30,7 +30,7 @@ public final class GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
         return this.enforceOnKeyName;
     }
     /**
-     * @return Determines the key to enforce the rate_limit_threshold on
+     * @return Determines the key to enforce the rateLimitThreshold on
      * 
      */
     public String enforceOnKeyType() {
