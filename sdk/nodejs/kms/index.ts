@@ -55,6 +55,11 @@ export type EkmConnectionIamPolicy = import("./ekmConnectionIamPolicy").EkmConne
 export const EkmConnectionIamPolicy: typeof import("./ekmConnectionIamPolicy").EkmConnectionIamPolicy = null as any;
 utilities.lazyLoad(exports, ["EkmConnectionIamPolicy"], () => require("./ekmConnectionIamPolicy"));
 
+export { FolderKajPolicyConfigArgs, FolderKajPolicyConfigState } from "./folderKajPolicyConfig";
+export type FolderKajPolicyConfig = import("./folderKajPolicyConfig").FolderKajPolicyConfig;
+export const FolderKajPolicyConfig: typeof import("./folderKajPolicyConfig").FolderKajPolicyConfig = null as any;
+utilities.lazyLoad(exports, ["FolderKajPolicyConfig"], () => require("./folderKajPolicyConfig"));
+
 export { GetAutokeyConfigArgs, GetAutokeyConfigResult, GetAutokeyConfigOutputArgs } from "./getAutokeyConfig";
 export const getAutokeyConfig: typeof import("./getAutokeyConfig").getAutokeyConfig = null as any;
 export const getAutokeyConfigOutput: typeof import("./getAutokeyConfig").getAutokeyConfigOutput = null as any;
@@ -200,6 +205,8 @@ const _module = {
                 return new EkmConnectionIamMember(name, <any>undefined, { urn })
             case "gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy":
                 return new EkmConnectionIamPolicy(name, <any>undefined, { urn })
+            case "gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig":
+                return new FolderKajPolicyConfig(name, <any>undefined, { urn })
             case "gcp:kms/keyHandle:KeyHandle":
                 return new KeyHandle(name, <any>undefined, { urn })
             case "gcp:kms/keyRing:KeyRing":
@@ -231,6 +238,7 @@ pulumi.runtime.registerResourceModule("gcp", "kms/ekmConnection", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/ekmConnectionIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/ekmConnectionIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/ekmConnectionIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/folderKajPolicyConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyHandle", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRing", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMBinding", _module)

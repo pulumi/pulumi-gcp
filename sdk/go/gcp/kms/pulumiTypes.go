@@ -2112,6 +2112,157 @@ func (o EkmConnectionServiceResolverServerCertificateArrayOutput) Index(i pulumi
 	}).(EkmConnectionServiceResolverServerCertificateOutput)
 }
 
+type FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy struct {
+	// A KeyAccessJustificationsPolicy specifies zero or more allowed
+	// AccessReason values for encrypt, decrypt, and sign operations on a
+	// CryptoKey.
+	// Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+	AllowedAccessReasons []string `pulumi:"allowedAccessReasons"`
+}
+
+// FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyInput is an input type that accepts FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs and FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput values.
+// You can construct a concrete instance of `FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyInput` via:
+//
+//	FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs{...}
+type FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyInput interface {
+	pulumi.Input
+
+	ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput() FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput
+	ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutputWithContext(context.Context) FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput
+}
+
+type FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs struct {
+	// A KeyAccessJustificationsPolicy specifies zero or more allowed
+	// AccessReason values for encrypt, decrypt, and sign operations on a
+	// CryptoKey.
+	// Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+	AllowedAccessReasons pulumi.StringArrayInput `pulumi:"allowedAccessReasons"`
+}
+
+func (FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy)(nil)).Elem()
+}
+
+func (i FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs) ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput() FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput {
+	return i.ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutputWithContext(context.Background())
+}
+
+func (i FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs) ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutputWithContext(ctx context.Context) FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput)
+}
+
+func (i FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs) ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput() FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return i.ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs) ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(ctx context.Context) FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput).ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(ctx)
+}
+
+// FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrInput is an input type that accepts FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs, FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtr and FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput values.
+// You can construct a concrete instance of `FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrInput` via:
+//
+//	        FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput() FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput
+	ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(context.Context) FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput
+}
+
+type folderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrType FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs
+
+func FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtr(v *FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs) FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrInput {
+	return (*folderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrType)(v)
+}
+
+func (*folderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy)(nil)).Elem()
+}
+
+func (i *folderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrType) ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput() FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return i.ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *folderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrType) ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(ctx context.Context) FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput)
+}
+
+type FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput struct{ *pulumi.OutputState }
+
+func (FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy)(nil)).Elem()
+}
+
+func (o FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput) ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput() FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput {
+	return o
+}
+
+func (o FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput) ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutputWithContext(ctx context.Context) FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput {
+	return o
+}
+
+func (o FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput) ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput() FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return o.ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput) ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(ctx context.Context) FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy) *FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy {
+		return &v
+	}).(FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput)
+}
+
+// A KeyAccessJustificationsPolicy specifies zero or more allowed
+// AccessReason values for encrypt, decrypt, and sign operations on a
+// CryptoKey.
+// Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+func (o FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput) AllowedAccessReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy) []string {
+		return v.AllowedAccessReasons
+	}).(pulumi.StringArrayOutput)
+}
+
+type FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy)(nil)).Elem()
+}
+
+func (o FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput) ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput() FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return o
+}
+
+func (o FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput) ToFolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(ctx context.Context) FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return o
+}
+
+func (o FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput) Elem() FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput {
+	return o.ApplyT(func(v *FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy) FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy
+		return ret
+	}).(FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput)
+}
+
+// A KeyAccessJustificationsPolicy specifies zero or more allowed
+// AccessReason values for encrypt, decrypt, and sign operations on a
+// CryptoKey.
+// Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+func (o FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput) AllowedAccessReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedAccessReasons
+	}).(pulumi.StringArrayOutput)
+}
+
 type KeyRingIAMBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
@@ -4608,6 +4759,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionServiceResolverArrayInput)(nil)).Elem(), EkmConnectionServiceResolverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionServiceResolverServerCertificateInput)(nil)).Elem(), EkmConnectionServiceResolverServerCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionServiceResolverServerCertificateArrayInput)(nil)).Elem(), EkmConnectionServiceResolverServerCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyInput)(nil)).Elem(), FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrInput)(nil)).Elem(), FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMBindingConditionInput)(nil)).Elem(), KeyRingIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMBindingConditionPtrInput)(nil)).Elem(), KeyRingIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMMemberConditionInput)(nil)).Elem(), KeyRingIAMMemberConditionArgs{})
@@ -4672,6 +4825,8 @@ func init() {
 	pulumi.RegisterOutputType(EkmConnectionServiceResolverArrayOutput{})
 	pulumi.RegisterOutputType(EkmConnectionServiceResolverServerCertificateOutput{})
 	pulumi.RegisterOutputType(EkmConnectionServiceResolverServerCertificateArrayOutput{})
+	pulumi.RegisterOutputType(FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput{})
+	pulumi.RegisterOutputType(FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMMemberConditionOutput{})

@@ -39,8 +39,12 @@ __all__ = [
     'AuthzPolicyHttpRuleFromArgsDict',
     'AuthzPolicyHttpRuleFromNotSourceArgs',
     'AuthzPolicyHttpRuleFromNotSourceArgsDict',
+    'AuthzPolicyHttpRuleFromNotSourceIpBlockArgs',
+    'AuthzPolicyHttpRuleFromNotSourceIpBlockArgsDict',
     'AuthzPolicyHttpRuleFromNotSourcePrincipalArgs',
     'AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict',
+    'AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs',
+    'AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict',
     'AuthzPolicyHttpRuleFromNotSourceResourceArgs',
     'AuthzPolicyHttpRuleFromNotSourceResourceArgsDict',
     'AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs',
@@ -49,8 +53,12 @@ __all__ = [
     'AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgsDict',
     'AuthzPolicyHttpRuleFromSourceArgs',
     'AuthzPolicyHttpRuleFromSourceArgsDict',
+    'AuthzPolicyHttpRuleFromSourceIpBlockArgs',
+    'AuthzPolicyHttpRuleFromSourceIpBlockArgsDict',
     'AuthzPolicyHttpRuleFromSourcePrincipalArgs',
     'AuthzPolicyHttpRuleFromSourcePrincipalArgsDict',
+    'AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs',
+    'AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict',
     'AuthzPolicyHttpRuleFromSourceResourceArgs',
     'AuthzPolicyHttpRuleFromSourceResourceArgsDict',
     'AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs',
@@ -718,12 +726,12 @@ if not MYPY:
     class AuthzPolicyHttpRuleFromArgsDict(TypedDict):
         not_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgsDict']]]]
         """
-        Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+        Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
         Structure is documented below.
         """
         sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgsDict']]]]
         """
-        Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+        Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
         Structure is documented below.
         """
 elif False:
@@ -735,9 +743,9 @@ class AuthzPolicyHttpRuleFromArgs:
                  not_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]] not_sources: Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]] not_sources: Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgs']]] sources: Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgs']]] sources: Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
                Structure is documented below.
         """
         if not_sources is not None:
@@ -749,7 +757,7 @@ class AuthzPolicyHttpRuleFromArgs:
     @pulumi.getter(name="notSources")
     def not_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]]]:
         """
-        Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+        Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
         Structure is documented below.
         """
         return pulumi.get(self, "not_sources")
@@ -762,7 +770,7 @@ class AuthzPolicyHttpRuleFromArgs:
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgs']]]]:
         """
-        Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+        Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
         Structure is documented below.
         """
         return pulumi.get(self, "sources")
@@ -774,6 +782,11 @@ class AuthzPolicyHttpRuleFromArgs:
 
 if not MYPY:
     class AuthzPolicyHttpRuleFromNotSourceArgsDict(TypedDict):
+        ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgsDict']]]]
+        """
+        A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+        Structure is documented below.
+        """
         principals: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict']]]]
         """
         A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
@@ -792,9 +805,12 @@ elif False:
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourceArgs:
     def __init__(__self__, *,
+                 ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]]] = None,
                  principals: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]] ip_blocks: A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgs']]] principals: A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
                Limited to 5 principals.
                Structure is documented below.
@@ -802,10 +818,25 @@ class AuthzPolicyHttpRuleFromNotSourceArgs:
                Limited to 5 resources.
                Structure is documented below.
         """
+        if ip_blocks is not None:
+            pulumi.set(__self__, "ip_blocks", ip_blocks)
         if principals is not None:
             pulumi.set(__self__, "principals", principals)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+
+    @_builtins.property
+    @pulumi.getter(name="ipBlocks")
+    def ip_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]]]:
+        """
+        A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ip_blocks")
+
+    @ip_blocks.setter
+    def ip_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]]]):
+        pulumi.set(self, "ip_blocks", value)
 
     @_builtins.property
     @pulumi.getter
@@ -837,7 +868,310 @@ class AuthzPolicyHttpRuleFromNotSourceArgs:
 
 
 if not MYPY:
+    class AuthzPolicyHttpRuleFromNotSourceIpBlockArgsDict(TypedDict):
+        length: pulumi.Input[_builtins.int]
+        """
+        The length of the address range.
+        """
+        prefix: pulumi.Input[_builtins.str]
+        """
+        The address prefix.
+        """
+elif False:
+    AuthzPolicyHttpRuleFromNotSourceIpBlockArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AuthzPolicyHttpRuleFromNotSourceIpBlockArgs:
+    def __init__(__self__, *,
+                 length: pulumi.Input[_builtins.int],
+                 prefix: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] length: The length of the address range.
+        :param pulumi.Input[_builtins.str] prefix: The address prefix.
+        """
+        pulumi.set(__self__, "length", length)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def length(self) -> pulumi.Input[_builtins.int]:
+        """
+        The length of the address range.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "length", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[_builtins.str]:
+        """
+        The address prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "prefix", value)
+
+
+if not MYPY:
     class AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict(TypedDict):
+        contains: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional, Deprecated)
+        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc.def
+
+        > **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+        """
+        exact: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional, Deprecated)
+        The input string must match exactly the string specified here.
+        Examples:
+        * abc only matches the value abc.
+
+        > **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+        """
+        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        (Optional, Deprecated)
+        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+
+        > **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+        """
+        prefix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional, Deprecated)
+        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value abc.xyz
+
+        > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+        """
+        principal: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict']]
+        """
+        Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+        Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+        Structure is documented below.
+        """
+        principal_selector: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+        Default value is `CLIENT_CERT_URI_SAN`.
+        Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+        """
+        suffix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional, Deprecated)
+        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc
+
+        > **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+        """
+elif False:
+    AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
+    def __init__(__self__, *,
+                 contains: Optional[pulumi.Input[_builtins.str]] = None,
+                 exact: Optional[pulumi.Input[_builtins.str]] = None,
+                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 principal: Optional[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs']] = None,
+                 principal_selector: Optional[pulumi.Input[_builtins.str]] = None,
+                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] contains: (Optional, Deprecated)
+               The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value xyz.abc.def
+               
+               > **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+        :param pulumi.Input[_builtins.str] exact: (Optional, Deprecated)
+               The input string must match exactly the string specified here.
+               Examples:
+               * abc only matches the value abc.
+               
+               > **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+        :param pulumi.Input[_builtins.bool] ignore_case: (Optional, Deprecated)
+               If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+               
+               > **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+        :param pulumi.Input[_builtins.str] prefix: (Optional, Deprecated)
+               The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value abc.xyz
+               
+               > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+        :param pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs'] principal: Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+               Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] principal_selector: An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+               Default value is `CLIENT_CERT_URI_SAN`.
+               Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+        :param pulumi.Input[_builtins.str] suffix: (Optional, Deprecated)
+               The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value xyz.abc
+               
+               > **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+        """
+        if contains is not None:
+            warnings.warn("""`principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.""", DeprecationWarning)
+            pulumi.log.warn("""contains is deprecated: `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.""")
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if exact is not None:
+            warnings.warn("""`principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.""", DeprecationWarning)
+            pulumi.log.warn("""exact is deprecated: `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.""")
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if ignore_case is not None:
+            warnings.warn("""`principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.""", DeprecationWarning)
+            pulumi.log.warn("""ignore_case is deprecated: `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.""")
+        if ignore_case is not None:
+            pulumi.set(__self__, "ignore_case", ignore_case)
+        if prefix is not None:
+            warnings.warn("""`principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.""", DeprecationWarning)
+            pulumi.log.warn("""prefix is deprecated: `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.""")
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+        if principal_selector is not None:
+            pulumi.set(__self__, "principal_selector", principal_selector)
+        if suffix is not None:
+            warnings.warn("""`principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.""", DeprecationWarning)
+            pulumi.log.warn("""suffix is deprecated: `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.""")
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.""")
+    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Deprecated)
+        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc.def
+
+        > **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+        """
+        return pulumi.get(self, "contains")
+
+    @contains.setter
+    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "contains", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.""")
+    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Deprecated)
+        The input string must match exactly the string specified here.
+        Examples:
+        * abc only matches the value abc.
+
+        > **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+        """
+        return pulumi.get(self, "exact")
+
+    @exact.setter
+    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "exact", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreCase")
+    @_utilities.deprecated("""`principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.""")
+    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Optional, Deprecated)
+        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+
+        > **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+        """
+        return pulumi.get(self, "ignore_case")
+
+    @ignore_case.setter
+    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ignore_case", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.""")
+    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Deprecated)
+        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value abc.xyz
+
+        > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "prefix", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs']]:
+        """
+        Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+        Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs']]):
+        pulumi.set(self, "principal", value)
+
+    @_builtins.property
+    @pulumi.getter(name="principalSelector")
+    def principal_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+        Default value is `CLIENT_CERT_URI_SAN`.
+        Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+        """
+        return pulumi.get(self, "principal_selector")
+
+    @principal_selector.setter
+    def principal_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "principal_selector", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.""")
+    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Deprecated)
+        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc
+
+        > **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+        """
+        return pulumi.get(self, "suffix")
+
+    @suffix.setter
+    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "suffix", value)
+
+
+if not MYPY:
+    class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict(TypedDict):
         contains: NotRequired[pulumi.Input[_builtins.str]]
         """
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
@@ -867,10 +1201,10 @@ if not MYPY:
         * abc matches the value xyz.abc
         """
 elif False:
-    AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict: TypeAlias = Mapping[str, Any]
+    AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
+class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs:
     def __init__(__self__, *,
                  contains: Optional[pulumi.Input[_builtins.str]] = None,
                  exact: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1203,6 +1537,11 @@ class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs:
 
 if not MYPY:
     class AuthzPolicyHttpRuleFromSourceArgsDict(TypedDict):
+        ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgsDict']]]]
+        """
+        A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+        Structure is documented below.
+        """
         principals: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgsDict']]]]
         """
         A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
@@ -1221,9 +1560,12 @@ elif False:
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourceArgs:
     def __init__(__self__, *,
+                 ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]]] = None,
                  principals: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]] ip_blocks: A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgs']]] principals: A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
                Limited to 5 principals.
                Structure is documented below.
@@ -1231,10 +1573,25 @@ class AuthzPolicyHttpRuleFromSourceArgs:
                Limited to 5 resources.
                Structure is documented below.
         """
+        if ip_blocks is not None:
+            pulumi.set(__self__, "ip_blocks", ip_blocks)
         if principals is not None:
             pulumi.set(__self__, "principals", principals)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+
+    @_builtins.property
+    @pulumi.getter(name="ipBlocks")
+    def ip_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]]]:
+        """
+        A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ip_blocks")
+
+    @ip_blocks.setter
+    def ip_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]]]):
+        pulumi.set(self, "ip_blocks", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1266,7 +1623,310 @@ class AuthzPolicyHttpRuleFromSourceArgs:
 
 
 if not MYPY:
+    class AuthzPolicyHttpRuleFromSourceIpBlockArgsDict(TypedDict):
+        length: pulumi.Input[_builtins.int]
+        """
+        The length of the address range.
+        """
+        prefix: pulumi.Input[_builtins.str]
+        """
+        The address prefix.
+        """
+elif False:
+    AuthzPolicyHttpRuleFromSourceIpBlockArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AuthzPolicyHttpRuleFromSourceIpBlockArgs:
+    def __init__(__self__, *,
+                 length: pulumi.Input[_builtins.int],
+                 prefix: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] length: The length of the address range.
+        :param pulumi.Input[_builtins.str] prefix: The address prefix.
+        """
+        pulumi.set(__self__, "length", length)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def length(self) -> pulumi.Input[_builtins.int]:
+        """
+        The length of the address range.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "length", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[_builtins.str]:
+        """
+        The address prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "prefix", value)
+
+
+if not MYPY:
     class AuthzPolicyHttpRuleFromSourcePrincipalArgsDict(TypedDict):
+        contains: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional, Deprecated)
+        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc.def
+
+        > **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+        """
+        exact: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional, Deprecated)
+        The input string must match exactly the string specified here.
+        Examples:
+        * abc only matches the value abc.
+
+        > **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+        """
+        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        (Optional, Deprecated)
+        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+
+        > **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+        """
+        prefix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional, Deprecated)
+        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value abc.xyz
+
+        > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+        """
+        principal: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict']]
+        """
+        Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+        Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+        Structure is documented below.
+        """
+        principal_selector: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+        Default value is `CLIENT_CERT_URI_SAN`.
+        Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+        """
+        suffix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional, Deprecated)
+        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc
+
+        > **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+        """
+elif False:
+    AuthzPolicyHttpRuleFromSourcePrincipalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
+    def __init__(__self__, *,
+                 contains: Optional[pulumi.Input[_builtins.str]] = None,
+                 exact: Optional[pulumi.Input[_builtins.str]] = None,
+                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 principal: Optional[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs']] = None,
+                 principal_selector: Optional[pulumi.Input[_builtins.str]] = None,
+                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] contains: (Optional, Deprecated)
+               The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value xyz.abc.def
+               
+               > **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+        :param pulumi.Input[_builtins.str] exact: (Optional, Deprecated)
+               The input string must match exactly the string specified here.
+               Examples:
+               * abc only matches the value abc.
+               
+               > **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+        :param pulumi.Input[_builtins.bool] ignore_case: (Optional, Deprecated)
+               If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+               
+               > **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+        :param pulumi.Input[_builtins.str] prefix: (Optional, Deprecated)
+               The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value abc.xyz
+               
+               > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+        :param pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs'] principal: Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+               Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] principal_selector: An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+               Default value is `CLIENT_CERT_URI_SAN`.
+               Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+        :param pulumi.Input[_builtins.str] suffix: (Optional, Deprecated)
+               The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+               Examples:
+               * abc matches the value xyz.abc
+               
+               > **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+        """
+        if contains is not None:
+            warnings.warn("""`principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.""", DeprecationWarning)
+            pulumi.log.warn("""contains is deprecated: `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.""")
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if exact is not None:
+            warnings.warn("""`principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.""", DeprecationWarning)
+            pulumi.log.warn("""exact is deprecated: `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.""")
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if ignore_case is not None:
+            warnings.warn("""`principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.""", DeprecationWarning)
+            pulumi.log.warn("""ignore_case is deprecated: `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.""")
+        if ignore_case is not None:
+            pulumi.set(__self__, "ignore_case", ignore_case)
+        if prefix is not None:
+            warnings.warn("""`principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.""", DeprecationWarning)
+            pulumi.log.warn("""prefix is deprecated: `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.""")
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+        if principal_selector is not None:
+            pulumi.set(__self__, "principal_selector", principal_selector)
+        if suffix is not None:
+            warnings.warn("""`principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.""", DeprecationWarning)
+            pulumi.log.warn("""suffix is deprecated: `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.""")
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.""")
+    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Deprecated)
+        The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc.def
+
+        > **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+        """
+        return pulumi.get(self, "contains")
+
+    @contains.setter
+    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "contains", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.""")
+    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Deprecated)
+        The input string must match exactly the string specified here.
+        Examples:
+        * abc only matches the value abc.
+
+        > **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+        """
+        return pulumi.get(self, "exact")
+
+    @exact.setter
+    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "exact", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreCase")
+    @_utilities.deprecated("""`principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.""")
+    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Optional, Deprecated)
+        If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+
+        > **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+        """
+        return pulumi.get(self, "ignore_case")
+
+    @ignore_case.setter
+    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ignore_case", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.""")
+    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Deprecated)
+        The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value abc.xyz
+
+        > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "prefix", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs']]:
+        """
+        Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+        Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs']]):
+        pulumi.set(self, "principal", value)
+
+    @_builtins.property
+    @pulumi.getter(name="principalSelector")
+    def principal_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+        Default value is `CLIENT_CERT_URI_SAN`.
+        Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+        """
+        return pulumi.get(self, "principal_selector")
+
+    @principal_selector.setter
+    def principal_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "principal_selector", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.""")
+    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Deprecated)
+        The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+        Examples:
+        * abc matches the value xyz.abc
+
+        > **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+        """
+        return pulumi.get(self, "suffix")
+
+    @suffix.setter
+    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "suffix", value)
+
+
+if not MYPY:
+    class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict(TypedDict):
         contains: NotRequired[pulumi.Input[_builtins.str]]
         """
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
@@ -1296,10 +1956,10 @@ if not MYPY:
         * abc matches the value xyz.abc
         """
 elif False:
-    AuthzPolicyHttpRuleFromSourcePrincipalArgsDict: TypeAlias = Mapping[str, Any]
+    AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
+class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs:
     def __init__(__self__, *,
                  contains: Optional[pulumi.Input[_builtins.str]] = None,
                  exact: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1634,12 +2294,12 @@ if not MYPY:
     class AuthzPolicyHttpRuleToArgsDict(TypedDict):
         not_operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgsDict']]]]
         """
-        Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+        Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
         Structure is documented below.
         """
         operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgsDict']]]]
         """
-        Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+        Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
         Structure is documented below.
         """
 elif False:
@@ -1651,9 +2311,9 @@ class AuthzPolicyHttpRuleToArgs:
                  not_operations: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]]] = None,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]] not_operations: Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]] not_operations: Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]] operations: Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]] operations: Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
                Structure is documented below.
         """
         if not_operations is not None:
@@ -1665,7 +2325,7 @@ class AuthzPolicyHttpRuleToArgs:
     @pulumi.getter(name="notOperations")
     def not_operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]]]:
         """
-        Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+        Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
         Structure is documented below.
         """
         return pulumi.get(self, "not_operations")
@@ -1678,7 +2338,7 @@ class AuthzPolicyHttpRuleToArgs:
     @pulumi.getter
     def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]]]:
         """
-        Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+        Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
         Structure is documented below.
         """
         return pulumi.get(self, "operations")
@@ -1698,7 +2358,7 @@ if not MYPY:
         hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgsDict']]]]
         """
         A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-        Limited to 5 matches.
+        Limited to 10 matches.
         Structure is documented below.
         """
         methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -1708,7 +2368,7 @@ if not MYPY:
         paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgsDict']]]]
         """
         A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-        Limited to 5 matches.
+        Limited to 10 matches.
         Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
         Structure is documented below.
         """
@@ -1726,11 +2386,11 @@ class AuthzPolicyHttpRuleToNotOperationArgs:
         :param pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetArgs'] header_set: A list of headers to match against in http header.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgs']]] hosts: A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-               Limited to 5 matches.
+               Limited to 10 matches.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] methods: A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgs']]] paths: A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-               Limited to 5 matches.
+               Limited to 10 matches.
                Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
                Structure is documented below.
         """
@@ -1761,7 +2421,7 @@ class AuthzPolicyHttpRuleToNotOperationArgs:
     def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgs']]]]:
         """
         A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-        Limited to 5 matches.
+        Limited to 10 matches.
         Structure is documented below.
         """
         return pulumi.get(self, "hosts")
@@ -1787,7 +2447,7 @@ class AuthzPolicyHttpRuleToNotOperationArgs:
     def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgs']]]]:
         """
         A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-        Limited to 5 matches.
+        Limited to 10 matches.
         Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
         Structure is documented below.
         """
@@ -1802,7 +2462,7 @@ if not MYPY:
     class AuthzPolicyHttpRuleToNotOperationHeaderSetArgsDict(TypedDict):
         headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgsDict']]]]
         """
-        A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+        A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
         Structure is documented below.
         """
 elif False:
@@ -1813,7 +2473,7 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetArgs:
     def __init__(__self__, *,
                  headers: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]] headers: A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]] headers: A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
                Structure is documented below.
         """
         if headers is not None:
@@ -1823,7 +2483,7 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetArgs:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]]]:
         """
-        A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+        A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
         Structure is documented below.
         """
         return pulumi.get(self, "headers")
@@ -2306,7 +2966,7 @@ if not MYPY:
         hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgsDict']]]]
         """
         A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-        Limited to 5 matches.
+        Limited to 10 matches.
         Structure is documented below.
         """
         methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -2316,7 +2976,7 @@ if not MYPY:
         paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgsDict']]]]
         """
         A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-        Limited to 5 matches.
+        Limited to 10 matches.
         Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
         Structure is documented below.
         """
@@ -2334,11 +2994,11 @@ class AuthzPolicyHttpRuleToOperationArgs:
         :param pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetArgs'] header_set: A list of headers to match against in http header.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgs']]] hosts: A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-               Limited to 5 matches.
+               Limited to 10 matches.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] methods: A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgs']]] paths: A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-               Limited to 5 matches.
+               Limited to 10 matches.
                Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
                Structure is documented below.
         """
@@ -2369,7 +3029,7 @@ class AuthzPolicyHttpRuleToOperationArgs:
     def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgs']]]]:
         """
         A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-        Limited to 5 matches.
+        Limited to 10 matches.
         Structure is documented below.
         """
         return pulumi.get(self, "hosts")
@@ -2395,7 +3055,7 @@ class AuthzPolicyHttpRuleToOperationArgs:
     def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgs']]]]:
         """
         A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-        Limited to 5 matches.
+        Limited to 10 matches.
         Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
         Structure is documented below.
         """
@@ -2410,7 +3070,7 @@ if not MYPY:
     class AuthzPolicyHttpRuleToOperationHeaderSetArgsDict(TypedDict):
         headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgsDict']]]]
         """
-        A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+        A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
         Structure is documented below.
         """
 elif False:
@@ -2421,7 +3081,7 @@ class AuthzPolicyHttpRuleToOperationHeaderSetArgs:
     def __init__(__self__, *,
                  headers: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]] headers: A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]] headers: A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
                Structure is documented below.
         """
         if headers is not None:
@@ -2431,7 +3091,7 @@ class AuthzPolicyHttpRuleToOperationHeaderSetArgs:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]]]:
         """
-        A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+        A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
         Structure is documented below.
         """
         return pulumi.get(self, "headers")

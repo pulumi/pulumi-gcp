@@ -24,6 +24,13 @@ namespace Pulumi.Gcp.Netapp.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Optional. Type of the volume's hybrid replication.
+        /// Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+        /// </summary>
+        [Input("hybridReplicationType")]
+        public Input<string>? HybridReplicationType { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -36,6 +43,12 @@ namespace Pulumi.Gcp.Netapp.Inputs
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Optional. Constituent volume count for large volume.
+        /// </summary>
+        [Input("largeVolumeConstituentCount")]
+        public Input<int>? LargeVolumeConstituentCount { get; set; }
 
         /// <summary>
         /// Required. Name of the user's local source cluster to be peered with the destination cluster.
@@ -72,6 +85,13 @@ namespace Pulumi.Gcp.Netapp.Inputs
         /// </summary>
         [Input("replication")]
         public Input<string>? Replication { get; set; }
+
+        /// <summary>
+        /// Optional. Replication Schedule for the replication created.
+        /// Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+        /// </summary>
+        [Input("replicationSchedule")]
+        public Input<string>? ReplicationSchedule { get; set; }
 
         public VolumeHybridReplicationParametersGetArgs()
         {

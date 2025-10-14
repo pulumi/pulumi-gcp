@@ -27,7 +27,7 @@ type GetDataSourceReferencesArgs struct {
 	Location string `pulumi:"location"`
 	// - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+	// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -55,7 +55,7 @@ type GetDataSourceReferencesOutputArgs struct {
 	Location pulumi.StringInput `pulumi:"location"`
 	// - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+	// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 

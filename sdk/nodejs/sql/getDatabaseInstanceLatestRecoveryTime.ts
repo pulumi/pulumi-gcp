@@ -27,6 +27,7 @@ export function getDatabaseInstanceLatestRecoveryTime(args: GetDatabaseInstanceL
     return pulumi.runtime.invoke("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", {
         "instance": args.instance,
         "project": args.project,
+        "sourceInstanceDeletionTime": args.sourceInstanceDeletionTime,
     }, opts);
 }
 
@@ -42,6 +43,7 @@ export interface GetDatabaseInstanceLatestRecoveryTimeArgs {
      * The ID of the project in which the resource belongs.
      */
     project?: string;
+    sourceInstanceDeletionTime?: string;
 }
 
 /**
@@ -64,6 +66,7 @@ export interface GetDatabaseInstanceLatestRecoveryTimeResult {
      * The ID of the project in which the resource belongs.
      */
     readonly project: string;
+    readonly sourceInstanceDeletionTime?: string;
 }
 /**
  * Get Latest Recovery Time for a given instance. For more information see the
@@ -88,6 +91,7 @@ export function getDatabaseInstanceLatestRecoveryTimeOutput(args: GetDatabaseIns
     return pulumi.runtime.invokeOutput("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", {
         "instance": args.instance,
         "project": args.project,
+        "sourceInstanceDeletionTime": args.sourceInstanceDeletionTime,
     }, opts);
 }
 
@@ -103,4 +107,5 @@ export interface GetDatabaseInstanceLatestRecoveryTimeOutputArgs {
      * The ID of the project in which the resource belongs.
      */
     project?: pulumi.Input<string>;
+    sourceInstanceDeletionTime?: pulumi.Input<string>;
 }
