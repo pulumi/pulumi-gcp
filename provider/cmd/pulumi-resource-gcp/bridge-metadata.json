@@ -2787,8 +2787,44 @@
                                         }
                                     }
                                 },
+                                "external": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "endpoints": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "network": {
                                     "maxItemsOne": true
+                                },
+                                "proxy_protocol": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_client_headers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "contextual_headers": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "device_info": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "group_info": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "user_info": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -16278,6 +16314,9 @@
                                                             "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "storage_path": {
+                                                                        "maxItemsOne": true
+                                                                    },
                                                                     "table": {
                                                                         "maxItemsOne": true
                                                                     }
@@ -26273,6 +26312,22 @@
                 "current": "gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy",
                 "majorVersion": 9
             },
+            "google_kms_folder_kaj_policy_config": {
+                "current": "gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig",
+                "majorVersion": 9,
+                "fields": {
+                    "default_key_access_justification_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_access_reasons": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_kms_key_handle": {
                 "current": "gcp:kms/keyHandle:KeyHandle",
                 "majorVersion": 9
@@ -27651,6 +27706,16 @@
                     "hybrid_peering_details": {
                         "maxItemsOne": false
                     },
+                    "hybrid_replication_user_commands": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "commands": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "transfer_stats": {
                         "maxItemsOne": false
                     }
@@ -28015,8 +28080,18 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
-                                                        "principals": {
+                                                        "ip_blocks": {
                                                             "maxItemsOne": false
+                                                        },
+                                                        "principals": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "principal": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "resources": {
                                                             "maxItemsOne": false,
@@ -28045,8 +28120,18 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
-                                                        "principals": {
+                                                        "ip_blocks": {
                                                             "maxItemsOne": false
+                                                        },
+                                                        "principals": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "principal": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "resources": {
                                                             "maxItemsOne": false,
@@ -35480,6 +35565,10 @@
                     }
                 }
             },
+            "google_vertex_ai_cache_config": {
+                "current": "gcp:vertex/aiCacheConfig:AiCacheConfig",
+                "majorVersion": 9
+            },
             "google_vertex_ai_dataset": {
                 "current": "gcp:vertex/aiDataset:AiDataset",
                 "majorVersion": 9,
@@ -36203,6 +36292,45 @@
                                     "maxItemsOne": true
                                 },
                                 "unprovisioned": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_vertex_ai_reasoning_engine": {
+                "current": "gcp:vertex/aiReasoningEngine:AiReasoningEngine",
+                "majorVersion": 9,
+                "fields": {
+                    "encryption_spec": {
+                        "maxItemsOne": true
+                    },
+                    "spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "deployment_spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "env": {
+                                                "maxItemsOne": false
+                                            },
+                                            "secret_env": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "secret_ref": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "package_spec": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -37305,7 +37433,21 @@
                 "majorVersion": 9,
                 "fields": {
                     "associations": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "rules_config_info": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "last_backup_error": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -48235,6 +48377,7 @@
             "gcp:kms/ekmConnectionIamBinding:EkmConnectionIamBinding": 0,
             "gcp:kms/ekmConnectionIamMember:EkmConnectionIamMember": 0,
             "gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy": 0,
+            "gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig": 0,
             "gcp:kms/keyHandle:KeyHandle": 0,
             "gcp:kms/keyRing:KeyRing": 0,
             "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding": 0,
@@ -48570,6 +48713,7 @@
             "gcp:tpu/v2Vm:V2Vm": 0,
             "gcp:transcoder/job:Job": 0,
             "gcp:transcoder/jobTemplate:JobTemplate": 0,
+            "gcp:vertex/aiCacheConfig:AiCacheConfig": 0,
             "gcp:vertex/aiDataset:AiDataset": 0,
             "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool": 0,
             "gcp:vertex/aiEndpoint:AiEndpoint": 0,
@@ -48604,6 +48748,7 @@
             "gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex": 0,
             "gcp:vertex/aiMetadataStore:AiMetadataStore": 0,
             "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig": 0,
+            "gcp:vertex/aiReasoningEngine:AiReasoningEngine": 0,
             "gcp:vertex/aiTensorboard:AiTensorboard": 0,
             "gcp:vmwareengine/cluster:Cluster": 0,
             "gcp:vmwareengine/externalAccessRule:ExternalAccessRule": 0,

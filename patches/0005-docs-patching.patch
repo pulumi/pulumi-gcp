@@ -70,10 +70,10 @@ index be5b80ea5..64eee9cbe 100644
  * `default_expiration` -
    (Optional)
 diff --git a/website/docs/r/bigquery_job.html.markdown b/website/docs/r/bigquery_job.html.markdown
-index 1ba9d9d4b..991a0a0f6 100644
+index cea8f5f02..f2c6e186f 100644
 --- a/website/docs/r/bigquery_job.html.markdown
 +++ b/website/docs/r/bigquery_job.html.markdown
-@@ -779,8 +779,8 @@ The following arguments are supported:
+@@ -784,8 +784,8 @@ The following arguments are supported:
  
  * `null_marker` -
    (Optional)
@@ -509,7 +509,7 @@ index 8c5f02037..ead4fc8ea 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index b3e15f257..80b928f4e 100644
+index b9b4548e3..75f81d573 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -41,7 +41,6 @@ To get more information about BackendService, see:
@@ -2740,7 +2740,7 @@ index d15349cea..98d6de8a5 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_brand.html.markdown b/website/docs/r/iap_brand.html.markdown
-index d20dbd8bc..830e2bf79 100644
+index 4af23e896..553cdbadb 100644
 --- a/website/docs/r/iap_brand.html.markdown
 +++ b/website/docs/r/iap_brand.html.markdown
 @@ -32,7 +32,6 @@ project and the underlying Google API doesn't not support DELETE or PATCH method
@@ -2752,7 +2752,7 @@ index d20dbd8bc..830e2bf79 100644
  
  * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands)
 diff --git a/website/docs/r/iap_client.html.markdown b/website/docs/r/iap_client.html.markdown
-index 52e7d1830..427b93822 100644
+index a07890268..894a7b4cb 100644
 --- a/website/docs/r/iap_client.html.markdown
 +++ b/website/docs/r/iap_client.html.markdown
 @@ -35,9 +35,8 @@ To get more information about Client, see:
@@ -3270,7 +3270,7 @@ index 94c3db9d4..091d0e9ac 100644
  * `default_time_zone` - (Optional) The default time zone for the database. The default time zone must be a valid name
  from the tz database. Default value is "America/Los_angeles".
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index abc6df60a..a1b023efb 100644
+index c97714305..824049a24 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -24,12 +24,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3338,8 +3338,8 @@ index abc6df60a..a1b023efb 100644
      configuration is detailed below.
  
  * `point_in_time_restore_context` - (Optional) The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
-@@ -656,7 +652,7 @@ The optional `clone` block supports:
- * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
+@@ -664,7 +660,7 @@ The optional `clone` block supports:
+     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
  
  The optional `restore_backup_context` block supports:
 -**NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
@@ -3347,7 +3347,7 @@ index abc6df60a..a1b023efb 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -722,21 +718,13 @@ instance.
+@@ -730,21 +726,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
