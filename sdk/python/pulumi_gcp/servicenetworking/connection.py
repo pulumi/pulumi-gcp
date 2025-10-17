@@ -33,6 +33,7 @@ class ConnectionArgs:
         :param pulumi.Input[_builtins.str] service: Provider peering service that is managing peering connectivity for a
                service provider organization. For Google services that support this functionality it is
                'servicenetworking.googleapis.com'.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
         :param pulumi.Input[_builtins.bool] update_on_creation_fail: When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
         """
         pulumi.set(__self__, "network", network)
@@ -86,6 +87,9 @@ class ConnectionArgs:
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -116,6 +120,7 @@ class _ConnectionState:
                  update_on_creation_fail: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
         :param pulumi.Input[_builtins.str] network: Name of VPC network connected with service producers using VPC peering.
         :param pulumi.Input[_builtins.str] peering: (Computed) The name of the VPC Network Peering connection that was created by the service producer.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_peering_ranges: Named IP address range(s) of PEERING type reserved for
@@ -142,6 +147,9 @@ class _ConnectionState:
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -279,6 +287,7 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
         :param pulumi.Input[_builtins.str] network: Name of VPC network connected with service producers using VPC peering.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_peering_ranges: Named IP address range(s) of PEERING type reserved for
                this service provider. Note that invoking this method with a different range when connection
@@ -410,6 +419,7 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
         :param pulumi.Input[_builtins.str] network: Name of VPC network connected with service producers using VPC peering.
         :param pulumi.Input[_builtins.str] peering: (Computed) The name of the VPC Network Peering connection that was created by the service producer.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_peering_ranges: Named IP address range(s) of PEERING type reserved for
@@ -435,6 +445,9 @@ class Connection(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
