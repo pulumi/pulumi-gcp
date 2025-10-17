@@ -85,6 +85,9 @@ namespace Pulumi.Gcp.ServiceNetworking
     [GcpResourceType("gcp:servicenetworking/connection:Connection")]
     public partial class Connection : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
@@ -168,6 +171,9 @@ namespace Pulumi.Gcp.ServiceNetworking
 
     public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
@@ -213,6 +219,9 @@ namespace Pulumi.Gcp.ServiceNetworking
 
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 

@@ -87,6 +87,9 @@ export class Connection extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connection.__pulumiType;
     }
 
+    /**
+     * The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+     */
     declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * Name of VPC network connected with service producers using VPC peering.
@@ -159,6 +162,9 @@ export class Connection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connection resources.
  */
 export interface ConnectionState {
+    /**
+     * The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * Name of VPC network connected with service producers using VPC peering.
@@ -190,6 +196,9 @@ export interface ConnectionState {
  * The set of arguments for constructing a Connection resource.
  */
 export interface ConnectionArgs {
+    /**
+     * The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * Name of VPC network connected with service producers using VPC peering.

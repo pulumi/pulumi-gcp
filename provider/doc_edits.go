@@ -13,6 +13,7 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 	return append(defaults,
 		fixUpKmsCryptoKey,
 		fixupEffectiveLabels,
+		fixUpServiceNetworkDeletionPolicy,
 		removeSecretsInPlainTextNote,
 		removeBetaFromDescriptionField,
 		substituteRandomSuffix,
@@ -146,6 +147,12 @@ var fixUpKmsCryptoKey = targetedSimpleReplace(
 		"to the resource to prevent accidental destruction.",
 	"For this reason, it is strongly recommended that you use "+
 		"Pulumi's [protect resource option](https://www.pulumi.com/docs/concepts/options/protect/).")
+
+var fixUpServiceNetworkDeletionPolicy = targetedSimpleReplace(
+	"service_networking_connection.html.markdown",
+	"This will enable a successful terraform destroy",
+	"This will enable a successful pulumi destroy",
+)
 
 var skipBetaWarning = tfbridge.DocsEdit{
 	Path: "*",
