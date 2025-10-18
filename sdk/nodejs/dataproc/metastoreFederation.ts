@@ -182,6 +182,12 @@ export class MetastoreFederation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly stateMessage: pulumi.Output<string>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The globally unique resource identifier of the metastore federation.
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
@@ -220,6 +226,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["state"] = state?.state;
             resourceInputs["stateMessage"] = state?.stateMessage;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["uid"] = state?.uid;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["version"] = state?.version;
@@ -240,6 +247,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["version"] = args?.version;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -319,6 +327,12 @@ export interface MetastoreFederationState {
      */
     stateMessage?: pulumi.Input<string>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The globally unique resource identifier of the metastore federation.
      */
     uid?: pulumi.Input<string>;
@@ -363,6 +377,12 @@ export interface MetastoreFederationArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
      */

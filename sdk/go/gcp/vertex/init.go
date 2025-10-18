@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:vertex/aiCacheConfig:AiCacheConfig":
+		r = &AiCacheConfig{}
 	case "gcp:vertex/aiDataset:AiDataset":
 		r = &AiDataset{}
 	case "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool":
@@ -89,6 +91,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiMetadataStore{}
 	case "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig":
 		r = &AiRagEngineConfig{}
+	case "gcp:vertex/aiReasoningEngine:AiReasoningEngine":
+		r = &AiReasoningEngine{}
 	case "gcp:vertex/aiTensorboard:AiTensorboard":
 		r = &AiTensorboard{}
 	default:
@@ -104,6 +108,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiCacheConfig",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiDataset",
@@ -272,6 +281,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiRagEngineConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiReasoningEngine",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

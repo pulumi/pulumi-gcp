@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networksecurity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyHttpRuleFromNotSourceIpBlock;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyHttpRuleFromNotSourcePrincipal;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyHttpRuleFromNotSourceResource;
 import java.util.List;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AuthzPolicyHttpRuleFromNotSource {
+    /**
+     * @return A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AuthzPolicyHttpRuleFromNotSourceIpBlock> ipBlocks;
     /**
      * @return A list of identities derived from the client&#39;s certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client&#39;s certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
      * Limited to 5 principals.
@@ -28,6 +35,14 @@ public final class AuthzPolicyHttpRuleFromNotSource {
     private @Nullable List<AuthzPolicyHttpRuleFromNotSourceResource> resources;
 
     private AuthzPolicyHttpRuleFromNotSource() {}
+    /**
+     * @return A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+     * Structure is documented below.
+     * 
+     */
+    public List<AuthzPolicyHttpRuleFromNotSourceIpBlock> ipBlocks() {
+        return this.ipBlocks == null ? List.of() : this.ipBlocks;
+    }
     /**
      * @return A list of identities derived from the client&#39;s certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client&#39;s certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
      * Limited to 5 principals.
@@ -56,15 +71,26 @@ public final class AuthzPolicyHttpRuleFromNotSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<AuthzPolicyHttpRuleFromNotSourceIpBlock> ipBlocks;
         private @Nullable List<AuthzPolicyHttpRuleFromNotSourcePrincipal> principals;
         private @Nullable List<AuthzPolicyHttpRuleFromNotSourceResource> resources;
         public Builder() {}
         public Builder(AuthzPolicyHttpRuleFromNotSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.ipBlocks = defaults.ipBlocks;
     	      this.principals = defaults.principals;
     	      this.resources = defaults.resources;
         }
 
+        @CustomType.Setter
+        public Builder ipBlocks(@Nullable List<AuthzPolicyHttpRuleFromNotSourceIpBlock> ipBlocks) {
+
+            this.ipBlocks = ipBlocks;
+            return this;
+        }
+        public Builder ipBlocks(AuthzPolicyHttpRuleFromNotSourceIpBlock... ipBlocks) {
+            return ipBlocks(List.of(ipBlocks));
+        }
         @CustomType.Setter
         public Builder principals(@Nullable List<AuthzPolicyHttpRuleFromNotSourcePrincipal> principals) {
 
@@ -85,6 +111,7 @@ public final class AuthzPolicyHttpRuleFromNotSource {
         }
         public AuthzPolicyHttpRuleFromNotSource build() {
             final var _resultValue = new AuthzPolicyHttpRuleFromNotSource();
+            _resultValue.ipBlocks = ipBlocks;
             _resultValue.principals = principals;
             _resultValue.resources = resources;
             return _resultValue;

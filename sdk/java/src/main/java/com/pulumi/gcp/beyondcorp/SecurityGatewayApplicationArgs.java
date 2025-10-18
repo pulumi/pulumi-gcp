@@ -72,8 +72,8 @@ public final class SecurityGatewayApplicationArgs extends com.pulumi.resources.R
      * Structure is documented below.
      * 
      */
-    @Import(name="endpointMatchers", required=true)
-    private Output<List<SecurityGatewayApplicationEndpointMatcherArgs>> endpointMatchers;
+    @Import(name="endpointMatchers")
+    private @Nullable Output<List<SecurityGatewayApplicationEndpointMatcherArgs>> endpointMatchers;
 
     /**
      * @return Required. Endpoint matchers associated with an application.
@@ -90,8 +90,8 @@ public final class SecurityGatewayApplicationArgs extends com.pulumi.resources.R
      * Structure is documented below.
      * 
      */
-    public Output<List<SecurityGatewayApplicationEndpointMatcherArgs>> endpointMatchers() {
-        return this.endpointMatchers;
+    public Optional<Output<List<SecurityGatewayApplicationEndpointMatcherArgs>>> endpointMatchers() {
+        return Optional.ofNullable(this.endpointMatchers);
     }
 
     /**
@@ -109,6 +109,23 @@ public final class SecurityGatewayApplicationArgs extends com.pulumi.resources.R
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * Type of the external application.
+     * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+     * 
+     */
+    @Import(name="schema")
+    private @Nullable Output<String> schema;
+
+    /**
+     * @return Type of the external application.
+     * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+     * 
+     */
+    public Optional<Output<String>> schema() {
+        return Optional.ofNullable(this.schema);
     }
 
     /**
@@ -150,6 +167,7 @@ public final class SecurityGatewayApplicationArgs extends com.pulumi.resources.R
         this.displayName = $.displayName;
         this.endpointMatchers = $.endpointMatchers;
         this.project = $.project;
+        this.schema = $.schema;
         this.securityGatewayId = $.securityGatewayId;
         this.upstreams = $.upstreams;
     }
@@ -239,7 +257,7 @@ public final class SecurityGatewayApplicationArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder endpointMatchers(Output<List<SecurityGatewayApplicationEndpointMatcherArgs>> endpointMatchers) {
+        public Builder endpointMatchers(@Nullable Output<List<SecurityGatewayApplicationEndpointMatcherArgs>> endpointMatchers) {
             $.endpointMatchers = endpointMatchers;
             return this;
         }
@@ -310,6 +328,29 @@ public final class SecurityGatewayApplicationArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param schema Type of the external application.
+         * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schema(@Nullable Output<String> schema) {
+            $.schema = schema;
+            return this;
+        }
+
+        /**
+         * @param schema Type of the external application.
+         * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schema(String schema) {
+            return schema(Output.of(schema));
+        }
+
+        /**
          * @param securityGatewayId ID of the Security Gateway resource this belongs to.
          * 
          * @return builder
@@ -367,9 +408,6 @@ public final class SecurityGatewayApplicationArgs extends com.pulumi.resources.R
         public SecurityGatewayApplicationArgs build() {
             if ($.applicationId == null) {
                 throw new MissingRequiredPropertyException("SecurityGatewayApplicationArgs", "applicationId");
-            }
-            if ($.endpointMatchers == null) {
-                throw new MissingRequiredPropertyException("SecurityGatewayApplicationArgs", "endpointMatchers");
             }
             if ($.securityGatewayId == null) {
                 throw new MissingRequiredPropertyException("SecurityGatewayApplicationArgs", "securityGatewayId");

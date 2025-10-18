@@ -37,6 +37,8 @@ __all__ = [
     'DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig',
     'DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig',
     'DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig',
+    'LicenseConfigEndDate',
+    'LicenseConfigStartDate',
     'RecommendationEngineCommonConfig',
     'RecommendationEngineMediaRecommendationEngineConfig',
     'RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig',
@@ -434,7 +436,7 @@ class DataConnectorEntity(dict):
                  data_store: Optional[_builtins.str] = None,
                  entity_name: Optional[_builtins.str] = None,
                  key_property_mappings: Optional[Mapping[str, _builtins.str]] = None,
-                 params: Optional[Mapping[str, _builtins.str]] = None):
+                 params: Optional[_builtins.str] = None):
         """
         :param _builtins.str data_store: (Output)
                The full resource name of the associated data store for the source
@@ -450,7 +452,7 @@ class DataConnectorEntity(dict):
                Key: Field name.
                Value: The key property to map a field to, such as `title`, and
                `description`. Supported key properties:
-        :param Mapping[str, _builtins.str] params: The parameters for the entity to facilitate data ingestion.
+        :param _builtins.str params: The parameters for the entity to facilitate data ingestion.
         """
         if data_store is not None:
             pulumi.set(__self__, "data_store", data_store)
@@ -498,7 +500,7 @@ class DataConnectorEntity(dict):
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[Mapping[str, _builtins.str]]:
+    def params(self) -> Optional[_builtins.str]:
         """
         The parameters for the entity to facilitate data ingestion.
         """
@@ -1213,6 +1215,92 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig(dic
         If true, will use native text instead of OCR text on pages containing native text.
         """
         return pulumi.get(self, "use_native_text")
+
+
+@pulumi.output_type
+class LicenseConfigEndDate(dict):
+    def __init__(__self__, *,
+                 day: Optional[_builtins.int] = None,
+                 month: Optional[_builtins.int] = None,
+                 year: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param _builtins.int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param _builtins.int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> Optional[_builtins.int]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @_builtins.property
+    @pulumi.getter
+    def month(self) -> Optional[_builtins.int]:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @_builtins.property
+    @pulumi.getter
+    def year(self) -> Optional[_builtins.int]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
+
+
+@pulumi.output_type
+class LicenseConfigStartDate(dict):
+    def __init__(__self__, *,
+                 day: Optional[_builtins.int] = None,
+                 month: Optional[_builtins.int] = None,
+                 year: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param _builtins.int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param _builtins.int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> Optional[_builtins.int]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @_builtins.property
+    @pulumi.getter
+    def month(self) -> Optional[_builtins.int]:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @_builtins.property
+    @pulumi.getter
+    def year(self) -> Optional[_builtins.int]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
 
 
 @pulumi.output_type

@@ -11,7 +11,10 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestRunArgs;
 import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestRunPlainArgs;
+import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
+import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsPlainArgs;
 import com.pulumi.gcp.networkmanagement.outputs.GetConnectivityTestRunResult;
+import com.pulumi.gcp.networkmanagement.outputs.GetConnectivityTestsResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class NetworkmanagementFunctions {
@@ -599,5 +602,348 @@ public final class NetworkmanagementFunctions {
      */
     public static CompletableFuture<GetConnectivityTestRunResult> getConnectivityTestRunPlain(GetConnectivityTestRunPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:networkmanagement/getConnectivityTestRun:getConnectivityTestRun", TypeShape.of(GetConnectivityTestRunResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A connectivity test is a static analysis of your resource configurations
+     * that enables you to evaluate connectivity to and from Google Cloud
+     * resources in your Virtual Private Cloud (VPC) network. This data source allows
+     * you to list connectivity tests in a project.
+     * 
+     * To get more information about connectivity tests, see:
+     * 
+     * * [API documentation](https://cloud.google.com/network-intelligence-center/docs/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests/rerun)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
+     * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tests = NetworkmanagementFunctions.getConnectivityTests(GetConnectivityTestsArgs.builder()
+     *             .filter("name:projects/project-id/locations/global/connectivityTests/my-tests")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectivityTestsResult> getConnectivityTests() {
+        return getConnectivityTests(GetConnectivityTestsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * A connectivity test is a static analysis of your resource configurations
+     * that enables you to evaluate connectivity to and from Google Cloud
+     * resources in your Virtual Private Cloud (VPC) network. This data source allows
+     * you to list connectivity tests in a project.
+     * 
+     * To get more information about connectivity tests, see:
+     * 
+     * * [API documentation](https://cloud.google.com/network-intelligence-center/docs/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests/rerun)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
+     * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tests = NetworkmanagementFunctions.getConnectivityTests(GetConnectivityTestsArgs.builder()
+     *             .filter("name:projects/project-id/locations/global/connectivityTests/my-tests")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectivityTestsResult> getConnectivityTestsPlain() {
+        return getConnectivityTestsPlain(GetConnectivityTestsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * A connectivity test is a static analysis of your resource configurations
+     * that enables you to evaluate connectivity to and from Google Cloud
+     * resources in your Virtual Private Cloud (VPC) network. This data source allows
+     * you to list connectivity tests in a project.
+     * 
+     * To get more information about connectivity tests, see:
+     * 
+     * * [API documentation](https://cloud.google.com/network-intelligence-center/docs/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests/rerun)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
+     * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tests = NetworkmanagementFunctions.getConnectivityTests(GetConnectivityTestsArgs.builder()
+     *             .filter("name:projects/project-id/locations/global/connectivityTests/my-tests")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectivityTestsResult> getConnectivityTests(GetConnectivityTestsArgs args) {
+        return getConnectivityTests(args, InvokeOptions.Empty);
+    }
+    /**
+     * A connectivity test is a static analysis of your resource configurations
+     * that enables you to evaluate connectivity to and from Google Cloud
+     * resources in your Virtual Private Cloud (VPC) network. This data source allows
+     * you to list connectivity tests in a project.
+     * 
+     * To get more information about connectivity tests, see:
+     * 
+     * * [API documentation](https://cloud.google.com/network-intelligence-center/docs/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests/rerun)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
+     * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tests = NetworkmanagementFunctions.getConnectivityTests(GetConnectivityTestsArgs.builder()
+     *             .filter("name:projects/project-id/locations/global/connectivityTests/my-tests")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectivityTestsResult> getConnectivityTestsPlain(GetConnectivityTestsPlainArgs args) {
+        return getConnectivityTestsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * A connectivity test is a static analysis of your resource configurations
+     * that enables you to evaluate connectivity to and from Google Cloud
+     * resources in your Virtual Private Cloud (VPC) network. This data source allows
+     * you to list connectivity tests in a project.
+     * 
+     * To get more information about connectivity tests, see:
+     * 
+     * * [API documentation](https://cloud.google.com/network-intelligence-center/docs/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests/rerun)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
+     * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tests = NetworkmanagementFunctions.getConnectivityTests(GetConnectivityTestsArgs.builder()
+     *             .filter("name:projects/project-id/locations/global/connectivityTests/my-tests")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectivityTestsResult> getConnectivityTests(GetConnectivityTestsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:networkmanagement/getConnectivityTests:getConnectivityTests", TypeShape.of(GetConnectivityTestsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A connectivity test is a static analysis of your resource configurations
+     * that enables you to evaluate connectivity to and from Google Cloud
+     * resources in your Virtual Private Cloud (VPC) network. This data source allows
+     * you to list connectivity tests in a project.
+     * 
+     * To get more information about connectivity tests, see:
+     * 
+     * * [API documentation](https://cloud.google.com/network-intelligence-center/docs/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests/rerun)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
+     * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tests = NetworkmanagementFunctions.getConnectivityTests(GetConnectivityTestsArgs.builder()
+     *             .filter("name:projects/project-id/locations/global/connectivityTests/my-tests")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectivityTestsResult> getConnectivityTests(GetConnectivityTestsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:networkmanagement/getConnectivityTests:getConnectivityTests", TypeShape.of(GetConnectivityTestsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A connectivity test is a static analysis of your resource configurations
+     * that enables you to evaluate connectivity to and from Google Cloud
+     * resources in your Virtual Private Cloud (VPC) network. This data source allows
+     * you to list connectivity tests in a project.
+     * 
+     * To get more information about connectivity tests, see:
+     * 
+     * * [API documentation](https://cloud.google.com/network-intelligence-center/docs/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests/rerun)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
+     * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tests = NetworkmanagementFunctions.getConnectivityTests(GetConnectivityTestsArgs.builder()
+     *             .filter("name:projects/project-id/locations/global/connectivityTests/my-tests")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectivityTestsResult> getConnectivityTestsPlain(GetConnectivityTestsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:networkmanagement/getConnectivityTests:getConnectivityTests", TypeShape.of(GetConnectivityTestsResult.class), args, Utilities.withVersion(options));
     }
 }

@@ -28,7 +28,7 @@ export interface GetDataSourceReferencesArgs {
      */
     project?: string;
     /**
-     * - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+     * - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
      */
     resourceType: string;
 }
@@ -68,7 +68,7 @@ export interface GetDataSourceReferencesOutputArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+     * - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
      */
     resourceType: pulumi.Input<string>;
 }

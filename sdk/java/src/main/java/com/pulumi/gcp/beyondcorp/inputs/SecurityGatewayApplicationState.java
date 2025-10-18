@@ -141,6 +141,23 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
     }
 
     /**
+     * Type of the external application.
+     * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+     * 
+     */
+    @Import(name="schema")
+    private @Nullable Output<String> schema;
+
+    /**
+     * @return Type of the external application.
+     * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+     * 
+     */
+    public Optional<Output<String>> schema() {
+        return Optional.ofNullable(this.schema);
+    }
+
+    /**
      * ID of the Security Gateway resource this belongs to.
      * 
      */
@@ -196,6 +213,7 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
         this.endpointMatchers = $.endpointMatchers;
         this.name = $.name;
         this.project = $.project;
+        this.schema = $.schema;
         this.securityGatewayId = $.securityGatewayId;
         this.updateTime = $.updateTime;
         this.upstreams = $.upstreams;
@@ -396,6 +414,29 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param schema Type of the external application.
+         * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schema(@Nullable Output<String> schema) {
+            $.schema = schema;
+            return this;
+        }
+
+        /**
+         * @param schema Type of the external application.
+         * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schema(String schema) {
+            return schema(Output.of(schema));
         }
 
         /**

@@ -172,6 +172,23 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.query);
     }
 
+    /**
+     * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+     * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+     * 
+     */
+    @Import(name="reservation")
+    private @Nullable Output<String> reservation;
+
+    /**
+     * @return The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+     * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+     * 
+     */
+    public Optional<Output<String>> reservation() {
+        return Optional.ofNullable(this.reservation);
+    }
+
     private JobArgs() {}
 
     private JobArgs(JobArgs $) {
@@ -184,6 +201,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.project = $.project;
         this.query = $.query;
+        this.reservation = $.reservation;
     }
 
     public static Builder builder() {
@@ -407,6 +425,29 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder query(JobQueryArgs query) {
             return query(Output.of(query));
+        }
+
+        /**
+         * @param reservation The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+         * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservation(@Nullable Output<String> reservation) {
+            $.reservation = reservation;
+            return this;
+        }
+
+        /**
+         * @param reservation The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+         * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservation(String reservation) {
+            return reservation(Output.of(reservation));
         }
 
         public JobArgs build() {

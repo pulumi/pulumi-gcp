@@ -625,6 +625,10 @@ type MetastoreService struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current state of the metastore service, if available.
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
 	TelemetryConfig MetastoreServiceTelemetryConfigOutput `pulumi:"telemetryConfig"`
@@ -742,6 +746,10 @@ type metastoreServiceState struct {
 	State *string `pulumi:"state"`
 	// Additional information about the current state of the metastore service, if available.
 	StateMessage *string `pulumi:"stateMessage"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
 	TelemetryConfig *MetastoreServiceTelemetryConfig `pulumi:"telemetryConfig"`
@@ -825,6 +833,10 @@ type MetastoreServiceState struct {
 	State pulumi.StringPtrInput
 	// Additional information about the current state of the metastore service, if available.
 	StateMessage pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
 	TelemetryConfig MetastoreServiceTelemetryConfigPtrInput
@@ -895,6 +907,10 @@ type metastoreServiceArgs struct {
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
 	ServiceId *string `pulumi:"serviceId"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
 	TelemetryConfig *MetastoreServiceTelemetryConfig `pulumi:"telemetryConfig"`
@@ -958,6 +974,10 @@ type MetastoreServiceArgs struct {
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
 	ServiceId pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
 	TelemetryConfig MetastoreServiceTelemetryConfigPtrInput
@@ -1193,6 +1213,13 @@ func (o MetastoreServiceOutput) State() pulumi.StringOutput {
 // Additional information about the current state of the metastore service, if available.
 func (o MetastoreServiceOutput) StateMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.StateMessage }).(pulumi.StringOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+func (o MetastoreServiceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MetastoreService) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.

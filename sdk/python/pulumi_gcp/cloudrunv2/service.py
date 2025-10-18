@@ -1203,6 +1203,7 @@ class Service(pulumi.CustomResource):
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
             template={
+                "health_check_disabled": True,
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
                     "resources": {
@@ -1825,6 +1826,7 @@ class Service(pulumi.CustomResource):
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
             template={
+                "health_check_disabled": True,
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
                     "resources": {

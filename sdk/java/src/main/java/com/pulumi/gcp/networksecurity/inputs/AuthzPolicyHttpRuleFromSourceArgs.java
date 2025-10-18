@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleFromSourceIpBlockArgs;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleFromSourcePrincipalArgs;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleFromSourceResourceArgs;
 import java.util.List;
@@ -16,6 +17,23 @@ import javax.annotation.Nullable;
 public final class AuthzPolicyHttpRuleFromSourceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AuthzPolicyHttpRuleFromSourceArgs Empty = new AuthzPolicyHttpRuleFromSourceArgs();
+
+    /**
+     * A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="ipBlocks")
+    private @Nullable Output<List<AuthzPolicyHttpRuleFromSourceIpBlockArgs>> ipBlocks;
+
+    /**
+     * @return A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AuthzPolicyHttpRuleFromSourceIpBlockArgs>>> ipBlocks() {
+        return Optional.ofNullable(this.ipBlocks);
+    }
 
     /**
      * A list of identities derived from the client&#39;s certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client&#39;s certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
@@ -58,6 +76,7 @@ public final class AuthzPolicyHttpRuleFromSourceArgs extends com.pulumi.resource
     private AuthzPolicyHttpRuleFromSourceArgs() {}
 
     private AuthzPolicyHttpRuleFromSourceArgs(AuthzPolicyHttpRuleFromSourceArgs $) {
+        this.ipBlocks = $.ipBlocks;
         this.principals = $.principals;
         this.resources = $.resources;
     }
@@ -78,6 +97,40 @@ public final class AuthzPolicyHttpRuleFromSourceArgs extends com.pulumi.resource
 
         public Builder(AuthzPolicyHttpRuleFromSourceArgs defaults) {
             $ = new AuthzPolicyHttpRuleFromSourceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param ipBlocks A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipBlocks(@Nullable Output<List<AuthzPolicyHttpRuleFromSourceIpBlockArgs>> ipBlocks) {
+            $.ipBlocks = ipBlocks;
+            return this;
+        }
+
+        /**
+         * @param ipBlocks A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipBlocks(List<AuthzPolicyHttpRuleFromSourceIpBlockArgs> ipBlocks) {
+            return ipBlocks(Output.of(ipBlocks));
+        }
+
+        /**
+         * @param ipBlocks A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipBlocks(AuthzPolicyHttpRuleFromSourceIpBlockArgs... ipBlocks) {
+            return ipBlocks(List.of(ipBlocks));
         }
 
         /**

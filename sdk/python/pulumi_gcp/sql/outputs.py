@@ -124,6 +124,8 @@ class DatabaseInstanceClone(dict):
             suggest = "point_in_time"
         elif key == "preferredZone":
             suggest = "preferred_zone"
+        elif key == "sourceInstanceDeletionTime":
+            suggest = "source_instance_deletion_time"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceClone. Access the value via the '{suggest}' property getter instead.")
@@ -141,7 +143,8 @@ class DatabaseInstanceClone(dict):
                  allocated_ip_range: Optional[_builtins.str] = None,
                  database_names: Optional[Sequence[_builtins.str]] = None,
                  point_in_time: Optional[_builtins.str] = None,
-                 preferred_zone: Optional[_builtins.str] = None):
+                 preferred_zone: Optional[_builtins.str] = None,
+                 source_instance_deletion_time: Optional[_builtins.str] = None):
         """
         :param _builtins.str source_instance_name: Name of the source instance which will be cloned.
         :param _builtins.str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -150,6 +153,9 @@ class DatabaseInstanceClone(dict):
                
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param _builtins.str preferred_zone: (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+        :param _builtins.str source_instance_deletion_time: The timestamp of when the source instance was deleted for a clone from a deleted instance.
+               
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         pulumi.set(__self__, "source_instance_name", source_instance_name)
         if allocated_ip_range is not None:
@@ -160,6 +166,8 @@ class DatabaseInstanceClone(dict):
             pulumi.set(__self__, "point_in_time", point_in_time)
         if preferred_zone is not None:
             pulumi.set(__self__, "preferred_zone", preferred_zone)
+        if source_instance_deletion_time is not None:
+            pulumi.set(__self__, "source_instance_deletion_time", source_instance_deletion_time)
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceName")
@@ -202,6 +210,16 @@ class DatabaseInstanceClone(dict):
         (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
         """
         return pulumi.get(self, "preferred_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceInstanceDeletionTime")
+    def source_instance_deletion_time(self) -> Optional[_builtins.str]:
+        """
+        The timestamp of when the source instance was deleted for a clone from a deleted instance.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "source_instance_deletion_time")
 
 
 @pulumi.output_type
@@ -2869,18 +2887,21 @@ class GetDatabaseInstanceCloneResult(dict):
                  database_names: Sequence[_builtins.str],
                  point_in_time: _builtins.str,
                  preferred_zone: _builtins.str,
+                 source_instance_deletion_time: _builtins.str,
                  source_instance_name: _builtins.str):
         """
         :param _builtins.str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         :param Sequence[_builtins.str] database_names: (SQL Server only, use with point_in_time) clone only the specified databases from the source instance. Clone all databases if empty.
         :param _builtins.str point_in_time: The timestamp of the point in time that should be restored.
         :param _builtins.str preferred_zone: (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
+        :param _builtins.str source_instance_deletion_time: The timestamp of when the source instance was deleted for a clone from a deleted instance.
         :param _builtins.str source_instance_name: The name of the instance from which the point in time should be restored.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "database_names", database_names)
         pulumi.set(__self__, "point_in_time", point_in_time)
         pulumi.set(__self__, "preferred_zone", preferred_zone)
+        pulumi.set(__self__, "source_instance_deletion_time", source_instance_deletion_time)
         pulumi.set(__self__, "source_instance_name", source_instance_name)
 
     @_builtins.property
@@ -2914,6 +2935,14 @@ class GetDatabaseInstanceCloneResult(dict):
         (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
         """
         return pulumi.get(self, "preferred_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceInstanceDeletionTime")
+    def source_instance_deletion_time(self) -> _builtins.str:
+        """
+        The timestamp of when the source instance was deleted for a clone from a deleted instance.
+        """
+        return pulumi.get(self, "source_instance_deletion_time")
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceName")
@@ -4861,18 +4890,21 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
                  database_names: Sequence[_builtins.str],
                  point_in_time: _builtins.str,
                  preferred_zone: _builtins.str,
+                 source_instance_deletion_time: _builtins.str,
                  source_instance_name: _builtins.str):
         """
         :param _builtins.str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         :param Sequence[_builtins.str] database_names: (SQL Server only, use with point_in_time) clone only the specified databases from the source instance. Clone all databases if empty.
         :param _builtins.str point_in_time: The timestamp of the point in time that should be restored.
         :param _builtins.str preferred_zone: (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
+        :param _builtins.str source_instance_deletion_time: The timestamp of when the source instance was deleted for a clone from a deleted instance.
         :param _builtins.str source_instance_name: The name of the instance from which the point in time should be restored.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "database_names", database_names)
         pulumi.set(__self__, "point_in_time", point_in_time)
         pulumi.set(__self__, "preferred_zone", preferred_zone)
+        pulumi.set(__self__, "source_instance_deletion_time", source_instance_deletion_time)
         pulumi.set(__self__, "source_instance_name", source_instance_name)
 
     @_builtins.property
@@ -4906,6 +4938,14 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
         (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
         """
         return pulumi.get(self, "preferred_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceInstanceDeletionTime")
+    def source_instance_deletion_time(self) -> _builtins.str:
+        """
+        The timestamp of when the source instance was deleted for a clone from a deleted instance.
+        """
+        return pulumi.get(self, "source_instance_deletion_time")
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceName")

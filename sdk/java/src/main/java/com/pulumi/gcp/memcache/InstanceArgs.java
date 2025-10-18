@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.memcache.inputs.InstanceMaintenancePolicyArgs;
 import com.pulumi.gcp.memcache.inputs.InstanceMemcacheParametersArgs;
 import com.pulumi.gcp.memcache.inputs.InstanceNodeConfigArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -37,6 +38,13 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> authorizedNetwork() {
         return Optional.ofNullable(this.authorizedNetwork);
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -251,6 +259,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     private InstanceArgs(InstanceArgs $) {
         this.authorizedNetwork = $.authorizedNetwork;
+        this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
         this.labels = $.labels;
         this.maintenancePolicy = $.maintenancePolicy;
@@ -304,6 +313,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authorizedNetwork(String authorizedNetwork) {
             return authorizedNetwork(Output.of(authorizedNetwork));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

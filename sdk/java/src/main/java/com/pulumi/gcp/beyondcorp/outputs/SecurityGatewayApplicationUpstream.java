@@ -5,7 +5,9 @@ package com.pulumi.gcp.beyondcorp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.beyondcorp.outputs.SecurityGatewayApplicationUpstreamEgressPolicy;
+import com.pulumi.gcp.beyondcorp.outputs.SecurityGatewayApplicationUpstreamExternal;
 import com.pulumi.gcp.beyondcorp.outputs.SecurityGatewayApplicationUpstreamNetwork;
+import com.pulumi.gcp.beyondcorp.outputs.SecurityGatewayApplicationUpstreamProxyProtocol;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,11 +21,23 @@ public final class SecurityGatewayApplicationUpstream {
      */
     private @Nullable SecurityGatewayApplicationUpstreamEgressPolicy egressPolicy;
     /**
+     * @return List of the external endpoints to forward traffic to.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable SecurityGatewayApplicationUpstreamExternal external;
+    /**
      * @return Network to forward traffic to.
      * Structure is documented below.
      * 
      */
     private @Nullable SecurityGatewayApplicationUpstreamNetwork network;
+    /**
+     * @return Shared proxy configuration for all apps.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable SecurityGatewayApplicationUpstreamProxyProtocol proxyProtocol;
 
     private SecurityGatewayApplicationUpstream() {}
     /**
@@ -35,12 +49,28 @@ public final class SecurityGatewayApplicationUpstream {
         return Optional.ofNullable(this.egressPolicy);
     }
     /**
+     * @return List of the external endpoints to forward traffic to.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<SecurityGatewayApplicationUpstreamExternal> external() {
+        return Optional.ofNullable(this.external);
+    }
+    /**
      * @return Network to forward traffic to.
      * Structure is documented below.
      * 
      */
     public Optional<SecurityGatewayApplicationUpstreamNetwork> network() {
         return Optional.ofNullable(this.network);
+    }
+    /**
+     * @return Shared proxy configuration for all apps.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<SecurityGatewayApplicationUpstreamProxyProtocol> proxyProtocol() {
+        return Optional.ofNullable(this.proxyProtocol);
     }
 
     public static Builder builder() {
@@ -53,12 +83,16 @@ public final class SecurityGatewayApplicationUpstream {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable SecurityGatewayApplicationUpstreamEgressPolicy egressPolicy;
+        private @Nullable SecurityGatewayApplicationUpstreamExternal external;
         private @Nullable SecurityGatewayApplicationUpstreamNetwork network;
+        private @Nullable SecurityGatewayApplicationUpstreamProxyProtocol proxyProtocol;
         public Builder() {}
         public Builder(SecurityGatewayApplicationUpstream defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.egressPolicy = defaults.egressPolicy;
+    	      this.external = defaults.external;
     	      this.network = defaults.network;
+    	      this.proxyProtocol = defaults.proxyProtocol;
         }
 
         @CustomType.Setter
@@ -68,15 +102,29 @@ public final class SecurityGatewayApplicationUpstream {
             return this;
         }
         @CustomType.Setter
+        public Builder external(@Nullable SecurityGatewayApplicationUpstreamExternal external) {
+
+            this.external = external;
+            return this;
+        }
+        @CustomType.Setter
         public Builder network(@Nullable SecurityGatewayApplicationUpstreamNetwork network) {
 
             this.network = network;
             return this;
         }
+        @CustomType.Setter
+        public Builder proxyProtocol(@Nullable SecurityGatewayApplicationUpstreamProxyProtocol proxyProtocol) {
+
+            this.proxyProtocol = proxyProtocol;
+            return this;
+        }
         public SecurityGatewayApplicationUpstream build() {
             final var _resultValue = new SecurityGatewayApplicationUpstream();
             _resultValue.egressPolicy = egressPolicy;
+            _resultValue.external = external;
             _resultValue.network = network;
+            _resultValue.proxyProtocol = proxyProtocol;
             return _resultValue;
         }
     }

@@ -162,6 +162,11 @@ export class VolumeReplication extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly hybridReplicationType: pulumi.Output<string>;
     /**
+     * Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly hybridReplicationUserCommands: pulumi.Output<outputs.netapp.VolumeReplicationHybridReplicationUserCommand[]>;
+    /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -257,6 +262,7 @@ export class VolumeReplication extends pulumi.CustomResource {
             resourceInputs["healthy"] = state?.healthy;
             resourceInputs["hybridPeeringDetails"] = state?.hybridPeeringDetails;
             resourceInputs["hybridReplicationType"] = state?.hybridReplicationType;
+            resourceInputs["hybridReplicationUserCommands"] = state?.hybridReplicationUserCommands;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["mirrorState"] = state?.mirrorState;
@@ -301,6 +307,7 @@ export class VolumeReplication extends pulumi.CustomResource {
             resourceInputs["healthy"] = undefined /*out*/;
             resourceInputs["hybridPeeringDetails"] = undefined /*out*/;
             resourceInputs["hybridReplicationType"] = undefined /*out*/;
+            resourceInputs["hybridReplicationUserCommands"] = undefined /*out*/;
             resourceInputs["mirrorState"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["role"] = undefined /*out*/;
@@ -364,6 +371,11 @@ export interface VolumeReplicationState {
      * Hybrid replication type.
      */
     hybridReplicationType?: pulumi.Input<string>;
+    /**
+     * Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+     * Structure is documented below.
+     */
+    hybridReplicationUserCommands?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeReplicationHybridReplicationUserCommand>[]>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
      *

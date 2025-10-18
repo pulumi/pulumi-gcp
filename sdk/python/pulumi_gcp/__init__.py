@@ -777,6 +777,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/developerApp",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/developerApp:DeveloperApp": "DeveloperApp"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/dnsZone",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -5241,6 +5249,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "discoveryengine/licenseConfig",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/licenseConfig:LicenseConfig": "LicenseConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "discoveryengine/recommendationEngine",
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
@@ -6561,6 +6577,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iam/workforcePoolProviderScimTenant",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant": "WorkforcePoolProviderScimTenant"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iam/workloadIdentityPool",
   "fqn": "pulumi_gcp.iam",
   "classes": {
@@ -7129,6 +7153,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "kms/folderKajPolicyConfig",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig": "FolderKajPolicyConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "kms/keyHandle",
   "fqn": "pulumi_gcp.kms",
   "classes": {
@@ -7181,6 +7213,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.kms",
   "classes": {
    "gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig": "OrganizationKajPolicyConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "kms/projectKajPolicyConfig",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig": "ProjectKajPolicyConfig"
   }
  },
  {
@@ -8689,6 +8729,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "saasruntime/tenant",
+  "fqn": "pulumi_gcp.saasruntime",
+  "classes": {
+   "gcp:saasruntime/tenant:Tenant": "Tenant"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "saasruntime/unitKind",
   "fqn": "pulumi_gcp.saasruntime",
   "classes": {
@@ -9809,6 +9857,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiCacheConfig",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiCacheConfig:AiCacheConfig": "AiCacheConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiDataset",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -10077,6 +10133,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig": "AiRagEngineConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiReasoningEngine",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiReasoningEngine:AiReasoningEngine": "AiReasoningEngine"
   }
  },
  {

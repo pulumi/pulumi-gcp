@@ -105,6 +105,7 @@ import (
 //					agentspaceBasic.DataStoreId,
 //				},
 //				IndustryVertical:   pulumi.String("GENERIC"),
+//				AppType:            pulumi.String("APP_TYPE_INTRANET"),
 //				SearchEngineConfig: &discoveryengine.SearchEngineSearchEngineConfigArgs{},
 //			})
 //			if err != nil {
@@ -164,6 +165,12 @@ type SearchEngine struct {
 	// Default value is `GENERIC`.
 	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical pulumi.StringPtrOutput `pulumi:"industryVertical"`
+	// The KMS key to be used to protect this Engine at creation time.
+	// Must be set for requests that need to comply with CMEK Org Policy
+	// protections.
+	// If this field is set and processed successfully, the Engine will be
+	// protected by the KMS key, as indicated in the cmekConfig field.
+	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// Location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The unique full resource name of the search engine. Values are of the format
@@ -251,6 +258,12 @@ type searchEngineState struct {
 	// Default value is `GENERIC`.
 	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical *string `pulumi:"industryVertical"`
+	// The KMS key to be used to protect this Engine at creation time.
+	// Must be set for requests that need to comply with CMEK Org Policy
+	// protections.
+	// If this field is set and processed successfully, the Engine will be
+	// protected by the KMS key, as indicated in the cmekConfig field.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Location.
 	Location *string `pulumi:"location"`
 	// The unique full resource name of the search engine. Values are of the format
@@ -291,6 +304,12 @@ type SearchEngineState struct {
 	// Default value is `GENERIC`.
 	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical pulumi.StringPtrInput
+	// The KMS key to be used to protect this Engine at creation time.
+	// Must be set for requests that need to comply with CMEK Org Policy
+	// protections.
+	// If this field is set and processed successfully, the Engine will be
+	// protected by the KMS key, as indicated in the cmekConfig field.
+	KmsKeyName pulumi.StringPtrInput
 	// Location.
 	Location pulumi.StringPtrInput
 	// The unique full resource name of the search engine. Values are of the format
@@ -333,6 +352,12 @@ type searchEngineArgs struct {
 	// Default value is `GENERIC`.
 	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical *string `pulumi:"industryVertical"`
+	// The KMS key to be used to protect this Engine at creation time.
+	// Must be set for requests that need to comply with CMEK Org Policy
+	// protections.
+	// If this field is set and processed successfully, the Engine will be
+	// protected by the KMS key, as indicated in the cmekConfig field.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Location.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -365,6 +390,12 @@ type SearchEngineArgs struct {
 	// Default value is `GENERIC`.
 	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical pulumi.StringPtrInput
+	// The KMS key to be used to protect this Engine at creation time.
+	// Must be set for requests that need to comply with CMEK Org Policy
+	// protections.
+	// If this field is set and processed successfully, the Engine will be
+	// protected by the KMS key, as indicated in the cmekConfig field.
+	KmsKeyName pulumi.StringPtrInput
 	// Location.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -509,6 +540,15 @@ func (o SearchEngineOutput) Features() pulumi.StringMapOutput {
 // Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 func (o SearchEngineOutput) IndustryVertical() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SearchEngine) pulumi.StringPtrOutput { return v.IndustryVertical }).(pulumi.StringPtrOutput)
+}
+
+// The KMS key to be used to protect this Engine at creation time.
+// Must be set for requests that need to comply with CMEK Org Policy
+// protections.
+// If this field is set and processed successfully, the Engine will be
+// protected by the KMS key, as indicated in the cmekConfig field.
+func (o SearchEngineOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SearchEngine) pulumi.StringPtrOutput { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
 
 // Location.

@@ -6,6 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .ai_cache_config import *
 from .ai_dataset import *
 from .ai_deployment_resource_pool import *
 from .ai_endpoint import *
@@ -40,6 +41,7 @@ from .ai_index_endpoint import *
 from .ai_index_endpoint_deployed_index import *
 from .ai_metadata_store import *
 from .ai_rag_engine_config import *
+from .ai_reasoning_engine import *
 from .ai_tensorboard import *
 from .get_ai_endpoint_iam_policy import *
 from .get_ai_feature_group_iam_policy import *

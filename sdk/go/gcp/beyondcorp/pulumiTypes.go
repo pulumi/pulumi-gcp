@@ -1215,9 +1215,15 @@ type SecurityGatewayApplicationUpstream struct {
 	// Optional. Routing policy information.
 	// Structure is documented below.
 	EgressPolicy *SecurityGatewayApplicationUpstreamEgressPolicy `pulumi:"egressPolicy"`
+	// List of the external endpoints to forward traffic to.
+	// Structure is documented below.
+	External *SecurityGatewayApplicationUpstreamExternal `pulumi:"external"`
 	// Network to forward traffic to.
 	// Structure is documented below.
 	Network *SecurityGatewayApplicationUpstreamNetwork `pulumi:"network"`
+	// Shared proxy configuration for all apps.
+	// Structure is documented below.
+	ProxyProtocol *SecurityGatewayApplicationUpstreamProxyProtocol `pulumi:"proxyProtocol"`
 }
 
 // SecurityGatewayApplicationUpstreamInput is an input type that accepts SecurityGatewayApplicationUpstreamArgs and SecurityGatewayApplicationUpstreamOutput values.
@@ -1235,9 +1241,15 @@ type SecurityGatewayApplicationUpstreamArgs struct {
 	// Optional. Routing policy information.
 	// Structure is documented below.
 	EgressPolicy SecurityGatewayApplicationUpstreamEgressPolicyPtrInput `pulumi:"egressPolicy"`
+	// List of the external endpoints to forward traffic to.
+	// Structure is documented below.
+	External SecurityGatewayApplicationUpstreamExternalPtrInput `pulumi:"external"`
 	// Network to forward traffic to.
 	// Structure is documented below.
 	Network SecurityGatewayApplicationUpstreamNetworkPtrInput `pulumi:"network"`
+	// Shared proxy configuration for all apps.
+	// Structure is documented below.
+	ProxyProtocol SecurityGatewayApplicationUpstreamProxyProtocolPtrInput `pulumi:"proxyProtocol"`
 }
 
 func (SecurityGatewayApplicationUpstreamArgs) ElementType() reflect.Type {
@@ -1299,12 +1311,28 @@ func (o SecurityGatewayApplicationUpstreamOutput) EgressPolicy() SecurityGateway
 	}).(SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput)
 }
 
+// List of the external endpoints to forward traffic to.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamOutput) External() SecurityGatewayApplicationUpstreamExternalPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstream) *SecurityGatewayApplicationUpstreamExternal {
+		return v.External
+	}).(SecurityGatewayApplicationUpstreamExternalPtrOutput)
+}
+
 // Network to forward traffic to.
 // Structure is documented below.
 func (o SecurityGatewayApplicationUpstreamOutput) Network() SecurityGatewayApplicationUpstreamNetworkPtrOutput {
 	return o.ApplyT(func(v SecurityGatewayApplicationUpstream) *SecurityGatewayApplicationUpstreamNetwork {
 		return v.Network
 	}).(SecurityGatewayApplicationUpstreamNetworkPtrOutput)
+}
+
+// Shared proxy configuration for all apps.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamOutput) ProxyProtocol() SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstream) *SecurityGatewayApplicationUpstreamProxyProtocol {
+		return v.ProxyProtocol
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput)
 }
 
 type SecurityGatewayApplicationUpstreamArrayOutput struct{ *pulumi.OutputState }
@@ -1464,6 +1492,255 @@ func (o SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput) Regions() pulum
 	}).(pulumi.StringArrayOutput)
 }
 
+type SecurityGatewayApplicationUpstreamExternal struct {
+	// List of the endpoints to forward traffic to.
+	// Structure is documented below.
+	Endpoints []SecurityGatewayApplicationUpstreamExternalEndpoint `pulumi:"endpoints"`
+}
+
+// SecurityGatewayApplicationUpstreamExternalInput is an input type that accepts SecurityGatewayApplicationUpstreamExternalArgs and SecurityGatewayApplicationUpstreamExternalOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamExternalInput` via:
+//
+//	SecurityGatewayApplicationUpstreamExternalArgs{...}
+type SecurityGatewayApplicationUpstreamExternalInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamExternalOutput() SecurityGatewayApplicationUpstreamExternalOutput
+	ToSecurityGatewayApplicationUpstreamExternalOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamExternalOutput
+}
+
+type SecurityGatewayApplicationUpstreamExternalArgs struct {
+	// List of the endpoints to forward traffic to.
+	// Structure is documented below.
+	Endpoints SecurityGatewayApplicationUpstreamExternalEndpointArrayInput `pulumi:"endpoints"`
+}
+
+func (SecurityGatewayApplicationUpstreamExternalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamExternal)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationUpstreamExternalArgs) ToSecurityGatewayApplicationUpstreamExternalOutput() SecurityGatewayApplicationUpstreamExternalOutput {
+	return i.ToSecurityGatewayApplicationUpstreamExternalOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamExternalArgs) ToSecurityGatewayApplicationUpstreamExternalOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamExternalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamExternalOutput)
+}
+
+func (i SecurityGatewayApplicationUpstreamExternalArgs) ToSecurityGatewayApplicationUpstreamExternalPtrOutput() SecurityGatewayApplicationUpstreamExternalPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamExternalPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamExternalArgs) ToSecurityGatewayApplicationUpstreamExternalPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamExternalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamExternalOutput).ToSecurityGatewayApplicationUpstreamExternalPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayApplicationUpstreamExternalPtrInput is an input type that accepts SecurityGatewayApplicationUpstreamExternalArgs, SecurityGatewayApplicationUpstreamExternalPtr and SecurityGatewayApplicationUpstreamExternalPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamExternalPtrInput` via:
+//
+//	        SecurityGatewayApplicationUpstreamExternalArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayApplicationUpstreamExternalPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamExternalPtrOutput() SecurityGatewayApplicationUpstreamExternalPtrOutput
+	ToSecurityGatewayApplicationUpstreamExternalPtrOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamExternalPtrOutput
+}
+
+type securityGatewayApplicationUpstreamExternalPtrType SecurityGatewayApplicationUpstreamExternalArgs
+
+func SecurityGatewayApplicationUpstreamExternalPtr(v *SecurityGatewayApplicationUpstreamExternalArgs) SecurityGatewayApplicationUpstreamExternalPtrInput {
+	return (*securityGatewayApplicationUpstreamExternalPtrType)(v)
+}
+
+func (*securityGatewayApplicationUpstreamExternalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamExternal)(nil)).Elem()
+}
+
+func (i *securityGatewayApplicationUpstreamExternalPtrType) ToSecurityGatewayApplicationUpstreamExternalPtrOutput() SecurityGatewayApplicationUpstreamExternalPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamExternalPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayApplicationUpstreamExternalPtrType) ToSecurityGatewayApplicationUpstreamExternalPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamExternalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamExternalPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamExternalOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamExternalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamExternal)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamExternalOutput) ToSecurityGatewayApplicationUpstreamExternalOutput() SecurityGatewayApplicationUpstreamExternalOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamExternalOutput) ToSecurityGatewayApplicationUpstreamExternalOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamExternalOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamExternalOutput) ToSecurityGatewayApplicationUpstreamExternalPtrOutput() SecurityGatewayApplicationUpstreamExternalPtrOutput {
+	return o.ToSecurityGatewayApplicationUpstreamExternalPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayApplicationUpstreamExternalOutput) ToSecurityGatewayApplicationUpstreamExternalPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamExternalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayApplicationUpstreamExternal) *SecurityGatewayApplicationUpstreamExternal {
+		return &v
+	}).(SecurityGatewayApplicationUpstreamExternalPtrOutput)
+}
+
+// List of the endpoints to forward traffic to.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamExternalOutput) Endpoints() SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamExternal) []SecurityGatewayApplicationUpstreamExternalEndpoint {
+		return v.Endpoints
+	}).(SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput)
+}
+
+type SecurityGatewayApplicationUpstreamExternalPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamExternalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamExternal)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamExternalPtrOutput) ToSecurityGatewayApplicationUpstreamExternalPtrOutput() SecurityGatewayApplicationUpstreamExternalPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamExternalPtrOutput) ToSecurityGatewayApplicationUpstreamExternalPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamExternalPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamExternalPtrOutput) Elem() SecurityGatewayApplicationUpstreamExternalOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamExternal) SecurityGatewayApplicationUpstreamExternal {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayApplicationUpstreamExternal
+		return ret
+	}).(SecurityGatewayApplicationUpstreamExternalOutput)
+}
+
+// List of the endpoints to forward traffic to.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamExternalPtrOutput) Endpoints() SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamExternal) []SecurityGatewayApplicationUpstreamExternalEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoints
+	}).(SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput)
+}
+
+type SecurityGatewayApplicationUpstreamExternalEndpoint struct {
+	// Hostname of the endpoint.
+	Hostname string `pulumi:"hostname"`
+	// Port of the endpoint.
+	Port int `pulumi:"port"`
+}
+
+// SecurityGatewayApplicationUpstreamExternalEndpointInput is an input type that accepts SecurityGatewayApplicationUpstreamExternalEndpointArgs and SecurityGatewayApplicationUpstreamExternalEndpointOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamExternalEndpointInput` via:
+//
+//	SecurityGatewayApplicationUpstreamExternalEndpointArgs{...}
+type SecurityGatewayApplicationUpstreamExternalEndpointInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamExternalEndpointOutput() SecurityGatewayApplicationUpstreamExternalEndpointOutput
+	ToSecurityGatewayApplicationUpstreamExternalEndpointOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamExternalEndpointOutput
+}
+
+type SecurityGatewayApplicationUpstreamExternalEndpointArgs struct {
+	// Hostname of the endpoint.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Port of the endpoint.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (SecurityGatewayApplicationUpstreamExternalEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamExternalEndpoint)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationUpstreamExternalEndpointArgs) ToSecurityGatewayApplicationUpstreamExternalEndpointOutput() SecurityGatewayApplicationUpstreamExternalEndpointOutput {
+	return i.ToSecurityGatewayApplicationUpstreamExternalEndpointOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamExternalEndpointArgs) ToSecurityGatewayApplicationUpstreamExternalEndpointOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamExternalEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamExternalEndpointOutput)
+}
+
+// SecurityGatewayApplicationUpstreamExternalEndpointArrayInput is an input type that accepts SecurityGatewayApplicationUpstreamExternalEndpointArray and SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamExternalEndpointArrayInput` via:
+//
+//	SecurityGatewayApplicationUpstreamExternalEndpointArray{ SecurityGatewayApplicationUpstreamExternalEndpointArgs{...} }
+type SecurityGatewayApplicationUpstreamExternalEndpointArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamExternalEndpointArrayOutput() SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput
+	ToSecurityGatewayApplicationUpstreamExternalEndpointArrayOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput
+}
+
+type SecurityGatewayApplicationUpstreamExternalEndpointArray []SecurityGatewayApplicationUpstreamExternalEndpointInput
+
+func (SecurityGatewayApplicationUpstreamExternalEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGatewayApplicationUpstreamExternalEndpoint)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationUpstreamExternalEndpointArray) ToSecurityGatewayApplicationUpstreamExternalEndpointArrayOutput() SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput {
+	return i.ToSecurityGatewayApplicationUpstreamExternalEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamExternalEndpointArray) ToSecurityGatewayApplicationUpstreamExternalEndpointArrayOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput)
+}
+
+type SecurityGatewayApplicationUpstreamExternalEndpointOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamExternalEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamExternalEndpoint)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamExternalEndpointOutput) ToSecurityGatewayApplicationUpstreamExternalEndpointOutput() SecurityGatewayApplicationUpstreamExternalEndpointOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamExternalEndpointOutput) ToSecurityGatewayApplicationUpstreamExternalEndpointOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamExternalEndpointOutput {
+	return o
+}
+
+// Hostname of the endpoint.
+func (o SecurityGatewayApplicationUpstreamExternalEndpointOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamExternalEndpoint) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Port of the endpoint.
+func (o SecurityGatewayApplicationUpstreamExternalEndpointOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamExternalEndpoint) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGatewayApplicationUpstreamExternalEndpoint)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput) ToSecurityGatewayApplicationUpstreamExternalEndpointArrayOutput() SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput) ToSecurityGatewayApplicationUpstreamExternalEndpointArrayOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput) Index(i pulumi.IntInput) SecurityGatewayApplicationUpstreamExternalEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGatewayApplicationUpstreamExternalEndpoint {
+		return vs[0].([]SecurityGatewayApplicationUpstreamExternalEndpoint)[vs[1].(int)]
+	}).(SecurityGatewayApplicationUpstreamExternalEndpointOutput)
+}
+
 type SecurityGatewayApplicationUpstreamNetwork struct {
 	// Required. Network name is of the format:
 	// `projects/{project}/global/networks/{network}`
@@ -1602,6 +1879,890 @@ func (o SecurityGatewayApplicationUpstreamNetworkPtrOutput) Name() pulumi.String
 			return nil
 		}
 		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocol struct {
+	// The configuration for the proxy.
+	AllowedClientHeaders []string `pulumi:"allowedClientHeaders"`
+	// Client IP configuration. The client IP address is included if true.
+	ClientIp *bool `pulumi:"clientIp"`
+	// Configuration for the contextual headers.
+	// Structure is documented below.
+	ContextualHeaders *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders `pulumi:"contextualHeaders"`
+	// Gateway identity configuration.
+	// Possible values are: `RESOURCE_NAME`.
+	GatewayIdentity *string `pulumi:"gatewayIdentity"`
+	// Custom resource specific headers along with the values.
+	// The names should conform to RFC 9110:
+	// > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+	// and ".", and SHOULD begin with a letter.
+	// Field values SHOULD contain only ASCII printable characters and tab.
+	MetadataHeaders map[string]string `pulumi:"metadataHeaders"`
+}
+
+// SecurityGatewayApplicationUpstreamProxyProtocolInput is an input type that accepts SecurityGatewayApplicationUpstreamProxyProtocolArgs and SecurityGatewayApplicationUpstreamProxyProtocolOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamProxyProtocolInput` via:
+//
+//	SecurityGatewayApplicationUpstreamProxyProtocolArgs{...}
+type SecurityGatewayApplicationUpstreamProxyProtocolInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamProxyProtocolOutput() SecurityGatewayApplicationUpstreamProxyProtocolOutput
+	ToSecurityGatewayApplicationUpstreamProxyProtocolOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamProxyProtocolOutput
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolArgs struct {
+	// The configuration for the proxy.
+	AllowedClientHeaders pulumi.StringArrayInput `pulumi:"allowedClientHeaders"`
+	// Client IP configuration. The client IP address is included if true.
+	ClientIp pulumi.BoolPtrInput `pulumi:"clientIp"`
+	// Configuration for the contextual headers.
+	// Structure is documented below.
+	ContextualHeaders SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrInput `pulumi:"contextualHeaders"`
+	// Gateway identity configuration.
+	// Possible values are: `RESOURCE_NAME`.
+	GatewayIdentity pulumi.StringPtrInput `pulumi:"gatewayIdentity"`
+	// Custom resource specific headers along with the values.
+	// The names should conform to RFC 9110:
+	// > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+	// and ".", and SHOULD begin with a letter.
+	// Field values SHOULD contain only ASCII printable characters and tab.
+	MetadataHeaders pulumi.StringMapInput `pulumi:"metadataHeaders"`
+}
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocol)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolOutput() SecurityGatewayApplicationUpstreamProxyProtocolOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolOutput)
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolOutput).ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayApplicationUpstreamProxyProtocolPtrInput is an input type that accepts SecurityGatewayApplicationUpstreamProxyProtocolArgs, SecurityGatewayApplicationUpstreamProxyProtocolPtr and SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamProxyProtocolPtrInput` via:
+//
+//	        SecurityGatewayApplicationUpstreamProxyProtocolArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayApplicationUpstreamProxyProtocolPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput
+	ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput
+}
+
+type securityGatewayApplicationUpstreamProxyProtocolPtrType SecurityGatewayApplicationUpstreamProxyProtocolArgs
+
+func SecurityGatewayApplicationUpstreamProxyProtocolPtr(v *SecurityGatewayApplicationUpstreamProxyProtocolArgs) SecurityGatewayApplicationUpstreamProxyProtocolPtrInput {
+	return (*securityGatewayApplicationUpstreamProxyProtocolPtrType)(v)
+}
+
+func (*securityGatewayApplicationUpstreamProxyProtocolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamProxyProtocol)(nil)).Elem()
+}
+
+func (i *securityGatewayApplicationUpstreamProxyProtocolPtrType) ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayApplicationUpstreamProxyProtocolPtrType) ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocol)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolOutput() SecurityGatewayApplicationUpstreamProxyProtocolOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput {
+	return o.ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayApplicationUpstreamProxyProtocol) *SecurityGatewayApplicationUpstreamProxyProtocol {
+		return &v
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput)
+}
+
+// The configuration for the proxy.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolOutput) AllowedClientHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamProxyProtocol) []string { return v.AllowedClientHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Client IP configuration. The client IP address is included if true.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolOutput) ClientIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamProxyProtocol) *bool { return v.ClientIp }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the contextual headers.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolOutput) ContextualHeaders() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamProxyProtocol) *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders {
+		return v.ContextualHeaders
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput)
+}
+
+// Gateway identity configuration.
+// Possible values are: `RESOURCE_NAME`.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolOutput) GatewayIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamProxyProtocol) *string { return v.GatewayIdentity }).(pulumi.StringPtrOutput)
+}
+
+// Custom resource specific headers along with the values.
+// The names should conform to RFC 9110:
+// > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+// and ".", and SHOULD begin with a letter.
+// Field values SHOULD contain only ASCII printable characters and tab.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolOutput) MetadataHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamProxyProtocol) map[string]string { return v.MetadataHeaders }).(pulumi.StringMapOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamProxyProtocol)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput) Elem() SecurityGatewayApplicationUpstreamProxyProtocolOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocol) SecurityGatewayApplicationUpstreamProxyProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayApplicationUpstreamProxyProtocol
+		return ret
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolOutput)
+}
+
+// The configuration for the proxy.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput) AllowedClientHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocol) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedClientHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Client IP configuration. The client IP address is included if true.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput) ClientIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocol) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClientIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the contextual headers.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput) ContextualHeaders() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocol) *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders {
+		if v == nil {
+			return nil
+		}
+		return v.ContextualHeaders
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput)
+}
+
+// Gateway identity configuration.
+// Possible values are: `RESOURCE_NAME`.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput) GatewayIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom resource specific headers along with the values.
+// The names should conform to RFC 9110:
+// > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+// and ".", and SHOULD begin with a letter.
+// Field values SHOULD contain only ASCII printable characters and tab.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput) MetadataHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocol) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders struct {
+	// Device info configuration.
+	// Structure is documented below.
+	DeviceInfo *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo `pulumi:"deviceInfo"`
+	// Group info configuration.
+	// Structure is documented below.
+	GroupInfo *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo `pulumi:"groupInfo"`
+	// Default output type for all enabled headers.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType *string `pulumi:"outputType"`
+	// User info configuration.
+	// Structure is documented below.
+	UserInfo *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo `pulumi:"userInfo"`
+}
+
+// SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersInput is an input type that accepts SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs and SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersInput` via:
+//
+//	SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs{...}
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs struct {
+	// Device info configuration.
+	// Structure is documented below.
+	DeviceInfo SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrInput `pulumi:"deviceInfo"`
+	// Group info configuration.
+	// Structure is documented below.
+	GroupInfo SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrInput `pulumi:"groupInfo"`
+	// Default output type for all enabled headers.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType pulumi.StringPtrInput `pulumi:"outputType"`
+	// User info configuration.
+	// Structure is documented below.
+	UserInfo SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrInput `pulumi:"userInfo"`
+}
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput)
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput).ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrInput is an input type that accepts SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs, SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtr and SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrInput` via:
+//
+//	        SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput
+}
+
+type securityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrType SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs
+
+func SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtr(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrInput {
+	return (*securityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrType)(v)
+}
+
+func (*securityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders)(nil)).Elem()
+}
+
+func (i *securityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrType) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrType) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput {
+	return o.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders) *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders {
+		return &v
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput)
+}
+
+// Device info configuration.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput) DeviceInfo() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders) *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo {
+		return v.DeviceInfo
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput)
+}
+
+// Group info configuration.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput) GroupInfo() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders) *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo {
+		return v.GroupInfo
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput)
+}
+
+// Default output type for all enabled headers.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders) *string { return v.OutputType }).(pulumi.StringPtrOutput)
+}
+
+// User info configuration.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput) UserInfo() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders) *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo {
+		return v.UserInfo
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput) Elem() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders
+		return ret
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput)
+}
+
+// Device info configuration.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput) DeviceInfo() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders) *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo {
+		if v == nil {
+			return nil
+		}
+		return v.DeviceInfo
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput)
+}
+
+// Group info configuration.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput) GroupInfo() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders) *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo {
+		if v == nil {
+			return nil
+		}
+		return v.GroupInfo
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput)
+}
+
+// Default output type for all enabled headers.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputType
+	}).(pulumi.StringPtrOutput)
+}
+
+// User info configuration.
+// Structure is documented below.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput) UserInfo() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders) *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo {
+		if v == nil {
+			return nil
+		}
+		return v.UserInfo
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo struct {
+	// The output type of the delegated device info.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType *string `pulumi:"outputType"`
+}
+
+// SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoInput is an input type that accepts SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs and SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoInput` via:
+//
+//	SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs{...}
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs struct {
+	// The output type of the delegated device info.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType pulumi.StringPtrInput `pulumi:"outputType"`
+}
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput)
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput).ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrInput is an input type that accepts SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs, SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtr and SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrInput` via:
+//
+//	        SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput
+}
+
+type securityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrType SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs
+
+func SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtr(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrInput {
+	return (*securityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrType)(v)
+}
+
+func (*securityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo)(nil)).Elem()
+}
+
+func (i *securityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrType) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrType) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput {
+	return o.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo) *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo {
+		return &v
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput)
+}
+
+// The output type of the delegated device info.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo) *string {
+		return v.OutputType
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput) Elem() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo
+		return ret
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput)
+}
+
+// The output type of the delegated device info.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputType
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo struct {
+	// The output type of the delegated group info.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType *string `pulumi:"outputType"`
+}
+
+// SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoInput is an input type that accepts SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs and SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoInput` via:
+//
+//	SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs{...}
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs struct {
+	// The output type of the delegated group info.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType pulumi.StringPtrInput `pulumi:"outputType"`
+}
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput)
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput).ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrInput is an input type that accepts SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs, SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtr and SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrInput` via:
+//
+//	        SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput
+}
+
+type securityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrType SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs
+
+func SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtr(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrInput {
+	return (*securityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrType)(v)
+}
+
+func (*securityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo)(nil)).Elem()
+}
+
+func (i *securityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrType) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrType) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput {
+	return o.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo) *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo {
+		return &v
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput)
+}
+
+// The output type of the delegated group info.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo) *string {
+		return v.OutputType
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput) Elem() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo
+		return ret
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput)
+}
+
+// The output type of the delegated group info.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputType
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo struct {
+	// The output type of the delegated user info.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType *string `pulumi:"outputType"`
+}
+
+// SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoInput is an input type that accepts SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs and SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoInput` via:
+//
+//	SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs{...}
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs struct {
+	// The output type of the delegated user info.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType pulumi.StringPtrInput `pulumi:"outputType"`
+}
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo)(nil)).Elem()
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput)
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput).ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrInput is an input type that accepts SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs, SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtr and SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrInput` via:
+//
+//	        SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput
+	ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutputWithContext(context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput
+}
+
+type securityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrType SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs
+
+func SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtr(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrInput {
+	return (*securityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrType)(v)
+}
+
+func (*securityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo)(nil)).Elem()
+}
+
+func (i *securityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrType) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput {
+	return i.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrType) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput {
+	return o.ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo) *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo {
+		return &v
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput)
+}
+
+// The output type of the delegated user info.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo) *string {
+		return v.OutputType
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo)(nil)).Elem()
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput) ToSecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput) Elem() SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo) SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo
+		return ret
+	}).(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput)
+}
+
+// The output type of the delegated user info.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2194,6 +3355,1307 @@ func (o SecurityGatewayIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutp
 			return nil
 		}
 		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfig struct {
+	// The configuration for the proxy.
+	AllowedClientHeaders []string `pulumi:"allowedClientHeaders"`
+	// Client IP configuration. The client IP address is included if true.
+	ClientIp *bool `pulumi:"clientIp"`
+	// Configuration for the contextual headers.
+	// Structure is documented below.
+	ContextualHeaders *SecurityGatewayProxyProtocolConfigContextualHeaders `pulumi:"contextualHeaders"`
+	// Gateway identity configuration.
+	// Possible values are: `RESOURCE_NAME`.
+	GatewayIdentity *string `pulumi:"gatewayIdentity"`
+	// Custom resource specific headers along with the values.
+	// The names should conform to RFC 9110:
+	// > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+	// and ".", and SHOULD begin with a letter.
+	// Field values SHOULD contain only ASCII printable characters and tab.
+	MetadataHeaders map[string]string `pulumi:"metadataHeaders"`
+}
+
+// SecurityGatewayProxyProtocolConfigInput is an input type that accepts SecurityGatewayProxyProtocolConfigArgs and SecurityGatewayProxyProtocolConfigOutput values.
+// You can construct a concrete instance of `SecurityGatewayProxyProtocolConfigInput` via:
+//
+//	SecurityGatewayProxyProtocolConfigArgs{...}
+type SecurityGatewayProxyProtocolConfigInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayProxyProtocolConfigOutput() SecurityGatewayProxyProtocolConfigOutput
+	ToSecurityGatewayProxyProtocolConfigOutputWithContext(context.Context) SecurityGatewayProxyProtocolConfigOutput
+}
+
+type SecurityGatewayProxyProtocolConfigArgs struct {
+	// The configuration for the proxy.
+	AllowedClientHeaders pulumi.StringArrayInput `pulumi:"allowedClientHeaders"`
+	// Client IP configuration. The client IP address is included if true.
+	ClientIp pulumi.BoolPtrInput `pulumi:"clientIp"`
+	// Configuration for the contextual headers.
+	// Structure is documented below.
+	ContextualHeaders SecurityGatewayProxyProtocolConfigContextualHeadersPtrInput `pulumi:"contextualHeaders"`
+	// Gateway identity configuration.
+	// Possible values are: `RESOURCE_NAME`.
+	GatewayIdentity pulumi.StringPtrInput `pulumi:"gatewayIdentity"`
+	// Custom resource specific headers along with the values.
+	// The names should conform to RFC 9110:
+	// > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+	// and ".", and SHOULD begin with a letter.
+	// Field values SHOULD contain only ASCII printable characters and tab.
+	MetadataHeaders pulumi.StringMapInput `pulumi:"metadataHeaders"`
+}
+
+func (SecurityGatewayProxyProtocolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayProxyProtocolConfig)(nil)).Elem()
+}
+
+func (i SecurityGatewayProxyProtocolConfigArgs) ToSecurityGatewayProxyProtocolConfigOutput() SecurityGatewayProxyProtocolConfigOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayProxyProtocolConfigArgs) ToSecurityGatewayProxyProtocolConfigOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigOutput)
+}
+
+func (i SecurityGatewayProxyProtocolConfigArgs) ToSecurityGatewayProxyProtocolConfigPtrOutput() SecurityGatewayProxyProtocolConfigPtrOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayProxyProtocolConfigArgs) ToSecurityGatewayProxyProtocolConfigPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigOutput).ToSecurityGatewayProxyProtocolConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayProxyProtocolConfigPtrInput is an input type that accepts SecurityGatewayProxyProtocolConfigArgs, SecurityGatewayProxyProtocolConfigPtr and SecurityGatewayProxyProtocolConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayProxyProtocolConfigPtrInput` via:
+//
+//	        SecurityGatewayProxyProtocolConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayProxyProtocolConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayProxyProtocolConfigPtrOutput() SecurityGatewayProxyProtocolConfigPtrOutput
+	ToSecurityGatewayProxyProtocolConfigPtrOutputWithContext(context.Context) SecurityGatewayProxyProtocolConfigPtrOutput
+}
+
+type securityGatewayProxyProtocolConfigPtrType SecurityGatewayProxyProtocolConfigArgs
+
+func SecurityGatewayProxyProtocolConfigPtr(v *SecurityGatewayProxyProtocolConfigArgs) SecurityGatewayProxyProtocolConfigPtrInput {
+	return (*securityGatewayProxyProtocolConfigPtrType)(v)
+}
+
+func (*securityGatewayProxyProtocolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayProxyProtocolConfig)(nil)).Elem()
+}
+
+func (i *securityGatewayProxyProtocolConfigPtrType) ToSecurityGatewayProxyProtocolConfigPtrOutput() SecurityGatewayProxyProtocolConfigPtrOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayProxyProtocolConfigPtrType) ToSecurityGatewayProxyProtocolConfigPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayProxyProtocolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayProxyProtocolConfig)(nil)).Elem()
+}
+
+func (o SecurityGatewayProxyProtocolConfigOutput) ToSecurityGatewayProxyProtocolConfigOutput() SecurityGatewayProxyProtocolConfigOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigOutput) ToSecurityGatewayProxyProtocolConfigOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigOutput) ToSecurityGatewayProxyProtocolConfigPtrOutput() SecurityGatewayProxyProtocolConfigPtrOutput {
+	return o.ToSecurityGatewayProxyProtocolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayProxyProtocolConfigOutput) ToSecurityGatewayProxyProtocolConfigPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayProxyProtocolConfig) *SecurityGatewayProxyProtocolConfig {
+		return &v
+	}).(SecurityGatewayProxyProtocolConfigPtrOutput)
+}
+
+// The configuration for the proxy.
+func (o SecurityGatewayProxyProtocolConfigOutput) AllowedClientHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityGatewayProxyProtocolConfig) []string { return v.AllowedClientHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Client IP configuration. The client IP address is included if true.
+func (o SecurityGatewayProxyProtocolConfigOutput) ClientIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayProxyProtocolConfig) *bool { return v.ClientIp }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the contextual headers.
+// Structure is documented below.
+func (o SecurityGatewayProxyProtocolConfigOutput) ContextualHeaders() SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayProxyProtocolConfig) *SecurityGatewayProxyProtocolConfigContextualHeaders {
+		return v.ContextualHeaders
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput)
+}
+
+// Gateway identity configuration.
+// Possible values are: `RESOURCE_NAME`.
+func (o SecurityGatewayProxyProtocolConfigOutput) GatewayIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayProxyProtocolConfig) *string { return v.GatewayIdentity }).(pulumi.StringPtrOutput)
+}
+
+// Custom resource specific headers along with the values.
+// The names should conform to RFC 9110:
+// > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+// and ".", and SHOULD begin with a letter.
+// Field values SHOULD contain only ASCII printable characters and tab.
+func (o SecurityGatewayProxyProtocolConfigOutput) MetadataHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecurityGatewayProxyProtocolConfig) map[string]string { return v.MetadataHeaders }).(pulumi.StringMapOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayProxyProtocolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayProxyProtocolConfig)(nil)).Elem()
+}
+
+func (o SecurityGatewayProxyProtocolConfigPtrOutput) ToSecurityGatewayProxyProtocolConfigPtrOutput() SecurityGatewayProxyProtocolConfigPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigPtrOutput) ToSecurityGatewayProxyProtocolConfigPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigPtrOutput) Elem() SecurityGatewayProxyProtocolConfigOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfig) SecurityGatewayProxyProtocolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayProxyProtocolConfig
+		return ret
+	}).(SecurityGatewayProxyProtocolConfigOutput)
+}
+
+// The configuration for the proxy.
+func (o SecurityGatewayProxyProtocolConfigPtrOutput) AllowedClientHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedClientHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Client IP configuration. The client IP address is included if true.
+func (o SecurityGatewayProxyProtocolConfigPtrOutput) ClientIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClientIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the contextual headers.
+// Structure is documented below.
+func (o SecurityGatewayProxyProtocolConfigPtrOutput) ContextualHeaders() SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfig) *SecurityGatewayProxyProtocolConfigContextualHeaders {
+		if v == nil {
+			return nil
+		}
+		return v.ContextualHeaders
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput)
+}
+
+// Gateway identity configuration.
+// Possible values are: `RESOURCE_NAME`.
+func (o SecurityGatewayProxyProtocolConfigPtrOutput) GatewayIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom resource specific headers along with the values.
+// The names should conform to RFC 9110:
+// > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+// and ".", and SHOULD begin with a letter.
+// Field values SHOULD contain only ASCII printable characters and tab.
+func (o SecurityGatewayProxyProtocolConfigPtrOutput) MetadataHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeaders struct {
+	// Device info configuration.
+	// Structure is documented below.
+	DeviceInfo *SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo `pulumi:"deviceInfo"`
+	// Group info configuration.
+	// Structure is documented below.
+	GroupInfo *SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo `pulumi:"groupInfo"`
+	// Default output type for all enabled headers.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType *string `pulumi:"outputType"`
+	// User info configuration.
+	// Structure is documented below.
+	UserInfo *SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo `pulumi:"userInfo"`
+}
+
+// SecurityGatewayProxyProtocolConfigContextualHeadersInput is an input type that accepts SecurityGatewayProxyProtocolConfigContextualHeadersArgs and SecurityGatewayProxyProtocolConfigContextualHeadersOutput values.
+// You can construct a concrete instance of `SecurityGatewayProxyProtocolConfigContextualHeadersInput` via:
+//
+//	SecurityGatewayProxyProtocolConfigContextualHeadersArgs{...}
+type SecurityGatewayProxyProtocolConfigContextualHeadersInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersOutput() SecurityGatewayProxyProtocolConfigContextualHeadersOutput
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersOutputWithContext(context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersOutput
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersArgs struct {
+	// Device info configuration.
+	// Structure is documented below.
+	DeviceInfo SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrInput `pulumi:"deviceInfo"`
+	// Group info configuration.
+	// Structure is documented below.
+	GroupInfo SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrInput `pulumi:"groupInfo"`
+	// Default output type for all enabled headers.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType pulumi.StringPtrInput `pulumi:"outputType"`
+	// User info configuration.
+	// Structure is documented below.
+	UserInfo SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrInput `pulumi:"userInfo"`
+}
+
+func (SecurityGatewayProxyProtocolConfigContextualHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeaders)(nil)).Elem()
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersOutput() SecurityGatewayProxyProtocolConfigContextualHeadersOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigContextualHeadersOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigContextualHeadersOutput)
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigContextualHeadersOutput).ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayProxyProtocolConfigContextualHeadersPtrInput is an input type that accepts SecurityGatewayProxyProtocolConfigContextualHeadersArgs, SecurityGatewayProxyProtocolConfigContextualHeadersPtr and SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayProxyProtocolConfigContextualHeadersPtrInput` via:
+//
+//	        SecurityGatewayProxyProtocolConfigContextualHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayProxyProtocolConfigContextualHeadersPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutputWithContext(context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput
+}
+
+type securityGatewayProxyProtocolConfigContextualHeadersPtrType SecurityGatewayProxyProtocolConfigContextualHeadersArgs
+
+func SecurityGatewayProxyProtocolConfigContextualHeadersPtr(v *SecurityGatewayProxyProtocolConfigContextualHeadersArgs) SecurityGatewayProxyProtocolConfigContextualHeadersPtrInput {
+	return (*securityGatewayProxyProtocolConfigContextualHeadersPtrType)(v)
+}
+
+func (*securityGatewayProxyProtocolConfigContextualHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayProxyProtocolConfigContextualHeaders)(nil)).Elem()
+}
+
+func (i *securityGatewayProxyProtocolConfigContextualHeadersPtrType) ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayProxyProtocolConfigContextualHeadersPtrType) ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayProxyProtocolConfigContextualHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeaders)(nil)).Elem()
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersOutput() SecurityGatewayProxyProtocolConfigContextualHeadersOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput {
+	return o.ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayProxyProtocolConfigContextualHeaders) *SecurityGatewayProxyProtocolConfigContextualHeaders {
+		return &v
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput)
+}
+
+// Device info configuration.
+// Structure is documented below.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersOutput) DeviceInfo() SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayProxyProtocolConfigContextualHeaders) *SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo {
+		return v.DeviceInfo
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput)
+}
+
+// Group info configuration.
+// Structure is documented below.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersOutput) GroupInfo() SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayProxyProtocolConfigContextualHeaders) *SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo {
+		return v.GroupInfo
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput)
+}
+
+// Default output type for all enabled headers.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayProxyProtocolConfigContextualHeaders) *string { return v.OutputType }).(pulumi.StringPtrOutput)
+}
+
+// User info configuration.
+// Structure is documented below.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersOutput) UserInfo() SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayProxyProtocolConfigContextualHeaders) *SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo {
+		return v.UserInfo
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayProxyProtocolConfigContextualHeaders)(nil)).Elem()
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput) Elem() SecurityGatewayProxyProtocolConfigContextualHeadersOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfigContextualHeaders) SecurityGatewayProxyProtocolConfigContextualHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayProxyProtocolConfigContextualHeaders
+		return ret
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersOutput)
+}
+
+// Device info configuration.
+// Structure is documented below.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput) DeviceInfo() SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfigContextualHeaders) *SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo {
+		if v == nil {
+			return nil
+		}
+		return v.DeviceInfo
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput)
+}
+
+// Group info configuration.
+// Structure is documented below.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput) GroupInfo() SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfigContextualHeaders) *SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo {
+		if v == nil {
+			return nil
+		}
+		return v.GroupInfo
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput)
+}
+
+// Default output type for all enabled headers.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfigContextualHeaders) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputType
+	}).(pulumi.StringPtrOutput)
+}
+
+// User info configuration.
+// Structure is documented below.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput) UserInfo() SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfigContextualHeaders) *SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo {
+		if v == nil {
+			return nil
+		}
+		return v.UserInfo
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo struct {
+	// The output type of the delegated device info.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType *string `pulumi:"outputType"`
+}
+
+// SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoInput is an input type that accepts SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs and SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput values.
+// You can construct a concrete instance of `SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoInput` via:
+//
+//	SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs{...}
+type SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput() SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutputWithContext(context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs struct {
+	// The output type of the delegated device info.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType pulumi.StringPtrInput `pulumi:"outputType"`
+}
+
+func (SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo)(nil)).Elem()
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput() SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput)
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput).ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrInput is an input type that accepts SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs, SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtr and SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrInput` via:
+//
+//	        SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutputWithContext(context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput
+}
+
+type securityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrType SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs
+
+func SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtr(v *SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs) SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrInput {
+	return (*securityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrType)(v)
+}
+
+func (*securityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo)(nil)).Elem()
+}
+
+func (i *securityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrType) ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrType) ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo)(nil)).Elem()
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput() SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput {
+	return o.ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo) *SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo {
+		return &v
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput)
+}
+
+// The output type of the delegated device info.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo) *string { return v.OutputType }).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo)(nil)).Elem()
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput) Elem() SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo) SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo
+		return ret
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput)
+}
+
+// The output type of the delegated device info.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputType
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo struct {
+	// The output type of the delegated group info.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType *string `pulumi:"outputType"`
+}
+
+// SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoInput is an input type that accepts SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs and SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput values.
+// You can construct a concrete instance of `SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoInput` via:
+//
+//	SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs{...}
+type SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput() SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutputWithContext(context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs struct {
+	// The output type of the delegated group info.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType pulumi.StringPtrInput `pulumi:"outputType"`
+}
+
+func (SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo)(nil)).Elem()
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput() SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput)
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput).ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrInput is an input type that accepts SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs, SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtr and SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrInput` via:
+//
+//	        SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutputWithContext(context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput
+}
+
+type securityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrType SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs
+
+func SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtr(v *SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs) SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrInput {
+	return (*securityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrType)(v)
+}
+
+func (*securityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo)(nil)).Elem()
+}
+
+func (i *securityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrType) ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrType) ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo)(nil)).Elem()
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput() SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput {
+	return o.ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo) *SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo {
+		return &v
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput)
+}
+
+// The output type of the delegated group info.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo) *string { return v.OutputType }).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo)(nil)).Elem()
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput) Elem() SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo) SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo
+		return ret
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput)
+}
+
+// The output type of the delegated group info.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputType
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo struct {
+	// The output type of the delegated user info.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType *string `pulumi:"outputType"`
+}
+
+// SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoInput is an input type that accepts SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs and SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput values.
+// You can construct a concrete instance of `SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoInput` via:
+//
+//	SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs{...}
+type SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput() SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutputWithContext(context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs struct {
+	// The output type of the delegated user info.
+	// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+	OutputType pulumi.StringPtrInput `pulumi:"outputType"`
+}
+
+func (SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo)(nil)).Elem()
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput() SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput)
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs) ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput).ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrInput is an input type that accepts SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs, SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtr and SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrInput` via:
+//
+//	        SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput
+	ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutputWithContext(context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput
+}
+
+type securityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrType SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs
+
+func SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtr(v *SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs) SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrInput {
+	return (*securityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrType)(v)
+}
+
+func (*securityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo)(nil)).Elem()
+}
+
+func (i *securityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrType) ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput {
+	return i.ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrType) ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo)(nil)).Elem()
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput() SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput {
+	return o.ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo) *SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo {
+		return &v
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput)
+}
+
+// The output type of the delegated user info.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo) *string { return v.OutputType }).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo)(nil)).Elem()
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput() SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput) ToSecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutputWithContext(ctx context.Context) SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput) Elem() SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo) SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo
+		return ret
+	}).(SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput)
+}
+
+// The output type of the delegated user info.
+// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+func (o SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputType
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayServiceDiscovery struct {
+	// External API configuration.
+	// Structure is documented below.
+	ApiGateway *SecurityGatewayServiceDiscoveryApiGateway `pulumi:"apiGateway"`
+}
+
+// SecurityGatewayServiceDiscoveryInput is an input type that accepts SecurityGatewayServiceDiscoveryArgs and SecurityGatewayServiceDiscoveryOutput values.
+// You can construct a concrete instance of `SecurityGatewayServiceDiscoveryInput` via:
+//
+//	SecurityGatewayServiceDiscoveryArgs{...}
+type SecurityGatewayServiceDiscoveryInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayServiceDiscoveryOutput() SecurityGatewayServiceDiscoveryOutput
+	ToSecurityGatewayServiceDiscoveryOutputWithContext(context.Context) SecurityGatewayServiceDiscoveryOutput
+}
+
+type SecurityGatewayServiceDiscoveryArgs struct {
+	// External API configuration.
+	// Structure is documented below.
+	ApiGateway SecurityGatewayServiceDiscoveryApiGatewayPtrInput `pulumi:"apiGateway"`
+}
+
+func (SecurityGatewayServiceDiscoveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayServiceDiscovery)(nil)).Elem()
+}
+
+func (i SecurityGatewayServiceDiscoveryArgs) ToSecurityGatewayServiceDiscoveryOutput() SecurityGatewayServiceDiscoveryOutput {
+	return i.ToSecurityGatewayServiceDiscoveryOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayServiceDiscoveryArgs) ToSecurityGatewayServiceDiscoveryOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayServiceDiscoveryOutput)
+}
+
+func (i SecurityGatewayServiceDiscoveryArgs) ToSecurityGatewayServiceDiscoveryPtrOutput() SecurityGatewayServiceDiscoveryPtrOutput {
+	return i.ToSecurityGatewayServiceDiscoveryPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayServiceDiscoveryArgs) ToSecurityGatewayServiceDiscoveryPtrOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayServiceDiscoveryOutput).ToSecurityGatewayServiceDiscoveryPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayServiceDiscoveryPtrInput is an input type that accepts SecurityGatewayServiceDiscoveryArgs, SecurityGatewayServiceDiscoveryPtr and SecurityGatewayServiceDiscoveryPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayServiceDiscoveryPtrInput` via:
+//
+//	        SecurityGatewayServiceDiscoveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayServiceDiscoveryPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayServiceDiscoveryPtrOutput() SecurityGatewayServiceDiscoveryPtrOutput
+	ToSecurityGatewayServiceDiscoveryPtrOutputWithContext(context.Context) SecurityGatewayServiceDiscoveryPtrOutput
+}
+
+type securityGatewayServiceDiscoveryPtrType SecurityGatewayServiceDiscoveryArgs
+
+func SecurityGatewayServiceDiscoveryPtr(v *SecurityGatewayServiceDiscoveryArgs) SecurityGatewayServiceDiscoveryPtrInput {
+	return (*securityGatewayServiceDiscoveryPtrType)(v)
+}
+
+func (*securityGatewayServiceDiscoveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayServiceDiscovery)(nil)).Elem()
+}
+
+func (i *securityGatewayServiceDiscoveryPtrType) ToSecurityGatewayServiceDiscoveryPtrOutput() SecurityGatewayServiceDiscoveryPtrOutput {
+	return i.ToSecurityGatewayServiceDiscoveryPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayServiceDiscoveryPtrType) ToSecurityGatewayServiceDiscoveryPtrOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayServiceDiscoveryPtrOutput)
+}
+
+type SecurityGatewayServiceDiscoveryOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayServiceDiscoveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayServiceDiscovery)(nil)).Elem()
+}
+
+func (o SecurityGatewayServiceDiscoveryOutput) ToSecurityGatewayServiceDiscoveryOutput() SecurityGatewayServiceDiscoveryOutput {
+	return o
+}
+
+func (o SecurityGatewayServiceDiscoveryOutput) ToSecurityGatewayServiceDiscoveryOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryOutput {
+	return o
+}
+
+func (o SecurityGatewayServiceDiscoveryOutput) ToSecurityGatewayServiceDiscoveryPtrOutput() SecurityGatewayServiceDiscoveryPtrOutput {
+	return o.ToSecurityGatewayServiceDiscoveryPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayServiceDiscoveryOutput) ToSecurityGatewayServiceDiscoveryPtrOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayServiceDiscovery) *SecurityGatewayServiceDiscovery {
+		return &v
+	}).(SecurityGatewayServiceDiscoveryPtrOutput)
+}
+
+// External API configuration.
+// Structure is documented below.
+func (o SecurityGatewayServiceDiscoveryOutput) ApiGateway() SecurityGatewayServiceDiscoveryApiGatewayPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayServiceDiscovery) *SecurityGatewayServiceDiscoveryApiGateway {
+		return v.ApiGateway
+	}).(SecurityGatewayServiceDiscoveryApiGatewayPtrOutput)
+}
+
+type SecurityGatewayServiceDiscoveryPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayServiceDiscoveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayServiceDiscovery)(nil)).Elem()
+}
+
+func (o SecurityGatewayServiceDiscoveryPtrOutput) ToSecurityGatewayServiceDiscoveryPtrOutput() SecurityGatewayServiceDiscoveryPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayServiceDiscoveryPtrOutput) ToSecurityGatewayServiceDiscoveryPtrOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayServiceDiscoveryPtrOutput) Elem() SecurityGatewayServiceDiscoveryOutput {
+	return o.ApplyT(func(v *SecurityGatewayServiceDiscovery) SecurityGatewayServiceDiscovery {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayServiceDiscovery
+		return ret
+	}).(SecurityGatewayServiceDiscoveryOutput)
+}
+
+// External API configuration.
+// Structure is documented below.
+func (o SecurityGatewayServiceDiscoveryPtrOutput) ApiGateway() SecurityGatewayServiceDiscoveryApiGatewayPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayServiceDiscovery) *SecurityGatewayServiceDiscoveryApiGateway {
+		if v == nil {
+			return nil
+		}
+		return v.ApiGateway
+	}).(SecurityGatewayServiceDiscoveryApiGatewayPtrOutput)
+}
+
+type SecurityGatewayServiceDiscoveryApiGateway struct {
+	// Enables fetching resource model updates to alter service behavior per Chrome profile.
+	// Structure is documented below.
+	ResourceOverride *SecurityGatewayServiceDiscoveryApiGatewayResourceOverride `pulumi:"resourceOverride"`
+}
+
+// SecurityGatewayServiceDiscoveryApiGatewayInput is an input type that accepts SecurityGatewayServiceDiscoveryApiGatewayArgs and SecurityGatewayServiceDiscoveryApiGatewayOutput values.
+// You can construct a concrete instance of `SecurityGatewayServiceDiscoveryApiGatewayInput` via:
+//
+//	SecurityGatewayServiceDiscoveryApiGatewayArgs{...}
+type SecurityGatewayServiceDiscoveryApiGatewayInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayServiceDiscoveryApiGatewayOutput() SecurityGatewayServiceDiscoveryApiGatewayOutput
+	ToSecurityGatewayServiceDiscoveryApiGatewayOutputWithContext(context.Context) SecurityGatewayServiceDiscoveryApiGatewayOutput
+}
+
+type SecurityGatewayServiceDiscoveryApiGatewayArgs struct {
+	// Enables fetching resource model updates to alter service behavior per Chrome profile.
+	// Structure is documented below.
+	ResourceOverride SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrInput `pulumi:"resourceOverride"`
+}
+
+func (SecurityGatewayServiceDiscoveryApiGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayServiceDiscoveryApiGateway)(nil)).Elem()
+}
+
+func (i SecurityGatewayServiceDiscoveryApiGatewayArgs) ToSecurityGatewayServiceDiscoveryApiGatewayOutput() SecurityGatewayServiceDiscoveryApiGatewayOutput {
+	return i.ToSecurityGatewayServiceDiscoveryApiGatewayOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayServiceDiscoveryApiGatewayArgs) ToSecurityGatewayServiceDiscoveryApiGatewayOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryApiGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayServiceDiscoveryApiGatewayOutput)
+}
+
+func (i SecurityGatewayServiceDiscoveryApiGatewayArgs) ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutput() SecurityGatewayServiceDiscoveryApiGatewayPtrOutput {
+	return i.ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayServiceDiscoveryApiGatewayArgs) ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryApiGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayServiceDiscoveryApiGatewayOutput).ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayServiceDiscoveryApiGatewayPtrInput is an input type that accepts SecurityGatewayServiceDiscoveryApiGatewayArgs, SecurityGatewayServiceDiscoveryApiGatewayPtr and SecurityGatewayServiceDiscoveryApiGatewayPtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayServiceDiscoveryApiGatewayPtrInput` via:
+//
+//	        SecurityGatewayServiceDiscoveryApiGatewayArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayServiceDiscoveryApiGatewayPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutput() SecurityGatewayServiceDiscoveryApiGatewayPtrOutput
+	ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutputWithContext(context.Context) SecurityGatewayServiceDiscoveryApiGatewayPtrOutput
+}
+
+type securityGatewayServiceDiscoveryApiGatewayPtrType SecurityGatewayServiceDiscoveryApiGatewayArgs
+
+func SecurityGatewayServiceDiscoveryApiGatewayPtr(v *SecurityGatewayServiceDiscoveryApiGatewayArgs) SecurityGatewayServiceDiscoveryApiGatewayPtrInput {
+	return (*securityGatewayServiceDiscoveryApiGatewayPtrType)(v)
+}
+
+func (*securityGatewayServiceDiscoveryApiGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayServiceDiscoveryApiGateway)(nil)).Elem()
+}
+
+func (i *securityGatewayServiceDiscoveryApiGatewayPtrType) ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutput() SecurityGatewayServiceDiscoveryApiGatewayPtrOutput {
+	return i.ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayServiceDiscoveryApiGatewayPtrType) ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryApiGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayServiceDiscoveryApiGatewayPtrOutput)
+}
+
+type SecurityGatewayServiceDiscoveryApiGatewayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayServiceDiscoveryApiGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayServiceDiscoveryApiGateway)(nil)).Elem()
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayOutput) ToSecurityGatewayServiceDiscoveryApiGatewayOutput() SecurityGatewayServiceDiscoveryApiGatewayOutput {
+	return o
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayOutput) ToSecurityGatewayServiceDiscoveryApiGatewayOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryApiGatewayOutput {
+	return o
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayOutput) ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutput() SecurityGatewayServiceDiscoveryApiGatewayPtrOutput {
+	return o.ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayOutput) ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryApiGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayServiceDiscoveryApiGateway) *SecurityGatewayServiceDiscoveryApiGateway {
+		return &v
+	}).(SecurityGatewayServiceDiscoveryApiGatewayPtrOutput)
+}
+
+// Enables fetching resource model updates to alter service behavior per Chrome profile.
+// Structure is documented below.
+func (o SecurityGatewayServiceDiscoveryApiGatewayOutput) ResourceOverride() SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput {
+	return o.ApplyT(func(v SecurityGatewayServiceDiscoveryApiGateway) *SecurityGatewayServiceDiscoveryApiGatewayResourceOverride {
+		return v.ResourceOverride
+	}).(SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput)
+}
+
+type SecurityGatewayServiceDiscoveryApiGatewayPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayServiceDiscoveryApiGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayServiceDiscoveryApiGateway)(nil)).Elem()
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayPtrOutput) ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutput() SecurityGatewayServiceDiscoveryApiGatewayPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayPtrOutput) ToSecurityGatewayServiceDiscoveryApiGatewayPtrOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryApiGatewayPtrOutput {
+	return o
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayPtrOutput) Elem() SecurityGatewayServiceDiscoveryApiGatewayOutput {
+	return o.ApplyT(func(v *SecurityGatewayServiceDiscoveryApiGateway) SecurityGatewayServiceDiscoveryApiGateway {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayServiceDiscoveryApiGateway
+		return ret
+	}).(SecurityGatewayServiceDiscoveryApiGatewayOutput)
+}
+
+// Enables fetching resource model updates to alter service behavior per Chrome profile.
+// Structure is documented below.
+func (o SecurityGatewayServiceDiscoveryApiGatewayPtrOutput) ResourceOverride() SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayServiceDiscoveryApiGateway) *SecurityGatewayServiceDiscoveryApiGatewayResourceOverride {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceOverride
+	}).(SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput)
+}
+
+type SecurityGatewayServiceDiscoveryApiGatewayResourceOverride struct {
+	// Contains uri path fragment where HTTP request is sent.
+	Path *string `pulumi:"path"`
+}
+
+// SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideInput is an input type that accepts SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs and SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput values.
+// You can construct a concrete instance of `SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideInput` via:
+//
+//	SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs{...}
+type SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput() SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput
+	ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutputWithContext(context.Context) SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput
+}
+
+type SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs struct {
+	// Contains uri path fragment where HTTP request is sent.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayServiceDiscoveryApiGatewayResourceOverride)(nil)).Elem()
+}
+
+func (i SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs) ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput() SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput {
+	return i.ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs) ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput)
+}
+
+func (i SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs) ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput() SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput {
+	return i.ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs) ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput).ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutputWithContext(ctx)
+}
+
+// SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrInput is an input type that accepts SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs, SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtr and SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput values.
+// You can construct a concrete instance of `SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrInput` via:
+//
+//	        SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrInput interface {
+	pulumi.Input
+
+	ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput() SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput
+	ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutputWithContext(context.Context) SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput
+}
+
+type securityGatewayServiceDiscoveryApiGatewayResourceOverridePtrType SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs
+
+func SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtr(v *SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs) SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrInput {
+	return (*securityGatewayServiceDiscoveryApiGatewayResourceOverridePtrType)(v)
+}
+
+func (*securityGatewayServiceDiscoveryApiGatewayResourceOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayServiceDiscoveryApiGatewayResourceOverride)(nil)).Elem()
+}
+
+func (i *securityGatewayServiceDiscoveryApiGatewayResourceOverridePtrType) ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput() SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput {
+	return i.ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *securityGatewayServiceDiscoveryApiGatewayResourceOverridePtrType) ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput)
+}
+
+type SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGatewayServiceDiscoveryApiGatewayResourceOverride)(nil)).Elem()
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput) ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput() SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput {
+	return o
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput) ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput {
+	return o
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput) ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput() SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput {
+	return o.ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput) ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGatewayServiceDiscoveryApiGatewayResourceOverride) *SecurityGatewayServiceDiscoveryApiGatewayResourceOverride {
+		return &v
+	}).(SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput)
+}
+
+// Contains uri path fragment where HTTP request is sent.
+func (o SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGatewayServiceDiscoveryApiGatewayResourceOverride) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGatewayServiceDiscoveryApiGatewayResourceOverride)(nil)).Elem()
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput) ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput() SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput {
+	return o
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput) ToSecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutputWithContext(ctx context.Context) SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput {
+	return o
+}
+
+func (o SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput) Elem() SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput {
+	return o.ApplyT(func(v *SecurityGatewayServiceDiscoveryApiGatewayResourceOverride) SecurityGatewayServiceDiscoveryApiGatewayResourceOverride {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGatewayServiceDiscoveryApiGatewayResourceOverride
+		return ret
+	}).(SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput)
+}
+
+// Contains uri path fragment where HTTP request is sent.
+func (o SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayServiceDiscoveryApiGatewayResourceOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2935,6 +5397,871 @@ func (o GetSecurityGatewayHubInternetGatewayArrayOutput) Index(i pulumi.IntInput
 	}).(GetSecurityGatewayHubInternetGatewayOutput)
 }
 
+type GetSecurityGatewayProxyProtocolConfig struct {
+	// The configuration for the proxy.
+	AllowedClientHeaders []string `pulumi:"allowedClientHeaders"`
+	// Client IP configuration. The client IP address is included if true.
+	ClientIp bool `pulumi:"clientIp"`
+	// Configuration for the contextual headers.
+	ContextualHeaders []GetSecurityGatewayProxyProtocolConfigContextualHeader `pulumi:"contextualHeaders"`
+	// Gateway identity configuration. Possible values: ["RESOURCE_NAME"]
+	GatewayIdentity string `pulumi:"gatewayIdentity"`
+	// Custom resource specific headers along with the values.
+	// The names should conform to RFC 9110:
+	// > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+	//   and ".", and SHOULD begin with a letter.
+	// Field values SHOULD contain only ASCII printable characters and tab.
+	MetadataHeaders map[string]string `pulumi:"metadataHeaders"`
+}
+
+// GetSecurityGatewayProxyProtocolConfigInput is an input type that accepts GetSecurityGatewayProxyProtocolConfigArgs and GetSecurityGatewayProxyProtocolConfigOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayProxyProtocolConfigInput` via:
+//
+//	GetSecurityGatewayProxyProtocolConfigArgs{...}
+type GetSecurityGatewayProxyProtocolConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayProxyProtocolConfigOutput() GetSecurityGatewayProxyProtocolConfigOutput
+	ToGetSecurityGatewayProxyProtocolConfigOutputWithContext(context.Context) GetSecurityGatewayProxyProtocolConfigOutput
+}
+
+type GetSecurityGatewayProxyProtocolConfigArgs struct {
+	// The configuration for the proxy.
+	AllowedClientHeaders pulumi.StringArrayInput `pulumi:"allowedClientHeaders"`
+	// Client IP configuration. The client IP address is included if true.
+	ClientIp pulumi.BoolInput `pulumi:"clientIp"`
+	// Configuration for the contextual headers.
+	ContextualHeaders GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayInput `pulumi:"contextualHeaders"`
+	// Gateway identity configuration. Possible values: ["RESOURCE_NAME"]
+	GatewayIdentity pulumi.StringInput `pulumi:"gatewayIdentity"`
+	// Custom resource specific headers along with the values.
+	// The names should conform to RFC 9110:
+	// > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+	//   and ".", and SHOULD begin with a letter.
+	// Field values SHOULD contain only ASCII printable characters and tab.
+	MetadataHeaders pulumi.StringMapInput `pulumi:"metadataHeaders"`
+}
+
+func (GetSecurityGatewayProxyProtocolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfig)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigArgs) ToGetSecurityGatewayProxyProtocolConfigOutput() GetSecurityGatewayProxyProtocolConfigOutput {
+	return i.ToGetSecurityGatewayProxyProtocolConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigArgs) ToGetSecurityGatewayProxyProtocolConfigOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayProxyProtocolConfigOutput)
+}
+
+// GetSecurityGatewayProxyProtocolConfigArrayInput is an input type that accepts GetSecurityGatewayProxyProtocolConfigArray and GetSecurityGatewayProxyProtocolConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayProxyProtocolConfigArrayInput` via:
+//
+//	GetSecurityGatewayProxyProtocolConfigArray{ GetSecurityGatewayProxyProtocolConfigArgs{...} }
+type GetSecurityGatewayProxyProtocolConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayProxyProtocolConfigArrayOutput() GetSecurityGatewayProxyProtocolConfigArrayOutput
+	ToGetSecurityGatewayProxyProtocolConfigArrayOutputWithContext(context.Context) GetSecurityGatewayProxyProtocolConfigArrayOutput
+}
+
+type GetSecurityGatewayProxyProtocolConfigArray []GetSecurityGatewayProxyProtocolConfigInput
+
+func (GetSecurityGatewayProxyProtocolConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayProxyProtocolConfig)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigArray) ToGetSecurityGatewayProxyProtocolConfigArrayOutput() GetSecurityGatewayProxyProtocolConfigArrayOutput {
+	return i.ToGetSecurityGatewayProxyProtocolConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigArray) ToGetSecurityGatewayProxyProtocolConfigArrayOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayProxyProtocolConfigArrayOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayProxyProtocolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfig)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigOutput) ToGetSecurityGatewayProxyProtocolConfigOutput() GetSecurityGatewayProxyProtocolConfigOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigOutput) ToGetSecurityGatewayProxyProtocolConfigOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigOutput {
+	return o
+}
+
+// The configuration for the proxy.
+func (o GetSecurityGatewayProxyProtocolConfigOutput) AllowedClientHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityGatewayProxyProtocolConfig) []string { return v.AllowedClientHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Client IP configuration. The client IP address is included if true.
+func (o GetSecurityGatewayProxyProtocolConfigOutput) ClientIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecurityGatewayProxyProtocolConfig) bool { return v.ClientIp }).(pulumi.BoolOutput)
+}
+
+// Configuration for the contextual headers.
+func (o GetSecurityGatewayProxyProtocolConfigOutput) ContextualHeaders() GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput {
+	return o.ApplyT(func(v GetSecurityGatewayProxyProtocolConfig) []GetSecurityGatewayProxyProtocolConfigContextualHeader {
+		return v.ContextualHeaders
+	}).(GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput)
+}
+
+// Gateway identity configuration. Possible values: ["RESOURCE_NAME"]
+func (o GetSecurityGatewayProxyProtocolConfigOutput) GatewayIdentity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGatewayProxyProtocolConfig) string { return v.GatewayIdentity }).(pulumi.StringOutput)
+}
+
+// Custom resource specific headers along with the values.
+// The names should conform to RFC 9110:
+// > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+//
+//	and ".", and SHOULD begin with a letter.
+//
+// Field values SHOULD contain only ASCII printable characters and tab.
+func (o GetSecurityGatewayProxyProtocolConfigOutput) MetadataHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecurityGatewayProxyProtocolConfig) map[string]string { return v.MetadataHeaders }).(pulumi.StringMapOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayProxyProtocolConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayProxyProtocolConfig)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigArrayOutput) ToGetSecurityGatewayProxyProtocolConfigArrayOutput() GetSecurityGatewayProxyProtocolConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigArrayOutput) ToGetSecurityGatewayProxyProtocolConfigArrayOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityGatewayProxyProtocolConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGatewayProxyProtocolConfig {
+		return vs[0].([]GetSecurityGatewayProxyProtocolConfig)[vs[1].(int)]
+	}).(GetSecurityGatewayProxyProtocolConfigOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeader struct {
+	// Device info configuration.
+	DeviceInfos []GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo `pulumi:"deviceInfos"`
+	// Group info configuration.
+	GroupInfos []GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo `pulumi:"groupInfos"`
+	// Default output type for all enabled headers. Possible values: ["PROTOBUF", "JSON", "NONE"]
+	OutputType string `pulumi:"outputType"`
+	// User info configuration.
+	UserInfos []GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo `pulumi:"userInfos"`
+}
+
+// GetSecurityGatewayProxyProtocolConfigContextualHeaderInput is an input type that accepts GetSecurityGatewayProxyProtocolConfigContextualHeaderArgs and GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayProxyProtocolConfigContextualHeaderInput` via:
+//
+//	GetSecurityGatewayProxyProtocolConfigContextualHeaderArgs{...}
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderOutputWithContext(context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderArgs struct {
+	// Device info configuration.
+	DeviceInfos GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayInput `pulumi:"deviceInfos"`
+	// Group info configuration.
+	GroupInfos GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayInput `pulumi:"groupInfos"`
+	// Default output type for all enabled headers. Possible values: ["PROTOBUF", "JSON", "NONE"]
+	OutputType pulumi.StringInput `pulumi:"outputType"`
+	// User info configuration.
+	UserInfos GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayInput `pulumi:"userInfos"`
+}
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeader)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderArgs) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput {
+	return i.ToGetSecurityGatewayProxyProtocolConfigContextualHeaderOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderArgs) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput)
+}
+
+// GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayInput is an input type that accepts GetSecurityGatewayProxyProtocolConfigContextualHeaderArray and GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayInput` via:
+//
+//	GetSecurityGatewayProxyProtocolConfigContextualHeaderArray{ GetSecurityGatewayProxyProtocolConfigContextualHeaderArgs{...} }
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutputWithContext(context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderArray []GetSecurityGatewayProxyProtocolConfigContextualHeaderInput
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayProxyProtocolConfigContextualHeader)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderArray) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput {
+	return i.ToGetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderArray) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeader)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput {
+	return o
+}
+
+// Device info configuration.
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput) DeviceInfos() GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput {
+	return o.ApplyT(func(v GetSecurityGatewayProxyProtocolConfigContextualHeader) []GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo {
+		return v.DeviceInfos
+	}).(GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput)
+}
+
+// Group info configuration.
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput) GroupInfos() GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput {
+	return o.ApplyT(func(v GetSecurityGatewayProxyProtocolConfigContextualHeader) []GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo {
+		return v.GroupInfos
+	}).(GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput)
+}
+
+// Default output type for all enabled headers. Possible values: ["PROTOBUF", "JSON", "NONE"]
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput) OutputType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGatewayProxyProtocolConfigContextualHeader) string { return v.OutputType }).(pulumi.StringOutput)
+}
+
+// User info configuration.
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput) UserInfos() GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput {
+	return o.ApplyT(func(v GetSecurityGatewayProxyProtocolConfigContextualHeader) []GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo {
+		return v.UserInfos
+	}).(GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayProxyProtocolConfigContextualHeader)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput) Index(i pulumi.IntInput) GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGatewayProxyProtocolConfigContextualHeader {
+		return vs[0].([]GetSecurityGatewayProxyProtocolConfigContextualHeader)[vs[1].(int)]
+	}).(GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo struct {
+	// The output type of the delegated device info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+	OutputType string `pulumi:"outputType"`
+}
+
+// GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoInput is an input type that accepts GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArgs and GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoInput` via:
+//
+//	GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArgs{...}
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutputWithContext(context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArgs struct {
+	// The output type of the delegated device info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+	OutputType pulumi.StringInput `pulumi:"outputType"`
+}
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArgs) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput {
+	return i.ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArgs) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput)
+}
+
+// GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayInput is an input type that accepts GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArray and GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayInput` via:
+//
+//	GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArray{ GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArgs{...} }
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutputWithContext(context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArray []GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoInput
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArray) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput {
+	return i.ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArray) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput {
+	return o
+}
+
+// The output type of the delegated device info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput) OutputType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo) string { return v.OutputType }).(pulumi.StringOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput) Index(i pulumi.IntInput) GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo {
+		return vs[0].([]GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo)[vs[1].(int)]
+	}).(GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo struct {
+	// The output type of the delegated group info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+	OutputType string `pulumi:"outputType"`
+}
+
+// GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoInput is an input type that accepts GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArgs and GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoInput` via:
+//
+//	GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArgs{...}
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutputWithContext(context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArgs struct {
+	// The output type of the delegated group info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+	OutputType pulumi.StringInput `pulumi:"outputType"`
+}
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArgs) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput {
+	return i.ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArgs) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput)
+}
+
+// GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayInput is an input type that accepts GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArray and GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayInput` via:
+//
+//	GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArray{ GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArgs{...} }
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutputWithContext(context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArray []GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoInput
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArray) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput {
+	return i.ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArray) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput {
+	return o
+}
+
+// The output type of the delegated group info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput) OutputType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo) string { return v.OutputType }).(pulumi.StringOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput) Index(i pulumi.IntInput) GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo {
+		return vs[0].([]GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo)[vs[1].(int)]
+	}).(GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo struct {
+	// The output type of the delegated user info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+	OutputType string `pulumi:"outputType"`
+}
+
+// GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoInput is an input type that accepts GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArgs and GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoInput` via:
+//
+//	GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArgs{...}
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutputWithContext(context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArgs struct {
+	// The output type of the delegated user info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+	OutputType pulumi.StringInput `pulumi:"outputType"`
+}
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArgs) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput {
+	return i.ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArgs) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput)
+}
+
+// GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayInput is an input type that accepts GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArray and GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayInput` via:
+//
+//	GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArray{ GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArgs{...} }
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput
+	ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutputWithContext(context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArray []GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoInput
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArray) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput {
+	return i.ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArray) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput {
+	return o
+}
+
+// The output type of the delegated user info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput) OutputType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo) string { return v.OutputType }).(pulumi.StringOutput)
+}
+
+type GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput() GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput) ToGetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutputWithContext(ctx context.Context) GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput) Index(i pulumi.IntInput) GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo {
+		return vs[0].([]GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo)[vs[1].(int)]
+	}).(GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput)
+}
+
+type GetSecurityGatewayServiceDiscovery struct {
+	// External API configuration.
+	ApiGateways []GetSecurityGatewayServiceDiscoveryApiGateway `pulumi:"apiGateways"`
+}
+
+// GetSecurityGatewayServiceDiscoveryInput is an input type that accepts GetSecurityGatewayServiceDiscoveryArgs and GetSecurityGatewayServiceDiscoveryOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayServiceDiscoveryInput` via:
+//
+//	GetSecurityGatewayServiceDiscoveryArgs{...}
+type GetSecurityGatewayServiceDiscoveryInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayServiceDiscoveryOutput() GetSecurityGatewayServiceDiscoveryOutput
+	ToGetSecurityGatewayServiceDiscoveryOutputWithContext(context.Context) GetSecurityGatewayServiceDiscoveryOutput
+}
+
+type GetSecurityGatewayServiceDiscoveryArgs struct {
+	// External API configuration.
+	ApiGateways GetSecurityGatewayServiceDiscoveryApiGatewayArrayInput `pulumi:"apiGateways"`
+}
+
+func (GetSecurityGatewayServiceDiscoveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayServiceDiscovery)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayServiceDiscoveryArgs) ToGetSecurityGatewayServiceDiscoveryOutput() GetSecurityGatewayServiceDiscoveryOutput {
+	return i.ToGetSecurityGatewayServiceDiscoveryOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayServiceDiscoveryArgs) ToGetSecurityGatewayServiceDiscoveryOutputWithContext(ctx context.Context) GetSecurityGatewayServiceDiscoveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayServiceDiscoveryOutput)
+}
+
+// GetSecurityGatewayServiceDiscoveryArrayInput is an input type that accepts GetSecurityGatewayServiceDiscoveryArray and GetSecurityGatewayServiceDiscoveryArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayServiceDiscoveryArrayInput` via:
+//
+//	GetSecurityGatewayServiceDiscoveryArray{ GetSecurityGatewayServiceDiscoveryArgs{...} }
+type GetSecurityGatewayServiceDiscoveryArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayServiceDiscoveryArrayOutput() GetSecurityGatewayServiceDiscoveryArrayOutput
+	ToGetSecurityGatewayServiceDiscoveryArrayOutputWithContext(context.Context) GetSecurityGatewayServiceDiscoveryArrayOutput
+}
+
+type GetSecurityGatewayServiceDiscoveryArray []GetSecurityGatewayServiceDiscoveryInput
+
+func (GetSecurityGatewayServiceDiscoveryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayServiceDiscovery)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayServiceDiscoveryArray) ToGetSecurityGatewayServiceDiscoveryArrayOutput() GetSecurityGatewayServiceDiscoveryArrayOutput {
+	return i.ToGetSecurityGatewayServiceDiscoveryArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayServiceDiscoveryArray) ToGetSecurityGatewayServiceDiscoveryArrayOutputWithContext(ctx context.Context) GetSecurityGatewayServiceDiscoveryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayServiceDiscoveryArrayOutput)
+}
+
+type GetSecurityGatewayServiceDiscoveryOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayServiceDiscoveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayServiceDiscovery)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayServiceDiscoveryOutput) ToGetSecurityGatewayServiceDiscoveryOutput() GetSecurityGatewayServiceDiscoveryOutput {
+	return o
+}
+
+func (o GetSecurityGatewayServiceDiscoveryOutput) ToGetSecurityGatewayServiceDiscoveryOutputWithContext(ctx context.Context) GetSecurityGatewayServiceDiscoveryOutput {
+	return o
+}
+
+// External API configuration.
+func (o GetSecurityGatewayServiceDiscoveryOutput) ApiGateways() GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput {
+	return o.ApplyT(func(v GetSecurityGatewayServiceDiscovery) []GetSecurityGatewayServiceDiscoveryApiGateway {
+		return v.ApiGateways
+	}).(GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput)
+}
+
+type GetSecurityGatewayServiceDiscoveryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayServiceDiscoveryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayServiceDiscovery)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayServiceDiscoveryArrayOutput) ToGetSecurityGatewayServiceDiscoveryArrayOutput() GetSecurityGatewayServiceDiscoveryArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayServiceDiscoveryArrayOutput) ToGetSecurityGatewayServiceDiscoveryArrayOutputWithContext(ctx context.Context) GetSecurityGatewayServiceDiscoveryArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayServiceDiscoveryArrayOutput) Index(i pulumi.IntInput) GetSecurityGatewayServiceDiscoveryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGatewayServiceDiscovery {
+		return vs[0].([]GetSecurityGatewayServiceDiscovery)[vs[1].(int)]
+	}).(GetSecurityGatewayServiceDiscoveryOutput)
+}
+
+type GetSecurityGatewayServiceDiscoveryApiGateway struct {
+	// Enables fetching resource model updates to alter service behavior per Chrome profile.
+	ResourceOverrides []GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride `pulumi:"resourceOverrides"`
+}
+
+// GetSecurityGatewayServiceDiscoveryApiGatewayInput is an input type that accepts GetSecurityGatewayServiceDiscoveryApiGatewayArgs and GetSecurityGatewayServiceDiscoveryApiGatewayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayServiceDiscoveryApiGatewayInput` via:
+//
+//	GetSecurityGatewayServiceDiscoveryApiGatewayArgs{...}
+type GetSecurityGatewayServiceDiscoveryApiGatewayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayServiceDiscoveryApiGatewayOutput() GetSecurityGatewayServiceDiscoveryApiGatewayOutput
+	ToGetSecurityGatewayServiceDiscoveryApiGatewayOutputWithContext(context.Context) GetSecurityGatewayServiceDiscoveryApiGatewayOutput
+}
+
+type GetSecurityGatewayServiceDiscoveryApiGatewayArgs struct {
+	// Enables fetching resource model updates to alter service behavior per Chrome profile.
+	ResourceOverrides GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayInput `pulumi:"resourceOverrides"`
+}
+
+func (GetSecurityGatewayServiceDiscoveryApiGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayServiceDiscoveryApiGateway)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayServiceDiscoveryApiGatewayArgs) ToGetSecurityGatewayServiceDiscoveryApiGatewayOutput() GetSecurityGatewayServiceDiscoveryApiGatewayOutput {
+	return i.ToGetSecurityGatewayServiceDiscoveryApiGatewayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayServiceDiscoveryApiGatewayArgs) ToGetSecurityGatewayServiceDiscoveryApiGatewayOutputWithContext(ctx context.Context) GetSecurityGatewayServiceDiscoveryApiGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayServiceDiscoveryApiGatewayOutput)
+}
+
+// GetSecurityGatewayServiceDiscoveryApiGatewayArrayInput is an input type that accepts GetSecurityGatewayServiceDiscoveryApiGatewayArray and GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayServiceDiscoveryApiGatewayArrayInput` via:
+//
+//	GetSecurityGatewayServiceDiscoveryApiGatewayArray{ GetSecurityGatewayServiceDiscoveryApiGatewayArgs{...} }
+type GetSecurityGatewayServiceDiscoveryApiGatewayArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput() GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput
+	ToGetSecurityGatewayServiceDiscoveryApiGatewayArrayOutputWithContext(context.Context) GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput
+}
+
+type GetSecurityGatewayServiceDiscoveryApiGatewayArray []GetSecurityGatewayServiceDiscoveryApiGatewayInput
+
+func (GetSecurityGatewayServiceDiscoveryApiGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayServiceDiscoveryApiGateway)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayServiceDiscoveryApiGatewayArray) ToGetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput() GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput {
+	return i.ToGetSecurityGatewayServiceDiscoveryApiGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayServiceDiscoveryApiGatewayArray) ToGetSecurityGatewayServiceDiscoveryApiGatewayArrayOutputWithContext(ctx context.Context) GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput)
+}
+
+type GetSecurityGatewayServiceDiscoveryApiGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayServiceDiscoveryApiGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayServiceDiscoveryApiGateway)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayServiceDiscoveryApiGatewayOutput) ToGetSecurityGatewayServiceDiscoveryApiGatewayOutput() GetSecurityGatewayServiceDiscoveryApiGatewayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayServiceDiscoveryApiGatewayOutput) ToGetSecurityGatewayServiceDiscoveryApiGatewayOutputWithContext(ctx context.Context) GetSecurityGatewayServiceDiscoveryApiGatewayOutput {
+	return o
+}
+
+// Enables fetching resource model updates to alter service behavior per Chrome profile.
+func (o GetSecurityGatewayServiceDiscoveryApiGatewayOutput) ResourceOverrides() GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput {
+	return o.ApplyT(func(v GetSecurityGatewayServiceDiscoveryApiGateway) []GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride {
+		return v.ResourceOverrides
+	}).(GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput)
+}
+
+type GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayServiceDiscoveryApiGateway)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput) ToGetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput() GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput) ToGetSecurityGatewayServiceDiscoveryApiGatewayArrayOutputWithContext(ctx context.Context) GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput) Index(i pulumi.IntInput) GetSecurityGatewayServiceDiscoveryApiGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGatewayServiceDiscoveryApiGateway {
+		return vs[0].([]GetSecurityGatewayServiceDiscoveryApiGateway)[vs[1].(int)]
+	}).(GetSecurityGatewayServiceDiscoveryApiGatewayOutput)
+}
+
+type GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride struct {
+	// Contains uri path fragment where HTTP request is sent.
+	Path string `pulumi:"path"`
+}
+
+// GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideInput is an input type that accepts GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs and GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideInput` via:
+//
+//	GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs{...}
+type GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput() GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput
+	ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutputWithContext(context.Context) GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput
+}
+
+type GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs struct {
+	// Contains uri path fragment where HTTP request is sent.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs) ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput() GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput {
+	return i.ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs) ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutputWithContext(ctx context.Context) GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput)
+}
+
+// GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayInput is an input type that accepts GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArray and GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayInput` via:
+//
+//	GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArray{ GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs{...} }
+type GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput() GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput
+	ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutputWithContext(context.Context) GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput
+}
+
+type GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArray []GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideInput
+
+func (GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride)(nil)).Elem()
+}
+
+func (i GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArray) ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput() GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput {
+	return i.ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArray) ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutputWithContext(ctx context.Context) GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput)
+}
+
+type GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput) ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput() GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput {
+	return o
+}
+
+func (o GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput) ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutputWithContext(ctx context.Context) GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput {
+	return o
+}
+
+// Contains uri path fragment where HTTP request is sent.
+func (o GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride)(nil)).Elem()
+}
+
+func (o GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput) ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput() GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput) ToGetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutputWithContext(ctx context.Context) GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput {
+	return o
+}
+
+func (o GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput) Index(i pulumi.IntInput) GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride {
+		return vs[0].([]GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride)[vs[1].(int)]
+	}).(GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectionApplicationEndpointInput)(nil)).Elem(), AppConnectionApplicationEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectionApplicationEndpointPtrInput)(nil)).Elem(), AppConnectionApplicationEndpointArgs{})
@@ -2956,8 +6283,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamArrayInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamEgressPolicyInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamEgressPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamEgressPolicyPtrInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamEgressPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamExternalInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamExternalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamExternalPtrInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamExternalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamExternalEndpointInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamExternalEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamExternalEndpointArrayInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamExternalEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamNetworkInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamNetworkPtrInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamProxyProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolPtrInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamProxyProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrInput)(nil)).Elem(), SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubInput)(nil)).Elem(), SecurityGatewayHubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubArrayInput)(nil)).Elem(), SecurityGatewayHubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubInternetGatewayInput)(nil)).Elem(), SecurityGatewayHubInternetGatewayArgs{})
@@ -2966,6 +6307,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayIamBindingConditionPtrInput)(nil)).Elem(), SecurityGatewayIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayIamMemberConditionInput)(nil)).Elem(), SecurityGatewayIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayIamMemberConditionPtrInput)(nil)).Elem(), SecurityGatewayIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigPtrInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigContextualHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersPtrInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigContextualHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrInput)(nil)).Elem(), SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayServiceDiscoveryInput)(nil)).Elem(), SecurityGatewayServiceDiscoveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayServiceDiscoveryPtrInput)(nil)).Elem(), SecurityGatewayServiceDiscoveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayServiceDiscoveryApiGatewayInput)(nil)).Elem(), SecurityGatewayServiceDiscoveryApiGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayServiceDiscoveryApiGatewayPtrInput)(nil)).Elem(), SecurityGatewayServiceDiscoveryApiGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideInput)(nil)).Elem(), SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrInput)(nil)).Elem(), SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectionApplicationEndpointInput)(nil)).Elem(), GetAppConnectionApplicationEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectionApplicationEndpointArrayInput)(nil)).Elem(), GetAppConnectionApplicationEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectionGatewayInput)(nil)).Elem(), GetAppConnectionGatewayArgs{})
@@ -2980,6 +6337,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayHubArrayInput)(nil)).Elem(), GetSecurityGatewayHubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayHubInternetGatewayInput)(nil)).Elem(), GetSecurityGatewayHubInternetGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayHubInternetGatewayArrayInput)(nil)).Elem(), GetSecurityGatewayHubInternetGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigArrayInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigContextualHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigContextualHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayInput)(nil)).Elem(), GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayServiceDiscoveryInput)(nil)).Elem(), GetSecurityGatewayServiceDiscoveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayServiceDiscoveryArrayInput)(nil)).Elem(), GetSecurityGatewayServiceDiscoveryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayServiceDiscoveryApiGatewayInput)(nil)).Elem(), GetSecurityGatewayServiceDiscoveryApiGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayServiceDiscoveryApiGatewayArrayInput)(nil)).Elem(), GetSecurityGatewayServiceDiscoveryApiGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideInput)(nil)).Elem(), GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayInput)(nil)).Elem(), GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArray{})
 	pulumi.RegisterOutputType(AppConnectionApplicationEndpointOutput{})
 	pulumi.RegisterOutputType(AppConnectionApplicationEndpointPtrOutput{})
 	pulumi.RegisterOutputType(AppConnectionGatewayOutput{})
@@ -3000,8 +6373,22 @@ func init() {
 	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamEgressPolicyOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamEgressPolicyPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamExternalOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamExternalPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamExternalEndpointOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamExternalEndpointArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamNetworkOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamNetworkPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamProxyProtocolOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamProxyProtocolPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubInternetGatewayOutput{})
@@ -3010,6 +6397,22 @@ func init() {
 	pulumi.RegisterOutputType(SecurityGatewayIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigContextualHeadersOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigContextualHeadersPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayServiceDiscoveryOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayServiceDiscoveryPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayServiceDiscoveryApiGatewayOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayServiceDiscoveryApiGatewayPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput{})
+	pulumi.RegisterOutputType(SecurityGatewayServiceDiscoveryApiGatewayResourceOverridePtrOutput{})
 	pulumi.RegisterOutputType(GetAppConnectionApplicationEndpointOutput{})
 	pulumi.RegisterOutputType(GetAppConnectionApplicationEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GetAppConnectionGatewayOutput{})
@@ -3024,4 +6427,20 @@ func init() {
 	pulumi.RegisterOutputType(GetSecurityGatewayHubArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGatewayHubInternetGatewayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGatewayHubInternetGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigContextualHeaderOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigContextualHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayServiceDiscoveryOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayServiceDiscoveryArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayServiceDiscoveryApiGatewayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayServiceDiscoveryApiGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideOutput{})
+	pulumi.RegisterOutputType(GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArrayOutput{})
 }

@@ -699,6 +699,13 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.JobQuery?> Query { get; private set; } = null!;
 
         /// <summary>
+        /// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+        /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+        /// </summary>
+        [Output("reservation")]
+        public Output<string?> Reservation { get; private set; } = null!;
+
+        /// <summary>
         /// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
         /// Structure is documented below.
         /// </summary>
@@ -830,6 +837,13 @@ namespace Pulumi.Gcp.BigQuery
         [Input("query")]
         public Input<Inputs.JobQueryArgs>? Query { get; set; }
 
+        /// <summary>
+        /// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+        /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+        /// </summary>
+        [Input("reservation")]
+        public Input<string>? Reservation { get; set; }
+
         public JobArgs()
         {
         }
@@ -947,6 +961,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobQueryGetArgs>? Query { get; set; }
+
+        /// <summary>
+        /// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+        /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+        /// </summary>
+        [Input("reservation")]
+        public Input<string>? Reservation { get; set; }
 
         [Input("statuses")]
         private InputList<Inputs.JobStatusGetArgs>? _statuses;

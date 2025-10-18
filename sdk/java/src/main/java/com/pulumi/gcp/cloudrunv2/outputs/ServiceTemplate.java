@@ -52,6 +52,11 @@ public final class ServiceTemplate {
      */
     private @Nullable Boolean gpuZonalRedundancyDisabled;
     /**
+     * @return Disables health checking containers during deployment.
+     * 
+     */
+    private @Nullable Boolean healthCheckDisabled;
+    /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
      * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
      * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -159,6 +164,13 @@ public final class ServiceTemplate {
         return Optional.ofNullable(this.gpuZonalRedundancyDisabled);
     }
     /**
+     * @return Disables health checking containers during deployment.
+     * 
+     */
+    public Optional<Boolean> healthCheckDisabled() {
+        return Optional.ofNullable(this.healthCheckDisabled);
+    }
+    /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
      * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
      * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -260,6 +272,7 @@ public final class ServiceTemplate {
         private @Nullable String encryptionKey;
         private @Nullable String executionEnvironment;
         private @Nullable Boolean gpuZonalRedundancyDisabled;
+        private @Nullable Boolean healthCheckDisabled;
         private @Nullable Map<String,String> labels;
         private @Nullable Integer maxInstanceRequestConcurrency;
         private @Nullable ServiceTemplateNodeSelector nodeSelector;
@@ -279,6 +292,7 @@ public final class ServiceTemplate {
     	      this.encryptionKey = defaults.encryptionKey;
     	      this.executionEnvironment = defaults.executionEnvironment;
     	      this.gpuZonalRedundancyDisabled = defaults.gpuZonalRedundancyDisabled;
+    	      this.healthCheckDisabled = defaults.healthCheckDisabled;
     	      this.labels = defaults.labels;
     	      this.maxInstanceRequestConcurrency = defaults.maxInstanceRequestConcurrency;
     	      this.nodeSelector = defaults.nodeSelector;
@@ -323,6 +337,12 @@ public final class ServiceTemplate {
         public Builder gpuZonalRedundancyDisabled(@Nullable Boolean gpuZonalRedundancyDisabled) {
 
             this.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder healthCheckDisabled(@Nullable Boolean healthCheckDisabled) {
+
+            this.healthCheckDisabled = healthCheckDisabled;
             return this;
         }
         @CustomType.Setter
@@ -401,6 +421,7 @@ public final class ServiceTemplate {
             _resultValue.encryptionKey = encryptionKey;
             _resultValue.executionEnvironment = executionEnvironment;
             _resultValue.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
+            _resultValue.healthCheckDisabled = healthCheckDisabled;
             _resultValue.labels = labels;
             _resultValue.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             _resultValue.nodeSelector = nodeSelector;

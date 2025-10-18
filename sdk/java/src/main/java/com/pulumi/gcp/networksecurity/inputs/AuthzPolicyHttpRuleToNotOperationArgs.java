@@ -38,7 +38,7 @@ public final class AuthzPolicyHttpRuleToNotOperationArgs extends com.pulumi.reso
 
     /**
      * A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-     * Limited to 5 matches.
+     * Limited to 10 matches.
      * Structure is documented below.
      * 
      */
@@ -47,7 +47,7 @@ public final class AuthzPolicyHttpRuleToNotOperationArgs extends com.pulumi.reso
 
     /**
      * @return A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-     * Limited to 5 matches.
+     * Limited to 10 matches.
      * Structure is documented below.
      * 
      */
@@ -72,7 +72,7 @@ public final class AuthzPolicyHttpRuleToNotOperationArgs extends com.pulumi.reso
 
     /**
      * A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-     * Limited to 5 matches.
+     * Limited to 10 matches.
      * Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
      * Structure is documented below.
      * 
@@ -82,7 +82,7 @@ public final class AuthzPolicyHttpRuleToNotOperationArgs extends com.pulumi.reso
 
     /**
      * @return A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-     * Limited to 5 matches.
+     * Limited to 10 matches.
      * Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
      * Structure is documented below.
      * 
@@ -143,7 +143,7 @@ public final class AuthzPolicyHttpRuleToNotOperationArgs extends com.pulumi.reso
 
         /**
          * @param hosts A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-         * Limited to 5 matches.
+         * Limited to 10 matches.
          * Structure is documented below.
          * 
          * @return builder
@@ -156,7 +156,7 @@ public final class AuthzPolicyHttpRuleToNotOperationArgs extends com.pulumi.reso
 
         /**
          * @param hosts A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-         * Limited to 5 matches.
+         * Limited to 10 matches.
          * Structure is documented below.
          * 
          * @return builder
@@ -168,7 +168,7 @@ public final class AuthzPolicyHttpRuleToNotOperationArgs extends com.pulumi.reso
 
         /**
          * @param hosts A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-         * Limited to 5 matches.
+         * Limited to 10 matches.
          * Structure is documented below.
          * 
          * @return builder
@@ -211,7 +211,7 @@ public final class AuthzPolicyHttpRuleToNotOperationArgs extends com.pulumi.reso
 
         /**
          * @param paths A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-         * Limited to 5 matches.
+         * Limited to 10 matches.
          * Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
          * Structure is documented below.
          * 
@@ -225,7 +225,7 @@ public final class AuthzPolicyHttpRuleToNotOperationArgs extends com.pulumi.reso
 
         /**
          * @param paths A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-         * Limited to 5 matches.
+         * Limited to 10 matches.
          * Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
          * Structure is documented below.
          * 
@@ -238,7 +238,7 @@ public final class AuthzPolicyHttpRuleToNotOperationArgs extends com.pulumi.reso
 
         /**
          * @param paths A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-         * Limited to 5 matches.
+         * Limited to 10 matches.
          * Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
          * Structure is documented below.
          * 

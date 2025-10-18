@@ -32,6 +32,11 @@ public final class GetDatabaseInstanceClone {
      */
     private String preferredZone;
     /**
+     * @return The timestamp of when the source instance was deleted for a clone from a deleted instance.
+     * 
+     */
+    private String sourceInstanceDeletionTime;
+    /**
      * @return The name of the instance from which the point in time should be restored.
      * 
      */
@@ -67,6 +72,13 @@ public final class GetDatabaseInstanceClone {
         return this.preferredZone;
     }
     /**
+     * @return The timestamp of when the source instance was deleted for a clone from a deleted instance.
+     * 
+     */
+    public String sourceInstanceDeletionTime() {
+        return this.sourceInstanceDeletionTime;
+    }
+    /**
      * @return The name of the instance from which the point in time should be restored.
      * 
      */
@@ -87,6 +99,7 @@ public final class GetDatabaseInstanceClone {
         private List<String> databaseNames;
         private String pointInTime;
         private String preferredZone;
+        private String sourceInstanceDeletionTime;
         private String sourceInstanceName;
         public Builder() {}
         public Builder(GetDatabaseInstanceClone defaults) {
@@ -95,6 +108,7 @@ public final class GetDatabaseInstanceClone {
     	      this.databaseNames = defaults.databaseNames;
     	      this.pointInTime = defaults.pointInTime;
     	      this.preferredZone = defaults.preferredZone;
+    	      this.sourceInstanceDeletionTime = defaults.sourceInstanceDeletionTime;
     	      this.sourceInstanceName = defaults.sourceInstanceName;
         }
 
@@ -134,6 +148,14 @@ public final class GetDatabaseInstanceClone {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceInstanceDeletionTime(String sourceInstanceDeletionTime) {
+            if (sourceInstanceDeletionTime == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceClone", "sourceInstanceDeletionTime");
+            }
+            this.sourceInstanceDeletionTime = sourceInstanceDeletionTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceInstanceName(String sourceInstanceName) {
             if (sourceInstanceName == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceClone", "sourceInstanceName");
@@ -147,6 +169,7 @@ public final class GetDatabaseInstanceClone {
             _resultValue.databaseNames = databaseNames;
             _resultValue.pointInTime = pointInTime;
             _resultValue.preferredZone = preferredZone;
+            _resultValue.sourceInstanceDeletionTime = sourceInstanceDeletionTime;
             _resultValue.sourceInstanceName = sourceInstanceName;
             return _resultValue;
         }

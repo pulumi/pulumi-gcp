@@ -51,6 +51,7 @@ export interface GetClusterArgs {
  */
 export interface GetClusterResult {
     readonly autoscalingSettings: outputs.vmwareengine.GetClusterAutoscalingSetting[];
+    readonly createTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -61,6 +62,7 @@ export interface GetClusterResult {
     readonly parent: string;
     readonly state: string;
     readonly uid: string;
+    readonly updateTime: string;
 }
 /**
  * Use this data source to get details about a cluster resource.

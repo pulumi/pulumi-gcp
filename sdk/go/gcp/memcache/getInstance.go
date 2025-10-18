@@ -61,11 +61,12 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	AuthorizedNetwork string            `pulumi:"authorizedNetwork"`
-	CreateTime        string            `pulumi:"createTime"`
-	DiscoveryEndpoint string            `pulumi:"discoveryEndpoint"`
-	DisplayName       string            `pulumi:"displayName"`
-	EffectiveLabels   map[string]string `pulumi:"effectiveLabels"`
+	AuthorizedNetwork  string            `pulumi:"authorizedNetwork"`
+	CreateTime         string            `pulumi:"createTime"`
+	DeletionProtection bool              `pulumi:"deletionProtection"`
+	DiscoveryEndpoint  string            `pulumi:"discoveryEndpoint"`
+	DisplayName        string            `pulumi:"displayName"`
+	EffectiveLabels    map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                   string                           `pulumi:"id"`
 	Labels               map[string]string                `pulumi:"labels"`
@@ -132,6 +133,10 @@ func (o LookupInstanceResultOutput) AuthorizedNetwork() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 func (o LookupInstanceResultOutput) DiscoveryEndpoint() pulumi.StringOutput {

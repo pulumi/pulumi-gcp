@@ -47,6 +47,63 @@ import (
 //	}
 //
 // ```
+// ### Beyondcorp Security Gateway Spa
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := beyondcorp.NewSecurityGateway(ctx, "example-spa", &beyondcorp.SecurityGatewayArgs{
+//				SecurityGatewayId: pulumi.String("default-spa"),
+//				DisplayName:       pulumi.String("My SPA Security Gateway resource"),
+//				ProxyProtocolConfig: &beyondcorp.SecurityGatewayProxyProtocolConfigArgs{
+//					AllowedClientHeaders: pulumi.StringArray{
+//						pulumi.String("header1"),
+//						pulumi.String("header2"),
+//					},
+//					ContextualHeaders: &beyondcorp.SecurityGatewayProxyProtocolConfigContextualHeadersArgs{
+//						UserInfo: &beyondcorp.SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs{
+//							OutputType: pulumi.String("PROTOBUF"),
+//						},
+//						GroupInfo: &beyondcorp.SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs{
+//							OutputType: pulumi.String("JSON"),
+//						},
+//						DeviceInfo: &beyondcorp.SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs{
+//							OutputType: pulumi.String("NONE"),
+//						},
+//						OutputType: pulumi.String("NONE"),
+//					},
+//					MetadataHeaders: pulumi.StringMap{
+//						"metadata-header1": pulumi.String("value1"),
+//						"metadata-header2": pulumi.String("value2"),
+//					},
+//					GatewayIdentity: pulumi.String("RESOURCE_NAME"),
+//					ClientIp:        pulumi.Bool(true),
+//				},
+//				ServiceDiscovery: &beyondcorp.SecurityGatewayServiceDiscoveryArgs{
+//					ApiGateway: &beyondcorp.SecurityGatewayServiceDiscoveryApiGatewayArgs{
+//						ResourceOverride: &beyondcorp.SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs{
+//							Path: pulumi.String("/api/v1/routes"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -100,11 +157,17 @@ type SecurityGateway struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Shared proxy configuration for all apps.
+	// Structure is documented below.
+	ProxyProtocolConfig SecurityGatewayProxyProtocolConfigPtrOutput `pulumi:"proxyProtocolConfig"`
 	// Optional. User-settable SecurityGateway resource ID.
 	// * Must start with a letter.
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
 	SecurityGatewayId pulumi.StringOutput `pulumi:"securityGatewayId"`
+	// Settings related to the Service Discovery.
+	// Structure is documented below.
+	ServiceDiscovery SecurityGatewayServiceDiscoveryPtrOutput `pulumi:"serviceDiscovery"`
 	// Output only. The operational state of the SecurityGateway.
 	// Possible values:
 	// STATE_UNSPECIFIED
@@ -178,11 +241,17 @@ type securityGatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Shared proxy configuration for all apps.
+	// Structure is documented below.
+	ProxyProtocolConfig *SecurityGatewayProxyProtocolConfig `pulumi:"proxyProtocolConfig"`
 	// Optional. User-settable SecurityGateway resource ID.
 	// * Must start with a letter.
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
 	SecurityGatewayId *string `pulumi:"securityGatewayId"`
+	// Settings related to the Service Discovery.
+	// Structure is documented below.
+	ServiceDiscovery *SecurityGatewayServiceDiscovery `pulumi:"serviceDiscovery"`
 	// Output only. The operational state of the SecurityGateway.
 	// Possible values:
 	// STATE_UNSPECIFIED
@@ -224,11 +293,17 @@ type SecurityGatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Shared proxy configuration for all apps.
+	// Structure is documented below.
+	ProxyProtocolConfig SecurityGatewayProxyProtocolConfigPtrInput
 	// Optional. User-settable SecurityGateway resource ID.
 	// * Must start with a letter.
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
 	SecurityGatewayId pulumi.StringPtrInput
+	// Settings related to the Service Discovery.
+	// Structure is documented below.
+	ServiceDiscovery SecurityGatewayServiceDiscoveryPtrInput
 	// Output only. The operational state of the SecurityGateway.
 	// Possible values:
 	// STATE_UNSPECIFIED
@@ -265,11 +340,17 @@ type securityGatewayArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Shared proxy configuration for all apps.
+	// Structure is documented below.
+	ProxyProtocolConfig *SecurityGatewayProxyProtocolConfig `pulumi:"proxyProtocolConfig"`
 	// Optional. User-settable SecurityGateway resource ID.
 	// * Must start with a letter.
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
 	SecurityGatewayId string `pulumi:"securityGatewayId"`
+	// Settings related to the Service Discovery.
+	// Structure is documented below.
+	ServiceDiscovery *SecurityGatewayServiceDiscovery `pulumi:"serviceDiscovery"`
 }
 
 // The set of arguments for constructing a SecurityGateway resource.
@@ -291,11 +372,17 @@ type SecurityGatewayArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Shared proxy configuration for all apps.
+	// Structure is documented below.
+	ProxyProtocolConfig SecurityGatewayProxyProtocolConfigPtrInput
 	// Optional. User-settable SecurityGateway resource ID.
 	// * Must start with a letter.
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
 	SecurityGatewayId pulumi.StringInput
+	// Settings related to the Service Discovery.
+	// Structure is documented below.
+	ServiceDiscovery SecurityGatewayServiceDiscoveryPtrInput
 }
 
 func (SecurityGatewayArgs) ElementType() reflect.Type {
@@ -435,12 +522,24 @@ func (o SecurityGatewayOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Shared proxy configuration for all apps.
+// Structure is documented below.
+func (o SecurityGatewayOutput) ProxyProtocolConfig() SecurityGatewayProxyProtocolConfigPtrOutput {
+	return o.ApplyT(func(v *SecurityGateway) SecurityGatewayProxyProtocolConfigPtrOutput { return v.ProxyProtocolConfig }).(SecurityGatewayProxyProtocolConfigPtrOutput)
+}
+
 // Optional. User-settable SecurityGateway resource ID.
 // * Must start with a letter.
 // * Must contain between 4-63 characters from `/a-z-/`.
 // * Must end with a number or letter.
 func (o SecurityGatewayOutput) SecurityGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGateway) pulumi.StringOutput { return v.SecurityGatewayId }).(pulumi.StringOutput)
+}
+
+// Settings related to the Service Discovery.
+// Structure is documented below.
+func (o SecurityGatewayOutput) ServiceDiscovery() SecurityGatewayServiceDiscoveryPtrOutput {
+	return o.ApplyT(func(v *SecurityGateway) SecurityGatewayServiceDiscoveryPtrOutput { return v.ServiceDiscovery }).(SecurityGatewayServiceDiscoveryPtrOutput)
 }
 
 // Output only. The operational state of the SecurityGateway.

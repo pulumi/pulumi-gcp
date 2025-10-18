@@ -10,6 +10,7 @@ import com.pulumi.gcp.memcache.outputs.GetInstanceMaintenanceSchedule;
 import com.pulumi.gcp.memcache.outputs.GetInstanceMemcacheNode;
 import com.pulumi.gcp.memcache.outputs.GetInstanceMemcacheParameter;
 import com.pulumi.gcp.memcache.outputs.GetInstanceNodeConfig;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -22,6 +23,7 @@ import javax.annotation.Nullable;
 public final class GetInstanceResult {
     private String authorizedNetwork;
     private String createTime;
+    private Boolean deletionProtection;
     private String discoveryEndpoint;
     private String displayName;
     private Map<String,String> effectiveLabels;
@@ -52,6 +54,9 @@ public final class GetInstanceResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
     }
     public String discoveryEndpoint() {
         return this.discoveryEndpoint;
@@ -126,6 +131,7 @@ public final class GetInstanceResult {
     public static final class Builder {
         private String authorizedNetwork;
         private String createTime;
+        private Boolean deletionProtection;
         private String discoveryEndpoint;
         private String displayName;
         private Map<String,String> effectiveLabels;
@@ -150,6 +156,7 @@ public final class GetInstanceResult {
     	      Objects.requireNonNull(defaults);
     	      this.authorizedNetwork = defaults.authorizedNetwork;
     	      this.createTime = defaults.createTime;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.discoveryEndpoint = defaults.discoveryEndpoint;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -185,6 +192,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
@@ -360,6 +375,7 @@ public final class GetInstanceResult {
             final var _resultValue = new GetInstanceResult();
             _resultValue.authorizedNetwork = authorizedNetwork;
             _resultValue.createTime = createTime;
+            _resultValue.deletionProtection = deletionProtection;
             _resultValue.discoveryEndpoint = discoveryEndpoint;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;

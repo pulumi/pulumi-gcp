@@ -26,21 +26,6 @@ public final class InsightsDatasetConfigArgs extends com.pulumi.resources.Resour
     public static final InsightsDatasetConfigArgs Empty = new InsightsDatasetConfigArgs();
 
     /**
-     * Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-     * 
-     */
-    @Import(name="activityDataRetentionPeriodDays")
-    private @Nullable Output<Integer> activityDataRetentionPeriodDays;
-
-    /**
-     * @return Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-     * 
-     */
-    public Optional<Output<Integer>> activityDataRetentionPeriodDays() {
-        return Optional.ofNullable(this.activityDataRetentionPeriodDays);
-    }
-
-    /**
      * The user-defined ID of the DatasetConfig
      * 
      */
@@ -293,7 +278,6 @@ public final class InsightsDatasetConfigArgs extends com.pulumi.resources.Resour
     private InsightsDatasetConfigArgs() {}
 
     private InsightsDatasetConfigArgs(InsightsDatasetConfigArgs $) {
-        this.activityDataRetentionPeriodDays = $.activityDataRetentionPeriodDays;
         this.datasetConfigId = $.datasetConfigId;
         this.description = $.description;
         this.excludeCloudStorageBuckets = $.excludeCloudStorageBuckets;
@@ -328,27 +312,6 @@ public final class InsightsDatasetConfigArgs extends com.pulumi.resources.Resour
 
         public Builder(InsightsDatasetConfigArgs defaults) {
             $ = new InsightsDatasetConfigArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param activityDataRetentionPeriodDays Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder activityDataRetentionPeriodDays(@Nullable Output<Integer> activityDataRetentionPeriodDays) {
-            $.activityDataRetentionPeriodDays = activityDataRetentionPeriodDays;
-            return this;
-        }
-
-        /**
-         * @param activityDataRetentionPeriodDays Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder activityDataRetentionPeriodDays(Integer activityDataRetentionPeriodDays) {
-            return activityDataRetentionPeriodDays(Output.of(activityDataRetentionPeriodDays));
         }
 
         /**

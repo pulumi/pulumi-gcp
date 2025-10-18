@@ -26,7 +26,8 @@ class SecurityProfileGroupArgs:
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_prevention_profile: Optional[pulumi.Input[_builtins.str]] = None):
+                 threat_prevention_profile: Optional[pulumi.Input[_builtins.str]] = None,
+                 url_filtering_profile: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityProfileGroup resource.
         :param pulumi.Input[_builtins.str] custom_intercept_profile: Reference to a SecurityProfile with the CustomIntercept configuration.
@@ -42,6 +43,7 @@ class SecurityProfileGroupArgs:
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile group belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[_builtins.str] threat_prevention_profile: Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
+        :param pulumi.Input[_builtins.str] url_filtering_profile: Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
         """
         if custom_intercept_profile is not None:
             pulumi.set(__self__, "custom_intercept_profile", custom_intercept_profile)
@@ -59,6 +61,8 @@ class SecurityProfileGroupArgs:
             pulumi.set(__self__, "parent", parent)
         if threat_prevention_profile is not None:
             pulumi.set(__self__, "threat_prevention_profile", threat_prevention_profile)
+        if url_filtering_profile is not None:
+            pulumi.set(__self__, "url_filtering_profile", url_filtering_profile)
 
     @_builtins.property
     @pulumi.getter(name="customInterceptProfile")
@@ -161,6 +165,18 @@ class SecurityProfileGroupArgs:
     def threat_prevention_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "threat_prevention_profile", value)
 
+    @_builtins.property
+    @pulumi.getter(name="urlFilteringProfile")
+    def url_filtering_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+        """
+        return pulumi.get(self, "url_filtering_profile")
+
+    @url_filtering_profile.setter
+    def url_filtering_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url_filtering_profile", value)
+
 
 @pulumi.input_type
 class _SecurityProfileGroupState:
@@ -177,7 +193,8 @@ class _SecurityProfileGroupState:
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  threat_prevention_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 url_filtering_profile: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityProfileGroup resources.
         :param pulumi.Input[_builtins.str] create_time: Time the security profile group was created in UTC.
@@ -201,6 +218,7 @@ class _SecurityProfileGroupState:
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] threat_prevention_profile: Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
         :param pulumi.Input[_builtins.str] update_time: Time the security profile group was updated in UTC.
+        :param pulumi.Input[_builtins.str] url_filtering_profile: Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -228,6 +246,8 @@ class _SecurityProfileGroupState:
             pulumi.set(__self__, "threat_prevention_profile", threat_prevention_profile)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if url_filtering_profile is not None:
+            pulumi.set(__self__, "url_filtering_profile", url_filtering_profile)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -393,6 +413,18 @@ class _SecurityProfileGroupState:
     def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
+    @_builtins.property
+    @pulumi.getter(name="urlFilteringProfile")
+    def url_filtering_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+        """
+        return pulumi.get(self, "url_filtering_profile")
+
+    @url_filtering_profile.setter
+    def url_filtering_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url_filtering_profile", value)
+
 
 @pulumi.type_token("gcp:networksecurity/securityProfileGroup:SecurityProfileGroup")
 class SecurityProfileGroup(pulumi.CustomResource):
@@ -408,6 +440,7 @@ class SecurityProfileGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  threat_prevention_profile: Optional[pulumi.Input[_builtins.str]] = None,
+                 url_filtering_profile: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         A security profile group defines a container for security profiles.
@@ -503,6 +536,37 @@ class SecurityProfileGroup(pulumi.CustomResource):
             description="my description",
             custom_intercept_profile=default_security_profile.id)
         ```
+        ### Network Security Security Profile Group Url Filtering
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        security_profile = gcp.networksecurity.SecurityProfile("security_profile",
+            name="sec-profile",
+            location="global",
+            type="URL_FILTERING",
+            url_filtering_profile={
+                "url_filters": [{
+                    "priority": 1,
+                    "filtering_action": "ALLOW",
+                    "urls": [
+                        "*example.com",
+                        "*about.example.com",
+                        "*help.example.com",
+                    ],
+                }],
+            },
+            parent="organizations/123456789")
+        default = gcp.networksecurity.SecurityProfileGroup("default",
+            name="sec-profile-group",
+            parent="organizations/123456789",
+            description="my description",
+            url_filtering_profile=security_profile.id,
+            labels={
+                "foo": "bar",
+            })
+        ```
 
         ## Import
 
@@ -531,6 +595,7 @@ class SecurityProfileGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile group belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[_builtins.str] threat_prevention_profile: Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
+        :param pulumi.Input[_builtins.str] url_filtering_profile: Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
         """
         ...
     @overload
@@ -632,6 +697,37 @@ class SecurityProfileGroup(pulumi.CustomResource):
             description="my description",
             custom_intercept_profile=default_security_profile.id)
         ```
+        ### Network Security Security Profile Group Url Filtering
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        security_profile = gcp.networksecurity.SecurityProfile("security_profile",
+            name="sec-profile",
+            location="global",
+            type="URL_FILTERING",
+            url_filtering_profile={
+                "url_filters": [{
+                    "priority": 1,
+                    "filtering_action": "ALLOW",
+                    "urls": [
+                        "*example.com",
+                        "*about.example.com",
+                        "*help.example.com",
+                    ],
+                }],
+            },
+            parent="organizations/123456789")
+        default = gcp.networksecurity.SecurityProfileGroup("default",
+            name="sec-profile-group",
+            parent="organizations/123456789",
+            description="my description",
+            url_filtering_profile=security_profile.id,
+            labels={
+                "foo": "bar",
+            })
+        ```
 
         ## Import
 
@@ -668,6 +764,7 @@ class SecurityProfileGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  threat_prevention_profile: Optional[pulumi.Input[_builtins.str]] = None,
+                 url_filtering_profile: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -685,6 +782,7 @@ class SecurityProfileGroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
             __props__.__dict__["threat_prevention_profile"] = threat_prevention_profile
+            __props__.__dict__["url_filtering_profile"] = url_filtering_profile
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
@@ -714,7 +812,8 @@ class SecurityProfileGroup(pulumi.CustomResource):
             parent: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             threat_prevention_profile: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityProfileGroup':
+            update_time: Optional[pulumi.Input[_builtins.str]] = None,
+            url_filtering_profile: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityProfileGroup':
         """
         Get an existing SecurityProfileGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -743,6 +842,7 @@ class SecurityProfileGroup(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] threat_prevention_profile: Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
         :param pulumi.Input[_builtins.str] update_time: Time the security profile group was updated in UTC.
+        :param pulumi.Input[_builtins.str] url_filtering_profile: Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -761,6 +861,7 @@ class SecurityProfileGroup(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["threat_prevention_profile"] = threat_prevention_profile
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["url_filtering_profile"] = url_filtering_profile
         return SecurityProfileGroup(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -874,4 +975,12 @@ class SecurityProfileGroup(pulumi.CustomResource):
         Time the security profile group was updated in UTC.
         """
         return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="urlFilteringProfile")
+    def url_filtering_profile(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+        """
+        return pulumi.get(self, "url_filtering_profile")
 

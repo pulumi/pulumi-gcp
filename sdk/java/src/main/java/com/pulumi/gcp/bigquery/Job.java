@@ -900,6 +900,22 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.query);
     }
     /**
+     * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+     * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+     * 
+     */
+    @Export(name="reservation", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> reservation;
+
+    /**
+     * @return The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+     * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+     * 
+     */
+    public Output<Optional<String>> reservation() {
+        return Codegen.optional(this.reservation);
+    }
+    /**
      * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
      * Structure is documented below.
      * 

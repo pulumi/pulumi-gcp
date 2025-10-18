@@ -36,6 +36,13 @@ public final class DatabaseInstanceClone {
      */
     private @Nullable String preferredZone;
     /**
+     * @return The timestamp of when the source instance was deleted for a clone from a deleted instance.
+     * 
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    private @Nullable String sourceInstanceDeletionTime;
+    /**
      * @return Name of the source instance which will be cloned.
      * 
      */
@@ -73,6 +80,15 @@ public final class DatabaseInstanceClone {
         return Optional.ofNullable(this.preferredZone);
     }
     /**
+     * @return The timestamp of when the source instance was deleted for a clone from a deleted instance.
+     * 
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<String> sourceInstanceDeletionTime() {
+        return Optional.ofNullable(this.sourceInstanceDeletionTime);
+    }
+    /**
      * @return Name of the source instance which will be cloned.
      * 
      */
@@ -93,6 +109,7 @@ public final class DatabaseInstanceClone {
         private @Nullable List<String> databaseNames;
         private @Nullable String pointInTime;
         private @Nullable String preferredZone;
+        private @Nullable String sourceInstanceDeletionTime;
         private String sourceInstanceName;
         public Builder() {}
         public Builder(DatabaseInstanceClone defaults) {
@@ -101,6 +118,7 @@ public final class DatabaseInstanceClone {
     	      this.databaseNames = defaults.databaseNames;
     	      this.pointInTime = defaults.pointInTime;
     	      this.preferredZone = defaults.preferredZone;
+    	      this.sourceInstanceDeletionTime = defaults.sourceInstanceDeletionTime;
     	      this.sourceInstanceName = defaults.sourceInstanceName;
         }
 
@@ -132,6 +150,12 @@ public final class DatabaseInstanceClone {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceInstanceDeletionTime(@Nullable String sourceInstanceDeletionTime) {
+
+            this.sourceInstanceDeletionTime = sourceInstanceDeletionTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceInstanceName(String sourceInstanceName) {
             if (sourceInstanceName == null) {
               throw new MissingRequiredPropertyException("DatabaseInstanceClone", "sourceInstanceName");
@@ -145,6 +169,7 @@ public final class DatabaseInstanceClone {
             _resultValue.databaseNames = databaseNames;
             _resultValue.pointInTime = pointInTime;
             _resultValue.preferredZone = preferredZone;
+            _resultValue.sourceInstanceDeletionTime = sourceInstanceDeletionTime;
             _resultValue.sourceInstanceName = sourceInstanceName;
             return _resultValue;
         }

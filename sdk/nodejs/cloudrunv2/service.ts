@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     template: {
+ *         healthCheckDisabled: true,
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
  *             resources: {

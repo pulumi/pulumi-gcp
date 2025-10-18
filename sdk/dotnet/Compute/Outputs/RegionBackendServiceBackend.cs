@@ -96,6 +96,22 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? MaxConnectionsPerInstance;
         /// <summary>
+        /// Defines a maximum number of in-flight requests for the whole NEG
+        /// or instance group. Not available if backend's balancingMode is RATE
+        /// or CONNECTION.
+        /// </summary>
+        public readonly int? MaxInFlightRequests;
+        /// <summary>
+        /// Defines a maximum number of in-flight requests for a single endpoint.
+        /// Not available if backend's balancingMode is RATE or CONNECTION.
+        /// </summary>
+        public readonly int? MaxInFlightRequestsPerEndpoint;
+        /// <summary>
+        /// Defines a maximum number of in-flight requests for a single VM.
+        /// Not available if backend's balancingMode is RATE or CONNECTION.
+        /// </summary>
+        public readonly int? MaxInFlightRequestsPerInstance;
+        /// <summary>
         /// The max requests per second (RPS) of the group. Cannot be set
         /// for INTERNAL backend services.
         /// Can be used with either RATE or UTILIZATION balancing modes,
@@ -126,6 +142,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Cannot be set for INTERNAL backend services.
         /// </summary>
         public readonly double? MaxUtilization;
+        /// <summary>
+        /// This field specifies how long a connection should be kept alive for:
+        /// - LONG: Most of the requests are expected to take more than multiple
+        /// seconds to finish.
+        /// - SHORT: Most requests are expected to finish with a sub-second latency.
+        /// Possible values are: `LONG`, `SHORT`.
+        /// </summary>
+        public readonly string? TrafficDuration;
 
         [OutputConstructor]
         private RegionBackendServiceBackend(
@@ -147,13 +171,21 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? maxConnectionsPerInstance,
 
+            int? maxInFlightRequests,
+
+            int? maxInFlightRequestsPerEndpoint,
+
+            int? maxInFlightRequestsPerInstance,
+
             int? maxRate,
 
             double? maxRatePerEndpoint,
 
             double? maxRatePerInstance,
 
-            double? maxUtilization)
+            double? maxUtilization,
+
+            string? trafficDuration)
         {
             BalancingMode = balancingMode;
             CapacityScaler = capacityScaler;
@@ -164,10 +196,14 @@ namespace Pulumi.Gcp.Compute.Outputs
             MaxConnections = maxConnections;
             MaxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
             MaxConnectionsPerInstance = maxConnectionsPerInstance;
+            MaxInFlightRequests = maxInFlightRequests;
+            MaxInFlightRequestsPerEndpoint = maxInFlightRequestsPerEndpoint;
+            MaxInFlightRequestsPerInstance = maxInFlightRequestsPerInstance;
             MaxRate = maxRate;
             MaxRatePerEndpoint = maxRatePerEndpoint;
             MaxRatePerInstance = maxRatePerInstance;
             MaxUtilization = maxUtilization;
+            TrafficDuration = trafficDuration;
         }
     }
 }

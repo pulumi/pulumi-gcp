@@ -57,7 +57,8 @@ type GetDatabaseInstanceLatestRecoveryTimeArgs struct {
 	// The name of the instance.
 	Instance string `pulumi:"instance"`
 	// The ID of the project in which the resource belongs.
-	Project *string `pulumi:"project"`
+	Project                    *string `pulumi:"project"`
+	SourceInstanceDeletionTime *string `pulumi:"sourceInstanceDeletionTime"`
 }
 
 // A collection of values returned by getDatabaseInstanceLatestRecoveryTime.
@@ -69,7 +70,8 @@ type GetDatabaseInstanceLatestRecoveryTimeResult struct {
 	// Timestamp, identifies the latest recovery time of the source instance.
 	LatestRecoveryTime string `pulumi:"latestRecoveryTime"`
 	// The ID of the project in which the resource belongs.
-	Project string `pulumi:"project"`
+	Project                    string  `pulumi:"project"`
+	SourceInstanceDeletionTime *string `pulumi:"sourceInstanceDeletionTime"`
 }
 
 func GetDatabaseInstanceLatestRecoveryTimeOutput(ctx *pulumi.Context, args GetDatabaseInstanceLatestRecoveryTimeOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseInstanceLatestRecoveryTimeResultOutput {
@@ -86,7 +88,8 @@ type GetDatabaseInstanceLatestRecoveryTimeOutputArgs struct {
 	// The name of the instance.
 	Instance pulumi.StringInput `pulumi:"instance"`
 	// The ID of the project in which the resource belongs.
-	Project pulumi.StringPtrInput `pulumi:"project"`
+	Project                    pulumi.StringPtrInput `pulumi:"project"`
+	SourceInstanceDeletionTime pulumi.StringPtrInput `pulumi:"sourceInstanceDeletionTime"`
 }
 
 func (GetDatabaseInstanceLatestRecoveryTimeOutputArgs) ElementType() reflect.Type {
@@ -126,6 +129,10 @@ func (o GetDatabaseInstanceLatestRecoveryTimeResultOutput) LatestRecoveryTime() 
 // The ID of the project in which the resource belongs.
 func (o GetDatabaseInstanceLatestRecoveryTimeResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceLatestRecoveryTimeResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceLatestRecoveryTimeResultOutput) SourceInstanceDeletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceLatestRecoveryTimeResult) *string { return v.SourceInstanceDeletionTime }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionExportDataArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionPubSubNotificationArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionTagResourcesArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,7 +53,22 @@ public final class PreventionDiscoveryConfigActionArgs extends com.pulumi.resour
     }
 
     /**
-     * Publish a message into the Pub/Sub topic.
+     * Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+     * 
+     */
+    @Import(name="publishToDataplexCatalog")
+    private @Nullable Output<PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs> publishToDataplexCatalog;
+
+    /**
+     * @return Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs>> publishToDataplexCatalog() {
+        return Optional.ofNullable(this.publishToDataplexCatalog);
+    }
+
+    /**
+     * Tag the profiled resources with the specified tag values.
      * Structure is documented below.
      * 
      */
@@ -60,7 +76,7 @@ public final class PreventionDiscoveryConfigActionArgs extends com.pulumi.resour
     private @Nullable Output<PreventionDiscoveryConfigActionTagResourcesArgs> tagResources;
 
     /**
-     * @return Publish a message into the Pub/Sub topic.
+     * @return Tag the profiled resources with the specified tag values.
      * Structure is documented below.
      * 
      */
@@ -73,6 +89,7 @@ public final class PreventionDiscoveryConfigActionArgs extends com.pulumi.resour
     private PreventionDiscoveryConfigActionArgs(PreventionDiscoveryConfigActionArgs $) {
         this.exportData = $.exportData;
         this.pubSubNotification = $.pubSubNotification;
+        this.publishToDataplexCatalog = $.publishToDataplexCatalog;
         this.tagResources = $.tagResources;
     }
 
@@ -141,7 +158,28 @@ public final class PreventionDiscoveryConfigActionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param tagResources Publish a message into the Pub/Sub topic.
+         * @param publishToDataplexCatalog Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishToDataplexCatalog(@Nullable Output<PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs> publishToDataplexCatalog) {
+            $.publishToDataplexCatalog = publishToDataplexCatalog;
+            return this;
+        }
+
+        /**
+         * @param publishToDataplexCatalog Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishToDataplexCatalog(PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs publishToDataplexCatalog) {
+            return publishToDataplexCatalog(Output.of(publishToDataplexCatalog));
+        }
+
+        /**
+         * @param tagResources Tag the profiled resources with the specified tag values.
          * Structure is documented below.
          * 
          * @return builder
@@ -153,7 +191,7 @@ public final class PreventionDiscoveryConfigActionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param tagResources Publish a message into the Pub/Sub topic.
+         * @param tagResources Tag the profiled resources with the specified tag values.
          * Structure is documented below.
          * 
          * @return builder

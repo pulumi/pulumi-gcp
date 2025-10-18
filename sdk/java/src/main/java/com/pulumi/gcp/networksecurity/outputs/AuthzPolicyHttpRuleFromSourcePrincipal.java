@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networksecurity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyHttpRuleFromSourcePrincipalPrincipal;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -13,80 +14,182 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AuthzPolicyHttpRuleFromSourcePrincipal {
     /**
-     * @return The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+     * @return (Optional, Deprecated)
+     * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
      * Examples:
      * * abc matches the value xyz.abc.def
      * 
+     * &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+     * 
+     * @deprecated
+     * `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+     * 
      */
+    @Deprecated /* `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead. */
     private @Nullable String contains;
     /**
-     * @return The input string must match exactly the string specified here.
+     * @return (Optional, Deprecated)
+     * The input string must match exactly the string specified here.
      * Examples:
      * * abc only matches the value abc.
      * 
-     */
-    private @Nullable String exact;
-    /**
-     * @return If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+     * &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+     * 
+     * @deprecated
+     * `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
      * 
      */
+    @Deprecated /* `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead. */
+    private @Nullable String exact;
+    /**
+     * @return (Optional, Deprecated)
+     * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+     * 
+     * &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+     * 
+     * @deprecated
+     * `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+     * 
+     */
+    @Deprecated /* `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead. */
     private @Nullable Boolean ignoreCase;
     /**
-     * @return The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+     * @return (Optional, Deprecated)
+     * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
      * Examples:
      * * abc matches the value abc.xyz
      * 
+     * &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+     * 
+     * @deprecated
+     * `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+     * 
      */
+    @Deprecated /* `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead. */
     private @Nullable String prefix;
     /**
-     * @return The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+     * @return Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+     * Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AuthzPolicyHttpRuleFromSourcePrincipalPrincipal principal;
+    /**
+     * @return An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+     * Default value is `CLIENT_CERT_URI_SAN`.
+     * Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+     * 
+     */
+    private @Nullable String principalSelector;
+    /**
+     * @return (Optional, Deprecated)
+     * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
      * Examples:
      * * abc matches the value xyz.abc
      * 
+     * &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+     * 
+     * @deprecated
+     * `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+     * 
      */
+    @Deprecated /* `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead. */
     private @Nullable String suffix;
 
     private AuthzPolicyHttpRuleFromSourcePrincipal() {}
     /**
-     * @return The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+     * @return (Optional, Deprecated)
+     * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
      * Examples:
      * * abc matches the value xyz.abc.def
      * 
+     * &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+     * 
+     * @deprecated
+     * `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+     * 
      */
+    @Deprecated /* `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead. */
     public Optional<String> contains() {
         return Optional.ofNullable(this.contains);
     }
     /**
-     * @return The input string must match exactly the string specified here.
+     * @return (Optional, Deprecated)
+     * The input string must match exactly the string specified here.
      * Examples:
      * * abc only matches the value abc.
      * 
+     * &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+     * 
+     * @deprecated
+     * `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+     * 
      */
+    @Deprecated /* `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead. */
     public Optional<String> exact() {
         return Optional.ofNullable(this.exact);
     }
     /**
-     * @return If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+     * @return (Optional, Deprecated)
+     * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+     * 
+     * &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+     * 
+     * @deprecated
+     * `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
      * 
      */
+    @Deprecated /* `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead. */
     public Optional<Boolean> ignoreCase() {
         return Optional.ofNullable(this.ignoreCase);
     }
     /**
-     * @return The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+     * @return (Optional, Deprecated)
+     * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
      * Examples:
      * * abc matches the value abc.xyz
      * 
+     * &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+     * 
+     * @deprecated
+     * `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+     * 
      */
+    @Deprecated /* `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead. */
     public Optional<String> prefix() {
         return Optional.ofNullable(this.prefix);
     }
     /**
-     * @return The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+     * @return Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+     * Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AuthzPolicyHttpRuleFromSourcePrincipalPrincipal> principal() {
+        return Optional.ofNullable(this.principal);
+    }
+    /**
+     * @return An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+     * Default value is `CLIENT_CERT_URI_SAN`.
+     * Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+     * 
+     */
+    public Optional<String> principalSelector() {
+        return Optional.ofNullable(this.principalSelector);
+    }
+    /**
+     * @return (Optional, Deprecated)
+     * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
      * Examples:
      * * abc matches the value xyz.abc
      * 
+     * &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+     * 
+     * @deprecated
+     * `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+     * 
      */
+    @Deprecated /* `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead. */
     public Optional<String> suffix() {
         return Optional.ofNullable(this.suffix);
     }
@@ -104,6 +207,8 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
         private @Nullable String exact;
         private @Nullable Boolean ignoreCase;
         private @Nullable String prefix;
+        private @Nullable AuthzPolicyHttpRuleFromSourcePrincipalPrincipal principal;
+        private @Nullable String principalSelector;
         private @Nullable String suffix;
         public Builder() {}
         public Builder(AuthzPolicyHttpRuleFromSourcePrincipal defaults) {
@@ -112,6 +217,8 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
     	      this.exact = defaults.exact;
     	      this.ignoreCase = defaults.ignoreCase;
     	      this.prefix = defaults.prefix;
+    	      this.principal = defaults.principal;
+    	      this.principalSelector = defaults.principalSelector;
     	      this.suffix = defaults.suffix;
         }
 
@@ -140,6 +247,18 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
             return this;
         }
         @CustomType.Setter
+        public Builder principal(@Nullable AuthzPolicyHttpRuleFromSourcePrincipalPrincipal principal) {
+
+            this.principal = principal;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder principalSelector(@Nullable String principalSelector) {
+
+            this.principalSelector = principalSelector;
+            return this;
+        }
+        @CustomType.Setter
         public Builder suffix(@Nullable String suffix) {
 
             this.suffix = suffix;
@@ -151,6 +270,8 @@ public final class AuthzPolicyHttpRuleFromSourcePrincipal {
             _resultValue.exact = exact;
             _resultValue.ignoreCase = ignoreCase;
             _resultValue.prefix = prefix;
+            _resultValue.principal = principal;
+            _resultValue.principalSelector = principalSelector;
             _resultValue.suffix = suffix;
             return _resultValue;
         }

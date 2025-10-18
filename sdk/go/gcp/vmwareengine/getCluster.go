@@ -63,6 +63,7 @@ type LookupClusterArgs struct {
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
 	AutoscalingSettings []GetClusterAutoscalingSetting `pulumi:"autoscalingSettings"`
+	CreateTime          string                         `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id              string                     `pulumi:"id"`
 	Management      bool                       `pulumi:"management"`
@@ -71,6 +72,7 @@ type LookupClusterResult struct {
 	Parent          string                     `pulumi:"parent"`
 	State           string                     `pulumi:"state"`
 	Uid             string                     `pulumi:"uid"`
+	UpdateTime      string                     `pulumi:"updateTime"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -113,6 +115,10 @@ func (o LookupClusterResultOutput) AutoscalingSettings() GetClusterAutoscalingSe
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterAutoscalingSetting { return v.AutoscalingSettings }).(GetClusterAutoscalingSettingArrayOutput)
 }
 
+func (o LookupClusterResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
@@ -140,6 +146,10 @@ func (o LookupClusterResultOutput) State() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 func init() {

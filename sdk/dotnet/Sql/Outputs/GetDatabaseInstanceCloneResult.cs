@@ -30,6 +30,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string PreferredZone;
         /// <summary>
+        /// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+        /// </summary>
+        public readonly string SourceInstanceDeletionTime;
+        /// <summary>
         /// The name of the instance from which the point in time should be restored.
         /// </summary>
         public readonly string SourceInstanceName;
@@ -44,12 +48,15 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string preferredZone,
 
+            string sourceInstanceDeletionTime,
+
             string sourceInstanceName)
         {
             AllocatedIpRange = allocatedIpRange;
             DatabaseNames = databaseNames;
             PointInTime = pointInTime;
             PreferredZone = preferredZone;
+            SourceInstanceDeletionTime = sourceInstanceDeletionTime;
             SourceInstanceName = sourceInstanceName;
         }
     }

@@ -214,6 +214,14 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> StateMessage { get; private set; } = null!;
 
         /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The globally unique resource identifier of the metastore federation.
         /// </summary>
         [Output("uid")]
@@ -332,6 +340,20 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
@@ -460,6 +482,20 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("stateMessage")]
         public Input<string>? StateMessage { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The globally unique resource identifier of the metastore federation.

@@ -20,6 +20,95 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// ## Example Usage
     /// 
+    /// ### Wasm Plugin Basic Docker Repository
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var wasmPlugin = new Gcp.NetworkServices.WasmPlugin("wasm_plugin", new()
+    ///     {
+    ///         Name = "my-wasm-plugin",
+    ///         Description = "my wasm plugin from a docker repository",
+    ///         MainVersionId = "v1",
+    ///         Labels = 
+    ///         {
+    ///             { "test_label", "test_value" },
+    ///         },
+    ///         LogConfig = new Gcp.NetworkServices.Inputs.WasmPluginLogConfigArgs
+    ///         {
+    ///             Enable = true,
+    ///             SampleRate = 1,
+    ///             MinLogLevel = "WARN",
+    ///         },
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.WasmPluginVersionArgs
+    ///             {
+    ///                 VersionName = "v1",
+    ///                 Description = "v1 version of my wasm plugin",
+    ///                 ImageUri = $"us-central1-docker.pkg.dev/{project.Apply(getProjectResult =&gt; getProjectResult.Name)}/my-artifact-registry-docker-repository/my-wasm-plugin-data:prod",
+    ///                 Labels = 
+    ///                 {
+    ///                     { "test_label", "test_value" },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Wasm Plugin Basic Generic Repository
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var wasmPlugin = new Gcp.NetworkServices.WasmPlugin("wasm_plugin", new()
+    ///     {
+    ///         Name = "my-wasm-plugin",
+    ///         Description = "my wasm plugin from a generic repository",
+    ///         MainVersionId = "v1",
+    ///         Labels = 
+    ///         {
+    ///             { "test_label", "test_value" },
+    ///         },
+    ///         LogConfig = new Gcp.NetworkServices.Inputs.WasmPluginLogConfigArgs
+    ///         {
+    ///             Enable = true,
+    ///             SampleRate = 1,
+    ///             MinLogLevel = "WARN",
+    ///         },
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.WasmPluginVersionArgs
+    ///             {
+    ///                 VersionName = "v1",
+    ///                 Description = "v1 version of my wasm plugin",
+    ///                 ImageUri = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Name)}/locations/us-central1/repositories/my-artifact-registry-generic-repository/genericArtifacts/my-wasm-plugin-data:v1",
+    ///                 Labels = 
+    ///                 {
+    ///                     { "test_label", "test_value" },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// WasmPlugin can be imported using any of these accepted formats:

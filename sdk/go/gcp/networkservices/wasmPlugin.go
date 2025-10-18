@@ -22,6 +22,111 @@ import (
 //
 // ## Example Usage
 //
+// ### Wasm Plugin Basic Docker Repository
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewWasmPlugin(ctx, "wasm_plugin", &networkservices.WasmPluginArgs{
+//				Name:          pulumi.String("my-wasm-plugin"),
+//				Description:   pulumi.String("my wasm plugin from a docker repository"),
+//				MainVersionId: pulumi.String("v1"),
+//				Labels: pulumi.StringMap{
+//					"test_label": pulumi.String("test_value"),
+//				},
+//				LogConfig: &networkservices.WasmPluginLogConfigArgs{
+//					Enable:      pulumi.Bool(true),
+//					SampleRate:  pulumi.Float64(1),
+//					MinLogLevel: pulumi.String("WARN"),
+//				},
+//				Versions: networkservices.WasmPluginVersionArray{
+//					&networkservices.WasmPluginVersionArgs{
+//						VersionName: pulumi.String("v1"),
+//						Description: pulumi.String("v1 version of my wasm plugin"),
+//						ImageUri:    pulumi.Sprintf("us-central1-docker.pkg.dev/%v/my-artifact-registry-docker-repository/my-wasm-plugin-data:prod", project.Name),
+//						Labels: pulumi.StringMap{
+//							"test_label": pulumi.String("test_value"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Wasm Plugin Basic Generic Repository
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewWasmPlugin(ctx, "wasm_plugin", &networkservices.WasmPluginArgs{
+//				Name:          pulumi.String("my-wasm-plugin"),
+//				Description:   pulumi.String("my wasm plugin from a generic repository"),
+//				MainVersionId: pulumi.String("v1"),
+//				Labels: pulumi.StringMap{
+//					"test_label": pulumi.String("test_value"),
+//				},
+//				LogConfig: &networkservices.WasmPluginLogConfigArgs{
+//					Enable:      pulumi.Bool(true),
+//					SampleRate:  pulumi.Float64(1),
+//					MinLogLevel: pulumi.String("WARN"),
+//				},
+//				Versions: networkservices.WasmPluginVersionArray{
+//					&networkservices.WasmPluginVersionArgs{
+//						VersionName: pulumi.String("v1"),
+//						Description: pulumi.String("v1 version of my wasm plugin"),
+//						ImageUri:    pulumi.Sprintf("projects/%v/locations/us-central1/repositories/my-artifact-registry-generic-repository/genericArtifacts/my-wasm-plugin-data:v1", project.Name),
+//						Labels: pulumi.StringMap{
+//							"test_label": pulumi.String("test_value"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // WasmPlugin can be imported using any of these accepted formats:

@@ -762,9 +762,14 @@ type VolumeHybridReplicationParameters struct {
 	ClusterLocation *string `pulumi:"clusterLocation"`
 	// Optional. Description of the replication.
 	Description *string `pulumi:"description"`
+	// Optional. Type of the volume's hybrid replication.
+	// Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+	HybridReplicationType *string `pulumi:"hybridReplicationType"`
 	// Optional. Labels to be added to the replication as the key value pairs.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
+	// Optional. Constituent volume count for large volume.
+	LargeVolumeConstituentCount *int `pulumi:"largeVolumeConstituentCount"`
 	// Required. Name of the user's local source cluster to be peered with the destination cluster.
 	PeerClusterName *string `pulumi:"peerClusterName"`
 	// Required. List of node ip addresses to be peered with.
@@ -775,6 +780,9 @@ type VolumeHybridReplicationParameters struct {
 	PeerVolumeName *string `pulumi:"peerVolumeName"`
 	// Required. Desired name for the replication of this volume.
 	Replication *string `pulumi:"replication"`
+	// Optional. Replication Schedule for the replication created.
+	// Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+	ReplicationSchedule *string `pulumi:"replicationSchedule"`
 }
 
 // VolumeHybridReplicationParametersInput is an input type that accepts VolumeHybridReplicationParametersArgs and VolumeHybridReplicationParametersOutput values.
@@ -793,9 +801,14 @@ type VolumeHybridReplicationParametersArgs struct {
 	ClusterLocation pulumi.StringPtrInput `pulumi:"clusterLocation"`
 	// Optional. Description of the replication.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Optional. Type of the volume's hybrid replication.
+	// Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+	HybridReplicationType pulumi.StringPtrInput `pulumi:"hybridReplicationType"`
 	// Optional. Labels to be added to the replication as the key value pairs.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Optional. Constituent volume count for large volume.
+	LargeVolumeConstituentCount pulumi.IntPtrInput `pulumi:"largeVolumeConstituentCount"`
 	// Required. Name of the user's local source cluster to be peered with the destination cluster.
 	PeerClusterName pulumi.StringPtrInput `pulumi:"peerClusterName"`
 	// Required. List of node ip addresses to be peered with.
@@ -806,6 +819,9 @@ type VolumeHybridReplicationParametersArgs struct {
 	PeerVolumeName pulumi.StringPtrInput `pulumi:"peerVolumeName"`
 	// Required. Desired name for the replication of this volume.
 	Replication pulumi.StringPtrInput `pulumi:"replication"`
+	// Optional. Replication Schedule for the replication created.
+	// Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+	ReplicationSchedule pulumi.StringPtrInput `pulumi:"replicationSchedule"`
 }
 
 func (VolumeHybridReplicationParametersArgs) ElementType() reflect.Type {
@@ -895,10 +911,21 @@ func (o VolumeHybridReplicationParametersOutput) Description() pulumi.StringPtrO
 	return o.ApplyT(func(v VolumeHybridReplicationParameters) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Type of the volume's hybrid replication.
+// Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+func (o VolumeHybridReplicationParametersOutput) HybridReplicationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeHybridReplicationParameters) *string { return v.HybridReplicationType }).(pulumi.StringPtrOutput)
+}
+
 // Optional. Labels to be added to the replication as the key value pairs.
 // An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o VolumeHybridReplicationParametersOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VolumeHybridReplicationParameters) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Constituent volume count for large volume.
+func (o VolumeHybridReplicationParametersOutput) LargeVolumeConstituentCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VolumeHybridReplicationParameters) *int { return v.LargeVolumeConstituentCount }).(pulumi.IntPtrOutput)
 }
 
 // Required. Name of the user's local source cluster to be peered with the destination cluster.
@@ -924,6 +951,12 @@ func (o VolumeHybridReplicationParametersOutput) PeerVolumeName() pulumi.StringP
 // Required. Desired name for the replication of this volume.
 func (o VolumeHybridReplicationParametersOutput) Replication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeHybridReplicationParameters) *string { return v.Replication }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Replication Schedule for the replication created.
+// Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+func (o VolumeHybridReplicationParametersOutput) ReplicationSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeHybridReplicationParameters) *string { return v.ReplicationSchedule }).(pulumi.StringPtrOutput)
 }
 
 type VolumeHybridReplicationParametersPtrOutput struct{ *pulumi.OutputState }
@@ -970,6 +1003,17 @@ func (o VolumeHybridReplicationParametersPtrOutput) Description() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Type of the volume's hybrid replication.
+// Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+func (o VolumeHybridReplicationParametersPtrOutput) HybridReplicationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeHybridReplicationParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HybridReplicationType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. Labels to be added to the replication as the key value pairs.
 // An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o VolumeHybridReplicationParametersPtrOutput) Labels() pulumi.StringMapOutput {
@@ -979,6 +1023,16 @@ func (o VolumeHybridReplicationParametersPtrOutput) Labels() pulumi.StringMapOut
 		}
 		return v.Labels
 	}).(pulumi.StringMapOutput)
+}
+
+// Optional. Constituent volume count for large volume.
+func (o VolumeHybridReplicationParametersPtrOutput) LargeVolumeConstituentCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VolumeHybridReplicationParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LargeVolumeConstituentCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // Required. Name of the user's local source cluster to be peered with the destination cluster.
@@ -1028,6 +1082,17 @@ func (o VolumeHybridReplicationParametersPtrOutput) Replication() pulumi.StringP
 			return nil
 		}
 		return v.Replication
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Replication Schedule for the replication created.
+// Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+func (o VolumeHybridReplicationParametersPtrOutput) ReplicationSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeHybridReplicationParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationSchedule
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1745,6 +1810,106 @@ func (o VolumeReplicationHybridPeeringDetailArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeReplicationHybridPeeringDetail {
 		return vs[0].([]VolumeReplicationHybridPeeringDetail)[vs[1].(int)]
 	}).(VolumeReplicationHybridPeeringDetailOutput)
+}
+
+type VolumeReplicationHybridReplicationUserCommand struct {
+	// (Output)
+	// List of commands to be executed by the customer.
+	Commands []string `pulumi:"commands"`
+}
+
+// VolumeReplicationHybridReplicationUserCommandInput is an input type that accepts VolumeReplicationHybridReplicationUserCommandArgs and VolumeReplicationHybridReplicationUserCommandOutput values.
+// You can construct a concrete instance of `VolumeReplicationHybridReplicationUserCommandInput` via:
+//
+//	VolumeReplicationHybridReplicationUserCommandArgs{...}
+type VolumeReplicationHybridReplicationUserCommandInput interface {
+	pulumi.Input
+
+	ToVolumeReplicationHybridReplicationUserCommandOutput() VolumeReplicationHybridReplicationUserCommandOutput
+	ToVolumeReplicationHybridReplicationUserCommandOutputWithContext(context.Context) VolumeReplicationHybridReplicationUserCommandOutput
+}
+
+type VolumeReplicationHybridReplicationUserCommandArgs struct {
+	// (Output)
+	// List of commands to be executed by the customer.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (VolumeReplicationHybridReplicationUserCommandArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeReplicationHybridReplicationUserCommand)(nil)).Elem()
+}
+
+func (i VolumeReplicationHybridReplicationUserCommandArgs) ToVolumeReplicationHybridReplicationUserCommandOutput() VolumeReplicationHybridReplicationUserCommandOutput {
+	return i.ToVolumeReplicationHybridReplicationUserCommandOutputWithContext(context.Background())
+}
+
+func (i VolumeReplicationHybridReplicationUserCommandArgs) ToVolumeReplicationHybridReplicationUserCommandOutputWithContext(ctx context.Context) VolumeReplicationHybridReplicationUserCommandOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeReplicationHybridReplicationUserCommandOutput)
+}
+
+// VolumeReplicationHybridReplicationUserCommandArrayInput is an input type that accepts VolumeReplicationHybridReplicationUserCommandArray and VolumeReplicationHybridReplicationUserCommandArrayOutput values.
+// You can construct a concrete instance of `VolumeReplicationHybridReplicationUserCommandArrayInput` via:
+//
+//	VolumeReplicationHybridReplicationUserCommandArray{ VolumeReplicationHybridReplicationUserCommandArgs{...} }
+type VolumeReplicationHybridReplicationUserCommandArrayInput interface {
+	pulumi.Input
+
+	ToVolumeReplicationHybridReplicationUserCommandArrayOutput() VolumeReplicationHybridReplicationUserCommandArrayOutput
+	ToVolumeReplicationHybridReplicationUserCommandArrayOutputWithContext(context.Context) VolumeReplicationHybridReplicationUserCommandArrayOutput
+}
+
+type VolumeReplicationHybridReplicationUserCommandArray []VolumeReplicationHybridReplicationUserCommandInput
+
+func (VolumeReplicationHybridReplicationUserCommandArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeReplicationHybridReplicationUserCommand)(nil)).Elem()
+}
+
+func (i VolumeReplicationHybridReplicationUserCommandArray) ToVolumeReplicationHybridReplicationUserCommandArrayOutput() VolumeReplicationHybridReplicationUserCommandArrayOutput {
+	return i.ToVolumeReplicationHybridReplicationUserCommandArrayOutputWithContext(context.Background())
+}
+
+func (i VolumeReplicationHybridReplicationUserCommandArray) ToVolumeReplicationHybridReplicationUserCommandArrayOutputWithContext(ctx context.Context) VolumeReplicationHybridReplicationUserCommandArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeReplicationHybridReplicationUserCommandArrayOutput)
+}
+
+type VolumeReplicationHybridReplicationUserCommandOutput struct{ *pulumi.OutputState }
+
+func (VolumeReplicationHybridReplicationUserCommandOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeReplicationHybridReplicationUserCommand)(nil)).Elem()
+}
+
+func (o VolumeReplicationHybridReplicationUserCommandOutput) ToVolumeReplicationHybridReplicationUserCommandOutput() VolumeReplicationHybridReplicationUserCommandOutput {
+	return o
+}
+
+func (o VolumeReplicationHybridReplicationUserCommandOutput) ToVolumeReplicationHybridReplicationUserCommandOutputWithContext(ctx context.Context) VolumeReplicationHybridReplicationUserCommandOutput {
+	return o
+}
+
+// (Output)
+// List of commands to be executed by the customer.
+func (o VolumeReplicationHybridReplicationUserCommandOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VolumeReplicationHybridReplicationUserCommand) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type VolumeReplicationHybridReplicationUserCommandArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeReplicationHybridReplicationUserCommandArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeReplicationHybridReplicationUserCommand)(nil)).Elem()
+}
+
+func (o VolumeReplicationHybridReplicationUserCommandArrayOutput) ToVolumeReplicationHybridReplicationUserCommandArrayOutput() VolumeReplicationHybridReplicationUserCommandArrayOutput {
+	return o
+}
+
+func (o VolumeReplicationHybridReplicationUserCommandArrayOutput) ToVolumeReplicationHybridReplicationUserCommandArrayOutputWithContext(ctx context.Context) VolumeReplicationHybridReplicationUserCommandArrayOutput {
+	return o
+}
+
+func (o VolumeReplicationHybridReplicationUserCommandArrayOutput) Index(i pulumi.IntInput) VolumeReplicationHybridReplicationUserCommandOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeReplicationHybridReplicationUserCommand {
+		return vs[0].([]VolumeReplicationHybridReplicationUserCommand)[vs[1].(int)]
+	}).(VolumeReplicationHybridReplicationUserCommandOutput)
 }
 
 type VolumeReplicationTransferStat struct {
@@ -3271,6 +3436,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationDestinationVolumeParametersTieringPolicyPtrInput)(nil)).Elem(), VolumeReplicationDestinationVolumeParametersTieringPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationHybridPeeringDetailInput)(nil)).Elem(), VolumeReplicationHybridPeeringDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationHybridPeeringDetailArrayInput)(nil)).Elem(), VolumeReplicationHybridPeeringDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationHybridReplicationUserCommandInput)(nil)).Elem(), VolumeReplicationHybridReplicationUserCommandArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationHybridReplicationUserCommandArrayInput)(nil)).Elem(), VolumeReplicationHybridReplicationUserCommandArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationTransferStatInput)(nil)).Elem(), VolumeReplicationTransferStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationTransferStatArrayInput)(nil)).Elem(), VolumeReplicationTransferStatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeRestoreParametersInput)(nil)).Elem(), VolumeRestoreParametersArgs{})
@@ -3305,6 +3472,8 @@ func init() {
 	pulumi.RegisterOutputType(VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput{})
 	pulumi.RegisterOutputType(VolumeReplicationHybridPeeringDetailOutput{})
 	pulumi.RegisterOutputType(VolumeReplicationHybridPeeringDetailArrayOutput{})
+	pulumi.RegisterOutputType(VolumeReplicationHybridReplicationUserCommandOutput{})
+	pulumi.RegisterOutputType(VolumeReplicationHybridReplicationUserCommandArrayOutput{})
 	pulumi.RegisterOutputType(VolumeReplicationTransferStatOutput{})
 	pulumi.RegisterOutputType(VolumeReplicationTransferStatArrayOutput{})
 	pulumi.RegisterOutputType(VolumeRestoreParametersOutput{})

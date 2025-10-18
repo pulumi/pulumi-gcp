@@ -73,8 +73,9 @@ import (
 //				return err
 //			}
 //			_, err = memcache.NewInstance(ctx, "instance", &memcache.InstanceArgs{
-//				Name:              pulumi.String("test-instance"),
-//				AuthorizedNetwork: privateServiceConnection.Network,
+//				Name:               pulumi.String("test-instance"),
+//				AuthorizedNetwork:  privateServiceConnection.Network,
+//				DeletionProtection: pulumi.Bool(false),
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("test"),
 //				},
@@ -144,7 +145,8 @@ type Instance struct {
 	// 'default' will be used.
 	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
 	// Creation timestamp in RFC3339 text format.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Endpoint for Discovery API
 	DiscoveryEndpoint pulumi.StringOutput `pulumi:"discoveryEndpoint"`
 	// A user-visible name for the instance.
@@ -245,7 +247,8 @@ type instanceState struct {
 	// 'default' will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// Creation timestamp in RFC3339 text format.
-	CreateTime *string `pulumi:"createTime"`
+	CreateTime         *string `pulumi:"createTime"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// Endpoint for Discovery API
 	DiscoveryEndpoint *string `pulumi:"discoveryEndpoint"`
 	// A user-visible name for the instance.
@@ -306,7 +309,8 @@ type InstanceState struct {
 	// 'default' will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
-	CreateTime pulumi.StringPtrInput
+	CreateTime         pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// Endpoint for Discovery API
 	DiscoveryEndpoint pulumi.StringPtrInput
 	// A user-visible name for the instance.
@@ -369,7 +373,8 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
-	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
+	AuthorizedNetwork  *string `pulumi:"authorizedNetwork"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// A user-visible name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
@@ -414,7 +419,8 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
-	AuthorizedNetwork pulumi.StringPtrInput
+	AuthorizedNetwork  pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// A user-visible name for the instance.
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
@@ -551,6 +557,10 @@ func (o InstanceOutput) AuthorizedNetwork() pulumi.StringOutput {
 // Creation timestamp in RFC3339 text format.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // Endpoint for Discovery API

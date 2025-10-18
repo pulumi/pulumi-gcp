@@ -39,6 +39,65 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
+    /// ### Beyondcorp Security Gateway Spa
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example_spa = new Gcp.Beyondcorp.SecurityGateway("example-spa", new()
+    ///     {
+    ///         SecurityGatewayId = "default-spa",
+    ///         DisplayName = "My SPA Security Gateway resource",
+    ///         ProxyProtocolConfig = new Gcp.Beyondcorp.Inputs.SecurityGatewayProxyProtocolConfigArgs
+    ///         {
+    ///             AllowedClientHeaders = new[]
+    ///             {
+    ///                 "header1",
+    ///                 "header2",
+    ///             },
+    ///             ContextualHeaders = new Gcp.Beyondcorp.Inputs.SecurityGatewayProxyProtocolConfigContextualHeadersArgs
+    ///             {
+    ///                 UserInfo = new Gcp.Beyondcorp.Inputs.SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs
+    ///                 {
+    ///                     OutputType = "PROTOBUF",
+    ///                 },
+    ///                 GroupInfo = new Gcp.Beyondcorp.Inputs.SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs
+    ///                 {
+    ///                     OutputType = "JSON",
+    ///                 },
+    ///                 DeviceInfo = new Gcp.Beyondcorp.Inputs.SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs
+    ///                 {
+    ///                     OutputType = "NONE",
+    ///                 },
+    ///                 OutputType = "NONE",
+    ///             },
+    ///             MetadataHeaders = 
+    ///             {
+    ///                 { "metadata-header1", "value1" },
+    ///                 { "metadata-header2", "value2" },
+    ///             },
+    ///             GatewayIdentity = "RESOURCE_NAME",
+    ///             ClientIp = true,
+    ///         },
+    ///         ServiceDiscovery = new Gcp.Beyondcorp.Inputs.SecurityGatewayServiceDiscoveryArgs
+    ///         {
+    ///             ApiGateway = new Gcp.Beyondcorp.Inputs.SecurityGatewayServiceDiscoveryApiGatewayArgs
+    ///             {
+    ///                 ResourceOverride = new Gcp.Beyondcorp.Inputs.SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs
+    ///                 {
+    ///                     Path = "/api/v1/routes",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -124,6 +183,13 @@ namespace Pulumi.Gcp.Beyondcorp
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Shared proxy configuration for all apps.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("proxyProtocolConfig")]
+        public Output<Outputs.SecurityGatewayProxyProtocolConfig?> ProxyProtocolConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. User-settable SecurityGateway resource ID.
         /// * Must start with a letter.
         /// * Must contain between 4-63 characters from `/a-z-/`.
@@ -131,6 +197,13 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Output("securityGatewayId")]
         public Output<string> SecurityGatewayId { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings related to the Service Discovery.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("serviceDiscovery")]
+        public Output<Outputs.SecurityGatewayServiceDiscovery?> ServiceDiscovery { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The operational state of the SecurityGateway.
@@ -236,6 +309,13 @@ namespace Pulumi.Gcp.Beyondcorp
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Shared proxy configuration for all apps.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("proxyProtocolConfig")]
+        public Input<Inputs.SecurityGatewayProxyProtocolConfigArgs>? ProxyProtocolConfig { get; set; }
+
+        /// <summary>
         /// Optional. User-settable SecurityGateway resource ID.
         /// * Must start with a letter.
         /// * Must contain between 4-63 characters from `/a-z-/`.
@@ -243,6 +323,13 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Input("securityGatewayId", required: true)]
         public Input<string> SecurityGatewayId { get; set; } = null!;
+
+        /// <summary>
+        /// Settings related to the Service Discovery.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("serviceDiscovery")]
+        public Input<Inputs.SecurityGatewayServiceDiscoveryArgs>? ServiceDiscovery { get; set; }
 
         public SecurityGatewayArgs()
         {
@@ -321,6 +408,13 @@ namespace Pulumi.Gcp.Beyondcorp
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Shared proxy configuration for all apps.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("proxyProtocolConfig")]
+        public Input<Inputs.SecurityGatewayProxyProtocolConfigGetArgs>? ProxyProtocolConfig { get; set; }
+
+        /// <summary>
         /// Optional. User-settable SecurityGateway resource ID.
         /// * Must start with a letter.
         /// * Must contain between 4-63 characters from `/a-z-/`.
@@ -328,6 +422,13 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Input("securityGatewayId")]
         public Input<string>? SecurityGatewayId { get; set; }
+
+        /// <summary>
+        /// Settings related to the Service Discovery.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("serviceDiscovery")]
+        public Input<Inputs.SecurityGatewayServiceDiscoveryGetArgs>? ServiceDiscovery { get; set; }
 
         /// <summary>
         /// Output only. The operational state of the SecurityGateway.

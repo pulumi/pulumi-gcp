@@ -80,6 +80,7 @@ import (
 //				DeletionProtection: pulumi.Bool(false),
 //				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
+//					HealthCheckDisabled: pulumi.Bool(true),
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
 //							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),

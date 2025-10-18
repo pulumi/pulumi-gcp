@@ -159,8 +159,11 @@ namespace Pulumi.Gcp.VMwareEngine
     [OutputType]
     public sealed class GetPrivateCloudResult
     {
+        public readonly string CreateTime;
+        public readonly string DeleteTime;
         public readonly int DeletionDelayHours;
         public readonly string Description;
+        public readonly string ExpireTime;
         public readonly ImmutableArray<Outputs.GetPrivateCloudHcxResult> Hcxes;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -176,13 +179,20 @@ namespace Pulumi.Gcp.VMwareEngine
         public readonly string State;
         public readonly string Type;
         public readonly string Uid;
+        public readonly string UpdateTime;
         public readonly ImmutableArray<Outputs.GetPrivateCloudVcenterResult> Vcenters;
 
         [OutputConstructor]
         private GetPrivateCloudResult(
+            string createTime,
+
+            string deleteTime,
+
             int deletionDelayHours,
 
             string description,
+
+            string expireTime,
 
             ImmutableArray<Outputs.GetPrivateCloudHcxResult> hcxes,
 
@@ -208,10 +218,15 @@ namespace Pulumi.Gcp.VMwareEngine
 
             string uid,
 
+            string updateTime,
+
             ImmutableArray<Outputs.GetPrivateCloudVcenterResult> vcenters)
         {
+            CreateTime = createTime;
+            DeleteTime = deleteTime;
             DeletionDelayHours = deletionDelayHours;
             Description = description;
+            ExpireTime = expireTime;
             Hcxes = hcxes;
             Id = id;
             Location = location;
@@ -224,6 +239,7 @@ namespace Pulumi.Gcp.VMwareEngine
             State = state;
             Type = type;
             Uid = uid;
+            UpdateTime = updateTime;
             Vcenters = vcenters;
         }
     }

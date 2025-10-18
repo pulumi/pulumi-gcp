@@ -37,6 +37,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Creation time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and
+     * up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Creation time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and
+     * up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * True if the cluster is a management cluster; false otherwise.
      * There can only be one management cluster in a private cloud and it has to be the first one.
      * 
@@ -136,16 +155,37 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.uid);
     }
 
+    /**
+     * Last updated time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return Last updated time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
     private ClusterState() {}
 
     private ClusterState(ClusterState $) {
         this.autoscalingSettings = $.autoscalingSettings;
+        this.createTime = $.createTime;
         this.management = $.management;
         this.name = $.name;
         this.nodeTypeConfigs = $.nodeTypeConfigs;
         this.parent = $.parent;
         this.state = $.state;
         this.uid = $.uid;
+        this.updateTime = $.updateTime;
     }
 
     public static Builder builder() {
@@ -187,6 +227,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoscalingSettings(ClusterAutoscalingSettingsArgs autoscalingSettings) {
             return autoscalingSettings(Output.of(autoscalingSettings));
+        }
+
+        /**
+         * @param createTime Creation time of this resource.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and
+         * up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Creation time of this resource.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and
+         * up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -335,6 +400,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
+        }
+
+        /**
+         * @param updateTime Last updated time of this resource.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+         * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime Last updated time of this resource.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+         * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
         }
 
         public ClusterState build() {

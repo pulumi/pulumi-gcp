@@ -94,6 +94,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///             agentspaceBasic.DataStoreId,
     ///         },
     ///         IndustryVertical = "GENERIC",
+    ///         AppType = "APP_TYPE_INTRANET",
     ///         SearchEngineConfig = null,
     ///     });
     /// 
@@ -184,6 +185,16 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Output("industryVertical")]
         public Output<string?> IndustryVertical { get; private set; } = null!;
+
+        /// <summary>
+        /// The KMS key to be used to protect this Engine at creation time.
+        /// Must be set for requests that need to comply with CMEK Org Policy
+        /// protections.
+        /// If this field is set and processed successfully, the Engine will be
+        /// protected by the KMS key, as indicated in the CmekConfig field.
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string?> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
         /// Location.
@@ -331,6 +342,16 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Input<string>? IndustryVertical { get; set; }
 
         /// <summary>
+        /// The KMS key to be used to protect this Engine at creation time.
+        /// Must be set for requests that need to comply with CMEK Org Policy
+        /// protections.
+        /// If this field is set and processed successfully, the Engine will be
+        /// protected by the KMS key, as indicated in the CmekConfig field.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
+
+        /// <summary>
         /// Location.
         /// </summary>
         [Input("location", required: true)]
@@ -427,6 +448,16 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("industryVertical")]
         public Input<string>? IndustryVertical { get; set; }
+
+        /// <summary>
+        /// The KMS key to be used to protect this Engine at creation time.
+        /// Must be set for requests that need to comply with CMEK Org Policy
+        /// protections.
+        /// If this field is set and processed successfully, the Engine will be
+        /// protected by the KMS key, as indicated in the CmekConfig field.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         /// <summary>
         /// Location.

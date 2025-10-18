@@ -134,6 +134,21 @@ public final class VMwareNodePoolArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Anthos version for the node pool. Defaults to the user cluster version.
+     * 
+     */
+    @Import(name="onPremVersion")
+    private @Nullable Output<String> onPremVersion;
+
+    /**
+     * @return Anthos version for the node pool. Defaults to the user cluster version.
+     * 
+     */
+    public Optional<Output<String>> onPremVersion() {
+        return Optional.ofNullable(this.onPremVersion);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -174,6 +189,7 @@ public final class VMwareNodePoolArgs extends com.pulumi.resources.ResourceArgs 
         this.location = $.location;
         this.name = $.name;
         this.nodePoolAutoscaling = $.nodePoolAutoscaling;
+        this.onPremVersion = $.onPremVersion;
         this.project = $.project;
         this.vmwareCluster = $.vmwareCluster;
     }
@@ -344,6 +360,27 @@ public final class VMwareNodePoolArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder nodePoolAutoscaling(VMwareNodePoolNodePoolAutoscalingArgs nodePoolAutoscaling) {
             return nodePoolAutoscaling(Output.of(nodePoolAutoscaling));
+        }
+
+        /**
+         * @param onPremVersion Anthos version for the node pool. Defaults to the user cluster version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onPremVersion(@Nullable Output<String> onPremVersion) {
+            $.onPremVersion = onPremVersion;
+            return this;
+        }
+
+        /**
+         * @param onPremVersion Anthos version for the node pool. Defaults to the user cluster version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onPremVersion(String onPremVersion) {
+            return onPremVersion(Output.of(onPremVersion));
         }
 
         /**

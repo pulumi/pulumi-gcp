@@ -3278,6 +3278,511 @@ func (o AppGroupAttributeArrayOutput) Index(i pulumi.IntInput) AppGroupAttribute
 	}).(AppGroupAttributeOutput)
 }
 
+type DeveloperAppAttribute struct {
+	// Key of the attribute
+	Name *string `pulumi:"name"`
+	// Value of the attribute
+	Value *string `pulumi:"value"`
+}
+
+// DeveloperAppAttributeInput is an input type that accepts DeveloperAppAttributeArgs and DeveloperAppAttributeOutput values.
+// You can construct a concrete instance of `DeveloperAppAttributeInput` via:
+//
+//	DeveloperAppAttributeArgs{...}
+type DeveloperAppAttributeInput interface {
+	pulumi.Input
+
+	ToDeveloperAppAttributeOutput() DeveloperAppAttributeOutput
+	ToDeveloperAppAttributeOutputWithContext(context.Context) DeveloperAppAttributeOutput
+}
+
+type DeveloperAppAttributeArgs struct {
+	// Key of the attribute
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the attribute
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DeveloperAppAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeveloperAppAttribute)(nil)).Elem()
+}
+
+func (i DeveloperAppAttributeArgs) ToDeveloperAppAttributeOutput() DeveloperAppAttributeOutput {
+	return i.ToDeveloperAppAttributeOutputWithContext(context.Background())
+}
+
+func (i DeveloperAppAttributeArgs) ToDeveloperAppAttributeOutputWithContext(ctx context.Context) DeveloperAppAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeveloperAppAttributeOutput)
+}
+
+// DeveloperAppAttributeArrayInput is an input type that accepts DeveloperAppAttributeArray and DeveloperAppAttributeArrayOutput values.
+// You can construct a concrete instance of `DeveloperAppAttributeArrayInput` via:
+//
+//	DeveloperAppAttributeArray{ DeveloperAppAttributeArgs{...} }
+type DeveloperAppAttributeArrayInput interface {
+	pulumi.Input
+
+	ToDeveloperAppAttributeArrayOutput() DeveloperAppAttributeArrayOutput
+	ToDeveloperAppAttributeArrayOutputWithContext(context.Context) DeveloperAppAttributeArrayOutput
+}
+
+type DeveloperAppAttributeArray []DeveloperAppAttributeInput
+
+func (DeveloperAppAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeveloperAppAttribute)(nil)).Elem()
+}
+
+func (i DeveloperAppAttributeArray) ToDeveloperAppAttributeArrayOutput() DeveloperAppAttributeArrayOutput {
+	return i.ToDeveloperAppAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i DeveloperAppAttributeArray) ToDeveloperAppAttributeArrayOutputWithContext(ctx context.Context) DeveloperAppAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeveloperAppAttributeArrayOutput)
+}
+
+type DeveloperAppAttributeOutput struct{ *pulumi.OutputState }
+
+func (DeveloperAppAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeveloperAppAttribute)(nil)).Elem()
+}
+
+func (o DeveloperAppAttributeOutput) ToDeveloperAppAttributeOutput() DeveloperAppAttributeOutput {
+	return o
+}
+
+func (o DeveloperAppAttributeOutput) ToDeveloperAppAttributeOutputWithContext(ctx context.Context) DeveloperAppAttributeOutput {
+	return o
+}
+
+// Key of the attribute
+func (o DeveloperAppAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAppAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the attribute
+func (o DeveloperAppAttributeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAppAttribute) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DeveloperAppAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (DeveloperAppAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeveloperAppAttribute)(nil)).Elem()
+}
+
+func (o DeveloperAppAttributeArrayOutput) ToDeveloperAppAttributeArrayOutput() DeveloperAppAttributeArrayOutput {
+	return o
+}
+
+func (o DeveloperAppAttributeArrayOutput) ToDeveloperAppAttributeArrayOutputWithContext(ctx context.Context) DeveloperAppAttributeArrayOutput {
+	return o
+}
+
+func (o DeveloperAppAttributeArrayOutput) Index(i pulumi.IntInput) DeveloperAppAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeveloperAppAttribute {
+		return vs[0].([]DeveloperAppAttribute)[vs[1].(int)]
+	}).(DeveloperAppAttributeOutput)
+}
+
+type DeveloperAppCredential struct {
+	// List of API products associated with the developer app.
+	ApiProducts []DeveloperAppCredentialApiProduct `pulumi:"apiProducts"`
+	// Developer attributes (name/value pairs). The custom attribute limit is 18.
+	// Structure is documented below.
+	Attributes []DeveloperAppCredentialAttribute `pulumi:"attributes"`
+	// (Output)
+	// Consumer key.
+	ConsumerKey *string `pulumi:"consumerKey"`
+	// (Output)
+	// Secret key.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ConsumerSecret *string `pulumi:"consumerSecret"`
+	// (Output)
+	// Time the credential will expire in milliseconds since epoch.
+	ExpiresAt *string `pulumi:"expiresAt"`
+	// (Output)
+	// Time the credential was issued in milliseconds since epoch.
+	IssuedAt *string `pulumi:"issuedAt"`
+	// Scopes to apply to the developer app.
+	// The specified scopes must already exist for the API product that
+	// you associate with the developer app.
+	Scopes []string `pulumi:"scopes"`
+	// Status of the credential. Valid values include approved or revoked.
+	Status *string `pulumi:"status"`
+}
+
+// DeveloperAppCredentialInput is an input type that accepts DeveloperAppCredentialArgs and DeveloperAppCredentialOutput values.
+// You can construct a concrete instance of `DeveloperAppCredentialInput` via:
+//
+//	DeveloperAppCredentialArgs{...}
+type DeveloperAppCredentialInput interface {
+	pulumi.Input
+
+	ToDeveloperAppCredentialOutput() DeveloperAppCredentialOutput
+	ToDeveloperAppCredentialOutputWithContext(context.Context) DeveloperAppCredentialOutput
+}
+
+type DeveloperAppCredentialArgs struct {
+	// List of API products associated with the developer app.
+	ApiProducts DeveloperAppCredentialApiProductArrayInput `pulumi:"apiProducts"`
+	// Developer attributes (name/value pairs). The custom attribute limit is 18.
+	// Structure is documented below.
+	Attributes DeveloperAppCredentialAttributeArrayInput `pulumi:"attributes"`
+	// (Output)
+	// Consumer key.
+	ConsumerKey pulumi.StringPtrInput `pulumi:"consumerKey"`
+	// (Output)
+	// Secret key.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ConsumerSecret pulumi.StringPtrInput `pulumi:"consumerSecret"`
+	// (Output)
+	// Time the credential will expire in milliseconds since epoch.
+	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
+	// (Output)
+	// Time the credential was issued in milliseconds since epoch.
+	IssuedAt pulumi.StringPtrInput `pulumi:"issuedAt"`
+	// Scopes to apply to the developer app.
+	// The specified scopes must already exist for the API product that
+	// you associate with the developer app.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Status of the credential. Valid values include approved or revoked.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (DeveloperAppCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeveloperAppCredential)(nil)).Elem()
+}
+
+func (i DeveloperAppCredentialArgs) ToDeveloperAppCredentialOutput() DeveloperAppCredentialOutput {
+	return i.ToDeveloperAppCredentialOutputWithContext(context.Background())
+}
+
+func (i DeveloperAppCredentialArgs) ToDeveloperAppCredentialOutputWithContext(ctx context.Context) DeveloperAppCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeveloperAppCredentialOutput)
+}
+
+// DeveloperAppCredentialArrayInput is an input type that accepts DeveloperAppCredentialArray and DeveloperAppCredentialArrayOutput values.
+// You can construct a concrete instance of `DeveloperAppCredentialArrayInput` via:
+//
+//	DeveloperAppCredentialArray{ DeveloperAppCredentialArgs{...} }
+type DeveloperAppCredentialArrayInput interface {
+	pulumi.Input
+
+	ToDeveloperAppCredentialArrayOutput() DeveloperAppCredentialArrayOutput
+	ToDeveloperAppCredentialArrayOutputWithContext(context.Context) DeveloperAppCredentialArrayOutput
+}
+
+type DeveloperAppCredentialArray []DeveloperAppCredentialInput
+
+func (DeveloperAppCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeveloperAppCredential)(nil)).Elem()
+}
+
+func (i DeveloperAppCredentialArray) ToDeveloperAppCredentialArrayOutput() DeveloperAppCredentialArrayOutput {
+	return i.ToDeveloperAppCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i DeveloperAppCredentialArray) ToDeveloperAppCredentialArrayOutputWithContext(ctx context.Context) DeveloperAppCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeveloperAppCredentialArrayOutput)
+}
+
+type DeveloperAppCredentialOutput struct{ *pulumi.OutputState }
+
+func (DeveloperAppCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeveloperAppCredential)(nil)).Elem()
+}
+
+func (o DeveloperAppCredentialOutput) ToDeveloperAppCredentialOutput() DeveloperAppCredentialOutput {
+	return o
+}
+
+func (o DeveloperAppCredentialOutput) ToDeveloperAppCredentialOutputWithContext(ctx context.Context) DeveloperAppCredentialOutput {
+	return o
+}
+
+// List of API products associated with the developer app.
+func (o DeveloperAppCredentialOutput) ApiProducts() DeveloperAppCredentialApiProductArrayOutput {
+	return o.ApplyT(func(v DeveloperAppCredential) []DeveloperAppCredentialApiProduct { return v.ApiProducts }).(DeveloperAppCredentialApiProductArrayOutput)
+}
+
+// Developer attributes (name/value pairs). The custom attribute limit is 18.
+// Structure is documented below.
+func (o DeveloperAppCredentialOutput) Attributes() DeveloperAppCredentialAttributeArrayOutput {
+	return o.ApplyT(func(v DeveloperAppCredential) []DeveloperAppCredentialAttribute { return v.Attributes }).(DeveloperAppCredentialAttributeArrayOutput)
+}
+
+// (Output)
+// Consumer key.
+func (o DeveloperAppCredentialOutput) ConsumerKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAppCredential) *string { return v.ConsumerKey }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Secret key.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o DeveloperAppCredentialOutput) ConsumerSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAppCredential) *string { return v.ConsumerSecret }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Time the credential will expire in milliseconds since epoch.
+func (o DeveloperAppCredentialOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAppCredential) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Time the credential was issued in milliseconds since epoch.
+func (o DeveloperAppCredentialOutput) IssuedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAppCredential) *string { return v.IssuedAt }).(pulumi.StringPtrOutput)
+}
+
+// Scopes to apply to the developer app.
+// The specified scopes must already exist for the API product that
+// you associate with the developer app.
+func (o DeveloperAppCredentialOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeveloperAppCredential) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// Status of the credential. Valid values include approved or revoked.
+func (o DeveloperAppCredentialOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAppCredential) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type DeveloperAppCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (DeveloperAppCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeveloperAppCredential)(nil)).Elem()
+}
+
+func (o DeveloperAppCredentialArrayOutput) ToDeveloperAppCredentialArrayOutput() DeveloperAppCredentialArrayOutput {
+	return o
+}
+
+func (o DeveloperAppCredentialArrayOutput) ToDeveloperAppCredentialArrayOutputWithContext(ctx context.Context) DeveloperAppCredentialArrayOutput {
+	return o
+}
+
+func (o DeveloperAppCredentialArrayOutput) Index(i pulumi.IntInput) DeveloperAppCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeveloperAppCredential {
+		return vs[0].([]DeveloperAppCredential)[vs[1].(int)]
+	}).(DeveloperAppCredentialOutput)
+}
+
+type DeveloperAppCredentialApiProduct struct {
+	// (Output)
+	// Name of the API product.
+	Apiproduct *string `pulumi:"apiproduct"`
+	// Status of the credential. Valid values include approved or revoked.
+	Status *string `pulumi:"status"`
+}
+
+// DeveloperAppCredentialApiProductInput is an input type that accepts DeveloperAppCredentialApiProductArgs and DeveloperAppCredentialApiProductOutput values.
+// You can construct a concrete instance of `DeveloperAppCredentialApiProductInput` via:
+//
+//	DeveloperAppCredentialApiProductArgs{...}
+type DeveloperAppCredentialApiProductInput interface {
+	pulumi.Input
+
+	ToDeveloperAppCredentialApiProductOutput() DeveloperAppCredentialApiProductOutput
+	ToDeveloperAppCredentialApiProductOutputWithContext(context.Context) DeveloperAppCredentialApiProductOutput
+}
+
+type DeveloperAppCredentialApiProductArgs struct {
+	// (Output)
+	// Name of the API product.
+	Apiproduct pulumi.StringPtrInput `pulumi:"apiproduct"`
+	// Status of the credential. Valid values include approved or revoked.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (DeveloperAppCredentialApiProductArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeveloperAppCredentialApiProduct)(nil)).Elem()
+}
+
+func (i DeveloperAppCredentialApiProductArgs) ToDeveloperAppCredentialApiProductOutput() DeveloperAppCredentialApiProductOutput {
+	return i.ToDeveloperAppCredentialApiProductOutputWithContext(context.Background())
+}
+
+func (i DeveloperAppCredentialApiProductArgs) ToDeveloperAppCredentialApiProductOutputWithContext(ctx context.Context) DeveloperAppCredentialApiProductOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeveloperAppCredentialApiProductOutput)
+}
+
+// DeveloperAppCredentialApiProductArrayInput is an input type that accepts DeveloperAppCredentialApiProductArray and DeveloperAppCredentialApiProductArrayOutput values.
+// You can construct a concrete instance of `DeveloperAppCredentialApiProductArrayInput` via:
+//
+//	DeveloperAppCredentialApiProductArray{ DeveloperAppCredentialApiProductArgs{...} }
+type DeveloperAppCredentialApiProductArrayInput interface {
+	pulumi.Input
+
+	ToDeveloperAppCredentialApiProductArrayOutput() DeveloperAppCredentialApiProductArrayOutput
+	ToDeveloperAppCredentialApiProductArrayOutputWithContext(context.Context) DeveloperAppCredentialApiProductArrayOutput
+}
+
+type DeveloperAppCredentialApiProductArray []DeveloperAppCredentialApiProductInput
+
+func (DeveloperAppCredentialApiProductArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeveloperAppCredentialApiProduct)(nil)).Elem()
+}
+
+func (i DeveloperAppCredentialApiProductArray) ToDeveloperAppCredentialApiProductArrayOutput() DeveloperAppCredentialApiProductArrayOutput {
+	return i.ToDeveloperAppCredentialApiProductArrayOutputWithContext(context.Background())
+}
+
+func (i DeveloperAppCredentialApiProductArray) ToDeveloperAppCredentialApiProductArrayOutputWithContext(ctx context.Context) DeveloperAppCredentialApiProductArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeveloperAppCredentialApiProductArrayOutput)
+}
+
+type DeveloperAppCredentialApiProductOutput struct{ *pulumi.OutputState }
+
+func (DeveloperAppCredentialApiProductOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeveloperAppCredentialApiProduct)(nil)).Elem()
+}
+
+func (o DeveloperAppCredentialApiProductOutput) ToDeveloperAppCredentialApiProductOutput() DeveloperAppCredentialApiProductOutput {
+	return o
+}
+
+func (o DeveloperAppCredentialApiProductOutput) ToDeveloperAppCredentialApiProductOutputWithContext(ctx context.Context) DeveloperAppCredentialApiProductOutput {
+	return o
+}
+
+// (Output)
+// Name of the API product.
+func (o DeveloperAppCredentialApiProductOutput) Apiproduct() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAppCredentialApiProduct) *string { return v.Apiproduct }).(pulumi.StringPtrOutput)
+}
+
+// Status of the credential. Valid values include approved or revoked.
+func (o DeveloperAppCredentialApiProductOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAppCredentialApiProduct) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type DeveloperAppCredentialApiProductArrayOutput struct{ *pulumi.OutputState }
+
+func (DeveloperAppCredentialApiProductArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeveloperAppCredentialApiProduct)(nil)).Elem()
+}
+
+func (o DeveloperAppCredentialApiProductArrayOutput) ToDeveloperAppCredentialApiProductArrayOutput() DeveloperAppCredentialApiProductArrayOutput {
+	return o
+}
+
+func (o DeveloperAppCredentialApiProductArrayOutput) ToDeveloperAppCredentialApiProductArrayOutputWithContext(ctx context.Context) DeveloperAppCredentialApiProductArrayOutput {
+	return o
+}
+
+func (o DeveloperAppCredentialApiProductArrayOutput) Index(i pulumi.IntInput) DeveloperAppCredentialApiProductOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeveloperAppCredentialApiProduct {
+		return vs[0].([]DeveloperAppCredentialApiProduct)[vs[1].(int)]
+	}).(DeveloperAppCredentialApiProductOutput)
+}
+
+type DeveloperAppCredentialAttribute struct {
+	// Key of the attribute
+	Name *string `pulumi:"name"`
+	// Value of the attribute
+	Value *string `pulumi:"value"`
+}
+
+// DeveloperAppCredentialAttributeInput is an input type that accepts DeveloperAppCredentialAttributeArgs and DeveloperAppCredentialAttributeOutput values.
+// You can construct a concrete instance of `DeveloperAppCredentialAttributeInput` via:
+//
+//	DeveloperAppCredentialAttributeArgs{...}
+type DeveloperAppCredentialAttributeInput interface {
+	pulumi.Input
+
+	ToDeveloperAppCredentialAttributeOutput() DeveloperAppCredentialAttributeOutput
+	ToDeveloperAppCredentialAttributeOutputWithContext(context.Context) DeveloperAppCredentialAttributeOutput
+}
+
+type DeveloperAppCredentialAttributeArgs struct {
+	// Key of the attribute
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the attribute
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DeveloperAppCredentialAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeveloperAppCredentialAttribute)(nil)).Elem()
+}
+
+func (i DeveloperAppCredentialAttributeArgs) ToDeveloperAppCredentialAttributeOutput() DeveloperAppCredentialAttributeOutput {
+	return i.ToDeveloperAppCredentialAttributeOutputWithContext(context.Background())
+}
+
+func (i DeveloperAppCredentialAttributeArgs) ToDeveloperAppCredentialAttributeOutputWithContext(ctx context.Context) DeveloperAppCredentialAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeveloperAppCredentialAttributeOutput)
+}
+
+// DeveloperAppCredentialAttributeArrayInput is an input type that accepts DeveloperAppCredentialAttributeArray and DeveloperAppCredentialAttributeArrayOutput values.
+// You can construct a concrete instance of `DeveloperAppCredentialAttributeArrayInput` via:
+//
+//	DeveloperAppCredentialAttributeArray{ DeveloperAppCredentialAttributeArgs{...} }
+type DeveloperAppCredentialAttributeArrayInput interface {
+	pulumi.Input
+
+	ToDeveloperAppCredentialAttributeArrayOutput() DeveloperAppCredentialAttributeArrayOutput
+	ToDeveloperAppCredentialAttributeArrayOutputWithContext(context.Context) DeveloperAppCredentialAttributeArrayOutput
+}
+
+type DeveloperAppCredentialAttributeArray []DeveloperAppCredentialAttributeInput
+
+func (DeveloperAppCredentialAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeveloperAppCredentialAttribute)(nil)).Elem()
+}
+
+func (i DeveloperAppCredentialAttributeArray) ToDeveloperAppCredentialAttributeArrayOutput() DeveloperAppCredentialAttributeArrayOutput {
+	return i.ToDeveloperAppCredentialAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i DeveloperAppCredentialAttributeArray) ToDeveloperAppCredentialAttributeArrayOutputWithContext(ctx context.Context) DeveloperAppCredentialAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeveloperAppCredentialAttributeArrayOutput)
+}
+
+type DeveloperAppCredentialAttributeOutput struct{ *pulumi.OutputState }
+
+func (DeveloperAppCredentialAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeveloperAppCredentialAttribute)(nil)).Elem()
+}
+
+func (o DeveloperAppCredentialAttributeOutput) ToDeveloperAppCredentialAttributeOutput() DeveloperAppCredentialAttributeOutput {
+	return o
+}
+
+func (o DeveloperAppCredentialAttributeOutput) ToDeveloperAppCredentialAttributeOutputWithContext(ctx context.Context) DeveloperAppCredentialAttributeOutput {
+	return o
+}
+
+// Key of the attribute
+func (o DeveloperAppCredentialAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAppCredentialAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the attribute
+func (o DeveloperAppCredentialAttributeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAppCredentialAttribute) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DeveloperAppCredentialAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (DeveloperAppCredentialAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeveloperAppCredentialAttribute)(nil)).Elem()
+}
+
+func (o DeveloperAppCredentialAttributeArrayOutput) ToDeveloperAppCredentialAttributeArrayOutput() DeveloperAppCredentialAttributeArrayOutput {
+	return o
+}
+
+func (o DeveloperAppCredentialAttributeArrayOutput) ToDeveloperAppCredentialAttributeArrayOutputWithContext(ctx context.Context) DeveloperAppCredentialAttributeArrayOutput {
+	return o
+}
+
+func (o DeveloperAppCredentialAttributeArrayOutput) Index(i pulumi.IntInput) DeveloperAppCredentialAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeveloperAppCredentialAttribute {
+		return vs[0].([]DeveloperAppCredentialAttribute)[vs[1].(int)]
+	}).(DeveloperAppCredentialAttributeOutput)
+}
+
 type DeveloperAttribute struct {
 	// Key of the attribute
 	Name *string `pulumi:"name"`
@@ -8197,6 +8702,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductOperationGroupOperationConfigQuotaPtrInput)(nil)).Elem(), ApiProductOperationGroupOperationConfigQuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupAttributeInput)(nil)).Elem(), AppGroupAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupAttributeArrayInput)(nil)).Elem(), AppGroupAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAppAttributeInput)(nil)).Elem(), DeveloperAppAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAppAttributeArrayInput)(nil)).Elem(), DeveloperAppAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAppCredentialInput)(nil)).Elem(), DeveloperAppCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAppCredentialArrayInput)(nil)).Elem(), DeveloperAppCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAppCredentialApiProductInput)(nil)).Elem(), DeveloperAppCredentialApiProductArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAppCredentialApiProductArrayInput)(nil)).Elem(), DeveloperAppCredentialApiProductArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAppCredentialAttributeInput)(nil)).Elem(), DeveloperAppCredentialAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAppCredentialAttributeArrayInput)(nil)).Elem(), DeveloperAppCredentialAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAttributeInput)(nil)).Elem(), DeveloperAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAttributeArrayInput)(nil)).Elem(), DeveloperAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsZonePeeringConfigInput)(nil)).Elem(), DnsZonePeeringConfigArgs{})
@@ -8303,6 +8816,14 @@ func init() {
 	pulumi.RegisterOutputType(ApiProductOperationGroupOperationConfigQuotaPtrOutput{})
 	pulumi.RegisterOutputType(AppGroupAttributeOutput{})
 	pulumi.RegisterOutputType(AppGroupAttributeArrayOutput{})
+	pulumi.RegisterOutputType(DeveloperAppAttributeOutput{})
+	pulumi.RegisterOutputType(DeveloperAppAttributeArrayOutput{})
+	pulumi.RegisterOutputType(DeveloperAppCredentialOutput{})
+	pulumi.RegisterOutputType(DeveloperAppCredentialArrayOutput{})
+	pulumi.RegisterOutputType(DeveloperAppCredentialApiProductOutput{})
+	pulumi.RegisterOutputType(DeveloperAppCredentialApiProductArrayOutput{})
+	pulumi.RegisterOutputType(DeveloperAppCredentialAttributeOutput{})
+	pulumi.RegisterOutputType(DeveloperAppCredentialAttributeArrayOutput{})
 	pulumi.RegisterOutputType(DeveloperAttributeOutput{})
 	pulumi.RegisterOutputType(DeveloperAttributeArrayOutput{})
 	pulumi.RegisterOutputType(DnsZonePeeringConfigOutput{})

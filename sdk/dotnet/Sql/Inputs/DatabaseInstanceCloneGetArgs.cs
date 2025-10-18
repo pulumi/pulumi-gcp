@@ -45,6 +45,14 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? PreferredZone { get; set; }
 
         /// <summary>
+        /// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+        /// 
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("sourceInstanceDeletionTime")]
+        public Input<string>? SourceInstanceDeletionTime { get; set; }
+
+        /// <summary>
         /// Name of the source instance which will be cloned.
         /// </summary>
         [Input("sourceInstanceName", required: true)]

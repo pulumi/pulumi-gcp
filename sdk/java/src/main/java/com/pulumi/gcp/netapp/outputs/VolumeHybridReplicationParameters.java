@@ -4,6 +4,7 @@
 package com.pulumi.gcp.netapp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -24,11 +25,22 @@ public final class VolumeHybridReplicationParameters {
      */
     private @Nullable String description;
     /**
+     * @return Optional. Type of the volume&#39;s hybrid replication.
+     * Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+     * 
+     */
+    private @Nullable String hybridReplicationType;
+    /**
      * @return Optional. Labels to be added to the replication as the key value pairs.
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     private @Nullable Map<String,String> labels;
+    /**
+     * @return Optional. Constituent volume count for large volume.
+     * 
+     */
+    private @Nullable Integer largeVolumeConstituentCount;
     /**
      * @return Required. Name of the user&#39;s local source cluster to be peered with the destination cluster.
      * 
@@ -54,6 +66,12 @@ public final class VolumeHybridReplicationParameters {
      * 
      */
     private @Nullable String replication;
+    /**
+     * @return Optional. Replication Schedule for the replication created.
+     * Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+     * 
+     */
+    private @Nullable String replicationSchedule;
 
     private VolumeHybridReplicationParameters() {}
     /**
@@ -71,12 +89,27 @@ public final class VolumeHybridReplicationParameters {
         return Optional.ofNullable(this.description);
     }
     /**
+     * @return Optional. Type of the volume&#39;s hybrid replication.
+     * Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+     * 
+     */
+    public Optional<String> hybridReplicationType() {
+        return Optional.ofNullable(this.hybridReplicationType);
+    }
+    /**
      * @return Optional. Labels to be added to the replication as the key value pairs.
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
+    }
+    /**
+     * @return Optional. Constituent volume count for large volume.
+     * 
+     */
+    public Optional<Integer> largeVolumeConstituentCount() {
+        return Optional.ofNullable(this.largeVolumeConstituentCount);
     }
     /**
      * @return Required. Name of the user&#39;s local source cluster to be peered with the destination cluster.
@@ -113,6 +146,14 @@ public final class VolumeHybridReplicationParameters {
     public Optional<String> replication() {
         return Optional.ofNullable(this.replication);
     }
+    /**
+     * @return Optional. Replication Schedule for the replication created.
+     * Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+     * 
+     */
+    public Optional<String> replicationSchedule() {
+        return Optional.ofNullable(this.replicationSchedule);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -125,23 +166,29 @@ public final class VolumeHybridReplicationParameters {
     public static final class Builder {
         private @Nullable String clusterLocation;
         private @Nullable String description;
+        private @Nullable String hybridReplicationType;
         private @Nullable Map<String,String> labels;
+        private @Nullable Integer largeVolumeConstituentCount;
         private @Nullable String peerClusterName;
         private @Nullable List<String> peerIpAddresses;
         private @Nullable String peerSvmName;
         private @Nullable String peerVolumeName;
         private @Nullable String replication;
+        private @Nullable String replicationSchedule;
         public Builder() {}
         public Builder(VolumeHybridReplicationParameters defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterLocation = defaults.clusterLocation;
     	      this.description = defaults.description;
+    	      this.hybridReplicationType = defaults.hybridReplicationType;
     	      this.labels = defaults.labels;
+    	      this.largeVolumeConstituentCount = defaults.largeVolumeConstituentCount;
     	      this.peerClusterName = defaults.peerClusterName;
     	      this.peerIpAddresses = defaults.peerIpAddresses;
     	      this.peerSvmName = defaults.peerSvmName;
     	      this.peerVolumeName = defaults.peerVolumeName;
     	      this.replication = defaults.replication;
+    	      this.replicationSchedule = defaults.replicationSchedule;
         }
 
         @CustomType.Setter
@@ -157,9 +204,21 @@ public final class VolumeHybridReplicationParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder hybridReplicationType(@Nullable String hybridReplicationType) {
+
+            this.hybridReplicationType = hybridReplicationType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder largeVolumeConstituentCount(@Nullable Integer largeVolumeConstituentCount) {
+
+            this.largeVolumeConstituentCount = largeVolumeConstituentCount;
             return this;
         }
         @CustomType.Setter
@@ -195,16 +254,25 @@ public final class VolumeHybridReplicationParameters {
             this.replication = replication;
             return this;
         }
+        @CustomType.Setter
+        public Builder replicationSchedule(@Nullable String replicationSchedule) {
+
+            this.replicationSchedule = replicationSchedule;
+            return this;
+        }
         public VolumeHybridReplicationParameters build() {
             final var _resultValue = new VolumeHybridReplicationParameters();
             _resultValue.clusterLocation = clusterLocation;
             _resultValue.description = description;
+            _resultValue.hybridReplicationType = hybridReplicationType;
             _resultValue.labels = labels;
+            _resultValue.largeVolumeConstituentCount = largeVolumeConstituentCount;
             _resultValue.peerClusterName = peerClusterName;
             _resultValue.peerIpAddresses = peerIpAddresses;
             _resultValue.peerSvmName = peerSvmName;
             _resultValue.peerVolumeName = peerVolumeName;
             _resultValue.replication = replication;
+            _resultValue.replicationSchedule = replicationSchedule;
             return _resultValue;
         }
     }

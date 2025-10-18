@@ -47,6 +47,7 @@ import * as utilities from "../utilities";
  * const instance = new gcp.memcache.Instance("instance", {
  *     name: "test-instance",
  *     authorizedNetwork: privateServiceConnection.network,
+ *     deletionProtection: false,
  *     labels: {
  *         env: "test",
  *     },
@@ -138,6 +139,7 @@ export class Instance extends pulumi.CustomResource {
      * Creation timestamp in RFC3339 text format.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * Endpoint for Discovery API
      */
@@ -243,6 +245,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["authorizedNetwork"] = state?.authorizedNetwork;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["discoveryEndpoint"] = state?.discoveryEndpoint;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -270,6 +273,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'nodeCount'");
             }
             resourceInputs["authorizedNetwork"] = args?.authorizedNetwork;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
@@ -310,6 +314,7 @@ export interface InstanceState {
      * Creation timestamp in RFC3339 text format.
      */
     createTime?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Endpoint for Discovery API
      */
@@ -410,6 +415,7 @@ export interface InstanceArgs {
      * 'default' will be used.
      */
     authorizedNetwork?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * A user-visible name for the instance.
      */

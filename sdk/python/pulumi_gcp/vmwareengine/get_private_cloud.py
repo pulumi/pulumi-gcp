@@ -27,13 +27,22 @@ class GetPrivateCloudResult:
     """
     A collection of values returned by getPrivateCloud.
     """
-    def __init__(__self__, deletion_delay_hours=None, description=None, hcxes=None, id=None, location=None, management_clusters=None, name=None, network_configs=None, nsxes=None, project=None, send_deletion_delay_hours_if_zero=None, state=None, type=None, uid=None, vcenters=None):
+    def __init__(__self__, create_time=None, delete_time=None, deletion_delay_hours=None, description=None, expire_time=None, hcxes=None, id=None, location=None, management_clusters=None, name=None, network_configs=None, nsxes=None, project=None, send_deletion_delay_hours_if_zero=None, state=None, type=None, uid=None, update_time=None, vcenters=None):
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
+        if delete_time and not isinstance(delete_time, str):
+            raise TypeError("Expected argument 'delete_time' to be a str")
+        pulumi.set(__self__, "delete_time", delete_time)
         if deletion_delay_hours and not isinstance(deletion_delay_hours, int):
             raise TypeError("Expected argument 'deletion_delay_hours' to be a int")
         pulumi.set(__self__, "deletion_delay_hours", deletion_delay_hours)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if expire_time and not isinstance(expire_time, str):
+            raise TypeError("Expected argument 'expire_time' to be a str")
+        pulumi.set(__self__, "expire_time", expire_time)
         if hcxes and not isinstance(hcxes, list):
             raise TypeError("Expected argument 'hcxes' to be a list")
         pulumi.set(__self__, "hcxes", hcxes)
@@ -70,9 +79,22 @@ class GetPrivateCloudResult:
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
         if vcenters and not isinstance(vcenters, list):
             raise TypeError("Expected argument 'vcenters' to be a list")
         pulumi.set(__self__, "vcenters", vcenters)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> _builtins.str:
+        return pulumi.get(self, "delete_time")
 
     @_builtins.property
     @pulumi.getter(name="deletionDelayHours")
@@ -83,6 +105,11 @@ class GetPrivateCloudResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> _builtins.str:
+        return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter
@@ -148,6 +175,11 @@ class GetPrivateCloudResult:
         return pulumi.get(self, "uid")
 
     @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
     @pulumi.getter
     def vcenters(self) -> Sequence['outputs.GetPrivateCloudVcenterResult']:
         return pulumi.get(self, "vcenters")
@@ -159,8 +191,11 @@ class AwaitableGetPrivateCloudResult(GetPrivateCloudResult):
         if False:
             yield self
         return GetPrivateCloudResult(
+            create_time=self.create_time,
+            delete_time=self.delete_time,
             deletion_delay_hours=self.deletion_delay_hours,
             description=self.description,
+            expire_time=self.expire_time,
             hcxes=self.hcxes,
             id=self.id,
             location=self.location,
@@ -173,6 +208,7 @@ class AwaitableGetPrivateCloudResult(GetPrivateCloudResult):
             state=self.state,
             type=self.type,
             uid=self.uid,
+            update_time=self.update_time,
             vcenters=self.vcenters)
 
 
@@ -212,8 +248,11 @@ def get_private_cloud(location: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:vmwareengine/getPrivateCloud:getPrivateCloud', __args__, opts=opts, typ=GetPrivateCloudResult).value
 
     return AwaitableGetPrivateCloudResult(
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
         deletion_delay_hours=pulumi.get(__ret__, 'deletion_delay_hours'),
         description=pulumi.get(__ret__, 'description'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
         hcxes=pulumi.get(__ret__, 'hcxes'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
@@ -226,6 +265,7 @@ def get_private_cloud(location: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'),
         uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'),
         vcenters=pulumi.get(__ret__, 'vcenters'))
 def get_private_cloud_output(location: Optional[pulumi.Input[_builtins.str]] = None,
                              name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -262,8 +302,11 @@ def get_private_cloud_output(location: Optional[pulumi.Input[_builtins.str]] = N
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getPrivateCloud:getPrivateCloud', __args__, opts=opts, typ=GetPrivateCloudResult)
     return __ret__.apply(lambda __response__: GetPrivateCloudResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        delete_time=pulumi.get(__response__, 'delete_time'),
         deletion_delay_hours=pulumi.get(__response__, 'deletion_delay_hours'),
         description=pulumi.get(__response__, 'description'),
+        expire_time=pulumi.get(__response__, 'expire_time'),
         hcxes=pulumi.get(__response__, 'hcxes'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
@@ -276,4 +319,5 @@ def get_private_cloud_output(location: Optional[pulumi.Input[_builtins.str]] = N
         state=pulumi.get(__response__, 'state'),
         type=pulumi.get(__response__, 'type'),
         uid=pulumi.get(__response__, 'uid'),
+        update_time=pulumi.get(__response__, 'update_time'),
         vcenters=pulumi.get(__response__, 'vcenters')))

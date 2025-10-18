@@ -26,11 +26,22 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<string>? OutputSchema { get; set; }
 
         /// <summary>
+        /// Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
+        /// as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
+        /// the naming convention &lt;job_id&gt;-&lt;shard_number&gt;, for example: my-job-id-2.
+        /// Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
+        /// Cloud Storage, the output schema field should not be set. If set, it will be ignored.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("storagePath")]
+        public Input<Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathGetArgs>? StoragePath { get; set; }
+
+        /// <summary>
         /// Information on the location of the target BigQuery Table.
         /// Structure is documented below.
         /// </summary>
-        [Input("table", required: true)]
-        public Input<Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableGetArgs> Table { get; set; } = null!;
+        [Input("table")]
+        public Input<Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableGetArgs>? Table { get; set; }
 
         public PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigGetArgs()
         {

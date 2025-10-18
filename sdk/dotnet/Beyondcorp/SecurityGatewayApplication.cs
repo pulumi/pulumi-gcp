@@ -109,6 +109,139 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
+    /// ### Beyondcorp Security Gateway Application Spa Api
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Beyondcorp.SecurityGateway("default", new()
+    ///     {
+    ///         SecurityGatewayId = "default-sg-spa-api",
+    ///         DisplayName = "My SPA Security Gateway resource",
+    ///     });
+    /// 
+    ///     var example_spa = new Gcp.Beyondcorp.SecurityGatewayApplication("example-spa", new()
+    ///     {
+    ///         SecurityGatewayId = @default.SecurityGatewayId,
+    ///         ApplicationId = "app-discovery",
+    ///         Upstreams = new[]
+    ///         {
+    ///             new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationUpstreamArgs
+    ///             {
+    ///                 External = new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationUpstreamExternalArgs
+    ///                 {
+    ///                     Endpoints = new[]
+    ///                     {
+    ///                         new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationUpstreamExternalEndpointArgs
+    ///                         {
+    ///                             Hostname = "my.discovery.service.com",
+    ///                             Port = 443,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 ProxyProtocol = new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationUpstreamProxyProtocolArgs
+    ///                 {
+    ///                     AllowedClientHeaders = new[]
+    ///                     {
+    ///                         "header",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Schema = "API_GATEWAY",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Beyondcorp Security Gateway Application Spa Proxy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Beyondcorp.SecurityGateway("default", new()
+    ///     {
+    ///         SecurityGatewayId = "default-sg-spa-proxy",
+    ///         DisplayName = "My SPA Security Gateway resource",
+    ///     });
+    /// 
+    ///     var example_spa = new Gcp.Beyondcorp.SecurityGatewayApplication("example-spa", new()
+    ///     {
+    ///         SecurityGatewayId = @default.SecurityGatewayId,
+    ///         ApplicationId = "app-proxy",
+    ///         EndpointMatchers = new[]
+    ///         {
+    ///             new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationEndpointMatcherArgs
+    ///             {
+    ///                 Hostname = "a.site.com",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     443,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Upstreams = new[]
+    ///         {
+    ///             new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationUpstreamArgs
+    ///             {
+    ///                 External = new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationUpstreamExternalArgs
+    ///                 {
+    ///                     Endpoints = new[]
+    ///                     {
+    ///                         new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationUpstreamExternalEndpointArgs
+    ///                         {
+    ///                             Hostname = "my.proxy.service.com",
+    ///                             Port = 443,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 ProxyProtocol = new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationUpstreamProxyProtocolArgs
+    ///                 {
+    ///                     AllowedClientHeaders = new[]
+    ///                     {
+    ///                         "header1",
+    ///                         "header2",
+    ///                     },
+    ///                     ContextualHeaders = new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs
+    ///                     {
+    ///                         UserInfo = new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs
+    ///                         {
+    ///                             OutputType = "PROTOBUF",
+    ///                         },
+    ///                         GroupInfo = new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs
+    ///                         {
+    ///                             OutputType = "JSON",
+    ///                         },
+    ///                         DeviceInfo = new Gcp.Beyondcorp.Inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs
+    ///                         {
+    ///                             OutputType = "NONE",
+    ///                         },
+    ///                         OutputType = "JSON",
+    ///                     },
+    ///                     MetadataHeaders = 
+    ///                     {
+    ///                         { "metadata-header1", "value1" },
+    ///                         { "metadata-header2", "value2" },
+    ///                     },
+    ///                     GatewayIdentity = "RESOURCE_NAME",
+    ///                     ClientIp = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Schema = "PROXY_GATEWAY",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -188,6 +321,13 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Type of the external application.
+        /// Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+        /// </summary>
+        [Output("schema")]
+        public Output<string?> Schema { get; private set; } = null!;
 
         /// <summary>
         /// ID of the Security Gateway resource this belongs to.
@@ -270,7 +410,7 @@ namespace Pulumi.Gcp.Beyondcorp
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("endpointMatchers", required: true)]
+        [Input("endpointMatchers")]
         private InputList<Inputs.SecurityGatewayApplicationEndpointMatcherArgs>? _endpointMatchers;
 
         /// <summary>
@@ -299,6 +439,13 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Type of the external application.
+        /// Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+        /// </summary>
+        [Input("schema")]
+        public Input<string>? Schema { get; set; }
 
         /// <summary>
         /// ID of the Security Gateway resource this belongs to.
@@ -384,6 +531,13 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Type of the external application.
+        /// Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+        /// </summary>
+        [Input("schema")]
+        public Input<string>? Schema { get; set; }
 
         /// <summary>
         /// ID of the Security Gateway resource this belongs to.

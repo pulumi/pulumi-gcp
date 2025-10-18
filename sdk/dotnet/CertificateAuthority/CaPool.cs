@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     ///     var privatecaSaKeyuserEncrypterdecrypter = new Gcp.Kms.CryptoKeyIAMMember("privateca_sa_keyuser_encrypterdecrypter", new()
     ///     {
-    ///         CryptoKeyId = "projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
+    ///         CryptoKeyId = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = privatecaSa.Member,
     ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
     ///     {
     ///         Name = "my-pool",
-    ///         Location = "asia-east1",
+    ///         Location = "us-central1",
     ///         Tier = "ENTERPRISE",
     ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
     ///         {
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         },
     ///         EncryptionSpec = new Gcp.CertificateAuthority.Inputs.CaPoolEncryptionSpecArgs
     ///         {
-    ///             CloudKmsKey = "projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
+    ///             CloudKmsKey = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
     ///         },
     ///         IssuancePolicy = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyArgs
     ///         {

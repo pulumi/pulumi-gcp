@@ -61,6 +61,14 @@ __all__ = [
     'ApiProductOperationGroupOperationConfigQuotaArgsDict',
     'AppGroupAttributeArgs',
     'AppGroupAttributeArgsDict',
+    'DeveloperAppAttributeArgs',
+    'DeveloperAppAttributeArgsDict',
+    'DeveloperAppCredentialArgs',
+    'DeveloperAppCredentialArgsDict',
+    'DeveloperAppCredentialApiProductArgs',
+    'DeveloperAppCredentialApiProductArgsDict',
+    'DeveloperAppCredentialAttributeArgs',
+    'DeveloperAppCredentialAttributeArgsDict',
     'DeveloperAttributeArgs',
     'DeveloperAttributeArgsDict',
     'DnsZonePeeringConfigArgs',
@@ -1559,6 +1567,361 @@ elif False:
 
 @pulumi.input_type
 class AppGroupAttributeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Key of the attribute
+        :param pulumi.Input[_builtins.str] value: Value of the attribute
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Key of the attribute
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Value of the attribute
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class DeveloperAppAttributeArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Key of the attribute
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Value of the attribute
+        """
+elif False:
+    DeveloperAppAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeveloperAppAttributeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Key of the attribute
+        :param pulumi.Input[_builtins.str] value: Value of the attribute
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Key of the attribute
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Value of the attribute
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class DeveloperAppCredentialArgsDict(TypedDict):
+        api_products: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialApiProductArgsDict']]]]
+        """
+        List of API products associated with the developer app.
+        """
+        attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialAttributeArgsDict']]]]
+        """
+        Developer attributes (name/value pairs). The custom attribute limit is 18.
+        Structure is documented below.
+        """
+        consumer_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Consumer key.
+        """
+        consumer_secret: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Secret key.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        expires_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Time the credential will expire in milliseconds since epoch.
+        """
+        issued_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Time the credential was issued in milliseconds since epoch.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Scopes to apply to the developer app.
+        The specified scopes must already exist for the API product that
+        you associate with the developer app.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Status of the credential. Valid values include approved or revoked.
+        """
+elif False:
+    DeveloperAppCredentialArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeveloperAppCredentialArgs:
+    def __init__(__self__, *,
+                 api_products: Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialApiProductArgs']]]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialAttributeArgs']]]] = None,
+                 consumer_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 consumer_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 issued_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialApiProductArgs']]] api_products: List of API products associated with the developer app.
+        :param pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialAttributeArgs']]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] consumer_key: (Output)
+               Consumer key.
+        :param pulumi.Input[_builtins.str] consumer_secret: (Output)
+               Secret key.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] expires_at: (Output)
+               Time the credential will expire in milliseconds since epoch.
+        :param pulumi.Input[_builtins.str] issued_at: (Output)
+               Time the credential was issued in milliseconds since epoch.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Scopes to apply to the developer app.
+               The specified scopes must already exist for the API product that
+               you associate with the developer app.
+        :param pulumi.Input[_builtins.str] status: Status of the credential. Valid values include approved or revoked.
+        """
+        if api_products is not None:
+            pulumi.set(__self__, "api_products", api_products)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if consumer_key is not None:
+            pulumi.set(__self__, "consumer_key", consumer_key)
+        if consumer_secret is not None:
+            pulumi.set(__self__, "consumer_secret", consumer_secret)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+        if issued_at is not None:
+            pulumi.set(__self__, "issued_at", issued_at)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="apiProducts")
+    def api_products(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialApiProductArgs']]]]:
+        """
+        List of API products associated with the developer app.
+        """
+        return pulumi.get(self, "api_products")
+
+    @api_products.setter
+    def api_products(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialApiProductArgs']]]]):
+        pulumi.set(self, "api_products", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialAttributeArgs']]]]:
+        """
+        Developer attributes (name/value pairs). The custom attribute limit is 18.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "attributes")
+
+    @attributes.setter
+    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialAttributeArgs']]]]):
+        pulumi.set(self, "attributes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="consumerKey")
+    def consumer_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Consumer key.
+        """
+        return pulumi.get(self, "consumer_key")
+
+    @consumer_key.setter
+    def consumer_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "consumer_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="consumerSecret")
+    def consumer_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Secret key.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "consumer_secret")
+
+    @consumer_secret.setter
+    def consumer_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "consumer_secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Time the credential will expire in milliseconds since epoch.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expires_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="issuedAt")
+    def issued_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Time the credential was issued in milliseconds since epoch.
+        """
+        return pulumi.get(self, "issued_at")
+
+    @issued_at.setter
+    def issued_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "issued_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Scopes to apply to the developer app.
+        The specified scopes must already exist for the API product that
+        you associate with the developer app.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Status of the credential. Valid values include approved or revoked.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class DeveloperAppCredentialApiProductArgsDict(TypedDict):
+        apiproduct: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Name of the API product.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Status of the credential. Valid values include approved or revoked.
+        """
+elif False:
+    DeveloperAppCredentialApiProductArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeveloperAppCredentialApiProductArgs:
+    def __init__(__self__, *,
+                 apiproduct: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] apiproduct: (Output)
+               Name of the API product.
+        :param pulumi.Input[_builtins.str] status: Status of the credential. Valid values include approved or revoked.
+        """
+        if apiproduct is not None:
+            pulumi.set(__self__, "apiproduct", apiproduct)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def apiproduct(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Name of the API product.
+        """
+        return pulumi.get(self, "apiproduct")
+
+    @apiproduct.setter
+    def apiproduct(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "apiproduct", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Status of the credential. Valid values include approved or revoked.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class DeveloperAppCredentialAttributeArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Key of the attribute
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Value of the attribute
+        """
+elif False:
+    DeveloperAppCredentialAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeveloperAppCredentialAttributeArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):

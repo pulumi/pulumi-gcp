@@ -22,10 +22,19 @@ namespace Pulumi.Gcp.Netapp.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
+        /// Optional. Type of the volume's hybrid replication.
+        /// Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+        /// </summary>
+        public readonly string? HybridReplicationType;
+        /// <summary>
         /// Optional. Labels to be added to the replication as the key value pairs.
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
+        /// Optional. Constituent volume count for large volume.
+        /// </summary>
+        public readonly int? LargeVolumeConstituentCount;
         /// <summary>
         /// Required. Name of the user's local source cluster to be peered with the destination cluster.
         /// </summary>
@@ -46,6 +55,11 @@ namespace Pulumi.Gcp.Netapp.Outputs
         /// Required. Desired name for the replication of this volume.
         /// </summary>
         public readonly string? Replication;
+        /// <summary>
+        /// Optional. Replication Schedule for the replication created.
+        /// Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+        /// </summary>
+        public readonly string? ReplicationSchedule;
 
         [OutputConstructor]
         private VolumeHybridReplicationParameters(
@@ -53,7 +67,11 @@ namespace Pulumi.Gcp.Netapp.Outputs
 
             string? description,
 
+            string? hybridReplicationType,
+
             ImmutableDictionary<string, string>? labels,
+
+            int? largeVolumeConstituentCount,
 
             string? peerClusterName,
 
@@ -63,16 +81,21 @@ namespace Pulumi.Gcp.Netapp.Outputs
 
             string? peerVolumeName,
 
-            string? replication)
+            string? replication,
+
+            string? replicationSchedule)
         {
             ClusterLocation = clusterLocation;
             Description = description;
+            HybridReplicationType = hybridReplicationType;
             Labels = labels;
+            LargeVolumeConstituentCount = largeVolumeConstituentCount;
             PeerClusterName = peerClusterName;
             PeerIpAddresses = peerIpAddresses;
             PeerSvmName = peerSvmName;
             PeerVolumeName = peerVolumeName;
             Replication = replication;
+            ReplicationSchedule = replicationSchedule;
         }
     }
 }

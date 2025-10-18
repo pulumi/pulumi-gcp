@@ -72,6 +72,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
+    ///             HealthCheckDisabled = true,
     ///             Containers = new[]
     ///             {
     ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs

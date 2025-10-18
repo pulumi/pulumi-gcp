@@ -184,6 +184,13 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> HybridReplicationType { get; private set; } = null!;
 
         /// <summary>
+        /// Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("hybridReplicationUserCommands")]
+        public Output<ImmutableArray<Outputs.VolumeReplicationHybridReplicationUserCommand>> HybridReplicationUserCommands { get; private set; } = null!;
+
+        /// <summary>
         /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -507,6 +514,19 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("hybridReplicationType")]
         public Input<string>? HybridReplicationType { get; set; }
+
+        [Input("hybridReplicationUserCommands")]
+        private InputList<Inputs.VolumeReplicationHybridReplicationUserCommandGetArgs>? _hybridReplicationUserCommands;
+
+        /// <summary>
+        /// Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.VolumeReplicationHybridReplicationUserCommandGetArgs> HybridReplicationUserCommands
+        {
+            get => _hybridReplicationUserCommands ?? (_hybridReplicationUserCommands = new InputList<Inputs.VolumeReplicationHybridReplicationUserCommandGetArgs>());
+            set => _hybridReplicationUserCommands = value;
+        }
 
         [Input("labels")]
         private InputMap<string>? _labels;

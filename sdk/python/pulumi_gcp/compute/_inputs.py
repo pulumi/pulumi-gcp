@@ -3325,6 +3325,22 @@ if not MYPY:
         For CONNECTION mode, either maxConnections or
         maxConnectionsPerInstance must be set.
         """
+        max_in_flight_requests: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Defines a maximum number of in-flight requests for the whole NEG
+        or instance group. Not available if backend's balancingMode is RATE
+        or CONNECTION.
+        """
+        max_in_flight_requests_per_endpoint: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Defines a maximum number of in-flight requests for a single endpoint.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
+        max_in_flight_requests_per_instance: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Defines a maximum number of in-flight requests for a single VM.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
         max_rate: NotRequired[pulumi.Input[_builtins.int]]
         """
         The max requests per second (RPS) of the group.
@@ -3362,6 +3378,14 @@ if not MYPY:
         traffic would be assigned based on the load balancing algorithm you use. This is the default
         Possible values are: `PREFERRED`, `DEFAULT`.
         """
+        traffic_duration: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This field specifies how long a connection should be kept alive for:
+        - LONG: Most of the requests are expected to take more than multiple
+        seconds to finish.
+        - SHORT: Most requests are expected to finish with a sub-second latency.
+        Possible values are: `LONG`, `SHORT`.
+        """
 elif False:
     BackendServiceBackendArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3376,11 +3400,15 @@ class BackendServiceBackendArgs:
                  max_connections: Optional[pulumi.Input[_builtins.int]] = None,
                  max_connections_per_endpoint: Optional[pulumi.Input[_builtins.int]] = None,
                  max_connections_per_instance: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_in_flight_requests: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_in_flight_requests_per_endpoint: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_in_flight_requests_per_instance: Optional[pulumi.Input[_builtins.int]] = None,
                  max_rate: Optional[pulumi.Input[_builtins.int]] = None,
                  max_rate_per_endpoint: Optional[pulumi.Input[_builtins.float]] = None,
                  max_rate_per_instance: Optional[pulumi.Input[_builtins.float]] = None,
                  max_utilization: Optional[pulumi.Input[_builtins.float]] = None,
-                 preference: Optional[pulumi.Input[_builtins.str]] = None):
+                 preference: Optional[pulumi.Input[_builtins.str]] = None,
+                 traffic_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] group: The fully-qualified URL of an Instance Group or Network Endpoint
                Group resource. In case of instance group this defines the list
@@ -3431,6 +3459,13 @@ class BackendServiceBackendArgs:
                UTILIZATION balancing modes.
                For CONNECTION mode, either maxConnections or
                maxConnectionsPerInstance must be set.
+        :param pulumi.Input[_builtins.int] max_in_flight_requests: Defines a maximum number of in-flight requests for the whole NEG
+               or instance group. Not available if backend's balancingMode is RATE
+               or CONNECTION.
+        :param pulumi.Input[_builtins.int] max_in_flight_requests_per_endpoint: Defines a maximum number of in-flight requests for a single endpoint.
+               Not available if backend's balancingMode is RATE or CONNECTION.
+        :param pulumi.Input[_builtins.int] max_in_flight_requests_per_instance: Defines a maximum number of in-flight requests for a single VM.
+               Not available if backend's balancingMode is RATE or CONNECTION.
         :param pulumi.Input[_builtins.int] max_rate: The max requests per second (RPS) of the group.
                Can be used with either RATE or UTILIZATION balancing modes,
                but required if RATE mode. For RATE mode, either maxRate or one
@@ -3453,6 +3488,11 @@ class BackendServiceBackendArgs:
                - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and
                traffic would be assigned based on the load balancing algorithm you use. This is the default
                Possible values are: `PREFERRED`, `DEFAULT`.
+        :param pulumi.Input[_builtins.str] traffic_duration: This field specifies how long a connection should be kept alive for:
+               - LONG: Most of the requests are expected to take more than multiple
+               seconds to finish.
+               - SHORT: Most requests are expected to finish with a sub-second latency.
+               Possible values are: `LONG`, `SHORT`.
         """
         pulumi.set(__self__, "group", group)
         if balancing_mode is not None:
@@ -3469,6 +3509,12 @@ class BackendServiceBackendArgs:
             pulumi.set(__self__, "max_connections_per_endpoint", max_connections_per_endpoint)
         if max_connections_per_instance is not None:
             pulumi.set(__self__, "max_connections_per_instance", max_connections_per_instance)
+        if max_in_flight_requests is not None:
+            pulumi.set(__self__, "max_in_flight_requests", max_in_flight_requests)
+        if max_in_flight_requests_per_endpoint is not None:
+            pulumi.set(__self__, "max_in_flight_requests_per_endpoint", max_in_flight_requests_per_endpoint)
+        if max_in_flight_requests_per_instance is not None:
+            pulumi.set(__self__, "max_in_flight_requests_per_instance", max_in_flight_requests_per_instance)
         if max_rate is not None:
             pulumi.set(__self__, "max_rate", max_rate)
         if max_rate_per_endpoint is not None:
@@ -3479,6 +3525,8 @@ class BackendServiceBackendArgs:
             pulumi.set(__self__, "max_utilization", max_utilization)
         if preference is not None:
             pulumi.set(__self__, "preference", preference)
+        if traffic_duration is not None:
+            pulumi.set(__self__, "traffic_duration", traffic_duration)
 
     @_builtins.property
     @pulumi.getter
@@ -3618,6 +3666,46 @@ class BackendServiceBackendArgs:
         pulumi.set(self, "max_connections_per_instance", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxInFlightRequests")
+    def max_in_flight_requests(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Defines a maximum number of in-flight requests for the whole NEG
+        or instance group. Not available if backend's balancingMode is RATE
+        or CONNECTION.
+        """
+        return pulumi.get(self, "max_in_flight_requests")
+
+    @max_in_flight_requests.setter
+    def max_in_flight_requests(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_in_flight_requests", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxInFlightRequestsPerEndpoint")
+    def max_in_flight_requests_per_endpoint(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Defines a maximum number of in-flight requests for a single endpoint.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
+        return pulumi.get(self, "max_in_flight_requests_per_endpoint")
+
+    @max_in_flight_requests_per_endpoint.setter
+    def max_in_flight_requests_per_endpoint(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_in_flight_requests_per_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxInFlightRequestsPerInstance")
+    def max_in_flight_requests_per_instance(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Defines a maximum number of in-flight requests for a single VM.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
+        return pulumi.get(self, "max_in_flight_requests_per_instance")
+
+    @max_in_flight_requests_per_instance.setter
+    def max_in_flight_requests_per_instance(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_in_flight_requests_per_instance", value)
+
+    @_builtins.property
     @pulumi.getter(name="maxRate")
     def max_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -3693,6 +3781,22 @@ class BackendServiceBackendArgs:
     @preference.setter
     def preference(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "preference", value)
+
+    @_builtins.property
+    @pulumi.getter(name="trafficDuration")
+    def traffic_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This field specifies how long a connection should be kept alive for:
+        - LONG: Most of the requests are expected to take more than multiple
+        seconds to finish.
+        - SHORT: Most requests are expected to finish with a sub-second latency.
+        Possible values are: `LONG`, `SHORT`.
+        """
+        return pulumi.get(self, "traffic_duration")
+
+    @traffic_duration.setter
+    def traffic_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "traffic_duration", value)
 
 
 if not MYPY:
@@ -36569,6 +36673,22 @@ if not MYPY:
         For CONNECTION mode, either maxConnections or
         maxConnectionsPerInstance must be set.
         """
+        max_in_flight_requests: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Defines a maximum number of in-flight requests for the whole NEG
+        or instance group. Not available if backend's balancingMode is RATE
+        or CONNECTION.
+        """
+        max_in_flight_requests_per_endpoint: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Defines a maximum number of in-flight requests for a single endpoint.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
+        max_in_flight_requests_per_instance: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Defines a maximum number of in-flight requests for a single VM.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
         max_rate: NotRequired[pulumi.Input[_builtins.int]]
         """
         The max requests per second (RPS) of the group. Cannot be set
@@ -36600,6 +36720,14 @@ if not MYPY:
         CPU utilization target for the group. Valid range is [0.0, 1.0].
         Cannot be set for INTERNAL backend services.
         """
+        traffic_duration: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This field specifies how long a connection should be kept alive for:
+        - LONG: Most of the requests are expected to take more than multiple
+        seconds to finish.
+        - SHORT: Most requests are expected to finish with a sub-second latency.
+        Possible values are: `LONG`, `SHORT`.
+        """
 elif False:
     RegionBackendServiceBackendArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -36615,10 +36743,14 @@ class RegionBackendServiceBackendArgs:
                  max_connections: Optional[pulumi.Input[_builtins.int]] = None,
                  max_connections_per_endpoint: Optional[pulumi.Input[_builtins.int]] = None,
                  max_connections_per_instance: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_in_flight_requests: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_in_flight_requests_per_endpoint: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_in_flight_requests_per_instance: Optional[pulumi.Input[_builtins.int]] = None,
                  max_rate: Optional[pulumi.Input[_builtins.int]] = None,
                  max_rate_per_endpoint: Optional[pulumi.Input[_builtins.float]] = None,
                  max_rate_per_instance: Optional[pulumi.Input[_builtins.float]] = None,
-                 max_utilization: Optional[pulumi.Input[_builtins.float]] = None):
+                 max_utilization: Optional[pulumi.Input[_builtins.float]] = None,
+                 traffic_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] group: The fully-qualified URL of an Instance Group or Network Endpoint
                Group resource. In case of instance group this defines the list
@@ -36675,6 +36807,13 @@ class RegionBackendServiceBackendArgs:
                Can be used in either CONNECTION or UTILIZATION balancing modes.
                For CONNECTION mode, either maxConnections or
                maxConnectionsPerInstance must be set.
+        :param pulumi.Input[_builtins.int] max_in_flight_requests: Defines a maximum number of in-flight requests for the whole NEG
+               or instance group. Not available if backend's balancingMode is RATE
+               or CONNECTION.
+        :param pulumi.Input[_builtins.int] max_in_flight_requests_per_endpoint: Defines a maximum number of in-flight requests for a single endpoint.
+               Not available if backend's balancingMode is RATE or CONNECTION.
+        :param pulumi.Input[_builtins.int] max_in_flight_requests_per_instance: Defines a maximum number of in-flight requests for a single VM.
+               Not available if backend's balancingMode is RATE or CONNECTION.
         :param pulumi.Input[_builtins.int] max_rate: The max requests per second (RPS) of the group. Cannot be set
                for INTERNAL backend services.
                Can be used with either RATE or UTILIZATION balancing modes,
@@ -36694,6 +36833,11 @@ class RegionBackendServiceBackendArgs:
         :param pulumi.Input[_builtins.float] max_utilization: Used when balancingMode is UTILIZATION. This ratio defines the
                CPU utilization target for the group. Valid range is [0.0, 1.0].
                Cannot be set for INTERNAL backend services.
+        :param pulumi.Input[_builtins.str] traffic_duration: This field specifies how long a connection should be kept alive for:
+               - LONG: Most of the requests are expected to take more than multiple
+               seconds to finish.
+               - SHORT: Most requests are expected to finish with a sub-second latency.
+               Possible values are: `LONG`, `SHORT`.
         """
         pulumi.set(__self__, "group", group)
         if balancing_mode is not None:
@@ -36712,6 +36856,12 @@ class RegionBackendServiceBackendArgs:
             pulumi.set(__self__, "max_connections_per_endpoint", max_connections_per_endpoint)
         if max_connections_per_instance is not None:
             pulumi.set(__self__, "max_connections_per_instance", max_connections_per_instance)
+        if max_in_flight_requests is not None:
+            pulumi.set(__self__, "max_in_flight_requests", max_in_flight_requests)
+        if max_in_flight_requests_per_endpoint is not None:
+            pulumi.set(__self__, "max_in_flight_requests_per_endpoint", max_in_flight_requests_per_endpoint)
+        if max_in_flight_requests_per_instance is not None:
+            pulumi.set(__self__, "max_in_flight_requests_per_instance", max_in_flight_requests_per_instance)
         if max_rate is not None:
             pulumi.set(__self__, "max_rate", max_rate)
         if max_rate_per_endpoint is not None:
@@ -36720,6 +36870,8 @@ class RegionBackendServiceBackendArgs:
             pulumi.set(__self__, "max_rate_per_instance", max_rate_per_instance)
         if max_utilization is not None:
             pulumi.set(__self__, "max_utilization", max_utilization)
+        if traffic_duration is not None:
+            pulumi.set(__self__, "traffic_duration", traffic_duration)
 
     @_builtins.property
     @pulumi.getter
@@ -36876,6 +37028,46 @@ class RegionBackendServiceBackendArgs:
         pulumi.set(self, "max_connections_per_instance", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxInFlightRequests")
+    def max_in_flight_requests(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Defines a maximum number of in-flight requests for the whole NEG
+        or instance group. Not available if backend's balancingMode is RATE
+        or CONNECTION.
+        """
+        return pulumi.get(self, "max_in_flight_requests")
+
+    @max_in_flight_requests.setter
+    def max_in_flight_requests(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_in_flight_requests", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxInFlightRequestsPerEndpoint")
+    def max_in_flight_requests_per_endpoint(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Defines a maximum number of in-flight requests for a single endpoint.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
+        return pulumi.get(self, "max_in_flight_requests_per_endpoint")
+
+    @max_in_flight_requests_per_endpoint.setter
+    def max_in_flight_requests_per_endpoint(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_in_flight_requests_per_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxInFlightRequestsPerInstance")
+    def max_in_flight_requests_per_instance(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Defines a maximum number of in-flight requests for a single VM.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
+        return pulumi.get(self, "max_in_flight_requests_per_instance")
+
+    @max_in_flight_requests_per_instance.setter
+    def max_in_flight_requests_per_instance(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_in_flight_requests_per_instance", value)
+
+    @_builtins.property
     @pulumi.getter(name="maxRate")
     def max_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -36937,6 +37129,22 @@ class RegionBackendServiceBackendArgs:
     @max_utilization.setter
     def max_utilization(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "max_utilization", value)
+
+    @_builtins.property
+    @pulumi.getter(name="trafficDuration")
+    def traffic_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This field specifies how long a connection should be kept alive for:
+        - LONG: Most of the requests are expected to take more than multiple
+        seconds to finish.
+        - SHORT: Most requests are expected to finish with a sub-second latency.
+        Possible values are: `LONG`, `SHORT`.
+        """
+        return pulumi.get(self, "traffic_duration")
+
+    @traffic_duration.setter
+    def traffic_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "traffic_duration", value)
 
 
 if not MYPY:
