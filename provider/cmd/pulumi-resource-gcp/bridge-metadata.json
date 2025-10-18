@@ -1518,6 +1518,37 @@
                     }
                 }
             },
+            "google_apigee_developer_app": {
+                "current": "gcp:apigee/developerApp:DeveloperApp",
+                "majorVersion": 9,
+                "fields": {
+                    "api_products": {
+                        "maxItemsOne": false
+                    },
+                    "attributes": {
+                        "maxItemsOne": false
+                    },
+                    "credentials": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "api_products": {
+                                    "maxItemsOne": false
+                                },
+                                "attributes": {
+                                    "maxItemsOne": false
+                                },
+                                "scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_apigee_dns_zone": {
                 "current": "gcp:apigee/dnsZone:DnsZone",
                 "majorVersion": 9,
@@ -2756,6 +2787,49 @@
                                 }
                             }
                         }
+                    },
+                    "proxy_protocol_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_client_headers": {
+                                    "maxItemsOne": false
+                                },
+                                "contextual_headers": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "device_info": {
+                                                "maxItemsOne": true
+                                            },
+                                            "group_info": {
+                                                "maxItemsOne": true
+                                            },
+                                            "user_info": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "service_discovery": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "api_gateway": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "resource_override": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2787,8 +2861,44 @@
                                         }
                                     }
                                 },
+                                "external": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "endpoints": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "network": {
                                     "maxItemsOne": true
+                                },
+                                "proxy_protocol": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_client_headers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "contextual_headers": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "device_info": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "group_info": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "user_info": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -15574,6 +15684,9 @@
                                         }
                                     }
                                 },
+                                "publish_to_dataplex_catalog": {
+                                    "maxItemsOne": true
+                                },
                                 "tag_resources": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -16278,6 +16391,9 @@
                                                             "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "storage_path": {
+                                                                        "maxItemsOne": true
+                                                                    },
                                                                     "table": {
                                                                         "maxItemsOne": true
                                                                     }
@@ -21171,6 +21287,9 @@
                     "blocking_reasons": {
                         "maxItemsOne": false
                     },
+                    "connector_modes": {
+                        "maxItemsOne": false
+                    },
                     "entities": {
                         "maxItemsOne": false
                     },
@@ -21272,6 +21391,18 @@
                     },
                     "solution_types": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "google_discovery_engine_license_config": {
+                "current": "gcp:discoveryengine/licenseConfig:LicenseConfig",
+                "majorVersion": 9,
+                "fields": {
+                    "end_date": {
+                        "maxItemsOne": true
+                    },
+                    "start_date": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -25065,6 +25196,10 @@
                     }
                 }
             },
+            "google_iam_workforce_pool_provider_scim_tenant": {
+                "current": "gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant",
+                "majorVersion": 9
+            },
             "google_iam_workload_identity_pool": {
                 "current": "gcp:iam/workloadIdentityPool:WorkloadIdentityPool",
                 "majorVersion": 9,
@@ -26273,6 +26408,22 @@
                 "current": "gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy",
                 "majorVersion": 9
             },
+            "google_kms_folder_kaj_policy_config": {
+                "current": "gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig",
+                "majorVersion": 9,
+                "fields": {
+                    "default_key_access_justification_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_access_reasons": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_kms_key_handle": {
                 "current": "gcp:kms/keyHandle:KeyHandle",
                 "majorVersion": 9
@@ -26320,6 +26471,22 @@
             },
             "google_kms_organization_kaj_policy_config": {
                 "current": "gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig",
+                "majorVersion": 9,
+                "fields": {
+                    "default_key_access_justification_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_access_reasons": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_kms_project_kaj_policy_config": {
+                "current": "gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig",
                 "majorVersion": 9,
                 "fields": {
                     "default_key_access_justification_policy": {
@@ -27651,6 +27818,16 @@
                     "hybrid_peering_details": {
                         "maxItemsOne": false
                     },
+                    "hybrid_replication_user_commands": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "commands": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "transfer_stats": {
                         "maxItemsOne": false
                     }
@@ -28015,8 +28192,18 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
-                                                        "principals": {
+                                                        "ip_blocks": {
                                                             "maxItemsOne": false
+                                                        },
+                                                        "principals": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "principal": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "resources": {
                                                             "maxItemsOne": false,
@@ -28045,8 +28232,18 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
-                                                        "principals": {
+                                                        "ip_blocks": {
                                                             "maxItemsOne": false
+                                                        },
+                                                        "principals": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "principal": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "resources": {
                                                             "maxItemsOne": false,
@@ -28338,6 +28535,23 @@
                                 },
                                 "threat_overrides": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "url_filtering_profile": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "url_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "urls": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -32873,6 +33087,10 @@
                     }
                 }
             },
+            "google_saas_runtime_tenant": {
+                "current": "gcp:saasruntime/tenant:Tenant",
+                "majorVersion": 9
+            },
             "google_saas_runtime_unit_kind": {
                 "current": "gcp:saasruntime/unitKind:UnitKind",
                 "majorVersion": 9,
@@ -35480,6 +35698,10 @@
                     }
                 }
             },
+            "google_vertex_ai_cache_config": {
+                "current": "gcp:vertex/aiCacheConfig:AiCacheConfig",
+                "majorVersion": 9
+            },
             "google_vertex_ai_dataset": {
                 "current": "gcp:vertex/aiDataset:AiDataset",
                 "majorVersion": 9,
@@ -36203,6 +36425,45 @@
                                     "maxItemsOne": true
                                 },
                                 "unprovisioned": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_vertex_ai_reasoning_engine": {
+                "current": "gcp:vertex/aiReasoningEngine:AiReasoningEngine",
+                "majorVersion": 9,
+                "fields": {
+                    "encryption_spec": {
+                        "maxItemsOne": true
+                    },
+                    "spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "deployment_spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "env": {
+                                                "maxItemsOne": false
+                                            },
+                                            "secret_env": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "secret_ref": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "package_spec": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -37305,7 +37566,21 @@
                 "majorVersion": 9,
                 "fields": {
                     "associations": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "rules_config_info": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "last_backup_error": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -37433,6 +37708,49 @@
                                     "elem": {
                                         "fields": {
                                             "assigned_ips": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "proxy_protocol_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_client_headers": {
+                                    "maxItemsOne": false
+                                },
+                                "contextual_headers": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "device_info": {
+                                                "maxItemsOne": false
+                                            },
+                                            "group_info": {
+                                                "maxItemsOne": false
+                                            },
+                                            "user_info": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "service_discovery": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "api_gateway": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "resource_override": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -43534,6 +43852,41 @@
                     }
                 }
             },
+            "google_network_management_connectivity_tests": {
+                "current": "gcp:networkmanagement/getConnectivityTests:getConnectivityTests",
+                "majorVersion": 9,
+                "fields": {
+                    "connectivity_tests": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "destination": {
+                                    "maxItemsOne": false
+                                },
+                                "related_projects": {
+                                    "maxItemsOne": false
+                                },
+                                "source": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "app_engine_version": {
+                                                "maxItemsOne": false
+                                            },
+                                            "cloud_function": {
+                                                "maxItemsOne": false
+                                            },
+                                            "cloud_run_revision": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_network_security_address_group_iam_policy": {
                 "current": "gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy",
                 "majorVersion": 9
@@ -47007,6 +47360,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_saas_runtime_tenant": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_saas_runtime_unit_kind": [
                 "effective_labels",
                 "terraform_labels"
@@ -47289,6 +47646,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_network_management_connectivity_tests": [
+                "connectivity_tests.$.effective_labels",
+                "connectivity_tests.$.terraform_labels"
+            ],
             "google_oracle_database_autonomous_database": [
                 "effective_labels",
                 "terraform_labels"
@@ -47441,6 +47802,7 @@
             "gcp:apigee/appGroup:AppGroup": 0,
             "gcp:apigee/controlPlaneAccess:ControlPlaneAccess": 0,
             "gcp:apigee/developer:Developer": 0,
+            "gcp:apigee/developerApp:DeveloperApp": 0,
             "gcp:apigee/dnsZone:DnsZone": 0,
             "gcp:apigee/endpointAttachment:EndpointAttachment": 0,
             "gcp:apigee/envGroup:EnvGroup": 0,
@@ -47999,6 +48361,7 @@
             "gcp:discoveryengine/cmekConfig:CmekConfig": 0,
             "gcp:discoveryengine/dataConnector:DataConnector": 0,
             "gcp:discoveryengine/dataStore:DataStore": 0,
+            "gcp:discoveryengine/licenseConfig:LicenseConfig": 0,
             "gcp:discoveryengine/recommendationEngine:RecommendationEngine": 0,
             "gcp:discoveryengine/schema:Schema": 0,
             "gcp:discoveryengine/searchEngine:SearchEngine": 0,
@@ -48164,6 +48527,7 @@
             "gcp:iam/workforcePoolIamPolicy:WorkforcePoolIamPolicy": 0,
             "gcp:iam/workforcePoolProvider:WorkforcePoolProvider": 0,
             "gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey": 0,
+            "gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant": 0,
             "gcp:iam/workloadIdentityPool:WorkloadIdentityPool": 0,
             "gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding": 0,
             "gcp:iam/workloadIdentityPoolIamMember:WorkloadIdentityPoolIamMember": 0,
@@ -48235,6 +48599,7 @@
             "gcp:kms/ekmConnectionIamBinding:EkmConnectionIamBinding": 0,
             "gcp:kms/ekmConnectionIamMember:EkmConnectionIamMember": 0,
             "gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy": 0,
+            "gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig": 0,
             "gcp:kms/keyHandle:KeyHandle": 0,
             "gcp:kms/keyRing:KeyRing": 0,
             "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding": 0,
@@ -48242,6 +48607,7 @@
             "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy": 0,
             "gcp:kms/keyRingImportJob:KeyRingImportJob": 0,
             "gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig": 0,
+            "gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig": 0,
             "gcp:kms/secretCiphertext:SecretCiphertext": 0,
             "gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig": 0,
             "gcp:logging/billingAccountExclusion:BillingAccountExclusion": 0,
@@ -48430,6 +48796,7 @@
             "gcp:saasruntime/release:Release": 0,
             "gcp:saasruntime/rolloutKind:RolloutKind": 0,
             "gcp:saasruntime/saaS:SaaS": 0,
+            "gcp:saasruntime/tenant:Tenant": 0,
             "gcp:saasruntime/unitKind:UnitKind": 0,
             "gcp:secretmanager/regionalSecret:RegionalSecret": 0,
             "gcp:secretmanager/regionalSecretIamBinding:RegionalSecretIamBinding": 0,
@@ -48570,6 +48937,7 @@
             "gcp:tpu/v2Vm:V2Vm": 0,
             "gcp:transcoder/job:Job": 0,
             "gcp:transcoder/jobTemplate:JobTemplate": 0,
+            "gcp:vertex/aiCacheConfig:AiCacheConfig": 0,
             "gcp:vertex/aiDataset:AiDataset": 0,
             "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool": 0,
             "gcp:vertex/aiEndpoint:AiEndpoint": 0,
@@ -48604,6 +48972,7 @@
             "gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex": 0,
             "gcp:vertex/aiMetadataStore:AiMetadataStore": 0,
             "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig": 0,
+            "gcp:vertex/aiReasoningEngine:AiReasoningEngine": 0,
             "gcp:vertex/aiTensorboard:AiTensorboard": 0,
             "gcp:vmwareengine/cluster:Cluster": 0,
             "gcp:vmwareengine/externalAccessRule:ExternalAccessRule": 0,
@@ -48918,6 +49287,7 @@
             "gcp:monitoring/getSecretVersion:getSecretVersion": 0,
             "gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs": 0,
             "gcp:networkmanagement/getConnectivityTestRun:getConnectivityTestRun": 0,
+            "gcp:networkmanagement/getConnectivityTests:getConnectivityTests": 0,
             "gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy": 0,
             "gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy": 0,
             "gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy": 0,
