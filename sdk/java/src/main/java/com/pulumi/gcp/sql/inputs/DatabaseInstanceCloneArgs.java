@@ -82,6 +82,25 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * The timestamp of when the source instance was deleted for a clone from a deleted instance.
+     * 
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Import(name="sourceInstanceDeletionTime")
+    private @Nullable Output<String> sourceInstanceDeletionTime;
+
+    /**
+     * @return The timestamp of when the source instance was deleted for a clone from a deleted instance.
+     * 
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<Output<String>> sourceInstanceDeletionTime() {
+        return Optional.ofNullable(this.sourceInstanceDeletionTime);
+    }
+
+    /**
      * Name of the source instance which will be cloned.
      * 
      */
@@ -103,6 +122,7 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
         this.databaseNames = $.databaseNames;
         this.pointInTime = $.pointInTime;
         this.preferredZone = $.preferredZone;
+        this.sourceInstanceDeletionTime = $.sourceInstanceDeletionTime;
         this.sourceInstanceName = $.sourceInstanceName;
     }
 
@@ -220,6 +240,31 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
          */
         public Builder preferredZone(String preferredZone) {
             return preferredZone(Output.of(preferredZone));
+        }
+
+        /**
+         * @param sourceInstanceDeletionTime The timestamp of when the source instance was deleted for a clone from a deleted instance.
+         * 
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceInstanceDeletionTime(@Nullable Output<String> sourceInstanceDeletionTime) {
+            $.sourceInstanceDeletionTime = sourceInstanceDeletionTime;
+            return this;
+        }
+
+        /**
+         * @param sourceInstanceDeletionTime The timestamp of when the source instance was deleted for a clone from a deleted instance.
+         * 
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceInstanceDeletionTime(String sourceInstanceDeletionTime) {
+            return sourceInstanceDeletionTime(Output.of(sourceInstanceDeletionTime));
         }
 
         /**

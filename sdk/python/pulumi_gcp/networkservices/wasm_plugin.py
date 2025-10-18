@@ -422,6 +422,63 @@ class WasmPlugin(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Wasm Plugin Basic Docker Repository
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        wasm_plugin = gcp.networkservices.WasmPlugin("wasm_plugin",
+            name="my-wasm-plugin",
+            description="my wasm plugin from a docker repository",
+            main_version_id="v1",
+            labels={
+                "test_label": "test_value",
+            },
+            log_config={
+                "enable": True,
+                "sample_rate": 1,
+                "min_log_level": "WARN",
+            },
+            versions=[{
+                "version_name": "v1",
+                "description": "v1 version of my wasm plugin",
+                "image_uri": f"us-central1-docker.pkg.dev/{project.name}/my-artifact-registry-docker-repository/my-wasm-plugin-data:prod",
+                "labels": {
+                    "test_label": "test_value",
+                },
+            }])
+        ```
+        ### Wasm Plugin Basic Generic Repository
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        wasm_plugin = gcp.networkservices.WasmPlugin("wasm_plugin",
+            name="my-wasm-plugin",
+            description="my wasm plugin from a generic repository",
+            main_version_id="v1",
+            labels={
+                "test_label": "test_value",
+            },
+            log_config={
+                "enable": True,
+                "sample_rate": 1,
+                "min_log_level": "WARN",
+            },
+            versions=[{
+                "version_name": "v1",
+                "description": "v1 version of my wasm plugin",
+                "image_uri": f"projects/{project.name}/locations/us-central1/repositories/my-artifact-registry-generic-repository/genericArtifacts/my-wasm-plugin-data:v1",
+                "labels": {
+                    "test_label": "test_value",
+                },
+            }])
+        ```
+
         ## Import
 
         WasmPlugin can be imported using any of these accepted formats:
@@ -479,6 +536,63 @@ class WasmPlugin(pulumi.CustomResource):
             * [Configure a route extension](https://cloud.google.com/service-extensions/docs/create-plugin)
 
         ## Example Usage
+
+        ### Wasm Plugin Basic Docker Repository
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        wasm_plugin = gcp.networkservices.WasmPlugin("wasm_plugin",
+            name="my-wasm-plugin",
+            description="my wasm plugin from a docker repository",
+            main_version_id="v1",
+            labels={
+                "test_label": "test_value",
+            },
+            log_config={
+                "enable": True,
+                "sample_rate": 1,
+                "min_log_level": "WARN",
+            },
+            versions=[{
+                "version_name": "v1",
+                "description": "v1 version of my wasm plugin",
+                "image_uri": f"us-central1-docker.pkg.dev/{project.name}/my-artifact-registry-docker-repository/my-wasm-plugin-data:prod",
+                "labels": {
+                    "test_label": "test_value",
+                },
+            }])
+        ```
+        ### Wasm Plugin Basic Generic Repository
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        wasm_plugin = gcp.networkservices.WasmPlugin("wasm_plugin",
+            name="my-wasm-plugin",
+            description="my wasm plugin from a generic repository",
+            main_version_id="v1",
+            labels={
+                "test_label": "test_value",
+            },
+            log_config={
+                "enable": True,
+                "sample_rate": 1,
+                "min_log_level": "WARN",
+            },
+            versions=[{
+                "version_name": "v1",
+                "description": "v1 version of my wasm plugin",
+                "image_uri": f"projects/{project.name}/locations/us-central1/repositories/my-artifact-registry-generic-repository/genericArtifacts/my-wasm-plugin-data:v1",
+                "labels": {
+                    "test_label": "test_value",
+                },
+            }])
+        ```
 
         ## Import
 

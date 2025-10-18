@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
         private InputList<Inputs.AuthzPolicyHttpRuleToNotOperationArgs>? _notOperations;
 
         /// <summary>
-        /// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.
+        /// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AuthzPolicyHttpRuleToNotOperationArgs> NotOperations
@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
         private InputList<Inputs.AuthzPolicyHttpRuleToOperationArgs>? _operations;
 
         /// <summary>
-        /// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
+        /// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AuthzPolicyHttpRuleToOperationArgs> Operations

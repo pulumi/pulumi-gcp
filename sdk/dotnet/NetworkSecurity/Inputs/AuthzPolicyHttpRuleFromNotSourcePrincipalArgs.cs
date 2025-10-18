@@ -13,39 +13,70 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
     public sealed class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Deprecated)
         /// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
         /// Examples:
         /// * abc matches the value xyz.abc.def
+        /// 
+        /// &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
         /// </summary>
         [Input("contains")]
         public Input<string>? Contains { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// The input string must match exactly the string specified here.
         /// Examples:
         /// * abc only matches the value abc.
+        /// 
+        /// &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
         /// </summary>
         [Input("exact")]
         public Input<string>? Exact { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+        /// 
+        /// &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
         /// </summary>
         [Input("ignoreCase")]
         public Input<bool>? IgnoreCase { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
         /// Examples:
         /// * abc matches the value abc.xyz
+        /// 
+        /// &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
         /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
         /// <summary>
+        /// Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+        /// Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("principal")]
+        public Input<Inputs.AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs>? Principal { get; set; }
+
+        /// <summary>
+        /// An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+        /// Default value is `CLIENT_CERT_URI_SAN`.
+        /// Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+        /// </summary>
+        [Input("principalSelector")]
+        public Input<string>? PrincipalSelector { get; set; }
+
+        /// <summary>
+        /// (Optional, Deprecated)
         /// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
         /// Examples:
         /// * abc matches the value xyz.abc
+        /// 
+        /// &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
         /// </summary>
         [Input("suffix")]
         public Input<string>? Suffix { get; set; }

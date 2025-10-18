@@ -15,6 +15,11 @@ export const getConnectivityTestRun: typeof import("./getConnectivityTestRun").g
 export const getConnectivityTestRunOutput: typeof import("./getConnectivityTestRun").getConnectivityTestRunOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectivityTestRun","getConnectivityTestRunOutput"], () => require("./getConnectivityTestRun"));
 
+export { GetConnectivityTestsArgs, GetConnectivityTestsResult, GetConnectivityTestsOutputArgs } from "./getConnectivityTests";
+export const getConnectivityTests: typeof import("./getConnectivityTests").getConnectivityTests = null as any;
+export const getConnectivityTestsOutput: typeof import("./getConnectivityTests").getConnectivityTestsOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectivityTests","getConnectivityTestsOutput"], () => require("./getConnectivityTests"));
+
 export { OrganizationVpcFlowLogsConfigArgs, OrganizationVpcFlowLogsConfigState } from "./organizationVpcFlowLogsConfig";
 export type OrganizationVpcFlowLogsConfig = import("./organizationVpcFlowLogsConfig").OrganizationVpcFlowLogsConfig;
 export const OrganizationVpcFlowLogsConfig: typeof import("./organizationVpcFlowLogsConfig").OrganizationVpcFlowLogsConfig = null as any;

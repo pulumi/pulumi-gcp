@@ -5,6 +5,7 @@ package com.pulumi.gcp.netapp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +49,23 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
     }
 
     /**
+     * Optional. Type of the volume&#39;s hybrid replication.
+     * Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+     * 
+     */
+    @Import(name="hybridReplicationType")
+    private @Nullable Output<String> hybridReplicationType;
+
+    /**
+     * @return Optional. Type of the volume&#39;s hybrid replication.
+     * Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+     * 
+     */
+    public Optional<Output<String>> hybridReplicationType() {
+        return Optional.ofNullable(this.hybridReplicationType);
+    }
+
+    /**
      * Optional. Labels to be added to the replication as the key value pairs.
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
@@ -62,6 +80,21 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
      */
     public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * Optional. Constituent volume count for large volume.
+     * 
+     */
+    @Import(name="largeVolumeConstituentCount")
+    private @Nullable Output<Integer> largeVolumeConstituentCount;
+
+    /**
+     * @return Optional. Constituent volume count for large volume.
+     * 
+     */
+    public Optional<Output<Integer>> largeVolumeConstituentCount() {
+        return Optional.ofNullable(this.largeVolumeConstituentCount);
     }
 
     /**
@@ -139,17 +172,37 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         return Optional.ofNullable(this.replication);
     }
 
+    /**
+     * Optional. Replication Schedule for the replication created.
+     * Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+     * 
+     */
+    @Import(name="replicationSchedule")
+    private @Nullable Output<String> replicationSchedule;
+
+    /**
+     * @return Optional. Replication Schedule for the replication created.
+     * Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+     * 
+     */
+    public Optional<Output<String>> replicationSchedule() {
+        return Optional.ofNullable(this.replicationSchedule);
+    }
+
     private VolumeHybridReplicationParametersArgs() {}
 
     private VolumeHybridReplicationParametersArgs(VolumeHybridReplicationParametersArgs $) {
         this.clusterLocation = $.clusterLocation;
         this.description = $.description;
+        this.hybridReplicationType = $.hybridReplicationType;
         this.labels = $.labels;
+        this.largeVolumeConstituentCount = $.largeVolumeConstituentCount;
         this.peerClusterName = $.peerClusterName;
         this.peerIpAddresses = $.peerIpAddresses;
         this.peerSvmName = $.peerSvmName;
         this.peerVolumeName = $.peerVolumeName;
         this.replication = $.replication;
+        this.replicationSchedule = $.replicationSchedule;
     }
 
     public static Builder builder() {
@@ -213,6 +266,29 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
+         * @param hybridReplicationType Optional. Type of the volume&#39;s hybrid replication.
+         * Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridReplicationType(@Nullable Output<String> hybridReplicationType) {
+            $.hybridReplicationType = hybridReplicationType;
+            return this;
+        }
+
+        /**
+         * @param hybridReplicationType Optional. Type of the volume&#39;s hybrid replication.
+         * Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridReplicationType(String hybridReplicationType) {
+            return hybridReplicationType(Output.of(hybridReplicationType));
+        }
+
+        /**
          * @param labels Optional. Labels to be added to the replication as the key value pairs.
          * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
@@ -233,6 +309,27 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param largeVolumeConstituentCount Optional. Constituent volume count for large volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder largeVolumeConstituentCount(@Nullable Output<Integer> largeVolumeConstituentCount) {
+            $.largeVolumeConstituentCount = largeVolumeConstituentCount;
+            return this;
+        }
+
+        /**
+         * @param largeVolumeConstituentCount Optional. Constituent volume count for large volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder largeVolumeConstituentCount(Integer largeVolumeConstituentCount) {
+            return largeVolumeConstituentCount(Output.of(largeVolumeConstituentCount));
         }
 
         /**
@@ -348,6 +445,29 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
          */
         public Builder replication(String replication) {
             return replication(Output.of(replication));
+        }
+
+        /**
+         * @param replicationSchedule Optional. Replication Schedule for the replication created.
+         * Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationSchedule(@Nullable Output<String> replicationSchedule) {
+            $.replicationSchedule = replicationSchedule;
+            return this;
+        }
+
+        /**
+         * @param replicationSchedule Optional. Replication Schedule for the replication created.
+         * Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationSchedule(String replicationSchedule) {
+            return replicationSchedule(Output.of(replicationSchedule));
         }
 
         public VolumeHybridReplicationParametersArgs build() {

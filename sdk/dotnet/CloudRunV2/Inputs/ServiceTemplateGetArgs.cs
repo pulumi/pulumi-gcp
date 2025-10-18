@@ -59,6 +59,12 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         [Input("gpuZonalRedundancyDisabled")]
         public Input<bool>? GpuZonalRedundancyDisabled { get; set; }
 
+        /// <summary>
+        /// Disables health checking containers during deployment.
+        /// </summary>
+        [Input("healthCheckDisabled")]
+        public Input<bool>? HealthCheckDisabled { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 

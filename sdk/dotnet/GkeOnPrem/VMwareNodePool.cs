@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         Location = "us-west1",
     ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
     ///         Description = "test cluster",
-    ///         OnPremVersion = "1.13.1-gke.35",
+    ///         OnPremVersion = "1.33.0-gke.35",
     ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
     ///         {
     ///             ServiceAddressCidrBlocks = new[]
@@ -182,6 +182,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         Name = "my-nodepool",
     ///         Location = "us-west1",
     ///         VmwareCluster = default_full.Name,
+    ///         OnPremVersion = "1.33.0-gke.35",
     ///         Annotations = null,
     ///         Config = new Gcp.GkeOnPrem.Inputs.VMwareNodePoolConfigArgs
     ///         {
@@ -344,7 +345,7 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// Anthos version for the node pool. Defaults to the user cluster version.
         /// </summary>
         [Output("onPremVersion")]
-        public Output<string> OnPremVersion { get; private set; } = null!;
+        public Output<string?> OnPremVersion { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -490,6 +491,12 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Input("nodePoolAutoscaling")]
         public Input<Inputs.VMwareNodePoolNodePoolAutoscalingArgs>? NodePoolAutoscaling { get; set; }
+
+        /// <summary>
+        /// Anthos version for the node pool. Defaults to the user cluster version.
+        /// </summary>
+        [Input("onPremVersion")]
+        public Input<string>? OnPremVersion { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

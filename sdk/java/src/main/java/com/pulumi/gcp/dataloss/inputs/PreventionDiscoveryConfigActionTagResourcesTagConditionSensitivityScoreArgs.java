@@ -16,7 +16,7 @@ public final class PreventionDiscoveryConfigActionTagResourcesTagConditionSensit
 
     /**
      * The sensitivity score applied to the resource.
-     * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+     * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
      * 
      */
     @Import(name="score", required=true)
@@ -24,7 +24,7 @@ public final class PreventionDiscoveryConfigActionTagResourcesTagConditionSensit
 
     /**
      * @return The sensitivity score applied to the resource.
-     * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+     * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
      * 
      */
     public Output<String> score() {
@@ -57,7 +57,7 @@ public final class PreventionDiscoveryConfigActionTagResourcesTagConditionSensit
 
         /**
          * @param score The sensitivity score applied to the resource.
-         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
          * 
          * @return builder
          * 
@@ -69,7 +69,7 @@ public final class PreventionDiscoveryConfigActionTagResourcesTagConditionSensit
 
         /**
          * @param score The sensitivity score applied to the resource.
-         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
          * 
          * @return builder
          * 

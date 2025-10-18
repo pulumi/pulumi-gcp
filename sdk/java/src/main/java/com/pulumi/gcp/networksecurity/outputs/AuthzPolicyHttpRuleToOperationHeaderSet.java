@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AuthzPolicyHttpRuleToOperationHeaderSet {
     /**
-     * @return A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+     * @return A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class AuthzPolicyHttpRuleToOperationHeaderSet {
 
     private AuthzPolicyHttpRuleToOperationHeaderSet() {}
     /**
-     * @return A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+     * @return A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
      * Structure is documented below.
      * 
      */

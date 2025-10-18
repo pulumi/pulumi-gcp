@@ -103,16 +103,21 @@ class ClusterArgs:
 class _ClusterState:
     def __init__(__self__, *,
                  autoscaling_settings: Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']] = None,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  management: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input['ClusterAutoscalingSettingsArgs'] autoscaling_settings: Configuration of the autoscaling applied to this cluster
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+               up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[_builtins.str] name: The ID of the Cluster.
@@ -124,9 +129,14 @@ class _ClusterState:
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         :param pulumi.Input[_builtins.str] state: State of the Cluster.
         :param pulumi.Input[_builtins.str] uid: System-generated unique identifier for the resource.
+        :param pulumi.Input[_builtins.str] update_time: Last updated time of this resource.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         if autoscaling_settings is not None:
             pulumi.set(__self__, "autoscaling_settings", autoscaling_settings)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if management is not None:
             pulumi.set(__self__, "management", management)
         if name is not None:
@@ -139,6 +149,8 @@ class _ClusterState:
             pulumi.set(__self__, "state", state)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
 
     @_builtins.property
     @pulumi.getter(name="autoscalingSettings")
@@ -152,6 +164,20 @@ class _ClusterState:
     @autoscaling_settings.setter
     def autoscaling_settings(self, value: Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']]):
         pulumi.set(self, "autoscaling_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Creation time of this resource.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+        up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -229,6 +255,20 @@ class _ClusterState:
     @uid.setter
     def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "uid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Last updated time of this resource.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update_time", value)
 
 
 @pulumi.type_token("gcp:vmwareengine/cluster:Cluster")
@@ -522,9 +562,11 @@ class Cluster(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["management"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
+            __props__.__dict__["update_time"] = None
         super(Cluster, __self__).__init__(
             'gcp:vmwareengine/cluster:Cluster',
             resource_name,
@@ -536,12 +578,14 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscaling_settings: Optional[pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             management: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
             parent: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
+            uid: Optional[pulumi.Input[_builtins.str]] = None,
+            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -551,6 +595,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']] autoscaling_settings: Configuration of the autoscaling applied to this cluster
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+               up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[_builtins.str] name: The ID of the Cluster.
@@ -562,18 +609,23 @@ class Cluster(pulumi.CustomResource):
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         :param pulumi.Input[_builtins.str] state: State of the Cluster.
         :param pulumi.Input[_builtins.str] uid: System-generated unique identifier for the resource.
+        :param pulumi.Input[_builtins.str] update_time: Last updated time of this resource.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ClusterState.__new__(_ClusterState)
 
         __props__.__dict__["autoscaling_settings"] = autoscaling_settings
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["management"] = management
         __props__.__dict__["name"] = name
         __props__.__dict__["node_type_configs"] = node_type_configs
         __props__.__dict__["parent"] = parent
         __props__.__dict__["state"] = state
         __props__.__dict__["uid"] = uid
+        __props__.__dict__["update_time"] = update_time
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -584,6 +636,16 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        Creation time of this resource.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+        up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
@@ -637,4 +699,14 @@ class Cluster(pulumi.CustomResource):
         System-generated unique identifier for the resource.
         """
         return pulumi.get(self, "uid")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        Last updated time of this resource.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "update_time")
 

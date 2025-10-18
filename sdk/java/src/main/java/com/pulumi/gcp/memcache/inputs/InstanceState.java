@@ -10,6 +10,7 @@ import com.pulumi.gcp.memcache.inputs.InstanceMaintenanceScheduleArgs;
 import com.pulumi.gcp.memcache.inputs.InstanceMemcacheNodeArgs;
 import com.pulumi.gcp.memcache.inputs.InstanceMemcacheParametersArgs;
 import com.pulumi.gcp.memcache.inputs.InstanceNodeConfigArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -53,6 +54,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -364,6 +372,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState(InstanceState $) {
         this.authorizedNetwork = $.authorizedNetwork;
         this.createTime = $.createTime;
+        this.deletionProtection = $.deletionProtection;
         this.discoveryEndpoint = $.discoveryEndpoint;
         this.displayName = $.displayName;
         this.effectiveLabels = $.effectiveLabels;
@@ -444,6 +453,15 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

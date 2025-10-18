@@ -66,7 +66,9 @@ type LookupNetworkArgs struct {
 
 // A collection of values returned by getNetwork.
 type LookupNetworkResult struct {
+	CreateTime  string `pulumi:"createTime"`
 	Description string `pulumi:"description"`
+	Etag        string `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
 	Id          string                 `pulumi:"id"`
 	Location    string                 `pulumi:"location"`
@@ -75,6 +77,7 @@ type LookupNetworkResult struct {
 	State       string                 `pulumi:"state"`
 	Type        string                 `pulumi:"type"`
 	Uid         string                 `pulumi:"uid"`
+	UpdateTime  string                 `pulumi:"updateTime"`
 	VpcNetworks []GetNetworkVpcNetwork `pulumi:"vpcNetworks"`
 }
 
@@ -118,8 +121,16 @@ func (o LookupNetworkResultOutput) ToLookupNetworkResultOutputWithContext(ctx co
 	return o
 }
 
+func (o LookupNetworkResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 func (o LookupNetworkResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -149,6 +160,10 @@ func (o LookupNetworkResultOutput) Type() pulumi.StringOutput {
 
 func (o LookupNetworkResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 func (o LookupNetworkResultOutput) VpcNetworks() GetNetworkVpcNetworkArrayOutput {

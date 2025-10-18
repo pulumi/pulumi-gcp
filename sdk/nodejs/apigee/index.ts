@@ -40,6 +40,11 @@ export type Developer = import("./developer").Developer;
 export const Developer: typeof import("./developer").Developer = null as any;
 utilities.lazyLoad(exports, ["Developer"], () => require("./developer"));
 
+export { DeveloperAppArgs, DeveloperAppState } from "./developerApp";
+export type DeveloperApp = import("./developerApp").DeveloperApp;
+export const DeveloperApp: typeof import("./developerApp").DeveloperApp = null as any;
+utilities.lazyLoad(exports, ["DeveloperApp"], () => require("./developerApp"));
+
 export { DnsZoneArgs, DnsZoneState } from "./dnsZone";
 export type DnsZone = import("./dnsZone").DnsZone;
 export const DnsZone: typeof import("./dnsZone").DnsZone = null as any;
@@ -204,6 +209,8 @@ const _module = {
                 return new ControlPlaneAccess(name, <any>undefined, { urn })
             case "gcp:apigee/developer:Developer":
                 return new Developer(name, <any>undefined, { urn })
+            case "gcp:apigee/developerApp:DeveloperApp":
+                return new DeveloperApp(name, <any>undefined, { urn })
             case "gcp:apigee/dnsZone:DnsZone":
                 return new DnsZone(name, <any>undefined, { urn })
             case "gcp:apigee/endpointAttachment:EndpointAttachment":
@@ -272,6 +279,7 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/apiProduct", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/appGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/controlPlaneAccess", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/developer", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/developerApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/dnsZone", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/endpointAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/envGroup", _module)

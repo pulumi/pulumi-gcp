@@ -126,6 +126,40 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Security Security Profile Url Filtering
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.SecurityProfile("default", {
+ *     name: "my-security-profile",
+ *     parent: "organizations/123456789",
+ *     description: "my description",
+ *     type: "URL_FILTERING",
+ *     urlFilteringProfile: {
+ *         urlFilters: [
+ *             {
+ *                 priority: 1,
+ *                 filteringAction: "ALLOW",
+ *                 urls: [
+ *                     "*example.com",
+ *                     "*about.example.com",
+ *                     "*help.example.com",
+ *                 ],
+ *             },
+ *             {
+ *                 priority: 2,
+ *                 filteringAction: "DENY",
+ *                 urls: ["*restricted.example.com"],
+ *             },
+ *         ],
+ *     },
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -234,13 +268,18 @@ export class SecurityProfile extends pulumi.CustomResource {
     declare public readonly threatPreventionProfile: pulumi.Output<outputs.networksecurity.SecurityProfileThreatPreventionProfile | undefined>;
     /**
      * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
      * Time the security profile was updated in UTC.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
+     * The url filtering configuration for the security profile.
+     * Structure is documented below.
+     */
+    declare public readonly urlFilteringProfile: pulumi.Output<outputs.networksecurity.SecurityProfileUrlFilteringProfile | undefined>;
 
     /**
      * Create a SecurityProfile resource with the given unique name, arguments, and options.
@@ -270,6 +309,7 @@ export class SecurityProfile extends pulumi.CustomResource {
             resourceInputs["threatPreventionProfile"] = state?.threatPreventionProfile;
             resourceInputs["type"] = state?.type;
             resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["urlFilteringProfile"] = state?.urlFilteringProfile;
         } else {
             const args = argsOrState as SecurityProfileArgs | undefined;
             if (args?.type === undefined && !opts.urn) {
@@ -284,6 +324,7 @@ export class SecurityProfile extends pulumi.CustomResource {
             resourceInputs["parent"] = args?.parent;
             resourceInputs["threatPreventionProfile"] = args?.threatPreventionProfile;
             resourceInputs["type"] = args?.type;
+            resourceInputs["urlFilteringProfile"] = args?.urlFilteringProfile;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -369,13 +410,18 @@ export interface SecurityProfileState {
     threatPreventionProfile?: pulumi.Input<inputs.networksecurity.SecurityProfileThreatPreventionProfile>;
     /**
      * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      */
     type?: pulumi.Input<string>;
     /**
      * Time the security profile was updated in UTC.
      */
     updateTime?: pulumi.Input<string>;
+    /**
+     * The url filtering configuration for the security profile.
+     * Structure is documented below.
+     */
+    urlFilteringProfile?: pulumi.Input<inputs.networksecurity.SecurityProfileUrlFilteringProfile>;
 }
 
 /**
@@ -426,7 +472,12 @@ export interface SecurityProfileArgs {
     threatPreventionProfile?: pulumi.Input<inputs.networksecurity.SecurityProfileThreatPreventionProfile>;
     /**
      * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      */
     type: pulumi.Input<string>;
+    /**
+     * The url filtering configuration for the security profile.
+     * Structure is documented below.
+     */
+    urlFilteringProfile?: pulumi.Input<inputs.networksecurity.SecurityProfileUrlFilteringProfile>;
 }

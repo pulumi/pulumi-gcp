@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AiCacheConfigArgs, AiCacheConfigState } from "./aiCacheConfig";
+export type AiCacheConfig = import("./aiCacheConfig").AiCacheConfig;
+export const AiCacheConfig: typeof import("./aiCacheConfig").AiCacheConfig = null as any;
+utilities.lazyLoad(exports, ["AiCacheConfig"], () => require("./aiCacheConfig"));
+
 export { AiDatasetArgs, AiDatasetState } from "./aiDataset";
 export type AiDataset = import("./aiDataset").AiDataset;
 export const AiDataset: typeof import("./aiDataset").AiDataset = null as any;
@@ -175,6 +180,11 @@ export type AiRagEngineConfig = import("./aiRagEngineConfig").AiRagEngineConfig;
 export const AiRagEngineConfig: typeof import("./aiRagEngineConfig").AiRagEngineConfig = null as any;
 utilities.lazyLoad(exports, ["AiRagEngineConfig"], () => require("./aiRagEngineConfig"));
 
+export { AiReasoningEngineArgs, AiReasoningEngineState } from "./aiReasoningEngine";
+export type AiReasoningEngine = import("./aiReasoningEngine").AiReasoningEngine;
+export const AiReasoningEngine: typeof import("./aiReasoningEngine").AiReasoningEngine = null as any;
+utilities.lazyLoad(exports, ["AiReasoningEngine"], () => require("./aiReasoningEngine"));
+
 export { AiTensorboardArgs, AiTensorboardState } from "./aiTensorboard";
 export type AiTensorboard = import("./aiTensorboard").AiTensorboard;
 export const AiTensorboard: typeof import("./aiTensorboard").AiTensorboard = null as any;
@@ -220,6 +230,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:vertex/aiCacheConfig:AiCacheConfig":
+                return new AiCacheConfig(name, <any>undefined, { urn })
             case "gcp:vertex/aiDataset:AiDataset":
                 return new AiDataset(name, <any>undefined, { urn })
             case "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool":
@@ -288,6 +300,8 @@ const _module = {
                 return new AiMetadataStore(name, <any>undefined, { urn })
             case "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig":
                 return new AiRagEngineConfig(name, <any>undefined, { urn })
+            case "gcp:vertex/aiReasoningEngine:AiReasoningEngine":
+                return new AiReasoningEngine(name, <any>undefined, { urn })
             case "gcp:vertex/aiTensorboard:AiTensorboard":
                 return new AiTensorboard(name, <any>undefined, { urn })
             default:
@@ -295,6 +309,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiCacheConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiDataset", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiDeploymentResourcePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpoint", _module)
@@ -329,4 +344,5 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpointDeployedIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiMetadataStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiRagEngineConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboard", _module)

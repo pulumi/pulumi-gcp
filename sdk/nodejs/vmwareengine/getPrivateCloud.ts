@@ -58,8 +58,11 @@ export interface GetPrivateCloudArgs {
  * A collection of values returned by getPrivateCloud.
  */
 export interface GetPrivateCloudResult {
+    readonly createTime: string;
+    readonly deleteTime: string;
     readonly deletionDelayHours: number;
     readonly description: string;
+    readonly expireTime: string;
     readonly hcxes: outputs.vmwareengine.GetPrivateCloudHcx[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -75,6 +78,7 @@ export interface GetPrivateCloudResult {
     readonly state: string;
     readonly type: string;
     readonly uid: string;
+    readonly updateTime: string;
     readonly vcenters: outputs.vmwareengine.GetPrivateCloudVcenter[];
 }
 /**

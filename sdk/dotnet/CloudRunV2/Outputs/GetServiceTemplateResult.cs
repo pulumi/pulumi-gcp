@@ -39,6 +39,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly bool GpuZonalRedundancyDisabled;
         /// <summary>
+        /// Disables health checking containers during deployment.
+        /// </summary>
+        public readonly bool HealthCheckDisabled;
+        /// <summary>
         /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
         /// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
         /// 
@@ -102,6 +106,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             bool gpuZonalRedundancyDisabled,
 
+            bool healthCheckDisabled,
+
             ImmutableDictionary<string, string> labels,
 
             int maxInstanceRequestConcurrency,
@@ -129,6 +135,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             EncryptionKey = encryptionKey;
             ExecutionEnvironment = executionEnvironment;
             GpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
+            HealthCheckDisabled = healthCheckDisabled;
             Labels = labels;
             MaxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             NodeSelectors = nodeSelectors;

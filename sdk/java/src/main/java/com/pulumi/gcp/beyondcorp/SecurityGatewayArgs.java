@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayHubArgs;
+import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayProxyProtocolConfigArgs;
+import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayServiceDiscoveryArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -101,6 +103,23 @@ public final class SecurityGatewayArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Shared proxy configuration for all apps.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="proxyProtocolConfig")
+    private @Nullable Output<SecurityGatewayProxyProtocolConfigArgs> proxyProtocolConfig;
+
+    /**
+     * @return Shared proxy configuration for all apps.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityGatewayProxyProtocolConfigArgs>> proxyProtocolConfig() {
+        return Optional.ofNullable(this.proxyProtocolConfig);
+    }
+
+    /**
      * Optional. User-settable SecurityGateway resource ID.
      * * Must start with a letter.
      * * Must contain between 4-63 characters from `/a-z-/`.
@@ -121,6 +140,23 @@ public final class SecurityGatewayArgs extends com.pulumi.resources.ResourceArgs
         return this.securityGatewayId;
     }
 
+    /**
+     * Settings related to the Service Discovery.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="serviceDiscovery")
+    private @Nullable Output<SecurityGatewayServiceDiscoveryArgs> serviceDiscovery;
+
+    /**
+     * @return Settings related to the Service Discovery.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityGatewayServiceDiscoveryArgs>> serviceDiscovery() {
+        return Optional.ofNullable(this.serviceDiscovery);
+    }
+
     private SecurityGatewayArgs() {}
 
     private SecurityGatewayArgs(SecurityGatewayArgs $) {
@@ -128,7 +164,9 @@ public final class SecurityGatewayArgs extends com.pulumi.resources.ResourceArgs
         this.hubs = $.hubs;
         this.location = $.location;
         this.project = $.project;
+        this.proxyProtocolConfig = $.proxyProtocolConfig;
         this.securityGatewayId = $.securityGatewayId;
+        this.serviceDiscovery = $.serviceDiscovery;
     }
 
     public static Builder builder() {
@@ -268,6 +306,29 @@ public final class SecurityGatewayArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param proxyProtocolConfig Shared proxy configuration for all apps.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyProtocolConfig(@Nullable Output<SecurityGatewayProxyProtocolConfigArgs> proxyProtocolConfig) {
+            $.proxyProtocolConfig = proxyProtocolConfig;
+            return this;
+        }
+
+        /**
+         * @param proxyProtocolConfig Shared proxy configuration for all apps.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyProtocolConfig(SecurityGatewayProxyProtocolConfigArgs proxyProtocolConfig) {
+            return proxyProtocolConfig(Output.of(proxyProtocolConfig));
+        }
+
+        /**
          * @param securityGatewayId Optional. User-settable SecurityGateway resource ID.
          * * Must start with a letter.
          * * Must contain between 4-63 characters from `/a-z-/`.
@@ -292,6 +353,29 @@ public final class SecurityGatewayArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder securityGatewayId(String securityGatewayId) {
             return securityGatewayId(Output.of(securityGatewayId));
+        }
+
+        /**
+         * @param serviceDiscovery Settings related to the Service Discovery.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceDiscovery(@Nullable Output<SecurityGatewayServiceDiscoveryArgs> serviceDiscovery) {
+            $.serviceDiscovery = serviceDiscovery;
+            return this;
+        }
+
+        /**
+         * @param serviceDiscovery Settings related to the Service Discovery.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceDiscovery(SecurityGatewayServiceDiscoveryArgs serviceDiscovery) {
+            return serviceDiscovery(Output.of(serviceDiscovery));
         }
 
         public SecurityGatewayArgs build() {

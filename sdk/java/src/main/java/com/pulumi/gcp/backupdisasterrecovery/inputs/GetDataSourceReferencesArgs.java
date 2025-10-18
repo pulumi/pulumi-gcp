@@ -39,14 +39,14 @@ public final class GetDataSourceReferencesArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (right now this service not available for compute Instances , it will be added soon )
+     * - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
      * 
      */
     @Import(name="resourceType", required=true)
     private Output<String> resourceType;
 
     /**
-     * @return - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (right now this service not available for compute Instances , it will be added soon )
+     * @return - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
      * 
      */
     public Output<String> resourceType() {
@@ -110,7 +110,7 @@ public final class GetDataSourceReferencesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param resourceType - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (right now this service not available for compute Instances , it will be added soon )
+         * @param resourceType - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class GetDataSourceReferencesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param resourceType - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (right now this service not available for compute Instances , it will be added soon )
+         * @param resourceType - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
          * 
          * @return builder
          * 

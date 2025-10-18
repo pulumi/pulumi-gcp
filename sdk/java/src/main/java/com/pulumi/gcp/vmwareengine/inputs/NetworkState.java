@@ -18,6 +18,25 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     public static final NetworkState Empty = new NetworkState();
 
     /**
+     * Creation time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Creation time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * User-provided description for this VMware Engine network.
      * 
      */
@@ -30,6 +49,23 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+     * The server computes checksums based on the value of other fields in the request.
+     * 
+     */
+    @Import(name="etag")
+    private @Nullable Output<String> etag;
+
+    /**
+     * @return Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+     * The server computes checksums based on the value of other fields in the request.
+     * 
+     */
+    public Optional<Output<String>> etag() {
+        return Optional.ofNullable(this.etag);
     }
 
     /**
@@ -127,6 +163,25 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Last update time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return Last update time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
+    /**
      * VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
      * the internet, and other Google Cloud services.
      * Structure is documented below.
@@ -148,13 +203,16 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     private NetworkState() {}
 
     private NetworkState(NetworkState $) {
+        this.createTime = $.createTime;
         this.description = $.description;
+        this.etag = $.etag;
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
         this.state = $.state;
         this.type = $.type;
         this.uid = $.uid;
+        this.updateTime = $.updateTime;
         this.vpcNetworks = $.vpcNetworks;
     }
 
@@ -177,6 +235,31 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param createTime Creation time of this resource.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Creation time of this resource.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
          * @param description User-provided description for this VMware Engine network.
          * 
          * @return builder
@@ -195,6 +278,29 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param etag Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+         * The server computes checksums based on the value of other fields in the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(@Nullable Output<String> etag) {
+            $.etag = etag;
+            return this;
+        }
+
+        /**
+         * @param etag Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+         * The server computes checksums based on the value of other fields in the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(String etag) {
+            return etag(Output.of(etag));
         }
 
         /**
@@ -325,6 +431,31 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
+        }
+
+        /**
+         * @param updateTime Last update time of this resource.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime Last update time of this resource.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
         }
 
         /**

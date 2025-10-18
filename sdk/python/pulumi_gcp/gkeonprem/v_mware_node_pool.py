@@ -28,6 +28,7 @@ class VMwareNodePoolArgs:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_pool_autoscaling: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']] = None,
+                 on_prem_version: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VMwareNodePool resource.
@@ -50,6 +51,7 @@ class VMwareNodePoolArgs:
         :param pulumi.Input[_builtins.str] name: The vmware node pool name.
         :param pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs'] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] on_prem_version: Anthos version for the node pool. Defaults to the user cluster version.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -64,6 +66,8 @@ class VMwareNodePoolArgs:
             pulumi.set(__self__, "name", name)
         if node_pool_autoscaling is not None:
             pulumi.set(__self__, "node_pool_autoscaling", node_pool_autoscaling)
+        if on_prem_version is not None:
+            pulumi.set(__self__, "on_prem_version", on_prem_version)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -162,6 +166,18 @@ class VMwareNodePoolArgs:
     @node_pool_autoscaling.setter
     def node_pool_autoscaling(self, value: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']]):
         pulumi.set(self, "node_pool_autoscaling", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onPremVersion")
+    def on_prem_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Anthos version for the node pool. Defaults to the user cluster version.
+        """
+        return pulumi.get(self, "on_prem_version")
+
+    @on_prem_version.setter
+    def on_prem_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "on_prem_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -519,6 +535,7 @@ class VMwareNodePool(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_pool_autoscaling: Optional[pulumi.Input[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']]] = None,
+                 on_prem_version: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  vmware_cluster: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -596,7 +613,7 @@ class VMwareNodePool(pulumi.CustomResource):
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             description="test cluster",
-            on_prem_version="1.13.1-gke.35",
+            on_prem_version="1.33.0-gke.35",
             network_config={
                 "service_address_cidr_blocks": ["10.96.0.0/12"],
                 "pod_address_cidr_blocks": ["192.168.0.0/16"],
@@ -633,6 +650,7 @@ class VMwareNodePool(pulumi.CustomResource):
             name="my-nodepool",
             location="us-west1",
             vmware_cluster=default_full.name,
+            on_prem_version="1.33.0-gke.35",
             annotations={},
             config={
                 "cpus": 4,
@@ -722,6 +740,7 @@ class VMwareNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The vmware node pool name.
         :param pulumi.Input[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] on_prem_version: Anthos version for the node pool. Defaults to the user cluster version.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] vmware_cluster: The cluster this node pool belongs to.
@@ -806,7 +825,7 @@ class VMwareNodePool(pulumi.CustomResource):
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             description="test cluster",
-            on_prem_version="1.13.1-gke.35",
+            on_prem_version="1.33.0-gke.35",
             network_config={
                 "service_address_cidr_blocks": ["10.96.0.0/12"],
                 "pod_address_cidr_blocks": ["192.168.0.0/16"],
@@ -843,6 +862,7 @@ class VMwareNodePool(pulumi.CustomResource):
             name="my-nodepool",
             location="us-west1",
             vmware_cluster=default_full.name,
+            on_prem_version="1.33.0-gke.35",
             annotations={},
             config={
                 "cpus": 4,
@@ -933,6 +953,7 @@ class VMwareNodePool(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_pool_autoscaling: Optional[pulumi.Input[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']]] = None,
+                 on_prem_version: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  vmware_cluster: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -954,6 +975,7 @@ class VMwareNodePool(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["node_pool_autoscaling"] = node_pool_autoscaling
+            __props__.__dict__["on_prem_version"] = on_prem_version
             __props__.__dict__["project"] = project
             if vmware_cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'vmware_cluster'")
@@ -962,7 +984,6 @@ class VMwareNodePool(pulumi.CustomResource):
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["etag"] = None
-            __props__.__dict__["on_prem_version"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["statuses"] = None
@@ -1159,7 +1180,7 @@ class VMwareNodePool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="onPremVersion")
-    def on_prem_version(self) -> pulumi.Output[_builtins.str]:
+    def on_prem_version(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Anthos version for the node pool. Defaults to the user cluster version.
         """

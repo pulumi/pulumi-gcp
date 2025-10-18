@@ -26,7 +26,7 @@ class GetDatabaseInstanceLatestRecoveryTimeResult:
     """
     A collection of values returned by getDatabaseInstanceLatestRecoveryTime.
     """
-    def __init__(__self__, id=None, instance=None, latest_recovery_time=None, project=None):
+    def __init__(__self__, id=None, instance=None, latest_recovery_time=None, project=None, source_instance_deletion_time=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +39,9 @@ class GetDatabaseInstanceLatestRecoveryTimeResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if source_instance_deletion_time and not isinstance(source_instance_deletion_time, str):
+            raise TypeError("Expected argument 'source_instance_deletion_time' to be a str")
+        pulumi.set(__self__, "source_instance_deletion_time", source_instance_deletion_time)
 
     @_builtins.property
     @pulumi.getter
@@ -72,6 +75,11 @@ class GetDatabaseInstanceLatestRecoveryTimeResult:
         """
         return pulumi.get(self, "project")
 
+    @_builtins.property
+    @pulumi.getter(name="sourceInstanceDeletionTime")
+    def source_instance_deletion_time(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "source_instance_deletion_time")
+
 
 class AwaitableGetDatabaseInstanceLatestRecoveryTimeResult(GetDatabaseInstanceLatestRecoveryTimeResult):
     # pylint: disable=using-constant-test
@@ -82,11 +90,13 @@ class AwaitableGetDatabaseInstanceLatestRecoveryTimeResult(GetDatabaseInstanceLa
             id=self.id,
             instance=self.instance,
             latest_recovery_time=self.latest_recovery_time,
-            project=self.project)
+            project=self.project,
+            source_instance_deletion_time=self.source_instance_deletion_time)
 
 
 def get_database_instance_latest_recovery_time(instance: Optional[_builtins.str] = None,
                                                project: Optional[_builtins.str] = None,
+                                               source_instance_deletion_time: Optional[_builtins.str] = None,
                                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseInstanceLatestRecoveryTimeResult:
     """
     Get Latest Recovery Time for a given instance. For more information see the
@@ -111,6 +121,7 @@ def get_database_instance_latest_recovery_time(instance: Optional[_builtins.str]
     __args__ = dict()
     __args__['instance'] = instance
     __args__['project'] = project
+    __args__['sourceInstanceDeletionTime'] = source_instance_deletion_time
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime', __args__, opts=opts, typ=GetDatabaseInstanceLatestRecoveryTimeResult).value
 
@@ -118,9 +129,11 @@ def get_database_instance_latest_recovery_time(instance: Optional[_builtins.str]
         id=pulumi.get(__ret__, 'id'),
         instance=pulumi.get(__ret__, 'instance'),
         latest_recovery_time=pulumi.get(__ret__, 'latest_recovery_time'),
-        project=pulumi.get(__ret__, 'project'))
+        project=pulumi.get(__ret__, 'project'),
+        source_instance_deletion_time=pulumi.get(__ret__, 'source_instance_deletion_time'))
 def get_database_instance_latest_recovery_time_output(instance: Optional[pulumi.Input[_builtins.str]] = None,
                                                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                                      source_instance_deletion_time: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceLatestRecoveryTimeResult]:
     """
     Get Latest Recovery Time for a given instance. For more information see the
@@ -145,10 +158,12 @@ def get_database_instance_latest_recovery_time_output(instance: Optional[pulumi.
     __args__ = dict()
     __args__['instance'] = instance
     __args__['project'] = project
+    __args__['sourceInstanceDeletionTime'] = source_instance_deletion_time
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime', __args__, opts=opts, typ=GetDatabaseInstanceLatestRecoveryTimeResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstanceLatestRecoveryTimeResult(
         id=pulumi.get(__response__, 'id'),
         instance=pulumi.get(__response__, 'instance'),
         latest_recovery_time=pulumi.get(__response__, 'latest_recovery_time'),
-        project=pulumi.get(__response__, 'project')))
+        project=pulumi.get(__response__, 'project'),
+        source_instance_deletion_time=pulumi.get(__response__, 'source_instance_deletion_time')))

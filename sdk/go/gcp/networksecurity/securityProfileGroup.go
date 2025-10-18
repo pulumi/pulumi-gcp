@@ -190,6 +190,59 @@ import (
 //	}
 //
 // ```
+// ### Network Security Security Profile Group Url Filtering
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			securityProfile, err := networksecurity.NewSecurityProfile(ctx, "security_profile", &networksecurity.SecurityProfileArgs{
+//				Name:     pulumi.String("sec-profile"),
+//				Location: pulumi.String("global"),
+//				Type:     pulumi.String("URL_FILTERING"),
+//				UrlFilteringProfile: &networksecurity.SecurityProfileUrlFilteringProfileArgs{
+//					UrlFilters: networksecurity.SecurityProfileUrlFilteringProfileUrlFilterArray{
+//						&networksecurity.SecurityProfileUrlFilteringProfileUrlFilterArgs{
+//							Priority:        pulumi.Int(1),
+//							FilteringAction: pulumi.String("ALLOW"),
+//							Urls: pulumi.StringArray{
+//								pulumi.String("*example.com"),
+//								pulumi.String("*about.example.com"),
+//								pulumi.String("*help.example.com"),
+//							},
+//						},
+//					},
+//				},
+//				Parent: pulumi.String("organizations/123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewSecurityProfileGroup(ctx, "default", &networksecurity.SecurityProfileGroupArgs{
+//				Name:                pulumi.String("sec-profile-group"),
+//				Parent:              pulumi.String("organizations/123456789"),
+//				Description:         pulumi.String("my description"),
+//				UrlFilteringProfile: securityProfile.ID(),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -239,6 +292,8 @@ type SecurityProfileGroup struct {
 	ThreatPreventionProfile pulumi.StringPtrOutput `pulumi:"threatPreventionProfile"`
 	// Time the security profile group was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+	UrlFilteringProfile pulumi.StringPtrOutput `pulumi:"urlFilteringProfile"`
 }
 
 // NewSecurityProfileGroup registers a new resource with the given unique name, arguments, and options.
@@ -310,6 +365,8 @@ type securityProfileGroupState struct {
 	ThreatPreventionProfile *string `pulumi:"threatPreventionProfile"`
 	// Time the security profile group was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
+	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+	UrlFilteringProfile *string `pulumi:"urlFilteringProfile"`
 }
 
 type SecurityProfileGroupState struct {
@@ -347,6 +404,8 @@ type SecurityProfileGroupState struct {
 	ThreatPreventionProfile pulumi.StringPtrInput
 	// Time the security profile group was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
+	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+	UrlFilteringProfile pulumi.StringPtrInput
 }
 
 func (SecurityProfileGroupState) ElementType() reflect.Type {
@@ -375,6 +434,8 @@ type securityProfileGroupArgs struct {
 	Parent *string `pulumi:"parent"`
 	// Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
 	ThreatPreventionProfile *string `pulumi:"threatPreventionProfile"`
+	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+	UrlFilteringProfile *string `pulumi:"urlFilteringProfile"`
 }
 
 // The set of arguments for constructing a SecurityProfileGroup resource.
@@ -400,6 +461,8 @@ type SecurityProfileGroupArgs struct {
 	Parent pulumi.StringPtrInput
 	// Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
 	ThreatPreventionProfile pulumi.StringPtrInput
+	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+	UrlFilteringProfile pulumi.StringPtrInput
 }
 
 func (SecurityProfileGroupArgs) ElementType() reflect.Type {
@@ -560,6 +623,11 @@ func (o SecurityProfileGroupOutput) ThreatPreventionProfile() pulumi.StringPtrOu
 // Time the security profile group was updated in UTC.
 func (o SecurityProfileGroupOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityProfileGroup) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+func (o SecurityProfileGroupOutput) UrlFilteringProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityProfileGroup) pulumi.StringPtrOutput { return v.UrlFilteringProfile }).(pulumi.StringPtrOutput)
 }
 
 type SecurityProfileGroupArrayOutput struct{ *pulumi.OutputState }

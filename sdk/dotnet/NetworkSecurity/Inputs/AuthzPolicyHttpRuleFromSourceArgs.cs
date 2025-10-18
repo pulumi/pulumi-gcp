@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
 
     public sealed class AuthzPolicyHttpRuleFromSourceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("ipBlocks")]
+        private InputList<Inputs.AuthzPolicyHttpRuleFromSourceIpBlockArgs>? _ipBlocks;
+
+        /// <summary>
+        /// A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AuthzPolicyHttpRuleFromSourceIpBlockArgs> IpBlocks
+        {
+            get => _ipBlocks ?? (_ipBlocks = new InputList<Inputs.AuthzPolicyHttpRuleFromSourceIpBlockArgs>());
+            set => _ipBlocks = value;
+        }
+
         [Input("principals")]
         private InputList<Inputs.AuthzPolicyHttpRuleFromSourcePrincipalArgs>? _principals;
 

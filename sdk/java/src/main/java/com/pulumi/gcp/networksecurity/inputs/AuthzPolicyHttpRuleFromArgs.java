@@ -18,7 +18,7 @@ public final class AuthzPolicyHttpRuleFromArgs extends com.pulumi.resources.Reso
     public static final AuthzPolicyHttpRuleFromArgs Empty = new AuthzPolicyHttpRuleFromArgs();
 
     /**
-     * Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+     * Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class AuthzPolicyHttpRuleFromArgs extends com.pulumi.resources.Reso
     private @Nullable Output<List<AuthzPolicyHttpRuleFromNotSourceArgs>> notSources;
 
     /**
-     * @return Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+     * @return Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
      * Structure is documented below.
      * 
      */
@@ -35,7 +35,7 @@ public final class AuthzPolicyHttpRuleFromArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+     * Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
      * Structure is documented below.
      * 
      */
@@ -43,7 +43,7 @@ public final class AuthzPolicyHttpRuleFromArgs extends com.pulumi.resources.Reso
     private @Nullable Output<List<AuthzPolicyHttpRuleFromSourceArgs>> sources;
 
     /**
-     * @return Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+     * @return Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
      * Structure is documented below.
      * 
      */
@@ -77,7 +77,7 @@ public final class AuthzPolicyHttpRuleFromArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param notSources Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+         * @param notSources Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
          * Structure is documented below.
          * 
          * @return builder
@@ -89,7 +89,7 @@ public final class AuthzPolicyHttpRuleFromArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param notSources Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+         * @param notSources Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
          * Structure is documented below.
          * 
          * @return builder
@@ -100,7 +100,7 @@ public final class AuthzPolicyHttpRuleFromArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param notSources Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+         * @param notSources Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
          * Structure is documented below.
          * 
          * @return builder
@@ -111,7 +111,7 @@ public final class AuthzPolicyHttpRuleFromArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sources Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+         * @param sources Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
          * Structure is documented below.
          * 
          * @return builder
@@ -123,7 +123,7 @@ public final class AuthzPolicyHttpRuleFromArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sources Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+         * @param sources Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
          * Structure is documented below.
          * 
          * @return builder
@@ -134,7 +134,7 @@ public final class AuthzPolicyHttpRuleFromArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sources Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+         * @param sources Describes the properties of a request&#39;s sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
          * Structure is documented below.
          * 
          * @return builder

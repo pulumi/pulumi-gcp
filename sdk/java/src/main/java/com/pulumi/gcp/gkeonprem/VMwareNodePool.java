@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *             .location("us-west1")
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
  *             .description("test cluster")
- *             .onPremVersion("1.13.1-gke.35")
+ *             .onPremVersion("1.33.0-gke.35")
  *             .networkConfig(VMwareClusterNetworkConfigArgs.builder()
  *                 .serviceAddressCidrBlocks("10.96.0.0/12")
  *                 .podAddressCidrBlocks("192.168.0.0/16")
@@ -194,6 +194,7 @@ import javax.annotation.Nullable;
  *             .name("my-nodepool")
  *             .location("us-west1")
  *             .vmwareCluster(default_full.name())
+ *             .onPremVersion("1.33.0-gke.35")
  *             .annotations(Map.ofEntries(
  *             ))
  *             .config(VMwareNodePoolConfigArgs.builder()
@@ -439,14 +440,14 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="onPremVersion", refs={String.class}, tree="[0]")
-    private Output<String> onPremVersion;
+    private Output</* @Nullable */ String> onPremVersion;
 
     /**
      * @return Anthos version for the node pool. Defaults to the user cluster version.
      * 
      */
-    public Output<String> onPremVersion() {
-        return this.onPremVersion;
+    public Output<Optional<String>> onPremVersion() {
+        return Codegen.optional(this.onPremVersion);
     }
     /**
      * The ID of the project in which the resource belongs.

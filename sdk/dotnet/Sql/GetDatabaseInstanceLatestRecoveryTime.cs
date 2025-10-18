@@ -123,6 +123,9 @@ namespace Pulumi.Gcp.Sql
         [Input("project")]
         public string? Project { get; set; }
 
+        [Input("sourceInstanceDeletionTime")]
+        public string? SourceInstanceDeletionTime { get; set; }
+
         public GetDatabaseInstanceLatestRecoveryTimeArgs()
         {
         }
@@ -142,6 +145,9 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("sourceInstanceDeletionTime")]
+        public Input<string>? SourceInstanceDeletionTime { get; set; }
 
         public GetDatabaseInstanceLatestRecoveryTimeInvokeArgs()
         {
@@ -169,6 +175,7 @@ namespace Pulumi.Gcp.Sql
         /// The ID of the project in which the resource belongs.
         /// </summary>
         public readonly string Project;
+        public readonly string? SourceInstanceDeletionTime;
 
         [OutputConstructor]
         private GetDatabaseInstanceLatestRecoveryTimeResult(
@@ -178,12 +185,15 @@ namespace Pulumi.Gcp.Sql
 
             string latestRecoveryTime,
 
-            string project)
+            string project,
+
+            string? sourceInstanceDeletionTime)
         {
             Id = id;
             Instance = instance;
             LatestRecoveryTime = latestRecoveryTime;
             Project = project;
+            SourceInstanceDeletionTime = sourceInstanceDeletionTime;
         }
     }
 }

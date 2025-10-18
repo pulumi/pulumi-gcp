@@ -152,6 +152,9 @@ type VolumeReplication struct {
 	HybridPeeringDetails VolumeReplicationHybridPeeringDetailArrayOutput `pulumi:"hybridPeeringDetails"`
 	// Hybrid replication type.
 	HybridReplicationType pulumi.StringOutput `pulumi:"hybridReplicationType"`
+	// Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+	// Structure is documented below.
+	HybridReplicationUserCommands VolumeReplicationHybridReplicationUserCommandArrayOutput `pulumi:"hybridReplicationUserCommands"`
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -268,6 +271,9 @@ type volumeReplicationState struct {
 	HybridPeeringDetails []VolumeReplicationHybridPeeringDetail `pulumi:"hybridPeeringDetails"`
 	// Hybrid replication type.
 	HybridReplicationType *string `pulumi:"hybridReplicationType"`
+	// Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+	// Structure is documented below.
+	HybridReplicationUserCommands []VolumeReplicationHybridReplicationUserCommand `pulumi:"hybridReplicationUserCommands"`
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -341,6 +347,9 @@ type VolumeReplicationState struct {
 	HybridPeeringDetails VolumeReplicationHybridPeeringDetailArrayInput
 	// Hybrid replication type.
 	HybridReplicationType pulumi.StringPtrInput
+	// Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+	// Structure is documented below.
+	HybridReplicationUserCommands VolumeReplicationHybridReplicationUserCommandArrayInput
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -611,6 +620,14 @@ func (o VolumeReplicationOutput) HybridPeeringDetails() VolumeReplicationHybridP
 // Hybrid replication type.
 func (o VolumeReplicationOutput) HybridReplicationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeReplication) pulumi.StringOutput { return v.HybridReplicationType }).(pulumi.StringOutput)
+}
+
+// Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+// Structure is documented below.
+func (o VolumeReplicationOutput) HybridReplicationUserCommands() VolumeReplicationHybridReplicationUserCommandArrayOutput {
+	return o.ApplyT(func(v *VolumeReplication) VolumeReplicationHybridReplicationUserCommandArrayOutput {
+		return v.HybridReplicationUserCommands
+	}).(VolumeReplicationHybridReplicationUserCommandArrayOutput)
 }
 
 // Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`

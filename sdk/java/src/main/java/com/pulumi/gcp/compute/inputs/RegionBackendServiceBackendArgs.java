@@ -249,6 +249,59 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
     }
 
     /**
+     * Defines a maximum number of in-flight requests for the whole NEG
+     * or instance group. Not available if backend&#39;s balancingMode is RATE
+     * or CONNECTION.
+     * 
+     */
+    @Import(name="maxInFlightRequests")
+    private @Nullable Output<Integer> maxInFlightRequests;
+
+    /**
+     * @return Defines a maximum number of in-flight requests for the whole NEG
+     * or instance group. Not available if backend&#39;s balancingMode is RATE
+     * or CONNECTION.
+     * 
+     */
+    public Optional<Output<Integer>> maxInFlightRequests() {
+        return Optional.ofNullable(this.maxInFlightRequests);
+    }
+
+    /**
+     * Defines a maximum number of in-flight requests for a single endpoint.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    @Import(name="maxInFlightRequestsPerEndpoint")
+    private @Nullable Output<Integer> maxInFlightRequestsPerEndpoint;
+
+    /**
+     * @return Defines a maximum number of in-flight requests for a single endpoint.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    public Optional<Output<Integer>> maxInFlightRequestsPerEndpoint() {
+        return Optional.ofNullable(this.maxInFlightRequestsPerEndpoint);
+    }
+
+    /**
+     * Defines a maximum number of in-flight requests for a single VM.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    @Import(name="maxInFlightRequestsPerInstance")
+    private @Nullable Output<Integer> maxInFlightRequestsPerInstance;
+
+    /**
+     * @return Defines a maximum number of in-flight requests for a single VM.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    public Optional<Output<Integer>> maxInFlightRequestsPerInstance() {
+        return Optional.ofNullable(this.maxInFlightRequestsPerInstance);
+    }
+
+    /**
      * The max requests per second (RPS) of the group. Cannot be set
      * for INTERNAL backend services.
      * Can be used with either RATE or UTILIZATION balancing modes,
@@ -338,6 +391,29 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.maxUtilization);
     }
 
+    /**
+     * This field specifies how long a connection should be kept alive for:
+     * - LONG: Most of the requests are expected to take more than multiple
+     *   seconds to finish.
+     * - SHORT: Most requests are expected to finish with a sub-second latency.
+     *   Possible values are: `LONG`, `SHORT`.
+     * 
+     */
+    @Import(name="trafficDuration")
+    private @Nullable Output<String> trafficDuration;
+
+    /**
+     * @return This field specifies how long a connection should be kept alive for:
+     * - LONG: Most of the requests are expected to take more than multiple
+     *   seconds to finish.
+     * - SHORT: Most requests are expected to finish with a sub-second latency.
+     *   Possible values are: `LONG`, `SHORT`.
+     * 
+     */
+    public Optional<Output<String>> trafficDuration() {
+        return Optional.ofNullable(this.trafficDuration);
+    }
+
     private RegionBackendServiceBackendArgs() {}
 
     private RegionBackendServiceBackendArgs(RegionBackendServiceBackendArgs $) {
@@ -350,10 +426,14 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         this.maxConnections = $.maxConnections;
         this.maxConnectionsPerEndpoint = $.maxConnectionsPerEndpoint;
         this.maxConnectionsPerInstance = $.maxConnectionsPerInstance;
+        this.maxInFlightRequests = $.maxInFlightRequests;
+        this.maxInFlightRequestsPerEndpoint = $.maxInFlightRequestsPerEndpoint;
+        this.maxInFlightRequestsPerInstance = $.maxInFlightRequestsPerInstance;
         this.maxRate = $.maxRate;
         this.maxRatePerEndpoint = $.maxRatePerEndpoint;
         this.maxRatePerInstance = $.maxRatePerInstance;
         this.maxUtilization = $.maxUtilization;
+        this.trafficDuration = $.trafficDuration;
     }
 
     public static Builder builder() {
@@ -667,6 +747,77 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param maxInFlightRequests Defines a maximum number of in-flight requests for the whole NEG
+         * or instance group. Not available if backend&#39;s balancingMode is RATE
+         * or CONNECTION.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInFlightRequests(@Nullable Output<Integer> maxInFlightRequests) {
+            $.maxInFlightRequests = maxInFlightRequests;
+            return this;
+        }
+
+        /**
+         * @param maxInFlightRequests Defines a maximum number of in-flight requests for the whole NEG
+         * or instance group. Not available if backend&#39;s balancingMode is RATE
+         * or CONNECTION.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInFlightRequests(Integer maxInFlightRequests) {
+            return maxInFlightRequests(Output.of(maxInFlightRequests));
+        }
+
+        /**
+         * @param maxInFlightRequestsPerEndpoint Defines a maximum number of in-flight requests for a single endpoint.
+         * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInFlightRequestsPerEndpoint(@Nullable Output<Integer> maxInFlightRequestsPerEndpoint) {
+            $.maxInFlightRequestsPerEndpoint = maxInFlightRequestsPerEndpoint;
+            return this;
+        }
+
+        /**
+         * @param maxInFlightRequestsPerEndpoint Defines a maximum number of in-flight requests for a single endpoint.
+         * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInFlightRequestsPerEndpoint(Integer maxInFlightRequestsPerEndpoint) {
+            return maxInFlightRequestsPerEndpoint(Output.of(maxInFlightRequestsPerEndpoint));
+        }
+
+        /**
+         * @param maxInFlightRequestsPerInstance Defines a maximum number of in-flight requests for a single VM.
+         * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInFlightRequestsPerInstance(@Nullable Output<Integer> maxInFlightRequestsPerInstance) {
+            $.maxInFlightRequestsPerInstance = maxInFlightRequestsPerInstance;
+            return this;
+        }
+
+        /**
+         * @param maxInFlightRequestsPerInstance Defines a maximum number of in-flight requests for a single VM.
+         * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInFlightRequestsPerInstance(Integer maxInFlightRequestsPerInstance) {
+            return maxInFlightRequestsPerInstance(Output.of(maxInFlightRequestsPerInstance));
+        }
+
+        /**
          * @param maxRate The max requests per second (RPS) of the group. Cannot be set
          * for INTERNAL backend services.
          * Can be used with either RATE or UTILIZATION balancing modes,
@@ -778,6 +929,35 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
          */
         public Builder maxUtilization(Double maxUtilization) {
             return maxUtilization(Output.of(maxUtilization));
+        }
+
+        /**
+         * @param trafficDuration This field specifies how long a connection should be kept alive for:
+         * - LONG: Most of the requests are expected to take more than multiple
+         *   seconds to finish.
+         * - SHORT: Most requests are expected to finish with a sub-second latency.
+         *   Possible values are: `LONG`, `SHORT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficDuration(@Nullable Output<String> trafficDuration) {
+            $.trafficDuration = trafficDuration;
+            return this;
+        }
+
+        /**
+         * @param trafficDuration This field specifies how long a connection should be kept alive for:
+         * - LONG: Most of the requests are expected to take more than multiple
+         *   seconds to finish.
+         * - SHORT: Most requests are expected to finish with a sub-second latency.
+         *   Possible values are: `LONG`, `SHORT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficDuration(String trafficDuration) {
+            return trafficDuration(Output.of(trafficDuration));
         }
 
         public RegionBackendServiceBackendArgs build() {

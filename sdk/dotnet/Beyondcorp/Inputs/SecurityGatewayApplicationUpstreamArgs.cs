@@ -20,11 +20,25 @@ namespace Pulumi.Gcp.Beyondcorp.Inputs
         public Input<Inputs.SecurityGatewayApplicationUpstreamEgressPolicyArgs>? EgressPolicy { get; set; }
 
         /// <summary>
+        /// List of the external endpoints to forward traffic to.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("external")]
+        public Input<Inputs.SecurityGatewayApplicationUpstreamExternalArgs>? External { get; set; }
+
+        /// <summary>
         /// Network to forward traffic to.
         /// Structure is documented below.
         /// </summary>
         [Input("network")]
         public Input<Inputs.SecurityGatewayApplicationUpstreamNetworkArgs>? Network { get; set; }
+
+        /// <summary>
+        /// Shared proxy configuration for all apps.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("proxyProtocol")]
+        public Input<Inputs.SecurityGatewayApplicationUpstreamProxyProtocolArgs>? ProxyProtocol { get; set; }
 
         public SecurityGatewayApplicationUpstreamArgs()
         {

@@ -244,6 +244,7 @@ class _VolumeReplicationState:
                  healthy: Optional[pulumi.Input[_builtins.bool]] = None,
                  hybrid_peering_details: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridPeeringDetailArgs']]]] = None,
                  hybrid_replication_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 hybrid_replication_user_commands: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridReplicationUserCommandArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  mirror_state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -277,6 +278,8 @@ class _VolumeReplicationState:
         :param pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridPeeringDetailArgs']]] hybrid_peering_details: HybridPeeringDetails contains details about the hybrid peering.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] hybrid_replication_type: Hybrid replication type.
+        :param pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridReplicationUserCommandArgs']]] hybrid_replication_user_commands: Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -327,6 +330,8 @@ class _VolumeReplicationState:
             pulumi.set(__self__, "hybrid_peering_details", hybrid_peering_details)
         if hybrid_replication_type is not None:
             pulumi.set(__self__, "hybrid_replication_type", hybrid_replication_type)
+        if hybrid_replication_user_commands is not None:
+            pulumi.set(__self__, "hybrid_replication_user_commands", hybrid_replication_user_commands)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -481,6 +486,19 @@ class _VolumeReplicationState:
     @hybrid_replication_type.setter
     def hybrid_replication_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "hybrid_replication_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hybridReplicationUserCommands")
+    def hybrid_replication_user_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridReplicationUserCommandArgs']]]]:
+        """
+        Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hybrid_replication_user_commands")
+
+    @hybrid_replication_user_commands.setter
+    def hybrid_replication_user_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridReplicationUserCommandArgs']]]]):
+        pulumi.set(self, "hybrid_replication_user_commands", value)
 
     @_builtins.property
     @pulumi.getter
@@ -937,6 +955,7 @@ class VolumeReplication(pulumi.CustomResource):
             __props__.__dict__["healthy"] = None
             __props__.__dict__["hybrid_peering_details"] = None
             __props__.__dict__["hybrid_replication_type"] = None
+            __props__.__dict__["hybrid_replication_user_commands"] = None
             __props__.__dict__["mirror_state"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["role"] = None
@@ -966,6 +985,7 @@ class VolumeReplication(pulumi.CustomResource):
             healthy: Optional[pulumi.Input[_builtins.bool]] = None,
             hybrid_peering_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationHybridPeeringDetailArgs', 'VolumeReplicationHybridPeeringDetailArgsDict']]]]] = None,
             hybrid_replication_type: Optional[pulumi.Input[_builtins.str]] = None,
+            hybrid_replication_user_commands: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationHybridReplicationUserCommandArgs', 'VolumeReplicationHybridReplicationUserCommandArgsDict']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             mirror_state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1004,6 +1024,8 @@ class VolumeReplication(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationHybridPeeringDetailArgs', 'VolumeReplicationHybridPeeringDetailArgsDict']]]] hybrid_peering_details: HybridPeeringDetails contains details about the hybrid peering.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] hybrid_replication_type: Hybrid replication type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationHybridReplicationUserCommandArgs', 'VolumeReplicationHybridReplicationUserCommandArgsDict']]]] hybrid_replication_user_commands: Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1048,6 +1070,7 @@ class VolumeReplication(pulumi.CustomResource):
         __props__.__dict__["healthy"] = healthy
         __props__.__dict__["hybrid_peering_details"] = hybrid_peering_details
         __props__.__dict__["hybrid_replication_type"] = hybrid_replication_type
+        __props__.__dict__["hybrid_replication_user_commands"] = hybrid_replication_user_commands
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["mirror_state"] = mirror_state
@@ -1148,6 +1171,15 @@ class VolumeReplication(pulumi.CustomResource):
         Hybrid replication type.
         """
         return pulumi.get(self, "hybrid_replication_type")
+
+    @_builtins.property
+    @pulumi.getter(name="hybridReplicationUserCommands")
+    def hybrid_replication_user_commands(self) -> pulumi.Output[Sequence['outputs.VolumeReplicationHybridReplicationUserCommand']]:
+        """
+        Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hybrid_replication_user_commands")
 
     @_builtins.property
     @pulumi.getter

@@ -29,11 +29,13 @@ __all__ = [
     'EkmConnectionIamMemberCondition',
     'EkmConnectionServiceResolver',
     'EkmConnectionServiceResolverServerCertificate',
+    'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy',
     'KeyRingIAMBindingCondition',
     'KeyRingIAMMemberCondition',
     'KeyRingImportJobAttestation',
     'KeyRingImportJobPublicKey',
     'OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy',
+    'ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy',
     'GetCryptoKeyLatestVersionPublicKeyResult',
     'GetCryptoKeyVersionsPublicKeyResult',
     'GetCryptoKeyVersionsVersionResult',
@@ -828,6 +830,48 @@ class EkmConnectionServiceResolverServerCertificate(dict):
 
 
 @pulumi.output_type
+class FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedAccessReasons":
+            suggest = "allowed_access_reasons"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_access_reasons: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] allowed_access_reasons: A KeyAccessJustificationsPolicy specifies zero or more allowed
+               AccessReason values for encrypt, decrypt, and sign operations on a
+               CryptoKey.
+               Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+        """
+        if allowed_access_reasons is not None:
+            pulumi.set(__self__, "allowed_access_reasons", allowed_access_reasons)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedAccessReasons")
+    def allowed_access_reasons(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A KeyAccessJustificationsPolicy specifies zero or more allowed
+        AccessReason values for encrypt, decrypt, and sign operations on a
+        CryptoKey.
+        Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+        """
+        return pulumi.get(self, "allowed_access_reasons")
+
+
+@pulumi.output_type
 class KeyRingIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: _builtins.str,
@@ -1002,6 +1046,48 @@ class OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy(dict):
 
     def get(self, key: str, default = None) -> Any:
         OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_access_reasons: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] allowed_access_reasons: A KeyAccessJustificationsPolicy specifies zero or more allowed
+               AccessReason values for encrypt, decrypt, and sign operations on a
+               CryptoKey.
+               Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+        """
+        if allowed_access_reasons is not None:
+            pulumi.set(__self__, "allowed_access_reasons", allowed_access_reasons)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedAccessReasons")
+    def allowed_access_reasons(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A KeyAccessJustificationsPolicy specifies zero or more allowed
+        AccessReason values for encrypt, decrypt, and sign operations on a
+        CryptoKey.
+        Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+        """
+        return pulumi.get(self, "allowed_access_reasons")
+
+
+@pulumi.output_type
+class ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedAccessReasons":
+            suggest = "allowed_access_reasons"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,

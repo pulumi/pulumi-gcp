@@ -13,10 +13,27 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
     [OutputType]
     public sealed class GetBackupPlanAssociationsAssociationResult
     {
+        /// <summary>
+        /// The backup plan to which the resource is attached.
+        /// </summary>
         public readonly string BackupPlan;
         public readonly string CreateTime;
+        /// <summary>
+        /// The resource name of data source which will be used as storage location for backups taken.
+        /// </summary>
+        public readonly string DataSource;
+        /// <summary>
+        /// The full name of the backup plan association resource.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The resource to which the backup plan is applied.
+        /// </summary>
         public readonly string Resource;
+        /// <summary>
+        /// A list containing information about the backup rules. Each object in the list contains:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetBackupPlanAssociationsAssociationRulesConfigInfoResult> RulesConfigInfos;
 
         [OutputConstructor]
         private GetBackupPlanAssociationsAssociationResult(
@@ -24,14 +41,20 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
 
             string createTime,
 
+            string dataSource,
+
             string name,
 
-            string resource)
+            string resource,
+
+            ImmutableArray<Outputs.GetBackupPlanAssociationsAssociationRulesConfigInfoResult> rulesConfigInfos)
         {
             BackupPlan = backupPlan;
             CreateTime = createTime;
+            DataSource = dataSource;
             Name = name;
             Resource = resource;
+            RulesConfigInfos = rulesConfigInfos;
         }
     }
 }

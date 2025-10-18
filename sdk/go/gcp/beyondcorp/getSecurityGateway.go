@@ -67,13 +67,15 @@ type LookupSecurityGatewayResult struct {
 	ExternalIps              []string                `pulumi:"externalIps"`
 	Hubs                     []GetSecurityGatewayHub `pulumi:"hubs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                string  `pulumi:"id"`
-	Location          string  `pulumi:"location"`
-	Name              string  `pulumi:"name"`
-	Project           *string `pulumi:"project"`
-	SecurityGatewayId string  `pulumi:"securityGatewayId"`
-	State             string  `pulumi:"state"`
-	UpdateTime        string  `pulumi:"updateTime"`
+	Id                   string                                  `pulumi:"id"`
+	Location             string                                  `pulumi:"location"`
+	Name                 string                                  `pulumi:"name"`
+	Project              *string                                 `pulumi:"project"`
+	ProxyProtocolConfigs []GetSecurityGatewayProxyProtocolConfig `pulumi:"proxyProtocolConfigs"`
+	SecurityGatewayId    string                                  `pulumi:"securityGatewayId"`
+	ServiceDiscoveries   []GetSecurityGatewayServiceDiscovery    `pulumi:"serviceDiscoveries"`
+	State                string                                  `pulumi:"state"`
+	UpdateTime           string                                  `pulumi:"updateTime"`
 }
 
 func LookupSecurityGatewayOutput(ctx *pulumi.Context, args LookupSecurityGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityGatewayResultOutput {
@@ -152,8 +154,18 @@ func (o LookupSecurityGatewayResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityGatewayResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupSecurityGatewayResultOutput) ProxyProtocolConfigs() GetSecurityGatewayProxyProtocolConfigArrayOutput {
+	return o.ApplyT(func(v LookupSecurityGatewayResult) []GetSecurityGatewayProxyProtocolConfig {
+		return v.ProxyProtocolConfigs
+	}).(GetSecurityGatewayProxyProtocolConfigArrayOutput)
+}
+
 func (o LookupSecurityGatewayResultOutput) SecurityGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityGatewayResult) string { return v.SecurityGatewayId }).(pulumi.StringOutput)
+}
+
+func (o LookupSecurityGatewayResultOutput) ServiceDiscoveries() GetSecurityGatewayServiceDiscoveryArrayOutput {
+	return o.ApplyT(func(v LookupSecurityGatewayResult) []GetSecurityGatewayServiceDiscovery { return v.ServiceDiscoveries }).(GetSecurityGatewayServiceDiscoveryArrayOutput)
 }
 
 func (o LookupSecurityGatewayResultOutput) State() pulumi.StringOutput {

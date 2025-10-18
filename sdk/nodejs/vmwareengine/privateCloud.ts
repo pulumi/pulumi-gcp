@@ -153,6 +153,18 @@ export class PrivateCloud extends pulumi.CustomResource {
     }
 
     /**
+     * Creation time of this resource.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Time when the resource was scheduled for deletion.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
+    /**
      * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      */
     declare public readonly deletionDelayHours: pulumi.Output<number | undefined>;
@@ -160,6 +172,12 @@ export class PrivateCloud extends pulumi.CustomResource {
      * User-provided description for this private cloud.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Time when the resource will be irreversibly deleted.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * Details about a HCX Cloud Manager appliance.
      * Structure is documented below.
@@ -212,6 +230,12 @@ export class PrivateCloud extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
+     * Last update time of this resource.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
      * Details about a vCenter Server management appliance.
      * Structure is documented below.
      */
@@ -230,8 +254,11 @@ export class PrivateCloud extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrivateCloudState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
             resourceInputs["deletionDelayHours"] = state?.deletionDelayHours;
             resourceInputs["description"] = state?.description;
+            resourceInputs["expireTime"] = state?.expireTime;
             resourceInputs["hcxes"] = state?.hcxes;
             resourceInputs["location"] = state?.location;
             resourceInputs["managementCluster"] = state?.managementCluster;
@@ -243,6 +270,7 @@ export class PrivateCloud extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
             resourceInputs["type"] = state?.type;
             resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["vcenters"] = state?.vcenters;
         } else {
             const args = argsOrState as PrivateCloudArgs | undefined;
@@ -264,10 +292,14 @@ export class PrivateCloud extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["sendDeletionDelayHoursIfZero"] = args?.sendDeletionDelayHoursIfZero;
             resourceInputs["type"] = args?.type;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["hcxes"] = undefined /*out*/;
             resourceInputs["nsxes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["vcenters"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -280,6 +312,18 @@ export class PrivateCloud extends pulumi.CustomResource {
  */
 export interface PrivateCloudState {
     /**
+     * Creation time of this resource.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Time when the resource was scheduled for deletion.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    deleteTime?: pulumi.Input<string>;
+    /**
      * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      */
     deletionDelayHours?: pulumi.Input<number>;
@@ -287,6 +331,12 @@ export interface PrivateCloudState {
      * User-provided description for this private cloud.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Time when the resource will be irreversibly deleted.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    expireTime?: pulumi.Input<string>;
     /**
      * Details about a HCX Cloud Manager appliance.
      * Structure is documented below.
@@ -338,6 +388,12 @@ export interface PrivateCloudState {
      * System-generated unique identifier for the resource.
      */
     uid?: pulumi.Input<string>;
+    /**
+     * Last update time of this resource.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    updateTime?: pulumi.Input<string>;
     /**
      * Details about a vCenter Server management appliance.
      * Structure is documented below.

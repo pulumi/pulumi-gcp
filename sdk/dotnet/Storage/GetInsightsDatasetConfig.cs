@@ -159,7 +159,6 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class GetInsightsDatasetConfigResult
     {
-        public readonly int ActivityDataRetentionPeriodDays;
         public readonly string CreateTime;
         public readonly string DatasetConfigId;
         public readonly string DatasetConfigState;
@@ -189,8 +188,6 @@ namespace Pulumi.Gcp.Storage
 
         [OutputConstructor]
         private GetInsightsDatasetConfigResult(
-            int activityDataRetentionPeriodDays,
-
             string createTime,
 
             string datasetConfigId,
@@ -237,7 +234,6 @@ namespace Pulumi.Gcp.Storage
 
             string updateTime)
         {
-            ActivityDataRetentionPeriodDays = activityDataRetentionPeriodDays;
             CreateTime = createTime;
             DatasetConfigId = datasetConfigId;
             DatasetConfigState = datasetConfigState;

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomInterceptProfileArgs;
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomMirroringProfileArgs;
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileArgs;
+import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -242,7 +243,7 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
 
     /**
      * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      * 
      */
     @Import(name="type")
@@ -250,7 +251,7 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -272,6 +273,23 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.updateTime);
     }
 
+    /**
+     * The url filtering configuration for the security profile.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="urlFilteringProfile")
+    private @Nullable Output<SecurityProfileUrlFilteringProfileArgs> urlFilteringProfile;
+
+    /**
+     * @return The url filtering configuration for the security profile.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityProfileUrlFilteringProfileArgs>> urlFilteringProfile() {
+        return Optional.ofNullable(this.urlFilteringProfile);
+    }
+
     private SecurityProfileState() {}
 
     private SecurityProfileState(SecurityProfileState $) {
@@ -290,6 +308,7 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
         this.threatPreventionProfile = $.threatPreventionProfile;
         this.type = $.type;
         this.updateTime = $.updateTime;
+        this.urlFilteringProfile = $.urlFilteringProfile;
     }
 
     public static Builder builder() {
@@ -611,7 +630,7 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param type The type of security profile.
-         * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+         * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
          * 
          * @return builder
          * 
@@ -623,7 +642,7 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param type The type of security profile.
-         * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+         * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
          * 
          * @return builder
          * 
@@ -651,6 +670,29 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
          */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param urlFilteringProfile The url filtering configuration for the security profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlFilteringProfile(@Nullable Output<SecurityProfileUrlFilteringProfileArgs> urlFilteringProfile) {
+            $.urlFilteringProfile = urlFilteringProfile;
+            return this;
+        }
+
+        /**
+         * @param urlFilteringProfile The url filtering configuration for the security profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlFilteringProfile(SecurityProfileUrlFilteringProfileArgs urlFilteringProfile) {
+            return urlFilteringProfile(Output.of(urlFilteringProfile));
         }
 
         public SecurityProfileState build() {

@@ -65,7 +65,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     datasetConfigId: "my_config_excludes",
  *     retentionPeriodDays: 1,
- *     activityDataRetentionPeriodDays: 2,
  *     organizationScope: true,
  *     identity: {
  *         type: "IDENTITY_TYPE_PER_PROJECT",
@@ -138,10 +137,6 @@ export class InsightsDatasetConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === InsightsDatasetConfig.__pulumiType;
     }
 
-    /**
-     * Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-     */
-    declare public readonly activityDataRetentionPeriodDays: pulumi.Output<number | undefined>;
     /**
      * The UTC time at which the DatasetConfig was created. This is auto-populated.
      */
@@ -251,7 +246,6 @@ export class InsightsDatasetConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InsightsDatasetConfigState | undefined;
-            resourceInputs["activityDataRetentionPeriodDays"] = state?.activityDataRetentionPeriodDays;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["datasetConfigId"] = state?.datasetConfigId;
             resourceInputs["datasetConfigState"] = state?.datasetConfigState;
@@ -288,7 +282,6 @@ export class InsightsDatasetConfig extends pulumi.CustomResource {
             if (args?.retentionPeriodDays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'retentionPeriodDays'");
             }
-            resourceInputs["activityDataRetentionPeriodDays"] = args?.activityDataRetentionPeriodDays;
             resourceInputs["datasetConfigId"] = args?.datasetConfigId;
             resourceInputs["description"] = args?.description;
             resourceInputs["excludeCloudStorageBuckets"] = args?.excludeCloudStorageBuckets;
@@ -321,10 +314,6 @@ export class InsightsDatasetConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InsightsDatasetConfig resources.
  */
 export interface InsightsDatasetConfigState {
-    /**
-     * Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-     */
-    activityDataRetentionPeriodDays?: pulumi.Input<number>;
     /**
      * The UTC time at which the DatasetConfig was created. This is auto-populated.
      */
@@ -426,10 +415,6 @@ export interface InsightsDatasetConfigState {
  * The set of arguments for constructing a InsightsDatasetConfig resource.
  */
 export interface InsightsDatasetConfigArgs {
-    /**
-     * Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-     */
-    activityDataRetentionPeriodDays?: pulumi.Input<number>;
     /**
      * The user-defined ID of the DatasetConfig
      */

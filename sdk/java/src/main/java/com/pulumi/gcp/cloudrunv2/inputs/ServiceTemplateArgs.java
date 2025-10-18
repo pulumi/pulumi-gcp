@@ -111,6 +111,21 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Disables health checking containers during deployment.
+     * 
+     */
+    @Import(name="healthCheckDisabled")
+    private @Nullable Output<Boolean> healthCheckDisabled;
+
+    /**
+     * @return Disables health checking containers during deployment.
+     * 
+     */
+    public Optional<Output<Boolean>> healthCheckDisabled() {
+        return Optional.ofNullable(this.healthCheckDisabled);
+    }
+
+    /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
      * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
      * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -303,6 +318,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         this.encryptionKey = $.encryptionKey;
         this.executionEnvironment = $.executionEnvironment;
         this.gpuZonalRedundancyDisabled = $.gpuZonalRedundancyDisabled;
+        this.healthCheckDisabled = $.healthCheckDisabled;
         this.labels = $.labels;
         this.maxInstanceRequestConcurrency = $.maxInstanceRequestConcurrency;
         this.nodeSelector = $.nodeSelector;
@@ -458,6 +474,27 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder gpuZonalRedundancyDisabled(Boolean gpuZonalRedundancyDisabled) {
             return gpuZonalRedundancyDisabled(Output.of(gpuZonalRedundancyDisabled));
+        }
+
+        /**
+         * @param healthCheckDisabled Disables health checking containers during deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckDisabled(@Nullable Output<Boolean> healthCheckDisabled) {
+            $.healthCheckDisabled = healthCheckDisabled;
+            return this;
+        }
+
+        /**
+         * @param healthCheckDisabled Disables health checking containers during deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckDisabled(Boolean healthCheckDisabled) {
+            return healthCheckDisabled(Output.of(healthCheckDisabled));
         }
 
         /**

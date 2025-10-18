@@ -163,6 +163,29 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The KMS key to be used to protect this Engine at creation time.
+     * Must be set for requests that need to comply with CMEK Org Policy
+     * protections.
+     * If this field is set and processed successfully, the Engine will be
+     * protected by the KMS key, as indicated in the cmekConfig field.
+     * 
+     */
+    @Import(name="kmsKeyName")
+    private @Nullable Output<String> kmsKeyName;
+
+    /**
+     * @return The KMS key to be used to protect this Engine at creation time.
+     * Must be set for requests that need to comply with CMEK Org Policy
+     * protections.
+     * If this field is set and processed successfully, the Engine will be
+     * protected by the KMS key, as indicated in the cmekConfig field.
+     * 
+     */
+    public Optional<Output<String>> kmsKeyName() {
+        return Optional.ofNullable(this.kmsKeyName);
+    }
+
+    /**
      * Location.
      * 
      */
@@ -259,6 +282,7 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
         this.engineId = $.engineId;
         this.features = $.features;
         this.industryVertical = $.industryVertical;
+        this.kmsKeyName = $.kmsKeyName;
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
@@ -489,6 +513,35 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder industryVertical(String industryVertical) {
             return industryVertical(Output.of(industryVertical));
+        }
+
+        /**
+         * @param kmsKeyName The KMS key to be used to protect this Engine at creation time.
+         * Must be set for requests that need to comply with CMEK Org Policy
+         * protections.
+         * If this field is set and processed successfully, the Engine will be
+         * protected by the KMS key, as indicated in the cmekConfig field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(@Nullable Output<String> kmsKeyName) {
+            $.kmsKeyName = kmsKeyName;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyName The KMS key to be used to protect this Engine at creation time.
+         * Must be set for requests that need to comply with CMEK Org Policy
+         * protections.
+         * If this field is set and processed successfully, the Engine will be
+         * protected by the KMS key, as indicated in the cmekConfig field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(String kmsKeyName) {
+            return kmsKeyName(Output.of(kmsKeyName));
         }
 
         /**

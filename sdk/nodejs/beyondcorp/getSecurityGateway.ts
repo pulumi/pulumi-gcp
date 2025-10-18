@@ -61,7 +61,9 @@ export interface GetSecurityGatewayResult {
     readonly location: string;
     readonly name: string;
     readonly project?: string;
+    readonly proxyProtocolConfigs: outputs.beyondcorp.GetSecurityGatewayProxyProtocolConfig[];
     readonly securityGatewayId: string;
+    readonly serviceDiscoveries: outputs.beyondcorp.GetSecurityGatewayServiceDiscovery[];
     readonly state: string;
     readonly updateTime: string;
 }

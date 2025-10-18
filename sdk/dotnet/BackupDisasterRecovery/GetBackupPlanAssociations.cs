@@ -12,19 +12,76 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     public static class GetBackupPlanAssociations
     {
         /// <summary>
+        /// Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+        /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var computeInstanceAssociations = Gcp.BackupDisasterRecovery.GetBackupPlanAssociations.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         ResourceType = "compute.googleapis.com/Instance",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetBackupPlanAssociationsResult> InvokeAsync(GetBackupPlanAssociationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupPlanAssociationsResult>("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", args ?? new GetBackupPlanAssociationsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+        /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var computeInstanceAssociations = Gcp.BackupDisasterRecovery.GetBackupPlanAssociations.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         ResourceType = "compute.googleapis.com/Instance",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetBackupPlanAssociationsResult> Invoke(GetBackupPlanAssociationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlanAssociationsResult>("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", args ?? new GetBackupPlanAssociationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+        /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var computeInstanceAssociations = Gcp.BackupDisasterRecovery.GetBackupPlanAssociations.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         ResourceType = "compute.googleapis.com/Instance",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetBackupPlanAssociationsResult> Invoke(GetBackupPlanAssociationsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlanAssociationsResult>("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", args ?? new GetBackupPlanAssociationsInvokeArgs(), options.WithDefaults());
@@ -33,12 +90,24 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
     public sealed class GetBackupPlanAssociationsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The location where the Backup Plan Association resources reside.
+        /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
 
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+        /// 
+        /// - - -
+        /// </summary>
         [Input("resourceType", required: true)]
         public string ResourceType { get; set; } = null!;
 
@@ -50,12 +119,24 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
     public sealed class GetBackupPlanAssociationsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The location where the Backup Plan Association resources reside.
+        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+        /// 
+        /// - - -
+        /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
 
@@ -69,12 +150,18 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     [OutputType]
     public sealed class GetBackupPlanAssociationsResult
     {
+        /// <summary>
+        /// A list of the backup plan associations found.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBackupPlanAssociationsAssociationResult> Associations;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Location;
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// </summary>
         public readonly string Project;
         public readonly string ResourceType;
 

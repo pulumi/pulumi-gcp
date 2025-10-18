@@ -54,6 +54,7 @@ export interface GetInstanceArgs {
 export interface GetInstanceResult {
     readonly authorizedNetwork: string;
     readonly createTime: string;
+    readonly deletionProtection: boolean;
     readonly discoveryEndpoint: string;
     readonly displayName: string;
     readonly effectiveLabels: {[key: string]: string};

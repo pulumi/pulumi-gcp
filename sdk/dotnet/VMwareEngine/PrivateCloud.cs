@@ -169,6 +169,22 @@ namespace Pulumi.Gcp.VMwareEngine
     public partial class PrivateCloud : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Creation time of this resource.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Time when the resource was scheduled for deletion.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("deleteTime")]
+        public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
         /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         /// </summary>
         [Output("deletionDelayHours")]
@@ -179,6 +195,14 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Time when the resource will be irreversibly deleted.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
 
         /// <summary>
         /// Details about a HCX Cloud Manager appliance.
@@ -252,6 +276,14 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// Last update time of this resource.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
         /// Details about a vCenter Server management appliance.
@@ -373,6 +405,22 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class PrivateCloudState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Creation time of this resource.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Time when the resource was scheduled for deletion.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("deleteTime")]
+        public Input<string>? DeleteTime { get; set; }
+
+        /// <summary>
         /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         /// </summary>
         [Input("deletionDelayHours")]
@@ -383,6 +431,14 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Time when the resource will be irreversibly deleted.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
 
         [Input("hcxes")]
         private InputList<Inputs.PrivateCloudHcxGetArgs>? _hcxes;
@@ -468,6 +524,14 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// Last update time of this resource.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         [Input("vcenters")]
         private InputList<Inputs.PrivateCloudVcenterGetArgs>? _vcenters;

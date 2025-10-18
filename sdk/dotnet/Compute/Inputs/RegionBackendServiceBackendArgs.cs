@@ -119,6 +119,28 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? MaxConnectionsPerInstance { get; set; }
 
         /// <summary>
+        /// Defines a maximum number of in-flight requests for the whole NEG
+        /// or instance group. Not available if backend's balancingMode is RATE
+        /// or CONNECTION.
+        /// </summary>
+        [Input("maxInFlightRequests")]
+        public Input<int>? MaxInFlightRequests { get; set; }
+
+        /// <summary>
+        /// Defines a maximum number of in-flight requests for a single endpoint.
+        /// Not available if backend's balancingMode is RATE or CONNECTION.
+        /// </summary>
+        [Input("maxInFlightRequestsPerEndpoint")]
+        public Input<int>? MaxInFlightRequestsPerEndpoint { get; set; }
+
+        /// <summary>
+        /// Defines a maximum number of in-flight requests for a single VM.
+        /// Not available if backend's balancingMode is RATE or CONNECTION.
+        /// </summary>
+        [Input("maxInFlightRequestsPerInstance")]
+        public Input<int>? MaxInFlightRequestsPerInstance { get; set; }
+
+        /// <summary>
         /// The max requests per second (RPS) of the group. Cannot be set
         /// for INTERNAL backend services.
         /// Can be used with either RATE or UTILIZATION balancing modes,
@@ -156,6 +178,16 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("maxUtilization")]
         public Input<double>? MaxUtilization { get; set; }
+
+        /// <summary>
+        /// This field specifies how long a connection should be kept alive for:
+        /// - LONG: Most of the requests are expected to take more than multiple
+        /// seconds to finish.
+        /// - SHORT: Most requests are expected to finish with a sub-second latency.
+        /// Possible values are: `LONG`, `SHORT`.
+        /// </summary>
+        [Input("trafficDuration")]
+        public Input<string>? TrafficDuration { get; set; }
 
         public RegionBackendServiceBackendArgs()
         {

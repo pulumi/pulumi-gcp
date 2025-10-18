@@ -215,6 +215,62 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Security Security Profile Group Url Filtering
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networksecurity.SecurityProfile;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileArgs;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileGroup;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var securityProfile = new SecurityProfile("securityProfile", SecurityProfileArgs.builder()
+ *             .name("sec-profile")
+ *             .location("global")
+ *             .type("URL_FILTERING")
+ *             .urlFilteringProfile(SecurityProfileUrlFilteringProfileArgs.builder()
+ *                 .urlFilters(SecurityProfileUrlFilteringProfileUrlFilterArgs.builder()
+ *                     .priority(1)
+ *                     .filteringAction("ALLOW")
+ *                     .urls(                    
+ *                         "*example.com",
+ *                         "*about.example.com",
+ *                         "*help.example.com")
+ *                     .build())
+ *                 .build())
+ *             .parent("organizations/123456789")
+ *             .build());
+ * 
+ *         var default_ = new SecurityProfileGroup("default", SecurityProfileGroupArgs.builder()
+ *             .name("sec-profile-group")
+ *             .parent("organizations/123456789")
+ *             .description("my description")
+ *             .urlFilteringProfile(securityProfile.id())
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -428,6 +484,20 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+     * 
+     */
+    @Export(name="urlFilteringProfile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> urlFilteringProfile;
+
+    /**
+     * @return Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+     * 
+     */
+    public Output<Optional<String>> urlFilteringProfile() {
+        return Codegen.optional(this.urlFilteringProfile);
     }
 
     /**

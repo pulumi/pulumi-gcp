@@ -24,6 +24,7 @@ class InstanceArgs:
                  node_config: pulumi.Input['InstanceNodeConfigArgs'],
                  node_count: pulumi.Input[_builtins.int],
                  authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
@@ -69,6 +70,8 @@ class InstanceArgs:
         pulumi.set(__self__, "node_count", node_count)
         if authorized_network is not None:
             pulumi.set(__self__, "authorized_network", authorized_network)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
@@ -127,6 +130,15 @@ class InstanceArgs:
     @authorized_network.setter
     def authorized_network(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "authorized_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -267,6 +279,7 @@ class _InstanceState:
     def __init__(__self__, *,
                  authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  discovery_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -330,6 +343,8 @@ class _InstanceState:
             pulumi.set(__self__, "authorized_network", authorized_network)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if discovery_endpoint is not None:
             pulumi.set(__self__, "discovery_endpoint", discovery_endpoint)
         if display_name is not None:
@@ -391,6 +406,15 @@ class _InstanceState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryEndpoint")
@@ -633,6 +657,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
@@ -685,6 +710,7 @@ class Instance(pulumi.CustomResource):
         instance = gcp.memcache.Instance("instance",
             name="test-instance",
             authorized_network=private_service_connection.network,
+            deletion_protection=False,
             labels={
                 "env": "test",
             },
@@ -814,6 +840,7 @@ class Instance(pulumi.CustomResource):
         instance = gcp.memcache.Instance("instance",
             name="test-instance",
             authorized_network=private_service_connection.network,
+            deletion_protection=False,
             labels={
                 "env": "test",
             },
@@ -883,6 +910,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
@@ -905,6 +933,7 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["authorized_network"] = authorized_network
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["maintenance_policy"] = maintenance_policy
@@ -942,6 +971,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             discovery_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1012,6 +1042,7 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["authorized_network"] = authorized_network
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["discovery_endpoint"] = discovery_endpoint
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1048,6 +1079,11 @@ class Instance(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter(name="discoveryEndpoint")

@@ -6,7 +6,9 @@ package com.pulumi.gcp.beyondcorp.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamEgressPolicyArgs;
+import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamExternalArgs;
 import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamNetworkArgs;
+import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,6 +36,23 @@ public final class SecurityGatewayApplicationUpstreamArgs extends com.pulumi.res
     }
 
     /**
+     * List of the external endpoints to forward traffic to.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="external")
+    private @Nullable Output<SecurityGatewayApplicationUpstreamExternalArgs> external;
+
+    /**
+     * @return List of the external endpoints to forward traffic to.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityGatewayApplicationUpstreamExternalArgs>> external() {
+        return Optional.ofNullable(this.external);
+    }
+
+    /**
      * Network to forward traffic to.
      * Structure is documented below.
      * 
@@ -50,11 +69,30 @@ public final class SecurityGatewayApplicationUpstreamArgs extends com.pulumi.res
         return Optional.ofNullable(this.network);
     }
 
+    /**
+     * Shared proxy configuration for all apps.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="proxyProtocol")
+    private @Nullable Output<SecurityGatewayApplicationUpstreamProxyProtocolArgs> proxyProtocol;
+
+    /**
+     * @return Shared proxy configuration for all apps.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityGatewayApplicationUpstreamProxyProtocolArgs>> proxyProtocol() {
+        return Optional.ofNullable(this.proxyProtocol);
+    }
+
     private SecurityGatewayApplicationUpstreamArgs() {}
 
     private SecurityGatewayApplicationUpstreamArgs(SecurityGatewayApplicationUpstreamArgs $) {
         this.egressPolicy = $.egressPolicy;
+        this.external = $.external;
         this.network = $.network;
+        this.proxyProtocol = $.proxyProtocol;
     }
 
     public static Builder builder() {
@@ -99,6 +137,29 @@ public final class SecurityGatewayApplicationUpstreamArgs extends com.pulumi.res
         }
 
         /**
+         * @param external List of the external endpoints to forward traffic to.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder external(@Nullable Output<SecurityGatewayApplicationUpstreamExternalArgs> external) {
+            $.external = external;
+            return this;
+        }
+
+        /**
+         * @param external List of the external endpoints to forward traffic to.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder external(SecurityGatewayApplicationUpstreamExternalArgs external) {
+            return external(Output.of(external));
+        }
+
+        /**
          * @param network Network to forward traffic to.
          * Structure is documented below.
          * 
@@ -119,6 +180,29 @@ public final class SecurityGatewayApplicationUpstreamArgs extends com.pulumi.res
          */
         public Builder network(SecurityGatewayApplicationUpstreamNetworkArgs network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param proxyProtocol Shared proxy configuration for all apps.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyProtocol(@Nullable Output<SecurityGatewayApplicationUpstreamProxyProtocolArgs> proxyProtocol) {
+            $.proxyProtocol = proxyProtocol;
+            return this;
+        }
+
+        /**
+         * @param proxyProtocol Shared proxy configuration for all apps.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyProtocol(SecurityGatewayApplicationUpstreamProxyProtocolArgs proxyProtocol) {
+            return proxyProtocol(Output.of(proxyProtocol));
         }
 
         public SecurityGatewayApplicationUpstreamArgs build() {

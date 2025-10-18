@@ -475,35 +475,205 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", TypeShape.of(GetBackupPlanAssociationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+     * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var computeInstanceAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
+     *             .location("us-central1")
+     *             .resourceType("compute.googleapis.com/Instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetBackupPlanAssociationsResult> getBackupPlanAssociations(GetBackupPlanAssociationsArgs args) {
         return getBackupPlanAssociations(args, InvokeOptions.Empty);
     }
     /**
+     * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+     * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var computeInstanceAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
+     *             .location("us-central1")
+     *             .resourceType("compute.googleapis.com/Instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetBackupPlanAssociationsResult> getBackupPlanAssociationsPlain(GetBackupPlanAssociationsPlainArgs args) {
         return getBackupPlanAssociationsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+     * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var computeInstanceAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
+     *             .location("us-central1")
+     *             .resourceType("compute.googleapis.com/Instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetBackupPlanAssociationsResult> getBackupPlanAssociations(GetBackupPlanAssociationsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", TypeShape.of(GetBackupPlanAssociationsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+     * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var computeInstanceAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
+     *             .location("us-central1")
+     *             .resourceType("compute.googleapis.com/Instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetBackupPlanAssociationsResult> getBackupPlanAssociations(GetBackupPlanAssociationsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", TypeShape.of(GetBackupPlanAssociationsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+     * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var computeInstanceAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
+     *             .location("us-central1")
+     *             .resourceType("compute.googleapis.com/Instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetBackupPlanAssociationsResult> getBackupPlanAssociationsPlain(GetBackupPlanAssociationsPlainArgs args, InvokeOptions options) {

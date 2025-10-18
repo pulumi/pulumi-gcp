@@ -57,7 +57,9 @@ export interface GetNetworkArgs {
  * A collection of values returned by getNetwork.
  */
 export interface GetNetworkResult {
+    readonly createTime: string;
     readonly description: string;
+    readonly etag: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -68,6 +70,7 @@ export interface GetNetworkResult {
     readonly state: string;
     readonly type: string;
     readonly uid: string;
+    readonly updateTime: string;
     readonly vpcNetworks: outputs.vmwareengine.GetNetworkVpcNetwork[];
 }
 /**

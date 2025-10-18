@@ -1766,6 +1766,896 @@ func (o GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput) Index(i pu
 	}).(GetConnectivityTestRunReachabilityDetailTraceStepOutput)
 }
 
+type GetConnectivityTestsConnectivityTest struct {
+	// Whether the analysis should skip firewall checking.
+	BypassFirewallChecks bool `pulumi:"bypassFirewallChecks"`
+	// The user-supplied description of the Connectivity Test.
+	Description string `pulumi:"description"`
+	// Destination specification of the Connectivity Test.
+	// Structure is documented below.
+	Destinations    []GetConnectivityTestsConnectivityTestDestination `pulumi:"destinations"`
+	EffectiveLabels map[string]string                                 `pulumi:"effectiveLabels"`
+	// Resource labels to represent user-provided metadata.
+	Labels map[string]string `pulumi:"labels"`
+	// Unique name for the connectivity test.
+	Name string `pulumi:"name"`
+	// The ID of the project.
+	Project string `pulumi:"project"`
+	// IP Protocol of the test.
+	Protocol string `pulumi:"protocol"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Other projects that may be relevant for reachability analysis.
+	RelatedProjects []string `pulumi:"relatedProjects"`
+	// Whether run analysis for the return path from destination to source.
+	RoundTrip bool `pulumi:"roundTrip"`
+	// Source specification of the Connectivity Test.
+	// Structure is documented below.
+	Sources []GetConnectivityTestsConnectivityTestSource `pulumi:"sources"`
+}
+
+// GetConnectivityTestsConnectivityTestInput is an input type that accepts GetConnectivityTestsConnectivityTestArgs and GetConnectivityTestsConnectivityTestOutput values.
+// You can construct a concrete instance of `GetConnectivityTestsConnectivityTestInput` via:
+//
+//	GetConnectivityTestsConnectivityTestArgs{...}
+type GetConnectivityTestsConnectivityTestInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestsConnectivityTestOutput() GetConnectivityTestsConnectivityTestOutput
+	ToGetConnectivityTestsConnectivityTestOutputWithContext(context.Context) GetConnectivityTestsConnectivityTestOutput
+}
+
+type GetConnectivityTestsConnectivityTestArgs struct {
+	// Whether the analysis should skip firewall checking.
+	BypassFirewallChecks pulumi.BoolInput `pulumi:"bypassFirewallChecks"`
+	// The user-supplied description of the Connectivity Test.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Destination specification of the Connectivity Test.
+	// Structure is documented below.
+	Destinations    GetConnectivityTestsConnectivityTestDestinationArrayInput `pulumi:"destinations"`
+	EffectiveLabels pulumi.StringMapInput                                     `pulumi:"effectiveLabels"`
+	// Resource labels to represent user-provided metadata.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Unique name for the connectivity test.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the project.
+	Project pulumi.StringInput `pulumi:"project"`
+	// IP Protocol of the test.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
+	// Other projects that may be relevant for reachability analysis.
+	RelatedProjects pulumi.StringArrayInput `pulumi:"relatedProjects"`
+	// Whether run analysis for the return path from destination to source.
+	RoundTrip pulumi.BoolInput `pulumi:"roundTrip"`
+	// Source specification of the Connectivity Test.
+	// Structure is documented below.
+	Sources GetConnectivityTestsConnectivityTestSourceArrayInput `pulumi:"sources"`
+}
+
+func (GetConnectivityTestsConnectivityTestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestsConnectivityTest)(nil)).Elem()
+}
+
+func (i GetConnectivityTestsConnectivityTestArgs) ToGetConnectivityTestsConnectivityTestOutput() GetConnectivityTestsConnectivityTestOutput {
+	return i.ToGetConnectivityTestsConnectivityTestOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestsConnectivityTestArgs) ToGetConnectivityTestsConnectivityTestOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestsConnectivityTestOutput)
+}
+
+// GetConnectivityTestsConnectivityTestArrayInput is an input type that accepts GetConnectivityTestsConnectivityTestArray and GetConnectivityTestsConnectivityTestArrayOutput values.
+// You can construct a concrete instance of `GetConnectivityTestsConnectivityTestArrayInput` via:
+//
+//	GetConnectivityTestsConnectivityTestArray{ GetConnectivityTestsConnectivityTestArgs{...} }
+type GetConnectivityTestsConnectivityTestArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestsConnectivityTestArrayOutput() GetConnectivityTestsConnectivityTestArrayOutput
+	ToGetConnectivityTestsConnectivityTestArrayOutputWithContext(context.Context) GetConnectivityTestsConnectivityTestArrayOutput
+}
+
+type GetConnectivityTestsConnectivityTestArray []GetConnectivityTestsConnectivityTestInput
+
+func (GetConnectivityTestsConnectivityTestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestsConnectivityTest)(nil)).Elem()
+}
+
+func (i GetConnectivityTestsConnectivityTestArray) ToGetConnectivityTestsConnectivityTestArrayOutput() GetConnectivityTestsConnectivityTestArrayOutput {
+	return i.ToGetConnectivityTestsConnectivityTestArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestsConnectivityTestArray) ToGetConnectivityTestsConnectivityTestArrayOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestsConnectivityTestArrayOutput)
+}
+
+type GetConnectivityTestsConnectivityTestOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestsConnectivityTestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestsConnectivityTest)(nil)).Elem()
+}
+
+func (o GetConnectivityTestsConnectivityTestOutput) ToGetConnectivityTestsConnectivityTestOutput() GetConnectivityTestsConnectivityTestOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestOutput) ToGetConnectivityTestsConnectivityTestOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestOutput {
+	return o
+}
+
+// Whether the analysis should skip firewall checking.
+func (o GetConnectivityTestsConnectivityTestOutput) BypassFirewallChecks() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) bool { return v.BypassFirewallChecks }).(pulumi.BoolOutput)
+}
+
+// The user-supplied description of the Connectivity Test.
+func (o GetConnectivityTestsConnectivityTestOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Destination specification of the Connectivity Test.
+// Structure is documented below.
+func (o GetConnectivityTestsConnectivityTestOutput) Destinations() GetConnectivityTestsConnectivityTestDestinationArrayOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) []GetConnectivityTestsConnectivityTestDestination {
+		return v.Destinations
+	}).(GetConnectivityTestsConnectivityTestDestinationArrayOutput)
+}
+
+func (o GetConnectivityTestsConnectivityTestOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Resource labels to represent user-provided metadata.
+func (o GetConnectivityTestsConnectivityTestOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Unique name for the connectivity test.
+func (o GetConnectivityTestsConnectivityTestOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the project.
+func (o GetConnectivityTestsConnectivityTestOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// IP Protocol of the test.
+func (o GetConnectivityTestsConnectivityTestOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+//
+//	and default labels configured on the provider.
+func (o GetConnectivityTestsConnectivityTestOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// Other projects that may be relevant for reachability analysis.
+func (o GetConnectivityTestsConnectivityTestOutput) RelatedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) []string { return v.RelatedProjects }).(pulumi.StringArrayOutput)
+}
+
+// Whether run analysis for the return path from destination to source.
+func (o GetConnectivityTestsConnectivityTestOutput) RoundTrip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) bool { return v.RoundTrip }).(pulumi.BoolOutput)
+}
+
+// Source specification of the Connectivity Test.
+// Structure is documented below.
+func (o GetConnectivityTestsConnectivityTestOutput) Sources() GetConnectivityTestsConnectivityTestSourceArrayOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) []GetConnectivityTestsConnectivityTestSource {
+		return v.Sources
+	}).(GetConnectivityTestsConnectivityTestSourceArrayOutput)
+}
+
+type GetConnectivityTestsConnectivityTestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestsConnectivityTestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestsConnectivityTest)(nil)).Elem()
+}
+
+func (o GetConnectivityTestsConnectivityTestArrayOutput) ToGetConnectivityTestsConnectivityTestArrayOutput() GetConnectivityTestsConnectivityTestArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestArrayOutput) ToGetConnectivityTestsConnectivityTestArrayOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestArrayOutput) Index(i pulumi.IntInput) GetConnectivityTestsConnectivityTestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectivityTestsConnectivityTest {
+		return vs[0].([]GetConnectivityTestsConnectivityTest)[vs[1].(int)]
+	}).(GetConnectivityTestsConnectivityTestOutput)
+}
+
+type GetConnectivityTestsConnectivityTestDestination struct {
+	// A Cloud SQL instance URI.
+	CloudSqlInstance string `pulumi:"cloudSqlInstance"`
+	// Forwarding rule URI. Forwarding rules are frontends for load balancers,
+	// PSC endpoints, and Protocol Forwarding.
+	ForwardingRule string `pulumi:"forwardingRule"`
+	// A DNS endpoint of Google Kubernetes Engine cluster control plane.
+	Fqdn string `pulumi:"fqdn"`
+	// A cluster URI for Google Kubernetes Engine cluster control plane.
+	GkeMasterCluster string `pulumi:"gkeMasterCluster"`
+	// A Compute Engine instance URI.
+	Instance string `pulumi:"instance"`
+	// The IP address of the endpoint.
+	IpAddress string `pulumi:"ipAddress"`
+	// A VPC network URI.
+	Network string `pulumi:"network"`
+	// The IP protocol port of the endpoint.
+	Port int `pulumi:"port"`
+	// Project ID where the endpoint is located.
+	ProjectId string `pulumi:"projectId"`
+	// A Redis Cluster URI.
+	RedisCluster string `pulumi:"redisCluster"`
+	// A Redis Instance URI.
+	RedisInstance string `pulumi:"redisInstance"`
+}
+
+// GetConnectivityTestsConnectivityTestDestinationInput is an input type that accepts GetConnectivityTestsConnectivityTestDestinationArgs and GetConnectivityTestsConnectivityTestDestinationOutput values.
+// You can construct a concrete instance of `GetConnectivityTestsConnectivityTestDestinationInput` via:
+//
+//	GetConnectivityTestsConnectivityTestDestinationArgs{...}
+type GetConnectivityTestsConnectivityTestDestinationInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestsConnectivityTestDestinationOutput() GetConnectivityTestsConnectivityTestDestinationOutput
+	ToGetConnectivityTestsConnectivityTestDestinationOutputWithContext(context.Context) GetConnectivityTestsConnectivityTestDestinationOutput
+}
+
+type GetConnectivityTestsConnectivityTestDestinationArgs struct {
+	// A Cloud SQL instance URI.
+	CloudSqlInstance pulumi.StringInput `pulumi:"cloudSqlInstance"`
+	// Forwarding rule URI. Forwarding rules are frontends for load balancers,
+	// PSC endpoints, and Protocol Forwarding.
+	ForwardingRule pulumi.StringInput `pulumi:"forwardingRule"`
+	// A DNS endpoint of Google Kubernetes Engine cluster control plane.
+	Fqdn pulumi.StringInput `pulumi:"fqdn"`
+	// A cluster URI for Google Kubernetes Engine cluster control plane.
+	GkeMasterCluster pulumi.StringInput `pulumi:"gkeMasterCluster"`
+	// A Compute Engine instance URI.
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// The IP address of the endpoint.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// A VPC network URI.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The IP protocol port of the endpoint.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Project ID where the endpoint is located.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// A Redis Cluster URI.
+	RedisCluster pulumi.StringInput `pulumi:"redisCluster"`
+	// A Redis Instance URI.
+	RedisInstance pulumi.StringInput `pulumi:"redisInstance"`
+}
+
+func (GetConnectivityTestsConnectivityTestDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestsConnectivityTestDestination)(nil)).Elem()
+}
+
+func (i GetConnectivityTestsConnectivityTestDestinationArgs) ToGetConnectivityTestsConnectivityTestDestinationOutput() GetConnectivityTestsConnectivityTestDestinationOutput {
+	return i.ToGetConnectivityTestsConnectivityTestDestinationOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestsConnectivityTestDestinationArgs) ToGetConnectivityTestsConnectivityTestDestinationOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestsConnectivityTestDestinationOutput)
+}
+
+// GetConnectivityTestsConnectivityTestDestinationArrayInput is an input type that accepts GetConnectivityTestsConnectivityTestDestinationArray and GetConnectivityTestsConnectivityTestDestinationArrayOutput values.
+// You can construct a concrete instance of `GetConnectivityTestsConnectivityTestDestinationArrayInput` via:
+//
+//	GetConnectivityTestsConnectivityTestDestinationArray{ GetConnectivityTestsConnectivityTestDestinationArgs{...} }
+type GetConnectivityTestsConnectivityTestDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestsConnectivityTestDestinationArrayOutput() GetConnectivityTestsConnectivityTestDestinationArrayOutput
+	ToGetConnectivityTestsConnectivityTestDestinationArrayOutputWithContext(context.Context) GetConnectivityTestsConnectivityTestDestinationArrayOutput
+}
+
+type GetConnectivityTestsConnectivityTestDestinationArray []GetConnectivityTestsConnectivityTestDestinationInput
+
+func (GetConnectivityTestsConnectivityTestDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestsConnectivityTestDestination)(nil)).Elem()
+}
+
+func (i GetConnectivityTestsConnectivityTestDestinationArray) ToGetConnectivityTestsConnectivityTestDestinationArrayOutput() GetConnectivityTestsConnectivityTestDestinationArrayOutput {
+	return i.ToGetConnectivityTestsConnectivityTestDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestsConnectivityTestDestinationArray) ToGetConnectivityTestsConnectivityTestDestinationArrayOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestsConnectivityTestDestinationArrayOutput)
+}
+
+type GetConnectivityTestsConnectivityTestDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestsConnectivityTestDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestsConnectivityTestDestination)(nil)).Elem()
+}
+
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) ToGetConnectivityTestsConnectivityTestDestinationOutput() GetConnectivityTestsConnectivityTestDestinationOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) ToGetConnectivityTestsConnectivityTestDestinationOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestDestinationOutput {
+	return o
+}
+
+// A Cloud SQL instance URI.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) CloudSqlInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.CloudSqlInstance }).(pulumi.StringOutput)
+}
+
+// Forwarding rule URI. Forwarding rules are frontends for load balancers,
+// PSC endpoints, and Protocol Forwarding.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) ForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.ForwardingRule }).(pulumi.StringOutput)
+}
+
+// A DNS endpoint of Google Kubernetes Engine cluster control plane.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// A cluster URI for Google Kubernetes Engine cluster control plane.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) GkeMasterCluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.GkeMasterCluster }).(pulumi.StringOutput)
+}
+
+// A Compute Engine instance URI.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// The IP address of the endpoint.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// A VPC network URI.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The IP protocol port of the endpoint.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Project ID where the endpoint is located.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// A Redis Cluster URI.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) RedisCluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.RedisCluster }).(pulumi.StringOutput)
+}
+
+// A Redis Instance URI.
+func (o GetConnectivityTestsConnectivityTestDestinationOutput) RedisInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestDestination) string { return v.RedisInstance }).(pulumi.StringOutput)
+}
+
+type GetConnectivityTestsConnectivityTestDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestsConnectivityTestDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestsConnectivityTestDestination)(nil)).Elem()
+}
+
+func (o GetConnectivityTestsConnectivityTestDestinationArrayOutput) ToGetConnectivityTestsConnectivityTestDestinationArrayOutput() GetConnectivityTestsConnectivityTestDestinationArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestDestinationArrayOutput) ToGetConnectivityTestsConnectivityTestDestinationArrayOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestDestinationArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestDestinationArrayOutput) Index(i pulumi.IntInput) GetConnectivityTestsConnectivityTestDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectivityTestsConnectivityTestDestination {
+		return vs[0].([]GetConnectivityTestsConnectivityTestDestination)[vs[1].(int)]
+	}).(GetConnectivityTestsConnectivityTestDestinationOutput)
+}
+
+type GetConnectivityTestsConnectivityTestSource struct {
+	// An App Engine service version.
+	// Structure is documented below.
+	AppEngineVersions []GetConnectivityTestsConnectivityTestSourceAppEngineVersion `pulumi:"appEngineVersions"`
+	// A Cloud Function.
+	// Structure is documented below.
+	CloudFunctions []GetConnectivityTestsConnectivityTestSourceCloudFunction `pulumi:"cloudFunctions"`
+	// A Cloud Run revision.
+	// Structure is documented below.
+	CloudRunRevisions []GetConnectivityTestsConnectivityTestSourceCloudRunRevision `pulumi:"cloudRunRevisions"`
+	// A Cloud SQL instance URI.
+	CloudSqlInstance string `pulumi:"cloudSqlInstance"`
+	// A cluster URI for Google Kubernetes Engine cluster control plane.
+	GkeMasterCluster string `pulumi:"gkeMasterCluster"`
+	// A Compute Engine instance URI.
+	Instance string `pulumi:"instance"`
+	// The IP address of the endpoint.
+	IpAddress string `pulumi:"ipAddress"`
+	// A VPC network URI.
+	Network string `pulumi:"network"`
+	// Type of the network where the endpoint is located.
+	NetworkType string `pulumi:"networkType"`
+	// The IP protocol port of the endpoint.
+	Port int `pulumi:"port"`
+	// Project ID where the endpoint is located.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetConnectivityTestsConnectivityTestSourceInput is an input type that accepts GetConnectivityTestsConnectivityTestSourceArgs and GetConnectivityTestsConnectivityTestSourceOutput values.
+// You can construct a concrete instance of `GetConnectivityTestsConnectivityTestSourceInput` via:
+//
+//	GetConnectivityTestsConnectivityTestSourceArgs{...}
+type GetConnectivityTestsConnectivityTestSourceInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestsConnectivityTestSourceOutput() GetConnectivityTestsConnectivityTestSourceOutput
+	ToGetConnectivityTestsConnectivityTestSourceOutputWithContext(context.Context) GetConnectivityTestsConnectivityTestSourceOutput
+}
+
+type GetConnectivityTestsConnectivityTestSourceArgs struct {
+	// An App Engine service version.
+	// Structure is documented below.
+	AppEngineVersions GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayInput `pulumi:"appEngineVersions"`
+	// A Cloud Function.
+	// Structure is documented below.
+	CloudFunctions GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayInput `pulumi:"cloudFunctions"`
+	// A Cloud Run revision.
+	// Structure is documented below.
+	CloudRunRevisions GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayInput `pulumi:"cloudRunRevisions"`
+	// A Cloud SQL instance URI.
+	CloudSqlInstance pulumi.StringInput `pulumi:"cloudSqlInstance"`
+	// A cluster URI for Google Kubernetes Engine cluster control plane.
+	GkeMasterCluster pulumi.StringInput `pulumi:"gkeMasterCluster"`
+	// A Compute Engine instance URI.
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// The IP address of the endpoint.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// A VPC network URI.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Type of the network where the endpoint is located.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The IP protocol port of the endpoint.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Project ID where the endpoint is located.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetConnectivityTestsConnectivityTestSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestsConnectivityTestSource)(nil)).Elem()
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceArgs) ToGetConnectivityTestsConnectivityTestSourceOutput() GetConnectivityTestsConnectivityTestSourceOutput {
+	return i.ToGetConnectivityTestsConnectivityTestSourceOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceArgs) ToGetConnectivityTestsConnectivityTestSourceOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestsConnectivityTestSourceOutput)
+}
+
+// GetConnectivityTestsConnectivityTestSourceArrayInput is an input type that accepts GetConnectivityTestsConnectivityTestSourceArray and GetConnectivityTestsConnectivityTestSourceArrayOutput values.
+// You can construct a concrete instance of `GetConnectivityTestsConnectivityTestSourceArrayInput` via:
+//
+//	GetConnectivityTestsConnectivityTestSourceArray{ GetConnectivityTestsConnectivityTestSourceArgs{...} }
+type GetConnectivityTestsConnectivityTestSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestsConnectivityTestSourceArrayOutput() GetConnectivityTestsConnectivityTestSourceArrayOutput
+	ToGetConnectivityTestsConnectivityTestSourceArrayOutputWithContext(context.Context) GetConnectivityTestsConnectivityTestSourceArrayOutput
+}
+
+type GetConnectivityTestsConnectivityTestSourceArray []GetConnectivityTestsConnectivityTestSourceInput
+
+func (GetConnectivityTestsConnectivityTestSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestsConnectivityTestSource)(nil)).Elem()
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceArray) ToGetConnectivityTestsConnectivityTestSourceArrayOutput() GetConnectivityTestsConnectivityTestSourceArrayOutput {
+	return i.ToGetConnectivityTestsConnectivityTestSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceArray) ToGetConnectivityTestsConnectivityTestSourceArrayOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestsConnectivityTestSourceArrayOutput)
+}
+
+type GetConnectivityTestsConnectivityTestSourceOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestsConnectivityTestSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestsConnectivityTestSource)(nil)).Elem()
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceOutput) ToGetConnectivityTestsConnectivityTestSourceOutput() GetConnectivityTestsConnectivityTestSourceOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceOutput) ToGetConnectivityTestsConnectivityTestSourceOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceOutput {
+	return o
+}
+
+// An App Engine service version.
+// Structure is documented below.
+func (o GetConnectivityTestsConnectivityTestSourceOutput) AppEngineVersions() GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSource) []GetConnectivityTestsConnectivityTestSourceAppEngineVersion {
+		return v.AppEngineVersions
+	}).(GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput)
+}
+
+// A Cloud Function.
+// Structure is documented below.
+func (o GetConnectivityTestsConnectivityTestSourceOutput) CloudFunctions() GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSource) []GetConnectivityTestsConnectivityTestSourceCloudFunction {
+		return v.CloudFunctions
+	}).(GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput)
+}
+
+// A Cloud Run revision.
+// Structure is documented below.
+func (o GetConnectivityTestsConnectivityTestSourceOutput) CloudRunRevisions() GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSource) []GetConnectivityTestsConnectivityTestSourceCloudRunRevision {
+		return v.CloudRunRevisions
+	}).(GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput)
+}
+
+// A Cloud SQL instance URI.
+func (o GetConnectivityTestsConnectivityTestSourceOutput) CloudSqlInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSource) string { return v.CloudSqlInstance }).(pulumi.StringOutput)
+}
+
+// A cluster URI for Google Kubernetes Engine cluster control plane.
+func (o GetConnectivityTestsConnectivityTestSourceOutput) GkeMasterCluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSource) string { return v.GkeMasterCluster }).(pulumi.StringOutput)
+}
+
+// A Compute Engine instance URI.
+func (o GetConnectivityTestsConnectivityTestSourceOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSource) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// The IP address of the endpoint.
+func (o GetConnectivityTestsConnectivityTestSourceOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSource) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// A VPC network URI.
+func (o GetConnectivityTestsConnectivityTestSourceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSource) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Type of the network where the endpoint is located.
+func (o GetConnectivityTestsConnectivityTestSourceOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSource) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The IP protocol port of the endpoint.
+func (o GetConnectivityTestsConnectivityTestSourceOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSource) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Project ID where the endpoint is located.
+func (o GetConnectivityTestsConnectivityTestSourceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSource) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetConnectivityTestsConnectivityTestSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestsConnectivityTestSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestsConnectivityTestSource)(nil)).Elem()
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceArrayOutput) ToGetConnectivityTestsConnectivityTestSourceArrayOutput() GetConnectivityTestsConnectivityTestSourceArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceArrayOutput) ToGetConnectivityTestsConnectivityTestSourceArrayOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceArrayOutput) Index(i pulumi.IntInput) GetConnectivityTestsConnectivityTestSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectivityTestsConnectivityTestSource {
+		return vs[0].([]GetConnectivityTestsConnectivityTestSource)[vs[1].(int)]
+	}).(GetConnectivityTestsConnectivityTestSourceOutput)
+}
+
+type GetConnectivityTestsConnectivityTestSourceAppEngineVersion struct {
+	// A Cloud Run revision URI.
+	Uri string `pulumi:"uri"`
+}
+
+// GetConnectivityTestsConnectivityTestSourceAppEngineVersionInput is an input type that accepts GetConnectivityTestsConnectivityTestSourceAppEngineVersionArgs and GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput values.
+// You can construct a concrete instance of `GetConnectivityTestsConnectivityTestSourceAppEngineVersionInput` via:
+//
+//	GetConnectivityTestsConnectivityTestSourceAppEngineVersionArgs{...}
+type GetConnectivityTestsConnectivityTestSourceAppEngineVersionInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput() GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput
+	ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionOutputWithContext(context.Context) GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput
+}
+
+type GetConnectivityTestsConnectivityTestSourceAppEngineVersionArgs struct {
+	// A Cloud Run revision URI.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetConnectivityTestsConnectivityTestSourceAppEngineVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceAppEngineVersion)(nil)).Elem()
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceAppEngineVersionArgs) ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput() GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput {
+	return i.ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceAppEngineVersionArgs) ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput)
+}
+
+// GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayInput is an input type that accepts GetConnectivityTestsConnectivityTestSourceAppEngineVersionArray and GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput values.
+// You can construct a concrete instance of `GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayInput` via:
+//
+//	GetConnectivityTestsConnectivityTestSourceAppEngineVersionArray{ GetConnectivityTestsConnectivityTestSourceAppEngineVersionArgs{...} }
+type GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput() GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput
+	ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutputWithContext(context.Context) GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput
+}
+
+type GetConnectivityTestsConnectivityTestSourceAppEngineVersionArray []GetConnectivityTestsConnectivityTestSourceAppEngineVersionInput
+
+func (GetConnectivityTestsConnectivityTestSourceAppEngineVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestsConnectivityTestSourceAppEngineVersion)(nil)).Elem()
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceAppEngineVersionArray) ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput() GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput {
+	return i.ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceAppEngineVersionArray) ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput)
+}
+
+type GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceAppEngineVersion)(nil)).Elem()
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput) ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput() GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput) ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput {
+	return o
+}
+
+// A Cloud Run revision URI.
+func (o GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSourceAppEngineVersion) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestsConnectivityTestSourceAppEngineVersion)(nil)).Elem()
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput) ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput() GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput) ToGetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput) Index(i pulumi.IntInput) GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectivityTestsConnectivityTestSourceAppEngineVersion {
+		return vs[0].([]GetConnectivityTestsConnectivityTestSourceAppEngineVersion)[vs[1].(int)]
+	}).(GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput)
+}
+
+type GetConnectivityTestsConnectivityTestSourceCloudFunction struct {
+	// A Cloud Run revision URI.
+	Uri string `pulumi:"uri"`
+}
+
+// GetConnectivityTestsConnectivityTestSourceCloudFunctionInput is an input type that accepts GetConnectivityTestsConnectivityTestSourceCloudFunctionArgs and GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput values.
+// You can construct a concrete instance of `GetConnectivityTestsConnectivityTestSourceCloudFunctionInput` via:
+//
+//	GetConnectivityTestsConnectivityTestSourceCloudFunctionArgs{...}
+type GetConnectivityTestsConnectivityTestSourceCloudFunctionInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestsConnectivityTestSourceCloudFunctionOutput() GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput
+	ToGetConnectivityTestsConnectivityTestSourceCloudFunctionOutputWithContext(context.Context) GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput
+}
+
+type GetConnectivityTestsConnectivityTestSourceCloudFunctionArgs struct {
+	// A Cloud Run revision URI.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetConnectivityTestsConnectivityTestSourceCloudFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceCloudFunction)(nil)).Elem()
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceCloudFunctionArgs) ToGetConnectivityTestsConnectivityTestSourceCloudFunctionOutput() GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput {
+	return i.ToGetConnectivityTestsConnectivityTestSourceCloudFunctionOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceCloudFunctionArgs) ToGetConnectivityTestsConnectivityTestSourceCloudFunctionOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput)
+}
+
+// GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayInput is an input type that accepts GetConnectivityTestsConnectivityTestSourceCloudFunctionArray and GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput values.
+// You can construct a concrete instance of `GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayInput` via:
+//
+//	GetConnectivityTestsConnectivityTestSourceCloudFunctionArray{ GetConnectivityTestsConnectivityTestSourceCloudFunctionArgs{...} }
+type GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput() GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput
+	ToGetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutputWithContext(context.Context) GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput
+}
+
+type GetConnectivityTestsConnectivityTestSourceCloudFunctionArray []GetConnectivityTestsConnectivityTestSourceCloudFunctionInput
+
+func (GetConnectivityTestsConnectivityTestSourceCloudFunctionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestsConnectivityTestSourceCloudFunction)(nil)).Elem()
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceCloudFunctionArray) ToGetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput() GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput {
+	return i.ToGetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceCloudFunctionArray) ToGetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput)
+}
+
+type GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceCloudFunction)(nil)).Elem()
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput) ToGetConnectivityTestsConnectivityTestSourceCloudFunctionOutput() GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput) ToGetConnectivityTestsConnectivityTestSourceCloudFunctionOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput {
+	return o
+}
+
+// A Cloud Run revision URI.
+func (o GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSourceCloudFunction) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestsConnectivityTestSourceCloudFunction)(nil)).Elem()
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput) ToGetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput() GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput) ToGetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput) Index(i pulumi.IntInput) GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectivityTestsConnectivityTestSourceCloudFunction {
+		return vs[0].([]GetConnectivityTestsConnectivityTestSourceCloudFunction)[vs[1].(int)]
+	}).(GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput)
+}
+
+type GetConnectivityTestsConnectivityTestSourceCloudRunRevision struct {
+	// A Cloud Run revision URI.
+	Uri string `pulumi:"uri"`
+}
+
+// GetConnectivityTestsConnectivityTestSourceCloudRunRevisionInput is an input type that accepts GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArgs and GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput values.
+// You can construct a concrete instance of `GetConnectivityTestsConnectivityTestSourceCloudRunRevisionInput` via:
+//
+//	GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArgs{...}
+type GetConnectivityTestsConnectivityTestSourceCloudRunRevisionInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput() GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput
+	ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutputWithContext(context.Context) GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput
+}
+
+type GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArgs struct {
+	// A Cloud Run revision URI.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceCloudRunRevision)(nil)).Elem()
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArgs) ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput() GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput {
+	return i.ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArgs) ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput)
+}
+
+// GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayInput is an input type that accepts GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArray and GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput values.
+// You can construct a concrete instance of `GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayInput` via:
+//
+//	GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArray{ GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArgs{...} }
+type GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput() GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput
+	ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutputWithContext(context.Context) GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput
+}
+
+type GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArray []GetConnectivityTestsConnectivityTestSourceCloudRunRevisionInput
+
+func (GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestsConnectivityTestSourceCloudRunRevision)(nil)).Elem()
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArray) ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput() GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput {
+	return i.ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArray) ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput)
+}
+
+type GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceCloudRunRevision)(nil)).Elem()
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput) ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput() GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput) ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput {
+	return o
+}
+
+// A Cloud Run revision URI.
+func (o GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTestSourceCloudRunRevision) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestsConnectivityTestSourceCloudRunRevision)(nil)).Elem()
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput) ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput() GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput) ToGetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutputWithContext(ctx context.Context) GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput) Index(i pulumi.IntInput) GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectivityTestsConnectivityTestSourceCloudRunRevision {
+		return vs[0].([]GetConnectivityTestsConnectivityTestSourceCloudRunRevision)[vs[1].(int)]
+	}).(GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestDestinationInput)(nil)).Elem(), ConnectivityTestDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestDestinationPtrInput)(nil)).Elem(), ConnectivityTestDestinationArgs{})
@@ -1785,6 +2675,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayInput)(nil)).Elem(), GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceStepInput)(nil)).Elem(), GetConnectivityTestRunReachabilityDetailTraceStepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceStepArrayInput)(nil)).Elem(), GetConnectivityTestRunReachabilityDetailTraceStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestsConnectivityTestInput)(nil)).Elem(), GetConnectivityTestsConnectivityTestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestsConnectivityTestArrayInput)(nil)).Elem(), GetConnectivityTestsConnectivityTestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestsConnectivityTestDestinationInput)(nil)).Elem(), GetConnectivityTestsConnectivityTestDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestsConnectivityTestDestinationArrayInput)(nil)).Elem(), GetConnectivityTestsConnectivityTestDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceInput)(nil)).Elem(), GetConnectivityTestsConnectivityTestSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceArrayInput)(nil)).Elem(), GetConnectivityTestsConnectivityTestSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceAppEngineVersionInput)(nil)).Elem(), GetConnectivityTestsConnectivityTestSourceAppEngineVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayInput)(nil)).Elem(), GetConnectivityTestsConnectivityTestSourceAppEngineVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceCloudFunctionInput)(nil)).Elem(), GetConnectivityTestsConnectivityTestSourceCloudFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayInput)(nil)).Elem(), GetConnectivityTestsConnectivityTestSourceCloudFunctionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceCloudRunRevisionInput)(nil)).Elem(), GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayInput)(nil)).Elem(), GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArray{})
 	pulumi.RegisterOutputType(ConnectivityTestDestinationOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestDestinationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestSourceOutput{})
@@ -1803,4 +2705,16 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectivityTestRunReachabilityDetailTraceStepOutput{})
 	pulumi.RegisterOutputType(GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestsConnectivityTestOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestsConnectivityTestArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestsConnectivityTestDestinationOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestsConnectivityTestDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestsConnectivityTestSourceOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestsConnectivityTestSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestsConnectivityTestSourceAppEngineVersionOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestsConnectivityTestSourceAppEngineVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestsConnectivityTestSourceCloudFunctionOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestsConnectivityTestSourceCloudFunctionArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestsConnectivityTestSourceCloudRunRevisionOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArrayOutput{})
 }
