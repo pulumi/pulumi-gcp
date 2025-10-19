@@ -157,7 +157,9 @@ namespace Pulumi.Gcp.VMwareEngine
     [OutputType]
     public sealed class GetNetworkResult
     {
+        public readonly string CreateTime;
         public readonly string Description;
+        public readonly string Etag;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -168,11 +170,16 @@ namespace Pulumi.Gcp.VMwareEngine
         public readonly string State;
         public readonly string Type;
         public readonly string Uid;
+        public readonly string UpdateTime;
         public readonly ImmutableArray<Outputs.GetNetworkVpcNetworkResult> VpcNetworks;
 
         [OutputConstructor]
         private GetNetworkResult(
+            string createTime,
+
             string description,
+
+            string etag,
 
             string id,
 
@@ -188,9 +195,13 @@ namespace Pulumi.Gcp.VMwareEngine
 
             string uid,
 
+            string updateTime,
+
             ImmutableArray<Outputs.GetNetworkVpcNetworkResult> vpcNetworks)
         {
+            CreateTime = createTime;
             Description = description;
+            Etag = etag;
             Id = id;
             Location = location;
             Name = name;
@@ -198,6 +209,7 @@ namespace Pulumi.Gcp.VMwareEngine
             State = state;
             Type = type;
             Uid = uid;
+            UpdateTime = updateTime;
             VpcNetworks = vpcNetworks;
         }
     }

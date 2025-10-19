@@ -121,6 +121,135 @@ import (
 //	}
 //
 // ```
+// ### Beyondcorp Security Gateway Application Spa Api
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := beyondcorp.NewSecurityGateway(ctx, "default", &beyondcorp.SecurityGatewayArgs{
+//				SecurityGatewayId: pulumi.String("default-sg-spa-api"),
+//				DisplayName:       pulumi.String("My SPA Security Gateway resource"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = beyondcorp.NewSecurityGatewayApplication(ctx, "example-spa", &beyondcorp.SecurityGatewayApplicationArgs{
+//				SecurityGatewayId: _default.SecurityGatewayId,
+//				ApplicationId:     pulumi.String("app-discovery"),
+//				Upstreams: beyondcorp.SecurityGatewayApplicationUpstreamArray{
+//					&beyondcorp.SecurityGatewayApplicationUpstreamArgs{
+//						External: &beyondcorp.SecurityGatewayApplicationUpstreamExternalArgs{
+//							Endpoints: beyondcorp.SecurityGatewayApplicationUpstreamExternalEndpointArray{
+//								&beyondcorp.SecurityGatewayApplicationUpstreamExternalEndpointArgs{
+//									Hostname: pulumi.String("my.discovery.service.com"),
+//									Port:     pulumi.Int(443),
+//								},
+//							},
+//						},
+//						ProxyProtocol: &beyondcorp.SecurityGatewayApplicationUpstreamProxyProtocolArgs{
+//							AllowedClientHeaders: pulumi.StringArray{
+//								pulumi.String("header"),
+//							},
+//						},
+//					},
+//				},
+//				Schema: pulumi.String("API_GATEWAY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Beyondcorp Security Gateway Application Spa Proxy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := beyondcorp.NewSecurityGateway(ctx, "default", &beyondcorp.SecurityGatewayArgs{
+//				SecurityGatewayId: pulumi.String("default-sg-spa-proxy"),
+//				DisplayName:       pulumi.String("My SPA Security Gateway resource"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = beyondcorp.NewSecurityGatewayApplication(ctx, "example-spa", &beyondcorp.SecurityGatewayApplicationArgs{
+//				SecurityGatewayId: _default.SecurityGatewayId,
+//				ApplicationId:     pulumi.String("app-proxy"),
+//				EndpointMatchers: beyondcorp.SecurityGatewayApplicationEndpointMatcherArray{
+//					&beyondcorp.SecurityGatewayApplicationEndpointMatcherArgs{
+//						Hostname: pulumi.String("a.site.com"),
+//						Ports: pulumi.IntArray{
+//							pulumi.Int(443),
+//						},
+//					},
+//				},
+//				Upstreams: beyondcorp.SecurityGatewayApplicationUpstreamArray{
+//					&beyondcorp.SecurityGatewayApplicationUpstreamArgs{
+//						External: &beyondcorp.SecurityGatewayApplicationUpstreamExternalArgs{
+//							Endpoints: beyondcorp.SecurityGatewayApplicationUpstreamExternalEndpointArray{
+//								&beyondcorp.SecurityGatewayApplicationUpstreamExternalEndpointArgs{
+//									Hostname: pulumi.String("my.proxy.service.com"),
+//									Port:     pulumi.Int(443),
+//								},
+//							},
+//						},
+//						ProxyProtocol: &beyondcorp.SecurityGatewayApplicationUpstreamProxyProtocolArgs{
+//							AllowedClientHeaders: pulumi.StringArray{
+//								pulumi.String("header1"),
+//								pulumi.String("header2"),
+//							},
+//							ContextualHeaders: &beyondcorp.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs{
+//								UserInfo: &beyondcorp.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs{
+//									OutputType: pulumi.String("PROTOBUF"),
+//								},
+//								GroupInfo: &beyondcorp.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs{
+//									OutputType: pulumi.String("JSON"),
+//								},
+//								DeviceInfo: &beyondcorp.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs{
+//									OutputType: pulumi.String("NONE"),
+//								},
+//								OutputType: pulumi.String("JSON"),
+//							},
+//							MetadataHeaders: pulumi.StringMap{
+//								"metadata-header1": pulumi.String("value1"),
+//								"metadata-header2": pulumi.String("value2"),
+//							},
+//							GatewayIdentity: pulumi.String("RESOURCE_NAME"),
+//							ClientIp:        pulumi.Bool(true),
+//						},
+//					},
+//				},
+//				Schema: pulumi.String("PROXY_GATEWAY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -176,6 +305,9 @@ type SecurityGatewayApplication struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Type of the external application.
+	// Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+	Schema pulumi.StringPtrOutput `pulumi:"schema"`
 	// ID of the Security Gateway resource this belongs to.
 	SecurityGatewayId pulumi.StringOutput `pulumi:"securityGatewayId"`
 	// Output only. Timestamp when the resource was last modified.
@@ -194,9 +326,6 @@ func NewSecurityGatewayApplication(ctx *pulumi.Context,
 
 	if args.ApplicationId == nil {
 		return nil, errors.New("invalid value for required argument 'ApplicationId'")
-	}
-	if args.EndpointMatchers == nil {
-		return nil, errors.New("invalid value for required argument 'EndpointMatchers'")
 	}
 	if args.SecurityGatewayId == nil {
 		return nil, errors.New("invalid value for required argument 'SecurityGatewayId'")
@@ -252,6 +381,9 @@ type securityGatewayApplicationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Type of the external application.
+	// Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+	Schema *string `pulumi:"schema"`
 	// ID of the Security Gateway resource this belongs to.
 	SecurityGatewayId *string `pulumi:"securityGatewayId"`
 	// Output only. Timestamp when the resource was last modified.
@@ -290,6 +422,9 @@ type SecurityGatewayApplicationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Type of the external application.
+	// Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+	Schema pulumi.StringPtrInput
 	// ID of the Security Gateway resource this belongs to.
 	SecurityGatewayId pulumi.StringPtrInput
 	// Output only. Timestamp when the resource was last modified.
@@ -328,6 +463,9 @@ type securityGatewayApplicationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Type of the external application.
+	// Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+	Schema *string `pulumi:"schema"`
 	// ID of the Security Gateway resource this belongs to.
 	SecurityGatewayId string `pulumi:"securityGatewayId"`
 	// Optional. List of which upstream resource(s) to forward traffic to.
@@ -361,6 +499,9 @@ type SecurityGatewayApplicationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Type of the external application.
+	// Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+	Schema pulumi.StringPtrInput
 	// ID of the Security Gateway resource this belongs to.
 	SecurityGatewayId pulumi.StringInput
 	// Optional. List of which upstream resource(s) to forward traffic to.
@@ -501,6 +642,12 @@ func (o SecurityGatewayApplicationOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o SecurityGatewayApplicationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGatewayApplication) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Type of the external application.
+// Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+func (o SecurityGatewayApplicationOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplication) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)
 }
 
 // ID of the Security Gateway resource this belongs to.

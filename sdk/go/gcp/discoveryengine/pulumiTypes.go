@@ -1080,7 +1080,7 @@ type DataConnectorEntity struct {
 	// `description`. Supported key properties:
 	KeyPropertyMappings map[string]string `pulumi:"keyPropertyMappings"`
 	// The parameters for the entity to facilitate data ingestion.
-	Params map[string]string `pulumi:"params"`
+	Params *string `pulumi:"params"`
 }
 
 // DataConnectorEntityInput is an input type that accepts DataConnectorEntityArgs and DataConnectorEntityOutput values.
@@ -1113,7 +1113,7 @@ type DataConnectorEntityArgs struct {
 	// `description`. Supported key properties:
 	KeyPropertyMappings pulumi.StringMapInput `pulumi:"keyPropertyMappings"`
 	// The parameters for the entity to facilitate data ingestion.
-	Params pulumi.StringMapInput `pulumi:"params"`
+	Params pulumi.StringPtrInput `pulumi:"params"`
 }
 
 func (DataConnectorEntityArgs) ElementType() reflect.Type {
@@ -1194,8 +1194,8 @@ func (o DataConnectorEntityOutput) KeyPropertyMappings() pulumi.StringMapOutput 
 }
 
 // The parameters for the entity to facilitate data ingestion.
-func (o DataConnectorEntityOutput) Params() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DataConnectorEntity) map[string]string { return v.Params }).(pulumi.StringMapOutput)
+func (o DataConnectorEntityOutput) Params() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorEntity) *string { return v.Params }).(pulumi.StringPtrOutput)
 }
 
 type DataConnectorEntityArrayOutput struct{ *pulumi.OutputState }
@@ -3348,6 +3348,356 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+type LicenseConfigEndDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year *int `pulumi:"year"`
+}
+
+// LicenseConfigEndDateInput is an input type that accepts LicenseConfigEndDateArgs and LicenseConfigEndDateOutput values.
+// You can construct a concrete instance of `LicenseConfigEndDateInput` via:
+//
+//	LicenseConfigEndDateArgs{...}
+type LicenseConfigEndDateInput interface {
+	pulumi.Input
+
+	ToLicenseConfigEndDateOutput() LicenseConfigEndDateOutput
+	ToLicenseConfigEndDateOutputWithContext(context.Context) LicenseConfigEndDateOutput
+}
+
+type LicenseConfigEndDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (LicenseConfigEndDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseConfigEndDate)(nil)).Elem()
+}
+
+func (i LicenseConfigEndDateArgs) ToLicenseConfigEndDateOutput() LicenseConfigEndDateOutput {
+	return i.ToLicenseConfigEndDateOutputWithContext(context.Background())
+}
+
+func (i LicenseConfigEndDateArgs) ToLicenseConfigEndDateOutputWithContext(ctx context.Context) LicenseConfigEndDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigEndDateOutput)
+}
+
+func (i LicenseConfigEndDateArgs) ToLicenseConfigEndDatePtrOutput() LicenseConfigEndDatePtrOutput {
+	return i.ToLicenseConfigEndDatePtrOutputWithContext(context.Background())
+}
+
+func (i LicenseConfigEndDateArgs) ToLicenseConfigEndDatePtrOutputWithContext(ctx context.Context) LicenseConfigEndDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigEndDateOutput).ToLicenseConfigEndDatePtrOutputWithContext(ctx)
+}
+
+// LicenseConfigEndDatePtrInput is an input type that accepts LicenseConfigEndDateArgs, LicenseConfigEndDatePtr and LicenseConfigEndDatePtrOutput values.
+// You can construct a concrete instance of `LicenseConfigEndDatePtrInput` via:
+//
+//	        LicenseConfigEndDateArgs{...}
+//
+//	or:
+//
+//	        nil
+type LicenseConfigEndDatePtrInput interface {
+	pulumi.Input
+
+	ToLicenseConfigEndDatePtrOutput() LicenseConfigEndDatePtrOutput
+	ToLicenseConfigEndDatePtrOutputWithContext(context.Context) LicenseConfigEndDatePtrOutput
+}
+
+type licenseConfigEndDatePtrType LicenseConfigEndDateArgs
+
+func LicenseConfigEndDatePtr(v *LicenseConfigEndDateArgs) LicenseConfigEndDatePtrInput {
+	return (*licenseConfigEndDatePtrType)(v)
+}
+
+func (*licenseConfigEndDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseConfigEndDate)(nil)).Elem()
+}
+
+func (i *licenseConfigEndDatePtrType) ToLicenseConfigEndDatePtrOutput() LicenseConfigEndDatePtrOutput {
+	return i.ToLicenseConfigEndDatePtrOutputWithContext(context.Background())
+}
+
+func (i *licenseConfigEndDatePtrType) ToLicenseConfigEndDatePtrOutputWithContext(ctx context.Context) LicenseConfigEndDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigEndDatePtrOutput)
+}
+
+type LicenseConfigEndDateOutput struct{ *pulumi.OutputState }
+
+func (LicenseConfigEndDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseConfigEndDate)(nil)).Elem()
+}
+
+func (o LicenseConfigEndDateOutput) ToLicenseConfigEndDateOutput() LicenseConfigEndDateOutput {
+	return o
+}
+
+func (o LicenseConfigEndDateOutput) ToLicenseConfigEndDateOutputWithContext(ctx context.Context) LicenseConfigEndDateOutput {
+	return o
+}
+
+func (o LicenseConfigEndDateOutput) ToLicenseConfigEndDatePtrOutput() LicenseConfigEndDatePtrOutput {
+	return o.ToLicenseConfigEndDatePtrOutputWithContext(context.Background())
+}
+
+func (o LicenseConfigEndDateOutput) ToLicenseConfigEndDatePtrOutputWithContext(ctx context.Context) LicenseConfigEndDatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseConfigEndDate) *LicenseConfigEndDate {
+		return &v
+	}).(LicenseConfigEndDatePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o LicenseConfigEndDateOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseConfigEndDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o LicenseConfigEndDateOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseConfigEndDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o LicenseConfigEndDateOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseConfigEndDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+}
+
+type LicenseConfigEndDatePtrOutput struct{ *pulumi.OutputState }
+
+func (LicenseConfigEndDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseConfigEndDate)(nil)).Elem()
+}
+
+func (o LicenseConfigEndDatePtrOutput) ToLicenseConfigEndDatePtrOutput() LicenseConfigEndDatePtrOutput {
+	return o
+}
+
+func (o LicenseConfigEndDatePtrOutput) ToLicenseConfigEndDatePtrOutputWithContext(ctx context.Context) LicenseConfigEndDatePtrOutput {
+	return o
+}
+
+func (o LicenseConfigEndDatePtrOutput) Elem() LicenseConfigEndDateOutput {
+	return o.ApplyT(func(v *LicenseConfigEndDate) LicenseConfigEndDate {
+		if v != nil {
+			return *v
+		}
+		var ret LicenseConfigEndDate
+		return ret
+	}).(LicenseConfigEndDateOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o LicenseConfigEndDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseConfigEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o LicenseConfigEndDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseConfigEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o LicenseConfigEndDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseConfigEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type LicenseConfigStartDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year *int `pulumi:"year"`
+}
+
+// LicenseConfigStartDateInput is an input type that accepts LicenseConfigStartDateArgs and LicenseConfigStartDateOutput values.
+// You can construct a concrete instance of `LicenseConfigStartDateInput` via:
+//
+//	LicenseConfigStartDateArgs{...}
+type LicenseConfigStartDateInput interface {
+	pulumi.Input
+
+	ToLicenseConfigStartDateOutput() LicenseConfigStartDateOutput
+	ToLicenseConfigStartDateOutputWithContext(context.Context) LicenseConfigStartDateOutput
+}
+
+type LicenseConfigStartDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (LicenseConfigStartDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseConfigStartDate)(nil)).Elem()
+}
+
+func (i LicenseConfigStartDateArgs) ToLicenseConfigStartDateOutput() LicenseConfigStartDateOutput {
+	return i.ToLicenseConfigStartDateOutputWithContext(context.Background())
+}
+
+func (i LicenseConfigStartDateArgs) ToLicenseConfigStartDateOutputWithContext(ctx context.Context) LicenseConfigStartDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigStartDateOutput)
+}
+
+func (i LicenseConfigStartDateArgs) ToLicenseConfigStartDatePtrOutput() LicenseConfigStartDatePtrOutput {
+	return i.ToLicenseConfigStartDatePtrOutputWithContext(context.Background())
+}
+
+func (i LicenseConfigStartDateArgs) ToLicenseConfigStartDatePtrOutputWithContext(ctx context.Context) LicenseConfigStartDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigStartDateOutput).ToLicenseConfigStartDatePtrOutputWithContext(ctx)
+}
+
+// LicenseConfigStartDatePtrInput is an input type that accepts LicenseConfigStartDateArgs, LicenseConfigStartDatePtr and LicenseConfigStartDatePtrOutput values.
+// You can construct a concrete instance of `LicenseConfigStartDatePtrInput` via:
+//
+//	        LicenseConfigStartDateArgs{...}
+//
+//	or:
+//
+//	        nil
+type LicenseConfigStartDatePtrInput interface {
+	pulumi.Input
+
+	ToLicenseConfigStartDatePtrOutput() LicenseConfigStartDatePtrOutput
+	ToLicenseConfigStartDatePtrOutputWithContext(context.Context) LicenseConfigStartDatePtrOutput
+}
+
+type licenseConfigStartDatePtrType LicenseConfigStartDateArgs
+
+func LicenseConfigStartDatePtr(v *LicenseConfigStartDateArgs) LicenseConfigStartDatePtrInput {
+	return (*licenseConfigStartDatePtrType)(v)
+}
+
+func (*licenseConfigStartDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseConfigStartDate)(nil)).Elem()
+}
+
+func (i *licenseConfigStartDatePtrType) ToLicenseConfigStartDatePtrOutput() LicenseConfigStartDatePtrOutput {
+	return i.ToLicenseConfigStartDatePtrOutputWithContext(context.Background())
+}
+
+func (i *licenseConfigStartDatePtrType) ToLicenseConfigStartDatePtrOutputWithContext(ctx context.Context) LicenseConfigStartDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigStartDatePtrOutput)
+}
+
+type LicenseConfigStartDateOutput struct{ *pulumi.OutputState }
+
+func (LicenseConfigStartDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseConfigStartDate)(nil)).Elem()
+}
+
+func (o LicenseConfigStartDateOutput) ToLicenseConfigStartDateOutput() LicenseConfigStartDateOutput {
+	return o
+}
+
+func (o LicenseConfigStartDateOutput) ToLicenseConfigStartDateOutputWithContext(ctx context.Context) LicenseConfigStartDateOutput {
+	return o
+}
+
+func (o LicenseConfigStartDateOutput) ToLicenseConfigStartDatePtrOutput() LicenseConfigStartDatePtrOutput {
+	return o.ToLicenseConfigStartDatePtrOutputWithContext(context.Background())
+}
+
+func (o LicenseConfigStartDateOutput) ToLicenseConfigStartDatePtrOutputWithContext(ctx context.Context) LicenseConfigStartDatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseConfigStartDate) *LicenseConfigStartDate {
+		return &v
+	}).(LicenseConfigStartDatePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o LicenseConfigStartDateOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseConfigStartDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o LicenseConfigStartDateOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseConfigStartDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o LicenseConfigStartDateOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseConfigStartDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+}
+
+type LicenseConfigStartDatePtrOutput struct{ *pulumi.OutputState }
+
+func (LicenseConfigStartDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseConfigStartDate)(nil)).Elem()
+}
+
+func (o LicenseConfigStartDatePtrOutput) ToLicenseConfigStartDatePtrOutput() LicenseConfigStartDatePtrOutput {
+	return o
+}
+
+func (o LicenseConfigStartDatePtrOutput) ToLicenseConfigStartDatePtrOutputWithContext(ctx context.Context) LicenseConfigStartDatePtrOutput {
+	return o
+}
+
+func (o LicenseConfigStartDatePtrOutput) Elem() LicenseConfigStartDateOutput {
+	return o.ApplyT(func(v *LicenseConfigStartDate) LicenseConfigStartDate {
+		if v != nil {
+			return *v
+		}
+		var ret LicenseConfigStartDate
+		return ret
+	}).(LicenseConfigStartDateOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o LicenseConfigStartDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseConfigStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o LicenseConfigStartDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseConfigStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o LicenseConfigStartDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseConfigStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
 type RecommendationEngineCommonConfig struct {
 	// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
 	CompanyName *string `pulumi:"companyName"`
@@ -5134,6 +5484,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseConfigEndDateInput)(nil)).Elem(), LicenseConfigEndDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseConfigEndDatePtrInput)(nil)).Elem(), LicenseConfigEndDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseConfigStartDateInput)(nil)).Elem(), LicenseConfigStartDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseConfigStartDatePtrInput)(nil)).Elem(), LicenseConfigStartDateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineCommonConfigInput)(nil)).Elem(), RecommendationEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineCommonConfigPtrInput)(nil)).Elem(), RecommendationEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigArgs{})
@@ -5198,6 +5552,10 @@ func init() {
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(LicenseConfigEndDateOutput{})
+	pulumi.RegisterOutputType(LicenseConfigEndDatePtrOutput{})
+	pulumi.RegisterOutputType(LicenseConfigStartDateOutput{})
+	pulumi.RegisterOutputType(LicenseConfigStartDatePtrOutput{})
 	pulumi.RegisterOutputType(RecommendationEngineCommonConfigOutput{})
 	pulumi.RegisterOutputType(RecommendationEngineCommonConfigPtrOutput{})
 	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigOutput{})

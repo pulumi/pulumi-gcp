@@ -2763,6 +2763,8 @@ class ServiceTemplate(dict):
             suggest = "execution_environment"
         elif key == "gpuZonalRedundancyDisabled":
             suggest = "gpu_zonal_redundancy_disabled"
+        elif key == "healthCheckDisabled":
+            suggest = "health_check_disabled"
         elif key == "maxInstanceRequestConcurrency":
             suggest = "max_instance_request_concurrency"
         elif key == "nodeSelector":
@@ -2793,6 +2795,7 @@ class ServiceTemplate(dict):
                  encryption_key: Optional[_builtins.str] = None,
                  execution_environment: Optional[_builtins.str] = None,
                  gpu_zonal_redundancy_disabled: Optional[_builtins.bool] = None,
+                 health_check_disabled: Optional[_builtins.bool] = None,
                  labels: Optional[Mapping[str, _builtins.str]] = None,
                  max_instance_request_concurrency: Optional[_builtins.int] = None,
                  node_selector: Optional['outputs.ServiceTemplateNodeSelector'] = None,
@@ -2815,6 +2818,7 @@ class ServiceTemplate(dict):
         :param _builtins.str execution_environment: The sandbox environment to host this Revision.
                Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         :param _builtins.bool gpu_zonal_redundancy_disabled: True if GPU zonal redundancy is disabled on this revision.
+        :param _builtins.bool health_check_disabled: Disables health checking containers during deployment.
         :param Mapping[str, _builtins.str] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
                For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -2847,6 +2851,8 @@ class ServiceTemplate(dict):
             pulumi.set(__self__, "execution_environment", execution_environment)
         if gpu_zonal_redundancy_disabled is not None:
             pulumi.set(__self__, "gpu_zonal_redundancy_disabled", gpu_zonal_redundancy_disabled)
+        if health_check_disabled is not None:
+            pulumi.set(__self__, "health_check_disabled", health_check_disabled)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_instance_request_concurrency is not None:
@@ -2914,6 +2920,14 @@ class ServiceTemplate(dict):
         True if GPU zonal redundancy is disabled on this revision.
         """
         return pulumi.get(self, "gpu_zonal_redundancy_disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckDisabled")
+    def health_check_disabled(self) -> Optional[_builtins.bool]:
+        """
+        Disables health checking containers during deployment.
+        """
+        return pulumi.get(self, "health_check_disabled")
 
     @_builtins.property
     @pulumi.getter
@@ -8979,6 +8993,7 @@ class GetServiceTemplateResult(dict):
                  encryption_key: _builtins.str,
                  execution_environment: _builtins.str,
                  gpu_zonal_redundancy_disabled: _builtins.bool,
+                 health_check_disabled: _builtins.bool,
                  labels: Mapping[str, _builtins.str],
                  max_instance_request_concurrency: _builtins.int,
                  node_selectors: Sequence['outputs.GetServiceTemplateNodeSelectorResult'],
@@ -9001,6 +9016,7 @@ class GetServiceTemplateResult(dict):
         :param _builtins.str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param _builtins.str execution_environment: The sandbox environment to host this Revision. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
         :param _builtins.bool gpu_zonal_redundancy_disabled: True if GPU zonal redundancy is disabled on this revision.
+        :param _builtins.bool health_check_disabled: Disables health checking containers during deployment.
         :param Mapping[str, _builtins.str] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
                For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                
@@ -9025,6 +9041,7 @@ class GetServiceTemplateResult(dict):
         pulumi.set(__self__, "encryption_key", encryption_key)
         pulumi.set(__self__, "execution_environment", execution_environment)
         pulumi.set(__self__, "gpu_zonal_redundancy_disabled", gpu_zonal_redundancy_disabled)
+        pulumi.set(__self__, "health_check_disabled", health_check_disabled)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
         pulumi.set(__self__, "node_selectors", node_selectors)
@@ -9081,6 +9098,14 @@ class GetServiceTemplateResult(dict):
         True if GPU zonal redundancy is disabled on this revision.
         """
         return pulumi.get(self, "gpu_zonal_redundancy_disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckDisabled")
+    def health_check_disabled(self) -> _builtins.bool:
+        """
+        Disables health checking containers during deployment.
+        """
+        return pulumi.get(self, "health_check_disabled")
 
     @_builtins.property
     @pulumi.getter

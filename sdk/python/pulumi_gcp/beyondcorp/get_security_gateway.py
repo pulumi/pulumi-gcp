@@ -27,7 +27,7 @@ class GetSecurityGatewayResult:
     """
     A collection of values returned by getSecurityGateway.
     """
-    def __init__(__self__, create_time=None, delegating_service_account=None, display_name=None, external_ips=None, hubs=None, id=None, location=None, name=None, project=None, security_gateway_id=None, state=None, update_time=None):
+    def __init__(__self__, create_time=None, delegating_service_account=None, display_name=None, external_ips=None, hubs=None, id=None, location=None, name=None, project=None, proxy_protocol_configs=None, security_gateway_id=None, service_discoveries=None, state=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -55,9 +55,15 @@ class GetSecurityGatewayResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if proxy_protocol_configs and not isinstance(proxy_protocol_configs, list):
+            raise TypeError("Expected argument 'proxy_protocol_configs' to be a list")
+        pulumi.set(__self__, "proxy_protocol_configs", proxy_protocol_configs)
         if security_gateway_id and not isinstance(security_gateway_id, str):
             raise TypeError("Expected argument 'security_gateway_id' to be a str")
         pulumi.set(__self__, "security_gateway_id", security_gateway_id)
+        if service_discoveries and not isinstance(service_discoveries, list):
+            raise TypeError("Expected argument 'service_discoveries' to be a list")
+        pulumi.set(__self__, "service_discoveries", service_discoveries)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -114,9 +120,19 @@ class GetSecurityGatewayResult:
         return pulumi.get(self, "project")
 
     @_builtins.property
+    @pulumi.getter(name="proxyProtocolConfigs")
+    def proxy_protocol_configs(self) -> Sequence['outputs.GetSecurityGatewayProxyProtocolConfigResult']:
+        return pulumi.get(self, "proxy_protocol_configs")
+
+    @_builtins.property
     @pulumi.getter(name="securityGatewayId")
     def security_gateway_id(self) -> _builtins.str:
         return pulumi.get(self, "security_gateway_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDiscoveries")
+    def service_discoveries(self) -> Sequence['outputs.GetSecurityGatewayServiceDiscoveryResult']:
+        return pulumi.get(self, "service_discoveries")
 
     @_builtins.property
     @pulumi.getter
@@ -144,7 +160,9 @@ class AwaitableGetSecurityGatewayResult(GetSecurityGatewayResult):
             location=self.location,
             name=self.name,
             project=self.project,
+            proxy_protocol_configs=self.proxy_protocol_configs,
             security_gateway_id=self.security_gateway_id,
+            service_discoveries=self.service_discoveries,
             state=self.state,
             update_time=self.update_time)
 
@@ -187,7 +205,9 @@ def get_security_gateway(project: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        proxy_protocol_configs=pulumi.get(__ret__, 'proxy_protocol_configs'),
         security_gateway_id=pulumi.get(__ret__, 'security_gateway_id'),
+        service_discoveries=pulumi.get(__ret__, 'service_discoveries'),
         state=pulumi.get(__ret__, 'state'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_security_gateway_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -227,6 +247,8 @@ def get_security_gateway_output(project: Optional[pulumi.Input[Optional[_builtin
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
+        proxy_protocol_configs=pulumi.get(__response__, 'proxy_protocol_configs'),
         security_gateway_id=pulumi.get(__response__, 'security_gateway_id'),
+        service_discoveries=pulumi.get(__response__, 'service_discoveries'),
         state=pulumi.get(__response__, 'state'),
         update_time=pulumi.get(__response__, 'update_time')))

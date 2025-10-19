@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataloss.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigActionExportData;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigActionPubSubNotification;
+import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigActionPublishToDataplexCatalog;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigActionTagResources;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,7 +27,12 @@ public final class PreventionDiscoveryConfigAction {
      */
     private @Nullable PreventionDiscoveryConfigActionPubSubNotification pubSubNotification;
     /**
-     * @return Publish a message into the Pub/Sub topic.
+     * @return Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+     * 
+     */
+    private @Nullable PreventionDiscoveryConfigActionPublishToDataplexCatalog publishToDataplexCatalog;
+    /**
+     * @return Tag the profiled resources with the specified tag values.
      * Structure is documented below.
      * 
      */
@@ -50,7 +56,14 @@ public final class PreventionDiscoveryConfigAction {
         return Optional.ofNullable(this.pubSubNotification);
     }
     /**
-     * @return Publish a message into the Pub/Sub topic.
+     * @return Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+     * 
+     */
+    public Optional<PreventionDiscoveryConfigActionPublishToDataplexCatalog> publishToDataplexCatalog() {
+        return Optional.ofNullable(this.publishToDataplexCatalog);
+    }
+    /**
+     * @return Tag the profiled resources with the specified tag values.
      * Structure is documented below.
      * 
      */
@@ -69,12 +82,14 @@ public final class PreventionDiscoveryConfigAction {
     public static final class Builder {
         private @Nullable PreventionDiscoveryConfigActionExportData exportData;
         private @Nullable PreventionDiscoveryConfigActionPubSubNotification pubSubNotification;
+        private @Nullable PreventionDiscoveryConfigActionPublishToDataplexCatalog publishToDataplexCatalog;
         private @Nullable PreventionDiscoveryConfigActionTagResources tagResources;
         public Builder() {}
         public Builder(PreventionDiscoveryConfigAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exportData = defaults.exportData;
     	      this.pubSubNotification = defaults.pubSubNotification;
+    	      this.publishToDataplexCatalog = defaults.publishToDataplexCatalog;
     	      this.tagResources = defaults.tagResources;
         }
 
@@ -91,6 +106,12 @@ public final class PreventionDiscoveryConfigAction {
             return this;
         }
         @CustomType.Setter
+        public Builder publishToDataplexCatalog(@Nullable PreventionDiscoveryConfigActionPublishToDataplexCatalog publishToDataplexCatalog) {
+
+            this.publishToDataplexCatalog = publishToDataplexCatalog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tagResources(@Nullable PreventionDiscoveryConfigActionTagResources tagResources) {
 
             this.tagResources = tagResources;
@@ -100,6 +121,7 @@ public final class PreventionDiscoveryConfigAction {
             final var _resultValue = new PreventionDiscoveryConfigAction();
             _resultValue.exportData = exportData;
             _resultValue.pubSubNotification = pubSubNotification;
+            _resultValue.publishToDataplexCatalog = publishToDataplexCatalog;
             _resultValue.tagResources = tagResources;
             return _resultValue;
         }

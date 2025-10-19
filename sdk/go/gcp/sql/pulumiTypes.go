@@ -24,6 +24,10 @@ type DatabaseInstanceClone struct {
 	PointInTime *string `pulumi:"pointInTime"`
 	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
 	PreferredZone *string `pulumi:"preferredZone"`
+	// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	SourceInstanceDeletionTime *string `pulumi:"sourceInstanceDeletionTime"`
 	// Name of the source instance which will be cloned.
 	SourceInstanceName string `pulumi:"sourceInstanceName"`
 }
@@ -50,6 +54,10 @@ type DatabaseInstanceCloneArgs struct {
 	PointInTime pulumi.StringPtrInput `pulumi:"pointInTime"`
 	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
 	PreferredZone pulumi.StringPtrInput `pulumi:"preferredZone"`
+	// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	SourceInstanceDeletionTime pulumi.StringPtrInput `pulumi:"sourceInstanceDeletionTime"`
 	// Name of the source instance which will be cloned.
 	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
 }
@@ -153,6 +161,13 @@ func (o DatabaseInstanceCloneOutput) PreferredZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceClone) *string { return v.PreferredZone }).(pulumi.StringPtrOutput)
 }
 
+// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+//
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o DatabaseInstanceCloneOutput) SourceInstanceDeletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceClone) *string { return v.SourceInstanceDeletionTime }).(pulumi.StringPtrOutput)
+}
+
 // Name of the source instance which will be cloned.
 func (o DatabaseInstanceCloneOutput) SourceInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInstanceClone) string { return v.SourceInstanceName }).(pulumi.StringOutput)
@@ -221,6 +236,18 @@ func (o DatabaseInstanceClonePtrOutput) PreferredZone() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.PreferredZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+//
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o DatabaseInstanceClonePtrOutput) SourceInstanceDeletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceInstanceDeletionTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6168,6 +6195,8 @@ type GetDatabaseInstanceClone struct {
 	PointInTime string `pulumi:"pointInTime"`
 	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
 	PreferredZone string `pulumi:"preferredZone"`
+	// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+	SourceInstanceDeletionTime string `pulumi:"sourceInstanceDeletionTime"`
 	// The name of the instance from which the point in time should be restored.
 	SourceInstanceName string `pulumi:"sourceInstanceName"`
 }
@@ -6192,6 +6221,8 @@ type GetDatabaseInstanceCloneArgs struct {
 	PointInTime pulumi.StringInput `pulumi:"pointInTime"`
 	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
 	PreferredZone pulumi.StringInput `pulumi:"preferredZone"`
+	// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+	SourceInstanceDeletionTime pulumi.StringInput `pulumi:"sourceInstanceDeletionTime"`
 	// The name of the instance from which the point in time should be restored.
 	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
 }
@@ -6265,6 +6296,11 @@ func (o GetDatabaseInstanceCloneOutput) PointInTime() pulumi.StringOutput {
 // (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
 func (o GetDatabaseInstanceCloneOutput) PreferredZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceClone) string { return v.PreferredZone }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+func (o GetDatabaseInstanceCloneOutput) SourceInstanceDeletionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceClone) string { return v.SourceInstanceDeletionTime }).(pulumi.StringOutput)
 }
 
 // The name of the instance from which the point in time should be restored.
@@ -10263,6 +10299,8 @@ type GetDatabaseInstancesInstanceClone struct {
 	PointInTime string `pulumi:"pointInTime"`
 	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
 	PreferredZone string `pulumi:"preferredZone"`
+	// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+	SourceInstanceDeletionTime string `pulumi:"sourceInstanceDeletionTime"`
 	// The name of the instance from which the point in time should be restored.
 	SourceInstanceName string `pulumi:"sourceInstanceName"`
 }
@@ -10287,6 +10325,8 @@ type GetDatabaseInstancesInstanceCloneArgs struct {
 	PointInTime pulumi.StringInput `pulumi:"pointInTime"`
 	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
 	PreferredZone pulumi.StringInput `pulumi:"preferredZone"`
+	// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+	SourceInstanceDeletionTime pulumi.StringInput `pulumi:"sourceInstanceDeletionTime"`
 	// The name of the instance from which the point in time should be restored.
 	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
 }
@@ -10360,6 +10400,11 @@ func (o GetDatabaseInstancesInstanceCloneOutput) PointInTime() pulumi.StringOutp
 // (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
 func (o GetDatabaseInstancesInstanceCloneOutput) PreferredZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceClone) string { return v.PreferredZone }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+func (o GetDatabaseInstancesInstanceCloneOutput) SourceInstanceDeletionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceClone) string { return v.SourceInstanceDeletionTime }).(pulumi.StringOutput)
 }
 
 // The name of the instance from which the point in time should be restored.

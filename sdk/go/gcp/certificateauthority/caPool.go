@@ -81,7 +81,7 @@ import (
 //				return err
 //			}
 //			privatecaSaKeyuserEncrypterdecrypter, err := kms.NewCryptoKeyIAMMember(ctx, "privateca_sa_keyuser_encrypterdecrypter", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: pulumi.String("projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key"),
+//				CryptoKeyId: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      privatecaSa.Member,
 //			})
@@ -90,7 +90,7 @@ import (
 //			}
 //			_, err = certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 //				Name:     pulumi.String("my-pool"),
-//				Location: pulumi.String("asia-east1"),
+//				Location: pulumi.String("us-central1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
 //					PublishCaCert:  pulumi.Bool(false),
@@ -101,7 +101,7 @@ import (
 //					"foo": pulumi.String("bar"),
 //				},
 //				EncryptionSpec: &certificateauthority.CaPoolEncryptionSpecArgs{
-//					CloudKmsKey: pulumi.String("projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key"),
+//					CloudKmsKey: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"),
 //				},
 //				IssuancePolicy: &certificateauthority.CaPoolIssuancePolicyArgs{
 //					AllowedKeyTypes: certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeArray{

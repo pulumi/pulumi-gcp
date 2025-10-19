@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
  *     description: "test cluster",
- *     onPremVersion: "1.13.1-gke.35",
+ *     onPremVersion: "1.33.0-gke.35",
  *     networkConfig: {
  *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
  *         podAddressCidrBlocks: ["192.168.0.0/16"],
@@ -120,6 +120,7 @@ import * as utilities from "../utilities";
  *     name: "my-nodepool",
  *     location: "us-west1",
  *     vmwareCluster: default_full.name,
+ *     onPremVersion: "1.33.0-gke.35",
  *     annotations: {},
  *     config: {
  *         cpus: 4,
@@ -274,7 +275,7 @@ export class VMwareNodePool extends pulumi.CustomResource {
     /**
      * Anthos version for the node pool. Defaults to the user cluster version.
      */
-    declare public /*out*/ readonly onPremVersion: pulumi.Output<string>;
+    declare public readonly onPremVersion: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -355,13 +356,13 @@ export class VMwareNodePool extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
             resourceInputs["nodePoolAutoscaling"] = args?.nodePoolAutoscaling;
+            resourceInputs["onPremVersion"] = args?.onPremVersion;
             resourceInputs["project"] = args?.project;
             resourceInputs["vmwareCluster"] = args?.vmwareCluster;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
-            resourceInputs["onPremVersion"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;
@@ -507,6 +508,10 @@ export interface VMwareNodePoolArgs {
      * Structure is documented below.
      */
     nodePoolAutoscaling?: pulumi.Input<inputs.gkeonprem.VMwareNodePoolNodePoolAutoscaling>;
+    /**
+     * Anthos version for the node pool. Defaults to the user cluster version.
+     */
+    onPremVersion?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

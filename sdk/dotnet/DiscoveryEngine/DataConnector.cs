@@ -23,55 +23,86 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// ## Example Usage
     /// 
-    /// ### Discoveryengine Dataconnector Jira Basic
+    /// ### Discoveryengine Dataconnector Servicenow Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var jira_basic = new Gcp.DiscoveryEngine.DataConnector("jira-basic", new()
+    ///     var servicenow_basic = new Gcp.DiscoveryEngine.DataConnector("servicenow-basic", new()
     ///     {
     ///         Location = "global",
     ///         CollectionId = "collection-id",
-    ///         CollectionDisplayName = "tf-test-dataconnector-jira",
-    ///         DataSource = "jira",
+    ///         CollectionDisplayName = "tf-test-dataconnector-servicenow",
+    ///         DataSource = "servicenow",
     ///         Params = 
     ///         {
-    ///             { "instance_id", "33db20a3-dc45-4305-a505-d70b68599840" },
-    ///             { "instance_uri", "https://vaissptbots1.atlassian.net/" },
-    ///             { "client_secret", "client-secret" },
-    ///             { "client_id", "client-id" },
-    ///             { "refresh_token", "fill-in-the-blank" },
+    ///             { "auth_type", "OAUTH_PASSWORD_GRANT" },
+    ///             { "instance_uri", "https://gcpconnector1.service-now.com/" },
+    ///             { "client_id", "SECRET_MANAGER_RESOURCE_NAME" },
+    ///             { "client_secret", "SECRET_MANAGER_RESOURCE_NAME" },
+    ///             { "static_ip_enabled", "false" },
+    ///             { "user_account", "connectorsuserqa@google.com" },
+    ///             { "password", "SECRET_MANAGER_RESOURCE_NAME" },
     ///         },
     ///         RefreshInterval = "86400s",
+    ///         IncrementalRefreshInterval = "21600s",
     ///         Entities = new[]
     ///         {
     ///             new Gcp.DiscoveryEngine.Inputs.DataConnectorEntityArgs
     ///             {
-    ///                 EntityName = "project",
+    ///                 EntityName = "catalog",
+    ///                 Params = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["inclusion_filters"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["knowledgeBaseSysId"] = new[]
+    ///                         {
+    ///                             "123",
+    ///                         },
+    ///                     },
+    ///                 }),
     ///             },
     ///             new Gcp.DiscoveryEngine.Inputs.DataConnectorEntityArgs
     ///             {
-    ///                 EntityName = "issue",
+    ///                 EntityName = "incident",
+    ///                 Params = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["inclusion_filters"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["knowledgeBaseSysId"] = new[]
+    ///                         {
+    ///                             "123",
+    ///                         },
+    ///                     },
+    ///                 }),
     ///             },
     ///             new Gcp.DiscoveryEngine.Inputs.DataConnectorEntityArgs
     ///             {
-    ///                 EntityName = "attachment",
-    ///             },
-    ///             new Gcp.DiscoveryEngine.Inputs.DataConnectorEntityArgs
-    ///             {
-    ///                 EntityName = "comment",
-    ///             },
-    ///             new Gcp.DiscoveryEngine.Inputs.DataConnectorEntityArgs
-    ///             {
-    ///                 EntityName = "worklog",
+    ///                 EntityName = "knowledge_base",
+    ///                 Params = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["inclusion_filters"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["knowledgeBaseSysId"] = new[]
+    ///                         {
+    ///                             "123",
+    ///                         },
+    ///                     },
+    ///                 }),
     ///             },
     ///         },
-    ///         StaticIpEnabled = true,
+    ///         StaticIpEnabled = false,
+    ///         ConnectorModes = new[]
+    ///         {
+    ///             "DATA_INGESTION",
+    ///         },
+    ///         SyncMode = "PERIODIC",
     ///     });
     /// 
     /// });
@@ -114,6 +145,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<string> ActionState { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether full syncs are paused for this connector
+        /// </summary>
+        [Output("autoRunDisabled")]
+        public Output<bool?> AutoRunDisabled { get; private set; } = null!;
+
+        /// <summary>
         /// User actions that must be completed before the connector can start syncing data.
         /// The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
         /// </summary>
@@ -139,6 +176,14 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Output("collectionId")]
         public Output<string> CollectionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The modes enabled for this connector. The possible value can be:
+        /// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
+        /// 'EUA', 'FEDERATED_AND_EUA'.
+        /// </summary>
+        [Output("connectorModes")]
+        public Output<ImmutableArray<string>> ConnectorModes { get; private set; } = null!;
 
         /// <summary>
         /// The type of connector. Each source can only map to one type.
@@ -177,6 +222,23 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Output("errors")]
         public Output<ImmutableArray<Outputs.DataConnectorError>> Errors { get; private set; } = null!;
+
+        /// <summary>
+        /// The refresh interval specifically for incremental data syncs. If unset,
+        /// incremental syncs will use the default from env, set to 3hrs.
+        /// The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+        /// connectors. When the refresh interval is
+        /// set to the same value as the incremental refresh interval, incremental
+        /// sync will be disabled.
+        /// </summary>
+        [Output("incrementalRefreshInterval")]
+        public Output<string?> IncrementalRefreshInterval { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether incremental syncs are paused for this connector.
+        /// </summary>
+        [Output("incrementalSyncDisabled")]
+        public Output<bool?> IncrementalSyncDisabled { get; private set; } = null!;
 
         /// <summary>
         /// Params needed to access the source in the format of json string.
@@ -285,6 +347,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<bool?> StaticIpEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// The data synchronization mode supported by the data connector. The possible value can be:
+        /// 'PERIODIC', 'STREAMING'.
+        /// </summary>
+        [Output("syncMode")]
+        public Output<string?> SyncMode { get; private set; } = null!;
+
+        /// <summary>
         /// Timestamp when the DataConnector was updated.
         /// </summary>
         [Output("updateTime")]
@@ -337,6 +406,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
     public sealed class DataConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Indicates whether full syncs are paused for this connector
+        /// </summary>
+        [Input("autoRunDisabled")]
+        public Input<bool>? AutoRunDisabled { get; set; }
+
+        /// <summary>
         /// The display name of the Collection.
         /// Should be human readable, used to display collections in the Console
         /// Dashboard. UTF-8 encoded string with limit of 1024 characters.
@@ -355,6 +430,20 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("collectionId", required: true)]
         public Input<string> CollectionId { get; set; } = null!;
+
+        [Input("connectorModes")]
+        private InputList<string>? _connectorModes;
+
+        /// <summary>
+        /// The modes enabled for this connector. The possible value can be:
+        /// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
+        /// 'EUA', 'FEDERATED_AND_EUA'.
+        /// </summary>
+        public InputList<string> ConnectorModes
+        {
+            get => _connectorModes ?? (_connectorModes = new InputList<string>());
+            set => _connectorModes = value;
+        }
 
         /// <summary>
         /// The name of the data source.
@@ -375,6 +464,23 @@ namespace Pulumi.Gcp.DiscoveryEngine
             get => _entities ?? (_entities = new InputList<Inputs.DataConnectorEntityArgs>());
             set => _entities = value;
         }
+
+        /// <summary>
+        /// The refresh interval specifically for incremental data syncs. If unset,
+        /// incremental syncs will use the default from env, set to 3hrs.
+        /// The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+        /// connectors. When the refresh interval is
+        /// set to the same value as the incremental refresh interval, incremental
+        /// sync will be disabled.
+        /// </summary>
+        [Input("incrementalRefreshInterval")]
+        public Input<string>? IncrementalRefreshInterval { get; set; }
+
+        /// <summary>
+        /// Indicates whether incremental syncs are paused for this connector.
+        /// </summary>
+        [Input("incrementalSyncDisabled")]
+        public Input<bool>? IncrementalSyncDisabled { get; set; }
 
         /// <summary>
         /// Params needed to access the source in the format of json string.
@@ -434,6 +540,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
         [Input("staticIpEnabled")]
         public Input<bool>? StaticIpEnabled { get; set; }
 
+        /// <summary>
+        /// The data synchronization mode supported by the data connector. The possible value can be:
+        /// 'PERIODIC', 'STREAMING'.
+        /// </summary>
+        [Input("syncMode")]
+        public Input<string>? SyncMode { get; set; }
+
         public DataConnectorArgs()
         {
         }
@@ -450,6 +563,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("actionState")]
         public Input<string>? ActionState { get; set; }
+
+        /// <summary>
+        /// Indicates whether full syncs are paused for this connector
+        /// </summary>
+        [Input("autoRunDisabled")]
+        public Input<bool>? AutoRunDisabled { get; set; }
 
         [Input("blockingReasons")]
         private InputList<string>? _blockingReasons;
@@ -483,6 +602,20 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("collectionId")]
         public Input<string>? CollectionId { get; set; }
+
+        [Input("connectorModes")]
+        private InputList<string>? _connectorModes;
+
+        /// <summary>
+        /// The modes enabled for this connector. The possible value can be:
+        /// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
+        /// 'EUA', 'FEDERATED_AND_EUA'.
+        /// </summary>
+        public InputList<string> ConnectorModes
+        {
+            get => _connectorModes ?? (_connectorModes = new InputList<string>());
+            set => _connectorModes = value;
+        }
 
         /// <summary>
         /// The type of connector. Each source can only map to one type.
@@ -533,6 +666,23 @@ namespace Pulumi.Gcp.DiscoveryEngine
             get => _errors ?? (_errors = new InputList<Inputs.DataConnectorErrorGetArgs>());
             set => _errors = value;
         }
+
+        /// <summary>
+        /// The refresh interval specifically for incremental data syncs. If unset,
+        /// incremental syncs will use the default from env, set to 3hrs.
+        /// The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+        /// connectors. When the refresh interval is
+        /// set to the same value as the incremental refresh interval, incremental
+        /// sync will be disabled.
+        /// </summary>
+        [Input("incrementalRefreshInterval")]
+        public Input<string>? IncrementalRefreshInterval { get; set; }
+
+        /// <summary>
+        /// Indicates whether incremental syncs are paused for this connector.
+        /// </summary>
+        [Input("incrementalSyncDisabled")]
+        public Input<bool>? IncrementalSyncDisabled { get; set; }
 
         /// <summary>
         /// Params needed to access the source in the format of json string.
@@ -651,6 +801,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("staticIpEnabled")]
         public Input<bool>? StaticIpEnabled { get; set; }
+
+        /// <summary>
+        /// The data synchronization mode supported by the data connector. The possible value can be:
+        /// 'PERIODIC', 'STREAMING'.
+        /// </summary>
+        [Input("syncMode")]
+        public Input<string>? SyncMode { get; set; }
 
         /// <summary>
         /// Timestamp when the DataConnector was updated.

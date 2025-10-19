@@ -25,6 +25,48 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Beyondcorp Security Gateway Spa
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example_spa = new gcp.beyondcorp.SecurityGateway("example-spa", {
+ *     securityGatewayId: "default-spa",
+ *     displayName: "My SPA Security Gateway resource",
+ *     proxyProtocolConfig: {
+ *         allowedClientHeaders: [
+ *             "header1",
+ *             "header2",
+ *         ],
+ *         contextualHeaders: {
+ *             userInfo: {
+ *                 outputType: "PROTOBUF",
+ *             },
+ *             groupInfo: {
+ *                 outputType: "JSON",
+ *             },
+ *             deviceInfo: {
+ *                 outputType: "NONE",
+ *             },
+ *             outputType: "NONE",
+ *         },
+ *         metadataHeaders: {
+ *             "metadata-header1": "value1",
+ *             "metadata-header2": "value2",
+ *         },
+ *         gatewayIdentity: "RESOURCE_NAME",
+ *         clientIp: true,
+ *     },
+ *     serviceDiscovery: {
+ *         apiGateway: {
+ *             resourceOverride: {
+ *                 path: "/api/v1/routes",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -121,12 +163,22 @@ export class SecurityGateway extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * Shared proxy configuration for all apps.
+     * Structure is documented below.
+     */
+    declare public readonly proxyProtocolConfig: pulumi.Output<outputs.beyondcorp.SecurityGatewayProxyProtocolConfig | undefined>;
+    /**
      * Optional. User-settable SecurityGateway resource ID.
      * * Must start with a letter.
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
      */
     declare public readonly securityGatewayId: pulumi.Output<string>;
+    /**
+     * Settings related to the Service Discovery.
+     * Structure is documented below.
+     */
+    declare public readonly serviceDiscovery: pulumi.Output<outputs.beyondcorp.SecurityGatewayServiceDiscovery | undefined>;
     /**
      * Output only. The operational state of the SecurityGateway.
      * Possible values:
@@ -165,7 +217,9 @@ export class SecurityGateway extends pulumi.CustomResource {
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["proxyProtocolConfig"] = state?.proxyProtocolConfig;
             resourceInputs["securityGatewayId"] = state?.securityGatewayId;
+            resourceInputs["serviceDiscovery"] = state?.serviceDiscovery;
             resourceInputs["state"] = state?.state;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -177,7 +231,9 @@ export class SecurityGateway extends pulumi.CustomResource {
             resourceInputs["hubs"] = args?.hubs;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
+            resourceInputs["proxyProtocolConfig"] = args?.proxyProtocolConfig;
             resourceInputs["securityGatewayId"] = args?.securityGatewayId;
+            resourceInputs["serviceDiscovery"] = args?.serviceDiscovery;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["delegatingServiceAccount"] = undefined /*out*/;
             resourceInputs["externalIps"] = undefined /*out*/;
@@ -237,12 +293,22 @@ export interface SecurityGatewayState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Shared proxy configuration for all apps.
+     * Structure is documented below.
+     */
+    proxyProtocolConfig?: pulumi.Input<inputs.beyondcorp.SecurityGatewayProxyProtocolConfig>;
+    /**
      * Optional. User-settable SecurityGateway resource ID.
      * * Must start with a letter.
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
      */
     securityGatewayId?: pulumi.Input<string>;
+    /**
+     * Settings related to the Service Discovery.
+     * Structure is documented below.
+     */
+    serviceDiscovery?: pulumi.Input<inputs.beyondcorp.SecurityGatewayServiceDiscovery>;
     /**
      * Output only. The operational state of the SecurityGateway.
      * Possible values:
@@ -291,10 +357,20 @@ export interface SecurityGatewayArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * Shared proxy configuration for all apps.
+     * Structure is documented below.
+     */
+    proxyProtocolConfig?: pulumi.Input<inputs.beyondcorp.SecurityGatewayProxyProtocolConfig>;
+    /**
      * Optional. User-settable SecurityGateway resource ID.
      * * Must start with a letter.
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
      */
     securityGatewayId: pulumi.Input<string>;
+    /**
+     * Settings related to the Service Discovery.
+     * Structure is documented below.
+     */
+    serviceDiscovery?: pulumi.Input<inputs.beyondcorp.SecurityGatewayServiceDiscovery>;
 }

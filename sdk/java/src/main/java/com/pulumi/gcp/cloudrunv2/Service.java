@@ -113,6 +113,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
+ *                 .healthCheckDisabled(true)
  *                 .containers(ServiceTemplateContainerArgs.builder()
  *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .resources(ServiceTemplateContainerResourcesArgs.builder()

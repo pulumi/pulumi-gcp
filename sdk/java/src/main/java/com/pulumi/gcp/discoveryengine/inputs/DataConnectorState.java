@@ -42,6 +42,21 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Indicates whether full syncs are paused for this connector
+     * 
+     */
+    @Import(name="autoRunDisabled")
+    private @Nullable Output<Boolean> autoRunDisabled;
+
+    /**
+     * @return Indicates whether full syncs are paused for this connector
+     * 
+     */
+    public Optional<Output<Boolean>> autoRunDisabled() {
+        return Optional.ofNullable(this.autoRunDisabled);
+    }
+
+    /**
      * User actions that must be completed before the connector can start syncing data.
      * The possible values can be: &#39;ALLOWLIST_STATIC_IP&#39;, &#39;ALLOWLIST_IN_SERVICE_ATTACHMENT&#39;.
      * 
@@ -102,6 +117,25 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> collectionId() {
         return Optional.ofNullable(this.collectionId);
+    }
+
+    /**
+     * The modes enabled for this connector. The possible value can be:
+     * &#39;DATA_INGESTION&#39;, &#39;ACTIONS&#39;, &#39;FEDERATED&#39;
+     * &#39;EUA&#39;, &#39;FEDERATED_AND_EUA&#39;.
+     * 
+     */
+    @Import(name="connectorModes")
+    private @Nullable Output<List<String>> connectorModes;
+
+    /**
+     * @return The modes enabled for this connector. The possible value can be:
+     * &#39;DATA_INGESTION&#39;, &#39;ACTIONS&#39;, &#39;FEDERATED&#39;
+     * &#39;EUA&#39;, &#39;FEDERATED_AND_EUA&#39;.
+     * 
+     */
+    public Optional<Output<List<String>>> connectorModes() {
+        return Optional.ofNullable(this.connectorModes);
     }
 
     /**
@@ -193,6 +227,46 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<List<DataConnectorErrorArgs>>> errors() {
         return Optional.ofNullable(this.errors);
+    }
+
+    /**
+     * The refresh interval specifically for incremental data syncs. If unset,
+     * incremental syncs will use the default from env, set to 3hrs.
+     * The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+     * connectors. When the refresh interval is
+     * set to the same value as the incremental refresh interval, incremental
+     * sync will be disabled.
+     * 
+     */
+    @Import(name="incrementalRefreshInterval")
+    private @Nullable Output<String> incrementalRefreshInterval;
+
+    /**
+     * @return The refresh interval specifically for incremental data syncs. If unset,
+     * incremental syncs will use the default from env, set to 3hrs.
+     * The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+     * connectors. When the refresh interval is
+     * set to the same value as the incremental refresh interval, incremental
+     * sync will be disabled.
+     * 
+     */
+    public Optional<Output<String>> incrementalRefreshInterval() {
+        return Optional.ofNullable(this.incrementalRefreshInterval);
+    }
+
+    /**
+     * Indicates whether incremental syncs are paused for this connector.
+     * 
+     */
+    @Import(name="incrementalSyncDisabled")
+    private @Nullable Output<Boolean> incrementalSyncDisabled;
+
+    /**
+     * @return Indicates whether incremental syncs are paused for this connector.
+     * 
+     */
+    public Optional<Output<Boolean>> incrementalSyncDisabled() {
+        return Optional.ofNullable(this.incrementalSyncDisabled);
     }
 
     /**
@@ -450,6 +524,23 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The data synchronization mode supported by the data connector. The possible value can be:
+     * &#39;PERIODIC&#39;, &#39;STREAMING&#39;.
+     * 
+     */
+    @Import(name="syncMode")
+    private @Nullable Output<String> syncMode;
+
+    /**
+     * @return The data synchronization mode supported by the data connector. The possible value can be:
+     * &#39;PERIODIC&#39;, &#39;STREAMING&#39;.
+     * 
+     */
+    public Optional<Output<String>> syncMode() {
+        return Optional.ofNullable(this.syncMode);
+    }
+
+    /**
      * Timestamp when the DataConnector was updated.
      * 
      */
@@ -468,14 +559,18 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
 
     private DataConnectorState(DataConnectorState $) {
         this.actionState = $.actionState;
+        this.autoRunDisabled = $.autoRunDisabled;
         this.blockingReasons = $.blockingReasons;
         this.collectionDisplayName = $.collectionDisplayName;
         this.collectionId = $.collectionId;
+        this.connectorModes = $.connectorModes;
         this.connectorType = $.connectorType;
         this.createTime = $.createTime;
         this.dataSource = $.dataSource;
         this.entities = $.entities;
         this.errors = $.errors;
+        this.incrementalRefreshInterval = $.incrementalRefreshInterval;
+        this.incrementalSyncDisabled = $.incrementalSyncDisabled;
         this.jsonParams = $.jsonParams;
         this.kmsKeyName = $.kmsKeyName;
         this.lastSyncTime = $.lastSyncTime;
@@ -490,6 +585,7 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
         this.state = $.state;
         this.staticIpAddresses = $.staticIpAddresses;
         this.staticIpEnabled = $.staticIpEnabled;
+        this.syncMode = $.syncMode;
         this.updateTime = $.updateTime;
     }
 
@@ -536,6 +632,27 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder actionState(String actionState) {
             return actionState(Output.of(actionState));
+        }
+
+        /**
+         * @param autoRunDisabled Indicates whether full syncs are paused for this connector
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRunDisabled(@Nullable Output<Boolean> autoRunDisabled) {
+            $.autoRunDisabled = autoRunDisabled;
+            return this;
+        }
+
+        /**
+         * @param autoRunDisabled Indicates whether full syncs are paused for this connector
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRunDisabled(Boolean autoRunDisabled) {
+            return autoRunDisabled(Output.of(autoRunDisabled));
         }
 
         /**
@@ -628,6 +745,43 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder collectionId(String collectionId) {
             return collectionId(Output.of(collectionId));
+        }
+
+        /**
+         * @param connectorModes The modes enabled for this connector. The possible value can be:
+         * &#39;DATA_INGESTION&#39;, &#39;ACTIONS&#39;, &#39;FEDERATED&#39;
+         * &#39;EUA&#39;, &#39;FEDERATED_AND_EUA&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorModes(@Nullable Output<List<String>> connectorModes) {
+            $.connectorModes = connectorModes;
+            return this;
+        }
+
+        /**
+         * @param connectorModes The modes enabled for this connector. The possible value can be:
+         * &#39;DATA_INGESTION&#39;, &#39;ACTIONS&#39;, &#39;FEDERATED&#39;
+         * &#39;EUA&#39;, &#39;FEDERATED_AND_EUA&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorModes(List<String> connectorModes) {
+            return connectorModes(Output.of(connectorModes));
+        }
+
+        /**
+         * @param connectorModes The modes enabled for this connector. The possible value can be:
+         * &#39;DATA_INGESTION&#39;, &#39;ACTIONS&#39;, &#39;FEDERATED&#39;
+         * &#39;EUA&#39;, &#39;FEDERATED_AND_EUA&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorModes(String... connectorModes) {
+            return connectorModes(List.of(connectorModes));
         }
 
         /**
@@ -771,6 +925,58 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder errors(DataConnectorErrorArgs... errors) {
             return errors(List.of(errors));
+        }
+
+        /**
+         * @param incrementalRefreshInterval The refresh interval specifically for incremental data syncs. If unset,
+         * incremental syncs will use the default from env, set to 3hrs.
+         * The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+         * connectors. When the refresh interval is
+         * set to the same value as the incremental refresh interval, incremental
+         * sync will be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder incrementalRefreshInterval(@Nullable Output<String> incrementalRefreshInterval) {
+            $.incrementalRefreshInterval = incrementalRefreshInterval;
+            return this;
+        }
+
+        /**
+         * @param incrementalRefreshInterval The refresh interval specifically for incremental data syncs. If unset,
+         * incremental syncs will use the default from env, set to 3hrs.
+         * The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+         * connectors. When the refresh interval is
+         * set to the same value as the incremental refresh interval, incremental
+         * sync will be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder incrementalRefreshInterval(String incrementalRefreshInterval) {
+            return incrementalRefreshInterval(Output.of(incrementalRefreshInterval));
+        }
+
+        /**
+         * @param incrementalSyncDisabled Indicates whether incremental syncs are paused for this connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder incrementalSyncDisabled(@Nullable Output<Boolean> incrementalSyncDisabled) {
+            $.incrementalSyncDisabled = incrementalSyncDisabled;
+            return this;
+        }
+
+        /**
+         * @param incrementalSyncDisabled Indicates whether incremental syncs are paused for this connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder incrementalSyncDisabled(Boolean incrementalSyncDisabled) {
+            return incrementalSyncDisabled(Output.of(incrementalSyncDisabled));
         }
 
         /**
@@ -1119,6 +1325,29 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder staticIpEnabled(Boolean staticIpEnabled) {
             return staticIpEnabled(Output.of(staticIpEnabled));
+        }
+
+        /**
+         * @param syncMode The data synchronization mode supported by the data connector. The possible value can be:
+         * &#39;PERIODIC&#39;, &#39;STREAMING&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncMode(@Nullable Output<String> syncMode) {
+            $.syncMode = syncMode;
+            return this;
+        }
+
+        /**
+         * @param syncMode The data synchronization mode supported by the data connector. The possible value can be:
+         * &#39;PERIODIC&#39;, &#39;STREAMING&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncMode(String syncMode) {
+            return syncMode(Output.of(syncMode));
         }
 
         /**

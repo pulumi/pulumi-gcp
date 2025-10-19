@@ -534,6 +534,11 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly query: pulumi.Output<outputs.bigquery.JobQuery | undefined>;
     /**
+     * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+     * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+     */
+    declare public readonly reservation: pulumi.Output<string | undefined>;
+    /**
      * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
      * Structure is documented below.
      */
@@ -568,6 +573,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["query"] = state?.query;
+            resourceInputs["reservation"] = state?.reservation;
             resourceInputs["statuses"] = state?.statuses;
             resourceInputs["userEmail"] = state?.userEmail;
         } else {
@@ -584,6 +590,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["query"] = args?.query;
+            resourceInputs["reservation"] = args?.reservation;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["jobType"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -662,6 +669,11 @@ export interface JobState {
      */
     query?: pulumi.Input<inputs.bigquery.JobQuery>;
     /**
+     * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+     * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+     */
+    reservation?: pulumi.Input<string>;
+    /**
      * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
      * Structure is documented below.
      */
@@ -720,4 +732,9 @@ export interface JobArgs {
      * Structure is documented below.
      */
     query?: pulumi.Input<inputs.bigquery.JobQuery>;
+    /**
+     * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+     * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+     */
+    reservation?: pulumi.Input<string>;
 }

@@ -67,8 +67,11 @@ type LookupPrivateCloudArgs struct {
 
 // A collection of values returned by getPrivateCloud.
 type LookupPrivateCloudResult struct {
+	CreateTime         string               `pulumi:"createTime"`
+	DeleteTime         string               `pulumi:"deleteTime"`
 	DeletionDelayHours int                  `pulumi:"deletionDelayHours"`
 	Description        string               `pulumi:"description"`
+	ExpireTime         string               `pulumi:"expireTime"`
 	Hcxes              []GetPrivateCloudHcx `pulumi:"hcxes"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                           string                             `pulumi:"id"`
@@ -82,6 +85,7 @@ type LookupPrivateCloudResult struct {
 	State                        string                             `pulumi:"state"`
 	Type                         string                             `pulumi:"type"`
 	Uid                          string                             `pulumi:"uid"`
+	UpdateTime                   string                             `pulumi:"updateTime"`
 	Vcenters                     []GetPrivateCloudVcenter           `pulumi:"vcenters"`
 }
 
@@ -126,12 +130,24 @@ func (o LookupPrivateCloudResultOutput) ToLookupPrivateCloudResultOutputWithCont
 	return o
 }
 
+func (o LookupPrivateCloudResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupPrivateCloudResultOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
 func (o LookupPrivateCloudResultOutput) DeletionDelayHours() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) int { return v.DeletionDelayHours }).(pulumi.IntOutput)
 }
 
 func (o LookupPrivateCloudResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupPrivateCloudResultOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 func (o LookupPrivateCloudResultOutput) Hcxes() GetPrivateCloudHcxArrayOutput {
@@ -181,6 +197,10 @@ func (o LookupPrivateCloudResultOutput) Type() pulumi.StringOutput {
 
 func (o LookupPrivateCloudResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+func (o LookupPrivateCloudResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 func (o LookupPrivateCloudResultOutput) Vcenters() GetPrivateCloudVcenterArrayOutput {

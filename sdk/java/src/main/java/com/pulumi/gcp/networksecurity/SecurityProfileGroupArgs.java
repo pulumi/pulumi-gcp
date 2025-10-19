@@ -146,6 +146,21 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.threatPreventionProfile);
     }
 
+    /**
+     * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+     * 
+     */
+    @Import(name="urlFilteringProfile")
+    private @Nullable Output<String> urlFilteringProfile;
+
+    /**
+     * @return Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+     * 
+     */
+    public Optional<Output<String>> urlFilteringProfile() {
+        return Optional.ofNullable(this.urlFilteringProfile);
+    }
+
     private SecurityProfileGroupArgs() {}
 
     private SecurityProfileGroupArgs(SecurityProfileGroupArgs $) {
@@ -157,6 +172,7 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
         this.name = $.name;
         this.parent = $.parent;
         this.threatPreventionProfile = $.threatPreventionProfile;
+        this.urlFilteringProfile = $.urlFilteringProfile;
     }
 
     public static Builder builder() {
@@ -353,6 +369,27 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
          */
         public Builder threatPreventionProfile(String threatPreventionProfile) {
             return threatPreventionProfile(Output.of(threatPreventionProfile));
+        }
+
+        /**
+         * @param urlFilteringProfile Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlFilteringProfile(@Nullable Output<String> urlFilteringProfile) {
+            $.urlFilteringProfile = urlFilteringProfile;
+            return this;
+        }
+
+        /**
+         * @param urlFilteringProfile Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlFilteringProfile(String urlFilteringProfile) {
+            return urlFilteringProfile(Output.of(urlFilteringProfile));
         }
 
         public SecurityProfileGroupArgs build() {

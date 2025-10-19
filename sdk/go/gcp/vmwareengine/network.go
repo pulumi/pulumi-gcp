@@ -136,8 +136,15 @@ import (
 type Network struct {
 	pulumi.CustomResourceState
 
+	// Creation time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// User-provided description for this VMware Engine network.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+	// The server computes checksums based on the value of other fields in the request.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location where the VMwareEngineNetwork should reside.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The ID of the VMwareEngineNetwork.
@@ -152,6 +159,10 @@ type Network struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// Last update time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
 	// the internet, and other Google Cloud services.
 	// Structure is documented below.
@@ -194,8 +205,15 @@ func GetNetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Network resources.
 type networkState struct {
+	// Creation time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime *string `pulumi:"createTime"`
 	// User-provided description for this VMware Engine network.
 	Description *string `pulumi:"description"`
+	// Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+	// The server computes checksums based on the value of other fields in the request.
+	Etag *string `pulumi:"etag"`
 	// The location where the VMwareEngineNetwork should reside.
 	Location *string `pulumi:"location"`
 	// The ID of the VMwareEngineNetwork.
@@ -210,6 +228,10 @@ type networkState struct {
 	Type *string `pulumi:"type"`
 	// System-generated unique identifier for the resource.
 	Uid *string `pulumi:"uid"`
+	// Last update time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime *string `pulumi:"updateTime"`
 	// VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
 	// the internet, and other Google Cloud services.
 	// Structure is documented below.
@@ -217,8 +239,15 @@ type networkState struct {
 }
 
 type NetworkState struct {
+	// Creation time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringPtrInput
 	// User-provided description for this VMware Engine network.
 	Description pulumi.StringPtrInput
+	// Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+	// The server computes checksums based on the value of other fields in the request.
+	Etag pulumi.StringPtrInput
 	// The location where the VMwareEngineNetwork should reside.
 	Location pulumi.StringPtrInput
 	// The ID of the VMwareEngineNetwork.
@@ -233,6 +262,10 @@ type NetworkState struct {
 	Type pulumi.StringPtrInput
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringPtrInput
+	// Last update time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime pulumi.StringPtrInput
 	// VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
 	// the internet, and other Google Cloud services.
 	// Structure is documented below.
@@ -361,9 +394,22 @@ func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOu
 	return o
 }
 
+// Creation time of this resource.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o NetworkOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // User-provided description for this VMware Engine network.
 func (o NetworkOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+// The server computes checksums based on the value of other fields in the request.
+func (o NetworkOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The location where the VMwareEngineNetwork should reside.
@@ -396,6 +442,13 @@ func (o NetworkOutput) Type() pulumi.StringOutput {
 // System-generated unique identifier for the resource.
 func (o NetworkOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Last update time of this resource.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o NetworkOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 // VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,

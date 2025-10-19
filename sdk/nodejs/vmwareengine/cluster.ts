@@ -160,6 +160,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly autoscalingSettings: pulumi.Output<outputs.vmwareengine.ClusterAutoscalingSettings | undefined>;
     /**
+     * Creation time of this resource.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+     * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
      * True if the cluster is a management cluster; false otherwise.
      * There can only be one management cluster in a private cloud and it has to be the first one.
      */
@@ -188,6 +194,12 @@ export class Cluster extends pulumi.CustomResource {
      * System-generated unique identifier for the resource.
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
+    /**
+     * Last updated time of this resource.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -203,12 +215,14 @@ export class Cluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["autoscalingSettings"] = state?.autoscalingSettings;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["management"] = state?.management;
             resourceInputs["name"] = state?.name;
             resourceInputs["nodeTypeConfigs"] = state?.nodeTypeConfigs;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["state"] = state?.state;
             resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             if (args?.parent === undefined && !opts.urn) {
@@ -218,9 +232,11 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["nodeTypeConfigs"] = args?.nodeTypeConfigs;
             resourceInputs["parent"] = args?.parent;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["management"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
@@ -236,6 +252,12 @@ export interface ClusterState {
      * Structure is documented below.
      */
     autoscalingSettings?: pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettings>;
+    /**
+     * Creation time of this resource.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+     * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * True if the cluster is a management cluster; false otherwise.
      * There can only be one management cluster in a private cloud and it has to be the first one.
@@ -265,6 +287,12 @@ export interface ClusterState {
      * System-generated unique identifier for the resource.
      */
     uid?: pulumi.Input<string>;
+    /**
+     * Last updated time of this resource.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    updateTime?: pulumi.Input<string>;
 }
 
 /**

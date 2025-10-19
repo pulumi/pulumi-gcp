@@ -227,6 +227,21 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.updateTime);
     }
 
+    /**
+     * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+     * 
+     */
+    @Import(name="urlFilteringProfile")
+    private @Nullable Output<String> urlFilteringProfile;
+
+    /**
+     * @return Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+     * 
+     */
+    public Optional<Output<String>> urlFilteringProfile() {
+        return Optional.ofNullable(this.urlFilteringProfile);
+    }
+
     private SecurityProfileGroupState() {}
 
     private SecurityProfileGroupState(SecurityProfileGroupState $) {
@@ -243,6 +258,7 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
         this.pulumiLabels = $.pulumiLabels;
         this.threatPreventionProfile = $.threatPreventionProfile;
         this.updateTime = $.updateTime;
+        this.urlFilteringProfile = $.urlFilteringProfile;
     }
 
     public static Builder builder() {
@@ -550,6 +566,27 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
          */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param urlFilteringProfile Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlFilteringProfile(@Nullable Output<String> urlFilteringProfile) {
+            $.urlFilteringProfile = urlFilteringProfile;
+            return this;
+        }
+
+        /**
+         * @param urlFilteringProfile Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlFilteringProfile(String urlFilteringProfile) {
+            return urlFilteringProfile(Output.of(urlFilteringProfile));
         }
 
         public SecurityProfileGroupState build() {

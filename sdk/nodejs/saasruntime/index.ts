@@ -20,6 +20,11 @@ export type SaaS = import("./saaS").SaaS;
 export const SaaS: typeof import("./saaS").SaaS = null as any;
 utilities.lazyLoad(exports, ["SaaS"], () => require("./saaS"));
 
+export { TenantArgs, TenantState } from "./tenant";
+export type Tenant = import("./tenant").Tenant;
+export const Tenant: typeof import("./tenant").Tenant = null as any;
+utilities.lazyLoad(exports, ["Tenant"], () => require("./tenant"));
+
 export { UnitKindArgs, UnitKindState } from "./unitKind";
 export type UnitKind = import("./unitKind").UnitKind;
 export const UnitKind: typeof import("./unitKind").UnitKind = null as any;
@@ -36,6 +41,8 @@ const _module = {
                 return new RolloutKind(name, <any>undefined, { urn })
             case "gcp:saasruntime/saaS:SaaS":
                 return new SaaS(name, <any>undefined, { urn })
+            case "gcp:saasruntime/tenant:Tenant":
+                return new Tenant(name, <any>undefined, { urn })
             case "gcp:saasruntime/unitKind:UnitKind":
                 return new UnitKind(name, <any>undefined, { urn })
             default:
@@ -46,4 +53,5 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "saasruntime/release", _module)
 pulumi.runtime.registerResourceModule("gcp", "saasruntime/rolloutKind", _module)
 pulumi.runtime.registerResourceModule("gcp", "saasruntime/saaS", _module)
+pulumi.runtime.registerResourceModule("gcp", "saasruntime/tenant", _module)
 pulumi.runtime.registerResourceModule("gcp", "saasruntime/unitKind", _module)

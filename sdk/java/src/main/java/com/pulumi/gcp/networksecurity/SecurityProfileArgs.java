@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomInterceptProfileArgs;
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomMirroringProfileArgs;
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileArgs;
+import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -162,7 +163,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      * 
      */
     @Import(name="type", required=true)
@@ -170,11 +171,28 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      * 
      */
     public Output<String> type() {
         return this.type;
+    }
+
+    /**
+     * The url filtering configuration for the security profile.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="urlFilteringProfile")
+    private @Nullable Output<SecurityProfileUrlFilteringProfileArgs> urlFilteringProfile;
+
+    /**
+     * @return The url filtering configuration for the security profile.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityProfileUrlFilteringProfileArgs>> urlFilteringProfile() {
+        return Optional.ofNullable(this.urlFilteringProfile);
     }
 
     private SecurityProfileArgs() {}
@@ -189,6 +207,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
         this.parent = $.parent;
         this.threatPreventionProfile = $.threatPreventionProfile;
         this.type = $.type;
+        this.urlFilteringProfile = $.urlFilteringProfile;
     }
 
     public static Builder builder() {
@@ -399,7 +418,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param type The type of security profile.
-         * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+         * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
          * 
          * @return builder
          * 
@@ -411,13 +430,36 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param type The type of security profile.
-         * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+         * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
          * 
          * @return builder
          * 
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param urlFilteringProfile The url filtering configuration for the security profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlFilteringProfile(@Nullable Output<SecurityProfileUrlFilteringProfileArgs> urlFilteringProfile) {
+            $.urlFilteringProfile = urlFilteringProfile;
+            return this;
+        }
+
+        /**
+         * @param urlFilteringProfile The url filtering configuration for the security profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlFilteringProfile(SecurityProfileUrlFilteringProfileArgs urlFilteringProfile) {
+            return urlFilteringProfile(Output.of(urlFilteringProfile));
         }
 
         public SecurityProfileArgs build() {

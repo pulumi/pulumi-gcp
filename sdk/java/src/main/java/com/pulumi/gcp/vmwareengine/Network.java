@@ -155,6 +155,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:vmwareengine/network:Network")
 public class Network extends com.pulumi.resources.CustomResource {
     /**
+     * Creation time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Creation time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
      * User-provided description for this VMware Engine network.
      * 
      */
@@ -167,6 +185,22 @@ public class Network extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+     * The server computes checksums based on the value of other fields in the request.
+     * 
+     */
+    @Export(name="etag", refs={String.class}, tree="[0]")
+    private Output<String> etag;
+
+    /**
+     * @return Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+     * The server computes checksums based on the value of other fields in the request.
+     * 
+     */
+    public Output<String> etag() {
+        return this.etag;
     }
     /**
      * The location where the VMwareEngineNetwork should reside.
@@ -255,6 +289,24 @@ public class Network extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uid() {
         return this.uid;
+    }
+    /**
+     * Last update time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    private Output<String> updateTime;
+
+    /**
+     * @return Last update time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
     }
     /**
      * VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,

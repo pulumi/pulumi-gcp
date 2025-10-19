@@ -47,6 +47,9 @@ class GetBackupPlanAssociationsResult:
     @_builtins.property
     @pulumi.getter
     def associations(self) -> Sequence['outputs.GetBackupPlanAssociationsAssociationResult']:
+        """
+        A list of the backup plan associations found.
+        """
         return pulumi.get(self, "associations")
 
     @_builtins.property
@@ -65,6 +68,9 @@ class GetBackupPlanAssociationsResult:
     @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
+        """
+        The ID of the project in which the resource belongs.
+        """
         return pulumi.get(self, "project")
 
     @_builtins.property
@@ -91,7 +97,25 @@ def get_backup_plan_associations(location: Optional[_builtins.str] = None,
                                  resource_type: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackupPlanAssociationsResult:
     """
+    Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    compute_instance_associations = gcp.backupdisasterrecovery.get_backup_plan_associations(location="us-central1",
+        resource_type="compute.googleapis.com/Instance")
+    ```
+
+
+    :param _builtins.str location: The location where the Backup Plan Association resources reside.
+    :param _builtins.str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param _builtins.str resource_type: The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+           
+           - - -
     """
     __args__ = dict()
     __args__['location'] = location
@@ -111,7 +135,25 @@ def get_backup_plan_associations_output(location: Optional[pulumi.Input[_builtin
                                         resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlanAssociationsResult]:
     """
+    Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    compute_instance_associations = gcp.backupdisasterrecovery.get_backup_plan_associations(location="us-central1",
+        resource_type="compute.googleapis.com/Instance")
+    ```
+
+
+    :param _builtins.str location: The location where the Backup Plan Association resources reside.
+    :param _builtins.str project: The project in which the resource belongs. If it
+           is not provided, the provider project is used.
+    :param _builtins.str resource_type: The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+           
+           - - -
     """
     __args__ = dict()
     __args__['location'] = location
