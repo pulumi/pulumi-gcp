@@ -97,6 +97,7 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
+	// The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Name of VPC network connected with service producers using VPC peering.
 	Network pulumi.StringOutput `pulumi:"network"`
@@ -153,6 +154,7 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
+	// The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of VPC network connected with service producers using VPC peering.
 	Network *string `pulumi:"network"`
@@ -171,6 +173,7 @@ type connectionState struct {
 }
 
 type ConnectionState struct {
+	// The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
 	DeletionPolicy pulumi.StringPtrInput
 	// Name of VPC network connected with service producers using VPC peering.
 	Network pulumi.StringPtrInput
@@ -193,6 +196,7 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
+	// The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of VPC network connected with service producers using VPC peering.
 	Network string `pulumi:"network"`
@@ -210,6 +214,7 @@ type connectionArgs struct {
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
+	// The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
 	DeletionPolicy pulumi.StringPtrInput
 	// Name of VPC network connected with service producers using VPC peering.
 	Network pulumi.StringInput
@@ -312,6 +317,7 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+// The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
 func (o ConnectionOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
