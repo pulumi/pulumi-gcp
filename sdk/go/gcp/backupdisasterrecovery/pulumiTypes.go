@@ -1426,10 +1426,17 @@ func (o GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput) Index
 }
 
 type GetBackupPlanAssociationsAssociation struct {
+	// The backup plan to which the resource is attached.
 	BackupPlan string `pulumi:"backupPlan"`
 	CreateTime string `pulumi:"createTime"`
-	Name       string `pulumi:"name"`
-	Resource   string `pulumi:"resource"`
+	// The resource name of data source which will be used as storage location for backups taken.
+	DataSource string `pulumi:"dataSource"`
+	// The full name of the backup plan association resource.
+	Name string `pulumi:"name"`
+	// The resource to which the backup plan is applied.
+	Resource string `pulumi:"resource"`
+	// A list containing information about the backup rules. Each object in the list contains:
+	RulesConfigInfos []GetBackupPlanAssociationsAssociationRulesConfigInfo `pulumi:"rulesConfigInfos"`
 }
 
 // GetBackupPlanAssociationsAssociationInput is an input type that accepts GetBackupPlanAssociationsAssociationArgs and GetBackupPlanAssociationsAssociationOutput values.
@@ -1444,10 +1451,17 @@ type GetBackupPlanAssociationsAssociationInput interface {
 }
 
 type GetBackupPlanAssociationsAssociationArgs struct {
+	// The backup plan to which the resource is attached.
 	BackupPlan pulumi.StringInput `pulumi:"backupPlan"`
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	Name       pulumi.StringInput `pulumi:"name"`
-	Resource   pulumi.StringInput `pulumi:"resource"`
+	// The resource name of data source which will be used as storage location for backups taken.
+	DataSource pulumi.StringInput `pulumi:"dataSource"`
+	// The full name of the backup plan association resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The resource to which the backup plan is applied.
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// A list containing information about the backup rules. Each object in the list contains:
+	RulesConfigInfos GetBackupPlanAssociationsAssociationRulesConfigInfoArrayInput `pulumi:"rulesConfigInfos"`
 }
 
 func (GetBackupPlanAssociationsAssociationArgs) ElementType() reflect.Type {
@@ -1501,6 +1515,7 @@ func (o GetBackupPlanAssociationsAssociationOutput) ToGetBackupPlanAssociationsA
 	return o
 }
 
+// The backup plan to which the resource is attached.
 func (o GetBackupPlanAssociationsAssociationOutput) BackupPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupPlanAssociationsAssociation) string { return v.BackupPlan }).(pulumi.StringOutput)
 }
@@ -1509,12 +1524,26 @@ func (o GetBackupPlanAssociationsAssociationOutput) CreateTime() pulumi.StringOu
 	return o.ApplyT(func(v GetBackupPlanAssociationsAssociation) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The resource name of data source which will be used as storage location for backups taken.
+func (o GetBackupPlanAssociationsAssociationOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationsAssociation) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// The full name of the backup plan association resource.
 func (o GetBackupPlanAssociationsAssociationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupPlanAssociationsAssociation) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource to which the backup plan is applied.
 func (o GetBackupPlanAssociationsAssociationOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupPlanAssociationsAssociation) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+// A list containing information about the backup rules. Each object in the list contains:
+func (o GetBackupPlanAssociationsAssociationOutput) RulesConfigInfos() GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationsAssociation) []GetBackupPlanAssociationsAssociationRulesConfigInfo {
+		return v.RulesConfigInfos
+	}).(GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput)
 }
 
 type GetBackupPlanAssociationsAssociationArrayOutput struct{ *pulumi.OutputState }
@@ -1535,6 +1564,240 @@ func (o GetBackupPlanAssociationsAssociationArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanAssociationsAssociation {
 		return vs[0].([]GetBackupPlanAssociationsAssociation)[vs[1].(int)]
 	}).(GetBackupPlanAssociationsAssociationOutput)
+}
+
+type GetBackupPlanAssociationsAssociationRulesConfigInfo struct {
+	// A block containing details of the last backup error, if any.
+	LastBackupErrors []GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError `pulumi:"lastBackupErrors"`
+	// State of last backup taken.
+	LastBackupState string `pulumi:"lastBackupState"`
+	// The point in time when the last successful backup was captured from the source.
+	LastSuccessfulBackupConsistencyTime string `pulumi:"lastSuccessfulBackupConsistencyTime"`
+	// Backup Rule id fetched from backup plan.
+	RuleId string `pulumi:"ruleId"`
+}
+
+// GetBackupPlanAssociationsAssociationRulesConfigInfoInput is an input type that accepts GetBackupPlanAssociationsAssociationRulesConfigInfoArgs and GetBackupPlanAssociationsAssociationRulesConfigInfoOutput values.
+// You can construct a concrete instance of `GetBackupPlanAssociationsAssociationRulesConfigInfoInput` via:
+//
+//	GetBackupPlanAssociationsAssociationRulesConfigInfoArgs{...}
+type GetBackupPlanAssociationsAssociationRulesConfigInfoInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanAssociationsAssociationRulesConfigInfoOutput() GetBackupPlanAssociationsAssociationRulesConfigInfoOutput
+	ToGetBackupPlanAssociationsAssociationRulesConfigInfoOutputWithContext(context.Context) GetBackupPlanAssociationsAssociationRulesConfigInfoOutput
+}
+
+type GetBackupPlanAssociationsAssociationRulesConfigInfoArgs struct {
+	// A block containing details of the last backup error, if any.
+	LastBackupErrors GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayInput `pulumi:"lastBackupErrors"`
+	// State of last backup taken.
+	LastBackupState pulumi.StringInput `pulumi:"lastBackupState"`
+	// The point in time when the last successful backup was captured from the source.
+	LastSuccessfulBackupConsistencyTime pulumi.StringInput `pulumi:"lastSuccessfulBackupConsistencyTime"`
+	// Backup Rule id fetched from backup plan.
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+}
+
+func (GetBackupPlanAssociationsAssociationRulesConfigInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanAssociationsAssociationRulesConfigInfo)(nil)).Elem()
+}
+
+func (i GetBackupPlanAssociationsAssociationRulesConfigInfoArgs) ToGetBackupPlanAssociationsAssociationRulesConfigInfoOutput() GetBackupPlanAssociationsAssociationRulesConfigInfoOutput {
+	return i.ToGetBackupPlanAssociationsAssociationRulesConfigInfoOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanAssociationsAssociationRulesConfigInfoArgs) ToGetBackupPlanAssociationsAssociationRulesConfigInfoOutputWithContext(ctx context.Context) GetBackupPlanAssociationsAssociationRulesConfigInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanAssociationsAssociationRulesConfigInfoOutput)
+}
+
+// GetBackupPlanAssociationsAssociationRulesConfigInfoArrayInput is an input type that accepts GetBackupPlanAssociationsAssociationRulesConfigInfoArray and GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput values.
+// You can construct a concrete instance of `GetBackupPlanAssociationsAssociationRulesConfigInfoArrayInput` via:
+//
+//	GetBackupPlanAssociationsAssociationRulesConfigInfoArray{ GetBackupPlanAssociationsAssociationRulesConfigInfoArgs{...} }
+type GetBackupPlanAssociationsAssociationRulesConfigInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput() GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput
+	ToGetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutputWithContext(context.Context) GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput
+}
+
+type GetBackupPlanAssociationsAssociationRulesConfigInfoArray []GetBackupPlanAssociationsAssociationRulesConfigInfoInput
+
+func (GetBackupPlanAssociationsAssociationRulesConfigInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanAssociationsAssociationRulesConfigInfo)(nil)).Elem()
+}
+
+func (i GetBackupPlanAssociationsAssociationRulesConfigInfoArray) ToGetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput() GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput {
+	return i.ToGetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanAssociationsAssociationRulesConfigInfoArray) ToGetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutputWithContext(ctx context.Context) GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput)
+}
+
+type GetBackupPlanAssociationsAssociationRulesConfigInfoOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanAssociationsAssociationRulesConfigInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanAssociationsAssociationRulesConfigInfo)(nil)).Elem()
+}
+
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoOutput) ToGetBackupPlanAssociationsAssociationRulesConfigInfoOutput() GetBackupPlanAssociationsAssociationRulesConfigInfoOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoOutput) ToGetBackupPlanAssociationsAssociationRulesConfigInfoOutputWithContext(ctx context.Context) GetBackupPlanAssociationsAssociationRulesConfigInfoOutput {
+	return o
+}
+
+// A block containing details of the last backup error, if any.
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoOutput) LastBackupErrors() GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationsAssociationRulesConfigInfo) []GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError {
+		return v.LastBackupErrors
+	}).(GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput)
+}
+
+// State of last backup taken.
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoOutput) LastBackupState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationsAssociationRulesConfigInfo) string { return v.LastBackupState }).(pulumi.StringOutput)
+}
+
+// The point in time when the last successful backup was captured from the source.
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoOutput) LastSuccessfulBackupConsistencyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationsAssociationRulesConfigInfo) string {
+		return v.LastSuccessfulBackupConsistencyTime
+	}).(pulumi.StringOutput)
+}
+
+// Backup Rule id fetched from backup plan.
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationsAssociationRulesConfigInfo) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+type GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanAssociationsAssociationRulesConfigInfo)(nil)).Elem()
+}
+
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput) ToGetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput() GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput) ToGetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutputWithContext(ctx context.Context) GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput) Index(i pulumi.IntInput) GetBackupPlanAssociationsAssociationRulesConfigInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanAssociationsAssociationRulesConfigInfo {
+		return vs[0].([]GetBackupPlanAssociationsAssociationRulesConfigInfo)[vs[1].(int)]
+	}).(GetBackupPlanAssociationsAssociationRulesConfigInfoOutput)
+}
+
+type GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError struct {
+	// The status code, which should be an enum value of [google.rpc.Code].
+	Code int `pulumi:"code"`
+	// A developer-facing error message.
+	Message string `pulumi:"message"`
+}
+
+// GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorInput is an input type that accepts GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArgs and GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput values.
+// You can construct a concrete instance of `GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorInput` via:
+//
+//	GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArgs{...}
+type GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput() GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput
+	ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutputWithContext(context.Context) GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput
+}
+
+type GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArgs struct {
+	// The status code, which should be an enum value of [google.rpc.Code].
+	Code pulumi.IntInput `pulumi:"code"`
+	// A developer-facing error message.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError)(nil)).Elem()
+}
+
+func (i GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArgs) ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput() GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput {
+	return i.ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArgs) ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutputWithContext(ctx context.Context) GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput)
+}
+
+// GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayInput is an input type that accepts GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArray and GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput values.
+// You can construct a concrete instance of `GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayInput` via:
+//
+//	GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArray{ GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArgs{...} }
+type GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput() GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput
+	ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutputWithContext(context.Context) GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput
+}
+
+type GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArray []GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorInput
+
+func (GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError)(nil)).Elem()
+}
+
+func (i GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArray) ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput() GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return i.ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArray) ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutputWithContext(ctx context.Context) GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput)
+}
+
+type GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError)(nil)).Elem()
+}
+
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput) ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput() GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput) ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutputWithContext(ctx context.Context) GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput {
+	return o
+}
+
+// The status code, which should be an enum value of [google.rpc.Code].
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A developer-facing error message.
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError)(nil)).Elem()
+}
+
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput) ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput() GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput) ToGetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutputWithContext(ctx context.Context) GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput) Index(i pulumi.IntInput) GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError {
+		return vs[0].([]GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError)[vs[1].(int)]
+	}).(GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput)
 }
 
 type GetBackupPlanBackupRule struct {
@@ -2885,7 +3148,7 @@ type GetDataSourceReferencesDataSourceReference struct {
 	// The last time a successful backup was made.
 	LastSuccessfulBackupTime string `pulumi:"lastSuccessfulBackupTime"`
 	Name                     string `pulumi:"name"`
-	// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+	// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -2914,7 +3177,7 @@ type GetDataSourceReferencesDataSourceReferenceArgs struct {
 	// The last time a successful backup was made.
 	LastSuccessfulBackupTime pulumi.StringInput `pulumi:"lastSuccessfulBackupTime"`
 	Name                     pulumi.StringInput `pulumi:"name"`
-	// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+	// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
@@ -3003,7 +3266,7 @@ func (o GetDataSourceReferencesDataSourceReferenceOutput) Name() pulumi.StringOu
 	return o.ApplyT(func(v GetDataSourceReferencesDataSourceReference) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
 func (o GetDataSourceReferencesDataSourceReferenceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourceReferencesDataSourceReference) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -3264,6 +3527,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationsAssociationInput)(nil)).Elem(), GetBackupPlanAssociationsAssociationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationsAssociationArrayInput)(nil)).Elem(), GetBackupPlanAssociationsAssociationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationsAssociationRulesConfigInfoInput)(nil)).Elem(), GetBackupPlanAssociationsAssociationRulesConfigInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationsAssociationRulesConfigInfoArrayInput)(nil)).Elem(), GetBackupPlanAssociationsAssociationRulesConfigInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorInput)(nil)).Elem(), GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayInput)(nil)).Elem(), GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleInput)(nil)).Elem(), GetBackupPlanBackupRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleArgs{})
@@ -3313,6 +3580,10 @@ func init() {
 	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanAssociationsAssociationOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanAssociationsAssociationArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanAssociationsAssociationRulesConfigInfoOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanAssociationsAssociationRulesConfigInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleOutput{})

@@ -6385,6 +6385,8 @@ type ServiceTemplate struct {
 	ExecutionEnvironment *string `pulumi:"executionEnvironment"`
 	// True if GPU zonal redundancy is disabled on this revision.
 	GpuZonalRedundancyDisabled *bool `pulumi:"gpuZonalRedundancyDisabled"`
+	// Disables health checking containers during deployment.
+	HealthCheckDisabled *bool `pulumi:"healthCheckDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
 	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -6446,6 +6448,8 @@ type ServiceTemplateArgs struct {
 	ExecutionEnvironment pulumi.StringPtrInput `pulumi:"executionEnvironment"`
 	// True if GPU zonal redundancy is disabled on this revision.
 	GpuZonalRedundancyDisabled pulumi.BoolPtrInput `pulumi:"gpuZonalRedundancyDisabled"`
+	// Disables health checking containers during deployment.
+	HealthCheckDisabled pulumi.BoolPtrInput `pulumi:"healthCheckDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
 	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -6585,6 +6589,11 @@ func (o ServiceTemplateOutput) ExecutionEnvironment() pulumi.StringPtrOutput {
 // True if GPU zonal redundancy is disabled on this revision.
 func (o ServiceTemplateOutput) GpuZonalRedundancyDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *bool { return v.GpuZonalRedundancyDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// Disables health checking containers during deployment.
+func (o ServiceTemplateOutput) HealthCheckDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceTemplate) *bool { return v.HealthCheckDisabled }).(pulumi.BoolPtrOutput)
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
@@ -6728,6 +6737,16 @@ func (o ServiceTemplatePtrOutput) GpuZonalRedundancyDisabled() pulumi.BoolPtrOut
 			return nil
 		}
 		return v.GpuZonalRedundancyDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Disables health checking containers during deployment.
+func (o ServiceTemplatePtrOutput) HealthCheckDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckDisabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -22280,6 +22299,8 @@ type GetServiceTemplate struct {
 	ExecutionEnvironment string `pulumi:"executionEnvironment"`
 	// True if GPU zonal redundancy is disabled on this revision.
 	GpuZonalRedundancyDisabled bool `pulumi:"gpuZonalRedundancyDisabled"`
+	// Disables health checking containers during deployment.
+	HealthCheckDisabled bool `pulumi:"healthCheckDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
 	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	//
@@ -22338,6 +22359,8 @@ type GetServiceTemplateArgs struct {
 	ExecutionEnvironment pulumi.StringInput `pulumi:"executionEnvironment"`
 	// True if GPU zonal redundancy is disabled on this revision.
 	GpuZonalRedundancyDisabled pulumi.BoolInput `pulumi:"gpuZonalRedundancyDisabled"`
+	// Disables health checking containers during deployment.
+	HealthCheckDisabled pulumi.BoolInput `pulumi:"healthCheckDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
 	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	//
@@ -22448,6 +22471,11 @@ func (o GetServiceTemplateOutput) ExecutionEnvironment() pulumi.StringOutput {
 // True if GPU zonal redundancy is disabled on this revision.
 func (o GetServiceTemplateOutput) GpuZonalRedundancyDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceTemplate) bool { return v.GpuZonalRedundancyDisabled }).(pulumi.BoolOutput)
+}
+
+// Disables health checking containers during deployment.
+func (o GetServiceTemplateOutput) HealthCheckDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTemplate) bool { return v.HealthCheckDisabled }).(pulumi.BoolOutput)
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.

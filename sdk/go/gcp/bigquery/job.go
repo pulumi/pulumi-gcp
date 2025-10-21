@@ -703,6 +703,9 @@ type Job struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query JobQueryPtrOutput `pulumi:"query"`
+	// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+	// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+	Reservation pulumi.StringPtrOutput `pulumi:"reservation"`
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	// Structure is documented below.
 	Statuses JobStatusArrayOutput `pulumi:"statuses"`
@@ -784,6 +787,9 @@ type jobState struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query *JobQuery `pulumi:"query"`
+	// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+	// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+	Reservation *string `pulumi:"reservation"`
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	// Structure is documented below.
 	Statuses []JobStatus `pulumi:"statuses"`
@@ -828,6 +834,9 @@ type JobState struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query JobQueryPtrInput
+	// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+	// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+	Reservation pulumi.StringPtrInput
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	// Structure is documented below.
 	Statuses JobStatusArrayInput
@@ -866,6 +875,9 @@ type jobArgs struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query *JobQuery `pulumi:"query"`
+	// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+	// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+	Reservation *string `pulumi:"reservation"`
 }
 
 // The set of arguments for constructing a Job resource.
@@ -896,6 +908,9 @@ type JobArgs struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query JobQueryPtrInput
+	// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+	// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+	Reservation pulumi.StringPtrInput
 }
 
 func (JobArgs) ElementType() reflect.Type {
@@ -1055,6 +1070,12 @@ func (o JobOutput) PulumiLabels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o JobOutput) Query() JobQueryPtrOutput {
 	return o.ApplyT(func(v *Job) JobQueryPtrOutput { return v.Query }).(JobQueryPtrOutput)
+}
+
+// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+func (o JobOutput) Reservation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.Reservation }).(pulumi.StringPtrOutput)
 }
 
 // The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.

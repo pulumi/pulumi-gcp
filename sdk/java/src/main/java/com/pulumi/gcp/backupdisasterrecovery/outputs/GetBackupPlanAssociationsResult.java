@@ -12,6 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackupPlanAssociationsResult {
+    /**
+     * @return A list of the backup plan associations found.
+     * 
+     */
     private List<GetBackupPlanAssociationsAssociation> associations;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -19,10 +23,18 @@ public final class GetBackupPlanAssociationsResult {
      */
     private String id;
     private String location;
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * 
+     */
     private String project;
     private String resourceType;
 
     private GetBackupPlanAssociationsResult() {}
+    /**
+     * @return A list of the backup plan associations found.
+     * 
+     */
     public List<GetBackupPlanAssociationsAssociation> associations() {
         return this.associations;
     }
@@ -36,6 +48,10 @@ public final class GetBackupPlanAssociationsResult {
     public String location() {
         return this.location;
     }
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * 
+     */
     public String project() {
         return this.project;
     }

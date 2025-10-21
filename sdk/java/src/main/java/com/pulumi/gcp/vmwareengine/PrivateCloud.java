@@ -199,6 +199,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:vmwareengine/privateCloud:PrivateCloud")
 public class PrivateCloud extends com.pulumi.resources.CustomResource {
     /**
+     * Creation time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Creation time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Time when the resource was scheduled for deletion.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Export(name="deleteTime", refs={String.class}, tree="[0]")
+    private Output<String> deleteTime;
+
+    /**
+     * @return Time when the resource was scheduled for deletion.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Output<String> deleteTime() {
+        return this.deleteTime;
+    }
+    /**
      * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      * 
      */
@@ -225,6 +261,24 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Time when the resource will be irreversibly deleted.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
+    private Output<String> expireTime;
+
+    /**
+     * @return Time when the resource will be irreversibly deleted.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Output<String> expireTime() {
+        return this.expireTime;
     }
     /**
      * Details about a HCX Cloud Manager appliance.
@@ -393,6 +447,24 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uid() {
         return this.uid;
+    }
+    /**
+     * Last update time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    private Output<String> updateTime;
+
+    /**
+     * @return Last update time of this resource.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
     }
     /**
      * Details about a vCenter Server management appliance.

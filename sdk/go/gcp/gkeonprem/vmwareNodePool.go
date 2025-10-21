@@ -121,7 +121,7 @@ import (
 //				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
 //				Description:            pulumi.String("test cluster"),
-//				OnPremVersion:          pulumi.String("1.13.1-gke.35"),
+//				OnPremVersion:          pulumi.String("1.33.0-gke.35"),
 //				NetworkConfig: &gkeonprem.VMwareClusterNetworkConfigArgs{
 //					ServiceAddressCidrBlocks: pulumi.StringArray{
 //						pulumi.String("10.96.0.0/12"),
@@ -170,6 +170,7 @@ import (
 //				Name:          pulumi.String("my-nodepool"),
 //				Location:      pulumi.String("us-west1"),
 //				VmwareCluster: default_full.Name,
+//				OnPremVersion: pulumi.String("1.33.0-gke.35"),
 //				Annotations:   pulumi.StringMap{},
 //				Config: &gkeonprem.VMwareNodePoolConfigArgs{
 //					Cpus:           pulumi.Int(4),
@@ -285,7 +286,7 @@ type VMwareNodePool struct {
 	// Structure is documented below.
 	NodePoolAutoscaling VMwareNodePoolNodePoolAutoscalingPtrOutput `pulumi:"nodePoolAutoscaling"`
 	// Anthos version for the node pool. Defaults to the user cluster version.
-	OnPremVersion pulumi.StringOutput `pulumi:"onPremVersion"`
+	OnPremVersion pulumi.StringPtrOutput `pulumi:"onPremVersion"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -486,6 +487,8 @@ type vmwareNodePoolArgs struct {
 	// Node Pool autoscaling config for the node pool.
 	// Structure is documented below.
 	NodePoolAutoscaling *VMwareNodePoolNodePoolAutoscaling `pulumi:"nodePoolAutoscaling"`
+	// Anthos version for the node pool. Defaults to the user cluster version.
+	OnPremVersion *string `pulumi:"onPremVersion"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -519,6 +522,8 @@ type VMwareNodePoolArgs struct {
 	// Node Pool autoscaling config for the node pool.
 	// Structure is documented below.
 	NodePoolAutoscaling VMwareNodePoolNodePoolAutoscalingPtrInput
+	// Anthos version for the node pool. Defaults to the user cluster version.
+	OnPremVersion pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -679,8 +684,8 @@ func (o VMwareNodePoolOutput) NodePoolAutoscaling() VMwareNodePoolNodePoolAutosc
 }
 
 // Anthos version for the node pool. Defaults to the user cluster version.
-func (o VMwareNodePoolOutput) OnPremVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VMwareNodePool) pulumi.StringOutput { return v.OnPremVersion }).(pulumi.StringOutput)
+func (o VMwareNodePoolOutput) OnPremVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMwareNodePool) pulumi.StringPtrOutput { return v.OnPremVersion }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

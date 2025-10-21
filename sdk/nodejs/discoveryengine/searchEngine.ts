@@ -63,6 +63,7 @@ import * as utilities from "../utilities";
  *     displayName: "tf-test-agentspace-search-engine",
  *     dataStoreIds: [agentspaceBasic.dataStoreId],
  *     industryVertical: "GENERIC",
+ *     appType: "APP_TYPE_INTRANET",
  *     searchEngineConfig: {},
  * });
  * ```
@@ -160,6 +161,14 @@ export class SearchEngine extends pulumi.CustomResource {
      */
     declare public readonly industryVertical: pulumi.Output<string | undefined>;
     /**
+     * The KMS key to be used to protect this Engine at creation time.
+     * Must be set for requests that need to comply with CMEK Org Policy
+     * protections.
+     * If this field is set and processed successfully, the Engine will be
+     * protected by the KMS key, as indicated in the cmekConfig field.
+     */
+    declare public readonly kmsKeyName: pulumi.Output<string | undefined>;
+    /**
      * Location.
      */
     declare public readonly location: pulumi.Output<string>;
@@ -207,6 +216,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["engineId"] = state?.engineId;
             resourceInputs["features"] = state?.features;
             resourceInputs["industryVertical"] = state?.industryVertical;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -240,6 +250,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["engineId"] = args?.engineId;
             resourceInputs["features"] = args?.features;
             resourceInputs["industryVertical"] = args?.industryVertical;
+            resourceInputs["kmsKeyName"] = args?.kmsKeyName;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["searchEngineConfig"] = args?.searchEngineConfig;
@@ -296,6 +307,14 @@ export interface SearchEngineState {
      * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      */
     industryVertical?: pulumi.Input<string>;
+    /**
+     * The KMS key to be used to protect this Engine at creation time.
+     * Must be set for requests that need to comply with CMEK Org Policy
+     * protections.
+     * If this field is set and processed successfully, the Engine will be
+     * protected by the KMS key, as indicated in the cmekConfig field.
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * Location.
      */
@@ -363,6 +382,14 @@ export interface SearchEngineArgs {
      * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      */
     industryVertical?: pulumi.Input<string>;
+    /**
+     * The KMS key to be used to protect this Engine at creation time.
+     * Must be set for requests that need to comply with CMEK Org Policy
+     * protections.
+     * If this field is set and processed successfully, the Engine will be
+     * protected by the KMS key, as indicated in the cmekConfig field.
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * Location.
      */

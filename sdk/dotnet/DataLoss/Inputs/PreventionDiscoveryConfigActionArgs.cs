@@ -27,7 +27,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionDiscoveryConfigActionPubSubNotificationArgs>? PubSubNotification { get; set; }
 
         /// <summary>
-        /// Publish a message into the Pub/Sub topic.
+        /// Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+        /// </summary>
+        [Input("publishToDataplexCatalog")]
+        public Input<Inputs.PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs>? PublishToDataplexCatalog { get; set; }
+
+        /// <summary>
+        /// Tag the profiled resources with the specified tag values.
         /// Structure is documented below.
         /// </summary>
         [Input("tagResources")]

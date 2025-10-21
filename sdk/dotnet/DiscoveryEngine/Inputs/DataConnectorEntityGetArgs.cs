@@ -47,17 +47,11 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
             set => _keyPropertyMappings = value;
         }
 
-        [Input("params")]
-        private InputMap<string>? _params;
-
         /// <summary>
         /// The parameters for the entity to facilitate data ingestion.
         /// </summary>
-        public InputMap<string> Params
-        {
-            get => _params ?? (_params = new InputMap<string>());
-            set => _params = value;
-        }
+        [Input("params")]
+        public Input<string>? Params { get; set; }
 
         public DataConnectorEntityGetArgs()
         {

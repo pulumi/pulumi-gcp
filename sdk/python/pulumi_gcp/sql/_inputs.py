@@ -105,6 +105,12 @@ if not MYPY:
         """
         (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
         """
+        source_instance_deletion_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The timestamp of when the source instance was deleted for a clone from a deleted instance.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
 elif False:
     DatabaseInstanceCloneArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -115,7 +121,8 @@ class DatabaseInstanceCloneArgs:
                  allocated_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
                  database_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  point_in_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 preferred_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 source_instance_deletion_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] source_instance_name: Name of the source instance which will be cloned.
         :param pulumi.Input[_builtins.str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -124,6 +131,9 @@ class DatabaseInstanceCloneArgs:
                
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] preferred_zone: (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+        :param pulumi.Input[_builtins.str] source_instance_deletion_time: The timestamp of when the source instance was deleted for a clone from a deleted instance.
+               
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         pulumi.set(__self__, "source_instance_name", source_instance_name)
         if allocated_ip_range is not None:
@@ -134,6 +144,8 @@ class DatabaseInstanceCloneArgs:
             pulumi.set(__self__, "point_in_time", point_in_time)
         if preferred_zone is not None:
             pulumi.set(__self__, "preferred_zone", preferred_zone)
+        if source_instance_deletion_time is not None:
+            pulumi.set(__self__, "source_instance_deletion_time", source_instance_deletion_time)
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceName")
@@ -196,6 +208,20 @@ class DatabaseInstanceCloneArgs:
     @preferred_zone.setter
     def preferred_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "preferred_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceInstanceDeletionTime")
+    def source_instance_deletion_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The timestamp of when the source instance was deleted for a clone from a deleted instance.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "source_instance_deletion_time")
+
+    @source_instance_deletion_time.setter
+    def source_instance_deletion_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_instance_deletion_time", value)
 
 
 if not MYPY:

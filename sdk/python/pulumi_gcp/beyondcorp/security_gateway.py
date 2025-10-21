@@ -25,7 +25,9 @@ class SecurityGatewayArgs:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  hubs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 proxy_protocol_config: Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']] = None,
+                 service_discovery: Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']] = None):
         """
         The set of arguments for constructing a SecurityGateway resource.
         :param pulumi.Input[_builtins.str] security_gateway_id: Optional. User-settable SecurityGateway resource ID.
@@ -43,6 +45,10 @@ class SecurityGatewayArgs:
                > **Warning:** `location` is deprecated and will be removed in a future major release.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['SecurityGatewayProxyProtocolConfigArgs'] proxy_protocol_config: Shared proxy configuration for all apps.
+               Structure is documented below.
+        :param pulumi.Input['SecurityGatewayServiceDiscoveryArgs'] service_discovery: Settings related to the Service Discovery.
+               Structure is documented below.
         """
         pulumi.set(__self__, "security_gateway_id", security_gateway_id)
         if display_name is not None:
@@ -56,6 +62,10 @@ class SecurityGatewayArgs:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if proxy_protocol_config is not None:
+            pulumi.set(__self__, "proxy_protocol_config", proxy_protocol_config)
+        if service_discovery is not None:
+            pulumi.set(__self__, "service_discovery", service_discovery)
 
     @_builtins.property
     @pulumi.getter(name="securityGatewayId")
@@ -128,6 +138,32 @@ class SecurityGatewayArgs:
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="proxyProtocolConfig")
+    def proxy_protocol_config(self) -> Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']]:
+        """
+        Shared proxy configuration for all apps.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proxy_protocol_config")
+
+    @proxy_protocol_config.setter
+    def proxy_protocol_config(self, value: Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']]):
+        pulumi.set(self, "proxy_protocol_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDiscovery")
+    def service_discovery(self) -> Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']]:
+        """
+        Settings related to the Service Discovery.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_discovery")
+
+    @service_discovery.setter
+    def service_discovery(self, value: Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']]):
+        pulumi.set(self, "service_discovery", value)
+
 
 @pulumi.input_type
 class _SecurityGatewayState:
@@ -140,7 +176,9 @@ class _SecurityGatewayState:
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 proxy_protocol_config: Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']] = None,
                  security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_discovery: Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -161,10 +199,14 @@ class _SecurityGatewayState:
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['SecurityGatewayProxyProtocolConfigArgs'] proxy_protocol_config: Shared proxy configuration for all apps.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] security_gateway_id: Optional. User-settable SecurityGateway resource ID.
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
+        :param pulumi.Input['SecurityGatewayServiceDiscoveryArgs'] service_discovery: Settings related to the Service Discovery.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] state: Output only. The operational state of the SecurityGateway.
                Possible values:
                STATE_UNSPECIFIED
@@ -195,8 +237,12 @@ class _SecurityGatewayState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if proxy_protocol_config is not None:
+            pulumi.set(__self__, "proxy_protocol_config", proxy_protocol_config)
         if security_gateway_id is not None:
             pulumi.set(__self__, "security_gateway_id", security_gateway_id)
+        if service_discovery is not None:
+            pulumi.set(__self__, "service_discovery", service_discovery)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if update_time is not None:
@@ -308,6 +354,19 @@ class _SecurityGatewayState:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="proxyProtocolConfig")
+    def proxy_protocol_config(self) -> Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']]:
+        """
+        Shared proxy configuration for all apps.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proxy_protocol_config")
+
+    @proxy_protocol_config.setter
+    def proxy_protocol_config(self, value: Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']]):
+        pulumi.set(self, "proxy_protocol_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityGatewayId")
     def security_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -321,6 +380,19 @@ class _SecurityGatewayState:
     @security_gateway_id.setter
     def security_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "security_gateway_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDiscovery")
+    def service_discovery(self) -> Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']]:
+        """
+        Settings related to the Service Discovery.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_discovery")
+
+    @service_discovery.setter
+    def service_discovery(self, value: Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']]):
+        pulumi.set(self, "service_discovery", value)
 
     @_builtins.property
     @pulumi.getter
@@ -365,7 +437,9 @@ class SecurityGateway(pulumi.CustomResource):
                  hubs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 proxy_protocol_config: Optional[pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
                  security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_discovery: Optional[pulumi.Input[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']]] = None,
                  __props__=None):
         """
         Deployment of Security Gateway.
@@ -384,6 +458,47 @@ class SecurityGateway(pulumi.CustomResource):
             hubs=[{
                 "region": "us-central1",
             }])
+        ```
+        ### Beyondcorp Security Gateway Spa
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_spa = gcp.beyondcorp.SecurityGateway("example-spa",
+            security_gateway_id="default-spa",
+            display_name="My SPA Security Gateway resource",
+            proxy_protocol_config={
+                "allowed_client_headers": [
+                    "header1",
+                    "header2",
+                ],
+                "contextual_headers": {
+                    "user_info": {
+                        "output_type": "PROTOBUF",
+                    },
+                    "group_info": {
+                        "output_type": "JSON",
+                    },
+                    "device_info": {
+                        "output_type": "NONE",
+                    },
+                    "output_type": "NONE",
+                },
+                "metadata_headers": {
+                    "metadata-header1": "value1",
+                    "metadata-header2": "value2",
+                },
+                "gateway_identity": "RESOURCE_NAME",
+                "client_ip": True,
+            },
+            service_discovery={
+                "api_gateway": {
+                    "resource_override": {
+                        "path": "/api/v1/routes",
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -423,10 +538,14 @@ class SecurityGateway(pulumi.CustomResource):
                > **Warning:** `location` is deprecated and will be removed in a future major release.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']] proxy_protocol_config: Shared proxy configuration for all apps.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] security_gateway_id: Optional. User-settable SecurityGateway resource ID.
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
+        :param pulumi.Input[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']] service_discovery: Settings related to the Service Discovery.
+               Structure is documented below.
         """
         ...
     @overload
@@ -451,6 +570,47 @@ class SecurityGateway(pulumi.CustomResource):
             hubs=[{
                 "region": "us-central1",
             }])
+        ```
+        ### Beyondcorp Security Gateway Spa
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_spa = gcp.beyondcorp.SecurityGateway("example-spa",
+            security_gateway_id="default-spa",
+            display_name="My SPA Security Gateway resource",
+            proxy_protocol_config={
+                "allowed_client_headers": [
+                    "header1",
+                    "header2",
+                ],
+                "contextual_headers": {
+                    "user_info": {
+                        "output_type": "PROTOBUF",
+                    },
+                    "group_info": {
+                        "output_type": "JSON",
+                    },
+                    "device_info": {
+                        "output_type": "NONE",
+                    },
+                    "output_type": "NONE",
+                },
+                "metadata_headers": {
+                    "metadata-header1": "value1",
+                    "metadata-header2": "value2",
+                },
+                "gateway_identity": "RESOURCE_NAME",
+                "client_ip": True,
+            },
+            service_discovery={
+                "api_gateway": {
+                    "resource_override": {
+                        "path": "/api/v1/routes",
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -496,7 +656,9 @@ class SecurityGateway(pulumi.CustomResource):
                  hubs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 proxy_protocol_config: Optional[pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
                  security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_discovery: Optional[pulumi.Input[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -510,9 +672,11 @@ class SecurityGateway(pulumi.CustomResource):
             __props__.__dict__["hubs"] = hubs
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["proxy_protocol_config"] = proxy_protocol_config
             if security_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_gateway_id'")
             __props__.__dict__["security_gateway_id"] = security_gateway_id
+            __props__.__dict__["service_discovery"] = service_discovery
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delegating_service_account"] = None
             __props__.__dict__["external_ips"] = None
@@ -537,7 +701,9 @@ class SecurityGateway(pulumi.CustomResource):
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
+            proxy_protocol_config: Optional[pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
             security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+            service_discovery: Optional[pulumi.Input[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityGateway':
         """
@@ -563,10 +729,14 @@ class SecurityGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']] proxy_protocol_config: Shared proxy configuration for all apps.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] security_gateway_id: Optional. User-settable SecurityGateway resource ID.
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
+        :param pulumi.Input[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']] service_discovery: Settings related to the Service Discovery.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] state: Output only. The operational state of the SecurityGateway.
                Possible values:
                STATE_UNSPECIFIED
@@ -590,7 +760,9 @@ class SecurityGateway(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["proxy_protocol_config"] = proxy_protocol_config
         __props__.__dict__["security_gateway_id"] = security_gateway_id
+        __props__.__dict__["service_discovery"] = service_discovery
         __props__.__dict__["state"] = state
         __props__.__dict__["update_time"] = update_time
         return SecurityGateway(resource_name, opts=opts, __props__=__props__)
@@ -669,6 +841,15 @@ class SecurityGateway(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @_builtins.property
+    @pulumi.getter(name="proxyProtocolConfig")
+    def proxy_protocol_config(self) -> pulumi.Output[Optional['outputs.SecurityGatewayProxyProtocolConfig']]:
+        """
+        Shared proxy configuration for all apps.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proxy_protocol_config")
+
+    @_builtins.property
     @pulumi.getter(name="securityGatewayId")
     def security_gateway_id(self) -> pulumi.Output[_builtins.str]:
         """
@@ -678,6 +859,15 @@ class SecurityGateway(pulumi.CustomResource):
         * Must end with a number or letter.
         """
         return pulumi.get(self, "security_gateway_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDiscovery")
+    def service_discovery(self) -> pulumi.Output[Optional['outputs.SecurityGatewayServiceDiscovery']]:
+        """
+        Settings related to the Service Discovery.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_discovery")
 
     @_builtins.property
     @pulumi.getter

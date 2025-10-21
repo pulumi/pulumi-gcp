@@ -425,6 +425,8 @@ __all__ = [
     'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsArgsDict',
     'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgs',
     'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgsDict',
+    'PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs',
+    'PreventionDiscoveryConfigActionPublishToDataplexCatalogArgsDict',
     'PreventionDiscoveryConfigActionTagResourcesArgs',
     'PreventionDiscoveryConfigActionTagResourcesArgsDict',
     'PreventionDiscoveryConfigActionTagResourcesTagConditionArgs',
@@ -661,6 +663,8 @@ __all__ = [
     'PreventionJobTriggerInspectJobActionSaveFindingsArgsDict',
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs',
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgsDict',
+    'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgs',
+    'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgsDict',
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs',
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgsDict',
     'PreventionJobTriggerInspectJobInspectConfigArgs',
@@ -15320,9 +15324,13 @@ if not MYPY:
         Publish a message into the Pub/Sub topic.
         Structure is documented below.
         """
+        publish_to_dataplex_catalog: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionPublishToDataplexCatalogArgsDict']]
+        """
+        Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+        """
         tag_resources: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesArgsDict']]
         """
-        Publish a message into the Pub/Sub topic.
+        Tag the profiled resources with the specified tag values.
         Structure is documented below.
         """
 elif False:
@@ -15333,19 +15341,23 @@ class PreventionDiscoveryConfigActionArgs:
     def __init__(__self__, *,
                  export_data: Optional[pulumi.Input['PreventionDiscoveryConfigActionExportDataArgs']] = None,
                  pub_sub_notification: Optional[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationArgs']] = None,
+                 publish_to_dataplex_catalog: Optional[pulumi.Input['PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs']] = None,
                  tag_resources: Optional[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesArgs']] = None):
         """
         :param pulumi.Input['PreventionDiscoveryConfigActionExportDataArgs'] export_data: Export data profiles into a provided location
                Structure is documented below.
         :param pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationArgs'] pub_sub_notification: Publish a message into the Pub/Sub topic.
                Structure is documented below.
-        :param pulumi.Input['PreventionDiscoveryConfigActionTagResourcesArgs'] tag_resources: Publish a message into the Pub/Sub topic.
+        :param pulumi.Input['PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs'] publish_to_dataplex_catalog: Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+        :param pulumi.Input['PreventionDiscoveryConfigActionTagResourcesArgs'] tag_resources: Tag the profiled resources with the specified tag values.
                Structure is documented below.
         """
         if export_data is not None:
             pulumi.set(__self__, "export_data", export_data)
         if pub_sub_notification is not None:
             pulumi.set(__self__, "pub_sub_notification", pub_sub_notification)
+        if publish_to_dataplex_catalog is not None:
+            pulumi.set(__self__, "publish_to_dataplex_catalog", publish_to_dataplex_catalog)
         if tag_resources is not None:
             pulumi.set(__self__, "tag_resources", tag_resources)
 
@@ -15376,10 +15388,22 @@ class PreventionDiscoveryConfigActionArgs:
         pulumi.set(self, "pub_sub_notification", value)
 
     @_builtins.property
+    @pulumi.getter(name="publishToDataplexCatalog")
+    def publish_to_dataplex_catalog(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs']]:
+        """
+        Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+        """
+        return pulumi.get(self, "publish_to_dataplex_catalog")
+
+    @publish_to_dataplex_catalog.setter
+    def publish_to_dataplex_catalog(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs']]):
+        pulumi.set(self, "publish_to_dataplex_catalog", value)
+
+    @_builtins.property
     @pulumi.getter(name="tagResources")
     def tag_resources(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesArgs']]:
         """
-        Publish a message into the Pub/Sub topic.
+        Tag the profiled resources with the specified tag values.
         Structure is documented below.
         """
         return pulumi.get(self, "tag_resources")
@@ -15749,6 +15773,18 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
 
 
 if not MYPY:
+    class PreventionDiscoveryConfigActionPublishToDataplexCatalogArgsDict(TypedDict):
+        pass
+elif False:
+    PreventionDiscoveryConfigActionPublishToDataplexCatalogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
     class PreventionDiscoveryConfigActionTagResourcesArgsDict(TypedDict):
         lower_data_risk_to_low: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -15889,7 +15925,7 @@ if not MYPY:
         score: pulumi.Input[_builtins.str]
         """
         The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
         """
 elif False:
     PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
@@ -15900,7 +15936,7 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArg
                  score: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[_builtins.str] score: The sensitivity score applied to the resource.
-               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
         """
         pulumi.set(__self__, "score", score)
 
@@ -15909,7 +15945,7 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArg
     def score(self) -> pulumi.Input[_builtins.str]:
         """
         The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
         """
         return pulumi.get(self, "score")
 
@@ -22264,11 +22300,6 @@ class PreventionJobTriggerInspectJobActionSaveFindingsArgs:
 
 if not MYPY:
     class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgsDict(TypedDict):
-        table: pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgsDict']
-        """
-        Information on the location of the target BigQuery Table.
-        Structure is documented below.
-        """
         output_schema: NotRequired[pulumi.Input[_builtins.str]]
         """
         Schema used for writing the findings for Inspect jobs. This field is only used for
@@ -22280,17 +22311,30 @@ if not MYPY:
         Only for use with external storage.
         Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
         """
+        storage_path: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgsDict']]
+        """
+        Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
+        as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
+        the naming convention <job_id>-<shard_number>, for example: my-job-id-2.
+        Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
+        Cloud Storage, the output schema field should not be set. If set, it will be ignored.
+        Structure is documented below.
+        """
+        table: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgsDict']]
+        """
+        Information on the location of the target BigQuery Table.
+        Structure is documented below.
+        """
 elif False:
     PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs:
     def __init__(__self__, *,
-                 table: pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs'],
-                 output_schema: Optional[pulumi.Input[_builtins.str]] = None):
+                 output_schema: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_path: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgs']] = None,
+                 table: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs']] = None):
         """
-        :param pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs'] table: Information on the location of the target BigQuery Table.
-               Structure is documented below.
         :param pulumi.Input[_builtins.str] output_schema: Schema used for writing the findings for Inspect jobs. This field is only used for
                Inspect and must be unspecified for Risk jobs. Columns are derived from the Finding
                object. If appending to an existing table, any columns from the predefined schema
@@ -22299,23 +22343,21 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs:
                table with no schema, and no changes will be made to an existing table that has a schema.
                Only for use with external storage.
                Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
+        :param pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgs'] storage_path: Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
+               as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
+               the naming convention <job_id>-<shard_number>, for example: my-job-id-2.
+               Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
+               Cloud Storage, the output schema field should not be set. If set, it will be ignored.
+               Structure is documented below.
+        :param pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs'] table: Information on the location of the target BigQuery Table.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
         if output_schema is not None:
             pulumi.set(__self__, "output_schema", output_schema)
-
-    @_builtins.property
-    @pulumi.getter
-    def table(self) -> pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs']:
-        """
-        Information on the location of the target BigQuery Table.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "table")
-
-    @table.setter
-    def table(self, value: pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs']):
-        pulumi.set(self, "table", value)
+        if storage_path is not None:
+            pulumi.set(__self__, "storage_path", storage_path)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
 
     @_builtins.property
     @pulumi.getter(name="outputSchema")
@@ -22335,6 +22377,70 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs:
     @output_schema.setter
     def output_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "output_schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storagePath")
+    def storage_path(self) -> Optional[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgs']]:
+        """
+        Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
+        as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
+        the naming convention <job_id>-<shard_number>, for example: my-job-id-2.
+        Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
+        Cloud Storage, the output schema field should not be set. If set, it will be ignored.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "storage_path")
+
+    @storage_path.setter
+    def storage_path(self, value: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgs']]):
+        pulumi.set(self, "storage_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> Optional[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs']]:
+        """
+        Information on the location of the target BigQuery Table.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs']]):
+        pulumi.set(self, "table", value)
+
+
+if not MYPY:
+    class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgsDict(TypedDict):
+        path: pulumi.Input[_builtins.str]
+        """
+        A URL representing a file or path (no wildcards) in Cloud Storage.
+        Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+elif False:
+    PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] path: A URL representing a file or path (no wildcards) in Cloud Storage.
+               Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+        pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[_builtins.str]:
+        """
+        A URL representing a file or path (no wildcards) in Cloud Storage.
+        Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "path", value)
 
 
 if not MYPY:

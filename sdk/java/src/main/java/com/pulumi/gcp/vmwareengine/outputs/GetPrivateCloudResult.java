@@ -20,8 +20,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPrivateCloudResult {
+    private String createTime;
+    private String deleteTime;
     private Integer deletionDelayHours;
     private String description;
+    private String expireTime;
     private List<GetPrivateCloudHcx> hcxes;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -38,14 +41,24 @@ public final class GetPrivateCloudResult {
     private String state;
     private String type;
     private String uid;
+    private String updateTime;
     private List<GetPrivateCloudVcenter> vcenters;
 
     private GetPrivateCloudResult() {}
+    public String createTime() {
+        return this.createTime;
+    }
+    public String deleteTime() {
+        return this.deleteTime;
+    }
     public Integer deletionDelayHours() {
         return this.deletionDelayHours;
     }
     public String description() {
         return this.description;
+    }
+    public String expireTime() {
+        return this.expireTime;
     }
     public List<GetPrivateCloudHcx> hcxes() {
         return this.hcxes;
@@ -87,6 +100,9 @@ public final class GetPrivateCloudResult {
     public String uid() {
         return this.uid;
     }
+    public String updateTime() {
+        return this.updateTime;
+    }
     public List<GetPrivateCloudVcenter> vcenters() {
         return this.vcenters;
     }
@@ -100,8 +116,11 @@ public final class GetPrivateCloudResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String createTime;
+        private String deleteTime;
         private Integer deletionDelayHours;
         private String description;
+        private String expireTime;
         private List<GetPrivateCloudHcx> hcxes;
         private String id;
         private String location;
@@ -114,12 +133,16 @@ public final class GetPrivateCloudResult {
         private String state;
         private String type;
         private String uid;
+        private String updateTime;
         private List<GetPrivateCloudVcenter> vcenters;
         public Builder() {}
         public Builder(GetPrivateCloudResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.createTime = defaults.createTime;
+    	      this.deleteTime = defaults.deleteTime;
     	      this.deletionDelayHours = defaults.deletionDelayHours;
     	      this.description = defaults.description;
+    	      this.expireTime = defaults.expireTime;
     	      this.hcxes = defaults.hcxes;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
@@ -132,9 +155,26 @@ public final class GetPrivateCloudResult {
     	      this.state = defaults.state;
     	      this.type = defaults.type;
     	      this.uid = defaults.uid;
+    	      this.updateTime = defaults.updateTime;
     	      this.vcenters = defaults.vcenters;
         }
 
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "createTime");
+            }
+            this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deleteTime(String deleteTime) {
+            if (deleteTime == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "deleteTime");
+            }
+            this.deleteTime = deleteTime;
+            return this;
+        }
         @CustomType.Setter
         public Builder deletionDelayHours(Integer deletionDelayHours) {
             if (deletionDelayHours == null) {
@@ -149,6 +189,14 @@ public final class GetPrivateCloudResult {
               throw new MissingRequiredPropertyException("GetPrivateCloudResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expireTime(String expireTime) {
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
@@ -258,6 +306,14 @@ public final class GetPrivateCloudResult {
             return this;
         }
         @CustomType.Setter
+        public Builder updateTime(String updateTime) {
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "updateTime");
+            }
+            this.updateTime = updateTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vcenters(List<GetPrivateCloudVcenter> vcenters) {
             if (vcenters == null) {
               throw new MissingRequiredPropertyException("GetPrivateCloudResult", "vcenters");
@@ -270,8 +326,11 @@ public final class GetPrivateCloudResult {
         }
         public GetPrivateCloudResult build() {
             final var _resultValue = new GetPrivateCloudResult();
+            _resultValue.createTime = createTime;
+            _resultValue.deleteTime = deleteTime;
             _resultValue.deletionDelayHours = deletionDelayHours;
             _resultValue.description = description;
+            _resultValue.expireTime = expireTime;
             _resultValue.hcxes = hcxes;
             _resultValue.id = id;
             _resultValue.location = location;
@@ -284,6 +343,7 @@ public final class GetPrivateCloudResult {
             _resultValue.state = state;
             _resultValue.type = type;
             _resultValue.uid = uid;
+            _resultValue.updateTime = updateTime;
             _resultValue.vcenters = vcenters;
             return _resultValue;
         }

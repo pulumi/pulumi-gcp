@@ -25,6 +25,12 @@ __all__ = [
     'GetConnectivityTestRunReachabilityDetailTraceResult',
     'GetConnectivityTestRunReachabilityDetailTraceEndpointInfoResult',
     'GetConnectivityTestRunReachabilityDetailTraceStepResult',
+    'GetConnectivityTestsConnectivityTestResult',
+    'GetConnectivityTestsConnectivityTestDestinationResult',
+    'GetConnectivityTestsConnectivityTestSourceResult',
+    'GetConnectivityTestsConnectivityTestSourceAppEngineVersionResult',
+    'GetConnectivityTestsConnectivityTestSourceCloudFunctionResult',
+    'GetConnectivityTestsConnectivityTestSourceCloudRunRevisionResult',
 ]
 
 @pulumi.output_type
@@ -740,5 +746,464 @@ class GetConnectivityTestRunReachabilityDetailTraceStepResult(dict):
         State of the connectivity test step.
         """
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetConnectivityTestsConnectivityTestResult(dict):
+    def __init__(__self__, *,
+                 bypass_firewall_checks: _builtins.bool,
+                 description: _builtins.str,
+                 destinations: Sequence['outputs.GetConnectivityTestsConnectivityTestDestinationResult'],
+                 effective_labels: Mapping[str, _builtins.str],
+                 labels: Mapping[str, _builtins.str],
+                 name: _builtins.str,
+                 project: _builtins.str,
+                 protocol: _builtins.str,
+                 pulumi_labels: Mapping[str, _builtins.str],
+                 related_projects: Sequence[_builtins.str],
+                 round_trip: _builtins.bool,
+                 sources: Sequence['outputs.GetConnectivityTestsConnectivityTestSourceResult']):
+        """
+        :param _builtins.bool bypass_firewall_checks: Whether the analysis should skip firewall checking.
+        :param _builtins.str description: The user-supplied description of the Connectivity Test.
+        :param Sequence['GetConnectivityTestsConnectivityTestDestinationArgs'] destinations: Destination specification of the Connectivity Test.
+               Structure is documented below.
+        :param Mapping[str, _builtins.str] labels: Resource labels to represent user-provided metadata.
+        :param _builtins.str name: Unique name for the connectivity test.
+        :param _builtins.str project: The ID of the project.
+        :param _builtins.str protocol: IP Protocol of the test.
+        :param Mapping[str, _builtins.str] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
+        :param Sequence[_builtins.str] related_projects: Other projects that may be relevant for reachability analysis.
+        :param _builtins.bool round_trip: Whether run analysis for the return path from destination to source.
+        :param Sequence['GetConnectivityTestsConnectivityTestSourceArgs'] sources: Source specification of the Connectivity Test.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "bypass_firewall_checks", bypass_firewall_checks)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "effective_labels", effective_labels)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        pulumi.set(__self__, "related_projects", related_projects)
+        pulumi.set(__self__, "round_trip", round_trip)
+        pulumi.set(__self__, "sources", sources)
+
+    @_builtins.property
+    @pulumi.getter(name="bypassFirewallChecks")
+    def bypass_firewall_checks(self) -> _builtins.bool:
+        """
+        Whether the analysis should skip firewall checking.
+        """
+        return pulumi.get(self, "bypass_firewall_checks")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The user-supplied description of the Connectivity Test.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Sequence['outputs.GetConnectivityTestsConnectivityTestDestinationResult']:
+        """
+        Destination specification of the Connectivity Test.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destinations")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, _builtins.str]:
+        """
+        Resource labels to represent user-provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Unique name for the connectivity test.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> _builtins.str:
+        """
+        The ID of the project.
+        """
+        return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        IP Protocol of the test.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        The combination of labels configured directly on the resource
+         and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="relatedProjects")
+    def related_projects(self) -> Sequence[_builtins.str]:
+        """
+        Other projects that may be relevant for reachability analysis.
+        """
+        return pulumi.get(self, "related_projects")
+
+    @_builtins.property
+    @pulumi.getter(name="roundTrip")
+    def round_trip(self) -> _builtins.bool:
+        """
+        Whether run analysis for the return path from destination to source.
+        """
+        return pulumi.get(self, "round_trip")
+
+    @_builtins.property
+    @pulumi.getter
+    def sources(self) -> Sequence['outputs.GetConnectivityTestsConnectivityTestSourceResult']:
+        """
+        Source specification of the Connectivity Test.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sources")
+
+
+@pulumi.output_type
+class GetConnectivityTestsConnectivityTestDestinationResult(dict):
+    def __init__(__self__, *,
+                 cloud_sql_instance: _builtins.str,
+                 forwarding_rule: _builtins.str,
+                 fqdn: _builtins.str,
+                 gke_master_cluster: _builtins.str,
+                 instance: _builtins.str,
+                 ip_address: _builtins.str,
+                 network: _builtins.str,
+                 port: _builtins.int,
+                 project_id: _builtins.str,
+                 redis_cluster: _builtins.str,
+                 redis_instance: _builtins.str):
+        """
+        :param _builtins.str cloud_sql_instance: A Cloud SQL instance URI.
+        :param _builtins.str forwarding_rule: Forwarding rule URI. Forwarding rules are frontends for load balancers,
+               PSC endpoints, and Protocol Forwarding.
+        :param _builtins.str fqdn: A DNS endpoint of Google Kubernetes Engine cluster control plane.
+        :param _builtins.str gke_master_cluster: A cluster URI for Google Kubernetes Engine cluster control plane.
+        :param _builtins.str instance: A Compute Engine instance URI.
+        :param _builtins.str ip_address: The IP address of the endpoint.
+        :param _builtins.str network: A VPC network URI.
+        :param _builtins.int port: The IP protocol port of the endpoint.
+        :param _builtins.str project_id: Project ID where the endpoint is located.
+        :param _builtins.str redis_cluster: A Redis Cluster URI.
+        :param _builtins.str redis_instance: A Redis Instance URI.
+        """
+        pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
+        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "fqdn", fqdn)
+        pulumi.set(__self__, "gke_master_cluster", gke_master_cluster)
+        pulumi.set(__self__, "instance", instance)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "redis_cluster", redis_cluster)
+        pulumi.set(__self__, "redis_instance", redis_instance)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudSqlInstance")
+    def cloud_sql_instance(self) -> _builtins.str:
+        """
+        A Cloud SQL instance URI.
+        """
+        return pulumi.get(self, "cloud_sql_instance")
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> _builtins.str:
+        """
+        Forwarding rule URI. Forwarding rules are frontends for load balancers,
+        PSC endpoints, and Protocol Forwarding.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @_builtins.property
+    @pulumi.getter
+    def fqdn(self) -> _builtins.str:
+        """
+        A DNS endpoint of Google Kubernetes Engine cluster control plane.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @_builtins.property
+    @pulumi.getter(name="gkeMasterCluster")
+    def gke_master_cluster(self) -> _builtins.str:
+        """
+        A cluster URI for Google Kubernetes Engine cluster control plane.
+        """
+        return pulumi.get(self, "gke_master_cluster")
+
+    @_builtins.property
+    @pulumi.getter
+    def instance(self) -> _builtins.str:
+        """
+        A Compute Engine instance URI.
+        """
+        return pulumi.get(self, "instance")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> _builtins.str:
+        """
+        The IP address of the endpoint.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> _builtins.str:
+        """
+        A VPC network URI.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        The IP protocol port of the endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Project ID where the endpoint is located.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="redisCluster")
+    def redis_cluster(self) -> _builtins.str:
+        """
+        A Redis Cluster URI.
+        """
+        return pulumi.get(self, "redis_cluster")
+
+    @_builtins.property
+    @pulumi.getter(name="redisInstance")
+    def redis_instance(self) -> _builtins.str:
+        """
+        A Redis Instance URI.
+        """
+        return pulumi.get(self, "redis_instance")
+
+
+@pulumi.output_type
+class GetConnectivityTestsConnectivityTestSourceResult(dict):
+    def __init__(__self__, *,
+                 app_engine_versions: Sequence['outputs.GetConnectivityTestsConnectivityTestSourceAppEngineVersionResult'],
+                 cloud_functions: Sequence['outputs.GetConnectivityTestsConnectivityTestSourceCloudFunctionResult'],
+                 cloud_run_revisions: Sequence['outputs.GetConnectivityTestsConnectivityTestSourceCloudRunRevisionResult'],
+                 cloud_sql_instance: _builtins.str,
+                 gke_master_cluster: _builtins.str,
+                 instance: _builtins.str,
+                 ip_address: _builtins.str,
+                 network: _builtins.str,
+                 network_type: _builtins.str,
+                 port: _builtins.int,
+                 project_id: _builtins.str):
+        """
+        :param Sequence['GetConnectivityTestsConnectivityTestSourceAppEngineVersionArgs'] app_engine_versions: An App Engine service version.
+               Structure is documented below.
+        :param Sequence['GetConnectivityTestsConnectivityTestSourceCloudFunctionArgs'] cloud_functions: A Cloud Function.
+               Structure is documented below.
+        :param Sequence['GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArgs'] cloud_run_revisions: A Cloud Run revision.
+               Structure is documented below.
+        :param _builtins.str cloud_sql_instance: A Cloud SQL instance URI.
+        :param _builtins.str gke_master_cluster: A cluster URI for Google Kubernetes Engine cluster control plane.
+        :param _builtins.str instance: A Compute Engine instance URI.
+        :param _builtins.str ip_address: The IP address of the endpoint.
+        :param _builtins.str network: A VPC network URI.
+        :param _builtins.str network_type: Type of the network where the endpoint is located.
+        :param _builtins.int port: The IP protocol port of the endpoint.
+        :param _builtins.str project_id: Project ID where the endpoint is located.
+        """
+        pulumi.set(__self__, "app_engine_versions", app_engine_versions)
+        pulumi.set(__self__, "cloud_functions", cloud_functions)
+        pulumi.set(__self__, "cloud_run_revisions", cloud_run_revisions)
+        pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
+        pulumi.set(__self__, "gke_master_cluster", gke_master_cluster)
+        pulumi.set(__self__, "instance", instance)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="appEngineVersions")
+    def app_engine_versions(self) -> Sequence['outputs.GetConnectivityTestsConnectivityTestSourceAppEngineVersionResult']:
+        """
+        An App Engine service version.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "app_engine_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudFunctions")
+    def cloud_functions(self) -> Sequence['outputs.GetConnectivityTestsConnectivityTestSourceCloudFunctionResult']:
+        """
+        A Cloud Function.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_functions")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudRunRevisions")
+    def cloud_run_revisions(self) -> Sequence['outputs.GetConnectivityTestsConnectivityTestSourceCloudRunRevisionResult']:
+        """
+        A Cloud Run revision.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_run_revisions")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudSqlInstance")
+    def cloud_sql_instance(self) -> _builtins.str:
+        """
+        A Cloud SQL instance URI.
+        """
+        return pulumi.get(self, "cloud_sql_instance")
+
+    @_builtins.property
+    @pulumi.getter(name="gkeMasterCluster")
+    def gke_master_cluster(self) -> _builtins.str:
+        """
+        A cluster URI for Google Kubernetes Engine cluster control plane.
+        """
+        return pulumi.get(self, "gke_master_cluster")
+
+    @_builtins.property
+    @pulumi.getter
+    def instance(self) -> _builtins.str:
+        """
+        A Compute Engine instance URI.
+        """
+        return pulumi.get(self, "instance")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> _builtins.str:
+        """
+        The IP address of the endpoint.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> _builtins.str:
+        """
+        A VPC network URI.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> _builtins.str:
+        """
+        Type of the network where the endpoint is located.
+        """
+        return pulumi.get(self, "network_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        The IP protocol port of the endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Project ID where the endpoint is located.
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetConnectivityTestsConnectivityTestSourceAppEngineVersionResult(dict):
+    def __init__(__self__, *,
+                 uri: _builtins.str):
+        """
+        :param _builtins.str uri: A Cloud Run revision URI.
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> _builtins.str:
+        """
+        A Cloud Run revision URI.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GetConnectivityTestsConnectivityTestSourceCloudFunctionResult(dict):
+    def __init__(__self__, *,
+                 uri: _builtins.str):
+        """
+        :param _builtins.str uri: A Cloud Run revision URI.
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> _builtins.str:
+        """
+        A Cloud Run revision URI.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GetConnectivityTestsConnectivityTestSourceCloudRunRevisionResult(dict):
+    def __init__(__self__, *,
+                 uri: _builtins.str):
+        """
+        :param _builtins.str uri: A Cloud Run revision URI.
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> _builtins.str:
+        """
+        A Cloud Run revision URI.
+        """
+        return pulumi.get(self, "uri")
 
 

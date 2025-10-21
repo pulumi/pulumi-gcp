@@ -13,6 +13,7 @@ from .api_product import *
 from .app_group import *
 from .control_plane_access import *
 from .developer import *
+from .developer_app import *
 from .dns_zone import *
 from .endpoint_attachment import *
 from .env_group import *

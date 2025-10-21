@@ -20,43 +20,57 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Discoveryengine Dataconnector Jira Basic
+ * ### Discoveryengine Dataconnector Servicenow Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const jira_basic = new gcp.discoveryengine.DataConnector("jira-basic", {
+ * const servicenow_basic = new gcp.discoveryengine.DataConnector("servicenow-basic", {
  *     location: "global",
  *     collectionId: "collection-id",
- *     collectionDisplayName: "tf-test-dataconnector-jira",
- *     dataSource: "jira",
+ *     collectionDisplayName: "tf-test-dataconnector-servicenow",
+ *     dataSource: "servicenow",
  *     params: {
- *         instance_id: "33db20a3-dc45-4305-a505-d70b68599840",
- *         instance_uri: "https://vaissptbots1.atlassian.net/",
- *         client_secret: "client-secret",
- *         client_id: "client-id",
- *         refresh_token: "fill-in-the-blank",
+ *         auth_type: "OAUTH_PASSWORD_GRANT",
+ *         instance_uri: "https://gcpconnector1.service-now.com/",
+ *         client_id: "SECRET_MANAGER_RESOURCE_NAME",
+ *         client_secret: "SECRET_MANAGER_RESOURCE_NAME",
+ *         static_ip_enabled: "false",
+ *         user_account: "connectorsuserqa@google.com",
+ *         password: "SECRET_MANAGER_RESOURCE_NAME",
  *     },
  *     refreshInterval: "86400s",
+ *     incrementalRefreshInterval: "21600s",
  *     entities: [
  *         {
- *             entityName: "project",
+ *             entityName: "catalog",
+ *             params: JSON.stringify({
+ *                 inclusion_filters: {
+ *                     knowledgeBaseSysId: ["123"],
+ *                 },
+ *             }),
  *         },
  *         {
- *             entityName: "issue",
+ *             entityName: "incident",
+ *             params: JSON.stringify({
+ *                 inclusion_filters: {
+ *                     knowledgeBaseSysId: ["123"],
+ *                 },
+ *             }),
  *         },
  *         {
- *             entityName: "attachment",
- *         },
- *         {
- *             entityName: "comment",
- *         },
- *         {
- *             entityName: "worklog",
+ *             entityName: "knowledge_base",
+ *             params: JSON.stringify({
+ *                 inclusion_filters: {
+ *                     knowledgeBaseSysId: ["123"],
+ *                 },
+ *             }),
  *         },
  *     ],
- *     staticIpEnabled: true,
+ *     staticIpEnabled: false,
+ *     connectorModes: ["DATA_INGESTION"],
+ *     syncMode: "PERIODIC",
  * });
  * ```
  *
@@ -120,6 +134,10 @@ export class DataConnector extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly actionState: pulumi.Output<string>;
     /**
+     * Indicates whether full syncs are paused for this connector
+     */
+    declare public readonly autoRunDisabled: pulumi.Output<boolean | undefined>;
+    /**
      * User actions that must be completed before the connector can start syncing data.
      * The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
      */
@@ -140,6 +158,12 @@ export class DataConnector extends pulumi.CustomResource {
      * INVALID_ARGUMENT error is returned.
      */
     declare public readonly collectionId: pulumi.Output<string>;
+    /**
+     * The modes enabled for this connector. The possible value can be:
+     * 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
+     * 'EUA', 'FEDERATED_AND_EUA'.
+     */
+    declare public readonly connectorModes: pulumi.Output<string[] | undefined>;
     /**
      * The type of connector. Each source can only map to one type.
      * For example, salesforce, confluence and jira have THIRD_PARTY connector
@@ -168,6 +192,19 @@ export class DataConnector extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public /*out*/ readonly errors: pulumi.Output<outputs.discoveryengine.DataConnectorError[]>;
+    /**
+     * The refresh interval specifically for incremental data syncs. If unset,
+     * incremental syncs will use the default from env, set to 3hrs.
+     * The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+     * connectors. When the refresh interval is
+     * set to the same value as the incremental refresh interval, incremental
+     * sync will be disabled.
+     */
+    declare public readonly incrementalRefreshInterval: pulumi.Output<string | undefined>;
+    /**
+     * Indicates whether incremental syncs are paused for this connector.
+     */
+    declare public readonly incrementalSyncDisabled: pulumi.Output<boolean | undefined>;
     /**
      * Params needed to access the source in the format of json string.
      */
@@ -247,6 +284,11 @@ export class DataConnector extends pulumi.CustomResource {
      */
     declare public readonly staticIpEnabled: pulumi.Output<boolean | undefined>;
     /**
+     * The data synchronization mode supported by the data connector. The possible value can be:
+     * 'PERIODIC', 'STREAMING'.
+     */
+    declare public readonly syncMode: pulumi.Output<string | undefined>;
+    /**
      * Timestamp when the DataConnector was updated.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
@@ -265,14 +307,18 @@ export class DataConnector extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DataConnectorState | undefined;
             resourceInputs["actionState"] = state?.actionState;
+            resourceInputs["autoRunDisabled"] = state?.autoRunDisabled;
             resourceInputs["blockingReasons"] = state?.blockingReasons;
             resourceInputs["collectionDisplayName"] = state?.collectionDisplayName;
             resourceInputs["collectionId"] = state?.collectionId;
+            resourceInputs["connectorModes"] = state?.connectorModes;
             resourceInputs["connectorType"] = state?.connectorType;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataSource"] = state?.dataSource;
             resourceInputs["entities"] = state?.entities;
             resourceInputs["errors"] = state?.errors;
+            resourceInputs["incrementalRefreshInterval"] = state?.incrementalRefreshInterval;
+            resourceInputs["incrementalSyncDisabled"] = state?.incrementalSyncDisabled;
             resourceInputs["jsonParams"] = state?.jsonParams;
             resourceInputs["kmsKeyName"] = state?.kmsKeyName;
             resourceInputs["lastSyncTime"] = state?.lastSyncTime;
@@ -287,6 +333,7 @@ export class DataConnector extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
             resourceInputs["staticIpAddresses"] = state?.staticIpAddresses;
             resourceInputs["staticIpEnabled"] = state?.staticIpEnabled;
+            resourceInputs["syncMode"] = state?.syncMode;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as DataConnectorArgs | undefined;
@@ -305,10 +352,14 @@ export class DataConnector extends pulumi.CustomResource {
             if (args?.refreshInterval === undefined && !opts.urn) {
                 throw new Error("Missing required property 'refreshInterval'");
             }
+            resourceInputs["autoRunDisabled"] = args?.autoRunDisabled;
             resourceInputs["collectionDisplayName"] = args?.collectionDisplayName;
             resourceInputs["collectionId"] = args?.collectionId;
+            resourceInputs["connectorModes"] = args?.connectorModes;
             resourceInputs["dataSource"] = args?.dataSource;
             resourceInputs["entities"] = args?.entities;
+            resourceInputs["incrementalRefreshInterval"] = args?.incrementalRefreshInterval;
+            resourceInputs["incrementalSyncDisabled"] = args?.incrementalSyncDisabled;
             resourceInputs["jsonParams"] = args?.jsonParams;
             resourceInputs["kmsKeyName"] = args?.kmsKeyName;
             resourceInputs["location"] = args?.location;
@@ -316,6 +367,7 @@ export class DataConnector extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["refreshInterval"] = args?.refreshInterval;
             resourceInputs["staticIpEnabled"] = args?.staticIpEnabled;
+            resourceInputs["syncMode"] = args?.syncMode;
             resourceInputs["actionState"] = undefined /*out*/;
             resourceInputs["blockingReasons"] = undefined /*out*/;
             resourceInputs["connectorType"] = undefined /*out*/;
@@ -347,6 +399,10 @@ export interface DataConnectorState {
      */
     actionState?: pulumi.Input<string>;
     /**
+     * Indicates whether full syncs are paused for this connector
+     */
+    autoRunDisabled?: pulumi.Input<boolean>;
+    /**
      * User actions that must be completed before the connector can start syncing data.
      * The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
      */
@@ -367,6 +423,12 @@ export interface DataConnectorState {
      * INVALID_ARGUMENT error is returned.
      */
     collectionId?: pulumi.Input<string>;
+    /**
+     * The modes enabled for this connector. The possible value can be:
+     * 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
+     * 'EUA', 'FEDERATED_AND_EUA'.
+     */
+    connectorModes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The type of connector. Each source can only map to one type.
      * For example, salesforce, confluence and jira have THIRD_PARTY connector
@@ -395,6 +457,19 @@ export interface DataConnectorState {
      * Structure is documented below.
      */
     errors?: pulumi.Input<pulumi.Input<inputs.discoveryengine.DataConnectorError>[]>;
+    /**
+     * The refresh interval specifically for incremental data syncs. If unset,
+     * incremental syncs will use the default from env, set to 3hrs.
+     * The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+     * connectors. When the refresh interval is
+     * set to the same value as the incremental refresh interval, incremental
+     * sync will be disabled.
+     */
+    incrementalRefreshInterval?: pulumi.Input<string>;
+    /**
+     * Indicates whether incremental syncs are paused for this connector.
+     */
+    incrementalSyncDisabled?: pulumi.Input<boolean>;
     /**
      * Params needed to access the source in the format of json string.
      */
@@ -474,6 +549,11 @@ export interface DataConnectorState {
      */
     staticIpEnabled?: pulumi.Input<boolean>;
     /**
+     * The data synchronization mode supported by the data connector. The possible value can be:
+     * 'PERIODIC', 'STREAMING'.
+     */
+    syncMode?: pulumi.Input<string>;
+    /**
      * Timestamp when the DataConnector was updated.
      */
     updateTime?: pulumi.Input<string>;
@@ -483,6 +563,10 @@ export interface DataConnectorState {
  * The set of arguments for constructing a DataConnector resource.
  */
 export interface DataConnectorArgs {
+    /**
+     * Indicates whether full syncs are paused for this connector
+     */
+    autoRunDisabled?: pulumi.Input<boolean>;
     /**
      * The display name of the Collection.
      * Should be human readable, used to display collections in the Console
@@ -500,6 +584,12 @@ export interface DataConnectorArgs {
      */
     collectionId: pulumi.Input<string>;
     /**
+     * The modes enabled for this connector. The possible value can be:
+     * 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
+     * 'EUA', 'FEDERATED_AND_EUA'.
+     */
+    connectorModes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The name of the data source.
      * Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
      */
@@ -509,6 +599,19 @@ export interface DataConnectorArgs {
      * Structure is documented below.
      */
     entities?: pulumi.Input<pulumi.Input<inputs.discoveryengine.DataConnectorEntity>[]>;
+    /**
+     * The refresh interval specifically for incremental data syncs. If unset,
+     * incremental syncs will use the default from env, set to 3hrs.
+     * The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+     * connectors. When the refresh interval is
+     * set to the same value as the incremental refresh interval, incremental
+     * sync will be disabled.
+     */
+    incrementalRefreshInterval?: pulumi.Input<string>;
+    /**
+     * Indicates whether incremental syncs are paused for this connector.
+     */
+    incrementalSyncDisabled?: pulumi.Input<boolean>;
     /**
      * Params needed to access the source in the format of json string.
      */
@@ -547,4 +650,9 @@ export interface DataConnectorArgs {
      * Whether customer has enabled static IP addresses for this connector.
      */
     staticIpEnabled?: pulumi.Input<boolean>;
+    /**
+     * The data synchronization mode supported by the data connector. The possible value can be:
+     * 'PERIODIC', 'STREAMING'.
+     */
+    syncMode?: pulumi.Input<string>;
 }

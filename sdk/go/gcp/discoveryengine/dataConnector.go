@@ -25,12 +25,14 @@ import (
 //
 // ## Example Usage
 //
-// ### Discoveryengine Dataconnector Jira Basic
+// ### Discoveryengine Dataconnector Servicenow Basic
 //
 // ```go
 // package main
 //
 // import (
+//
+//	"encoding/json"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -39,37 +41,74 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := discoveryengine.NewDataConnector(ctx, "jira-basic", &discoveryengine.DataConnectorArgs{
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"inclusion_filters": map[string]interface{}{
+//					"knowledgeBaseSysId": []string{
+//						"123",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"inclusion_filters": map[string]interface{}{
+//					"knowledgeBaseSysId": []string{
+//						"123",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//				"inclusion_filters": map[string]interface{}{
+//					"knowledgeBaseSysId": []string{
+//						"123",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json2 := string(tmpJSON2)
+//			_, err = discoveryengine.NewDataConnector(ctx, "servicenow-basic", &discoveryengine.DataConnectorArgs{
 //				Location:              pulumi.String("global"),
 //				CollectionId:          pulumi.String("collection-id"),
-//				CollectionDisplayName: pulumi.String("tf-test-dataconnector-jira"),
-//				DataSource:            pulumi.String("jira"),
+//				CollectionDisplayName: pulumi.String("tf-test-dataconnector-servicenow"),
+//				DataSource:            pulumi.String("servicenow"),
 //				Params: pulumi.StringMap{
-//					"instance_id":   pulumi.String("33db20a3-dc45-4305-a505-d70b68599840"),
-//					"instance_uri":  pulumi.String("https://vaissptbots1.atlassian.net/"),
-//					"client_secret": pulumi.String("client-secret"),
-//					"client_id":     pulumi.String("client-id"),
-//					"refresh_token": pulumi.String("fill-in-the-blank"),
+//					"auth_type":         pulumi.String("OAUTH_PASSWORD_GRANT"),
+//					"instance_uri":      pulumi.String("https://gcpconnector1.service-now.com/"),
+//					"client_id":         pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+//					"client_secret":     pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+//					"static_ip_enabled": pulumi.String("false"),
+//					"user_account":      pulumi.String("connectorsuserqa@google.com"),
+//					"password":          pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
 //				},
-//				RefreshInterval: pulumi.String("86400s"),
+//				RefreshInterval:            pulumi.String("86400s"),
+//				IncrementalRefreshInterval: pulumi.String("21600s"),
 //				Entities: discoveryengine.DataConnectorEntityArray{
 //					&discoveryengine.DataConnectorEntityArgs{
-//						EntityName: pulumi.String("project"),
+//						EntityName: pulumi.String("catalog"),
+//						Params:     pulumi.String(json0),
 //					},
 //					&discoveryengine.DataConnectorEntityArgs{
-//						EntityName: pulumi.String("issue"),
+//						EntityName: pulumi.String("incident"),
+//						Params:     pulumi.String(json1),
 //					},
 //					&discoveryengine.DataConnectorEntityArgs{
-//						EntityName: pulumi.String("attachment"),
-//					},
-//					&discoveryengine.DataConnectorEntityArgs{
-//						EntityName: pulumi.String("comment"),
-//					},
-//					&discoveryengine.DataConnectorEntityArgs{
-//						EntityName: pulumi.String("worklog"),
+//						EntityName: pulumi.String("knowledge_base"),
+//						Params:     pulumi.String(json2),
 //					},
 //				},
-//				StaticIpEnabled: pulumi.Bool(true),
+//				StaticIpEnabled: pulumi.Bool(false),
+//				ConnectorModes: pulumi.StringArray{
+//					pulumi.String("DATA_INGESTION"),
+//				},
+//				SyncMode: pulumi.String("PERIODIC"),
 //			})
 //			if err != nil {
 //				return err
@@ -111,6 +150,8 @@ type DataConnector struct {
 	// 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
 	// 'INITIALIZATION_FAILED', 'UPDATING'.
 	ActionState pulumi.StringOutput `pulumi:"actionState"`
+	// Indicates whether full syncs are paused for this connector
+	AutoRunDisabled pulumi.BoolPtrOutput `pulumi:"autoRunDisabled"`
 	// User actions that must be completed before the connector can start syncing data.
 	// The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
 	BlockingReasons pulumi.StringArrayOutput `pulumi:"blockingReasons"`
@@ -126,6 +167,10 @@ type DataConnector struct {
 	// standard with a length limit of 63 characters. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	CollectionId pulumi.StringOutput `pulumi:"collectionId"`
+	// The modes enabled for this connector. The possible value can be:
+	// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
+	// 'EUA', 'FEDERATED_AND_EUA'.
+	ConnectorModes pulumi.StringArrayOutput `pulumi:"connectorModes"`
 	// The type of connector. Each source can only map to one type.
 	// For example, salesforce, confluence and jira have THIRD_PARTY connector
 	// type. It is not mutable once set by system. The possible value can be:
@@ -144,6 +189,15 @@ type DataConnector struct {
 	// The errors from initialization or from the latest connector run.
 	// Structure is documented below.
 	Errors DataConnectorErrorArrayOutput `pulumi:"errors"`
+	// The refresh interval specifically for incremental data syncs. If unset,
+	// incremental syncs will use the default from env, set to 3hrs.
+	// The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+	// connectors. When the refresh interval is
+	// set to the same value as the incremental refresh interval, incremental
+	// sync will be disabled.
+	IncrementalRefreshInterval pulumi.StringPtrOutput `pulumi:"incrementalRefreshInterval"`
+	// Indicates whether incremental syncs are paused for this connector.
+	IncrementalSyncDisabled pulumi.BoolPtrOutput `pulumi:"incrementalSyncDisabled"`
 	// Params needed to access the source in the format of json string.
 	JsonParams pulumi.StringPtrOutput `pulumi:"jsonParams"`
 	// The KMS key to be used to protect the DataStores managed by this connector.
@@ -194,6 +248,9 @@ type DataConnector struct {
 	StaticIpAddresses pulumi.StringArrayOutput `pulumi:"staticIpAddresses"`
 	// Whether customer has enabled static IP addresses for this connector.
 	StaticIpEnabled pulumi.BoolPtrOutput `pulumi:"staticIpEnabled"`
+	// The data synchronization mode supported by the data connector. The possible value can be:
+	// 'PERIODIC', 'STREAMING'.
+	SyncMode pulumi.StringPtrOutput `pulumi:"syncMode"`
 	// Timestamp when the DataConnector was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -248,6 +305,8 @@ type dataConnectorState struct {
 	// 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
 	// 'INITIALIZATION_FAILED', 'UPDATING'.
 	ActionState *string `pulumi:"actionState"`
+	// Indicates whether full syncs are paused for this connector
+	AutoRunDisabled *bool `pulumi:"autoRunDisabled"`
 	// User actions that must be completed before the connector can start syncing data.
 	// The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
 	BlockingReasons []string `pulumi:"blockingReasons"`
@@ -263,6 +322,10 @@ type dataConnectorState struct {
 	// standard with a length limit of 63 characters. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	CollectionId *string `pulumi:"collectionId"`
+	// The modes enabled for this connector. The possible value can be:
+	// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
+	// 'EUA', 'FEDERATED_AND_EUA'.
+	ConnectorModes []string `pulumi:"connectorModes"`
 	// The type of connector. Each source can only map to one type.
 	// For example, salesforce, confluence and jira have THIRD_PARTY connector
 	// type. It is not mutable once set by system. The possible value can be:
@@ -281,6 +344,15 @@ type dataConnectorState struct {
 	// The errors from initialization or from the latest connector run.
 	// Structure is documented below.
 	Errors []DataConnectorError `pulumi:"errors"`
+	// The refresh interval specifically for incremental data syncs. If unset,
+	// incremental syncs will use the default from env, set to 3hrs.
+	// The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+	// connectors. When the refresh interval is
+	// set to the same value as the incremental refresh interval, incremental
+	// sync will be disabled.
+	IncrementalRefreshInterval *string `pulumi:"incrementalRefreshInterval"`
+	// Indicates whether incremental syncs are paused for this connector.
+	IncrementalSyncDisabled *bool `pulumi:"incrementalSyncDisabled"`
 	// Params needed to access the source in the format of json string.
 	JsonParams *string `pulumi:"jsonParams"`
 	// The KMS key to be used to protect the DataStores managed by this connector.
@@ -331,6 +403,9 @@ type dataConnectorState struct {
 	StaticIpAddresses []string `pulumi:"staticIpAddresses"`
 	// Whether customer has enabled static IP addresses for this connector.
 	StaticIpEnabled *bool `pulumi:"staticIpEnabled"`
+	// The data synchronization mode supported by the data connector. The possible value can be:
+	// 'PERIODIC', 'STREAMING'.
+	SyncMode *string `pulumi:"syncMode"`
 	// Timestamp when the DataConnector was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -341,6 +416,8 @@ type DataConnectorState struct {
 	// 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
 	// 'INITIALIZATION_FAILED', 'UPDATING'.
 	ActionState pulumi.StringPtrInput
+	// Indicates whether full syncs are paused for this connector
+	AutoRunDisabled pulumi.BoolPtrInput
 	// User actions that must be completed before the connector can start syncing data.
 	// The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
 	BlockingReasons pulumi.StringArrayInput
@@ -356,6 +433,10 @@ type DataConnectorState struct {
 	// standard with a length limit of 63 characters. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	CollectionId pulumi.StringPtrInput
+	// The modes enabled for this connector. The possible value can be:
+	// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
+	// 'EUA', 'FEDERATED_AND_EUA'.
+	ConnectorModes pulumi.StringArrayInput
 	// The type of connector. Each source can only map to one type.
 	// For example, salesforce, confluence and jira have THIRD_PARTY connector
 	// type. It is not mutable once set by system. The possible value can be:
@@ -374,6 +455,15 @@ type DataConnectorState struct {
 	// The errors from initialization or from the latest connector run.
 	// Structure is documented below.
 	Errors DataConnectorErrorArrayInput
+	// The refresh interval specifically for incremental data syncs. If unset,
+	// incremental syncs will use the default from env, set to 3hrs.
+	// The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+	// connectors. When the refresh interval is
+	// set to the same value as the incremental refresh interval, incremental
+	// sync will be disabled.
+	IncrementalRefreshInterval pulumi.StringPtrInput
+	// Indicates whether incremental syncs are paused for this connector.
+	IncrementalSyncDisabled pulumi.BoolPtrInput
 	// Params needed to access the source in the format of json string.
 	JsonParams pulumi.StringPtrInput
 	// The KMS key to be used to protect the DataStores managed by this connector.
@@ -424,6 +514,9 @@ type DataConnectorState struct {
 	StaticIpAddresses pulumi.StringArrayInput
 	// Whether customer has enabled static IP addresses for this connector.
 	StaticIpEnabled pulumi.BoolPtrInput
+	// The data synchronization mode supported by the data connector. The possible value can be:
+	// 'PERIODIC', 'STREAMING'.
+	SyncMode pulumi.StringPtrInput
 	// Timestamp when the DataConnector was updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -433,6 +526,8 @@ func (DataConnectorState) ElementType() reflect.Type {
 }
 
 type dataConnectorArgs struct {
+	// Indicates whether full syncs are paused for this connector
+	AutoRunDisabled *bool `pulumi:"autoRunDisabled"`
 	// The display name of the Collection.
 	// Should be human readable, used to display collections in the Console
 	// Dashboard. UTF-8 encoded string with limit of 1024 characters.
@@ -445,12 +540,25 @@ type dataConnectorArgs struct {
 	// standard with a length limit of 63 characters. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	CollectionId string `pulumi:"collectionId"`
+	// The modes enabled for this connector. The possible value can be:
+	// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
+	// 'EUA', 'FEDERATED_AND_EUA'.
+	ConnectorModes []string `pulumi:"connectorModes"`
 	// The name of the data source.
 	// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
 	DataSource string `pulumi:"dataSource"`
 	// List of entities from the connected data source to ingest.
 	// Structure is documented below.
 	Entities []DataConnectorEntity `pulumi:"entities"`
+	// The refresh interval specifically for incremental data syncs. If unset,
+	// incremental syncs will use the default from env, set to 3hrs.
+	// The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+	// connectors. When the refresh interval is
+	// set to the same value as the incremental refresh interval, incremental
+	// sync will be disabled.
+	IncrementalRefreshInterval *string `pulumi:"incrementalRefreshInterval"`
+	// Indicates whether incremental syncs are paused for this connector.
+	IncrementalSyncDisabled *bool `pulumi:"incrementalSyncDisabled"`
 	// Params needed to access the source in the format of json string.
 	JsonParams *string `pulumi:"jsonParams"`
 	// The KMS key to be used to protect the DataStores managed by this connector.
@@ -475,10 +583,15 @@ type dataConnectorArgs struct {
 	RefreshInterval string `pulumi:"refreshInterval"`
 	// Whether customer has enabled static IP addresses for this connector.
 	StaticIpEnabled *bool `pulumi:"staticIpEnabled"`
+	// The data synchronization mode supported by the data connector. The possible value can be:
+	// 'PERIODIC', 'STREAMING'.
+	SyncMode *string `pulumi:"syncMode"`
 }
 
 // The set of arguments for constructing a DataConnector resource.
 type DataConnectorArgs struct {
+	// Indicates whether full syncs are paused for this connector
+	AutoRunDisabled pulumi.BoolPtrInput
 	// The display name of the Collection.
 	// Should be human readable, used to display collections in the Console
 	// Dashboard. UTF-8 encoded string with limit of 1024 characters.
@@ -491,12 +604,25 @@ type DataConnectorArgs struct {
 	// standard with a length limit of 63 characters. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	CollectionId pulumi.StringInput
+	// The modes enabled for this connector. The possible value can be:
+	// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
+	// 'EUA', 'FEDERATED_AND_EUA'.
+	ConnectorModes pulumi.StringArrayInput
 	// The name of the data source.
 	// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
 	DataSource pulumi.StringInput
 	// List of entities from the connected data source to ingest.
 	// Structure is documented below.
 	Entities DataConnectorEntityArrayInput
+	// The refresh interval specifically for incremental data syncs. If unset,
+	// incremental syncs will use the default from env, set to 3hrs.
+	// The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+	// connectors. When the refresh interval is
+	// set to the same value as the incremental refresh interval, incremental
+	// sync will be disabled.
+	IncrementalRefreshInterval pulumi.StringPtrInput
+	// Indicates whether incremental syncs are paused for this connector.
+	IncrementalSyncDisabled pulumi.BoolPtrInput
 	// Params needed to access the source in the format of json string.
 	JsonParams pulumi.StringPtrInput
 	// The KMS key to be used to protect the DataStores managed by this connector.
@@ -521,6 +647,9 @@ type DataConnectorArgs struct {
 	RefreshInterval pulumi.StringInput
 	// Whether customer has enabled static IP addresses for this connector.
 	StaticIpEnabled pulumi.BoolPtrInput
+	// The data synchronization mode supported by the data connector. The possible value can be:
+	// 'PERIODIC', 'STREAMING'.
+	SyncMode pulumi.StringPtrInput
 }
 
 func (DataConnectorArgs) ElementType() reflect.Type {
@@ -618,6 +747,11 @@ func (o DataConnectorOutput) ActionState() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataConnector) pulumi.StringOutput { return v.ActionState }).(pulumi.StringOutput)
 }
 
+// Indicates whether full syncs are paused for this connector
+func (o DataConnectorOutput) AutoRunDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataConnector) pulumi.BoolPtrOutput { return v.AutoRunDisabled }).(pulumi.BoolPtrOutput)
+}
+
 // User actions that must be completed before the connector can start syncing data.
 // The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
 func (o DataConnectorOutput) BlockingReasons() pulumi.StringArrayOutput {
@@ -640,6 +774,13 @@ func (o DataConnectorOutput) CollectionDisplayName() pulumi.StringOutput {
 // INVALID_ARGUMENT error is returned.
 func (o DataConnectorOutput) CollectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataConnector) pulumi.StringOutput { return v.CollectionId }).(pulumi.StringOutput)
+}
+
+// The modes enabled for this connector. The possible value can be:
+// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
+// 'EUA', 'FEDERATED_AND_EUA'.
+func (o DataConnectorOutput) ConnectorModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataConnector) pulumi.StringArrayOutput { return v.ConnectorModes }).(pulumi.StringArrayOutput)
 }
 
 // The type of connector. Each source can only map to one type.
@@ -673,6 +814,21 @@ func (o DataConnectorOutput) Entities() DataConnectorEntityArrayOutput {
 // Structure is documented below.
 func (o DataConnectorOutput) Errors() DataConnectorErrorArrayOutput {
 	return o.ApplyT(func(v *DataConnector) DataConnectorErrorArrayOutput { return v.Errors }).(DataConnectorErrorArrayOutput)
+}
+
+// The refresh interval specifically for incremental data syncs. If unset,
+// incremental syncs will use the default from env, set to 3hrs.
+// The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+// connectors. When the refresh interval is
+// set to the same value as the incremental refresh interval, incremental
+// sync will be disabled.
+func (o DataConnectorOutput) IncrementalRefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataConnector) pulumi.StringPtrOutput { return v.IncrementalRefreshInterval }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether incremental syncs are paused for this connector.
+func (o DataConnectorOutput) IncrementalSyncDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataConnector) pulumi.BoolPtrOutput { return v.IncrementalSyncDisabled }).(pulumi.BoolPtrOutput)
 }
 
 // Params needed to access the source in the format of json string.
@@ -765,6 +921,12 @@ func (o DataConnectorOutput) StaticIpAddresses() pulumi.StringArrayOutput {
 // Whether customer has enabled static IP addresses for this connector.
 func (o DataConnectorOutput) StaticIpEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DataConnector) pulumi.BoolPtrOutput { return v.StaticIpEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The data synchronization mode supported by the data connector. The possible value can be:
+// 'PERIODIC', 'STREAMING'.
+func (o DataConnectorOutput) SyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataConnector) pulumi.StringPtrOutput { return v.SyncMode }).(pulumi.StringPtrOutput)
 }
 
 // Timestamp when the DataConnector was updated.

@@ -173,10 +173,22 @@ import (
 type PrivateCloud struct {
 	pulumi.CustomResourceState
 
+	// Creation time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Time when the resource was scheduled for deletion.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
 	DeletionDelayHours pulumi.IntPtrOutput `pulumi:"deletionDelayHours"`
 	// User-provided description for this private cloud.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Time when the resource will be irreversibly deleted.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// Details about a HCX Cloud Manager appliance.
 	// Structure is documented below.
 	Hcxes PrivateCloudHcxArrayOutput `pulumi:"hcxes"`
@@ -206,6 +218,10 @@ type PrivateCloud struct {
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// Last update time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Details about a vCenter Server management appliance.
 	// Structure is documented below.
 	Vcenters PrivateCloudVcenterArrayOutput `pulumi:"vcenters"`
@@ -250,10 +266,22 @@ func GetPrivateCloud(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrivateCloud resources.
 type privateCloudState struct {
+	// Creation time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime *string `pulumi:"createTime"`
+	// Time when the resource was scheduled for deletion.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	DeleteTime *string `pulumi:"deleteTime"`
 	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
 	DeletionDelayHours *int `pulumi:"deletionDelayHours"`
 	// User-provided description for this private cloud.
 	Description *string `pulumi:"description"`
+	// Time when the resource will be irreversibly deleted.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpireTime *string `pulumi:"expireTime"`
 	// Details about a HCX Cloud Manager appliance.
 	// Structure is documented below.
 	Hcxes []PrivateCloudHcx `pulumi:"hcxes"`
@@ -283,16 +311,32 @@ type privateCloudState struct {
 	Type *string `pulumi:"type"`
 	// System-generated unique identifier for the resource.
 	Uid *string `pulumi:"uid"`
+	// Last update time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime *string `pulumi:"updateTime"`
 	// Details about a vCenter Server management appliance.
 	// Structure is documented below.
 	Vcenters []PrivateCloudVcenter `pulumi:"vcenters"`
 }
 
 type PrivateCloudState struct {
+	// Creation time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringPtrInput
+	// Time when the resource was scheduled for deletion.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	DeleteTime pulumi.StringPtrInput
 	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
 	DeletionDelayHours pulumi.IntPtrInput
 	// User-provided description for this private cloud.
 	Description pulumi.StringPtrInput
+	// Time when the resource will be irreversibly deleted.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	ExpireTime pulumi.StringPtrInput
 	// Details about a HCX Cloud Manager appliance.
 	// Structure is documented below.
 	Hcxes PrivateCloudHcxArrayInput
@@ -322,6 +366,10 @@ type PrivateCloudState struct {
 	Type pulumi.StringPtrInput
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringPtrInput
+	// Last update time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime pulumi.StringPtrInput
 	// Details about a vCenter Server management appliance.
 	// Structure is documented below.
 	Vcenters PrivateCloudVcenterArrayInput
@@ -469,6 +517,20 @@ func (o PrivateCloudOutput) ToPrivateCloudOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Creation time of this resource.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o PrivateCloudOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Time when the resource was scheduled for deletion.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o PrivateCloudOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
 // The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
 func (o PrivateCloudOutput) DeletionDelayHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.IntPtrOutput { return v.DeletionDelayHours }).(pulumi.IntPtrOutput)
@@ -477,6 +539,13 @@ func (o PrivateCloudOutput) DeletionDelayHours() pulumi.IntPtrOutput {
 // User-provided description for this private cloud.
 func (o PrivateCloudOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Time when the resource will be irreversibly deleted.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o PrivateCloudOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // Details about a HCX Cloud Manager appliance.
@@ -539,6 +608,13 @@ func (o PrivateCloudOutput) Type() pulumi.StringPtrOutput {
 // System-generated unique identifier for the resource.
 func (o PrivateCloudOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Last update time of this resource.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o PrivateCloudOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 // Details about a vCenter Server management appliance.

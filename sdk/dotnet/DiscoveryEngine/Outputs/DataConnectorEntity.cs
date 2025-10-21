@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
         /// <summary>
         /// The parameters for the entity to facilitate data ingestion.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? Params;
+        public readonly string? Params;
 
         [OutputConstructor]
         private DataConnectorEntity(
@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
 
             ImmutableDictionary<string, string>? keyPropertyMappings,
 
-            ImmutableDictionary<string, string>? @params)
+            string? @params)
         {
             DataStore = dataStore;
             EntityName = entityName;

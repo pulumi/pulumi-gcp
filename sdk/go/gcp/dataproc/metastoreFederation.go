@@ -178,6 +178,10 @@ type MetastoreFederation struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current state of the metastore federation, if available.
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The globally unique resource identifier of the metastore federation.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The time when the metastore federation was last updated.
@@ -262,6 +266,10 @@ type metastoreFederationState struct {
 	State *string `pulumi:"state"`
 	// Additional information about the current state of the metastore federation, if available.
 	StateMessage *string `pulumi:"stateMessage"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// The globally unique resource identifier of the metastore federation.
 	Uid *string `pulumi:"uid"`
 	// Output only. The time when the metastore federation was last updated.
@@ -303,6 +311,10 @@ type MetastoreFederationState struct {
 	State pulumi.StringPtrInput
 	// Additional information about the current state of the metastore federation, if available.
 	StateMessage pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 	// The globally unique resource identifier of the metastore federation.
 	Uid pulumi.StringPtrInput
 	// Output only. The time when the metastore federation was last updated.
@@ -333,6 +345,10 @@ type metastoreFederationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
 	Version string `pulumi:"version"`
 }
@@ -356,6 +372,10 @@ type MetastoreFederationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 	// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
 	Version pulumi.StringInput
 }
@@ -518,6 +538,13 @@ func (o MetastoreFederationOutput) State() pulumi.StringOutput {
 // Additional information about the current state of the metastore federation, if available.
 func (o MetastoreFederationOutput) StateMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.StateMessage }).(pulumi.StringOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+func (o MetastoreFederationOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The globally unique resource identifier of the metastore federation.

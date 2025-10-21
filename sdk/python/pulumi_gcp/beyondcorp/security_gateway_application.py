@@ -22,10 +22,11 @@ __all__ = ['SecurityGatewayApplicationArgs', 'SecurityGatewayApplication']
 class SecurityGatewayApplicationArgs:
     def __init__(__self__, *,
                  application_id: pulumi.Input[_builtins.str],
-                 endpoint_matchers: pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]],
                  security_gateway_id: pulumi.Input[_builtins.str],
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 schema: Optional[pulumi.Input[_builtins.str]] = None,
                  upstreams: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamArgs']]]] = None):
         """
         The set of arguments for constructing a SecurityGatewayApplication resource.
@@ -33,6 +34,9 @@ class SecurityGatewayApplicationArgs:
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
+        :param pulumi.Input[_builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to.
+        :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource.
+               Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]] endpoint_matchers: Required. Endpoint matchers associated with an application.
                A combination of hostname and ports as endpoint matcher is used to match
                the application.
@@ -45,21 +49,23 @@ class SecurityGatewayApplicationArgs:
                Hostname - ("*.abc.com"), ("xyz.abc.com")
                Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to.
-        :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource.
-               Cannot exceed 64 characters.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] schema: Type of the external application.
+               Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamArgs']]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
                Structure is documented below.
         """
         pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "endpoint_matchers", endpoint_matchers)
         pulumi.set(__self__, "security_gateway_id", security_gateway_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if endpoint_matchers is not None:
+            pulumi.set(__self__, "endpoint_matchers", endpoint_matchers)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
         if upstreams is not None:
             pulumi.set(__self__, "upstreams", upstreams)
 
@@ -77,29 +83,6 @@ class SecurityGatewayApplicationArgs:
     @application_id.setter
     def application_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "application_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="endpointMatchers")
-    def endpoint_matchers(self) -> pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]]:
-        """
-        Required. Endpoint matchers associated with an application.
-        A combination of hostname and ports as endpoint matcher is used to match
-        the application.
-        Match conditions for OR logic.
-        An array of match conditions to allow for multiple matching criteria.
-        The rule is considered a match if one the conditions are met.
-        The conditions can be one of the following combination
-        (Hostname), (Hostname & Ports)
-        EXAMPLES:
-        Hostname - ("*.abc.com"), ("xyz.abc.com")
-        Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
-        Structure is documented below.
-        """
-        return pulumi.get(self, "endpoint_matchers")
-
-    @endpoint_matchers.setter
-    def endpoint_matchers(self, value: pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]]):
-        pulumi.set(self, "endpoint_matchers", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGatewayId")
@@ -127,6 +110,29 @@ class SecurityGatewayApplicationArgs:
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="endpointMatchers")
+    def endpoint_matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]]]:
+        """
+        Required. Endpoint matchers associated with an application.
+        A combination of hostname and ports as endpoint matcher is used to match
+        the application.
+        Match conditions for OR logic.
+        An array of match conditions to allow for multiple matching criteria.
+        The rule is considered a match if one the conditions are met.
+        The conditions can be one of the following combination
+        (Hostname), (Hostname & Ports)
+        EXAMPLES:
+        Hostname - ("*.abc.com"), ("xyz.abc.com")
+        Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
+        Structure is documented below.
+        """
+        return pulumi.get(self, "endpoint_matchers")
+
+    @endpoint_matchers.setter
+    def endpoint_matchers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]]]):
+        pulumi.set(self, "endpoint_matchers", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -138,6 +144,19 @@ class SecurityGatewayApplicationArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the external application.
+        Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
@@ -162,6 +181,7 @@ class _SecurityGatewayApplicationState:
                  endpoint_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 schema: Optional[pulumi.Input[_builtins.str]] = None,
                  security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None,
                  upstreams: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamArgs']]]] = None):
@@ -189,6 +209,8 @@ class _SecurityGatewayApplicationState:
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] schema: Type of the external application.
+               Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
         :param pulumi.Input[_builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to.
         :param pulumi.Input[_builtins.str] update_time: Output only. Timestamp when the resource was last modified.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamArgs']]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
@@ -206,6 +228,8 @@ class _SecurityGatewayApplicationState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
         if security_gateway_id is not None:
             pulumi.set(__self__, "security_gateway_id", security_gateway_id)
         if update_time is not None:
@@ -302,6 +326,19 @@ class _SecurityGatewayApplicationState:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the external application.
+        Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "schema", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityGatewayId")
     def security_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -349,6 +386,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 schema: Optional[pulumi.Input[_builtins.str]] = None,
                  security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
                  upstreams: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict']]]]] = None,
                  __props__=None):
@@ -404,6 +442,81 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Beyondcorp Security Gateway Application Spa Api
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.beyondcorp.SecurityGateway("default",
+            security_gateway_id="default-sg-spa-api",
+            display_name="My SPA Security Gateway resource")
+        example_spa = gcp.beyondcorp.SecurityGatewayApplication("example-spa",
+            security_gateway_id=default.security_gateway_id,
+            application_id="app-discovery",
+            upstreams=[{
+                "external": {
+                    "endpoints": [{
+                        "hostname": "my.discovery.service.com",
+                        "port": 443,
+                    }],
+                },
+                "proxy_protocol": {
+                    "allowed_client_headers": ["header"],
+                },
+            }],
+            schema="API_GATEWAY")
+        ```
+        ### Beyondcorp Security Gateway Application Spa Proxy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.beyondcorp.SecurityGateway("default",
+            security_gateway_id="default-sg-spa-proxy",
+            display_name="My SPA Security Gateway resource")
+        example_spa = gcp.beyondcorp.SecurityGatewayApplication("example-spa",
+            security_gateway_id=default.security_gateway_id,
+            application_id="app-proxy",
+            endpoint_matchers=[{
+                "hostname": "a.site.com",
+                "ports": [443],
+            }],
+            upstreams=[{
+                "external": {
+                    "endpoints": [{
+                        "hostname": "my.proxy.service.com",
+                        "port": 443,
+                    }],
+                },
+                "proxy_protocol": {
+                    "allowed_client_headers": [
+                        "header1",
+                        "header2",
+                    ],
+                    "contextual_headers": {
+                        "user_info": {
+                            "output_type": "PROTOBUF",
+                        },
+                        "group_info": {
+                            "output_type": "JSON",
+                        },
+                        "device_info": {
+                            "output_type": "NONE",
+                        },
+                        "output_type": "JSON",
+                    },
+                    "metadata_headers": {
+                        "metadata-header1": "value1",
+                        "metadata-header2": "value2",
+                    },
+                    "gateway_identity": "RESOURCE_NAME",
+                    "client_ip": True,
+                },
+            }],
+            schema="PROXY_GATEWAY")
+        ```
 
         ## Import
 
@@ -451,6 +564,8 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] schema: Type of the external application.
+               Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
         :param pulumi.Input[_builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict']]]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
                Structure is documented below.
@@ -513,6 +628,81 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Beyondcorp Security Gateway Application Spa Api
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.beyondcorp.SecurityGateway("default",
+            security_gateway_id="default-sg-spa-api",
+            display_name="My SPA Security Gateway resource")
+        example_spa = gcp.beyondcorp.SecurityGatewayApplication("example-spa",
+            security_gateway_id=default.security_gateway_id,
+            application_id="app-discovery",
+            upstreams=[{
+                "external": {
+                    "endpoints": [{
+                        "hostname": "my.discovery.service.com",
+                        "port": 443,
+                    }],
+                },
+                "proxy_protocol": {
+                    "allowed_client_headers": ["header"],
+                },
+            }],
+            schema="API_GATEWAY")
+        ```
+        ### Beyondcorp Security Gateway Application Spa Proxy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.beyondcorp.SecurityGateway("default",
+            security_gateway_id="default-sg-spa-proxy",
+            display_name="My SPA Security Gateway resource")
+        example_spa = gcp.beyondcorp.SecurityGatewayApplication("example-spa",
+            security_gateway_id=default.security_gateway_id,
+            application_id="app-proxy",
+            endpoint_matchers=[{
+                "hostname": "a.site.com",
+                "ports": [443],
+            }],
+            upstreams=[{
+                "external": {
+                    "endpoints": [{
+                        "hostname": "my.proxy.service.com",
+                        "port": 443,
+                    }],
+                },
+                "proxy_protocol": {
+                    "allowed_client_headers": [
+                        "header1",
+                        "header2",
+                    ],
+                    "contextual_headers": {
+                        "user_info": {
+                            "output_type": "PROTOBUF",
+                        },
+                        "group_info": {
+                            "output_type": "JSON",
+                        },
+                        "device_info": {
+                            "output_type": "NONE",
+                        },
+                        "output_type": "JSON",
+                    },
+                    "metadata_headers": {
+                        "metadata-header1": "value1",
+                        "metadata-header2": "value2",
+                    },
+                    "gateway_identity": "RESOURCE_NAME",
+                    "client_ip": True,
+                },
+            }],
+            schema="PROXY_GATEWAY")
+        ```
 
         ## Import
 
@@ -557,6 +747,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 schema: Optional[pulumi.Input[_builtins.str]] = None,
                  security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
                  upstreams: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict']]]]] = None,
                  __props__=None):
@@ -572,10 +763,9 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                 raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
             __props__.__dict__["display_name"] = display_name
-            if endpoint_matchers is None and not opts.urn:
-                raise TypeError("Missing required property 'endpoint_matchers'")
             __props__.__dict__["endpoint_matchers"] = endpoint_matchers
             __props__.__dict__["project"] = project
+            __props__.__dict__["schema"] = schema
             if security_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_gateway_id'")
             __props__.__dict__["security_gateway_id"] = security_gateway_id
@@ -599,6 +789,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
             endpoint_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
+            schema: Optional[pulumi.Input[_builtins.str]] = None,
             security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None,
             upstreams: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict']]]]] = None) -> 'SecurityGatewayApplication':
@@ -631,6 +822,8 @@ class SecurityGatewayApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] schema: Type of the external application.
+               Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
         :param pulumi.Input[_builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to.
         :param pulumi.Input[_builtins.str] update_time: Output only. Timestamp when the resource was last modified.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict']]]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
@@ -646,6 +839,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
         __props__.__dict__["endpoint_matchers"] = endpoint_matchers
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["schema"] = schema
         __props__.__dict__["security_gateway_id"] = security_gateway_id
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["upstreams"] = upstreams
@@ -681,7 +875,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="endpointMatchers")
-    def endpoint_matchers(self) -> pulumi.Output[Sequence['outputs.SecurityGatewayApplicationEndpointMatcher']]:
+    def endpoint_matchers(self) -> pulumi.Output[Optional[Sequence['outputs.SecurityGatewayApplicationEndpointMatcher']]]:
         """
         Required. Endpoint matchers associated with an application.
         A combination of hostname and ports as endpoint matcher is used to match
@@ -714,6 +908,15 @@ class SecurityGatewayApplication(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Type of the external application.
+        Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+        """
+        return pulumi.get(self, "schema")
 
     @_builtins.property
     @pulumi.getter(name="securityGatewayId")

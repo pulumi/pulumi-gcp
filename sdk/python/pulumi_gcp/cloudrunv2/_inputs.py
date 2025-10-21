@@ -3671,6 +3671,10 @@ if not MYPY:
         """
         True if GPU zonal redundancy is disabled on this revision.
         """
+        health_check_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Disables health checking containers during deployment.
+        """
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
@@ -3736,6 +3740,7 @@ class ServiceTemplateArgs:
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  execution_environment: Optional[pulumi.Input[_builtins.str]] = None,
                  gpu_zonal_redundancy_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 health_check_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_instance_request_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
                  node_selector: Optional[pulumi.Input['ServiceTemplateNodeSelectorArgs']] = None,
@@ -3758,6 +3763,7 @@ class ServiceTemplateArgs:
         :param pulumi.Input[_builtins.str] execution_environment: The sandbox environment to host this Revision.
                Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         :param pulumi.Input[_builtins.bool] gpu_zonal_redundancy_disabled: True if GPU zonal redundancy is disabled on this revision.
+        :param pulumi.Input[_builtins.bool] health_check_disabled: Disables health checking containers during deployment.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
                For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -3790,6 +3796,8 @@ class ServiceTemplateArgs:
             pulumi.set(__self__, "execution_environment", execution_environment)
         if gpu_zonal_redundancy_disabled is not None:
             pulumi.set(__self__, "gpu_zonal_redundancy_disabled", gpu_zonal_redundancy_disabled)
+        if health_check_disabled is not None:
+            pulumi.set(__self__, "health_check_disabled", health_check_disabled)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_instance_request_concurrency is not None:
@@ -3877,6 +3885,18 @@ class ServiceTemplateArgs:
     @gpu_zonal_redundancy_disabled.setter
     def gpu_zonal_redundancy_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "gpu_zonal_redundancy_disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckDisabled")
+    def health_check_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Disables health checking containers during deployment.
+        """
+        return pulumi.get(self, "health_check_disabled")
+
+    @health_check_disabled.setter
+    def health_check_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "health_check_disabled", value)
 
     @_builtins.property
     @pulumi.getter

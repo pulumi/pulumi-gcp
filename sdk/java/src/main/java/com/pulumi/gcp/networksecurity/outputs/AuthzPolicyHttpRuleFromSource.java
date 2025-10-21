@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networksecurity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyHttpRuleFromSourceIpBlock;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyHttpRuleFromSourcePrincipal;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyHttpRuleFromSourceResource;
 import java.util.List;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AuthzPolicyHttpRuleFromSource {
+    /**
+     * @return A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AuthzPolicyHttpRuleFromSourceIpBlock> ipBlocks;
     /**
      * @return A list of identities derived from the client&#39;s certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client&#39;s certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
      * Limited to 5 principals.
@@ -28,6 +35,14 @@ public final class AuthzPolicyHttpRuleFromSource {
     private @Nullable List<AuthzPolicyHttpRuleFromSourceResource> resources;
 
     private AuthzPolicyHttpRuleFromSource() {}
+    /**
+     * @return A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
+     * Structure is documented below.
+     * 
+     */
+    public List<AuthzPolicyHttpRuleFromSourceIpBlock> ipBlocks() {
+        return this.ipBlocks == null ? List.of() : this.ipBlocks;
+    }
     /**
      * @return A list of identities derived from the client&#39;s certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client&#39;s certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
      * Limited to 5 principals.
@@ -56,15 +71,26 @@ public final class AuthzPolicyHttpRuleFromSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<AuthzPolicyHttpRuleFromSourceIpBlock> ipBlocks;
         private @Nullable List<AuthzPolicyHttpRuleFromSourcePrincipal> principals;
         private @Nullable List<AuthzPolicyHttpRuleFromSourceResource> resources;
         public Builder() {}
         public Builder(AuthzPolicyHttpRuleFromSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.ipBlocks = defaults.ipBlocks;
     	      this.principals = defaults.principals;
     	      this.resources = defaults.resources;
         }
 
+        @CustomType.Setter
+        public Builder ipBlocks(@Nullable List<AuthzPolicyHttpRuleFromSourceIpBlock> ipBlocks) {
+
+            this.ipBlocks = ipBlocks;
+            return this;
+        }
+        public Builder ipBlocks(AuthzPolicyHttpRuleFromSourceIpBlock... ipBlocks) {
+            return ipBlocks(List.of(ipBlocks));
+        }
         @CustomType.Setter
         public Builder principals(@Nullable List<AuthzPolicyHttpRuleFromSourcePrincipal> principals) {
 
@@ -85,6 +111,7 @@ public final class AuthzPolicyHttpRuleFromSource {
         }
         public AuthzPolicyHttpRuleFromSource build() {
             final var _resultValue = new AuthzPolicyHttpRuleFromSource();
+            _resultValue.ipBlocks = ipBlocks;
             _resultValue.principals = principals;
             _resultValue.resources = resources;
             return _resultValue;

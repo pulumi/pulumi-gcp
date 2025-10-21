@@ -17,6 +17,65 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Wasm Plugin Basic Docker Repository
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const wasmPlugin = new gcp.networkservices.WasmPlugin("wasm_plugin", {
+ *     name: "my-wasm-plugin",
+ *     description: "my wasm plugin from a docker repository",
+ *     mainVersionId: "v1",
+ *     labels: {
+ *         test_label: "test_value",
+ *     },
+ *     logConfig: {
+ *         enable: true,
+ *         sampleRate: 1,
+ *         minLogLevel: "WARN",
+ *     },
+ *     versions: [{
+ *         versionName: "v1",
+ *         description: "v1 version of my wasm plugin",
+ *         imageUri: project.then(project => `us-central1-docker.pkg.dev/${project.name}/my-artifact-registry-docker-repository/my-wasm-plugin-data:prod`),
+ *         labels: {
+ *             test_label: "test_value",
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Wasm Plugin Basic Generic Repository
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const wasmPlugin = new gcp.networkservices.WasmPlugin("wasm_plugin", {
+ *     name: "my-wasm-plugin",
+ *     description: "my wasm plugin from a generic repository",
+ *     mainVersionId: "v1",
+ *     labels: {
+ *         test_label: "test_value",
+ *     },
+ *     logConfig: {
+ *         enable: true,
+ *         sampleRate: 1,
+ *         minLogLevel: "WARN",
+ *     },
+ *     versions: [{
+ *         versionName: "v1",
+ *         description: "v1 version of my wasm plugin",
+ *         imageUri: project.then(project => `projects/${project.name}/locations/us-central1/repositories/my-artifact-registry-generic-repository/genericArtifacts/my-wasm-plugin-data:v1`),
+ *         labels: {
+ *             test_label: "test_value",
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * WasmPlugin can be imported using any of these accepted formats:

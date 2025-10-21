@@ -124,6 +124,7 @@ import javax.annotation.Nullable;
  *             .displayName("tf-test-agentspace-search-engine")
  *             .dataStoreIds(agentspaceBasic.dataStoreId())
  *             .industryVertical("GENERIC")
+ *             .appType("APP_TYPE_INTRANET")
  *             .searchEngineConfig(SearchEngineSearchEngineConfigArgs.builder()
  *                 .build())
  *             .build());
@@ -293,6 +294,28 @@ public class SearchEngine extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> industryVertical() {
         return Codegen.optional(this.industryVertical);
+    }
+    /**
+     * The KMS key to be used to protect this Engine at creation time.
+     * Must be set for requests that need to comply with CMEK Org Policy
+     * protections.
+     * If this field is set and processed successfully, the Engine will be
+     * protected by the KMS key, as indicated in the cmekConfig field.
+     * 
+     */
+    @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKeyName;
+
+    /**
+     * @return The KMS key to be used to protect this Engine at creation time.
+     * Must be set for requests that need to comply with CMEK Org Policy
+     * protections.
+     * If this field is set and processed successfully, the Engine will be
+     * protected by the KMS key, as indicated in the cmekConfig field.
+     * 
+     */
+    public Output<Optional<String>> kmsKeyName() {
+        return Codegen.optional(this.kmsKeyName);
     }
     /**
      * Location.

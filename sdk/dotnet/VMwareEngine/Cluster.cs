@@ -190,6 +190,14 @@ namespace Pulumi.Gcp.VMwareEngine
         public Output<Outputs.ClusterAutoscalingSettings?> AutoscalingSettings { get; private set; } = null!;
 
         /// <summary>
+        /// Creation time of this resource.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+        /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// True if the cluster is a management cluster; false otherwise.
         /// There can only be one management cluster in a private cloud and it has to be the first one.
         /// </summary>
@@ -229,6 +237,14 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// Last updated time of this resource.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -327,6 +343,14 @@ namespace Pulumi.Gcp.VMwareEngine
         public Input<Inputs.ClusterAutoscalingSettingsGetArgs>? AutoscalingSettings { get; set; }
 
         /// <summary>
+        /// Creation time of this resource.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+        /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// True if the cluster is a management cluster; false otherwise.
         /// There can only be one management cluster in a private cloud and it has to be the first one.
         /// </summary>
@@ -372,6 +396,14 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// Last updated time of this resource.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         public ClusterState()
         {

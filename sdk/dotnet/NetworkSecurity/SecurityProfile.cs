@@ -184,6 +184,56 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Network Security Security Profile Url Filtering
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkSecurity.SecurityProfile("default", new()
+    ///     {
+    ///         Name = "my-security-profile",
+    ///         Parent = "organizations/123456789",
+    ///         Description = "my description",
+    ///         Type = "URL_FILTERING",
+    ///         UrlFilteringProfile = new Gcp.NetworkSecurity.Inputs.SecurityProfileUrlFilteringProfileArgs
+    ///         {
+    ///             UrlFilters = new[]
+    ///             {
+    ///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileUrlFilteringProfileUrlFilterArgs
+    ///                 {
+    ///                     Priority = 1,
+    ///                     FilteringAction = "ALLOW",
+    ///                     Urls = new[]
+    ///                     {
+    ///                         "*example.com",
+    ///                         "*about.example.com",
+    ///                         "*help.example.com",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileUrlFilteringProfileUrlFilterArgs
+    ///                 {
+    ///                     Priority = 2,
+    ///                     FilteringAction = "DENY",
+    ///                     Urls = new[]
+    ///                     {
+    ///                         "*restricted.example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -293,7 +343,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The type of security profile.
-        /// Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -303,6 +353,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The url filtering configuration for the security profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("urlFilteringProfile")]
+        public Output<Outputs.SecurityProfileUrlFilteringProfile?> UrlFilteringProfile { get; private set; } = null!;
 
 
         /// <summary>
@@ -421,10 +478,17 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The type of security profile.
-        /// Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
+
+        /// <summary>
+        /// The url filtering configuration for the security profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("urlFilteringProfile")]
+        public Input<Inputs.SecurityProfileUrlFilteringProfileArgs>? UrlFilteringProfile { get; set; }
 
         public SecurityProfileArgs()
         {
@@ -553,7 +617,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The type of security profile.
-        /// Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -563,6 +627,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// The url filtering configuration for the security profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("urlFilteringProfile")]
+        public Input<Inputs.SecurityProfileUrlFilteringProfileGetArgs>? UrlFilteringProfile { get; set; }
 
         public SecurityProfileState()
         {

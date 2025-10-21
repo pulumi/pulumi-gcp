@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class GetClusterResult
     {
         public readonly ImmutableArray<Outputs.GetClusterAutoscalingSettingResult> AutoscalingSettings;
+        public readonly string CreateTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -152,10 +153,13 @@ namespace Pulumi.Gcp.VMwareEngine
         public readonly string Parent;
         public readonly string State;
         public readonly string Uid;
+        public readonly string UpdateTime;
 
         [OutputConstructor]
         private GetClusterResult(
             ImmutableArray<Outputs.GetClusterAutoscalingSettingResult> autoscalingSettings,
+
+            string createTime,
 
             string id,
 
@@ -169,9 +173,12 @@ namespace Pulumi.Gcp.VMwareEngine
 
             string state,
 
-            string uid)
+            string uid,
+
+            string updateTime)
         {
             AutoscalingSettings = autoscalingSettings;
+            CreateTime = createTime;
             Id = id;
             Management = management;
             Name = name;
@@ -179,6 +186,7 @@ namespace Pulumi.Gcp.VMwareEngine
             Parent = parent;
             State = state;
             Uid = uid;
+            UpdateTime = updateTime;
         }
     }
 }

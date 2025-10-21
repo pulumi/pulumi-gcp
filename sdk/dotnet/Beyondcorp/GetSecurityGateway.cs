@@ -147,7 +147,9 @@ namespace Pulumi.Gcp.Beyondcorp
         public readonly string Location;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableArray<Outputs.GetSecurityGatewayProxyProtocolConfigResult> ProxyProtocolConfigs;
         public readonly string SecurityGatewayId;
+        public readonly ImmutableArray<Outputs.GetSecurityGatewayServiceDiscoveryResult> ServiceDiscoveries;
         public readonly string State;
         public readonly string UpdateTime;
 
@@ -171,7 +173,11 @@ namespace Pulumi.Gcp.Beyondcorp
 
             string? project,
 
+            ImmutableArray<Outputs.GetSecurityGatewayProxyProtocolConfigResult> proxyProtocolConfigs,
+
             string securityGatewayId,
+
+            ImmutableArray<Outputs.GetSecurityGatewayServiceDiscoveryResult> serviceDiscoveries,
 
             string state,
 
@@ -186,7 +192,9 @@ namespace Pulumi.Gcp.Beyondcorp
             Location = location;
             Name = name;
             Project = project;
+            ProxyProtocolConfigs = proxyProtocolConfigs;
             SecurityGatewayId = securityGatewayId;
+            ServiceDiscoveries = serviceDiscoveries;
             State = state;
             UpdateTime = updateTime;
         }

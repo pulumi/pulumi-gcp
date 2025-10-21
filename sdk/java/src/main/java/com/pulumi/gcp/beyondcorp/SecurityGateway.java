@@ -11,6 +11,8 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.beyondcorp.SecurityGatewayArgs;
 import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayState;
 import com.pulumi.gcp.beyondcorp.outputs.SecurityGatewayHub;
+import com.pulumi.gcp.beyondcorp.outputs.SecurityGatewayProxyProtocolConfig;
+import com.pulumi.gcp.beyondcorp.outputs.SecurityGatewayServiceDiscovery;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -51,6 +53,77 @@ import javax.annotation.Nullable;
  *             .displayName("My Security Gateway resource")
  *             .hubs(SecurityGatewayHubArgs.builder()
  *                 .region("us-central1")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Beyondcorp Security Gateway Spa
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.beyondcorp.SecurityGateway;
+ * import com.pulumi.gcp.beyondcorp.SecurityGatewayArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayProxyProtocolConfigArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayProxyProtocolConfigContextualHeadersArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayServiceDiscoveryArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayServiceDiscoveryApiGatewayArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example_spa = new SecurityGateway("example-spa", SecurityGatewayArgs.builder()
+ *             .securityGatewayId("default-spa")
+ *             .displayName("My SPA Security Gateway resource")
+ *             .proxyProtocolConfig(SecurityGatewayProxyProtocolConfigArgs.builder()
+ *                 .allowedClientHeaders(                
+ *                     "header1",
+ *                     "header2")
+ *                 .contextualHeaders(SecurityGatewayProxyProtocolConfigContextualHeadersArgs.builder()
+ *                     .userInfo(SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs.builder()
+ *                         .outputType("PROTOBUF")
+ *                         .build())
+ *                     .groupInfo(SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs.builder()
+ *                         .outputType("JSON")
+ *                         .build())
+ *                     .deviceInfo(SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs.builder()
+ *                         .outputType("NONE")
+ *                         .build())
+ *                     .outputType("NONE")
+ *                     .build())
+ *                 .metadataHeaders(Map.ofEntries(
+ *                     Map.entry("metadata-header1", "value1"),
+ *                     Map.entry("metadata-header2", "value2")
+ *                 ))
+ *                 .gatewayIdentity("RESOURCE_NAME")
+ *                 .clientIp(true)
+ *                 .build())
+ *             .serviceDiscovery(SecurityGatewayServiceDiscoveryArgs.builder()
+ *                 .apiGateway(SecurityGatewayServiceDiscoveryApiGatewayArgs.builder()
+ *                     .resourceOverride(SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs.builder()
+ *                         .path("/api/v1/routes")
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -219,6 +292,22 @@ public class SecurityGateway extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * Shared proxy configuration for all apps.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="proxyProtocolConfig", refs={SecurityGatewayProxyProtocolConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SecurityGatewayProxyProtocolConfig> proxyProtocolConfig;
+
+    /**
+     * @return Shared proxy configuration for all apps.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SecurityGatewayProxyProtocolConfig>> proxyProtocolConfig() {
+        return Codegen.optional(this.proxyProtocolConfig);
+    }
+    /**
      * Optional. User-settable SecurityGateway resource ID.
      * * Must start with a letter.
      * * Must contain between 4-63 characters from `/a-z-/`.
@@ -237,6 +326,22 @@ public class SecurityGateway extends com.pulumi.resources.CustomResource {
      */
     public Output<String> securityGatewayId() {
         return this.securityGatewayId;
+    }
+    /**
+     * Settings related to the Service Discovery.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="serviceDiscovery", refs={SecurityGatewayServiceDiscovery.class}, tree="[0]")
+    private Output</* @Nullable */ SecurityGatewayServiceDiscovery> serviceDiscovery;
+
+    /**
+     * @return Settings related to the Service Discovery.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SecurityGatewayServiceDiscovery>> serviceDiscovery() {
+        return Codegen.optional(this.serviceDiscovery);
     }
     /**
      * Output only. The operational state of the SecurityGateway.
