@@ -81,6 +81,68 @@ namespace Pulumi.Gcp.Monitoring
     /// ```
     /// ### Uptime Check Config Http Password Wo
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var http = new Gcp.Monitoring.UptimeCheckConfig("http", new()
+    ///     {
+    ///         DisplayName = "http-uptime-check",
+    ///         Timeout = "60s",
+    ///         UserLabels = 
+    ///         {
+    ///             { "example-key", "example-value" },
+    ///         },
+    ///         HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
+    ///         {
+    ///             Path = "some-path",
+    ///             Port = 8010,
+    ///             RequestMethod = "POST",
+    ///             ContentType = "USER_PROVIDED",
+    ///             CustomContentType = "application/json",
+    ///             Body = "Zm9vJTI1M0RiYXI=",
+    ///             PingConfig = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckPingConfigArgs
+    ///             {
+    ///                 PingsCount = 1,
+    ///             },
+    ///             AuthInfo = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckAuthInfoArgs
+    ///             {
+    ///                 Username = "name",
+    ///                 PasswordWo = "password1",
+    ///                 PasswordWoVersion = "1",
+    ///             },
+    ///         },
+    ///         MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
+    ///         {
+    ///             Type = "uptime_url",
+    ///             Labels = 
+    ///             {
+    ///                 { "project_id", "my-project-name" },
+    ///                 { "host", "192.168.1.1" },
+    ///             },
+    ///         },
+    ///         ContentMatchers = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
+    ///             {
+    ///                 Content = "\"example\"",
+    ///                 Matcher = "MATCHES_JSON_PATH",
+    ///                 JsonPathMatcher = new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs
+    ///                 {
+    ///                     JsonPath = "$.path",
+    ///                     JsonMatcher = "EXACT_MATCH",
+    ///                 },
+    ///             },
+    ///         },
+    ///         CheckerType = "STATIC_IP_CHECKERS",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Uptime Check Config Status Code
     /// 
     /// ```csharp

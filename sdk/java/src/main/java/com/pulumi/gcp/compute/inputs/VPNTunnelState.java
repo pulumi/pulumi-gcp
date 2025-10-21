@@ -400,6 +400,27 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Shared secret used to set the secure session between the Cloud VPN
+     * gateway and the peer VPN gateway.
+     *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    @Import(name="sharedSecretWo")
+    private @Nullable Output<String> sharedSecretWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Shared secret used to set the secure session between the Cloud VPN
+     * gateway and the peer VPN gateway.
+     *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    public Optional<Output<String>> sharedSecretWo() {
+        return Optional.ofNullable(this.sharedSecretWo);
+    }
+
+    /**
      * Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      * 
      */
@@ -505,6 +526,7 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
         this.selfLink = $.selfLink;
         this.sharedSecret = $.sharedSecret;
         this.sharedSecretHash = $.sharedSecretHash;
+        this.sharedSecretWo = $.sharedSecretWo;
         this.sharedSecretWoVersion = $.sharedSecretWoVersion;
         this.targetVpnGateway = $.targetVpnGateway;
         this.tunnelId = $.tunnelId;
@@ -1066,6 +1088,33 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sharedSecretHash(String sharedSecretHash) {
             return sharedSecretHash(Output.of(sharedSecretHash));
+        }
+
+        /**
+         * @param sharedSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Shared secret used to set the secure session between the Cloud VPN
+         * gateway and the peer VPN gateway.
+         *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharedSecretWo(@Nullable Output<String> sharedSecretWo) {
+            $.sharedSecretWo = sharedSecretWo;
+            return this;
+        }
+
+        /**
+         * @param sharedSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Shared secret used to set the secure session between the Cloud VPN
+         * gateway and the peer VPN gateway.
+         *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharedSecretWo(String sharedSecretWo) {
+            return sharedSecretWo(Output.of(sharedSecretWo));
         }
 
         /**

@@ -1414,6 +1414,11 @@ if not MYPY:
         """
         The Secret Access Key of the AWS account transferring data from.
         """
+        secret_access_key_wo: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The Secret Access Key of the AWS account transferring data from.
+        """
         secret_access_key_wo_version: NotRequired[pulumi.Input[_builtins.int]]
         """
         The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
@@ -1425,13 +1430,18 @@ elif False:
 class DataTransferConfigSensitiveParamsArgs:
     def __init__(__self__, *,
                  secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret_access_key_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_access_key_wo_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] secret_access_key: The Secret Access Key of the AWS account transferring data from.
+        :param pulumi.Input[_builtins.str] secret_access_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The Secret Access Key of the AWS account transferring data from.
         :param pulumi.Input[_builtins.int] secret_access_key_wo_version: The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         """
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
+        if secret_access_key_wo is not None:
+            pulumi.set(__self__, "secret_access_key_wo", secret_access_key_wo)
         if secret_access_key_wo_version is not None:
             pulumi.set(__self__, "secret_access_key_wo_version", secret_access_key_wo_version)
 
@@ -1446,6 +1456,19 @@ class DataTransferConfigSensitiveParamsArgs:
     @secret_access_key.setter
     def secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "secret_access_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretAccessKeyWo")
+    def secret_access_key_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The Secret Access Key of the AWS account transferring data from.
+        """
+        return pulumi.get(self, "secret_access_key_wo")
+
+    @secret_access_key_wo.setter
+    def secret_access_key_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_access_key_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKeyWoVersion")

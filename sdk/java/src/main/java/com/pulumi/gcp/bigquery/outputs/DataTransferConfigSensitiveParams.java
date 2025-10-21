@@ -18,6 +18,12 @@ public final class DataTransferConfigSensitiveParams {
      */
     private @Nullable String secretAccessKey;
     /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The Secret Access Key of the AWS account transferring data from.
+     * 
+     */
+    private @Nullable String secretAccessKeyWo;
+    /**
      * @return The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      * 
      */
@@ -30,6 +36,14 @@ public final class DataTransferConfigSensitiveParams {
      */
     public Optional<String> secretAccessKey() {
         return Optional.ofNullable(this.secretAccessKey);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The Secret Access Key of the AWS account transferring data from.
+     * 
+     */
+    public Optional<String> secretAccessKeyWo() {
+        return Optional.ofNullable(this.secretAccessKeyWo);
     }
     /**
      * @return The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
@@ -49,11 +63,13 @@ public final class DataTransferConfigSensitiveParams {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String secretAccessKey;
+        private @Nullable String secretAccessKeyWo;
         private @Nullable Integer secretAccessKeyWoVersion;
         public Builder() {}
         public Builder(DataTransferConfigSensitiveParams defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.secretAccessKey = defaults.secretAccessKey;
+    	      this.secretAccessKeyWo = defaults.secretAccessKeyWo;
     	      this.secretAccessKeyWoVersion = defaults.secretAccessKeyWoVersion;
         }
 
@@ -61,6 +77,12 @@ public final class DataTransferConfigSensitiveParams {
         public Builder secretAccessKey(@Nullable String secretAccessKey) {
 
             this.secretAccessKey = secretAccessKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder secretAccessKeyWo(@Nullable String secretAccessKeyWo) {
+
+            this.secretAccessKeyWo = secretAccessKeyWo;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +94,7 @@ public final class DataTransferConfigSensitiveParams {
         public DataTransferConfigSensitiveParams build() {
             final var _resultValue = new DataTransferConfigSensitiveParams();
             _resultValue.secretAccessKey = secretAccessKey;
+            _resultValue.secretAccessKeyWo = secretAccessKeyWo;
             _resultValue.secretAccessKeyWoVersion = secretAccessKeyWoVersion;
             return _resultValue;
         }

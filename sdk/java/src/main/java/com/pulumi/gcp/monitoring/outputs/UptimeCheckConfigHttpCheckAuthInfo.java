@@ -18,6 +18,12 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
      */
     private @Nullable String password;
     /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password to authenticate.
+     * 
+     */
+    private @Nullable String passwordWo;
+    /**
      * @return The password write-only version.
      * 
      */
@@ -35,6 +41,14 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password to authenticate.
+     * 
+     */
+    public Optional<String> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
     }
     /**
      * @return The password write-only version.
@@ -61,12 +75,14 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String password;
+        private @Nullable String passwordWo;
         private @Nullable String passwordWoVersion;
         private String username;
         public Builder() {}
         public Builder(UptimeCheckConfigHttpCheckAuthInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
+    	      this.passwordWo = defaults.passwordWo;
     	      this.passwordWoVersion = defaults.passwordWoVersion;
     	      this.username = defaults.username;
         }
@@ -75,6 +91,12 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
         public Builder password(@Nullable String password) {
 
             this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordWo(@Nullable String passwordWo) {
+
+            this.passwordWo = passwordWo;
             return this;
         }
         @CustomType.Setter
@@ -94,6 +116,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
         public UptimeCheckConfigHttpCheckAuthInfo build() {
             final var _resultValue = new UptimeCheckConfigHttpCheckAuthInfo();
             _resultValue.password = password;
+            _resultValue.passwordWo = passwordWo;
             _resultValue.passwordWoVersion = passwordWoVersion;
             _resultValue.username = username;
             return _resultValue;

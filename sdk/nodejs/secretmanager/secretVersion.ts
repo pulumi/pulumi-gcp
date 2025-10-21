@@ -40,6 +40,25 @@ import * as utilities from "../utilities";
  * ```
  * ### Secret Version Basic Write Only
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic_write_only = new gcp.secretmanager.Secret("secret-basic-write-only", {
+ *     secretId: "secret-version-write-only",
+ *     labels: {
+ *         label: "my-label",
+ *     },
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const secret_version_basic_write_only = new gcp.secretmanager.SecretVersion("secret-version-basic-write-only", {
+ *     secret: secret_basic_write_only.id,
+ *     secretDataWoVersion: 1,
+ *     secretDataWo: "secret-data-write-only",
+ * });
+ * ```
  * ### Secret Version Deletion Policy Abandon
  *
  * ```typescript
@@ -110,6 +129,31 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ### Secret Version With Base64 String Secret Data Write Only
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret-version-base64-write-only",
+ *     replication: {
+ *         userManaged: {
+ *             replicas: [{
+ *                 location: "us-central1",
+ *             }],
+ *         },
+ *     },
+ * });
+ * const secret_version_base64_write_only = new gcp.secretmanager.SecretVersion("secret-version-base64-write-only", {
+ *     secret: secret_basic.id,
+ *     isSecretDataBase64: true,
+ *     secretDataWoVersion: 1,
+ *     secretDataWo: std.filebase64({
+ *         input: "secret-data-base64-write-only.pfx",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
  *
  * ## Ephemeral Attributes Reference
  *
@@ -207,6 +251,11 @@ export class SecretVersion extends pulumi.CustomResource {
      */
     declare public readonly secretData: pulumi.Output<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     */
+    declare public readonly secretDataWo: pulumi.Output<string | undefined>;
+    /**
      * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      */
     declare public readonly secretDataWoVersion: pulumi.Output<number | undefined>;
@@ -236,6 +285,7 @@ export class SecretVersion extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["secret"] = state?.secret;
             resourceInputs["secretData"] = state?.secretData;
+            resourceInputs["secretDataWo"] = state?.secretDataWo;
             resourceInputs["secretDataWoVersion"] = state?.secretDataWoVersion;
             resourceInputs["version"] = state?.version;
         } else {
@@ -248,6 +298,7 @@ export class SecretVersion extends pulumi.CustomResource {
             resourceInputs["isSecretDataBase64"] = args?.isSecretDataBase64;
             resourceInputs["secret"] = args?.secret;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
+            resourceInputs["secretDataWo"] = args?.secretDataWo ? pulumi.secret(args.secretDataWo) : undefined;
             resourceInputs["secretDataWoVersion"] = args?.secretDataWoVersion;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destroyTime"] = undefined /*out*/;
@@ -255,7 +306,7 @@ export class SecretVersion extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["secretData"] };
+        const secretOpts = { additionalSecretOutputs: ["secretData", "secretDataWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(SecretVersion.__pulumiType, name, resourceInputs, opts);
     }
@@ -305,6 +356,11 @@ export interface SecretVersionState {
      */
     secretData?: pulumi.Input<string>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     */
+    secretDataWo?: pulumi.Input<string>;
+    /**
      * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      */
     secretDataWoVersion?: pulumi.Input<number>;
@@ -344,6 +400,11 @@ export interface SecretVersionArgs {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     secretData?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     */
+    secretDataWo?: pulumi.Input<string>;
     /**
      * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      */

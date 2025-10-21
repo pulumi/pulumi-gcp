@@ -28,6 +28,23 @@ namespace Pulumi.Gcp.BigQuery.Inputs
             }
         }
 
+        [Input("secretAccessKeyWo")]
+        private Input<string>? _secretAccessKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The Secret Access Key of the AWS account transferring data from.
+        /// </summary>
+        public Input<string>? SecretAccessKeyWo
+        {
+            get => _secretAccessKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretAccessKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         /// </summary>

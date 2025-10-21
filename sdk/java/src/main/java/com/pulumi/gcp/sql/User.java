@@ -335,6 +335,24 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.passwordPolicy);
     }
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * 
+     */
+    @Export(name="passwordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * 
+     */
+    public Output<Optional<String>> passwordWo() {
+        return Codegen.optional(this.passwordWo);
+    }
+    /**
      * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      * 
      * ***
@@ -439,7 +457,8 @@ public class User extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "password"
+                "password",
+                "passwordWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
