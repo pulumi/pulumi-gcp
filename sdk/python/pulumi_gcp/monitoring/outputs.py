@@ -4584,7 +4584,9 @@ class UptimeCheckConfigHttpCheckAuthInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "passwordWoVersion":
+        if key == "passwordWo":
+            suggest = "password_wo"
+        elif key == "passwordWoVersion":
             suggest = "password_wo_version"
 
         if suggest:
@@ -4601,15 +4603,20 @@ class UptimeCheckConfigHttpCheckAuthInfo(dict):
     def __init__(__self__, *,
                  username: _builtins.str,
                  password: Optional[_builtins.str] = None,
+                 password_wo: Optional[_builtins.str] = None,
                  password_wo_version: Optional[_builtins.str] = None):
         """
         :param _builtins.str username: The username to authenticate.
         :param _builtins.str password: The password to authenticate.
+        :param _builtins.str password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The password to authenticate.
         :param _builtins.str password_wo_version: The password write-only version.
         """
         pulumi.set(__self__, "username", username)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
         if password_wo_version is not None:
             pulumi.set(__self__, "password_wo_version", password_wo_version)
 
@@ -4628,6 +4635,15 @@ class UptimeCheckConfigHttpCheckAuthInfo(dict):
         The password to authenticate.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The password to authenticate.
+        """
+        return pulumi.get(self, "password_wo")
 
     @_builtins.property
     @pulumi.getter(name="passwordWoVersion")

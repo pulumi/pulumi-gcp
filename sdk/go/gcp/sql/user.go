@@ -250,6 +250,10 @@ type User struct {
 	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
 	Password       pulumi.StringPtrOutput      `pulumi:"password"`
 	PasswordPolicy UserPasswordPolicyPtrOutput `pulumi:"passwordPolicy"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+	// 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
 	// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
 	//
 	// ***
@@ -280,8 +284,12 @@ func NewUser(ctx *pulumi.Context,
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
+	if args.PasswordWo != nil {
+		args.PasswordWo = pulumi.ToSecret(args.PasswordWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"password",
+		"passwordWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -329,6 +337,10 @@ type userState struct {
 	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
 	Password       *string             `pulumi:"password"`
 	PasswordPolicy *UserPasswordPolicy `pulumi:"passwordPolicy"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+	// 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+	PasswordWo *string `pulumi:"passwordWo"`
 	// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
 	//
 	// ***
@@ -369,6 +381,10 @@ type UserState struct {
 	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
 	Password       pulumi.StringPtrInput
 	PasswordPolicy UserPasswordPolicyPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+	// 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+	PasswordWo pulumi.StringPtrInput
 	// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
 	//
 	// ***
@@ -413,6 +429,10 @@ type userArgs struct {
 	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
 	Password       *string             `pulumi:"password"`
 	PasswordPolicy *UserPasswordPolicy `pulumi:"passwordPolicy"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+	// 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+	PasswordWo *string `pulumi:"passwordWo"`
 	// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
 	//
 	// ***
@@ -453,6 +473,10 @@ type UserArgs struct {
 	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
 	Password       pulumi.StringPtrInput
 	PasswordPolicy UserPasswordPolicyPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+	// 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+	PasswordWo pulumi.StringPtrInput
 	// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
 	//
 	// ***
@@ -594,6 +618,14 @@ func (o UserOutput) Password() pulumi.StringPtrOutput {
 
 func (o UserOutput) PasswordPolicy() UserPasswordPolicyPtrOutput {
 	return o.ApplyT(func(v *User) UserPasswordPolicyPtrOutput { return v.PasswordPolicy }).(UserPasswordPolicyPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+//
+//	either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+func (o UserOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
 
 // The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).

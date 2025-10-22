@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string? Password;
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The password to authenticate.
+        /// </summary>
+        public readonly string? PasswordWo;
+        /// <summary>
         /// The password write-only version.
         /// </summary>
         public readonly string? PasswordWoVersion;
@@ -30,11 +35,14 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         private UptimeCheckConfigHttpCheckAuthInfo(
             string? password,
 
+            string? passwordWo,
+
             string? passwordWoVersion,
 
             string username)
         {
             Password = password;
+            PasswordWo = passwordWo;
             PasswordWoVersion = passwordWoVersion;
             Username = username;
         }

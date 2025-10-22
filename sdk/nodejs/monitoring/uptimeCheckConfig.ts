@@ -61,6 +61,50 @@ import * as utilities from "../utilities";
  * ```
  * ### Uptime Check Config Http Password Wo
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const http = new gcp.monitoring.UptimeCheckConfig("http", {
+ *     displayName: "http-uptime-check",
+ *     timeout: "60s",
+ *     userLabels: {
+ *         "example-key": "example-value",
+ *     },
+ *     httpCheck: {
+ *         path: "some-path",
+ *         port: 8010,
+ *         requestMethod: "POST",
+ *         contentType: "USER_PROVIDED",
+ *         customContentType: "application/json",
+ *         body: "Zm9vJTI1M0RiYXI=",
+ *         pingConfig: {
+ *             pingsCount: 1,
+ *         },
+ *         authInfo: {
+ *             username: "name",
+ *             passwordWo: "password1",
+ *             passwordWoVersion: "1",
+ *         },
+ *     },
+ *     monitoredResource: {
+ *         type: "uptime_url",
+ *         labels: {
+ *             project_id: "my-project-name",
+ *             host: "192.168.1.1",
+ *         },
+ *     },
+ *     contentMatchers: [{
+ *         content: "\"example\"",
+ *         matcher: "MATCHES_JSON_PATH",
+ *         jsonPathMatcher: {
+ *             jsonPath: "$.path",
+ *             jsonMatcher: "EXACT_MATCH",
+ *         },
+ *     }],
+ *     checkerType: "STATIC_IP_CHECKERS",
+ * });
+ * ```
  * ### Uptime Check Config Status Code
  *
  * ```typescript

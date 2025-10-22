@@ -83,6 +83,67 @@ import (
 // ```
 // ### Uptime Check Config Http Password Wo
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := monitoring.NewUptimeCheckConfig(ctx, "http", &monitoring.UptimeCheckConfigArgs{
+//				DisplayName: pulumi.String("http-uptime-check"),
+//				Timeout:     pulumi.String("60s"),
+//				UserLabels: pulumi.StringMap{
+//					"example-key": pulumi.String("example-value"),
+//				},
+//				HttpCheck: &monitoring.UptimeCheckConfigHttpCheckArgs{
+//					Path:              pulumi.String("some-path"),
+//					Port:              pulumi.Int(8010),
+//					RequestMethod:     pulumi.String("POST"),
+//					ContentType:       pulumi.String("USER_PROVIDED"),
+//					CustomContentType: pulumi.String("application/json"),
+//					Body:              pulumi.String("Zm9vJTI1M0RiYXI="),
+//					PingConfig: &monitoring.UptimeCheckConfigHttpCheckPingConfigArgs{
+//						PingsCount: pulumi.Int(1),
+//					},
+//					AuthInfo: &monitoring.UptimeCheckConfigHttpCheckAuthInfoArgs{
+//						Username:          pulumi.String("name"),
+//						PasswordWo:        pulumi.String("password1"),
+//						PasswordWoVersion: pulumi.String("1"),
+//					},
+//				},
+//				MonitoredResource: &monitoring.UptimeCheckConfigMonitoredResourceArgs{
+//					Type: pulumi.String("uptime_url"),
+//					Labels: pulumi.StringMap{
+//						"project_id": pulumi.String("my-project-name"),
+//						"host":       pulumi.String("192.168.1.1"),
+//					},
+//				},
+//				ContentMatchers: monitoring.UptimeCheckConfigContentMatcherArray{
+//					&monitoring.UptimeCheckConfigContentMatcherArgs{
+//						Content: pulumi.String("\"example\""),
+//						Matcher: pulumi.String("MATCHES_JSON_PATH"),
+//						JsonPathMatcher: &monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs{
+//							JsonPath:    pulumi.String("$.path"),
+//							JsonMatcher: pulumi.String("EXACT_MATCH"),
+//						},
+//					},
+//				},
+//				CheckerType: pulumi.String("STATIC_IP_CHECKERS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Uptime Check Config Status Code
 //
 // ```go

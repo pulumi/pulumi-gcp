@@ -3203,6 +3203,9 @@ func (o DataTransferConfigScheduleOptionsPtrOutput) StartTime() pulumi.StringPtr
 type DataTransferConfigSensitiveParams struct {
 	// The Secret Access Key of the AWS account transferring data from.
 	SecretAccessKey *string `pulumi:"secretAccessKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The Secret Access Key of the AWS account transferring data from.
+	SecretAccessKeyWo *string `pulumi:"secretAccessKeyWo"`
 	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
 	SecretAccessKeyWoVersion *int `pulumi:"secretAccessKeyWoVersion"`
 }
@@ -3221,6 +3224,9 @@ type DataTransferConfigSensitiveParamsInput interface {
 type DataTransferConfigSensitiveParamsArgs struct {
 	// The Secret Access Key of the AWS account transferring data from.
 	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The Secret Access Key of the AWS account transferring data from.
+	SecretAccessKeyWo pulumi.StringPtrInput `pulumi:"secretAccessKeyWo"`
 	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
 	SecretAccessKeyWoVersion pulumi.IntPtrInput `pulumi:"secretAccessKeyWoVersion"`
 }
@@ -3307,6 +3313,12 @@ func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKey() pulumi.String
 	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The Secret Access Key of the AWS account transferring data from.
+func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *string { return v.SecretAccessKeyWo }).(pulumi.StringPtrOutput)
+}
+
 // The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
 func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKeyWoVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *int { return v.SecretAccessKeyWoVersion }).(pulumi.IntPtrOutput)
@@ -3343,6 +3355,17 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKey() pulumi.Str
 			return nil
 		}
 		return v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The Secret Access Key of the AWS account transferring data from.
+func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKeyWo
 	}).(pulumi.StringPtrOutput)
 }
 
