@@ -103,6 +103,76 @@ import javax.annotation.Nullable;
  * </pre>
  * ### Uptime Check Config Http Password Wo
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.UptimeCheckConfig;
+ * import com.pulumi.gcp.monitoring.UptimeCheckConfigArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckPingConfigArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckAuthInfoArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var http = new UptimeCheckConfig("http", UptimeCheckConfigArgs.builder()
+ *             .displayName("http-uptime-check")
+ *             .timeout("60s")
+ *             .userLabels(Map.of("example-key", "example-value"))
+ *             .httpCheck(UptimeCheckConfigHttpCheckArgs.builder()
+ *                 .path("some-path")
+ *                 .port(8010)
+ *                 .requestMethod("POST")
+ *                 .contentType("USER_PROVIDED")
+ *                 .customContentType("application/json")
+ *                 .body("Zm9vJTI1M0RiYXI=")
+ *                 .pingConfig(UptimeCheckConfigHttpCheckPingConfigArgs.builder()
+ *                     .pingsCount(1)
+ *                     .build())
+ *                 .authInfo(UptimeCheckConfigHttpCheckAuthInfoArgs.builder()
+ *                     .username("name")
+ *                     .passwordWo("password1")
+ *                     .passwordWoVersion("1")
+ *                     .build())
+ *                 .build())
+ *             .monitoredResource(UptimeCheckConfigMonitoredResourceArgs.builder()
+ *                 .type("uptime_url")
+ *                 .labels(Map.ofEntries(
+ *                     Map.entry("project_id", "my-project-name"),
+ *                     Map.entry("host", "192.168.1.1")
+ *                 ))
+ *                 .build())
+ *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
+ *                 .content("\"example\"")
+ *                 .matcher("MATCHES_JSON_PATH")
+ *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
+ *                     .jsonPath("$.path")
+ *                     .jsonMatcher("EXACT_MATCH")
+ *                     .build())
+ *                 .build())
+ *             .checkerType("STATIC_IP_CHECKERS")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Uptime Check Config Status Code
  * 
  * <pre>

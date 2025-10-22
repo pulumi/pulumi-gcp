@@ -233,6 +233,14 @@ namespace Pulumi.Gcp.Sql
         public Output<Outputs.UserPasswordPolicy?> PasswordPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+        /// 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+        /// </summary>
+        [Output("passwordWo")]
+        public Output<string?> PasswordWo { get; private set; } = null!;
+
+        /// <summary>
         /// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
         /// 
         /// - - -
@@ -287,6 +295,7 @@ namespace Pulumi.Gcp.Sql
                 AdditionalSecretOutputs =
                 {
                     "password",
+                    "passwordWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -364,6 +373,24 @@ namespace Pulumi.Gcp.Sql
 
         [Input("passwordPolicy")]
         public Input<Inputs.UserPasswordPolicyArgs>? PasswordPolicy { get; set; }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+        /// 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
@@ -452,6 +479,24 @@ namespace Pulumi.Gcp.Sql
 
         [Input("passwordPolicy")]
         public Input<Inputs.UserPasswordPolicyGetArgs>? PasswordPolicy { get; set; }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+        /// 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).

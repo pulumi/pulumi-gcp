@@ -11716,6 +11716,9 @@ func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput) Index(i
 type UptimeCheckConfigHttpCheckAuthInfo struct {
 	// The password to authenticate.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password to authenticate.
+	PasswordWo *string `pulumi:"passwordWo"`
 	// The password write-only version.
 	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The username to authenticate.
@@ -11736,6 +11739,9 @@ type UptimeCheckConfigHttpCheckAuthInfoInput interface {
 type UptimeCheckConfigHttpCheckAuthInfoArgs struct {
 	// The password to authenticate.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password to authenticate.
+	PasswordWo pulumi.StringPtrInput `pulumi:"passwordWo"`
 	// The password write-only version.
 	PasswordWoVersion pulumi.StringPtrInput `pulumi:"passwordWoVersion"`
 	// The username to authenticate.
@@ -11824,6 +11830,12 @@ func (o UptimeCheckConfigHttpCheckAuthInfoOutput) Password() pulumi.StringPtrOut
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The password to authenticate.
+func (o UptimeCheckConfigHttpCheckAuthInfoOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) *string { return v.PasswordWo }).(pulumi.StringPtrOutput)
+}
+
 // The password write-only version.
 func (o UptimeCheckConfigHttpCheckAuthInfoOutput) PasswordWoVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) *string { return v.PasswordWoVersion }).(pulumi.StringPtrOutput)
@@ -11865,6 +11877,17 @@ func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Password() pulumi.StringPtr
 			return nil
 		}
 		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The password to authenticate.
+func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordWo
 	}).(pulumi.StringPtrOutput)
 }
 

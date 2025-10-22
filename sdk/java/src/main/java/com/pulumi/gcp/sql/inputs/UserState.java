@@ -124,6 +124,25 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * 
+     */
+    @Import(name="passwordWo")
+    private @Nullable Output<String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * 
+     */
+    public Optional<Output<String>> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+
+    /**
      * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      * 
      * ***
@@ -200,6 +219,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.password = $.password;
         this.passwordPolicy = $.passwordPolicy;
+        this.passwordWo = $.passwordWo;
         this.passwordWoVersion = $.passwordWoVersion;
         this.project = $.project;
         this.sqlServerUserDetails = $.sqlServerUserDetails;
@@ -358,6 +378,31 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         public Builder passwordPolicy(UserPasswordPolicyArgs passwordPolicy) {
             return passwordPolicy(Output.of(passwordPolicy));
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+         * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(@Nullable Output<String> passwordWo) {
+            $.passwordWo = passwordWo;
+            return this;
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+         * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(String passwordWo) {
+            return passwordWo(Output.of(passwordWo));
         }
 
         /**

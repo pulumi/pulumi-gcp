@@ -190,6 +190,12 @@ export class User extends pulumi.CustomResource {
     declare public readonly password: pulumi.Output<string | undefined>;
     declare public readonly passwordPolicy: pulumi.Output<outputs.sql.UserPasswordPolicy | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     */
+    declare public readonly passwordWo: pulumi.Output<string | undefined>;
+    /**
      * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      *
      * - - -
@@ -230,6 +236,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["password"] = state?.password;
             resourceInputs["passwordPolicy"] = state?.passwordPolicy;
+            resourceInputs["passwordWo"] = state?.passwordWo;
             resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["project"] = state?.project;
             resourceInputs["sqlServerUserDetails"] = state?.sqlServerUserDetails;
@@ -245,13 +252,14 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["passwordPolicy"] = args?.passwordPolicy;
+            resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
             resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["project"] = args?.project;
             resourceInputs["type"] = args?.type;
             resourceInputs["sqlServerUserDetails"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password"] };
+        const secretOpts = { additionalSecretOutputs: ["password", "passwordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
@@ -293,6 +301,12 @@ export interface UserState {
      */
     password?: pulumi.Input<string>;
     passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     */
+    passwordWo?: pulumi.Input<string>;
     /**
      * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      *
@@ -352,6 +366,12 @@ export interface UserArgs {
      */
     password?: pulumi.Input<string>;
     passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     */
+    passwordWo?: pulumi.Input<string>;
     /**
      * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      *

@@ -32,6 +32,23 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The Secret Access Key of the AWS account transferring data from.
+     * 
+     */
+    @Import(name="secretAccessKeyWo")
+    private @Nullable Output<String> secretAccessKeyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The Secret Access Key of the AWS account transferring data from.
+     * 
+     */
+    public Optional<Output<String>> secretAccessKeyWo() {
+        return Optional.ofNullable(this.secretAccessKeyWo);
+    }
+
+    /**
      * The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      * 
      */
@@ -50,6 +67,7 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
 
     private DataTransferConfigSensitiveParamsArgs(DataTransferConfigSensitiveParamsArgs $) {
         this.secretAccessKey = $.secretAccessKey;
+        this.secretAccessKeyWo = $.secretAccessKeyWo;
         this.secretAccessKeyWoVersion = $.secretAccessKeyWoVersion;
     }
 
@@ -90,6 +108,29 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
          */
         public Builder secretAccessKey(String secretAccessKey) {
             return secretAccessKey(Output.of(secretAccessKey));
+        }
+
+        /**
+         * @param secretAccessKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The Secret Access Key of the AWS account transferring data from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretAccessKeyWo(@Nullable Output<String> secretAccessKeyWo) {
+            $.secretAccessKeyWo = secretAccessKeyWo;
+            return this;
+        }
+
+        /**
+         * @param secretAccessKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The Secret Access Key of the AWS account transferring data from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretAccessKeyWo(String secretAccessKeyWo) {
+            return secretAccessKeyWo(Output.of(secretAccessKeyWo));
         }
 
         /**

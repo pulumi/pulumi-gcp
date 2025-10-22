@@ -328,6 +328,13 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly sharedSecretHash: pulumi.Output<string>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Shared secret used to set the secure session between the Cloud VPN
+     * gateway and the peer VPN gateway.
+     *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     */
+    declare public readonly sharedSecretWo: pulumi.Output<string | undefined>;
+    /**
      * Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      */
     declare public readonly sharedSecretWoVersion: pulumi.Output<string | undefined>;
@@ -386,6 +393,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["sharedSecret"] = state?.sharedSecret;
             resourceInputs["sharedSecretHash"] = state?.sharedSecretHash;
+            resourceInputs["sharedSecretWo"] = state?.sharedSecretWo;
             resourceInputs["sharedSecretWoVersion"] = state?.sharedSecretWoVersion;
             resourceInputs["targetVpnGateway"] = state?.targetVpnGateway;
             resourceInputs["tunnelId"] = state?.tunnelId;
@@ -408,6 +416,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["remoteTrafficSelectors"] = args?.remoteTrafficSelectors;
             resourceInputs["router"] = args?.router;
             resourceInputs["sharedSecret"] = args?.sharedSecret ? pulumi.secret(args.sharedSecret) : undefined;
+            resourceInputs["sharedSecretWo"] = args?.sharedSecretWo ? pulumi.secret(args.sharedSecretWo) : undefined;
             resourceInputs["sharedSecretWoVersion"] = args?.sharedSecretWoVersion;
             resourceInputs["targetVpnGateway"] = args?.targetVpnGateway;
             resourceInputs["vpnGateway"] = args?.vpnGateway;
@@ -422,7 +431,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["tunnelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels", "sharedSecret"] };
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels", "sharedSecret", "sharedSecretWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(VPNTunnel.__pulumiType, name, resourceInputs, opts);
     }
@@ -546,6 +555,13 @@ export interface VPNTunnelState {
      */
     sharedSecretHash?: pulumi.Input<string>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Shared secret used to set the secure session between the Cloud VPN
+     * gateway and the peer VPN gateway.
+     *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     */
+    sharedSecretWo?: pulumi.Input<string>;
+    /**
      * Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      */
     sharedSecretWoVersion?: pulumi.Input<string>;
@@ -657,6 +673,13 @@ export interface VPNTunnelArgs {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     sharedSecret?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Shared secret used to set the secure session between the Cloud VPN
+     * gateway and the peer VPN gateway.
+     *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     */
+    sharedSecretWo?: pulumi.Input<string>;
     /**
      * Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      */

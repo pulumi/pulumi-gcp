@@ -36,6 +36,7 @@ class VPNTunnelArgs:
                  remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  router: Optional[pulumi.Input[_builtins.str]] = None,
                  shared_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 shared_secret_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  shared_secret_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  target_vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
@@ -80,6 +81,10 @@ class VPNTunnelArgs:
         :param pulumi.Input[_builtins.str] shared_secret: Shared secret used to set the secure session between the Cloud VPN
                gateway and the peer VPN gateway.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] shared_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Shared secret used to set the secure session between the Cloud VPN
+               gateway and the peer VPN gateway.
+                Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[_builtins.str] shared_secret_wo_version: Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[_builtins.str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
@@ -118,6 +123,8 @@ class VPNTunnelArgs:
             pulumi.set(__self__, "router", router)
         if shared_secret is not None:
             pulumi.set(__self__, "shared_secret", shared_secret)
+        if shared_secret_wo is not None:
+            pulumi.set(__self__, "shared_secret_wo", shared_secret_wo)
         if shared_secret_wo_version is not None:
             pulumi.set(__self__, "shared_secret_wo_version", shared_secret_wo_version)
         if target_vpn_gateway is not None:
@@ -331,6 +338,21 @@ class VPNTunnelArgs:
         pulumi.set(self, "shared_secret", value)
 
     @_builtins.property
+    @pulumi.getter(name="sharedSecretWo")
+    def shared_secret_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Shared secret used to set the secure session between the Cloud VPN
+        gateway and the peer VPN gateway.
+         Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        """
+        return pulumi.get(self, "shared_secret_wo")
+
+    @shared_secret_wo.setter
+    def shared_secret_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "shared_secret_wo", value)
+
+    @_builtins.property
     @pulumi.getter(name="sharedSecretWoVersion")
     def shared_secret_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -407,6 +429,7 @@ class _VPNTunnelState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None,
                  shared_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  shared_secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
+                 shared_secret_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  shared_secret_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  target_vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -461,6 +484,10 @@ class _VPNTunnelState:
                gateway and the peer VPN gateway.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] shared_secret_hash: Hash of the shared secret.
+        :param pulumi.Input[_builtins.str] shared_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Shared secret used to set the secure session between the Cloud VPN
+               gateway and the peer VPN gateway.
+                Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[_builtins.str] shared_secret_wo_version: Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[_builtins.str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
@@ -514,6 +541,8 @@ class _VPNTunnelState:
             pulumi.set(__self__, "shared_secret", shared_secret)
         if shared_secret_hash is not None:
             pulumi.set(__self__, "shared_secret_hash", shared_secret_hash)
+        if shared_secret_wo is not None:
+            pulumi.set(__self__, "shared_secret_wo", shared_secret_wo)
         if shared_secret_wo_version is not None:
             pulumi.set(__self__, "shared_secret_wo_version", shared_secret_wo_version)
         if target_vpn_gateway is not None:
@@ -815,6 +844,21 @@ class _VPNTunnelState:
         pulumi.set(self, "shared_secret_hash", value)
 
     @_builtins.property
+    @pulumi.getter(name="sharedSecretWo")
+    def shared_secret_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Shared secret used to set the secure session between the Cloud VPN
+        gateway and the peer VPN gateway.
+         Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        """
+        return pulumi.get(self, "shared_secret_wo")
+
+    @shared_secret_wo.setter
+    def shared_secret_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "shared_secret_wo", value)
+
+    @_builtins.property
     @pulumi.getter(name="sharedSecretWoVersion")
     def shared_secret_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -899,6 +943,7 @@ class VPNTunnel(pulumi.CustomResource):
                  remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  router: Optional[pulumi.Input[_builtins.str]] = None,
                  shared_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 shared_secret_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  shared_secret_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  target_vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1110,6 +1155,10 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] shared_secret: Shared secret used to set the secure session between the Cloud VPN
                gateway and the peer VPN gateway.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] shared_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Shared secret used to set the secure session between the Cloud VPN
+               gateway and the peer VPN gateway.
+                Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[_builtins.str] shared_secret_wo_version: Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[_builtins.str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
@@ -1320,6 +1369,7 @@ class VPNTunnel(pulumi.CustomResource):
                  remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  router: Optional[pulumi.Input[_builtins.str]] = None,
                  shared_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 shared_secret_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  shared_secret_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  target_vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1348,6 +1398,7 @@ class VPNTunnel(pulumi.CustomResource):
             __props__.__dict__["remote_traffic_selectors"] = remote_traffic_selectors
             __props__.__dict__["router"] = router
             __props__.__dict__["shared_secret"] = None if shared_secret is None else pulumi.Output.secret(shared_secret)
+            __props__.__dict__["shared_secret_wo"] = None if shared_secret_wo is None else pulumi.Output.secret(shared_secret_wo)
             __props__.__dict__["shared_secret_wo_version"] = shared_secret_wo_version
             __props__.__dict__["target_vpn_gateway"] = target_vpn_gateway
             __props__.__dict__["vpn_gateway"] = vpn_gateway
@@ -1360,7 +1411,7 @@ class VPNTunnel(pulumi.CustomResource):
             __props__.__dict__["self_link"] = None
             __props__.__dict__["shared_secret_hash"] = None
             __props__.__dict__["tunnel_id"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels", "sharedSecret"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels", "sharedSecret", "sharedSecretWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(VPNTunnel, __self__).__init__(
             'gcp:compute/vPNTunnel:VPNTunnel',
@@ -1394,6 +1445,7 @@ class VPNTunnel(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[_builtins.str]] = None,
             shared_secret: Optional[pulumi.Input[_builtins.str]] = None,
             shared_secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
+            shared_secret_wo: Optional[pulumi.Input[_builtins.str]] = None,
             shared_secret_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
             target_vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
             tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1453,6 +1505,10 @@ class VPNTunnel(pulumi.CustomResource):
                gateway and the peer VPN gateway.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] shared_secret_hash: Hash of the shared secret.
+        :param pulumi.Input[_builtins.str] shared_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Shared secret used to set the secure session between the Cloud VPN
+               gateway and the peer VPN gateway.
+                Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[_builtins.str] shared_secret_wo_version: Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         :param pulumi.Input[_builtins.str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
@@ -1488,6 +1544,7 @@ class VPNTunnel(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["shared_secret"] = shared_secret
         __props__.__dict__["shared_secret_hash"] = shared_secret_hash
+        __props__.__dict__["shared_secret_wo"] = shared_secret_wo
         __props__.__dict__["shared_secret_wo_version"] = shared_secret_wo_version
         __props__.__dict__["target_vpn_gateway"] = target_vpn_gateway
         __props__.__dict__["tunnel_id"] = tunnel_id
@@ -1695,6 +1752,17 @@ class VPNTunnel(pulumi.CustomResource):
         Hash of the shared secret.
         """
         return pulumi.get(self, "shared_secret_hash")
+
+    @_builtins.property
+    @pulumi.getter(name="sharedSecretWo")
+    def shared_secret_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Shared secret used to set the secure session between the Cloud VPN
+        gateway and the peer VPN gateway.
+         Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        """
+        return pulumi.get(self, "shared_secret_wo")
 
     @_builtins.property
     @pulumi.getter(name="sharedSecretWoVersion")

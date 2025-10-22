@@ -645,6 +645,26 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
         return this.sharedSecretHash;
     }
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Shared secret used to set the secure session between the Cloud VPN
+     * gateway and the peer VPN gateway.
+     *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    @Export(name="sharedSecretWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sharedSecretWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Shared secret used to set the secure session between the Cloud VPN
+     * gateway and the peer VPN gateway.
+     *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    public Output<Optional<String>> sharedSecretWo() {
+        return Codegen.optional(this.sharedSecretWo);
+    }
+    /**
      * Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      * 
      */
@@ -763,7 +783,8 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
             .additionalSecretOutputs(List.of(
                 "effectiveLabels",
                 "pulumiLabels",
-                "sharedSecret"
+                "sharedSecret",
+                "sharedSecretWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
