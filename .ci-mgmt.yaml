@@ -16,22 +16,6 @@ env:
     PULUMI_MISSING_DOCS_ERROR: true
 upstream-provider-repo: terraform-provider-google-beta
 makeTemplate: bridged
-plugins:
-    - name: random
-      version: "4.16.1"
-    - name: kubernetes
-      version: "4.11.0"
-    - name: std
-      version: "1.6.2"
-    - name: tls
-      version: "5.0.2"
-    - name: http
-      version: "0.0.3"
-    - name: time
-      version: "0.0.15"
-    - name: terraform
-      version: "1.0.17"
-      kind: converter
 goBuildParallelism: 2
 # Use `pulumi convert` for translating examples from TF to Pulumi.
 pulumiConvert: 1
