@@ -203,6 +203,8 @@ if typing.TYPE_CHECKING:
     networkservices = __networkservices
     import pulumi_gcp.notebooks as __notebooks
     notebooks = __notebooks
+    import pulumi_gcp.observability as __observability
+    observability = __observability
     import pulumi_gcp.oracledatabase as __oracledatabase
     oracledatabase = __oracledatabase
     import pulumi_gcp.organizations as __organizations
@@ -374,6 +376,7 @@ else:
     networksecurity = _utilities.lazy_import('pulumi_gcp.networksecurity')
     networkservices = _utilities.lazy_import('pulumi_gcp.networkservices')
     notebooks = _utilities.lazy_import('pulumi_gcp.notebooks')
+    observability = _utilities.lazy_import('pulumi_gcp.observability')
     oracledatabase = _utilities.lazy_import('pulumi_gcp.oracledatabase')
     organizations = _utilities.lazy_import('pulumi_gcp.organizations')
     orgpolicy = _utilities.lazy_import('pulumi_gcp.orgpolicy')
@@ -777,6 +780,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/developerApp",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/developerApp:DeveloperApp": "DeveloperApp"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/dnsZone",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -837,6 +848,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.apigee",
   "classes": {
    "gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig": "EnvironmentAddonsConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/environmentApiRevisionDeployment",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment": "EnvironmentApiRevisionDeployment"
   }
  },
  {
@@ -4545,6 +4564,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/entryLink",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/entryLink:EntryLink": "EntryLink"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/entryType",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
@@ -5209,6 +5236,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "discoveryengine/assistant",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/assistant:Assistant": "Assistant"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "discoveryengine/chatEngine",
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
@@ -5237,6 +5272,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
    "gcp:discoveryengine/dataStore:DataStore": "DataStore"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "discoveryengine/licenseConfig",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/licenseConfig:LicenseConfig": "LicenseConfig"
   }
  },
  {
@@ -5821,6 +5864,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.firestore",
   "classes": {
    "gcp:firestore/index:Index": "Index"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firestore/userCreds",
+  "fqn": "pulumi_gcp.firestore",
+  "classes": {
+   "gcp:firestore/userCreds:UserCreds": "UserCreds"
   }
  },
  {
@@ -6561,6 +6612,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iam/workforcePoolProviderScimTenant",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant": "WorkforcePoolProviderScimTenant"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iam/workloadIdentityPool",
   "fqn": "pulumi_gcp.iam",
   "classes": {
@@ -7129,6 +7188,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "kms/folderKajPolicyConfig",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig": "FolderKajPolicyConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "kms/keyHandle",
   "fqn": "pulumi_gcp.kms",
   "classes": {
@@ -7181,6 +7248,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.kms",
   "classes": {
    "gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig": "OrganizationKajPolicyConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "kms/projectKajPolicyConfig",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig": "ProjectKajPolicyConfig"
   }
  },
  {
@@ -7785,6 +7860,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networksecurity/dnsThreatDetector",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/dnsThreatDetector:DnsThreatDetector": "DnsThreatDetector"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networksecurity/firewallEndpoint",
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
@@ -8121,6 +8204,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "observability/traceScope",
+  "fqn": "pulumi_gcp.observability",
+  "classes": {
+   "gcp:observability/traceScope:TraceScope": "TraceScope"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "oracledatabase/autonomousDatabase",
   "fqn": "pulumi_gcp.oracledatabase",
   "classes": {
@@ -8141,6 +8232,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.oracledatabase",
   "classes": {
    "gcp:oracledatabase/cloudVmCluster:CloudVmCluster": "CloudVmCluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "oracledatabase/dbSystem",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/dbSystem:DbSystem": "DbSystem"
   }
  },
  {
@@ -8685,6 +8784,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.saasruntime",
   "classes": {
    "gcp:saasruntime/saaS:SaaS": "SaaS"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "saasruntime/tenant",
+  "fqn": "pulumi_gcp.saasruntime",
+  "classes": {
+   "gcp:saasruntime/tenant:Tenant": "Tenant"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "saasruntime/unit",
+  "fqn": "pulumi_gcp.saasruntime",
+  "classes": {
+   "gcp:saasruntime/unit:Unit": "Unit"
   }
  },
  {
@@ -9809,6 +9924,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiCacheConfig",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiCacheConfig:AiCacheConfig": "AiCacheConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiDataset",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -10077,6 +10200,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig": "AiRagEngineConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiReasoningEngine",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiReasoningEngine:AiReasoningEngine": "AiReasoningEngine"
   }
  },
  {

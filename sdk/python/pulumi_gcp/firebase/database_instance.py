@@ -330,7 +330,7 @@ class DatabaseInstance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         default = gcp.organizations.Project("default",
             project_id="rtdb-project",
@@ -348,7 +348,7 @@ class DatabaseInstance(pulumi.CustomResource):
         firebase_database = gcp.projects.Service("firebase_database",
             project=default_project.project,
             service="firebasedatabase.googleapis.com")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[firebase_database]))
         default_database_instance = gcp.firebase.DatabaseInstance("default",
             project=default_project.project,
@@ -450,7 +450,7 @@ class DatabaseInstance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         default = gcp.organizations.Project("default",
             project_id="rtdb-project",
@@ -468,7 +468,7 @@ class DatabaseInstance(pulumi.CustomResource):
         firebase_database = gcp.projects.Service("firebase_database",
             project=default_project.project,
             service="firebasedatabase.googleapis.com")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[firebase_database]))
         default_database_instance = gcp.firebase.DatabaseInstance("default",
             project=default_project.project,

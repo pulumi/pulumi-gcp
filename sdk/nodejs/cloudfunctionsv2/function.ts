@@ -434,7 +434,7 @@ import * as utilities from "../utilities";
  *     source: new pulumi.asset.FileAsset("function-source.zip"),
  * });
  * // builder permissions need to stablize before it can pull the source zip
- * const wait60s = new time.index.Sleep("wait_60s", {createDuration: "60s"}, {
+ * const wait60s = new time.Sleep("wait_60s", {createDuration: "60s"}, {
  *     dependsOn: [
  *         logWriter,
  *         artifactRegistryWriter,

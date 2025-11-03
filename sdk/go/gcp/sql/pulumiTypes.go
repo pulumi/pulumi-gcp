@@ -24,6 +24,10 @@ type DatabaseInstanceClone struct {
 	PointInTime *string `pulumi:"pointInTime"`
 	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
 	PreferredZone *string `pulumi:"preferredZone"`
+	// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	SourceInstanceDeletionTime *string `pulumi:"sourceInstanceDeletionTime"`
 	// Name of the source instance which will be cloned.
 	SourceInstanceName string `pulumi:"sourceInstanceName"`
 }
@@ -50,6 +54,10 @@ type DatabaseInstanceCloneArgs struct {
 	PointInTime pulumi.StringPtrInput `pulumi:"pointInTime"`
 	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
 	PreferredZone pulumi.StringPtrInput `pulumi:"preferredZone"`
+	// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	SourceInstanceDeletionTime pulumi.StringPtrInput `pulumi:"sourceInstanceDeletionTime"`
 	// Name of the source instance which will be cloned.
 	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
 }
@@ -153,6 +161,13 @@ func (o DatabaseInstanceCloneOutput) PreferredZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceClone) *string { return v.PreferredZone }).(pulumi.StringPtrOutput)
 }
 
+// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+//
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o DatabaseInstanceCloneOutput) SourceInstanceDeletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceClone) *string { return v.SourceInstanceDeletionTime }).(pulumi.StringPtrOutput)
+}
+
 // Name of the source instance which will be cloned.
 func (o DatabaseInstanceCloneOutput) SourceInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInstanceClone) string { return v.SourceInstanceName }).(pulumi.StringOutput)
@@ -221,6 +236,18 @@ func (o DatabaseInstanceClonePtrOutput) PreferredZone() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.PreferredZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+//
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o DatabaseInstanceClonePtrOutput) SourceInstanceDeletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceInstanceDeletionTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1649,6 +1676,8 @@ type DatabaseInstanceSettings struct {
 	PasswordValidationPolicy *DatabaseInstanceSettingsPasswordValidationPolicy `pulumi:"passwordValidationPolicy"`
 	// Pricing plan for this instance, can only be `PER_USE`.
 	PricingPlan *string `pulumi:"pricingPlan"`
+	// Configuration of Read Pool Auto Scale.
+	ReadPoolAutoScaleConfig *DatabaseInstanceSettingsReadPoolAutoScaleConfig `pulumi:"readPoolAutoScaleConfig"`
 	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
 	RetainBackupsOnDelete *bool                                         `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfig  *DatabaseInstanceSettingsSqlServerAuditConfig `pulumi:"sqlServerAuditConfig"`
@@ -1739,6 +1768,8 @@ type DatabaseInstanceSettingsArgs struct {
 	PasswordValidationPolicy DatabaseInstanceSettingsPasswordValidationPolicyPtrInput `pulumi:"passwordValidationPolicy"`
 	// Pricing plan for this instance, can only be `PER_USE`.
 	PricingPlan pulumi.StringPtrInput `pulumi:"pricingPlan"`
+	// Configuration of Read Pool Auto Scale.
+	ReadPoolAutoScaleConfig DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrInput `pulumi:"readPoolAutoScaleConfig"`
 	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
 	RetainBackupsOnDelete pulumi.BoolPtrInput                                  `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfig  DatabaseInstanceSettingsSqlServerAuditConfigPtrInput `pulumi:"sqlServerAuditConfig"`
@@ -1997,6 +2028,13 @@ func (o DatabaseInstanceSettingsOutput) PasswordValidationPolicy() DatabaseInsta
 // Pricing plan for this instance, can only be `PER_USE`.
 func (o DatabaseInstanceSettingsOutput) PricingPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.PricingPlan }).(pulumi.StringPtrOutput)
+}
+
+// Configuration of Read Pool Auto Scale.
+func (o DatabaseInstanceSettingsOutput) ReadPoolAutoScaleConfig() DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsReadPoolAutoScaleConfig {
+		return v.ReadPoolAutoScaleConfig
+	}).(DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput)
 }
 
 // When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
@@ -2349,6 +2387,16 @@ func (o DatabaseInstanceSettingsPtrOutput) PricingPlan() pulumi.StringPtrOutput 
 		}
 		return v.PricingPlan
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration of Read Pool Auto Scale.
+func (o DatabaseInstanceSettingsPtrOutput) ReadPoolAutoScaleConfig() DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsReadPoolAutoScaleConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ReadPoolAutoScaleConfig
+	}).(DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput)
 }
 
 // When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
@@ -5430,6 +5478,365 @@ func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) ReuseInterval
 	}).(pulumi.IntPtrOutput)
 }
 
+type DatabaseInstanceSettingsReadPoolAutoScaleConfig struct {
+	// True if auto scale in is disabled.
+	DisableScaleIn *bool `pulumi:"disableScaleIn"`
+	// True if Read Pool Auto Scale is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
+	MaxNodeCount *int `pulumi:"maxNodeCount"`
+	// Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
+	MinNodeCount *int `pulumi:"minNodeCount"`
+	// The cooldown period for scale in operations.
+	ScaleInCooldownSeconds *int `pulumi:"scaleInCooldownSeconds"`
+	// The cooldown period for scale out operations.
+	ScaleOutCooldownSeconds *int `pulumi:"scaleOutCooldownSeconds"`
+	// Target metrics for Read Pool Auto Scale. Must specify `target_metrics.metric` and `target_metrics.target_value` in subblock.
+	TargetMetrics []DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric `pulumi:"targetMetrics"`
+}
+
+// DatabaseInstanceSettingsReadPoolAutoScaleConfigInput is an input type that accepts DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs and DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsReadPoolAutoScaleConfigInput` via:
+//
+//	DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs{...}
+type DatabaseInstanceSettingsReadPoolAutoScaleConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsReadPoolAutoScaleConfigOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput
+	ToDatabaseInstanceSettingsReadPoolAutoScaleConfigOutputWithContext(context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput
+}
+
+type DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs struct {
+	// True if auto scale in is disabled.
+	DisableScaleIn pulumi.BoolPtrInput `pulumi:"disableScaleIn"`
+	// True if Read Pool Auto Scale is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
+	MaxNodeCount pulumi.IntPtrInput `pulumi:"maxNodeCount"`
+	// Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
+	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
+	// The cooldown period for scale in operations.
+	ScaleInCooldownSeconds pulumi.IntPtrInput `pulumi:"scaleInCooldownSeconds"`
+	// The cooldown period for scale out operations.
+	ScaleOutCooldownSeconds pulumi.IntPtrInput `pulumi:"scaleOutCooldownSeconds"`
+	// Target metrics for Read Pool Auto Scale. Must specify `target_metrics.metric` and `target_metrics.target_value` in subblock.
+	TargetMetrics DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayInput `pulumi:"targetMetrics"`
+}
+
+func (DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsReadPoolAutoScaleConfig)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput {
+	return i.ToDatabaseInstanceSettingsReadPoolAutoScaleConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput)
+}
+
+func (i DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput).ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrInput is an input type that accepts DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs, DatabaseInstanceSettingsReadPoolAutoScaleConfigPtr and DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrInput` via:
+//
+//	        DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput
+	ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutputWithContext(context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput
+}
+
+type databaseInstanceSettingsReadPoolAutoScaleConfigPtrType DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs
+
+func DatabaseInstanceSettingsReadPoolAutoScaleConfigPtr(v *DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs) DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrInput {
+	return (*databaseInstanceSettingsReadPoolAutoScaleConfigPtrType)(v)
+}
+
+func (*databaseInstanceSettingsReadPoolAutoScaleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsReadPoolAutoScaleConfig)(nil)).Elem()
+}
+
+func (i *databaseInstanceSettingsReadPoolAutoScaleConfigPtrType) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceSettingsReadPoolAutoScaleConfigPtrType) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput)
+}
+
+type DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsReadPoolAutoScaleConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput {
+	return o.ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsReadPoolAutoScaleConfig) *DatabaseInstanceSettingsReadPoolAutoScaleConfig {
+		return &v
+	}).(DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput)
+}
+
+// True if auto scale in is disabled.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput) DisableScaleIn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsReadPoolAutoScaleConfig) *bool { return v.DisableScaleIn }).(pulumi.BoolPtrOutput)
+}
+
+// True if Read Pool Auto Scale is enabled.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsReadPoolAutoScaleConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsReadPoolAutoScaleConfig) *int { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsReadPoolAutoScaleConfig) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// The cooldown period for scale in operations.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput) ScaleInCooldownSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsReadPoolAutoScaleConfig) *int { return v.ScaleInCooldownSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The cooldown period for scale out operations.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput) ScaleOutCooldownSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsReadPoolAutoScaleConfig) *int { return v.ScaleOutCooldownSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Target metrics for Read Pool Auto Scale. Must specify `target_metrics.metric` and `target_metrics.target_value` in subblock.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput) TargetMetrics() DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsReadPoolAutoScaleConfig) []DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric {
+		return v.TargetMetrics
+	}).(DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput)
+}
+
+type DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsReadPoolAutoScaleConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput) Elem() DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsReadPoolAutoScaleConfig) DatabaseInstanceSettingsReadPoolAutoScaleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsReadPoolAutoScaleConfig
+		return ret
+	}).(DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput)
+}
+
+// True if auto scale in is disabled.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput) DisableScaleIn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsReadPoolAutoScaleConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableScaleIn
+	}).(pulumi.BoolPtrOutput)
+}
+
+// True if Read Pool Auto Scale is enabled.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsReadPoolAutoScaleConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsReadPoolAutoScaleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsReadPoolAutoScaleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The cooldown period for scale in operations.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput) ScaleInCooldownSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsReadPoolAutoScaleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ScaleInCooldownSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The cooldown period for scale out operations.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput) ScaleOutCooldownSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsReadPoolAutoScaleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ScaleOutCooldownSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target metrics for Read Pool Auto Scale. Must specify `target_metrics.metric` and `target_metrics.target_value` in subblock.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput) TargetMetrics() DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsReadPoolAutoScaleConfig) []DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric {
+		if v == nil {
+			return nil
+		}
+		return v.TargetMetrics
+	}).(DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput)
+}
+
+type DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric struct {
+	// Metric name for Read Pool Auto Scale.
+	Metric *string `pulumi:"metric"`
+	// Target value for Read Pool Auto Scale.
+	TargetValue *float64 `pulumi:"targetValue"`
+}
+
+// DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricInput is an input type that accepts DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs and DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricInput` via:
+//
+//	DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs{...}
+type DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput
+	ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutputWithContext(context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput
+}
+
+type DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs struct {
+	// Metric name for Read Pool Auto Scale.
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	// Target value for Read Pool Auto Scale.
+	TargetValue pulumi.Float64PtrInput `pulumi:"targetValue"`
+}
+
+func (DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput {
+	return i.ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutputWithContext(ctx context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput)
+}
+
+// DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayInput is an input type that accepts DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArray and DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayInput` via:
+//
+//	DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArray{ DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs{...} }
+type DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput
+	ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutputWithContext(context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput
+}
+
+type DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArray []DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricInput
+
+func (DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArray) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return i.ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArray) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput)
+}
+
+type DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutputWithContext(ctx context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput {
+	return o
+}
+
+// Metric name for Read Pool Auto Scale.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+// Target value for Read Pool Auto Scale.
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput) TargetValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric) *float64 { return v.TargetValue }).(pulumi.Float64PtrOutput)
+}
+
+type DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput() DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput) ToDatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric {
+		return vs[0].([]DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric)[vs[1].(int)]
+	}).(DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput)
+}
+
 type DatabaseInstanceSettingsSqlServerAuditConfig struct {
 	// The name of the destination bucket (e.g., gs://mybucket).
 	Bucket *string `pulumi:"bucket"`
@@ -6168,6 +6575,8 @@ type GetDatabaseInstanceClone struct {
 	PointInTime string `pulumi:"pointInTime"`
 	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
 	PreferredZone string `pulumi:"preferredZone"`
+	// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+	SourceInstanceDeletionTime string `pulumi:"sourceInstanceDeletionTime"`
 	// The name of the instance from which the point in time should be restored.
 	SourceInstanceName string `pulumi:"sourceInstanceName"`
 }
@@ -6192,6 +6601,8 @@ type GetDatabaseInstanceCloneArgs struct {
 	PointInTime pulumi.StringInput `pulumi:"pointInTime"`
 	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
 	PreferredZone pulumi.StringInput `pulumi:"preferredZone"`
+	// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+	SourceInstanceDeletionTime pulumi.StringInput `pulumi:"sourceInstanceDeletionTime"`
 	// The name of the instance from which the point in time should be restored.
 	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
 }
@@ -6265,6 +6676,11 @@ func (o GetDatabaseInstanceCloneOutput) PointInTime() pulumi.StringOutput {
 // (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
 func (o GetDatabaseInstanceCloneOutput) PreferredZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceClone) string { return v.PreferredZone }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+func (o GetDatabaseInstanceCloneOutput) SourceInstanceDeletionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceClone) string { return v.SourceInstanceDeletionTime }).(pulumi.StringOutput)
 }
 
 // The name of the instance from which the point in time should be restored.
@@ -7259,6 +7675,8 @@ type GetDatabaseInstanceSetting struct {
 	PasswordValidationPolicies []GetDatabaseInstanceSettingPasswordValidationPolicy `pulumi:"passwordValidationPolicies"`
 	// Pricing plan for this instance, can only be PER_USE.
 	PricingPlan string `pulumi:"pricingPlan"`
+	// Configuration of Read Pool Auto Scale.
+	ReadPoolAutoScaleConfigs []GetDatabaseInstanceSettingReadPoolAutoScaleConfig `pulumi:"readPoolAutoScaleConfigs"`
 	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
 	RetainBackupsOnDelete bool                                             `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfigs []GetDatabaseInstanceSettingSqlServerAuditConfig `pulumi:"sqlServerAuditConfigs"`
@@ -7343,6 +7761,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	PasswordValidationPolicies GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput `pulumi:"passwordValidationPolicies"`
 	// Pricing plan for this instance, can only be PER_USE.
 	PricingPlan pulumi.StringInput `pulumi:"pricingPlan"`
+	// Configuration of Read Pool Auto Scale.
+	ReadPoolAutoScaleConfigs GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayInput `pulumi:"readPoolAutoScaleConfigs"`
 	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
 	RetainBackupsOnDelete pulumi.BoolInput                                         `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfigs GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput `pulumi:"sqlServerAuditConfigs"`
@@ -7575,6 +7995,13 @@ func (o GetDatabaseInstanceSettingOutput) PasswordValidationPolicies() GetDataba
 // Pricing plan for this instance, can only be PER_USE.
 func (o GetDatabaseInstanceSettingOutput) PricingPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.PricingPlan }).(pulumi.StringOutput)
+}
+
+// Configuration of Read Pool Auto Scale.
+func (o GetDatabaseInstanceSettingOutput) ReadPoolAutoScaleConfigs() GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingReadPoolAutoScaleConfig {
+		return v.ReadPoolAutoScaleConfigs
+	}).(GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput)
 }
 
 // When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
@@ -9780,6 +10207,265 @@ func (o GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput) Index(i p
 	}).(GetDatabaseInstanceSettingPasswordValidationPolicyOutput)
 }
 
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfig struct {
+	// True if auto scale in is disabled.
+	DisableScaleIn bool `pulumi:"disableScaleIn"`
+	// True if Read Pool Auto Scale is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
+	MaxNodeCount int `pulumi:"maxNodeCount"`
+	// Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
+	MinNodeCount int `pulumi:"minNodeCount"`
+	// The cooldown period for scale in operations.
+	ScaleInCooldownSeconds int `pulumi:"scaleInCooldownSeconds"`
+	// The cooldown period for scale out operations.
+	ScaleOutCooldownSeconds int `pulumi:"scaleOutCooldownSeconds"`
+	// Target metrics for Read Pool Auto Scale.
+	TargetMetrics []GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric `pulumi:"targetMetrics"`
+}
+
+// GetDatabaseInstanceSettingReadPoolAutoScaleConfigInput is an input type that accepts GetDatabaseInstanceSettingReadPoolAutoScaleConfigArgs and GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingReadPoolAutoScaleConfigInput` via:
+//
+//	GetDatabaseInstanceSettingReadPoolAutoScaleConfigArgs{...}
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput() GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput
+	ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigOutputWithContext(context.Context) GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput
+}
+
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigArgs struct {
+	// True if auto scale in is disabled.
+	DisableScaleIn pulumi.BoolInput `pulumi:"disableScaleIn"`
+	// True if Read Pool Auto Scale is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
+	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
+	// Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
+	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
+	// The cooldown period for scale in operations.
+	ScaleInCooldownSeconds pulumi.IntInput `pulumi:"scaleInCooldownSeconds"`
+	// The cooldown period for scale out operations.
+	ScaleOutCooldownSeconds pulumi.IntInput `pulumi:"scaleOutCooldownSeconds"`
+	// Target metrics for Read Pool Auto Scale.
+	TargetMetrics GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayInput `pulumi:"targetMetrics"`
+}
+
+func (GetDatabaseInstanceSettingReadPoolAutoScaleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingReadPoolAutoScaleConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingReadPoolAutoScaleConfigArgs) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput() GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput {
+	return i.ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingReadPoolAutoScaleConfigArgs) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput)
+}
+
+// GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingReadPoolAutoScaleConfigArray and GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayInput` via:
+//
+//	GetDatabaseInstanceSettingReadPoolAutoScaleConfigArray{ GetDatabaseInstanceSettingReadPoolAutoScaleConfigArgs{...} }
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput() GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput
+	ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput
+}
+
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigArray []GetDatabaseInstanceSettingReadPoolAutoScaleConfigInput
+
+func (GetDatabaseInstanceSettingReadPoolAutoScaleConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingReadPoolAutoScaleConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingReadPoolAutoScaleConfigArray) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput() GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput {
+	return i.ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingReadPoolAutoScaleConfigArray) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput)
+}
+
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingReadPoolAutoScaleConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput() GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput {
+	return o
+}
+
+// True if auto scale in is disabled.
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput) DisableScaleIn() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingReadPoolAutoScaleConfig) bool { return v.DisableScaleIn }).(pulumi.BoolOutput)
+}
+
+// True if Read Pool Auto Scale is enabled.
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingReadPoolAutoScaleConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput) MaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingReadPoolAutoScaleConfig) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+}
+
+// Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput) MinNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingReadPoolAutoScaleConfig) int { return v.MinNodeCount }).(pulumi.IntOutput)
+}
+
+// The cooldown period for scale in operations.
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput) ScaleInCooldownSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingReadPoolAutoScaleConfig) int { return v.ScaleInCooldownSeconds }).(pulumi.IntOutput)
+}
+
+// The cooldown period for scale out operations.
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput) ScaleOutCooldownSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingReadPoolAutoScaleConfig) int { return v.ScaleOutCooldownSeconds }).(pulumi.IntOutput)
+}
+
+// Target metrics for Read Pool Auto Scale.
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput) TargetMetrics() GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingReadPoolAutoScaleConfig) []GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric {
+		return v.TargetMetrics
+	}).(GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput)
+}
+
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingReadPoolAutoScaleConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput() GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingReadPoolAutoScaleConfig {
+		return vs[0].([]GetDatabaseInstanceSettingReadPoolAutoScaleConfig)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput)
+}
+
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric struct {
+	// Metric name for Read Pool Auto Scale.
+	Metric string `pulumi:"metric"`
+	// Target value for Read Pool Auto Scale.
+	TargetValue float64 `pulumi:"targetValue"`
+}
+
+// GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricInput is an input type that accepts GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs and GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricInput` via:
+//
+//	GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs{...}
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput() GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput
+	ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutputWithContext(context.Context) GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput
+}
+
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs struct {
+	// Metric name for Read Pool Auto Scale.
+	Metric pulumi.StringInput `pulumi:"metric"`
+	// Target value for Read Pool Auto Scale.
+	TargetValue pulumi.Float64Input `pulumi:"targetValue"`
+}
+
+func (GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput() GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput {
+	return i.ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput)
+}
+
+// GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayInput is an input type that accepts GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArray and GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayInput` via:
+//
+//	GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArray{ GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs{...} }
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput() GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput
+	ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput
+}
+
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArray []GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricInput
+
+func (GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArray) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput() GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return i.ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArray) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput)
+}
+
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput() GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput {
+	return o
+}
+
+// Metric name for Read Pool Auto Scale.
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric) string { return v.Metric }).(pulumi.StringOutput)
+}
+
+// Target value for Read Pool Auto Scale.
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput) TargetValue() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric) float64 { return v.TargetValue }).(pulumi.Float64Output)
+}
+
+type GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput() GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput) ToGetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric {
+		return vs[0].([]GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput)
+}
+
 type GetDatabaseInstanceSettingSqlServerAuditConfig struct {
 	// The name of the destination bucket (e.g., gs://mybucket).
 	Bucket string `pulumi:"bucket"`
@@ -9923,7 +10609,7 @@ type GetDatabaseInstancesInstance struct {
 	// The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binaryLogEnabled set, as well as existing backups.
 	MasterInstanceName string `pulumi:"masterInstanceName"`
 	Name               string `pulumi:"name"`
-	// For a read pool instance, the number of nodes in the read pool.
+	// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
 	NodeCount int `pulumi:"nodeCount"`
 	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
 	PointInTimeRestoreContexts []GetDatabaseInstancesInstancePointInTimeRestoreContext `pulumi:"pointInTimeRestoreContexts"`
@@ -9992,7 +10678,7 @@ type GetDatabaseInstancesInstanceArgs struct {
 	// The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binaryLogEnabled set, as well as existing backups.
 	MasterInstanceName pulumi.StringInput `pulumi:"masterInstanceName"`
 	Name               pulumi.StringInput `pulumi:"name"`
-	// For a read pool instance, the number of nodes in the read pool.
+	// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
 	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
 	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
 	PointInTimeRestoreContexts GetDatabaseInstancesInstancePointInTimeRestoreContextArrayInput `pulumi:"pointInTimeRestoreContexts"`
@@ -10148,7 +10834,7 @@ func (o GetDatabaseInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// For a read pool instance, the number of nodes in the read pool.
+// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
 func (o GetDatabaseInstancesInstanceOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) int { return v.NodeCount }).(pulumi.IntOutput)
 }
@@ -10263,6 +10949,8 @@ type GetDatabaseInstancesInstanceClone struct {
 	PointInTime string `pulumi:"pointInTime"`
 	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
 	PreferredZone string `pulumi:"preferredZone"`
+	// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+	SourceInstanceDeletionTime string `pulumi:"sourceInstanceDeletionTime"`
 	// The name of the instance from which the point in time should be restored.
 	SourceInstanceName string `pulumi:"sourceInstanceName"`
 }
@@ -10287,6 +10975,8 @@ type GetDatabaseInstancesInstanceCloneArgs struct {
 	PointInTime pulumi.StringInput `pulumi:"pointInTime"`
 	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
 	PreferredZone pulumi.StringInput `pulumi:"preferredZone"`
+	// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+	SourceInstanceDeletionTime pulumi.StringInput `pulumi:"sourceInstanceDeletionTime"`
 	// The name of the instance from which the point in time should be restored.
 	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
 }
@@ -10360,6 +11050,11 @@ func (o GetDatabaseInstancesInstanceCloneOutput) PointInTime() pulumi.StringOutp
 // (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
 func (o GetDatabaseInstancesInstanceCloneOutput) PreferredZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceClone) string { return v.PreferredZone }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the source instance was deleted for a clone from a deleted instance.
+func (o GetDatabaseInstancesInstanceCloneOutput) SourceInstanceDeletionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceClone) string { return v.SourceInstanceDeletionTime }).(pulumi.StringOutput)
 }
 
 // The name of the instance from which the point in time should be restored.
@@ -11351,6 +12046,8 @@ type GetDatabaseInstancesInstanceSetting struct {
 	PasswordValidationPolicies []GetDatabaseInstancesInstanceSettingPasswordValidationPolicy `pulumi:"passwordValidationPolicies"`
 	// Pricing plan for this instance, can only be PER_USE.
 	PricingPlan string `pulumi:"pricingPlan"`
+	// Configuration of Read Pool Auto Scale.
+	ReadPoolAutoScaleConfigs []GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig `pulumi:"readPoolAutoScaleConfigs"`
 	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
 	RetainBackupsOnDelete bool                                                      `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfigs []GetDatabaseInstancesInstanceSettingSqlServerAuditConfig `pulumi:"sqlServerAuditConfigs"`
@@ -11435,6 +12132,8 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	PasswordValidationPolicies GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput `pulumi:"passwordValidationPolicies"`
 	// Pricing plan for this instance, can only be PER_USE.
 	PricingPlan pulumi.StringInput `pulumi:"pricingPlan"`
+	// Configuration of Read Pool Auto Scale.
+	ReadPoolAutoScaleConfigs GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayInput `pulumi:"readPoolAutoScaleConfigs"`
 	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
 	RetainBackupsOnDelete pulumi.BoolInput                                                  `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfigs GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput `pulumi:"sqlServerAuditConfigs"`
@@ -11669,6 +12368,13 @@ func (o GetDatabaseInstancesInstanceSettingOutput) PasswordValidationPolicies() 
 // Pricing plan for this instance, can only be PER_USE.
 func (o GetDatabaseInstancesInstanceSettingOutput) PricingPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.PricingPlan }).(pulumi.StringOutput)
+}
+
+// Configuration of Read Pool Auto Scale.
+func (o GetDatabaseInstancesInstanceSettingOutput) ReadPoolAutoScaleConfigs() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig {
+		return v.ReadPoolAutoScaleConfigs
+	}).(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput)
 }
 
 // When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
@@ -13895,6 +14601,271 @@ func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput) 
 	}).(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput)
 }
 
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig struct {
+	// True if auto scale in is disabled.
+	DisableScaleIn bool `pulumi:"disableScaleIn"`
+	// True if Read Pool Auto Scale is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
+	MaxNodeCount int `pulumi:"maxNodeCount"`
+	// Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
+	MinNodeCount int `pulumi:"minNodeCount"`
+	// The cooldown period for scale in operations.
+	ScaleInCooldownSeconds int `pulumi:"scaleInCooldownSeconds"`
+	// The cooldown period for scale out operations.
+	ScaleOutCooldownSeconds int `pulumi:"scaleOutCooldownSeconds"`
+	// Target metrics for Read Pool Auto Scale.
+	TargetMetrics []GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric `pulumi:"targetMetrics"`
+}
+
+// GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArgs and GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArgs{...}
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput
+	ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput
+}
+
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArgs struct {
+	// True if auto scale in is disabled.
+	DisableScaleIn pulumi.BoolInput `pulumi:"disableScaleIn"`
+	// True if Read Pool Auto Scale is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
+	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
+	// Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
+	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
+	// The cooldown period for scale in operations.
+	ScaleInCooldownSeconds pulumi.IntInput `pulumi:"scaleInCooldownSeconds"`
+	// The cooldown period for scale out operations.
+	ScaleOutCooldownSeconds pulumi.IntInput `pulumi:"scaleOutCooldownSeconds"`
+	// Target metrics for Read Pool Auto Scale.
+	TargetMetrics GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayInput `pulumi:"targetMetrics"`
+}
+
+func (GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArgs) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArgs) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArray and GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArray{ GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArgs{...} }
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput
+	ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArray []GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigInput
+
+func (GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArray) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArray) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput {
+	return o
+}
+
+// True if auto scale in is disabled.
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput) DisableScaleIn() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig) bool { return v.DisableScaleIn }).(pulumi.BoolOutput)
+}
+
+// True if Read Pool Auto Scale is enabled.
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput) MaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+}
+
+// Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput) MinNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig) int { return v.MinNodeCount }).(pulumi.IntOutput)
+}
+
+// The cooldown period for scale in operations.
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput) ScaleInCooldownSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig) int {
+		return v.ScaleInCooldownSeconds
+	}).(pulumi.IntOutput)
+}
+
+// The cooldown period for scale out operations.
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput) ScaleOutCooldownSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig) int {
+		return v.ScaleOutCooldownSeconds
+	}).(pulumi.IntOutput)
+}
+
+// Target metrics for Read Pool Auto Scale.
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput) TargetMetrics() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig) []GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric {
+		return v.TargetMetrics
+	}).(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric struct {
+	// Metric name for Read Pool Auto Scale.
+	Metric string `pulumi:"metric"`
+	// Target value for Read Pool Auto Scale.
+	TargetValue float64 `pulumi:"targetValue"`
+}
+
+// GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricInput is an input type that accepts GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs and GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs{...}
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput
+	ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput
+}
+
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs struct {
+	// Metric name for Read Pool Auto Scale.
+	Metric pulumi.StringInput `pulumi:"metric"`
+	// Target value for Read Pool Auto Scale.
+	TargetValue pulumi.Float64Input `pulumi:"targetValue"`
+}
+
+func (GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArray and GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArray{ GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs{...} }
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput
+	ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArray []GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricInput
+
+func (GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArray) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArray) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput {
+	return o
+}
+
+// Metric name for Read Pool Auto Scale.
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric) string { return v.Metric }).(pulumi.StringOutput)
+}
+
+// Target value for Read Pool Auto Scale.
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput) TargetValue() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric) float64 {
+		return v.TargetValue
+	}).(pulumi.Float64Output)
+}
+
+type GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput() GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput) ToGetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput)
+}
+
 type GetDatabaseInstancesInstanceSettingSqlServerAuditConfig struct {
 	// The name of the destination bucket (e.g., gs://mybucket).
 	Bucket string `pulumi:"bucket"`
@@ -14379,6 +15350,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsMaintenanceWindowPtrInput)(nil)).Elem(), DatabaseInstanceSettingsMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsPasswordValidationPolicyInput)(nil)).Elem(), DatabaseInstanceSettingsPasswordValidationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsPasswordValidationPolicyPtrInput)(nil)).Elem(), DatabaseInstanceSettingsPasswordValidationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsReadPoolAutoScaleConfigInput)(nil)).Elem(), DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricInput)(nil)).Elem(), DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayInput)(nil)).Elem(), DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsSqlServerAuditConfigInput)(nil)).Elem(), DatabaseInstanceSettingsSqlServerAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsSqlServerAuditConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsSqlServerAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPolicyInput)(nil)).Elem(), UserPasswordPolicyArgs{})
@@ -14443,6 +15418,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingMaintenanceWindowArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingPasswordValidationPolicyInput)(nil)).Elem(), GetDatabaseInstanceSettingPasswordValidationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingPasswordValidationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingReadPoolAutoScaleConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingReadPoolAutoScaleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingReadPoolAutoScaleConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricInput)(nil)).Elem(), GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingSqlServerAuditConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingSqlServerAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingSqlServerAuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceInput)(nil)).Elem(), GetDatabaseInstancesInstanceArgs{})
@@ -14501,6 +15480,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPasswordValidationPolicyInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingSqlServerAuditConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseInput)(nil)).Elem(), GetDatabasesDatabaseArgs{})
@@ -14561,6 +15544,10 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsPasswordValidationPolicyOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsReadPoolAutoScaleConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsReadPoolAutoScaleConfigPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsSqlServerAuditConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput{})
 	pulumi.RegisterOutputType(UserPasswordPolicyOutput{})
@@ -14625,6 +15612,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingPasswordValidationPolicyOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingReadPoolAutoScaleConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingReadPoolAutoScaleConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingSqlServerAuditConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceOutput{})
@@ -14683,6 +15674,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetricArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasesDatabaseOutput{})

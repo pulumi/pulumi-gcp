@@ -205,7 +205,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-        /// Possible values are: `MESH`, `STAR`.
+        /// Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
         /// </summary>
         [Output("presetTopology")]
         public Output<string> PresetTopology { get; private set; } = null!;
@@ -341,7 +341,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-        /// Possible values are: `MESH`, `STAR`.
+        /// Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
         /// </summary>
         [Input("presetTopology")]
         public Input<string>? PresetTopology { get; set; }
@@ -424,7 +424,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-        /// Possible values are: `MESH`, `STAR`.
+        /// Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
         /// </summary>
         [Input("presetTopology")]
         public Input<string>? PresetTopology { get; set; }

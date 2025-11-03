@@ -27,6 +27,11 @@ public final class GetClusterFleet {
      */
     private String membershipLocation;
     /**
+     * @return The type of the cluster&#39;s fleet membership.
+     * 
+     */
+    private String membershipType;
+    /**
      * @return Whether the cluster has been registered via the fleet API.
      * 
      */
@@ -61,6 +66,13 @@ public final class GetClusterFleet {
         return this.membershipLocation;
     }
     /**
+     * @return The type of the cluster&#39;s fleet membership.
+     * 
+     */
+    public String membershipType() {
+        return this.membershipType;
+    }
+    /**
      * @return Whether the cluster has been registered via the fleet API.
      * 
      */
@@ -88,6 +100,7 @@ public final class GetClusterFleet {
         private String membership;
         private String membershipId;
         private String membershipLocation;
+        private String membershipType;
         private Boolean preRegistered;
         private String project;
         public Builder() {}
@@ -96,6 +109,7 @@ public final class GetClusterFleet {
     	      this.membership = defaults.membership;
     	      this.membershipId = defaults.membershipId;
     	      this.membershipLocation = defaults.membershipLocation;
+    	      this.membershipType = defaults.membershipType;
     	      this.preRegistered = defaults.preRegistered;
     	      this.project = defaults.project;
         }
@@ -125,6 +139,14 @@ public final class GetClusterFleet {
             return this;
         }
         @CustomType.Setter
+        public Builder membershipType(String membershipType) {
+            if (membershipType == null) {
+              throw new MissingRequiredPropertyException("GetClusterFleet", "membershipType");
+            }
+            this.membershipType = membershipType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder preRegistered(Boolean preRegistered) {
             if (preRegistered == null) {
               throw new MissingRequiredPropertyException("GetClusterFleet", "preRegistered");
@@ -145,6 +167,7 @@ public final class GetClusterFleet {
             _resultValue.membership = membership;
             _resultValue.membershipId = membershipId;
             _resultValue.membershipLocation = membershipLocation;
+            _resultValue.membershipType = membershipType;
             _resultValue.preRegistered = preRegistered;
             _resultValue.project = project;
             return _resultValue;

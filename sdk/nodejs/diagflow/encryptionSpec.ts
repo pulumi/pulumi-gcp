@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     project: project.projectId,
  *     service: "dialogflow.googleapis.com",
  * });
- * const waitEnableServiceApi = new time.index.Sleep("wait_enable_service_api", {createDuration: "30s"}, {
+ * const waitEnableServiceApi = new time.Sleep("wait_enable_service_api", {createDuration: "30s"}, {
  *     dependsOn: [
  *         cloudkms,
  *         dialogflow,
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [waitEnableServiceApi],
  * });
- * const waitCreateSa = new time.index.Sleep("wait_create_sa", {createDuration: "30s"}, {
+ * const waitCreateSa = new time.Sleep("wait_create_sa", {createDuration: "30s"}, {
  *     dependsOn: [gcpSa],
  * });
  * const keyring = new gcp.kms.KeyRing("keyring", {

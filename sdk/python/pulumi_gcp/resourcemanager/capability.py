@@ -151,13 +151,13 @@ class Capability(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         folder = gcp.organizations.Folder("folder",
             display_name="my-folder",
             parent="organizations/123456789",
             deletion_protection=False)
-        wait60s = time.index.Sleep("wait_60s", create_duration=60s,
+        wait60s = time.Sleep("wait_60s", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[folder]))
         capability = gcp.resourcemanager.Capability("capability",
             value=True,
@@ -212,13 +212,13 @@ class Capability(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         folder = gcp.organizations.Folder("folder",
             display_name="my-folder",
             parent="organizations/123456789",
             deletion_protection=False)
-        wait60s = time.index.Sleep("wait_60s", create_duration=60s,
+        wait60s = time.Sleep("wait_60s", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[folder]))
         capability = gcp.resourcemanager.Capability("capability",
             value=True,

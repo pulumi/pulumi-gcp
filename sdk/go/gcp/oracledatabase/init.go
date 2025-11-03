@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudExadataInfrastructure{}
 	case "gcp:oracledatabase/cloudVmCluster:CloudVmCluster":
 		r = &CloudVmCluster{}
+	case "gcp:oracledatabase/dbSystem:DbSystem":
+		r = &DbSystem{}
 	case "gcp:oracledatabase/odbNetwork:OdbNetwork":
 		r = &OdbNetwork{}
 	case "gcp:oracledatabase/odbSubnet:OdbSubnet":
@@ -57,6 +59,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"oracledatabase/cloudVmCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"oracledatabase/dbSystem",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

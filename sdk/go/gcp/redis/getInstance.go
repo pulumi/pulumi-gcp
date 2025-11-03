@@ -75,6 +75,7 @@ type LookupInstanceResult struct {
 	CreateTime               string            `pulumi:"createTime"`
 	CurrentLocationId        string            `pulumi:"currentLocationId"`
 	CustomerManagedKey       string            `pulumi:"customerManagedKey"`
+	DeletionProtection       bool              `pulumi:"deletionProtection"`
 	DisplayName              string            `pulumi:"displayName"`
 	EffectiveLabels          map[string]string `pulumi:"effectiveLabels"`
 	EffectiveReservedIpRange string            `pulumi:"effectiveReservedIpRange"`
@@ -180,6 +181,10 @@ func (o LookupInstanceResultOutput) CurrentLocationId() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) CustomerManagedKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CustomerManagedKey }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 func (o LookupInstanceResultOutput) DisplayName() pulumi.StringOutput {

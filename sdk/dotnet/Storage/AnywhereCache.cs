@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Storage
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Storage
     ///         Location = "US",
     ///     });
     /// 
-    ///     var destroyWait5000Seconds = new Time.Index.Sleep("destroy_wait_5000_seconds", new()
+    ///     var destroyWait5000Seconds = new Time.Sleep("destroy_wait_5000_seconds", new()
     ///     {
     ///         DestroyDuration = "5000s",
     ///     }, new CustomResourceOptions

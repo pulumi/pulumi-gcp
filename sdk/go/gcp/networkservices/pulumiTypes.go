@@ -12191,6 +12191,174 @@ func (o ServiceLbPoliciesFailoverConfigPtrOutput) FailoverHealthThreshold() pulu
 	}).(pulumi.IntPtrOutput)
 }
 
+type ServiceLbPoliciesIsolationConfig struct {
+	// The isolation granularity of the load balancer.
+	// Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
+	IsolationGranularity *string `pulumi:"isolationGranularity"`
+	// The isolation mode of the load balancer.
+	// Default value is `NEAREST`.
+	// Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
+	IsolationMode *string `pulumi:"isolationMode"`
+}
+
+// ServiceLbPoliciesIsolationConfigInput is an input type that accepts ServiceLbPoliciesIsolationConfigArgs and ServiceLbPoliciesIsolationConfigOutput values.
+// You can construct a concrete instance of `ServiceLbPoliciesIsolationConfigInput` via:
+//
+//	ServiceLbPoliciesIsolationConfigArgs{...}
+type ServiceLbPoliciesIsolationConfigInput interface {
+	pulumi.Input
+
+	ToServiceLbPoliciesIsolationConfigOutput() ServiceLbPoliciesIsolationConfigOutput
+	ToServiceLbPoliciesIsolationConfigOutputWithContext(context.Context) ServiceLbPoliciesIsolationConfigOutput
+}
+
+type ServiceLbPoliciesIsolationConfigArgs struct {
+	// The isolation granularity of the load balancer.
+	// Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
+	IsolationGranularity pulumi.StringPtrInput `pulumi:"isolationGranularity"`
+	// The isolation mode of the load balancer.
+	// Default value is `NEAREST`.
+	// Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
+	IsolationMode pulumi.StringPtrInput `pulumi:"isolationMode"`
+}
+
+func (ServiceLbPoliciesIsolationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPoliciesIsolationConfig)(nil)).Elem()
+}
+
+func (i ServiceLbPoliciesIsolationConfigArgs) ToServiceLbPoliciesIsolationConfigOutput() ServiceLbPoliciesIsolationConfigOutput {
+	return i.ToServiceLbPoliciesIsolationConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceLbPoliciesIsolationConfigArgs) ToServiceLbPoliciesIsolationConfigOutputWithContext(ctx context.Context) ServiceLbPoliciesIsolationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPoliciesIsolationConfigOutput)
+}
+
+func (i ServiceLbPoliciesIsolationConfigArgs) ToServiceLbPoliciesIsolationConfigPtrOutput() ServiceLbPoliciesIsolationConfigPtrOutput {
+	return i.ToServiceLbPoliciesIsolationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceLbPoliciesIsolationConfigArgs) ToServiceLbPoliciesIsolationConfigPtrOutputWithContext(ctx context.Context) ServiceLbPoliciesIsolationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPoliciesIsolationConfigOutput).ToServiceLbPoliciesIsolationConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceLbPoliciesIsolationConfigPtrInput is an input type that accepts ServiceLbPoliciesIsolationConfigArgs, ServiceLbPoliciesIsolationConfigPtr and ServiceLbPoliciesIsolationConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceLbPoliciesIsolationConfigPtrInput` via:
+//
+//	        ServiceLbPoliciesIsolationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceLbPoliciesIsolationConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceLbPoliciesIsolationConfigPtrOutput() ServiceLbPoliciesIsolationConfigPtrOutput
+	ToServiceLbPoliciesIsolationConfigPtrOutputWithContext(context.Context) ServiceLbPoliciesIsolationConfigPtrOutput
+}
+
+type serviceLbPoliciesIsolationConfigPtrType ServiceLbPoliciesIsolationConfigArgs
+
+func ServiceLbPoliciesIsolationConfigPtr(v *ServiceLbPoliciesIsolationConfigArgs) ServiceLbPoliciesIsolationConfigPtrInput {
+	return (*serviceLbPoliciesIsolationConfigPtrType)(v)
+}
+
+func (*serviceLbPoliciesIsolationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLbPoliciesIsolationConfig)(nil)).Elem()
+}
+
+func (i *serviceLbPoliciesIsolationConfigPtrType) ToServiceLbPoliciesIsolationConfigPtrOutput() ServiceLbPoliciesIsolationConfigPtrOutput {
+	return i.ToServiceLbPoliciesIsolationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceLbPoliciesIsolationConfigPtrType) ToServiceLbPoliciesIsolationConfigPtrOutputWithContext(ctx context.Context) ServiceLbPoliciesIsolationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPoliciesIsolationConfigPtrOutput)
+}
+
+type ServiceLbPoliciesIsolationConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPoliciesIsolationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPoliciesIsolationConfig)(nil)).Elem()
+}
+
+func (o ServiceLbPoliciesIsolationConfigOutput) ToServiceLbPoliciesIsolationConfigOutput() ServiceLbPoliciesIsolationConfigOutput {
+	return o
+}
+
+func (o ServiceLbPoliciesIsolationConfigOutput) ToServiceLbPoliciesIsolationConfigOutputWithContext(ctx context.Context) ServiceLbPoliciesIsolationConfigOutput {
+	return o
+}
+
+func (o ServiceLbPoliciesIsolationConfigOutput) ToServiceLbPoliciesIsolationConfigPtrOutput() ServiceLbPoliciesIsolationConfigPtrOutput {
+	return o.ToServiceLbPoliciesIsolationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceLbPoliciesIsolationConfigOutput) ToServiceLbPoliciesIsolationConfigPtrOutputWithContext(ctx context.Context) ServiceLbPoliciesIsolationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceLbPoliciesIsolationConfig) *ServiceLbPoliciesIsolationConfig {
+		return &v
+	}).(ServiceLbPoliciesIsolationConfigPtrOutput)
+}
+
+// The isolation granularity of the load balancer.
+// Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
+func (o ServiceLbPoliciesIsolationConfigOutput) IsolationGranularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLbPoliciesIsolationConfig) *string { return v.IsolationGranularity }).(pulumi.StringPtrOutput)
+}
+
+// The isolation mode of the load balancer.
+// Default value is `NEAREST`.
+// Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
+func (o ServiceLbPoliciesIsolationConfigOutput) IsolationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLbPoliciesIsolationConfig) *string { return v.IsolationMode }).(pulumi.StringPtrOutput)
+}
+
+type ServiceLbPoliciesIsolationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPoliciesIsolationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLbPoliciesIsolationConfig)(nil)).Elem()
+}
+
+func (o ServiceLbPoliciesIsolationConfigPtrOutput) ToServiceLbPoliciesIsolationConfigPtrOutput() ServiceLbPoliciesIsolationConfigPtrOutput {
+	return o
+}
+
+func (o ServiceLbPoliciesIsolationConfigPtrOutput) ToServiceLbPoliciesIsolationConfigPtrOutputWithContext(ctx context.Context) ServiceLbPoliciesIsolationConfigPtrOutput {
+	return o
+}
+
+func (o ServiceLbPoliciesIsolationConfigPtrOutput) Elem() ServiceLbPoliciesIsolationConfigOutput {
+	return o.ApplyT(func(v *ServiceLbPoliciesIsolationConfig) ServiceLbPoliciesIsolationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceLbPoliciesIsolationConfig
+		return ret
+	}).(ServiceLbPoliciesIsolationConfigOutput)
+}
+
+// The isolation granularity of the load balancer.
+// Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
+func (o ServiceLbPoliciesIsolationConfigPtrOutput) IsolationGranularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceLbPoliciesIsolationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IsolationGranularity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The isolation mode of the load balancer.
+// Default value is `NEAREST`.
+// Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
+func (o ServiceLbPoliciesIsolationConfigPtrOutput) IsolationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceLbPoliciesIsolationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IsolationMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type TcpRouteRule struct {
 	// A detailed rule defining how to route traffic.
 	// Structure is documented below.
@@ -13641,6 +13809,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesAutoCapacityDrainPtrInput)(nil)).Elem(), ServiceLbPoliciesAutoCapacityDrainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesFailoverConfigInput)(nil)).Elem(), ServiceLbPoliciesFailoverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesFailoverConfigPtrInput)(nil)).Elem(), ServiceLbPoliciesFailoverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesIsolationConfigInput)(nil)).Elem(), ServiceLbPoliciesIsolationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesIsolationConfigPtrInput)(nil)).Elem(), ServiceLbPoliciesIsolationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleInput)(nil)).Elem(), TcpRouteRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleArrayInput)(nil)).Elem(), TcpRouteRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleActionInput)(nil)).Elem(), TcpRouteRuleActionArgs{})
@@ -13803,6 +13973,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceLbPoliciesAutoCapacityDrainPtrOutput{})
 	pulumi.RegisterOutputType(ServiceLbPoliciesFailoverConfigOutput{})
 	pulumi.RegisterOutputType(ServiceLbPoliciesFailoverConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceLbPoliciesIsolationConfigOutput{})
+	pulumi.RegisterOutputType(ServiceLbPoliciesIsolationConfigPtrOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleArrayOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleActionOutput{})

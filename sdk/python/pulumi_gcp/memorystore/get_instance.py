@@ -27,13 +27,16 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, managed_backup_sources=None, managed_server_cas=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
         if automated_backup_configs and not isinstance(automated_backup_configs, list):
             raise TypeError("Expected argument 'automated_backup_configs' to be a list")
         pulumi.set(__self__, "automated_backup_configs", automated_backup_configs)
+        if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
+            raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
+        pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         if backup_collection and not isinstance(backup_collection, str):
             raise TypeError("Expected argument 'backup_collection' to be a str")
         pulumi.set(__self__, "backup_collection", backup_collection)
@@ -58,6 +61,9 @@ class GetInstanceResult:
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
+        if effective_maintenance_version and not isinstance(effective_maintenance_version, str):
+            raise TypeError("Expected argument 'effective_maintenance_version' to be a str")
+        pulumi.set(__self__, "effective_maintenance_version", effective_maintenance_version)
         if endpoints and not isinstance(endpoints, list):
             raise TypeError("Expected argument 'endpoints' to be a list")
         pulumi.set(__self__, "endpoints", endpoints)
@@ -91,6 +97,9 @@ class GetInstanceResult:
         if maintenance_schedules and not isinstance(maintenance_schedules, list):
             raise TypeError("Expected argument 'maintenance_schedules' to be a list")
         pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
+        if maintenance_version and not isinstance(maintenance_version, str):
+            raise TypeError("Expected argument 'maintenance_version' to be a str")
+        pulumi.set(__self__, "maintenance_version", maintenance_version)
         if managed_backup_sources and not isinstance(managed_backup_sources, list):
             raise TypeError("Expected argument 'managed_backup_sources' to be a list")
         pulumi.set(__self__, "managed_backup_sources", managed_backup_sources)
@@ -160,6 +169,11 @@ class GetInstanceResult:
         return pulumi.get(self, "automated_backup_configs")
 
     @_builtins.property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "available_maintenance_versions")
+
+    @_builtins.property
     @pulumi.getter(name="backupCollection")
     def backup_collection(self) -> _builtins.str:
         return pulumi.get(self, "backup_collection")
@@ -198,6 +212,11 @@ class GetInstanceResult:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveMaintenanceVersion")
+    def effective_maintenance_version(self) -> _builtins.str:
+        return pulumi.get(self, "effective_maintenance_version")
 
     @_builtins.property
     @pulumi.getter
@@ -256,6 +275,11 @@ class GetInstanceResult:
     @pulumi.getter(name="maintenanceSchedules")
     def maintenance_schedules(self) -> Sequence['outputs.GetInstanceMaintenanceScheduleResult']:
         return pulumi.get(self, "maintenance_schedules")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> _builtins.str:
+        return pulumi.get(self, "maintenance_version")
 
     @_builtins.property
     @pulumi.getter(name="managedBackupSources")
@@ -361,6 +385,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         return GetInstanceResult(
             authorization_mode=self.authorization_mode,
             automated_backup_configs=self.automated_backup_configs,
+            available_maintenance_versions=self.available_maintenance_versions,
             backup_collection=self.backup_collection,
             create_time=self.create_time,
             cross_instance_replication_configs=self.cross_instance_replication_configs,
@@ -369,6 +394,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             desired_psc_auto_connections=self.desired_psc_auto_connections,
             discovery_endpoints=self.discovery_endpoints,
             effective_labels=self.effective_labels,
+            effective_maintenance_version=self.effective_maintenance_version,
             endpoints=self.endpoints,
             engine_configs=self.engine_configs,
             engine_version=self.engine_version,
@@ -380,6 +406,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             location=self.location,
             maintenance_policies=self.maintenance_policies,
             maintenance_schedules=self.maintenance_schedules,
+            maintenance_version=self.maintenance_version,
             managed_backup_sources=self.managed_backup_sources,
             managed_server_cas=self.managed_server_cas,
             mode=self.mode,
@@ -435,6 +462,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
     return AwaitableGetInstanceResult(
         authorization_mode=pulumi.get(__ret__, 'authorization_mode'),
         automated_backup_configs=pulumi.get(__ret__, 'automated_backup_configs'),
+        available_maintenance_versions=pulumi.get(__ret__, 'available_maintenance_versions'),
         backup_collection=pulumi.get(__ret__, 'backup_collection'),
         create_time=pulumi.get(__ret__, 'create_time'),
         cross_instance_replication_configs=pulumi.get(__ret__, 'cross_instance_replication_configs'),
@@ -443,6 +471,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         desired_psc_auto_connections=pulumi.get(__ret__, 'desired_psc_auto_connections'),
         discovery_endpoints=pulumi.get(__ret__, 'discovery_endpoints'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
+        effective_maintenance_version=pulumi.get(__ret__, 'effective_maintenance_version'),
         endpoints=pulumi.get(__ret__, 'endpoints'),
         engine_configs=pulumi.get(__ret__, 'engine_configs'),
         engine_version=pulumi.get(__ret__, 'engine_version'),
@@ -454,6 +483,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'),
         maintenance_schedules=pulumi.get(__ret__, 'maintenance_schedules'),
+        maintenance_version=pulumi.get(__ret__, 'maintenance_version'),
         managed_backup_sources=pulumi.get(__ret__, 'managed_backup_sources'),
         managed_server_cas=pulumi.get(__ret__, 'managed_server_cas'),
         mode=pulumi.get(__ret__, 'mode'),
@@ -506,6 +536,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = Non
     return __ret__.apply(lambda __response__: GetInstanceResult(
         authorization_mode=pulumi.get(__response__, 'authorization_mode'),
         automated_backup_configs=pulumi.get(__response__, 'automated_backup_configs'),
+        available_maintenance_versions=pulumi.get(__response__, 'available_maintenance_versions'),
         backup_collection=pulumi.get(__response__, 'backup_collection'),
         create_time=pulumi.get(__response__, 'create_time'),
         cross_instance_replication_configs=pulumi.get(__response__, 'cross_instance_replication_configs'),
@@ -514,6 +545,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = Non
         desired_psc_auto_connections=pulumi.get(__response__, 'desired_psc_auto_connections'),
         discovery_endpoints=pulumi.get(__response__, 'discovery_endpoints'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
+        effective_maintenance_version=pulumi.get(__response__, 'effective_maintenance_version'),
         endpoints=pulumi.get(__response__, 'endpoints'),
         engine_configs=pulumi.get(__response__, 'engine_configs'),
         engine_version=pulumi.get(__response__, 'engine_version'),
@@ -525,6 +557,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = Non
         location=pulumi.get(__response__, 'location'),
         maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),
         maintenance_schedules=pulumi.get(__response__, 'maintenance_schedules'),
+        maintenance_version=pulumi.get(__response__, 'maintenance_version'),
         managed_backup_sources=pulumi.get(__response__, 'managed_backup_sources'),
         managed_server_cas=pulumi.get(__response__, 'managed_server_cas'),
         mode=pulumi.get(__response__, 'mode'),

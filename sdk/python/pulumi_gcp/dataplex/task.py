@@ -593,11 +593,11 @@ class Task(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         example = gcp.dataplex.Lake("example",
-            name="tf-test-lake_8493",
+            name="tf-test-lake_2067",
             location="us-central1",
             project="my-project-name")
         example_task = gcp.dataplex.Task("example",
-            task_id="tf-test-task_9106",
+            task_id="tf-test-task_40785",
             location="us-central1",
             lake=example.name,
             description="Test Task Basic",
@@ -631,15 +631,15 @@ class Task(pulumi.CustomResource):
 
         # VPC network
         default = gcp.compute.Network("default",
-            name="tf-test-workstation-cluster_27169",
+            name="tf-test-workstation-cluster_79169",
             auto_create_subnetworks=True)
         project = gcp.organizations.get_project()
         example_spark = gcp.dataplex.Lake("example_spark",
-            name="tf-test-lake_75223",
+            name="tf-test-lake_56529",
             location="us-central1",
             project="my-project-name")
         example_spark_task = gcp.dataplex.Task("example_spark",
-            task_id="tf-test-task_41819",
+            task_id="tf-test-task_75413",
             location="us-central1",
             lake=example_spark.name,
             trigger_spec={
@@ -687,15 +687,15 @@ class Task(pulumi.CustomResource):
 
         # VPC network
         default = gcp.compute.Network("default",
-            name="tf-test-workstation-cluster_75092",
+            name="tf-test-workstation-cluster_55138",
             auto_create_subnetworks=True)
         project = gcp.organizations.get_project()
         example_notebook = gcp.dataplex.Lake("example_notebook",
-            name="tf-test-lake_2605",
+            name="tf-test-lake_37559",
             location="us-central1",
             project="my-project-name")
         example_notebook_task = gcp.dataplex.Task("example_notebook",
-            task_id="tf-test-task_34535",
+            task_id="tf-test-task_91980",
             location="us-central1",
             lake=example_notebook.name,
             trigger_spec={
@@ -807,11 +807,11 @@ class Task(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         example = gcp.dataplex.Lake("example",
-            name="tf-test-lake_8493",
+            name="tf-test-lake_2067",
             location="us-central1",
             project="my-project-name")
         example_task = gcp.dataplex.Task("example",
-            task_id="tf-test-task_9106",
+            task_id="tf-test-task_40785",
             location="us-central1",
             lake=example.name,
             description="Test Task Basic",
@@ -845,15 +845,15 @@ class Task(pulumi.CustomResource):
 
         # VPC network
         default = gcp.compute.Network("default",
-            name="tf-test-workstation-cluster_27169",
+            name="tf-test-workstation-cluster_79169",
             auto_create_subnetworks=True)
         project = gcp.organizations.get_project()
         example_spark = gcp.dataplex.Lake("example_spark",
-            name="tf-test-lake_75223",
+            name="tf-test-lake_56529",
             location="us-central1",
             project="my-project-name")
         example_spark_task = gcp.dataplex.Task("example_spark",
-            task_id="tf-test-task_41819",
+            task_id="tf-test-task_75413",
             location="us-central1",
             lake=example_spark.name,
             trigger_spec={
@@ -901,15 +901,15 @@ class Task(pulumi.CustomResource):
 
         # VPC network
         default = gcp.compute.Network("default",
-            name="tf-test-workstation-cluster_75092",
+            name="tf-test-workstation-cluster_55138",
             auto_create_subnetworks=True)
         project = gcp.organizations.get_project()
         example_notebook = gcp.dataplex.Lake("example_notebook",
-            name="tf-test-lake_2605",
+            name="tf-test-lake_37559",
             location="us-central1",
             project="my-project-name")
         example_notebook_task = gcp.dataplex.Task("example_notebook",
-            task_id="tf-test-task_34535",
+            task_id="tf-test-task_91980",
             location="us-central1",
             lake=example_notebook.name,
             trigger_spec={

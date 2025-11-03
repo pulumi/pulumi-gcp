@@ -32,6 +32,29 @@ public final class AspectTypeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Classifies the data stored by the aspect.
+     * `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+     * while `METADATA_AND_DATA` indicates data derived content.
+     * &lt;br&gt;&lt;br&gt;
+     * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+     * 
+     */
+    @Import(name="dataClassification")
+    private @Nullable Output<String> dataClassification;
+
+    /**
+     * @return Classifies the data stored by the aspect.
+     * `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+     * while `METADATA_AND_DATA` indicates data derived content.
+     * &lt;br&gt;&lt;br&gt;
+     * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+     * 
+     */
+    public Optional<Output<String>> dataClassification() {
+        return Optional.ofNullable(this.dataClassification);
+    }
+
+    /**
      * Description of the AspectType.
      * 
      */
@@ -133,6 +156,7 @@ public final class AspectTypeArgs extends com.pulumi.resources.ResourceArgs {
 
     private AspectTypeArgs(AspectTypeArgs $) {
         this.aspectTypeId = $.aspectTypeId;
+        this.dataClassification = $.dataClassification;
         this.description = $.description;
         this.displayName = $.displayName;
         this.labels = $.labels;
@@ -178,6 +202,35 @@ public final class AspectTypeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder aspectTypeId(String aspectTypeId) {
             return aspectTypeId(Output.of(aspectTypeId));
+        }
+
+        /**
+         * @param dataClassification Classifies the data stored by the aspect.
+         * `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+         * while `METADATA_AND_DATA` indicates data derived content.
+         * &lt;br&gt;&lt;br&gt;
+         * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataClassification(@Nullable Output<String> dataClassification) {
+            $.dataClassification = dataClassification;
+            return this;
+        }
+
+        /**
+         * @param dataClassification Classifies the data stored by the aspect.
+         * `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+         * while `METADATA_AND_DATA` indicates data derived content.
+         * &lt;br&gt;&lt;br&gt;
+         * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataClassification(String dataClassification) {
+            return dataClassification(Output.of(dataClassification));
         }
 
         /**

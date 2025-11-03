@@ -72,6 +72,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
+    ///             HealthCheckDisabled = true,
     ///             Containers = new[]
     ///             {
     ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
@@ -750,7 +751,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -759,7 +760,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "network-services-mesh",
     ///     });
     /// 
-    ///     var waitForMesh = new Time.Index.Sleep("wait_for_mesh", new()
+    ///     var waitForMesh = new Time.Sleep("wait_for_mesh", new()
     ///     {
     ///         CreateDuration = "1m",
     ///     }, new CustomResourceOptions

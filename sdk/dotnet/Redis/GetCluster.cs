@@ -148,11 +148,13 @@ namespace Pulumi.Gcp.Redis
     {
         public readonly string AuthorizationMode;
         public readonly ImmutableArray<Outputs.GetClusterAutomatedBackupConfigResult> AutomatedBackupConfigs;
+        public readonly ImmutableArray<string> AvailableMaintenanceVersions;
         public readonly string BackupCollection;
         public readonly string CreateTime;
         public readonly ImmutableArray<Outputs.GetClusterCrossClusterReplicationConfigResult> CrossClusterReplicationConfigs;
         public readonly bool DeletionProtectionEnabled;
         public readonly ImmutableArray<Outputs.GetClusterDiscoveryEndpointResult> DiscoveryEndpoints;
+        public readonly string EffectiveMaintenanceVersion;
         public readonly ImmutableArray<Outputs.GetClusterGcsSourceResult> GcsSources;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -161,6 +163,7 @@ namespace Pulumi.Gcp.Redis
         public readonly string KmsKey;
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyResult> MaintenancePolicies;
         public readonly ImmutableArray<Outputs.GetClusterMaintenanceScheduleResult> MaintenanceSchedules;
+        public readonly string MaintenanceVersion;
         public readonly ImmutableArray<Outputs.GetClusterManagedBackupSourceResult> ManagedBackupSources;
         public readonly ImmutableArray<Outputs.GetClusterManagedServerCaResult> ManagedServerCas;
         public readonly string Name;
@@ -188,6 +191,8 @@ namespace Pulumi.Gcp.Redis
 
             ImmutableArray<Outputs.GetClusterAutomatedBackupConfigResult> automatedBackupConfigs,
 
+            ImmutableArray<string> availableMaintenanceVersions,
+
             string backupCollection,
 
             string createTime,
@@ -198,6 +203,8 @@ namespace Pulumi.Gcp.Redis
 
             ImmutableArray<Outputs.GetClusterDiscoveryEndpointResult> discoveryEndpoints,
 
+            string effectiveMaintenanceVersion,
+
             ImmutableArray<Outputs.GetClusterGcsSourceResult> gcsSources,
 
             string id,
@@ -207,6 +214,8 @@ namespace Pulumi.Gcp.Redis
             ImmutableArray<Outputs.GetClusterMaintenancePolicyResult> maintenancePolicies,
 
             ImmutableArray<Outputs.GetClusterMaintenanceScheduleResult> maintenanceSchedules,
+
+            string maintenanceVersion,
 
             ImmutableArray<Outputs.GetClusterManagedBackupSourceResult> managedBackupSources,
 
@@ -250,16 +259,19 @@ namespace Pulumi.Gcp.Redis
         {
             AuthorizationMode = authorizationMode;
             AutomatedBackupConfigs = automatedBackupConfigs;
+            AvailableMaintenanceVersions = availableMaintenanceVersions;
             BackupCollection = backupCollection;
             CreateTime = createTime;
             CrossClusterReplicationConfigs = crossClusterReplicationConfigs;
             DeletionProtectionEnabled = deletionProtectionEnabled;
             DiscoveryEndpoints = discoveryEndpoints;
+            EffectiveMaintenanceVersion = effectiveMaintenanceVersion;
             GcsSources = gcsSources;
             Id = id;
             KmsKey = kmsKey;
             MaintenancePolicies = maintenancePolicies;
             MaintenanceSchedules = maintenanceSchedules;
+            MaintenanceVersion = maintenanceVersion;
             ManagedBackupSources = managedBackupSources;
             ManagedServerCas = managedServerCas;
             Name = name;

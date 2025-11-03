@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// To get more information about Spoke, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
+    /// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.spokes)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
     /// 
@@ -148,13 +148,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         Name = "tf-test-network_60365",
+    ///         Name = "tf-test-network_50610",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
     ///     {
-    ///         Name = "tf-test-subnet_80215",
+    ///         Name = "tf-test-subnet_77124",
     ///         IpCidrRange = "10.0.0.0/28",
     ///         Region = "us-central1",
     ///         Network = network.SelfLink,
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var instance = new Gcp.Compute.Instance("instance", new()
     ///     {
-    ///         Name = "tf-test-instance_59033",
+    ///         Name = "tf-test-instance_15335",
     ///         MachineType = "e2-medium",
     ///         CanIpForward = true,
     ///         Zone = "us-central1-a",
@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
     ///     {
-    ///         Name = "tf-test-hub_32081",
+    ///         Name = "tf-test-hub_20665",
     ///         Description = "A sample hub",
     ///         Labels = 
     ///         {
@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
     ///     {
-    ///         Name = "tf-test-name_10393",
+    ///         Name = "tf-test-name_85160",
     ///         Location = "us-central1",
     ///         Description = "A sample spoke with a linked routher appliance instance",
     ///         Labels = 
@@ -594,8 +594,8 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///         {
     ///             AutoAcceptProjects = new[]
     ///             {
-    ///                 "foo_33052",
-    ///                 "bar_3684",
+    ///                 "foo_92130",
+    ///                 "bar_16199",
     ///             },
     ///         },
     ///     });
@@ -668,6 +668,67 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// ### Network Connectivity Spoke Gateway
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "net-spoke",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
+    ///     {
+    ///         Name = "tf-test-subnet_21563",
+    ///         IpCidrRange = "10.0.0.0/28",
+    ///         Region = "us-central1",
+    ///         Network = network.SelfLink,
+    ///     });
+    /// 
+    ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
+    ///     {
+    ///         Name = "hub",
+    ///         Description = "A sample hub",
+    ///         Labels = 
+    ///         {
+    ///             { "label-two", "value-one" },
+    ///         },
+    ///         PresetTopology = "HYBRID_INSPECTION",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
+    ///     {
+    ///         Name = "gateway",
+    ///         Location = "us-central1",
+    ///         Description = "A sample spoke of type Gateway",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Hub = basicHub.Id,
+    ///         Gateway = new Gcp.NetworkConnectivity.Inputs.SpokeGatewayArgs
+    ///         {
+    ///             IpRangeReservations = new[]
+    ///             {
+    ///                 new Gcp.NetworkConnectivity.Inputs.SpokeGatewayIpRangeReservationArgs
+    ///                 {
+    ///                     IpRange = "10.0.0.0/23",
+    ///                 },
+    ///             },
+    ///             Capacity = "CAPACITY_1_GBPS",
+    ///         },
+    ///         Group = "gateways",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -713,6 +774,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// This is a gateway that can apply specialized processing to traffic going through it.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("gateway")]
+        public Output<Outputs.SpokeGateway?> Gateway { get; private set; } = null!;
 
         /// <summary>
         /// The name of the group that this spoke is associated with.
@@ -878,6 +946,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// This is a gateway that can apply specialized processing to traffic going through it.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gateway")]
+        public Input<Inputs.SpokeGatewayArgs>? Gateway { get; set; }
+
+        /// <summary>
         /// The name of the group that this spoke is associated with.
         /// </summary>
         [Input("group")]
@@ -992,6 +1067,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// This is a gateway that can apply specialized processing to traffic going through it.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gateway")]
+        public Input<Inputs.SpokeGatewayGetArgs>? Gateway { get; set; }
 
         /// <summary>
         /// The name of the group that this spoke is associated with.

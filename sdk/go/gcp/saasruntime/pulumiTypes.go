@@ -956,6 +956,514 @@ func (o SaaSLocationArrayOutput) Index(i pulumi.IntInput) SaaSLocationOutput {
 	}).(SaaSLocationOutput)
 }
 
+type UnitCondition struct {
+	// Last time the condition transited from one status to another.
+	LastTransitionTime string `pulumi:"lastTransitionTime"`
+	// Human readable message indicating details about the last transition.
+	Message string `pulumi:"message"`
+	// Brief reason for the condition's last transition.
+	Reason string `pulumi:"reason"`
+	// Status of the condition.
+	// Possible values:
+	// STATUS_UNKNOWN
+	// STATUS_TRUE
+	// STATUS_FALSE
+	Status string `pulumi:"status"`
+	// Name of a supported variable type. Supported types are string, int, bool.
+	// Possible values:
+	// STRING
+	// INT
+	// BOOL
+	Type string `pulumi:"type"`
+}
+
+// UnitConditionInput is an input type that accepts UnitConditionArgs and UnitConditionOutput values.
+// You can construct a concrete instance of `UnitConditionInput` via:
+//
+//	UnitConditionArgs{...}
+type UnitConditionInput interface {
+	pulumi.Input
+
+	ToUnitConditionOutput() UnitConditionOutput
+	ToUnitConditionOutputWithContext(context.Context) UnitConditionOutput
+}
+
+type UnitConditionArgs struct {
+	// Last time the condition transited from one status to another.
+	LastTransitionTime pulumi.StringInput `pulumi:"lastTransitionTime"`
+	// Human readable message indicating details about the last transition.
+	Message pulumi.StringInput `pulumi:"message"`
+	// Brief reason for the condition's last transition.
+	Reason pulumi.StringInput `pulumi:"reason"`
+	// Status of the condition.
+	// Possible values:
+	// STATUS_UNKNOWN
+	// STATUS_TRUE
+	// STATUS_FALSE
+	Status pulumi.StringInput `pulumi:"status"`
+	// Name of a supported variable type. Supported types are string, int, bool.
+	// Possible values:
+	// STRING
+	// INT
+	// BOOL
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (UnitConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitCondition)(nil)).Elem()
+}
+
+func (i UnitConditionArgs) ToUnitConditionOutput() UnitConditionOutput {
+	return i.ToUnitConditionOutputWithContext(context.Background())
+}
+
+func (i UnitConditionArgs) ToUnitConditionOutputWithContext(ctx context.Context) UnitConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitConditionOutput)
+}
+
+// UnitConditionArrayInput is an input type that accepts UnitConditionArray and UnitConditionArrayOutput values.
+// You can construct a concrete instance of `UnitConditionArrayInput` via:
+//
+//	UnitConditionArray{ UnitConditionArgs{...} }
+type UnitConditionArrayInput interface {
+	pulumi.Input
+
+	ToUnitConditionArrayOutput() UnitConditionArrayOutput
+	ToUnitConditionArrayOutputWithContext(context.Context) UnitConditionArrayOutput
+}
+
+type UnitConditionArray []UnitConditionInput
+
+func (UnitConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitCondition)(nil)).Elem()
+}
+
+func (i UnitConditionArray) ToUnitConditionArrayOutput() UnitConditionArrayOutput {
+	return i.ToUnitConditionArrayOutputWithContext(context.Background())
+}
+
+func (i UnitConditionArray) ToUnitConditionArrayOutputWithContext(ctx context.Context) UnitConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitConditionArrayOutput)
+}
+
+type UnitConditionOutput struct{ *pulumi.OutputState }
+
+func (UnitConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitCondition)(nil)).Elem()
+}
+
+func (o UnitConditionOutput) ToUnitConditionOutput() UnitConditionOutput {
+	return o
+}
+
+func (o UnitConditionOutput) ToUnitConditionOutputWithContext(ctx context.Context) UnitConditionOutput {
+	return o
+}
+
+// Last time the condition transited from one status to another.
+func (o UnitConditionOutput) LastTransitionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v UnitCondition) string { return v.LastTransitionTime }).(pulumi.StringOutput)
+}
+
+// Human readable message indicating details about the last transition.
+func (o UnitConditionOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v UnitCondition) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Brief reason for the condition's last transition.
+func (o UnitConditionOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v UnitCondition) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+// Status of the condition.
+// Possible values:
+// STATUS_UNKNOWN
+// STATUS_TRUE
+// STATUS_FALSE
+func (o UnitConditionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v UnitCondition) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Name of a supported variable type. Supported types are string, int, bool.
+// Possible values:
+// STRING
+// INT
+// BOOL
+func (o UnitConditionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v UnitCondition) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type UnitConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (UnitConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitCondition)(nil)).Elem()
+}
+
+func (o UnitConditionArrayOutput) ToUnitConditionArrayOutput() UnitConditionArrayOutput {
+	return o
+}
+
+func (o UnitConditionArrayOutput) ToUnitConditionArrayOutputWithContext(ctx context.Context) UnitConditionArrayOutput {
+	return o
+}
+
+func (o UnitConditionArrayOutput) Index(i pulumi.IntInput) UnitConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UnitCondition {
+		return vs[0].([]UnitCondition)[vs[1].(int)]
+	}).(UnitConditionOutput)
+}
+
+type UnitDependency struct {
+	// (Output)
+	// Alias for the name of the dependency.
+	Alias *string `pulumi:"alias"`
+	// (Output)
+	// A reference to the Unit object.
+	Unit *string `pulumi:"unit"`
+}
+
+// UnitDependencyInput is an input type that accepts UnitDependencyArgs and UnitDependencyOutput values.
+// You can construct a concrete instance of `UnitDependencyInput` via:
+//
+//	UnitDependencyArgs{...}
+type UnitDependencyInput interface {
+	pulumi.Input
+
+	ToUnitDependencyOutput() UnitDependencyOutput
+	ToUnitDependencyOutputWithContext(context.Context) UnitDependencyOutput
+}
+
+type UnitDependencyArgs struct {
+	// (Output)
+	// Alias for the name of the dependency.
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// (Output)
+	// A reference to the Unit object.
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (UnitDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitDependency)(nil)).Elem()
+}
+
+func (i UnitDependencyArgs) ToUnitDependencyOutput() UnitDependencyOutput {
+	return i.ToUnitDependencyOutputWithContext(context.Background())
+}
+
+func (i UnitDependencyArgs) ToUnitDependencyOutputWithContext(ctx context.Context) UnitDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitDependencyOutput)
+}
+
+// UnitDependencyArrayInput is an input type that accepts UnitDependencyArray and UnitDependencyArrayOutput values.
+// You can construct a concrete instance of `UnitDependencyArrayInput` via:
+//
+//	UnitDependencyArray{ UnitDependencyArgs{...} }
+type UnitDependencyArrayInput interface {
+	pulumi.Input
+
+	ToUnitDependencyArrayOutput() UnitDependencyArrayOutput
+	ToUnitDependencyArrayOutputWithContext(context.Context) UnitDependencyArrayOutput
+}
+
+type UnitDependencyArray []UnitDependencyInput
+
+func (UnitDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitDependency)(nil)).Elem()
+}
+
+func (i UnitDependencyArray) ToUnitDependencyArrayOutput() UnitDependencyArrayOutput {
+	return i.ToUnitDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i UnitDependencyArray) ToUnitDependencyArrayOutputWithContext(ctx context.Context) UnitDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitDependencyArrayOutput)
+}
+
+type UnitDependencyOutput struct{ *pulumi.OutputState }
+
+func (UnitDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitDependency)(nil)).Elem()
+}
+
+func (o UnitDependencyOutput) ToUnitDependencyOutput() UnitDependencyOutput {
+	return o
+}
+
+func (o UnitDependencyOutput) ToUnitDependencyOutputWithContext(ctx context.Context) UnitDependencyOutput {
+	return o
+}
+
+// (Output)
+// Alias for the name of the dependency.
+func (o UnitDependencyOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitDependency) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A reference to the Unit object.
+func (o UnitDependencyOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitDependency) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type UnitDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (UnitDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitDependency)(nil)).Elem()
+}
+
+func (o UnitDependencyArrayOutput) ToUnitDependencyArrayOutput() UnitDependencyArrayOutput {
+	return o
+}
+
+func (o UnitDependencyArrayOutput) ToUnitDependencyArrayOutputWithContext(ctx context.Context) UnitDependencyArrayOutput {
+	return o
+}
+
+func (o UnitDependencyArrayOutput) Index(i pulumi.IntInput) UnitDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UnitDependency {
+		return vs[0].([]UnitDependency)[vs[1].(int)]
+	}).(UnitDependencyOutput)
+}
+
+type UnitDependent struct {
+	// (Output)
+	// Alias for the name of the dependency.
+	Alias *string `pulumi:"alias"`
+	// (Output)
+	// A reference to the Unit object.
+	Unit *string `pulumi:"unit"`
+}
+
+// UnitDependentInput is an input type that accepts UnitDependentArgs and UnitDependentOutput values.
+// You can construct a concrete instance of `UnitDependentInput` via:
+//
+//	UnitDependentArgs{...}
+type UnitDependentInput interface {
+	pulumi.Input
+
+	ToUnitDependentOutput() UnitDependentOutput
+	ToUnitDependentOutputWithContext(context.Context) UnitDependentOutput
+}
+
+type UnitDependentArgs struct {
+	// (Output)
+	// Alias for the name of the dependency.
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// (Output)
+	// A reference to the Unit object.
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (UnitDependentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitDependent)(nil)).Elem()
+}
+
+func (i UnitDependentArgs) ToUnitDependentOutput() UnitDependentOutput {
+	return i.ToUnitDependentOutputWithContext(context.Background())
+}
+
+func (i UnitDependentArgs) ToUnitDependentOutputWithContext(ctx context.Context) UnitDependentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitDependentOutput)
+}
+
+// UnitDependentArrayInput is an input type that accepts UnitDependentArray and UnitDependentArrayOutput values.
+// You can construct a concrete instance of `UnitDependentArrayInput` via:
+//
+//	UnitDependentArray{ UnitDependentArgs{...} }
+type UnitDependentArrayInput interface {
+	pulumi.Input
+
+	ToUnitDependentArrayOutput() UnitDependentArrayOutput
+	ToUnitDependentArrayOutputWithContext(context.Context) UnitDependentArrayOutput
+}
+
+type UnitDependentArray []UnitDependentInput
+
+func (UnitDependentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitDependent)(nil)).Elem()
+}
+
+func (i UnitDependentArray) ToUnitDependentArrayOutput() UnitDependentArrayOutput {
+	return i.ToUnitDependentArrayOutputWithContext(context.Background())
+}
+
+func (i UnitDependentArray) ToUnitDependentArrayOutputWithContext(ctx context.Context) UnitDependentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitDependentArrayOutput)
+}
+
+type UnitDependentOutput struct{ *pulumi.OutputState }
+
+func (UnitDependentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitDependent)(nil)).Elem()
+}
+
+func (o UnitDependentOutput) ToUnitDependentOutput() UnitDependentOutput {
+	return o
+}
+
+func (o UnitDependentOutput) ToUnitDependentOutputWithContext(ctx context.Context) UnitDependentOutput {
+	return o
+}
+
+// (Output)
+// Alias for the name of the dependency.
+func (o UnitDependentOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitDependent) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A reference to the Unit object.
+func (o UnitDependentOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitDependent) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type UnitDependentArrayOutput struct{ *pulumi.OutputState }
+
+func (UnitDependentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitDependent)(nil)).Elem()
+}
+
+func (o UnitDependentArrayOutput) ToUnitDependentArrayOutput() UnitDependentArrayOutput {
+	return o
+}
+
+func (o UnitDependentArrayOutput) ToUnitDependentArrayOutputWithContext(ctx context.Context) UnitDependentArrayOutput {
+	return o
+}
+
+func (o UnitDependentArrayOutput) Index(i pulumi.IntInput) UnitDependentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UnitDependent {
+		return vs[0].([]UnitDependent)[vs[1].(int)]
+	}).(UnitDependentOutput)
+}
+
+type UnitInputVariable struct {
+	// Name of a supported variable type. Supported types are string, int, bool.
+	// Possible values:
+	// STRING
+	// INT
+	// BOOL
+	Type *string `pulumi:"type"`
+	// String encoded value for the variable.
+	Value *string `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable string `pulumi:"variable"`
+}
+
+// UnitInputVariableInput is an input type that accepts UnitInputVariableArgs and UnitInputVariableOutput values.
+// You can construct a concrete instance of `UnitInputVariableInput` via:
+//
+//	UnitInputVariableArgs{...}
+type UnitInputVariableInput interface {
+	pulumi.Input
+
+	ToUnitInputVariableOutput() UnitInputVariableOutput
+	ToUnitInputVariableOutputWithContext(context.Context) UnitInputVariableOutput
+}
+
+type UnitInputVariableArgs struct {
+	// Name of a supported variable type. Supported types are string, int, bool.
+	// Possible values:
+	// STRING
+	// INT
+	// BOOL
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// String encoded value for the variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable pulumi.StringInput `pulumi:"variable"`
+}
+
+func (UnitInputVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitInputVariable)(nil)).Elem()
+}
+
+func (i UnitInputVariableArgs) ToUnitInputVariableOutput() UnitInputVariableOutput {
+	return i.ToUnitInputVariableOutputWithContext(context.Background())
+}
+
+func (i UnitInputVariableArgs) ToUnitInputVariableOutputWithContext(ctx context.Context) UnitInputVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitInputVariableOutput)
+}
+
+// UnitInputVariableArrayInput is an input type that accepts UnitInputVariableArray and UnitInputVariableArrayOutput values.
+// You can construct a concrete instance of `UnitInputVariableArrayInput` via:
+//
+//	UnitInputVariableArray{ UnitInputVariableArgs{...} }
+type UnitInputVariableArrayInput interface {
+	pulumi.Input
+
+	ToUnitInputVariableArrayOutput() UnitInputVariableArrayOutput
+	ToUnitInputVariableArrayOutputWithContext(context.Context) UnitInputVariableArrayOutput
+}
+
+type UnitInputVariableArray []UnitInputVariableInput
+
+func (UnitInputVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitInputVariable)(nil)).Elem()
+}
+
+func (i UnitInputVariableArray) ToUnitInputVariableArrayOutput() UnitInputVariableArrayOutput {
+	return i.ToUnitInputVariableArrayOutputWithContext(context.Background())
+}
+
+func (i UnitInputVariableArray) ToUnitInputVariableArrayOutputWithContext(ctx context.Context) UnitInputVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitInputVariableArrayOutput)
+}
+
+type UnitInputVariableOutput struct{ *pulumi.OutputState }
+
+func (UnitInputVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitInputVariable)(nil)).Elem()
+}
+
+func (o UnitInputVariableOutput) ToUnitInputVariableOutput() UnitInputVariableOutput {
+	return o
+}
+
+func (o UnitInputVariableOutput) ToUnitInputVariableOutputWithContext(ctx context.Context) UnitInputVariableOutput {
+	return o
+}
+
+// Name of a supported variable type. Supported types are string, int, bool.
+// Possible values:
+// STRING
+// INT
+// BOOL
+func (o UnitInputVariableOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitInputVariable) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// String encoded value for the variable.
+func (o UnitInputVariableOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitInputVariable) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Name of the variable from actuation configs.
+func (o UnitInputVariableOutput) Variable() pulumi.StringOutput {
+	return o.ApplyT(func(v UnitInputVariable) string { return v.Variable }).(pulumi.StringOutput)
+}
+
+type UnitInputVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (UnitInputVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitInputVariable)(nil)).Elem()
+}
+
+func (o UnitInputVariableArrayOutput) ToUnitInputVariableArrayOutput() UnitInputVariableArrayOutput {
+	return o
+}
+
+func (o UnitInputVariableArrayOutput) ToUnitInputVariableArrayOutputWithContext(ctx context.Context) UnitInputVariableArrayOutput {
+	return o
+}
+
+func (o UnitInputVariableArrayOutput) Index(i pulumi.IntInput) UnitInputVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UnitInputVariable {
+		return vs[0].([]UnitInputVariable)[vs[1].(int)]
+	}).(UnitInputVariableOutput)
+}
+
 type UnitKindDependency struct {
 	// An alias for the dependency. Used for input variable mapping.
 	Alias string `pulumi:"alias"`
@@ -1966,6 +2474,278 @@ func (o UnitKindOutputVariableMappingToPtrOutput) InputVariable() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+type UnitMaintenance struct {
+	// If present, it fixes the release on the unit until the given time; i.e.
+	// changes to the release field will be rejected. Rollouts should and will
+	// also respect this by not requesting an upgrade in the first place.
+	PinnedUntilTime *string `pulumi:"pinnedUntilTime"`
+}
+
+// UnitMaintenanceInput is an input type that accepts UnitMaintenanceArgs and UnitMaintenanceOutput values.
+// You can construct a concrete instance of `UnitMaintenanceInput` via:
+//
+//	UnitMaintenanceArgs{...}
+type UnitMaintenanceInput interface {
+	pulumi.Input
+
+	ToUnitMaintenanceOutput() UnitMaintenanceOutput
+	ToUnitMaintenanceOutputWithContext(context.Context) UnitMaintenanceOutput
+}
+
+type UnitMaintenanceArgs struct {
+	// If present, it fixes the release on the unit until the given time; i.e.
+	// changes to the release field will be rejected. Rollouts should and will
+	// also respect this by not requesting an upgrade in the first place.
+	PinnedUntilTime pulumi.StringPtrInput `pulumi:"pinnedUntilTime"`
+}
+
+func (UnitMaintenanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitMaintenance)(nil)).Elem()
+}
+
+func (i UnitMaintenanceArgs) ToUnitMaintenanceOutput() UnitMaintenanceOutput {
+	return i.ToUnitMaintenanceOutputWithContext(context.Background())
+}
+
+func (i UnitMaintenanceArgs) ToUnitMaintenanceOutputWithContext(ctx context.Context) UnitMaintenanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitMaintenanceOutput)
+}
+
+func (i UnitMaintenanceArgs) ToUnitMaintenancePtrOutput() UnitMaintenancePtrOutput {
+	return i.ToUnitMaintenancePtrOutputWithContext(context.Background())
+}
+
+func (i UnitMaintenanceArgs) ToUnitMaintenancePtrOutputWithContext(ctx context.Context) UnitMaintenancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitMaintenanceOutput).ToUnitMaintenancePtrOutputWithContext(ctx)
+}
+
+// UnitMaintenancePtrInput is an input type that accepts UnitMaintenanceArgs, UnitMaintenancePtr and UnitMaintenancePtrOutput values.
+// You can construct a concrete instance of `UnitMaintenancePtrInput` via:
+//
+//	        UnitMaintenanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type UnitMaintenancePtrInput interface {
+	pulumi.Input
+
+	ToUnitMaintenancePtrOutput() UnitMaintenancePtrOutput
+	ToUnitMaintenancePtrOutputWithContext(context.Context) UnitMaintenancePtrOutput
+}
+
+type unitMaintenancePtrType UnitMaintenanceArgs
+
+func UnitMaintenancePtr(v *UnitMaintenanceArgs) UnitMaintenancePtrInput {
+	return (*unitMaintenancePtrType)(v)
+}
+
+func (*unitMaintenancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitMaintenance)(nil)).Elem()
+}
+
+func (i *unitMaintenancePtrType) ToUnitMaintenancePtrOutput() UnitMaintenancePtrOutput {
+	return i.ToUnitMaintenancePtrOutputWithContext(context.Background())
+}
+
+func (i *unitMaintenancePtrType) ToUnitMaintenancePtrOutputWithContext(ctx context.Context) UnitMaintenancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitMaintenancePtrOutput)
+}
+
+type UnitMaintenanceOutput struct{ *pulumi.OutputState }
+
+func (UnitMaintenanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitMaintenance)(nil)).Elem()
+}
+
+func (o UnitMaintenanceOutput) ToUnitMaintenanceOutput() UnitMaintenanceOutput {
+	return o
+}
+
+func (o UnitMaintenanceOutput) ToUnitMaintenanceOutputWithContext(ctx context.Context) UnitMaintenanceOutput {
+	return o
+}
+
+func (o UnitMaintenanceOutput) ToUnitMaintenancePtrOutput() UnitMaintenancePtrOutput {
+	return o.ToUnitMaintenancePtrOutputWithContext(context.Background())
+}
+
+func (o UnitMaintenanceOutput) ToUnitMaintenancePtrOutputWithContext(ctx context.Context) UnitMaintenancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UnitMaintenance) *UnitMaintenance {
+		return &v
+	}).(UnitMaintenancePtrOutput)
+}
+
+// If present, it fixes the release on the unit until the given time; i.e.
+// changes to the release field will be rejected. Rollouts should and will
+// also respect this by not requesting an upgrade in the first place.
+func (o UnitMaintenanceOutput) PinnedUntilTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitMaintenance) *string { return v.PinnedUntilTime }).(pulumi.StringPtrOutput)
+}
+
+type UnitMaintenancePtrOutput struct{ *pulumi.OutputState }
+
+func (UnitMaintenancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitMaintenance)(nil)).Elem()
+}
+
+func (o UnitMaintenancePtrOutput) ToUnitMaintenancePtrOutput() UnitMaintenancePtrOutput {
+	return o
+}
+
+func (o UnitMaintenancePtrOutput) ToUnitMaintenancePtrOutputWithContext(ctx context.Context) UnitMaintenancePtrOutput {
+	return o
+}
+
+func (o UnitMaintenancePtrOutput) Elem() UnitMaintenanceOutput {
+	return o.ApplyT(func(v *UnitMaintenance) UnitMaintenance {
+		if v != nil {
+			return *v
+		}
+		var ret UnitMaintenance
+		return ret
+	}).(UnitMaintenanceOutput)
+}
+
+// If present, it fixes the release on the unit until the given time; i.e.
+// changes to the release field will be rejected. Rollouts should and will
+// also respect this by not requesting an upgrade in the first place.
+func (o UnitMaintenancePtrOutput) PinnedUntilTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UnitMaintenance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PinnedUntilTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type UnitOutputVariable struct {
+	// Name of a supported variable type. Supported types are string, int, bool.
+	// Possible values:
+	// STRING
+	// INT
+	// BOOL
+	Type *string `pulumi:"type"`
+	// String encoded value for the variable.
+	Value *string `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable string `pulumi:"variable"`
+}
+
+// UnitOutputVariableInput is an input type that accepts UnitOutputVariableArgs and UnitOutputVariableOutput values.
+// You can construct a concrete instance of `UnitOutputVariableInput` via:
+//
+//	UnitOutputVariableArgs{...}
+type UnitOutputVariableInput interface {
+	pulumi.Input
+
+	ToUnitOutputVariableOutput() UnitOutputVariableOutput
+	ToUnitOutputVariableOutputWithContext(context.Context) UnitOutputVariableOutput
+}
+
+type UnitOutputVariableArgs struct {
+	// Name of a supported variable type. Supported types are string, int, bool.
+	// Possible values:
+	// STRING
+	// INT
+	// BOOL
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// String encoded value for the variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable pulumi.StringInput `pulumi:"variable"`
+}
+
+func (UnitOutputVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOutputVariable)(nil)).Elem()
+}
+
+func (i UnitOutputVariableArgs) ToUnitOutputVariableOutput() UnitOutputVariableOutput {
+	return i.ToUnitOutputVariableOutputWithContext(context.Background())
+}
+
+func (i UnitOutputVariableArgs) ToUnitOutputVariableOutputWithContext(ctx context.Context) UnitOutputVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOutputVariableOutput)
+}
+
+// UnitOutputVariableArrayInput is an input type that accepts UnitOutputVariableArray and UnitOutputVariableArrayOutput values.
+// You can construct a concrete instance of `UnitOutputVariableArrayInput` via:
+//
+//	UnitOutputVariableArray{ UnitOutputVariableArgs{...} }
+type UnitOutputVariableArrayInput interface {
+	pulumi.Input
+
+	ToUnitOutputVariableArrayOutput() UnitOutputVariableArrayOutput
+	ToUnitOutputVariableArrayOutputWithContext(context.Context) UnitOutputVariableArrayOutput
+}
+
+type UnitOutputVariableArray []UnitOutputVariableInput
+
+func (UnitOutputVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitOutputVariable)(nil)).Elem()
+}
+
+func (i UnitOutputVariableArray) ToUnitOutputVariableArrayOutput() UnitOutputVariableArrayOutput {
+	return i.ToUnitOutputVariableArrayOutputWithContext(context.Background())
+}
+
+func (i UnitOutputVariableArray) ToUnitOutputVariableArrayOutputWithContext(ctx context.Context) UnitOutputVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOutputVariableArrayOutput)
+}
+
+type UnitOutputVariableOutput struct{ *pulumi.OutputState }
+
+func (UnitOutputVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOutputVariable)(nil)).Elem()
+}
+
+func (o UnitOutputVariableOutput) ToUnitOutputVariableOutput() UnitOutputVariableOutput {
+	return o
+}
+
+func (o UnitOutputVariableOutput) ToUnitOutputVariableOutputWithContext(ctx context.Context) UnitOutputVariableOutput {
+	return o
+}
+
+// Name of a supported variable type. Supported types are string, int, bool.
+// Possible values:
+// STRING
+// INT
+// BOOL
+func (o UnitOutputVariableOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOutputVariable) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// String encoded value for the variable.
+func (o UnitOutputVariableOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOutputVariable) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Name of the variable from actuation configs.
+func (o UnitOutputVariableOutput) Variable() pulumi.StringOutput {
+	return o.ApplyT(func(v UnitOutputVariable) string { return v.Variable }).(pulumi.StringOutput)
+}
+
+type UnitOutputVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (UnitOutputVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitOutputVariable)(nil)).Elem()
+}
+
+func (o UnitOutputVariableArrayOutput) ToUnitOutputVariableArrayOutput() UnitOutputVariableArrayOutput {
+	return o
+}
+
+func (o UnitOutputVariableArrayOutput) ToUnitOutputVariableArrayOutputWithContext(ctx context.Context) UnitOutputVariableArrayOutput {
+	return o
+}
+
+func (o UnitOutputVariableArrayOutput) Index(i pulumi.IntInput) UnitOutputVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UnitOutputVariable {
+		return vs[0].([]UnitOutputVariable)[vs[1].(int)]
+	}).(UnitOutputVariableOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseBlueprintInput)(nil)).Elem(), ReleaseBlueprintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseBlueprintPtrInput)(nil)).Elem(), ReleaseBlueprintArgs{})
@@ -1981,6 +2761,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutKindErrorBudgetPtrInput)(nil)).Elem(), RolloutKindErrorBudgetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SaaSLocationInput)(nil)).Elem(), SaaSLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SaaSLocationArrayInput)(nil)).Elem(), SaaSLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitConditionInput)(nil)).Elem(), UnitConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitConditionArrayInput)(nil)).Elem(), UnitConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitDependencyInput)(nil)).Elem(), UnitDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitDependencyArrayInput)(nil)).Elem(), UnitDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitDependentInput)(nil)).Elem(), UnitDependentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitDependentArrayInput)(nil)).Elem(), UnitDependentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitInputVariableInput)(nil)).Elem(), UnitInputVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitInputVariableArrayInput)(nil)).Elem(), UnitInputVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindDependencyInput)(nil)).Elem(), UnitKindDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindDependencyArrayInput)(nil)).Elem(), UnitKindDependencyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindInputVariableMappingInput)(nil)).Elem(), UnitKindInputVariableMappingArgs{})
@@ -1995,6 +2783,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindOutputVariableMappingFromPtrInput)(nil)).Elem(), UnitKindOutputVariableMappingFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindOutputVariableMappingToInput)(nil)).Elem(), UnitKindOutputVariableMappingToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindOutputVariableMappingToPtrInput)(nil)).Elem(), UnitKindOutputVariableMappingToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitMaintenanceInput)(nil)).Elem(), UnitMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitMaintenancePtrInput)(nil)).Elem(), UnitMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOutputVariableInput)(nil)).Elem(), UnitOutputVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOutputVariableArrayInput)(nil)).Elem(), UnitOutputVariableArray{})
 	pulumi.RegisterOutputType(ReleaseBlueprintOutput{})
 	pulumi.RegisterOutputType(ReleaseBlueprintPtrOutput{})
 	pulumi.RegisterOutputType(ReleaseInputVariableOutput{})
@@ -2009,6 +2801,14 @@ func init() {
 	pulumi.RegisterOutputType(RolloutKindErrorBudgetPtrOutput{})
 	pulumi.RegisterOutputType(SaaSLocationOutput{})
 	pulumi.RegisterOutputType(SaaSLocationArrayOutput{})
+	pulumi.RegisterOutputType(UnitConditionOutput{})
+	pulumi.RegisterOutputType(UnitConditionArrayOutput{})
+	pulumi.RegisterOutputType(UnitDependencyOutput{})
+	pulumi.RegisterOutputType(UnitDependencyArrayOutput{})
+	pulumi.RegisterOutputType(UnitDependentOutput{})
+	pulumi.RegisterOutputType(UnitDependentArrayOutput{})
+	pulumi.RegisterOutputType(UnitInputVariableOutput{})
+	pulumi.RegisterOutputType(UnitInputVariableArrayOutput{})
 	pulumi.RegisterOutputType(UnitKindDependencyOutput{})
 	pulumi.RegisterOutputType(UnitKindDependencyArrayOutput{})
 	pulumi.RegisterOutputType(UnitKindInputVariableMappingOutput{})
@@ -2023,4 +2823,8 @@ func init() {
 	pulumi.RegisterOutputType(UnitKindOutputVariableMappingFromPtrOutput{})
 	pulumi.RegisterOutputType(UnitKindOutputVariableMappingToOutput{})
 	pulumi.RegisterOutputType(UnitKindOutputVariableMappingToPtrOutput{})
+	pulumi.RegisterOutputType(UnitMaintenanceOutput{})
+	pulumi.RegisterOutputType(UnitMaintenancePtrOutput{})
+	pulumi.RegisterOutputType(UnitOutputVariableOutput{})
+	pulumi.RegisterOutputType(UnitOutputVariableArrayOutput{})
 }

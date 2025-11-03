@@ -221,6 +221,7 @@ __all__ = [
     'PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition',
     'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions',
     'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition',
+    'PreventionDiscoveryConfigActionPublishToDataplexCatalog',
     'PreventionDiscoveryConfigActionTagResources',
     'PreventionDiscoveryConfigActionTagResourcesTagCondition',
     'PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore',
@@ -335,10 +336,12 @@ __all__ = [
     'PreventionJobTriggerInspectJobActionJobNotificationEmails',
     'PreventionJobTriggerInspectJobActionPubSub',
     'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog',
+    'PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog',
     'PreventionJobTriggerInspectJobActionPublishSummaryToCscc',
     'PreventionJobTriggerInspectJobActionPublishToStackdriver',
     'PreventionJobTriggerInspectJobActionSaveFindings',
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig',
+    'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath',
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable',
     'PreventionJobTriggerInspectJobInspectConfig',
     'PreventionJobTriggerInspectJobInspectConfigCustomInfoType',
@@ -11192,6 +11195,8 @@ class PreventionDiscoveryConfigAction(dict):
             suggest = "export_data"
         elif key == "pubSubNotification":
             suggest = "pub_sub_notification"
+        elif key == "publishToDataplexCatalog":
+            suggest = "publish_to_dataplex_catalog"
         elif key == "tagResources":
             suggest = "tag_resources"
 
@@ -11209,19 +11214,23 @@ class PreventionDiscoveryConfigAction(dict):
     def __init__(__self__, *,
                  export_data: Optional['outputs.PreventionDiscoveryConfigActionExportData'] = None,
                  pub_sub_notification: Optional['outputs.PreventionDiscoveryConfigActionPubSubNotification'] = None,
+                 publish_to_dataplex_catalog: Optional['outputs.PreventionDiscoveryConfigActionPublishToDataplexCatalog'] = None,
                  tag_resources: Optional['outputs.PreventionDiscoveryConfigActionTagResources'] = None):
         """
         :param 'PreventionDiscoveryConfigActionExportDataArgs' export_data: Export data profiles into a provided location
                Structure is documented below.
         :param 'PreventionDiscoveryConfigActionPubSubNotificationArgs' pub_sub_notification: Publish a message into the Pub/Sub topic.
                Structure is documented below.
-        :param 'PreventionDiscoveryConfigActionTagResourcesArgs' tag_resources: Publish a message into the Pub/Sub topic.
+        :param 'PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs' publish_to_dataplex_catalog: Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+        :param 'PreventionDiscoveryConfigActionTagResourcesArgs' tag_resources: Tag the profiled resources with the specified tag values.
                Structure is documented below.
         """
         if export_data is not None:
             pulumi.set(__self__, "export_data", export_data)
         if pub_sub_notification is not None:
             pulumi.set(__self__, "pub_sub_notification", pub_sub_notification)
+        if publish_to_dataplex_catalog is not None:
+            pulumi.set(__self__, "publish_to_dataplex_catalog", publish_to_dataplex_catalog)
         if tag_resources is not None:
             pulumi.set(__self__, "tag_resources", tag_resources)
 
@@ -11244,10 +11253,18 @@ class PreventionDiscoveryConfigAction(dict):
         return pulumi.get(self, "pub_sub_notification")
 
     @_builtins.property
+    @pulumi.getter(name="publishToDataplexCatalog")
+    def publish_to_dataplex_catalog(self) -> Optional['outputs.PreventionDiscoveryConfigActionPublishToDataplexCatalog']:
+        """
+        Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+        """
+        return pulumi.get(self, "publish_to_dataplex_catalog")
+
+    @_builtins.property
     @pulumi.getter(name="tagResources")
     def tag_resources(self) -> Optional['outputs.PreventionDiscoveryConfigActionTagResources']:
         """
-        Publish a message into the Pub/Sub topic.
+        Tag the profiled resources with the specified tag values.
         Structure is documented below.
         """
         return pulumi.get(self, "tag_resources")
@@ -11563,6 +11580,12 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
 
 
 @pulumi.output_type
+class PreventionDiscoveryConfigActionPublishToDataplexCatalog(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
 class PreventionDiscoveryConfigActionTagResources(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -11688,7 +11711,7 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore(di
                  score: _builtins.str):
         """
         :param _builtins.str score: The sensitivity score applied to the resource.
-               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
         """
         pulumi.set(__self__, "score", score)
 
@@ -11697,7 +11720,7 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore(di
     def score(self) -> _builtins.str:
         """
         The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
         """
         return pulumi.get(self, "score")
 
@@ -16413,6 +16436,8 @@ class PreventionJobTriggerInspectJobAction(dict):
             suggest = "pub_sub"
         elif key == "publishFindingsToCloudDataCatalog":
             suggest = "publish_findings_to_cloud_data_catalog"
+        elif key == "publishFindingsToDataplexCatalog":
+            suggest = "publish_findings_to_dataplex_catalog"
         elif key == "publishSummaryToCscc":
             suggest = "publish_summary_to_cscc"
         elif key == "publishToStackdriver":
@@ -16436,6 +16461,7 @@ class PreventionJobTriggerInspectJobAction(dict):
                  job_notification_emails: Optional['outputs.PreventionJobTriggerInspectJobActionJobNotificationEmails'] = None,
                  pub_sub: Optional['outputs.PreventionJobTriggerInspectJobActionPubSub'] = None,
                  publish_findings_to_cloud_data_catalog: Optional['outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog'] = None,
+                 publish_findings_to_dataplex_catalog: Optional['outputs.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog'] = None,
                  publish_summary_to_cscc: Optional['outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc'] = None,
                  publish_to_stackdriver: Optional['outputs.PreventionJobTriggerInspectJobActionPublishToStackdriver'] = None,
                  save_findings: Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindings'] = None):
@@ -16446,6 +16472,7 @@ class PreventionJobTriggerInspectJobAction(dict):
         :param 'PreventionJobTriggerInspectJobActionPubSubArgs' pub_sub: Publish a message into a given Pub/Sub topic when the job completes.
                Structure is documented below.
         :param 'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs' publish_findings_to_cloud_data_catalog: Publish findings of a DlpJob to Data Catalog.
+        :param 'PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs' publish_findings_to_dataplex_catalog: Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
         :param 'PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs' publish_summary_to_cscc: Publish the result summary of a DlpJob to the Cloud Security Command Center.
         :param 'PreventionJobTriggerInspectJobActionPublishToStackdriverArgs' publish_to_stackdriver: Enable Stackdriver metric dlp.googleapis.com/findingCount.
         :param 'PreventionJobTriggerInspectJobActionSaveFindingsArgs' save_findings: If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
@@ -16459,6 +16486,8 @@ class PreventionJobTriggerInspectJobAction(dict):
             pulumi.set(__self__, "pub_sub", pub_sub)
         if publish_findings_to_cloud_data_catalog is not None:
             pulumi.set(__self__, "publish_findings_to_cloud_data_catalog", publish_findings_to_cloud_data_catalog)
+        if publish_findings_to_dataplex_catalog is not None:
+            pulumi.set(__self__, "publish_findings_to_dataplex_catalog", publish_findings_to_dataplex_catalog)
         if publish_summary_to_cscc is not None:
             pulumi.set(__self__, "publish_summary_to_cscc", publish_summary_to_cscc)
         if publish_to_stackdriver is not None:
@@ -16499,6 +16528,14 @@ class PreventionJobTriggerInspectJobAction(dict):
         Publish findings of a DlpJob to Data Catalog.
         """
         return pulumi.get(self, "publish_findings_to_cloud_data_catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="publishFindingsToDataplexCatalog")
+    def publish_findings_to_dataplex_catalog(self) -> Optional['outputs.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog']:
+        """
+        Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
+        """
+        return pulumi.get(self, "publish_findings_to_dataplex_catalog")
 
     @_builtins.property
     @pulumi.getter(name="publishSummaryToCscc")
@@ -16802,6 +16839,12 @@ class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog(dict
 
 
 @pulumi.output_type
+class PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
 class PreventionJobTriggerInspectJobActionPublishSummaryToCscc(dict):
     def __init__(__self__):
         pass
@@ -16857,6 +16900,8 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
         suggest = None
         if key == "outputSchema":
             suggest = "output_schema"
+        elif key == "storagePath":
+            suggest = "storage_path"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig. Access the value via the '{suggest}' property getter instead.")
@@ -16870,11 +16915,10 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 table: 'outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable',
-                 output_schema: Optional[_builtins.str] = None):
+                 output_schema: Optional[_builtins.str] = None,
+                 storage_path: Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath'] = None,
+                 table: Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable'] = None):
         """
-        :param 'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs' table: Information on the location of the target BigQuery Table.
-               Structure is documented below.
         :param _builtins.str output_schema: Schema used for writing the findings for Inspect jobs. This field is only used for
                Inspect and must be unspecified for Risk jobs. Columns are derived from the Finding
                object. If appending to an existing table, any columns from the predefined schema
@@ -16883,19 +16927,21 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
                table with no schema, and no changes will be made to an existing table that has a schema.
                Only for use with external storage.
                Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
+        :param 'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgs' storage_path: Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
+               as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
+               the naming convention <job_id>-<shard_number>, for example: my-job-id-2.
+               Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
+               Cloud Storage, the output schema field should not be set. If set, it will be ignored.
+               Structure is documented below.
+        :param 'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs' table: Information on the location of the target BigQuery Table.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "table", table)
         if output_schema is not None:
             pulumi.set(__self__, "output_schema", output_schema)
-
-    @_builtins.property
-    @pulumi.getter
-    def table(self) -> 'outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable':
-        """
-        Information on the location of the target BigQuery Table.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "table")
+        if storage_path is not None:
+            pulumi.set(__self__, "storage_path", storage_path)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
 
     @_builtins.property
     @pulumi.getter(name="outputSchema")
@@ -16911,6 +16957,48 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
         Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
         """
         return pulumi.get(self, "output_schema")
+
+    @_builtins.property
+    @pulumi.getter(name="storagePath")
+    def storage_path(self) -> Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath']:
+        """
+        Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
+        as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
+        the naming convention <job_id>-<shard_number>, for example: my-job-id-2.
+        Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
+        Cloud Storage, the output schema field should not be set. If set, it will be ignored.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "storage_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable']:
+        """
+        Information on the location of the target BigQuery Table.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str):
+        """
+        :param _builtins.str path: A URL representing a file or path (no wildcards) in Cloud Storage.
+               Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+        pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        A URL representing a file or path (no wildcards) in Cloud Storage.
+        Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type

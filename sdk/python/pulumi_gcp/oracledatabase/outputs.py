@@ -33,6 +33,16 @@ __all__ = [
     'CloudVmClusterProperties',
     'CloudVmClusterPropertiesDiagnosticsDataCollectionOptions',
     'CloudVmClusterPropertiesTimeZone',
+    'DbSystemProperties',
+    'DbSystemPropertiesDataCollectionOptions',
+    'DbSystemPropertiesDbHome',
+    'DbSystemPropertiesDbHomeDatabase',
+    'DbSystemPropertiesDbHomeDatabaseProperties',
+    'DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig',
+    'DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig',
+    'DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail',
+    'DbSystemPropertiesDbSystemOptions',
+    'DbSystemPropertiesTimeZone',
     'GetAutonomousDatabasePropertyResult',
     'GetAutonomousDatabasePropertyApexDetailResult',
     'GetAutonomousDatabasePropertyConnectionStringResult',
@@ -3391,6 +3401,1217 @@ class CloudVmClusterPropertiesTimeZone(dict):
     def id(self) -> Optional[_builtins.str]:
         """
         IANA Time Zone Database time zone, e.g. "America/New_York".
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class DbSystemProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "computeCount":
+            suggest = "compute_count"
+        elif key == "databaseEdition":
+            suggest = "database_edition"
+        elif key == "initialDataStorageSizeGb":
+            suggest = "initial_data_storage_size_gb"
+        elif key == "licenseModel":
+            suggest = "license_model"
+        elif key == "sshPublicKeys":
+            suggest = "ssh_public_keys"
+        elif key == "computeModel":
+            suggest = "compute_model"
+        elif key == "dataCollectionOptions":
+            suggest = "data_collection_options"
+        elif key == "dataStorageSizeGb":
+            suggest = "data_storage_size_gb"
+        elif key == "dbHome":
+            suggest = "db_home"
+        elif key == "dbSystemOptions":
+            suggest = "db_system_options"
+        elif key == "hostnamePrefix":
+            suggest = "hostname_prefix"
+        elif key == "lifecycleState":
+            suggest = "lifecycle_state"
+        elif key == "memorySizeGb":
+            suggest = "memory_size_gb"
+        elif key == "nodeCount":
+            suggest = "node_count"
+        elif key == "privateIp":
+            suggest = "private_ip"
+        elif key == "recoStorageSizeGb":
+            suggest = "reco_storage_size_gb"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbSystemProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbSystemProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbSystemProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compute_count: _builtins.int,
+                 database_edition: _builtins.str,
+                 initial_data_storage_size_gb: _builtins.int,
+                 license_model: _builtins.str,
+                 shape: _builtins.str,
+                 ssh_public_keys: Sequence[_builtins.str],
+                 compute_model: Optional[_builtins.str] = None,
+                 data_collection_options: Optional['outputs.DbSystemPropertiesDataCollectionOptions'] = None,
+                 data_storage_size_gb: Optional[_builtins.int] = None,
+                 db_home: Optional['outputs.DbSystemPropertiesDbHome'] = None,
+                 db_system_options: Optional['outputs.DbSystemPropertiesDbSystemOptions'] = None,
+                 domain: Optional[_builtins.str] = None,
+                 hostname: Optional[_builtins.str] = None,
+                 hostname_prefix: Optional[_builtins.str] = None,
+                 lifecycle_state: Optional[_builtins.str] = None,
+                 memory_size_gb: Optional[_builtins.int] = None,
+                 node_count: Optional[_builtins.int] = None,
+                 ocid: Optional[_builtins.str] = None,
+                 private_ip: Optional[_builtins.str] = None,
+                 reco_storage_size_gb: Optional[_builtins.int] = None,
+                 time_zone: Optional['outputs.DbSystemPropertiesTimeZone'] = None):
+        """
+        :param _builtins.int compute_count: The number of CPU cores to enable for the DbSystem.
+        :param _builtins.str database_edition: The database edition of the DbSystem.
+               Possible values:
+               STANDARD_EDITION
+               ENTERPRISE_EDITION
+               ENTERPRISE_EDITION_HIGH_PERFORMANCE
+        :param _builtins.int initial_data_storage_size_gb: The initial data storage size in GB.
+        :param _builtins.str license_model: The license model of the DbSystem.
+               Possible values:
+               LICENSE_INCLUDED
+               BRING_YOUR_OWN_LICENSE
+        :param _builtins.str shape: Shape of DB System.
+        :param Sequence[_builtins.str] ssh_public_keys: SSH public keys to be stored with the DbSystem.
+        :param _builtins.str compute_model: The compute model of the DbSystem.
+               Possible values:
+               ECPU
+               OCPU
+        :param 'DbSystemPropertiesDataCollectionOptionsArgs' data_collection_options: Data collection options for DbSystem.
+               Structure is documented below.
+        :param _builtins.int data_storage_size_gb: The data storage size in GB that is currently available to DbSystems.
+        :param 'DbSystemPropertiesDbHomeArgs' db_home: Details of the Database Home resource.
+               Structure is documented below.
+        :param 'DbSystemPropertiesDbSystemOptionsArgs' db_system_options: Details of the DbSystem Options.
+               Structure is documented below.
+        :param _builtins.str domain: The host domain name of the DbSystem.
+        :param _builtins.str hostname: (Output)
+               The hostname of the DbSystem.
+        :param _builtins.str hostname_prefix: Prefix for DB System host names.
+        :param _builtins.str lifecycle_state: (Output)
+               State of the DbSystem.
+               Possible values:
+               PROVISIONING
+               AVAILABLE
+               UPDATING
+               TERMINATING
+               TERMINATED
+               FAILED
+               MIGRATED
+               MAINTENANCE_IN_PROGRESS
+               NEEDS_ATTENTION
+               UPGRADING
+        :param _builtins.int memory_size_gb: The memory size in GB.
+        :param _builtins.int node_count: The number of nodes in the DbSystem.
+        :param _builtins.str ocid: (Output)
+               OCID of the DbSystem.
+        :param _builtins.str private_ip: The private IP address of the DbSystem.
+        :param _builtins.int reco_storage_size_gb: The reco/redo storage size in GB.
+        :param 'DbSystemPropertiesTimeZoneArgs' time_zone: Represents a time zone from the
+               [IANA Time Zone Database](https://www.iana.org/time-zones).
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "compute_count", compute_count)
+        pulumi.set(__self__, "database_edition", database_edition)
+        pulumi.set(__self__, "initial_data_storage_size_gb", initial_data_storage_size_gb)
+        pulumi.set(__self__, "license_model", license_model)
+        pulumi.set(__self__, "shape", shape)
+        pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if compute_model is not None:
+            pulumi.set(__self__, "compute_model", compute_model)
+        if data_collection_options is not None:
+            pulumi.set(__self__, "data_collection_options", data_collection_options)
+        if data_storage_size_gb is not None:
+            pulumi.set(__self__, "data_storage_size_gb", data_storage_size_gb)
+        if db_home is not None:
+            pulumi.set(__self__, "db_home", db_home)
+        if db_system_options is not None:
+            pulumi.set(__self__, "db_system_options", db_system_options)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if hostname_prefix is not None:
+            pulumi.set(__self__, "hostname_prefix", hostname_prefix)
+        if lifecycle_state is not None:
+            pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+        if memory_size_gb is not None:
+            pulumi.set(__self__, "memory_size_gb", memory_size_gb)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if ocid is not None:
+            pulumi.set(__self__, "ocid", ocid)
+        if private_ip is not None:
+            pulumi.set(__self__, "private_ip", private_ip)
+        if reco_storage_size_gb is not None:
+            pulumi.set(__self__, "reco_storage_size_gb", reco_storage_size_gb)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @_builtins.property
+    @pulumi.getter(name="computeCount")
+    def compute_count(self) -> _builtins.int:
+        """
+        The number of CPU cores to enable for the DbSystem.
+        """
+        return pulumi.get(self, "compute_count")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseEdition")
+    def database_edition(self) -> _builtins.str:
+        """
+        The database edition of the DbSystem.
+        Possible values:
+        STANDARD_EDITION
+        ENTERPRISE_EDITION
+        ENTERPRISE_EDITION_HIGH_PERFORMANCE
+        """
+        return pulumi.get(self, "database_edition")
+
+    @_builtins.property
+    @pulumi.getter(name="initialDataStorageSizeGb")
+    def initial_data_storage_size_gb(self) -> _builtins.int:
+        """
+        The initial data storage size in GB.
+        """
+        return pulumi.get(self, "initial_data_storage_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="licenseModel")
+    def license_model(self) -> _builtins.str:
+        """
+        The license model of the DbSystem.
+        Possible values:
+        LICENSE_INCLUDED
+        BRING_YOUR_OWN_LICENSE
+        """
+        return pulumi.get(self, "license_model")
+
+    @_builtins.property
+    @pulumi.getter
+    def shape(self) -> _builtins.str:
+        """
+        Shape of DB System.
+        """
+        return pulumi.get(self, "shape")
+
+    @_builtins.property
+    @pulumi.getter(name="sshPublicKeys")
+    def ssh_public_keys(self) -> Sequence[_builtins.str]:
+        """
+        SSH public keys to be stored with the DbSystem.
+        """
+        return pulumi.get(self, "ssh_public_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="computeModel")
+    def compute_model(self) -> Optional[_builtins.str]:
+        """
+        The compute model of the DbSystem.
+        Possible values:
+        ECPU
+        OCPU
+        """
+        return pulumi.get(self, "compute_model")
+
+    @_builtins.property
+    @pulumi.getter(name="dataCollectionOptions")
+    def data_collection_options(self) -> Optional['outputs.DbSystemPropertiesDataCollectionOptions']:
+        """
+        Data collection options for DbSystem.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_collection_options")
+
+    @_builtins.property
+    @pulumi.getter(name="dataStorageSizeGb")
+    def data_storage_size_gb(self) -> Optional[_builtins.int]:
+        """
+        The data storage size in GB that is currently available to DbSystems.
+        """
+        return pulumi.get(self, "data_storage_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="dbHome")
+    def db_home(self) -> Optional['outputs.DbSystemPropertiesDbHome']:
+        """
+        Details of the Database Home resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "db_home")
+
+    @_builtins.property
+    @pulumi.getter(name="dbSystemOptions")
+    def db_system_options(self) -> Optional['outputs.DbSystemPropertiesDbSystemOptions']:
+        """
+        Details of the DbSystem Options.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "db_system_options")
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> Optional[_builtins.str]:
+        """
+        The host domain name of the DbSystem.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The hostname of the DbSystem.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter(name="hostnamePrefix")
+    def hostname_prefix(self) -> Optional[_builtins.str]:
+        """
+        Prefix for DB System host names.
+        """
+        return pulumi.get(self, "hostname_prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        State of the DbSystem.
+        Possible values:
+        PROVISIONING
+        AVAILABLE
+        UPDATING
+        TERMINATING
+        TERMINATED
+        FAILED
+        MIGRATED
+        MAINTENANCE_IN_PROGRESS
+        NEEDS_ATTENTION
+        UPGRADING
+        """
+        return pulumi.get(self, "lifecycle_state")
+
+    @_builtins.property
+    @pulumi.getter(name="memorySizeGb")
+    def memory_size_gb(self) -> Optional[_builtins.int]:
+        """
+        The memory size in GB.
+        """
+        return pulumi.get(self, "memory_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[_builtins.int]:
+        """
+        The number of nodes in the DbSystem.
+        """
+        return pulumi.get(self, "node_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def ocid(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        OCID of the DbSystem.
+        """
+        return pulumi.get(self, "ocid")
+
+    @_builtins.property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> Optional[_builtins.str]:
+        """
+        The private IP address of the DbSystem.
+        """
+        return pulumi.get(self, "private_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="recoStorageSizeGb")
+    def reco_storage_size_gb(self) -> Optional[_builtins.int]:
+        """
+        The reco/redo storage size in GB.
+        """
+        return pulumi.get(self, "reco_storage_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional['outputs.DbSystemPropertiesTimeZone']:
+        """
+        Represents a time zone from the
+        [IANA Time Zone Database](https://www.iana.org/time-zones).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "time_zone")
+
+
+@pulumi.output_type
+class DbSystemPropertiesDataCollectionOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isDiagnosticsEventsEnabled":
+            suggest = "is_diagnostics_events_enabled"
+        elif key == "isIncidentLogsEnabled":
+            suggest = "is_incident_logs_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbSystemPropertiesDataCollectionOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbSystemPropertiesDataCollectionOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbSystemPropertiesDataCollectionOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_diagnostics_events_enabled: Optional[_builtins.bool] = None,
+                 is_incident_logs_enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool is_diagnostics_events_enabled: Indicates whether to enable data collection for diagnostics.
+        :param _builtins.bool is_incident_logs_enabled: Indicates whether to enable incident logs and trace collection.
+        """
+        if is_diagnostics_events_enabled is not None:
+            pulumi.set(__self__, "is_diagnostics_events_enabled", is_diagnostics_events_enabled)
+        if is_incident_logs_enabled is not None:
+            pulumi.set(__self__, "is_incident_logs_enabled", is_incident_logs_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="isDiagnosticsEventsEnabled")
+    def is_diagnostics_events_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether to enable data collection for diagnostics.
+        """
+        return pulumi.get(self, "is_diagnostics_events_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="isIncidentLogsEnabled")
+    def is_incident_logs_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether to enable incident logs and trace collection.
+        """
+        return pulumi.get(self, "is_incident_logs_enabled")
+
+
+@pulumi.output_type
+class DbSystemPropertiesDbHome(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dbVersion":
+            suggest = "db_version"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "isUnifiedAuditingEnabled":
+            suggest = "is_unified_auditing_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbSystemPropertiesDbHome. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbSystemPropertiesDbHome.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbSystemPropertiesDbHome.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database: 'outputs.DbSystemPropertiesDbHomeDatabase',
+                 db_version: _builtins.str,
+                 display_name: Optional[_builtins.str] = None,
+                 is_unified_auditing_enabled: Optional[_builtins.bool] = None):
+        """
+        :param 'DbSystemPropertiesDbHomeDatabaseArgs' database: Details of the Database resource.
+               https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
+               Structure is documented below.
+        :param _builtins.str db_version: A valid Oracle Database version. For a list of supported versions, use the
+               ListDbVersions operation.
+        :param _builtins.str display_name: The display name for the Database Home. The name does not have to
+               be unique within your project.
+        :param _builtins.bool is_unified_auditing_enabled: Whether unified auditing is enabled for the Database Home.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "db_version", db_version)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if is_unified_auditing_enabled is not None:
+            pulumi.set(__self__, "is_unified_auditing_enabled", is_unified_auditing_enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> 'outputs.DbSystemPropertiesDbHomeDatabase':
+        """
+        Details of the Database resource.
+        https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
+        Structure is documented below.
+        """
+        return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter(name="dbVersion")
+    def db_version(self) -> _builtins.str:
+        """
+        A valid Oracle Database version. For a list of supported versions, use the
+        ListDbVersions operation.
+        """
+        return pulumi.get(self, "db_version")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The display name for the Database Home. The name does not have to
+        be unique within your project.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="isUnifiedAuditingEnabled")
+    def is_unified_auditing_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether unified auditing is enabled for the Database Home.
+        """
+        return pulumi.get(self, "is_unified_auditing_enabled")
+
+
+@pulumi.output_type
+class DbSystemPropertiesDbHomeDatabase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminPassword":
+            suggest = "admin_password"
+        elif key == "databaseId":
+            suggest = "database_id"
+        elif key == "characterSet":
+            suggest = "character_set"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "dbHomeName":
+            suggest = "db_home_name"
+        elif key == "dbName":
+            suggest = "db_name"
+        elif key == "dbUniqueName":
+            suggest = "db_unique_name"
+        elif key == "gcpOracleZone":
+            suggest = "gcp_oracle_zone"
+        elif key == "ncharacterSet":
+            suggest = "ncharacter_set"
+        elif key == "ociUrl":
+            suggest = "oci_url"
+        elif key == "opsInsightsStatus":
+            suggest = "ops_insights_status"
+        elif key == "tdeWalletPassword":
+            suggest = "tde_wallet_password"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbSystemPropertiesDbHomeDatabase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbSystemPropertiesDbHomeDatabase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbSystemPropertiesDbHomeDatabase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_password: _builtins.str,
+                 database_id: _builtins.str,
+                 character_set: Optional[_builtins.str] = None,
+                 create_time: Optional[_builtins.str] = None,
+                 db_home_name: Optional[_builtins.str] = None,
+                 db_name: Optional[_builtins.str] = None,
+                 db_unique_name: Optional[_builtins.str] = None,
+                 gcp_oracle_zone: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 ncharacter_set: Optional[_builtins.str] = None,
+                 oci_url: Optional[_builtins.str] = None,
+                 ops_insights_status: Optional[_builtins.str] = None,
+                 properties: Optional['outputs.DbSystemPropertiesDbHomeDatabaseProperties'] = None,
+                 tde_wallet_password: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str admin_password: The password for the default ADMIN user.
+        :param _builtins.str database_id: The database ID of the Database.
+        :param _builtins.str character_set: The character set for the database. The default is AL32UTF8.
+        :param _builtins.str create_time: (Output)
+               The date and time that the Database was created.
+        :param _builtins.str db_home_name: The name of the DbHome resource associated with the Database.
+        :param _builtins.str db_name: The database name. The name must begin with an alphabetic character and can
+               contain a maximum of eight alphanumeric characters. Special characters are
+               not permitted.
+        :param _builtins.str db_unique_name: The DB_UNIQUE_NAME of the Oracle Database being backed up.
+        :param _builtins.str gcp_oracle_zone: The GCP Oracle zone where the Database is created.
+        :param _builtins.str name: (Output)
+               Identifier. The name of the Database resource in the following format:
+               projects/{project}/locations/{region}/databases/{database}
+        :param _builtins.str ncharacter_set: The national character set for the database. The default is AL16UTF16.
+        :param _builtins.str oci_url: (Output)
+               HTTPS link to OCI resources exposed to Customer via UI Interface.
+        :param _builtins.str ops_insights_status: (Output)
+               The Status of Operations Insights for this Database.
+               Possible values:
+               ENABLING
+               ENABLED
+               DISABLING
+               NOT_ENABLED
+               FAILED_ENABLING
+               FAILED_DISABLING
+        :param 'DbSystemPropertiesDbHomeDatabasePropertiesArgs' properties: The properties of a Database.
+               Structure is documented below.
+        :param _builtins.str tde_wallet_password: The TDE wallet password for the database.
+        """
+        pulumi.set(__self__, "admin_password", admin_password)
+        pulumi.set(__self__, "database_id", database_id)
+        if character_set is not None:
+            pulumi.set(__self__, "character_set", character_set)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if db_home_name is not None:
+            pulumi.set(__self__, "db_home_name", db_home_name)
+        if db_name is not None:
+            pulumi.set(__self__, "db_name", db_name)
+        if db_unique_name is not None:
+            pulumi.set(__self__, "db_unique_name", db_unique_name)
+        if gcp_oracle_zone is not None:
+            pulumi.set(__self__, "gcp_oracle_zone", gcp_oracle_zone)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ncharacter_set is not None:
+            pulumi.set(__self__, "ncharacter_set", ncharacter_set)
+        if oci_url is not None:
+            pulumi.set(__self__, "oci_url", oci_url)
+        if ops_insights_status is not None:
+            pulumi.set(__self__, "ops_insights_status", ops_insights_status)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if tde_wallet_password is not None:
+            pulumi.set(__self__, "tde_wallet_password", tde_wallet_password)
+
+    @_builtins.property
+    @pulumi.getter(name="adminPassword")
+    def admin_password(self) -> _builtins.str:
+        """
+        The password for the default ADMIN user.
+        """
+        return pulumi.get(self, "admin_password")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> _builtins.str:
+        """
+        The database ID of the Database.
+        """
+        return pulumi.get(self, "database_id")
+
+    @_builtins.property
+    @pulumi.getter(name="characterSet")
+    def character_set(self) -> Optional[_builtins.str]:
+        """
+        The character set for the database. The default is AL32UTF8.
+        """
+        return pulumi.get(self, "character_set")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The date and time that the Database was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="dbHomeName")
+    def db_home_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the DbHome resource associated with the Database.
+        """
+        return pulumi.get(self, "db_home_name")
+
+    @_builtins.property
+    @pulumi.getter(name="dbName")
+    def db_name(self) -> Optional[_builtins.str]:
+        """
+        The database name. The name must begin with an alphabetic character and can
+        contain a maximum of eight alphanumeric characters. Special characters are
+        not permitted.
+        """
+        return pulumi.get(self, "db_name")
+
+    @_builtins.property
+    @pulumi.getter(name="dbUniqueName")
+    def db_unique_name(self) -> Optional[_builtins.str]:
+        """
+        The DB_UNIQUE_NAME of the Oracle Database being backed up.
+        """
+        return pulumi.get(self, "db_unique_name")
+
+    @_builtins.property
+    @pulumi.getter(name="gcpOracleZone")
+    def gcp_oracle_zone(self) -> Optional[_builtins.str]:
+        """
+        The GCP Oracle zone where the Database is created.
+        """
+        return pulumi.get(self, "gcp_oracle_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Identifier. The name of the Database resource in the following format:
+        projects/{project}/locations/{region}/databases/{database}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="ncharacterSet")
+    def ncharacter_set(self) -> Optional[_builtins.str]:
+        """
+        The national character set for the database. The default is AL16UTF16.
+        """
+        return pulumi.get(self, "ncharacter_set")
+
+    @_builtins.property
+    @pulumi.getter(name="ociUrl")
+    def oci_url(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        HTTPS link to OCI resources exposed to Customer via UI Interface.
+        """
+        return pulumi.get(self, "oci_url")
+
+    @_builtins.property
+    @pulumi.getter(name="opsInsightsStatus")
+    def ops_insights_status(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The Status of Operations Insights for this Database.
+        Possible values:
+        ENABLING
+        ENABLED
+        DISABLING
+        NOT_ENABLED
+        FAILED_ENABLING
+        FAILED_DISABLING
+        """
+        return pulumi.get(self, "ops_insights_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def properties(self) -> Optional['outputs.DbSystemPropertiesDbHomeDatabaseProperties']:
+        """
+        The properties of a Database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "properties")
+
+    @_builtins.property
+    @pulumi.getter(name="tdeWalletPassword")
+    def tde_wallet_password(self) -> Optional[_builtins.str]:
+        """
+        The TDE wallet password for the database.
+        """
+        return pulumi.get(self, "tde_wallet_password")
+
+
+@pulumi.output_type
+class DbSystemPropertiesDbHomeDatabaseProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dbVersion":
+            suggest = "db_version"
+        elif key == "databaseManagementConfig":
+            suggest = "database_management_config"
+        elif key == "dbBackupConfig":
+            suggest = "db_backup_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbSystemPropertiesDbHomeDatabaseProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbSystemPropertiesDbHomeDatabaseProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbSystemPropertiesDbHomeDatabaseProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 db_version: _builtins.str,
+                 database_management_config: Optional['outputs.DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig'] = None,
+                 db_backup_config: Optional['outputs.DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig'] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str db_version: The Oracle Database version.
+        :param 'DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs' database_management_config: The configuration of the Database Management service.
+               Structure is documented below.
+        :param 'DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs' db_backup_config: Backup Options for the Database.
+               Structure is documented below.
+        :param _builtins.str state: (Output)
+               State of the Database.
+               Possible values:
+               PROVISIONING
+               AVAILABLE
+               UPDATING
+               BACKUP_IN_PROGRESS
+               UPGRADING
+               CONVERTING
+               TERMINATING
+               TERMINATED
+               RESTORE_FAILED
+               FAILED
+        """
+        pulumi.set(__self__, "db_version", db_version)
+        if database_management_config is not None:
+            pulumi.set(__self__, "database_management_config", database_management_config)
+        if db_backup_config is not None:
+            pulumi.set(__self__, "db_backup_config", db_backup_config)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="dbVersion")
+    def db_version(self) -> _builtins.str:
+        """
+        The Oracle Database version.
+        """
+        return pulumi.get(self, "db_version")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseManagementConfig")
+    def database_management_config(self) -> Optional['outputs.DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig']:
+        """
+        The configuration of the Database Management service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "database_management_config")
+
+    @_builtins.property
+    @pulumi.getter(name="dbBackupConfig")
+    def db_backup_config(self) -> Optional['outputs.DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig']:
+        """
+        Backup Options for the Database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "db_backup_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        State of the Database.
+        Possible values:
+        PROVISIONING
+        AVAILABLE
+        UPDATING
+        BACKUP_IN_PROGRESS
+        UPGRADING
+        CONVERTING
+        TERMINATING
+        TERMINATED
+        RESTORE_FAILED
+        FAILED
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "managementState":
+            suggest = "management_state"
+        elif key == "managementType":
+            suggest = "management_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 management_state: Optional[_builtins.str] = None,
+                 management_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str management_state: (Output)
+               The status of the Database Management service.
+               Possible values:
+               ENABLING
+               ENABLED
+               DISABLING
+               DISABLED
+               UPDATING
+               FAILED_ENABLING
+               FAILED_DISABLING
+               FAILED_UPDATING
+        :param _builtins.str management_type: (Output)
+               The Database Management type.
+               Possible values:
+               BASIC
+               ADVANCED
+        """
+        if management_state is not None:
+            pulumi.set(__self__, "management_state", management_state)
+        if management_type is not None:
+            pulumi.set(__self__, "management_type", management_type)
+
+    @_builtins.property
+    @pulumi.getter(name="managementState")
+    def management_state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The status of the Database Management service.
+        Possible values:
+        ENABLING
+        ENABLED
+        DISABLING
+        DISABLED
+        UPDATING
+        FAILED_ENABLING
+        FAILED_DISABLING
+        FAILED_UPDATING
+        """
+        return pulumi.get(self, "management_state")
+
+    @_builtins.property
+    @pulumi.getter(name="managementType")
+    def management_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The Database Management type.
+        Possible values:
+        BASIC
+        ADVANCED
+        """
+        return pulumi.get(self, "management_type")
+
+
+@pulumi.output_type
+class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoBackupEnabled":
+            suggest = "auto_backup_enabled"
+        elif key == "autoFullBackupDay":
+            suggest = "auto_full_backup_day"
+        elif key == "autoFullBackupWindow":
+            suggest = "auto_full_backup_window"
+        elif key == "autoIncrementalBackupWindow":
+            suggest = "auto_incremental_backup_window"
+        elif key == "backupDeletionPolicy":
+            suggest = "backup_deletion_policy"
+        elif key == "backupDestinationDetails":
+            suggest = "backup_destination_details"
+        elif key == "retentionPeriodDays":
+            suggest = "retention_period_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_backup_enabled: Optional[_builtins.bool] = None,
+                 auto_full_backup_day: Optional[_builtins.str] = None,
+                 auto_full_backup_window: Optional[_builtins.str] = None,
+                 auto_incremental_backup_window: Optional[_builtins.str] = None,
+                 backup_deletion_policy: Optional[_builtins.str] = None,
+                 backup_destination_details: Optional[Sequence['outputs.DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail']] = None,
+                 retention_period_days: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool auto_backup_enabled: If set to true, enables automatic backups on the database.
+        :param _builtins.str auto_full_backup_day: Possible values:
+               MONDAY
+               TUESDAY
+               WEDNESDAY
+               THURSDAY
+               FRIDAY
+               SATURDAY
+               SUNDAY
+        :param _builtins.str auto_full_backup_window: The window in which the full backup should be performed on the database.
+               If no value is provided, the default is anytime.
+               Possible values:
+               SLOT_ONE
+               SLOT_TWO
+               SLOT_THREE
+               SLOT_FOUR
+               SLOT_FIVE
+               SLOT_SIX
+               SLOT_SEVEN
+               SLOT_EIGHT
+               SLOT_NINE
+               SLOT_TEN
+               SLOT_ELEVEN
+               SLOT_TWELVE
+        :param _builtins.str auto_incremental_backup_window: The window in which the incremental backup should be performed on the
+               database. If no value is provided, the default is anytime except the auto
+               full backup day.
+               Possible values:
+               SLOT_ONE
+               SLOT_TWO
+               SLOT_THREE
+               SLOT_FOUR
+               SLOT_FIVE
+               SLOT_SIX
+               SLOT_SEVEN
+               SLOT_EIGHT
+               SLOT_NINE
+               SLOT_TEN
+               SLOT_ELEVEN
+               SLOT_TWELVE
+        :param _builtins.str backup_deletion_policy: This defines when the backups will be deleted after Database termination.
+               Possible values:
+               DELETE_IMMEDIATELY
+               DELETE_AFTER_RETENTION_PERIOD
+        :param Sequence['DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArgs'] backup_destination_details: Details of the database backup destinations.
+               Structure is documented below.
+        :param _builtins.int retention_period_days: The number of days an automatic backup is retained before being
+               automatically deleted. This value determines the earliest point in time to
+               which a database can be restored. Min: 1, Max: 60.
+        """
+        if auto_backup_enabled is not None:
+            pulumi.set(__self__, "auto_backup_enabled", auto_backup_enabled)
+        if auto_full_backup_day is not None:
+            pulumi.set(__self__, "auto_full_backup_day", auto_full_backup_day)
+        if auto_full_backup_window is not None:
+            pulumi.set(__self__, "auto_full_backup_window", auto_full_backup_window)
+        if auto_incremental_backup_window is not None:
+            pulumi.set(__self__, "auto_incremental_backup_window", auto_incremental_backup_window)
+        if backup_deletion_policy is not None:
+            pulumi.set(__self__, "backup_deletion_policy", backup_deletion_policy)
+        if backup_destination_details is not None:
+            pulumi.set(__self__, "backup_destination_details", backup_destination_details)
+        if retention_period_days is not None:
+            pulumi.set(__self__, "retention_period_days", retention_period_days)
+
+    @_builtins.property
+    @pulumi.getter(name="autoBackupEnabled")
+    def auto_backup_enabled(self) -> Optional[_builtins.bool]:
+        """
+        If set to true, enables automatic backups on the database.
+        """
+        return pulumi.get(self, "auto_backup_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="autoFullBackupDay")
+    def auto_full_backup_day(self) -> Optional[_builtins.str]:
+        """
+        Possible values:
+        MONDAY
+        TUESDAY
+        WEDNESDAY
+        THURSDAY
+        FRIDAY
+        SATURDAY
+        SUNDAY
+        """
+        return pulumi.get(self, "auto_full_backup_day")
+
+    @_builtins.property
+    @pulumi.getter(name="autoFullBackupWindow")
+    def auto_full_backup_window(self) -> Optional[_builtins.str]:
+        """
+        The window in which the full backup should be performed on the database.
+        If no value is provided, the default is anytime.
+        Possible values:
+        SLOT_ONE
+        SLOT_TWO
+        SLOT_THREE
+        SLOT_FOUR
+        SLOT_FIVE
+        SLOT_SIX
+        SLOT_SEVEN
+        SLOT_EIGHT
+        SLOT_NINE
+        SLOT_TEN
+        SLOT_ELEVEN
+        SLOT_TWELVE
+        """
+        return pulumi.get(self, "auto_full_backup_window")
+
+    @_builtins.property
+    @pulumi.getter(name="autoIncrementalBackupWindow")
+    def auto_incremental_backup_window(self) -> Optional[_builtins.str]:
+        """
+        The window in which the incremental backup should be performed on the
+        database. If no value is provided, the default is anytime except the auto
+        full backup day.
+        Possible values:
+        SLOT_ONE
+        SLOT_TWO
+        SLOT_THREE
+        SLOT_FOUR
+        SLOT_FIVE
+        SLOT_SIX
+        SLOT_SEVEN
+        SLOT_EIGHT
+        SLOT_NINE
+        SLOT_TEN
+        SLOT_ELEVEN
+        SLOT_TWELVE
+        """
+        return pulumi.get(self, "auto_incremental_backup_window")
+
+    @_builtins.property
+    @pulumi.getter(name="backupDeletionPolicy")
+    def backup_deletion_policy(self) -> Optional[_builtins.str]:
+        """
+        This defines when the backups will be deleted after Database termination.
+        Possible values:
+        DELETE_IMMEDIATELY
+        DELETE_AFTER_RETENTION_PERIOD
+        """
+        return pulumi.get(self, "backup_deletion_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="backupDestinationDetails")
+    def backup_destination_details(self) -> Optional[Sequence['outputs.DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail']]:
+        """
+        Details of the database backup destinations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "backup_destination_details")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionPeriodDays")
+    def retention_period_days(self) -> Optional[_builtins.int]:
+        """
+        The number of days an automatic backup is retained before being
+        automatically deleted. This value determines the earliest point in time to
+        which a database can be restored. Min: 1, Max: 60.
+        """
+        return pulumi.get(self, "retention_period_days")
+
+
+@pulumi.output_type
+class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail(dict):
+    def __init__(__self__, *,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: The type of the database backup destination.
+               Possible values:
+               NFS
+               RECOVERY_APPLIANCE
+               OBJECT_STORE
+               LOCAL
+               DBRS
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The type of the database backup destination.
+        Possible values:
+        NFS
+        RECOVERY_APPLIANCE
+        OBJECT_STORE
+        LOCAL
+        DBRS
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DbSystemPropertiesDbSystemOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageManagement":
+            suggest = "storage_management"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbSystemPropertiesDbSystemOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbSystemPropertiesDbSystemOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbSystemPropertiesDbSystemOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 storage_management: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str storage_management: The storage option used in DB system.
+               Possible values:
+               ASM
+               LVM
+        """
+        if storage_management is not None:
+            pulumi.set(__self__, "storage_management", storage_management)
+
+    @_builtins.property
+    @pulumi.getter(name="storageManagement")
+    def storage_management(self) -> Optional[_builtins.str]:
+        """
+        The storage option used in DB system.
+        Possible values:
+        ASM
+        LVM
+        """
+        return pulumi.get(self, "storage_management")
+
+
+@pulumi.output_type
+class DbSystemPropertiesTimeZone(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: IANA Time Zone Database time zone. For example "America/New_York".
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        IANA Time Zone Database time zone. For example "America/New_York".
         """
         return pulumi.get(self, "id")
 

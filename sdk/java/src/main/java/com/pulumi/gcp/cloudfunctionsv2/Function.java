@@ -631,8 +631,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.BucketObject;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.Function;
  * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
@@ -695,10 +695,10 @@ import javax.annotation.Nullable;
  *         var wait60s = new Sleep("wait60s", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(                
+ *                 .dependsOn(                
  *                     logWriter,
  *                     artifactRegistryWriter,
- *                     storageObjectAdmin))
+ *                     storageObjectAdmin)
  *                 .build());
  * 
  *         var function = new Function("function", FunctionArgs.builder()

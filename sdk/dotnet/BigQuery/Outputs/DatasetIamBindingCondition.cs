@@ -14,7 +14,13 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class DatasetIamBindingCondition
     {
         public readonly string? Description;
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         public readonly string Expression;
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         public readonly string Title;
 
         [OutputConstructor]

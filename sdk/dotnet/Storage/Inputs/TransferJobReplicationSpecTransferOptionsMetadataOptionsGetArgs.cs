@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Storage.Inputs
     public sealed class TransferJobReplicationSpecTransferOptionsMetadataOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        /// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<string>? Gid { get; set; }
 
         /// <summary>
-        /// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        /// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
         /// </summary>
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        /// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<string>? Symlink { get; set; }
 
         /// <summary>
-        /// SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        /// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
         /// </summary>
         [Input("temporaryHold")]
         public Input<string>? TemporaryHold { get; set; }

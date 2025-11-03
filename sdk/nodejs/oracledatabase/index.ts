@@ -20,6 +20,11 @@ export type CloudVmCluster = import("./cloudVmCluster").CloudVmCluster;
 export const CloudVmCluster: typeof import("./cloudVmCluster").CloudVmCluster = null as any;
 utilities.lazyLoad(exports, ["CloudVmCluster"], () => require("./cloudVmCluster"));
 
+export { DbSystemArgs, DbSystemState } from "./dbSystem";
+export type DbSystem = import("./dbSystem").DbSystem;
+export const DbSystem: typeof import("./dbSystem").DbSystem = null as any;
+utilities.lazyLoad(exports, ["DbSystem"], () => require("./dbSystem"));
+
 export { GetAutonomousDatabaseArgs, GetAutonomousDatabaseResult, GetAutonomousDatabaseOutputArgs } from "./getAutonomousDatabase";
 export const getAutonomousDatabase: typeof import("./getAutonomousDatabase").getAutonomousDatabase = null as any;
 export const getAutonomousDatabaseOutput: typeof import("./getAutonomousDatabase").getAutonomousDatabaseOutput = null as any;
@@ -81,6 +86,8 @@ const _module = {
                 return new CloudExadataInfrastructure(name, <any>undefined, { urn })
             case "gcp:oracledatabase/cloudVmCluster:CloudVmCluster":
                 return new CloudVmCluster(name, <any>undefined, { urn })
+            case "gcp:oracledatabase/dbSystem:DbSystem":
+                return new DbSystem(name, <any>undefined, { urn })
             case "gcp:oracledatabase/odbNetwork:OdbNetwork":
                 return new OdbNetwork(name, <any>undefined, { urn })
             case "gcp:oracledatabase/odbSubnet:OdbSubnet":
@@ -93,5 +100,6 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/autonomousDatabase", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/cloudExadataInfrastructure", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/cloudVmCluster", _module)
+pulumi.runtime.registerResourceModule("gcp", "oracledatabase/dbSystem", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/odbNetwork", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/odbSubnet", _module)

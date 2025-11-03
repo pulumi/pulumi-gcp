@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Firebase
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     ///     // It takes a while for App Check to recognize the new app
     ///     // If your app already exists, you don't have to wait 30 seconds.
-    ///     var wait30s = new Time.Index.Sleep("wait_30s", new()
+    ///     var wait30s = new Time.Sleep("wait_30s", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions
@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.Firebase
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     ///     // It takes a while for App Check to recognize the new app
     ///     // If your app already exists, you don't have to wait 30 seconds.
-    ///     var wait30s = new Time.Index.Sleep("wait_30s", new()
+    ///     var wait30s = new Time.Sleep("wait_30s", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions

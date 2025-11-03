@@ -770,13 +770,13 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cross_project_dataset = new gcp.organizations.Project("cross-project-dataset", {
- *     projectId: "tf-test_79169",
- *     name: "tf-test_56529",
+ *     projectId: "tf-test_76044",
+ *     name: "tf-test_69391",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
  * });
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ * const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
  *     dependsOn: [cross_project_dataset],
  * });
  * const bigquery = new gcp.projects.Service("bigquery", {
@@ -1082,6 +1082,8 @@ import * as utilities from "../utilities";
  *     backfillNone: {},
  * });
  * ```
+ * ### Datastream Stream Mongodb
+ *
  * ## Import
  *
  * Stream can be imported using any of these accepted formats:

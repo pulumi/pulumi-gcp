@@ -104,6 +104,8 @@ type Application struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The serving status of the app.
 	ServingStatus pulumi.StringOutput `pulumi:"servingStatus"`
+	// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+	SslPolicy pulumi.StringOutput `pulumi:"sslPolicy"`
 	// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
 	UrlDispatchRules ApplicationUrlDispatchRuleArrayOutput `pulumi:"urlDispatchRules"`
 }
@@ -175,6 +177,8 @@ type applicationState struct {
 	Project *string `pulumi:"project"`
 	// The serving status of the app.
 	ServingStatus *string `pulumi:"servingStatus"`
+	// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+	SslPolicy *string `pulumi:"sslPolicy"`
 	// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
 	UrlDispatchRules []ApplicationUrlDispatchRule `pulumi:"urlDispatchRules"`
 }
@@ -214,6 +218,8 @@ type ApplicationState struct {
 	Project pulumi.StringPtrInput
 	// The serving status of the app.
 	ServingStatus pulumi.StringPtrInput
+	// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+	SslPolicy pulumi.StringPtrInput
 	// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
 	UrlDispatchRules ApplicationUrlDispatchRuleArrayInput
 }
@@ -245,6 +251,8 @@ type applicationArgs struct {
 	Project *string `pulumi:"project"`
 	// The serving status of the app.
 	ServingStatus *string `pulumi:"servingStatus"`
+	// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+	SslPolicy *string `pulumi:"sslPolicy"`
 }
 
 // The set of arguments for constructing a Application resource.
@@ -271,6 +279,8 @@ type ApplicationArgs struct {
 	Project pulumi.StringPtrInput
 	// The serving status of the app.
 	ServingStatus pulumi.StringPtrInput
+	// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+	SslPolicy pulumi.StringPtrInput
 }
 
 func (ApplicationArgs) ElementType() reflect.Type {
@@ -431,6 +441,11 @@ func (o ApplicationOutput) Project() pulumi.StringOutput {
 // The serving status of the app.
 func (o ApplicationOutput) ServingStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.ServingStatus }).(pulumi.StringOutput)
+}
+
+// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+func (o ApplicationOutput) SslPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.SslPolicy }).(pulumi.StringOutput)
 }
 
 // A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.

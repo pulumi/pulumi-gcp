@@ -55,11 +55,13 @@ export interface GetClusterArgs {
 export interface GetClusterResult {
     readonly authorizationMode: string;
     readonly automatedBackupConfigs: outputs.redis.GetClusterAutomatedBackupConfig[];
+    readonly availableMaintenanceVersions: string[];
     readonly backupCollection: string;
     readonly createTime: string;
     readonly crossClusterReplicationConfigs: outputs.redis.GetClusterCrossClusterReplicationConfig[];
     readonly deletionProtectionEnabled: boolean;
     readonly discoveryEndpoints: outputs.redis.GetClusterDiscoveryEndpoint[];
+    readonly effectiveMaintenanceVersion: string;
     readonly gcsSources: outputs.redis.GetClusterGcsSource[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -68,6 +70,7 @@ export interface GetClusterResult {
     readonly kmsKey: string;
     readonly maintenancePolicies: outputs.redis.GetClusterMaintenancePolicy[];
     readonly maintenanceSchedules: outputs.redis.GetClusterMaintenanceSchedule[];
+    readonly maintenanceVersion: string;
     readonly managedBackupSources: outputs.redis.GetClusterManagedBackupSource[];
     readonly managedServerCas: outputs.redis.GetClusterManagedServerCa[];
     readonly name: string;

@@ -66,6 +66,7 @@ namespace Pulumi.Gcp.Memcache
     ///     {
     ///         Name = "test-instance",
     ///         AuthorizedNetwork = privateServiceConnection.Network,
+    ///         DeletionProtection = false,
     ///         Labels = 
     ///         {
     ///             { "env", "test" },
@@ -145,6 +146,9 @@ namespace Pulumi.Gcp.Memcache
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// Endpoint for Discovery API
@@ -329,6 +333,9 @@ namespace Pulumi.Gcp.Memcache
         [Input("authorizedNetwork")]
         public Input<string>? AuthorizedNetwork { get; set; }
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// A user-visible name for the instance.
         /// </summary>
@@ -453,6 +460,9 @@ namespace Pulumi.Gcp.Memcache
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// Endpoint for Discovery API

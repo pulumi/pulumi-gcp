@@ -436,7 +436,7 @@ class OrganizationSink(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a organization-level logging sink. For more information see:
+        Manages an organization-level logging sink. For more information see:
         * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks)
         * How-to Guides
             * [Exporting Logs](https://cloud.google.com/logging/docs/export)
@@ -506,7 +506,7 @@ class OrganizationSink(pulumi.CustomResource):
                  args: OrganizationSinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a organization-level logging sink. For more information see:
+        Manages an organization-level logging sink. For more information see:
         * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks)
         * How-to Guides
             * [Exporting Logs](https://cloud.google.com/logging/docs/export)

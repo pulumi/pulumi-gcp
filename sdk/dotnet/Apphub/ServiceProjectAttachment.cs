@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Apphub
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Apphub
     ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
-    ///     var wait120s = new Time.Index.Sleep("wait_120s", new()
+    ///     var wait120s = new Time.Sleep("wait_120s", new()
     ///     {
     ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Apphub
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.Apphub
     ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
-    ///     var wait120s = new Time.Index.Sleep("wait_120s", new()
+    ///     var wait120s = new Time.Sleep("wait_120s", new()
     ///     {
     ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions

@@ -836,7 +836,7 @@ class Function(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         project = "my-project-name"
         account = gcp.serviceaccount.Account("account",
@@ -863,7 +863,7 @@ class Function(pulumi.CustomResource):
             bucket=bucket.name,
             source=pulumi.FileAsset("function-source.zip"))
         # builder permissions need to stablize before it can pull the source zip
-        wait60s = time.index.Sleep("wait_60s", create_duration=60s,
+        wait60s = time.Sleep("wait_60s", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[
                 log_writer,
                 artifact_registry_writer,
@@ -1639,7 +1639,7 @@ class Function(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         project = "my-project-name"
         account = gcp.serviceaccount.Account("account",
@@ -1666,7 +1666,7 @@ class Function(pulumi.CustomResource):
             bucket=bucket.name,
             source=pulumi.FileAsset("function-source.zip"))
         # builder permissions need to stablize before it can pull the source zip
-        wait60s = time.index.Sleep("wait_60s", create_duration=60s,
+        wait60s = time.Sleep("wait_60s", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[
                 log_writer,
                 artifact_registry_writer,

@@ -6,6 +6,7 @@ package com.pulumi.gcp.networkconnectivity;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.networkconnectivity.inputs.SpokeGatewayArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedInterconnectAttachmentsArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedProducerVpcNetworkArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesArgs;
@@ -35,6 +36,23 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * This is a gateway that can apply specialized processing to traffic going through it.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gateway")
+    private @Nullable Output<SpokeGatewayArgs> gateway;
+
+    /**
+     * @return This is a gateway that can apply specialized processing to traffic going through it.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SpokeGatewayArgs>> gateway() {
+        return Optional.ofNullable(this.gateway);
     }
 
     /**
@@ -222,6 +240,7 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
 
     private SpokeArgs(SpokeArgs $) {
         this.description = $.description;
+        this.gateway = $.gateway;
         this.group = $.group;
         this.hub = $.hub;
         this.labels = $.labels;
@@ -272,6 +291,29 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param gateway This is a gateway that can apply specialized processing to traffic going through it.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gateway(@Nullable Output<SpokeGatewayArgs> gateway) {
+            $.gateway = gateway;
+            return this;
+        }
+
+        /**
+         * @param gateway This is a gateway that can apply specialized processing to traffic going through it.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gateway(SpokeGatewayArgs gateway) {
+            return gateway(Output.of(gateway));
         }
 
         /**

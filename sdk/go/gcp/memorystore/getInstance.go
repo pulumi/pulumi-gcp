@@ -63,6 +63,7 @@ type LookupInstanceArgs struct {
 type LookupInstanceResult struct {
 	AuthorizationMode               string                                      `pulumi:"authorizationMode"`
 	AutomatedBackupConfigs          []GetInstanceAutomatedBackupConfig          `pulumi:"automatedBackupConfigs"`
+	AvailableMaintenanceVersions    []string                                    `pulumi:"availableMaintenanceVersions"`
 	BackupCollection                string                                      `pulumi:"backupCollection"`
 	CreateTime                      string                                      `pulumi:"createTime"`
 	CrossInstanceReplicationConfigs []GetInstanceCrossInstanceReplicationConfig `pulumi:"crossInstanceReplicationConfigs"`
@@ -71,6 +72,7 @@ type LookupInstanceResult struct {
 	DesiredPscAutoConnections       []GetInstanceDesiredPscAutoConnection       `pulumi:"desiredPscAutoConnections"`
 	DiscoveryEndpoints              []GetInstanceDiscoveryEndpoint              `pulumi:"discoveryEndpoints"`
 	EffectiveLabels                 map[string]string                           `pulumi:"effectiveLabels"`
+	EffectiveMaintenanceVersion     string                                      `pulumi:"effectiveMaintenanceVersion"`
 	Endpoints                       []GetInstanceEndpoint                       `pulumi:"endpoints"`
 	EngineConfigs                   map[string]string                           `pulumi:"engineConfigs"`
 	EngineVersion                   string                                      `pulumi:"engineVersion"`
@@ -83,6 +85,7 @@ type LookupInstanceResult struct {
 	Location                *string                             `pulumi:"location"`
 	MaintenancePolicies     []GetInstanceMaintenancePolicy      `pulumi:"maintenancePolicies"`
 	MaintenanceSchedules    []GetInstanceMaintenanceSchedule    `pulumi:"maintenanceSchedules"`
+	MaintenanceVersion      string                              `pulumi:"maintenanceVersion"`
 	ManagedBackupSources    []GetInstanceManagedBackupSource    `pulumi:"managedBackupSources"`
 	ManagedServerCas        []GetInstanceManagedServerCa        `pulumi:"managedServerCas"`
 	Mode                    string                              `pulumi:"mode"`
@@ -153,6 +156,10 @@ func (o LookupInstanceResultOutput) AutomatedBackupConfigs() GetInstanceAutomate
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceAutomatedBackupConfig { return v.AutomatedBackupConfigs }).(GetInstanceAutomatedBackupConfigArrayOutput)
 }
 
+func (o LookupInstanceResultOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []string { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupInstanceResultOutput) BackupCollection() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.BackupCollection }).(pulumi.StringOutput)
 }
@@ -187,6 +194,10 @@ func (o LookupInstanceResultOutput) DiscoveryEndpoints() GetInstanceDiscoveryEnd
 
 func (o LookupInstanceResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupInstanceResultOutput) EffectiveMaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.EffectiveMaintenanceVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) Endpoints() GetInstanceEndpointArrayOutput {
@@ -232,6 +243,10 @@ func (o LookupInstanceResultOutput) MaintenancePolicies() GetInstanceMaintenance
 
 func (o LookupInstanceResultOutput) MaintenanceSchedules() GetInstanceMaintenanceScheduleArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceMaintenanceSchedule { return v.MaintenanceSchedules }).(GetInstanceMaintenanceScheduleArrayOutput)
+}
+
+func (o LookupInstanceResultOutput) MaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.MaintenanceVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) ManagedBackupSources() GetInstanceManagedBackupSourceArrayOutput {

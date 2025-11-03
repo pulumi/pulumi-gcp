@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Apigee
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.Apigee
     ///         },
     ///     });
     /// 
-    ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
+    ///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
     ///     {
     ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions

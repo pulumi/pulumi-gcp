@@ -511,7 +511,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// For a read pool instance, the number of nodes in the read pool.
+        /// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
         /// </summary>
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
@@ -749,7 +749,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// For a read pool instance, the number of nodes in the read pool.
+        /// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -986,7 +986,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// For a read pool instance, the number of nodes in the read pool.
+        /// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }

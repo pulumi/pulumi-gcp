@@ -15,6 +15,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterResult {
     private List<GetClusterAutoscalingSetting> autoscalingSettings;
+    private String createTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -26,10 +27,14 @@ public final class GetClusterResult {
     private String parent;
     private String state;
     private String uid;
+    private String updateTime;
 
     private GetClusterResult() {}
     public List<GetClusterAutoscalingSetting> autoscalingSettings() {
         return this.autoscalingSettings;
+    }
+    public String createTime() {
+        return this.createTime;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -56,6 +61,9 @@ public final class GetClusterResult {
     public String uid() {
         return this.uid;
     }
+    public String updateTime() {
+        return this.updateTime;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -67,6 +75,7 @@ public final class GetClusterResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterAutoscalingSetting> autoscalingSettings;
+        private String createTime;
         private String id;
         private Boolean management;
         private String name;
@@ -74,10 +83,12 @@ public final class GetClusterResult {
         private String parent;
         private String state;
         private String uid;
+        private String updateTime;
         public Builder() {}
         public Builder(GetClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingSettings = defaults.autoscalingSettings;
+    	      this.createTime = defaults.createTime;
     	      this.id = defaults.id;
     	      this.management = defaults.management;
     	      this.name = defaults.name;
@@ -85,6 +96,7 @@ public final class GetClusterResult {
     	      this.parent = defaults.parent;
     	      this.state = defaults.state;
     	      this.uid = defaults.uid;
+    	      this.updateTime = defaults.updateTime;
         }
 
         @CustomType.Setter
@@ -97,6 +109,14 @@ public final class GetClusterResult {
         }
         public Builder autoscalingSettings(GetClusterAutoscalingSetting... autoscalingSettings) {
             return autoscalingSettings(List.of(autoscalingSettings));
+        }
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "createTime");
+            }
+            this.createTime = createTime;
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -157,9 +177,18 @@ public final class GetClusterResult {
             this.uid = uid;
             return this;
         }
+        @CustomType.Setter
+        public Builder updateTime(String updateTime) {
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "updateTime");
+            }
+            this.updateTime = updateTime;
+            return this;
+        }
         public GetClusterResult build() {
             final var _resultValue = new GetClusterResult();
             _resultValue.autoscalingSettings = autoscalingSettings;
+            _resultValue.createTime = createTime;
             _resultValue.id = id;
             _resultValue.management = management;
             _resultValue.name = name;
@@ -167,6 +196,7 @@ public final class GetClusterResult {
             _resultValue.parent = parent;
             _resultValue.state = state;
             _resultValue.uid = uid;
+            _resultValue.updateTime = updateTime;
             return _resultValue;
         }
     }

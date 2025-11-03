@@ -744,14 +744,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * For a read pool instance, the number of nodes in the read pool.
+     * For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
      * 
      */
     @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> nodeCount;
 
     /**
-     * @return For a read pool instance, the number of nodes in the read pool.
+     * @return For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
      * 
      */
     public Output<Integer> nodeCount() {

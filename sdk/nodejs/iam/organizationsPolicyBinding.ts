@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     displayName: "binding for all principals in the Organization",
  *     principalAccessBoundaryPolicyId: "my-pab-policy",
  * });
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ * const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
  *     dependsOn: [pabPolicy],
  * });
  * const binding_for_all_org_principals = new gcp.iam.OrganizationsPolicyBinding("binding-for-all-org-principals", {

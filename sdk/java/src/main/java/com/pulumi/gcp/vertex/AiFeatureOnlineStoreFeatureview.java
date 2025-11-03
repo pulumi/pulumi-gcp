@@ -283,8 +283,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.vertex.AiFeatureOnlineStore;
@@ -325,8 +325,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("tf-test_20665")
- *             .name("tf-test_85160")
+ *             .projectId("tf-test_9329")
+ *             .name("tf-test_37135")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")
@@ -335,7 +335,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(project))
+ *                 .dependsOn(project)
  *                 .build());
  * 
  *         var vertexai = new Service("vertexai", ServiceArgs.builder()
@@ -380,7 +380,7 @@ import javax.annotation.Nullable;
  *         var wait30Seconds = new Sleep("wait30Seconds", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(viewer))
+ *                 .dependsOn(viewer)
  *                 .build());
  * 
  *         var sampleTable = new Table("sampleTable", TableArgs.builder()

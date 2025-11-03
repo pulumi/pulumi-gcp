@@ -33,6 +33,8 @@ __all__ = [
     'VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict',
     'VolumeReplicationHybridPeeringDetailArgs',
     'VolumeReplicationHybridPeeringDetailArgsDict',
+    'VolumeReplicationHybridReplicationUserCommandArgs',
+    'VolumeReplicationHybridReplicationUserCommandArgsDict',
     'VolumeReplicationTransferStatArgs',
     'VolumeReplicationTransferStatArgsDict',
     'VolumeRestoreParametersArgs',
@@ -561,10 +563,19 @@ if not MYPY:
         """
         Optional. Description of the replication.
         """
+        hybrid_replication_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Type of the volume's hybrid replication.
+        Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+        """
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         Optional. Labels to be added to the replication as the key value pairs.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        large_volume_constituent_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Optional. Constituent volume count for large volume.
         """
         peer_cluster_name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -586,6 +597,11 @@ if not MYPY:
         """
         Required. Desired name for the replication of this volume.
         """
+        replication_schedule: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Replication Schedule for the replication created.
+        Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+        """
 elif False:
     VolumeHybridReplicationParametersArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -594,29 +610,41 @@ class VolumeHybridReplicationParametersArgs:
     def __init__(__self__, *,
                  cluster_location: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 hybrid_replication_type: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 large_volume_constituent_count: Optional[pulumi.Input[_builtins.int]] = None,
                  peer_cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
                  peer_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  peer_svm_name: Optional[pulumi.Input[_builtins.str]] = None,
                  peer_volume_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication: Optional[pulumi.Input[_builtins.str]] = None):
+                 replication: Optional[pulumi.Input[_builtins.str]] = None,
+                 replication_schedule: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_location: Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the replication.
+        :param pulumi.Input[_builtins.str] hybrid_replication_type: Optional. Type of the volume's hybrid replication.
+               Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels to be added to the replication as the key value pairs.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[_builtins.int] large_volume_constituent_count: Optional. Constituent volume count for large volume.
         :param pulumi.Input[_builtins.str] peer_cluster_name: Required. Name of the user's local source cluster to be peered with the destination cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_ip_addresses: Required. List of node ip addresses to be peered with.
         :param pulumi.Input[_builtins.str] peer_svm_name: Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
         :param pulumi.Input[_builtins.str] peer_volume_name: Required. Name of the user's local source volume to be peered with the destination volume.
         :param pulumi.Input[_builtins.str] replication: Required. Desired name for the replication of this volume.
+        :param pulumi.Input[_builtins.str] replication_schedule: Optional. Replication Schedule for the replication created.
+               Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
         """
         if cluster_location is not None:
             pulumi.set(__self__, "cluster_location", cluster_location)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if hybrid_replication_type is not None:
+            pulumi.set(__self__, "hybrid_replication_type", hybrid_replication_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if large_volume_constituent_count is not None:
+            pulumi.set(__self__, "large_volume_constituent_count", large_volume_constituent_count)
         if peer_cluster_name is not None:
             pulumi.set(__self__, "peer_cluster_name", peer_cluster_name)
         if peer_ip_addresses is not None:
@@ -627,6 +655,8 @@ class VolumeHybridReplicationParametersArgs:
             pulumi.set(__self__, "peer_volume_name", peer_volume_name)
         if replication is not None:
             pulumi.set(__self__, "replication", replication)
+        if replication_schedule is not None:
+            pulumi.set(__self__, "replication_schedule", replication_schedule)
 
     @_builtins.property
     @pulumi.getter(name="clusterLocation")
@@ -653,6 +683,19 @@ class VolumeHybridReplicationParametersArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="hybridReplicationType")
+    def hybrid_replication_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Type of the volume's hybrid replication.
+        Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
+        """
+        return pulumi.get(self, "hybrid_replication_type")
+
+    @hybrid_replication_type.setter
+    def hybrid_replication_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hybrid_replication_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -664,6 +707,18 @@ class VolumeHybridReplicationParametersArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="largeVolumeConstituentCount")
+    def large_volume_constituent_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Optional. Constituent volume count for large volume.
+        """
+        return pulumi.get(self, "large_volume_constituent_count")
+
+    @large_volume_constituent_count.setter
+    def large_volume_constituent_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "large_volume_constituent_count", value)
 
     @_builtins.property
     @pulumi.getter(name="peerClusterName")
@@ -724,6 +779,19 @@ class VolumeHybridReplicationParametersArgs:
     @replication.setter
     def replication(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "replication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="replicationSchedule")
+    def replication_schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Replication Schedule for the replication created.
+        Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
+        """
+        return pulumi.get(self, "replication_schedule")
+
+    @replication_schedule.setter
+    def replication_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "replication_schedule", value)
 
 
 if not MYPY:
@@ -1208,6 +1276,41 @@ class VolumeReplicationHybridPeeringDetailArgs:
     @subnet_ip.setter
     def subnet_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "subnet_ip", value)
+
+
+if not MYPY:
+    class VolumeReplicationHybridReplicationUserCommandArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        (Output)
+        List of commands to be executed by the customer.
+        """
+elif False:
+    VolumeReplicationHybridReplicationUserCommandArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VolumeReplicationHybridReplicationUserCommandArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: (Output)
+               List of commands to be executed by the customer.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        List of commands to be executed by the customer.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
 
 
 if not MYPY:

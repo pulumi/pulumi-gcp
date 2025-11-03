@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Datastream.Inputs
     public sealed class StreamBackfillAllGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// MongoDB data source objects to avoid backfilling.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("mongodbExcludedObjects")]
+        public Input<Inputs.StreamBackfillAllMongodbExcludedObjectsGetArgs>? MongodbExcludedObjects { get; set; }
+
+        /// <summary>
         /// MySQL data source objects to avoid backfilling.
         /// Structure is documented below.
         /// </summary>

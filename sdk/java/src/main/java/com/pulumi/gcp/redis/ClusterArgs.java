@@ -150,6 +150,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+     * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+     * 
+     */
+    @Import(name="maintenanceVersion")
+    private @Nullable Output<String> maintenanceVersion;
+
+    /**
+     * @return This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+     * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+     * 
+     */
+    public Optional<Output<String>> maintenanceVersion() {
+        return Optional.ofNullable(this.maintenanceVersion);
+    }
+
+    /**
      * Backups that generated and managed by memorystore.
      * Structure is documented below.
      * 
@@ -369,6 +386,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.gcsSource = $.gcsSource;
         this.kmsKey = $.kmsKey;
         this.maintenancePolicy = $.maintenancePolicy;
+        this.maintenanceVersion = $.maintenanceVersion;
         this.managedBackupSource = $.managedBackupSource;
         this.name = $.name;
         this.nodeType = $.nodeType;
@@ -562,6 +580,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintenancePolicy(ClusterMaintenancePolicyArgs maintenancePolicy) {
             return maintenancePolicy(Output.of(maintenancePolicy));
+        }
+
+        /**
+         * @param maintenanceVersion This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+         * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceVersion(@Nullable Output<String> maintenanceVersion) {
+            $.maintenanceVersion = maintenanceVersion;
+            return this;
+        }
+
+        /**
+         * @param maintenanceVersion This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+         * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceVersion(String maintenanceVersion) {
+            return maintenanceVersion(Output.of(maintenanceVersion));
         }
 
         /**

@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
     public sealed class StreamBackfillAll
     {
         /// <summary>
+        /// MongoDB data source objects to avoid backfilling.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.StreamBackfillAllMongodbExcludedObjects? MongodbExcludedObjects;
+        /// <summary>
         /// MySQL data source objects to avoid backfilling.
         /// Structure is documented below.
         /// </summary>
@@ -41,6 +46,8 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
         [OutputConstructor]
         private StreamBackfillAll(
+            Outputs.StreamBackfillAllMongodbExcludedObjects? mongodbExcludedObjects,
+
             Outputs.StreamBackfillAllMysqlExcludedObjects? mysqlExcludedObjects,
 
             Outputs.StreamBackfillAllOracleExcludedObjects? oracleExcludedObjects,
@@ -51,6 +58,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
             Outputs.StreamBackfillAllSqlServerExcludedObjects? sqlServerExcludedObjects)
         {
+            MongodbExcludedObjects = mongodbExcludedObjects;
             MysqlExcludedObjects = mysqlExcludedObjects;
             OracleExcludedObjects = oracleExcludedObjects;
             PostgresqlExcludedObjects = postgresqlExcludedObjects;

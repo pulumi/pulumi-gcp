@@ -27,10 +27,7 @@ class GetInsightsDatasetConfigResult:
     """
     A collection of values returned by getInsightsDatasetConfig.
     """
-    def __init__(__self__, activity_data_retention_period_days=None, create_time=None, dataset_config_id=None, dataset_config_state=None, description=None, exclude_cloud_storage_buckets=None, exclude_cloud_storage_locations=None, id=None, identities=None, include_cloud_storage_buckets=None, include_cloud_storage_locations=None, include_newly_created_buckets=None, link_dataset=None, links=None, location=None, name=None, organization_number=None, organization_scope=None, project=None, retention_period_days=None, source_folders=None, source_projects=None, uid=None, update_time=None):
-        if activity_data_retention_period_days and not isinstance(activity_data_retention_period_days, int):
-            raise TypeError("Expected argument 'activity_data_retention_period_days' to be a int")
-        pulumi.set(__self__, "activity_data_retention_period_days", activity_data_retention_period_days)
+    def __init__(__self__, create_time=None, dataset_config_id=None, dataset_config_state=None, description=None, exclude_cloud_storage_buckets=None, exclude_cloud_storage_locations=None, id=None, identities=None, include_cloud_storage_buckets=None, include_cloud_storage_locations=None, include_newly_created_buckets=None, link_dataset=None, links=None, location=None, name=None, organization_number=None, organization_scope=None, project=None, retention_period_days=None, source_folders=None, source_projects=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -100,11 +97,6 @@ class GetInsightsDatasetConfigResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
-
-    @_builtins.property
-    @pulumi.getter(name="activityDataRetentionPeriodDays")
-    def activity_data_retention_period_days(self) -> _builtins.int:
-        return pulumi.get(self, "activity_data_retention_period_days")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -231,7 +223,6 @@ class AwaitableGetInsightsDatasetConfigResult(GetInsightsDatasetConfigResult):
         if False:
             yield self
         return GetInsightsDatasetConfigResult(
-            activity_data_retention_period_days=self.activity_data_retention_period_days,
             create_time=self.create_time,
             dataset_config_id=self.dataset_config_id,
             dataset_config_state=self.dataset_config_state,
@@ -291,7 +282,6 @@ def get_insights_dataset_config(dataset_config_id: Optional[_builtins.str] = Non
     __ret__ = pulumi.runtime.invoke('gcp:storage/getInsightsDatasetConfig:getInsightsDatasetConfig', __args__, opts=opts, typ=GetInsightsDatasetConfigResult).value
 
     return AwaitableGetInsightsDatasetConfigResult(
-        activity_data_retention_period_days=pulumi.get(__ret__, 'activity_data_retention_period_days'),
         create_time=pulumi.get(__ret__, 'create_time'),
         dataset_config_id=pulumi.get(__ret__, 'dataset_config_id'),
         dataset_config_state=pulumi.get(__ret__, 'dataset_config_state'),
@@ -348,7 +338,6 @@ def get_insights_dataset_config_output(dataset_config_id: Optional[pulumi.Input[
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:storage/getInsightsDatasetConfig:getInsightsDatasetConfig', __args__, opts=opts, typ=GetInsightsDatasetConfigResult)
     return __ret__.apply(lambda __response__: GetInsightsDatasetConfigResult(
-        activity_data_retention_period_days=pulumi.get(__response__, 'activity_data_retention_period_days'),
         create_time=pulumi.get(__response__, 'create_time'),
         dataset_config_id=pulumi.get(__response__, 'dataset_config_id'),
         dataset_config_state=pulumi.get(__response__, 'dataset_config_state'),

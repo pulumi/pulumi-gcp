@@ -12,6 +12,7 @@ import com.pulumi.gcp.networkservices.ServiceLbPoliciesArgs;
 import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesState;
 import com.pulumi.gcp.networkservices.outputs.ServiceLbPoliciesAutoCapacityDrain;
 import com.pulumi.gcp.networkservices.outputs.ServiceLbPoliciesFailoverConfig;
+import com.pulumi.gcp.networkservices.outputs.ServiceLbPoliciesIsolationConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -98,6 +99,65 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .failoverConfig(ServiceLbPoliciesFailoverConfigArgs.builder()
  *                 .failoverHealthThreshold(70)
+ *                 .build())
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
+ *             .name("my-lb-backend")
+ *             .description("my description")
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .protocol("HTTP")
+ *             .serviceLbPolicy(default_.id().applyValue(_id -> String.format("//networkservices.googleapis.com/%s", _id)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Network Services Service Lb Policies Beta
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networkservices.ServiceLbPolicies;
+ * import com.pulumi.gcp.networkservices.ServiceLbPoliciesArgs;
+ * import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesAutoCapacityDrainArgs;
+ * import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesFailoverConfigArgs;
+ * import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesIsolationConfigArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ServiceLbPolicies("default", ServiceLbPoliciesArgs.builder()
+ *             .name("my-lb-policy")
+ *             .location("global")
+ *             .description("my description")
+ *             .loadBalancingAlgorithm("SPRAY_TO_REGION")
+ *             .autoCapacityDrain(ServiceLbPoliciesAutoCapacityDrainArgs.builder()
+ *                 .enable(true)
+ *                 .build())
+ *             .failoverConfig(ServiceLbPoliciesFailoverConfigArgs.builder()
+ *                 .failoverHealthThreshold(70)
+ *                 .build())
+ *             .isolationConfig(ServiceLbPoliciesIsolationConfigArgs.builder()
+ *                 .isolationGranularity("REGION")
+ *                 .isolationMode("NEAREST")
  *                 .build())
  *             .labels(Map.of("foo", "bar"))
  *             .build());
@@ -215,6 +275,22 @@ public class ServiceLbPolicies extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ServiceLbPoliciesFailoverConfig>> failoverConfig() {
         return Codegen.optional(this.failoverConfig);
+    }
+    /**
+     * Configuration to provide isolation support for the associated Backend Service.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="isolationConfig", refs={ServiceLbPoliciesIsolationConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceLbPoliciesIsolationConfig> isolationConfig;
+
+    /**
+     * @return Configuration to provide isolation support for the associated Backend Service.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ServiceLbPoliciesIsolationConfig>> isolationConfig() {
+        return Codegen.optional(this.isolationConfig);
     }
     /**
      * Set of label tags associated with the ServiceLbPolicy resource.

@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Datastream.Inputs
     public sealed class StreamSourceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// MongoDB source configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("mongodbSourceConfig")]
+        public Input<Inputs.StreamSourceConfigMongodbSourceConfigGetArgs>? MongodbSourceConfig { get; set; }
+
+        /// <summary>
         /// MySQL data source configuration.
         /// Structure is documented below.
         /// </summary>

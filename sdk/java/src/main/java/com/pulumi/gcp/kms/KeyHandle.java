@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.projects.ServiceIdentity;
  * import com.pulumi.gcp.projects.ServiceIdentityArgs;
  * import com.pulumi.gcp.projects.IAMMember;
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *         var waitEnableServiceApi = new Sleep("waitEnableServiceApi", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(kmsApiService))
+ *                 .dependsOn(kmsApiService)
  *                 .build());
  * 
  *         //Create KMS Service Agent
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *         var waitServiceAgent = new Sleep("waitServiceAgent", SleepArgs.builder()
  *             .createDuration("10s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(kmsServiceAgent))
+ *                 .dependsOn(kmsServiceAgent)
  *                 .build());
  * 
  *         //Grant the KMS Service Agent the Cloud KMS Admin role
@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  *         var waitSrvAccPermissions = new Sleep("waitSrvAccPermissions", SleepArgs.builder()
  *             .createDuration("10s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(autokeyProjectAdmin))
+ *                 .dependsOn(autokeyProjectAdmin)
  *                 .build());
  * 
  *         var autokeyConfig = new AutokeyConfig("autokeyConfig", AutokeyConfigArgs.builder()
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *         var waitAutokeyConfig = new Sleep("waitAutokeyConfig", SleepArgs.builder()
  *             .createDuration("10s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(autokeyConfig))
+ *                 .dependsOn(autokeyConfig)
  *                 .build());
  * 
  *         var example_keyhandle = new KeyHandle("example-keyhandle", KeyHandleArgs.builder()

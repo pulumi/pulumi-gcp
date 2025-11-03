@@ -73,6 +73,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * This field is used to determine the available maintenance versions for the self service update.
+     * 
+     */
+    @Import(name="availableMaintenanceVersions")
+    private @Nullable Output<List<String>> availableMaintenanceVersions;
+
+    /**
+     * @return This field is used to determine the available maintenance versions for the self service update.
+     * 
+     */
+    public Optional<Output<List<String>>> availableMaintenanceVersions() {
+        return Optional.ofNullable(this.availableMaintenanceVersions);
+    }
+
+    /**
      * The backup collection full resource name.
      * Example: projects/{project}/locations/{location}/backupCollections/{collection}
      * 
@@ -214,6 +229,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * This field represents the actual maintenance version of the cluster.
+     * 
+     */
+    @Import(name="effectiveMaintenanceVersion")
+    private @Nullable Output<String> effectiveMaintenanceVersion;
+
+    /**
+     * @return This field represents the actual maintenance version of the cluster.
+     * 
+     */
+    public Optional<Output<String>> effectiveMaintenanceVersion() {
+        return Optional.ofNullable(this.effectiveMaintenanceVersion);
     }
 
     /**
@@ -390,6 +420,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<InstanceMaintenanceScheduleArgs>>> maintenanceSchedules() {
         return Optional.ofNullable(this.maintenanceSchedules);
+    }
+
+    /**
+     * This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+     * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+     * 
+     */
+    @Import(name="maintenanceVersion")
+    private @Nullable Output<String> maintenanceVersion;
+
+    /**
+     * @return This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+     * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+     * 
+     */
+    public Optional<Output<String>> maintenanceVersion() {
+        return Optional.ofNullable(this.maintenanceVersion);
     }
 
     /**
@@ -748,6 +795,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState(InstanceState $) {
         this.authorizationMode = $.authorizationMode;
         this.automatedBackupConfig = $.automatedBackupConfig;
+        this.availableMaintenanceVersions = $.availableMaintenanceVersions;
         this.backupCollection = $.backupCollection;
         this.createTime = $.createTime;
         this.crossInstanceReplicationConfig = $.crossInstanceReplicationConfig;
@@ -756,6 +804,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.desiredPscAutoConnections = $.desiredPscAutoConnections;
         this.discoveryEndpoints = $.discoveryEndpoints;
         this.effectiveLabels = $.effectiveLabels;
+        this.effectiveMaintenanceVersion = $.effectiveMaintenanceVersion;
         this.endpoints = $.endpoints;
         this.engineConfigs = $.engineConfigs;
         this.engineVersion = $.engineVersion;
@@ -766,6 +815,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.maintenancePolicy = $.maintenancePolicy;
         this.maintenanceSchedules = $.maintenanceSchedules;
+        this.maintenanceVersion = $.maintenanceVersion;
         this.managedBackupSource = $.managedBackupSource;
         this.managedServerCas = $.managedServerCas;
         this.mode = $.mode;
@@ -851,6 +901,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder automatedBackupConfig(InstanceAutomatedBackupConfigArgs automatedBackupConfig) {
             return automatedBackupConfig(Output.of(automatedBackupConfig));
+        }
+
+        /**
+         * @param availableMaintenanceVersions This field is used to determine the available maintenance versions for the self service update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availableMaintenanceVersions(@Nullable Output<List<String>> availableMaintenanceVersions) {
+            $.availableMaintenanceVersions = availableMaintenanceVersions;
+            return this;
+        }
+
+        /**
+         * @param availableMaintenanceVersions This field is used to determine the available maintenance versions for the self service update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availableMaintenanceVersions(List<String> availableMaintenanceVersions) {
+            return availableMaintenanceVersions(Output.of(availableMaintenanceVersions));
+        }
+
+        /**
+         * @param availableMaintenanceVersions This field is used to determine the available maintenance versions for the self service update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availableMaintenanceVersions(String... availableMaintenanceVersions) {
+            return availableMaintenanceVersions(List.of(availableMaintenanceVersions));
         }
 
         /**
@@ -1083,6 +1164,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param effectiveMaintenanceVersion This field represents the actual maintenance version of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveMaintenanceVersion(@Nullable Output<String> effectiveMaintenanceVersion) {
+            $.effectiveMaintenanceVersion = effectiveMaintenanceVersion;
+            return this;
+        }
+
+        /**
+         * @param effectiveMaintenanceVersion This field represents the actual maintenance version of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveMaintenanceVersion(String effectiveMaintenanceVersion) {
+            return effectiveMaintenanceVersion(Output.of(effectiveMaintenanceVersion));
         }
 
         /**
@@ -1341,6 +1443,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintenanceSchedules(InstanceMaintenanceScheduleArgs... maintenanceSchedules) {
             return maintenanceSchedules(List.of(maintenanceSchedules));
+        }
+
+        /**
+         * @param maintenanceVersion This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+         * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceVersion(@Nullable Output<String> maintenanceVersion) {
+            $.maintenanceVersion = maintenanceVersion;
+            return this;
+        }
+
+        /**
+         * @param maintenanceVersion This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+         * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceVersion(String maintenanceVersion) {
+            return maintenanceVersion(Output.of(maintenanceVersion));
         }
 
         /**

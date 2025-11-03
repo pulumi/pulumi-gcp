@@ -132,7 +132,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-     * Possible values are: `MESH`, `STAR`.
+     * Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
      * 
      */
     @Import(name="presetTopology")
@@ -140,7 +140,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-     * Possible values are: `MESH`, `STAR`.
+     * Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
      * 
      */
     public Optional<Output<String>> presetTopology() {
@@ -435,7 +435,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param presetTopology Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-         * Possible values are: `MESH`, `STAR`.
+         * Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param presetTopology Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-         * Possible values are: `MESH`, `STAR`.
+         * Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
          * 
          * @return builder
          * 

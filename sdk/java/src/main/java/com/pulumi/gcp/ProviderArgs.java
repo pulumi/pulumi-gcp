@@ -931,6 +931,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.networkConnectivityCustomEndpoint);
     }
 
+    @Import(name="networkConnectivityv1CustomEndpoint")
+    private @Nullable Output<String> networkConnectivityv1CustomEndpoint;
+
+    public Optional<Output<String>> networkConnectivityv1CustomEndpoint() {
+        return Optional.ofNullable(this.networkConnectivityv1CustomEndpoint);
+    }
+
     @Import(name="networkManagementCustomEndpoint")
     private @Nullable Output<String> networkManagementCustomEndpoint;
 
@@ -957,6 +964,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> notebooksCustomEndpoint() {
         return Optional.ofNullable(this.notebooksCustomEndpoint);
+    }
+
+    @Import(name="observabilityCustomEndpoint")
+    private @Nullable Output<String> observabilityCustomEndpoint;
+
+    public Optional<Output<String>> observabilityCustomEndpoint() {
+        return Optional.ofNullable(this.observabilityCustomEndpoint);
     }
 
     @Import(name="oracleDatabaseCustomEndpoint")
@@ -1519,10 +1533,12 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.monitoringCustomEndpoint = $.monitoringCustomEndpoint;
         this.netappCustomEndpoint = $.netappCustomEndpoint;
         this.networkConnectivityCustomEndpoint = $.networkConnectivityCustomEndpoint;
+        this.networkConnectivityv1CustomEndpoint = $.networkConnectivityv1CustomEndpoint;
         this.networkManagementCustomEndpoint = $.networkManagementCustomEndpoint;
         this.networkSecurityCustomEndpoint = $.networkSecurityCustomEndpoint;
         this.networkServicesCustomEndpoint = $.networkServicesCustomEndpoint;
         this.notebooksCustomEndpoint = $.notebooksCustomEndpoint;
+        this.observabilityCustomEndpoint = $.observabilityCustomEndpoint;
         this.oracleDatabaseCustomEndpoint = $.oracleDatabaseCustomEndpoint;
         this.orgPolicyCustomEndpoint = $.orgPolicyCustomEndpoint;
         this.osConfigCustomEndpoint = $.osConfigCustomEndpoint;
@@ -2778,6 +2794,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return networkConnectivityCustomEndpoint(Output.of(networkConnectivityCustomEndpoint));
         }
 
+        public Builder networkConnectivityv1CustomEndpoint(@Nullable Output<String> networkConnectivityv1CustomEndpoint) {
+            $.networkConnectivityv1CustomEndpoint = networkConnectivityv1CustomEndpoint;
+            return this;
+        }
+
+        public Builder networkConnectivityv1CustomEndpoint(String networkConnectivityv1CustomEndpoint) {
+            return networkConnectivityv1CustomEndpoint(Output.of(networkConnectivityv1CustomEndpoint));
+        }
+
         public Builder networkManagementCustomEndpoint(@Nullable Output<String> networkManagementCustomEndpoint) {
             $.networkManagementCustomEndpoint = networkManagementCustomEndpoint;
             return this;
@@ -2812,6 +2837,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder notebooksCustomEndpoint(String notebooksCustomEndpoint) {
             return notebooksCustomEndpoint(Output.of(notebooksCustomEndpoint));
+        }
+
+        public Builder observabilityCustomEndpoint(@Nullable Output<String> observabilityCustomEndpoint) {
+            $.observabilityCustomEndpoint = observabilityCustomEndpoint;
+            return this;
+        }
+
+        public Builder observabilityCustomEndpoint(String observabilityCustomEndpoint) {
+            return observabilityCustomEndpoint(Output.of(observabilityCustomEndpoint));
         }
 
         public Builder oracleDatabaseCustomEndpoint(@Nullable Output<String> oracleDatabaseCustomEndpoint) {

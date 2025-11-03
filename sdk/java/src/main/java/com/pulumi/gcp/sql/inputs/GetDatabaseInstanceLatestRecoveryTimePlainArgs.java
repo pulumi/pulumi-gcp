@@ -45,11 +45,19 @@ public final class GetDatabaseInstanceLatestRecoveryTimePlainArgs extends com.pu
         return Optional.ofNullable(this.project);
     }
 
+    @Import(name="sourceInstanceDeletionTime")
+    private @Nullable String sourceInstanceDeletionTime;
+
+    public Optional<String> sourceInstanceDeletionTime() {
+        return Optional.ofNullable(this.sourceInstanceDeletionTime);
+    }
+
     private GetDatabaseInstanceLatestRecoveryTimePlainArgs() {}
 
     private GetDatabaseInstanceLatestRecoveryTimePlainArgs(GetDatabaseInstanceLatestRecoveryTimePlainArgs $) {
         this.instance = $.instance;
         this.project = $.project;
+        this.sourceInstanceDeletionTime = $.sourceInstanceDeletionTime;
     }
 
     public static Builder builder() {
@@ -89,6 +97,11 @@ public final class GetDatabaseInstanceLatestRecoveryTimePlainArgs extends com.pu
          */
         public Builder project(@Nullable String project) {
             $.project = project;
+            return this;
+        }
+
+        public Builder sourceInstanceDeletionTime(@Nullable String sourceInstanceDeletionTime) {
+            $.sourceInstanceDeletionTime = sourceInstanceDeletionTime;
             return this;
         }
 

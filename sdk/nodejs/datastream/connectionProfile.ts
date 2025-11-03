@@ -333,7 +333,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ## Import
  *
  * ConnectionProfile can be imported using any of these accepted formats:
@@ -427,6 +426,11 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * Configuration for connecting to a MongoDB database.
+     * Structure is documented below.
+     */
+    declare public readonly mongodbProfile: pulumi.Output<outputs.datastream.ConnectionProfileMongodbProfile | undefined>;
+    /**
      * MySQL database profile.
      * Structure is documented below.
      */
@@ -493,6 +497,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["gcsProfile"] = state?.gcsProfile;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
+            resourceInputs["mongodbProfile"] = state?.mongodbProfile;
             resourceInputs["mysqlProfile"] = state?.mysqlProfile;
             resourceInputs["name"] = state?.name;
             resourceInputs["oracleProfile"] = state?.oracleProfile;
@@ -521,6 +526,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["gcsProfile"] = args?.gcsProfile;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
+            resourceInputs["mongodbProfile"] = args?.mongodbProfile;
             resourceInputs["mysqlProfile"] = args?.mysqlProfile;
             resourceInputs["oracleProfile"] = args?.oracleProfile;
             resourceInputs["postgresqlProfile"] = args?.postgresqlProfile;
@@ -583,6 +589,11 @@ export interface ConnectionProfileState {
      * The name of the location this connection profile is located in.
      */
     location?: pulumi.Input<string>;
+    /**
+     * Configuration for connecting to a MongoDB database.
+     * Structure is documented below.
+     */
+    mongodbProfile?: pulumi.Input<inputs.datastream.ConnectionProfileMongodbProfile>;
     /**
      * MySQL database profile.
      * Structure is documented below.
@@ -669,6 +680,11 @@ export interface ConnectionProfileArgs {
      * The name of the location this connection profile is located in.
      */
     location: pulumi.Input<string>;
+    /**
+     * Configuration for connecting to a MongoDB database.
+     * Structure is documented below.
+     */
+    mongodbProfile?: pulumi.Input<inputs.datastream.ConnectionProfileMongodbProfile>;
     /**
      * MySQL database profile.
      * Structure is documented below.

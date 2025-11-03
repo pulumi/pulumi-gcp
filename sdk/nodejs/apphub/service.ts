@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     project: serviceProject.projectId,
  *     service: "compute.googleapis.com",
  * });
- * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"}, {
+ * const wait120s = new time.Sleep("wait_120s", {createDuration: "120s"}, {
  *     dependsOn: [computeServiceProject],
  * });
  * const serviceProjectAttachment = new gcp.apphub.ServiceProjectAttachment("service_project_attachment", {serviceProjectAttachmentId: serviceProject.projectId}, {
@@ -95,7 +95,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     serviceUri: pulumi.interpolate`//compute.googleapis.com/${forwardingRule.id}`,
  * });
- * const wait120sForResourceIngestion = new time.index.Sleep("wait_120s_for_resource_ingestion", {createDuration: "120s"}, {
+ * const wait120sForResourceIngestion = new time.Sleep("wait_120s_for_resource_ingestion", {createDuration: "120s"}, {
  *     dependsOn: [forwardingRule],
  * });
  * const example = new gcp.apphub.Service("example", {
@@ -131,7 +131,7 @@ import * as utilities from "../utilities";
  *     project: serviceProject.projectId,
  *     service: "compute.googleapis.com",
  * });
- * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"}, {
+ * const wait120s = new time.Sleep("wait_120s", {createDuration: "120s"}, {
  *     dependsOn: [computeServiceProject],
  * });
  * const serviceProjectAttachment = new gcp.apphub.ServiceProjectAttachment("service_project_attachment", {serviceProjectAttachmentId: serviceProject.projectId}, {
@@ -189,7 +189,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     serviceUri: pulumi.interpolate`//compute.googleapis.com/${forwardingRule.id}`,
  * });
- * const wait120sForResourceIngestion = new time.index.Sleep("wait_120s_for_resource_ingestion", {createDuration: "120s"}, {
+ * const wait120sForResourceIngestion = new time.Sleep("wait_120s_for_resource_ingestion", {createDuration: "120s"}, {
  *     dependsOn: [forwardingRule],
  * });
  * const example = new gcp.apphub.Service("example", {

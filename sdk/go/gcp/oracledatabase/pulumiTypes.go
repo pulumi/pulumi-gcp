@@ -5864,6 +5864,2751 @@ func (o CloudVmClusterPropertiesTimeZonePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type DbSystemProperties struct {
+	// The number of CPU cores to enable for the DbSystem.
+	ComputeCount int `pulumi:"computeCount"`
+	// The compute model of the DbSystem.
+	// Possible values:
+	// ECPU
+	// OCPU
+	ComputeModel *string `pulumi:"computeModel"`
+	// Data collection options for DbSystem.
+	// Structure is documented below.
+	DataCollectionOptions *DbSystemPropertiesDataCollectionOptions `pulumi:"dataCollectionOptions"`
+	// The data storage size in GB that is currently available to DbSystems.
+	DataStorageSizeGb *int `pulumi:"dataStorageSizeGb"`
+	// The database edition of the DbSystem.
+	// Possible values:
+	// STANDARD_EDITION
+	// ENTERPRISE_EDITION
+	// ENTERPRISE_EDITION_HIGH_PERFORMANCE
+	DatabaseEdition string `pulumi:"databaseEdition"`
+	// Details of the Database Home resource.
+	// Structure is documented below.
+	DbHome *DbSystemPropertiesDbHome `pulumi:"dbHome"`
+	// Details of the DbSystem Options.
+	// Structure is documented below.
+	DbSystemOptions *DbSystemPropertiesDbSystemOptions `pulumi:"dbSystemOptions"`
+	// The host domain name of the DbSystem.
+	Domain *string `pulumi:"domain"`
+	// (Output)
+	// The hostname of the DbSystem.
+	Hostname *string `pulumi:"hostname"`
+	// Prefix for DB System host names.
+	HostnamePrefix *string `pulumi:"hostnamePrefix"`
+	// The initial data storage size in GB.
+	InitialDataStorageSizeGb int `pulumi:"initialDataStorageSizeGb"`
+	// The license model of the DbSystem.
+	// Possible values:
+	// LICENSE_INCLUDED
+	// BRING_YOUR_OWN_LICENSE
+	LicenseModel string `pulumi:"licenseModel"`
+	// (Output)
+	// State of the DbSystem.
+	// Possible values:
+	// PROVISIONING
+	// AVAILABLE
+	// UPDATING
+	// TERMINATING
+	// TERMINATED
+	// FAILED
+	// MIGRATED
+	// MAINTENANCE_IN_PROGRESS
+	// NEEDS_ATTENTION
+	// UPGRADING
+	LifecycleState *string `pulumi:"lifecycleState"`
+	// The memory size in GB.
+	MemorySizeGb *int `pulumi:"memorySizeGb"`
+	// The number of nodes in the DbSystem.
+	NodeCount *int `pulumi:"nodeCount"`
+	// (Output)
+	// OCID of the DbSystem.
+	Ocid *string `pulumi:"ocid"`
+	// The private IP address of the DbSystem.
+	PrivateIp *string `pulumi:"privateIp"`
+	// The reco/redo storage size in GB.
+	RecoStorageSizeGb *int `pulumi:"recoStorageSizeGb"`
+	// Shape of DB System.
+	Shape string `pulumi:"shape"`
+	// SSH public keys to be stored with the DbSystem.
+	SshPublicKeys []string `pulumi:"sshPublicKeys"`
+	// Represents a time zone from the
+	// [IANA Time Zone Database](https://www.iana.org/time-zones).
+	// Structure is documented below.
+	TimeZone *DbSystemPropertiesTimeZone `pulumi:"timeZone"`
+}
+
+// DbSystemPropertiesInput is an input type that accepts DbSystemPropertiesArgs and DbSystemPropertiesOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesInput` via:
+//
+//	DbSystemPropertiesArgs{...}
+type DbSystemPropertiesInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesOutput() DbSystemPropertiesOutput
+	ToDbSystemPropertiesOutputWithContext(context.Context) DbSystemPropertiesOutput
+}
+
+type DbSystemPropertiesArgs struct {
+	// The number of CPU cores to enable for the DbSystem.
+	ComputeCount pulumi.IntInput `pulumi:"computeCount"`
+	// The compute model of the DbSystem.
+	// Possible values:
+	// ECPU
+	// OCPU
+	ComputeModel pulumi.StringPtrInput `pulumi:"computeModel"`
+	// Data collection options for DbSystem.
+	// Structure is documented below.
+	DataCollectionOptions DbSystemPropertiesDataCollectionOptionsPtrInput `pulumi:"dataCollectionOptions"`
+	// The data storage size in GB that is currently available to DbSystems.
+	DataStorageSizeGb pulumi.IntPtrInput `pulumi:"dataStorageSizeGb"`
+	// The database edition of the DbSystem.
+	// Possible values:
+	// STANDARD_EDITION
+	// ENTERPRISE_EDITION
+	// ENTERPRISE_EDITION_HIGH_PERFORMANCE
+	DatabaseEdition pulumi.StringInput `pulumi:"databaseEdition"`
+	// Details of the Database Home resource.
+	// Structure is documented below.
+	DbHome DbSystemPropertiesDbHomePtrInput `pulumi:"dbHome"`
+	// Details of the DbSystem Options.
+	// Structure is documented below.
+	DbSystemOptions DbSystemPropertiesDbSystemOptionsPtrInput `pulumi:"dbSystemOptions"`
+	// The host domain name of the DbSystem.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// (Output)
+	// The hostname of the DbSystem.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Prefix for DB System host names.
+	HostnamePrefix pulumi.StringPtrInput `pulumi:"hostnamePrefix"`
+	// The initial data storage size in GB.
+	InitialDataStorageSizeGb pulumi.IntInput `pulumi:"initialDataStorageSizeGb"`
+	// The license model of the DbSystem.
+	// Possible values:
+	// LICENSE_INCLUDED
+	// BRING_YOUR_OWN_LICENSE
+	LicenseModel pulumi.StringInput `pulumi:"licenseModel"`
+	// (Output)
+	// State of the DbSystem.
+	// Possible values:
+	// PROVISIONING
+	// AVAILABLE
+	// UPDATING
+	// TERMINATING
+	// TERMINATED
+	// FAILED
+	// MIGRATED
+	// MAINTENANCE_IN_PROGRESS
+	// NEEDS_ATTENTION
+	// UPGRADING
+	LifecycleState pulumi.StringPtrInput `pulumi:"lifecycleState"`
+	// The memory size in GB.
+	MemorySizeGb pulumi.IntPtrInput `pulumi:"memorySizeGb"`
+	// The number of nodes in the DbSystem.
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	// (Output)
+	// OCID of the DbSystem.
+	Ocid pulumi.StringPtrInput `pulumi:"ocid"`
+	// The private IP address of the DbSystem.
+	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
+	// The reco/redo storage size in GB.
+	RecoStorageSizeGb pulumi.IntPtrInput `pulumi:"recoStorageSizeGb"`
+	// Shape of DB System.
+	Shape pulumi.StringInput `pulumi:"shape"`
+	// SSH public keys to be stored with the DbSystem.
+	SshPublicKeys pulumi.StringArrayInput `pulumi:"sshPublicKeys"`
+	// Represents a time zone from the
+	// [IANA Time Zone Database](https://www.iana.org/time-zones).
+	// Structure is documented below.
+	TimeZone DbSystemPropertiesTimeZonePtrInput `pulumi:"timeZone"`
+}
+
+func (DbSystemPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemProperties)(nil)).Elem()
+}
+
+func (i DbSystemPropertiesArgs) ToDbSystemPropertiesOutput() DbSystemPropertiesOutput {
+	return i.ToDbSystemPropertiesOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesArgs) ToDbSystemPropertiesOutputWithContext(ctx context.Context) DbSystemPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesOutput)
+}
+
+func (i DbSystemPropertiesArgs) ToDbSystemPropertiesPtrOutput() DbSystemPropertiesPtrOutput {
+	return i.ToDbSystemPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesArgs) ToDbSystemPropertiesPtrOutputWithContext(ctx context.Context) DbSystemPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesOutput).ToDbSystemPropertiesPtrOutputWithContext(ctx)
+}
+
+// DbSystemPropertiesPtrInput is an input type that accepts DbSystemPropertiesArgs, DbSystemPropertiesPtr and DbSystemPropertiesPtrOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesPtrInput` via:
+//
+//	        DbSystemPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbSystemPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesPtrOutput() DbSystemPropertiesPtrOutput
+	ToDbSystemPropertiesPtrOutputWithContext(context.Context) DbSystemPropertiesPtrOutput
+}
+
+type dbSystemPropertiesPtrType DbSystemPropertiesArgs
+
+func DbSystemPropertiesPtr(v *DbSystemPropertiesArgs) DbSystemPropertiesPtrInput {
+	return (*dbSystemPropertiesPtrType)(v)
+}
+
+func (*dbSystemPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemProperties)(nil)).Elem()
+}
+
+func (i *dbSystemPropertiesPtrType) ToDbSystemPropertiesPtrOutput() DbSystemPropertiesPtrOutput {
+	return i.ToDbSystemPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *dbSystemPropertiesPtrType) ToDbSystemPropertiesPtrOutputWithContext(ctx context.Context) DbSystemPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesPtrOutput)
+}
+
+type DbSystemPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemProperties)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesOutput) ToDbSystemPropertiesOutput() DbSystemPropertiesOutput {
+	return o
+}
+
+func (o DbSystemPropertiesOutput) ToDbSystemPropertiesOutputWithContext(ctx context.Context) DbSystemPropertiesOutput {
+	return o
+}
+
+func (o DbSystemPropertiesOutput) ToDbSystemPropertiesPtrOutput() DbSystemPropertiesPtrOutput {
+	return o.ToDbSystemPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DbSystemPropertiesOutput) ToDbSystemPropertiesPtrOutputWithContext(ctx context.Context) DbSystemPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbSystemProperties) *DbSystemProperties {
+		return &v
+	}).(DbSystemPropertiesPtrOutput)
+}
+
+// The number of CPU cores to enable for the DbSystem.
+func (o DbSystemPropertiesOutput) ComputeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v DbSystemProperties) int { return v.ComputeCount }).(pulumi.IntOutput)
+}
+
+// The compute model of the DbSystem.
+// Possible values:
+// ECPU
+// OCPU
+func (o DbSystemPropertiesOutput) ComputeModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *string { return v.ComputeModel }).(pulumi.StringPtrOutput)
+}
+
+// Data collection options for DbSystem.
+// Structure is documented below.
+func (o DbSystemPropertiesOutput) DataCollectionOptions() DbSystemPropertiesDataCollectionOptionsPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *DbSystemPropertiesDataCollectionOptions { return v.DataCollectionOptions }).(DbSystemPropertiesDataCollectionOptionsPtrOutput)
+}
+
+// The data storage size in GB that is currently available to DbSystems.
+func (o DbSystemPropertiesOutput) DataStorageSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *int { return v.DataStorageSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// The database edition of the DbSystem.
+// Possible values:
+// STANDARD_EDITION
+// ENTERPRISE_EDITION
+// ENTERPRISE_EDITION_HIGH_PERFORMANCE
+func (o DbSystemPropertiesOutput) DatabaseEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v DbSystemProperties) string { return v.DatabaseEdition }).(pulumi.StringOutput)
+}
+
+// Details of the Database Home resource.
+// Structure is documented below.
+func (o DbSystemPropertiesOutput) DbHome() DbSystemPropertiesDbHomePtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *DbSystemPropertiesDbHome { return v.DbHome }).(DbSystemPropertiesDbHomePtrOutput)
+}
+
+// Details of the DbSystem Options.
+// Structure is documented below.
+func (o DbSystemPropertiesOutput) DbSystemOptions() DbSystemPropertiesDbSystemOptionsPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *DbSystemPropertiesDbSystemOptions { return v.DbSystemOptions }).(DbSystemPropertiesDbSystemOptionsPtrOutput)
+}
+
+// The host domain name of the DbSystem.
+func (o DbSystemPropertiesOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The hostname of the DbSystem.
+func (o DbSystemPropertiesOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Prefix for DB System host names.
+func (o DbSystemPropertiesOutput) HostnamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *string { return v.HostnamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The initial data storage size in GB.
+func (o DbSystemPropertiesOutput) InitialDataStorageSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v DbSystemProperties) int { return v.InitialDataStorageSizeGb }).(pulumi.IntOutput)
+}
+
+// The license model of the DbSystem.
+// Possible values:
+// LICENSE_INCLUDED
+// BRING_YOUR_OWN_LICENSE
+func (o DbSystemPropertiesOutput) LicenseModel() pulumi.StringOutput {
+	return o.ApplyT(func(v DbSystemProperties) string { return v.LicenseModel }).(pulumi.StringOutput)
+}
+
+// (Output)
+// State of the DbSystem.
+// Possible values:
+// PROVISIONING
+// AVAILABLE
+// UPDATING
+// TERMINATING
+// TERMINATED
+// FAILED
+// MIGRATED
+// MAINTENANCE_IN_PROGRESS
+// NEEDS_ATTENTION
+// UPGRADING
+func (o DbSystemPropertiesOutput) LifecycleState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *string { return v.LifecycleState }).(pulumi.StringPtrOutput)
+}
+
+// The memory size in GB.
+func (o DbSystemPropertiesOutput) MemorySizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *int { return v.MemorySizeGb }).(pulumi.IntPtrOutput)
+}
+
+// The number of nodes in the DbSystem.
+func (o DbSystemPropertiesOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// OCID of the DbSystem.
+func (o DbSystemPropertiesOutput) Ocid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *string { return v.Ocid }).(pulumi.StringPtrOutput)
+}
+
+// The private IP address of the DbSystem.
+func (o DbSystemPropertiesOutput) PrivateIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
+}
+
+// The reco/redo storage size in GB.
+func (o DbSystemPropertiesOutput) RecoStorageSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *int { return v.RecoStorageSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Shape of DB System.
+func (o DbSystemPropertiesOutput) Shape() pulumi.StringOutput {
+	return o.ApplyT(func(v DbSystemProperties) string { return v.Shape }).(pulumi.StringOutput)
+}
+
+// SSH public keys to be stored with the DbSystem.
+func (o DbSystemPropertiesOutput) SshPublicKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DbSystemProperties) []string { return v.SshPublicKeys }).(pulumi.StringArrayOutput)
+}
+
+// Represents a time zone from the
+// [IANA Time Zone Database](https://www.iana.org/time-zones).
+// Structure is documented below.
+func (o DbSystemPropertiesOutput) TimeZone() DbSystemPropertiesTimeZonePtrOutput {
+	return o.ApplyT(func(v DbSystemProperties) *DbSystemPropertiesTimeZone { return v.TimeZone }).(DbSystemPropertiesTimeZonePtrOutput)
+}
+
+type DbSystemPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemProperties)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesPtrOutput) ToDbSystemPropertiesPtrOutput() DbSystemPropertiesPtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesPtrOutput) ToDbSystemPropertiesPtrOutputWithContext(ctx context.Context) DbSystemPropertiesPtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesPtrOutput) Elem() DbSystemPropertiesOutput {
+	return o.ApplyT(func(v *DbSystemProperties) DbSystemProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DbSystemProperties
+		return ret
+	}).(DbSystemPropertiesOutput)
+}
+
+// The number of CPU cores to enable for the DbSystem.
+func (o DbSystemPropertiesPtrOutput) ComputeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ComputeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The compute model of the DbSystem.
+// Possible values:
+// ECPU
+// OCPU
+func (o DbSystemPropertiesPtrOutput) ComputeModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Data collection options for DbSystem.
+// Structure is documented below.
+func (o DbSystemPropertiesPtrOutput) DataCollectionOptions() DbSystemPropertiesDataCollectionOptionsPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *DbSystemPropertiesDataCollectionOptions {
+		if v == nil {
+			return nil
+		}
+		return v.DataCollectionOptions
+	}).(DbSystemPropertiesDataCollectionOptionsPtrOutput)
+}
+
+// The data storage size in GB that is currently available to DbSystems.
+func (o DbSystemPropertiesPtrOutput) DataStorageSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DataStorageSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The database edition of the DbSystem.
+// Possible values:
+// STANDARD_EDITION
+// ENTERPRISE_EDITION
+// ENTERPRISE_EDITION_HIGH_PERFORMANCE
+func (o DbSystemPropertiesPtrOutput) DatabaseEdition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatabaseEdition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details of the Database Home resource.
+// Structure is documented below.
+func (o DbSystemPropertiesPtrOutput) DbHome() DbSystemPropertiesDbHomePtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *DbSystemPropertiesDbHome {
+		if v == nil {
+			return nil
+		}
+		return v.DbHome
+	}).(DbSystemPropertiesDbHomePtrOutput)
+}
+
+// Details of the DbSystem Options.
+// Structure is documented below.
+func (o DbSystemPropertiesPtrOutput) DbSystemOptions() DbSystemPropertiesDbSystemOptionsPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *DbSystemPropertiesDbSystemOptions {
+		if v == nil {
+			return nil
+		}
+		return v.DbSystemOptions
+	}).(DbSystemPropertiesDbSystemOptionsPtrOutput)
+}
+
+// The host domain name of the DbSystem.
+func (o DbSystemPropertiesPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The hostname of the DbSystem.
+func (o DbSystemPropertiesPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prefix for DB System host names.
+func (o DbSystemPropertiesPtrOutput) HostnamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostnamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial data storage size in GB.
+func (o DbSystemPropertiesPtrOutput) InitialDataStorageSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.InitialDataStorageSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The license model of the DbSystem.
+// Possible values:
+// LICENSE_INCLUDED
+// BRING_YOUR_OWN_LICENSE
+func (o DbSystemPropertiesPtrOutput) LicenseModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LicenseModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// State of the DbSystem.
+// Possible values:
+// PROVISIONING
+// AVAILABLE
+// UPDATING
+// TERMINATING
+// TERMINATED
+// FAILED
+// MIGRATED
+// MAINTENANCE_IN_PROGRESS
+// NEEDS_ATTENTION
+// UPGRADING
+func (o DbSystemPropertiesPtrOutput) LifecycleState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LifecycleState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The memory size in GB.
+func (o DbSystemPropertiesPtrOutput) MemorySizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemorySizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of nodes in the DbSystem.
+func (o DbSystemPropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// OCID of the DbSystem.
+func (o DbSystemPropertiesPtrOutput) Ocid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ocid
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private IP address of the DbSystem.
+func (o DbSystemPropertiesPtrOutput) PrivateIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// The reco/redo storage size in GB.
+func (o DbSystemPropertiesPtrOutput) RecoStorageSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RecoStorageSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Shape of DB System.
+func (o DbSystemPropertiesPtrOutput) Shape() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Shape
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSH public keys to be stored with the DbSystem.
+func (o DbSystemPropertiesPtrOutput) SshPublicKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DbSystemProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SshPublicKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// Represents a time zone from the
+// [IANA Time Zone Database](https://www.iana.org/time-zones).
+// Structure is documented below.
+func (o DbSystemPropertiesPtrOutput) TimeZone() DbSystemPropertiesTimeZonePtrOutput {
+	return o.ApplyT(func(v *DbSystemProperties) *DbSystemPropertiesTimeZone {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(DbSystemPropertiesTimeZonePtrOutput)
+}
+
+type DbSystemPropertiesDataCollectionOptions struct {
+	// Indicates whether to enable data collection for diagnostics.
+	IsDiagnosticsEventsEnabled *bool `pulumi:"isDiagnosticsEventsEnabled"`
+	// Indicates whether to enable incident logs and trace collection.
+	IsIncidentLogsEnabled *bool `pulumi:"isIncidentLogsEnabled"`
+}
+
+// DbSystemPropertiesDataCollectionOptionsInput is an input type that accepts DbSystemPropertiesDataCollectionOptionsArgs and DbSystemPropertiesDataCollectionOptionsOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDataCollectionOptionsInput` via:
+//
+//	DbSystemPropertiesDataCollectionOptionsArgs{...}
+type DbSystemPropertiesDataCollectionOptionsInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDataCollectionOptionsOutput() DbSystemPropertiesDataCollectionOptionsOutput
+	ToDbSystemPropertiesDataCollectionOptionsOutputWithContext(context.Context) DbSystemPropertiesDataCollectionOptionsOutput
+}
+
+type DbSystemPropertiesDataCollectionOptionsArgs struct {
+	// Indicates whether to enable data collection for diagnostics.
+	IsDiagnosticsEventsEnabled pulumi.BoolPtrInput `pulumi:"isDiagnosticsEventsEnabled"`
+	// Indicates whether to enable incident logs and trace collection.
+	IsIncidentLogsEnabled pulumi.BoolPtrInput `pulumi:"isIncidentLogsEnabled"`
+}
+
+func (DbSystemPropertiesDataCollectionOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDataCollectionOptions)(nil)).Elem()
+}
+
+func (i DbSystemPropertiesDataCollectionOptionsArgs) ToDbSystemPropertiesDataCollectionOptionsOutput() DbSystemPropertiesDataCollectionOptionsOutput {
+	return i.ToDbSystemPropertiesDataCollectionOptionsOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDataCollectionOptionsArgs) ToDbSystemPropertiesDataCollectionOptionsOutputWithContext(ctx context.Context) DbSystemPropertiesDataCollectionOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDataCollectionOptionsOutput)
+}
+
+func (i DbSystemPropertiesDataCollectionOptionsArgs) ToDbSystemPropertiesDataCollectionOptionsPtrOutput() DbSystemPropertiesDataCollectionOptionsPtrOutput {
+	return i.ToDbSystemPropertiesDataCollectionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDataCollectionOptionsArgs) ToDbSystemPropertiesDataCollectionOptionsPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDataCollectionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDataCollectionOptionsOutput).ToDbSystemPropertiesDataCollectionOptionsPtrOutputWithContext(ctx)
+}
+
+// DbSystemPropertiesDataCollectionOptionsPtrInput is an input type that accepts DbSystemPropertiesDataCollectionOptionsArgs, DbSystemPropertiesDataCollectionOptionsPtr and DbSystemPropertiesDataCollectionOptionsPtrOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDataCollectionOptionsPtrInput` via:
+//
+//	        DbSystemPropertiesDataCollectionOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbSystemPropertiesDataCollectionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDataCollectionOptionsPtrOutput() DbSystemPropertiesDataCollectionOptionsPtrOutput
+	ToDbSystemPropertiesDataCollectionOptionsPtrOutputWithContext(context.Context) DbSystemPropertiesDataCollectionOptionsPtrOutput
+}
+
+type dbSystemPropertiesDataCollectionOptionsPtrType DbSystemPropertiesDataCollectionOptionsArgs
+
+func DbSystemPropertiesDataCollectionOptionsPtr(v *DbSystemPropertiesDataCollectionOptionsArgs) DbSystemPropertiesDataCollectionOptionsPtrInput {
+	return (*dbSystemPropertiesDataCollectionOptionsPtrType)(v)
+}
+
+func (*dbSystemPropertiesDataCollectionOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDataCollectionOptions)(nil)).Elem()
+}
+
+func (i *dbSystemPropertiesDataCollectionOptionsPtrType) ToDbSystemPropertiesDataCollectionOptionsPtrOutput() DbSystemPropertiesDataCollectionOptionsPtrOutput {
+	return i.ToDbSystemPropertiesDataCollectionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *dbSystemPropertiesDataCollectionOptionsPtrType) ToDbSystemPropertiesDataCollectionOptionsPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDataCollectionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDataCollectionOptionsPtrOutput)
+}
+
+type DbSystemPropertiesDataCollectionOptionsOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDataCollectionOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDataCollectionOptions)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDataCollectionOptionsOutput) ToDbSystemPropertiesDataCollectionOptionsOutput() DbSystemPropertiesDataCollectionOptionsOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDataCollectionOptionsOutput) ToDbSystemPropertiesDataCollectionOptionsOutputWithContext(ctx context.Context) DbSystemPropertiesDataCollectionOptionsOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDataCollectionOptionsOutput) ToDbSystemPropertiesDataCollectionOptionsPtrOutput() DbSystemPropertiesDataCollectionOptionsPtrOutput {
+	return o.ToDbSystemPropertiesDataCollectionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o DbSystemPropertiesDataCollectionOptionsOutput) ToDbSystemPropertiesDataCollectionOptionsPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDataCollectionOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbSystemPropertiesDataCollectionOptions) *DbSystemPropertiesDataCollectionOptions {
+		return &v
+	}).(DbSystemPropertiesDataCollectionOptionsPtrOutput)
+}
+
+// Indicates whether to enable data collection for diagnostics.
+func (o DbSystemPropertiesDataCollectionOptionsOutput) IsDiagnosticsEventsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDataCollectionOptions) *bool { return v.IsDiagnosticsEventsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to enable incident logs and trace collection.
+func (o DbSystemPropertiesDataCollectionOptionsOutput) IsIncidentLogsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDataCollectionOptions) *bool { return v.IsIncidentLogsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type DbSystemPropertiesDataCollectionOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDataCollectionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDataCollectionOptions)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDataCollectionOptionsPtrOutput) ToDbSystemPropertiesDataCollectionOptionsPtrOutput() DbSystemPropertiesDataCollectionOptionsPtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDataCollectionOptionsPtrOutput) ToDbSystemPropertiesDataCollectionOptionsPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDataCollectionOptionsPtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDataCollectionOptionsPtrOutput) Elem() DbSystemPropertiesDataCollectionOptionsOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDataCollectionOptions) DbSystemPropertiesDataCollectionOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DbSystemPropertiesDataCollectionOptions
+		return ret
+	}).(DbSystemPropertiesDataCollectionOptionsOutput)
+}
+
+// Indicates whether to enable data collection for diagnostics.
+func (o DbSystemPropertiesDataCollectionOptionsPtrOutput) IsDiagnosticsEventsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDataCollectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsDiagnosticsEventsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to enable incident logs and trace collection.
+func (o DbSystemPropertiesDataCollectionOptionsPtrOutput) IsIncidentLogsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDataCollectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsIncidentLogsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DbSystemPropertiesDbHome struct {
+	// Details of the Database resource.
+	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
+	// Structure is documented below.
+	Database DbSystemPropertiesDbHomeDatabase `pulumi:"database"`
+	// A valid Oracle Database version. For a list of supported versions, use the
+	// ListDbVersions operation.
+	DbVersion string `pulumi:"dbVersion"`
+	// The display name for the Database Home. The name does not have to
+	// be unique within your project.
+	DisplayName *string `pulumi:"displayName"`
+	// Whether unified auditing is enabled for the Database Home.
+	IsUnifiedAuditingEnabled *bool `pulumi:"isUnifiedAuditingEnabled"`
+}
+
+// DbSystemPropertiesDbHomeInput is an input type that accepts DbSystemPropertiesDbHomeArgs and DbSystemPropertiesDbHomeOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbHomeInput` via:
+//
+//	DbSystemPropertiesDbHomeArgs{...}
+type DbSystemPropertiesDbHomeInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbHomeOutput() DbSystemPropertiesDbHomeOutput
+	ToDbSystemPropertiesDbHomeOutputWithContext(context.Context) DbSystemPropertiesDbHomeOutput
+}
+
+type DbSystemPropertiesDbHomeArgs struct {
+	// Details of the Database resource.
+	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
+	// Structure is documented below.
+	Database DbSystemPropertiesDbHomeDatabaseInput `pulumi:"database"`
+	// A valid Oracle Database version. For a list of supported versions, use the
+	// ListDbVersions operation.
+	DbVersion pulumi.StringInput `pulumi:"dbVersion"`
+	// The display name for the Database Home. The name does not have to
+	// be unique within your project.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Whether unified auditing is enabled for the Database Home.
+	IsUnifiedAuditingEnabled pulumi.BoolPtrInput `pulumi:"isUnifiedAuditingEnabled"`
+}
+
+func (DbSystemPropertiesDbHomeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbHome)(nil)).Elem()
+}
+
+func (i DbSystemPropertiesDbHomeArgs) ToDbSystemPropertiesDbHomeOutput() DbSystemPropertiesDbHomeOutput {
+	return i.ToDbSystemPropertiesDbHomeOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbHomeArgs) ToDbSystemPropertiesDbHomeOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeOutput)
+}
+
+func (i DbSystemPropertiesDbHomeArgs) ToDbSystemPropertiesDbHomePtrOutput() DbSystemPropertiesDbHomePtrOutput {
+	return i.ToDbSystemPropertiesDbHomePtrOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbHomeArgs) ToDbSystemPropertiesDbHomePtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeOutput).ToDbSystemPropertiesDbHomePtrOutputWithContext(ctx)
+}
+
+// DbSystemPropertiesDbHomePtrInput is an input type that accepts DbSystemPropertiesDbHomeArgs, DbSystemPropertiesDbHomePtr and DbSystemPropertiesDbHomePtrOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbHomePtrInput` via:
+//
+//	        DbSystemPropertiesDbHomeArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbSystemPropertiesDbHomePtrInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbHomePtrOutput() DbSystemPropertiesDbHomePtrOutput
+	ToDbSystemPropertiesDbHomePtrOutputWithContext(context.Context) DbSystemPropertiesDbHomePtrOutput
+}
+
+type dbSystemPropertiesDbHomePtrType DbSystemPropertiesDbHomeArgs
+
+func DbSystemPropertiesDbHomePtr(v *DbSystemPropertiesDbHomeArgs) DbSystemPropertiesDbHomePtrInput {
+	return (*dbSystemPropertiesDbHomePtrType)(v)
+}
+
+func (*dbSystemPropertiesDbHomePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDbHome)(nil)).Elem()
+}
+
+func (i *dbSystemPropertiesDbHomePtrType) ToDbSystemPropertiesDbHomePtrOutput() DbSystemPropertiesDbHomePtrOutput {
+	return i.ToDbSystemPropertiesDbHomePtrOutputWithContext(context.Background())
+}
+
+func (i *dbSystemPropertiesDbHomePtrType) ToDbSystemPropertiesDbHomePtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomePtrOutput)
+}
+
+type DbSystemPropertiesDbHomeOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbHomeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbHome)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbHomeOutput) ToDbSystemPropertiesDbHomeOutput() DbSystemPropertiesDbHomeOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeOutput) ToDbSystemPropertiesDbHomeOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeOutput) ToDbSystemPropertiesDbHomePtrOutput() DbSystemPropertiesDbHomePtrOutput {
+	return o.ToDbSystemPropertiesDbHomePtrOutputWithContext(context.Background())
+}
+
+func (o DbSystemPropertiesDbHomeOutput) ToDbSystemPropertiesDbHomePtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbSystemPropertiesDbHome) *DbSystemPropertiesDbHome {
+		return &v
+	}).(DbSystemPropertiesDbHomePtrOutput)
+}
+
+// Details of the Database resource.
+// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
+// Structure is documented below.
+func (o DbSystemPropertiesDbHomeOutput) Database() DbSystemPropertiesDbHomeDatabaseOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHome) DbSystemPropertiesDbHomeDatabase { return v.Database }).(DbSystemPropertiesDbHomeDatabaseOutput)
+}
+
+// A valid Oracle Database version. For a list of supported versions, use the
+// ListDbVersions operation.
+func (o DbSystemPropertiesDbHomeOutput) DbVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHome) string { return v.DbVersion }).(pulumi.StringOutput)
+}
+
+// The display name for the Database Home. The name does not have to
+// be unique within your project.
+func (o DbSystemPropertiesDbHomeOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHome) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Whether unified auditing is enabled for the Database Home.
+func (o DbSystemPropertiesDbHomeOutput) IsUnifiedAuditingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHome) *bool { return v.IsUnifiedAuditingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type DbSystemPropertiesDbHomePtrOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbHomePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDbHome)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbHomePtrOutput) ToDbSystemPropertiesDbHomePtrOutput() DbSystemPropertiesDbHomePtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomePtrOutput) ToDbSystemPropertiesDbHomePtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomePtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomePtrOutput) Elem() DbSystemPropertiesDbHomeOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHome) DbSystemPropertiesDbHome {
+		if v != nil {
+			return *v
+		}
+		var ret DbSystemPropertiesDbHome
+		return ret
+	}).(DbSystemPropertiesDbHomeOutput)
+}
+
+// Details of the Database resource.
+// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
+// Structure is documented below.
+func (o DbSystemPropertiesDbHomePtrOutput) Database() DbSystemPropertiesDbHomeDatabasePtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHome) *DbSystemPropertiesDbHomeDatabase {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(DbSystemPropertiesDbHomeDatabasePtrOutput)
+}
+
+// A valid Oracle Database version. For a list of supported versions, use the
+// ListDbVersions operation.
+func (o DbSystemPropertiesDbHomePtrOutput) DbVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHome) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DbVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name for the Database Home. The name does not have to
+// be unique within your project.
+func (o DbSystemPropertiesDbHomePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHome) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether unified auditing is enabled for the Database Home.
+func (o DbSystemPropertiesDbHomePtrOutput) IsUnifiedAuditingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHome) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsUnifiedAuditingEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabase struct {
+	// The password for the default ADMIN user.
+	AdminPassword string `pulumi:"adminPassword"`
+	// The character set for the database. The default is AL32UTF8.
+	CharacterSet *string `pulumi:"characterSet"`
+	// (Output)
+	// The date and time that the Database was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The database ID of the Database.
+	DatabaseId string `pulumi:"databaseId"`
+	// The name of the DbHome resource associated with the Database.
+	DbHomeName *string `pulumi:"dbHomeName"`
+	// The database name. The name must begin with an alphabetic character and can
+	// contain a maximum of eight alphanumeric characters. Special characters are
+	// not permitted.
+	DbName *string `pulumi:"dbName"`
+	// The DB_UNIQUE_NAME of the Oracle Database being backed up.
+	DbUniqueName *string `pulumi:"dbUniqueName"`
+	// The GCP Oracle zone where the Database is created.
+	GcpOracleZone *string `pulumi:"gcpOracleZone"`
+	// (Output)
+	// Identifier. The name of the Database resource in the following format:
+	// projects/{project}/locations/{region}/databases/{database}
+	Name *string `pulumi:"name"`
+	// The national character set for the database. The default is AL16UTF16.
+	NcharacterSet *string `pulumi:"ncharacterSet"`
+	// (Output)
+	// HTTPS link to OCI resources exposed to Customer via UI Interface.
+	OciUrl *string `pulumi:"ociUrl"`
+	// (Output)
+	// The Status of Operations Insights for this Database.
+	// Possible values:
+	// ENABLING
+	// ENABLED
+	// DISABLING
+	// NOT_ENABLED
+	// FAILED_ENABLING
+	// FAILED_DISABLING
+	OpsInsightsStatus *string `pulumi:"opsInsightsStatus"`
+	// The properties of a Database.
+	// Structure is documented below.
+	Properties *DbSystemPropertiesDbHomeDatabaseProperties `pulumi:"properties"`
+	// The TDE wallet password for the database.
+	TdeWalletPassword *string `pulumi:"tdeWalletPassword"`
+}
+
+// DbSystemPropertiesDbHomeDatabaseInput is an input type that accepts DbSystemPropertiesDbHomeDatabaseArgs and DbSystemPropertiesDbHomeDatabaseOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbHomeDatabaseInput` via:
+//
+//	DbSystemPropertiesDbHomeDatabaseArgs{...}
+type DbSystemPropertiesDbHomeDatabaseInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbHomeDatabaseOutput() DbSystemPropertiesDbHomeDatabaseOutput
+	ToDbSystemPropertiesDbHomeDatabaseOutputWithContext(context.Context) DbSystemPropertiesDbHomeDatabaseOutput
+}
+
+type DbSystemPropertiesDbHomeDatabaseArgs struct {
+	// The password for the default ADMIN user.
+	AdminPassword pulumi.StringInput `pulumi:"adminPassword"`
+	// The character set for the database. The default is AL32UTF8.
+	CharacterSet pulumi.StringPtrInput `pulumi:"characterSet"`
+	// (Output)
+	// The date and time that the Database was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// The database ID of the Database.
+	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	// The name of the DbHome resource associated with the Database.
+	DbHomeName pulumi.StringPtrInput `pulumi:"dbHomeName"`
+	// The database name. The name must begin with an alphabetic character and can
+	// contain a maximum of eight alphanumeric characters. Special characters are
+	// not permitted.
+	DbName pulumi.StringPtrInput `pulumi:"dbName"`
+	// The DB_UNIQUE_NAME of the Oracle Database being backed up.
+	DbUniqueName pulumi.StringPtrInput `pulumi:"dbUniqueName"`
+	// The GCP Oracle zone where the Database is created.
+	GcpOracleZone pulumi.StringPtrInput `pulumi:"gcpOracleZone"`
+	// (Output)
+	// Identifier. The name of the Database resource in the following format:
+	// projects/{project}/locations/{region}/databases/{database}
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The national character set for the database. The default is AL16UTF16.
+	NcharacterSet pulumi.StringPtrInput `pulumi:"ncharacterSet"`
+	// (Output)
+	// HTTPS link to OCI resources exposed to Customer via UI Interface.
+	OciUrl pulumi.StringPtrInput `pulumi:"ociUrl"`
+	// (Output)
+	// The Status of Operations Insights for this Database.
+	// Possible values:
+	// ENABLING
+	// ENABLED
+	// DISABLING
+	// NOT_ENABLED
+	// FAILED_ENABLING
+	// FAILED_DISABLING
+	OpsInsightsStatus pulumi.StringPtrInput `pulumi:"opsInsightsStatus"`
+	// The properties of a Database.
+	// Structure is documented below.
+	Properties DbSystemPropertiesDbHomeDatabasePropertiesPtrInput `pulumi:"properties"`
+	// The TDE wallet password for the database.
+	TdeWalletPassword pulumi.StringPtrInput `pulumi:"tdeWalletPassword"`
+}
+
+func (DbSystemPropertiesDbHomeDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbHomeDatabase)(nil)).Elem()
+}
+
+func (i DbSystemPropertiesDbHomeDatabaseArgs) ToDbSystemPropertiesDbHomeDatabaseOutput() DbSystemPropertiesDbHomeDatabaseOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabaseOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbHomeDatabaseArgs) ToDbSystemPropertiesDbHomeDatabaseOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabaseOutput)
+}
+
+func (i DbSystemPropertiesDbHomeDatabaseArgs) ToDbSystemPropertiesDbHomeDatabasePtrOutput() DbSystemPropertiesDbHomeDatabasePtrOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePtrOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbHomeDatabaseArgs) ToDbSystemPropertiesDbHomeDatabasePtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabaseOutput).ToDbSystemPropertiesDbHomeDatabasePtrOutputWithContext(ctx)
+}
+
+// DbSystemPropertiesDbHomeDatabasePtrInput is an input type that accepts DbSystemPropertiesDbHomeDatabaseArgs, DbSystemPropertiesDbHomeDatabasePtr and DbSystemPropertiesDbHomeDatabasePtrOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbHomeDatabasePtrInput` via:
+//
+//	        DbSystemPropertiesDbHomeDatabaseArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbSystemPropertiesDbHomeDatabasePtrInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbHomeDatabasePtrOutput() DbSystemPropertiesDbHomeDatabasePtrOutput
+	ToDbSystemPropertiesDbHomeDatabasePtrOutputWithContext(context.Context) DbSystemPropertiesDbHomeDatabasePtrOutput
+}
+
+type dbSystemPropertiesDbHomeDatabasePtrType DbSystemPropertiesDbHomeDatabaseArgs
+
+func DbSystemPropertiesDbHomeDatabasePtr(v *DbSystemPropertiesDbHomeDatabaseArgs) DbSystemPropertiesDbHomeDatabasePtrInput {
+	return (*dbSystemPropertiesDbHomeDatabasePtrType)(v)
+}
+
+func (*dbSystemPropertiesDbHomeDatabasePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDbHomeDatabase)(nil)).Elem()
+}
+
+func (i *dbSystemPropertiesDbHomeDatabasePtrType) ToDbSystemPropertiesDbHomeDatabasePtrOutput() DbSystemPropertiesDbHomeDatabasePtrOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePtrOutputWithContext(context.Background())
+}
+
+func (i *dbSystemPropertiesDbHomeDatabasePtrType) ToDbSystemPropertiesDbHomeDatabasePtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabasePtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabaseOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbHomeDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbHomeDatabase)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbHomeDatabaseOutput) ToDbSystemPropertiesDbHomeDatabaseOutput() DbSystemPropertiesDbHomeDatabaseOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabaseOutput) ToDbSystemPropertiesDbHomeDatabaseOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabaseOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabaseOutput) ToDbSystemPropertiesDbHomeDatabasePtrOutput() DbSystemPropertiesDbHomeDatabasePtrOutput {
+	return o.ToDbSystemPropertiesDbHomeDatabasePtrOutputWithContext(context.Background())
+}
+
+func (o DbSystemPropertiesDbHomeDatabaseOutput) ToDbSystemPropertiesDbHomeDatabasePtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbSystemPropertiesDbHomeDatabase) *DbSystemPropertiesDbHomeDatabase {
+		return &v
+	}).(DbSystemPropertiesDbHomeDatabasePtrOutput)
+}
+
+// The password for the default ADMIN user.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) AdminPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) string { return v.AdminPassword }).(pulumi.StringOutput)
+}
+
+// The character set for the database. The default is AL32UTF8.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) CharacterSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.CharacterSet }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The date and time that the Database was created.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// The database ID of the Database.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) DatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) string { return v.DatabaseId }).(pulumi.StringOutput)
+}
+
+// The name of the DbHome resource associated with the Database.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) DbHomeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.DbHomeName }).(pulumi.StringPtrOutput)
+}
+
+// The database name. The name must begin with an alphabetic character and can
+// contain a maximum of eight alphanumeric characters. Special characters are
+// not permitted.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+// The DB_UNIQUE_NAME of the Oracle Database being backed up.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) DbUniqueName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.DbUniqueName }).(pulumi.StringPtrOutput)
+}
+
+// The GCP Oracle zone where the Database is created.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) GcpOracleZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.GcpOracleZone }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Identifier. The name of the Database resource in the following format:
+// projects/{project}/locations/{region}/databases/{database}
+func (o DbSystemPropertiesDbHomeDatabaseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The national character set for the database. The default is AL16UTF16.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) NcharacterSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.NcharacterSet }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// HTTPS link to OCI resources exposed to Customer via UI Interface.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) OciUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.OciUrl }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Status of Operations Insights for this Database.
+// Possible values:
+// ENABLING
+// ENABLED
+// DISABLING
+// NOT_ENABLED
+// FAILED_ENABLING
+// FAILED_DISABLING
+func (o DbSystemPropertiesDbHomeDatabaseOutput) OpsInsightsStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.OpsInsightsStatus }).(pulumi.StringPtrOutput)
+}
+
+// The properties of a Database.
+// Structure is documented below.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) Properties() DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *DbSystemPropertiesDbHomeDatabaseProperties {
+		return v.Properties
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput)
+}
+
+// The TDE wallet password for the database.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) TdeWalletPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.TdeWalletPassword }).(pulumi.StringPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabasePtrOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbHomeDatabasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDbHomeDatabase)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) ToDbSystemPropertiesDbHomeDatabasePtrOutput() DbSystemPropertiesDbHomeDatabasePtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) ToDbSystemPropertiesDbHomeDatabasePtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) Elem() DbSystemPropertiesDbHomeDatabaseOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) DbSystemPropertiesDbHomeDatabase {
+		if v != nil {
+			return *v
+		}
+		var ret DbSystemPropertiesDbHomeDatabase
+		return ret
+	}).(DbSystemPropertiesDbHomeDatabaseOutput)
+}
+
+// The password for the default ADMIN user.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AdminPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// The character set for the database. The default is AL32UTF8.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) CharacterSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CharacterSet
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The date and time that the Database was created.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The database ID of the Database.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) DatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatabaseId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the DbHome resource associated with the Database.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) DbHomeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbHomeName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The database name. The name must begin with an alphabetic character and can
+// contain a maximum of eight alphanumeric characters. Special characters are
+// not permitted.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The DB_UNIQUE_NAME of the Oracle Database being backed up.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) DbUniqueName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbUniqueName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GCP Oracle zone where the Database is created.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) GcpOracleZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcpOracleZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Identifier. The name of the Database resource in the following format:
+// projects/{project}/locations/{region}/databases/{database}
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The national character set for the database. The default is AL16UTF16.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) NcharacterSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NcharacterSet
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// HTTPS link to OCI resources exposed to Customer via UI Interface.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) OciUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OciUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Status of Operations Insights for this Database.
+// Possible values:
+// ENABLING
+// ENABLED
+// DISABLING
+// NOT_ENABLED
+// FAILED_ENABLING
+// FAILED_DISABLING
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) OpsInsightsStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OpsInsightsStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of a Database.
+// Structure is documented below.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) Properties() DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *DbSystemPropertiesDbHomeDatabaseProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput)
+}
+
+// The TDE wallet password for the database.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) TdeWalletPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TdeWalletPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabaseProperties struct {
+	// The configuration of the Database Management service.
+	// Structure is documented below.
+	DatabaseManagementConfig *DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig `pulumi:"databaseManagementConfig"`
+	// Backup Options for the Database.
+	// Structure is documented below.
+	DbBackupConfig *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig `pulumi:"dbBackupConfig"`
+	// The Oracle Database version.
+	DbVersion string `pulumi:"dbVersion"`
+	// (Output)
+	// State of the Database.
+	// Possible values:
+	// PROVISIONING
+	// AVAILABLE
+	// UPDATING
+	// BACKUP_IN_PROGRESS
+	// UPGRADING
+	// CONVERTING
+	// TERMINATING
+	// TERMINATED
+	// RESTORE_FAILED
+	// FAILED
+	State *string `pulumi:"state"`
+}
+
+// DbSystemPropertiesDbHomeDatabasePropertiesInput is an input type that accepts DbSystemPropertiesDbHomeDatabasePropertiesArgs and DbSystemPropertiesDbHomeDatabasePropertiesOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbHomeDatabasePropertiesInput` via:
+//
+//	DbSystemPropertiesDbHomeDatabasePropertiesArgs{...}
+type DbSystemPropertiesDbHomeDatabasePropertiesInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbHomeDatabasePropertiesOutput() DbSystemPropertiesDbHomeDatabasePropertiesOutput
+	ToDbSystemPropertiesDbHomeDatabasePropertiesOutputWithContext(context.Context) DbSystemPropertiesDbHomeDatabasePropertiesOutput
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesArgs struct {
+	// The configuration of the Database Management service.
+	// Structure is documented below.
+	DatabaseManagementConfig DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrInput `pulumi:"databaseManagementConfig"`
+	// Backup Options for the Database.
+	// Structure is documented below.
+	DbBackupConfig DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrInput `pulumi:"dbBackupConfig"`
+	// The Oracle Database version.
+	DbVersion pulumi.StringInput `pulumi:"dbVersion"`
+	// (Output)
+	// State of the Database.
+	// Possible values:
+	// PROVISIONING
+	// AVAILABLE
+	// UPDATING
+	// BACKUP_IN_PROGRESS
+	// UPGRADING
+	// CONVERTING
+	// TERMINATING
+	// TERMINATED
+	// RESTORE_FAILED
+	// FAILED
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbHomeDatabaseProperties)(nil)).Elem()
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesOutput() DbSystemPropertiesDbHomeDatabasePropertiesOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePropertiesOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabasePropertiesOutput)
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabasePropertiesOutput).ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutputWithContext(ctx)
+}
+
+// DbSystemPropertiesDbHomeDatabasePropertiesPtrInput is an input type that accepts DbSystemPropertiesDbHomeDatabasePropertiesArgs, DbSystemPropertiesDbHomeDatabasePropertiesPtr and DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbHomeDatabasePropertiesPtrInput` via:
+//
+//	        DbSystemPropertiesDbHomeDatabasePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbSystemPropertiesDbHomeDatabasePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput
+	ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutputWithContext(context.Context) DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput
+}
+
+type dbSystemPropertiesDbHomeDatabasePropertiesPtrType DbSystemPropertiesDbHomeDatabasePropertiesArgs
+
+func DbSystemPropertiesDbHomeDatabasePropertiesPtr(v *DbSystemPropertiesDbHomeDatabasePropertiesArgs) DbSystemPropertiesDbHomeDatabasePropertiesPtrInput {
+	return (*dbSystemPropertiesDbHomeDatabasePropertiesPtrType)(v)
+}
+
+func (*dbSystemPropertiesDbHomeDatabasePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDbHomeDatabaseProperties)(nil)).Elem()
+}
+
+func (i *dbSystemPropertiesDbHomeDatabasePropertiesPtrType) ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *dbSystemPropertiesDbHomeDatabasePropertiesPtrType) ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbHomeDatabaseProperties)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesOutput() DbSystemPropertiesDbHomeDatabasePropertiesOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput {
+	return o.ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbSystemPropertiesDbHomeDatabaseProperties) *DbSystemPropertiesDbHomeDatabaseProperties {
+		return &v
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput)
+}
+
+// The configuration of the Database Management service.
+// Structure is documented below.
+func (o DbSystemPropertiesDbHomeDatabasePropertiesOutput) DatabaseManagementConfig() DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabaseProperties) *DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
+		return v.DatabaseManagementConfig
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput)
+}
+
+// Backup Options for the Database.
+// Structure is documented below.
+func (o DbSystemPropertiesDbHomeDatabasePropertiesOutput) DbBackupConfig() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabaseProperties) *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
+		return v.DbBackupConfig
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput)
+}
+
+// The Oracle Database version.
+func (o DbSystemPropertiesDbHomeDatabasePropertiesOutput) DbVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabaseProperties) string { return v.DbVersion }).(pulumi.StringOutput)
+}
+
+// (Output)
+// State of the Database.
+// Possible values:
+// PROVISIONING
+// AVAILABLE
+// UPDATING
+// BACKUP_IN_PROGRESS
+// UPGRADING
+// CONVERTING
+// TERMINATING
+// TERMINATED
+// RESTORE_FAILED
+// FAILED
+func (o DbSystemPropertiesDbHomeDatabasePropertiesOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabaseProperties) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDbHomeDatabaseProperties)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput) Elem() DbSystemPropertiesDbHomeDatabasePropertiesOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabaseProperties) DbSystemPropertiesDbHomeDatabaseProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DbSystemPropertiesDbHomeDatabaseProperties
+		return ret
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesOutput)
+}
+
+// The configuration of the Database Management service.
+// Structure is documented below.
+func (o DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput) DatabaseManagementConfig() DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabaseProperties) *DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseManagementConfig
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput)
+}
+
+// Backup Options for the Database.
+// Structure is documented below.
+func (o DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput) DbBackupConfig() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabaseProperties) *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DbBackupConfig
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput)
+}
+
+// The Oracle Database version.
+func (o DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput) DbVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabaseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DbVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// State of the Database.
+// Possible values:
+// PROVISIONING
+// AVAILABLE
+// UPDATING
+// BACKUP_IN_PROGRESS
+// UPGRADING
+// CONVERTING
+// TERMINATING
+// TERMINATED
+// RESTORE_FAILED
+// FAILED
+func (o DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabaseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig struct {
+	// (Output)
+	// The status of the Database Management service.
+	// Possible values:
+	// ENABLING
+	// ENABLED
+	// DISABLING
+	// DISABLED
+	// UPDATING
+	// FAILED_ENABLING
+	// FAILED_DISABLING
+	// FAILED_UPDATING
+	ManagementState *string `pulumi:"managementState"`
+	// (Output)
+	// The Database Management type.
+	// Possible values:
+	// BASIC
+	// ADVANCED
+	ManagementType *string `pulumi:"managementType"`
+}
+
+// DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigInput is an input type that accepts DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs and DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigInput` via:
+//
+//	DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs{...}
+type DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput() DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput
+	ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutputWithContext(context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs struct {
+	// (Output)
+	// The status of the Database Management service.
+	// Possible values:
+	// ENABLING
+	// ENABLED
+	// DISABLING
+	// DISABLED
+	// UPDATING
+	// FAILED_ENABLING
+	// FAILED_DISABLING
+	// FAILED_UPDATING
+	ManagementState pulumi.StringPtrInput `pulumi:"managementState"`
+	// (Output)
+	// The Database Management type.
+	// Possible values:
+	// BASIC
+	// ADVANCED
+	ManagementType pulumi.StringPtrInput `pulumi:"managementType"`
+}
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig)(nil)).Elem()
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput() DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput)
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput).ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutputWithContext(ctx)
+}
+
+// DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrInput is an input type that accepts DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs, DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtr and DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrInput` via:
+//
+//	        DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput
+	ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutputWithContext(context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput
+}
+
+type dbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrType DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs
+
+func DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtr(v *DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs) DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrInput {
+	return (*dbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrType)(v)
+}
+
+func (*dbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig)(nil)).Elem()
+}
+
+func (i *dbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrType) ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrType) ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput() DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput {
+	return o.ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig) *DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
+		return &v
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput)
+}
+
+// (Output)
+// The status of the Database Management service.
+// Possible values:
+// ENABLING
+// ENABLED
+// DISABLING
+// DISABLED
+// UPDATING
+// FAILED_ENABLING
+// FAILED_DISABLING
+// FAILED_UPDATING
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput) ManagementState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig) *string {
+		return v.ManagementState
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Database Management type.
+// Possible values:
+// BASIC
+// ADVANCED
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput) ManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig) *string {
+		return v.ManagementType
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput) Elem() DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig) DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig
+		return ret
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput)
+}
+
+// (Output)
+// The status of the Database Management service.
+// Possible values:
+// ENABLING
+// ENABLED
+// DISABLING
+// DISABLED
+// UPDATING
+// FAILED_ENABLING
+// FAILED_DISABLING
+// FAILED_UPDATING
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput) ManagementState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementState
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Database Management type.
+// Possible values:
+// BASIC
+// ADVANCED
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput) ManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementType
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig struct {
+	// If set to true, enables automatic backups on the database.
+	AutoBackupEnabled *bool `pulumi:"autoBackupEnabled"`
+	// Possible values:
+	// MONDAY
+	// TUESDAY
+	// WEDNESDAY
+	// THURSDAY
+	// FRIDAY
+	// SATURDAY
+	// SUNDAY
+	AutoFullBackupDay *string `pulumi:"autoFullBackupDay"`
+	// The window in which the full backup should be performed on the database.
+	// If no value is provided, the default is anytime.
+	// Possible values:
+	// SLOT_ONE
+	// SLOT_TWO
+	// SLOT_THREE
+	// SLOT_FOUR
+	// SLOT_FIVE
+	// SLOT_SIX
+	// SLOT_SEVEN
+	// SLOT_EIGHT
+	// SLOT_NINE
+	// SLOT_TEN
+	// SLOT_ELEVEN
+	// SLOT_TWELVE
+	AutoFullBackupWindow *string `pulumi:"autoFullBackupWindow"`
+	// The window in which the incremental backup should be performed on the
+	// database. If no value is provided, the default is anytime except the auto
+	// full backup day.
+	// Possible values:
+	// SLOT_ONE
+	// SLOT_TWO
+	// SLOT_THREE
+	// SLOT_FOUR
+	// SLOT_FIVE
+	// SLOT_SIX
+	// SLOT_SEVEN
+	// SLOT_EIGHT
+	// SLOT_NINE
+	// SLOT_TEN
+	// SLOT_ELEVEN
+	// SLOT_TWELVE
+	AutoIncrementalBackupWindow *string `pulumi:"autoIncrementalBackupWindow"`
+	// This defines when the backups will be deleted after Database termination.
+	// Possible values:
+	// DELETE_IMMEDIATELY
+	// DELETE_AFTER_RETENTION_PERIOD
+	BackupDeletionPolicy *string `pulumi:"backupDeletionPolicy"`
+	// Details of the database backup destinations.
+	// Structure is documented below.
+	BackupDestinationDetails []DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail `pulumi:"backupDestinationDetails"`
+	// The number of days an automatic backup is retained before being
+	// automatically deleted. This value determines the earliest point in time to
+	// which a database can be restored. Min: 1, Max: 60.
+	RetentionPeriodDays *int `pulumi:"retentionPeriodDays"`
+}
+
+// DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigInput is an input type that accepts DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs and DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigInput` via:
+//
+//	DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs{...}
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput
+	ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutputWithContext(context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs struct {
+	// If set to true, enables automatic backups on the database.
+	AutoBackupEnabled pulumi.BoolPtrInput `pulumi:"autoBackupEnabled"`
+	// Possible values:
+	// MONDAY
+	// TUESDAY
+	// WEDNESDAY
+	// THURSDAY
+	// FRIDAY
+	// SATURDAY
+	// SUNDAY
+	AutoFullBackupDay pulumi.StringPtrInput `pulumi:"autoFullBackupDay"`
+	// The window in which the full backup should be performed on the database.
+	// If no value is provided, the default is anytime.
+	// Possible values:
+	// SLOT_ONE
+	// SLOT_TWO
+	// SLOT_THREE
+	// SLOT_FOUR
+	// SLOT_FIVE
+	// SLOT_SIX
+	// SLOT_SEVEN
+	// SLOT_EIGHT
+	// SLOT_NINE
+	// SLOT_TEN
+	// SLOT_ELEVEN
+	// SLOT_TWELVE
+	AutoFullBackupWindow pulumi.StringPtrInput `pulumi:"autoFullBackupWindow"`
+	// The window in which the incremental backup should be performed on the
+	// database. If no value is provided, the default is anytime except the auto
+	// full backup day.
+	// Possible values:
+	// SLOT_ONE
+	// SLOT_TWO
+	// SLOT_THREE
+	// SLOT_FOUR
+	// SLOT_FIVE
+	// SLOT_SIX
+	// SLOT_SEVEN
+	// SLOT_EIGHT
+	// SLOT_NINE
+	// SLOT_TEN
+	// SLOT_ELEVEN
+	// SLOT_TWELVE
+	AutoIncrementalBackupWindow pulumi.StringPtrInput `pulumi:"autoIncrementalBackupWindow"`
+	// This defines when the backups will be deleted after Database termination.
+	// Possible values:
+	// DELETE_IMMEDIATELY
+	// DELETE_AFTER_RETENTION_PERIOD
+	BackupDeletionPolicy pulumi.StringPtrInput `pulumi:"backupDeletionPolicy"`
+	// Details of the database backup destinations.
+	// Structure is documented below.
+	BackupDestinationDetails DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayInput `pulumi:"backupDestinationDetails"`
+	// The number of days an automatic backup is retained before being
+	// automatically deleted. This value determines the earliest point in time to
+	// which a database can be restored. Min: 1, Max: 60.
+	RetentionPeriodDays pulumi.IntPtrInput `pulumi:"retentionPeriodDays"`
+}
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig)(nil)).Elem()
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput)
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput).ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutputWithContext(ctx)
+}
+
+// DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrInput is an input type that accepts DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs, DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtr and DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrInput` via:
+//
+//	        DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput
+	ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutputWithContext(context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput
+}
+
+type dbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrType DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs
+
+func DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtr(v *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrInput {
+	return (*dbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrType)(v)
+}
+
+func (*dbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig)(nil)).Elem()
+}
+
+func (i *dbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrType) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrType) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput {
+	return o.ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
+		return &v
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput)
+}
+
+// If set to true, enables automatic backups on the database.
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput) AutoBackupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *bool { return v.AutoBackupEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Possible values:
+// MONDAY
+// TUESDAY
+// WEDNESDAY
+// THURSDAY
+// FRIDAY
+// SATURDAY
+// SUNDAY
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput) AutoFullBackupDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *string { return v.AutoFullBackupDay }).(pulumi.StringPtrOutput)
+}
+
+// The window in which the full backup should be performed on the database.
+// If no value is provided, the default is anytime.
+// Possible values:
+// SLOT_ONE
+// SLOT_TWO
+// SLOT_THREE
+// SLOT_FOUR
+// SLOT_FIVE
+// SLOT_SIX
+// SLOT_SEVEN
+// SLOT_EIGHT
+// SLOT_NINE
+// SLOT_TEN
+// SLOT_ELEVEN
+// SLOT_TWELVE
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput) AutoFullBackupWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *string {
+		return v.AutoFullBackupWindow
+	}).(pulumi.StringPtrOutput)
+}
+
+// The window in which the incremental backup should be performed on the
+// database. If no value is provided, the default is anytime except the auto
+// full backup day.
+// Possible values:
+// SLOT_ONE
+// SLOT_TWO
+// SLOT_THREE
+// SLOT_FOUR
+// SLOT_FIVE
+// SLOT_SIX
+// SLOT_SEVEN
+// SLOT_EIGHT
+// SLOT_NINE
+// SLOT_TEN
+// SLOT_ELEVEN
+// SLOT_TWELVE
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput) AutoIncrementalBackupWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *string {
+		return v.AutoIncrementalBackupWindow
+	}).(pulumi.StringPtrOutput)
+}
+
+// This defines when the backups will be deleted after Database termination.
+// Possible values:
+// DELETE_IMMEDIATELY
+// DELETE_AFTER_RETENTION_PERIOD
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput) BackupDeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *string {
+		return v.BackupDeletionPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details of the database backup destinations.
+// Structure is documented below.
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput) BackupDestinationDetails() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) []DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail {
+		return v.BackupDestinationDetails
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput)
+}
+
+// The number of days an automatic backup is retained before being
+// automatically deleted. This value determines the earliest point in time to
+// which a database can be restored. Min: 1, Max: 60.
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput) RetentionPeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *int { return v.RetentionPeriodDays }).(pulumi.IntPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput) Elem() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig
+		return ret
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput)
+}
+
+// If set to true, enables automatic backups on the database.
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput) AutoBackupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoBackupEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Possible values:
+// MONDAY
+// TUESDAY
+// WEDNESDAY
+// THURSDAY
+// FRIDAY
+// SATURDAY
+// SUNDAY
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput) AutoFullBackupDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoFullBackupDay
+	}).(pulumi.StringPtrOutput)
+}
+
+// The window in which the full backup should be performed on the database.
+// If no value is provided, the default is anytime.
+// Possible values:
+// SLOT_ONE
+// SLOT_TWO
+// SLOT_THREE
+// SLOT_FOUR
+// SLOT_FIVE
+// SLOT_SIX
+// SLOT_SEVEN
+// SLOT_EIGHT
+// SLOT_NINE
+// SLOT_TEN
+// SLOT_ELEVEN
+// SLOT_TWELVE
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput) AutoFullBackupWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoFullBackupWindow
+	}).(pulumi.StringPtrOutput)
+}
+
+// The window in which the incremental backup should be performed on the
+// database. If no value is provided, the default is anytime except the auto
+// full backup day.
+// Possible values:
+// SLOT_ONE
+// SLOT_TWO
+// SLOT_THREE
+// SLOT_FOUR
+// SLOT_FIVE
+// SLOT_SIX
+// SLOT_SEVEN
+// SLOT_EIGHT
+// SLOT_NINE
+// SLOT_TEN
+// SLOT_ELEVEN
+// SLOT_TWELVE
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput) AutoIncrementalBackupWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoIncrementalBackupWindow
+	}).(pulumi.StringPtrOutput)
+}
+
+// This defines when the backups will be deleted after Database termination.
+// Possible values:
+// DELETE_IMMEDIATELY
+// DELETE_AFTER_RETENTION_PERIOD
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput) BackupDeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupDeletionPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details of the database backup destinations.
+// Structure is documented below.
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput) BackupDestinationDetails() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) []DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail {
+		if v == nil {
+			return nil
+		}
+		return v.BackupDestinationDetails
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput)
+}
+
+// The number of days an automatic backup is retained before being
+// automatically deleted. This value determines the earliest point in time to
+// which a database can be restored. Min: 1, Max: 60.
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput) RetentionPeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionPeriodDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail struct {
+	// The type of the database backup destination.
+	// Possible values:
+	// NFS
+	// RECOVERY_APPLIANCE
+	// OBJECT_STORE
+	// LOCAL
+	// DBRS
+	Type *string `pulumi:"type"`
+}
+
+// DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailInput is an input type that accepts DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArgs and DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailInput` via:
+//
+//	DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArgs{...}
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput
+	ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutputWithContext(context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArgs struct {
+	// The type of the database backup destination.
+	// Possible values:
+	// NFS
+	// RECOVERY_APPLIANCE
+	// OBJECT_STORE
+	// LOCAL
+	// DBRS
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail)(nil)).Elem()
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArgs) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput)
+}
+
+// DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayInput is an input type that accepts DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArray and DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayInput` via:
+//
+//	DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArray{ DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArgs{...} }
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput
+	ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutputWithContext(context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArray []DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailInput
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail)(nil)).Elem()
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArray) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput {
+	return i.ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArray) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput {
+	return o
+}
+
+// The type of the database backup destination.
+// Possible values:
+// NFS
+// RECOVERY_APPLIANCE
+// OBJECT_STORE
+// LOCAL
+// DBRS
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput() DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput) ToDbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutputWithContext(ctx context.Context) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput) Index(i pulumi.IntInput) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail {
+		return vs[0].([]DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail)[vs[1].(int)]
+	}).(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput)
+}
+
+type DbSystemPropertiesDbSystemOptions struct {
+	// The storage option used in DB system.
+	// Possible values:
+	// ASM
+	// LVM
+	StorageManagement *string `pulumi:"storageManagement"`
+}
+
+// DbSystemPropertiesDbSystemOptionsInput is an input type that accepts DbSystemPropertiesDbSystemOptionsArgs and DbSystemPropertiesDbSystemOptionsOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbSystemOptionsInput` via:
+//
+//	DbSystemPropertiesDbSystemOptionsArgs{...}
+type DbSystemPropertiesDbSystemOptionsInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbSystemOptionsOutput() DbSystemPropertiesDbSystemOptionsOutput
+	ToDbSystemPropertiesDbSystemOptionsOutputWithContext(context.Context) DbSystemPropertiesDbSystemOptionsOutput
+}
+
+type DbSystemPropertiesDbSystemOptionsArgs struct {
+	// The storage option used in DB system.
+	// Possible values:
+	// ASM
+	// LVM
+	StorageManagement pulumi.StringPtrInput `pulumi:"storageManagement"`
+}
+
+func (DbSystemPropertiesDbSystemOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbSystemOptions)(nil)).Elem()
+}
+
+func (i DbSystemPropertiesDbSystemOptionsArgs) ToDbSystemPropertiesDbSystemOptionsOutput() DbSystemPropertiesDbSystemOptionsOutput {
+	return i.ToDbSystemPropertiesDbSystemOptionsOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbSystemOptionsArgs) ToDbSystemPropertiesDbSystemOptionsOutputWithContext(ctx context.Context) DbSystemPropertiesDbSystemOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbSystemOptionsOutput)
+}
+
+func (i DbSystemPropertiesDbSystemOptionsArgs) ToDbSystemPropertiesDbSystemOptionsPtrOutput() DbSystemPropertiesDbSystemOptionsPtrOutput {
+	return i.ToDbSystemPropertiesDbSystemOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesDbSystemOptionsArgs) ToDbSystemPropertiesDbSystemOptionsPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbSystemOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbSystemOptionsOutput).ToDbSystemPropertiesDbSystemOptionsPtrOutputWithContext(ctx)
+}
+
+// DbSystemPropertiesDbSystemOptionsPtrInput is an input type that accepts DbSystemPropertiesDbSystemOptionsArgs, DbSystemPropertiesDbSystemOptionsPtr and DbSystemPropertiesDbSystemOptionsPtrOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesDbSystemOptionsPtrInput` via:
+//
+//	        DbSystemPropertiesDbSystemOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbSystemPropertiesDbSystemOptionsPtrInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesDbSystemOptionsPtrOutput() DbSystemPropertiesDbSystemOptionsPtrOutput
+	ToDbSystemPropertiesDbSystemOptionsPtrOutputWithContext(context.Context) DbSystemPropertiesDbSystemOptionsPtrOutput
+}
+
+type dbSystemPropertiesDbSystemOptionsPtrType DbSystemPropertiesDbSystemOptionsArgs
+
+func DbSystemPropertiesDbSystemOptionsPtr(v *DbSystemPropertiesDbSystemOptionsArgs) DbSystemPropertiesDbSystemOptionsPtrInput {
+	return (*dbSystemPropertiesDbSystemOptionsPtrType)(v)
+}
+
+func (*dbSystemPropertiesDbSystemOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDbSystemOptions)(nil)).Elem()
+}
+
+func (i *dbSystemPropertiesDbSystemOptionsPtrType) ToDbSystemPropertiesDbSystemOptionsPtrOutput() DbSystemPropertiesDbSystemOptionsPtrOutput {
+	return i.ToDbSystemPropertiesDbSystemOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *dbSystemPropertiesDbSystemOptionsPtrType) ToDbSystemPropertiesDbSystemOptionsPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbSystemOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesDbSystemOptionsPtrOutput)
+}
+
+type DbSystemPropertiesDbSystemOptionsOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbSystemOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesDbSystemOptions)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbSystemOptionsOutput) ToDbSystemPropertiesDbSystemOptionsOutput() DbSystemPropertiesDbSystemOptionsOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbSystemOptionsOutput) ToDbSystemPropertiesDbSystemOptionsOutputWithContext(ctx context.Context) DbSystemPropertiesDbSystemOptionsOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbSystemOptionsOutput) ToDbSystemPropertiesDbSystemOptionsPtrOutput() DbSystemPropertiesDbSystemOptionsPtrOutput {
+	return o.ToDbSystemPropertiesDbSystemOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o DbSystemPropertiesDbSystemOptionsOutput) ToDbSystemPropertiesDbSystemOptionsPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbSystemOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbSystemPropertiesDbSystemOptions) *DbSystemPropertiesDbSystemOptions {
+		return &v
+	}).(DbSystemPropertiesDbSystemOptionsPtrOutput)
+}
+
+// The storage option used in DB system.
+// Possible values:
+// ASM
+// LVM
+func (o DbSystemPropertiesDbSystemOptionsOutput) StorageManagement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbSystemOptions) *string { return v.StorageManagement }).(pulumi.StringPtrOutput)
+}
+
+type DbSystemPropertiesDbSystemOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesDbSystemOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesDbSystemOptions)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesDbSystemOptionsPtrOutput) ToDbSystemPropertiesDbSystemOptionsPtrOutput() DbSystemPropertiesDbSystemOptionsPtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbSystemOptionsPtrOutput) ToDbSystemPropertiesDbSystemOptionsPtrOutputWithContext(ctx context.Context) DbSystemPropertiesDbSystemOptionsPtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesDbSystemOptionsPtrOutput) Elem() DbSystemPropertiesDbSystemOptionsOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbSystemOptions) DbSystemPropertiesDbSystemOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DbSystemPropertiesDbSystemOptions
+		return ret
+	}).(DbSystemPropertiesDbSystemOptionsOutput)
+}
+
+// The storage option used in DB system.
+// Possible values:
+// ASM
+// LVM
+func (o DbSystemPropertiesDbSystemOptionsPtrOutput) StorageManagement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbSystemOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageManagement
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbSystemPropertiesTimeZone struct {
+	// IANA Time Zone Database time zone. For example "America/New_York".
+	Id *string `pulumi:"id"`
+}
+
+// DbSystemPropertiesTimeZoneInput is an input type that accepts DbSystemPropertiesTimeZoneArgs and DbSystemPropertiesTimeZoneOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesTimeZoneInput` via:
+//
+//	DbSystemPropertiesTimeZoneArgs{...}
+type DbSystemPropertiesTimeZoneInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesTimeZoneOutput() DbSystemPropertiesTimeZoneOutput
+	ToDbSystemPropertiesTimeZoneOutputWithContext(context.Context) DbSystemPropertiesTimeZoneOutput
+}
+
+type DbSystemPropertiesTimeZoneArgs struct {
+	// IANA Time Zone Database time zone. For example "America/New_York".
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (DbSystemPropertiesTimeZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesTimeZone)(nil)).Elem()
+}
+
+func (i DbSystemPropertiesTimeZoneArgs) ToDbSystemPropertiesTimeZoneOutput() DbSystemPropertiesTimeZoneOutput {
+	return i.ToDbSystemPropertiesTimeZoneOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesTimeZoneArgs) ToDbSystemPropertiesTimeZoneOutputWithContext(ctx context.Context) DbSystemPropertiesTimeZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesTimeZoneOutput)
+}
+
+func (i DbSystemPropertiesTimeZoneArgs) ToDbSystemPropertiesTimeZonePtrOutput() DbSystemPropertiesTimeZonePtrOutput {
+	return i.ToDbSystemPropertiesTimeZonePtrOutputWithContext(context.Background())
+}
+
+func (i DbSystemPropertiesTimeZoneArgs) ToDbSystemPropertiesTimeZonePtrOutputWithContext(ctx context.Context) DbSystemPropertiesTimeZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesTimeZoneOutput).ToDbSystemPropertiesTimeZonePtrOutputWithContext(ctx)
+}
+
+// DbSystemPropertiesTimeZonePtrInput is an input type that accepts DbSystemPropertiesTimeZoneArgs, DbSystemPropertiesTimeZonePtr and DbSystemPropertiesTimeZonePtrOutput values.
+// You can construct a concrete instance of `DbSystemPropertiesTimeZonePtrInput` via:
+//
+//	        DbSystemPropertiesTimeZoneArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbSystemPropertiesTimeZonePtrInput interface {
+	pulumi.Input
+
+	ToDbSystemPropertiesTimeZonePtrOutput() DbSystemPropertiesTimeZonePtrOutput
+	ToDbSystemPropertiesTimeZonePtrOutputWithContext(context.Context) DbSystemPropertiesTimeZonePtrOutput
+}
+
+type dbSystemPropertiesTimeZonePtrType DbSystemPropertiesTimeZoneArgs
+
+func DbSystemPropertiesTimeZonePtr(v *DbSystemPropertiesTimeZoneArgs) DbSystemPropertiesTimeZonePtrInput {
+	return (*dbSystemPropertiesTimeZonePtrType)(v)
+}
+
+func (*dbSystemPropertiesTimeZonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesTimeZone)(nil)).Elem()
+}
+
+func (i *dbSystemPropertiesTimeZonePtrType) ToDbSystemPropertiesTimeZonePtrOutput() DbSystemPropertiesTimeZonePtrOutput {
+	return i.ToDbSystemPropertiesTimeZonePtrOutputWithContext(context.Background())
+}
+
+func (i *dbSystemPropertiesTimeZonePtrType) ToDbSystemPropertiesTimeZonePtrOutputWithContext(ctx context.Context) DbSystemPropertiesTimeZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSystemPropertiesTimeZonePtrOutput)
+}
+
+type DbSystemPropertiesTimeZoneOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesTimeZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSystemPropertiesTimeZone)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesTimeZoneOutput) ToDbSystemPropertiesTimeZoneOutput() DbSystemPropertiesTimeZoneOutput {
+	return o
+}
+
+func (o DbSystemPropertiesTimeZoneOutput) ToDbSystemPropertiesTimeZoneOutputWithContext(ctx context.Context) DbSystemPropertiesTimeZoneOutput {
+	return o
+}
+
+func (o DbSystemPropertiesTimeZoneOutput) ToDbSystemPropertiesTimeZonePtrOutput() DbSystemPropertiesTimeZonePtrOutput {
+	return o.ToDbSystemPropertiesTimeZonePtrOutputWithContext(context.Background())
+}
+
+func (o DbSystemPropertiesTimeZoneOutput) ToDbSystemPropertiesTimeZonePtrOutputWithContext(ctx context.Context) DbSystemPropertiesTimeZonePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbSystemPropertiesTimeZone) *DbSystemPropertiesTimeZone {
+		return &v
+	}).(DbSystemPropertiesTimeZonePtrOutput)
+}
+
+// IANA Time Zone Database time zone. For example "America/New_York".
+func (o DbSystemPropertiesTimeZoneOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesTimeZone) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type DbSystemPropertiesTimeZonePtrOutput struct{ *pulumi.OutputState }
+
+func (DbSystemPropertiesTimeZonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSystemPropertiesTimeZone)(nil)).Elem()
+}
+
+func (o DbSystemPropertiesTimeZonePtrOutput) ToDbSystemPropertiesTimeZonePtrOutput() DbSystemPropertiesTimeZonePtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesTimeZonePtrOutput) ToDbSystemPropertiesTimeZonePtrOutputWithContext(ctx context.Context) DbSystemPropertiesTimeZonePtrOutput {
+	return o
+}
+
+func (o DbSystemPropertiesTimeZonePtrOutput) Elem() DbSystemPropertiesTimeZoneOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesTimeZone) DbSystemPropertiesTimeZone {
+		if v != nil {
+			return *v
+		}
+		var ret DbSystemPropertiesTimeZone
+		return ret
+	}).(DbSystemPropertiesTimeZoneOutput)
+}
+
+// IANA Time Zone Database time zone. For example "America/New_York".
+func (o DbSystemPropertiesTimeZonePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesTimeZone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAutonomousDatabaseProperty struct {
 	// The amount of storage currently being used for user and system data, in
 	// terabytes.
@@ -15303,6 +18048,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudVmClusterPropertiesDiagnosticsDataCollectionOptionsPtrInput)(nil)).Elem(), CloudVmClusterPropertiesDiagnosticsDataCollectionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudVmClusterPropertiesTimeZoneInput)(nil)).Elem(), CloudVmClusterPropertiesTimeZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudVmClusterPropertiesTimeZonePtrInput)(nil)).Elem(), CloudVmClusterPropertiesTimeZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesInput)(nil)).Elem(), DbSystemPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesPtrInput)(nil)).Elem(), DbSystemPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDataCollectionOptionsInput)(nil)).Elem(), DbSystemPropertiesDataCollectionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDataCollectionOptionsPtrInput)(nil)).Elem(), DbSystemPropertiesDataCollectionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbHomeInput)(nil)).Elem(), DbSystemPropertiesDbHomeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbHomePtrInput)(nil)).Elem(), DbSystemPropertiesDbHomeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbHomeDatabaseInput)(nil)).Elem(), DbSystemPropertiesDbHomeDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePtrInput)(nil)).Elem(), DbSystemPropertiesDbHomeDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesInput)(nil)).Elem(), DbSystemPropertiesDbHomeDatabasePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesPtrInput)(nil)).Elem(), DbSystemPropertiesDbHomeDatabasePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigInput)(nil)).Elem(), DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrInput)(nil)).Elem(), DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigInput)(nil)).Elem(), DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrInput)(nil)).Elem(), DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailInput)(nil)).Elem(), DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayInput)(nil)).Elem(), DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbSystemOptionsInput)(nil)).Elem(), DbSystemPropertiesDbSystemOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbSystemOptionsPtrInput)(nil)).Elem(), DbSystemPropertiesDbSystemOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesTimeZoneInput)(nil)).Elem(), DbSystemPropertiesTimeZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesTimeZonePtrInput)(nil)).Elem(), DbSystemPropertiesTimeZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasePropertyInput)(nil)).Elem(), GetAutonomousDatabasePropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasePropertyArrayInput)(nil)).Elem(), GetAutonomousDatabasePropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasePropertyApexDetailInput)(nil)).Elem(), GetAutonomousDatabasePropertyApexDetailArgs{})
@@ -15419,6 +18184,26 @@ func init() {
 	pulumi.RegisterOutputType(CloudVmClusterPropertiesDiagnosticsDataCollectionOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CloudVmClusterPropertiesTimeZoneOutput{})
 	pulumi.RegisterOutputType(CloudVmClusterPropertiesTimeZonePtrOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDataCollectionOptionsOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDataCollectionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbHomeOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbHomePtrOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbHomeDatabaseOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbHomeDatabasePtrOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbHomeDatabasePropertiesOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbHomeDatabasePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigPtrOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigPtrOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArrayOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbSystemOptionsOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesDbSystemOptionsPtrOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesTimeZoneOutput{})
+	pulumi.RegisterOutputType(DbSystemPropertiesTimeZonePtrOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasePropertyOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasePropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasePropertyApexDetailOutput{})

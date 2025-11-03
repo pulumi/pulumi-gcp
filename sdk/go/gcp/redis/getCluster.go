@@ -64,17 +64,20 @@ type LookupClusterArgs struct {
 type LookupClusterResult struct {
 	AuthorizationMode              string                                    `pulumi:"authorizationMode"`
 	AutomatedBackupConfigs         []GetClusterAutomatedBackupConfig         `pulumi:"automatedBackupConfigs"`
+	AvailableMaintenanceVersions   []string                                  `pulumi:"availableMaintenanceVersions"`
 	BackupCollection               string                                    `pulumi:"backupCollection"`
 	CreateTime                     string                                    `pulumi:"createTime"`
 	CrossClusterReplicationConfigs []GetClusterCrossClusterReplicationConfig `pulumi:"crossClusterReplicationConfigs"`
 	DeletionProtectionEnabled      bool                                      `pulumi:"deletionProtectionEnabled"`
 	DiscoveryEndpoints             []GetClusterDiscoveryEndpoint             `pulumi:"discoveryEndpoints"`
+	EffectiveMaintenanceVersion    string                                    `pulumi:"effectiveMaintenanceVersion"`
 	GcsSources                     []GetClusterGcsSource                     `pulumi:"gcsSources"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                      string                             `pulumi:"id"`
 	KmsKey                  string                             `pulumi:"kmsKey"`
 	MaintenancePolicies     []GetClusterMaintenancePolicy      `pulumi:"maintenancePolicies"`
 	MaintenanceSchedules    []GetClusterMaintenanceSchedule    `pulumi:"maintenanceSchedules"`
+	MaintenanceVersion      string                             `pulumi:"maintenanceVersion"`
 	ManagedBackupSources    []GetClusterManagedBackupSource    `pulumi:"managedBackupSources"`
 	ManagedServerCas        []GetClusterManagedServerCa        `pulumi:"managedServerCas"`
 	Name                    string                             `pulumi:"name"`
@@ -144,6 +147,10 @@ func (o LookupClusterResultOutput) AutomatedBackupConfigs() GetClusterAutomatedB
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterAutomatedBackupConfig { return v.AutomatedBackupConfigs }).(GetClusterAutomatedBackupConfigArrayOutput)
 }
 
+func (o LookupClusterResultOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []string { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupClusterResultOutput) BackupCollection() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.BackupCollection }).(pulumi.StringOutput)
 }
@@ -166,6 +173,10 @@ func (o LookupClusterResultOutput) DiscoveryEndpoints() GetClusterDiscoveryEndpo
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterDiscoveryEndpoint { return v.DiscoveryEndpoints }).(GetClusterDiscoveryEndpointArrayOutput)
 }
 
+func (o LookupClusterResultOutput) EffectiveMaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.EffectiveMaintenanceVersion }).(pulumi.StringOutput)
+}
+
 func (o LookupClusterResultOutput) GcsSources() GetClusterGcsSourceArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterGcsSource { return v.GcsSources }).(GetClusterGcsSourceArrayOutput)
 }
@@ -185,6 +196,10 @@ func (o LookupClusterResultOutput) MaintenancePolicies() GetClusterMaintenancePo
 
 func (o LookupClusterResultOutput) MaintenanceSchedules() GetClusterMaintenanceScheduleArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterMaintenanceSchedule { return v.MaintenanceSchedules }).(GetClusterMaintenanceScheduleArrayOutput)
+}
+
+func (o LookupClusterResultOutput) MaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.MaintenanceVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupClusterResultOutput) ManagedBackupSources() GetClusterManagedBackupSourceArrayOutput {

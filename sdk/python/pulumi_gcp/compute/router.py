@@ -21,18 +21,18 @@ __all__ = ['RouterArgs', 'Router']
 @pulumi.input_type
 class RouterArgs:
     def __init__(__self__, *,
-                 network: pulumi.Input[_builtins.str],
                  bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[_builtins.bool]] = None,
                  md5_authentication_keys: Optional[pulumi.Input['RouterMd5AuthenticationKeysArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ncc_gateway: Optional[pulumi.Input[_builtins.str]] = None,
+                 network: Optional[pulumi.Input[_builtins.str]] = None,
                  params: Optional[pulumi.Input['RouterParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Router resource.
-        :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
         :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -46,13 +46,14 @@ class RouterArgs:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[_builtins.str] ncc_gateway: A URI of an NCC Gateway spoke
+        :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
         :param pulumi.Input['RouterParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where the router resides.
         """
-        pulumi.set(__self__, "network", network)
         if bgp is not None:
             pulumi.set(__self__, "bgp", bgp)
         if description is not None:
@@ -63,24 +64,16 @@ class RouterArgs:
             pulumi.set(__self__, "md5_authentication_keys", md5_authentication_keys)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if ncc_gateway is not None:
+            pulumi.set(__self__, "ncc_gateway", ncc_gateway)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if params is not None:
             pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
-
-    @_builtins.property
-    @pulumi.getter
-    def network(self) -> pulumi.Input[_builtins.str]:
-        """
-        A reference to the network to which this router belongs.
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
@@ -151,6 +144,30 @@ class RouterArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="nccGateway")
+    def ncc_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A URI of an NCC Gateway spoke
+        """
+        return pulumi.get(self, "ncc_gateway")
+
+    @ncc_gateway.setter
+    def ncc_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ncc_gateway", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A reference to the network to which this router belongs.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input['RouterParamsArgs']]:
         """
@@ -198,6 +215,7 @@ class _RouterState:
                  encrypted_interconnect_router: Optional[pulumi.Input[_builtins.bool]] = None,
                  md5_authentication_keys: Optional[pulumi.Input['RouterMd5AuthenticationKeysArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ncc_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  params: Optional[pulumi.Input['RouterParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -219,6 +237,7 @@ class _RouterState:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[_builtins.str] ncc_gateway: A URI of an NCC Gateway spoke
         :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
         :param pulumi.Input['RouterParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
@@ -239,6 +258,8 @@ class _RouterState:
             pulumi.set(__self__, "md5_authentication_keys", md5_authentication_keys)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if ncc_gateway is not None:
+            pulumi.set(__self__, "ncc_gateway", ncc_gateway)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if params is not None:
@@ -331,6 +352,18 @@ class _RouterState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="nccGateway")
+    def ncc_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A URI of an NCC Gateway spoke
+        """
+        return pulumi.get(self, "ncc_gateway")
+
+    @ncc_gateway.setter
+    def ncc_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ncc_gateway", value)
+
+    @_builtins.property
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -404,6 +437,7 @@ class Router(pulumi.CustomResource):
                  encrypted_interconnect_router: Optional[pulumi.Input[_builtins.bool]] = None,
                  md5_authentication_keys: Optional[pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ncc_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  params: Optional[pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -463,6 +497,59 @@ class Router(pulumi.CustomResource):
                 "asn": 64514,
             })
         ```
+        ### Router Ncc Gw
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="net-spoke",
+            auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="tf-test-subnet_21197",
+            ip_cidr_range="10.0.0.0/28",
+            region="us-central1",
+            network=network.self_link)
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="hub",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            },
+            preset_topology="HYBRID_INSPECTION")
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="my-ncc-gw",
+            location="us-central1",
+            description="A sample spoke of type Gateway",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            gateway={
+                "ip_range_reservations": [{
+                    "ip_range": "10.0.0.0/23",
+                }],
+                "capacity": "CAPACITY_1_GBPS",
+            },
+            group="gateways")
+        foobar = gcp.compute.Router("foobar",
+            name="my-router",
+            bgp={
+                "asn": 64514,
+                "advertise_mode": "CUSTOM",
+                "advertised_groups": ["ALL_SUBNETS"],
+                "advertised_ip_ranges": [
+                    {
+                        "range": "1.2.3.4",
+                    },
+                    {
+                        "range": "6.7.0.0/16",
+                    },
+                ],
+            },
+            ncc_gateway=primary.id)
+        ```
 
         ## Import
 
@@ -509,6 +596,7 @@ class Router(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[_builtins.str] ncc_gateway: A URI of an NCC Gateway spoke
         :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
         :param pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
@@ -520,7 +608,7 @@ class Router(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RouterArgs,
+                 args: Optional[RouterArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Router resource.
@@ -576,6 +664,59 @@ class Router(pulumi.CustomResource):
                 "asn": 64514,
             })
         ```
+        ### Router Ncc Gw
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="net-spoke",
+            auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="tf-test-subnet_21197",
+            ip_cidr_range="10.0.0.0/28",
+            region="us-central1",
+            network=network.self_link)
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="hub",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            },
+            preset_topology="HYBRID_INSPECTION")
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="my-ncc-gw",
+            location="us-central1",
+            description="A sample spoke of type Gateway",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            gateway={
+                "ip_range_reservations": [{
+                    "ip_range": "10.0.0.0/23",
+                }],
+                "capacity": "CAPACITY_1_GBPS",
+            },
+            group="gateways")
+        foobar = gcp.compute.Router("foobar",
+            name="my-router",
+            bgp={
+                "asn": 64514,
+                "advertise_mode": "CUSTOM",
+                "advertised_groups": ["ALL_SUBNETS"],
+                "advertised_ip_ranges": [
+                    {
+                        "range": "1.2.3.4",
+                    },
+                    {
+                        "range": "6.7.0.0/16",
+                    },
+                ],
+            },
+            ncc_gateway=primary.id)
+        ```
 
         ## Import
 
@@ -627,6 +768,7 @@ class Router(pulumi.CustomResource):
                  encrypted_interconnect_router: Optional[pulumi.Input[_builtins.bool]] = None,
                  md5_authentication_keys: Optional[pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ncc_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  params: Optional[pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -645,8 +787,7 @@ class Router(pulumi.CustomResource):
             __props__.__dict__["encrypted_interconnect_router"] = encrypted_interconnect_router
             __props__.__dict__["md5_authentication_keys"] = md5_authentication_keys
             __props__.__dict__["name"] = name
-            if network is None and not opts.urn:
-                raise TypeError("Missing required property 'network'")
+            __props__.__dict__["ncc_gateway"] = ncc_gateway
             __props__.__dict__["network"] = network
             __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
@@ -669,6 +810,7 @@ class Router(pulumi.CustomResource):
             encrypted_interconnect_router: Optional[pulumi.Input[_builtins.bool]] = None,
             md5_authentication_keys: Optional[pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            ncc_gateway: Optional[pulumi.Input[_builtins.str]] = None,
             network: Optional[pulumi.Input[_builtins.str]] = None,
             params: Optional[pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -695,6 +837,7 @@ class Router(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[_builtins.str] ncc_gateway: A URI of an NCC Gateway spoke
         :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
         :param pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
@@ -713,6 +856,7 @@ class Router(pulumi.CustomResource):
         __props__.__dict__["encrypted_interconnect_router"] = encrypted_interconnect_router
         __props__.__dict__["md5_authentication_keys"] = md5_authentication_keys
         __props__.__dict__["name"] = name
+        __props__.__dict__["ncc_gateway"] = ncc_gateway
         __props__.__dict__["network"] = network
         __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
@@ -777,8 +921,16 @@ class Router(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="nccGateway")
+    def ncc_gateway(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A URI of an NCC Gateway spoke
+        """
+        return pulumi.get(self, "ncc_gateway")
+
+    @_builtins.property
     @pulumi.getter
-    def network(self) -> pulumi.Output[_builtins.str]:
+    def network(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         A reference to the network to which this router belongs.
         """

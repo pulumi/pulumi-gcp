@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  *         var cache = new Instance("cache", InstanceArgs.builder()
  *             .name("memory-cache")
  *             .memorySizeGb(1)
+ *             .deletionProtection(false)
  *             .build());
  * 
  *     }
@@ -559,6 +560,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> customerManagedKey() {
         return Codegen.optional(this.customerManagedKey);
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
      * An arbitrary and optional user-provided name for the instance.

@@ -483,6 +483,12 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly stateMessage: pulumi.Output<string>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
      * Structure is documented below.
      */
@@ -538,6 +544,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["serviceId"] = state?.serviceId;
             resourceInputs["state"] = state?.state;
             resourceInputs["stateMessage"] = state?.stateMessage;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["telemetryConfig"] = state?.telemetryConfig;
             resourceInputs["tier"] = state?.tier;
             resourceInputs["uid"] = state?.uid;
@@ -560,6 +567,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["scalingConfig"] = args?.scalingConfig;
             resourceInputs["scheduledBackup"] = args?.scheduledBackup;
             resourceInputs["serviceId"] = args?.serviceId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["telemetryConfig"] = args?.telemetryConfig;
             resourceInputs["tier"] = args?.tier;
             resourceInputs["artifactGcsUri"] = undefined /*out*/;
@@ -703,6 +711,12 @@ export interface MetastoreServiceState {
      */
     stateMessage?: pulumi.Input<string>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
      * Structure is documented below.
      */
@@ -811,6 +825,12 @@ export interface MetastoreServiceArgs {
      * 3 and 63 characters.
      */
     serviceId?: pulumi.Input<string>;
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
      * Structure is documented below.

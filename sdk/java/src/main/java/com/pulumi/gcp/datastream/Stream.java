@@ -1149,8 +1149,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.projects.IAMMember;
@@ -1197,8 +1197,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var cross_project_dataset = new Project("cross-project-dataset", ProjectArgs.builder()
- *             .projectId("tf-test_79169")
- *             .name("tf-test_56529")
+ *             .projectId("tf-test_76044")
+ *             .name("tf-test_69391")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")
@@ -1207,7 +1207,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(cross_project_dataset))
+ *                 .dependsOn(cross_project_dataset)
  *                 .build());
  * 
  *         var bigquery = new Service("bigquery", ServiceArgs.builder()
@@ -1657,6 +1657,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Datastream Stream Mongodb
+ * 
  * ## Import
  * 
  * Stream can be imported using any of these accepted formats:

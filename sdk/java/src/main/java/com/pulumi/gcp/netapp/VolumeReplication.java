@@ -12,6 +12,7 @@ import com.pulumi.gcp.netapp.VolumeReplicationArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeReplicationState;
 import com.pulumi.gcp.netapp.outputs.VolumeReplicationDestinationVolumeParameters;
 import com.pulumi.gcp.netapp.outputs.VolumeReplicationHybridPeeringDetail;
+import com.pulumi.gcp.netapp.outputs.VolumeReplicationHybridReplicationUserCommand;
 import com.pulumi.gcp.netapp.outputs.VolumeReplicationTransferStat;
 import java.lang.Boolean;
 import java.lang.String;
@@ -286,6 +287,22 @@ public class VolumeReplication extends com.pulumi.resources.CustomResource {
      */
     public Output<String> hybridReplicationType() {
         return this.hybridReplicationType;
+    }
+    /**
+     * Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="hybridReplicationUserCommands", refs={List.class,VolumeReplicationHybridReplicationUserCommand.class}, tree="[0,1]")
+    private Output<List<VolumeReplicationHybridReplicationUserCommand>> hybridReplicationUserCommands;
+
+    /**
+     * @return Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<VolumeReplicationHybridReplicationUserCommand>> hybridReplicationUserCommands() {
+        return this.hybridReplicationUserCommands;
     }
     /**
      * Labels as key value pairs. Example: `{ &#34;owner&#34;: &#34;Bob&#34;, &#34;department&#34;: &#34;finance&#34;, &#34;purpose&#34;: &#34;testing&#34; }`

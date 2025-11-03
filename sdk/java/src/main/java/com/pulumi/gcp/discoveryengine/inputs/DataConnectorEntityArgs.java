@@ -88,13 +88,13 @@ public final class DataConnectorEntityArgs extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="params")
-    private @Nullable Output<Map<String,String>> params;
+    private @Nullable Output<String> params;
 
     /**
      * @return The parameters for the entity to facilitate data ingestion.
      * 
      */
-    public Optional<Output<Map<String,String>>> params() {
+    public Optional<Output<String>> params() {
         return Optional.ofNullable(this.params);
     }
 
@@ -216,7 +216,7 @@ public final class DataConnectorEntityArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder params(@Nullable Output<Map<String,String>> params) {
+        public Builder params(@Nullable Output<String> params) {
             $.params = params;
             return this;
         }
@@ -227,7 +227,7 @@ public final class DataConnectorEntityArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder params(Map<String,String> params) {
+        public Builder params(String params) {
             return params(Output.of(params));
         }
 

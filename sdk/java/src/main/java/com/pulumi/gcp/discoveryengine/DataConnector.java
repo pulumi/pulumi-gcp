@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Discoveryengine Dataconnector Jira Basic
+ * ### Discoveryengine Dataconnector Servicenow Basic
  * 
  * <pre>
  * {@code
@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.discoveryengine.DataConnector;
  * import com.pulumi.gcp.discoveryengine.DataConnectorArgs;
  * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorEntityArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,46 +53,63 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
- *         var jira_basic = new DataConnector("jira-basic", DataConnectorArgs.builder()
+ *     public static void stack(Context ctx) }{{@code
+ *         var servicenow_basic = new DataConnector("servicenow-basic", DataConnectorArgs.builder()
  *             .location("global")
  *             .collectionId("collection-id")
- *             .collectionDisplayName("tf-test-dataconnector-jira")
- *             .dataSource("jira")
+ *             .collectionDisplayName("tf-test-dataconnector-servicenow")
+ *             .dataSource("servicenow")
  *             .params(Map.ofEntries(
- *                 Map.entry("instance_id", "33db20a3-dc45-4305-a505-d70b68599840"),
- *                 Map.entry("instance_uri", "https://vaissptbots1.atlassian.net/"),
- *                 Map.entry("client_secret", "client-secret"),
- *                 Map.entry("client_id", "client-id"),
- *                 Map.entry("refresh_token", "fill-in-the-blank")
+ *                 Map.entry("auth_type", "OAUTH_PASSWORD_GRANT"),
+ *                 Map.entry("instance_uri", "https://gcpconnector1.service-now.com/"),
+ *                 Map.entry("client_id", "SECRET_MANAGER_RESOURCE_NAME"),
+ *                 Map.entry("client_secret", "SECRET_MANAGER_RESOURCE_NAME"),
+ *                 Map.entry("static_ip_enabled", "false"),
+ *                 Map.entry("user_account", "connectorsuserqa}{@literal @}{@code google.com"),
+ *                 Map.entry("password", "SECRET_MANAGER_RESOURCE_NAME")
  *             ))
  *             .refreshInterval("86400s")
+ *             .incrementalRefreshInterval("21600s")
  *             .entities(            
  *                 DataConnectorEntityArgs.builder()
- *                     .entityName("project")
+ *                     .entityName("catalog")
+ *                     .params(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("inclusion_filters", jsonObject(
+ *                                 jsonProperty("knowledgeBaseSysId", jsonArray("123"))
+ *                             ))
+ *                         )))
  *                     .build(),
  *                 DataConnectorEntityArgs.builder()
- *                     .entityName("issue")
+ *                     .entityName("incident")
+ *                     .params(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("inclusion_filters", jsonObject(
+ *                                 jsonProperty("knowledgeBaseSysId", jsonArray("123"))
+ *                             ))
+ *                         )))
  *                     .build(),
  *                 DataConnectorEntityArgs.builder()
- *                     .entityName("attachment")
- *                     .build(),
- *                 DataConnectorEntityArgs.builder()
- *                     .entityName("comment")
- *                     .build(),
- *                 DataConnectorEntityArgs.builder()
- *                     .entityName("worklog")
+ *                     .entityName("knowledge_base")
+ *                     .params(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("inclusion_filters", jsonObject(
+ *                                 jsonProperty("knowledgeBaseSysId", jsonArray("123"))
+ *                             ))
+ *                         )))
  *                     .build())
- *             .staticIpEnabled(true)
+ *             .staticIpEnabled(false)
+ *             .connectorModes("DATA_INGESTION")
+ *             .syncMode("PERIODIC")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -141,6 +159,20 @@ public class DataConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<String> actionState() {
         return this.actionState;
+    }
+    /**
+     * Indicates whether full syncs are paused for this connector
+     * 
+     */
+    @Export(name="autoRunDisabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoRunDisabled;
+
+    /**
+     * @return Indicates whether full syncs are paused for this connector
+     * 
+     */
+    public Output<Optional<Boolean>> autoRunDisabled() {
+        return Codegen.optional(this.autoRunDisabled);
     }
     /**
      * User actions that must be completed before the connector can start syncing data.
@@ -201,6 +233,24 @@ public class DataConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<String> collectionId() {
         return this.collectionId;
+    }
+    /**
+     * The modes enabled for this connector. The possible value can be:
+     * &#39;DATA_INGESTION&#39;, &#39;ACTIONS&#39;, &#39;FEDERATED&#39;
+     * &#39;EUA&#39;, &#39;FEDERATED_AND_EUA&#39;.
+     * 
+     */
+    @Export(name="connectorModes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> connectorModes;
+
+    /**
+     * @return The modes enabled for this connector. The possible value can be:
+     * &#39;DATA_INGESTION&#39;, &#39;ACTIONS&#39;, &#39;FEDERATED&#39;
+     * &#39;EUA&#39;, &#39;FEDERATED_AND_EUA&#39;.
+     * 
+     */
+    public Output<Optional<List<String>>> connectorModes() {
+        return Codegen.optional(this.connectorModes);
     }
     /**
      * The type of connector. Each source can only map to one type.
@@ -287,6 +337,44 @@ public class DataConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<List<DataConnectorError>> errors() {
         return this.errors;
+    }
+    /**
+     * The refresh interval specifically for incremental data syncs. If unset,
+     * incremental syncs will use the default from env, set to 3hrs.
+     * The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+     * connectors. When the refresh interval is
+     * set to the same value as the incremental refresh interval, incremental
+     * sync will be disabled.
+     * 
+     */
+    @Export(name="incrementalRefreshInterval", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> incrementalRefreshInterval;
+
+    /**
+     * @return The refresh interval specifically for incremental data syncs. If unset,
+     * incremental syncs will use the default from env, set to 3hrs.
+     * The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+     * connectors. When the refresh interval is
+     * set to the same value as the incremental refresh interval, incremental
+     * sync will be disabled.
+     * 
+     */
+    public Output<Optional<String>> incrementalRefreshInterval() {
+        return Codegen.optional(this.incrementalRefreshInterval);
+    }
+    /**
+     * Indicates whether incremental syncs are paused for this connector.
+     * 
+     */
+    @Export(name="incrementalSyncDisabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> incrementalSyncDisabled;
+
+    /**
+     * @return Indicates whether incremental syncs are paused for this connector.
+     * 
+     */
+    public Output<Optional<Boolean>> incrementalSyncDisabled() {
+        return Codegen.optional(this.incrementalSyncDisabled);
     }
     /**
      * Params needed to access the source in the format of json string.
@@ -527,6 +615,22 @@ public class DataConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> staticIpEnabled() {
         return Codegen.optional(this.staticIpEnabled);
+    }
+    /**
+     * The data synchronization mode supported by the data connector. The possible value can be:
+     * &#39;PERIODIC&#39;, &#39;STREAMING&#39;.
+     * 
+     */
+    @Export(name="syncMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> syncMode;
+
+    /**
+     * @return The data synchronization mode supported by the data connector. The possible value can be:
+     * &#39;PERIODIC&#39;, &#39;STREAMING&#39;.
+     * 
+     */
+    public Output<Optional<String>> syncMode() {
+        return Codegen.optional(this.syncMode);
     }
     /**
      * Timestamp when the DataConnector was updated.

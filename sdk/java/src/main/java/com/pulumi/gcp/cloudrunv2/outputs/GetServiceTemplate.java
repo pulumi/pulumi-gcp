@@ -51,6 +51,11 @@ public final class GetServiceTemplate {
      */
     private Boolean gpuZonalRedundancyDisabled;
     /**
+     * @return Disables health checking containers during deployment.
+     * 
+     */
+    private Boolean healthCheckDisabled;
+    /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
      * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
      * 
@@ -155,6 +160,13 @@ public final class GetServiceTemplate {
         return this.gpuZonalRedundancyDisabled;
     }
     /**
+     * @return Disables health checking containers during deployment.
+     * 
+     */
+    public Boolean healthCheckDisabled() {
+        return this.healthCheckDisabled;
+    }
+    /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
      * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
      * 
@@ -253,6 +265,7 @@ public final class GetServiceTemplate {
         private String encryptionKey;
         private String executionEnvironment;
         private Boolean gpuZonalRedundancyDisabled;
+        private Boolean healthCheckDisabled;
         private Map<String,String> labels;
         private Integer maxInstanceRequestConcurrency;
         private List<GetServiceTemplateNodeSelector> nodeSelectors;
@@ -272,6 +285,7 @@ public final class GetServiceTemplate {
     	      this.encryptionKey = defaults.encryptionKey;
     	      this.executionEnvironment = defaults.executionEnvironment;
     	      this.gpuZonalRedundancyDisabled = defaults.gpuZonalRedundancyDisabled;
+    	      this.healthCheckDisabled = defaults.healthCheckDisabled;
     	      this.labels = defaults.labels;
     	      this.maxInstanceRequestConcurrency = defaults.maxInstanceRequestConcurrency;
     	      this.nodeSelectors = defaults.nodeSelectors;
@@ -326,6 +340,14 @@ public final class GetServiceTemplate {
               throw new MissingRequiredPropertyException("GetServiceTemplate", "gpuZonalRedundancyDisabled");
             }
             this.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder healthCheckDisabled(Boolean healthCheckDisabled) {
+            if (healthCheckDisabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "healthCheckDisabled");
+            }
+            this.healthCheckDisabled = healthCheckDisabled;
             return this;
         }
         @CustomType.Setter
@@ -438,6 +460,7 @@ public final class GetServiceTemplate {
             _resultValue.encryptionKey = encryptionKey;
             _resultValue.executionEnvironment = executionEnvironment;
             _resultValue.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
+            _resultValue.healthCheckDisabled = healthCheckDisabled;
             _resultValue.labels = labels;
             _resultValue.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             _resultValue.nodeSelectors = nodeSelectors;

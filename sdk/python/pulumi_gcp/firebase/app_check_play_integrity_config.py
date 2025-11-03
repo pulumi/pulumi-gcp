@@ -186,7 +186,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         # Enables the Play Integrity API
         play_integrity = gcp.projects.Service("play_integrity",
@@ -200,7 +200,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
             sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"])
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.index.Sleep("wait_30s", create_duration=30s,
+        wait30s = time.Sleep("wait_30s", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_play_integrity_config = gcp.firebase.AppCheckPlayIntegrityConfig("default",
             project="my-project-name",
@@ -212,7 +212,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         # Enables the Play Integrity API
         play_integrity = gcp.projects.Service("play_integrity",
@@ -226,7 +226,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
             sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"])
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.index.Sleep("wait_30s", create_duration=30s,
+        wait30s = time.Sleep("wait_30s", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_play_integrity_config = gcp.firebase.AppCheckPlayIntegrityConfig("default",
             project="my-project-name",
@@ -292,7 +292,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         # Enables the Play Integrity API
         play_integrity = gcp.projects.Service("play_integrity",
@@ -306,7 +306,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
             sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"])
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.index.Sleep("wait_30s", create_duration=30s,
+        wait30s = time.Sleep("wait_30s", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_play_integrity_config = gcp.firebase.AppCheckPlayIntegrityConfig("default",
             project="my-project-name",
@@ -318,7 +318,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         # Enables the Play Integrity API
         play_integrity = gcp.projects.Service("play_integrity",
@@ -332,7 +332,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
             sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"])
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.index.Sleep("wait_30s", create_duration=30s,
+        wait30s = time.Sleep("wait_30s", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_play_integrity_config = gcp.firebase.AppCheckPlayIntegrityConfig("default",
             project="my-project-name",

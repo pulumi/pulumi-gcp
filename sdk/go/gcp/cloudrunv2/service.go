@@ -80,6 +80,7 @@ import (
 //				DeletionProtection: pulumi.Bool(false),
 //				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
+//					HealthCheckDisabled: pulumi.Bool(true),
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
 //							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
@@ -754,8 +755,8 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -768,7 +769,7 @@ import (
 //				return err
 //			}
 //			waitForMesh, err := time.NewSleep(ctx, "wait_for_mesh", &time.SleepArgs{
-//				CreateDuration: "1m",
+//				CreateDuration: pulumi.String("1m"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				mesh,
 //			}))

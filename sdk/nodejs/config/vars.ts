@@ -1057,6 +1057,14 @@ Object.defineProperty(exports, "networkConnectivityCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const networkConnectivityv1CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "networkConnectivityv1CustomEndpoint", {
+    get() {
+        return __config.get("networkConnectivityv1CustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const networkManagementCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "networkManagementCustomEndpoint", {
     get() {
@@ -1085,6 +1093,14 @@ export declare const notebooksCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "notebooksCustomEndpoint", {
     get() {
         return __config.get("notebooksCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const observabilityCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "observabilityCustomEndpoint", {
+    get() {
+        return __config.get("observabilityCustomEndpoint");
     },
     enumerable: true,
 });

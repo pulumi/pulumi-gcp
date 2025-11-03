@@ -14,6 +14,7 @@ import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecHttpDataSource;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecObjectConditions;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecPosixDataSink;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecPosixDataSource;
+import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecTransferManifest;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecTransferOptions;
 import java.lang.String;
 import java.util.Objects;
@@ -82,6 +83,11 @@ public final class TransferJobTransferSpec {
      * 
      */
     private @Nullable String sourceAgentPoolName;
+    /**
+     * @return Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+     * 
+     */
+    private @Nullable TransferJobTransferSpecTransferManifest transferManifest;
     /**
      * @return Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects&#39; `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
      * 
@@ -174,6 +180,13 @@ public final class TransferJobTransferSpec {
         return Optional.ofNullable(this.sourceAgentPoolName);
     }
     /**
+     * @return Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+     * 
+     */
+    public Optional<TransferJobTransferSpecTransferManifest> transferManifest() {
+        return Optional.ofNullable(this.transferManifest);
+    }
+    /**
      * @return Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects&#39; `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
      * 
      */
@@ -202,6 +215,7 @@ public final class TransferJobTransferSpec {
         private @Nullable TransferJobTransferSpecPosixDataSource posixDataSource;
         private @Nullable String sinkAgentPoolName;
         private @Nullable String sourceAgentPoolName;
+        private @Nullable TransferJobTransferSpecTransferManifest transferManifest;
         private @Nullable TransferJobTransferSpecTransferOptions transferOptions;
         public Builder() {}
         public Builder(TransferJobTransferSpec defaults) {
@@ -218,6 +232,7 @@ public final class TransferJobTransferSpec {
     	      this.posixDataSource = defaults.posixDataSource;
     	      this.sinkAgentPoolName = defaults.sinkAgentPoolName;
     	      this.sourceAgentPoolName = defaults.sourceAgentPoolName;
+    	      this.transferManifest = defaults.transferManifest;
     	      this.transferOptions = defaults.transferOptions;
         }
 
@@ -294,6 +309,12 @@ public final class TransferJobTransferSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder transferManifest(@Nullable TransferJobTransferSpecTransferManifest transferManifest) {
+
+            this.transferManifest = transferManifest;
+            return this;
+        }
+        @CustomType.Setter
         public Builder transferOptions(@Nullable TransferJobTransferSpecTransferOptions transferOptions) {
 
             this.transferOptions = transferOptions;
@@ -313,6 +334,7 @@ public final class TransferJobTransferSpec {
             _resultValue.posixDataSource = posixDataSource;
             _resultValue.sinkAgentPoolName = sinkAgentPoolName;
             _resultValue.sourceAgentPoolName = sourceAgentPoolName;
+            _resultValue.transferManifest = transferManifest;
             _resultValue.transferOptions = transferOptions;
             return _resultValue;
         }

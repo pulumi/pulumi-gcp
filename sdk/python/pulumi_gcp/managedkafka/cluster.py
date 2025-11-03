@@ -504,12 +504,6 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        key_ring = gcp.kms.KeyRing("key_ring",
-            name="example-key-ring",
-            location="us-central1")
-        key = gcp.kms.CryptoKey("key",
-            name="example-key",
-            key_ring=key_ring.id)
         project = gcp.organizations.get_project()
         example = gcp.managedkafka.Cluster("example",
             cluster_id="my-cluster",
@@ -524,15 +518,11 @@ class Cluster(pulumi.CustomResource):
                         "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
                     }],
                 },
-                "kms_key": key.id,
+                "kms_key": "example-key",
             })
         kafka_service_identity = gcp.projects.ServiceIdentity("kafka_service_identity",
             project=project.project_id,
             service="managedkafka.googleapis.com")
-        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("crypto_key_binding",
-            crypto_key_id=key.id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-managedkafka.iam.gserviceaccount.com"])
         ```
 
         ## Import
@@ -660,12 +650,6 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        key_ring = gcp.kms.KeyRing("key_ring",
-            name="example-key-ring",
-            location="us-central1")
-        key = gcp.kms.CryptoKey("key",
-            name="example-key",
-            key_ring=key_ring.id)
         project = gcp.organizations.get_project()
         example = gcp.managedkafka.Cluster("example",
             cluster_id="my-cluster",
@@ -680,15 +664,11 @@ class Cluster(pulumi.CustomResource):
                         "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
                     }],
                 },
-                "kms_key": key.id,
+                "kms_key": "example-key",
             })
         kafka_service_identity = gcp.projects.ServiceIdentity("kafka_service_identity",
             project=project.project_id,
             service="managedkafka.googleapis.com")
-        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("crypto_key_binding",
-            crypto_key_id=key.id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-managedkafka.iam.gserviceaccount.com"])
         ```
 
         ## Import

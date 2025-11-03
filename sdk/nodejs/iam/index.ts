@@ -105,6 +105,11 @@ export type WorkforcePoolProviderKey = import("./workforcePoolProviderKey").Work
 export const WorkforcePoolProviderKey: typeof import("./workforcePoolProviderKey").WorkforcePoolProviderKey = null as any;
 utilities.lazyLoad(exports, ["WorkforcePoolProviderKey"], () => require("./workforcePoolProviderKey"));
 
+export { WorkforcePoolProviderScimTenantArgs, WorkforcePoolProviderScimTenantState } from "./workforcePoolProviderScimTenant";
+export type WorkforcePoolProviderScimTenant = import("./workforcePoolProviderScimTenant").WorkforcePoolProviderScimTenant;
+export const WorkforcePoolProviderScimTenant: typeof import("./workforcePoolProviderScimTenant").WorkforcePoolProviderScimTenant = null as any;
+utilities.lazyLoad(exports, ["WorkforcePoolProviderScimTenant"], () => require("./workforcePoolProviderScimTenant"));
+
 export { WorkloadIdentityPoolArgs, WorkloadIdentityPoolState } from "./workloadIdentityPool";
 export type WorkloadIdentityPool = import("./workloadIdentityPool").WorkloadIdentityPool;
 export const WorkloadIdentityPool: typeof import("./workloadIdentityPool").WorkloadIdentityPool = null as any;
@@ -173,6 +178,8 @@ const _module = {
                 return new WorkforcePoolProvider(name, <any>undefined, { urn })
             case "gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey":
                 return new WorkforcePoolProviderKey(name, <any>undefined, { urn })
+            case "gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant":
+                return new WorkforcePoolProviderScimTenant(name, <any>undefined, { urn })
             case "gcp:iam/workloadIdentityPool:WorkloadIdentityPool":
                 return new WorkloadIdentityPool(name, <any>undefined, { urn })
             case "gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding":
@@ -206,6 +213,7 @@ pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolIamMember", _modu
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolProvider", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolProviderKey", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolProviderScimTenant", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPool", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPoolIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPoolIamMember", _module)

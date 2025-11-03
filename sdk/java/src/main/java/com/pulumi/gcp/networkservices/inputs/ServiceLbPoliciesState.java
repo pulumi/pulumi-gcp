@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesAutoCapacityDrainArgs;
 import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesFailoverConfigArgs;
+import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesIsolationConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -95,6 +96,23 @@ public final class ServiceLbPoliciesState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<ServiceLbPoliciesFailoverConfigArgs>> failoverConfig() {
         return Optional.ofNullable(this.failoverConfig);
+    }
+
+    /**
+     * Configuration to provide isolation support for the associated Backend Service.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="isolationConfig")
+    private @Nullable Output<ServiceLbPoliciesIsolationConfigArgs> isolationConfig;
+
+    /**
+     * @return Configuration to provide isolation support for the associated Backend Service.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceLbPoliciesIsolationConfigArgs>> isolationConfig() {
+        return Optional.ofNullable(this.isolationConfig);
     }
 
     /**
@@ -220,6 +238,7 @@ public final class ServiceLbPoliciesState extends com.pulumi.resources.ResourceA
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.failoverConfig = $.failoverConfig;
+        this.isolationConfig = $.isolationConfig;
         this.labels = $.labels;
         this.loadBalancingAlgorithm = $.loadBalancingAlgorithm;
         this.location = $.location;
@@ -354,6 +373,29 @@ public final class ServiceLbPoliciesState extends com.pulumi.resources.ResourceA
          */
         public Builder failoverConfig(ServiceLbPoliciesFailoverConfigArgs failoverConfig) {
             return failoverConfig(Output.of(failoverConfig));
+        }
+
+        /**
+         * @param isolationConfig Configuration to provide isolation support for the associated Backend Service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationConfig(@Nullable Output<ServiceLbPoliciesIsolationConfigArgs> isolationConfig) {
+            $.isolationConfig = isolationConfig;
+            return this;
+        }
+
+        /**
+         * @param isolationConfig Configuration to provide isolation support for the associated Backend Service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationConfig(ServiceLbPoliciesIsolationConfigArgs isolationConfig) {
+            return isolationConfig(Output.of(isolationConfig));
         }
 
         /**

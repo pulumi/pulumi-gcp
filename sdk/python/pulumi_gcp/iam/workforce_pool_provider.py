@@ -32,7 +32,8 @@ class WorkforcePoolProviderArgs:
                  extended_attributes_oauth2_client: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs']] = None,
                  extra_attributes_oauth2_client: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']] = None,
                  oidc: Optional[pulumi.Input['WorkforcePoolProviderOidcArgs']] = None,
-                 saml: Optional[pulumi.Input['WorkforcePoolProviderSamlArgs']] = None):
+                 saml: Optional[pulumi.Input['WorkforcePoolProviderSamlArgs']] = None,
+                 scim_usage: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkforcePoolProvider resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource.
@@ -114,6 +115,16 @@ class WorkforcePoolProviderArgs:
                Structure is documented below.
         :param pulumi.Input['WorkforcePoolProviderSamlArgs'] saml: Represents a SAML identity provider.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] scim_usage: Agentspace only. Specifies whether the workforce identity pool
+               provider uses SCIM-managed groups instead of the `google.groups`
+               attribute mapping for authorization checks.
+               The `scimUsage` and `extendedAttributesOauth2Client` fields are
+               mutually exclusive. A request that enables both fields on the same
+               workforce identity pool provider will produce an error.
+               * SCIM_USAGE_UNSPECIFIED: Default behaviour
+               * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+               attribute mapping for authorization checks
+               Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "provider_id", provider_id)
@@ -136,6 +147,8 @@ class WorkforcePoolProviderArgs:
             pulumi.set(__self__, "oidc", oidc)
         if saml is not None:
             pulumi.set(__self__, "saml", saml)
+        if scim_usage is not None:
+            pulumi.set(__self__, "scim_usage", scim_usage)
 
     @_builtins.property
     @pulumi.getter
@@ -348,6 +361,27 @@ class WorkforcePoolProviderArgs:
     def saml(self, value: Optional[pulumi.Input['WorkforcePoolProviderSamlArgs']]):
         pulumi.set(self, "saml", value)
 
+    @_builtins.property
+    @pulumi.getter(name="scimUsage")
+    def scim_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Agentspace only. Specifies whether the workforce identity pool
+        provider uses SCIM-managed groups instead of the `google.groups`
+        attribute mapping for authorization checks.
+        The `scimUsage` and `extendedAttributesOauth2Client` fields are
+        mutually exclusive. A request that enables both fields on the same
+        workforce identity pool provider will produce an error.
+        * SCIM_USAGE_UNSPECIFIED: Default behaviour
+        * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+        attribute mapping for authorization checks
+        Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+        """
+        return pulumi.get(self, "scim_usage")
+
+    @scim_usage.setter
+    def scim_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scim_usage", value)
+
 
 @pulumi.input_type
 class _WorkforcePoolProviderState:
@@ -364,6 +398,7 @@ class _WorkforcePoolProviderState:
                  oidc: Optional[pulumi.Input['WorkforcePoolProviderOidcArgs']] = None,
                  provider_id: Optional[pulumi.Input[_builtins.str]] = None,
                  saml: Optional[pulumi.Input['WorkforcePoolProviderSamlArgs']] = None,
+                 scim_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -445,6 +480,16 @@ class _WorkforcePoolProviderState:
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
         :param pulumi.Input['WorkforcePoolProviderSamlArgs'] saml: Represents a SAML identity provider.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] scim_usage: Agentspace only. Specifies whether the workforce identity pool
+               provider uses SCIM-managed groups instead of the `google.groups`
+               attribute mapping for authorization checks.
+               The `scimUsage` and `extendedAttributesOauth2Client` fields are
+               mutually exclusive. A request that enables both fields on the same
+               workforce identity pool provider will produce an error.
+               * SCIM_USAGE_UNSPECIFIED: Default behaviour
+               * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+               attribute mapping for authorization checks
+               Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
         :param pulumi.Input[_builtins.str] state: The current state of the provider.
                * STATE_UNSPECIFIED: State unspecified.
                * ACTIVE: The provider is active and may be used to validate authentication credentials.
@@ -480,6 +525,8 @@ class _WorkforcePoolProviderState:
             pulumi.set(__self__, "provider_id", provider_id)
         if saml is not None:
             pulumi.set(__self__, "saml", saml)
+        if scim_usage is not None:
+            pulumi.set(__self__, "scim_usage", scim_usage)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if workforce_pool_id is not None:
@@ -695,6 +742,27 @@ class _WorkforcePoolProviderState:
         pulumi.set(self, "saml", value)
 
     @_builtins.property
+    @pulumi.getter(name="scimUsage")
+    def scim_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Agentspace only. Specifies whether the workforce identity pool
+        provider uses SCIM-managed groups instead of the `google.groups`
+        attribute mapping for authorization checks.
+        The `scimUsage` and `extendedAttributesOauth2Client` fields are
+        mutually exclusive. A request that enables both fields on the same
+        workforce identity pool provider will produce an error.
+        * SCIM_USAGE_UNSPECIFIED: Default behaviour
+        * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+        attribute mapping for authorization checks
+        Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+        """
+        return pulumi.get(self, "scim_usage")
+
+    @scim_usage.setter
+    def scim_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scim_usage", value)
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -744,6 +812,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                  oidc: Optional[pulumi.Input[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict']]] = None,
                  provider_id: Optional[pulumi.Input[_builtins.str]] = None,
                  saml: Optional[pulumi.Input[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict']]] = None,
+                 scim_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1168,6 +1237,16 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
         :param pulumi.Input[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict']] saml: Represents a SAML identity provider.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] scim_usage: Agentspace only. Specifies whether the workforce identity pool
+               provider uses SCIM-managed groups instead of the `google.groups`
+               attribute mapping for authorization checks.
+               The `scimUsage` and `extendedAttributesOauth2Client` fields are
+               mutually exclusive. A request that enables both fields on the same
+               workforce identity pool provider will produce an error.
+               * SCIM_USAGE_UNSPECIFIED: Default behaviour
+               * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+               attribute mapping for authorization checks
+               Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
         :param pulumi.Input[_builtins.str] workforce_pool_id: The ID to use for the pool, which becomes the final component of the resource name.
                The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
                It must start with a letter, and cannot have a trailing hyphen.
@@ -1550,6 +1629,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                  oidc: Optional[pulumi.Input[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict']]] = None,
                  provider_id: Optional[pulumi.Input[_builtins.str]] = None,
                  saml: Optional[pulumi.Input[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict']]] = None,
+                 scim_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1575,6 +1655,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 raise TypeError("Missing required property 'provider_id'")
             __props__.__dict__["provider_id"] = provider_id
             __props__.__dict__["saml"] = saml
+            __props__.__dict__["scim_usage"] = scim_usage
             if workforce_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workforce_pool_id'")
             __props__.__dict__["workforce_pool_id"] = workforce_pool_id
@@ -1602,6 +1683,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             oidc: Optional[pulumi.Input[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict']]] = None,
             provider_id: Optional[pulumi.Input[_builtins.str]] = None,
             saml: Optional[pulumi.Input[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict']]] = None,
+            scim_usage: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkforcePoolProvider':
         """
@@ -1688,6 +1770,16 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
         :param pulumi.Input[Union['WorkforcePoolProviderSamlArgs', 'WorkforcePoolProviderSamlArgsDict']] saml: Represents a SAML identity provider.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] scim_usage: Agentspace only. Specifies whether the workforce identity pool
+               provider uses SCIM-managed groups instead of the `google.groups`
+               attribute mapping for authorization checks.
+               The `scimUsage` and `extendedAttributesOauth2Client` fields are
+               mutually exclusive. A request that enables both fields on the same
+               workforce identity pool provider will produce an error.
+               * SCIM_USAGE_UNSPECIFIED: Default behaviour
+               * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+               attribute mapping for authorization checks
+               Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
         :param pulumi.Input[_builtins.str] state: The current state of the provider.
                * STATE_UNSPECIFIED: State unspecified.
                * ACTIVE: The provider is active and may be used to validate authentication credentials.
@@ -1715,6 +1807,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         __props__.__dict__["oidc"] = oidc
         __props__.__dict__["provider_id"] = provider_id
         __props__.__dict__["saml"] = saml
+        __props__.__dict__["scim_usage"] = scim_usage
         __props__.__dict__["state"] = state
         __props__.__dict__["workforce_pool_id"] = workforce_pool_id
         return WorkforcePoolProvider(resource_name, opts=opts, __props__=__props__)
@@ -1879,6 +1972,23 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "saml")
+
+    @_builtins.property
+    @pulumi.getter(name="scimUsage")
+    def scim_usage(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Agentspace only. Specifies whether the workforce identity pool
+        provider uses SCIM-managed groups instead of the `google.groups`
+        attribute mapping for authorization checks.
+        The `scimUsage` and `extendedAttributesOauth2Client` fields are
+        mutually exclusive. A request that enables both fields on the same
+        workforce identity pool provider will produce an error.
+        * SCIM_USAGE_UNSPECIFIED: Default behaviour
+        * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+        attribute mapping for authorization checks
+        Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+        """
+        return pulumi.get(self, "scim_usage")
 
     @_builtins.property
     @pulumi.getter

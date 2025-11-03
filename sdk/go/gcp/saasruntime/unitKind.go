@@ -32,10 +32,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			exampleSaas, err := saasruntime.NewSaaS(ctx, "example_saas", &saasruntime.SaaSArgs{
 //				SaasId:   pulumi.String("example-saas"),
-//				Location: pulumi.String("global"),
+//				Location: pulumi.String("us-east1"),
 //				Locations: saasruntime.SaaSLocationArray{
 //					&saasruntime.SaaSLocationArgs{
-//						Name: pulumi.String("us-central1"),
+//						Name: pulumi.String("us-east1"),
 //					},
 //				},
 //			})
@@ -43,15 +43,16 @@ import (
 //				return err
 //			}
 //			clusterUnitKind, err := saasruntime.NewUnitKind(ctx, "cluster_unit_kind", &saasruntime.UnitKindArgs{
-//				Location:   pulumi.String("global"),
-//				UnitKindId: pulumi.String("cluster-unitkind"),
-//				Saas:       exampleSaas.ID(),
+//				Location:       pulumi.String("us-east1"),
+//				UnitKindId:     pulumi.String("cluster-unitkind"),
+//				Saas:           exampleSaas.ID(),
+//				DefaultRelease: pulumi.String("projects/my-project-name/locations/us-east1/releases/example-release"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = saasruntime.NewUnitKind(ctx, "example", &saasruntime.UnitKindArgs{
-//				Location:   pulumi.String("global"),
+//				Location:   pulumi.String("us-east1"),
 //				UnitKindId: pulumi.String("app-unitkind"),
 //				Saas:       exampleSaas.ID(),
 //				Dependencies: saasruntime.UnitKindDependencyArray{
@@ -59,6 +60,17 @@ import (
 //						UnitKind: clusterUnitKind.ID(),
 //						Alias:    pulumi.String("cluster"),
 //					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = saasruntime.NewRelease(ctx, "example_release", &saasruntime.ReleaseArgs{
+//				Location:  pulumi.String("us-east1"),
+//				ReleaseId: pulumi.String("example-release"),
+//				UnitKind:  clusterUnitKind.ID(),
+//				Blueprint: &saasruntime.ReleaseBlueprintArgs{
+//					Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"),
 //				},
 //			})
 //			if err != nil {
@@ -105,6 +117,11 @@ type UnitKind struct {
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// A reference to the Release object to use as default for creating new units
+	// of this UnitKind.
+	// If not specified, a new unit must explicitly reference which release to use
+	// for its creation.
+	DefaultRelease pulumi.StringPtrOutput `pulumi:"defaultRelease"`
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
@@ -213,6 +230,11 @@ type unitKindState struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// The timestamp when the resource was created.
 	CreateTime *string `pulumi:"createTime"`
+	// A reference to the Release object to use as default for creating new units
+	// of this UnitKind.
+	// If not specified, a new unit must explicitly reference which release to use
+	// for its creation.
+	DefaultRelease *string `pulumi:"defaultRelease"`
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
@@ -278,6 +300,11 @@ type UnitKindState struct {
 	Annotations pulumi.StringMapInput
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringPtrInput
+	// A reference to the Release object to use as default for creating new units
+	// of this UnitKind.
+	// If not specified, a new unit must explicitly reference which release to use
+	// for its creation.
+	DefaultRelease pulumi.StringPtrInput
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
@@ -345,6 +372,11 @@ type unitKindArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// A reference to the Release object to use as default for creating new units
+	// of this UnitKind.
+	// If not specified, a new unit must explicitly reference which release to use
+	// for its creation.
+	DefaultRelease *string `pulumi:"defaultRelease"`
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
@@ -385,6 +417,11 @@ type UnitKindArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// A reference to the Release object to use as default for creating new units
+	// of this UnitKind.
+	// If not specified, a new unit must explicitly reference which release to use
+	// for its creation.
+	DefaultRelease pulumi.StringPtrInput
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
@@ -516,6 +553,14 @@ func (o UnitKindOutput) Annotations() pulumi.StringMapOutput {
 // The timestamp when the resource was created.
 func (o UnitKindOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *UnitKind) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A reference to the Release object to use as default for creating new units
+// of this UnitKind.
+// If not specified, a new unit must explicitly reference which release to use
+// for its creation.
+func (o UnitKindOutput) DefaultRelease() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UnitKind) pulumi.StringPtrOutput { return v.DefaultRelease }).(pulumi.StringPtrOutput)
 }
 
 // List of other unit kinds that this release will depend on. Dependencies

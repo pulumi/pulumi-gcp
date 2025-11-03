@@ -221,7 +221,7 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         # Enables the reCAPTCHA Enterprise API
         recaptcha_enterprise = gcp.projects.Service("recaptcha_enterprise",
@@ -232,7 +232,7 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
             display_name="Web App for reCAPTCHA Enterprise")
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.index.Sleep("wait_30s", create_duration=30s,
+        wait30s = time.Sleep("wait_30s", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_recaptcha_enterprise_config = gcp.firebase.AppCheckRecaptchaEnterpriseConfig("default",
             project="my-project-name",
@@ -300,7 +300,7 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         # Enables the reCAPTCHA Enterprise API
         recaptcha_enterprise = gcp.projects.Service("recaptcha_enterprise",
@@ -311,7 +311,7 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
             display_name="Web App for reCAPTCHA Enterprise")
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.index.Sleep("wait_30s", create_duration=30s,
+        wait30s = time.Sleep("wait_30s", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_recaptcha_enterprise_config = gcp.firebase.AppCheckRecaptchaEnterpriseConfig("default",
             project="my-project-name",

@@ -5,28 +5,78 @@ package com.pulumi.gcp.backupdisasterrecovery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanAssociationsAssociationRulesConfigInfo;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetBackupPlanAssociationsAssociation {
+    /**
+     * @return The backup plan to which the resource is attached.
+     * 
+     */
     private String backupPlan;
     private String createTime;
+    /**
+     * @return The resource name of data source which will be used as storage location for backups taken.
+     * 
+     */
+    private String dataSource;
+    /**
+     * @return The full name of the backup plan association resource.
+     * 
+     */
     private String name;
+    /**
+     * @return The resource to which the backup plan is applied.
+     * 
+     */
     private String resource;
+    /**
+     * @return A list containing information about the backup rules. Each object in the list contains:
+     * 
+     */
+    private List<GetBackupPlanAssociationsAssociationRulesConfigInfo> rulesConfigInfos;
 
     private GetBackupPlanAssociationsAssociation() {}
+    /**
+     * @return The backup plan to which the resource is attached.
+     * 
+     */
     public String backupPlan() {
         return this.backupPlan;
     }
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return The resource name of data source which will be used as storage location for backups taken.
+     * 
+     */
+    public String dataSource() {
+        return this.dataSource;
+    }
+    /**
+     * @return The full name of the backup plan association resource.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The resource to which the backup plan is applied.
+     * 
+     */
     public String resource() {
         return this.resource;
+    }
+    /**
+     * @return A list containing information about the backup rules. Each object in the list contains:
+     * 
+     */
+    public List<GetBackupPlanAssociationsAssociationRulesConfigInfo> rulesConfigInfos() {
+        return this.rulesConfigInfos;
     }
 
     public static Builder builder() {
@@ -40,15 +90,19 @@ public final class GetBackupPlanAssociationsAssociation {
     public static final class Builder {
         private String backupPlan;
         private String createTime;
+        private String dataSource;
         private String name;
         private String resource;
+        private List<GetBackupPlanAssociationsAssociationRulesConfigInfo> rulesConfigInfos;
         public Builder() {}
         public Builder(GetBackupPlanAssociationsAssociation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupPlan = defaults.backupPlan;
     	      this.createTime = defaults.createTime;
+    	      this.dataSource = defaults.dataSource;
     	      this.name = defaults.name;
     	      this.resource = defaults.resource;
+    	      this.rulesConfigInfos = defaults.rulesConfigInfos;
         }
 
         @CustomType.Setter
@@ -68,6 +122,14 @@ public final class GetBackupPlanAssociationsAssociation {
             return this;
         }
         @CustomType.Setter
+        public Builder dataSource(String dataSource) {
+            if (dataSource == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanAssociationsAssociation", "dataSource");
+            }
+            this.dataSource = dataSource;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetBackupPlanAssociationsAssociation", "name");
@@ -83,12 +145,25 @@ public final class GetBackupPlanAssociationsAssociation {
             this.resource = resource;
             return this;
         }
+        @CustomType.Setter
+        public Builder rulesConfigInfos(List<GetBackupPlanAssociationsAssociationRulesConfigInfo> rulesConfigInfos) {
+            if (rulesConfigInfos == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanAssociationsAssociation", "rulesConfigInfos");
+            }
+            this.rulesConfigInfos = rulesConfigInfos;
+            return this;
+        }
+        public Builder rulesConfigInfos(GetBackupPlanAssociationsAssociationRulesConfigInfo... rulesConfigInfos) {
+            return rulesConfigInfos(List.of(rulesConfigInfos));
+        }
         public GetBackupPlanAssociationsAssociation build() {
             final var _resultValue = new GetBackupPlanAssociationsAssociation();
             _resultValue.backupPlan = backupPlan;
             _resultValue.createTime = createTime;
+            _resultValue.dataSource = dataSource;
             _resultValue.name = name;
             _resultValue.resource = resource;
+            _resultValue.rulesConfigInfos = rulesConfigInfos;
             return _resultValue;
         }
     }

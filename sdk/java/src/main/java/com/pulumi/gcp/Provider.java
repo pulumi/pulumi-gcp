@@ -767,6 +767,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> networkConnectivityCustomEndpoint() {
         return Codegen.optional(this.networkConnectivityCustomEndpoint);
     }
+    @Export(name="networkConnectivityv1CustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> networkConnectivityv1CustomEndpoint;
+
+    public Output<Optional<String>> networkConnectivityv1CustomEndpoint() {
+        return Codegen.optional(this.networkConnectivityv1CustomEndpoint);
+    }
     @Export(name="networkManagementCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkManagementCustomEndpoint;
 
@@ -790,6 +796,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> notebooksCustomEndpoint() {
         return Codegen.optional(this.notebooksCustomEndpoint);
+    }
+    @Export(name="observabilityCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> observabilityCustomEndpoint;
+
+    public Output<Optional<String>> observabilityCustomEndpoint() {
+        return Codegen.optional(this.observabilityCustomEndpoint);
     }
     @Export(name="oracleDatabaseCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oracleDatabaseCustomEndpoint;

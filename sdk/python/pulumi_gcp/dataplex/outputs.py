@@ -70,6 +70,7 @@ __all__ = [
     'EntryEntrySourceAncestor',
     'EntryGroupIamBindingCondition',
     'EntryGroupIamMemberCondition',
+    'EntryLinkEntryReference',
     'EntryTypeIamBindingCondition',
     'EntryTypeIamMemberCondition',
     'EntryTypeRequiredAspect',
@@ -2973,6 +2974,54 @@ class EntryGroupIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class EntryLinkEntryReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 path: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The relative resource name of the referenced Entry, of the form:
+               projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+        :param _builtins.str path: The path in the Entry that is referenced in the Entry Link.
+               Empty path denotes that the Entry itself is referenced in the Entry Link.
+        :param _builtins.str type: The reference type of the Entry.
+               Possible values are: `SOURCE`, `TARGET`.
+        """
+        pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The relative resource name of the referenced Entry, of the form:
+        projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        The path in the Entry that is referenced in the Entry Link.
+        Empty path denotes that the Entry itself is referenced in the Entry Link.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The reference type of the Entry.
+        Possible values are: `SOURCE`, `TARGET`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

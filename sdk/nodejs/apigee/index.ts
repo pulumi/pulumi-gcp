@@ -40,6 +40,11 @@ export type Developer = import("./developer").Developer;
 export const Developer: typeof import("./developer").Developer = null as any;
 utilities.lazyLoad(exports, ["Developer"], () => require("./developer"));
 
+export { DeveloperAppArgs, DeveloperAppState } from "./developerApp";
+export type DeveloperApp = import("./developerApp").DeveloperApp;
+export const DeveloperApp: typeof import("./developerApp").DeveloperApp = null as any;
+utilities.lazyLoad(exports, ["DeveloperApp"], () => require("./developerApp"));
+
 export { DnsZoneArgs, DnsZoneState } from "./dnsZone";
 export type DnsZone = import("./dnsZone").DnsZone;
 export const DnsZone: typeof import("./dnsZone").DnsZone = null as any;
@@ -79,6 +84,11 @@ export { EnvironmentAddonsConfigArgs, EnvironmentAddonsConfigState } from "./env
 export type EnvironmentAddonsConfig = import("./environmentAddonsConfig").EnvironmentAddonsConfig;
 export const EnvironmentAddonsConfig: typeof import("./environmentAddonsConfig").EnvironmentAddonsConfig = null as any;
 utilities.lazyLoad(exports, ["EnvironmentAddonsConfig"], () => require("./environmentAddonsConfig"));
+
+export { EnvironmentApiRevisionDeploymentArgs, EnvironmentApiRevisionDeploymentState } from "./environmentApiRevisionDeployment";
+export type EnvironmentApiRevisionDeployment = import("./environmentApiRevisionDeployment").EnvironmentApiRevisionDeployment;
+export const EnvironmentApiRevisionDeployment: typeof import("./environmentApiRevisionDeployment").EnvironmentApiRevisionDeployment = null as any;
+utilities.lazyLoad(exports, ["EnvironmentApiRevisionDeployment"], () => require("./environmentApiRevisionDeployment"));
 
 export { EnvironmentIamBindingArgs, EnvironmentIamBindingState } from "./environmentIamBinding";
 export type EnvironmentIamBinding = import("./environmentIamBinding").EnvironmentIamBinding;
@@ -204,6 +214,8 @@ const _module = {
                 return new ControlPlaneAccess(name, <any>undefined, { urn })
             case "gcp:apigee/developer:Developer":
                 return new Developer(name, <any>undefined, { urn })
+            case "gcp:apigee/developerApp:DeveloperApp":
+                return new DeveloperApp(name, <any>undefined, { urn })
             case "gcp:apigee/dnsZone:DnsZone":
                 return new DnsZone(name, <any>undefined, { urn })
             case "gcp:apigee/endpointAttachment:EndpointAttachment":
@@ -220,6 +232,8 @@ const _module = {
                 return new Environment(name, <any>undefined, { urn })
             case "gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig":
                 return new EnvironmentAddonsConfig(name, <any>undefined, { urn })
+            case "gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment":
+                return new EnvironmentApiRevisionDeployment(name, <any>undefined, { urn })
             case "gcp:apigee/environmentIamBinding:EnvironmentIamBinding":
                 return new EnvironmentIamBinding(name, <any>undefined, { urn })
             case "gcp:apigee/environmentIamMember:EnvironmentIamMember":
@@ -272,6 +286,7 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/apiProduct", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/appGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/controlPlaneAccess", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/developer", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/developerApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/dnsZone", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/endpointAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/envGroup", _module)
@@ -280,6 +295,7 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/envKeystore", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/envReferences", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentAddonsConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/environmentApiRevisionDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamPolicy", _module)

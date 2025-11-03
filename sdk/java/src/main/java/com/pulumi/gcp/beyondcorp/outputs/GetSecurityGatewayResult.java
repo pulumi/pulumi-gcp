@@ -6,6 +6,8 @@ package com.pulumi.gcp.beyondcorp.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.beyondcorp.outputs.GetSecurityGatewayHub;
+import com.pulumi.gcp.beyondcorp.outputs.GetSecurityGatewayProxyProtocolConfig;
+import com.pulumi.gcp.beyondcorp.outputs.GetSecurityGatewayServiceDiscovery;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +29,9 @@ public final class GetSecurityGatewayResult {
     private String location;
     private String name;
     private @Nullable String project;
+    private List<GetSecurityGatewayProxyProtocolConfig> proxyProtocolConfigs;
     private String securityGatewayId;
+    private List<GetSecurityGatewayServiceDiscovery> serviceDiscoveries;
     private String state;
     private String updateTime;
 
@@ -63,8 +67,14 @@ public final class GetSecurityGatewayResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public List<GetSecurityGatewayProxyProtocolConfig> proxyProtocolConfigs() {
+        return this.proxyProtocolConfigs;
+    }
     public String securityGatewayId() {
         return this.securityGatewayId;
+    }
+    public List<GetSecurityGatewayServiceDiscovery> serviceDiscoveries() {
+        return this.serviceDiscoveries;
     }
     public String state() {
         return this.state;
@@ -91,7 +101,9 @@ public final class GetSecurityGatewayResult {
         private String location;
         private String name;
         private @Nullable String project;
+        private List<GetSecurityGatewayProxyProtocolConfig> proxyProtocolConfigs;
         private String securityGatewayId;
+        private List<GetSecurityGatewayServiceDiscovery> serviceDiscoveries;
         private String state;
         private String updateTime;
         public Builder() {}
@@ -106,7 +118,9 @@ public final class GetSecurityGatewayResult {
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.proxyProtocolConfigs = defaults.proxyProtocolConfigs;
     	      this.securityGatewayId = defaults.securityGatewayId;
+    	      this.serviceDiscoveries = defaults.serviceDiscoveries;
     	      this.state = defaults.state;
     	      this.updateTime = defaults.updateTime;
         }
@@ -188,12 +202,34 @@ public final class GetSecurityGatewayResult {
             return this;
         }
         @CustomType.Setter
+        public Builder proxyProtocolConfigs(List<GetSecurityGatewayProxyProtocolConfig> proxyProtocolConfigs) {
+            if (proxyProtocolConfigs == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGatewayResult", "proxyProtocolConfigs");
+            }
+            this.proxyProtocolConfigs = proxyProtocolConfigs;
+            return this;
+        }
+        public Builder proxyProtocolConfigs(GetSecurityGatewayProxyProtocolConfig... proxyProtocolConfigs) {
+            return proxyProtocolConfigs(List.of(proxyProtocolConfigs));
+        }
+        @CustomType.Setter
         public Builder securityGatewayId(String securityGatewayId) {
             if (securityGatewayId == null) {
               throw new MissingRequiredPropertyException("GetSecurityGatewayResult", "securityGatewayId");
             }
             this.securityGatewayId = securityGatewayId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder serviceDiscoveries(List<GetSecurityGatewayServiceDiscovery> serviceDiscoveries) {
+            if (serviceDiscoveries == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGatewayResult", "serviceDiscoveries");
+            }
+            this.serviceDiscoveries = serviceDiscoveries;
+            return this;
+        }
+        public Builder serviceDiscoveries(GetSecurityGatewayServiceDiscovery... serviceDiscoveries) {
+            return serviceDiscoveries(List.of(serviceDiscoveries));
         }
         @CustomType.Setter
         public Builder state(String state) {
@@ -222,7 +258,9 @@ public final class GetSecurityGatewayResult {
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.project = project;
+            _resultValue.proxyProtocolConfigs = proxyProtocolConfigs;
             _resultValue.securityGatewayId = securityGatewayId;
+            _resultValue.serviceDiscoveries = serviceDiscoveries;
             _resultValue.state = state;
             _resultValue.updateTime = updateTime;
             return _resultValue;

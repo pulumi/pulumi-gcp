@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Spoke, see:
  *
- * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
+ * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.spokes)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
  *
@@ -106,17 +106,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const network = new gcp.compute.Network("network", {
- *     name: "tf-test-network_60365",
+ *     name: "tf-test-network_50610",
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_80215",
+ *     name: "tf-test-subnet_77124",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,
  * });
  * const instance = new gcp.compute.Instance("instance", {
- *     name: "tf-test-instance_59033",
+ *     name: "tf-test-instance_15335",
  *     machineType: "e2-medium",
  *     canIpForward: true,
  *     zone: "us-central1-a",
@@ -134,14 +134,14 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
- *     name: "tf-test-hub_32081",
+ *     name: "tf-test-hub_20665",
  *     description: "A sample hub",
  *     labels: {
  *         "label-two": "value-one",
  *     },
  * });
  * const primary = new gcp.networkconnectivity.Spoke("primary", {
- *     name: "tf-test-name_10393",
+ *     name: "tf-test-name_85160",
  *     location: "us-central1",
  *     description: "A sample spoke with a linked routher appliance instance",
  *     labels: {
@@ -401,8 +401,8 @@ import * as utilities from "../utilities";
  *     hub: starHub.id,
  *     autoAccept: {
  *         autoAcceptProjects: [
- *             "foo_33052",
- *             "bar_3684",
+ *             "foo_92130",
+ *             "bar_16199",
  *         ],
  *     },
  * });
@@ -452,6 +452,47 @@ import * as utilities from "../utilities";
  *         ],
  *         uri: network.selfLink,
  *     },
+ * });
+ * ```
+ * ### Network Connectivity Spoke Gateway
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     name: "net-spoke",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
+ *     name: "tf-test-subnet_21563",
+ *     ipCidrRange: "10.0.0.0/28",
+ *     region: "us-central1",
+ *     network: network.selfLink,
+ * });
+ * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
+ *     name: "hub",
+ *     description: "A sample hub",
+ *     labels: {
+ *         "label-two": "value-one",
+ *     },
+ *     presetTopology: "HYBRID_INSPECTION",
+ * });
+ * const primary = new gcp.networkconnectivity.Spoke("primary", {
+ *     name: "gateway",
+ *     location: "us-central1",
+ *     description: "A sample spoke of type Gateway",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     hub: basicHub.id,
+ *     gateway: {
+ *         ipRangeReservations: [{
+ *             ipRange: "10.0.0.0/23",
+ *         }],
+ *         capacity: "CAPACITY_1_GBPS",
+ *     },
+ *     group: "gateways",
  * });
  * ```
  *
@@ -519,6 +560,11 @@ export class Spoke extends pulumi.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * This is a gateway that can apply specialized processing to traffic going through it.
+     * Structure is documented below.
+     */
+    declare public readonly gateway: pulumi.Output<outputs.networkconnectivity.SpokeGateway | undefined>;
     /**
      * The name of the group that this spoke is associated with.
      */
@@ -610,6 +656,7 @@ export class Spoke extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["gateway"] = state?.gateway;
             resourceInputs["group"] = state?.group;
             resourceInputs["hub"] = state?.hub;
             resourceInputs["labels"] = state?.labels;
@@ -635,6 +682,7 @@ export class Spoke extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["description"] = args?.description;
+            resourceInputs["gateway"] = args?.gateway;
             resourceInputs["group"] = args?.group;
             resourceInputs["hub"] = args?.hub;
             resourceInputs["labels"] = args?.labels;
@@ -677,6 +725,11 @@ export interface SpokeState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * This is a gateway that can apply specialized processing to traffic going through it.
+     * Structure is documented below.
+     */
+    gateway?: pulumi.Input<inputs.networkconnectivity.SpokeGateway>;
     /**
      * The name of the group that this spoke is associated with.
      */
@@ -761,6 +814,11 @@ export interface SpokeArgs {
      * An optional description of the spoke.
      */
     description?: pulumi.Input<string>;
+    /**
+     * This is a gateway that can apply specialized processing to traffic going through it.
+     * Structure is documented below.
+     */
+    gateway?: pulumi.Input<inputs.networkconnectivity.SpokeGateway>;
     /**
      * The name of the group that this spoke is associated with.
      */

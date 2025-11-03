@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.OsConfig
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.OsConfig
     ///         Service = "progressiverollout.googleapis.com",
     ///     });
     /// 
-    ///     var wait30Sec = new Time.Index.Sleep("wait_30_sec", new()
+    ///     var wait30Sec = new Time.Sleep("wait_30_sec", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.OsConfig
     ///         },
     ///     });
     /// 
-    ///     var wait3Min = new Time.Index.Sleep("wait_3_min", new()
+    ///     var wait3Min = new Time.Sleep("wait_3_min", new()
     ///     {
     ///         CreateDuration = "180s",
     ///     }, new CustomResourceOptions

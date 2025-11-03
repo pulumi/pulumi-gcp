@@ -32,6 +32,10 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog? PublishFindingsToCloudDataCatalog;
         /// <summary>
+        /// Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
+        /// </summary>
+        public readonly Outputs.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog? PublishFindingsToDataplexCatalog;
+        /// <summary>
         /// Publish the result summary of a DlpJob to the Cloud Security Command Center.
         /// </summary>
         public readonly Outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc? PublishSummaryToCscc;
@@ -55,6 +59,8 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog? publishFindingsToCloudDataCatalog,
 
+            Outputs.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog? publishFindingsToDataplexCatalog,
+
             Outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc? publishSummaryToCscc,
 
             Outputs.PreventionJobTriggerInspectJobActionPublishToStackdriver? publishToStackdriver,
@@ -65,6 +71,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
             JobNotificationEmails = jobNotificationEmails;
             PubSub = pubSub;
             PublishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
+            PublishFindingsToDataplexCatalog = publishFindingsToDataplexCatalog;
             PublishSummaryToCscc = publishSummaryToCscc;
             PublishToStackdriver = publishToStackdriver;
             SaveFindings = saveFindings;

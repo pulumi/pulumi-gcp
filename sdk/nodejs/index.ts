@@ -107,6 +107,7 @@ import * as networkmanagement from "./networkmanagement";
 import * as networksecurity from "./networksecurity";
 import * as networkservices from "./networkservices";
 import * as notebooks from "./notebooks";
+import * as observability from "./observability";
 import * as oracledatabase from "./oracledatabase";
 import * as organizations from "./organizations";
 import * as orgpolicy from "./orgpolicy";
@@ -243,6 +244,7 @@ export {
     networksecurity,
     networkservices,
     notebooks,
+    observability,
     oracledatabase,
     organizations,
     orgpolicy,

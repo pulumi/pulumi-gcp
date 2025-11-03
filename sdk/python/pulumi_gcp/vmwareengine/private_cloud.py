@@ -178,8 +178,11 @@ class PrivateCloudArgs:
 @pulumi.input_type
 class _PrivateCloudState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_delay_hours: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
                  hcxes: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudHcxArgs']]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  management_cluster: Optional[pulumi.Input['PrivateCloudManagementClusterArgs']] = None,
@@ -191,11 +194,21 @@ class _PrivateCloudState:
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
                  vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]] = None):
         """
         Input properties used for looking up and filtering PrivateCloud resources.
+        :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.str] delete_time: Time when the resource was scheduled for deletion.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         :param pulumi.Input[_builtins.str] description: User-provided description for this private cloud.
+        :param pulumi.Input[_builtins.str] expire_time: Time when the resource will be irreversibly deleted.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudHcxArgs']]] hcxes: Details about a HCX Cloud Manager appliance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location where the PrivateCloud should reside.
@@ -214,13 +227,22 @@ class _PrivateCloudState:
         :param pulumi.Input[_builtins.str] type: Initial type of the private cloud.
                Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         :param pulumi.Input[_builtins.str] uid: System-generated unique identifier for the resource.
+        :param pulumi.Input[_builtins.str] update_time: Last update time of this resource.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]] vcenters: Details about a vCenter Server management appliance.
                Structure is documented below.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if delete_time is not None:
+            pulumi.set(__self__, "delete_time", delete_time)
         if deletion_delay_hours is not None:
             pulumi.set(__self__, "deletion_delay_hours", deletion_delay_hours)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if hcxes is not None:
             pulumi.set(__self__, "hcxes", hcxes)
         if location is not None:
@@ -243,8 +265,38 @@ class _PrivateCloudState:
             pulumi.set(__self__, "type", type)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
         if vcenters is not None:
             pulumi.set(__self__, "vcenters", vcenters)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Creation time of this resource.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time when the resource was scheduled for deletion.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "delete_time")
+
+    @delete_time.setter
+    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionDelayHours")
@@ -269,6 +321,20 @@ class _PrivateCloudState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time when the resource will be irreversibly deleted.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -408,6 +474,20 @@ class _PrivateCloudState:
     @uid.setter
     def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "uid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Last update time of this resource.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -737,10 +817,14 @@ class PrivateCloud(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["send_deletion_delay_hours_if_zero"] = send_deletion_delay_hours_if_zero
             __props__.__dict__["type"] = type
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["delete_time"] = None
+            __props__.__dict__["expire_time"] = None
             __props__.__dict__["hcxes"] = None
             __props__.__dict__["nsxes"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
+            __props__.__dict__["update_time"] = None
             __props__.__dict__["vcenters"] = None
         super(PrivateCloud, __self__).__init__(
             'gcp:vmwareengine/privateCloud:PrivateCloud',
@@ -752,8 +836,11 @@ class PrivateCloud(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
             deletion_delay_hours: Optional[pulumi.Input[_builtins.int]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
             hcxes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict']]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             management_cluster: Optional[pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
@@ -765,6 +852,7 @@ class PrivateCloud(pulumi.CustomResource):
             state: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
+            update_time: Optional[pulumi.Input[_builtins.str]] = None,
             vcenters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudVcenterArgs', 'PrivateCloudVcenterArgsDict']]]]] = None) -> 'PrivateCloud':
         """
         Get an existing PrivateCloud resource's state with the given name, id, and optional extra
@@ -773,8 +861,17 @@ class PrivateCloud(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.str] delete_time: Time when the resource was scheduled for deletion.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         :param pulumi.Input[_builtins.str] description: User-provided description for this private cloud.
+        :param pulumi.Input[_builtins.str] expire_time: Time when the resource will be irreversibly deleted.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict']]]] hcxes: Details about a HCX Cloud Manager appliance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location where the PrivateCloud should reside.
@@ -793,6 +890,9 @@ class PrivateCloud(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] type: Initial type of the private cloud.
                Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         :param pulumi.Input[_builtins.str] uid: System-generated unique identifier for the resource.
+        :param pulumi.Input[_builtins.str] update_time: Last update time of this resource.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudVcenterArgs', 'PrivateCloudVcenterArgsDict']]]] vcenters: Details about a vCenter Server management appliance.
                Structure is documented below.
         """
@@ -800,8 +900,11 @@ class PrivateCloud(pulumi.CustomResource):
 
         __props__ = _PrivateCloudState.__new__(_PrivateCloudState)
 
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["deletion_delay_hours"] = deletion_delay_hours
         __props__.__dict__["description"] = description
+        __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["hcxes"] = hcxes
         __props__.__dict__["location"] = location
         __props__.__dict__["management_cluster"] = management_cluster
@@ -813,8 +916,29 @@ class PrivateCloud(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["type"] = type
         __props__.__dict__["uid"] = uid
+        __props__.__dict__["update_time"] = update_time
         __props__.__dict__["vcenters"] = vcenters
         return PrivateCloud(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        Creation time of this resource.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        Time when the resource was scheduled for deletion.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "delete_time")
 
     @_builtins.property
     @pulumi.getter(name="deletionDelayHours")
@@ -831,6 +955,16 @@ class PrivateCloud(pulumi.CustomResource):
         User-provided description for this private cloud.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        Time when the resource will be irreversibly deleted.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter
@@ -926,6 +1060,16 @@ class PrivateCloud(pulumi.CustomResource):
         System-generated unique identifier for the resource.
         """
         return pulumi.get(self, "uid")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        Last update time of this resource.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "update_time")
 
     @_builtins.property
     @pulumi.getter

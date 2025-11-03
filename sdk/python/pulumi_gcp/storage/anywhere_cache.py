@@ -270,12 +270,12 @@ class AnywhereCache(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         bucket = gcp.storage.Bucket("bucket",
             name="bucket-name",
             location="US")
-        destroy_wait5000_seconds = time.index.Sleep("destroy_wait_5000_seconds", destroy_duration=5000s,
+        destroy_wait5000_seconds = time.Sleep("destroy_wait_5000_seconds", destroy_duration="5000s",
         opts = pulumi.ResourceOptions(depends_on=[bucket]))
         cache = gcp.storage.AnywhereCache("cache",
             bucket=bucket.name,
@@ -330,12 +330,12 @@ class AnywhereCache(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         bucket = gcp.storage.Bucket("bucket",
             name="bucket-name",
             location="US")
-        destroy_wait5000_seconds = time.index.Sleep("destroy_wait_5000_seconds", destroy_duration=5000s,
+        destroy_wait5000_seconds = time.Sleep("destroy_wait_5000_seconds", destroy_duration="5000s",
         opts = pulumi.ResourceOptions(depends_on=[bucket]))
         cache = gcp.storage.AnywhereCache("cache",
             bucket=bucket.name,

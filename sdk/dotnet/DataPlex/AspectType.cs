@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         AspectTypeId = "aspect-type-basic",
     ///         Project = "my-project-name",
     ///         Location = "us-central1",
+    ///         DataClassification = "DATA_CLASSIFICATION_UNSPECIFIED",
     ///         MetadataTemplate = @"{
     ///   ""name"": ""tf-test-template"",
     ///   ""type"": ""record"",
@@ -78,7 +79,8 @@ namespace Pulumi.Gcp.DataPlex
     ///             { "tag", "test-tf" },
     ///         },
     ///         DisplayName = "terraform aspect type",
-    ///         Description = "aspect type created by Terraform",
+    ///         Description = "data aspect type created by Terraform",
+    ///         DataClassification = "METADATA_AND_DATA",
     ///         MetadataTemplate = @"{
     ///   ""type"": ""record"",
     ///   ""name"": ""Schema"",
@@ -253,6 +255,16 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Classifies the data stored by the aspect.
+        /// `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+        /// while `METADATA_AND_DATA` indicates data derived content.
+        /// &lt;br&gt;&lt;br&gt;
+        /// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+        /// </summary>
+        [Output("dataClassification")]
+        public Output<string?> DataClassification { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the AspectType.
         /// </summary>
         [Output("description")]
@@ -388,6 +400,16 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? AspectTypeId { get; set; }
 
         /// <summary>
+        /// Classifies the data stored by the aspect.
+        /// `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+        /// while `METADATA_AND_DATA` indicates data derived content.
+        /// &lt;br&gt;&lt;br&gt;
+        /// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+        /// </summary>
+        [Input("dataClassification")]
+        public Input<string>? DataClassification { get; set; }
+
+        /// <summary>
         /// Description of the AspectType.
         /// </summary>
         [Input("description")]
@@ -452,6 +474,16 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Classifies the data stored by the aspect.
+        /// `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+        /// while `METADATA_AND_DATA` indicates data derived content.
+        /// &lt;br&gt;&lt;br&gt;
+        /// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+        /// </summary>
+        [Input("dataClassification")]
+        public Input<string>? DataClassification { get; set; }
 
         /// <summary>
         /// Description of the AspectType.

@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Beyondcorp.Inputs
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
-        [Input("ports")]
+        [Input("ports", required: true)]
         private InputList<int>? _ports;
 
         /// <summary>

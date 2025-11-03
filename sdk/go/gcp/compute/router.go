@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -107,6 +106,96 @@ import (
 //	}
 //
 // ```
+// ### Router Ncc Gw
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("net-spoke"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("tf-test-subnet_21197"),
+//				IpCidrRange: pulumi.String("10.0.0.0/28"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     network.SelfLink,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basicHub, err := networkconnectivity.NewHub(ctx, "basic_hub", &networkconnectivity.HubArgs{
+//				Name:        pulumi.String("hub"),
+//				Description: pulumi.String("A sample hub"),
+//				Labels: pulumi.StringMap{
+//					"label-two": pulumi.String("value-one"),
+//				},
+//				PresetTopology: pulumi.String("HYBRID_INSPECTION"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			primary, err := networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
+//				Name:        pulumi.String("my-ncc-gw"),
+//				Location:    pulumi.String("us-central1"),
+//				Description: pulumi.String("A sample spoke of type Gateway"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Hub: basicHub.ID(),
+//				Gateway: &networkconnectivity.SpokeGatewayArgs{
+//					IpRangeReservations: networkconnectivity.SpokeGatewayIpRangeReservationArray{
+//						&networkconnectivity.SpokeGatewayIpRangeReservationArgs{
+//							IpRange: pulumi.String("10.0.0.0/23"),
+//						},
+//					},
+//					Capacity: pulumi.String("CAPACITY_1_GBPS"),
+//				},
+//				Group: pulumi.String("gateways"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRouter(ctx, "foobar", &compute.RouterArgs{
+//				Name: pulumi.String("my-router"),
+//				Bgp: &compute.RouterBgpArgs{
+//					Asn:           pulumi.Int(64514),
+//					AdvertiseMode: pulumi.String("CUSTOM"),
+//					AdvertisedGroups: pulumi.StringArray{
+//						pulumi.String("ALL_SUBNETS"),
+//					},
+//					AdvertisedIpRanges: compute.RouterBgpAdvertisedIpRangeArray{
+//						&compute.RouterBgpAdvertisedIpRangeArgs{
+//							Range: pulumi.String("1.2.3.4"),
+//						},
+//						&compute.RouterBgpAdvertisedIpRangeArgs{
+//							Range: pulumi.String("6.7.0.0/16"),
+//						},
+//					},
+//				},
+//				NccGateway: primary.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -160,8 +249,10 @@ type Router struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// A URI of an NCC Gateway spoke
+	NccGateway pulumi.StringPtrOutput `pulumi:"nccGateway"`
 	// A reference to the network to which this router belongs.
-	Network pulumi.StringOutput `pulumi:"network"`
+	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params RouterParamsPtrOutput `pulumi:"params"`
@@ -178,12 +269,9 @@ type Router struct {
 func NewRouter(ctx *pulumi.Context,
 	name string, args *RouterArgs, opts ...pulumi.ResourceOption) (*Router, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &RouterArgs{}
 	}
 
-	if args.Network == nil {
-		return nil, errors.New("invalid value for required argument 'Network'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Router
 	err := ctx.RegisterResource("gcp:compute/router:Router", name, args, &resource, opts...)
@@ -227,6 +315,8 @@ type routerState struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// A URI of an NCC Gateway spoke
+	NccGateway *string `pulumi:"nccGateway"`
 	// A reference to the network to which this router belongs.
 	Network *string `pulumi:"network"`
 	// Additional params passed with the request, but not persisted as part of resource payload
@@ -262,6 +352,8 @@ type RouterState struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// A URI of an NCC Gateway spoke
+	NccGateway pulumi.StringPtrInput
 	// A reference to the network to which this router belongs.
 	Network pulumi.StringPtrInput
 	// Additional params passed with the request, but not persisted as part of resource payload
@@ -299,8 +391,10 @@ type routerArgs struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// A URI of an NCC Gateway spoke
+	NccGateway *string `pulumi:"nccGateway"`
 	// A reference to the network to which this router belongs.
-	Network string `pulumi:"network"`
+	Network *string `pulumi:"network"`
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params *RouterParams `pulumi:"params"`
@@ -331,8 +425,10 @@ type RouterArgs struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// A URI of an NCC Gateway spoke
+	NccGateway pulumi.StringPtrInput
 	// A reference to the network to which this router belongs.
-	Network pulumi.StringInput
+	Network pulumi.StringPtrInput
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
 	Params RouterParamsPtrInput
@@ -468,9 +564,14 @@ func (o RouterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// A URI of an NCC Gateway spoke
+func (o RouterOutput) NccGateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringPtrOutput { return v.NccGateway }).(pulumi.StringPtrOutput)
+}
+
 // A reference to the network to which this router belongs.
-func (o RouterOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+func (o RouterOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }
 
 // Additional params passed with the request, but not persisted as part of resource payload

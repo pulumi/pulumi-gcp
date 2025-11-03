@@ -564,7 +564,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -612,7 +612,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///     });
     /// 
     ///     // builder permissions need to stablize before it can pull the source zip
-    ///     var wait60s = new Time.Index.Sleep("wait_60s", new()
+    ///     var wait60s = new Time.Sleep("wait_60s", new()
     ///     {
     ///         CreateDuration = "60s",
     ///     }, new CustomResourceOptions

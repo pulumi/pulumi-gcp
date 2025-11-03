@@ -6828,6 +6828,14 @@ if not MYPY:
         """
         Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
         """
+        enable_k8s_certs_via_dns: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Controls whether the k8s certs auth is allowed via Dns.
+        """
+        enable_k8s_tokens_via_dns: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Controls whether the k8s token auth is allowed via Dns.
+        """
         endpoint: NotRequired[pulumi.Input[_builtins.str]]
         """
         The cluster's DNS endpoint.
@@ -6839,13 +6847,21 @@ elif False:
 class ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs:
     def __init__(__self__, *,
                  allow_external_traffic: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_k8s_certs_via_dns: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_k8s_tokens_via_dns: Optional[pulumi.Input[_builtins.bool]] = None,
                  endpoint: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_external_traffic: Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+        :param pulumi.Input[_builtins.bool] enable_k8s_certs_via_dns: Controls whether the k8s certs auth is allowed via Dns.
+        :param pulumi.Input[_builtins.bool] enable_k8s_tokens_via_dns: Controls whether the k8s token auth is allowed via Dns.
         :param pulumi.Input[_builtins.str] endpoint: The cluster's DNS endpoint.
         """
         if allow_external_traffic is not None:
             pulumi.set(__self__, "allow_external_traffic", allow_external_traffic)
+        if enable_k8s_certs_via_dns is not None:
+            pulumi.set(__self__, "enable_k8s_certs_via_dns", enable_k8s_certs_via_dns)
+        if enable_k8s_tokens_via_dns is not None:
+            pulumi.set(__self__, "enable_k8s_tokens_via_dns", enable_k8s_tokens_via_dns)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
 
@@ -6860,6 +6876,30 @@ class ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs:
     @allow_external_traffic.setter
     def allow_external_traffic(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "allow_external_traffic", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableK8sCertsViaDns")
+    def enable_k8s_certs_via_dns(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Controls whether the k8s certs auth is allowed via Dns.
+        """
+        return pulumi.get(self, "enable_k8s_certs_via_dns")
+
+    @enable_k8s_certs_via_dns.setter
+    def enable_k8s_certs_via_dns(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_k8s_certs_via_dns", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableK8sTokensViaDns")
+    def enable_k8s_tokens_via_dns(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Controls whether the k8s token auth is allowed via Dns.
+        """
+        return pulumi.get(self, "enable_k8s_tokens_via_dns")
+
+    @enable_k8s_tokens_via_dns.setter
+    def enable_k8s_tokens_via_dns(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_k8s_tokens_via_dns", value)
 
     @_builtins.property
     @pulumi.getter
@@ -7228,6 +7268,10 @@ if not MYPY:
         """
         The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
         """
+        membership_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
+        """
         pre_registered: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Whether the cluster has been registered via the fleet API.
@@ -7245,12 +7289,14 @@ class ClusterFleetArgs:
                  membership: Optional[pulumi.Input[_builtins.str]] = None,
                  membership_id: Optional[pulumi.Input[_builtins.str]] = None,
                  membership_location: Optional[pulumi.Input[_builtins.str]] = None,
+                 membership_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pre_registered: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] membership: The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
         :param pulumi.Input[_builtins.str] membership_id: The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
         :param pulumi.Input[_builtins.str] membership_location: The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
+        :param pulumi.Input[_builtins.str] membership_type: Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
         :param pulumi.Input[_builtins.bool] pre_registered: Whether the cluster has been registered via the fleet API.
         :param pulumi.Input[_builtins.str] project: The name of the Fleet host project where this cluster will be registered.
         """
@@ -7260,6 +7306,8 @@ class ClusterFleetArgs:
             pulumi.set(__self__, "membership_id", membership_id)
         if membership_location is not None:
             pulumi.set(__self__, "membership_location", membership_location)
+        if membership_type is not None:
+            pulumi.set(__self__, "membership_type", membership_type)
         if pre_registered is not None:
             pulumi.set(__self__, "pre_registered", pre_registered)
         if project is not None:
@@ -7300,6 +7348,18 @@ class ClusterFleetArgs:
     @membership_location.setter
     def membership_location(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "membership_location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="membershipType")
+    def membership_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
+        """
+        return pulumi.get(self, "membership_type")
+
+    @membership_type.setter
+    def membership_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "membership_type", value)
 
     @_builtins.property
     @pulumi.getter(name="preRegistered")

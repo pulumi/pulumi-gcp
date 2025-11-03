@@ -223,14 +223,14 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         service_project = gcp.organizations.Project("service_project",
             project_id="project-1",
             name="Service Project",
             org_id="123456789",
             deletion_policy="DELETE")
-        wait120s = time.index.Sleep("wait_120s", create_duration=120s,
+        wait120s = time.Sleep("wait_120s", create_duration="120s",
         opts = pulumi.ResourceOptions(depends_on=[service_project]))
         example = gcp.apphub.ServiceProjectAttachment("example", service_project_attachment_id=service_project.project_id,
         opts = pulumi.ResourceOptions(depends_on=[wait120s]))
@@ -240,14 +240,14 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         service_project_full = gcp.organizations.Project("service_project_full",
             project_id="project-1",
             name="Service Project Full",
             org_id="123456789",
             deletion_policy="DELETE")
-        wait120s = time.index.Sleep("wait_120s", create_duration=120s,
+        wait120s = time.Sleep("wait_120s", create_duration="120s",
         opts = pulumi.ResourceOptions(depends_on=[service_project_full]))
         example2 = gcp.apphub.ServiceProjectAttachment("example2",
             service_project_attachment_id=service_project_full.project_id,
@@ -304,14 +304,14 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         service_project = gcp.organizations.Project("service_project",
             project_id="project-1",
             name="Service Project",
             org_id="123456789",
             deletion_policy="DELETE")
-        wait120s = time.index.Sleep("wait_120s", create_duration=120s,
+        wait120s = time.Sleep("wait_120s", create_duration="120s",
         opts = pulumi.ResourceOptions(depends_on=[service_project]))
         example = gcp.apphub.ServiceProjectAttachment("example", service_project_attachment_id=service_project.project_id,
         opts = pulumi.ResourceOptions(depends_on=[wait120s]))
@@ -321,14 +321,14 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         service_project_full = gcp.organizations.Project("service_project_full",
             project_id="project-1",
             name="Service Project Full",
             org_id="123456789",
             deletion_policy="DELETE")
-        wait120s = time.index.Sleep("wait_120s", create_duration=120s,
+        wait120s = time.Sleep("wait_120s", create_duration="120s",
         opts = pulumi.ResourceOptions(depends_on=[service_project_full]))
         example2 = gcp.apphub.ServiceProjectAttachment("example2",
             service_project_attachment_id=service_project_full.project_id,

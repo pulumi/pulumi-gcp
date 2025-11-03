@@ -86,14 +86,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRing("key_ring", {
- *     name: "example-key-ring",
- *     location: "us-central1",
- * });
- * const key = new gcp.kms.CryptoKey("key", {
- *     name: "example-key",
- *     keyRing: keyRing.id,
- * });
  * const project = gcp.organizations.getProject({});
  * const example = new gcp.managedkafka.Cluster("example", {
  *     clusterId: "my-cluster",
@@ -108,17 +100,12 @@ import * as utilities from "../utilities";
  *                 subnet: project.then(project => `projects/${project.number}/regions/us-central1/subnetworks/default`),
  *             }],
  *         },
- *         kmsKey: key.id,
+ *         kmsKey: "example-key",
  *     },
  * });
  * const kafkaServiceIdentity = new gcp.projects.ServiceIdentity("kafka_service_identity", {
  *     project: project.then(project => project.projectId),
  *     service: "managedkafka.googleapis.com",
- * });
- * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMBinding("crypto_key_binding", {
- *     cryptoKeyId: key.id,
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-managedkafka.iam.gserviceaccount.com`)],
  * });
  * ```
  *

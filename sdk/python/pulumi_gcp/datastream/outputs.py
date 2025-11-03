@@ -19,6 +19,11 @@ __all__ = [
     'ConnectionProfileBigqueryProfile',
     'ConnectionProfileForwardSshConnectivity',
     'ConnectionProfileGcsProfile',
+    'ConnectionProfileMongodbProfile',
+    'ConnectionProfileMongodbProfileHostAddress',
+    'ConnectionProfileMongodbProfileSrvConnectionFormat',
+    'ConnectionProfileMongodbProfileSslConfig',
+    'ConnectionProfileMongodbProfileStandardConnectionFormat',
     'ConnectionProfileMysqlProfile',
     'ConnectionProfileMysqlProfileSslConfig',
     'ConnectionProfileOracleProfile',
@@ -32,6 +37,10 @@ __all__ = [
     'PrivateConnectionPscInterfaceConfig',
     'PrivateConnectionVpcPeeringConfig',
     'StreamBackfillAll',
+    'StreamBackfillAllMongodbExcludedObjects',
+    'StreamBackfillAllMongodbExcludedObjectsDatabase',
+    'StreamBackfillAllMongodbExcludedObjectsDatabaseCollection',
+    'StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField',
     'StreamBackfillAllMysqlExcludedObjects',
     'StreamBackfillAllMysqlExcludedObjectsMysqlDatabase',
     'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable',
@@ -64,6 +73,15 @@ __all__ = [
     'StreamDestinationConfigGcsDestinationConfigAvroFileFormat',
     'StreamDestinationConfigGcsDestinationConfigJsonFileFormat',
     'StreamSourceConfig',
+    'StreamSourceConfigMongodbSourceConfig',
+    'StreamSourceConfigMongodbSourceConfigExcludeObjects',
+    'StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase',
+    'StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection',
+    'StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField',
+    'StreamSourceConfigMongodbSourceConfigIncludeObjects',
+    'StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase',
+    'StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection',
+    'StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField',
     'StreamSourceConfigMysqlSourceConfig',
     'StreamSourceConfigMysqlSourceConfigBinaryLogPosition',
     'StreamSourceConfigMysqlSourceConfigExcludeObjects',
@@ -252,6 +270,372 @@ class ConnectionProfileGcsProfile(dict):
         The root path inside the Cloud Storage bucket.
         """
         return pulumi.get(self, "root_path")
+
+
+@pulumi.output_type
+class ConnectionProfileMongodbProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostAddresses":
+            suggest = "host_addresses"
+        elif key == "replicaSet":
+            suggest = "replica_set"
+        elif key == "secretManagerStoredPassword":
+            suggest = "secret_manager_stored_password"
+        elif key == "srvConnectionFormat":
+            suggest = "srv_connection_format"
+        elif key == "sslConfig":
+            suggest = "ssl_config"
+        elif key == "standardConnectionFormat":
+            suggest = "standard_connection_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileMongodbProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileMongodbProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileMongodbProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host_addresses: Sequence['outputs.ConnectionProfileMongodbProfileHostAddress'],
+                 username: _builtins.str,
+                 password: Optional[_builtins.str] = None,
+                 replica_set: Optional[_builtins.str] = None,
+                 secret_manager_stored_password: Optional[_builtins.str] = None,
+                 srv_connection_format: Optional['outputs.ConnectionProfileMongodbProfileSrvConnectionFormat'] = None,
+                 ssl_config: Optional['outputs.ConnectionProfileMongodbProfileSslConfig'] = None,
+                 standard_connection_format: Optional['outputs.ConnectionProfileMongodbProfileStandardConnectionFormat'] = None):
+        """
+        :param Sequence['ConnectionProfileMongodbProfileHostAddressArgs'] host_addresses: List of host addresses for a MongoDB cluster.
+               Structure is documented below.
+        :param _builtins.str username: Username for the MongoDB connection.
+        :param _builtins.str password: Password for the MongoDB connection. Mutually exclusive with
+               secretManagerStoredPassword.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str replica_set: Name of the replica set.
+        :param _builtins.str secret_manager_stored_password: A reference to a Secret Manager resource name storing the MongoDB
+               connection password. Mutually exclusive with password.
+        :param 'ConnectionProfileMongodbProfileSrvConnectionFormatArgs' srv_connection_format: Srv connection format. Mutually exclusive with
+               standard_connection_Format.
+        :param 'ConnectionProfileMongodbProfileSslConfigArgs' ssl_config: SSL configuration for the MongoDB connection.
+               Structure is documented below.
+        :param 'ConnectionProfileMongodbProfileStandardConnectionFormatArgs' standard_connection_format: Standard connection format. Mutually exclusive with
+               srv_connection_format.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "host_addresses", host_addresses)
+        pulumi.set(__self__, "username", username)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if replica_set is not None:
+            pulumi.set(__self__, "replica_set", replica_set)
+        if secret_manager_stored_password is not None:
+            pulumi.set(__self__, "secret_manager_stored_password", secret_manager_stored_password)
+        if srv_connection_format is not None:
+            pulumi.set(__self__, "srv_connection_format", srv_connection_format)
+        if ssl_config is not None:
+            pulumi.set(__self__, "ssl_config", ssl_config)
+        if standard_connection_format is not None:
+            pulumi.set(__self__, "standard_connection_format", standard_connection_format)
+
+    @_builtins.property
+    @pulumi.getter(name="hostAddresses")
+    def host_addresses(self) -> Sequence['outputs.ConnectionProfileMongodbProfileHostAddress']:
+        """
+        List of host addresses for a MongoDB cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "host_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        Username for the MongoDB connection.
+        """
+        return pulumi.get(self, "username")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Password for the MongoDB connection. Mutually exclusive with
+        secretManagerStoredPassword.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="replicaSet")
+    def replica_set(self) -> Optional[_builtins.str]:
+        """
+        Name of the replica set.
+        """
+        return pulumi.get(self, "replica_set")
+
+    @_builtins.property
+    @pulumi.getter(name="secretManagerStoredPassword")
+    def secret_manager_stored_password(self) -> Optional[_builtins.str]:
+        """
+        A reference to a Secret Manager resource name storing the MongoDB
+        connection password. Mutually exclusive with password.
+        """
+        return pulumi.get(self, "secret_manager_stored_password")
+
+    @_builtins.property
+    @pulumi.getter(name="srvConnectionFormat")
+    def srv_connection_format(self) -> Optional['outputs.ConnectionProfileMongodbProfileSrvConnectionFormat']:
+        """
+        Srv connection format. Mutually exclusive with
+        standard_connection_Format.
+        """
+        return pulumi.get(self, "srv_connection_format")
+
+    @_builtins.property
+    @pulumi.getter(name="sslConfig")
+    def ssl_config(self) -> Optional['outputs.ConnectionProfileMongodbProfileSslConfig']:
+        """
+        SSL configuration for the MongoDB connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ssl_config")
+
+    @_builtins.property
+    @pulumi.getter(name="standardConnectionFormat")
+    def standard_connection_format(self) -> Optional['outputs.ConnectionProfileMongodbProfileStandardConnectionFormat']:
+        """
+        Standard connection format. Mutually exclusive with
+        srv_connection_format.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "standard_connection_format")
+
+
+@pulumi.output_type
+class ConnectionProfileMongodbProfileHostAddress(dict):
+    def __init__(__self__, *,
+                 hostname: _builtins.str,
+                 port: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str hostname: Hostname for the connection.
+        :param _builtins.int port: Port for the connection.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> _builtins.str:
+        """
+        Hostname for the connection.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Port for the connection.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class ConnectionProfileMongodbProfileSrvConnectionFormat(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class ConnectionProfileMongodbProfileSslConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "caCertificateSet":
+            suggest = "ca_certificate_set"
+        elif key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientCertificateSet":
+            suggest = "client_certificate_set"
+        elif key == "clientKey":
+            suggest = "client_key"
+        elif key == "clientKeySet":
+            suggest = "client_key_set"
+        elif key == "secretManagerStoredClientKey":
+            suggest = "secret_manager_stored_client_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileMongodbProfileSslConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileMongodbProfileSslConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileMongodbProfileSslConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: Optional[_builtins.str] = None,
+                 ca_certificate_set: Optional[_builtins.bool] = None,
+                 client_certificate: Optional[_builtins.str] = None,
+                 client_certificate_set: Optional[_builtins.bool] = None,
+                 client_key: Optional[_builtins.str] = None,
+                 client_key_set: Optional[_builtins.bool] = None,
+                 secret_manager_stored_client_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ca_certificate: PEM-encoded certificate of the CA that signed the source database
+               server's certificate.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.bool ca_certificate_set: (Output)
+               Indicates whether the clientKey field is set.
+        :param _builtins.str client_certificate: PEM-encoded certificate that will be used by the replica to
+               authenticate against the source database server. If this field
+               is used then the 'clientKey' and the 'caCertificate' fields are
+               mandatory.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.bool client_certificate_set: (Output)
+               Indicates whether the clientCertificate field is set.
+        :param _builtins.str client_key: PEM-encoded private key associated with the Client Certificate.
+               If this field is used then the 'client_certificate' and the
+               'ca_certificate' fields are mandatory.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.bool client_key_set: (Output)
+               Indicates whether the clientKey field is set.
+        :param _builtins.str secret_manager_stored_client_key: A reference to a Secret Manager resource name storing the
+               PEM-encoded private key. Mutually exclusive with clientKey.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if ca_certificate_set is not None:
+            pulumi.set(__self__, "ca_certificate_set", ca_certificate_set)
+        if client_certificate is not None:
+            pulumi.set(__self__, "client_certificate", client_certificate)
+        if client_certificate_set is not None:
+            pulumi.set(__self__, "client_certificate_set", client_certificate_set)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if client_key_set is not None:
+            pulumi.set(__self__, "client_key_set", client_key_set)
+        if secret_manager_stored_client_key is not None:
+            pulumi.set(__self__, "secret_manager_stored_client_key", secret_manager_stored_client_key)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[_builtins.str]:
+        """
+        PEM-encoded certificate of the CA that signed the source database
+        server's certificate.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @_builtins.property
+    @pulumi.getter(name="caCertificateSet")
+    def ca_certificate_set(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Indicates whether the clientKey field is set.
+        """
+        return pulumi.get(self, "ca_certificate_set")
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> Optional[_builtins.str]:
+        """
+        PEM-encoded certificate that will be used by the replica to
+        authenticate against the source database server. If this field
+        is used then the 'clientKey' and the 'caCertificate' fields are
+        mandatory.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificateSet")
+    def client_certificate_set(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Indicates whether the clientCertificate field is set.
+        """
+        return pulumi.get(self, "client_certificate_set")
+
+    @_builtins.property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[_builtins.str]:
+        """
+        PEM-encoded private key associated with the Client Certificate.
+        If this field is used then the 'client_certificate' and the
+        'ca_certificate' fields are mandatory.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "client_key")
+
+    @_builtins.property
+    @pulumi.getter(name="clientKeySet")
+    def client_key_set(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Indicates whether the clientKey field is set.
+        """
+        return pulumi.get(self, "client_key_set")
+
+    @_builtins.property
+    @pulumi.getter(name="secretManagerStoredClientKey")
+    def secret_manager_stored_client_key(self) -> Optional[_builtins.str]:
+        """
+        A reference to a Secret Manager resource name storing the
+        PEM-encoded private key. Mutually exclusive with clientKey.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "secret_manager_stored_client_key")
+
+
+@pulumi.output_type
+class ConnectionProfileMongodbProfileStandardConnectionFormat(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "directConnection":
+            suggest = "direct_connection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileMongodbProfileStandardConnectionFormat. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileMongodbProfileStandardConnectionFormat.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileMongodbProfileStandardConnectionFormat.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 direct_connection: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool direct_connection: Specifies whether the client connects directly to the
+               host[:port] in the connection URI.
+        """
+        if direct_connection is not None:
+            pulumi.set(__self__, "direct_connection", direct_connection)
+
+    @_builtins.property
+    @pulumi.getter(name="directConnection")
+    def direct_connection(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether the client connects directly to the
+        host[:port] in the connection URI.
+        """
+        return pulumi.get(self, "direct_connection")
 
 
 @pulumi.output_type
@@ -1153,7 +1537,9 @@ class StreamBackfillAll(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "mysqlExcludedObjects":
+        if key == "mongodbExcludedObjects":
+            suggest = "mongodb_excluded_objects"
+        elif key == "mysqlExcludedObjects":
             suggest = "mysql_excluded_objects"
         elif key == "oracleExcludedObjects":
             suggest = "oracle_excluded_objects"
@@ -1176,12 +1562,15 @@ class StreamBackfillAll(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 mongodb_excluded_objects: Optional['outputs.StreamBackfillAllMongodbExcludedObjects'] = None,
                  mysql_excluded_objects: Optional['outputs.StreamBackfillAllMysqlExcludedObjects'] = None,
                  oracle_excluded_objects: Optional['outputs.StreamBackfillAllOracleExcludedObjects'] = None,
                  postgresql_excluded_objects: Optional['outputs.StreamBackfillAllPostgresqlExcludedObjects'] = None,
                  salesforce_excluded_objects: Optional['outputs.StreamBackfillAllSalesforceExcludedObjects'] = None,
                  sql_server_excluded_objects: Optional['outputs.StreamBackfillAllSqlServerExcludedObjects'] = None):
         """
+        :param 'StreamBackfillAllMongodbExcludedObjectsArgs' mongodb_excluded_objects: MongoDB data source objects to avoid backfilling.
+               Structure is documented below.
         :param 'StreamBackfillAllMysqlExcludedObjectsArgs' mysql_excluded_objects: MySQL data source objects to avoid backfilling.
                Structure is documented below.
         :param 'StreamBackfillAllOracleExcludedObjectsArgs' oracle_excluded_objects: PostgreSQL data source objects to avoid backfilling.
@@ -1193,6 +1582,8 @@ class StreamBackfillAll(dict):
         :param 'StreamBackfillAllSqlServerExcludedObjectsArgs' sql_server_excluded_objects: SQL Server data source objects to avoid backfilling.
                Structure is documented below.
         """
+        if mongodb_excluded_objects is not None:
+            pulumi.set(__self__, "mongodb_excluded_objects", mongodb_excluded_objects)
         if mysql_excluded_objects is not None:
             pulumi.set(__self__, "mysql_excluded_objects", mysql_excluded_objects)
         if oracle_excluded_objects is not None:
@@ -1203,6 +1594,15 @@ class StreamBackfillAll(dict):
             pulumi.set(__self__, "salesforce_excluded_objects", salesforce_excluded_objects)
         if sql_server_excluded_objects is not None:
             pulumi.set(__self__, "sql_server_excluded_objects", sql_server_excluded_objects)
+
+    @_builtins.property
+    @pulumi.getter(name="mongodbExcludedObjects")
+    def mongodb_excluded_objects(self) -> Optional['outputs.StreamBackfillAllMongodbExcludedObjects']:
+        """
+        MongoDB data source objects to avoid backfilling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mongodb_excluded_objects")
 
     @_builtins.property
     @pulumi.getter(name="mysqlExcludedObjects")
@@ -1248,6 +1648,109 @@ class StreamBackfillAll(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "sql_server_excluded_objects")
+
+
+@pulumi.output_type
+class StreamBackfillAllMongodbExcludedObjects(dict):
+    def __init__(__self__, *,
+                 databases: Sequence['outputs.StreamBackfillAllMongodbExcludedObjectsDatabase']):
+        """
+        :param Sequence['StreamBackfillAllMongodbExcludedObjectsDatabaseArgs'] databases: MongoDB databases in the cluster.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "databases", databases)
+
+    @_builtins.property
+    @pulumi.getter
+    def databases(self) -> Sequence['outputs.StreamBackfillAllMongodbExcludedObjectsDatabase']:
+        """
+        MongoDB databases in the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "databases")
+
+
+@pulumi.output_type
+class StreamBackfillAllMongodbExcludedObjectsDatabase(dict):
+    def __init__(__self__, *,
+                 database: _builtins.str,
+                 collections: Optional[Sequence['outputs.StreamBackfillAllMongodbExcludedObjectsDatabaseCollection']] = None):
+        """
+        :param _builtins.str database: Database name.
+        :param Sequence['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs'] collections: Collections in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "database", database)
+        if collections is not None:
+            pulumi.set(__self__, "collections", collections)
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> _builtins.str:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter
+    def collections(self) -> Optional[Sequence['outputs.StreamBackfillAllMongodbExcludedObjectsDatabaseCollection']]:
+        """
+        Collections in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "collections")
+
+
+@pulumi.output_type
+class StreamBackfillAllMongodbExcludedObjectsDatabaseCollection(dict):
+    def __init__(__self__, *,
+                 collection: _builtins.str,
+                 fields: Optional[Sequence['outputs.StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField']] = None):
+        """
+        :param _builtins.str collection: Collection name.
+        :param Sequence['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs'] fields: Fields in the collection.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "collection", collection)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+
+    @_builtins.property
+    @pulumi.getter
+    def collection(self) -> _builtins.str:
+        """
+        Collection name.
+        """
+        return pulumi.get(self, "collection")
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Optional[Sequence['outputs.StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField']]:
+        """
+        Fields in the collection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+
+@pulumi.output_type
+class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField(dict):
+    def __init__(__self__, *,
+                 field: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str field: Field name.
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> Optional[_builtins.str]:
+        """
+        Field name.
+        """
+        return pulumi.get(self, "field")
 
 
 @pulumi.output_type
@@ -2979,6 +3482,8 @@ class StreamSourceConfig(dict):
         suggest = None
         if key == "sourceConnectionProfile":
             suggest = "source_connection_profile"
+        elif key == "mongodbSourceConfig":
+            suggest = "mongodb_source_config"
         elif key == "mysqlSourceConfig":
             suggest = "mysql_source_config"
         elif key == "oracleSourceConfig":
@@ -3003,6 +3508,7 @@ class StreamSourceConfig(dict):
 
     def __init__(__self__, *,
                  source_connection_profile: _builtins.str,
+                 mongodb_source_config: Optional['outputs.StreamSourceConfigMongodbSourceConfig'] = None,
                  mysql_source_config: Optional['outputs.StreamSourceConfigMysqlSourceConfig'] = None,
                  oracle_source_config: Optional['outputs.StreamSourceConfigOracleSourceConfig'] = None,
                  postgresql_source_config: Optional['outputs.StreamSourceConfigPostgresqlSourceConfig'] = None,
@@ -3010,6 +3516,8 @@ class StreamSourceConfig(dict):
                  sql_server_source_config: Optional['outputs.StreamSourceConfigSqlServerSourceConfig'] = None):
         """
         :param _builtins.str source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+        :param 'StreamSourceConfigMongodbSourceConfigArgs' mongodb_source_config: MongoDB source configuration.
+               Structure is documented below.
         :param 'StreamSourceConfigMysqlSourceConfigArgs' mysql_source_config: MySQL data source configuration.
                Structure is documented below.
         :param 'StreamSourceConfigOracleSourceConfigArgs' oracle_source_config: MySQL data source configuration.
@@ -3022,6 +3530,8 @@ class StreamSourceConfig(dict):
                Structure is documented below.
         """
         pulumi.set(__self__, "source_connection_profile", source_connection_profile)
+        if mongodb_source_config is not None:
+            pulumi.set(__self__, "mongodb_source_config", mongodb_source_config)
         if mysql_source_config is not None:
             pulumi.set(__self__, "mysql_source_config", mysql_source_config)
         if oracle_source_config is not None:
@@ -3040,6 +3550,15 @@ class StreamSourceConfig(dict):
         Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
         """
         return pulumi.get(self, "source_connection_profile")
+
+    @_builtins.property
+    @pulumi.getter(name="mongodbSourceConfig")
+    def mongodb_source_config(self) -> Optional['outputs.StreamSourceConfigMongodbSourceConfig']:
+        """
+        MongoDB source configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mongodb_source_config")
 
     @_builtins.property
     @pulumi.getter(name="mysqlSourceConfig")
@@ -3085,6 +3604,290 @@ class StreamSourceConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "sql_server_source_config")
+
+
+@pulumi.output_type
+class StreamSourceConfigMongodbSourceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeObjects":
+            suggest = "exclude_objects"
+        elif key == "includeObjects":
+            suggest = "include_objects"
+        elif key == "maxConcurrentBackfillTasks":
+            suggest = "max_concurrent_backfill_tasks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigMongodbSourceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigMongodbSourceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigMongodbSourceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exclude_objects: Optional['outputs.StreamSourceConfigMongodbSourceConfigExcludeObjects'] = None,
+                 include_objects: Optional['outputs.StreamSourceConfigMongodbSourceConfigIncludeObjects'] = None,
+                 max_concurrent_backfill_tasks: Optional[_builtins.int] = None):
+        """
+        :param 'StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs' exclude_objects: MongoDB collections to include in the stream.
+               Structure is documented below.
+        :param 'StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs' include_objects: MongoDB collections to include in the stream.
+               Structure is documented below.
+        :param _builtins.int max_concurrent_backfill_tasks: Optional. Maximum number of concurrent backfill tasks. The number
+               should be non-negative and less than or equal to 50. If not set
+               (or set to 0), the system''s default value is used
+        """
+        if exclude_objects is not None:
+            pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if include_objects is not None:
+            pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_backfill_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
+
+    @_builtins.property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> Optional['outputs.StreamSourceConfigMongodbSourceConfigExcludeObjects']:
+        """
+        MongoDB collections to include in the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @_builtins.property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> Optional['outputs.StreamSourceConfigMongodbSourceConfigIncludeObjects']:
+        """
+        MongoDB collections to include in the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @_builtins.property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> Optional[_builtins.int]:
+        """
+        Optional. Maximum number of concurrent backfill tasks. The number
+        should be non-negative and less than or equal to 50. If not set
+        (or set to 0), the system''s default value is used
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+
+@pulumi.output_type
+class StreamSourceConfigMongodbSourceConfigExcludeObjects(dict):
+    def __init__(__self__, *,
+                 databases: Optional[Sequence['outputs.StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase']] = None):
+        """
+        :param Sequence['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs'] databases: MongoDB databases in the cluster.
+               Structure is documented below.
+        """
+        if databases is not None:
+            pulumi.set(__self__, "databases", databases)
+
+    @_builtins.property
+    @pulumi.getter
+    def databases(self) -> Optional[Sequence['outputs.StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase']]:
+        """
+        MongoDB databases in the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "databases")
+
+
+@pulumi.output_type
+class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase(dict):
+    def __init__(__self__, *,
+                 collections: Optional[Sequence['outputs.StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection']] = None,
+                 database: Optional[_builtins.str] = None):
+        """
+        :param Sequence['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs'] collections: Collections in the database.
+               Structure is documented below.
+        :param _builtins.str database: Database name.
+        """
+        if collections is not None:
+            pulumi.set(__self__, "collections", collections)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+
+    @_builtins.property
+    @pulumi.getter
+    def collections(self) -> Optional[Sequence['outputs.StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection']]:
+        """
+        Collections in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "collections")
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional[_builtins.str]:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "database")
+
+
+@pulumi.output_type
+class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection(dict):
+    def __init__(__self__, *,
+                 collection: Optional[_builtins.str] = None,
+                 fields: Optional[Sequence['outputs.StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField']] = None):
+        """
+        :param _builtins.str collection: Collection name.
+        :param Sequence['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs'] fields: Fields in the collection.
+               Structure is documented below.
+        """
+        if collection is not None:
+            pulumi.set(__self__, "collection", collection)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+
+    @_builtins.property
+    @pulumi.getter
+    def collection(self) -> Optional[_builtins.str]:
+        """
+        Collection name.
+        """
+        return pulumi.get(self, "collection")
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Optional[Sequence['outputs.StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField']]:
+        """
+        Fields in the collection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+
+@pulumi.output_type
+class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField(dict):
+    def __init__(__self__, *,
+                 field: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str field: Field name.
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> Optional[_builtins.str]:
+        """
+        Field name.
+        """
+        return pulumi.get(self, "field")
+
+
+@pulumi.output_type
+class StreamSourceConfigMongodbSourceConfigIncludeObjects(dict):
+    def __init__(__self__, *,
+                 databases: Optional[Sequence['outputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase']] = None):
+        """
+        :param Sequence['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs'] databases: MongoDB databases in the cluster.
+               Structure is documented below.
+        """
+        if databases is not None:
+            pulumi.set(__self__, "databases", databases)
+
+    @_builtins.property
+    @pulumi.getter
+    def databases(self) -> Optional[Sequence['outputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase']]:
+        """
+        MongoDB databases in the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "databases")
+
+
+@pulumi.output_type
+class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase(dict):
+    def __init__(__self__, *,
+                 collections: Optional[Sequence['outputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection']] = None,
+                 database: Optional[_builtins.str] = None):
+        """
+        :param Sequence['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs'] collections: Collections in the database.
+               Structure is documented below.
+        :param _builtins.str database: Database name.
+        """
+        if collections is not None:
+            pulumi.set(__self__, "collections", collections)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+
+    @_builtins.property
+    @pulumi.getter
+    def collections(self) -> Optional[Sequence['outputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection']]:
+        """
+        Collections in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "collections")
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional[_builtins.str]:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "database")
+
+
+@pulumi.output_type
+class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection(dict):
+    def __init__(__self__, *,
+                 collection: Optional[_builtins.str] = None,
+                 fields: Optional[Sequence['outputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField']] = None):
+        """
+        :param _builtins.str collection: Collection name.
+        :param Sequence['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs'] fields: Fields in the collection.
+               Structure is documented below.
+        """
+        if collection is not None:
+            pulumi.set(__self__, "collection", collection)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+
+    @_builtins.property
+    @pulumi.getter
+    def collection(self) -> Optional[_builtins.str]:
+        """
+        Collection name.
+        """
+        return pulumi.get(self, "collection")
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Optional[Sequence['outputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField']]:
+        """
+        Fields in the collection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+
+@pulumi.output_type
+class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField(dict):
+    def __init__(__self__, *,
+                 field: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str field: Field name.
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> Optional[_builtins.str]:
+        """
+        Field name.
+        """
+        return pulumi.get(self, "field")
 
 
 @pulumi.output_type

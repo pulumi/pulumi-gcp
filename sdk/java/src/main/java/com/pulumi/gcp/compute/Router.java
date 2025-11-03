@@ -127,6 +127,95 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Router Ncc Gw
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import com.pulumi.gcp.networkconnectivity.Spoke;
+ * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeGatewayArgs;
+ * import com.pulumi.gcp.compute.Router;
+ * import com.pulumi.gcp.compute.RouterArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("net-spoke")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
+ *             .name("tf-test-subnet_21197")
+ *             .ipCidrRange("10.0.0.0/28")
+ *             .region("us-central1")
+ *             .network(network.selfLink())
+ *             .build());
+ * 
+ *         var basicHub = new Hub("basicHub", HubArgs.builder()
+ *             .name("hub")
+ *             .description("A sample hub")
+ *             .labels(Map.of("label-two", "value-one"))
+ *             .presetTopology("HYBRID_INSPECTION")
+ *             .build());
+ * 
+ *         var primary = new Spoke("primary", SpokeArgs.builder()
+ *             .name("my-ncc-gw")
+ *             .location("us-central1")
+ *             .description("A sample spoke of type Gateway")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .hub(basicHub.id())
+ *             .gateway(SpokeGatewayArgs.builder()
+ *                 .ipRangeReservations(SpokeGatewayIpRangeReservationArgs.builder()
+ *                     .ipRange("10.0.0.0/23")
+ *                     .build())
+ *                 .capacity("CAPACITY_1_GBPS")
+ *                 .build())
+ *             .group("gateways")
+ *             .build());
+ * 
+ *         var foobar = new Router("foobar", RouterArgs.builder()
+ *             .name("my-router")
+ *             .bgp(RouterBgpArgs.builder()
+ *                 .asn(64514)
+ *                 .advertiseMode("CUSTOM")
+ *                 .advertisedGroups("ALL_SUBNETS")
+ *                 .advertisedIpRanges(                
+ *                     RouterBgpAdvertisedIpRangeArgs.builder()
+ *                         .range("1.2.3.4")
+ *                         .build(),
+ *                     RouterBgpAdvertisedIpRangeArgs.builder()
+ *                         .range("6.7.0.0/16")
+ *                         .build())
+ *                 .build())
+ *             .nccGateway(primary.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -262,18 +351,32 @@ public class Router extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * A URI of an NCC Gateway spoke
+     * 
+     */
+    @Export(name="nccGateway", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> nccGateway;
+
+    /**
+     * @return A URI of an NCC Gateway spoke
+     * 
+     */
+    public Output<Optional<String>> nccGateway() {
+        return Codegen.optional(this.nccGateway);
+    }
+    /**
      * A reference to the network to which this router belongs.
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
-    private Output<String> network;
+    private Output</* @Nullable */ String> network;
 
     /**
      * @return A reference to the network to which this router belongs.
      * 
      */
-    public Output<String> network() {
-        return this.network;
+    public Output<Optional<String>> network() {
+        return Codegen.optional(this.network);
     }
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
@@ -348,7 +451,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Router(java.lang.String name, RouterArgs args) {
+    public Router(java.lang.String name, @Nullable RouterArgs args) {
         this(name, args, null);
     }
     /**
@@ -357,7 +460,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Router(java.lang.String name, RouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Router(java.lang.String name, @Nullable RouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/router:Router", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -365,7 +468,7 @@ public class Router extends com.pulumi.resources.CustomResource {
         super("gcp:compute/router:Router", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static RouterArgs makeArgs(RouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static RouterArgs makeArgs(@Nullable RouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

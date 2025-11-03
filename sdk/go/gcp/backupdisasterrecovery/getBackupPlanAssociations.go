@@ -11,7 +11,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+//
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := backupdisasterrecovery.GetBackupPlanAssociations(ctx, &backupdisasterrecovery.GetBackupPlanAssociationsArgs{
+//				Location:     "us-central1",
+//				ResourceType: "compute.googleapis.com/Instance",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetBackupPlanAssociations(ctx *pulumi.Context, args *GetBackupPlanAssociationsArgs, opts ...pulumi.InvokeOption) (*GetBackupPlanAssociationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupPlanAssociationsResult
@@ -24,17 +51,25 @@ func GetBackupPlanAssociations(ctx *pulumi.Context, args *GetBackupPlanAssociati
 
 // A collection of arguments for invoking getBackupPlanAssociations.
 type GetBackupPlanAssociationsArgs struct {
-	Location     string  `pulumi:"location"`
-	Project      *string `pulumi:"project"`
-	ResourceType string  `pulumi:"resourceType"`
+	// The location where the Backup Plan Association resources reside.
+	Location string `pulumi:"location"`
+	// The project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+	//
+	// ***
+	ResourceType string `pulumi:"resourceType"`
 }
 
 // A collection of values returned by getBackupPlanAssociations.
 type GetBackupPlanAssociationsResult struct {
+	// A list of the backup plan associations found.
 	Associations []GetBackupPlanAssociationsAssociation `pulumi:"associations"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string `pulumi:"id"`
-	Location     string `pulumi:"location"`
+	Id       string `pulumi:"id"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
 	Project      string `pulumi:"project"`
 	ResourceType string `pulumi:"resourceType"`
 }
@@ -50,9 +85,15 @@ func GetBackupPlanAssociationsOutput(ctx *pulumi.Context, args GetBackupPlanAsso
 
 // A collection of arguments for invoking getBackupPlanAssociations.
 type GetBackupPlanAssociationsOutputArgs struct {
-	Location     pulumi.StringInput    `pulumi:"location"`
-	Project      pulumi.StringPtrInput `pulumi:"project"`
-	ResourceType pulumi.StringInput    `pulumi:"resourceType"`
+	// The location where the Backup Plan Association resources reside.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+	//
+	// ***
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
 func (GetBackupPlanAssociationsOutputArgs) ElementType() reflect.Type {
@@ -74,6 +115,7 @@ func (o GetBackupPlanAssociationsResultOutput) ToGetBackupPlanAssociationsResult
 	return o
 }
 
+// A list of the backup plan associations found.
 func (o GetBackupPlanAssociationsResultOutput) Associations() GetBackupPlanAssociationsAssociationArrayOutput {
 	return o.ApplyT(func(v GetBackupPlanAssociationsResult) []GetBackupPlanAssociationsAssociation { return v.Associations }).(GetBackupPlanAssociationsAssociationArrayOutput)
 }
@@ -87,6 +129,7 @@ func (o GetBackupPlanAssociationsResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupPlanAssociationsResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
 func (o GetBackupPlanAssociationsResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupPlanAssociationsResult) string { return v.Project }).(pulumi.StringOutput)
 }

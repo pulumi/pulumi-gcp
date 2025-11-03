@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TransferJobTransferSpecTransferOptionsMetadataOptions {
     /**
-     * @return Specifies how each object&#39;s ACLs should be preserved for transfers between Google Cloud Storage buckets
+     * @return Specifies how each object&#39;s ACLs should be preserved for transfers between Google Cloud Storage buckets.
      * 
      */
     private @Nullable String acl;
@@ -22,7 +22,7 @@ public final class TransferJobTransferSpecTransferOptionsMetadataOptions {
      */
     private @Nullable String gid;
     /**
-     * @return Specifies how each object&#39;s Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+     * @return Specifies how each object&#39;s Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
      * 
      */
     private @Nullable String kmsKey;
@@ -32,7 +32,7 @@ public final class TransferJobTransferSpecTransferOptionsMetadataOptions {
      */
     private @Nullable String mode;
     /**
-     * @return Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+     * @return Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
      * 
      */
     private @Nullable String storageClass;
@@ -42,7 +42,7 @@ public final class TransferJobTransferSpecTransferOptionsMetadataOptions {
      */
     private @Nullable String symlink;
     /**
-     * @return SSpecifies how each object&#39;s temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+     * @return Specifies how each object&#39;s temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
      * 
      */
     private @Nullable String temporaryHold;
@@ -59,7 +59,7 @@ public final class TransferJobTransferSpecTransferOptionsMetadataOptions {
 
     private TransferJobTransferSpecTransferOptionsMetadataOptions() {}
     /**
-     * @return Specifies how each object&#39;s ACLs should be preserved for transfers between Google Cloud Storage buckets
+     * @return Specifies how each object&#39;s ACLs should be preserved for transfers between Google Cloud Storage buckets.
      * 
      */
     public Optional<String> acl() {
@@ -73,7 +73,7 @@ public final class TransferJobTransferSpecTransferOptionsMetadataOptions {
         return Optional.ofNullable(this.gid);
     }
     /**
-     * @return Specifies how each object&#39;s Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+     * @return Specifies how each object&#39;s Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
      * 
      */
     public Optional<String> kmsKey() {
@@ -87,7 +87,7 @@ public final class TransferJobTransferSpecTransferOptionsMetadataOptions {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+     * @return Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
      * 
      */
     public Optional<String> storageClass() {
@@ -101,7 +101,7 @@ public final class TransferJobTransferSpecTransferOptionsMetadataOptions {
         return Optional.ofNullable(this.symlink);
     }
     /**
-     * @return SSpecifies how each object&#39;s temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+     * @return Specifies how each object&#39;s temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
      * 
      */
     public Optional<String> temporaryHold() {

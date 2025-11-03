@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
     public sealed class StreamSourceConfig
     {
         /// <summary>
+        /// MongoDB source configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.StreamSourceConfigMongodbSourceConfig? MongodbSourceConfig;
+        /// <summary>
         /// MySQL data source configuration.
         /// Structure is documented below.
         /// </summary>
@@ -45,6 +50,8 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
         [OutputConstructor]
         private StreamSourceConfig(
+            Outputs.StreamSourceConfigMongodbSourceConfig? mongodbSourceConfig,
+
             Outputs.StreamSourceConfigMysqlSourceConfig? mysqlSourceConfig,
 
             Outputs.StreamSourceConfigOracleSourceConfig? oracleSourceConfig,
@@ -57,6 +64,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
             Outputs.StreamSourceConfigSqlServerSourceConfig? sqlServerSourceConfig)
         {
+            MongodbSourceConfig = mongodbSourceConfig;
             MysqlSourceConfig = mysqlSourceConfig;
             OracleSourceConfig = oracleSourceConfig;
             PostgresqlSourceConfig = postgresqlSourceConfig;

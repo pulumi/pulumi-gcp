@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.Firebase
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.Firebase
     ///         ServiceName = "firebasedatabase.googleapis.com",
     ///     });
     /// 
-    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     var wait60Seconds = new Time.Sleep("wait_60_seconds", new()
     ///     {
     ///         CreateDuration = "60s",
     ///     }, new CustomResourceOptions

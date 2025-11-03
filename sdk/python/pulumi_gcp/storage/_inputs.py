@@ -215,6 +215,8 @@ __all__ = [
     'TransferJobTransferSpecPosixDataSinkArgsDict',
     'TransferJobTransferSpecPosixDataSourceArgs',
     'TransferJobTransferSpecPosixDataSourceArgsDict',
+    'TransferJobTransferSpecTransferManifestArgs',
+    'TransferJobTransferSpecTransferManifestArgsDict',
     'TransferJobTransferSpecTransferOptionsArgs',
     'TransferJobTransferSpecTransferOptionsArgsDict',
     'TransferJobTransferSpecTransferOptionsMetadataOptionsArgs',
@@ -4736,7 +4738,7 @@ if not MYPY:
         """
         metadata_options: NotRequired[pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgsDict']]
         """
-        Specifies the metadata options for running a transfer
+        Specifies the metadata options for running a transfer. Structure documented below.
         """
         overwrite_objects_already_existing_in_sink: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -4761,7 +4763,7 @@ class TransferJobReplicationSpecTransferOptionsArgs:
         :param pulumi.Input[_builtins.bool] delete_objects_from_source_after_transfer: Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
         :param pulumi.Input[_builtins.bool] delete_objects_unique_in_sink: Whether objects that exist only in the sink should be deleted. Note that this option and
                `delete_objects_from_source_after_transfer` are mutually exclusive.
-        :param pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs'] metadata_options: Specifies the metadata options for running a transfer
+        :param pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs'] metadata_options: Specifies the metadata options for running a transfer. Structure documented below.
         :param pulumi.Input[_builtins.bool] overwrite_objects_already_existing_in_sink: Whether overwriting objects that already exist in the sink is allowed.
         :param pulumi.Input[_builtins.str] overwrite_when: When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
         """
@@ -4805,7 +4807,7 @@ class TransferJobReplicationSpecTransferOptionsArgs:
     @pulumi.getter(name="metadataOptions")
     def metadata_options(self) -> Optional[pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs']]:
         """
-        Specifies the metadata options for running a transfer
+        Specifies the metadata options for running a transfer. Structure documented below.
         """
         return pulumi.get(self, "metadata_options")
 
@@ -4842,7 +4844,7 @@ if not MYPY:
     class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgsDict(TypedDict):
         acl: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
         """
         gid: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -4850,7 +4852,7 @@ if not MYPY:
         """
         kms_key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
         """
         mode: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -4858,7 +4860,7 @@ if not MYPY:
         """
         storage_class: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
         """
         symlink: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -4866,7 +4868,7 @@ if not MYPY:
         """
         temporary_hold: NotRequired[pulumi.Input[_builtins.str]]
         """
-        SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
         """
         time_created: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -4892,13 +4894,13 @@ class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs:
                  time_created: Optional[pulumi.Input[_builtins.str]] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] acl: Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        :param pulumi.Input[_builtins.str] acl: Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
         :param pulumi.Input[_builtins.str] gid: Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
-        :param pulumi.Input[_builtins.str] kms_key: Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        :param pulumi.Input[_builtins.str] kms_key: Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
         :param pulumi.Input[_builtins.str] mode: Specifies how each file's mode attribute should be handled by the transfer.
-        :param pulumi.Input[_builtins.str] storage_class: Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        :param pulumi.Input[_builtins.str] storage_class: Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
         :param pulumi.Input[_builtins.str] symlink: Specifies how symlinks should be handled by the transfer.
-        :param pulumi.Input[_builtins.str] temporary_hold: SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        :param pulumi.Input[_builtins.str] temporary_hold: Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
         :param pulumi.Input[_builtins.str] time_created: Specifies how each object's timeCreated metadata is preserved for transfers.
         :param pulumi.Input[_builtins.str] uid: Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
         """
@@ -4925,7 +4927,7 @@ class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs:
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
         """
         return pulumi.get(self, "acl")
 
@@ -4949,7 +4951,7 @@ class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs:
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
         """
         return pulumi.get(self, "kms_key")
 
@@ -4973,7 +4975,7 @@ class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs:
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
         """
         return pulumi.get(self, "storage_class")
 
@@ -4997,7 +4999,7 @@ class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs:
     @pulumi.getter(name="temporaryHold")
     def temporary_hold(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
         """
         return pulumi.get(self, "temporary_hold")
 
@@ -5397,6 +5399,10 @@ if not MYPY:
         """
         Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
         """
+        transfer_manifest: NotRequired[pulumi.Input['TransferJobTransferSpecTransferManifestArgsDict']]
+        """
+        Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+        """
         transfer_options: NotRequired[pulumi.Input['TransferJobTransferSpecTransferOptionsArgsDict']]
         """
         Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
@@ -5419,6 +5425,7 @@ class TransferJobTransferSpecArgs:
                  posix_data_source: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs']] = None,
                  sink_agent_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
                  source_agent_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 transfer_manifest: Optional[pulumi.Input['TransferJobTransferSpecTransferManifestArgs']] = None,
                  transfer_options: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArgs']] = None):
         """
         :param pulumi.Input['TransferJobTransferSpecAwsS3CompatibleDataSourceArgs'] aws_s3_compatible_data_source: An AWS S3 Compatible data source. Structure documented below.
@@ -5433,6 +5440,7 @@ class TransferJobTransferSpecArgs:
         :param pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs'] posix_data_source: A POSIX filesystem data source. Structure documented below.
         :param pulumi.Input[_builtins.str] sink_agent_pool_name: Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
         :param pulumi.Input[_builtins.str] source_agent_pool_name: Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+        :param pulumi.Input['TransferJobTransferSpecTransferManifestArgs'] transfer_manifest: Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecTransferOptionsArgs'] transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
         if aws_s3_compatible_data_source is not None:
@@ -5459,6 +5467,8 @@ class TransferJobTransferSpecArgs:
             pulumi.set(__self__, "sink_agent_pool_name", sink_agent_pool_name)
         if source_agent_pool_name is not None:
             pulumi.set(__self__, "source_agent_pool_name", source_agent_pool_name)
+        if transfer_manifest is not None:
+            pulumi.set(__self__, "transfer_manifest", transfer_manifest)
         if transfer_options is not None:
             pulumi.set(__self__, "transfer_options", transfer_options)
 
@@ -5605,6 +5615,18 @@ class TransferJobTransferSpecArgs:
     @source_agent_pool_name.setter
     def source_agent_pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "source_agent_pool_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transferManifest")
+    def transfer_manifest(self) -> Optional[pulumi.Input['TransferJobTransferSpecTransferManifestArgs']]:
+        """
+        Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+        """
+        return pulumi.get(self, "transfer_manifest")
+
+    @transfer_manifest.setter
+    def transfer_manifest(self, value: Optional[pulumi.Input['TransferJobTransferSpecTransferManifestArgs']]):
+        pulumi.set(self, "transfer_manifest", value)
 
     @_builtins.property
     @pulumi.getter(name="transferOptions")
@@ -6598,6 +6620,37 @@ class TransferJobTransferSpecPosixDataSourceArgs:
 
 
 if not MYPY:
+    class TransferJobTransferSpecTransferManifestArgsDict(TypedDict):
+        location: pulumi.Input[_builtins.str]
+        """
+        The **GCS URI** to the manifest file (CSV or line-delimited). Example: `gs://my-bucket/manifest.csv`
+        """
+elif False:
+    TransferJobTransferSpecTransferManifestArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TransferJobTransferSpecTransferManifestArgs:
+    def __init__(__self__, *,
+                 location: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] location: The **GCS URI** to the manifest file (CSV or line-delimited). Example: `gs://my-bucket/manifest.csv`
+        """
+        pulumi.set(__self__, "location", location)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[_builtins.str]:
+        """
+        The **GCS URI** to the manifest file (CSV or line-delimited). Example: `gs://my-bucket/manifest.csv`
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "location", value)
+
+
+if not MYPY:
     class TransferJobTransferSpecTransferOptionsArgsDict(TypedDict):
         delete_objects_from_source_after_transfer: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -6610,7 +6663,7 @@ if not MYPY:
         """
         metadata_options: NotRequired[pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgsDict']]
         """
-        Specifies the metadata options for running a transfer
+        Specifies the metadata options for running a transfer. Structure documented below.
         """
         overwrite_objects_already_existing_in_sink: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -6635,7 +6688,7 @@ class TransferJobTransferSpecTransferOptionsArgs:
         :param pulumi.Input[_builtins.bool] delete_objects_from_source_after_transfer: Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
         :param pulumi.Input[_builtins.bool] delete_objects_unique_in_sink: Whether objects that exist only in the sink should be deleted. Note that this option and
                `delete_objects_from_source_after_transfer` are mutually exclusive.
-        :param pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs'] metadata_options: Specifies the metadata options for running a transfer
+        :param pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs'] metadata_options: Specifies the metadata options for running a transfer. Structure documented below.
         :param pulumi.Input[_builtins.bool] overwrite_objects_already_existing_in_sink: Whether overwriting objects that already exist in the sink is allowed.
         :param pulumi.Input[_builtins.str] overwrite_when: When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
         """
@@ -6679,7 +6732,7 @@ class TransferJobTransferSpecTransferOptionsArgs:
     @pulumi.getter(name="metadataOptions")
     def metadata_options(self) -> Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs']]:
         """
-        Specifies the metadata options for running a transfer
+        Specifies the metadata options for running a transfer. Structure documented below.
         """
         return pulumi.get(self, "metadata_options")
 
@@ -6716,7 +6769,7 @@ if not MYPY:
     class TransferJobTransferSpecTransferOptionsMetadataOptionsArgsDict(TypedDict):
         acl: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
         """
         gid: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -6724,7 +6777,7 @@ if not MYPY:
         """
         kms_key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
         """
         mode: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -6732,7 +6785,7 @@ if not MYPY:
         """
         storage_class: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
         """
         symlink: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -6740,7 +6793,7 @@ if not MYPY:
         """
         temporary_hold: NotRequired[pulumi.Input[_builtins.str]]
         """
-        SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
         """
         time_created: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -6766,13 +6819,13 @@ class TransferJobTransferSpecTransferOptionsMetadataOptionsArgs:
                  time_created: Optional[pulumi.Input[_builtins.str]] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] acl: Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        :param pulumi.Input[_builtins.str] acl: Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
         :param pulumi.Input[_builtins.str] gid: Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
-        :param pulumi.Input[_builtins.str] kms_key: Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        :param pulumi.Input[_builtins.str] kms_key: Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
         :param pulumi.Input[_builtins.str] mode: Specifies how each file's mode attribute should be handled by the transfer.
-        :param pulumi.Input[_builtins.str] storage_class: Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        :param pulumi.Input[_builtins.str] storage_class: Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
         :param pulumi.Input[_builtins.str] symlink: Specifies how symlinks should be handled by the transfer.
-        :param pulumi.Input[_builtins.str] temporary_hold: SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        :param pulumi.Input[_builtins.str] temporary_hold: Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
         :param pulumi.Input[_builtins.str] time_created: Specifies how each object's timeCreated metadata is preserved for transfers.
         :param pulumi.Input[_builtins.str] uid: Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
         """
@@ -6799,7 +6852,7 @@ class TransferJobTransferSpecTransferOptionsMetadataOptionsArgs:
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
         """
         return pulumi.get(self, "acl")
 
@@ -6823,7 +6876,7 @@ class TransferJobTransferSpecTransferOptionsMetadataOptionsArgs:
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
         """
         return pulumi.get(self, "kms_key")
 
@@ -6847,7 +6900,7 @@ class TransferJobTransferSpecTransferOptionsMetadataOptionsArgs:
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
         """
         return pulumi.get(self, "storage_class")
 
@@ -6871,7 +6924,7 @@ class TransferJobTransferSpecTransferOptionsMetadataOptionsArgs:
     @pulumi.getter(name="temporaryHold")
     def temporary_hold(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
         """
         return pulumi.get(self, "temporary_hold")
 

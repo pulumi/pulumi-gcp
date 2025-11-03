@@ -4730,6 +4730,139 @@ func (o GetNpmPackagesNpmPackageArrayOutput) Index(i pulumi.IntInput) GetNpmPack
 	}).(GetNpmPackagesNpmPackageOutput)
 }
 
+type GetPackagesPackage struct {
+	// Client specified annotations.
+	Annotations map[string]string `pulumi:"annotations"`
+	// The time, as a RFC 3339 string, this package was created.
+	CreateTime string `pulumi:"createTime"`
+	// The display name of the package.
+	DisplayName string `pulumi:"displayName"`
+	// The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped.
+	Name string `pulumi:"name"`
+	// The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetPackagesPackageInput is an input type that accepts GetPackagesPackageArgs and GetPackagesPackageOutput values.
+// You can construct a concrete instance of `GetPackagesPackageInput` via:
+//
+//	GetPackagesPackageArgs{...}
+type GetPackagesPackageInput interface {
+	pulumi.Input
+
+	ToGetPackagesPackageOutput() GetPackagesPackageOutput
+	ToGetPackagesPackageOutputWithContext(context.Context) GetPackagesPackageOutput
+}
+
+type GetPackagesPackageArgs struct {
+	// Client specified annotations.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// The time, as a RFC 3339 string, this package was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The display name of the package.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetPackagesPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPackagesPackage)(nil)).Elem()
+}
+
+func (i GetPackagesPackageArgs) ToGetPackagesPackageOutput() GetPackagesPackageOutput {
+	return i.ToGetPackagesPackageOutputWithContext(context.Background())
+}
+
+func (i GetPackagesPackageArgs) ToGetPackagesPackageOutputWithContext(ctx context.Context) GetPackagesPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPackagesPackageOutput)
+}
+
+// GetPackagesPackageArrayInput is an input type that accepts GetPackagesPackageArray and GetPackagesPackageArrayOutput values.
+// You can construct a concrete instance of `GetPackagesPackageArrayInput` via:
+//
+//	GetPackagesPackageArray{ GetPackagesPackageArgs{...} }
+type GetPackagesPackageArrayInput interface {
+	pulumi.Input
+
+	ToGetPackagesPackageArrayOutput() GetPackagesPackageArrayOutput
+	ToGetPackagesPackageArrayOutputWithContext(context.Context) GetPackagesPackageArrayOutput
+}
+
+type GetPackagesPackageArray []GetPackagesPackageInput
+
+func (GetPackagesPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPackagesPackage)(nil)).Elem()
+}
+
+func (i GetPackagesPackageArray) ToGetPackagesPackageArrayOutput() GetPackagesPackageArrayOutput {
+	return i.ToGetPackagesPackageArrayOutputWithContext(context.Background())
+}
+
+func (i GetPackagesPackageArray) ToGetPackagesPackageArrayOutputWithContext(ctx context.Context) GetPackagesPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPackagesPackageArrayOutput)
+}
+
+type GetPackagesPackageOutput struct{ *pulumi.OutputState }
+
+func (GetPackagesPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPackagesPackage)(nil)).Elem()
+}
+
+func (o GetPackagesPackageOutput) ToGetPackagesPackageOutput() GetPackagesPackageOutput {
+	return o
+}
+
+func (o GetPackagesPackageOutput) ToGetPackagesPackageOutputWithContext(ctx context.Context) GetPackagesPackageOutput {
+	return o
+}
+
+// Client specified annotations.
+func (o GetPackagesPackageOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPackagesPackage) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// The time, as a RFC 3339 string, this package was created.
+func (o GetPackagesPackageOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPackagesPackage) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The display name of the package.
+func (o GetPackagesPackageOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPackagesPackage) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped.
+func (o GetPackagesPackageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPackagesPackage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
+func (o GetPackagesPackageOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPackagesPackage) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetPackagesPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPackagesPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPackagesPackage)(nil)).Elem()
+}
+
+func (o GetPackagesPackageArrayOutput) ToGetPackagesPackageArrayOutput() GetPackagesPackageArrayOutput {
+	return o
+}
+
+func (o GetPackagesPackageArrayOutput) ToGetPackagesPackageArrayOutputWithContext(ctx context.Context) GetPackagesPackageArrayOutput {
+	return o
+}
+
+func (o GetPackagesPackageArrayOutput) Index(i pulumi.IntInput) GetPackagesPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPackagesPackage {
+		return vs[0].([]GetPackagesPackage)[vs[1].(int)]
+	}).(GetPackagesPackageOutput)
+}
+
 type GetRepositoriesRepository struct {
 	// The time when the repository was created.
 	CreateTime string `pulumi:"createTime"`
@@ -7811,6 +7944,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMavenArtifactsMavenArtifactArrayInput)(nil)).Elem(), GetMavenArtifactsMavenArtifactArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNpmPackagesNpmPackageInput)(nil)).Elem(), GetNpmPackagesNpmPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNpmPackagesNpmPackageArrayInput)(nil)).Elem(), GetNpmPackagesNpmPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPackagesPackageInput)(nil)).Elem(), GetPackagesPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPackagesPackageArrayInput)(nil)).Elem(), GetPackagesPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoriesRepositoryInput)(nil)).Elem(), GetRepositoriesRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoriesRepositoryArrayInput)(nil)).Elem(), GetRepositoriesRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyInput)(nil)).Elem(), GetRepositoryCleanupPolicyArgs{})
@@ -7923,6 +8058,8 @@ func init() {
 	pulumi.RegisterOutputType(GetMavenArtifactsMavenArtifactArrayOutput{})
 	pulumi.RegisterOutputType(GetNpmPackagesNpmPackageOutput{})
 	pulumi.RegisterOutputType(GetNpmPackagesNpmPackageArrayOutput{})
+	pulumi.RegisterOutputType(GetPackagesPackageOutput{})
+	pulumi.RegisterOutputType(GetPackagesPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoriesRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoriesRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyOutput{})

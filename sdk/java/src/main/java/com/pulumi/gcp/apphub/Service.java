@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.apphub.ServiceProjectAttachment;
  * import com.pulumi.gcp.apphub.ServiceProjectAttachmentArgs;
  * import com.pulumi.gcp.compute.Network;
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(computeServiceProject))
+ *                 .dependsOn(computeServiceProject)
  *                 .build());
  * 
  *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()
@@ -163,7 +163,7 @@ import javax.annotation.Nullable;
  *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(forwardingRule))
+ *                 .dependsOn(forwardingRule)
  *                 .build());
  * 
  *         var example = new com.pulumi.gcp.apphub.Service("example", com.pulumi.gcp.apphub.ServiceArgs.builder()
@@ -191,8 +191,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.apphub.ServiceProjectAttachment;
  * import com.pulumi.gcp.apphub.ServiceProjectAttachmentArgs;
  * import com.pulumi.gcp.compute.Network;
@@ -250,7 +250,7 @@ import javax.annotation.Nullable;
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(computeServiceProject))
+ *                 .dependsOn(computeServiceProject)
  *                 .build());
  * 
  *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()
@@ -320,7 +320,7 @@ import javax.annotation.Nullable;
  *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(forwardingRule))
+ *                 .dependsOn(forwardingRule)
  *                 .build());
  * 
  *         var example = new com.pulumi.gcp.apphub.Service("example", com.pulumi.gcp.apphub.ServiceArgs.builder()

@@ -93,6 +93,93 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Router Ncc Gw
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "net-spoke",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
+    ///     {
+    ///         Name = "tf-test-subnet_21197",
+    ///         IpCidrRange = "10.0.0.0/28",
+    ///         Region = "us-central1",
+    ///         Network = network.SelfLink,
+    ///     });
+    /// 
+    ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
+    ///     {
+    ///         Name = "hub",
+    ///         Description = "A sample hub",
+    ///         Labels = 
+    ///         {
+    ///             { "label-two", "value-one" },
+    ///         },
+    ///         PresetTopology = "HYBRID_INSPECTION",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
+    ///     {
+    ///         Name = "my-ncc-gw",
+    ///         Location = "us-central1",
+    ///         Description = "A sample spoke of type Gateway",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Hub = basicHub.Id,
+    ///         Gateway = new Gcp.NetworkConnectivity.Inputs.SpokeGatewayArgs
+    ///         {
+    ///             IpRangeReservations = new[]
+    ///             {
+    ///                 new Gcp.NetworkConnectivity.Inputs.SpokeGatewayIpRangeReservationArgs
+    ///                 {
+    ///                     IpRange = "10.0.0.0/23",
+    ///                 },
+    ///             },
+    ///             Capacity = "CAPACITY_1_GBPS",
+    ///         },
+    ///         Group = "gateways",
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.Compute.Router("foobar", new()
+    ///     {
+    ///         Name = "my-router",
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 64514,
+    ///             AdvertiseMode = "CUSTOM",
+    ///             AdvertisedGroups = new[]
+    ///             {
+    ///                 "ALL_SUBNETS",
+    ///             },
+    ///             AdvertisedIpRanges = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RouterBgpAdvertisedIpRangeArgs
+    ///                 {
+    ///                     Range = "1.2.3.4",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.RouterBgpAdvertisedIpRangeArgs
+    ///                 {
+    ///                     Range = "6.7.0.0/16",
+    ///                 },
+    ///             },
+    ///         },
+    ///         NccGateway = primary.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -172,10 +259,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// A URI of an NCC Gateway spoke
+        /// </summary>
+        [Output("nccGateway")]
+        public Output<string?> NccGateway { get; private set; } = null!;
+
+        /// <summary>
         /// A reference to the network to which this router belongs.
         /// </summary>
         [Output("network")]
-        public Output<string> Network { get; private set; } = null!;
+        public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
         /// Additional params passed with the request, but not persisted as part of resource payload
@@ -211,7 +304,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Router(string name, RouterArgs args, CustomResourceOptions? options = null)
+        public Router(string name, RouterArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:compute/router:Router", name, args ?? new RouterArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -288,10 +381,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// A URI of an NCC Gateway spoke
+        /// </summary>
+        [Input("nccGateway")]
+        public Input<string>? NccGateway { get; set; }
+
+        /// <summary>
         /// A reference to the network to which this router belongs.
         /// </summary>
-        [Input("network", required: true)]
-        public Input<string> Network { get; set; } = null!;
+        [Input("network")]
+        public Input<string>? Network { get; set; }
 
         /// <summary>
         /// Additional params passed with the request, but not persisted as part of resource payload
@@ -364,6 +463,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A URI of an NCC Gateway spoke
+        /// </summary>
+        [Input("nccGateway")]
+        public Input<string>? NccGateway { get; set; }
 
         /// <summary>
         /// A reference to the network to which this router belongs.

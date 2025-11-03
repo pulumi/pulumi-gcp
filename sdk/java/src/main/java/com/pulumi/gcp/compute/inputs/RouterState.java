@@ -126,6 +126,21 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A URI of an NCC Gateway spoke
+     * 
+     */
+    @Import(name="nccGateway")
+    private @Nullable Output<String> nccGateway;
+
+    /**
+     * @return A URI of an NCC Gateway spoke
+     * 
+     */
+    public Optional<Output<String>> nccGateway() {
+        return Optional.ofNullable(this.nccGateway);
+    }
+
+    /**
      * A reference to the network to which this router belongs.
      * 
      */
@@ -213,6 +228,7 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
         this.encryptedInterconnectRouter = $.encryptedInterconnectRouter;
         this.md5AuthenticationKeys = $.md5AuthenticationKeys;
         this.name = $.name;
+        this.nccGateway = $.nccGateway;
         this.network = $.network;
         this.params = $.params;
         this.project = $.project;
@@ -378,6 +394,27 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nccGateway A URI of an NCC Gateway spoke
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nccGateway(@Nullable Output<String> nccGateway) {
+            $.nccGateway = nccGateway;
+            return this;
+        }
+
+        /**
+         * @param nccGateway A URI of an NCC Gateway spoke
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nccGateway(String nccGateway) {
+            return nccGateway(Output.of(nccGateway));
         }
 
         /**

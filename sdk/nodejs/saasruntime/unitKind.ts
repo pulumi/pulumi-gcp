@@ -19,24 +19,33 @@ import * as utilities from "../utilities";
  *
  * const exampleSaas = new gcp.saasruntime.SaaS("example_saas", {
  *     saasId: "example-saas",
- *     location: "global",
+ *     location: "us-east1",
  *     locations: [{
- *         name: "us-central1",
+ *         name: "us-east1",
  *     }],
  * });
  * const clusterUnitKind = new gcp.saasruntime.UnitKind("cluster_unit_kind", {
- *     location: "global",
+ *     location: "us-east1",
  *     unitKindId: "cluster-unitkind",
  *     saas: exampleSaas.id,
+ *     defaultRelease: "projects/my-project-name/locations/us-east1/releases/example-release",
  * });
  * const example = new gcp.saasruntime.UnitKind("example", {
- *     location: "global",
+ *     location: "us-east1",
  *     unitKindId: "app-unitkind",
  *     saas: exampleSaas.id,
  *     dependencies: [{
  *         unitKind: clusterUnitKind.id,
  *         alias: "cluster",
  *     }],
+ * });
+ * const exampleRelease = new gcp.saasruntime.Release("example_release", {
+ *     location: "us-east1",
+ *     releaseId: "example-release",
+ *     unitKind: clusterUnitKind.id,
+ *     blueprint: {
+ *         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+ *     },
  * });
  * ```
  *
@@ -105,6 +114,13 @@ export class UnitKind extends pulumi.CustomResource {
      * The timestamp when the resource was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * A reference to the Release object to use as default for creating new units
+     * of this UnitKind.
+     * If not specified, a new unit must explicitly reference which release to use
+     * for its creation.
+     */
+    declare public readonly defaultRelease: pulumi.Output<string | undefined>;
     /**
      * List of other unit kinds that this release will depend on. Dependencies
      * will be automatically provisioned if not found. Maximum 10.
@@ -202,6 +218,7 @@ export class UnitKind extends pulumi.CustomResource {
             const state = argsOrState as UnitKindState | undefined;
             resourceInputs["annotations"] = state?.annotations;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["defaultRelease"] = state?.defaultRelease;
             resourceInputs["dependencies"] = state?.dependencies;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -229,6 +246,7 @@ export class UnitKind extends pulumi.CustomResource {
                 throw new Error("Missing required property 'unitKindId'");
             }
             resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["defaultRelease"] = args?.defaultRelease;
             resourceInputs["dependencies"] = args?.dependencies;
             resourceInputs["inputVariableMappings"] = args?.inputVariableMappings;
             resourceInputs["labels"] = args?.labels;
@@ -270,6 +288,13 @@ export interface UnitKindState {
      * The timestamp when the resource was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * A reference to the Release object to use as default for creating new units
+     * of this UnitKind.
+     * If not specified, a new unit must explicitly reference which release to use
+     * for its creation.
+     */
+    defaultRelease?: pulumi.Input<string>;
     /**
      * List of other unit kinds that this release will depend on. Dependencies
      * will be automatically provisioned if not found. Maximum 10.
@@ -366,6 +391,13 @@ export interface UnitKindArgs {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A reference to the Release object to use as default for creating new units
+     * of this UnitKind.
+     * If not specified, a new unit must explicitly reference which release to use
+     * for its creation.
+     */
+    defaultRelease?: pulumi.Input<string>;
     /**
      * List of other unit kinds that this release will depend on. Dependencies
      * will be automatically provisioned if not found. Maximum 10.

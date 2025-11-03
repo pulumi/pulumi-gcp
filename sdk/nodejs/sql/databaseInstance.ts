@@ -385,7 +385,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * For a read pool instance, the number of nodes in the read pool.
+     * For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
      */
     declare public readonly nodeCount: pulumi.Output<number>;
     /**
@@ -636,7 +636,7 @@ export interface DatabaseInstanceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * For a read pool instance, the number of nodes in the read pool.
+     * For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
      */
     nodeCount?: pulumi.Input<number>;
     /**
@@ -776,7 +776,7 @@ export interface DatabaseInstanceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * For a read pool instance, the number of nodes in the read pool.
+     * For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
      */
     nodeCount?: pulumi.Input<number>;
     /**

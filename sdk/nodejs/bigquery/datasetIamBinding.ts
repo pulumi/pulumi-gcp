@@ -44,35 +44,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## gcp.bigquery.DatasetIamBinding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
- * const reader = new gcp.bigquery.DatasetIamBinding("reader", {
- *     datasetId: dataset.datasetId,
- *     role: "roles/bigquery.dataViewer",
- *     members: ["user:jane@example.com"],
- * });
- * ```
- *
- * ## gcp.bigquery.DatasetIamMember
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
- * const editor = new gcp.bigquery.DatasetIamMember("editor", {
- *     datasetId: dataset.datasetId,
- *     role: "roles/bigquery.dataEditor",
- *     member: "user:jane@example.com",
- * });
- * ```
- *
- * ## gcp.bigquery.DatasetIamPolicy
+ * ## With IAM condition
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -82,6 +54,11 @@ import * as utilities from "../utilities";
  *     bindings: [{
  *         role: "roles/bigquery.dataOwner",
  *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2029_12_31",
+ *             description: "Expiring at midnight of 2029-12-31",
+ *             expression: "request.time < timestamp(\"2030-01-01T00:00:00Z\")",
+ *         },
  *     }],
  * });
  * const datasetDataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
@@ -105,6 +82,25 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## With IAM condition
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const reader = new gcp.bigquery.DatasetIamBinding("reader", {
+ *     datasetId: dataset.datasetId,
+ *     role: "roles/bigquery.dataViewer",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2029_12_31",
+ *         description: "Expiring at midnight of 2029-12-31",
+ *         expression: "request.time < timestamp(\"2030-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
  * ## gcp.bigquery.DatasetIamMember
  *
  * ```typescript
@@ -116,6 +112,134 @@ import * as utilities from "../utilities";
  *     datasetId: dataset.datasetId,
  *     role: "roles/bigquery.dataEditor",
  *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * ## With IAM condition
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const editor = new gcp.bigquery.DatasetIamMember("editor", {
+ *     datasetId: dataset.datasetId,
+ *     role: "roles/bigquery.dataEditor",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2029_12_31",
+ *         description: "Expiring at midnight of 2029-12-31",
+ *         expression: "request.time < timestamp(\"2030-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## gcp.bigquery.DatasetIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const owner = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/bigquery.dataOwner",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const datasetDataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const dataset = new gcp.bigquery.DatasetIamPolicy("dataset", {
+ *     datasetId: datasetDataset.datasetId,
+ *     policyData: owner.then(owner => owner.policyData),
+ * });
+ * ```
+ *
+ * ## With IAM condition
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const owner = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/bigquery.dataOwner",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2029_12_31",
+ *             description: "Expiring at midnight of 2029-12-31",
+ *             expression: "request.time < timestamp(\"2030-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const datasetDataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const dataset = new gcp.bigquery.DatasetIamPolicy("dataset", {
+ *     datasetId: datasetDataset.datasetId,
+ *     policyData: owner.then(owner => owner.policyData),
+ * });
+ * ```
+ *
+ * ## gcp.bigquery.DatasetIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const reader = new gcp.bigquery.DatasetIamBinding("reader", {
+ *     datasetId: dataset.datasetId,
+ *     role: "roles/bigquery.dataViewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## With IAM condition
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const reader = new gcp.bigquery.DatasetIamBinding("reader", {
+ *     datasetId: dataset.datasetId,
+ *     role: "roles/bigquery.dataViewer",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2029_12_31",
+ *         description: "Expiring at midnight of 2029-12-31",
+ *         expression: "request.time < timestamp(\"2030-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## gcp.bigquery.DatasetIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const editor = new gcp.bigquery.DatasetIamMember("editor", {
+ *     datasetId: dataset.datasetId,
+ *     role: "roles/bigquery.dataEditor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * ## With IAM condition
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const editor = new gcp.bigquery.DatasetIamMember("editor", {
+ *     datasetId: dataset.datasetId,
+ *     role: "roles/bigquery.dataEditor",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2029_12_31",
+ *         description: "Expiring at midnight of 2029-12-31",
+ *         expression: "request.time < timestamp(\"2030-01-01T00:00:00Z\")",
+ *     },
  * });
  * ```
  *
@@ -173,6 +297,10 @@ export class DatasetIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatasetIamBinding.__pulumiType;
     }
 
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     declare public readonly condition: pulumi.Output<outputs.bigquery.DatasetIamBindingCondition | undefined>;
     /**
      * The dataset ID.
@@ -255,6 +383,10 @@ export class DatasetIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatasetIamBinding resources.
  */
 export interface DatasetIamBindingState {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.bigquery.DatasetIamBindingCondition>;
     /**
      * The dataset ID.
@@ -296,6 +428,10 @@ export interface DatasetIamBindingState {
  * The set of arguments for constructing a DatasetIamBinding resource.
  */
 export interface DatasetIamBindingArgs {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.bigquery.DatasetIamBindingCondition>;
     /**
      * The dataset ID.

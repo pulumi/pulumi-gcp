@@ -28,7 +28,7 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
-     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
      * 
      */
     @Import(name="balancingMode")
@@ -42,7 +42,7 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
-     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
      * 
      */
     public Optional<Output<String>> balancingMode() {
@@ -223,6 +223,59 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Defines a maximum number of in-flight requests for the whole NEG
+     * or instance group. Not available if backend&#39;s balancingMode is RATE
+     * or CONNECTION.
+     * 
+     */
+    @Import(name="maxInFlightRequests")
+    private @Nullable Output<Integer> maxInFlightRequests;
+
+    /**
+     * @return Defines a maximum number of in-flight requests for the whole NEG
+     * or instance group. Not available if backend&#39;s balancingMode is RATE
+     * or CONNECTION.
+     * 
+     */
+    public Optional<Output<Integer>> maxInFlightRequests() {
+        return Optional.ofNullable(this.maxInFlightRequests);
+    }
+
+    /**
+     * Defines a maximum number of in-flight requests for a single endpoint.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    @Import(name="maxInFlightRequestsPerEndpoint")
+    private @Nullable Output<Integer> maxInFlightRequestsPerEndpoint;
+
+    /**
+     * @return Defines a maximum number of in-flight requests for a single endpoint.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    public Optional<Output<Integer>> maxInFlightRequestsPerEndpoint() {
+        return Optional.ofNullable(this.maxInFlightRequestsPerEndpoint);
+    }
+
+    /**
+     * Defines a maximum number of in-flight requests for a single VM.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    @Import(name="maxInFlightRequestsPerInstance")
+    private @Nullable Output<Integer> maxInFlightRequestsPerInstance;
+
+    /**
+     * @return Defines a maximum number of in-flight requests for a single VM.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    public Optional<Output<Integer>> maxInFlightRequestsPerInstance() {
+        return Optional.ofNullable(this.maxInFlightRequestsPerInstance);
+    }
+
+    /**
      * The max requests per second (RPS) of the group.
      * Can be used with either RATE or UTILIZATION balancing modes,
      * but required if RATE mode. For RATE mode, either maxRate or one
@@ -331,6 +384,29 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.preference);
     }
 
+    /**
+     * This field specifies how long a connection should be kept alive for:
+     * - LONG: Most of the requests are expected to take more than multiple
+     *   seconds to finish.
+     * - SHORT: Most requests are expected to finish with a sub-second latency.
+     *   Possible values are: `LONG`, `SHORT`.
+     * 
+     */
+    @Import(name="trafficDuration")
+    private @Nullable Output<String> trafficDuration;
+
+    /**
+     * @return This field specifies how long a connection should be kept alive for:
+     * - LONG: Most of the requests are expected to take more than multiple
+     *   seconds to finish.
+     * - SHORT: Most requests are expected to finish with a sub-second latency.
+     *   Possible values are: `LONG`, `SHORT`.
+     * 
+     */
+    public Optional<Output<String>> trafficDuration() {
+        return Optional.ofNullable(this.trafficDuration);
+    }
+
     private BackendServiceBackendArgs() {}
 
     private BackendServiceBackendArgs(BackendServiceBackendArgs $) {
@@ -342,11 +418,15 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
         this.maxConnections = $.maxConnections;
         this.maxConnectionsPerEndpoint = $.maxConnectionsPerEndpoint;
         this.maxConnectionsPerInstance = $.maxConnectionsPerInstance;
+        this.maxInFlightRequests = $.maxInFlightRequests;
+        this.maxInFlightRequestsPerEndpoint = $.maxInFlightRequestsPerEndpoint;
+        this.maxInFlightRequestsPerInstance = $.maxInFlightRequestsPerInstance;
         this.maxRate = $.maxRate;
         this.maxRatePerEndpoint = $.maxRatePerEndpoint;
         this.maxRatePerInstance = $.maxRatePerInstance;
         this.maxUtilization = $.maxUtilization;
         this.preference = $.preference;
+        this.trafficDuration = $.trafficDuration;
     }
 
     public static Builder builder() {
@@ -375,7 +455,7 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
          * 
          * @return builder
          * 
@@ -393,7 +473,7 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
          * 
          * @return builder
          * 
@@ -629,6 +709,77 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param maxInFlightRequests Defines a maximum number of in-flight requests for the whole NEG
+         * or instance group. Not available if backend&#39;s balancingMode is RATE
+         * or CONNECTION.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInFlightRequests(@Nullable Output<Integer> maxInFlightRequests) {
+            $.maxInFlightRequests = maxInFlightRequests;
+            return this;
+        }
+
+        /**
+         * @param maxInFlightRequests Defines a maximum number of in-flight requests for the whole NEG
+         * or instance group. Not available if backend&#39;s balancingMode is RATE
+         * or CONNECTION.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInFlightRequests(Integer maxInFlightRequests) {
+            return maxInFlightRequests(Output.of(maxInFlightRequests));
+        }
+
+        /**
+         * @param maxInFlightRequestsPerEndpoint Defines a maximum number of in-flight requests for a single endpoint.
+         * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInFlightRequestsPerEndpoint(@Nullable Output<Integer> maxInFlightRequestsPerEndpoint) {
+            $.maxInFlightRequestsPerEndpoint = maxInFlightRequestsPerEndpoint;
+            return this;
+        }
+
+        /**
+         * @param maxInFlightRequestsPerEndpoint Defines a maximum number of in-flight requests for a single endpoint.
+         * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInFlightRequestsPerEndpoint(Integer maxInFlightRequestsPerEndpoint) {
+            return maxInFlightRequestsPerEndpoint(Output.of(maxInFlightRequestsPerEndpoint));
+        }
+
+        /**
+         * @param maxInFlightRequestsPerInstance Defines a maximum number of in-flight requests for a single VM.
+         * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInFlightRequestsPerInstance(@Nullable Output<Integer> maxInFlightRequestsPerInstance) {
+            $.maxInFlightRequestsPerInstance = maxInFlightRequestsPerInstance;
+            return this;
+        }
+
+        /**
+         * @param maxInFlightRequestsPerInstance Defines a maximum number of in-flight requests for a single VM.
+         * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInFlightRequestsPerInstance(Integer maxInFlightRequestsPerInstance) {
+            return maxInFlightRequestsPerInstance(Output.of(maxInFlightRequestsPerInstance));
+        }
+
+        /**
          * @param maxRate The max requests per second (RPS) of the group.
          * Can be used with either RATE or UTILIZATION balancing modes,
          * but required if RATE mode. For RATE mode, either maxRate or one
@@ -765,6 +916,35 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
          */
         public Builder preference(String preference) {
             return preference(Output.of(preference));
+        }
+
+        /**
+         * @param trafficDuration This field specifies how long a connection should be kept alive for:
+         * - LONG: Most of the requests are expected to take more than multiple
+         *   seconds to finish.
+         * - SHORT: Most requests are expected to finish with a sub-second latency.
+         *   Possible values are: `LONG`, `SHORT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficDuration(@Nullable Output<String> trafficDuration) {
+            $.trafficDuration = trafficDuration;
+            return this;
+        }
+
+        /**
+         * @param trafficDuration This field specifies how long a connection should be kept alive for:
+         * - LONG: Most of the requests are expected to take more than multiple
+         *   seconds to finish.
+         * - SHORT: Most requests are expected to finish with a sub-second latency.
+         *   Possible values are: `LONG`, `SHORT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficDuration(String trafficDuration) {
+            return trafficDuration(Output.of(trafficDuration));
         }
 
         public BackendServiceBackendArgs build() {

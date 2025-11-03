@@ -25,6 +25,7 @@ class ServiceLbPoliciesArgs:
                  auto_capacity_drain: Optional[pulumi.Input['ServiceLbPoliciesAutoCapacityDrainArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  failover_config: Optional[pulumi.Input['ServiceLbPoliciesFailoverConfigArgs']] = None,
+                 isolation_config: Optional[pulumi.Input['ServiceLbPoliciesIsolationConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  load_balancing_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -36,6 +37,8 @@ class ServiceLbPoliciesArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input['ServiceLbPoliciesFailoverConfigArgs'] failover_config: Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+               Structure is documented below.
+        :param pulumi.Input['ServiceLbPoliciesIsolationConfigArgs'] isolation_config: Configuration to provide isolation support for the associated Backend Service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the ServiceLbPolicy resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -53,6 +56,8 @@ class ServiceLbPoliciesArgs:
             pulumi.set(__self__, "description", description)
         if failover_config is not None:
             pulumi.set(__self__, "failover_config", failover_config)
+        if isolation_config is not None:
+            pulumi.set(__self__, "isolation_config", isolation_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if load_balancing_algorithm is not None:
@@ -111,6 +116,19 @@ class ServiceLbPoliciesArgs:
     @failover_config.setter
     def failover_config(self, value: Optional[pulumi.Input['ServiceLbPoliciesFailoverConfigArgs']]):
         pulumi.set(self, "failover_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isolationConfig")
+    def isolation_config(self) -> Optional[pulumi.Input['ServiceLbPoliciesIsolationConfigArgs']]:
+        """
+        Configuration to provide isolation support for the associated Backend Service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "isolation_config")
+
+    @isolation_config.setter
+    def isolation_config(self, value: Optional[pulumi.Input['ServiceLbPoliciesIsolationConfigArgs']]):
+        pulumi.set(self, "isolation_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -173,6 +191,7 @@ class _ServiceLbPoliciesState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  failover_config: Optional[pulumi.Input['ServiceLbPoliciesFailoverConfigArgs']] = None,
+                 isolation_config: Optional[pulumi.Input['ServiceLbPoliciesIsolationConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  load_balancing_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -188,6 +207,8 @@ class _ServiceLbPoliciesState:
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['ServiceLbPoliciesFailoverConfigArgs'] failover_config: Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+               Structure is documented below.
+        :param pulumi.Input['ServiceLbPoliciesIsolationConfigArgs'] isolation_config: Configuration to provide isolation support for the associated Backend Service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the ServiceLbPolicy resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -212,6 +233,8 @@ class _ServiceLbPoliciesState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if failover_config is not None:
             pulumi.set(__self__, "failover_config", failover_config)
+        if isolation_config is not None:
+            pulumi.set(__self__, "isolation_config", isolation_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if load_balancing_algorithm is not None:
@@ -288,6 +311,19 @@ class _ServiceLbPoliciesState:
     @failover_config.setter
     def failover_config(self, value: Optional[pulumi.Input['ServiceLbPoliciesFailoverConfigArgs']]):
         pulumi.set(self, "failover_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isolationConfig")
+    def isolation_config(self) -> Optional[pulumi.Input['ServiceLbPoliciesIsolationConfigArgs']]:
+        """
+        Configuration to provide isolation support for the associated Backend Service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "isolation_config")
+
+    @isolation_config.setter
+    def isolation_config(self, value: Optional[pulumi.Input['ServiceLbPoliciesIsolationConfigArgs']]):
+        pulumi.set(self, "isolation_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -388,6 +424,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
                  auto_capacity_drain: Optional[pulumi.Input[Union['ServiceLbPoliciesAutoCapacityDrainArgs', 'ServiceLbPoliciesAutoCapacityDrainArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  failover_config: Optional[pulumi.Input[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']]] = None,
+                 isolation_config: Optional[pulumi.Input[Union['ServiceLbPoliciesIsolationConfigArgs', 'ServiceLbPoliciesIsolationConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  load_balancing_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -440,6 +477,37 @@ class ServiceLbPolicies(pulumi.CustomResource):
             protocol="HTTP",
             service_lb_policy=default.id.apply(lambda id: f"//networkservices.googleapis.com/{id}"))
         ```
+        ### Network Services Service Lb Policies Beta
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.ServiceLbPolicies("default",
+            name="my-lb-policy",
+            location="global",
+            description="my description",
+            load_balancing_algorithm="SPRAY_TO_REGION",
+            auto_capacity_drain={
+                "enable": True,
+            },
+            failover_config={
+                "failover_health_threshold": 70,
+            },
+            isolation_config={
+                "isolation_granularity": "REGION",
+                "isolation_mode": "NEAREST",
+            },
+            labels={
+                "foo": "bar",
+            })
+        default_backend_service = gcp.compute.BackendService("default",
+            name="my-lb-backend",
+            description="my description",
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            protocol="HTTP",
+            service_lb_policy=default.id.apply(lambda id: f"//networkservices.googleapis.com/{id}"))
+        ```
 
         ## Import
 
@@ -471,6 +539,8 @@ class ServiceLbPolicies(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']] failover_config: Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+               Structure is documented below.
+        :param pulumi.Input[Union['ServiceLbPoliciesIsolationConfigArgs', 'ServiceLbPoliciesIsolationConfigArgsDict']] isolation_config: Configuration to provide isolation support for the associated Backend Service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the ServiceLbPolicy resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -534,6 +604,37 @@ class ServiceLbPolicies(pulumi.CustomResource):
             protocol="HTTP",
             service_lb_policy=default.id.apply(lambda id: f"//networkservices.googleapis.com/{id}"))
         ```
+        ### Network Services Service Lb Policies Beta
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.ServiceLbPolicies("default",
+            name="my-lb-policy",
+            location="global",
+            description="my description",
+            load_balancing_algorithm="SPRAY_TO_REGION",
+            auto_capacity_drain={
+                "enable": True,
+            },
+            failover_config={
+                "failover_health_threshold": 70,
+            },
+            isolation_config={
+                "isolation_granularity": "REGION",
+                "isolation_mode": "NEAREST",
+            },
+            labels={
+                "foo": "bar",
+            })
+        default_backend_service = gcp.compute.BackendService("default",
+            name="my-lb-backend",
+            description="my description",
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            protocol="HTTP",
+            service_lb_policy=default.id.apply(lambda id: f"//networkservices.googleapis.com/{id}"))
+        ```
 
         ## Import
 
@@ -577,6 +678,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
                  auto_capacity_drain: Optional[pulumi.Input[Union['ServiceLbPoliciesAutoCapacityDrainArgs', 'ServiceLbPoliciesAutoCapacityDrainArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  failover_config: Optional[pulumi.Input[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']]] = None,
+                 isolation_config: Optional[pulumi.Input[Union['ServiceLbPoliciesIsolationConfigArgs', 'ServiceLbPoliciesIsolationConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  load_balancing_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -594,6 +696,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
             __props__.__dict__["auto_capacity_drain"] = auto_capacity_drain
             __props__.__dict__["description"] = description
             __props__.__dict__["failover_config"] = failover_config
+            __props__.__dict__["isolation_config"] = isolation_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["load_balancing_algorithm"] = load_balancing_algorithm
             if location is None and not opts.urn:
@@ -622,6 +725,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             failover_config: Optional[pulumi.Input[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']]] = None,
+            isolation_config: Optional[pulumi.Input[Union['ServiceLbPoliciesIsolationConfigArgs', 'ServiceLbPoliciesIsolationConfigArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             load_balancing_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -642,6 +746,8 @@ class ServiceLbPolicies(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']] failover_config: Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+               Structure is documented below.
+        :param pulumi.Input[Union['ServiceLbPoliciesIsolationConfigArgs', 'ServiceLbPoliciesIsolationConfigArgsDict']] isolation_config: Configuration to provide isolation support for the associated Backend Service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the ServiceLbPolicy resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -665,6 +771,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["failover_config"] = failover_config
+        __props__.__dict__["isolation_config"] = isolation_config
         __props__.__dict__["labels"] = labels
         __props__.__dict__["load_balancing_algorithm"] = load_balancing_algorithm
         __props__.__dict__["location"] = location
@@ -715,6 +822,15 @@ class ServiceLbPolicies(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "failover_config")
+
+    @_builtins.property
+    @pulumi.getter(name="isolationConfig")
+    def isolation_config(self) -> pulumi.Output[Optional['outputs.ServiceLbPoliciesIsolationConfig']]:
+        """
+        Configuration to provide isolation support for the associated Backend Service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "isolation_config")
 
     @_builtins.property
     @pulumi.getter

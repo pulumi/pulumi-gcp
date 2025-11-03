@@ -77,77 +77,7 @@ import (
 //
 // ```
 //
-// ## bigquery.DatasetIamBinding
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
-//				DatasetId: pulumi.String("example_dataset"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigquery.NewDatasetIamBinding(ctx, "reader", &bigquery.DatasetIamBindingArgs{
-//				DatasetId: dataset.DatasetId,
-//				Role:      pulumi.String("roles/bigquery.dataViewer"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## bigquery.DatasetIamMember
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
-//				DatasetId: pulumi.String("example_dataset"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigquery.NewDatasetIamMember(ctx, "editor", &bigquery.DatasetIamMemberArgs{
-//				DatasetId: dataset.DatasetId,
-//				Role:      pulumi.String("roles/bigquery.dataEditor"),
-//				Member:    pulumi.String("user:jane@example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## bigquery.DatasetIamPolicy
+// ## With IAM condition
 //
 // ```go
 // package main
@@ -168,6 +98,11 @@ import (
 //						Role: "roles/bigquery.dataOwner",
 //						Members: []string{
 //							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2029_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2029-12-31"),
+//							Expression:  "request.time < timestamp(\"2030-01-01T00:00:00Z\")",
 //						},
 //					},
 //				},
@@ -230,6 +165,47 @@ import (
 //
 // ```
 //
+// ## With IAM condition
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamBinding(ctx, "reader", &bigquery.DatasetIamBindingArgs{
+//				DatasetId: dataset.DatasetId,
+//				Role:      pulumi.String("roles/bigquery.dataViewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &bigquery.DatasetIamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2029_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2029-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2030-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## bigquery.DatasetIamMember
 //
 // ```go
@@ -254,6 +230,294 @@ import (
 //				DatasetId: dataset.DatasetId,
 //				Role:      pulumi.String("roles/bigquery.dataEditor"),
 //				Member:    pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## With IAM condition
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamMember(ctx, "editor", &bigquery.DatasetIamMemberArgs{
+//				DatasetId: dataset.DatasetId,
+//				Role:      pulumi.String("roles/bigquery.dataEditor"),
+//				Member:    pulumi.String("user:jane@example.com"),
+//				Condition: &bigquery.DatasetIamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2029_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2029-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2030-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## bigquery.DatasetIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			owner, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/bigquery.dataOwner",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datasetDataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamPolicy(ctx, "dataset", &bigquery.DatasetIamPolicyArgs{
+//				DatasetId:  datasetDataset.DatasetId,
+//				PolicyData: pulumi.String(owner.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## With IAM condition
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			owner, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/bigquery.dataOwner",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2029_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2029-12-31"),
+//							Expression:  "request.time < timestamp(\"2030-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datasetDataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamPolicy(ctx, "dataset", &bigquery.DatasetIamPolicyArgs{
+//				DatasetId:  datasetDataset.DatasetId,
+//				PolicyData: pulumi.String(owner.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## bigquery.DatasetIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamBinding(ctx, "reader", &bigquery.DatasetIamBindingArgs{
+//				DatasetId: dataset.DatasetId,
+//				Role:      pulumi.String("roles/bigquery.dataViewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## With IAM condition
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamBinding(ctx, "reader", &bigquery.DatasetIamBindingArgs{
+//				DatasetId: dataset.DatasetId,
+//				Role:      pulumi.String("roles/bigquery.dataViewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &bigquery.DatasetIamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2029_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2029-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2030-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## bigquery.DatasetIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamMember(ctx, "editor", &bigquery.DatasetIamMemberArgs{
+//				DatasetId: dataset.DatasetId,
+//				Role:      pulumi.String("roles/bigquery.dataEditor"),
+//				Member:    pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## With IAM condition
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamMember(ctx, "editor", &bigquery.DatasetIamMemberArgs{
+//				DatasetId: dataset.DatasetId,
+//				Role:      pulumi.String("roles/bigquery.dataEditor"),
+//				Member:    pulumi.String("user:jane@example.com"),
+//				Condition: &bigquery.DatasetIamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2029_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2029-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2030-01-01T00:00:00Z\")"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -292,6 +556,8 @@ import (
 type DatasetIamBinding struct {
 	pulumi.CustomResourceState
 
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition DatasetIamBindingConditionPtrOutput `pulumi:"condition"`
 	// The dataset ID.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
@@ -358,6 +624,8 @@ func GetDatasetIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatasetIamBinding resources.
 type datasetIamBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *DatasetIamBindingCondition `pulumi:"condition"`
 	// The dataset ID.
 	DatasetId *string `pulumi:"datasetId"`
@@ -386,6 +654,8 @@ type datasetIamBindingState struct {
 }
 
 type DatasetIamBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition DatasetIamBindingConditionPtrInput
 	// The dataset ID.
 	DatasetId pulumi.StringPtrInput
@@ -418,6 +688,8 @@ func (DatasetIamBindingState) ElementType() reflect.Type {
 }
 
 type datasetIamBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *DatasetIamBindingCondition `pulumi:"condition"`
 	// The dataset ID.
 	DatasetId string `pulumi:"datasetId"`
@@ -445,6 +717,8 @@ type datasetIamBindingArgs struct {
 
 // The set of arguments for constructing a DatasetIamBinding resource.
 type DatasetIamBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition DatasetIamBindingConditionPtrInput
 	// The dataset ID.
 	DatasetId pulumi.StringInput
@@ -557,6 +831,8 @@ func (o DatasetIamBindingOutput) ToDatasetIamBindingOutputWithContext(ctx contex
 	return o
 }
 
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
 func (o DatasetIamBindingOutput) Condition() DatasetIamBindingConditionPtrOutput {
 	return o.ApplyT(func(v *DatasetIamBinding) DatasetIamBindingConditionPtrOutput { return v.Condition }).(DatasetIamBindingConditionPtrOutput)
 }

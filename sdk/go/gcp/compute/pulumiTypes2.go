@@ -13,6 +13,454 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRegionInstanceGroupManagerStatefulDisk struct {
+	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule string `pulumi:"deleteRule"`
+	// The device name of the disk to be attached.
+	DeviceName string `pulumi:"deviceName"`
+}
+
+// GetRegionInstanceGroupManagerStatefulDiskInput is an input type that accepts GetRegionInstanceGroupManagerStatefulDiskArgs and GetRegionInstanceGroupManagerStatefulDiskOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatefulDiskInput` via:
+//
+//	GetRegionInstanceGroupManagerStatefulDiskArgs{...}
+type GetRegionInstanceGroupManagerStatefulDiskInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatefulDiskOutput() GetRegionInstanceGroupManagerStatefulDiskOutput
+	ToGetRegionInstanceGroupManagerStatefulDiskOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatefulDiskOutput
+}
+
+type GetRegionInstanceGroupManagerStatefulDiskArgs struct {
+	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule pulumi.StringInput `pulumi:"deleteRule"`
+	// The device name of the disk to be attached.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+}
+
+func (GetRegionInstanceGroupManagerStatefulDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatefulDiskArgs) ToGetRegionInstanceGroupManagerStatefulDiskOutput() GetRegionInstanceGroupManagerStatefulDiskOutput {
+	return i.ToGetRegionInstanceGroupManagerStatefulDiskOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatefulDiskArgs) ToGetRegionInstanceGroupManagerStatefulDiskOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatefulDiskOutput)
+}
+
+// GetRegionInstanceGroupManagerStatefulDiskArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatefulDiskArray and GetRegionInstanceGroupManagerStatefulDiskArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatefulDiskArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatefulDiskArray{ GetRegionInstanceGroupManagerStatefulDiskArgs{...} }
+type GetRegionInstanceGroupManagerStatefulDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatefulDiskArrayOutput() GetRegionInstanceGroupManagerStatefulDiskArrayOutput
+	ToGetRegionInstanceGroupManagerStatefulDiskArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatefulDiskArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatefulDiskArray []GetRegionInstanceGroupManagerStatefulDiskInput
+
+func (GetRegionInstanceGroupManagerStatefulDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatefulDiskArray) ToGetRegionInstanceGroupManagerStatefulDiskArrayOutput() GetRegionInstanceGroupManagerStatefulDiskArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatefulDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatefulDiskArray) ToGetRegionInstanceGroupManagerStatefulDiskArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatefulDiskArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulDiskOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatefulDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatefulDiskOutput) ToGetRegionInstanceGroupManagerStatefulDiskOutput() GetRegionInstanceGroupManagerStatefulDiskOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulDiskOutput) ToGetRegionInstanceGroupManagerStatefulDiskOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulDiskOutput {
+	return o
+}
+
+// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+func (o GetRegionInstanceGroupManagerStatefulDiskOutput) DeleteRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatefulDisk) string { return v.DeleteRule }).(pulumi.StringOutput)
+}
+
+// The device name of the disk to be attached.
+func (o GetRegionInstanceGroupManagerStatefulDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatefulDisk) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatefulDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatefulDiskArrayOutput) ToGetRegionInstanceGroupManagerStatefulDiskArrayOutput() GetRegionInstanceGroupManagerStatefulDiskArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulDiskArrayOutput) ToGetRegionInstanceGroupManagerStatefulDiskArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulDiskArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulDiskArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatefulDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatefulDisk {
+		return vs[0].([]GetRegionInstanceGroupManagerStatefulDisk)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatefulDiskOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulExternalIp struct {
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule string `pulumi:"deleteRule"`
+	// The network interface name
+	InterfaceName string `pulumi:"interfaceName"`
+}
+
+// GetRegionInstanceGroupManagerStatefulExternalIpInput is an input type that accepts GetRegionInstanceGroupManagerStatefulExternalIpArgs and GetRegionInstanceGroupManagerStatefulExternalIpOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatefulExternalIpInput` via:
+//
+//	GetRegionInstanceGroupManagerStatefulExternalIpArgs{...}
+type GetRegionInstanceGroupManagerStatefulExternalIpInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatefulExternalIpOutput() GetRegionInstanceGroupManagerStatefulExternalIpOutput
+	ToGetRegionInstanceGroupManagerStatefulExternalIpOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatefulExternalIpOutput
+}
+
+type GetRegionInstanceGroupManagerStatefulExternalIpArgs struct {
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule pulumi.StringInput `pulumi:"deleteRule"`
+	// The network interface name
+	InterfaceName pulumi.StringInput `pulumi:"interfaceName"`
+}
+
+func (GetRegionInstanceGroupManagerStatefulExternalIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulExternalIp)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatefulExternalIpArgs) ToGetRegionInstanceGroupManagerStatefulExternalIpOutput() GetRegionInstanceGroupManagerStatefulExternalIpOutput {
+	return i.ToGetRegionInstanceGroupManagerStatefulExternalIpOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatefulExternalIpArgs) ToGetRegionInstanceGroupManagerStatefulExternalIpOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulExternalIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatefulExternalIpOutput)
+}
+
+// GetRegionInstanceGroupManagerStatefulExternalIpArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatefulExternalIpArray and GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatefulExternalIpArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatefulExternalIpArray{ GetRegionInstanceGroupManagerStatefulExternalIpArgs{...} }
+type GetRegionInstanceGroupManagerStatefulExternalIpArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutput() GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput
+	ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatefulExternalIpArray []GetRegionInstanceGroupManagerStatefulExternalIpInput
+
+func (GetRegionInstanceGroupManagerStatefulExternalIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatefulExternalIp)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatefulExternalIpArray) ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutput() GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatefulExternalIpArray) ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulExternalIpOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatefulExternalIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulExternalIp)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatefulExternalIpOutput) ToGetRegionInstanceGroupManagerStatefulExternalIpOutput() GetRegionInstanceGroupManagerStatefulExternalIpOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulExternalIpOutput) ToGetRegionInstanceGroupManagerStatefulExternalIpOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulExternalIpOutput {
+	return o
+}
+
+// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+func (o GetRegionInstanceGroupManagerStatefulExternalIpOutput) DeleteRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatefulExternalIp) string { return v.DeleteRule }).(pulumi.StringOutput)
+}
+
+// The network interface name
+func (o GetRegionInstanceGroupManagerStatefulExternalIpOutput) InterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatefulExternalIp) string { return v.InterfaceName }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatefulExternalIp)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput) ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutput() GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput) ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatefulExternalIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatefulExternalIp {
+		return vs[0].([]GetRegionInstanceGroupManagerStatefulExternalIp)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatefulExternalIpOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulInternalIp struct {
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule string `pulumi:"deleteRule"`
+	// The network interface name
+	InterfaceName string `pulumi:"interfaceName"`
+}
+
+// GetRegionInstanceGroupManagerStatefulInternalIpInput is an input type that accepts GetRegionInstanceGroupManagerStatefulInternalIpArgs and GetRegionInstanceGroupManagerStatefulInternalIpOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatefulInternalIpInput` via:
+//
+//	GetRegionInstanceGroupManagerStatefulInternalIpArgs{...}
+type GetRegionInstanceGroupManagerStatefulInternalIpInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatefulInternalIpOutput() GetRegionInstanceGroupManagerStatefulInternalIpOutput
+	ToGetRegionInstanceGroupManagerStatefulInternalIpOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatefulInternalIpOutput
+}
+
+type GetRegionInstanceGroupManagerStatefulInternalIpArgs struct {
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule pulumi.StringInput `pulumi:"deleteRule"`
+	// The network interface name
+	InterfaceName pulumi.StringInput `pulumi:"interfaceName"`
+}
+
+func (GetRegionInstanceGroupManagerStatefulInternalIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatefulInternalIpArgs) ToGetRegionInstanceGroupManagerStatefulInternalIpOutput() GetRegionInstanceGroupManagerStatefulInternalIpOutput {
+	return i.ToGetRegionInstanceGroupManagerStatefulInternalIpOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatefulInternalIpArgs) ToGetRegionInstanceGroupManagerStatefulInternalIpOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulInternalIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatefulInternalIpOutput)
+}
+
+// GetRegionInstanceGroupManagerStatefulInternalIpArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatefulInternalIpArray and GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatefulInternalIpArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatefulInternalIpArray{ GetRegionInstanceGroupManagerStatefulInternalIpArgs{...} }
+type GetRegionInstanceGroupManagerStatefulInternalIpArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutput() GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput
+	ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatefulInternalIpArray []GetRegionInstanceGroupManagerStatefulInternalIpInput
+
+func (GetRegionInstanceGroupManagerStatefulInternalIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatefulInternalIpArray) ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutput() GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatefulInternalIpArray) ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulInternalIpOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatefulInternalIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatefulInternalIpOutput) ToGetRegionInstanceGroupManagerStatefulInternalIpOutput() GetRegionInstanceGroupManagerStatefulInternalIpOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulInternalIpOutput) ToGetRegionInstanceGroupManagerStatefulInternalIpOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulInternalIpOutput {
+	return o
+}
+
+// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+func (o GetRegionInstanceGroupManagerStatefulInternalIpOutput) DeleteRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatefulInternalIp) string { return v.DeleteRule }).(pulumi.StringOutput)
+}
+
+// The network interface name
+func (o GetRegionInstanceGroupManagerStatefulInternalIpOutput) InterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatefulInternalIp) string { return v.InterfaceName }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput) ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutput() GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput) ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatefulInternalIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatefulInternalIp {
+		return vs[0].([]GetRegionInstanceGroupManagerStatefulInternalIp)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatefulInternalIpOutput)
+}
+
+type GetRegionInstanceGroupManagerStatus struct {
+	// Status of all-instances configuration on the group.
+	AllInstancesConfigs []GetRegionInstanceGroupManagerStatusAllInstancesConfig `pulumi:"allInstancesConfigs"`
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	IsStable bool `pulumi:"isStable"`
+	// Stateful status of the given Instance Group Manager.
+	Statefuls []GetRegionInstanceGroupManagerStatusStateful `pulumi:"statefuls"`
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+	VersionTargets []GetRegionInstanceGroupManagerStatusVersionTarget `pulumi:"versionTargets"`
+}
+
+// GetRegionInstanceGroupManagerStatusInput is an input type that accepts GetRegionInstanceGroupManagerStatusArgs and GetRegionInstanceGroupManagerStatusOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusArgs{...}
+type GetRegionInstanceGroupManagerStatusInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusOutput() GetRegionInstanceGroupManagerStatusOutput
+	ToGetRegionInstanceGroupManagerStatusOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusOutput
+}
+
+type GetRegionInstanceGroupManagerStatusArgs struct {
+	// Status of all-instances configuration on the group.
+	AllInstancesConfigs GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayInput `pulumi:"allInstancesConfigs"`
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	IsStable pulumi.BoolInput `pulumi:"isStable"`
+	// Stateful status of the given Instance Group Manager.
+	Statefuls GetRegionInstanceGroupManagerStatusStatefulArrayInput `pulumi:"statefuls"`
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+	VersionTargets GetRegionInstanceGroupManagerStatusVersionTargetArrayInput `pulumi:"versionTargets"`
+}
+
+func (GetRegionInstanceGroupManagerStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusArgs) ToGetRegionInstanceGroupManagerStatusOutput() GetRegionInstanceGroupManagerStatusOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusArgs) ToGetRegionInstanceGroupManagerStatusOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusOutput)
+}
+
+// GetRegionInstanceGroupManagerStatusArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatusArray and GetRegionInstanceGroupManagerStatusArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusArray{ GetRegionInstanceGroupManagerStatusArgs{...} }
+type GetRegionInstanceGroupManagerStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusArrayOutput() GetRegionInstanceGroupManagerStatusArrayOutput
+	ToGetRegionInstanceGroupManagerStatusArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatusArray []GetRegionInstanceGroupManagerStatusInput
+
+func (GetRegionInstanceGroupManagerStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusArray) ToGetRegionInstanceGroupManagerStatusArrayOutput() GetRegionInstanceGroupManagerStatusArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusArray) ToGetRegionInstanceGroupManagerStatusArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusOutput) ToGetRegionInstanceGroupManagerStatusOutput() GetRegionInstanceGroupManagerStatusOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusOutput) ToGetRegionInstanceGroupManagerStatusOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusOutput {
+	return o
+}
+
+// Status of all-instances configuration on the group.
+func (o GetRegionInstanceGroupManagerStatusOutput) AllInstancesConfigs() GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatus) []GetRegionInstanceGroupManagerStatusAllInstancesConfig {
+		return v.AllInstancesConfigs
+	}).(GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput)
+}
+
+// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+func (o GetRegionInstanceGroupManagerStatusOutput) IsStable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatus) bool { return v.IsStable }).(pulumi.BoolOutput)
+}
+
+// Stateful status of the given Instance Group Manager.
+func (o GetRegionInstanceGroupManagerStatusOutput) Statefuls() GetRegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatus) []GetRegionInstanceGroupManagerStatusStateful {
+		return v.Statefuls
+	}).(GetRegionInstanceGroupManagerStatusStatefulArrayOutput)
+}
+
+// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+func (o GetRegionInstanceGroupManagerStatusOutput) VersionTargets() GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatus) []GetRegionInstanceGroupManagerStatusVersionTarget {
+		return v.VersionTargets
+	}).(GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusArrayOutput) ToGetRegionInstanceGroupManagerStatusArrayOutput() GetRegionInstanceGroupManagerStatusArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusArrayOutput) ToGetRegionInstanceGroupManagerStatusArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatus {
+		return vs[0].([]GetRegionInstanceGroupManagerStatus)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatusOutput)
+}
+
 type GetRegionInstanceGroupManagerStatusAllInstancesConfig struct {
 	// Current all-instances configuration revision. This value is in RFC3339 text format.
 	CurrentRevision string `pulumi:"currentRevision"`
@@ -14285,6 +14733,14 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulDiskInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulDiskArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulExternalIpInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulExternalIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulExternalIpArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulExternalIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulInternalIpInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulInternalIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulInternalIpArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulInternalIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusAllInstancesConfigInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusAllInstancesConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusStatefulArgs{})
@@ -14503,6 +14959,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulDiskOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulExternalIpOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulInternalIpOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusStatefulOutput{})

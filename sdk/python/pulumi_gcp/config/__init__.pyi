@@ -277,6 +277,8 @@ netappCustomEndpoint: Optional[str]
 
 networkConnectivityCustomEndpoint: Optional[str]
 
+networkConnectivityv1CustomEndpoint: Optional[str]
+
 networkManagementCustomEndpoint: Optional[str]
 
 networkSecurityCustomEndpoint: Optional[str]
@@ -284,6 +286,8 @@ networkSecurityCustomEndpoint: Optional[str]
 networkServicesCustomEndpoint: Optional[str]
 
 notebooksCustomEndpoint: Optional[str]
+
+observabilityCustomEndpoint: Optional[str]
 
 oracleDatabaseCustomEndpoint: Optional[str]
 

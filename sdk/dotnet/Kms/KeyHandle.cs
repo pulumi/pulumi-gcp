@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Kms
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.Kms
     ///     });
     /// 
     ///     // Wait delay after enabling APIs
-    ///     var waitEnableServiceApi = new Time.Index.Sleep("wait_enable_service_api", new()
+    ///     var waitEnableServiceApi = new Time.Sleep("wait_enable_service_api", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Kms
     ///     });
     /// 
     ///     // Wait delay after creating service agent.
-    ///     var waitServiceAgent = new Time.Index.Sleep("wait_service_agent", new()
+    ///     var waitServiceAgent = new Time.Sleep("wait_service_agent", new()
     ///     {
     ///         CreateDuration = "10s",
     ///     }, new CustomResourceOptions
@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.Kms
     ///     });
     /// 
     ///     // Wait delay after granting IAM permissions
-    ///     var waitSrvAccPermissions = new Time.Index.Sleep("wait_srv_acc_permissions", new()
+    ///     var waitSrvAccPermissions = new Time.Sleep("wait_srv_acc_permissions", new()
     ///     {
     ///         CreateDuration = "10s",
     ///     }, new CustomResourceOptions
@@ -153,7 +153,7 @@ namespace Pulumi.Gcp.Kms
     ///     });
     /// 
     ///     // Wait delay for autokey config to take effect
-    ///     var waitAutokeyConfig = new Time.Index.Sleep("wait_autokey_config", new()
+    ///     var waitAutokeyConfig = new Time.Sleep("wait_autokey_config", new()
     ///     {
     ///         CreateDuration = "10s",
     ///     }, new CustomResourceOptions

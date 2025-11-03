@@ -132,6 +132,10 @@ export class Application extends pulumi.CustomResource {
      */
     declare public readonly servingStatus: pulumi.Output<string>;
     /**
+     * A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+     */
+    declare public readonly sslPolicy: pulumi.Output<string>;
+    /**
      * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
      */
     declare public /*out*/ readonly urlDispatchRules: pulumi.Output<outputs.appengine.ApplicationUrlDispatchRule[]>;
@@ -162,6 +166,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["servingStatus"] = state?.servingStatus;
+            resourceInputs["sslPolicy"] = state?.sslPolicy;
             resourceInputs["urlDispatchRules"] = state?.urlDispatchRules;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
@@ -175,6 +180,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["locationId"] = args?.locationId;
             resourceInputs["project"] = args?.project;
             resourceInputs["servingStatus"] = args?.servingStatus;
+            resourceInputs["sslPolicy"] = args?.sslPolicy;
             resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["codeBucket"] = undefined /*out*/;
             resourceInputs["defaultBucket"] = undefined /*out*/;
@@ -253,6 +259,10 @@ export interface ApplicationState {
      */
     servingStatus?: pulumi.Input<string>;
     /**
+     * A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+     */
+    sslPolicy?: pulumi.Input<string>;
+    /**
      * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
      */
     urlDispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRule>[]>;
@@ -298,4 +308,8 @@ export interface ApplicationArgs {
      * The serving status of the app.
      */
     servingStatus?: pulumi.Input<string>;
+    /**
+     * A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+     */
+    sslPolicy?: pulumi.Input<string>;
 }

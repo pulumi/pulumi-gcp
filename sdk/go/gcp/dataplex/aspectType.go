@@ -30,9 +30,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataplex.NewAspectType(ctx, "test_aspect_type_basic", &dataplex.AspectTypeArgs{
-//				AspectTypeId: pulumi.String("aspect-type-basic"),
-//				Project:      pulumi.String("my-project-name"),
-//				Location:     pulumi.String("us-central1"),
+//				AspectTypeId:       pulumi.String("aspect-type-basic"),
+//				Project:            pulumi.String("my-project-name"),
+//				Location:           pulumi.String("us-central1"),
+//				DataClassification: pulumi.String("DATA_CLASSIFICATION_UNSPECIFIED"),
 //				MetadataTemplate: pulumi.String(`{
 //	  "name": "tf-test-template",
 //	  "type": "record",
@@ -90,8 +91,9 @@ import (
 //				Labels: pulumi.StringMap{
 //					"tag": pulumi.String("test-tf"),
 //				},
-//				DisplayName: pulumi.String("terraform aspect type"),
-//				Description: pulumi.String("aspect type created by Terraform"),
+//				DisplayName:        pulumi.String("terraform aspect type"),
+//				Description:        pulumi.String("data aspect type created by Terraform"),
+//				DataClassification: pulumi.String("METADATA_AND_DATA"),
 //				MetadataTemplate: pulumi.String(`{
 //	  "type": "record",
 //	  "name": "Schema",
@@ -263,6 +265,12 @@ type AspectType struct {
 	AspectTypeId pulumi.StringPtrOutput `pulumi:"aspectTypeId"`
 	// The time when the AspectType was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Classifies the data stored by the aspect.
+	// `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+	// while `METADATA_AND_DATA` indicates data derived content.
+	// <br><br>
+	// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+	DataClassification pulumi.StringPtrOutput `pulumi:"dataClassification"`
 	// Description of the AspectType.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name.
@@ -334,6 +342,12 @@ type aspectTypeState struct {
 	AspectTypeId *string `pulumi:"aspectTypeId"`
 	// The time when the AspectType was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Classifies the data stored by the aspect.
+	// `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+	// while `METADATA_AND_DATA` indicates data derived content.
+	// <br><br>
+	// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+	DataClassification *string `pulumi:"dataClassification"`
 	// Description of the AspectType.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
@@ -371,6 +385,12 @@ type AspectTypeState struct {
 	AspectTypeId pulumi.StringPtrInput
 	// The time when the AspectType was created.
 	CreateTime pulumi.StringPtrInput
+	// Classifies the data stored by the aspect.
+	// `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+	// while `METADATA_AND_DATA` indicates data derived content.
+	// <br><br>
+	// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+	DataClassification pulumi.StringPtrInput
 	// Description of the AspectType.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
@@ -410,6 +430,12 @@ func (AspectTypeState) ElementType() reflect.Type {
 type aspectTypeArgs struct {
 	// The aspect type id of the aspect type.
 	AspectTypeId *string `pulumi:"aspectTypeId"`
+	// Classifies the data stored by the aspect.
+	// `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+	// while `METADATA_AND_DATA` indicates data derived content.
+	// <br><br>
+	// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+	DataClassification *string `pulumi:"dataClassification"`
 	// Description of the AspectType.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
@@ -432,6 +458,12 @@ type aspectTypeArgs struct {
 type AspectTypeArgs struct {
 	// The aspect type id of the aspect type.
 	AspectTypeId pulumi.StringPtrInput
+	// Classifies the data stored by the aspect.
+	// `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+	// while `METADATA_AND_DATA` indicates data derived content.
+	// <br><br>
+	// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+	DataClassification pulumi.StringPtrInput
 	// Description of the AspectType.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
@@ -545,6 +577,15 @@ func (o AspectTypeOutput) AspectTypeId() pulumi.StringPtrOutput {
 // The time when the AspectType was created.
 func (o AspectTypeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AspectType) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Classifies the data stored by the aspect.
+// `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+// while `METADATA_AND_DATA` indicates data derived content.
+// <br><br>
+// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+func (o AspectTypeOutput) DataClassification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AspectType) pulumi.StringPtrOutput { return v.DataClassification }).(pulumi.StringPtrOutput)
 }
 
 // Description of the AspectType.

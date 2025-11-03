@@ -31,6 +31,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? MembershipLocation { get; set; }
 
         /// <summary>
+        /// Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the MembershipType will be a regular membership that supports all features.
+        /// </summary>
+        [Input("membershipType")]
+        public Input<string>? MembershipType { get; set; }
+
+        /// <summary>
         /// Whether the cluster has been registered via the fleet API.
         /// </summary>
         [Input("preRegistered")]

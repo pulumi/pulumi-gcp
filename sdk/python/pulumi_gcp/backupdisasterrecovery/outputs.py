@@ -28,6 +28,8 @@ __all__ = [
     'GetBackupPlanAssociationRulesConfigInfoResult',
     'GetBackupPlanAssociationRulesConfigInfoLastBackupErrorResult',
     'GetBackupPlanAssociationsAssociationResult',
+    'GetBackupPlanAssociationsAssociationRulesConfigInfoResult',
+    'GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorResult',
     'GetBackupPlanBackupRuleResult',
     'GetBackupPlanBackupRuleStandardScheduleResult',
     'GetBackupPlanBackupRuleStandardScheduleBackupWindowResult',
@@ -710,16 +712,30 @@ class GetBackupPlanAssociationsAssociationResult(dict):
     def __init__(__self__, *,
                  backup_plan: _builtins.str,
                  create_time: _builtins.str,
+                 data_source: _builtins.str,
                  name: _builtins.str,
-                 resource: _builtins.str):
+                 resource: _builtins.str,
+                 rules_config_infos: Sequence['outputs.GetBackupPlanAssociationsAssociationRulesConfigInfoResult']):
+        """
+        :param _builtins.str backup_plan: The backup plan to which the resource is attached.
+        :param _builtins.str data_source: The resource name of data source which will be used as storage location for backups taken.
+        :param _builtins.str name: The full name of the backup plan association resource.
+        :param _builtins.str resource: The resource to which the backup plan is applied.
+        :param Sequence['GetBackupPlanAssociationsAssociationRulesConfigInfoArgs'] rules_config_infos: A list containing information about the backup rules. Each object in the list contains:
+        """
         pulumi.set(__self__, "backup_plan", backup_plan)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "data_source", data_source)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "rules_config_infos", rules_config_infos)
 
     @_builtins.property
     @pulumi.getter(name="backupPlan")
     def backup_plan(self) -> _builtins.str:
+        """
+        The backup plan to which the resource is attached.
+        """
         return pulumi.get(self, "backup_plan")
 
     @_builtins.property
@@ -728,14 +744,116 @@ class GetBackupPlanAssociationsAssociationResult(dict):
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter(name="dataSource")
+    def data_source(self) -> _builtins.str:
+        """
+        The resource name of data source which will be used as storage location for backups taken.
+        """
+        return pulumi.get(self, "data_source")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        The full name of the backup plan association resource.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def resource(self) -> _builtins.str:
+        """
+        The resource to which the backup plan is applied.
+        """
         return pulumi.get(self, "resource")
+
+    @_builtins.property
+    @pulumi.getter(name="rulesConfigInfos")
+    def rules_config_infos(self) -> Sequence['outputs.GetBackupPlanAssociationsAssociationRulesConfigInfoResult']:
+        """
+        A list containing information about the backup rules. Each object in the list contains:
+        """
+        return pulumi.get(self, "rules_config_infos")
+
+
+@pulumi.output_type
+class GetBackupPlanAssociationsAssociationRulesConfigInfoResult(dict):
+    def __init__(__self__, *,
+                 last_backup_errors: Sequence['outputs.GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorResult'],
+                 last_backup_state: _builtins.str,
+                 last_successful_backup_consistency_time: _builtins.str,
+                 rule_id: _builtins.str):
+        """
+        :param Sequence['GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorArgs'] last_backup_errors: A block containing details of the last backup error, if any.
+        :param _builtins.str last_backup_state: State of last backup taken.
+        :param _builtins.str last_successful_backup_consistency_time: The point in time when the last successful backup was captured from the source.
+        :param _builtins.str rule_id: Backup Rule id fetched from backup plan.
+        """
+        pulumi.set(__self__, "last_backup_errors", last_backup_errors)
+        pulumi.set(__self__, "last_backup_state", last_backup_state)
+        pulumi.set(__self__, "last_successful_backup_consistency_time", last_successful_backup_consistency_time)
+        pulumi.set(__self__, "rule_id", rule_id)
+
+    @_builtins.property
+    @pulumi.getter(name="lastBackupErrors")
+    def last_backup_errors(self) -> Sequence['outputs.GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorResult']:
+        """
+        A block containing details of the last backup error, if any.
+        """
+        return pulumi.get(self, "last_backup_errors")
+
+    @_builtins.property
+    @pulumi.getter(name="lastBackupState")
+    def last_backup_state(self) -> _builtins.str:
+        """
+        State of last backup taken.
+        """
+        return pulumi.get(self, "last_backup_state")
+
+    @_builtins.property
+    @pulumi.getter(name="lastSuccessfulBackupConsistencyTime")
+    def last_successful_backup_consistency_time(self) -> _builtins.str:
+        """
+        The point in time when the last successful backup was captured from the source.
+        """
+        return pulumi.get(self, "last_successful_backup_consistency_time")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> _builtins.str:
+        """
+        Backup Rule id fetched from backup plan.
+        """
+        return pulumi.get(self, "rule_id")
+
+
+@pulumi.output_type
+class GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupErrorResult(dict):
+    def __init__(__self__, *,
+                 code: _builtins.int,
+                 message: _builtins.str):
+        """
+        :param _builtins.int code: The status code, which should be an enum value of [google.rpc.Code].
+        :param _builtins.str message: A developer-facing error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.int:
+        """
+        The status code, which should be an enum value of [google.rpc.Code].
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type
@@ -1351,7 +1469,7 @@ class GetDataSourceReferencesDataSourceReferenceResult(dict):
         :param _builtins.str gcp_resource_name: The GCP resource name for the data source.
         :param _builtins.str last_backup_state: The state of the last backup.
         :param _builtins.str last_successful_backup_time: The last time a successful backup was made.
-        :param _builtins.str resource_type: - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+        :param _builtins.str resource_type: - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
         """
         pulumi.set(__self__, "backup_config_state", backup_config_state)
         pulumi.set(__self__, "backup_count", backup_count)
@@ -1419,7 +1537,7 @@ class GetDataSourceReferencesDataSourceReferenceResult(dict):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> _builtins.str:
         """
-        - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+        - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
         """
         return pulumi.get(self, "resource_type")
 

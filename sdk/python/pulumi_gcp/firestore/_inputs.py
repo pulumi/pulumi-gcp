@@ -33,6 +33,8 @@ __all__ = [
     'IndexFieldVectorConfigArgsDict',
     'IndexFieldVectorConfigFlatArgs',
     'IndexFieldVectorConfigFlatArgsDict',
+    'UserCredsResourceIdentityArgs',
+    'UserCredsResourceIdentityArgsDict',
 ]
 
 MYPY = False
@@ -521,5 +523,43 @@ elif False:
 class IndexFieldVectorConfigFlatArgs:
     def __init__(__self__):
         pass
+
+
+if not MYPY:
+    class UserCredsResourceIdentityArgsDict(TypedDict):
+        principal: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The principal identifier string.
+        See https://cloud.google.com/iam/docs/principal-identifiers.
+        """
+elif False:
+    UserCredsResourceIdentityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UserCredsResourceIdentityArgs:
+    def __init__(__self__, *,
+                 principal: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] principal: (Output)
+               The principal identifier string.
+               See https://cloud.google.com/iam/docs/principal-identifiers.
+        """
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The principal identifier string.
+        See https://cloud.google.com/iam/docs/principal-identifiers.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "principal", value)
 
 

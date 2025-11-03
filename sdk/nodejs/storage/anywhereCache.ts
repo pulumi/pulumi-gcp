@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     name: "bucket-name",
  *     location: "US",
  * });
- * const destroyWait5000Seconds = new time.index.Sleep("destroy_wait_5000_seconds", {destroyDuration: "5000s"}, {
+ * const destroyWait5000Seconds = new time.Sleep("destroy_wait_5000_seconds", {destroyDuration: "5000s"}, {
  *     dependsOn: [bucket],
  * });
  * const cache = new gcp.storage.AnywhereCache("cache", {

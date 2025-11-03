@@ -9,6 +9,7 @@ import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionDeiden
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPubSubArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishToStackdriverArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
@@ -86,6 +87,21 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
     }
 
     /**
+     * Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
+     * 
+     */
+    @Import(name="publishFindingsToDataplexCatalog")
+    private @Nullable Output<PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs> publishFindingsToDataplexCatalog;
+
+    /**
+     * @return Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
+     * 
+     */
+    public Optional<Output<PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs>> publishFindingsToDataplexCatalog() {
+        return Optional.ofNullable(this.publishFindingsToDataplexCatalog);
+    }
+
+    /**
      * Publish the result summary of a DlpJob to the Cloud Security Command Center.
      * 
      */
@@ -139,6 +155,7 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
         this.jobNotificationEmails = $.jobNotificationEmails;
         this.pubSub = $.pubSub;
         this.publishFindingsToCloudDataCatalog = $.publishFindingsToCloudDataCatalog;
+        this.publishFindingsToDataplexCatalog = $.publishFindingsToDataplexCatalog;
         this.publishSummaryToCscc = $.publishSummaryToCscc;
         this.publishToStackdriver = $.publishToStackdriver;
         this.saveFindings = $.saveFindings;
@@ -248,6 +265,27 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
          */
         public Builder publishFindingsToCloudDataCatalog(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs publishFindingsToCloudDataCatalog) {
             return publishFindingsToCloudDataCatalog(Output.of(publishFindingsToCloudDataCatalog));
+        }
+
+        /**
+         * @param publishFindingsToDataplexCatalog Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishFindingsToDataplexCatalog(@Nullable Output<PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs> publishFindingsToDataplexCatalog) {
+            $.publishFindingsToDataplexCatalog = publishFindingsToDataplexCatalog;
+            return this;
+        }
+
+        /**
+         * @param publishFindingsToDataplexCatalog Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishFindingsToDataplexCatalog(PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs publishFindingsToDataplexCatalog) {
+            return publishFindingsToDataplexCatalog(Output.of(publishFindingsToDataplexCatalog));
         }
 
         /**

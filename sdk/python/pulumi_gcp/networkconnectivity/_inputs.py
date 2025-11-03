@@ -39,6 +39,10 @@ __all__ = [
     'ServiceConnectionPolicyPscConnectionErrorArgsDict',
     'ServiceConnectionPolicyPscConnectionErrorInfoArgs',
     'ServiceConnectionPolicyPscConnectionErrorInfoArgsDict',
+    'SpokeGatewayArgs',
+    'SpokeGatewayArgsDict',
+    'SpokeGatewayIpRangeReservationArgs',
+    'SpokeGatewayIpRangeReservationArgsDict',
     'SpokeLinkedInterconnectAttachmentsArgs',
     'SpokeLinkedInterconnectAttachmentsArgsDict',
     'SpokeLinkedProducerVpcNetworkArgs',
@@ -956,6 +960,116 @@ class ServiceConnectionPolicyPscConnectionErrorInfoArgs:
     @reason.setter
     def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "reason", value)
+
+
+if not MYPY:
+    class SpokeGatewayArgsDict(TypedDict):
+        capacity: pulumi.Input[_builtins.str]
+        """
+        the capacity of the gateway spoke, in Gbps.
+        Possible values are: `CAPACITY_1_GBPS`, `CAPACITY_10_GBPS`, `CAPACITY_100_GBPS`.
+        """
+        ip_range_reservations: pulumi.Input[Sequence[pulumi.Input['SpokeGatewayIpRangeReservationArgsDict']]]
+        """
+        A list of IP ranges that are reserved for this gateway's internal infrastructure.
+        Structure is documented below.
+        """
+        routers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        (Output, Beta)
+        Set of Cloud Routers that are attached to this NCC-GW
+        """
+elif False:
+    SpokeGatewayArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SpokeGatewayArgs:
+    def __init__(__self__, *,
+                 capacity: pulumi.Input[_builtins.str],
+                 ip_range_reservations: pulumi.Input[Sequence[pulumi.Input['SpokeGatewayIpRangeReservationArgs']]],
+                 routers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] capacity: the capacity of the gateway spoke, in Gbps.
+               Possible values are: `CAPACITY_1_GBPS`, `CAPACITY_10_GBPS`, `CAPACITY_100_GBPS`.
+        :param pulumi.Input[Sequence[pulumi.Input['SpokeGatewayIpRangeReservationArgs']]] ip_range_reservations: A list of IP ranges that are reserved for this gateway's internal infrastructure.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] routers: (Output, Beta)
+               Set of Cloud Routers that are attached to this NCC-GW
+        """
+        pulumi.set(__self__, "capacity", capacity)
+        pulumi.set(__self__, "ip_range_reservations", ip_range_reservations)
+        if routers is not None:
+            pulumi.set(__self__, "routers", routers)
+
+    @_builtins.property
+    @pulumi.getter
+    def capacity(self) -> pulumi.Input[_builtins.str]:
+        """
+        the capacity of the gateway spoke, in Gbps.
+        Possible values are: `CAPACITY_1_GBPS`, `CAPACITY_10_GBPS`, `CAPACITY_100_GBPS`.
+        """
+        return pulumi.get(self, "capacity")
+
+    @capacity.setter
+    def capacity(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "capacity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipRangeReservations")
+    def ip_range_reservations(self) -> pulumi.Input[Sequence[pulumi.Input['SpokeGatewayIpRangeReservationArgs']]]:
+        """
+        A list of IP ranges that are reserved for this gateway's internal infrastructure.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ip_range_reservations")
+
+    @ip_range_reservations.setter
+    def ip_range_reservations(self, value: pulumi.Input[Sequence[pulumi.Input['SpokeGatewayIpRangeReservationArgs']]]):
+        pulumi.set(self, "ip_range_reservations", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def routers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output, Beta)
+        Set of Cloud Routers that are attached to this NCC-GW
+        """
+        return pulumi.get(self, "routers")
+
+    @routers.setter
+    def routers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "routers", value)
+
+
+if not MYPY:
+    class SpokeGatewayIpRangeReservationArgsDict(TypedDict):
+        ip_range: pulumi.Input[_builtins.str]
+        """
+        A block of IP address ranges used to allocate supporting infrastructure for this gateway—for example, 10.1.2.0/23. The IP address block must be a /23 range. This IP address block must not overlap with subnets in any spoke or peer network that the gateway can communicate with.
+        """
+elif False:
+    SpokeGatewayIpRangeReservationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SpokeGatewayIpRangeReservationArgs:
+    def __init__(__self__, *,
+                 ip_range: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] ip_range: A block of IP address ranges used to allocate supporting infrastructure for this gateway—for example, 10.1.2.0/23. The IP address block must be a /23 range. This IP address block must not overlap with subnets in any spoke or peer network that the gateway can communicate with.
+        """
+        pulumi.set(__self__, "ip_range", ip_range)
+
+    @_builtins.property
+    @pulumi.getter(name="ipRange")
+    def ip_range(self) -> pulumi.Input[_builtins.str]:
+        """
+        A block of IP address ranges used to allocate supporting infrastructure for this gateway—for example, 10.1.2.0/23. The IP address block must be a /23 range. This IP address block must not overlap with subnets in any spoke or peer network that the gateway can communicate with.
+        """
+        return pulumi.get(self, "ip_range")
+
+    @ip_range.setter
+    def ip_range(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ip_range", value)
 
 
 if not MYPY:

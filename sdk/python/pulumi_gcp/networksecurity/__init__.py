@@ -14,6 +14,7 @@ from .authorization_policy import *
 from .authz_policy import *
 from .backend_authentication_config import *
 from .client_tls_policy import *
+from .dns_threat_detector import *
 from .firewall_endpoint import *
 from .firewall_endpoint_association import *
 from .gateway_security_policy import *

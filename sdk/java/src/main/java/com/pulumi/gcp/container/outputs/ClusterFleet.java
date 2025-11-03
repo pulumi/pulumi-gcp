@@ -28,6 +28,11 @@ public final class ClusterFleet {
      */
     private @Nullable String membershipLocation;
     /**
+     * @return Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membershipType will be a regular membership that supports all features.
+     * 
+     */
+    private @Nullable String membershipType;
+    /**
      * @return Whether the cluster has been registered via the fleet API.
      * 
      */
@@ -61,6 +66,13 @@ public final class ClusterFleet {
         return Optional.ofNullable(this.membershipLocation);
     }
     /**
+     * @return Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membershipType will be a regular membership that supports all features.
+     * 
+     */
+    public Optional<String> membershipType() {
+        return Optional.ofNullable(this.membershipType);
+    }
+    /**
      * @return Whether the cluster has been registered via the fleet API.
      * 
      */
@@ -87,6 +99,7 @@ public final class ClusterFleet {
         private @Nullable String membership;
         private @Nullable String membershipId;
         private @Nullable String membershipLocation;
+        private @Nullable String membershipType;
         private @Nullable Boolean preRegistered;
         private @Nullable String project;
         public Builder() {}
@@ -95,6 +108,7 @@ public final class ClusterFleet {
     	      this.membership = defaults.membership;
     	      this.membershipId = defaults.membershipId;
     	      this.membershipLocation = defaults.membershipLocation;
+    	      this.membershipType = defaults.membershipType;
     	      this.preRegistered = defaults.preRegistered;
     	      this.project = defaults.project;
         }
@@ -118,6 +132,12 @@ public final class ClusterFleet {
             return this;
         }
         @CustomType.Setter
+        public Builder membershipType(@Nullable String membershipType) {
+
+            this.membershipType = membershipType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder preRegistered(@Nullable Boolean preRegistered) {
 
             this.preRegistered = preRegistered;
@@ -134,6 +154,7 @@ public final class ClusterFleet {
             _resultValue.membership = membership;
             _resultValue.membershipId = membershipId;
             _resultValue.membershipLocation = membershipLocation;
+            _resultValue.membershipType = membershipType;
             _resultValue.preRegistered = preRegistered;
             _resultValue.project = project;
             return _resultValue;

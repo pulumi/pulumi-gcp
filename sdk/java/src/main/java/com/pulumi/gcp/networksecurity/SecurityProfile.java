@@ -13,6 +13,7 @@ import com.pulumi.gcp.networksecurity.inputs.SecurityProfileState;
 import com.pulumi.gcp.networksecurity.outputs.SecurityProfileCustomInterceptProfile;
 import com.pulumi.gcp.networksecurity.outputs.SecurityProfileCustomMirroringProfile;
 import com.pulumi.gcp.networksecurity.outputs.SecurityProfileThreatPreventionProfile;
+import com.pulumi.gcp.networksecurity.outputs.SecurityProfileUrlFilteringProfile;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -245,6 +246,59 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Security Security Profile Url Filtering
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networksecurity.SecurityProfile;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new SecurityProfile("default", SecurityProfileArgs.builder()
+ *             .name("my-security-profile")
+ *             .parent("organizations/123456789")
+ *             .description("my description")
+ *             .type("URL_FILTERING")
+ *             .urlFilteringProfile(SecurityProfileUrlFilteringProfileArgs.builder()
+ *                 .urlFilters(                
+ *                     SecurityProfileUrlFilteringProfileUrlFilterArgs.builder()
+ *                         .priority(1)
+ *                         .filteringAction("ALLOW")
+ *                         .urls(                        
+ *                             "*example.com",
+ *                             "*about.example.com",
+ *                             "*help.example.com")
+ *                         .build(),
+ *                     SecurityProfileUrlFilteringProfileUrlFilterArgs.builder()
+ *                         .priority(2)
+ *                         .filteringAction("DENY")
+ *                         .urls("*restricted.example.com")
+ *                         .build())
+ *                 .build())
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -471,7 +525,7 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -479,7 +533,7 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      * 
      */
     public Output<String> type() {
@@ -498,6 +552,22 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * The url filtering configuration for the security profile.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="urlFilteringProfile", refs={SecurityProfileUrlFilteringProfile.class}, tree="[0]")
+    private Output</* @Nullable */ SecurityProfileUrlFilteringProfile> urlFilteringProfile;
+
+    /**
+     * @return The url filtering configuration for the security profile.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SecurityProfileUrlFilteringProfile>> urlFilteringProfile() {
+        return Codegen.optional(this.urlFilteringProfile);
     }
 
     /**

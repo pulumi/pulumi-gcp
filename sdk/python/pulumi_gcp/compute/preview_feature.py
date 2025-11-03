@@ -28,7 +28,7 @@ class PreviewFeatureArgs:
         """
         The set of arguments for constructing a PreviewFeature resource.
         :param pulumi.Input[_builtins.str] activation_status: The activation status of the preview feature.
-               Possible values are: `ENABLED`, `DISABLED`.
+               Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
         :param pulumi.Input[_builtins.str] name: The name of the preview feature.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -48,7 +48,7 @@ class PreviewFeatureArgs:
     def activation_status(self) -> pulumi.Input[_builtins.str]:
         """
         The activation status of the preview feature.
-        Possible values are: `ENABLED`, `DISABLED`.
+        Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
         """
         return pulumi.get(self, "activation_status")
 
@@ -105,7 +105,7 @@ class _PreviewFeatureState:
         """
         Input properties used for looking up and filtering PreviewFeature resources.
         :param pulumi.Input[_builtins.str] activation_status: The activation status of the preview feature.
-               Possible values are: `ENABLED`, `DISABLED`.
+               Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
         :param pulumi.Input[_builtins.str] name: The name of the preview feature.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -126,7 +126,7 @@ class _PreviewFeatureState:
     def activation_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The activation status of the preview feature.
-        Possible values are: `ENABLED`, `DISABLED`.
+        Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
         """
         return pulumi.get(self, "activation_status")
 
@@ -185,11 +185,11 @@ class PreviewFeature(pulumi.CustomResource):
                  rollout_operation: Optional[pulumi.Input[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict']]] = None,
                  __props__=None):
         """
-        Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or disabled for a project.
+        Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or unspecified for a project.
 
         To get more information about PreviewFeature, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/PreviewFeatures)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/previewFeatures)
         * How-to Guides
             * [Use the Compute Engine alpha API](https://cloud.google.com/compute/docs/reference/rest/alpha)
 
@@ -203,7 +203,7 @@ class PreviewFeature(pulumi.CustomResource):
 
         gce_preview_feature = gcp.compute.PreviewFeature("gce_preview_feature",
             name="alpha-api-access",
-            activation_status="DISABLED",
+            activation_status="ACTIVATION_STATE_UNSPECIFIED",
             rollout_operation={
                 "rollout_input": {
                     "predefined_rollout_plan": "ROLLOUT_PLAN_FAST_ROLLOUT",
@@ -238,7 +238,7 @@ class PreviewFeature(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] activation_status: The activation status of the preview feature.
-               Possible values are: `ENABLED`, `DISABLED`.
+               Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
         :param pulumi.Input[_builtins.str] name: The name of the preview feature.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -252,11 +252,11 @@ class PreviewFeature(pulumi.CustomResource):
                  args: PreviewFeatureArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or disabled for a project.
+        Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or unspecified for a project.
 
         To get more information about PreviewFeature, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/PreviewFeatures)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/previewFeatures)
         * How-to Guides
             * [Use the Compute Engine alpha API](https://cloud.google.com/compute/docs/reference/rest/alpha)
 
@@ -270,7 +270,7 @@ class PreviewFeature(pulumi.CustomResource):
 
         gce_preview_feature = gcp.compute.PreviewFeature("gce_preview_feature",
             name="alpha-api-access",
-            activation_status="DISABLED",
+            activation_status="ACTIVATION_STATE_UNSPECIFIED",
             rollout_operation={
                 "rollout_input": {
                     "predefined_rollout_plan": "ROLLOUT_PLAN_FAST_ROLLOUT",
@@ -358,7 +358,7 @@ class PreviewFeature(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] activation_status: The activation status of the preview feature.
-               Possible values are: `ENABLED`, `DISABLED`.
+               Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
         :param pulumi.Input[_builtins.str] name: The name of the preview feature.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -380,7 +380,7 @@ class PreviewFeature(pulumi.CustomResource):
     def activation_status(self) -> pulumi.Output[_builtins.str]:
         """
         The activation status of the preview feature.
-        Possible values are: `ENABLED`, `DISABLED`.
+        Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
         """
         return pulumi.get(self, "activation_status")
 

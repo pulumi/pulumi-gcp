@@ -16,6 +16,7 @@ from .ekm_connection import *
 from .ekm_connection_iam_binding import *
 from .ekm_connection_iam_member import *
 from .ekm_connection_iam_policy import *
+from .folder_kaj_policy_config import *
 from .get_autokey_config import *
 from .get_crypto_key_iam_policy import *
 from .get_crypto_key_latest_version import *
@@ -39,6 +40,7 @@ from .key_ring_iam_member import *
 from .key_ring_iam_policy import *
 from .key_ring_import_job import *
 from .organization_kaj_policy_config import *
+from .project_kaj_policy_config import *
 from .secret_ciphertext import *
 from ._inputs import *
 from . import outputs

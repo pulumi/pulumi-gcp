@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicyArgs;
  * import com.pulumi.gcp.organizations.Folder;
  * import com.pulumi.gcp.organizations.FolderArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.iam.FoldersPolicyBinding;
  * import com.pulumi.gcp.iam.FoldersPolicyBindingArgs;
  * import com.pulumi.gcp.iam.inputs.FoldersPolicyBindingTargetArgs;
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(folder))
+ *                 .dependsOn(folder)
  *                 .build());
  * 
  *         var binding_for_all_folder_principals = new FoldersPolicyBinding("binding-for-all-folder-principals", FoldersPolicyBindingArgs.builder()

@@ -16,14 +16,14 @@ public final class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs 
     public static final TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs Empty = new TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs();
 
     /**
-     * Specifies how each object&#39;s ACLs should be preserved for transfers between Google Cloud Storage buckets
+     * Specifies how each object&#39;s ACLs should be preserved for transfers between Google Cloud Storage buckets.
      * 
      */
     @Import(name="acl")
     private @Nullable Output<String> acl;
 
     /**
-     * @return Specifies how each object&#39;s ACLs should be preserved for transfers between Google Cloud Storage buckets
+     * @return Specifies how each object&#39;s ACLs should be preserved for transfers between Google Cloud Storage buckets.
      * 
      */
     public Optional<Output<String>> acl() {
@@ -46,14 +46,14 @@ public final class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs 
     }
 
     /**
-     * Specifies how each object&#39;s Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+     * Specifies how each object&#39;s Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
      * 
      */
     @Import(name="kmsKey")
     private @Nullable Output<String> kmsKey;
 
     /**
-     * @return Specifies how each object&#39;s Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+     * @return Specifies how each object&#39;s Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
      * 
      */
     public Optional<Output<String>> kmsKey() {
@@ -76,14 +76,14 @@ public final class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs 
     }
 
     /**
-     * Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+     * Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
      * 
      */
     @Import(name="storageClass")
     private @Nullable Output<String> storageClass;
 
     /**
-     * @return Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+     * @return Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
      * 
      */
     public Optional<Output<String>> storageClass() {
@@ -106,14 +106,14 @@ public final class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs 
     }
 
     /**
-     * SSpecifies how each object&#39;s temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+     * Specifies how each object&#39;s temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
      * 
      */
     @Import(name="temporaryHold")
     private @Nullable Output<String> temporaryHold;
 
     /**
-     * @return SSpecifies how each object&#39;s temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+     * @return Specifies how each object&#39;s temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
      * 
      */
     public Optional<Output<String>> temporaryHold() {
@@ -183,7 +183,7 @@ public final class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs 
         }
 
         /**
-         * @param acl Specifies how each object&#39;s ACLs should be preserved for transfers between Google Cloud Storage buckets
+         * @param acl Specifies how each object&#39;s ACLs should be preserved for transfers between Google Cloud Storage buckets.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs 
         }
 
         /**
-         * @param acl Specifies how each object&#39;s ACLs should be preserved for transfers between Google Cloud Storage buckets
+         * @param acl Specifies how each object&#39;s ACLs should be preserved for transfers between Google Cloud Storage buckets.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs 
         }
 
         /**
-         * @param kmsKey Specifies how each object&#39;s Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+         * @param kmsKey Specifies how each object&#39;s Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs 
         }
 
         /**
-         * @param kmsKey Specifies how each object&#39;s Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+         * @param kmsKey Specifies how each object&#39;s Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs 
         }
 
         /**
-         * @param storageClass Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+         * @param storageClass Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs 
         }
 
         /**
-         * @param storageClass Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+         * @param storageClass Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs 
         }
 
         /**
-         * @param temporaryHold SSpecifies how each object&#39;s temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+         * @param temporaryHold Specifies how each object&#39;s temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs 
         }
 
         /**
-         * @param temporaryHold SSpecifies how each object&#39;s temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+         * @param temporaryHold Specifies how each object&#39;s temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
          * 
          * @return builder
          * 

@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * const cache = new gcp.redis.Instance("cache", {
  *     name: "memory-cache",
  *     memorySizeGb: 1,
+ *     deletionProtection: false,
  * });
  * ```
  * ### Redis Instance Full
@@ -312,6 +313,7 @@ export class Instance extends pulumi.CustomResource {
      * instance. If this is provided, CMEK is enabled.
      */
     declare public readonly customerManagedKey: pulumi.Output<string | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * An arbitrary and optional user-provided name for the instance.
      */
@@ -501,6 +503,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["currentLocationId"] = state?.currentLocationId;
             resourceInputs["customerManagedKey"] = state?.customerManagedKey;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["effectiveReservedIpRange"] = state?.effectiveReservedIpRange;
@@ -540,6 +543,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["authorizedNetwork"] = args?.authorizedNetwork;
             resourceInputs["connectMode"] = args?.connectMode;
             resourceInputs["customerManagedKey"] = args?.customerManagedKey;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["locationId"] = args?.locationId;
@@ -631,6 +635,7 @@ export interface InstanceState {
      * instance. If this is provided, CMEK is enabled.
      */
     customerManagedKey?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * An arbitrary and optional user-provided name for the instance.
      */
@@ -834,6 +839,7 @@ export interface InstanceArgs {
      * instance. If this is provided, CMEK is enabled.
      */
     customerManagedKey?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * An arbitrary and optional user-provided name for the instance.
      */

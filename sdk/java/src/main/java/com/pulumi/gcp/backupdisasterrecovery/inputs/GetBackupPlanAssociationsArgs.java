@@ -16,23 +16,53 @@ public final class GetBackupPlanAssociationsArgs extends com.pulumi.resources.In
 
     public static final GetBackupPlanAssociationsArgs Empty = new GetBackupPlanAssociationsArgs();
 
+    /**
+     * The location where the Backup Plan Association resources reside.
+     * 
+     */
     @Import(name="location", required=true)
     private Output<String> location;
 
+    /**
+     * @return The location where the Backup Plan Association resources reside.
+     * 
+     */
     public Output<String> location() {
         return this.location;
     }
 
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+     * 
+     * ***
+     * 
+     */
     @Import(name="resourceType", required=true)
     private Output<String> resourceType;
 
+    /**
+     * @return The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+     * 
+     * ***
+     * 
+     */
     public Output<String> resourceType() {
         return this.resourceType;
     }
@@ -63,29 +93,71 @@ public final class GetBackupPlanAssociationsArgs extends com.pulumi.resources.In
             $ = new GetBackupPlanAssociationsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param location The location where the Backup Plan Association resources reside.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location The location where the Backup Plan Association resources reside.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }
 
+        /**
+         * @param project The project in which the resource belongs. If it
+         * is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The project in which the resource belongs. If it
+         * is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param resourceType The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceType(Output<String> resourceType) {
             $.resourceType = resourceType;
             return this;
         }
 
+        /**
+         * @param resourceType The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceType(String resourceType) {
             return resourceType(Output.of(resourceType));
         }

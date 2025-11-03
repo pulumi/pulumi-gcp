@@ -13,6 +13,7 @@ import com.pulumi.gcp.datastream.inputs.ConnectionProfileState;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileBigqueryProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileForwardSshConnectivity;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileGcsProfile;
+import com.pulumi.gcp.datastream.outputs.ConnectionProfileMongodbProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileMysqlProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileOracleProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfilePostgresqlProfile;
@@ -576,7 +577,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
  * ## Import
  * 
  * ConnectionProfile can be imported using any of these accepted formats:
@@ -737,6 +737,22 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * Configuration for connecting to a MongoDB database.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="mongodbProfile", refs={ConnectionProfileMongodbProfile.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionProfileMongodbProfile> mongodbProfile;
+
+    /**
+     * @return Configuration for connecting to a MongoDB database.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionProfileMongodbProfile>> mongodbProfile() {
+        return Codegen.optional(this.mongodbProfile);
     }
     /**
      * MySQL database profile.

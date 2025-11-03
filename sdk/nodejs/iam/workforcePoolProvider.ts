@@ -509,6 +509,19 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      */
     declare public readonly saml: pulumi.Output<outputs.iam.WorkforcePoolProviderSaml | undefined>;
     /**
+     * Agentspace only. Specifies whether the workforce identity pool
+     * provider uses SCIM-managed groups instead of the `google.groups`
+     * attribute mapping for authorization checks.
+     * The `scimUsage` and `extendedAttributesOauth2Client` fields are
+     * mutually exclusive. A request that enables both fields on the same
+     * workforce identity pool provider will produce an error.
+     * * SCIM_USAGE_UNSPECIFIED: Default behaviour
+     * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+     * attribute mapping for authorization checks
+     * Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+     */
+    declare public readonly scimUsage: pulumi.Output<string | undefined>;
+    /**
      * The current state of the provider.
      * * STATE_UNSPECIFIED: State unspecified.
      * * ACTIVE: The provider is active and may be used to validate authentication credentials.
@@ -550,6 +563,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             resourceInputs["oidc"] = state?.oidc;
             resourceInputs["providerId"] = state?.providerId;
             resourceInputs["saml"] = state?.saml;
+            resourceInputs["scimUsage"] = state?.scimUsage;
             resourceInputs["state"] = state?.state;
             resourceInputs["workforcePoolId"] = state?.workforcePoolId;
         } else {
@@ -574,6 +588,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             resourceInputs["oidc"] = args?.oidc;
             resourceInputs["providerId"] = args?.providerId;
             resourceInputs["saml"] = args?.saml;
+            resourceInputs["scimUsage"] = args?.scimUsage;
             resourceInputs["workforcePoolId"] = args?.workforcePoolId;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -700,6 +715,19 @@ export interface WorkforcePoolProviderState {
      * Structure is documented below.
      */
     saml?: pulumi.Input<inputs.iam.WorkforcePoolProviderSaml>;
+    /**
+     * Agentspace only. Specifies whether the workforce identity pool
+     * provider uses SCIM-managed groups instead of the `google.groups`
+     * attribute mapping for authorization checks.
+     * The `scimUsage` and `extendedAttributesOauth2Client` fields are
+     * mutually exclusive. A request that enables both fields on the same
+     * workforce identity pool provider will produce an error.
+     * * SCIM_USAGE_UNSPECIFIED: Default behaviour
+     * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+     * attribute mapping for authorization checks
+     * Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+     */
+    scimUsage?: pulumi.Input<string>;
     /**
      * The current state of the provider.
      * * STATE_UNSPECIFIED: State unspecified.
@@ -830,6 +858,19 @@ export interface WorkforcePoolProviderArgs {
      * Structure is documented below.
      */
     saml?: pulumi.Input<inputs.iam.WorkforcePoolProviderSaml>;
+    /**
+     * Agentspace only. Specifies whether the workforce identity pool
+     * provider uses SCIM-managed groups instead of the `google.groups`
+     * attribute mapping for authorization checks.
+     * The `scimUsage` and `extendedAttributesOauth2Client` fields are
+     * mutually exclusive. A request that enables both fields on the same
+     * workforce identity pool provider will produce an error.
+     * * SCIM_USAGE_UNSPECIFIED: Default behaviour
+     * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+     * attribute mapping for authorization checks
+     * Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+     */
+    scimUsage?: pulumi.Input<string>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name.
      * The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.

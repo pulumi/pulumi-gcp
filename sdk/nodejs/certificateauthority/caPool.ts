@@ -46,13 +46,13 @@ import * as utilities from "../utilities";
  *
  * const privatecaSa = new gcp.projects.ServiceIdentity("privateca_sa", {service: "privateca.googleapis.com"});
  * const privatecaSaKeyuserEncrypterdecrypter = new gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_encrypterdecrypter", {
- *     cryptoKeyId: "projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
+ *     cryptoKeyId: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: privatecaSa.member,
  * });
  * const _default = new gcp.certificateauthority.CaPool("default", {
  *     name: "my-pool",
- *     location: "asia-east1",
+ *     location: "us-central1",
  *     tier: "ENTERPRISE",
  *     publishingOptions: {
  *         publishCaCert: false,
@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     encryptionSpec: {
- *         cloudKmsKey: "projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
+ *         cloudKmsKey: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
  *     },
  *     issuancePolicy: {
  *         allowedKeyTypes: [

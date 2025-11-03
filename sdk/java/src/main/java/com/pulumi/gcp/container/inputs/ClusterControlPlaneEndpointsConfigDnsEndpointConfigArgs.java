@@ -32,6 +32,36 @@ public final class ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs exten
     }
 
     /**
+     * Controls whether the k8s certs auth is allowed via Dns.
+     * 
+     */
+    @Import(name="enableK8sCertsViaDns")
+    private @Nullable Output<Boolean> enableK8sCertsViaDns;
+
+    /**
+     * @return Controls whether the k8s certs auth is allowed via Dns.
+     * 
+     */
+    public Optional<Output<Boolean>> enableK8sCertsViaDns() {
+        return Optional.ofNullable(this.enableK8sCertsViaDns);
+    }
+
+    /**
+     * Controls whether the k8s token auth is allowed via Dns.
+     * 
+     */
+    @Import(name="enableK8sTokensViaDns")
+    private @Nullable Output<Boolean> enableK8sTokensViaDns;
+
+    /**
+     * @return Controls whether the k8s token auth is allowed via Dns.
+     * 
+     */
+    public Optional<Output<Boolean>> enableK8sTokensViaDns() {
+        return Optional.ofNullable(this.enableK8sTokensViaDns);
+    }
+
+    /**
      * The cluster&#39;s DNS endpoint.
      * 
      */
@@ -50,6 +80,8 @@ public final class ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs exten
 
     private ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs(ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs $) {
         this.allowExternalTraffic = $.allowExternalTraffic;
+        this.enableK8sCertsViaDns = $.enableK8sCertsViaDns;
+        this.enableK8sTokensViaDns = $.enableK8sTokensViaDns;
         this.endpoint = $.endpoint;
     }
 
@@ -90,6 +122,48 @@ public final class ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs exten
          */
         public Builder allowExternalTraffic(Boolean allowExternalTraffic) {
             return allowExternalTraffic(Output.of(allowExternalTraffic));
+        }
+
+        /**
+         * @param enableK8sCertsViaDns Controls whether the k8s certs auth is allowed via Dns.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableK8sCertsViaDns(@Nullable Output<Boolean> enableK8sCertsViaDns) {
+            $.enableK8sCertsViaDns = enableK8sCertsViaDns;
+            return this;
+        }
+
+        /**
+         * @param enableK8sCertsViaDns Controls whether the k8s certs auth is allowed via Dns.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableK8sCertsViaDns(Boolean enableK8sCertsViaDns) {
+            return enableK8sCertsViaDns(Output.of(enableK8sCertsViaDns));
+        }
+
+        /**
+         * @param enableK8sTokensViaDns Controls whether the k8s token auth is allowed via Dns.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableK8sTokensViaDns(@Nullable Output<Boolean> enableK8sTokensViaDns) {
+            $.enableK8sTokensViaDns = enableK8sTokensViaDns;
+            return this;
+        }
+
+        /**
+         * @param enableK8sTokensViaDns Controls whether the k8s token auth is allowed via Dns.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableK8sTokensViaDns(Boolean enableK8sTokensViaDns) {
+            return enableK8sTokensViaDns(Output.of(enableK8sTokensViaDns));
         }
 
         /**

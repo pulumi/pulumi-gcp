@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or disabled for a project.
+// Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or unspecified for a project.
 //
 // To get more information about PreviewFeature, see:
 //
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/PreviewFeatures)
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/previewFeatures)
 // * How-to Guides
 //   - [Use the Compute Engine alpha API](https://cloud.google.com/compute/docs/reference/rest/alpha)
 //
@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewPreviewFeature(ctx, "gce_preview_feature", &compute.PreviewFeatureArgs{
 //				Name:             pulumi.String("alpha-api-access"),
-//				ActivationStatus: pulumi.String("DISABLED"),
+//				ActivationStatus: pulumi.String("ACTIVATION_STATE_UNSPECIFIED"),
 //				RolloutOperation: &compute.PreviewFeatureRolloutOperationArgs{
 //					RolloutInput: &compute.PreviewFeatureRolloutOperationRolloutInputArgs{
 //						PredefinedRolloutPlan: pulumi.String("ROLLOUT_PLAN_FAST_ROLLOUT"),
@@ -81,7 +81,7 @@ type PreviewFeature struct {
 	pulumi.CustomResourceState
 
 	// The activation status of the preview feature.
-	// Possible values are: `ENABLED`, `DISABLED`.
+	// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
 	ActivationStatus pulumi.StringOutput `pulumi:"activationStatus"`
 	// The name of the preview feature.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -127,7 +127,7 @@ func GetPreviewFeature(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PreviewFeature resources.
 type previewFeatureState struct {
 	// The activation status of the preview feature.
-	// Possible values are: `ENABLED`, `DISABLED`.
+	// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
 	ActivationStatus *string `pulumi:"activationStatus"`
 	// The name of the preview feature.
 	Name *string `pulumi:"name"`
@@ -141,7 +141,7 @@ type previewFeatureState struct {
 
 type PreviewFeatureState struct {
 	// The activation status of the preview feature.
-	// Possible values are: `ENABLED`, `DISABLED`.
+	// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
 	ActivationStatus pulumi.StringPtrInput
 	// The name of the preview feature.
 	Name pulumi.StringPtrInput
@@ -159,7 +159,7 @@ func (PreviewFeatureState) ElementType() reflect.Type {
 
 type previewFeatureArgs struct {
 	// The activation status of the preview feature.
-	// Possible values are: `ENABLED`, `DISABLED`.
+	// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
 	ActivationStatus string `pulumi:"activationStatus"`
 	// The name of the preview feature.
 	Name *string `pulumi:"name"`
@@ -174,7 +174,7 @@ type previewFeatureArgs struct {
 // The set of arguments for constructing a PreviewFeature resource.
 type PreviewFeatureArgs struct {
 	// The activation status of the preview feature.
-	// Possible values are: `ENABLED`, `DISABLED`.
+	// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
 	ActivationStatus pulumi.StringInput
 	// The name of the preview feature.
 	Name pulumi.StringPtrInput
@@ -274,7 +274,7 @@ func (o PreviewFeatureOutput) ToPreviewFeatureOutputWithContext(ctx context.Cont
 }
 
 // The activation status of the preview feature.
-// Possible values are: `ENABLED`, `DISABLED`.
+// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
 func (o PreviewFeatureOutput) ActivationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreviewFeature) pulumi.StringOutput { return v.ActivationStatus }).(pulumi.StringOutput)
 }

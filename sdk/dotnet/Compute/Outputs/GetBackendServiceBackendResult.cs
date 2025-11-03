@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
         /// 
         /// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-        /// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+        /// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS", "IN_FLIGHT"]
         /// </summary>
         public readonly string BalancingMode;
         /// <summary>
@@ -92,6 +92,22 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int MaxConnectionsPerInstance;
         /// <summary>
+        /// Defines a maximum number of in-flight requests for the whole NEG
+        /// or instance group. Not available if backend's balancingMode is RATE
+        /// or CONNECTION.
+        /// </summary>
+        public readonly int MaxInFlightRequests;
+        /// <summary>
+        /// Defines a maximum number of in-flight requests for a single endpoint.
+        /// Not available if backend's balancingMode is RATE or CONNECTION.
+        /// </summary>
+        public readonly int MaxInFlightRequestsPerEndpoint;
+        /// <summary>
+        /// Defines a maximum number of in-flight requests for a single VM.
+        /// Not available if backend's balancingMode is RATE or CONNECTION.
+        /// </summary>
+        public readonly int MaxInFlightRequestsPerInstance;
+        /// <summary>
         /// The max requests per second (RPS) of the group.
         /// 
         /// Can be used with either RATE or UTILIZATION balancing modes,
@@ -128,6 +144,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         ///     traffic would be assigned based on the load balancing algorithm you use. This is the default Possible values: ["PREFERRED", "DEFAULT"]
         /// </summary>
         public readonly string Preference;
+        /// <summary>
+        /// This field specifies how long a connection should be kept alive for:
+        /// - LONG: Most of the requests are expected to take more than multiple
+        ///   seconds to finish.
+        /// - SHORT: Most requests are expected to finish with a sub-second latency. Possible values: ["LONG", "SHORT"]
+        /// </summary>
+        public readonly string TrafficDuration;
 
         [OutputConstructor]
         private GetBackendServiceBackendResult(
@@ -147,6 +170,12 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int maxConnectionsPerInstance,
 
+            int maxInFlightRequests,
+
+            int maxInFlightRequestsPerEndpoint,
+
+            int maxInFlightRequestsPerInstance,
+
             int maxRate,
 
             double maxRatePerEndpoint,
@@ -155,7 +184,9 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             double maxUtilization,
 
-            string preference)
+            string preference,
+
+            string trafficDuration)
         {
             BalancingMode = balancingMode;
             CapacityScaler = capacityScaler;
@@ -165,11 +196,15 @@ namespace Pulumi.Gcp.Compute.Outputs
             MaxConnections = maxConnections;
             MaxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
             MaxConnectionsPerInstance = maxConnectionsPerInstance;
+            MaxInFlightRequests = maxInFlightRequests;
+            MaxInFlightRequestsPerEndpoint = maxInFlightRequestsPerEndpoint;
+            MaxInFlightRequestsPerInstance = maxInFlightRequestsPerInstance;
             MaxRate = maxRate;
             MaxRatePerEndpoint = maxRatePerEndpoint;
             MaxRatePerInstance = maxRatePerInstance;
             MaxUtilization = maxUtilization;
             Preference = preference;
+            TrafficDuration = trafficDuration;
         }
     }
 }

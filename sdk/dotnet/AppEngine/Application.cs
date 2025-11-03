@@ -145,6 +145,12 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> ServingStatus { get; private set; } = null!;
 
         /// <summary>
+        /// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+        /// </summary>
+        [Output("sslPolicy")]
+        public Output<string> SslPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A list of dispatch rule blocks. Each block has a `Domain`, `Path`, and `Service` field.
         /// </summary>
         [Output("urlDispatchRules")]
@@ -246,6 +252,12 @@ namespace Pulumi.Gcp.AppEngine
         [Input("servingStatus")]
         public Input<string>? ServingStatus { get; set; }
 
+        /// <summary>
+        /// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+        /// </summary>
+        [Input("sslPolicy")]
+        public Input<string>? SslPolicy { get; set; }
+
         public ApplicationArgs()
         {
         }
@@ -339,6 +351,12 @@ namespace Pulumi.Gcp.AppEngine
         /// </summary>
         [Input("servingStatus")]
         public Input<string>? ServingStatus { get; set; }
+
+        /// <summary>
+        /// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+        /// </summary>
+        [Input("sslPolicy")]
+        public Input<string>? SslPolicy { get; set; }
 
         [Input("urlDispatchRules")]
         private InputList<Inputs.ApplicationUrlDispatchRuleGetArgs>? _urlDispatchRules;

@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     folder: myFolder.folderId,
  *     service: "progressiverollout.googleapis.com",
  * });
- * const wait30Sec = new time.index.Sleep("wait_30_sec", {createDuration: "30s"}, {
+ * const wait30Sec = new time.Sleep("wait_30_sec", {createDuration: "30s"}, {
  *     dependsOn: [
  *         osconfigSa,
  *         rippleSa,
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [iamOsconfigRolloutServiceAgent],
  * });
- * const wait3Min = new time.index.Sleep("wait_3_min", {createDuration: "180s"}, {
+ * const wait3Min = new time.Sleep("wait_3_min", {createDuration: "180s"}, {
  *     dependsOn: [iamProgressiverolloutServiceAgent],
  * });
  * const policyOrchestratorForFolder = new gcp.osconfig.V2PolicyOrchestratorForFolder("policy_orchestrator_for_folder", {

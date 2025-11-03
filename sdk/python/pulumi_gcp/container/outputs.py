@@ -5621,6 +5621,10 @@ class ClusterControlPlaneEndpointsConfigDnsEndpointConfig(dict):
         suggest = None
         if key == "allowExternalTraffic":
             suggest = "allow_external_traffic"
+        elif key == "enableK8sCertsViaDns":
+            suggest = "enable_k8s_certs_via_dns"
+        elif key == "enableK8sTokensViaDns":
+            suggest = "enable_k8s_tokens_via_dns"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterControlPlaneEndpointsConfigDnsEndpointConfig. Access the value via the '{suggest}' property getter instead.")
@@ -5635,13 +5639,21 @@ class ClusterControlPlaneEndpointsConfigDnsEndpointConfig(dict):
 
     def __init__(__self__, *,
                  allow_external_traffic: Optional[_builtins.bool] = None,
+                 enable_k8s_certs_via_dns: Optional[_builtins.bool] = None,
+                 enable_k8s_tokens_via_dns: Optional[_builtins.bool] = None,
                  endpoint: Optional[_builtins.str] = None):
         """
         :param _builtins.bool allow_external_traffic: Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+        :param _builtins.bool enable_k8s_certs_via_dns: Controls whether the k8s certs auth is allowed via Dns.
+        :param _builtins.bool enable_k8s_tokens_via_dns: Controls whether the k8s token auth is allowed via Dns.
         :param _builtins.str endpoint: The cluster's DNS endpoint.
         """
         if allow_external_traffic is not None:
             pulumi.set(__self__, "allow_external_traffic", allow_external_traffic)
+        if enable_k8s_certs_via_dns is not None:
+            pulumi.set(__self__, "enable_k8s_certs_via_dns", enable_k8s_certs_via_dns)
+        if enable_k8s_tokens_via_dns is not None:
+            pulumi.set(__self__, "enable_k8s_tokens_via_dns", enable_k8s_tokens_via_dns)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
 
@@ -5652,6 +5664,22 @@ class ClusterControlPlaneEndpointsConfigDnsEndpointConfig(dict):
         Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
         """
         return pulumi.get(self, "allow_external_traffic")
+
+    @_builtins.property
+    @pulumi.getter(name="enableK8sCertsViaDns")
+    def enable_k8s_certs_via_dns(self) -> Optional[_builtins.bool]:
+        """
+        Controls whether the k8s certs auth is allowed via Dns.
+        """
+        return pulumi.get(self, "enable_k8s_certs_via_dns")
+
+    @_builtins.property
+    @pulumi.getter(name="enableK8sTokensViaDns")
+    def enable_k8s_tokens_via_dns(self) -> Optional[_builtins.bool]:
+        """
+        Controls whether the k8s token auth is allowed via Dns.
+        """
+        return pulumi.get(self, "enable_k8s_tokens_via_dns")
 
     @_builtins.property
     @pulumi.getter
@@ -5946,6 +5974,8 @@ class ClusterFleet(dict):
             suggest = "membership_id"
         elif key == "membershipLocation":
             suggest = "membership_location"
+        elif key == "membershipType":
+            suggest = "membership_type"
         elif key == "preRegistered":
             suggest = "pre_registered"
 
@@ -5964,12 +5994,14 @@ class ClusterFleet(dict):
                  membership: Optional[_builtins.str] = None,
                  membership_id: Optional[_builtins.str] = None,
                  membership_location: Optional[_builtins.str] = None,
+                 membership_type: Optional[_builtins.str] = None,
                  pre_registered: Optional[_builtins.bool] = None,
                  project: Optional[_builtins.str] = None):
         """
         :param _builtins.str membership: The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
         :param _builtins.str membership_id: The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
         :param _builtins.str membership_location: The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
+        :param _builtins.str membership_type: Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
         :param _builtins.bool pre_registered: Whether the cluster has been registered via the fleet API.
         :param _builtins.str project: The name of the Fleet host project where this cluster will be registered.
         """
@@ -5979,6 +6011,8 @@ class ClusterFleet(dict):
             pulumi.set(__self__, "membership_id", membership_id)
         if membership_location is not None:
             pulumi.set(__self__, "membership_location", membership_location)
+        if membership_type is not None:
+            pulumi.set(__self__, "membership_type", membership_type)
         if pre_registered is not None:
             pulumi.set(__self__, "pre_registered", pre_registered)
         if project is not None:
@@ -6007,6 +6041,14 @@ class ClusterFleet(dict):
         The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
         """
         return pulumi.get(self, "membership_location")
+
+    @_builtins.property
+    @pulumi.getter(name="membershipType")
+    def membership_type(self) -> Optional[_builtins.str]:
+        """
+        Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
+        """
+        return pulumi.get(self, "membership_type")
 
     @_builtins.property
     @pulumi.getter(name="preRegistered")
@@ -19947,12 +19989,18 @@ class GetClusterControlPlaneEndpointsConfigResult(dict):
 class GetClusterControlPlaneEndpointsConfigDnsEndpointConfigResult(dict):
     def __init__(__self__, *,
                  allow_external_traffic: _builtins.bool,
+                 enable_k8s_certs_via_dns: _builtins.bool,
+                 enable_k8s_tokens_via_dns: _builtins.bool,
                  endpoint: _builtins.str):
         """
         :param _builtins.bool allow_external_traffic: Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+        :param _builtins.bool enable_k8s_certs_via_dns: Controls whether the k8s certs auth is allowed via dns.
+        :param _builtins.bool enable_k8s_tokens_via_dns: Controls whether the k8s token auth is allowed via dns.
         :param _builtins.str endpoint: The cluster's DNS endpoint.
         """
         pulumi.set(__self__, "allow_external_traffic", allow_external_traffic)
+        pulumi.set(__self__, "enable_k8s_certs_via_dns", enable_k8s_certs_via_dns)
+        pulumi.set(__self__, "enable_k8s_tokens_via_dns", enable_k8s_tokens_via_dns)
         pulumi.set(__self__, "endpoint", endpoint)
 
     @_builtins.property
@@ -19962,6 +20010,22 @@ class GetClusterControlPlaneEndpointsConfigDnsEndpointConfigResult(dict):
         Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
         """
         return pulumi.get(self, "allow_external_traffic")
+
+    @_builtins.property
+    @pulumi.getter(name="enableK8sCertsViaDns")
+    def enable_k8s_certs_via_dns(self) -> _builtins.bool:
+        """
+        Controls whether the k8s certs auth is allowed via dns.
+        """
+        return pulumi.get(self, "enable_k8s_certs_via_dns")
+
+    @_builtins.property
+    @pulumi.getter(name="enableK8sTokensViaDns")
+    def enable_k8s_tokens_via_dns(self) -> _builtins.bool:
+        """
+        Controls whether the k8s token auth is allowed via dns.
+        """
+        return pulumi.get(self, "enable_k8s_tokens_via_dns")
 
     @_builtins.property
     @pulumi.getter
@@ -20159,12 +20223,14 @@ class GetClusterFleetResult(dict):
                  membership: _builtins.str,
                  membership_id: _builtins.str,
                  membership_location: _builtins.str,
+                 membership_type: _builtins.str,
                  pre_registered: _builtins.bool,
                  project: _builtins.str):
         """
         :param _builtins.str membership: Full resource name of the registered fleet membership of the cluster.
         :param _builtins.str membership_id: Short name of the fleet membership, for example "member-1".
         :param _builtins.str membership_location: Location of the fleet membership, for example "us-central1".
+        :param _builtins.str membership_type: The type of the cluster's fleet membership.
         :param _builtins.bool pre_registered: Whether the cluster has been registered via the fleet API.
         :param _builtins.str project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -20172,6 +20238,7 @@ class GetClusterFleetResult(dict):
         pulumi.set(__self__, "membership", membership)
         pulumi.set(__self__, "membership_id", membership_id)
         pulumi.set(__self__, "membership_location", membership_location)
+        pulumi.set(__self__, "membership_type", membership_type)
         pulumi.set(__self__, "pre_registered", pre_registered)
         pulumi.set(__self__, "project", project)
 
@@ -20198,6 +20265,14 @@ class GetClusterFleetResult(dict):
         Location of the fleet membership, for example "us-central1".
         """
         return pulumi.get(self, "membership_location")
+
+    @_builtins.property
+    @pulumi.getter(name="membershipType")
+    def membership_type(self) -> _builtins.str:
+        """
+        The type of the cluster's fleet membership.
+        """
+        return pulumi.get(self, "membership_type")
 
     @_builtins.property
     @pulumi.getter(name="preRegistered")

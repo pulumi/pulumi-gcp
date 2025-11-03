@@ -1965,6 +1965,290 @@ func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) Reason() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type SpokeGateway struct {
+	// the capacity of the gateway spoke, in Gbps.
+	// Possible values are: `CAPACITY_1_GBPS`, `CAPACITY_10_GBPS`, `CAPACITY_100_GBPS`.
+	Capacity string `pulumi:"capacity"`
+	// A list of IP ranges that are reserved for this gateway's internal infrastructure.
+	// Structure is documented below.
+	IpRangeReservations []SpokeGatewayIpRangeReservation `pulumi:"ipRangeReservations"`
+	// (Output, Beta)
+	// Set of Cloud Routers that are attached to this NCC-GW
+	Routers []string `pulumi:"routers"`
+}
+
+// SpokeGatewayInput is an input type that accepts SpokeGatewayArgs and SpokeGatewayOutput values.
+// You can construct a concrete instance of `SpokeGatewayInput` via:
+//
+//	SpokeGatewayArgs{...}
+type SpokeGatewayInput interface {
+	pulumi.Input
+
+	ToSpokeGatewayOutput() SpokeGatewayOutput
+	ToSpokeGatewayOutputWithContext(context.Context) SpokeGatewayOutput
+}
+
+type SpokeGatewayArgs struct {
+	// the capacity of the gateway spoke, in Gbps.
+	// Possible values are: `CAPACITY_1_GBPS`, `CAPACITY_10_GBPS`, `CAPACITY_100_GBPS`.
+	Capacity pulumi.StringInput `pulumi:"capacity"`
+	// A list of IP ranges that are reserved for this gateway's internal infrastructure.
+	// Structure is documented below.
+	IpRangeReservations SpokeGatewayIpRangeReservationArrayInput `pulumi:"ipRangeReservations"`
+	// (Output, Beta)
+	// Set of Cloud Routers that are attached to this NCC-GW
+	Routers pulumi.StringArrayInput `pulumi:"routers"`
+}
+
+func (SpokeGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeGateway)(nil)).Elem()
+}
+
+func (i SpokeGatewayArgs) ToSpokeGatewayOutput() SpokeGatewayOutput {
+	return i.ToSpokeGatewayOutputWithContext(context.Background())
+}
+
+func (i SpokeGatewayArgs) ToSpokeGatewayOutputWithContext(ctx context.Context) SpokeGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeGatewayOutput)
+}
+
+func (i SpokeGatewayArgs) ToSpokeGatewayPtrOutput() SpokeGatewayPtrOutput {
+	return i.ToSpokeGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i SpokeGatewayArgs) ToSpokeGatewayPtrOutputWithContext(ctx context.Context) SpokeGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeGatewayOutput).ToSpokeGatewayPtrOutputWithContext(ctx)
+}
+
+// SpokeGatewayPtrInput is an input type that accepts SpokeGatewayArgs, SpokeGatewayPtr and SpokeGatewayPtrOutput values.
+// You can construct a concrete instance of `SpokeGatewayPtrInput` via:
+//
+//	        SpokeGatewayArgs{...}
+//
+//	or:
+//
+//	        nil
+type SpokeGatewayPtrInput interface {
+	pulumi.Input
+
+	ToSpokeGatewayPtrOutput() SpokeGatewayPtrOutput
+	ToSpokeGatewayPtrOutputWithContext(context.Context) SpokeGatewayPtrOutput
+}
+
+type spokeGatewayPtrType SpokeGatewayArgs
+
+func SpokeGatewayPtr(v *SpokeGatewayArgs) SpokeGatewayPtrInput {
+	return (*spokeGatewayPtrType)(v)
+}
+
+func (*spokeGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpokeGateway)(nil)).Elem()
+}
+
+func (i *spokeGatewayPtrType) ToSpokeGatewayPtrOutput() SpokeGatewayPtrOutput {
+	return i.ToSpokeGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *spokeGatewayPtrType) ToSpokeGatewayPtrOutputWithContext(ctx context.Context) SpokeGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeGatewayPtrOutput)
+}
+
+type SpokeGatewayOutput struct{ *pulumi.OutputState }
+
+func (SpokeGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeGateway)(nil)).Elem()
+}
+
+func (o SpokeGatewayOutput) ToSpokeGatewayOutput() SpokeGatewayOutput {
+	return o
+}
+
+func (o SpokeGatewayOutput) ToSpokeGatewayOutputWithContext(ctx context.Context) SpokeGatewayOutput {
+	return o
+}
+
+func (o SpokeGatewayOutput) ToSpokeGatewayPtrOutput() SpokeGatewayPtrOutput {
+	return o.ToSpokeGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o SpokeGatewayOutput) ToSpokeGatewayPtrOutputWithContext(ctx context.Context) SpokeGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpokeGateway) *SpokeGateway {
+		return &v
+	}).(SpokeGatewayPtrOutput)
+}
+
+// the capacity of the gateway spoke, in Gbps.
+// Possible values are: `CAPACITY_1_GBPS`, `CAPACITY_10_GBPS`, `CAPACITY_100_GBPS`.
+func (o SpokeGatewayOutput) Capacity() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeGateway) string { return v.Capacity }).(pulumi.StringOutput)
+}
+
+// A list of IP ranges that are reserved for this gateway's internal infrastructure.
+// Structure is documented below.
+func (o SpokeGatewayOutput) IpRangeReservations() SpokeGatewayIpRangeReservationArrayOutput {
+	return o.ApplyT(func(v SpokeGateway) []SpokeGatewayIpRangeReservation { return v.IpRangeReservations }).(SpokeGatewayIpRangeReservationArrayOutput)
+}
+
+// (Output, Beta)
+// Set of Cloud Routers that are attached to this NCC-GW
+func (o SpokeGatewayOutput) Routers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeGateway) []string { return v.Routers }).(pulumi.StringArrayOutput)
+}
+
+type SpokeGatewayPtrOutput struct{ *pulumi.OutputState }
+
+func (SpokeGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpokeGateway)(nil)).Elem()
+}
+
+func (o SpokeGatewayPtrOutput) ToSpokeGatewayPtrOutput() SpokeGatewayPtrOutput {
+	return o
+}
+
+func (o SpokeGatewayPtrOutput) ToSpokeGatewayPtrOutputWithContext(ctx context.Context) SpokeGatewayPtrOutput {
+	return o
+}
+
+func (o SpokeGatewayPtrOutput) Elem() SpokeGatewayOutput {
+	return o.ApplyT(func(v *SpokeGateway) SpokeGateway {
+		if v != nil {
+			return *v
+		}
+		var ret SpokeGateway
+		return ret
+	}).(SpokeGatewayOutput)
+}
+
+// the capacity of the gateway spoke, in Gbps.
+// Possible values are: `CAPACITY_1_GBPS`, `CAPACITY_10_GBPS`, `CAPACITY_100_GBPS`.
+func (o SpokeGatewayPtrOutput) Capacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpokeGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Capacity
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of IP ranges that are reserved for this gateway's internal infrastructure.
+// Structure is documented below.
+func (o SpokeGatewayPtrOutput) IpRangeReservations() SpokeGatewayIpRangeReservationArrayOutput {
+	return o.ApplyT(func(v *SpokeGateway) []SpokeGatewayIpRangeReservation {
+		if v == nil {
+			return nil
+		}
+		return v.IpRangeReservations
+	}).(SpokeGatewayIpRangeReservationArrayOutput)
+}
+
+// (Output, Beta)
+// Set of Cloud Routers that are attached to this NCC-GW
+func (o SpokeGatewayPtrOutput) Routers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeGateway) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Routers
+	}).(pulumi.StringArrayOutput)
+}
+
+type SpokeGatewayIpRangeReservation struct {
+	// A block of IP address ranges used to allocate supporting infrastructure for this gateway—for example, 10.1.2.0/23. The IP address block must be a /23 range. This IP address block must not overlap with subnets in any spoke or peer network that the gateway can communicate with.
+	IpRange string `pulumi:"ipRange"`
+}
+
+// SpokeGatewayIpRangeReservationInput is an input type that accepts SpokeGatewayIpRangeReservationArgs and SpokeGatewayIpRangeReservationOutput values.
+// You can construct a concrete instance of `SpokeGatewayIpRangeReservationInput` via:
+//
+//	SpokeGatewayIpRangeReservationArgs{...}
+type SpokeGatewayIpRangeReservationInput interface {
+	pulumi.Input
+
+	ToSpokeGatewayIpRangeReservationOutput() SpokeGatewayIpRangeReservationOutput
+	ToSpokeGatewayIpRangeReservationOutputWithContext(context.Context) SpokeGatewayIpRangeReservationOutput
+}
+
+type SpokeGatewayIpRangeReservationArgs struct {
+	// A block of IP address ranges used to allocate supporting infrastructure for this gateway—for example, 10.1.2.0/23. The IP address block must be a /23 range. This IP address block must not overlap with subnets in any spoke or peer network that the gateway can communicate with.
+	IpRange pulumi.StringInput `pulumi:"ipRange"`
+}
+
+func (SpokeGatewayIpRangeReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeGatewayIpRangeReservation)(nil)).Elem()
+}
+
+func (i SpokeGatewayIpRangeReservationArgs) ToSpokeGatewayIpRangeReservationOutput() SpokeGatewayIpRangeReservationOutput {
+	return i.ToSpokeGatewayIpRangeReservationOutputWithContext(context.Background())
+}
+
+func (i SpokeGatewayIpRangeReservationArgs) ToSpokeGatewayIpRangeReservationOutputWithContext(ctx context.Context) SpokeGatewayIpRangeReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeGatewayIpRangeReservationOutput)
+}
+
+// SpokeGatewayIpRangeReservationArrayInput is an input type that accepts SpokeGatewayIpRangeReservationArray and SpokeGatewayIpRangeReservationArrayOutput values.
+// You can construct a concrete instance of `SpokeGatewayIpRangeReservationArrayInput` via:
+//
+//	SpokeGatewayIpRangeReservationArray{ SpokeGatewayIpRangeReservationArgs{...} }
+type SpokeGatewayIpRangeReservationArrayInput interface {
+	pulumi.Input
+
+	ToSpokeGatewayIpRangeReservationArrayOutput() SpokeGatewayIpRangeReservationArrayOutput
+	ToSpokeGatewayIpRangeReservationArrayOutputWithContext(context.Context) SpokeGatewayIpRangeReservationArrayOutput
+}
+
+type SpokeGatewayIpRangeReservationArray []SpokeGatewayIpRangeReservationInput
+
+func (SpokeGatewayIpRangeReservationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpokeGatewayIpRangeReservation)(nil)).Elem()
+}
+
+func (i SpokeGatewayIpRangeReservationArray) ToSpokeGatewayIpRangeReservationArrayOutput() SpokeGatewayIpRangeReservationArrayOutput {
+	return i.ToSpokeGatewayIpRangeReservationArrayOutputWithContext(context.Background())
+}
+
+func (i SpokeGatewayIpRangeReservationArray) ToSpokeGatewayIpRangeReservationArrayOutputWithContext(ctx context.Context) SpokeGatewayIpRangeReservationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeGatewayIpRangeReservationArrayOutput)
+}
+
+type SpokeGatewayIpRangeReservationOutput struct{ *pulumi.OutputState }
+
+func (SpokeGatewayIpRangeReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeGatewayIpRangeReservation)(nil)).Elem()
+}
+
+func (o SpokeGatewayIpRangeReservationOutput) ToSpokeGatewayIpRangeReservationOutput() SpokeGatewayIpRangeReservationOutput {
+	return o
+}
+
+func (o SpokeGatewayIpRangeReservationOutput) ToSpokeGatewayIpRangeReservationOutputWithContext(ctx context.Context) SpokeGatewayIpRangeReservationOutput {
+	return o
+}
+
+// A block of IP address ranges used to allocate supporting infrastructure for this gateway—for example, 10.1.2.0/23. The IP address block must be a /23 range. This IP address block must not overlap with subnets in any spoke or peer network that the gateway can communicate with.
+func (o SpokeGatewayIpRangeReservationOutput) IpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeGatewayIpRangeReservation) string { return v.IpRange }).(pulumi.StringOutput)
+}
+
+type SpokeGatewayIpRangeReservationArrayOutput struct{ *pulumi.OutputState }
+
+func (SpokeGatewayIpRangeReservationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpokeGatewayIpRangeReservation)(nil)).Elem()
+}
+
+func (o SpokeGatewayIpRangeReservationArrayOutput) ToSpokeGatewayIpRangeReservationArrayOutput() SpokeGatewayIpRangeReservationArrayOutput {
+	return o
+}
+
+func (o SpokeGatewayIpRangeReservationArrayOutput) ToSpokeGatewayIpRangeReservationArrayOutputWithContext(ctx context.Context) SpokeGatewayIpRangeReservationArrayOutput {
+	return o
+}
+
+func (o SpokeGatewayIpRangeReservationArrayOutput) Index(i pulumi.IntInput) SpokeGatewayIpRangeReservationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpokeGatewayIpRangeReservation {
+		return vs[0].([]SpokeGatewayIpRangeReservation)[vs[1].(int)]
+	}).(SpokeGatewayIpRangeReservationOutput)
+}
+
 type SpokeLinkedInterconnectAttachments struct {
 	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
 	// The only allowed value for now is "ALL_IPV4_RANGES".
@@ -3146,6 +3430,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConnectionErrorPtrInput)(nil)).Elem(), ServiceConnectionPolicyPscConnectionErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConnectionErrorInfoInput)(nil)).Elem(), ServiceConnectionPolicyPscConnectionErrorInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConnectionErrorInfoPtrInput)(nil)).Elem(), ServiceConnectionPolicyPscConnectionErrorInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeGatewayInput)(nil)).Elem(), SpokeGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeGatewayPtrInput)(nil)).Elem(), SpokeGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeGatewayIpRangeReservationInput)(nil)).Elem(), SpokeGatewayIpRangeReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeGatewayIpRangeReservationArrayInput)(nil)).Elem(), SpokeGatewayIpRangeReservationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedInterconnectAttachmentsInput)(nil)).Elem(), SpokeLinkedInterconnectAttachmentsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedInterconnectAttachmentsPtrInput)(nil)).Elem(), SpokeLinkedInterconnectAttachmentsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedProducerVpcNetworkInput)(nil)).Elem(), SpokeLinkedProducerVpcNetworkArgs{})
@@ -3184,6 +3472,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConnectionErrorPtrOutput{})
 	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConnectionErrorInfoOutput{})
 	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput{})
+	pulumi.RegisterOutputType(SpokeGatewayOutput{})
+	pulumi.RegisterOutputType(SpokeGatewayPtrOutput{})
+	pulumi.RegisterOutputType(SpokeGatewayIpRangeReservationOutput{})
+	pulumi.RegisterOutputType(SpokeGatewayIpRangeReservationArrayOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedInterconnectAttachmentsOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedInterconnectAttachmentsPtrOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedProducerVpcNetworkOutput{})

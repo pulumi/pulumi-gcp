@@ -529,7 +529,6 @@ import (
 //	}
 //
 // ```
-//
 // ## Import
 //
 // ConnectionProfile can be imported using any of these accepted formats:
@@ -578,6 +577,9 @@ type ConnectionProfile struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location this connection profile is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Configuration for connecting to a MongoDB database.
+	// Structure is documented below.
+	MongodbProfile ConnectionProfileMongodbProfilePtrOutput `pulumi:"mongodbProfile"`
 	// MySQL database profile.
 	// Structure is documented below.
 	MysqlProfile ConnectionProfileMysqlProfilePtrOutput `pulumi:"mysqlProfile"`
@@ -672,6 +674,9 @@ type connectionProfileState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this connection profile is located in.
 	Location *string `pulumi:"location"`
+	// Configuration for connecting to a MongoDB database.
+	// Structure is documented below.
+	MongodbProfile *ConnectionProfileMongodbProfile `pulumi:"mongodbProfile"`
 	// MySQL database profile.
 	// Structure is documented below.
 	MysqlProfile *ConnectionProfileMysqlProfile `pulumi:"mysqlProfile"`
@@ -723,6 +728,9 @@ type ConnectionProfileState struct {
 	Labels pulumi.StringMapInput
 	// The name of the location this connection profile is located in.
 	Location pulumi.StringPtrInput
+	// Configuration for connecting to a MongoDB database.
+	// Structure is documented below.
+	MongodbProfile ConnectionProfileMongodbProfilePtrInput
 	// MySQL database profile.
 	// Structure is documented below.
 	MysqlProfile ConnectionProfileMysqlProfilePtrInput
@@ -776,6 +784,9 @@ type connectionProfileArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this connection profile is located in.
 	Location string `pulumi:"location"`
+	// Configuration for connecting to a MongoDB database.
+	// Structure is documented below.
+	MongodbProfile *ConnectionProfileMongodbProfile `pulumi:"mongodbProfile"`
 	// MySQL database profile.
 	// Structure is documented below.
 	MysqlProfile *ConnectionProfileMysqlProfile `pulumi:"mysqlProfile"`
@@ -821,6 +832,9 @@ type ConnectionProfileArgs struct {
 	Labels pulumi.StringMapInput
 	// The name of the location this connection profile is located in.
 	Location pulumi.StringInput
+	// Configuration for connecting to a MongoDB database.
+	// Structure is documented below.
+	MongodbProfile ConnectionProfileMongodbProfilePtrInput
 	// MySQL database profile.
 	// Structure is documented below.
 	MysqlProfile ConnectionProfileMysqlProfilePtrInput
@@ -980,6 +994,12 @@ func (o ConnectionProfileOutput) Labels() pulumi.StringMapOutput {
 // The name of the location this connection profile is located in.
 func (o ConnectionProfileOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Configuration for connecting to a MongoDB database.
+// Structure is documented below.
+func (o ConnectionProfileOutput) MongodbProfile() ConnectionProfileMongodbProfilePtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) ConnectionProfileMongodbProfilePtrOutput { return v.MongodbProfile }).(ConnectionProfileMongodbProfilePtrOutput)
 }
 
 // MySQL database profile.

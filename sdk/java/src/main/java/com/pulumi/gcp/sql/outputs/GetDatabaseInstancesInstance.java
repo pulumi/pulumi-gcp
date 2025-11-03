@@ -83,7 +83,7 @@ public final class GetDatabaseInstancesInstance {
     private String masterInstanceName;
     private String name;
     /**
-     * @return For a read pool instance, the number of nodes in the read pool.
+     * @return For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
      * 
      */
     private Integer nodeCount;
@@ -241,7 +241,7 @@ public final class GetDatabaseInstancesInstance {
         return this.name;
     }
     /**
-     * @return For a read pool instance, the number of nodes in the read pool.
+     * @return For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
      * 
      */
     public Integer nodeCount() {

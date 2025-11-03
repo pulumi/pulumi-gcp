@@ -376,6 +376,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly automatedBackupConfig: pulumi.Output<outputs.memorystore.InstanceAutomatedBackupConfig | undefined>;
     /**
+     * This field is used to determine the available maintenance versions for the self service update.
+     */
+    declare public /*out*/ readonly availableMaintenanceVersions: pulumi.Output<string[]>;
+    /**
      * The backup collection full resource name.
      * Example: projects/{project}/locations/{location}/backupCollections/{collection}
      */
@@ -415,6 +419,10 @@ export class Instance extends pulumi.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * This field represents the actual maintenance version of the cluster.
+     */
+    declare public /*out*/ readonly effectiveMaintenanceVersion: pulumi.Output<string>;
     /**
      * Endpoints for the instance.
      * Structure is documented below.
@@ -468,6 +476,11 @@ export class Instance extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public /*out*/ readonly maintenanceSchedules: pulumi.Output<outputs.memorystore.InstanceMaintenanceSchedule[]>;
+    /**
+     * This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+     * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+     */
+    declare public readonly maintenanceVersion: pulumi.Output<string | undefined>;
     /**
      * Managed backup source for the instance.
      * Structure is documented below.
@@ -591,6 +604,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["authorizationMode"] = state?.authorizationMode;
             resourceInputs["automatedBackupConfig"] = state?.automatedBackupConfig;
+            resourceInputs["availableMaintenanceVersions"] = state?.availableMaintenanceVersions;
             resourceInputs["backupCollection"] = state?.backupCollection;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["crossInstanceReplicationConfig"] = state?.crossInstanceReplicationConfig;
@@ -599,6 +613,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["desiredPscAutoConnections"] = state?.desiredPscAutoConnections;
             resourceInputs["discoveryEndpoints"] = state?.discoveryEndpoints;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["effectiveMaintenanceVersion"] = state?.effectiveMaintenanceVersion;
             resourceInputs["endpoints"] = state?.endpoints;
             resourceInputs["engineConfigs"] = state?.engineConfigs;
             resourceInputs["engineVersion"] = state?.engineVersion;
@@ -609,6 +624,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["location"] = state?.location;
             resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
             resourceInputs["maintenanceSchedules"] = state?.maintenanceSchedules;
+            resourceInputs["maintenanceVersion"] = state?.maintenanceVersion;
             resourceInputs["managedBackupSource"] = state?.managedBackupSource;
             resourceInputs["managedServerCas"] = state?.managedServerCas;
             resourceInputs["mode"] = state?.mode;
@@ -653,6 +669,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
+            resourceInputs["maintenanceVersion"] = args?.maintenanceVersion;
             resourceInputs["managedBackupSource"] = args?.managedBackupSource;
             resourceInputs["mode"] = args?.mode;
             resourceInputs["nodeType"] = args?.nodeType;
@@ -662,10 +679,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["shardCount"] = args?.shardCount;
             resourceInputs["transitEncryptionMode"] = args?.transitEncryptionMode;
             resourceInputs["zoneDistributionConfig"] = args?.zoneDistributionConfig;
+            resourceInputs["availableMaintenanceVersions"] = undefined /*out*/;
             resourceInputs["backupCollection"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["effectiveMaintenanceVersion"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
             resourceInputs["maintenanceSchedules"] = undefined /*out*/;
             resourceInputs["managedServerCas"] = undefined /*out*/;
@@ -701,6 +720,10 @@ export interface InstanceState {
      * Structure is documented below.
      */
     automatedBackupConfig?: pulumi.Input<inputs.memorystore.InstanceAutomatedBackupConfig>;
+    /**
+     * This field is used to determine the available maintenance versions for the self service update.
+     */
+    availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The backup collection full resource name.
      * Example: projects/{project}/locations/{location}/backupCollections/{collection}
@@ -741,6 +764,10 @@ export interface InstanceState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * This field represents the actual maintenance version of the cluster.
+     */
+    effectiveMaintenanceVersion?: pulumi.Input<string>;
     /**
      * Endpoints for the instance.
      * Structure is documented below.
@@ -794,6 +821,11 @@ export interface InstanceState {
      * Structure is documented below.
      */
     maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceMaintenanceSchedule>[]>;
+    /**
+     * This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+     * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+     */
+    maintenanceVersion?: pulumi.Input<string>;
     /**
      * Managed backup source for the instance.
      * Structure is documented below.
@@ -980,6 +1012,11 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.memorystore.InstanceMaintenancePolicy>;
+    /**
+     * This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+     * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+     */
+    maintenanceVersion?: pulumi.Input<string>;
     /**
      * Managed backup source for the instance.
      * Structure is documented below.

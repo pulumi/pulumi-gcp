@@ -40,8 +40,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.FolderArgs;
  * import com.pulumi.gcp.folder.ServiceIdentity;
  * import com.pulumi.gcp.folder.ServiceIdentityArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.folder.IAMMember;
  * import com.pulumi.gcp.folder.IAMMemberArgs;
  * import com.pulumi.gcp.osconfig.V2PolicyOrchestratorForFolder;
@@ -85,9 +85,9 @@ import javax.annotation.Nullable;
  *         var wait30Sec = new Sleep("wait30Sec", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(                
+ *                 .dependsOn(                
  *                     osconfigSa,
- *                     rippleSa))
+ *                     rippleSa)
  *                 .build());
  * 
  *         var iamOsconfigServiceAgent = new IAMMember("iamOsconfigServiceAgent", IAMMemberArgs.builder()
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *         var wait3Min = new Sleep("wait3Min", SleepArgs.builder()
  *             .createDuration("180s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(iamProgressiverolloutServiceAgent))
+ *                 .dependsOn(iamProgressiverolloutServiceAgent)
  *                 .build());
  * 
  *         var policyOrchestratorForFolder = new V2PolicyOrchestratorForFolder("policyOrchestratorForFolder", V2PolicyOrchestratorForFolderArgs.builder()

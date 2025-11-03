@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     displayName: "Binding for all principals in the Organization",
  *     principalAccessBoundaryPolicyId: "my-pab-policy",
  * });
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ * const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
  *     dependsOn: [pabPolicy],
  * });
  * const my_pab_policy = new gcp.iam.OrganizationsPolicyBinding("my-pab-policy", {

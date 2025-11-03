@@ -175,6 +175,7 @@ namespace Pulumi.Gcp.Redis
         public readonly string CreateTime;
         public readonly string CurrentLocationId;
         public readonly string CustomerManagedKey;
+        public readonly bool DeletionProtection;
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string EffectiveReservedIpRange;
@@ -226,6 +227,8 @@ namespace Pulumi.Gcp.Redis
             string currentLocationId,
 
             string customerManagedKey,
+
+            bool deletionProtection,
 
             string displayName,
 
@@ -295,6 +298,7 @@ namespace Pulumi.Gcp.Redis
             CreateTime = createTime;
             CurrentLocationId = currentLocationId;
             CustomerManagedKey = customerManagedKey;
+            DeletionProtection = deletionProtection;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
             EffectiveReservedIpRange = effectiveReservedIpRange;

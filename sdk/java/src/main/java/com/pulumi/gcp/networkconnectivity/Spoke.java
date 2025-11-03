@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeState;
+import com.pulumi.gcp.networkconnectivity.outputs.SpokeGateway;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedInterconnectAttachments;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedProducerVpcNetwork;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedRouterApplianceInstances;
@@ -27,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about Spoke, see:
  * 
- * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
+ * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.spokes)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
  * 
@@ -201,19 +202,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network("network", NetworkArgs.builder()
- *             .name("tf-test-network_60365")
+ *             .name("tf-test-network_50610")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
- *             .name("tf-test-subnet_80215")
+ *             .name("tf-test-subnet_77124")
  *             .ipCidrRange("10.0.0.0/28")
  *             .region("us-central1")
  *             .network(network.selfLink())
  *             .build());
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .name("tf-test-instance_59033")
+ *             .name("tf-test-instance_15335")
  *             .machineType("e2-medium")
  *             .canIpForward(true)
  *             .zone("us-central1-a")
@@ -232,13 +233,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basicHub = new Hub("basicHub", HubArgs.builder()
- *             .name("tf-test-hub_32081")
+ *             .name("tf-test-hub_20665")
  *             .description("A sample hub")
  *             .labels(Map.of("label-two", "value-one"))
  *             .build());
  * 
  *         var primary = new Spoke("primary", SpokeArgs.builder()
- *             .name("tf-test-name_10393")
+ *             .name("tf-test-name_85160")
  *             .location("us-central1")
  *             .description("A sample spoke with a linked routher appliance instance")
  *             .labels(Map.of("label-one", "value-one"))
@@ -647,8 +648,8 @@ import javax.annotation.Nullable;
  *             .hub(starHub.id())
  *             .autoAccept(GroupAutoAcceptArgs.builder()
  *                 .autoAcceptProjects(                
- *                     "foo_33052",
- *                     "bar_3684")
+ *                     "foo_92130",
+ *                     "bar_16199")
  *                 .build())
  *             .build());
  * 
@@ -726,6 +727,75 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Connectivity Spoke Gateway
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import com.pulumi.gcp.networkconnectivity.Spoke;
+ * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeGatewayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("net-spoke")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
+ *             .name("tf-test-subnet_21563")
+ *             .ipCidrRange("10.0.0.0/28")
+ *             .region("us-central1")
+ *             .network(network.selfLink())
+ *             .build());
+ * 
+ *         var basicHub = new Hub("basicHub", HubArgs.builder()
+ *             .name("hub")
+ *             .description("A sample hub")
+ *             .labels(Map.of("label-two", "value-one"))
+ *             .presetTopology("HYBRID_INSPECTION")
+ *             .build());
+ * 
+ *         var primary = new Spoke("primary", SpokeArgs.builder()
+ *             .name("gateway")
+ *             .location("us-central1")
+ *             .description("A sample spoke of type Gateway")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .hub(basicHub.id())
+ *             .gateway(SpokeGatewayArgs.builder()
+ *                 .ipRangeReservations(SpokeGatewayIpRangeReservationArgs.builder()
+ *                     .ipRange("10.0.0.0/23")
+ *                     .build())
+ *                 .capacity("CAPACITY_1_GBPS")
+ *                 .build())
+ *             .group("gateways")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -795,6 +865,22 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * This is a gateway that can apply specialized processing to traffic going through it.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="gateway", refs={SpokeGateway.class}, tree="[0]")
+    private Output</* @Nullable */ SpokeGateway> gateway;
+
+    /**
+     * @return This is a gateway that can apply specialized processing to traffic going through it.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SpokeGateway>> gateway() {
+        return Codegen.optional(this.gateway);
     }
     /**
      * The name of the group that this spoke is associated with.

@@ -54,6 +54,7 @@ export interface GetInstanceArgs {
 export interface GetInstanceResult {
     readonly authorizationMode: string;
     readonly automatedBackupConfigs: outputs.memorystore.GetInstanceAutomatedBackupConfig[];
+    readonly availableMaintenanceVersions: string[];
     readonly backupCollection: string;
     readonly createTime: string;
     readonly crossInstanceReplicationConfigs: outputs.memorystore.GetInstanceCrossInstanceReplicationConfig[];
@@ -62,6 +63,7 @@ export interface GetInstanceResult {
     readonly desiredPscAutoConnections: outputs.memorystore.GetInstanceDesiredPscAutoConnection[];
     readonly discoveryEndpoints: outputs.memorystore.GetInstanceDiscoveryEndpoint[];
     readonly effectiveLabels: {[key: string]: string};
+    readonly effectiveMaintenanceVersion: string;
     readonly endpoints: outputs.memorystore.GetInstanceEndpoint[];
     readonly engineConfigs: {[key: string]: string};
     readonly engineVersion: string;
@@ -76,6 +78,7 @@ export interface GetInstanceResult {
     readonly location?: string;
     readonly maintenancePolicies: outputs.memorystore.GetInstanceMaintenancePolicy[];
     readonly maintenanceSchedules: outputs.memorystore.GetInstanceMaintenanceSchedule[];
+    readonly maintenanceVersion: string;
     readonly managedBackupSources: outputs.memorystore.GetInstanceManagedBackupSource[];
     readonly managedServerCas: outputs.memorystore.GetInstanceManagedServerCa[];
     readonly mode: string;

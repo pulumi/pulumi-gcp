@@ -67,60 +67,7 @@ namespace Pulumi.Gcp.BigQuery
     /// });
     /// ```
     /// 
-    /// ## gcp.bigquery.DatasetIamBinding
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
-    ///     {
-    ///         DatasetId = "example_dataset",
-    ///     });
-    /// 
-    ///     var reader = new Gcp.BigQuery.DatasetIamBinding("reader", new()
-    ///     {
-    ///         DatasetId = dataset.DatasetId,
-    ///         Role = "roles/bigquery.dataViewer",
-    ///         Members = new[]
-    ///         {
-    ///             "user:jane@example.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## gcp.bigquery.DatasetIamMember
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
-    ///     {
-    ///         DatasetId = "example_dataset",
-    ///     });
-    /// 
-    ///     var editor = new Gcp.BigQuery.DatasetIamMember("editor", new()
-    ///     {
-    ///         DatasetId = dataset.DatasetId,
-    ///         Role = "roles/bigquery.dataEditor",
-    ///         Member = "user:jane@example.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## gcp.bigquery.DatasetIamPolicy
+    /// ## With IAM condition
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -140,6 +87,12 @@ namespace Pulumi.Gcp.BigQuery
     ///                 Members = new[]
     ///                 {
     ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2029_12_31",
+    ///                     Description = "Expiring at midnight of 2029-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2030-01-01T00:00:00Z\")",
     ///                 },
     ///             },
     ///         },
@@ -187,6 +140,40 @@ namespace Pulumi.Gcp.BigQuery
     /// });
     /// ```
     /// 
+    /// ## With IAM condition
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var reader = new Gcp.BigQuery.DatasetIamBinding("reader", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "roles/bigquery.dataViewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.BigQuery.Inputs.DatasetIamBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2029_12_31",
+    ///             Description = "Expiring at midnight of 2029-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2030-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## gcp.bigquery.DatasetIamMember
     /// 
     /// ```csharp
@@ -207,6 +194,239 @@ namespace Pulumi.Gcp.BigQuery
     ///         DatasetId = dataset.DatasetId,
     ///         Role = "roles/bigquery.dataEditor",
     ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## With IAM condition
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var editor = new Gcp.BigQuery.DatasetIamMember("editor", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "roles/bigquery.dataEditor",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.BigQuery.Inputs.DatasetIamMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2029_12_31",
+    ///             Description = "Expiring at midnight of 2029-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2030-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.bigquery.DatasetIamPolicy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var owner = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/bigquery.dataOwner",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var datasetDataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var dataset = new Gcp.BigQuery.DatasetIamPolicy("dataset", new()
+    ///     {
+    ///         DatasetId = datasetDataset.DatasetId,
+    ///         PolicyData = owner.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## With IAM condition
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var owner = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/bigquery.dataOwner",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2029_12_31",
+    ///                     Description = "Expiring at midnight of 2029-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2030-01-01T00:00:00Z\")",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var datasetDataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var dataset = new Gcp.BigQuery.DatasetIamPolicy("dataset", new()
+    ///     {
+    ///         DatasetId = datasetDataset.DatasetId,
+    ///         PolicyData = owner.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.bigquery.DatasetIamBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var reader = new Gcp.BigQuery.DatasetIamBinding("reader", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "roles/bigquery.dataViewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## With IAM condition
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var reader = new Gcp.BigQuery.DatasetIamBinding("reader", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "roles/bigquery.dataViewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.BigQuery.Inputs.DatasetIamBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2029_12_31",
+    ///             Description = "Expiring at midnight of 2029-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2030-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.bigquery.DatasetIamMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var editor = new Gcp.BigQuery.DatasetIamMember("editor", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "roles/bigquery.dataEditor",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## With IAM condition
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var editor = new Gcp.BigQuery.DatasetIamMember("editor", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "roles/bigquery.dataEditor",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.BigQuery.Inputs.DatasetIamMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2029_12_31",
+    ///             Description = "Expiring at midnight of 2029-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2030-01-01T00:00:00Z\")",
+    ///         },
     ///     });
     /// 
     /// });
@@ -241,6 +461,10 @@ namespace Pulumi.Gcp.BigQuery
     [GcpResourceType("gcp:bigquery/datasetIamBinding:DatasetIamBinding")]
     public partial class DatasetIamBinding : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.DatasetIamBindingCondition?> Condition { get; private set; } = null!;
 
@@ -334,6 +558,10 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class DatasetIamBindingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.DatasetIamBindingConditionArgs>? Condition { get; set; }
 
@@ -389,6 +617,10 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class DatasetIamBindingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.DatasetIamBindingConditionGetArgs>? Condition { get; set; }
 

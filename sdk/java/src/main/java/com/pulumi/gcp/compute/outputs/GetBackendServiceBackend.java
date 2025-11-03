@@ -22,7 +22,7 @@ public final class GetBackendServiceBackend {
      * CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
      * 
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;, &#34;CUSTOM_METRICS&#34;]
+     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;, &#34;CUSTOM_METRICS&#34;, &#34;IN_FLIGHT&#34;]
      * 
      */
     private String balancingMode;
@@ -101,6 +101,25 @@ public final class GetBackendServiceBackend {
      */
     private Integer maxConnectionsPerInstance;
     /**
+     * @return Defines a maximum number of in-flight requests for the whole NEG
+     * or instance group. Not available if backend&#39;s balancingMode is RATE
+     * or CONNECTION.
+     * 
+     */
+    private Integer maxInFlightRequests;
+    /**
+     * @return Defines a maximum number of in-flight requests for a single endpoint.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    private Integer maxInFlightRequestsPerEndpoint;
+    /**
+     * @return Defines a maximum number of in-flight requests for a single VM.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    private Integer maxInFlightRequestsPerInstance;
+    /**
      * @return The max requests per second (RPS) of the group.
      * 
      * Can be used with either RATE or UTILIZATION balancing modes,
@@ -142,6 +161,14 @@ public final class GetBackendServiceBackend {
      * 
      */
     private String preference;
+    /**
+     * @return This field specifies how long a connection should be kept alive for:
+     * - LONG: Most of the requests are expected to take more than multiple
+     *   seconds to finish.
+     * - SHORT: Most requests are expected to finish with a sub-second latency. Possible values: [&#34;LONG&#34;, &#34;SHORT&#34;]
+     * 
+     */
+    private String trafficDuration;
 
     private GetBackendServiceBackend() {}
     /**
@@ -152,7 +179,7 @@ public final class GetBackendServiceBackend {
      * CUSTOM_METRICS (for HTTP(s)) and CONNECTION (for TCP/SSL).
      * 
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;, &#34;CUSTOM_METRICS&#34;]
+     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;, &#34;CUSTOM_METRICS&#34;, &#34;IN_FLIGHT&#34;]
      * 
      */
     public String balancingMode() {
@@ -247,6 +274,31 @@ public final class GetBackendServiceBackend {
         return this.maxConnectionsPerInstance;
     }
     /**
+     * @return Defines a maximum number of in-flight requests for the whole NEG
+     * or instance group. Not available if backend&#39;s balancingMode is RATE
+     * or CONNECTION.
+     * 
+     */
+    public Integer maxInFlightRequests() {
+        return this.maxInFlightRequests;
+    }
+    /**
+     * @return Defines a maximum number of in-flight requests for a single endpoint.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    public Integer maxInFlightRequestsPerEndpoint() {
+        return this.maxInFlightRequestsPerEndpoint;
+    }
+    /**
+     * @return Defines a maximum number of in-flight requests for a single VM.
+     * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
+     * 
+     */
+    public Integer maxInFlightRequestsPerInstance() {
+        return this.maxInFlightRequestsPerInstance;
+    }
+    /**
      * @return The max requests per second (RPS) of the group.
      * 
      * Can be used with either RATE or UTILIZATION balancing modes,
@@ -298,6 +350,16 @@ public final class GetBackendServiceBackend {
     public String preference() {
         return this.preference;
     }
+    /**
+     * @return This field specifies how long a connection should be kept alive for:
+     * - LONG: Most of the requests are expected to take more than multiple
+     *   seconds to finish.
+     * - SHORT: Most requests are expected to finish with a sub-second latency. Possible values: [&#34;LONG&#34;, &#34;SHORT&#34;]
+     * 
+     */
+    public String trafficDuration() {
+        return this.trafficDuration;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -316,11 +378,15 @@ public final class GetBackendServiceBackend {
         private Integer maxConnections;
         private Integer maxConnectionsPerEndpoint;
         private Integer maxConnectionsPerInstance;
+        private Integer maxInFlightRequests;
+        private Integer maxInFlightRequestsPerEndpoint;
+        private Integer maxInFlightRequestsPerInstance;
         private Integer maxRate;
         private Double maxRatePerEndpoint;
         private Double maxRatePerInstance;
         private Double maxUtilization;
         private String preference;
+        private String trafficDuration;
         public Builder() {}
         public Builder(GetBackendServiceBackend defaults) {
     	      Objects.requireNonNull(defaults);
@@ -332,11 +398,15 @@ public final class GetBackendServiceBackend {
     	      this.maxConnections = defaults.maxConnections;
     	      this.maxConnectionsPerEndpoint = defaults.maxConnectionsPerEndpoint;
     	      this.maxConnectionsPerInstance = defaults.maxConnectionsPerInstance;
+    	      this.maxInFlightRequests = defaults.maxInFlightRequests;
+    	      this.maxInFlightRequestsPerEndpoint = defaults.maxInFlightRequestsPerEndpoint;
+    	      this.maxInFlightRequestsPerInstance = defaults.maxInFlightRequestsPerInstance;
     	      this.maxRate = defaults.maxRate;
     	      this.maxRatePerEndpoint = defaults.maxRatePerEndpoint;
     	      this.maxRatePerInstance = defaults.maxRatePerInstance;
     	      this.maxUtilization = defaults.maxUtilization;
     	      this.preference = defaults.preference;
+    	      this.trafficDuration = defaults.trafficDuration;
         }
 
         @CustomType.Setter
@@ -407,6 +477,30 @@ public final class GetBackendServiceBackend {
             return this;
         }
         @CustomType.Setter
+        public Builder maxInFlightRequests(Integer maxInFlightRequests) {
+            if (maxInFlightRequests == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "maxInFlightRequests");
+            }
+            this.maxInFlightRequests = maxInFlightRequests;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxInFlightRequestsPerEndpoint(Integer maxInFlightRequestsPerEndpoint) {
+            if (maxInFlightRequestsPerEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "maxInFlightRequestsPerEndpoint");
+            }
+            this.maxInFlightRequestsPerEndpoint = maxInFlightRequestsPerEndpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxInFlightRequestsPerInstance(Integer maxInFlightRequestsPerInstance) {
+            if (maxInFlightRequestsPerInstance == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "maxInFlightRequestsPerInstance");
+            }
+            this.maxInFlightRequestsPerInstance = maxInFlightRequestsPerInstance;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxRate(Integer maxRate) {
             if (maxRate == null) {
               throw new MissingRequiredPropertyException("GetBackendServiceBackend", "maxRate");
@@ -446,6 +540,14 @@ public final class GetBackendServiceBackend {
             this.preference = preference;
             return this;
         }
+        @CustomType.Setter
+        public Builder trafficDuration(String trafficDuration) {
+            if (trafficDuration == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "trafficDuration");
+            }
+            this.trafficDuration = trafficDuration;
+            return this;
+        }
         public GetBackendServiceBackend build() {
             final var _resultValue = new GetBackendServiceBackend();
             _resultValue.balancingMode = balancingMode;
@@ -456,11 +558,15 @@ public final class GetBackendServiceBackend {
             _resultValue.maxConnections = maxConnections;
             _resultValue.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
             _resultValue.maxConnectionsPerInstance = maxConnectionsPerInstance;
+            _resultValue.maxInFlightRequests = maxInFlightRequests;
+            _resultValue.maxInFlightRequestsPerEndpoint = maxInFlightRequestsPerEndpoint;
+            _resultValue.maxInFlightRequestsPerInstance = maxInFlightRequestsPerInstance;
             _resultValue.maxRate = maxRate;
             _resultValue.maxRatePerEndpoint = maxRatePerEndpoint;
             _resultValue.maxRatePerInstance = maxRatePerInstance;
             _resultValue.maxUtilization = maxUtilization;
             _resultValue.preference = preference;
+            _resultValue.trafficDuration = trafficDuration;
             return _resultValue;
         }
     }

@@ -326,6 +326,39 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
     }
 
     /**
+     * Agentspace only. Specifies whether the workforce identity pool
+     * provider uses SCIM-managed groups instead of the `google.groups`
+     * attribute mapping for authorization checks.
+     * The `scimUsage` and `extendedAttributesOauth2Client` fields are
+     * mutually exclusive. A request that enables both fields on the same
+     * workforce identity pool provider will produce an error.
+     * * SCIM_USAGE_UNSPECIFIED: Default behaviour
+     * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+     *   attribute mapping for authorization checks
+     *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+     * 
+     */
+    @Import(name="scimUsage")
+    private @Nullable Output<String> scimUsage;
+
+    /**
+     * @return Agentspace only. Specifies whether the workforce identity pool
+     * provider uses SCIM-managed groups instead of the `google.groups`
+     * attribute mapping for authorization checks.
+     * The `scimUsage` and `extendedAttributesOauth2Client` fields are
+     * mutually exclusive. A request that enables both fields on the same
+     * workforce identity pool provider will produce an error.
+     * * SCIM_USAGE_UNSPECIFIED: Default behaviour
+     * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+     *   attribute mapping for authorization checks
+     *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+     * 
+     */
+    public Optional<Output<String>> scimUsage() {
+        return Optional.ofNullable(this.scimUsage);
+    }
+
+    /**
      * The current state of the provider.
      * * STATE_UNSPECIFIED: State unspecified.
      * * ACTIVE: The provider is active and may be used to validate authentication credentials.
@@ -386,6 +419,7 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
         this.oidc = $.oidc;
         this.providerId = $.providerId;
         this.saml = $.saml;
+        this.scimUsage = $.scimUsage;
         this.state = $.state;
         this.workforcePoolId = $.workforcePoolId;
     }
@@ -782,6 +816,45 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
          */
         public Builder saml(WorkforcePoolProviderSamlArgs saml) {
             return saml(Output.of(saml));
+        }
+
+        /**
+         * @param scimUsage Agentspace only. Specifies whether the workforce identity pool
+         * provider uses SCIM-managed groups instead of the `google.groups`
+         * attribute mapping for authorization checks.
+         * The `scimUsage` and `extendedAttributesOauth2Client` fields are
+         * mutually exclusive. A request that enables both fields on the same
+         * workforce identity pool provider will produce an error.
+         * * SCIM_USAGE_UNSPECIFIED: Default behaviour
+         * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+         *   attribute mapping for authorization checks
+         *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimUsage(@Nullable Output<String> scimUsage) {
+            $.scimUsage = scimUsage;
+            return this;
+        }
+
+        /**
+         * @param scimUsage Agentspace only. Specifies whether the workforce identity pool
+         * provider uses SCIM-managed groups instead of the `google.groups`
+         * attribute mapping for authorization checks.
+         * The `scimUsage` and `extendedAttributesOauth2Client` fields are
+         * mutually exclusive. A request that enables both fields on the same
+         * workforce identity pool provider will produce an error.
+         * * SCIM_USAGE_UNSPECIFIED: Default behaviour
+         * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+         *   attribute mapping for authorization checks
+         *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimUsage(String scimUsage) {
+            return scimUsage(Output.of(scimUsage));
         }
 
         /**

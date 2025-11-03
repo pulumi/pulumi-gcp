@@ -170,6 +170,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetRouterMd5AuthenticationKeyResult> Md5AuthenticationKeys;
         public readonly string Name;
+        public readonly string NccGateway;
         public readonly string Network;
         public readonly ImmutableArray<Outputs.GetRouterParamResult> Params;
         public readonly string? Project;
@@ -192,6 +193,8 @@ namespace Pulumi.Gcp.Compute
 
             string name,
 
+            string nccGateway,
+
             string network,
 
             ImmutableArray<Outputs.GetRouterParamResult> @params,
@@ -209,6 +212,7 @@ namespace Pulumi.Gcp.Compute
             Id = id;
             Md5AuthenticationKeys = md5AuthenticationKeys;
             Name = name;
+            NccGateway = nccGateway;
             Network = network;
             Params = @params;
             Project = project;

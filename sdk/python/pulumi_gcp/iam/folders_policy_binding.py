@@ -565,7 +565,7 @@ class FoldersPolicyBinding(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
             organization="123456789",
@@ -576,7 +576,7 @@ class FoldersPolicyBinding(pulumi.CustomResource):
             display_name="my folder",
             parent="organizations/123456789",
             deletion_protection=False)
-        wait120s = time.index.Sleep("wait_120s", create_duration=120s,
+        wait120s = time.Sleep("wait_120s", create_duration="120s",
         opts = pulumi.ResourceOptions(depends_on=[folder]))
         binding_for_all_folder_principals = gcp.iam.FoldersPolicyBinding("binding-for-all-folder-principals",
             folder=folder.folder_id,
@@ -664,7 +664,7 @@ class FoldersPolicyBinding(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
             organization="123456789",
@@ -675,7 +675,7 @@ class FoldersPolicyBinding(pulumi.CustomResource):
             display_name="my folder",
             parent="organizations/123456789",
             deletion_protection=False)
-        wait120s = time.index.Sleep("wait_120s", create_duration=120s,
+        wait120s = time.Sleep("wait_120s", create_duration="120s",
         opts = pulumi.ResourceOptions(depends_on=[folder]))
         binding_for_all_folder_principals = gcp.iam.FoldersPolicyBinding("binding-for-all-folder-principals",
             folder=folder.folder_id,

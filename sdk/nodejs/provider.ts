@@ -151,10 +151,12 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly monitoringCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly netappCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkConnectivityCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly networkConnectivityv1CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkManagementCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkSecurityCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkServicesCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly notebooksCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly observabilityCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly oracleDatabaseCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly orgPolicyCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly osConfigCustomEndpoint: pulumi.Output<string | undefined>;
@@ -356,10 +358,12 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["monitoringCustomEndpoint"] = args?.monitoringCustomEndpoint;
             resourceInputs["netappCustomEndpoint"] = args?.netappCustomEndpoint;
             resourceInputs["networkConnectivityCustomEndpoint"] = args?.networkConnectivityCustomEndpoint;
+            resourceInputs["networkConnectivityv1CustomEndpoint"] = args?.networkConnectivityv1CustomEndpoint;
             resourceInputs["networkManagementCustomEndpoint"] = args?.networkManagementCustomEndpoint;
             resourceInputs["networkSecurityCustomEndpoint"] = args?.networkSecurityCustomEndpoint;
             resourceInputs["networkServicesCustomEndpoint"] = args?.networkServicesCustomEndpoint;
             resourceInputs["notebooksCustomEndpoint"] = args?.notebooksCustomEndpoint;
+            resourceInputs["observabilityCustomEndpoint"] = args?.observabilityCustomEndpoint;
             resourceInputs["oracleDatabaseCustomEndpoint"] = args?.oracleDatabaseCustomEndpoint;
             resourceInputs["orgPolicyCustomEndpoint"] = args?.orgPolicyCustomEndpoint;
             resourceInputs["osConfigCustomEndpoint"] = args?.osConfigCustomEndpoint;
@@ -572,10 +576,12 @@ export interface ProviderArgs {
     monitoringCustomEndpoint?: pulumi.Input<string>;
     netappCustomEndpoint?: pulumi.Input<string>;
     networkConnectivityCustomEndpoint?: pulumi.Input<string>;
+    networkConnectivityv1CustomEndpoint?: pulumi.Input<string>;
     networkManagementCustomEndpoint?: pulumi.Input<string>;
     networkSecurityCustomEndpoint?: pulumi.Input<string>;
     networkServicesCustomEndpoint?: pulumi.Input<string>;
     notebooksCustomEndpoint?: pulumi.Input<string>;
+    observabilityCustomEndpoint?: pulumi.Input<string>;
     oracleDatabaseCustomEndpoint?: pulumi.Input<string>;
     orgPolicyCustomEndpoint?: pulumi.Input<string>;
     osConfigCustomEndpoint?: pulumi.Input<string>;

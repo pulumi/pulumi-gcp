@@ -113,6 +113,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
+ *                 .healthCheckDisabled(true)
  *                 .containers(ServiceTemplateContainerArgs.builder()
  *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .resources(ServiceTemplateContainerResourcesArgs.builder()
@@ -805,8 +806,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networkservices.Mesh;
  * import com.pulumi.gcp.networkservices.MeshArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
@@ -832,7 +833,7 @@ import javax.annotation.Nullable;
  *         var waitForMesh = new Sleep("waitForMesh", SleepArgs.builder()
  *             .createDuration("1m")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(mesh))
+ *                 .dependsOn(mesh)
  *                 .build());
  * 
  *         var default_ = new Service("default", ServiceArgs.builder()

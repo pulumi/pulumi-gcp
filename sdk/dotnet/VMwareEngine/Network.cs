@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
-    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     var wait60Seconds = new Time.Sleep("wait_60_seconds", new()
     ///     {
     ///         CreateDuration = "60s",
     ///     }, new CustomResourceOptions
@@ -123,10 +123,25 @@ namespace Pulumi.Gcp.VMwareEngine
     public partial class Network : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Creation time of this resource.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// User-provided description for this VMware Engine network.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+        /// The server computes checksums based on the value of other fields in the request.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
         /// The location where the VMwareEngineNetwork should reside.
@@ -165,6 +180,14 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// Last update time of this resource.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
         /// VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
@@ -261,10 +284,25 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class NetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Creation time of this resource.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// User-provided description for this VMware Engine network.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+        /// The server computes checksums based on the value of other fields in the request.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
 
         /// <summary>
         /// The location where the VMwareEngineNetwork should reside.
@@ -303,6 +341,14 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// Last update time of this resource.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         [Input("vpcNetworks")]
         private InputList<Inputs.NetworkVpcNetworkGetArgs>? _vpcNetworks;

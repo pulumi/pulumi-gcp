@@ -212,7 +212,7 @@ type Hub struct {
 	// Possible values are: `CUSTOM`, `PRESET`.
 	PolicyMode pulumi.StringOutput `pulumi:"policyMode"`
 	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-	// Possible values are: `MESH`, `STAR`.
+	// Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
 	PresetTopology pulumi.StringOutput `pulumi:"presetTopology"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -284,7 +284,7 @@ type hubState struct {
 	// Possible values are: `CUSTOM`, `PRESET`.
 	PolicyMode *string `pulumi:"policyMode"`
 	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-	// Possible values are: `MESH`, `STAR`.
+	// Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
 	PresetTopology *string `pulumi:"presetTopology"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -322,7 +322,7 @@ type HubState struct {
 	// Possible values are: `CUSTOM`, `PRESET`.
 	PolicyMode pulumi.StringPtrInput
 	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-	// Possible values are: `MESH`, `STAR`.
+	// Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
 	PresetTopology pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -360,7 +360,7 @@ type hubArgs struct {
 	// Possible values are: `CUSTOM`, `PRESET`.
 	PolicyMode *string `pulumi:"policyMode"`
 	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-	// Possible values are: `MESH`, `STAR`.
+	// Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
 	PresetTopology *string `pulumi:"presetTopology"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -383,7 +383,7 @@ type HubArgs struct {
 	// Possible values are: `CUSTOM`, `PRESET`.
 	PolicyMode pulumi.StringPtrInput
 	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-	// Possible values are: `MESH`, `STAR`.
+	// Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
 	PresetTopology pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -516,7 +516,7 @@ func (o HubOutput) PolicyMode() pulumi.StringOutput {
 }
 
 // Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-// Possible values are: `MESH`, `STAR`.
+// Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
 func (o HubOutput) PresetTopology() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.PresetTopology }).(pulumi.StringOutput)
 }

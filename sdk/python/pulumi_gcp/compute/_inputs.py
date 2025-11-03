@@ -405,6 +405,8 @@ __all__ = [
     'InstanceGroupManagerAutoHealingPoliciesArgsDict',
     'InstanceGroupManagerInstanceLifecyclePolicyArgs',
     'InstanceGroupManagerInstanceLifecyclePolicyArgsDict',
+    'InstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs',
+    'InstanceGroupManagerInstanceLifecyclePolicyOnRepairArgsDict',
     'InstanceGroupManagerNamedPortArgs',
     'InstanceGroupManagerNamedPortArgsDict',
     'InstanceGroupManagerParamsArgs',
@@ -815,6 +817,8 @@ __all__ = [
     'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgsDict',
     'RegionInstanceGroupManagerInstanceLifecyclePolicyArgs',
     'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict',
+    'RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs',
+    'RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgsDict',
     'RegionInstanceGroupManagerNamedPortArgs',
     'RegionInstanceGroupManagerNamedPortArgsDict',
     'RegionInstanceGroupManagerParamsArgs',
@@ -3278,7 +3282,7 @@ if not MYPY:
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
         Default value is `UTILIZATION`.
-        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
         """
         capacity_scaler: NotRequired[pulumi.Input[_builtins.float]]
         """
@@ -3325,6 +3329,22 @@ if not MYPY:
         For CONNECTION mode, either maxConnections or
         maxConnectionsPerInstance must be set.
         """
+        max_in_flight_requests: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Defines a maximum number of in-flight requests for the whole NEG
+        or instance group. Not available if backend's balancingMode is RATE
+        or CONNECTION.
+        """
+        max_in_flight_requests_per_endpoint: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Defines a maximum number of in-flight requests for a single endpoint.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
+        max_in_flight_requests_per_instance: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Defines a maximum number of in-flight requests for a single VM.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
         max_rate: NotRequired[pulumi.Input[_builtins.int]]
         """
         The max requests per second (RPS) of the group.
@@ -3362,6 +3382,14 @@ if not MYPY:
         traffic would be assigned based on the load balancing algorithm you use. This is the default
         Possible values are: `PREFERRED`, `DEFAULT`.
         """
+        traffic_duration: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This field specifies how long a connection should be kept alive for:
+        - LONG: Most of the requests are expected to take more than multiple
+        seconds to finish.
+        - SHORT: Most requests are expected to finish with a sub-second latency.
+        Possible values are: `LONG`, `SHORT`.
+        """
 elif False:
     BackendServiceBackendArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3376,11 +3404,15 @@ class BackendServiceBackendArgs:
                  max_connections: Optional[pulumi.Input[_builtins.int]] = None,
                  max_connections_per_endpoint: Optional[pulumi.Input[_builtins.int]] = None,
                  max_connections_per_instance: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_in_flight_requests: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_in_flight_requests_per_endpoint: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_in_flight_requests_per_instance: Optional[pulumi.Input[_builtins.int]] = None,
                  max_rate: Optional[pulumi.Input[_builtins.int]] = None,
                  max_rate_per_endpoint: Optional[pulumi.Input[_builtins.float]] = None,
                  max_rate_per_instance: Optional[pulumi.Input[_builtins.float]] = None,
                  max_utilization: Optional[pulumi.Input[_builtins.float]] = None,
-                 preference: Optional[pulumi.Input[_builtins.str]] = None):
+                 preference: Optional[pulumi.Input[_builtins.str]] = None,
+                 traffic_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] group: The fully-qualified URL of an Instance Group or Network Endpoint
                Group resource. In case of instance group this defines the list
@@ -3403,7 +3435,7 @@ class BackendServiceBackendArgs:
                See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
                for an explanation of load balancing modes.
                Default value is `UTILIZATION`.
-               Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+               Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
         :param pulumi.Input[_builtins.float] capacity_scaler: A multiplier applied to the group's maximum servicing capacity
                (based on UTILIZATION, RATE or CONNECTION).
                Default value is 1, which means the group will serve up to 100%
@@ -3431,6 +3463,13 @@ class BackendServiceBackendArgs:
                UTILIZATION balancing modes.
                For CONNECTION mode, either maxConnections or
                maxConnectionsPerInstance must be set.
+        :param pulumi.Input[_builtins.int] max_in_flight_requests: Defines a maximum number of in-flight requests for the whole NEG
+               or instance group. Not available if backend's balancingMode is RATE
+               or CONNECTION.
+        :param pulumi.Input[_builtins.int] max_in_flight_requests_per_endpoint: Defines a maximum number of in-flight requests for a single endpoint.
+               Not available if backend's balancingMode is RATE or CONNECTION.
+        :param pulumi.Input[_builtins.int] max_in_flight_requests_per_instance: Defines a maximum number of in-flight requests for a single VM.
+               Not available if backend's balancingMode is RATE or CONNECTION.
         :param pulumi.Input[_builtins.int] max_rate: The max requests per second (RPS) of the group.
                Can be used with either RATE or UTILIZATION balancing modes,
                but required if RATE mode. For RATE mode, either maxRate or one
@@ -3453,6 +3492,11 @@ class BackendServiceBackendArgs:
                - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and
                traffic would be assigned based on the load balancing algorithm you use. This is the default
                Possible values are: `PREFERRED`, `DEFAULT`.
+        :param pulumi.Input[_builtins.str] traffic_duration: This field specifies how long a connection should be kept alive for:
+               - LONG: Most of the requests are expected to take more than multiple
+               seconds to finish.
+               - SHORT: Most requests are expected to finish with a sub-second latency.
+               Possible values are: `LONG`, `SHORT`.
         """
         pulumi.set(__self__, "group", group)
         if balancing_mode is not None:
@@ -3469,6 +3513,12 @@ class BackendServiceBackendArgs:
             pulumi.set(__self__, "max_connections_per_endpoint", max_connections_per_endpoint)
         if max_connections_per_instance is not None:
             pulumi.set(__self__, "max_connections_per_instance", max_connections_per_instance)
+        if max_in_flight_requests is not None:
+            pulumi.set(__self__, "max_in_flight_requests", max_in_flight_requests)
+        if max_in_flight_requests_per_endpoint is not None:
+            pulumi.set(__self__, "max_in_flight_requests_per_endpoint", max_in_flight_requests_per_endpoint)
+        if max_in_flight_requests_per_instance is not None:
+            pulumi.set(__self__, "max_in_flight_requests_per_instance", max_in_flight_requests_per_instance)
         if max_rate is not None:
             pulumi.set(__self__, "max_rate", max_rate)
         if max_rate_per_endpoint is not None:
@@ -3479,6 +3529,8 @@ class BackendServiceBackendArgs:
             pulumi.set(__self__, "max_utilization", max_utilization)
         if preference is not None:
             pulumi.set(__self__, "preference", preference)
+        if traffic_duration is not None:
+            pulumi.set(__self__, "traffic_duration", traffic_duration)
 
     @_builtins.property
     @pulumi.getter
@@ -3516,7 +3568,7 @@ class BackendServiceBackendArgs:
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
         Default value is `UTILIZATION`.
-        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
         """
         return pulumi.get(self, "balancing_mode")
 
@@ -3618,6 +3670,46 @@ class BackendServiceBackendArgs:
         pulumi.set(self, "max_connections_per_instance", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxInFlightRequests")
+    def max_in_flight_requests(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Defines a maximum number of in-flight requests for the whole NEG
+        or instance group. Not available if backend's balancingMode is RATE
+        or CONNECTION.
+        """
+        return pulumi.get(self, "max_in_flight_requests")
+
+    @max_in_flight_requests.setter
+    def max_in_flight_requests(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_in_flight_requests", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxInFlightRequestsPerEndpoint")
+    def max_in_flight_requests_per_endpoint(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Defines a maximum number of in-flight requests for a single endpoint.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
+        return pulumi.get(self, "max_in_flight_requests_per_endpoint")
+
+    @max_in_flight_requests_per_endpoint.setter
+    def max_in_flight_requests_per_endpoint(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_in_flight_requests_per_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxInFlightRequestsPerInstance")
+    def max_in_flight_requests_per_instance(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Defines a maximum number of in-flight requests for a single VM.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
+        return pulumi.get(self, "max_in_flight_requests_per_instance")
+
+    @max_in_flight_requests_per_instance.setter
+    def max_in_flight_requests_per_instance(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_in_flight_requests_per_instance", value)
+
+    @_builtins.property
     @pulumi.getter(name="maxRate")
     def max_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -3693,6 +3785,22 @@ class BackendServiceBackendArgs:
     @preference.setter
     def preference(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "preference", value)
+
+    @_builtins.property
+    @pulumi.getter(name="trafficDuration")
+    def traffic_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This field specifies how long a connection should be kept alive for:
+        - LONG: Most of the requests are expected to take more than multiple
+        seconds to finish.
+        - SHORT: Most requests are expected to finish with a sub-second latency.
+        Possible values are: `LONG`, `SHORT`.
+        """
+        return pulumi.get(self, "traffic_duration")
+
+    @traffic_duration.setter
+    def traffic_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "traffic_duration", value)
 
 
 if not MYPY:
@@ -22172,7 +22280,10 @@ if not MYPY:
         on_failed_health_check: NotRequired[pulumi.Input[_builtins.str]]
         """
         , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
-
+        """
+        on_repair: NotRequired[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyOnRepairArgsDict']]
+        """
+        , Configuration for VM repairs in the MIG. Structure is documented below.
         - - -
         """
 elif False:
@@ -22183,12 +22294,13 @@ class InstanceGroupManagerInstanceLifecyclePolicyArgs:
     def __init__(__self__, *,
                  default_action_on_failure: Optional[pulumi.Input[_builtins.str]] = None,
                  force_update_on_repair: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_failed_health_check: Optional[pulumi.Input[_builtins.str]] = None):
+                 on_failed_health_check: Optional[pulumi.Input[_builtins.str]] = None,
+                 on_repair: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] default_action_on_failure: , Specifies the action that a MIG performs on a failed VM. If the value of the `on_failed_health_check` field is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application fails a health check. Valid options are: `DO_NOTHING`, `REPAIR`. If `DO_NOTHING`, then MIG does not repair a failed VM. If `REPAIR` (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG.
         :param pulumi.Input[_builtins.str] force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         :param pulumi.Input[_builtins.str] on_failed_health_check: , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
-               
+        :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs'] on_repair: , Configuration for VM repairs in the MIG. Structure is documented below.
                - - -
         """
         if default_action_on_failure is not None:
@@ -22197,6 +22309,8 @@ class InstanceGroupManagerInstanceLifecyclePolicyArgs:
             pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
         if on_failed_health_check is not None:
             pulumi.set(__self__, "on_failed_health_check", on_failed_health_check)
+        if on_repair is not None:
+            pulumi.set(__self__, "on_repair", on_repair)
 
     @_builtins.property
     @pulumi.getter(name="defaultActionOnFailure")
@@ -22227,14 +22341,63 @@ class InstanceGroupManagerInstanceLifecyclePolicyArgs:
     def on_failed_health_check(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
-
-        - - -
         """
         return pulumi.get(self, "on_failed_health_check")
 
     @on_failed_health_check.setter
     def on_failed_health_check(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "on_failed_health_check", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onRepair")
+    def on_repair(self) -> Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs']]:
+        """
+        , Configuration for VM repairs in the MIG. Structure is documented below.
+        - - -
+        """
+        return pulumi.get(self, "on_repair")
+
+    @on_repair.setter
+    def on_repair(self, value: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs']]):
+        pulumi.set(self, "on_repair", value)
+
+
+if not MYPY:
+    class InstanceGroupManagerInstanceLifecyclePolicyOnRepairArgsDict(TypedDict):
+        allow_changing_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        , Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allow_changing_zone is "NO".
+
+        - - -
+        """
+elif False:
+    InstanceGroupManagerInstanceLifecyclePolicyOnRepairArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs:
+    def __init__(__self__, *,
+                 allow_changing_zone: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] allow_changing_zone: , Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allow_changing_zone is "NO".
+               
+               - - -
+        """
+        if allow_changing_zone is not None:
+            pulumi.set(__self__, "allow_changing_zone", allow_changing_zone)
+
+    @_builtins.property
+    @pulumi.getter(name="allowChangingZone")
+    def allow_changing_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        , Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allow_changing_zone is "NO".
+
+        - - -
+        """
+        return pulumi.get(self, "allow_changing_zone")
+
+    @allow_changing_zone.setter
+    def allow_changing_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "allow_changing_zone", value)
 
 
 if not MYPY:
@@ -36569,6 +36732,22 @@ if not MYPY:
         For CONNECTION mode, either maxConnections or
         maxConnectionsPerInstance must be set.
         """
+        max_in_flight_requests: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Defines a maximum number of in-flight requests for the whole NEG
+        or instance group. Not available if backend's balancingMode is RATE
+        or CONNECTION.
+        """
+        max_in_flight_requests_per_endpoint: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Defines a maximum number of in-flight requests for a single endpoint.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
+        max_in_flight_requests_per_instance: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Defines a maximum number of in-flight requests for a single VM.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
         max_rate: NotRequired[pulumi.Input[_builtins.int]]
         """
         The max requests per second (RPS) of the group. Cannot be set
@@ -36600,6 +36779,14 @@ if not MYPY:
         CPU utilization target for the group. Valid range is [0.0, 1.0].
         Cannot be set for INTERNAL backend services.
         """
+        traffic_duration: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This field specifies how long a connection should be kept alive for:
+        - LONG: Most of the requests are expected to take more than multiple
+        seconds to finish.
+        - SHORT: Most requests are expected to finish with a sub-second latency.
+        Possible values are: `LONG`, `SHORT`.
+        """
 elif False:
     RegionBackendServiceBackendArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -36615,10 +36802,14 @@ class RegionBackendServiceBackendArgs:
                  max_connections: Optional[pulumi.Input[_builtins.int]] = None,
                  max_connections_per_endpoint: Optional[pulumi.Input[_builtins.int]] = None,
                  max_connections_per_instance: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_in_flight_requests: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_in_flight_requests_per_endpoint: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_in_flight_requests_per_instance: Optional[pulumi.Input[_builtins.int]] = None,
                  max_rate: Optional[pulumi.Input[_builtins.int]] = None,
                  max_rate_per_endpoint: Optional[pulumi.Input[_builtins.float]] = None,
                  max_rate_per_instance: Optional[pulumi.Input[_builtins.float]] = None,
-                 max_utilization: Optional[pulumi.Input[_builtins.float]] = None):
+                 max_utilization: Optional[pulumi.Input[_builtins.float]] = None,
+                 traffic_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] group: The fully-qualified URL of an Instance Group or Network Endpoint
                Group resource. In case of instance group this defines the list
@@ -36675,6 +36866,13 @@ class RegionBackendServiceBackendArgs:
                Can be used in either CONNECTION or UTILIZATION balancing modes.
                For CONNECTION mode, either maxConnections or
                maxConnectionsPerInstance must be set.
+        :param pulumi.Input[_builtins.int] max_in_flight_requests: Defines a maximum number of in-flight requests for the whole NEG
+               or instance group. Not available if backend's balancingMode is RATE
+               or CONNECTION.
+        :param pulumi.Input[_builtins.int] max_in_flight_requests_per_endpoint: Defines a maximum number of in-flight requests for a single endpoint.
+               Not available if backend's balancingMode is RATE or CONNECTION.
+        :param pulumi.Input[_builtins.int] max_in_flight_requests_per_instance: Defines a maximum number of in-flight requests for a single VM.
+               Not available if backend's balancingMode is RATE or CONNECTION.
         :param pulumi.Input[_builtins.int] max_rate: The max requests per second (RPS) of the group. Cannot be set
                for INTERNAL backend services.
                Can be used with either RATE or UTILIZATION balancing modes,
@@ -36694,6 +36892,11 @@ class RegionBackendServiceBackendArgs:
         :param pulumi.Input[_builtins.float] max_utilization: Used when balancingMode is UTILIZATION. This ratio defines the
                CPU utilization target for the group. Valid range is [0.0, 1.0].
                Cannot be set for INTERNAL backend services.
+        :param pulumi.Input[_builtins.str] traffic_duration: This field specifies how long a connection should be kept alive for:
+               - LONG: Most of the requests are expected to take more than multiple
+               seconds to finish.
+               - SHORT: Most requests are expected to finish with a sub-second latency.
+               Possible values are: `LONG`, `SHORT`.
         """
         pulumi.set(__self__, "group", group)
         if balancing_mode is not None:
@@ -36712,6 +36915,12 @@ class RegionBackendServiceBackendArgs:
             pulumi.set(__self__, "max_connections_per_endpoint", max_connections_per_endpoint)
         if max_connections_per_instance is not None:
             pulumi.set(__self__, "max_connections_per_instance", max_connections_per_instance)
+        if max_in_flight_requests is not None:
+            pulumi.set(__self__, "max_in_flight_requests", max_in_flight_requests)
+        if max_in_flight_requests_per_endpoint is not None:
+            pulumi.set(__self__, "max_in_flight_requests_per_endpoint", max_in_flight_requests_per_endpoint)
+        if max_in_flight_requests_per_instance is not None:
+            pulumi.set(__self__, "max_in_flight_requests_per_instance", max_in_flight_requests_per_instance)
         if max_rate is not None:
             pulumi.set(__self__, "max_rate", max_rate)
         if max_rate_per_endpoint is not None:
@@ -36720,6 +36929,8 @@ class RegionBackendServiceBackendArgs:
             pulumi.set(__self__, "max_rate_per_instance", max_rate_per_instance)
         if max_utilization is not None:
             pulumi.set(__self__, "max_utilization", max_utilization)
+        if traffic_duration is not None:
+            pulumi.set(__self__, "traffic_duration", traffic_duration)
 
     @_builtins.property
     @pulumi.getter
@@ -36876,6 +37087,46 @@ class RegionBackendServiceBackendArgs:
         pulumi.set(self, "max_connections_per_instance", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxInFlightRequests")
+    def max_in_flight_requests(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Defines a maximum number of in-flight requests for the whole NEG
+        or instance group. Not available if backend's balancingMode is RATE
+        or CONNECTION.
+        """
+        return pulumi.get(self, "max_in_flight_requests")
+
+    @max_in_flight_requests.setter
+    def max_in_flight_requests(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_in_flight_requests", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxInFlightRequestsPerEndpoint")
+    def max_in_flight_requests_per_endpoint(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Defines a maximum number of in-flight requests for a single endpoint.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
+        return pulumi.get(self, "max_in_flight_requests_per_endpoint")
+
+    @max_in_flight_requests_per_endpoint.setter
+    def max_in_flight_requests_per_endpoint(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_in_flight_requests_per_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxInFlightRequestsPerInstance")
+    def max_in_flight_requests_per_instance(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Defines a maximum number of in-flight requests for a single VM.
+        Not available if backend's balancingMode is RATE or CONNECTION.
+        """
+        return pulumi.get(self, "max_in_flight_requests_per_instance")
+
+    @max_in_flight_requests_per_instance.setter
+    def max_in_flight_requests_per_instance(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_in_flight_requests_per_instance", value)
+
+    @_builtins.property
     @pulumi.getter(name="maxRate")
     def max_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -36937,6 +37188,22 @@ class RegionBackendServiceBackendArgs:
     @max_utilization.setter
     def max_utilization(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "max_utilization", value)
+
+    @_builtins.property
+    @pulumi.getter(name="trafficDuration")
+    def traffic_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This field specifies how long a connection should be kept alive for:
+        - LONG: Most of the requests are expected to take more than multiple
+        seconds to finish.
+        - SHORT: Most requests are expected to finish with a sub-second latency.
+        Possible values are: `LONG`, `SHORT`.
+        """
+        return pulumi.get(self, "traffic_duration")
+
+    @traffic_duration.setter
+    def traffic_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "traffic_duration", value)
 
 
 if not MYPY:
@@ -41638,10 +41905,12 @@ if not MYPY:
         """
         on_failed_health_check: NotRequired[pulumi.Input[_builtins.str]]
         """
-        , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG. 
-
+        , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
+        """
+        on_repair: NotRequired[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgsDict']]
+        """
+        , Configuration for VM repairs in the MIG. Structure is documented below.
         - - -
-        <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
         """
 elif False:
     RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -41651,14 +41920,14 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
     def __init__(__self__, *,
                  default_action_on_failure: Optional[pulumi.Input[_builtins.str]] = None,
                  force_update_on_repair: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_failed_health_check: Optional[pulumi.Input[_builtins.str]] = None):
+                 on_failed_health_check: Optional[pulumi.Input[_builtins.str]] = None,
+                 on_repair: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] default_action_on_failure: , Specifies the action that a MIG performs on a failed VM. If the value of the `on_failed_health_check` field is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application fails a health check. Valid options are: `DO_NOTHING`, `REPAIR`. If `DO_NOTHING`, then MIG does not repair a failed VM. If `REPAIR` (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG.
         :param pulumi.Input[_builtins.str] force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
-        :param pulumi.Input[_builtins.str] on_failed_health_check: , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG. 
-               
+        :param pulumi.Input[_builtins.str] on_failed_health_check: , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
+        :param pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs'] on_repair: , Configuration for VM repairs in the MIG. Structure is documented below.
                - - -
-               <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
         """
         if default_action_on_failure is not None:
             pulumi.set(__self__, "default_action_on_failure", default_action_on_failure)
@@ -41666,6 +41935,8 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
             pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
         if on_failed_health_check is not None:
             pulumi.set(__self__, "on_failed_health_check", on_failed_health_check)
+        if on_repair is not None:
+            pulumi.set(__self__, "on_repair", on_repair)
 
     @_builtins.property
     @pulumi.getter(name="defaultActionOnFailure")
@@ -41695,16 +41966,67 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
     @pulumi.getter(name="onFailedHealthCheck")
     def on_failed_health_check(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG. 
-
-        - - -
-        <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
+        , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
         """
         return pulumi.get(self, "on_failed_health_check")
 
     @on_failed_health_check.setter
     def on_failed_health_check(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "on_failed_health_check", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onRepair")
+    def on_repair(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs']]:
+        """
+        , Configuration for VM repairs in the MIG. Structure is documented below.
+        - - -
+        """
+        return pulumi.get(self, "on_repair")
+
+    @on_repair.setter
+    def on_repair(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs']]):
+        pulumi.set(self, "on_repair", value)
+
+
+if not MYPY:
+    class RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgsDict(TypedDict):
+        allow_changing_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        , Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allow_changing_zone is "NO".
+
+        - - -
+        <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
+        """
+elif False:
+    RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs:
+    def __init__(__self__, *,
+                 allow_changing_zone: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] allow_changing_zone: , Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allow_changing_zone is "NO".
+               
+               - - -
+               <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
+        """
+        if allow_changing_zone is not None:
+            pulumi.set(__self__, "allow_changing_zone", allow_changing_zone)
+
+    @_builtins.property
+    @pulumi.getter(name="allowChangingZone")
+    def allow_changing_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        , Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allow_changing_zone is "NO".
+
+        - - -
+        <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
+        """
+        return pulumi.get(self, "allow_changing_zone")
+
+    @allow_changing_zone.setter
+    def allow_changing_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "allow_changing_zone", value)
 
 
 if not MYPY:

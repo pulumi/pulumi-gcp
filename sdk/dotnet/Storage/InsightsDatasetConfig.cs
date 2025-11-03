@@ -91,7 +91,6 @@ namespace Pulumi.Gcp.Storage
     ///         Location = "us-central1",
     ///         DatasetConfigId = "my_config_excludes",
     ///         RetentionPeriodDays = 1,
-    ///         ActivityDataRetentionPeriodDays = 2,
     ///         OrganizationScope = true,
     ///         Identity = new Gcp.Storage.Inputs.InsightsDatasetConfigIdentityArgs
     ///         {
@@ -150,12 +149,6 @@ namespace Pulumi.Gcp.Storage
     [GcpResourceType("gcp:storage/insightsDatasetConfig:InsightsDatasetConfig")]
     public partial class InsightsDatasetConfig : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-        /// </summary>
-        [Output("activityDataRetentionPeriodDays")]
-        public Output<int?> ActivityDataRetentionPeriodDays { get; private set; } = null!;
-
         /// <summary>
         /// The UTC time at which the DatasetConfig was created. This is auto-populated.
         /// </summary>
@@ -342,12 +335,6 @@ namespace Pulumi.Gcp.Storage
     public sealed class InsightsDatasetConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-        /// </summary>
-        [Input("activityDataRetentionPeriodDays")]
-        public Input<int>? ActivityDataRetentionPeriodDays { get; set; }
-
-        /// <summary>
         /// The user-defined ID of the DatasetConfig
         /// </summary>
         [Input("datasetConfigId", required: true)]
@@ -457,12 +444,6 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class InsightsDatasetConfigState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-        /// </summary>
-        [Input("activityDataRetentionPeriodDays")]
-        public Input<int>? ActivityDataRetentionPeriodDays { get; set; }
-
         /// <summary>
         /// The UTC time at which the DatasetConfig was created. This is auto-populated.
         /// </summary>

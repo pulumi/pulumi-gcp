@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
  * });
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ * const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
  *     dependsOn: [acceptanceProject],
  * });
  * const acceptance = new gcp.projects.Service("acceptance", {
@@ -115,9 +115,20 @@ export class Network extends pulumi.CustomResource {
     }
 
     /**
+     * Creation time of this resource.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
      * User-provided description for this VMware Engine network.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+     * The server computes checksums based on the value of other fields in the request.
+     */
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The location where the VMwareEngineNetwork should reside.
      */
@@ -145,6 +156,12 @@ export class Network extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
+     * Last update time of this resource.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
      * VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
      * the internet, and other Google Cloud services.
      * Structure is documented below.
@@ -164,13 +181,16 @@ export class Network extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
+            resourceInputs["etag"] = state?.etag;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["state"] = state?.state;
             resourceInputs["type"] = state?.type;
             resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["vpcNetworks"] = state?.vpcNetworks;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
@@ -185,8 +205,11 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["type"] = args?.type;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["vpcNetworks"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -199,9 +222,20 @@ export class Network extends pulumi.CustomResource {
  */
 export interface NetworkState {
     /**
+     * Creation time of this resource.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    createTime?: pulumi.Input<string>;
+    /**
      * User-provided description for this VMware Engine network.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+     * The server computes checksums based on the value of other fields in the request.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * The location where the VMwareEngineNetwork should reside.
      */
@@ -228,6 +262,12 @@ export interface NetworkState {
      * System-generated unique identifier for the resource.
      */
     uid?: pulumi.Input<string>;
+    /**
+     * Last update time of this resource.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    updateTime?: pulumi.Input<string>;
     /**
      * VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
      * the internet, and other Google Cloud services.

@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, effective_labels=None, effective_reserved_ip_range=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, memory_size_gb=None, name=None, nodes=None, persistence_configs=None, persistence_iam_identity=None, port=None, project=None, pulumi_labels=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, deletion_protection=None, display_name=None, effective_labels=None, effective_reserved_ip_range=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, memory_size_gb=None, name=None, nodes=None, persistence_configs=None, persistence_iam_identity=None, port=None, project=None, pulumi_labels=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -52,6 +52,9 @@ class GetInstanceResult:
         if customer_managed_key and not isinstance(customer_managed_key, str):
             raise TypeError("Expected argument 'customer_managed_key' to be a str")
         pulumi.set(__self__, "customer_managed_key", customer_managed_key)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -182,6 +185,11 @@ class GetInstanceResult:
     @pulumi.getter(name="customerManagedKey")
     def customer_managed_key(self) -> _builtins.str:
         return pulumi.get(self, "customer_managed_key")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> _builtins.bool:
+        return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -351,6 +359,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             create_time=self.create_time,
             current_location_id=self.current_location_id,
             customer_managed_key=self.customer_managed_key,
+            deletion_protection=self.deletion_protection,
             display_name=self.display_name,
             effective_labels=self.effective_labels,
             effective_reserved_ip_range=self.effective_reserved_ip_range,
@@ -427,6 +436,7 @@ def get_instance(name: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         current_location_id=pulumi.get(__ret__, 'current_location_id'),
         customer_managed_key=pulumi.get(__ret__, 'customer_managed_key'),
+        deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         effective_reserved_ip_range=pulumi.get(__ret__, 'effective_reserved_ip_range'),
@@ -500,6 +510,7 @@ def get_instance_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         create_time=pulumi.get(__response__, 'create_time'),
         current_location_id=pulumi.get(__response__, 'current_location_id'),
         customer_managed_key=pulumi.get(__response__, 'customer_managed_key'),
+        deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         display_name=pulumi.get(__response__, 'display_name'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         effective_reserved_ip_range=pulumi.get(__response__, 'effective_reserved_ip_range'),

@@ -23,6 +23,7 @@ from .entry_group import *
 from .entry_group_iam_binding import *
 from .entry_group_iam_member import *
 from .entry_group_iam_policy import *
+from .entry_link import *
 from .entry_type import *
 from .entry_type_iam_binding import *
 from .entry_type_iam_member import *

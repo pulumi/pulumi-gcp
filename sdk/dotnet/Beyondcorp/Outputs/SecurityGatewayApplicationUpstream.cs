@@ -19,19 +19,35 @@ namespace Pulumi.Gcp.Beyondcorp.Outputs
         /// </summary>
         public readonly Outputs.SecurityGatewayApplicationUpstreamEgressPolicy? EgressPolicy;
         /// <summary>
+        /// List of the external endpoints to forward traffic to.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SecurityGatewayApplicationUpstreamExternal? External;
+        /// <summary>
         /// Network to forward traffic to.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityGatewayApplicationUpstreamNetwork? Network;
+        /// <summary>
+        /// Shared proxy configuration for all apps.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SecurityGatewayApplicationUpstreamProxyProtocol? ProxyProtocol;
 
         [OutputConstructor]
         private SecurityGatewayApplicationUpstream(
             Outputs.SecurityGatewayApplicationUpstreamEgressPolicy? egressPolicy,
 
-            Outputs.SecurityGatewayApplicationUpstreamNetwork? network)
+            Outputs.SecurityGatewayApplicationUpstreamExternal? external,
+
+            Outputs.SecurityGatewayApplicationUpstreamNetwork? network,
+
+            Outputs.SecurityGatewayApplicationUpstreamProxyProtocol? proxyProtocol)
         {
             EgressPolicy = egressPolicy;
+            External = external;
             Network = network;
+            ProxyProtocol = proxyProtocol;
         }
     }
 }

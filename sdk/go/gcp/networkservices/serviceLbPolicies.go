@@ -98,6 +98,62 @@ import (
 //	}
 //
 // ```
+// ### Network Services Service Lb Policies Beta
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := networkservices.NewServiceLbPolicies(ctx, "default", &networkservices.ServiceLbPoliciesArgs{
+//				Name:                   pulumi.String("my-lb-policy"),
+//				Location:               pulumi.String("global"),
+//				Description:            pulumi.String("my description"),
+//				LoadBalancingAlgorithm: pulumi.String("SPRAY_TO_REGION"),
+//				AutoCapacityDrain: &networkservices.ServiceLbPoliciesAutoCapacityDrainArgs{
+//					Enable: pulumi.Bool(true),
+//				},
+//				FailoverConfig: &networkservices.ServiceLbPoliciesFailoverConfigArgs{
+//					FailoverHealthThreshold: pulumi.Int(70),
+//				},
+//				IsolationConfig: &networkservices.ServiceLbPoliciesIsolationConfigArgs{
+//					IsolationGranularity: pulumi.String("REGION"),
+//					IsolationMode:        pulumi.String("NEAREST"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("my-lb-backend"),
+//				Description:         pulumi.String("my description"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+//				Protocol:            pulumi.String("HTTP"),
+//				ServiceLbPolicy: _default.ID().ApplyT(func(id string) (string, error) {
+//					return fmt.Sprintf("//networkservices.googleapis.com/%v", id), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -137,6 +193,9 @@ type ServiceLbPolicies struct {
 	// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
 	// Structure is documented below.
 	FailoverConfig ServiceLbPoliciesFailoverConfigPtrOutput `pulumi:"failoverConfig"`
+	// Configuration to provide isolation support for the associated Backend Service.
+	// Structure is documented below.
+	IsolationConfig ServiceLbPoliciesIsolationConfigPtrOutput `pulumi:"isolationConfig"`
 	// Set of label tags associated with the ServiceLbPolicy resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -208,6 +267,9 @@ type serviceLbPoliciesState struct {
 	// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
 	// Structure is documented below.
 	FailoverConfig *ServiceLbPoliciesFailoverConfig `pulumi:"failoverConfig"`
+	// Configuration to provide isolation support for the associated Backend Service.
+	// Structure is documented below.
+	IsolationConfig *ServiceLbPoliciesIsolationConfig `pulumi:"isolationConfig"`
 	// Set of label tags associated with the ServiceLbPolicy resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -242,6 +304,9 @@ type ServiceLbPoliciesState struct {
 	// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
 	// Structure is documented below.
 	FailoverConfig ServiceLbPoliciesFailoverConfigPtrInput
+	// Configuration to provide isolation support for the associated Backend Service.
+	// Structure is documented below.
+	IsolationConfig ServiceLbPoliciesIsolationConfigPtrInput
 	// Set of label tags associated with the ServiceLbPolicy resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -276,6 +341,9 @@ type serviceLbPoliciesArgs struct {
 	// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
 	// Structure is documented below.
 	FailoverConfig *ServiceLbPoliciesFailoverConfig `pulumi:"failoverConfig"`
+	// Configuration to provide isolation support for the associated Backend Service.
+	// Structure is documented below.
+	IsolationConfig *ServiceLbPoliciesIsolationConfig `pulumi:"isolationConfig"`
 	// Set of label tags associated with the ServiceLbPolicy resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -302,6 +370,9 @@ type ServiceLbPoliciesArgs struct {
 	// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
 	// Structure is documented below.
 	FailoverConfig ServiceLbPoliciesFailoverConfigPtrInput
+	// Configuration to provide isolation support for the associated Backend Service.
+	// Structure is documented below.
+	IsolationConfig ServiceLbPoliciesIsolationConfigPtrInput
 	// Set of label tags associated with the ServiceLbPolicy resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -430,6 +501,12 @@ func (o ServiceLbPoliciesOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o ServiceLbPoliciesOutput) FailoverConfig() ServiceLbPoliciesFailoverConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceLbPolicies) ServiceLbPoliciesFailoverConfigPtrOutput { return v.FailoverConfig }).(ServiceLbPoliciesFailoverConfigPtrOutput)
+}
+
+// Configuration to provide isolation support for the associated Backend Service.
+// Structure is documented below.
+func (o ServiceLbPoliciesOutput) IsolationConfig() ServiceLbPoliciesIsolationConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceLbPolicies) ServiceLbPoliciesIsolationConfigPtrOutput { return v.IsolationConfig }).(ServiceLbPoliciesIsolationConfigPtrOutput)
 }
 
 // Set of label tags associated with the ServiceLbPolicy resource.

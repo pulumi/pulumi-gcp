@@ -39,6 +39,12 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs>? PublishFindingsToCloudDataCatalog { get; set; }
 
         /// <summary>
+        /// Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
+        /// </summary>
+        [Input("publishFindingsToDataplexCatalog")]
+        public Input<Inputs.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs>? PublishFindingsToDataplexCatalog { get; set; }
+
+        /// <summary>
         /// Publish the result summary of a DlpJob to the Cloud Security Command Center.
         /// </summary>
         [Input("publishSummaryToCscc")]

@@ -18,6 +18,11 @@ from . import outputs
 __all__ = [
     'AclConfigIdpConfig',
     'AclConfigIdpConfigExternalIdpConfig',
+    'AssistantCustomerPolicy',
+    'AssistantCustomerPolicyBannedPhrase',
+    'AssistantCustomerPolicyModelArmorConfig',
+    'AssistantGenerationConfig',
+    'AssistantGenerationConfigSystemInstruction',
     'ChatEngineChatEngineConfig',
     'ChatEngineChatEngineConfigAgentCreationConfig',
     'ChatEngineChatEngineMetadata',
@@ -37,6 +42,8 @@ __all__ = [
     'DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig',
     'DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig',
     'DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig',
+    'LicenseConfigEndDate',
+    'LicenseConfigStartDate',
     'RecommendationEngineCommonConfig',
     'RecommendationEngineMediaRecommendationEngineConfig',
     'RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig',
@@ -138,6 +145,297 @@ class AclConfigIdpConfigExternalIdpConfig(dict):
         Workforce pool name: "locations/global/workforcePools/pool_id"
         """
         return pulumi.get(self, "workforce_pool_name")
+
+
+@pulumi.output_type
+class AssistantCustomerPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bannedPhrases":
+            suggest = "banned_phrases"
+        elif key == "modelArmorConfig":
+            suggest = "model_armor_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssistantCustomerPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssistantCustomerPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssistantCustomerPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 banned_phrases: Optional[Sequence['outputs.AssistantCustomerPolicyBannedPhrase']] = None,
+                 model_armor_config: Optional['outputs.AssistantCustomerPolicyModelArmorConfig'] = None):
+        """
+        :param Sequence['AssistantCustomerPolicyBannedPhraseArgs'] banned_phrases: List of banned phrases.
+               Structure is documented below.
+        :param 'AssistantCustomerPolicyModelArmorConfigArgs' model_armor_config: Model Armor configuration to be used for sanitizing user prompts and assistant responses.
+               Structure is documented below.
+        """
+        if banned_phrases is not None:
+            pulumi.set(__self__, "banned_phrases", banned_phrases)
+        if model_armor_config is not None:
+            pulumi.set(__self__, "model_armor_config", model_armor_config)
+
+    @_builtins.property
+    @pulumi.getter(name="bannedPhrases")
+    def banned_phrases(self) -> Optional[Sequence['outputs.AssistantCustomerPolicyBannedPhrase']]:
+        """
+        List of banned phrases.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "banned_phrases")
+
+    @_builtins.property
+    @pulumi.getter(name="modelArmorConfig")
+    def model_armor_config(self) -> Optional['outputs.AssistantCustomerPolicyModelArmorConfig']:
+        """
+        Model Armor configuration to be used for sanitizing user prompts and assistant responses.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "model_armor_config")
+
+
+@pulumi.output_type
+class AssistantCustomerPolicyBannedPhrase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreDiacritics":
+            suggest = "ignore_diacritics"
+        elif key == "matchType":
+            suggest = "match_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssistantCustomerPolicyBannedPhrase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssistantCustomerPolicyBannedPhrase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssistantCustomerPolicyBannedPhrase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 phrase: _builtins.str,
+                 ignore_diacritics: Optional[_builtins.bool] = None,
+                 match_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str phrase: The raw string content to be banned.
+        :param _builtins.bool ignore_diacritics: If true, diacritical marks (e.g., accents, umlauts) are ignored when
+               matching banned phrases. For example, "cafe" would match "café".
+        :param _builtins.str match_type: Match type for the banned phrase.
+               The supported values: 'SIMPLE_STRING_MATCH', 'WORD_BOUNDARY_STRING_MATCH'.
+        """
+        pulumi.set(__self__, "phrase", phrase)
+        if ignore_diacritics is not None:
+            pulumi.set(__self__, "ignore_diacritics", ignore_diacritics)
+        if match_type is not None:
+            pulumi.set(__self__, "match_type", match_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def phrase(self) -> _builtins.str:
+        """
+        The raw string content to be banned.
+        """
+        return pulumi.get(self, "phrase")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreDiacritics")
+    def ignore_diacritics(self) -> Optional[_builtins.bool]:
+        """
+        If true, diacritical marks (e.g., accents, umlauts) are ignored when
+        matching banned phrases. For example, "cafe" would match "café".
+        """
+        return pulumi.get(self, "ignore_diacritics")
+
+    @_builtins.property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> Optional[_builtins.str]:
+        """
+        Match type for the banned phrase.
+        The supported values: 'SIMPLE_STRING_MATCH', 'WORD_BOUNDARY_STRING_MATCH'.
+        """
+        return pulumi.get(self, "match_type")
+
+
+@pulumi.output_type
+class AssistantCustomerPolicyModelArmorConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "responseTemplate":
+            suggest = "response_template"
+        elif key == "userPromptTemplate":
+            suggest = "user_prompt_template"
+        elif key == "failureMode":
+            suggest = "failure_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssistantCustomerPolicyModelArmorConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssistantCustomerPolicyModelArmorConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssistantCustomerPolicyModelArmorConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 response_template: _builtins.str,
+                 user_prompt_template: _builtins.str,
+                 failure_mode: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str response_template: The resource name of the Model Armor template for sanitizing assistant
+               responses. Format:
+               `projects/{project}/locations/{location}/templates/{template_id}`
+               If not specified, no sanitization will be applied to the assistant
+               response.
+        :param _builtins.str user_prompt_template: The resource name of the Model Armor template for sanitizing user
+               prompts. Format:
+               `projects/{project}/locations/{location}/templates/{template_id}`
+               If not specified, no sanitization will be applied to the user prompt.
+        :param _builtins.str failure_mode: Defines the failure mode for Model Armor sanitization.
+               The supported values: 'FAIL_OPEN', 'FAIL_CLOSED'.
+        """
+        pulumi.set(__self__, "response_template", response_template)
+        pulumi.set(__self__, "user_prompt_template", user_prompt_template)
+        if failure_mode is not None:
+            pulumi.set(__self__, "failure_mode", failure_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="responseTemplate")
+    def response_template(self) -> _builtins.str:
+        """
+        The resource name of the Model Armor template for sanitizing assistant
+        responses. Format:
+        `projects/{project}/locations/{location}/templates/{template_id}`
+        If not specified, no sanitization will be applied to the assistant
+        response.
+        """
+        return pulumi.get(self, "response_template")
+
+    @_builtins.property
+    @pulumi.getter(name="userPromptTemplate")
+    def user_prompt_template(self) -> _builtins.str:
+        """
+        The resource name of the Model Armor template for sanitizing user
+        prompts. Format:
+        `projects/{project}/locations/{location}/templates/{template_id}`
+        If not specified, no sanitization will be applied to the user prompt.
+        """
+        return pulumi.get(self, "user_prompt_template")
+
+    @_builtins.property
+    @pulumi.getter(name="failureMode")
+    def failure_mode(self) -> Optional[_builtins.str]:
+        """
+        Defines the failure mode for Model Armor sanitization.
+        The supported values: 'FAIL_OPEN', 'FAIL_CLOSED'.
+        """
+        return pulumi.get(self, "failure_mode")
+
+
+@pulumi.output_type
+class AssistantGenerationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultLanguage":
+            suggest = "default_language"
+        elif key == "systemInstruction":
+            suggest = "system_instruction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssistantGenerationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssistantGenerationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssistantGenerationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_language: Optional[_builtins.str] = None,
+                 system_instruction: Optional['outputs.AssistantGenerationConfigSystemInstruction'] = None):
+        """
+        :param _builtins.str default_language: The default language to use for the generation of the assistant response.
+               Use an ISO 639-1 language code such as `en`.
+               If not specified, the language will be automatically detected.
+        :param 'AssistantGenerationConfigSystemInstructionArgs' system_instruction: System instruction, also known as the prompt preamble for LLM calls.
+               See also https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/system-instructions
+               Structure is documented below.
+        """
+        if default_language is not None:
+            pulumi.set(__self__, "default_language", default_language)
+        if system_instruction is not None:
+            pulumi.set(__self__, "system_instruction", system_instruction)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultLanguage")
+    def default_language(self) -> Optional[_builtins.str]:
+        """
+        The default language to use for the generation of the assistant response.
+        Use an ISO 639-1 language code such as `en`.
+        If not specified, the language will be automatically detected.
+        """
+        return pulumi.get(self, "default_language")
+
+    @_builtins.property
+    @pulumi.getter(name="systemInstruction")
+    def system_instruction(self) -> Optional['outputs.AssistantGenerationConfigSystemInstruction']:
+        """
+        System instruction, also known as the prompt preamble for LLM calls.
+        See also https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/system-instructions
+        Structure is documented below.
+        """
+        return pulumi.get(self, "system_instruction")
+
+
+@pulumi.output_type
+class AssistantGenerationConfigSystemInstruction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalSystemInstruction":
+            suggest = "additional_system_instruction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssistantGenerationConfigSystemInstruction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssistantGenerationConfigSystemInstruction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssistantGenerationConfigSystemInstruction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_system_instruction: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str additional_system_instruction: Additional system instruction that will be added to the default system instruction.
+        """
+        if additional_system_instruction is not None:
+            pulumi.set(__self__, "additional_system_instruction", additional_system_instruction)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalSystemInstruction")
+    def additional_system_instruction(self) -> Optional[_builtins.str]:
+        """
+        Additional system instruction that will be added to the default system instruction.
+        """
+        return pulumi.get(self, "additional_system_instruction")
 
 
 @pulumi.output_type
@@ -434,7 +732,7 @@ class DataConnectorEntity(dict):
                  data_store: Optional[_builtins.str] = None,
                  entity_name: Optional[_builtins.str] = None,
                  key_property_mappings: Optional[Mapping[str, _builtins.str]] = None,
-                 params: Optional[Mapping[str, _builtins.str]] = None):
+                 params: Optional[_builtins.str] = None):
         """
         :param _builtins.str data_store: (Output)
                The full resource name of the associated data store for the source
@@ -450,7 +748,7 @@ class DataConnectorEntity(dict):
                Key: Field name.
                Value: The key property to map a field to, such as `title`, and
                `description`. Supported key properties:
-        :param Mapping[str, _builtins.str] params: The parameters for the entity to facilitate data ingestion.
+        :param _builtins.str params: The parameters for the entity to facilitate data ingestion.
         """
         if data_store is not None:
             pulumi.set(__self__, "data_store", data_store)
@@ -498,7 +796,7 @@ class DataConnectorEntity(dict):
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[Mapping[str, _builtins.str]]:
+    def params(self) -> Optional[_builtins.str]:
         """
         The parameters for the entity to facilitate data ingestion.
         """
@@ -1213,6 +1511,92 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig(dic
         If true, will use native text instead of OCR text on pages containing native text.
         """
         return pulumi.get(self, "use_native_text")
+
+
+@pulumi.output_type
+class LicenseConfigEndDate(dict):
+    def __init__(__self__, *,
+                 day: Optional[_builtins.int] = None,
+                 month: Optional[_builtins.int] = None,
+                 year: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param _builtins.int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param _builtins.int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> Optional[_builtins.int]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @_builtins.property
+    @pulumi.getter
+    def month(self) -> Optional[_builtins.int]:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @_builtins.property
+    @pulumi.getter
+    def year(self) -> Optional[_builtins.int]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
+
+
+@pulumi.output_type
+class LicenseConfigStartDate(dict):
+    def __init__(__self__, *,
+                 day: Optional[_builtins.int] = None,
+                 month: Optional[_builtins.int] = None,
+                 year: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param _builtins.int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param _builtins.int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> Optional[_builtins.int]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @_builtins.property
+    @pulumi.getter
+    def month(self) -> Optional[_builtins.int]:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @_builtins.property
+    @pulumi.getter
+    def year(self) -> Optional[_builtins.int]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
 
 
 @pulumi.output_type

@@ -619,8 +619,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -682,7 +682,7 @@ import (
 //			}
 //			// builder permissions need to stablize before it can pull the source zip
 //			wait60s, err := time.NewSleep(ctx, "wait_60s", &time.SleepArgs{
-//				CreateDuration: "60s",
+//				CreateDuration: pulumi.String("60s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				logWriter,
 //				artifactRegistryWriter,

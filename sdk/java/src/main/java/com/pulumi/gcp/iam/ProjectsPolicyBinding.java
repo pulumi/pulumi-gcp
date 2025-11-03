@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicy;
  * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicyArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.iam.ProjectsPolicyBinding;
  * import com.pulumi.gcp.iam.ProjectsPolicyBindingArgs;
  * import com.pulumi.gcp.iam.inputs.ProjectsPolicyBindingTargetArgs;
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(pabPolicy))
+ *                 .dependsOn(pabPolicy)
  *                 .build());
  * 
  *         var binding_for_all_project_principals = new ProjectsPolicyBinding("binding-for-all-project-principals", ProjectsPolicyBindingArgs.builder()

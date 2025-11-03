@@ -29,6 +29,10 @@ import * as utilities from "../utilities";
  *     applicationId: "google-sga",
  *     endpointMatchers: [{
  *         hostname: "google.com",
+ *         ports: [
+ *             80,
+ *             443,
+ *         ],
  *     }],
  * });
  * ```
@@ -51,6 +55,10 @@ import * as utilities from "../utilities";
  *     applicationId: "my-vm-service2",
  *     endpointMatchers: [{
  *         hostname: "my-vm-service.com",
+ *         ports: [
+ *             80,
+ *             443,
+ *         ],
  *     }],
  *     upstreams: [{
  *         egressPolicy: {
@@ -60,6 +68,85 @@ import * as utilities from "../utilities";
  *             name: project.then(project => `projects/${project.projectId}/global/networks/default`),
  *         },
  *     }],
+ * });
+ * ```
+ * ### Beyondcorp Security Gateway Application Spa Api
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.beyondcorp.SecurityGateway("default", {
+ *     securityGatewayId: "default-sg-spa-api",
+ *     displayName: "My SPA Security Gateway resource",
+ * });
+ * const example_spa = new gcp.beyondcorp.SecurityGatewayApplication("example-spa", {
+ *     securityGatewayId: _default.securityGatewayId,
+ *     applicationId: "app-discovery",
+ *     upstreams: [{
+ *         external: {
+ *             endpoints: [{
+ *                 hostname: "my.discovery.service.com",
+ *                 port: 443,
+ *             }],
+ *         },
+ *         proxyProtocol: {
+ *             allowedClientHeaders: ["header"],
+ *         },
+ *     }],
+ *     schema: "API_GATEWAY",
+ * });
+ * ```
+ * ### Beyondcorp Security Gateway Application Spa Proxy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.beyondcorp.SecurityGateway("default", {
+ *     securityGatewayId: "default-sg-spa-proxy",
+ *     displayName: "My SPA Security Gateway resource",
+ * });
+ * const example_spa = new gcp.beyondcorp.SecurityGatewayApplication("example-spa", {
+ *     securityGatewayId: _default.securityGatewayId,
+ *     applicationId: "app-proxy",
+ *     endpointMatchers: [{
+ *         hostname: "a.site.com",
+ *         ports: [443],
+ *     }],
+ *     upstreams: [{
+ *         external: {
+ *             endpoints: [{
+ *                 hostname: "my.proxy.service.com",
+ *                 port: 443,
+ *             }],
+ *         },
+ *         proxyProtocol: {
+ *             allowedClientHeaders: [
+ *                 "header1",
+ *                 "header2",
+ *             ],
+ *             contextualHeaders: {
+ *                 userInfo: {
+ *                     outputType: "PROTOBUF",
+ *                 },
+ *                 groupInfo: {
+ *                     outputType: "JSON",
+ *                 },
+ *                 deviceInfo: {
+ *                     outputType: "NONE",
+ *                 },
+ *                 outputType: "JSON",
+ *             },
+ *             metadataHeaders: {
+ *                 "metadata-header1": "value1",
+ *                 "metadata-header2": "value2",
+ *             },
+ *             gatewayIdentity: "RESOURCE_NAME",
+ *             clientIp: true,
+ *         },
+ *     }],
+ *     schema: "PROXY_GATEWAY",
  * });
  * ```
  *
@@ -145,7 +232,7 @@ export class SecurityGatewayApplication extends pulumi.CustomResource {
      * Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
      * Structure is documented below.
      */
-    declare public readonly endpointMatchers: pulumi.Output<outputs.beyondcorp.SecurityGatewayApplicationEndpointMatcher[]>;
+    declare public readonly endpointMatchers: pulumi.Output<outputs.beyondcorp.SecurityGatewayApplicationEndpointMatcher[] | undefined>;
     /**
      * Identifier. Name of the resource.
      */
@@ -155,6 +242,11 @@ export class SecurityGatewayApplication extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * Type of the external application.
+     * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+     */
+    declare public readonly schema: pulumi.Output<string | undefined>;
     /**
      * ID of the Security Gateway resource this belongs to.
      */
@@ -188,6 +280,7 @@ export class SecurityGatewayApplication extends pulumi.CustomResource {
             resourceInputs["endpointMatchers"] = state?.endpointMatchers;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["schema"] = state?.schema;
             resourceInputs["securityGatewayId"] = state?.securityGatewayId;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["upstreams"] = state?.upstreams;
@@ -196,9 +289,6 @@ export class SecurityGatewayApplication extends pulumi.CustomResource {
             if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if (args?.endpointMatchers === undefined && !opts.urn) {
-                throw new Error("Missing required property 'endpointMatchers'");
-            }
             if (args?.securityGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGatewayId'");
             }
@@ -206,6 +296,7 @@ export class SecurityGatewayApplication extends pulumi.CustomResource {
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["endpointMatchers"] = args?.endpointMatchers;
             resourceInputs["project"] = args?.project;
+            resourceInputs["schema"] = args?.schema;
             resourceInputs["securityGatewayId"] = args?.securityGatewayId;
             resourceInputs["upstreams"] = args?.upstreams;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -262,6 +353,11 @@ export interface SecurityGatewayApplicationState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Type of the external application.
+     * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+     */
+    schema?: pulumi.Input<string>;
+    /**
      * ID of the Security Gateway resource this belongs to.
      */
     securityGatewayId?: pulumi.Input<string>;
@@ -306,12 +402,17 @@ export interface SecurityGatewayApplicationArgs {
      * Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
      * Structure is documented below.
      */
-    endpointMatchers: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationEndpointMatcher>[]>;
+    endpointMatchers?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationEndpointMatcher>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Type of the external application.
+     * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+     */
+    schema?: pulumi.Input<string>;
     /**
      * ID of the Security Gateway resource this belongs to.
      */

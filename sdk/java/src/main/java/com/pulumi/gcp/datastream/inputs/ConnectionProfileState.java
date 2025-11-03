@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileForwardSshConnectivityArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileGcsProfileArgs;
+import com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileMysqlProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileOracleProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
@@ -167,6 +168,23 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
+    }
+
+    /**
+     * Configuration for connecting to a MongoDB database.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="mongodbProfile")
+    private @Nullable Output<ConnectionProfileMongodbProfileArgs> mongodbProfile;
+
+    /**
+     * @return Configuration for connecting to a MongoDB database.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionProfileMongodbProfileArgs>> mongodbProfile() {
+        return Optional.ofNullable(this.mongodbProfile);
     }
 
     /**
@@ -332,6 +350,7 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
         this.gcsProfile = $.gcsProfile;
         this.labels = $.labels;
         this.location = $.location;
+        this.mongodbProfile = $.mongodbProfile;
         this.mysqlProfile = $.mysqlProfile;
         this.name = $.name;
         this.oracleProfile = $.oracleProfile;
@@ -556,6 +575,29 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param mongodbProfile Configuration for connecting to a MongoDB database.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mongodbProfile(@Nullable Output<ConnectionProfileMongodbProfileArgs> mongodbProfile) {
+            $.mongodbProfile = mongodbProfile;
+            return this;
+        }
+
+        /**
+         * @param mongodbProfile Configuration for connecting to a MongoDB database.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mongodbProfile(ConnectionProfileMongodbProfileArgs mongodbProfile) {
+            return mongodbProfile(Output.of(mongodbProfile));
         }
 
         /**

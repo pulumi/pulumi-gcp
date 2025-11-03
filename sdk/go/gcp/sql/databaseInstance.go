@@ -481,7 +481,7 @@ type DatabaseInstance struct {
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringOutput `pulumi:"name"`
-	// For a read pool instance, the number of nodes in the read pool.
+	// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
 	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
 	PointInTimeRestoreContext DatabaseInstancePointInTimeRestoreContextPtrOutput `pulumi:"pointInTimeRestoreContext"`
@@ -624,7 +624,7 @@ type databaseInstanceState struct {
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name *string `pulumi:"name"`
-	// For a read pool instance, the number of nodes in the read pool.
+	// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
 	NodeCount *int `pulumi:"nodeCount"`
 	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
 	PointInTimeRestoreContext *DatabaseInstancePointInTimeRestoreContext `pulumi:"pointInTimeRestoreContext"`
@@ -723,7 +723,7 @@ type DatabaseInstanceState struct {
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringPtrInput
-	// For a read pool instance, the number of nodes in the read pool.
+	// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
 	NodeCount pulumi.IntPtrInput
 	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
 	PointInTimeRestoreContext DatabaseInstancePointInTimeRestoreContextPtrInput
@@ -814,7 +814,7 @@ type databaseInstanceArgs struct {
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name *string `pulumi:"name"`
-	// For a read pool instance, the number of nodes in the read pool.
+	// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
 	NodeCount *int `pulumi:"nodeCount"`
 	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
 	PointInTimeRestoreContext *DatabaseInstancePointInTimeRestoreContext `pulumi:"pointInTimeRestoreContext"`
@@ -890,7 +890,7 @@ type DatabaseInstanceArgs struct {
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringPtrInput
-	// For a read pool instance, the number of nodes in the read pool.
+	// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
 	NodeCount pulumi.IntPtrInput
 	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
 	PointInTimeRestoreContext DatabaseInstancePointInTimeRestoreContextPtrInput
@@ -1111,7 +1111,7 @@ func (o DatabaseInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// For a read pool instance, the number of nodes in the read pool.
+// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
 func (o DatabaseInstanceOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
 }

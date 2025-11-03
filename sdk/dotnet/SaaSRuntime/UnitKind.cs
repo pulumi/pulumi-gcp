@@ -27,26 +27,27 @@ namespace Pulumi.Gcp.SaaSRuntime
     ///     var exampleSaas = new Gcp.SaaSRuntime.SaaS("example_saas", new()
     ///     {
     ///         SaasId = "example-saas",
-    ///         Location = "global",
+    ///         Location = "us-east1",
     ///         Locations = new[]
     ///         {
     ///             new Gcp.SaaSRuntime.Inputs.SaaSLocationArgs
     ///             {
-    ///                 Name = "us-central1",
+    ///                 Name = "us-east1",
     ///             },
     ///         },
     ///     });
     /// 
     ///     var clusterUnitKind = new Gcp.SaaSRuntime.UnitKind("cluster_unit_kind", new()
     ///     {
-    ///         Location = "global",
+    ///         Location = "us-east1",
     ///         UnitKindId = "cluster-unitkind",
     ///         Saas = exampleSaas.Id,
+    ///         DefaultRelease = "projects/my-project-name/locations/us-east1/releases/example-release",
     ///     });
     /// 
     ///     var example = new Gcp.SaaSRuntime.UnitKind("example", new()
     ///     {
-    ///         Location = "global",
+    ///         Location = "us-east1",
     ///         UnitKindId = "app-unitkind",
     ///         Saas = exampleSaas.Id,
     ///         Dependencies = new[]
@@ -56,6 +57,17 @@ namespace Pulumi.Gcp.SaaSRuntime
     ///                 UnitKind = clusterUnitKind.Id,
     ///                 Alias = "cluster",
     ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleRelease = new Gcp.SaaSRuntime.Release("example_release", new()
+    ///     {
+    ///         Location = "us-east1",
+    ///         ReleaseId = "example-release",
+    ///         UnitKind = clusterUnitKind.Id,
+    ///         Blueprint = new Gcp.SaaSRuntime.Inputs.ReleaseBlueprintArgs
+    ///         {
+    ///             Package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
     ///         },
     ///     });
     /// 
@@ -105,6 +117,15 @@ namespace Pulumi.Gcp.SaaSRuntime
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// A reference to the Release object to use as default for creating new units
+        /// of this UnitKind.
+        /// If not specified, a new unit must explicitly reference which release to use
+        /// for its creation.
+        /// </summary>
+        [Output("defaultRelease")]
+        public Output<string?> DefaultRelease { get; private set; } = null!;
 
         /// <summary>
         /// List of other unit kinds that this release will depend on. Dependencies
@@ -285,6 +306,15 @@ namespace Pulumi.Gcp.SaaSRuntime
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// A reference to the Release object to use as default for creating new units
+        /// of this UnitKind.
+        /// If not specified, a new unit must explicitly reference which release to use
+        /// for its creation.
+        /// </summary>
+        [Input("defaultRelease")]
+        public Input<string>? DefaultRelease { get; set; }
+
         [Input("dependencies")]
         private InputList<Inputs.UnitKindDependencyArgs>? _dependencies;
 
@@ -400,6 +430,15 @@ namespace Pulumi.Gcp.SaaSRuntime
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// A reference to the Release object to use as default for creating new units
+        /// of this UnitKind.
+        /// If not specified, a new unit must explicitly reference which release to use
+        /// for its creation.
+        /// </summary>
+        [Input("defaultRelease")]
+        public Input<string>? DefaultRelease { get; set; }
 
         [Input("dependencies")]
         private InputList<Inputs.UnitKindDependencyGetArgs>? _dependencies;

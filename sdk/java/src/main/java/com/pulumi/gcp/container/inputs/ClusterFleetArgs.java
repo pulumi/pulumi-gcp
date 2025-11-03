@@ -62,6 +62,21 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membershipType will be a regular membership that supports all features.
+     * 
+     */
+    @Import(name="membershipType")
+    private @Nullable Output<String> membershipType;
+
+    /**
+     * @return Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membershipType will be a regular membership that supports all features.
+     * 
+     */
+    public Optional<Output<String>> membershipType() {
+        return Optional.ofNullable(this.membershipType);
+    }
+
+    /**
      * Whether the cluster has been registered via the fleet API.
      * 
      */
@@ -97,6 +112,7 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
         this.membership = $.membership;
         this.membershipId = $.membershipId;
         this.membershipLocation = $.membershipLocation;
+        this.membershipType = $.membershipType;
         this.preRegistered = $.preRegistered;
         this.project = $.project;
     }
@@ -180,6 +196,27 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder membershipLocation(String membershipLocation) {
             return membershipLocation(Output.of(membershipLocation));
+        }
+
+        /**
+         * @param membershipType Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membershipType will be a regular membership that supports all features.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder membershipType(@Nullable Output<String> membershipType) {
+            $.membershipType = membershipType;
+            return this;
+        }
+
+        /**
+         * @param membershipType Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membershipType will be a regular membership that supports all features.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder membershipType(String membershipType) {
+            return membershipType(Output.of(membershipType));
         }
 
         /**

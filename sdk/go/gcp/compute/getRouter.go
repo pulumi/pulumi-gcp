@@ -73,6 +73,7 @@ type LookupRouterResult struct {
 	Id                    string                          `pulumi:"id"`
 	Md5AuthenticationKeys []GetRouterMd5AuthenticationKey `pulumi:"md5AuthenticationKeys"`
 	Name                  string                          `pulumi:"name"`
+	NccGateway            string                          `pulumi:"nccGateway"`
 	Network               string                          `pulumi:"network"`
 	Params                []GetRouterParam                `pulumi:"params"`
 	Project               *string                         `pulumi:"project"`
@@ -149,6 +150,10 @@ func (o LookupRouterResultOutput) Md5AuthenticationKeys() GetRouterMd5Authentica
 
 func (o LookupRouterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupRouterResultOutput) NccGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouterResult) string { return v.NccGateway }).(pulumi.StringOutput)
 }
 
 func (o LookupRouterResultOutput) Network() pulumi.StringOutput {

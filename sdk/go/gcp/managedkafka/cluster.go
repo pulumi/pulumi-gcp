@@ -146,7 +146,6 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
@@ -156,20 +155,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
-//				Name:     pulumi.String("example-key-ring"),
-//				Location: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
-//				Name:    pulumi.String("example-key"),
-//				KeyRing: keyRing.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
@@ -189,7 +174,7 @@ import (
 //							},
 //						},
 //					},
-//					KmsKey: key.ID(),
+//					KmsKey: pulumi.String("example-key"),
 //				},
 //			})
 //			if err != nil {
@@ -198,16 +183,6 @@ import (
 //			_, err = projects.NewServiceIdentity(ctx, "kafka_service_identity", &projects.ServiceIdentityArgs{
 //				Project: pulumi.String(project.ProjectId),
 //				Service: pulumi.String("managedkafka.googleapis.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewCryptoKeyIAMBinding(ctx, "crypto_key_binding", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: key.ID(),
-//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Members: pulumi.StringArray{
-//					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-managedkafka.iam.gserviceaccount.com", project.Number),
-//				},
 //			})
 //			if err != nil {
 //				return err

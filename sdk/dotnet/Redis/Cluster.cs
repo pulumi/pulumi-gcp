@@ -700,6 +700,12 @@ namespace Pulumi.Gcp.Redis
         public Output<Outputs.ClusterAutomatedBackupConfig?> AutomatedBackupConfig { get; private set; } = null!;
 
         /// <summary>
+        /// This field is used to determine the available maintenance versions for the self service update.
+        /// </summary>
+        [Output("availableMaintenanceVersions")]
+        public Output<ImmutableArray<string>> AvailableMaintenanceVersions { get; private set; } = null!;
+
+        /// <summary>
         /// The backup collection full resource name.
         /// Example: projects/{project}/locations/{location}/backupCollections/{collection}
         /// </summary>
@@ -739,6 +745,12 @@ namespace Pulumi.Gcp.Redis
         public Output<ImmutableArray<Outputs.ClusterDiscoveryEndpoint>> DiscoveryEndpoints { get; private set; } = null!;
 
         /// <summary>
+        /// This field represents the actual maintenance version of the cluster.
+        /// </summary>
+        [Output("effectiveMaintenanceVersion")]
+        public Output<string> EffectiveMaintenanceVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
         /// Structure is documented below.
         /// </summary>
@@ -764,6 +776,13 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("maintenanceSchedules")]
         public Output<ImmutableArray<Outputs.ClusterMaintenanceSchedule>> MaintenanceSchedules { get; private set; } = null!;
+
+        /// <summary>
+        /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the AvailableMaintenanceVersions field.
+        /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+        /// </summary>
+        [Output("maintenanceVersion")]
+        public Output<string?> MaintenanceVersion { get; private set; } = null!;
 
         /// <summary>
         /// Backups that generated and managed by memorystore.
@@ -1001,6 +1020,13 @@ namespace Pulumi.Gcp.Redis
         public Input<Inputs.ClusterMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
+        /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the AvailableMaintenanceVersions field.
+        /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+        /// </summary>
+        [Input("maintenanceVersion")]
+        public Input<string>? MaintenanceVersion { get; set; }
+
+        /// <summary>
         /// Backups that generated and managed by memorystore.
         /// Structure is documented below.
         /// </summary>
@@ -1122,6 +1148,18 @@ namespace Pulumi.Gcp.Redis
         [Input("automatedBackupConfig")]
         public Input<Inputs.ClusterAutomatedBackupConfigGetArgs>? AutomatedBackupConfig { get; set; }
 
+        [Input("availableMaintenanceVersions")]
+        private InputList<string>? _availableMaintenanceVersions;
+
+        /// <summary>
+        /// This field is used to determine the available maintenance versions for the self service update.
+        /// </summary>
+        public InputList<string> AvailableMaintenanceVersions
+        {
+            get => _availableMaintenanceVersions ?? (_availableMaintenanceVersions = new InputList<string>());
+            set => _availableMaintenanceVersions = value;
+        }
+
         /// <summary>
         /// The backup collection full resource name.
         /// Example: projects/{project}/locations/{location}/backupCollections/{collection}
@@ -1168,6 +1206,12 @@ namespace Pulumi.Gcp.Redis
         }
 
         /// <summary>
+        /// This field represents the actual maintenance version of the cluster.
+        /// </summary>
+        [Input("effectiveMaintenanceVersion")]
+        public Input<string>? EffectiveMaintenanceVersion { get; set; }
+
+        /// <summary>
         /// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
         /// Structure is documented below.
         /// </summary>
@@ -1199,6 +1243,13 @@ namespace Pulumi.Gcp.Redis
             get => _maintenanceSchedules ?? (_maintenanceSchedules = new InputList<Inputs.ClusterMaintenanceScheduleGetArgs>());
             set => _maintenanceSchedules = value;
         }
+
+        /// <summary>
+        /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the AvailableMaintenanceVersions field.
+        /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+        /// </summary>
+        [Input("maintenanceVersion")]
+        public Input<string>? MaintenanceVersion { get; set; }
 
         /// <summary>
         /// Backups that generated and managed by memorystore.

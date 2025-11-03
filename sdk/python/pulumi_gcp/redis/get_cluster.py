@@ -27,13 +27,16 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, backup_collection=None, create_time=None, cross_cluster_replication_configs=None, deletion_protection_enabled=None, discovery_endpoints=None, gcs_sources=None, id=None, kms_key=None, maintenance_policies=None, maintenance_schedules=None, managed_backup_sources=None, managed_server_cas=None, name=None, node_type=None, persistence_configs=None, precise_size_gb=None, project=None, psc_configs=None, psc_connections=None, psc_service_attachments=None, redis_configs=None, region=None, replica_count=None, shard_count=None, size_gb=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_cluster_replication_configs=None, deletion_protection_enabled=None, discovery_endpoints=None, effective_maintenance_version=None, gcs_sources=None, id=None, kms_key=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, name=None, node_type=None, persistence_configs=None, precise_size_gb=None, project=None, psc_configs=None, psc_connections=None, psc_service_attachments=None, redis_configs=None, region=None, replica_count=None, shard_count=None, size_gb=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
         if automated_backup_configs and not isinstance(automated_backup_configs, list):
             raise TypeError("Expected argument 'automated_backup_configs' to be a list")
         pulumi.set(__self__, "automated_backup_configs", automated_backup_configs)
+        if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
+            raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
+        pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         if backup_collection and not isinstance(backup_collection, str):
             raise TypeError("Expected argument 'backup_collection' to be a str")
         pulumi.set(__self__, "backup_collection", backup_collection)
@@ -49,6 +52,9 @@ class GetClusterResult:
         if discovery_endpoints and not isinstance(discovery_endpoints, list):
             raise TypeError("Expected argument 'discovery_endpoints' to be a list")
         pulumi.set(__self__, "discovery_endpoints", discovery_endpoints)
+        if effective_maintenance_version and not isinstance(effective_maintenance_version, str):
+            raise TypeError("Expected argument 'effective_maintenance_version' to be a str")
+        pulumi.set(__self__, "effective_maintenance_version", effective_maintenance_version)
         if gcs_sources and not isinstance(gcs_sources, list):
             raise TypeError("Expected argument 'gcs_sources' to be a list")
         pulumi.set(__self__, "gcs_sources", gcs_sources)
@@ -64,6 +70,9 @@ class GetClusterResult:
         if maintenance_schedules and not isinstance(maintenance_schedules, list):
             raise TypeError("Expected argument 'maintenance_schedules' to be a list")
         pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
+        if maintenance_version and not isinstance(maintenance_version, str):
+            raise TypeError("Expected argument 'maintenance_version' to be a str")
+        pulumi.set(__self__, "maintenance_version", maintenance_version)
         if managed_backup_sources and not isinstance(managed_backup_sources, list):
             raise TypeError("Expected argument 'managed_backup_sources' to be a list")
         pulumi.set(__self__, "managed_backup_sources", managed_backup_sources)
@@ -136,6 +145,11 @@ class GetClusterResult:
         return pulumi.get(self, "automated_backup_configs")
 
     @_builtins.property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "available_maintenance_versions")
+
+    @_builtins.property
     @pulumi.getter(name="backupCollection")
     def backup_collection(self) -> _builtins.str:
         return pulumi.get(self, "backup_collection")
@@ -159,6 +173,11 @@ class GetClusterResult:
     @pulumi.getter(name="discoveryEndpoints")
     def discovery_endpoints(self) -> Sequence['outputs.GetClusterDiscoveryEndpointResult']:
         return pulumi.get(self, "discovery_endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveMaintenanceVersion")
+    def effective_maintenance_version(self) -> _builtins.str:
+        return pulumi.get(self, "effective_maintenance_version")
 
     @_builtins.property
     @pulumi.getter(name="gcsSources")
@@ -187,6 +206,11 @@ class GetClusterResult:
     @pulumi.getter(name="maintenanceSchedules")
     def maintenance_schedules(self) -> Sequence['outputs.GetClusterMaintenanceScheduleResult']:
         return pulumi.get(self, "maintenance_schedules")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> _builtins.str:
+        return pulumi.get(self, "maintenance_version")
 
     @_builtins.property
     @pulumi.getter(name="managedBackupSources")
@@ -297,16 +321,19 @@ class AwaitableGetClusterResult(GetClusterResult):
         return GetClusterResult(
             authorization_mode=self.authorization_mode,
             automated_backup_configs=self.automated_backup_configs,
+            available_maintenance_versions=self.available_maintenance_versions,
             backup_collection=self.backup_collection,
             create_time=self.create_time,
             cross_cluster_replication_configs=self.cross_cluster_replication_configs,
             deletion_protection_enabled=self.deletion_protection_enabled,
             discovery_endpoints=self.discovery_endpoints,
+            effective_maintenance_version=self.effective_maintenance_version,
             gcs_sources=self.gcs_sources,
             id=self.id,
             kms_key=self.kms_key,
             maintenance_policies=self.maintenance_policies,
             maintenance_schedules=self.maintenance_schedules,
+            maintenance_version=self.maintenance_version,
             managed_backup_sources=self.managed_backup_sources,
             managed_server_cas=self.managed_server_cas,
             name=self.name,
@@ -362,16 +389,19 @@ def get_cluster(name: Optional[_builtins.str] = None,
     return AwaitableGetClusterResult(
         authorization_mode=pulumi.get(__ret__, 'authorization_mode'),
         automated_backup_configs=pulumi.get(__ret__, 'automated_backup_configs'),
+        available_maintenance_versions=pulumi.get(__ret__, 'available_maintenance_versions'),
         backup_collection=pulumi.get(__ret__, 'backup_collection'),
         create_time=pulumi.get(__ret__, 'create_time'),
         cross_cluster_replication_configs=pulumi.get(__ret__, 'cross_cluster_replication_configs'),
         deletion_protection_enabled=pulumi.get(__ret__, 'deletion_protection_enabled'),
         discovery_endpoints=pulumi.get(__ret__, 'discovery_endpoints'),
+        effective_maintenance_version=pulumi.get(__ret__, 'effective_maintenance_version'),
         gcs_sources=pulumi.get(__ret__, 'gcs_sources'),
         id=pulumi.get(__ret__, 'id'),
         kms_key=pulumi.get(__ret__, 'kms_key'),
         maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'),
         maintenance_schedules=pulumi.get(__ret__, 'maintenance_schedules'),
+        maintenance_version=pulumi.get(__ret__, 'maintenance_version'),
         managed_backup_sources=pulumi.get(__ret__, 'managed_backup_sources'),
         managed_server_cas=pulumi.get(__ret__, 'managed_server_cas'),
         name=pulumi.get(__ret__, 'name'),
@@ -424,16 +454,19 @@ def get_cluster_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetClusterResult(
         authorization_mode=pulumi.get(__response__, 'authorization_mode'),
         automated_backup_configs=pulumi.get(__response__, 'automated_backup_configs'),
+        available_maintenance_versions=pulumi.get(__response__, 'available_maintenance_versions'),
         backup_collection=pulumi.get(__response__, 'backup_collection'),
         create_time=pulumi.get(__response__, 'create_time'),
         cross_cluster_replication_configs=pulumi.get(__response__, 'cross_cluster_replication_configs'),
         deletion_protection_enabled=pulumi.get(__response__, 'deletion_protection_enabled'),
         discovery_endpoints=pulumi.get(__response__, 'discovery_endpoints'),
+        effective_maintenance_version=pulumi.get(__response__, 'effective_maintenance_version'),
         gcs_sources=pulumi.get(__response__, 'gcs_sources'),
         id=pulumi.get(__response__, 'id'),
         kms_key=pulumi.get(__response__, 'kms_key'),
         maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),
         maintenance_schedules=pulumi.get(__response__, 'maintenance_schedules'),
+        maintenance_version=pulumi.get(__response__, 'maintenance_version'),
         managed_backup_sources=pulumi.get(__response__, 'managed_backup_sources'),
         managed_server_cas=pulumi.get(__response__, 'managed_server_cas'),
         name=pulumi.get(__response__, 'name'),

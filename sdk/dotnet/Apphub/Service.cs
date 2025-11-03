@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Apphub
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Apphub
     ///         ServiceName = "compute.googleapis.com",
     ///     });
     /// 
-    ///     var wait120s = new Time.Index.Sleep("wait_120s", new()
+    ///     var wait120s = new Time.Sleep("wait_120s", new()
     ///     {
     ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions
@@ -146,7 +146,7 @@ namespace Pulumi.Gcp.Apphub
     ///         ServiceUri = $"//compute.googleapis.com/{forwardingRule.Id}",
     ///     });
     /// 
-    ///     var wait120sForResourceIngestion = new Time.Index.Sleep("wait_120s_for_resource_ingestion", new()
+    ///     var wait120sForResourceIngestion = new Time.Sleep("wait_120s_for_resource_ingestion", new()
     ///     {
     ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions
@@ -174,7 +174,7 @@ namespace Pulumi.Gcp.Apphub
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -204,7 +204,7 @@ namespace Pulumi.Gcp.Apphub
     ///         ServiceName = "compute.googleapis.com",
     ///     });
     /// 
-    ///     var wait120s = new Time.Index.Sleep("wait_120s", new()
+    ///     var wait120s = new Time.Sleep("wait_120s", new()
     ///     {
     ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions
@@ -299,7 +299,7 @@ namespace Pulumi.Gcp.Apphub
     ///         ServiceUri = $"//compute.googleapis.com/{forwardingRule.Id}",
     ///     });
     /// 
-    ///     var wait120sForResourceIngestion = new Time.Index.Sleep("wait_120s_for_resource_ingestion", new()
+    ///     var wait120sForResourceIngestion = new Time.Sleep("wait_120s_for_resource_ingestion", new()
     ///     {
     ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions

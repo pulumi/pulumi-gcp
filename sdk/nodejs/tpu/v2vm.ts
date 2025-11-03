@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-c",
  * });
  * // Wait after service account creation to limit eventual consistency errors.
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ * const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
  *     dependsOn: [sa],
  * });
  * const tpu = new gcp.tpu.V2Vm("tpu", {

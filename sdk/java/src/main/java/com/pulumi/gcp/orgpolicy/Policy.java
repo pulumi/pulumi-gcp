@@ -251,7 +251,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var constraint = new CustomConstraint("constraint", CustomConstraintArgs.builder()
- *             .name("custom.disableGkeAutoUpgrade_1443")
+ *             .name("custom.disableGkeAutoUpgrade_16178")
  *             .parent("organizations/123456789")
  *             .displayName("Disable GKE auto upgrade")
  *             .description("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.")

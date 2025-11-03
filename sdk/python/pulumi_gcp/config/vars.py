@@ -546,6 +546,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('networkConnectivityCustomEndpoint')
 
     @_builtins.property
+    def network_connectivityv1_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('networkConnectivityv1CustomEndpoint')
+
+    @_builtins.property
     def network_management_custom_endpoint(self) -> Optional[str]:
         return __config__.get('networkManagementCustomEndpoint')
 
@@ -560,6 +564,10 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def notebooks_custom_endpoint(self) -> Optional[str]:
         return __config__.get('notebooksCustomEndpoint')
+
+    @_builtins.property
+    def observability_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('observabilityCustomEndpoint')
 
     @_builtins.property
     def oracle_database_custom_endpoint(self) -> Optional[str]:

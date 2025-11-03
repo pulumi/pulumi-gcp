@@ -36,6 +36,7 @@ class InstanceArgs:
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
+                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  managed_backup_source: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
                  node_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -76,6 +77,8 @@ class InstanceArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] maintenance_version: This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
+               *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
         :param pulumi.Input['InstanceManagedBackupSourceArgs'] managed_backup_source: Managed backup source for the instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] mode: Optional. cluster or cluster-disabled.
@@ -131,6 +134,8 @@ class InstanceArgs:
             pulumi.set(__self__, "labels", labels)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_version is not None:
+            pulumi.set(__self__, "maintenance_version", maintenance_version)
         if managed_backup_source is not None:
             pulumi.set(__self__, "managed_backup_source", managed_backup_source)
         if mode is not None:
@@ -345,6 +350,19 @@ class InstanceArgs:
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
+        *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+        """
+        return pulumi.get(self, "maintenance_version")
+
+    @maintenance_version.setter
+    def maintenance_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "maintenance_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="managedBackupSource")
     def managed_backup_source(self) -> Optional[pulumi.Input['InstanceManagedBackupSourceArgs']]:
         """
@@ -462,6 +480,7 @@ class _InstanceState:
     def __init__(__self__, *,
                  authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  automated_backup_config: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']] = None,
+                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_collection: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  cross_instance_replication_config: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']] = None,
@@ -470,6 +489,7 @@ class _InstanceState:
                  desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]] = None,
                  discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]] = None,
                  engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -480,6 +500,7 @@ class _InstanceState:
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
                  maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
+                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  managed_backup_source: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']] = None,
                  managed_server_cas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaArgs']]]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
@@ -506,6 +527,7 @@ class _InstanceState:
                IAM_AUTH
         :param pulumi.Input['InstanceAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: This field is used to determine the available maintenance versions for the self service update.
         :param pulumi.Input[_builtins.str] backup_collection: The backup collection full resource name.
                Example: projects/{project}/locations/{location}/backupCollections/{collection}
         :param pulumi.Input[_builtins.str] create_time: Output only. Creation timestamp of the instance.
@@ -518,6 +540,7 @@ class _InstanceState:
                Deprecated. Output only. Endpoints clients can connect to the instance through.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] effective_maintenance_version: This field represents the actual maintenance version of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]] endpoints: Endpoints for the instance.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] engine_configs: Optional. User-provided engine configurations for the instance.
@@ -541,6 +564,8 @@ class _InstanceState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] maintenance_version: This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
+               *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
         :param pulumi.Input['InstanceManagedBackupSourceArgs'] managed_backup_source: Managed backup source for the instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaArgs']]] managed_server_cas: Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
@@ -594,6 +619,8 @@ class _InstanceState:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if automated_backup_config is not None:
             pulumi.set(__self__, "automated_backup_config", automated_backup_config)
+        if available_maintenance_versions is not None:
+            pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         if backup_collection is not None:
             pulumi.set(__self__, "backup_collection", backup_collection)
         if create_time is not None:
@@ -616,6 +643,8 @@ class _InstanceState:
             pulumi.set(__self__, "discovery_endpoints", discovery_endpoints)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if effective_maintenance_version is not None:
+            pulumi.set(__self__, "effective_maintenance_version", effective_maintenance_version)
         if endpoints is not None:
             pulumi.set(__self__, "endpoints", endpoints)
         if engine_configs is not None:
@@ -636,6 +665,8 @@ class _InstanceState:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_schedules is not None:
             pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
+        if maintenance_version is not None:
+            pulumi.set(__self__, "maintenance_version", maintenance_version)
         if managed_backup_source is not None:
             pulumi.set(__self__, "managed_backup_source", managed_backup_source)
         if managed_server_cas is not None:
@@ -704,6 +735,18 @@ class _InstanceState:
     @automated_backup_config.setter
     def automated_backup_config(self, value: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']]):
         pulumi.set(self, "automated_backup_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        This field is used to determine the available maintenance versions for the self service update.
+        """
+        return pulumi.get(self, "available_maintenance_versions")
+
+    @available_maintenance_versions.setter
+    def available_maintenance_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "available_maintenance_versions", value)
 
     @_builtins.property
     @pulumi.getter(name="backupCollection")
@@ -806,6 +849,18 @@ class _InstanceState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveMaintenanceVersion")
+    def effective_maintenance_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This field represents the actual maintenance version of the cluster.
+        """
+        return pulumi.get(self, "effective_maintenance_version")
+
+    @effective_maintenance_version.setter
+    def effective_maintenance_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "effective_maintenance_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -939,6 +994,19 @@ class _InstanceState:
     @maintenance_schedules.setter
     def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
         pulumi.set(self, "maintenance_schedules", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
+        *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+        """
+        return pulumi.get(self, "maintenance_version")
+
+    @maintenance_version.setter
+    def maintenance_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "maintenance_version", value)
 
     @_builtins.property
     @pulumi.getter(name="managedBackupSource")
@@ -1219,6 +1287,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  managed_backup_source: Optional[pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
                  node_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1565,6 +1634,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
         :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] maintenance_version: This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
+               *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
         :param pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']] managed_backup_source: Managed backup source for the instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] mode: Optional. cluster or cluster-disabled.
@@ -1931,6 +2002,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  managed_backup_source: Optional[pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
                  node_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1967,6 +2039,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["maintenance_policy"] = maintenance_policy
+            __props__.__dict__["maintenance_version"] = maintenance_version
             __props__.__dict__["managed_backup_source"] = managed_backup_source
             __props__.__dict__["mode"] = mode
             __props__.__dict__["node_type"] = node_type
@@ -1978,10 +2051,12 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["shard_count"] = shard_count
             __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
             __props__.__dict__["zone_distribution_config"] = zone_distribution_config
+            __props__.__dict__["available_maintenance_versions"] = None
             __props__.__dict__["backup_collection"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_endpoints"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["effective_maintenance_version"] = None
             __props__.__dict__["endpoints"] = None
             __props__.__dict__["maintenance_schedules"] = None
             __props__.__dict__["managed_server_cas"] = None
@@ -2008,6 +2083,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
             automated_backup_config: Optional[pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
+            available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             backup_collection: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
@@ -2016,6 +2092,7 @@ class Instance(pulumi.CustomResource):
             desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
             discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDiscoveryEndpointArgs', 'InstanceDiscoveryEndpointArgsDict']]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
             endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
             engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             engine_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2026,6 +2103,7 @@ class Instance(pulumi.CustomResource):
             location: Optional[pulumi.Input[_builtins.str]] = None,
             maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
             maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]]] = None,
+            maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
             managed_backup_source: Optional[pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
             managed_server_cas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceManagedServerCaArgs', 'InstanceManagedServerCaArgsDict']]]]] = None,
             mode: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2057,6 +2135,7 @@ class Instance(pulumi.CustomResource):
                IAM_AUTH
         :param pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: This field is used to determine the available maintenance versions for the self service update.
         :param pulumi.Input[_builtins.str] backup_collection: The backup collection full resource name.
                Example: projects/{project}/locations/{location}/backupCollections/{collection}
         :param pulumi.Input[_builtins.str] create_time: Output only. Creation timestamp of the instance.
@@ -2069,6 +2148,7 @@ class Instance(pulumi.CustomResource):
                Deprecated. Output only. Endpoints clients can connect to the instance through.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] effective_maintenance_version: This field represents the actual maintenance version of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]] endpoints: Endpoints for the instance.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] engine_configs: Optional. User-provided engine configurations for the instance.
@@ -2092,6 +2172,8 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] maintenance_version: This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
+               *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
         :param pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']] managed_backup_source: Managed backup source for the instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceManagedServerCaArgs', 'InstanceManagedServerCaArgsDict']]]] managed_server_cas: Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
@@ -2147,6 +2229,7 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["authorization_mode"] = authorization_mode
         __props__.__dict__["automated_backup_config"] = automated_backup_config
+        __props__.__dict__["available_maintenance_versions"] = available_maintenance_versions
         __props__.__dict__["backup_collection"] = backup_collection
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["cross_instance_replication_config"] = cross_instance_replication_config
@@ -2155,6 +2238,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["desired_psc_auto_connections"] = desired_psc_auto_connections
         __props__.__dict__["discovery_endpoints"] = discovery_endpoints
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["effective_maintenance_version"] = effective_maintenance_version
         __props__.__dict__["endpoints"] = endpoints
         __props__.__dict__["engine_configs"] = engine_configs
         __props__.__dict__["engine_version"] = engine_version
@@ -2165,6 +2249,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["maintenance_schedules"] = maintenance_schedules
+        __props__.__dict__["maintenance_version"] = maintenance_version
         __props__.__dict__["managed_backup_source"] = managed_backup_source
         __props__.__dict__["managed_server_cas"] = managed_server_cas
         __props__.__dict__["mode"] = mode
@@ -2204,6 +2289,14 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "automated_backup_config")
+
+    @_builtins.property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        This field is used to determine the available maintenance versions for the self service update.
+        """
+        return pulumi.get(self, "available_maintenance_versions")
 
     @_builtins.property
     @pulumi.getter(name="backupCollection")
@@ -2274,6 +2367,14 @@ class Instance(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveMaintenanceVersion")
+    def effective_maintenance_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        This field represents the actual maintenance version of the cluster.
+        """
+        return pulumi.get(self, "effective_maintenance_version")
 
     @_builtins.property
     @pulumi.getter
@@ -2367,6 +2468,15 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "maintenance_schedules")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
+        *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+        """
+        return pulumi.get(self, "maintenance_version")
 
     @_builtins.property
     @pulumi.getter(name="managedBackupSource")

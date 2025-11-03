@@ -18,7 +18,7 @@ public final class PreviewFeatureState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The activation status of the preview feature.
-     * Possible values are: `ENABLED`, `DISABLED`.
+     * Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
      * 
      */
     @Import(name="activationStatus")
@@ -26,7 +26,7 @@ public final class PreviewFeatureState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The activation status of the preview feature.
-     * Possible values are: `ENABLED`, `DISABLED`.
+     * Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
      * 
      */
     public Optional<Output<String>> activationStatus() {
@@ -111,7 +111,7 @@ public final class PreviewFeatureState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param activationStatus The activation status of the preview feature.
-         * Possible values are: `ENABLED`, `DISABLED`.
+         * Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class PreviewFeatureState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param activationStatus The activation status of the preview feature.
-         * Possible values are: `ENABLED`, `DISABLED`.
+         * Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
          * 
          * @return builder
          * 

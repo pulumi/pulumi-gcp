@@ -110,6 +110,39 @@ import * as utilities from "../utilities";
  *     customInterceptProfile: defaultSecurityProfile.id,
  * });
  * ```
+ * ### Network Security Security Profile Group Url Filtering
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const securityProfile = new gcp.networksecurity.SecurityProfile("security_profile", {
+ *     name: "sec-profile",
+ *     location: "global",
+ *     type: "URL_FILTERING",
+ *     urlFilteringProfile: {
+ *         urlFilters: [{
+ *             priority: 1,
+ *             filteringAction: "ALLOW",
+ *             urls: [
+ *                 "*example.com",
+ *                 "*about.example.com",
+ *                 "*help.example.com",
+ *             ],
+ *         }],
+ *     },
+ *     parent: "organizations/123456789",
+ * });
+ * const _default = new gcp.networksecurity.SecurityProfileGroup("default", {
+ *     name: "sec-profile-group",
+ *     parent: "organizations/123456789",
+ *     description: "my description",
+ *     urlFilteringProfile: securityProfile.id,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -211,6 +244,10 @@ export class SecurityProfileGroup extends pulumi.CustomResource {
      * Time the security profile group was updated in UTC.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
+     * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+     */
+    declare public readonly urlFilteringProfile: pulumi.Output<string | undefined>;
 
     /**
      * Create a SecurityProfileGroup resource with the given unique name, arguments, and options.
@@ -238,6 +275,7 @@ export class SecurityProfileGroup extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["threatPreventionProfile"] = state?.threatPreventionProfile;
             resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["urlFilteringProfile"] = state?.urlFilteringProfile;
         } else {
             const args = argsOrState as SecurityProfileGroupArgs | undefined;
             resourceInputs["customInterceptProfile"] = args?.customInterceptProfile;
@@ -248,6 +286,7 @@ export class SecurityProfileGroup extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["threatPreventionProfile"] = args?.threatPreventionProfile;
+            resourceInputs["urlFilteringProfile"] = args?.urlFilteringProfile;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -325,6 +364,10 @@ export interface SecurityProfileGroupState {
      * Time the security profile group was updated in UTC.
      */
     updateTime?: pulumi.Input<string>;
+    /**
+     * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+     */
+    urlFilteringProfile?: pulumi.Input<string>;
 }
 
 /**
@@ -368,4 +411,8 @@ export interface SecurityProfileGroupArgs {
      * Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
      */
     threatPreventionProfile?: pulumi.Input<string>;
+    /**
+     * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+     */
+    urlFilteringProfile?: pulumi.Input<string>;
 }
