@@ -109,7 +109,7 @@ import * as utilities from "../utilities";
  *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
  * });
  * // ca pool IAM permissions can take time to propagate
- * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
  *     dependsOn: [caPoolBinding],
  * });
  * const _default = new gcp.securesourcemanager.Instance("default", {
@@ -183,7 +183,7 @@ import * as utilities from "../utilities";
  *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
  * });
  * // ca pool IAM permissions can take time to propagate
- * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
  *     dependsOn: [caPoolBinding],
  * });
  * // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
@@ -346,7 +346,7 @@ import * as utilities from "../utilities";
  *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
  * });
  * // ca pool IAM permissions can take time to propagate
- * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
  *     dependsOn: [caPoolBinding],
  * });
  * // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api

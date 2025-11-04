@@ -274,8 +274,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -286,8 +286,8 @@ import (
 //				return err
 //			}
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_20665"),
-//				Name:           pulumi.String("tf-test_85160"),
+//				ProjectId:      pulumi.String("tf-test_9329"),
+//				Name:           pulumi.String("tf-test_37135"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -296,7 +296,7 @@ import (
 //				return err
 //			}
 //			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
-//				CreateDuration: "60s",
+//				CreateDuration: pulumi.String("60s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				project,
 //			}))
@@ -355,7 +355,7 @@ import (
 //				return err
 //			}
 //			wait30Seconds, err := time.NewSleep(ctx, "wait_30_seconds", &time.SleepArgs{
-//				CreateDuration: "30s",
+//				CreateDuration: pulumi.String("30s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				viewer,
 //			}))

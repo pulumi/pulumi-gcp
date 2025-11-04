@@ -5,10 +5,10 @@ Subject: [PATCH] Add nil checks for sql database instance flattening
 
 
 diff --git a/google-beta/services/sql/resource_sql_database_instance.go b/google-beta/services/sql/resource_sql_database_instance.go
-index ee8a5f6d2..06a15e1c5 100644
+index e352eb866..e6f4e0b8b 100644
 --- a/google-beta/services/sql/resource_sql_database_instance.go
 +++ b/google-beta/services/sql/resource_sql_database_instance.go
-@@ -2570,6 +2570,10 @@ func resourceSqlDatabaseInstanceImport(d *schema.ResourceData, meta interface{})
+@@ -2727,6 +2727,10 @@ func resourceSqlDatabaseInstanceImport(d *schema.ResourceData, meta interface{})
  }
  
  func flattenSettings(settings *sqladmin.Settings, iType string, d *schema.ResourceData) []map[string]interface{} {
@@ -19,7 +19,7 @@ index ee8a5f6d2..06a15e1c5 100644
  	data := map[string]interface{}{
  		"version":                          settings.SettingsVersion,
  		"tier":                             settings.Tier,
-@@ -2695,6 +2699,10 @@ func flattenDataCacheConfig(d *sqladmin.DataCacheConfig) []map[string]interface{
+@@ -2862,6 +2866,10 @@ func flattenDataCacheConfig(d *sqladmin.DataCacheConfig) []map[string]interface{
  }
  
  func flattenBackupConfiguration(backupConfiguration *sqladmin.BackupConfiguration) []map[string]interface{} {
@@ -30,7 +30,7 @@ index ee8a5f6d2..06a15e1c5 100644
  	data := map[string]interface{}{
  		"binary_log_enabled":             backupConfiguration.BinaryLogEnabled,
  		"enabled":                        backupConfiguration.Enabled,
-@@ -2848,6 +2856,10 @@ func flattenConnectionPoolConfig(connectionPoolConfig *sqladmin.ConnectionPoolCo
+@@ -3015,6 +3023,10 @@ func flattenConnectionPoolConfig(connectionPoolConfig *sqladmin.ConnectionPoolCo
  }
  
  func flattenIpConfiguration(ipConfiguration *sqladmin.IpConfiguration, d *schema.ResourceData) interface{} {
@@ -41,7 +41,7 @@ index ee8a5f6d2..06a15e1c5 100644
  	data := map[string]interface{}{
  		"ipv4_enabled":       ipConfiguration.Ipv4Enabled,
  		"private_network":    ipConfiguration.PrivateNetwork,
-@@ -2916,6 +2928,10 @@ func flattenAuthorizedNetworks(entries []*sqladmin.AclEntry) interface{} {
+@@ -3083,6 +3095,10 @@ func flattenAuthorizedNetworks(entries []*sqladmin.AclEntry) interface{} {
  }
  
  func flattenLocationPreference(locationPreference *sqladmin.LocationPreference) interface{} {
@@ -52,7 +52,7 @@ index ee8a5f6d2..06a15e1c5 100644
  	data := map[string]interface{}{
  		"follow_gae_application": locationPreference.FollowGaeApplication,
  		"zone":                   locationPreference.Zone,
-@@ -2926,6 +2942,10 @@ func flattenLocationPreference(locationPreference *sqladmin.LocationPreference)
+@@ -3093,6 +3109,10 @@ func flattenLocationPreference(locationPreference *sqladmin.LocationPreference)
  }
  
  func flattenMaintenanceWindow(maintenanceWindow *sqladmin.MaintenanceWindow) interface{} {
@@ -63,7 +63,7 @@ index ee8a5f6d2..06a15e1c5 100644
  	data := map[string]interface{}{
  		"day":          maintenanceWindow.Day,
  		"hour":         maintenanceWindow.Hour,
-@@ -3017,6 +3037,10 @@ func flattenServerCaCerts(caCerts []*sqladmin.SslCert) []map[string]interface{}
+@@ -3184,6 +3204,10 @@ func flattenServerCaCerts(caCerts []*sqladmin.SslCert) []map[string]interface{}
  }
  
  func flattenInsightsConfig(insightsConfig *sqladmin.InsightsConfig) interface{} {

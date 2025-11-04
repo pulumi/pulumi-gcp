@@ -27,7 +27,8 @@ class ApplicationArgs:
                  feature_settings: Optional[pulumi.Input['ApplicationFeatureSettingsArgs']] = None,
                  iap: Optional[pulumi.Input['ApplicationIapArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
-                 serving_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 serving_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Application resource.
         :param pulumi.Input[_builtins.str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
@@ -45,6 +46,7 @@ class ApplicationArgs:
                ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
                you may get a "Permission denied" error.
         :param pulumi.Input[_builtins.str] serving_status: The serving status of the app.
+        :param pulumi.Input[_builtins.str] ssl_policy: A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
         """
         pulumi.set(__self__, "location_id", location_id)
         if auth_domain is not None:
@@ -59,6 +61,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "project", project)
         if serving_status is not None:
             pulumi.set(__self__, "serving_status", serving_status)
+        if ssl_policy is not None:
+            pulumi.set(__self__, "ssl_policy", ssl_policy)
 
     @_builtins.property
     @pulumi.getter(name="locationId")
@@ -152,6 +156,18 @@ class ApplicationArgs:
     def serving_status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "serving_status", value)
 
+    @_builtins.property
+    @pulumi.getter(name="sslPolicy")
+    def ssl_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+        """
+        return pulumi.get(self, "ssl_policy")
+
+    @ssl_policy.setter
+    def ssl_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ssl_policy", value)
+
 
 @pulumi.input_type
 class _ApplicationState:
@@ -169,6 +185,7 @@ class _ApplicationState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  serving_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  url_dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering Application resources.
@@ -193,6 +210,7 @@ class _ApplicationState:
                ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
                you may get a "Permission denied" error.
         :param pulumi.Input[_builtins.str] serving_status: The serving status of the app.
+        :param pulumi.Input[_builtins.str] ssl_policy: A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]] url_dispatch_rules: A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
         """
         if app_id is not None:
@@ -221,6 +239,8 @@ class _ApplicationState:
             pulumi.set(__self__, "project", project)
         if serving_status is not None:
             pulumi.set(__self__, "serving_status", serving_status)
+        if ssl_policy is not None:
+            pulumi.set(__self__, "ssl_policy", ssl_policy)
         if url_dispatch_rules is not None:
             pulumi.set(__self__, "url_dispatch_rules", url_dispatch_rules)
 
@@ -389,6 +409,18 @@ class _ApplicationState:
         pulumi.set(self, "serving_status", value)
 
     @_builtins.property
+    @pulumi.getter(name="sslPolicy")
+    def ssl_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+        """
+        return pulumi.get(self, "ssl_policy")
+
+    @ssl_policy.setter
+    def ssl_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ssl_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="urlDispatchRules")
     def url_dispatch_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]]]:
         """
@@ -414,6 +446,7 @@ class Application(pulumi.CustomResource):
                  location_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  serving_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Allows creation and management of an App Engine application.
@@ -467,6 +500,7 @@ class Application(pulumi.CustomResource):
                ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
                you may get a "Permission denied" error.
         :param pulumi.Input[_builtins.str] serving_status: The serving status of the app.
+        :param pulumi.Input[_builtins.str] ssl_policy: A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
         """
         ...
     @overload
@@ -531,6 +565,7 @@ class Application(pulumi.CustomResource):
                  location_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  serving_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -549,6 +584,7 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["location_id"] = location_id
             __props__.__dict__["project"] = project
             __props__.__dict__["serving_status"] = serving_status
+            __props__.__dict__["ssl_policy"] = ssl_policy
             __props__.__dict__["app_id"] = None
             __props__.__dict__["code_bucket"] = None
             __props__.__dict__["default_bucket"] = None
@@ -579,6 +615,7 @@ class Application(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             serving_status: Optional[pulumi.Input[_builtins.str]] = None,
+            ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
             url_dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRuleArgs', 'ApplicationUrlDispatchRuleArgsDict']]]]] = None) -> 'Application':
         """
         Get an existing Application resource's state with the given name, id, and optional extra
@@ -608,6 +645,7 @@ class Application(pulumi.CustomResource):
                ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
                you may get a "Permission denied" error.
         :param pulumi.Input[_builtins.str] serving_status: The serving status of the app.
+        :param pulumi.Input[_builtins.str] ssl_policy: A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRuleArgs', 'ApplicationUrlDispatchRuleArgsDict']]]] url_dispatch_rules: A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -627,6 +665,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["serving_status"] = serving_status
+        __props__.__dict__["ssl_policy"] = ssl_policy
         __props__.__dict__["url_dispatch_rules"] = url_dispatch_rules
         return Application(resource_name, opts=opts, __props__=__props__)
 
@@ -741,6 +780,14 @@ class Application(pulumi.CustomResource):
         The serving status of the app.
         """
         return pulumi.get(self, "serving_status")
+
+    @_builtins.property
+    @pulumi.getter(name="sslPolicy")
+    def ssl_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+        """
+        return pulumi.get(self, "ssl_policy")
 
     @_builtins.property
     @pulumi.getter(name="urlDispatchRules")

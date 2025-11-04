@@ -604,6 +604,17 @@ type WorkforcePoolProvider struct {
 	// Represents a SAML identity provider.
 	// Structure is documented below.
 	Saml WorkforcePoolProviderSamlPtrOutput `pulumi:"saml"`
+	// Agentspace only. Specifies whether the workforce identity pool
+	// provider uses SCIM-managed groups instead of the `google.groups`
+	// attribute mapping for authorization checks.
+	// The `scimUsage` and `extendedAttributesOauth2Client` fields are
+	// mutually exclusive. A request that enables both fields on the same
+	// workforce identity pool provider will produce an error.
+	// * SCIM_USAGE_UNSPECIFIED: Default behaviour
+	// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+	//   attribute mapping for authorization checks
+	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+	ScimUsage pulumi.StringPtrOutput `pulumi:"scimUsage"`
 	// The current state of the provider.
 	// * STATE_UNSPECIFIED: State unspecified.
 	// * ACTIVE: The provider is active and may be used to validate authentication credentials.
@@ -743,6 +754,17 @@ type workforcePoolProviderState struct {
 	// Represents a SAML identity provider.
 	// Structure is documented below.
 	Saml *WorkforcePoolProviderSaml `pulumi:"saml"`
+	// Agentspace only. Specifies whether the workforce identity pool
+	// provider uses SCIM-managed groups instead of the `google.groups`
+	// attribute mapping for authorization checks.
+	// The `scimUsage` and `extendedAttributesOauth2Client` fields are
+	// mutually exclusive. A request that enables both fields on the same
+	// workforce identity pool provider will produce an error.
+	// * SCIM_USAGE_UNSPECIFIED: Default behaviour
+	// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+	//   attribute mapping for authorization checks
+	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+	ScimUsage *string `pulumi:"scimUsage"`
 	// The current state of the provider.
 	// * STATE_UNSPECIFIED: State unspecified.
 	// * ACTIVE: The provider is active and may be used to validate authentication credentials.
@@ -844,6 +866,17 @@ type WorkforcePoolProviderState struct {
 	// Represents a SAML identity provider.
 	// Structure is documented below.
 	Saml WorkforcePoolProviderSamlPtrInput
+	// Agentspace only. Specifies whether the workforce identity pool
+	// provider uses SCIM-managed groups instead of the `google.groups`
+	// attribute mapping for authorization checks.
+	// The `scimUsage` and `extendedAttributesOauth2Client` fields are
+	// mutually exclusive. A request that enables both fields on the same
+	// workforce identity pool provider will produce an error.
+	// * SCIM_USAGE_UNSPECIFIED: Default behaviour
+	// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+	//   attribute mapping for authorization checks
+	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+	ScimUsage pulumi.StringPtrInput
 	// The current state of the provider.
 	// * STATE_UNSPECIFIED: State unspecified.
 	// * ACTIVE: The provider is active and may be used to validate authentication credentials.
@@ -946,6 +979,17 @@ type workforcePoolProviderArgs struct {
 	// Represents a SAML identity provider.
 	// Structure is documented below.
 	Saml *WorkforcePoolProviderSaml `pulumi:"saml"`
+	// Agentspace only. Specifies whether the workforce identity pool
+	// provider uses SCIM-managed groups instead of the `google.groups`
+	// attribute mapping for authorization checks.
+	// The `scimUsage` and `extendedAttributesOauth2Client` fields are
+	// mutually exclusive. A request that enables both fields on the same
+	// workforce identity pool provider will produce an error.
+	// * SCIM_USAGE_UNSPECIFIED: Default behaviour
+	// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+	//   attribute mapping for authorization checks
+	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+	ScimUsage *string `pulumi:"scimUsage"`
 	// The ID to use for the pool, which becomes the final component of the resource name.
 	// The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
 	// It must start with a letter, and cannot have a trailing hyphen.
@@ -1038,6 +1082,17 @@ type WorkforcePoolProviderArgs struct {
 	// Represents a SAML identity provider.
 	// Structure is documented below.
 	Saml WorkforcePoolProviderSamlPtrInput
+	// Agentspace only. Specifies whether the workforce identity pool
+	// provider uses SCIM-managed groups instead of the `google.groups`
+	// attribute mapping for authorization checks.
+	// The `scimUsage` and `extendedAttributesOauth2Client` fields are
+	// mutually exclusive. A request that enables both fields on the same
+	// workforce identity pool provider will produce an error.
+	// * SCIM_USAGE_UNSPECIFIED: Default behaviour
+	// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+	//   attribute mapping for authorization checks
+	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+	ScimUsage pulumi.StringPtrInput
 	// The ID to use for the pool, which becomes the final component of the resource name.
 	// The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
 	// It must start with a letter, and cannot have a trailing hyphen.
@@ -1257,6 +1312,20 @@ func (o WorkforcePoolProviderOutput) ProviderId() pulumi.StringOutput {
 // Structure is documented below.
 func (o WorkforcePoolProviderOutput) Saml() WorkforcePoolProviderSamlPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) WorkforcePoolProviderSamlPtrOutput { return v.Saml }).(WorkforcePoolProviderSamlPtrOutput)
+}
+
+// Agentspace only. Specifies whether the workforce identity pool
+// provider uses SCIM-managed groups instead of the `google.groups`
+// attribute mapping for authorization checks.
+// The `scimUsage` and `extendedAttributesOauth2Client` fields are
+// mutually exclusive. A request that enables both fields on the same
+// workforce identity pool provider will produce an error.
+//   - SCIM_USAGE_UNSPECIFIED: Default behaviour
+//   - ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+//     attribute mapping for authorization checks
+//     Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+func (o WorkforcePoolProviderOutput) ScimUsage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringPtrOutput { return v.ScimUsage }).(pulumi.StringPtrOutput)
 }
 
 // The current state of the provider.

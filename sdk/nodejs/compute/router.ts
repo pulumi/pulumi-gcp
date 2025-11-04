@@ -64,6 +64,64 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Router Ncc Gw
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     name: "net-spoke",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
+ *     name: "tf-test-subnet_21197",
+ *     ipCidrRange: "10.0.0.0/28",
+ *     region: "us-central1",
+ *     network: network.selfLink,
+ * });
+ * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
+ *     name: "hub",
+ *     description: "A sample hub",
+ *     labels: {
+ *         "label-two": "value-one",
+ *     },
+ *     presetTopology: "HYBRID_INSPECTION",
+ * });
+ * const primary = new gcp.networkconnectivity.Spoke("primary", {
+ *     name: "my-ncc-gw",
+ *     location: "us-central1",
+ *     description: "A sample spoke of type Gateway",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     hub: basicHub.id,
+ *     gateway: {
+ *         ipRangeReservations: [{
+ *             ipRange: "10.0.0.0/23",
+ *         }],
+ *         capacity: "CAPACITY_1_GBPS",
+ *     },
+ *     group: "gateways",
+ * });
+ * const foobar = new gcp.compute.Router("foobar", {
+ *     name: "my-router",
+ *     bgp: {
+ *         asn: 64514,
+ *         advertiseMode: "CUSTOM",
+ *         advertisedGroups: ["ALL_SUBNETS"],
+ *         advertisedIpRanges: [
+ *             {
+ *                 range: "1.2.3.4",
+ *             },
+ *             {
+ *                 range: "6.7.0.0/16",
+ *             },
+ *         ],
+ *     },
+ *     nccGateway: primary.id,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -156,9 +214,13 @@ export class Router extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * A URI of an NCC Gateway spoke
+     */
+    declare public readonly nccGateway: pulumi.Output<string | undefined>;
+    /**
      * A reference to the network to which this router belongs.
      */
-    declare public readonly network: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
@@ -185,7 +247,7 @@ export class Router extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RouterArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: RouterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterArgs | RouterState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -197,6 +259,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["encryptedInterconnectRouter"] = state?.encryptedInterconnectRouter;
             resourceInputs["md5AuthenticationKeys"] = state?.md5AuthenticationKeys;
             resourceInputs["name"] = state?.name;
+            resourceInputs["nccGateway"] = state?.nccGateway;
             resourceInputs["network"] = state?.network;
             resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
@@ -204,14 +267,12 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state?.selfLink;
         } else {
             const args = argsOrState as RouterArgs | undefined;
-            if (args?.network === undefined && !opts.urn) {
-                throw new Error("Missing required property 'network'");
-            }
             resourceInputs["bgp"] = args?.bgp;
             resourceInputs["description"] = args?.description;
             resourceInputs["encryptedInterconnectRouter"] = args?.encryptedInterconnectRouter;
             resourceInputs["md5AuthenticationKeys"] = args?.md5AuthenticationKeys;
             resourceInputs["name"] = args?.name;
+            resourceInputs["nccGateway"] = args?.nccGateway;
             resourceInputs["network"] = args?.network;
             resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
@@ -260,6 +321,10 @@ export interface RouterState {
      * except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * A URI of an NCC Gateway spoke
+     */
+    nccGateway?: pulumi.Input<string>;
     /**
      * A reference to the network to which this router belongs.
      */
@@ -317,9 +382,13 @@ export interface RouterArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * A URI of an NCC Gateway spoke
+     */
+    nccGateway?: pulumi.Input<string>;
+    /**
      * A reference to the network to which this router belongs.
      */
-    network: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.

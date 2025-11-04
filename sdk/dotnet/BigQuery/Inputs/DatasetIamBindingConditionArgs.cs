@@ -15,9 +15,15 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 

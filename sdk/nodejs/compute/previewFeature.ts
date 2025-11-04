@@ -7,11 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or disabled for a project.
+ * Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or unspecified for a project.
  *
  * To get more information about PreviewFeature, see:
  *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/PreviewFeatures)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/previewFeatures)
  * * How-to Guides
  *     * [Use the Compute Engine alpha API](https://cloud.google.com/compute/docs/reference/rest/alpha)
  *
@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * const gcePreviewFeature = new gcp.compute.PreviewFeature("gce_preview_feature", {
  *     name: "alpha-api-access",
- *     activationStatus: "DISABLED",
+ *     activationStatus: "ACTIVATION_STATE_UNSPECIFIED",
  *     rolloutOperation: {
  *         rolloutInput: {
  *             predefinedRolloutPlan: "ROLLOUT_PLAN_FAST_ROLLOUT",
@@ -88,7 +88,7 @@ export class PreviewFeature extends pulumi.CustomResource {
 
     /**
      * The activation status of the preview feature.
-     * Possible values are: `ENABLED`, `DISABLED`.
+     * Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
      */
     declare public readonly activationStatus: pulumi.Output<string>;
     /**
@@ -144,7 +144,7 @@ export class PreviewFeature extends pulumi.CustomResource {
 export interface PreviewFeatureState {
     /**
      * The activation status of the preview feature.
-     * Possible values are: `ENABLED`, `DISABLED`.
+     * Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
      */
     activationStatus?: pulumi.Input<string>;
     /**
@@ -169,7 +169,7 @@ export interface PreviewFeatureState {
 export interface PreviewFeatureArgs {
     /**
      * The activation status of the preview feature.
-     * Possible values are: `ENABLED`, `DISABLED`.
+     * Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
      */
     activationStatus: pulumi.Input<string>;
     /**

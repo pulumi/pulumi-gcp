@@ -55,6 +55,39 @@ import * as utilities from "../utilities";
  *     serviceLbPolicy: pulumi.interpolate`//networkservices.googleapis.com/${_default.id}`,
  * });
  * ```
+ * ### Network Services Service Lb Policies Beta
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.ServiceLbPolicies("default", {
+ *     name: "my-lb-policy",
+ *     location: "global",
+ *     description: "my description",
+ *     loadBalancingAlgorithm: "SPRAY_TO_REGION",
+ *     autoCapacityDrain: {
+ *         enable: true,
+ *     },
+ *     failoverConfig: {
+ *         failoverHealthThreshold: 70,
+ *     },
+ *     isolationConfig: {
+ *         isolationGranularity: "REGION",
+ *         isolationMode: "NEAREST",
+ *     },
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "my-lb-backend",
+ *     description: "my description",
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     protocol: "HTTP",
+ *     serviceLbPolicy: pulumi.interpolate`//networkservices.googleapis.com/${_default.id}`,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -131,6 +164,11 @@ export class ServiceLbPolicies extends pulumi.CustomResource {
      */
     declare public readonly failoverConfig: pulumi.Output<outputs.networkservices.ServiceLbPoliciesFailoverConfig | undefined>;
     /**
+     * Configuration to provide isolation support for the associated Backend Service.
+     * Structure is documented below.
+     */
+    declare public readonly isolationConfig: pulumi.Output<outputs.networkservices.ServiceLbPoliciesIsolationConfig | undefined>;
+    /**
      * Set of label tags associated with the ServiceLbPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -182,6 +220,7 @@ export class ServiceLbPolicies extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["failoverConfig"] = state?.failoverConfig;
+            resourceInputs["isolationConfig"] = state?.isolationConfig;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["loadBalancingAlgorithm"] = state?.loadBalancingAlgorithm;
             resourceInputs["location"] = state?.location;
@@ -197,6 +236,7 @@ export class ServiceLbPolicies extends pulumi.CustomResource {
             resourceInputs["autoCapacityDrain"] = args?.autoCapacityDrain;
             resourceInputs["description"] = args?.description;
             resourceInputs["failoverConfig"] = args?.failoverConfig;
+            resourceInputs["isolationConfig"] = args?.isolationConfig;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["loadBalancingAlgorithm"] = args?.loadBalancingAlgorithm;
             resourceInputs["location"] = args?.location;
@@ -240,6 +280,11 @@ export interface ServiceLbPoliciesState {
      * Structure is documented below.
      */
     failoverConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesFailoverConfig>;
+    /**
+     * Configuration to provide isolation support for the associated Backend Service.
+     * Structure is documented below.
+     */
+    isolationConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesIsolationConfig>;
     /**
      * Set of label tags associated with the ServiceLbPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -293,6 +338,11 @@ export interface ServiceLbPoliciesArgs {
      * Structure is documented below.
      */
     failoverConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesFailoverConfig>;
+    /**
+     * Configuration to provide isolation support for the associated Backend Service.
+     * Structure is documented below.
+     */
+    isolationConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesIsolationConfig>;
     /**
      * Set of label tags associated with the ServiceLbPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

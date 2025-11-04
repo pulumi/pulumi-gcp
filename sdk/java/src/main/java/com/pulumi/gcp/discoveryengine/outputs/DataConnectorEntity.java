@@ -42,7 +42,7 @@ public final class DataConnectorEntity {
      * @return The parameters for the entity to facilitate data ingestion.
      * 
      */
-    private @Nullable Map<String,String> params;
+    private @Nullable String params;
 
     private DataConnectorEntity() {}
     /**
@@ -81,8 +81,8 @@ public final class DataConnectorEntity {
      * @return The parameters for the entity to facilitate data ingestion.
      * 
      */
-    public Map<String,String> params() {
-        return this.params == null ? Map.of() : this.params;
+    public Optional<String> params() {
+        return Optional.ofNullable(this.params);
     }
 
     public static Builder builder() {
@@ -97,7 +97,7 @@ public final class DataConnectorEntity {
         private @Nullable String dataStore;
         private @Nullable String entityName;
         private @Nullable Map<String,String> keyPropertyMappings;
-        private @Nullable Map<String,String> params;
+        private @Nullable String params;
         public Builder() {}
         public Builder(DataConnectorEntity defaults) {
     	      Objects.requireNonNull(defaults);
@@ -126,7 +126,7 @@ public final class DataConnectorEntity {
             return this;
         }
         @CustomType.Setter
-        public Builder params(@Nullable Map<String,String> params) {
+        public Builder params(@Nullable String params) {
 
             this.params = params;
             return this;

@@ -16,9 +16,19 @@ public final class DatasetIamMemberState extends com.pulumi.resources.ResourceAr
 
     public static final DatasetIamMemberState Empty = new DatasetIamMemberState();
 
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="condition")
     private @Nullable Output<DatasetIamMemberConditionArgs> condition;
 
+    /**
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<DatasetIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -155,11 +165,25 @@ public final class DatasetIamMemberState extends com.pulumi.resources.ResourceAr
             $ = new DatasetIamMemberState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(@Nullable Output<DatasetIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
+        /**
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(DatasetIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }

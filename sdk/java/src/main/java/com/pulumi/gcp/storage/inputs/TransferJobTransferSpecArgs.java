@@ -15,6 +15,7 @@ import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecHttpDataSourceArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecObjectConditionsArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecPosixDataSinkArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecPosixDataSourceArgs;
+import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecTransferManifestArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecTransferOptionsArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -207,6 +208,21 @@ public final class TransferJobTransferSpecArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+     * 
+     */
+    @Import(name="transferManifest")
+    private @Nullable Output<TransferJobTransferSpecTransferManifestArgs> transferManifest;
+
+    /**
+     * @return Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+     * 
+     */
+    public Optional<Output<TransferJobTransferSpecTransferManifestArgs>> transferManifest() {
+        return Optional.ofNullable(this.transferManifest);
+    }
+
+    /**
      * Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects&#39; `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
      * 
      */
@@ -236,6 +252,7 @@ public final class TransferJobTransferSpecArgs extends com.pulumi.resources.Reso
         this.posixDataSource = $.posixDataSource;
         this.sinkAgentPoolName = $.sinkAgentPoolName;
         this.sourceAgentPoolName = $.sourceAgentPoolName;
+        this.transferManifest = $.transferManifest;
         this.transferOptions = $.transferOptions;
     }
 
@@ -507,6 +524,27 @@ public final class TransferJobTransferSpecArgs extends com.pulumi.resources.Reso
          */
         public Builder sourceAgentPoolName(String sourceAgentPoolName) {
             return sourceAgentPoolName(Output.of(sourceAgentPoolName));
+        }
+
+        /**
+         * @param transferManifest Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transferManifest(@Nullable Output<TransferJobTransferSpecTransferManifestArgs> transferManifest) {
+            $.transferManifest = transferManifest;
+            return this;
+        }
+
+        /**
+         * @param transferManifest Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transferManifest(TransferJobTransferSpecTransferManifestArgs transferManifest) {
+            return transferManifest(Output.of(transferManifest));
         }
 
         /**

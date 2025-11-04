@@ -83,89 +83,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## gcp.bigquery.DatasetIamBinding
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.bigquery.Dataset;
- * import com.pulumi.gcp.bigquery.DatasetArgs;
- * import com.pulumi.gcp.bigquery.DatasetIamBinding;
- * import com.pulumi.gcp.bigquery.DatasetIamBindingArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()
- *             .datasetId("example_dataset")
- *             .build());
- * 
- *         var reader = new DatasetIamBinding("reader", DatasetIamBindingArgs.builder()
- *             .datasetId(dataset.datasetId())
- *             .role("roles/bigquery.dataViewer")
- *             .members("user:jane}{@literal @}{@code example.com")
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * 
- * ## gcp.bigquery.DatasetIamMember
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.bigquery.Dataset;
- * import com.pulumi.gcp.bigquery.DatasetArgs;
- * import com.pulumi.gcp.bigquery.DatasetIamMember;
- * import com.pulumi.gcp.bigquery.DatasetIamMemberArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()
- *             .datasetId("example_dataset")
- *             .build());
- * 
- *         var editor = new DatasetIamMember("editor", DatasetIamMemberArgs.builder()
- *             .datasetId(dataset.datasetId())
- *             .role("roles/bigquery.dataEditor")
- *             .member("user:jane}{@literal @}{@code example.com")
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * 
- * ## gcp.bigquery.DatasetIamPolicy
+ * ## With IAM condition
  * 
  * <pre>
  * {@code
@@ -197,6 +115,11 @@ import javax.annotation.Nullable;
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/bigquery.dataOwner")
  *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("expires_after_2029_12_31")
+ *                     .description("Expiring at midnight of 2029-12-31")
+ *                     .expression("request.time < timestamp(\"2030-01-01T00:00:00Z\")")
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -255,6 +178,53 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## With IAM condition
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamBinding;
+ * import com.pulumi.gcp.bigquery.DatasetIamBindingArgs;
+ * import com.pulumi.gcp.bigquery.inputs.DatasetIamBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .build());
+ * 
+ *         var reader = new DatasetIamBinding("reader", DatasetIamBindingArgs.builder()
+ *             .datasetId(dataset.datasetId())
+ *             .role("roles/bigquery.dataViewer")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .condition(DatasetIamBindingConditionArgs.builder()
+ *                 .title("expires_after_2029_12_31")
+ *                 .description("Expiring at midnight of 2029-12-31")
+ *                 .expression("request.time < timestamp(\"2030-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## gcp.bigquery.DatasetIamMember
  * 
  * <pre>
@@ -296,6 +266,332 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## With IAM condition
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamMember;
+ * import com.pulumi.gcp.bigquery.DatasetIamMemberArgs;
+ * import com.pulumi.gcp.bigquery.inputs.DatasetIamMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .build());
+ * 
+ *         var editor = new DatasetIamMember("editor", DatasetIamMemberArgs.builder()
+ *             .datasetId(dataset.datasetId())
+ *             .role("roles/bigquery.dataEditor")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .condition(DatasetIamMemberConditionArgs.builder()
+ *                 .title("expires_after_2029_12_31")
+ *                 .description("Expiring at midnight of 2029-12-31")
+ *                 .expression("request.time < timestamp(\"2030-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.bigquery.DatasetIamPolicy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamPolicy;
+ * import com.pulumi.gcp.bigquery.DatasetIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var owner = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/bigquery.dataOwner")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var datasetDataset = new Dataset("datasetDataset", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .build());
+ * 
+ *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()
+ *             .datasetId(datasetDataset.datasetId())
+ *             .policyData(owner.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## With IAM condition
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamPolicy;
+ * import com.pulumi.gcp.bigquery.DatasetIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var owner = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/bigquery.dataOwner")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("expires_after_2029_12_31")
+ *                     .description("Expiring at midnight of 2029-12-31")
+ *                     .expression("request.time < timestamp(\"2030-01-01T00:00:00Z\")")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var datasetDataset = new Dataset("datasetDataset", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .build());
+ * 
+ *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()
+ *             .datasetId(datasetDataset.datasetId())
+ *             .policyData(owner.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.bigquery.DatasetIamBinding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamBinding;
+ * import com.pulumi.gcp.bigquery.DatasetIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .build());
+ * 
+ *         var reader = new DatasetIamBinding("reader", DatasetIamBindingArgs.builder()
+ *             .datasetId(dataset.datasetId())
+ *             .role("roles/bigquery.dataViewer")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## With IAM condition
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamBinding;
+ * import com.pulumi.gcp.bigquery.DatasetIamBindingArgs;
+ * import com.pulumi.gcp.bigquery.inputs.DatasetIamBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .build());
+ * 
+ *         var reader = new DatasetIamBinding("reader", DatasetIamBindingArgs.builder()
+ *             .datasetId(dataset.datasetId())
+ *             .role("roles/bigquery.dataViewer")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .condition(DatasetIamBindingConditionArgs.builder()
+ *                 .title("expires_after_2029_12_31")
+ *                 .description("Expiring at midnight of 2029-12-31")
+ *                 .expression("request.time < timestamp(\"2030-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.bigquery.DatasetIamMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamMember;
+ * import com.pulumi.gcp.bigquery.DatasetIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .build());
+ * 
+ *         var editor = new DatasetIamMember("editor", DatasetIamMemberArgs.builder()
+ *             .datasetId(dataset.datasetId())
+ *             .role("roles/bigquery.dataEditor")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## With IAM condition
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamMember;
+ * import com.pulumi.gcp.bigquery.DatasetIamMemberArgs;
+ * import com.pulumi.gcp.bigquery.inputs.DatasetIamMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .build());
+ * 
+ *         var editor = new DatasetIamMember("editor", DatasetIamMemberArgs.builder()
+ *             .datasetId(dataset.datasetId())
+ *             .role("roles/bigquery.dataEditor")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .condition(DatasetIamMemberConditionArgs.builder()
+ *                 .title("expires_after_2029_12_31")
+ *                 .description("Expiring at midnight of 2029-12-31")
+ *                 .expression("request.time < timestamp(\"2030-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ### Importing IAM policies
@@ -325,9 +621,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigquery/datasetIamMember:DatasetIamMember")
 public class DatasetIamMember extends com.pulumi.resources.CustomResource {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     @Export(name="condition", refs={DatasetIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ DatasetIamMemberCondition> condition;
 
+    /**
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     public Output<Optional<DatasetIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }

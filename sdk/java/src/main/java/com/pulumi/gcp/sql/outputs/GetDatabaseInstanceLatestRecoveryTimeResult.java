@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseInstanceLatestRecoveryTimeResult {
@@ -30,6 +32,7 @@ public final class GetDatabaseInstanceLatestRecoveryTimeResult {
      * 
      */
     private String project;
+    private @Nullable String sourceInstanceDeletionTime;
 
     private GetDatabaseInstanceLatestRecoveryTimeResult() {}
     /**
@@ -60,6 +63,9 @@ public final class GetDatabaseInstanceLatestRecoveryTimeResult {
     public String project() {
         return this.project;
     }
+    public Optional<String> sourceInstanceDeletionTime() {
+        return Optional.ofNullable(this.sourceInstanceDeletionTime);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -74,6 +80,7 @@ public final class GetDatabaseInstanceLatestRecoveryTimeResult {
         private String instance;
         private String latestRecoveryTime;
         private String project;
+        private @Nullable String sourceInstanceDeletionTime;
         public Builder() {}
         public Builder(GetDatabaseInstanceLatestRecoveryTimeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,6 +88,7 @@ public final class GetDatabaseInstanceLatestRecoveryTimeResult {
     	      this.instance = defaults.instance;
     	      this.latestRecoveryTime = defaults.latestRecoveryTime;
     	      this.project = defaults.project;
+    	      this.sourceInstanceDeletionTime = defaults.sourceInstanceDeletionTime;
         }
 
         @CustomType.Setter
@@ -115,12 +123,19 @@ public final class GetDatabaseInstanceLatestRecoveryTimeResult {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
+        public Builder sourceInstanceDeletionTime(@Nullable String sourceInstanceDeletionTime) {
+
+            this.sourceInstanceDeletionTime = sourceInstanceDeletionTime;
+            return this;
+        }
         public GetDatabaseInstanceLatestRecoveryTimeResult build() {
             final var _resultValue = new GetDatabaseInstanceLatestRecoveryTimeResult();
             _resultValue.id = id;
             _resultValue.instance = instance;
             _resultValue.latestRecoveryTime = latestRecoveryTime;
             _resultValue.project = project;
+            _resultValue.sourceInstanceDeletionTime = sourceInstanceDeletionTime;
             return _resultValue;
         }
     }

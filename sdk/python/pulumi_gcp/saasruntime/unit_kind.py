@@ -25,6 +25,7 @@ class UnitKindArgs:
                  saas: pulumi.Input[_builtins.str],
                  unit_kind_id: pulumi.Input[_builtins.str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 default_release: Optional[pulumi.Input[_builtins.str]] = None,
                  dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['UnitKindDependencyArgs']]]] = None,
                  input_variable_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['UnitKindInputVariableMappingArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -43,6 +44,10 @@ class UnitKindArgs:
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] default_release: A reference to the Release object to use as default for creating new units
+               of this UnitKind.
+               If not specified, a new unit must explicitly reference which release to use
+               for its creation.
         :param pulumi.Input[Sequence[pulumi.Input['UnitKindDependencyArgs']]] dependencies: List of other unit kinds that this release will depend on. Dependencies
                will be automatically provisioned if not found. Maximum 10.
                Structure is documented below.
@@ -65,6 +70,8 @@ class UnitKindArgs:
         pulumi.set(__self__, "unit_kind_id", unit_kind_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if default_release is not None:
+            pulumi.set(__self__, "default_release", default_release)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
         if input_variable_mappings is not None:
@@ -130,6 +137,21 @@ class UnitKindArgs:
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRelease")
+    def default_release(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A reference to the Release object to use as default for creating new units
+        of this UnitKind.
+        If not specified, a new unit must explicitly reference which release to use
+        for its creation.
+        """
+        return pulumi.get(self, "default_release")
+
+    @default_release.setter
+    def default_release(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_release", value)
 
     @_builtins.property
     @pulumi.getter
@@ -208,6 +230,7 @@ class _UnitKindState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_release: Optional[pulumi.Input[_builtins.str]] = None,
                  dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['UnitKindDependencyArgs']]]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -232,6 +255,10 @@ class _UnitKindState:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
+        :param pulumi.Input[_builtins.str] default_release: A reference to the Release object to use as default for creating new units
+               of this UnitKind.
+               If not specified, a new unit must explicitly reference which release to use
+               for its creation.
         :param pulumi.Input[Sequence[pulumi.Input['UnitKindDependencyArgs']]] dependencies: List of other unit kinds that this release will depend on. Dependencies
                will be automatically provisioned if not found. Maximum 10.
                Structure is documented below.
@@ -275,6 +302,8 @@ class _UnitKindState:
             pulumi.set(__self__, "annotations", annotations)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if default_release is not None:
+            pulumi.set(__self__, "default_release", default_release)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
         if effective_annotations is not None:
@@ -334,6 +363,21 @@ class _UnitKindState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRelease")
+    def default_release(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A reference to the Release object to use as default for creating new units
+        of this UnitKind.
+        If not specified, a new unit must explicitly reference which release to use
+        for its creation.
+        """
+        return pulumi.get(self, "default_release")
+
+    @default_release.setter
+    def default_release(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_release", value)
 
     @_builtins.property
     @pulumi.getter
@@ -544,6 +588,7 @@ class UnitKind(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 default_release: Optional[pulumi.Input[_builtins.str]] = None,
                  dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict']]]]] = None,
                  input_variable_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -566,22 +611,30 @@ class UnitKind(pulumi.CustomResource):
 
         example_saas = gcp.saasruntime.SaaS("example_saas",
             saas_id="example-saas",
-            location="global",
+            location="us-east1",
             locations=[{
-                "name": "us-central1",
+                "name": "us-east1",
             }])
         cluster_unit_kind = gcp.saasruntime.UnitKind("cluster_unit_kind",
-            location="global",
+            location="us-east1",
             unit_kind_id="cluster-unitkind",
-            saas=example_saas.id)
+            saas=example_saas.id,
+            default_release="projects/my-project-name/locations/us-east1/releases/example-release")
         example = gcp.saasruntime.UnitKind("example",
-            location="global",
+            location="us-east1",
             unit_kind_id="app-unitkind",
             saas=example_saas.id,
             dependencies=[{
                 "unit_kind": cluster_unit_kind.id,
                 "alias": "cluster",
             }])
+        example_release = gcp.saasruntime.Release("example_release",
+            location="us-east1",
+            release_id="example-release",
+            unit_kind=cluster_unit_kind.id,
+            blueprint={
+                "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+            })
         ```
 
         ## Import
@@ -616,6 +669,10 @@ class UnitKind(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] default_release: A reference to the Release object to use as default for creating new units
+               of this UnitKind.
+               If not specified, a new unit must explicitly reference which release to use
+               for its creation.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict']]]] dependencies: List of other unit kinds that this release will depend on. Dependencies
                will be automatically provisioned if not found. Maximum 10.
                Structure is documented below.
@@ -657,22 +714,30 @@ class UnitKind(pulumi.CustomResource):
 
         example_saas = gcp.saasruntime.SaaS("example_saas",
             saas_id="example-saas",
-            location="global",
+            location="us-east1",
             locations=[{
-                "name": "us-central1",
+                "name": "us-east1",
             }])
         cluster_unit_kind = gcp.saasruntime.UnitKind("cluster_unit_kind",
-            location="global",
+            location="us-east1",
             unit_kind_id="cluster-unitkind",
-            saas=example_saas.id)
+            saas=example_saas.id,
+            default_release="projects/my-project-name/locations/us-east1/releases/example-release")
         example = gcp.saasruntime.UnitKind("example",
-            location="global",
+            location="us-east1",
             unit_kind_id="app-unitkind",
             saas=example_saas.id,
             dependencies=[{
                 "unit_kind": cluster_unit_kind.id,
                 "alias": "cluster",
             }])
+        example_release = gcp.saasruntime.Release("example_release",
+            location="us-east1",
+            release_id="example-release",
+            unit_kind=cluster_unit_kind.id,
+            blueprint={
+                "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+            })
         ```
 
         ## Import
@@ -715,6 +780,7 @@ class UnitKind(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 default_release: Optional[pulumi.Input[_builtins.str]] = None,
                  dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict']]]]] = None,
                  input_variable_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UnitKindInputVariableMappingArgs', 'UnitKindInputVariableMappingArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -733,6 +799,7 @@ class UnitKind(pulumi.CustomResource):
             __props__ = UnitKindArgs.__new__(UnitKindArgs)
 
             __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["default_release"] = default_release
             __props__.__dict__["dependencies"] = dependencies
             __props__.__dict__["input_variable_mappings"] = input_variable_mappings
             __props__.__dict__["labels"] = labels
@@ -769,6 +836,7 @@ class UnitKind(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            default_release: Optional[pulumi.Input[_builtins.str]] = None,
             dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict']]]]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -798,6 +866,10 @@ class UnitKind(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
+        :param pulumi.Input[_builtins.str] default_release: A reference to the Release object to use as default for creating new units
+               of this UnitKind.
+               If not specified, a new unit must explicitly reference which release to use
+               for its creation.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UnitKindDependencyArgs', 'UnitKindDependencyArgsDict']]]] dependencies: List of other unit kinds that this release will depend on. Dependencies
                will be automatically provisioned if not found. Maximum 10.
                Structure is documented below.
@@ -843,6 +915,7 @@ class UnitKind(pulumi.CustomResource):
 
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["default_release"] = default_release
         __props__.__dict__["dependencies"] = dependencies
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
@@ -880,6 +953,17 @@ class UnitKind(pulumi.CustomResource):
         The timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRelease")
+    def default_release(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A reference to the Release object to use as default for creating new units
+        of this UnitKind.
+        If not specified, a new unit must explicitly reference which release to use
+        for its creation.
+        """
+        return pulumi.get(self, "default_release")
 
     @_builtins.property
     @pulumi.getter

@@ -63,6 +63,9 @@ import javax.annotation.Nullable;
  *             .applicationId("google-sga")
  *             .endpointMatchers(SecurityGatewayApplicationEndpointMatcherArgs.builder()
  *                 .hostname("google.com")
+ *                 .ports(                
+ *                     80,
+ *                     443)
  *                 .build())
  *             .build());
  * 
@@ -119,6 +122,9 @@ import javax.annotation.Nullable;
  *             .applicationId("my-vm-service2")
  *             .endpointMatchers(SecurityGatewayApplicationEndpointMatcherArgs.builder()
  *                 .hostname("my-vm-service.com")
+ *                 .ports(                
+ *                     80,
+ *                     443)
  *                 .build())
  *             .upstreams(SecurityGatewayApplicationUpstreamArgs.builder()
  *                 .egressPolicy(SecurityGatewayApplicationUpstreamEgressPolicyArgs.builder()
@@ -128,6 +134,145 @@ import javax.annotation.Nullable;
  *                     .name(String.format("projects/%s/global/networks/default", project.projectId()))
  *                     .build())
  *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Beyondcorp Security Gateway Application Spa Api
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.beyondcorp.SecurityGateway;
+ * import com.pulumi.gcp.beyondcorp.SecurityGatewayArgs;
+ * import com.pulumi.gcp.beyondcorp.SecurityGatewayApplication;
+ * import com.pulumi.gcp.beyondcorp.SecurityGatewayApplicationArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamExternalArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new SecurityGateway("default", SecurityGatewayArgs.builder()
+ *             .securityGatewayId("default-sg-spa-api")
+ *             .displayName("My SPA Security Gateway resource")
+ *             .build());
+ * 
+ *         var example_spa = new SecurityGatewayApplication("example-spa", SecurityGatewayApplicationArgs.builder()
+ *             .securityGatewayId(default_.securityGatewayId())
+ *             .applicationId("app-discovery")
+ *             .upstreams(SecurityGatewayApplicationUpstreamArgs.builder()
+ *                 .external(SecurityGatewayApplicationUpstreamExternalArgs.builder()
+ *                     .endpoints(SecurityGatewayApplicationUpstreamExternalEndpointArgs.builder()
+ *                         .hostname("my.discovery.service.com")
+ *                         .port(443)
+ *                         .build())
+ *                     .build())
+ *                 .proxyProtocol(SecurityGatewayApplicationUpstreamProxyProtocolArgs.builder()
+ *                     .allowedClientHeaders("header")
+ *                     .build())
+ *                 .build())
+ *             .schema("API_GATEWAY")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Beyondcorp Security Gateway Application Spa Proxy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.beyondcorp.SecurityGateway;
+ * import com.pulumi.gcp.beyondcorp.SecurityGatewayArgs;
+ * import com.pulumi.gcp.beyondcorp.SecurityGatewayApplication;
+ * import com.pulumi.gcp.beyondcorp.SecurityGatewayApplicationArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationEndpointMatcherArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamExternalArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new SecurityGateway("default", SecurityGatewayArgs.builder()
+ *             .securityGatewayId("default-sg-spa-proxy")
+ *             .displayName("My SPA Security Gateway resource")
+ *             .build());
+ * 
+ *         var example_spa = new SecurityGatewayApplication("example-spa", SecurityGatewayApplicationArgs.builder()
+ *             .securityGatewayId(default_.securityGatewayId())
+ *             .applicationId("app-proxy")
+ *             .endpointMatchers(SecurityGatewayApplicationEndpointMatcherArgs.builder()
+ *                 .hostname("a.site.com")
+ *                 .ports(443)
+ *                 .build())
+ *             .upstreams(SecurityGatewayApplicationUpstreamArgs.builder()
+ *                 .external(SecurityGatewayApplicationUpstreamExternalArgs.builder()
+ *                     .endpoints(SecurityGatewayApplicationUpstreamExternalEndpointArgs.builder()
+ *                         .hostname("my.proxy.service.com")
+ *                         .port(443)
+ *                         .build())
+ *                     .build())
+ *                 .proxyProtocol(SecurityGatewayApplicationUpstreamProxyProtocolArgs.builder()
+ *                     .allowedClientHeaders(                    
+ *                         "header1",
+ *                         "header2")
+ *                     .contextualHeaders(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs.builder()
+ *                         .userInfo(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs.builder()
+ *                             .outputType("PROTOBUF")
+ *                             .build())
+ *                         .groupInfo(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs.builder()
+ *                             .outputType("JSON")
+ *                             .build())
+ *                         .deviceInfo(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs.builder()
+ *                             .outputType("NONE")
+ *                             .build())
+ *                         .outputType("JSON")
+ *                         .build())
+ *                     .metadataHeaders(Map.ofEntries(
+ *                         Map.entry("metadata-header1", "value1"),
+ *                         Map.entry("metadata-header2", "value2")
+ *                     ))
+ *                     .gatewayIdentity("RESOURCE_NAME")
+ *                     .clientIp(true)
+ *                     .build())
+ *                 .build())
+ *             .schema("PROXY_GATEWAY")
  *             .build());
  * 
  *     }
@@ -228,7 +373,7 @@ public class SecurityGatewayApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="endpointMatchers", refs={List.class,SecurityGatewayApplicationEndpointMatcher.class}, tree="[0,1]")
-    private Output<List<SecurityGatewayApplicationEndpointMatcher>> endpointMatchers;
+    private Output</* @Nullable */ List<SecurityGatewayApplicationEndpointMatcher>> endpointMatchers;
 
     /**
      * @return Required. Endpoint matchers associated with an application.
@@ -245,8 +390,8 @@ public class SecurityGatewayApplication extends com.pulumi.resources.CustomResou
      * Structure is documented below.
      * 
      */
-    public Output<List<SecurityGatewayApplicationEndpointMatcher>> endpointMatchers() {
-        return this.endpointMatchers;
+    public Output<Optional<List<SecurityGatewayApplicationEndpointMatcher>>> endpointMatchers() {
+        return Codegen.optional(this.endpointMatchers);
     }
     /**
      * Identifier. Name of the resource.
@@ -277,6 +422,22 @@ public class SecurityGatewayApplication extends com.pulumi.resources.CustomResou
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Type of the external application.
+     * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+     * 
+     */
+    @Export(name="schema", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> schema;
+
+    /**
+     * @return Type of the external application.
+     * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
+     * 
+     */
+    public Output<Optional<String>> schema() {
+        return Codegen.optional(this.schema);
     }
     /**
      * ID of the Security Gateway resource this belongs to.

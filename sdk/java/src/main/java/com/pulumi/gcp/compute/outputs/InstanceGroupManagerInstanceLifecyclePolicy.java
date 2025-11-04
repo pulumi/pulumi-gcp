@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.InstanceGroupManagerInstanceLifecyclePolicyOnRepair;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,10 +25,14 @@ public final class InstanceGroupManagerInstanceLifecyclePolicy {
     /**
      * @return , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `defaultActionOnFailure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
      * 
+     */
+    private @Nullable String onFailedHealthCheck;
+    /**
+     * @return , Configuration for VM repairs in the MIG. Structure is documented below.
      * ***
      * 
      */
-    private @Nullable String onFailedHealthCheck;
+    private @Nullable InstanceGroupManagerInstanceLifecyclePolicyOnRepair onRepair;
 
     private InstanceGroupManagerInstanceLifecyclePolicy() {}
     /**
@@ -47,11 +52,17 @@ public final class InstanceGroupManagerInstanceLifecyclePolicy {
     /**
      * @return , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `defaultActionOnFailure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
      * 
-     * ***
-     * 
      */
     public Optional<String> onFailedHealthCheck() {
         return Optional.ofNullable(this.onFailedHealthCheck);
+    }
+    /**
+     * @return , Configuration for VM repairs in the MIG. Structure is documented below.
+     * ***
+     * 
+     */
+    public Optional<InstanceGroupManagerInstanceLifecyclePolicyOnRepair> onRepair() {
+        return Optional.ofNullable(this.onRepair);
     }
 
     public static Builder builder() {
@@ -66,12 +77,14 @@ public final class InstanceGroupManagerInstanceLifecyclePolicy {
         private @Nullable String defaultActionOnFailure;
         private @Nullable String forceUpdateOnRepair;
         private @Nullable String onFailedHealthCheck;
+        private @Nullable InstanceGroupManagerInstanceLifecyclePolicyOnRepair onRepair;
         public Builder() {}
         public Builder(InstanceGroupManagerInstanceLifecyclePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultActionOnFailure = defaults.defaultActionOnFailure;
     	      this.forceUpdateOnRepair = defaults.forceUpdateOnRepair;
     	      this.onFailedHealthCheck = defaults.onFailedHealthCheck;
+    	      this.onRepair = defaults.onRepair;
         }
 
         @CustomType.Setter
@@ -92,11 +105,18 @@ public final class InstanceGroupManagerInstanceLifecyclePolicy {
             this.onFailedHealthCheck = onFailedHealthCheck;
             return this;
         }
+        @CustomType.Setter
+        public Builder onRepair(@Nullable InstanceGroupManagerInstanceLifecyclePolicyOnRepair onRepair) {
+
+            this.onRepair = onRepair;
+            return this;
+        }
         public InstanceGroupManagerInstanceLifecyclePolicy build() {
             final var _resultValue = new InstanceGroupManagerInstanceLifecyclePolicy();
             _resultValue.defaultActionOnFailure = defaultActionOnFailure;
             _resultValue.forceUpdateOnRepair = forceUpdateOnRepair;
             _resultValue.onFailedHealthCheck = onFailedHealthCheck;
+            _resultValue.onRepair = onRepair;
             return _resultValue;
         }
     }

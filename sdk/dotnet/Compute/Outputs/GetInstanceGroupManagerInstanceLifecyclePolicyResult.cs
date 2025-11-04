@@ -25,6 +25,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "DefaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
         /// </summary>
         public readonly string OnFailedHealthCheck;
+        /// <summary>
+        /// Configuration for VM repairs in the MIG.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairResult> OnRepairs;
 
         [OutputConstructor]
         private GetInstanceGroupManagerInstanceLifecyclePolicyResult(
@@ -32,11 +36,14 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string forceUpdateOnRepair,
 
-            string onFailedHealthCheck)
+            string onFailedHealthCheck,
+
+            ImmutableArray<Outputs.GetInstanceGroupManagerInstanceLifecyclePolicyOnRepairResult> onRepairs)
         {
             DefaultActionOnFailure = defaultActionOnFailure;
             ForceUpdateOnRepair = forceUpdateOnRepair;
             OnFailedHealthCheck = onFailedHealthCheck;
+            OnRepairs = onRepairs;
         }
     }
 }

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
  * });
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ * const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
  *     dependsOn: [project],
  * });
  * // Enable API hub API

@@ -16,11 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or disabled for a project.
+ * Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or unspecified for a project.
  * 
  * To get more information about PreviewFeature, see:
  * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/PreviewFeatures)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/previewFeatures)
  * * How-to Guides
  *     * [Use the Compute Engine alpha API](https://cloud.google.com/compute/docs/reference/rest/alpha)
  * 
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var gcePreviewFeature = new PreviewFeature("gcePreviewFeature", PreviewFeatureArgs.builder()
  *             .name("alpha-api-access")
- *             .activationStatus("DISABLED")
+ *             .activationStatus("ACTIVATION_STATE_UNSPECIFIED")
  *             .rolloutOperation(PreviewFeatureRolloutOperationArgs.builder()
  *                 .rolloutInput(PreviewFeatureRolloutOperationRolloutInputArgs.builder()
  *                     .predefinedRolloutPlan("ROLLOUT_PLAN_FAST_ROLLOUT")
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
 public class PreviewFeature extends com.pulumi.resources.CustomResource {
     /**
      * The activation status of the preview feature.
-     * Possible values are: `ENABLED`, `DISABLED`.
+     * Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
      * 
      */
     @Export(name="activationStatus", refs={String.class}, tree="[0]")
@@ -104,7 +104,7 @@ public class PreviewFeature extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The activation status of the preview feature.
-     * Possible values are: `ENABLED`, `DISABLED`.
+     * Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
      * 
      */
     public Output<String> activationStatus() {

@@ -30,8 +30,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/folder"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			wait30Sec, err := time.NewSleep(ctx, "wait_30_sec", &time.SleepArgs{
-//				CreateDuration: "30s",
+//				CreateDuration: pulumi.String("30s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				osconfigSa,
 //				rippleSa,
@@ -101,7 +101,7 @@ import (
 //				return err
 //			}
 //			wait3Min, err := time.NewSleep(ctx, "wait_3_min", &time.SleepArgs{
-//				CreateDuration: "180s",
+//				CreateDuration: pulumi.String("180s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				iamProgressiverolloutServiceAgent,
 //			}))

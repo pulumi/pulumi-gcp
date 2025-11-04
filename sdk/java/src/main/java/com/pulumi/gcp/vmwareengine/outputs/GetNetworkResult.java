@@ -14,7 +14,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNetworkResult {
+    private String createTime;
     private String description;
+    private String etag;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -26,11 +28,18 @@ public final class GetNetworkResult {
     private String state;
     private String type;
     private String uid;
+    private String updateTime;
     private List<GetNetworkVpcNetwork> vpcNetworks;
 
     private GetNetworkResult() {}
+    public String createTime() {
+        return this.createTime;
+    }
     public String description() {
         return this.description;
+    }
+    public String etag() {
+        return this.etag;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -57,6 +66,9 @@ public final class GetNetworkResult {
     public String uid() {
         return this.uid;
     }
+    public String updateTime() {
+        return this.updateTime;
+    }
     public List<GetNetworkVpcNetwork> vpcNetworks() {
         return this.vpcNetworks;
     }
@@ -70,7 +82,9 @@ public final class GetNetworkResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String createTime;
         private String description;
+        private String etag;
         private String id;
         private String location;
         private String name;
@@ -78,11 +92,14 @@ public final class GetNetworkResult {
         private String state;
         private String type;
         private String uid;
+        private String updateTime;
         private List<GetNetworkVpcNetwork> vpcNetworks;
         public Builder() {}
         public Builder(GetNetworkResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
+    	      this.etag = defaults.etag;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
@@ -90,15 +107,32 @@ public final class GetNetworkResult {
     	      this.state = defaults.state;
     	      this.type = defaults.type;
     	      this.uid = defaults.uid;
+    	      this.updateTime = defaults.updateTime;
     	      this.vpcNetworks = defaults.vpcNetworks;
         }
 
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "createTime");
+            }
+            this.createTime = createTime;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
               throw new MissingRequiredPropertyException("GetNetworkResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder etag(String etag) {
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
@@ -156,6 +190,14 @@ public final class GetNetworkResult {
             return this;
         }
         @CustomType.Setter
+        public Builder updateTime(String updateTime) {
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "updateTime");
+            }
+            this.updateTime = updateTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcNetworks(List<GetNetworkVpcNetwork> vpcNetworks) {
             if (vpcNetworks == null) {
               throw new MissingRequiredPropertyException("GetNetworkResult", "vpcNetworks");
@@ -168,7 +210,9 @@ public final class GetNetworkResult {
         }
         public GetNetworkResult build() {
             final var _resultValue = new GetNetworkResult();
+            _resultValue.createTime = createTime;
             _resultValue.description = description;
+            _resultValue.etag = etag;
             _resultValue.id = id;
             _resultValue.location = location;
             _resultValue.name = name;
@@ -176,6 +220,7 @@ public final class GetNetworkResult {
             _resultValue.state = state;
             _resultValue.type = type;
             _resultValue.uid = uid;
+            _resultValue.updateTime = updateTime;
             _resultValue.vpcNetworks = vpcNetworks;
             return _resultValue;
         }

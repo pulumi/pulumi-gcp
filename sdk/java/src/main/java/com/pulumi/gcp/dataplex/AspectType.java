@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *             .aspectTypeId("aspect-type-basic")
  *             .project("my-project-name")
  *             .location("us-central1")
+ *             .dataClassification("DATA_CLASSIFICATION_UNSPECIFIED")
  *             .metadataTemplate("""
  * {
  *   "name": "tf-test-template",
@@ -111,7 +112,8 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .labels(Map.of("tag", "test-tf"))
  *             .displayName("terraform aspect type")
- *             .description("aspect type created by Terraform")
+ *             .description("data aspect type created by Terraform")
+ *             .dataClassification("METADATA_AND_DATA")
  *             .metadataTemplate("""
  * {
  *   "type": "record",
@@ -303,6 +305,28 @@ public class AspectType extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Classifies the data stored by the aspect.
+     * `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+     * while `METADATA_AND_DATA` indicates data derived content.
+     * &lt;br&gt;&lt;br&gt;
+     * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+     * 
+     */
+    @Export(name="dataClassification", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dataClassification;
+
+    /**
+     * @return Classifies the data stored by the aspect.
+     * `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+     * while `METADATA_AND_DATA` indicates data derived content.
+     * &lt;br&gt;&lt;br&gt;
+     * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+     * 
+     */
+    public Output<Optional<String>> dataClassification() {
+        return Codegen.optional(this.dataClassification);
     }
     /**
      * Description of the AspectType.

@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Field{}
 	case "gcp:firestore/index:Index":
 		r = &Index{}
+	case "gcp:firestore/userCreds:UserCreds":
+		r = &UserCreds{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -67,6 +69,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firestore/index",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firestore/userCreds",
 		&module{version},
 	)
 }

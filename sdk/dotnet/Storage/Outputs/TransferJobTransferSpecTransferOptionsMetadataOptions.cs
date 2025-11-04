@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class TransferJobTransferSpecTransferOptionsMetadataOptions
     {
         /// <summary>
-        /// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+        /// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
         /// </summary>
         public readonly string? Acl;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string? Gid;
         /// <summary>
-        /// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+        /// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
         /// </summary>
         public readonly string? KmsKey;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+        /// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
         /// </summary>
         public readonly string? StorageClass;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string? Symlink;
         /// <summary>
-        /// SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+        /// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
         /// </summary>
         public readonly string? TemporaryHold;
         /// <summary>

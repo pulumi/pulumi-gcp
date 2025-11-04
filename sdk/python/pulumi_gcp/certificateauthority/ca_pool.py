@@ -428,12 +428,12 @@ class CaPool(pulumi.CustomResource):
 
         privateca_sa = gcp.projects.ServiceIdentity("privateca_sa", service="privateca.googleapis.com")
         privateca_sa_keyuser_encrypterdecrypter = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_encrypterdecrypter",
-            crypto_key_id="projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
+            crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=privateca_sa.member)
         default = gcp.certificateauthority.CaPool("default",
             name="my-pool",
-            location="asia-east1",
+            location="us-central1",
             tier="ENTERPRISE",
             publishing_options={
                 "publish_ca_cert": False,
@@ -444,7 +444,7 @@ class CaPool(pulumi.CustomResource):
                 "foo": "bar",
             },
             encryption_spec={
-                "cloud_kms_key": "projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
+                "cloud_kms_key": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             },
             issuance_policy={
                 "allowed_key_types": [
@@ -657,12 +657,12 @@ class CaPool(pulumi.CustomResource):
 
         privateca_sa = gcp.projects.ServiceIdentity("privateca_sa", service="privateca.googleapis.com")
         privateca_sa_keyuser_encrypterdecrypter = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_encrypterdecrypter",
-            crypto_key_id="projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
+            crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=privateca_sa.member)
         default = gcp.certificateauthority.CaPool("default",
             name="my-pool",
-            location="asia-east1",
+            location="us-central1",
             tier="ENTERPRISE",
             publishing_options={
                 "publish_ca_cert": False,
@@ -673,7 +673,7 @@ class CaPool(pulumi.CustomResource):
                 "foo": "bar",
             },
             encryption_spec={
-                "cloud_kms_key": "projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
+                "cloud_kms_key": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             },
             issuance_policy={
                 "allowed_key_types": [

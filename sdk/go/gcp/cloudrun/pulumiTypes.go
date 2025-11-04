@@ -5530,8 +5530,12 @@ func (o ServiceTemplateSpecContainerPortArrayOutput) Index(i pulumi.IntInput) Se
 
 type ServiceTemplateSpecContainerResources struct {
 	// Limits describes the maximum amount of compute resources allowed.
-	// The values of the map is string form of the 'quantity' k8s type:
-	// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// CPU Limit details:
+	// - For fractional CPU values (e.g. `0.5`, `0.75`, min `0.08`) are also supported.
+	// - CPU allocation must comply with memory limits and concurrency rules described in:
+	//   https://cloud.google.com/run/docs/configuring/services/cpu
+	//   The values of the map is string form of the 'quantity' k8s type:
+	//   https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
 	// Requests describes the minimum amount of compute resources required.
 	// If Requests is omitted for a container, it defaults to Limits if that is
@@ -5554,8 +5558,12 @@ type ServiceTemplateSpecContainerResourcesInput interface {
 
 type ServiceTemplateSpecContainerResourcesArgs struct {
 	// Limits describes the maximum amount of compute resources allowed.
-	// The values of the map is string form of the 'quantity' k8s type:
-	// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// CPU Limit details:
+	// - For fractional CPU values (e.g. `0.5`, `0.75`, min `0.08`) are also supported.
+	// - CPU allocation must comply with memory limits and concurrency rules described in:
+	//   https://cloud.google.com/run/docs/configuring/services/cpu
+	//   The values of the map is string form of the 'quantity' k8s type:
+	//   https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 	// Requests describes the minimum amount of compute resources required.
 	// If Requests is omitted for a container, it defaults to Limits if that is
@@ -5643,8 +5651,12 @@ func (o ServiceTemplateSpecContainerResourcesOutput) ToServiceTemplateSpecContai
 }
 
 // Limits describes the maximum amount of compute resources allowed.
-// The values of the map is string form of the 'quantity' k8s type:
-// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// CPU Limit details:
+//   - For fractional CPU values (e.g. `0.5`, `0.75`, min `0.08`) are also supported.
+//   - CPU allocation must comply with memory limits and concurrency rules described in:
+//     https://cloud.google.com/run/docs/configuring/services/cpu
+//     The values of the map is string form of the 'quantity' k8s type:
+//     https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ServiceTemplateSpecContainerResourcesOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -5683,8 +5695,12 @@ func (o ServiceTemplateSpecContainerResourcesPtrOutput) Elem() ServiceTemplateSp
 }
 
 // Limits describes the maximum amount of compute resources allowed.
-// The values of the map is string form of the 'quantity' k8s type:
-// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// CPU Limit details:
+//   - For fractional CPU values (e.g. `0.5`, `0.75`, min `0.08`) are also supported.
+//   - CPU allocation must comply with memory limits and concurrency rules described in:
+//     https://cloud.google.com/run/docs/configuring/services/cpu
+//     The values of the map is string form of the 'quantity' k8s type:
+//     https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ServiceTemplateSpecContainerResourcesPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerResources) map[string]string {
 		if v == nil {
@@ -10771,8 +10787,12 @@ func (o GetServiceTemplateSpecContainerPortArrayOutput) Index(i pulumi.IntInput)
 
 type GetServiceTemplateSpecContainerResource struct {
 	// Limits describes the maximum amount of compute resources allowed.
-	// The values of the map is string form of the 'quantity' k8s type:
-	// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// CPU Limit details:
+	// - For fractional CPU values (e.g. '0.5', '0.75', min '0.08') are also supported.
+	// - CPU allocation must comply with memory limits and concurrency rules described in:
+	//   https://cloud.google.com/run/docs/configuring/services/cpu
+	//   The values of the map is string form of the 'quantity' k8s type:
+	//   https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
 	// Requests describes the minimum amount of compute resources required.
 	// If Requests is omitted for a container, it defaults to Limits if that is
@@ -10795,8 +10815,12 @@ type GetServiceTemplateSpecContainerResourceInput interface {
 
 type GetServiceTemplateSpecContainerResourceArgs struct {
 	// Limits describes the maximum amount of compute resources allowed.
-	// The values of the map is string form of the 'quantity' k8s type:
-	// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// CPU Limit details:
+	// - For fractional CPU values (e.g. '0.5', '0.75', min '0.08') are also supported.
+	// - CPU allocation must comply with memory limits and concurrency rules described in:
+	//   https://cloud.google.com/run/docs/configuring/services/cpu
+	//   The values of the map is string form of the 'quantity' k8s type:
+	//   https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 	// Requests describes the minimum amount of compute resources required.
 	// If Requests is omitted for a container, it defaults to Limits if that is
@@ -10858,8 +10882,12 @@ func (o GetServiceTemplateSpecContainerResourceOutput) ToGetServiceTemplateSpecC
 }
 
 // Limits describes the maximum amount of compute resources allowed.
-// The values of the map is string form of the 'quantity' k8s type:
-// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// CPU Limit details:
+//   - For fractional CPU values (e.g. '0.5', '0.75', min '0.08') are also supported.
+//   - CPU allocation must comply with memory limits and concurrency rules described in:
+//     https://cloud.google.com/run/docs/configuring/services/cpu
+//     The values of the map is string form of the 'quantity' k8s type:
+//     https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o GetServiceTemplateSpecContainerResourceOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerResource) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }

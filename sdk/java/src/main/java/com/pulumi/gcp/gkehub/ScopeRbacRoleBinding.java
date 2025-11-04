@@ -56,11 +56,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var scope = new Scope("scope", ScopeArgs.builder()
- *             .scopeId("tf-test-scope_89313")
+ *             .scopeId("tf-test-scope_59033")
  *             .build());
  * 
  *         var scopeRbacRoleBinding = new ScopeRbacRoleBinding("scopeRbacRoleBinding", ScopeRbacRoleBindingArgs.builder()
- *             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_60646")
+ *             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_32081")
  *             .scopeId(scope.scopeId())
  *             .user("test-email}{@literal @}{@code gmail.com")
  *             .role(ScopeRbacRoleBindingRoleArgs.builder()
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var scope = new Scope("scope", ScopeArgs.builder()
- *             .scopeId("tf-test-scope_9394")
+ *             .scopeId("tf-test-scope_10393")
  *             .build());
  * 
  *         var rbacrolebindingactuation = new Feature("rbacrolebindingactuation", FeatureArgs.builder()
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var scopeRbacRoleBinding = new ScopeRbacRoleBinding("scopeRbacRoleBinding", ScopeRbacRoleBindingArgs.builder()
- *             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_11380")
+ *             .scopeRbacRoleBindingId("tf-test-scope-rbac-role-binding_33052")
  *             .scopeId(scope.scopeId())
  *             .user("test-email}{@literal @}{@code gmail.com")
  *             .role(ScopeRbacRoleBindingRoleArgs.builder()

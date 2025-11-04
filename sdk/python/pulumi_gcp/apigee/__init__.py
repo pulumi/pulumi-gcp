@@ -13,6 +13,7 @@ from .api_product import *
 from .app_group import *
 from .control_plane_access import *
 from .developer import *
+from .developer_app import *
 from .dns_zone import *
 from .endpoint_attachment import *
 from .env_group import *
@@ -21,6 +22,7 @@ from .env_keystore import *
 from .env_references import *
 from .environment import *
 from .environment_addons_config import *
+from .environment_api_revision_deployment import *
 from .environment_iam_binding import *
 from .environment_iam_member import *
 from .environment_iam_policy import *

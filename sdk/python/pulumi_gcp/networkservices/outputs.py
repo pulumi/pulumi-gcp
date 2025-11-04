@@ -88,6 +88,7 @@ __all__ = [
     'LbTrafficExtensionExtensionChainMatchCondition',
     'ServiceLbPoliciesAutoCapacityDrain',
     'ServiceLbPoliciesFailoverConfig',
+    'ServiceLbPoliciesIsolationConfig',
     'TcpRouteRule',
     'TcpRouteRuleAction',
     'TcpRouteRuleActionDestination',
@@ -5157,6 +5158,62 @@ class ServiceLbPoliciesFailoverConfig(dict):
         Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
         """
         return pulumi.get(self, "failover_health_threshold")
+
+
+@pulumi.output_type
+class ServiceLbPoliciesIsolationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isolationGranularity":
+            suggest = "isolation_granularity"
+        elif key == "isolationMode":
+            suggest = "isolation_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceLbPoliciesIsolationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceLbPoliciesIsolationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceLbPoliciesIsolationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 isolation_granularity: Optional[_builtins.str] = None,
+                 isolation_mode: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str isolation_granularity: The isolation granularity of the load balancer.
+               Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
+        :param _builtins.str isolation_mode: The isolation mode of the load balancer.
+               Default value is `NEAREST`.
+               Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
+        """
+        if isolation_granularity is not None:
+            pulumi.set(__self__, "isolation_granularity", isolation_granularity)
+        if isolation_mode is not None:
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="isolationGranularity")
+    def isolation_granularity(self) -> Optional[_builtins.str]:
+        """
+        The isolation granularity of the load balancer.
+        Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
+        """
+        return pulumi.get(self, "isolation_granularity")
+
+    @_builtins.property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> Optional[_builtins.str]:
+        """
+        The isolation mode of the load balancer.
+        Default value is `NEAREST`.
+        Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
+        """
+        return pulumi.get(self, "isolation_mode")
 
 
 @pulumi.output_type

@@ -9,7 +9,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class SecurityGatewayApplicationEndpointMatcher {
@@ -22,7 +21,7 @@ public final class SecurityGatewayApplicationEndpointMatcher {
      * @return Optional. Ports of the application.
      * 
      */
-    private @Nullable List<Integer> ports;
+    private List<Integer> ports;
 
     private SecurityGatewayApplicationEndpointMatcher() {}
     /**
@@ -37,7 +36,7 @@ public final class SecurityGatewayApplicationEndpointMatcher {
      * 
      */
     public List<Integer> ports() {
-        return this.ports == null ? List.of() : this.ports;
+        return this.ports;
     }
 
     public static Builder builder() {
@@ -50,7 +49,7 @@ public final class SecurityGatewayApplicationEndpointMatcher {
     @CustomType.Builder
     public static final class Builder {
         private String hostname;
-        private @Nullable List<Integer> ports;
+        private List<Integer> ports;
         public Builder() {}
         public Builder(SecurityGatewayApplicationEndpointMatcher defaults) {
     	      Objects.requireNonNull(defaults);
@@ -67,8 +66,10 @@ public final class SecurityGatewayApplicationEndpointMatcher {
             return this;
         }
         @CustomType.Setter
-        public Builder ports(@Nullable List<Integer> ports) {
-
+        public Builder ports(List<Integer> ports) {
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("SecurityGatewayApplicationEndpointMatcher", "ports");
+            }
             this.ports = ports;
             return this;
         }

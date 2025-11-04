@@ -19,6 +19,7 @@ import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsLocationPreferenceArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsMaintenanceWindowArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsPasswordValidationPolicyArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsSqlServerAuditConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -430,6 +431,21 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Configuration of Read Pool Auto Scale.
+     * 
+     */
+    @Import(name="readPoolAutoScaleConfig")
+    private @Nullable Output<DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs> readPoolAutoScaleConfig;
+
+    /**
+     * @return Configuration of Read Pool Auto Scale.
+     * 
+     */
+    public Optional<Output<DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs>> readPoolAutoScaleConfig() {
+        return Optional.ofNullable(this.readPoolAutoScaleConfig);
+    }
+
+    /**
      * When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
      * 
      */
@@ -549,6 +565,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.maintenanceWindow = $.maintenanceWindow;
         this.passwordValidationPolicy = $.passwordValidationPolicy;
         this.pricingPlan = $.pricingPlan;
+        this.readPoolAutoScaleConfig = $.readPoolAutoScaleConfig;
         this.retainBackupsOnDelete = $.retainBackupsOnDelete;
         this.sqlServerAuditConfig = $.sqlServerAuditConfig;
         this.tier = $.tier;
@@ -1124,6 +1141,27 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder pricingPlan(String pricingPlan) {
             return pricingPlan(Output.of(pricingPlan));
+        }
+
+        /**
+         * @param readPoolAutoScaleConfig Configuration of Read Pool Auto Scale.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readPoolAutoScaleConfig(@Nullable Output<DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs> readPoolAutoScaleConfig) {
+            $.readPoolAutoScaleConfig = readPoolAutoScaleConfig;
+            return this;
+        }
+
+        /**
+         * @param readPoolAutoScaleConfig Configuration of Read Pool Auto Scale.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readPoolAutoScaleConfig(DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs readPoolAutoScaleConfig) {
+            return readPoolAutoScaleConfig(Output.of(readPoolAutoScaleConfig));
         }
 
         /**

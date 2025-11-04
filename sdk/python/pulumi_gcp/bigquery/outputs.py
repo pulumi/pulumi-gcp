@@ -2070,6 +2070,10 @@ class DatasetIamBindingCondition(dict):
                  expression: _builtins.str,
                  title: _builtins.str,
                  description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -2078,11 +2082,17 @@ class DatasetIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def expression(self) -> _builtins.str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @_builtins.property
     @pulumi.getter
     def title(self) -> _builtins.str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @_builtins.property
@@ -2097,6 +2107,10 @@ class DatasetIamMemberCondition(dict):
                  expression: _builtins.str,
                  title: _builtins.str,
                  description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -2105,11 +2119,17 @@ class DatasetIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def expression(self) -> _builtins.str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @_builtins.property
     @pulumi.getter
     def title(self) -> _builtins.str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @_builtins.property

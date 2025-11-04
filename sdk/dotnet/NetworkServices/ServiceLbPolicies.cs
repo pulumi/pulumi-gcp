@@ -77,6 +77,52 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// ### Network Services Service Lb Policies Beta
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkServices.ServiceLbPolicies("default", new()
+    ///     {
+    ///         Name = "my-lb-policy",
+    ///         Location = "global",
+    ///         Description = "my description",
+    ///         LoadBalancingAlgorithm = "SPRAY_TO_REGION",
+    ///         AutoCapacityDrain = new Gcp.NetworkServices.Inputs.ServiceLbPoliciesAutoCapacityDrainArgs
+    ///         {
+    ///             Enable = true,
+    ///         },
+    ///         FailoverConfig = new Gcp.NetworkServices.Inputs.ServiceLbPoliciesFailoverConfigArgs
+    ///         {
+    ///             FailoverHealthThreshold = 70,
+    ///         },
+    ///         IsolationConfig = new Gcp.NetworkServices.Inputs.ServiceLbPoliciesIsolationConfigArgs
+    ///         {
+    ///             IsolationGranularity = "REGION",
+    ///             IsolationMode = "NEAREST",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "my-lb-backend",
+    ///         Description = "my description",
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         Protocol = "HTTP",
+    ///         ServiceLbPolicy = @default.Id.Apply(id =&gt; $"//networkservices.googleapis.com/{id}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -136,6 +182,13 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("failoverConfig")]
         public Output<Outputs.ServiceLbPoliciesFailoverConfig?> FailoverConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration to provide isolation support for the associated Backend Service.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("isolationConfig")]
+        public Output<Outputs.ServiceLbPoliciesIsolationConfig?> IsolationConfig { get; private set; } = null!;
 
         /// <summary>
         /// Set of label tags associated with the ServiceLbPolicy resource.
@@ -255,6 +308,13 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("failoverConfig")]
         public Input<Inputs.ServiceLbPoliciesFailoverConfigArgs>? FailoverConfig { get; set; }
 
+        /// <summary>
+        /// Configuration to provide isolation support for the associated Backend Service.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("isolationConfig")]
+        public Input<Inputs.ServiceLbPoliciesIsolationConfigArgs>? IsolationConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -344,6 +404,13 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("failoverConfig")]
         public Input<Inputs.ServiceLbPoliciesFailoverConfigGetArgs>? FailoverConfig { get; set; }
+
+        /// <summary>
+        /// Configuration to provide isolation support for the associated Backend Service.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("isolationConfig")]
+        public Input<Inputs.ServiceLbPoliciesIsolationConfigGetArgs>? IsolationConfig { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

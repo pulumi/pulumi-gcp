@@ -4,7 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable;
 import java.lang.String;
 import java.util.Objects;
@@ -26,11 +26,21 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig 
      */
     private @Nullable String outputSchema;
     /**
+     * @return Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
+     * as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
+     * the naming convention &lt;job_id&gt;-&lt;shard_number&gt;, for example: my-job-id-2.
+     * Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
+     * Cloud Storage, the output schema field should not be set. If set, it will be ignored.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath storagePath;
+    /**
      * @return Information on the location of the target BigQuery Table.
      * Structure is documented below.
      * 
      */
-    private PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table;
+    private @Nullable PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table;
 
     private PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig() {}
     /**
@@ -48,12 +58,24 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig 
         return Optional.ofNullable(this.outputSchema);
     }
     /**
+     * @return Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
+     * as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
+     * the naming convention &lt;job_id&gt;-&lt;shard_number&gt;, for example: my-job-id-2.
+     * Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
+     * Cloud Storage, the output schema field should not be set. If set, it will be ignored.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath> storagePath() {
+        return Optional.ofNullable(this.storagePath);
+    }
+    /**
      * @return Information on the location of the target BigQuery Table.
      * Structure is documented below.
      * 
      */
-    public PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table() {
-        return this.table;
+    public Optional<PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable> table() {
+        return Optional.ofNullable(this.table);
     }
 
     public static Builder builder() {
@@ -66,11 +88,13 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig 
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String outputSchema;
-        private PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table;
+        private @Nullable PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath storagePath;
+        private @Nullable PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table;
         public Builder() {}
         public Builder(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.outputSchema = defaults.outputSchema;
+    	      this.storagePath = defaults.storagePath;
     	      this.table = defaults.table;
         }
 
@@ -81,16 +105,21 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig 
             return this;
         }
         @CustomType.Setter
-        public Builder table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table) {
-            if (table == null) {
-              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig", "table");
-            }
+        public Builder storagePath(@Nullable PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath storagePath) {
+
+            this.storagePath = storagePath;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder table(@Nullable PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table) {
+
             this.table = table;
             return this;
         }
         public PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig build() {
             final var _resultValue = new PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig();
             _resultValue.outputSchema = outputSchema;
+            _resultValue.storagePath = storagePath;
             _resultValue.table = table;
             return _resultValue;
         }

@@ -20,6 +20,7 @@ __all__ = ['AspectTypeArgs', 'AspectType']
 class AspectTypeArgs:
     def __init__(__self__, *,
                  aspect_type_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_classification: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -29,6 +30,11 @@ class AspectTypeArgs:
         """
         The set of arguments for constructing a AspectType resource.
         :param pulumi.Input[_builtins.str] aspect_type_id: The aspect type id of the aspect type.
+        :param pulumi.Input[_builtins.str] data_classification: Classifies the data stored by the aspect.
+               `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+               while `METADATA_AND_DATA` indicates data derived content.
+               <br><br>
+               Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
         :param pulumi.Input[_builtins.str] description: Description of the AspectType.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the AspectType.
@@ -42,6 +48,8 @@ class AspectTypeArgs:
         """
         if aspect_type_id is not None:
             pulumi.set(__self__, "aspect_type_id", aspect_type_id)
+        if data_classification is not None:
+            pulumi.set(__self__, "data_classification", data_classification)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -66,6 +74,22 @@ class AspectTypeArgs:
     @aspect_type_id.setter
     def aspect_type_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "aspect_type_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataClassification")
+    def data_classification(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Classifies the data stored by the aspect.
+        `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+        while `METADATA_AND_DATA` indicates data derived content.
+        <br><br>
+        Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+        """
+        return pulumi.get(self, "data_classification")
+
+    @data_classification.setter
+    def data_classification(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_classification", value)
 
     @_builtins.property
     @pulumi.getter
@@ -149,6 +173,7 @@ class _AspectTypeState:
     def __init__(__self__, *,
                  aspect_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_classification: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -165,6 +190,11 @@ class _AspectTypeState:
         Input properties used for looking up and filtering AspectType resources.
         :param pulumi.Input[_builtins.str] aspect_type_id: The aspect type id of the aspect type.
         :param pulumi.Input[_builtins.str] create_time: The time when the AspectType was created.
+        :param pulumi.Input[_builtins.str] data_classification: Classifies the data stored by the aspect.
+               `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+               while `METADATA_AND_DATA` indicates data derived content.
+               <br><br>
+               Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
         :param pulumi.Input[_builtins.str] description: Description of the AspectType.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -188,6 +218,8 @@ class _AspectTypeState:
             pulumi.set(__self__, "aspect_type_id", aspect_type_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if data_classification is not None:
+            pulumi.set(__self__, "data_classification", data_classification)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -236,6 +268,22 @@ class _AspectTypeState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataClassification")
+    def data_classification(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Classifies the data stored by the aspect.
+        `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+        while `METADATA_AND_DATA` indicates data derived content.
+        <br><br>
+        Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+        """
+        return pulumi.get(self, "data_classification")
+
+    @data_classification.setter
+    def data_classification(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_classification", value)
 
     @_builtins.property
     @pulumi.getter
@@ -395,6 +443,7 @@ class AspectType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aspect_type_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_classification: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -417,6 +466,7 @@ class AspectType(pulumi.CustomResource):
             aspect_type_id="aspect-type-basic",
             project="my-project-name",
             location="us-central1",
+            data_classification="DATA_CLASSIFICATION_UNSPECIFIED",
             metadata_template=\"\"\"{
           "name": "tf-test-template",
           "type": "record",
@@ -457,7 +507,8 @@ class AspectType(pulumi.CustomResource):
                 "tag": "test-tf",
             },
             display_name="terraform aspect type",
-            description="aspect type created by Terraform",
+            description="data aspect type created by Terraform",
+            data_classification="METADATA_AND_DATA",
             metadata_template=\"\"\"{
           "type": "record",
           "name": "Schema",
@@ -616,6 +667,11 @@ class AspectType(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aspect_type_id: The aspect type id of the aspect type.
+        :param pulumi.Input[_builtins.str] data_classification: Classifies the data stored by the aspect.
+               `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+               while `METADATA_AND_DATA` indicates data derived content.
+               <br><br>
+               Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
         :param pulumi.Input[_builtins.str] description: Description of the AspectType.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the AspectType.
@@ -648,6 +704,7 @@ class AspectType(pulumi.CustomResource):
             aspect_type_id="aspect-type-basic",
             project="my-project-name",
             location="us-central1",
+            data_classification="DATA_CLASSIFICATION_UNSPECIFIED",
             metadata_template=\"\"\"{
           "name": "tf-test-template",
           "type": "record",
@@ -688,7 +745,8 @@ class AspectType(pulumi.CustomResource):
                 "tag": "test-tf",
             },
             display_name="terraform aspect type",
-            description="aspect type created by Terraform",
+            description="data aspect type created by Terraform",
+            data_classification="METADATA_AND_DATA",
             metadata_template=\"\"\"{
           "type": "record",
           "name": "Schema",
@@ -860,6 +918,7 @@ class AspectType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aspect_type_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_classification: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -876,6 +935,7 @@ class AspectType(pulumi.CustomResource):
             __props__ = AspectTypeArgs.__new__(AspectTypeArgs)
 
             __props__.__dict__["aspect_type_id"] = aspect_type_id
+            __props__.__dict__["data_classification"] = data_classification
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
@@ -903,6 +963,7 @@ class AspectType(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aspect_type_id: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            data_classification: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -924,6 +985,11 @@ class AspectType(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aspect_type_id: The aspect type id of the aspect type.
         :param pulumi.Input[_builtins.str] create_time: The time when the AspectType was created.
+        :param pulumi.Input[_builtins.str] data_classification: Classifies the data stored by the aspect.
+               `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+               while `METADATA_AND_DATA` indicates data derived content.
+               <br><br>
+               Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
         :param pulumi.Input[_builtins.str] description: Description of the AspectType.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -949,6 +1015,7 @@ class AspectType(pulumi.CustomResource):
 
         __props__.__dict__["aspect_type_id"] = aspect_type_id
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["data_classification"] = data_classification
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
@@ -978,6 +1045,18 @@ class AspectType(pulumi.CustomResource):
         The time when the AspectType was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="dataClassification")
+    def data_classification(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Classifies the data stored by the aspect.
+        `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+        while `METADATA_AND_DATA` indicates data derived content.
+        <br><br>
+        Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+        """
+        return pulumi.get(self, "data_classification")
 
     @_builtins.property
     @pulumi.getter

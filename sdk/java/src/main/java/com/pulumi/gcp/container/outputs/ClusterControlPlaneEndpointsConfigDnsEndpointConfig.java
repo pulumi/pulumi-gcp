@@ -18,6 +18,16 @@ public final class ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
      */
     private @Nullable Boolean allowExternalTraffic;
     /**
+     * @return Controls whether the k8s certs auth is allowed via Dns.
+     * 
+     */
+    private @Nullable Boolean enableK8sCertsViaDns;
+    /**
+     * @return Controls whether the k8s token auth is allowed via Dns.
+     * 
+     */
+    private @Nullable Boolean enableK8sTokensViaDns;
+    /**
      * @return The cluster&#39;s DNS endpoint.
      * 
      */
@@ -30,6 +40,20 @@ public final class ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
      */
     public Optional<Boolean> allowExternalTraffic() {
         return Optional.ofNullable(this.allowExternalTraffic);
+    }
+    /**
+     * @return Controls whether the k8s certs auth is allowed via Dns.
+     * 
+     */
+    public Optional<Boolean> enableK8sCertsViaDns() {
+        return Optional.ofNullable(this.enableK8sCertsViaDns);
+    }
+    /**
+     * @return Controls whether the k8s token auth is allowed via Dns.
+     * 
+     */
+    public Optional<Boolean> enableK8sTokensViaDns() {
+        return Optional.ofNullable(this.enableK8sTokensViaDns);
     }
     /**
      * @return The cluster&#39;s DNS endpoint.
@@ -49,11 +73,15 @@ public final class ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowExternalTraffic;
+        private @Nullable Boolean enableK8sCertsViaDns;
+        private @Nullable Boolean enableK8sTokensViaDns;
         private @Nullable String endpoint;
         public Builder() {}
         public Builder(ClusterControlPlaneEndpointsConfigDnsEndpointConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowExternalTraffic = defaults.allowExternalTraffic;
+    	      this.enableK8sCertsViaDns = defaults.enableK8sCertsViaDns;
+    	      this.enableK8sTokensViaDns = defaults.enableK8sTokensViaDns;
     	      this.endpoint = defaults.endpoint;
         }
 
@@ -61,6 +89,18 @@ public final class ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
         public Builder allowExternalTraffic(@Nullable Boolean allowExternalTraffic) {
 
             this.allowExternalTraffic = allowExternalTraffic;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableK8sCertsViaDns(@Nullable Boolean enableK8sCertsViaDns) {
+
+            this.enableK8sCertsViaDns = enableK8sCertsViaDns;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableK8sTokensViaDns(@Nullable Boolean enableK8sTokensViaDns) {
+
+            this.enableK8sTokensViaDns = enableK8sTokensViaDns;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +112,8 @@ public final class ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
         public ClusterControlPlaneEndpointsConfigDnsEndpointConfig build() {
             final var _resultValue = new ClusterControlPlaneEndpointsConfigDnsEndpointConfig();
             _resultValue.allowExternalTraffic = allowExternalTraffic;
+            _resultValue.enableK8sCertsViaDns = enableK8sCertsViaDns;
+            _resultValue.enableK8sTokensViaDns = enableK8sTokensViaDns;
             _resultValue.endpoint = endpoint;
             return _resultValue;
         }

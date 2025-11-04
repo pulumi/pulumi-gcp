@@ -18,8 +18,12 @@ public final class ServiceTemplateSpecContainerResourcesArgs extends com.pulumi.
 
     /**
      * Limits describes the maximum amount of compute resources allowed.
-     * The values of the map is string form of the &#39;quantity&#39; k8s type:
-     * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+     * CPU Limit details:
+     * - For fractional CPU values (e.g. `0.5`, `0.75`, min `0.08`) are also supported.
+     * - CPU allocation must comply with memory limits and concurrency rules described in:
+     *   https://cloud.google.com/run/docs/configuring/services/cpu
+     *   The values of the map is string form of the &#39;quantity&#39; k8s type:
+     *   https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
      * 
      */
     @Import(name="limits")
@@ -27,8 +31,12 @@ public final class ServiceTemplateSpecContainerResourcesArgs extends com.pulumi.
 
     /**
      * @return Limits describes the maximum amount of compute resources allowed.
-     * The values of the map is string form of the &#39;quantity&#39; k8s type:
-     * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+     * CPU Limit details:
+     * - For fractional CPU values (e.g. `0.5`, `0.75`, min `0.08`) are also supported.
+     * - CPU allocation must comply with memory limits and concurrency rules described in:
+     *   https://cloud.google.com/run/docs/configuring/services/cpu
+     *   The values of the map is string form of the &#39;quantity&#39; k8s type:
+     *   https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
      * 
      */
     public Optional<Output<Map<String,String>>> limits() {
@@ -85,8 +93,12 @@ public final class ServiceTemplateSpecContainerResourcesArgs extends com.pulumi.
 
         /**
          * @param limits Limits describes the maximum amount of compute resources allowed.
-         * The values of the map is string form of the &#39;quantity&#39; k8s type:
-         * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * CPU Limit details:
+         * - For fractional CPU values (e.g. `0.5`, `0.75`, min `0.08`) are also supported.
+         * - CPU allocation must comply with memory limits and concurrency rules described in:
+         *   https://cloud.google.com/run/docs/configuring/services/cpu
+         *   The values of the map is string form of the &#39;quantity&#39; k8s type:
+         *   https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          * 
          * @return builder
          * 
@@ -98,8 +110,12 @@ public final class ServiceTemplateSpecContainerResourcesArgs extends com.pulumi.
 
         /**
          * @param limits Limits describes the maximum amount of compute resources allowed.
-         * The values of the map is string form of the &#39;quantity&#39; k8s type:
-         * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * CPU Limit details:
+         * - For fractional CPU values (e.g. `0.5`, `0.75`, min `0.08`) are also supported.
+         * - CPU allocation must comply with memory limits and concurrency rules described in:
+         *   https://cloud.google.com/run/docs/configuring/services/cpu
+         *   The values of the map is string form of the &#39;quantity&#39; k8s type:
+         *   https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          * 
          * @return builder
          * 

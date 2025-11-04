@@ -19,6 +19,18 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? AllowExternalTraffic { get; set; }
 
         /// <summary>
+        /// Controls whether the k8s certs auth is allowed via Dns.
+        /// </summary>
+        [Input("enableK8sCertsViaDns")]
+        public Input<bool>? EnableK8sCertsViaDns { get; set; }
+
+        /// <summary>
+        /// Controls whether the k8s token auth is allowed via Dns.
+        /// </summary>
+        [Input("enableK8sTokensViaDns")]
+        public Input<bool>? EnableK8sTokensViaDns { get; set; }
+
+        /// <summary>
         /// The cluster's DNS endpoint.
         /// </summary>
         [Input("endpoint")]

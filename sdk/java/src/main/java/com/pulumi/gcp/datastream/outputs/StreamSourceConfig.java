@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMongodbSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMysqlSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigOracleSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigPostgresqlSourceConfig;
@@ -17,6 +18,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StreamSourceConfig {
+    /**
+     * @return MongoDB source configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable StreamSourceConfigMongodbSourceConfig mongodbSourceConfig;
     /**
      * @return MySQL data source configuration.
      * Structure is documented below.
@@ -54,6 +61,14 @@ public final class StreamSourceConfig {
     private @Nullable StreamSourceConfigSqlServerSourceConfig sqlServerSourceConfig;
 
     private StreamSourceConfig() {}
+    /**
+     * @return MongoDB source configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<StreamSourceConfigMongodbSourceConfig> mongodbSourceConfig() {
+        return Optional.ofNullable(this.mongodbSourceConfig);
+    }
     /**
      * @return MySQL data source configuration.
      * Structure is documented below.
@@ -111,6 +126,7 @@ public final class StreamSourceConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable StreamSourceConfigMongodbSourceConfig mongodbSourceConfig;
         private @Nullable StreamSourceConfigMysqlSourceConfig mysqlSourceConfig;
         private @Nullable StreamSourceConfigOracleSourceConfig oracleSourceConfig;
         private @Nullable StreamSourceConfigPostgresqlSourceConfig postgresqlSourceConfig;
@@ -120,6 +136,7 @@ public final class StreamSourceConfig {
         public Builder() {}
         public Builder(StreamSourceConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.mongodbSourceConfig = defaults.mongodbSourceConfig;
     	      this.mysqlSourceConfig = defaults.mysqlSourceConfig;
     	      this.oracleSourceConfig = defaults.oracleSourceConfig;
     	      this.postgresqlSourceConfig = defaults.postgresqlSourceConfig;
@@ -128,6 +145,12 @@ public final class StreamSourceConfig {
     	      this.sqlServerSourceConfig = defaults.sqlServerSourceConfig;
         }
 
+        @CustomType.Setter
+        public Builder mongodbSourceConfig(@Nullable StreamSourceConfigMongodbSourceConfig mongodbSourceConfig) {
+
+            this.mongodbSourceConfig = mongodbSourceConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder mysqlSourceConfig(@Nullable StreamSourceConfigMysqlSourceConfig mysqlSourceConfig) {
 
@@ -168,6 +191,7 @@ public final class StreamSourceConfig {
         }
         public StreamSourceConfig build() {
             final var _resultValue = new StreamSourceConfig();
+            _resultValue.mongodbSourceConfig = mongodbSourceConfig;
             _resultValue.mysqlSourceConfig = mysqlSourceConfig;
             _resultValue.oracleSourceConfig = oracleSourceConfig;
             _resultValue.postgresqlSourceConfig = postgresqlSourceConfig;

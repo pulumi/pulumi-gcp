@@ -10,8 +10,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class SecurityGatewayApplicationEndpointMatcherArgs extends com.pulumi.resources.ResourceArgs {
@@ -37,15 +35,15 @@ public final class SecurityGatewayApplicationEndpointMatcherArgs extends com.pul
      * Optional. Ports of the application.
      * 
      */
-    @Import(name="ports")
-    private @Nullable Output<List<Integer>> ports;
+    @Import(name="ports", required=true)
+    private Output<List<Integer>> ports;
 
     /**
      * @return Optional. Ports of the application.
      * 
      */
-    public Optional<Output<List<Integer>>> ports() {
-        return Optional.ofNullable(this.ports);
+    public Output<List<Integer>> ports() {
+        return this.ports;
     }
 
     private SecurityGatewayApplicationEndpointMatcherArgs() {}
@@ -100,7 +98,7 @@ public final class SecurityGatewayApplicationEndpointMatcherArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder ports(@Nullable Output<List<Integer>> ports) {
+        public Builder ports(Output<List<Integer>> ports) {
             $.ports = ports;
             return this;
         }
@@ -128,6 +126,9 @@ public final class SecurityGatewayApplicationEndpointMatcherArgs extends com.pul
         public SecurityGatewayApplicationEndpointMatcherArgs build() {
             if ($.hostname == null) {
                 throw new MissingRequiredPropertyException("SecurityGatewayApplicationEndpointMatcherArgs", "hostname");
+            }
+            if ($.ports == null) {
+                throw new MissingRequiredPropertyException("SecurityGatewayApplicationEndpointMatcherArgs", "ports");
             }
             return $;
         }

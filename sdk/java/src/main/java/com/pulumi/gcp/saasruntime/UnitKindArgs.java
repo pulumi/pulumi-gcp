@@ -47,6 +47,27 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A reference to the Release object to use as default for creating new units
+     * of this UnitKind.
+     * If not specified, a new unit must explicitly reference which release to use
+     * for its creation.
+     * 
+     */
+    @Import(name="defaultRelease")
+    private @Nullable Output<String> defaultRelease;
+
+    /**
+     * @return A reference to the Release object to use as default for creating new units
+     * of this UnitKind.
+     * If not specified, a new unit must explicitly reference which release to use
+     * for its creation.
+     * 
+     */
+    public Optional<Output<String>> defaultRelease() {
+        return Optional.ofNullable(this.defaultRelease);
+    }
+
+    /**
      * List of other unit kinds that this release will depend on. Dependencies
      * will be automatically provisioned if not found. Maximum 10.
      * Structure is documented below.
@@ -196,6 +217,7 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
 
     private UnitKindArgs(UnitKindArgs $) {
         this.annotations = $.annotations;
+        this.defaultRelease = $.defaultRelease;
         this.dependencies = $.dependencies;
         this.inputVariableMappings = $.inputVariableMappings;
         this.labels = $.labels;
@@ -253,6 +275,33 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
+        }
+
+        /**
+         * @param defaultRelease A reference to the Release object to use as default for creating new units
+         * of this UnitKind.
+         * If not specified, a new unit must explicitly reference which release to use
+         * for its creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultRelease(@Nullable Output<String> defaultRelease) {
+            $.defaultRelease = defaultRelease;
+            return this;
+        }
+
+        /**
+         * @param defaultRelease A reference to the Release object to use as default for creating new units
+         * of this UnitKind.
+         * If not specified, a new unit must explicitly reference which release to use
+         * for its creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultRelease(String defaultRelease) {
+            return defaultRelease(Output.of(defaultRelease));
         }
 
         /**

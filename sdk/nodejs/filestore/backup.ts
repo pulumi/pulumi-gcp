@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Backup, see:
  *
- * * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.backups)
+ * * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.backups)
  * * How-to Guides
  *     * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
  *     * [Official Documentation](https://cloud.google.com/filestore/docs/backups)

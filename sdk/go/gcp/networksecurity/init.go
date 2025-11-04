@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackendAuthenticationConfig{}
 	case "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy":
 		r = &ClientTlsPolicy{}
+	case "gcp:networksecurity/dnsThreatDetector:DnsThreatDetector":
+		r = &DnsThreatDetector{}
 	case "gcp:networksecurity/firewallEndpoint:FirewallEndpoint":
 		r = &FirewallEndpoint{}
 	case "gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation":
@@ -122,6 +124,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networksecurity/clientTlsPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/dnsThreatDetector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -27,10 +27,13 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, autoscaling_settings=None, id=None, management=None, name=None, node_type_configs=None, parent=None, state=None, uid=None):
+    def __init__(__self__, autoscaling_settings=None, create_time=None, id=None, management=None, name=None, node_type_configs=None, parent=None, state=None, uid=None, update_time=None):
         if autoscaling_settings and not isinstance(autoscaling_settings, list):
             raise TypeError("Expected argument 'autoscaling_settings' to be a list")
         pulumi.set(__self__, "autoscaling_settings", autoscaling_settings)
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -52,11 +55,19 @@ class GetClusterResult:
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
 
     @_builtins.property
     @pulumi.getter(name="autoscalingSettings")
     def autoscaling_settings(self) -> Sequence['outputs.GetClusterAutoscalingSettingResult']:
         return pulumi.get(self, "autoscaling_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
@@ -96,6 +107,11 @@ class GetClusterResult:
     def uid(self) -> _builtins.str:
         return pulumi.get(self, "uid")
 
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        return pulumi.get(self, "update_time")
+
 
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
@@ -104,13 +120,15 @@ class AwaitableGetClusterResult(GetClusterResult):
             yield self
         return GetClusterResult(
             autoscaling_settings=self.autoscaling_settings,
+            create_time=self.create_time,
             id=self.id,
             management=self.management,
             name=self.name,
             node_type_configs=self.node_type_configs,
             parent=self.parent,
             state=self.state,
-            uid=self.uid)
+            uid=self.uid,
+            update_time=self.update_time)
 
 
 def get_cluster(name: Optional[_builtins.str] = None,
@@ -144,13 +162,15 @@ def get_cluster(name: Optional[_builtins.str] = None,
 
     return AwaitableGetClusterResult(
         autoscaling_settings=pulumi.get(__ret__, 'autoscaling_settings'),
+        create_time=pulumi.get(__ret__, 'create_time'),
         id=pulumi.get(__ret__, 'id'),
         management=pulumi.get(__ret__, 'management'),
         name=pulumi.get(__ret__, 'name'),
         node_type_configs=pulumi.get(__ret__, 'node_type_configs'),
         parent=pulumi.get(__ret__, 'parent'),
         state=pulumi.get(__ret__, 'state'),
-        uid=pulumi.get(__ret__, 'uid'))
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 def get_cluster_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                        parent: Optional[pulumi.Input[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
@@ -181,10 +201,12 @@ def get_cluster_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
     return __ret__.apply(lambda __response__: GetClusterResult(
         autoscaling_settings=pulumi.get(__response__, 'autoscaling_settings'),
+        create_time=pulumi.get(__response__, 'create_time'),
         id=pulumi.get(__response__, 'id'),
         management=pulumi.get(__response__, 'management'),
         name=pulumi.get(__response__, 'name'),
         node_type_configs=pulumi.get(__response__, 'node_type_configs'),
         parent=pulumi.get(__response__, 'parent'),
         state=pulumi.get(__response__, 'state'),
-        uid=pulumi.get(__response__, 'uid')))
+        uid=pulumi.get(__response__, 'uid'),
+        update_time=pulumi.get(__response__, 'update_time')))

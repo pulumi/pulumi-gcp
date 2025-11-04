@@ -2233,6 +2233,67 @@ class BackendService(pulumi.CustomResource):
                 "group": external_proxy.id,
             }])
         ```
+        ### Backend Service In Flight
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom = gcp.compute.Network("custom",
+            name="custom-vpc",
+            auto_create_subnetworks=False)
+        default = gcp.compute.Subnetwork("default",
+            name="custom-subnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=custom.id)
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            name="instance-template",
+            machine_type="e2-micro",
+            disks=[{
+                "source_image": "debian-cloud/debian-11",
+                "auto_delete": True,
+                "boot": True,
+            }],
+            network_interfaces=[{
+                "network": custom.id,
+                "subnetwork": default.id,
+            }],
+            metadata={
+                "startup-script": \"\"\"#!/bin/bash
+        echo "Hello World from MIG VM" > /var/www/html/index.html
+        apt-get update -y
+        apt-get install -y apache2
+        systemctl start apache2
+        \"\"\",
+            })
+        foobar = gcp.compute.RegionInstanceGroupManager("foobar",
+            name="instance-group-manager",
+            base_instance_name="vm",
+            region="us-central1",
+            versions=[{
+                "instance_template": default_instance_template.id,
+            }],
+            target_size=1)
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            description="Hello World 1234",
+            port_name="http",
+            protocol="TCP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            backends=[{
+                "group": foobar.instance_group,
+                "balancing_mode": "IN_FLIGHT",
+                "max_in_flight_requests": 1000,
+                "traffic_duration": "LONG",
+            }],
+            health_checks=default_health_check.self_link)
+        ```
         ### Backend Service External Managed
 
         ```python
@@ -2861,6 +2922,67 @@ class BackendService(pulumi.CustomResource):
             backends=[{
                 "group": external_proxy.id,
             }])
+        ```
+        ### Backend Service In Flight
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom = gcp.compute.Network("custom",
+            name="custom-vpc",
+            auto_create_subnetworks=False)
+        default = gcp.compute.Subnetwork("default",
+            name="custom-subnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=custom.id)
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            name="instance-template",
+            machine_type="e2-micro",
+            disks=[{
+                "source_image": "debian-cloud/debian-11",
+                "auto_delete": True,
+                "boot": True,
+            }],
+            network_interfaces=[{
+                "network": custom.id,
+                "subnetwork": default.id,
+            }],
+            metadata={
+                "startup-script": \"\"\"#!/bin/bash
+        echo "Hello World from MIG VM" > /var/www/html/index.html
+        apt-get update -y
+        apt-get install -y apache2
+        systemctl start apache2
+        \"\"\",
+            })
+        foobar = gcp.compute.RegionInstanceGroupManager("foobar",
+            name="instance-group-manager",
+            base_instance_name="vm",
+            region="us-central1",
+            versions=[{
+                "instance_template": default_instance_template.id,
+            }],
+            target_size=1)
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            description="Hello World 1234",
+            port_name="http",
+            protocol="TCP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            backends=[{
+                "group": foobar.instance_group,
+                "balancing_mode": "IN_FLIGHT",
+                "max_in_flight_requests": 1000,
+                "traffic_duration": "LONG",
+            }],
+            health_checks=default_health_check.self_link)
         ```
         ### Backend Service External Managed
 

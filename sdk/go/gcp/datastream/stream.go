@@ -1086,8 +1086,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -1098,8 +1098,8 @@ import (
 //				return err
 //			}
 //			cross_project_dataset, err := organizations.NewProject(ctx, "cross-project-dataset", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_79169"),
-//				Name:           pulumi.String("tf-test_56529"),
+//				ProjectId:      pulumi.String("tf-test_76044"),
+//				Name:           pulumi.String("tf-test_69391"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -1108,7 +1108,7 @@ import (
 //				return err
 //			}
 //			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
-//				CreateDuration: "60s",
+//				CreateDuration: pulumi.String("60s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				cross_project_dataset,
 //			}))
@@ -1545,6 +1545,8 @@ import (
 //	}
 //
 // ```
+// ### Datastream Stream Mongodb
+//
 // ## Import
 //
 // Stream can be imported using any of these accepted formats:

@@ -32,8 +32,8 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -51,7 +51,7 @@ import (
 //			// It takes a while for App Check to recognize the new app
 //			// If your app already exists, you don't have to wait 30 seconds.
 //			wait30s, err := time.NewSleep(ctx, "wait_30s", &time.SleepArgs{
-//				CreateDuration: "30s",
+//				CreateDuration: pulumi.String("30s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
 //			}))

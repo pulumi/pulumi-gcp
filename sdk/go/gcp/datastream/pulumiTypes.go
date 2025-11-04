@@ -508,6 +508,986 @@ func (o ConnectionProfileGcsProfilePtrOutput) RootPath() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionProfileMongodbProfile struct {
+	// List of host addresses for a MongoDB cluster.
+	// Structure is documented below.
+	HostAddresses []ConnectionProfileMongodbProfileHostAddress `pulumi:"hostAddresses"`
+	// Password for the MongoDB connection. Mutually exclusive with
+	// secretManagerStoredPassword.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Password *string `pulumi:"password"`
+	// Name of the replica set.
+	ReplicaSet *string `pulumi:"replicaSet"`
+	// A reference to a Secret Manager resource name storing the MongoDB
+	// connection password. Mutually exclusive with password.
+	SecretManagerStoredPassword *string `pulumi:"secretManagerStoredPassword"`
+	// Srv connection format. Mutually exclusive with
+	// standard_connection_Format.
+	SrvConnectionFormat *ConnectionProfileMongodbProfileSrvConnectionFormat `pulumi:"srvConnectionFormat"`
+	// SSL configuration for the MongoDB connection.
+	// Structure is documented below.
+	SslConfig *ConnectionProfileMongodbProfileSslConfig `pulumi:"sslConfig"`
+	// Standard connection format. Mutually exclusive with
+	// srv_connection_format.
+	// Structure is documented below.
+	StandardConnectionFormat *ConnectionProfileMongodbProfileStandardConnectionFormat `pulumi:"standardConnectionFormat"`
+	// Username for the MongoDB connection.
+	Username string `pulumi:"username"`
+}
+
+// ConnectionProfileMongodbProfileInput is an input type that accepts ConnectionProfileMongodbProfileArgs and ConnectionProfileMongodbProfileOutput values.
+// You can construct a concrete instance of `ConnectionProfileMongodbProfileInput` via:
+//
+//	ConnectionProfileMongodbProfileArgs{...}
+type ConnectionProfileMongodbProfileInput interface {
+	pulumi.Input
+
+	ToConnectionProfileMongodbProfileOutput() ConnectionProfileMongodbProfileOutput
+	ToConnectionProfileMongodbProfileOutputWithContext(context.Context) ConnectionProfileMongodbProfileOutput
+}
+
+type ConnectionProfileMongodbProfileArgs struct {
+	// List of host addresses for a MongoDB cluster.
+	// Structure is documented below.
+	HostAddresses ConnectionProfileMongodbProfileHostAddressArrayInput `pulumi:"hostAddresses"`
+	// Password for the MongoDB connection. Mutually exclusive with
+	// secretManagerStoredPassword.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Name of the replica set.
+	ReplicaSet pulumi.StringPtrInput `pulumi:"replicaSet"`
+	// A reference to a Secret Manager resource name storing the MongoDB
+	// connection password. Mutually exclusive with password.
+	SecretManagerStoredPassword pulumi.StringPtrInput `pulumi:"secretManagerStoredPassword"`
+	// Srv connection format. Mutually exclusive with
+	// standard_connection_Format.
+	SrvConnectionFormat ConnectionProfileMongodbProfileSrvConnectionFormatPtrInput `pulumi:"srvConnectionFormat"`
+	// SSL configuration for the MongoDB connection.
+	// Structure is documented below.
+	SslConfig ConnectionProfileMongodbProfileSslConfigPtrInput `pulumi:"sslConfig"`
+	// Standard connection format. Mutually exclusive with
+	// srv_connection_format.
+	// Structure is documented below.
+	StandardConnectionFormat ConnectionProfileMongodbProfileStandardConnectionFormatPtrInput `pulumi:"standardConnectionFormat"`
+	// Username for the MongoDB connection.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (ConnectionProfileMongodbProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileMongodbProfile)(nil)).Elem()
+}
+
+func (i ConnectionProfileMongodbProfileArgs) ToConnectionProfileMongodbProfileOutput() ConnectionProfileMongodbProfileOutput {
+	return i.ToConnectionProfileMongodbProfileOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileMongodbProfileArgs) ToConnectionProfileMongodbProfileOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileOutput)
+}
+
+func (i ConnectionProfileMongodbProfileArgs) ToConnectionProfileMongodbProfilePtrOutput() ConnectionProfileMongodbProfilePtrOutput {
+	return i.ToConnectionProfileMongodbProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileMongodbProfileArgs) ToConnectionProfileMongodbProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileOutput).ToConnectionProfileMongodbProfilePtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileMongodbProfilePtrInput is an input type that accepts ConnectionProfileMongodbProfileArgs, ConnectionProfileMongodbProfilePtr and ConnectionProfileMongodbProfilePtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileMongodbProfilePtrInput` via:
+//
+//	        ConnectionProfileMongodbProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileMongodbProfilePtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileMongodbProfilePtrOutput() ConnectionProfileMongodbProfilePtrOutput
+	ToConnectionProfileMongodbProfilePtrOutputWithContext(context.Context) ConnectionProfileMongodbProfilePtrOutput
+}
+
+type connectionProfileMongodbProfilePtrType ConnectionProfileMongodbProfileArgs
+
+func ConnectionProfileMongodbProfilePtr(v *ConnectionProfileMongodbProfileArgs) ConnectionProfileMongodbProfilePtrInput {
+	return (*connectionProfileMongodbProfilePtrType)(v)
+}
+
+func (*connectionProfileMongodbProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileMongodbProfile)(nil)).Elem()
+}
+
+func (i *connectionProfileMongodbProfilePtrType) ToConnectionProfileMongodbProfilePtrOutput() ConnectionProfileMongodbProfilePtrOutput {
+	return i.ToConnectionProfileMongodbProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileMongodbProfilePtrType) ToConnectionProfileMongodbProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfilePtrOutput)
+}
+
+type ConnectionProfileMongodbProfileOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileMongodbProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileMongodbProfile)(nil)).Elem()
+}
+
+func (o ConnectionProfileMongodbProfileOutput) ToConnectionProfileMongodbProfileOutput() ConnectionProfileMongodbProfileOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileOutput) ToConnectionProfileMongodbProfileOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileOutput) ToConnectionProfileMongodbProfilePtrOutput() ConnectionProfileMongodbProfilePtrOutput {
+	return o.ToConnectionProfileMongodbProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileMongodbProfileOutput) ToConnectionProfileMongodbProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileMongodbProfile) *ConnectionProfileMongodbProfile {
+		return &v
+	}).(ConnectionProfileMongodbProfilePtrOutput)
+}
+
+// List of host addresses for a MongoDB cluster.
+// Structure is documented below.
+func (o ConnectionProfileMongodbProfileOutput) HostAddresses() ConnectionProfileMongodbProfileHostAddressArrayOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfile) []ConnectionProfileMongodbProfileHostAddress {
+		return v.HostAddresses
+	}).(ConnectionProfileMongodbProfileHostAddressArrayOutput)
+}
+
+// Password for the MongoDB connection. Mutually exclusive with
+// secretManagerStoredPassword.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileMongodbProfileOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfile) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Name of the replica set.
+func (o ConnectionProfileMongodbProfileOutput) ReplicaSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfile) *string { return v.ReplicaSet }).(pulumi.StringPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the MongoDB
+// connection password. Mutually exclusive with password.
+func (o ConnectionProfileMongodbProfileOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfile) *string { return v.SecretManagerStoredPassword }).(pulumi.StringPtrOutput)
+}
+
+// Srv connection format. Mutually exclusive with
+// standard_connection_Format.
+func (o ConnectionProfileMongodbProfileOutput) SrvConnectionFormat() ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfile) *ConnectionProfileMongodbProfileSrvConnectionFormat {
+		return v.SrvConnectionFormat
+	}).(ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput)
+}
+
+// SSL configuration for the MongoDB connection.
+// Structure is documented below.
+func (o ConnectionProfileMongodbProfileOutput) SslConfig() ConnectionProfileMongodbProfileSslConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfile) *ConnectionProfileMongodbProfileSslConfig { return v.SslConfig }).(ConnectionProfileMongodbProfileSslConfigPtrOutput)
+}
+
+// Standard connection format. Mutually exclusive with
+// srv_connection_format.
+// Structure is documented below.
+func (o ConnectionProfileMongodbProfileOutput) StandardConnectionFormat() ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfile) *ConnectionProfileMongodbProfileStandardConnectionFormat {
+		return v.StandardConnectionFormat
+	}).(ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput)
+}
+
+// Username for the MongoDB connection.
+func (o ConnectionProfileMongodbProfileOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfile) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type ConnectionProfileMongodbProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileMongodbProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileMongodbProfile)(nil)).Elem()
+}
+
+func (o ConnectionProfileMongodbProfilePtrOutput) ToConnectionProfileMongodbProfilePtrOutput() ConnectionProfileMongodbProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfilePtrOutput) ToConnectionProfileMongodbProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfilePtrOutput) Elem() ConnectionProfileMongodbProfileOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfile) ConnectionProfileMongodbProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileMongodbProfile
+		return ret
+	}).(ConnectionProfileMongodbProfileOutput)
+}
+
+// List of host addresses for a MongoDB cluster.
+// Structure is documented below.
+func (o ConnectionProfileMongodbProfilePtrOutput) HostAddresses() ConnectionProfileMongodbProfileHostAddressArrayOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfile) []ConnectionProfileMongodbProfileHostAddress {
+		if v == nil {
+			return nil
+		}
+		return v.HostAddresses
+	}).(ConnectionProfileMongodbProfileHostAddressArrayOutput)
+}
+
+// Password for the MongoDB connection. Mutually exclusive with
+// secretManagerStoredPassword.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileMongodbProfilePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the replica set.
+func (o ConnectionProfileMongodbProfilePtrOutput) ReplicaSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaSet
+	}).(pulumi.StringPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the MongoDB
+// connection password. Mutually exclusive with password.
+func (o ConnectionProfileMongodbProfilePtrOutput) SecretManagerStoredPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretManagerStoredPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Srv connection format. Mutually exclusive with
+// standard_connection_Format.
+func (o ConnectionProfileMongodbProfilePtrOutput) SrvConnectionFormat() ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfile) *ConnectionProfileMongodbProfileSrvConnectionFormat {
+		if v == nil {
+			return nil
+		}
+		return v.SrvConnectionFormat
+	}).(ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput)
+}
+
+// SSL configuration for the MongoDB connection.
+// Structure is documented below.
+func (o ConnectionProfileMongodbProfilePtrOutput) SslConfig() ConnectionProfileMongodbProfileSslConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfile) *ConnectionProfileMongodbProfileSslConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SslConfig
+	}).(ConnectionProfileMongodbProfileSslConfigPtrOutput)
+}
+
+// Standard connection format. Mutually exclusive with
+// srv_connection_format.
+// Structure is documented below.
+func (o ConnectionProfileMongodbProfilePtrOutput) StandardConnectionFormat() ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfile) *ConnectionProfileMongodbProfileStandardConnectionFormat {
+		if v == nil {
+			return nil
+		}
+		return v.StandardConnectionFormat
+	}).(ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput)
+}
+
+// Username for the MongoDB connection.
+func (o ConnectionProfileMongodbProfilePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileMongodbProfileHostAddress struct {
+	// Hostname for the connection.
+	Hostname string `pulumi:"hostname"`
+	// Port for the connection.
+	Port *int `pulumi:"port"`
+}
+
+// ConnectionProfileMongodbProfileHostAddressInput is an input type that accepts ConnectionProfileMongodbProfileHostAddressArgs and ConnectionProfileMongodbProfileHostAddressOutput values.
+// You can construct a concrete instance of `ConnectionProfileMongodbProfileHostAddressInput` via:
+//
+//	ConnectionProfileMongodbProfileHostAddressArgs{...}
+type ConnectionProfileMongodbProfileHostAddressInput interface {
+	pulumi.Input
+
+	ToConnectionProfileMongodbProfileHostAddressOutput() ConnectionProfileMongodbProfileHostAddressOutput
+	ToConnectionProfileMongodbProfileHostAddressOutputWithContext(context.Context) ConnectionProfileMongodbProfileHostAddressOutput
+}
+
+type ConnectionProfileMongodbProfileHostAddressArgs struct {
+	// Hostname for the connection.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Port for the connection.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (ConnectionProfileMongodbProfileHostAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileMongodbProfileHostAddress)(nil)).Elem()
+}
+
+func (i ConnectionProfileMongodbProfileHostAddressArgs) ToConnectionProfileMongodbProfileHostAddressOutput() ConnectionProfileMongodbProfileHostAddressOutput {
+	return i.ToConnectionProfileMongodbProfileHostAddressOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileMongodbProfileHostAddressArgs) ToConnectionProfileMongodbProfileHostAddressOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileHostAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileHostAddressOutput)
+}
+
+// ConnectionProfileMongodbProfileHostAddressArrayInput is an input type that accepts ConnectionProfileMongodbProfileHostAddressArray and ConnectionProfileMongodbProfileHostAddressArrayOutput values.
+// You can construct a concrete instance of `ConnectionProfileMongodbProfileHostAddressArrayInput` via:
+//
+//	ConnectionProfileMongodbProfileHostAddressArray{ ConnectionProfileMongodbProfileHostAddressArgs{...} }
+type ConnectionProfileMongodbProfileHostAddressArrayInput interface {
+	pulumi.Input
+
+	ToConnectionProfileMongodbProfileHostAddressArrayOutput() ConnectionProfileMongodbProfileHostAddressArrayOutput
+	ToConnectionProfileMongodbProfileHostAddressArrayOutputWithContext(context.Context) ConnectionProfileMongodbProfileHostAddressArrayOutput
+}
+
+type ConnectionProfileMongodbProfileHostAddressArray []ConnectionProfileMongodbProfileHostAddressInput
+
+func (ConnectionProfileMongodbProfileHostAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionProfileMongodbProfileHostAddress)(nil)).Elem()
+}
+
+func (i ConnectionProfileMongodbProfileHostAddressArray) ToConnectionProfileMongodbProfileHostAddressArrayOutput() ConnectionProfileMongodbProfileHostAddressArrayOutput {
+	return i.ToConnectionProfileMongodbProfileHostAddressArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileMongodbProfileHostAddressArray) ToConnectionProfileMongodbProfileHostAddressArrayOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileHostAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileHostAddressArrayOutput)
+}
+
+type ConnectionProfileMongodbProfileHostAddressOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileMongodbProfileHostAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileMongodbProfileHostAddress)(nil)).Elem()
+}
+
+func (o ConnectionProfileMongodbProfileHostAddressOutput) ToConnectionProfileMongodbProfileHostAddressOutput() ConnectionProfileMongodbProfileHostAddressOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileHostAddressOutput) ToConnectionProfileMongodbProfileHostAddressOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileHostAddressOutput {
+	return o
+}
+
+// Hostname for the connection.
+func (o ConnectionProfileMongodbProfileHostAddressOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfileHostAddress) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Port for the connection.
+func (o ConnectionProfileMongodbProfileHostAddressOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfileHostAddress) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ConnectionProfileMongodbProfileHostAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileMongodbProfileHostAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionProfileMongodbProfileHostAddress)(nil)).Elem()
+}
+
+func (o ConnectionProfileMongodbProfileHostAddressArrayOutput) ToConnectionProfileMongodbProfileHostAddressArrayOutput() ConnectionProfileMongodbProfileHostAddressArrayOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileHostAddressArrayOutput) ToConnectionProfileMongodbProfileHostAddressArrayOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileHostAddressArrayOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileHostAddressArrayOutput) Index(i pulumi.IntInput) ConnectionProfileMongodbProfileHostAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionProfileMongodbProfileHostAddress {
+		return vs[0].([]ConnectionProfileMongodbProfileHostAddress)[vs[1].(int)]
+	}).(ConnectionProfileMongodbProfileHostAddressOutput)
+}
+
+type ConnectionProfileMongodbProfileSrvConnectionFormat struct {
+}
+
+// ConnectionProfileMongodbProfileSrvConnectionFormatInput is an input type that accepts ConnectionProfileMongodbProfileSrvConnectionFormatArgs and ConnectionProfileMongodbProfileSrvConnectionFormatOutput values.
+// You can construct a concrete instance of `ConnectionProfileMongodbProfileSrvConnectionFormatInput` via:
+//
+//	ConnectionProfileMongodbProfileSrvConnectionFormatArgs{...}
+type ConnectionProfileMongodbProfileSrvConnectionFormatInput interface {
+	pulumi.Input
+
+	ToConnectionProfileMongodbProfileSrvConnectionFormatOutput() ConnectionProfileMongodbProfileSrvConnectionFormatOutput
+	ToConnectionProfileMongodbProfileSrvConnectionFormatOutputWithContext(context.Context) ConnectionProfileMongodbProfileSrvConnectionFormatOutput
+}
+
+type ConnectionProfileMongodbProfileSrvConnectionFormatArgs struct {
+}
+
+func (ConnectionProfileMongodbProfileSrvConnectionFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileMongodbProfileSrvConnectionFormat)(nil)).Elem()
+}
+
+func (i ConnectionProfileMongodbProfileSrvConnectionFormatArgs) ToConnectionProfileMongodbProfileSrvConnectionFormatOutput() ConnectionProfileMongodbProfileSrvConnectionFormatOutput {
+	return i.ToConnectionProfileMongodbProfileSrvConnectionFormatOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileMongodbProfileSrvConnectionFormatArgs) ToConnectionProfileMongodbProfileSrvConnectionFormatOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileSrvConnectionFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileSrvConnectionFormatOutput)
+}
+
+func (i ConnectionProfileMongodbProfileSrvConnectionFormatArgs) ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput() ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput {
+	return i.ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileMongodbProfileSrvConnectionFormatArgs) ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileSrvConnectionFormatOutput).ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileMongodbProfileSrvConnectionFormatPtrInput is an input type that accepts ConnectionProfileMongodbProfileSrvConnectionFormatArgs, ConnectionProfileMongodbProfileSrvConnectionFormatPtr and ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileMongodbProfileSrvConnectionFormatPtrInput` via:
+//
+//	        ConnectionProfileMongodbProfileSrvConnectionFormatArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileMongodbProfileSrvConnectionFormatPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput() ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput
+	ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutputWithContext(context.Context) ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput
+}
+
+type connectionProfileMongodbProfileSrvConnectionFormatPtrType ConnectionProfileMongodbProfileSrvConnectionFormatArgs
+
+func ConnectionProfileMongodbProfileSrvConnectionFormatPtr(v *ConnectionProfileMongodbProfileSrvConnectionFormatArgs) ConnectionProfileMongodbProfileSrvConnectionFormatPtrInput {
+	return (*connectionProfileMongodbProfileSrvConnectionFormatPtrType)(v)
+}
+
+func (*connectionProfileMongodbProfileSrvConnectionFormatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileMongodbProfileSrvConnectionFormat)(nil)).Elem()
+}
+
+func (i *connectionProfileMongodbProfileSrvConnectionFormatPtrType) ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput() ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput {
+	return i.ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileMongodbProfileSrvConnectionFormatPtrType) ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput)
+}
+
+type ConnectionProfileMongodbProfileSrvConnectionFormatOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileMongodbProfileSrvConnectionFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileMongodbProfileSrvConnectionFormat)(nil)).Elem()
+}
+
+func (o ConnectionProfileMongodbProfileSrvConnectionFormatOutput) ToConnectionProfileMongodbProfileSrvConnectionFormatOutput() ConnectionProfileMongodbProfileSrvConnectionFormatOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileSrvConnectionFormatOutput) ToConnectionProfileMongodbProfileSrvConnectionFormatOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileSrvConnectionFormatOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileSrvConnectionFormatOutput) ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput() ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput {
+	return o.ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileMongodbProfileSrvConnectionFormatOutput) ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileMongodbProfileSrvConnectionFormat) *ConnectionProfileMongodbProfileSrvConnectionFormat {
+		return &v
+	}).(ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput)
+}
+
+type ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileMongodbProfileSrvConnectionFormat)(nil)).Elem()
+}
+
+func (o ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput) ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput() ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput) ToConnectionProfileMongodbProfileSrvConnectionFormatPtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput) Elem() ConnectionProfileMongodbProfileSrvConnectionFormatOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfileSrvConnectionFormat) ConnectionProfileMongodbProfileSrvConnectionFormat {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileMongodbProfileSrvConnectionFormat
+		return ret
+	}).(ConnectionProfileMongodbProfileSrvConnectionFormatOutput)
+}
+
+type ConnectionProfileMongodbProfileSslConfig struct {
+	// PEM-encoded certificate of the CA that signed the source database
+	// server's certificate.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	CaCertificate *string `pulumi:"caCertificate"`
+	// (Output)
+	// Indicates whether the clientKey field is set.
+	CaCertificateSet *bool `pulumi:"caCertificateSet"`
+	// PEM-encoded certificate that will be used by the replica to
+	// authenticate against the source database server. If this field
+	// is used then the 'clientKey' and the 'caCertificate' fields are
+	// mandatory.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientCertificate *string `pulumi:"clientCertificate"`
+	// (Output)
+	// Indicates whether the clientCertificate field is set.
+	ClientCertificateSet *bool `pulumi:"clientCertificateSet"`
+	// PEM-encoded private key associated with the Client Certificate.
+	// If this field is used then the 'client_certificate' and the
+	// 'ca_certificate' fields are mandatory.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientKey *string `pulumi:"clientKey"`
+	// (Output)
+	// Indicates whether the clientKey field is set.
+	ClientKeySet *bool `pulumi:"clientKeySet"`
+	// A reference to a Secret Manager resource name storing the
+	// PEM-encoded private key. Mutually exclusive with clientKey.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	SecretManagerStoredClientKey *string `pulumi:"secretManagerStoredClientKey"`
+}
+
+// ConnectionProfileMongodbProfileSslConfigInput is an input type that accepts ConnectionProfileMongodbProfileSslConfigArgs and ConnectionProfileMongodbProfileSslConfigOutput values.
+// You can construct a concrete instance of `ConnectionProfileMongodbProfileSslConfigInput` via:
+//
+//	ConnectionProfileMongodbProfileSslConfigArgs{...}
+type ConnectionProfileMongodbProfileSslConfigInput interface {
+	pulumi.Input
+
+	ToConnectionProfileMongodbProfileSslConfigOutput() ConnectionProfileMongodbProfileSslConfigOutput
+	ToConnectionProfileMongodbProfileSslConfigOutputWithContext(context.Context) ConnectionProfileMongodbProfileSslConfigOutput
+}
+
+type ConnectionProfileMongodbProfileSslConfigArgs struct {
+	// PEM-encoded certificate of the CA that signed the source database
+	// server's certificate.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	CaCertificate pulumi.StringPtrInput `pulumi:"caCertificate"`
+	// (Output)
+	// Indicates whether the clientKey field is set.
+	CaCertificateSet pulumi.BoolPtrInput `pulumi:"caCertificateSet"`
+	// PEM-encoded certificate that will be used by the replica to
+	// authenticate against the source database server. If this field
+	// is used then the 'clientKey' and the 'caCertificate' fields are
+	// mandatory.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
+	// (Output)
+	// Indicates whether the clientCertificate field is set.
+	ClientCertificateSet pulumi.BoolPtrInput `pulumi:"clientCertificateSet"`
+	// PEM-encoded private key associated with the Client Certificate.
+	// If this field is used then the 'client_certificate' and the
+	// 'ca_certificate' fields are mandatory.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// (Output)
+	// Indicates whether the clientKey field is set.
+	ClientKeySet pulumi.BoolPtrInput `pulumi:"clientKeySet"`
+	// A reference to a Secret Manager resource name storing the
+	// PEM-encoded private key. Mutually exclusive with clientKey.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	SecretManagerStoredClientKey pulumi.StringPtrInput `pulumi:"secretManagerStoredClientKey"`
+}
+
+func (ConnectionProfileMongodbProfileSslConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileMongodbProfileSslConfig)(nil)).Elem()
+}
+
+func (i ConnectionProfileMongodbProfileSslConfigArgs) ToConnectionProfileMongodbProfileSslConfigOutput() ConnectionProfileMongodbProfileSslConfigOutput {
+	return i.ToConnectionProfileMongodbProfileSslConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileMongodbProfileSslConfigArgs) ToConnectionProfileMongodbProfileSslConfigOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileSslConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileSslConfigOutput)
+}
+
+func (i ConnectionProfileMongodbProfileSslConfigArgs) ToConnectionProfileMongodbProfileSslConfigPtrOutput() ConnectionProfileMongodbProfileSslConfigPtrOutput {
+	return i.ToConnectionProfileMongodbProfileSslConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileMongodbProfileSslConfigArgs) ToConnectionProfileMongodbProfileSslConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileSslConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileSslConfigOutput).ToConnectionProfileMongodbProfileSslConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileMongodbProfileSslConfigPtrInput is an input type that accepts ConnectionProfileMongodbProfileSslConfigArgs, ConnectionProfileMongodbProfileSslConfigPtr and ConnectionProfileMongodbProfileSslConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileMongodbProfileSslConfigPtrInput` via:
+//
+//	        ConnectionProfileMongodbProfileSslConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileMongodbProfileSslConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileMongodbProfileSslConfigPtrOutput() ConnectionProfileMongodbProfileSslConfigPtrOutput
+	ToConnectionProfileMongodbProfileSslConfigPtrOutputWithContext(context.Context) ConnectionProfileMongodbProfileSslConfigPtrOutput
+}
+
+type connectionProfileMongodbProfileSslConfigPtrType ConnectionProfileMongodbProfileSslConfigArgs
+
+func ConnectionProfileMongodbProfileSslConfigPtr(v *ConnectionProfileMongodbProfileSslConfigArgs) ConnectionProfileMongodbProfileSslConfigPtrInput {
+	return (*connectionProfileMongodbProfileSslConfigPtrType)(v)
+}
+
+func (*connectionProfileMongodbProfileSslConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileMongodbProfileSslConfig)(nil)).Elem()
+}
+
+func (i *connectionProfileMongodbProfileSslConfigPtrType) ToConnectionProfileMongodbProfileSslConfigPtrOutput() ConnectionProfileMongodbProfileSslConfigPtrOutput {
+	return i.ToConnectionProfileMongodbProfileSslConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileMongodbProfileSslConfigPtrType) ToConnectionProfileMongodbProfileSslConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileSslConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileSslConfigPtrOutput)
+}
+
+type ConnectionProfileMongodbProfileSslConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileMongodbProfileSslConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileMongodbProfileSslConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileMongodbProfileSslConfigOutput) ToConnectionProfileMongodbProfileSslConfigOutput() ConnectionProfileMongodbProfileSslConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileSslConfigOutput) ToConnectionProfileMongodbProfileSslConfigOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileSslConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileSslConfigOutput) ToConnectionProfileMongodbProfileSslConfigPtrOutput() ConnectionProfileMongodbProfileSslConfigPtrOutput {
+	return o.ToConnectionProfileMongodbProfileSslConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileMongodbProfileSslConfigOutput) ToConnectionProfileMongodbProfileSslConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileSslConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileMongodbProfileSslConfig) *ConnectionProfileMongodbProfileSslConfig {
+		return &v
+	}).(ConnectionProfileMongodbProfileSslConfigPtrOutput)
+}
+
+// PEM-encoded certificate of the CA that signed the source database
+// server's certificate.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileMongodbProfileSslConfigOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfileSslConfig) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Indicates whether the clientKey field is set.
+func (o ConnectionProfileMongodbProfileSslConfigOutput) CaCertificateSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfileSslConfig) *bool { return v.CaCertificateSet }).(pulumi.BoolPtrOutput)
+}
+
+// PEM-encoded certificate that will be used by the replica to
+// authenticate against the source database server. If this field
+// is used then the 'clientKey' and the 'caCertificate' fields are
+// mandatory.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileMongodbProfileSslConfigOutput) ClientCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfileSslConfig) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Indicates whether the clientCertificate field is set.
+func (o ConnectionProfileMongodbProfileSslConfigOutput) ClientCertificateSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfileSslConfig) *bool { return v.ClientCertificateSet }).(pulumi.BoolPtrOutput)
+}
+
+// PEM-encoded private key associated with the Client Certificate.
+// If this field is used then the 'client_certificate' and the
+// 'ca_certificate' fields are mandatory.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileMongodbProfileSslConfigOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfileSslConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Indicates whether the clientKey field is set.
+func (o ConnectionProfileMongodbProfileSslConfigOutput) ClientKeySet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfileSslConfig) *bool { return v.ClientKeySet }).(pulumi.BoolPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the
+// PEM-encoded private key. Mutually exclusive with clientKey.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileMongodbProfileSslConfigOutput) SecretManagerStoredClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfileSslConfig) *string { return v.SecretManagerStoredClientKey }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileMongodbProfileSslConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileMongodbProfileSslConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileMongodbProfileSslConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileMongodbProfileSslConfigPtrOutput) ToConnectionProfileMongodbProfileSslConfigPtrOutput() ConnectionProfileMongodbProfileSslConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileSslConfigPtrOutput) ToConnectionProfileMongodbProfileSslConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileSslConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileSslConfigPtrOutput) Elem() ConnectionProfileMongodbProfileSslConfigOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfileSslConfig) ConnectionProfileMongodbProfileSslConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileMongodbProfileSslConfig
+		return ret
+	}).(ConnectionProfileMongodbProfileSslConfigOutput)
+}
+
+// PEM-encoded certificate of the CA that signed the source database
+// server's certificate.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileMongodbProfileSslConfigPtrOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfileSslConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Indicates whether the clientKey field is set.
+func (o ConnectionProfileMongodbProfileSslConfigPtrOutput) CaCertificateSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfileSslConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertificateSet
+	}).(pulumi.BoolPtrOutput)
+}
+
+// PEM-encoded certificate that will be used by the replica to
+// authenticate against the source database server. If this field
+// is used then the 'clientKey' and the 'caCertificate' fields are
+// mandatory.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileMongodbProfileSslConfigPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfileSslConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Indicates whether the clientCertificate field is set.
+func (o ConnectionProfileMongodbProfileSslConfigPtrOutput) ClientCertificateSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfileSslConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCertificateSet
+	}).(pulumi.BoolPtrOutput)
+}
+
+// PEM-encoded private key associated with the Client Certificate.
+// If this field is used then the 'client_certificate' and the
+// 'ca_certificate' fields are mandatory.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileMongodbProfileSslConfigPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfileSslConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Indicates whether the clientKey field is set.
+func (o ConnectionProfileMongodbProfileSslConfigPtrOutput) ClientKeySet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfileSslConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClientKeySet
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A reference to a Secret Manager resource name storing the
+// PEM-encoded private key. Mutually exclusive with clientKey.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileMongodbProfileSslConfigPtrOutput) SecretManagerStoredClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfileSslConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretManagerStoredClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileMongodbProfileStandardConnectionFormat struct {
+	// Specifies whether the client connects directly to the
+	// host[:port] in the connection URI.
+	DirectConnection *bool `pulumi:"directConnection"`
+}
+
+// ConnectionProfileMongodbProfileStandardConnectionFormatInput is an input type that accepts ConnectionProfileMongodbProfileStandardConnectionFormatArgs and ConnectionProfileMongodbProfileStandardConnectionFormatOutput values.
+// You can construct a concrete instance of `ConnectionProfileMongodbProfileStandardConnectionFormatInput` via:
+//
+//	ConnectionProfileMongodbProfileStandardConnectionFormatArgs{...}
+type ConnectionProfileMongodbProfileStandardConnectionFormatInput interface {
+	pulumi.Input
+
+	ToConnectionProfileMongodbProfileStandardConnectionFormatOutput() ConnectionProfileMongodbProfileStandardConnectionFormatOutput
+	ToConnectionProfileMongodbProfileStandardConnectionFormatOutputWithContext(context.Context) ConnectionProfileMongodbProfileStandardConnectionFormatOutput
+}
+
+type ConnectionProfileMongodbProfileStandardConnectionFormatArgs struct {
+	// Specifies whether the client connects directly to the
+	// host[:port] in the connection URI.
+	DirectConnection pulumi.BoolPtrInput `pulumi:"directConnection"`
+}
+
+func (ConnectionProfileMongodbProfileStandardConnectionFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileMongodbProfileStandardConnectionFormat)(nil)).Elem()
+}
+
+func (i ConnectionProfileMongodbProfileStandardConnectionFormatArgs) ToConnectionProfileMongodbProfileStandardConnectionFormatOutput() ConnectionProfileMongodbProfileStandardConnectionFormatOutput {
+	return i.ToConnectionProfileMongodbProfileStandardConnectionFormatOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileMongodbProfileStandardConnectionFormatArgs) ToConnectionProfileMongodbProfileStandardConnectionFormatOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileStandardConnectionFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileStandardConnectionFormatOutput)
+}
+
+func (i ConnectionProfileMongodbProfileStandardConnectionFormatArgs) ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput() ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput {
+	return i.ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileMongodbProfileStandardConnectionFormatArgs) ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileStandardConnectionFormatOutput).ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileMongodbProfileStandardConnectionFormatPtrInput is an input type that accepts ConnectionProfileMongodbProfileStandardConnectionFormatArgs, ConnectionProfileMongodbProfileStandardConnectionFormatPtr and ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileMongodbProfileStandardConnectionFormatPtrInput` via:
+//
+//	        ConnectionProfileMongodbProfileStandardConnectionFormatArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileMongodbProfileStandardConnectionFormatPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput() ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput
+	ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutputWithContext(context.Context) ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput
+}
+
+type connectionProfileMongodbProfileStandardConnectionFormatPtrType ConnectionProfileMongodbProfileStandardConnectionFormatArgs
+
+func ConnectionProfileMongodbProfileStandardConnectionFormatPtr(v *ConnectionProfileMongodbProfileStandardConnectionFormatArgs) ConnectionProfileMongodbProfileStandardConnectionFormatPtrInput {
+	return (*connectionProfileMongodbProfileStandardConnectionFormatPtrType)(v)
+}
+
+func (*connectionProfileMongodbProfileStandardConnectionFormatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileMongodbProfileStandardConnectionFormat)(nil)).Elem()
+}
+
+func (i *connectionProfileMongodbProfileStandardConnectionFormatPtrType) ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput() ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput {
+	return i.ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileMongodbProfileStandardConnectionFormatPtrType) ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput)
+}
+
+type ConnectionProfileMongodbProfileStandardConnectionFormatOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileMongodbProfileStandardConnectionFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileMongodbProfileStandardConnectionFormat)(nil)).Elem()
+}
+
+func (o ConnectionProfileMongodbProfileStandardConnectionFormatOutput) ToConnectionProfileMongodbProfileStandardConnectionFormatOutput() ConnectionProfileMongodbProfileStandardConnectionFormatOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileStandardConnectionFormatOutput) ToConnectionProfileMongodbProfileStandardConnectionFormatOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileStandardConnectionFormatOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileStandardConnectionFormatOutput) ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput() ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput {
+	return o.ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileMongodbProfileStandardConnectionFormatOutput) ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileMongodbProfileStandardConnectionFormat) *ConnectionProfileMongodbProfileStandardConnectionFormat {
+		return &v
+	}).(ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput)
+}
+
+// Specifies whether the client connects directly to the
+// host[:port] in the connection URI.
+func (o ConnectionProfileMongodbProfileStandardConnectionFormatOutput) DirectConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMongodbProfileStandardConnectionFormat) *bool { return v.DirectConnection }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileMongodbProfileStandardConnectionFormat)(nil)).Elem()
+}
+
+func (o ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput) ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput() ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput) ToConnectionProfileMongodbProfileStandardConnectionFormatPtrOutputWithContext(ctx context.Context) ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput) Elem() ConnectionProfileMongodbProfileStandardConnectionFormatOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfileStandardConnectionFormat) ConnectionProfileMongodbProfileStandardConnectionFormat {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileMongodbProfileStandardConnectionFormat
+		return ret
+	}).(ConnectionProfileMongodbProfileStandardConnectionFormatOutput)
+}
+
+// Specifies whether the client connects directly to the
+// host[:port] in the connection URI.
+func (o ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput) DirectConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileMongodbProfileStandardConnectionFormat) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DirectConnection
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ConnectionProfileMysqlProfile struct {
 	// Hostname for the MySQL connection.
 	Hostname string `pulumi:"hostname"`
@@ -2905,6 +3885,9 @@ func (o PrivateConnectionVpcPeeringConfigPtrOutput) Vpc() pulumi.StringPtrOutput
 }
 
 type StreamBackfillAll struct {
+	// MongoDB data source objects to avoid backfilling.
+	// Structure is documented below.
+	MongodbExcludedObjects *StreamBackfillAllMongodbExcludedObjects `pulumi:"mongodbExcludedObjects"`
 	// MySQL data source objects to avoid backfilling.
 	// Structure is documented below.
 	MysqlExcludedObjects *StreamBackfillAllMysqlExcludedObjects `pulumi:"mysqlExcludedObjects"`
@@ -2934,6 +3917,9 @@ type StreamBackfillAllInput interface {
 }
 
 type StreamBackfillAllArgs struct {
+	// MongoDB data source objects to avoid backfilling.
+	// Structure is documented below.
+	MongodbExcludedObjects StreamBackfillAllMongodbExcludedObjectsPtrInput `pulumi:"mongodbExcludedObjects"`
 	// MySQL data source objects to avoid backfilling.
 	// Structure is documented below.
 	MysqlExcludedObjects StreamBackfillAllMysqlExcludedObjectsPtrInput `pulumi:"mysqlExcludedObjects"`
@@ -3028,6 +4014,12 @@ func (o StreamBackfillAllOutput) ToStreamBackfillAllPtrOutputWithContext(ctx con
 	}).(StreamBackfillAllPtrOutput)
 }
 
+// MongoDB data source objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllOutput) MongodbExcludedObjects() StreamBackfillAllMongodbExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAll) *StreamBackfillAllMongodbExcludedObjects { return v.MongodbExcludedObjects }).(StreamBackfillAllMongodbExcludedObjectsPtrOutput)
+}
+
 // MySQL data source objects to avoid backfilling.
 // Structure is documented below.
 func (o StreamBackfillAllOutput) MysqlExcludedObjects() StreamBackfillAllMysqlExcludedObjectsPtrOutput {
@@ -3088,6 +4080,17 @@ func (o StreamBackfillAllPtrOutput) Elem() StreamBackfillAllOutput {
 	}).(StreamBackfillAllOutput)
 }
 
+// MongoDB data source objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllPtrOutput) MongodbExcludedObjects() StreamBackfillAllMongodbExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamBackfillAll) *StreamBackfillAllMongodbExcludedObjects {
+		if v == nil {
+			return nil
+		}
+		return v.MongodbExcludedObjects
+	}).(StreamBackfillAllMongodbExcludedObjectsPtrOutput)
+}
+
 // MySQL data source objects to avoid backfilling.
 // Structure is documented below.
 func (o StreamBackfillAllPtrOutput) MysqlExcludedObjects() StreamBackfillAllMysqlExcludedObjectsPtrOutput {
@@ -3141,6 +4144,468 @@ func (o StreamBackfillAllPtrOutput) SqlServerExcludedObjects() StreamBackfillAll
 		}
 		return v.SqlServerExcludedObjects
 	}).(StreamBackfillAllSqlServerExcludedObjectsPtrOutput)
+}
+
+type StreamBackfillAllMongodbExcludedObjects struct {
+	// MongoDB databases in the cluster.
+	// Structure is documented below.
+	Databases []StreamBackfillAllMongodbExcludedObjectsDatabase `pulumi:"databases"`
+}
+
+// StreamBackfillAllMongodbExcludedObjectsInput is an input type that accepts StreamBackfillAllMongodbExcludedObjectsArgs and StreamBackfillAllMongodbExcludedObjectsOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMongodbExcludedObjectsInput` via:
+//
+//	StreamBackfillAllMongodbExcludedObjectsArgs{...}
+type StreamBackfillAllMongodbExcludedObjectsInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMongodbExcludedObjectsOutput() StreamBackfillAllMongodbExcludedObjectsOutput
+	ToStreamBackfillAllMongodbExcludedObjectsOutputWithContext(context.Context) StreamBackfillAllMongodbExcludedObjectsOutput
+}
+
+type StreamBackfillAllMongodbExcludedObjectsArgs struct {
+	// MongoDB databases in the cluster.
+	// Structure is documented below.
+	Databases StreamBackfillAllMongodbExcludedObjectsDatabaseArrayInput `pulumi:"databases"`
+}
+
+func (StreamBackfillAllMongodbExcludedObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjects)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsArgs) ToStreamBackfillAllMongodbExcludedObjectsOutput() StreamBackfillAllMongodbExcludedObjectsOutput {
+	return i.ToStreamBackfillAllMongodbExcludedObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsArgs) ToStreamBackfillAllMongodbExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMongodbExcludedObjectsOutput)
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsArgs) ToStreamBackfillAllMongodbExcludedObjectsPtrOutput() StreamBackfillAllMongodbExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllMongodbExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsArgs) ToStreamBackfillAllMongodbExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMongodbExcludedObjectsOutput).ToStreamBackfillAllMongodbExcludedObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamBackfillAllMongodbExcludedObjectsPtrInput is an input type that accepts StreamBackfillAllMongodbExcludedObjectsArgs, StreamBackfillAllMongodbExcludedObjectsPtr and StreamBackfillAllMongodbExcludedObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMongodbExcludedObjectsPtrInput` via:
+//
+//	        StreamBackfillAllMongodbExcludedObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamBackfillAllMongodbExcludedObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMongodbExcludedObjectsPtrOutput() StreamBackfillAllMongodbExcludedObjectsPtrOutput
+	ToStreamBackfillAllMongodbExcludedObjectsPtrOutputWithContext(context.Context) StreamBackfillAllMongodbExcludedObjectsPtrOutput
+}
+
+type streamBackfillAllMongodbExcludedObjectsPtrType StreamBackfillAllMongodbExcludedObjectsArgs
+
+func StreamBackfillAllMongodbExcludedObjectsPtr(v *StreamBackfillAllMongodbExcludedObjectsArgs) StreamBackfillAllMongodbExcludedObjectsPtrInput {
+	return (*streamBackfillAllMongodbExcludedObjectsPtrType)(v)
+}
+
+func (*streamBackfillAllMongodbExcludedObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllMongodbExcludedObjects)(nil)).Elem()
+}
+
+func (i *streamBackfillAllMongodbExcludedObjectsPtrType) ToStreamBackfillAllMongodbExcludedObjectsPtrOutput() StreamBackfillAllMongodbExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllMongodbExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamBackfillAllMongodbExcludedObjectsPtrType) ToStreamBackfillAllMongodbExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMongodbExcludedObjectsPtrOutput)
+}
+
+type StreamBackfillAllMongodbExcludedObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMongodbExcludedObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsOutput) ToStreamBackfillAllMongodbExcludedObjectsOutput() StreamBackfillAllMongodbExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsOutput) ToStreamBackfillAllMongodbExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsOutput) ToStreamBackfillAllMongodbExcludedObjectsPtrOutput() StreamBackfillAllMongodbExcludedObjectsPtrOutput {
+	return o.ToStreamBackfillAllMongodbExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsOutput) ToStreamBackfillAllMongodbExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamBackfillAllMongodbExcludedObjects) *StreamBackfillAllMongodbExcludedObjects {
+		return &v
+	}).(StreamBackfillAllMongodbExcludedObjectsPtrOutput)
+}
+
+// MongoDB databases in the cluster.
+// Structure is documented below.
+func (o StreamBackfillAllMongodbExcludedObjectsOutput) Databases() StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllMongodbExcludedObjects) []StreamBackfillAllMongodbExcludedObjectsDatabase {
+		return v.Databases
+	}).(StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput)
+}
+
+type StreamBackfillAllMongodbExcludedObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMongodbExcludedObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllMongodbExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsPtrOutput) ToStreamBackfillAllMongodbExcludedObjectsPtrOutput() StreamBackfillAllMongodbExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsPtrOutput) ToStreamBackfillAllMongodbExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsPtrOutput) Elem() StreamBackfillAllMongodbExcludedObjectsOutput {
+	return o.ApplyT(func(v *StreamBackfillAllMongodbExcludedObjects) StreamBackfillAllMongodbExcludedObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamBackfillAllMongodbExcludedObjects
+		return ret
+	}).(StreamBackfillAllMongodbExcludedObjectsOutput)
+}
+
+// MongoDB databases in the cluster.
+// Structure is documented below.
+func (o StreamBackfillAllMongodbExcludedObjectsPtrOutput) Databases() StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput {
+	return o.ApplyT(func(v *StreamBackfillAllMongodbExcludedObjects) []StreamBackfillAllMongodbExcludedObjectsDatabase {
+		if v == nil {
+			return nil
+		}
+		return v.Databases
+	}).(StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput)
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabase struct {
+	// Collections in the database.
+	// Structure is documented below.
+	Collections []StreamBackfillAllMongodbExcludedObjectsDatabaseCollection `pulumi:"collections"`
+	// Database name.
+	Database string `pulumi:"database"`
+}
+
+// StreamBackfillAllMongodbExcludedObjectsDatabaseInput is an input type that accepts StreamBackfillAllMongodbExcludedObjectsDatabaseArgs and StreamBackfillAllMongodbExcludedObjectsDatabaseOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMongodbExcludedObjectsDatabaseInput` via:
+//
+//	StreamBackfillAllMongodbExcludedObjectsDatabaseArgs{...}
+type StreamBackfillAllMongodbExcludedObjectsDatabaseInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMongodbExcludedObjectsDatabaseOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseOutput
+	ToStreamBackfillAllMongodbExcludedObjectsDatabaseOutputWithContext(context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseOutput
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseArgs struct {
+	// Collections in the database.
+	// Structure is documented below.
+	Collections StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayInput `pulumi:"collections"`
+	// Database name.
+	Database pulumi.StringInput `pulumi:"database"`
+}
+
+func (StreamBackfillAllMongodbExcludedObjectsDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsDatabase)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsDatabaseArgs) ToStreamBackfillAllMongodbExcludedObjectsDatabaseOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseOutput {
+	return i.ToStreamBackfillAllMongodbExcludedObjectsDatabaseOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsDatabaseArgs) ToStreamBackfillAllMongodbExcludedObjectsDatabaseOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMongodbExcludedObjectsDatabaseOutput)
+}
+
+// StreamBackfillAllMongodbExcludedObjectsDatabaseArrayInput is an input type that accepts StreamBackfillAllMongodbExcludedObjectsDatabaseArray and StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMongodbExcludedObjectsDatabaseArrayInput` via:
+//
+//	StreamBackfillAllMongodbExcludedObjectsDatabaseArray{ StreamBackfillAllMongodbExcludedObjectsDatabaseArgs{...} }
+type StreamBackfillAllMongodbExcludedObjectsDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput
+	ToStreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutputWithContext(context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseArray []StreamBackfillAllMongodbExcludedObjectsDatabaseInput
+
+func (StreamBackfillAllMongodbExcludedObjectsDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllMongodbExcludedObjectsDatabase)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsDatabaseArray) ToStreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput {
+	return i.ToStreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsDatabaseArray) ToStreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput)
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMongodbExcludedObjectsDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsDatabase)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseOutput) ToStreamBackfillAllMongodbExcludedObjectsDatabaseOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseOutput) ToStreamBackfillAllMongodbExcludedObjectsDatabaseOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseOutput {
+	return o
+}
+
+// Collections in the database.
+// Structure is documented below.
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseOutput) Collections() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllMongodbExcludedObjectsDatabase) []StreamBackfillAllMongodbExcludedObjectsDatabaseCollection {
+		return v.Collections
+	}).(StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput)
+}
+
+// Database name.
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllMongodbExcludedObjectsDatabase) string { return v.Database }).(pulumi.StringOutput)
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllMongodbExcludedObjectsDatabase)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput) ToStreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput) ToStreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllMongodbExcludedObjectsDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllMongodbExcludedObjectsDatabase {
+		return vs[0].([]StreamBackfillAllMongodbExcludedObjectsDatabase)[vs[1].(int)]
+	}).(StreamBackfillAllMongodbExcludedObjectsDatabaseOutput)
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollection struct {
+	// Collection name.
+	Collection string `pulumi:"collection"`
+	// Fields in the collection.
+	// Structure is documented below.
+	Fields []StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField `pulumi:"fields"`
+}
+
+// StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionInput is an input type that accepts StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs and StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionInput` via:
+//
+//	StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs{...}
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput
+	ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutputWithContext(context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs struct {
+	// Collection name.
+	Collection pulumi.StringInput `pulumi:"collection"`
+	// Fields in the collection.
+	// Structure is documented below.
+	Fields StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayInput `pulumi:"fields"`
+}
+
+func (StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsDatabaseCollection)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput {
+	return i.ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput)
+}
+
+// StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayInput is an input type that accepts StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArray and StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayInput` via:
+//
+//	StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArray{ StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs{...} }
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput
+	ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutputWithContext(context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArray []StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionInput
+
+func (StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllMongodbExcludedObjectsDatabaseCollection)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArray) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput {
+	return i.ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArray) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput)
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsDatabaseCollection)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput {
+	return o
+}
+
+// Collection name.
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput) Collection() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllMongodbExcludedObjectsDatabaseCollection) string { return v.Collection }).(pulumi.StringOutput)
+}
+
+// Fields in the collection.
+// Structure is documented below.
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput) Fields() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllMongodbExcludedObjectsDatabaseCollection) []StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField {
+		return v.Fields
+	}).(StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput)
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllMongodbExcludedObjectsDatabaseCollection)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllMongodbExcludedObjectsDatabaseCollection {
+		return vs[0].([]StreamBackfillAllMongodbExcludedObjectsDatabaseCollection)[vs[1].(int)]
+	}).(StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput)
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField struct {
+	// Field name.
+	Field *string `pulumi:"field"`
+}
+
+// StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldInput is an input type that accepts StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs and StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldInput` via:
+//
+//	StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs{...}
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput
+	ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutputWithContext(context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs struct {
+	// Field name.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+}
+
+func (StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput {
+	return i.ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput)
+}
+
+// StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayInput is an input type that accepts StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArray and StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayInput` via:
+//
+//	StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArray{ StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs{...} }
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput
+	ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutputWithContext(context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArray []StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldInput
+
+func (StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArray) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput {
+	return i.ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArray) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput)
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput {
+	return o
+}
+
+// Field name.
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+type StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput() StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput) ToStreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutputWithContext(ctx context.Context) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField {
+		return vs[0].([]StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField)[vs[1].(int)]
+	}).(StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput)
 }
 
 type StreamBackfillAllMysqlExcludedObjects struct {
@@ -7753,6 +9218,9 @@ func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) Sche
 }
 
 type StreamSourceConfig struct {
+	// MongoDB source configuration.
+	// Structure is documented below.
+	MongodbSourceConfig *StreamSourceConfigMongodbSourceConfig `pulumi:"mongodbSourceConfig"`
 	// MySQL data source configuration.
 	// Structure is documented below.
 	MysqlSourceConfig *StreamSourceConfigMysqlSourceConfig `pulumi:"mysqlSourceConfig"`
@@ -7784,6 +9252,9 @@ type StreamSourceConfigInput interface {
 }
 
 type StreamSourceConfigArgs struct {
+	// MongoDB source configuration.
+	// Structure is documented below.
+	MongodbSourceConfig StreamSourceConfigMongodbSourceConfigPtrInput `pulumi:"mongodbSourceConfig"`
 	// MySQL data source configuration.
 	// Structure is documented below.
 	MysqlSourceConfig StreamSourceConfigMysqlSourceConfigPtrInput `pulumi:"mysqlSourceConfig"`
@@ -7880,6 +9351,12 @@ func (o StreamSourceConfigOutput) ToStreamSourceConfigPtrOutputWithContext(ctx c
 	}).(StreamSourceConfigPtrOutput)
 }
 
+// MongoDB source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigOutput) MongodbSourceConfig() StreamSourceConfigMongodbSourceConfigPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfig) *StreamSourceConfigMongodbSourceConfig { return v.MongodbSourceConfig }).(StreamSourceConfigMongodbSourceConfigPtrOutput)
+}
+
 // MySQL data source configuration.
 // Structure is documented below.
 func (o StreamSourceConfigOutput) MysqlSourceConfig() StreamSourceConfigMysqlSourceConfigPtrOutput {
@@ -7937,6 +9414,17 @@ func (o StreamSourceConfigPtrOutput) Elem() StreamSourceConfigOutput {
 		var ret StreamSourceConfig
 		return ret
 	}).(StreamSourceConfigOutput)
+}
+
+// MongoDB source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigPtrOutput) MongodbSourceConfig() StreamSourceConfigMongodbSourceConfigPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfig) *StreamSourceConfigMongodbSourceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MongodbSourceConfig
+	}).(StreamSourceConfigMongodbSourceConfigPtrOutput)
 }
 
 // MySQL data source configuration.
@@ -8002,6 +9490,1133 @@ func (o StreamSourceConfigPtrOutput) SqlServerSourceConfig() StreamSourceConfigS
 		}
 		return v.SqlServerSourceConfig
 	}).(StreamSourceConfigSqlServerSourceConfigPtrOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfig struct {
+	// MongoDB collections to include in the stream.
+	// Structure is documented below.
+	ExcludeObjects *StreamSourceConfigMongodbSourceConfigExcludeObjects `pulumi:"excludeObjects"`
+	// MongoDB collections to include in the stream.
+	// Structure is documented below.
+	IncludeObjects *StreamSourceConfigMongodbSourceConfigIncludeObjects `pulumi:"includeObjects"`
+	// Optional. Maximum number of concurrent backfill tasks. The number
+	// should be non-negative and less than or equal to 50. If not set
+	// (or set to 0), the system''s default value is used
+	MaxConcurrentBackfillTasks *int `pulumi:"maxConcurrentBackfillTasks"`
+}
+
+// StreamSourceConfigMongodbSourceConfigInput is an input type that accepts StreamSourceConfigMongodbSourceConfigArgs and StreamSourceConfigMongodbSourceConfigOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigArgs{...}
+type StreamSourceConfigMongodbSourceConfigInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigOutput() StreamSourceConfigMongodbSourceConfigOutput
+	ToStreamSourceConfigMongodbSourceConfigOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigArgs struct {
+	// MongoDB collections to include in the stream.
+	// Structure is documented below.
+	ExcludeObjects StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrInput `pulumi:"excludeObjects"`
+	// MongoDB collections to include in the stream.
+	// Structure is documented below.
+	IncludeObjects StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrInput `pulumi:"includeObjects"`
+	// Optional. Maximum number of concurrent backfill tasks. The number
+	// should be non-negative and less than or equal to 50. If not set
+	// (or set to 0), the system''s default value is used
+	MaxConcurrentBackfillTasks pulumi.IntPtrInput `pulumi:"maxConcurrentBackfillTasks"`
+}
+
+func (StreamSourceConfigMongodbSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfig)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigArgs) ToStreamSourceConfigMongodbSourceConfigOutput() StreamSourceConfigMongodbSourceConfigOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigArgs) ToStreamSourceConfigMongodbSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigOutput)
+}
+
+func (i StreamSourceConfigMongodbSourceConfigArgs) ToStreamSourceConfigMongodbSourceConfigPtrOutput() StreamSourceConfigMongodbSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigArgs) ToStreamSourceConfigMongodbSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigOutput).ToStreamSourceConfigMongodbSourceConfigPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigMongodbSourceConfigPtrInput is an input type that accepts StreamSourceConfigMongodbSourceConfigArgs, StreamSourceConfigMongodbSourceConfigPtr and StreamSourceConfigMongodbSourceConfigPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigPtrInput` via:
+//
+//	        StreamSourceConfigMongodbSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigMongodbSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigPtrOutput() StreamSourceConfigMongodbSourceConfigPtrOutput
+	ToStreamSourceConfigMongodbSourceConfigPtrOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigPtrOutput
+}
+
+type streamSourceConfigMongodbSourceConfigPtrType StreamSourceConfigMongodbSourceConfigArgs
+
+func StreamSourceConfigMongodbSourceConfigPtr(v *StreamSourceConfigMongodbSourceConfigArgs) StreamSourceConfigMongodbSourceConfigPtrInput {
+	return (*streamSourceConfigMongodbSourceConfigPtrType)(v)
+}
+
+func (*streamSourceConfigMongodbSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMongodbSourceConfig)(nil)).Elem()
+}
+
+func (i *streamSourceConfigMongodbSourceConfigPtrType) ToStreamSourceConfigMongodbSourceConfigPtrOutput() StreamSourceConfigMongodbSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigMongodbSourceConfigPtrType) ToStreamSourceConfigMongodbSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigPtrOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigOutput) ToStreamSourceConfigMongodbSourceConfigOutput() StreamSourceConfigMongodbSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigOutput) ToStreamSourceConfigMongodbSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigOutput) ToStreamSourceConfigMongodbSourceConfigPtrOutput() StreamSourceConfigMongodbSourceConfigPtrOutput {
+	return o.ToStreamSourceConfigMongodbSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigMongodbSourceConfigOutput) ToStreamSourceConfigMongodbSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigMongodbSourceConfig) *StreamSourceConfigMongodbSourceConfig {
+		return &v
+	}).(StreamSourceConfigMongodbSourceConfigPtrOutput)
+}
+
+// MongoDB collections to include in the stream.
+// Structure is documented below.
+func (o StreamSourceConfigMongodbSourceConfigOutput) ExcludeObjects() StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfig) *StreamSourceConfigMongodbSourceConfigExcludeObjects {
+		return v.ExcludeObjects
+	}).(StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput)
+}
+
+// MongoDB collections to include in the stream.
+// Structure is documented below.
+func (o StreamSourceConfigMongodbSourceConfigOutput) IncludeObjects() StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfig) *StreamSourceConfigMongodbSourceConfigIncludeObjects {
+		return v.IncludeObjects
+	}).(StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Optional. Maximum number of concurrent backfill tasks. The number
+// should be non-negative and less than or equal to 50. If not set
+// (or set to 0), the system”s default value is used
+func (o StreamSourceConfigMongodbSourceConfigOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfig) *int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMongodbSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigPtrOutput) ToStreamSourceConfigMongodbSourceConfigPtrOutput() StreamSourceConfigMongodbSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigPtrOutput) ToStreamSourceConfigMongodbSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigPtrOutput) Elem() StreamSourceConfigMongodbSourceConfigOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMongodbSourceConfig) StreamSourceConfigMongodbSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigMongodbSourceConfig
+		return ret
+	}).(StreamSourceConfigMongodbSourceConfigOutput)
+}
+
+// MongoDB collections to include in the stream.
+// Structure is documented below.
+func (o StreamSourceConfigMongodbSourceConfigPtrOutput) ExcludeObjects() StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMongodbSourceConfig) *StreamSourceConfigMongodbSourceConfigExcludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeObjects
+	}).(StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput)
+}
+
+// MongoDB collections to include in the stream.
+// Structure is documented below.
+func (o StreamSourceConfigMongodbSourceConfigPtrOutput) IncludeObjects() StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMongodbSourceConfig) *StreamSourceConfigMongodbSourceConfigIncludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeObjects
+	}).(StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Optional. Maximum number of concurrent backfill tasks. The number
+// should be non-negative and less than or equal to 50. If not set
+// (or set to 0), the system”s default value is used
+func (o StreamSourceConfigMongodbSourceConfigPtrOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMongodbSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentBackfillTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjects struct {
+	// MongoDB databases in the cluster.
+	// Structure is documented below.
+	Databases []StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase `pulumi:"databases"`
+}
+
+// StreamSourceConfigMongodbSourceConfigExcludeObjectsInput is an input type that accepts StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs and StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigExcludeObjectsInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs{...}
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs struct {
+	// MongoDB databases in the cluster.
+	// Structure is documented below.
+	Databases StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayInput `pulumi:"databases"`
+}
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigExcludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput)
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput).ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrInput is an input type that accepts StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs, StreamSourceConfigMongodbSourceConfigExcludeObjectsPtr and StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput
+}
+
+type streamSourceConfigMongodbSourceConfigExcludeObjectsPtrType StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs
+
+func StreamSourceConfigMongodbSourceConfigExcludeObjectsPtr(v *StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs) StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrInput {
+	return (*streamSourceConfigMongodbSourceConfigExcludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigMongodbSourceConfigExcludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMongodbSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigMongodbSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigMongodbSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigMongodbSourceConfigExcludeObjects) *StreamSourceConfigMongodbSourceConfigExcludeObjects {
+		return &v
+	}).(StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput)
+}
+
+// MongoDB databases in the cluster.
+// Structure is documented below.
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput) Databases() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfigExcludeObjects) []StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase {
+		return v.Databases
+	}).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMongodbSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput) Elem() StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMongodbSourceConfigExcludeObjects) StreamSourceConfigMongodbSourceConfigExcludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigMongodbSourceConfigExcludeObjects
+		return ret
+	}).(StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput)
+}
+
+// MongoDB databases in the cluster.
+// Structure is documented below.
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput) Databases() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMongodbSourceConfigExcludeObjects) []StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase {
+		if v == nil {
+			return nil
+		}
+		return v.Databases
+	}).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase struct {
+	// Collections in the database.
+	// Structure is documented below.
+	Collections []StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection `pulumi:"collections"`
+	// Database name.
+	Database *string `pulumi:"database"`
+}
+
+// StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseInput is an input type that accepts StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs and StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs{...}
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs struct {
+	// Collections in the database.
+	// Structure is documented below.
+	Collections StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayInput `pulumi:"collections"`
+	// Database name.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+}
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput)
+}
+
+// StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayInput is an input type that accepts StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArray and StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArray{ StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs{...} }
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArray []StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseInput
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArray) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArray) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput {
+	return o
+}
+
+// Collections in the database.
+// Structure is documented below.
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput) Collections() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase) []StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection {
+		return v.Collections
+	}).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput)
+}
+
+// Database name.
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase {
+		return vs[0].([]StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase)[vs[1].(int)]
+	}).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection struct {
+	// Collection name.
+	Collection *string `pulumi:"collection"`
+	// Fields in the collection.
+	// Structure is documented below.
+	Fields []StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField `pulumi:"fields"`
+}
+
+// StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionInput is an input type that accepts StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs and StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs{...}
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs struct {
+	// Collection name.
+	Collection pulumi.StringPtrInput `pulumi:"collection"`
+	// Fields in the collection.
+	// Structure is documented below.
+	Fields StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayInput `pulumi:"fields"`
+}
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput)
+}
+
+// StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayInput is an input type that accepts StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArray and StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArray{ StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs{...} }
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArray []StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionInput
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArray) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArray) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput {
+	return o
+}
+
+// Collection name.
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput) Collection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection) *string {
+		return v.Collection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fields in the collection.
+// Structure is documented below.
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput) Fields() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection) []StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField {
+		return v.Fields
+	}).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection {
+		return vs[0].([]StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection)[vs[1].(int)]
+	}).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField struct {
+	// Field name.
+	Field *string `pulumi:"field"`
+}
+
+// StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldInput is an input type that accepts StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs and StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs{...}
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs struct {
+	// Field name.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+}
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput)
+}
+
+// StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayInput is an input type that accepts StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArray and StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArray{ StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs{...} }
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput
+	ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArray []StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldInput
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArray) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArray) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput {
+	return o
+}
+
+// Field name.
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField) *string {
+		return v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput() StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput) ToStreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField {
+		return vs[0].([]StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField)[vs[1].(int)]
+	}).(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjects struct {
+	// MongoDB databases in the cluster.
+	// Structure is documented below.
+	Databases []StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase `pulumi:"databases"`
+}
+
+// StreamSourceConfigMongodbSourceConfigIncludeObjectsInput is an input type that accepts StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs and StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigIncludeObjectsInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs{...}
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs struct {
+	// MongoDB databases in the cluster.
+	// Structure is documented below.
+	Databases StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayInput `pulumi:"databases"`
+}
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigIncludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput)
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput).ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrInput is an input type that accepts StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs, StreamSourceConfigMongodbSourceConfigIncludeObjectsPtr and StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput
+}
+
+type streamSourceConfigMongodbSourceConfigIncludeObjectsPtrType StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs
+
+func StreamSourceConfigMongodbSourceConfigIncludeObjectsPtr(v *StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs) StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrInput {
+	return (*streamSourceConfigMongodbSourceConfigIncludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigMongodbSourceConfigIncludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMongodbSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigMongodbSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigMongodbSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigMongodbSourceConfigIncludeObjects) *StreamSourceConfigMongodbSourceConfigIncludeObjects {
+		return &v
+	}).(StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput)
+}
+
+// MongoDB databases in the cluster.
+// Structure is documented below.
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput) Databases() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfigIncludeObjects) []StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase {
+		return v.Databases
+	}).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMongodbSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput) Elem() StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMongodbSourceConfigIncludeObjects) StreamSourceConfigMongodbSourceConfigIncludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigMongodbSourceConfigIncludeObjects
+		return ret
+	}).(StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput)
+}
+
+// MongoDB databases in the cluster.
+// Structure is documented below.
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput) Databases() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMongodbSourceConfigIncludeObjects) []StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase {
+		if v == nil {
+			return nil
+		}
+		return v.Databases
+	}).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase struct {
+	// Collections in the database.
+	// Structure is documented below.
+	Collections []StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection `pulumi:"collections"`
+	// Database name.
+	Database *string `pulumi:"database"`
+}
+
+// StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseInput is an input type that accepts StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs and StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs{...}
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs struct {
+	// Collections in the database.
+	// Structure is documented below.
+	Collections StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayInput `pulumi:"collections"`
+	// Database name.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+}
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput)
+}
+
+// StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayInput is an input type that accepts StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArray and StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArray{ StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs{...} }
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArray []StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseInput
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArray) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArray) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput {
+	return o
+}
+
+// Collections in the database.
+// Structure is documented below.
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput) Collections() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase) []StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection {
+		return v.Collections
+	}).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput)
+}
+
+// Database name.
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase {
+		return vs[0].([]StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase)[vs[1].(int)]
+	}).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection struct {
+	// Collection name.
+	Collection *string `pulumi:"collection"`
+	// Fields in the collection.
+	// Structure is documented below.
+	Fields []StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField `pulumi:"fields"`
+}
+
+// StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionInput is an input type that accepts StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs and StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs{...}
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs struct {
+	// Collection name.
+	Collection pulumi.StringPtrInput `pulumi:"collection"`
+	// Fields in the collection.
+	// Structure is documented below.
+	Fields StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayInput `pulumi:"fields"`
+}
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput)
+}
+
+// StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayInput is an input type that accepts StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArray and StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArray{ StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs{...} }
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArray []StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionInput
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArray) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArray) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput {
+	return o
+}
+
+// Collection name.
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput) Collection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection) *string {
+		return v.Collection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fields in the collection.
+// Structure is documented below.
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput) Fields() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection) []StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField {
+		return v.Fields
+	}).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection {
+		return vs[0].([]StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection)[vs[1].(int)]
+	}).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField struct {
+	// Field name.
+	Field *string `pulumi:"field"`
+}
+
+// StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldInput is an input type that accepts StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs and StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs{...}
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs struct {
+	// Field name.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+}
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput)
+}
+
+// StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayInput is an input type that accepts StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArray and StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayInput` via:
+//
+//	StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArray{ StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs{...} }
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput
+	ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutputWithContext(context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArray []StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldInput
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArray) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput {
+	return i.ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArray) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput {
+	return o
+}
+
+// Field name.
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField) *string {
+		return v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput() StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput) ToStreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutputWithContext(ctx context.Context) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField {
+		return vs[0].([]StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField)[vs[1].(int)]
+	}).(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput)
 }
 
 type StreamSourceConfigMysqlSourceConfig struct {
@@ -15061,6 +17676,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileForwardSshConnectivityPtrInput)(nil)).Elem(), ConnectionProfileForwardSshConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileGcsProfileInput)(nil)).Elem(), ConnectionProfileGcsProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileGcsProfilePtrInput)(nil)).Elem(), ConnectionProfileGcsProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMongodbProfileInput)(nil)).Elem(), ConnectionProfileMongodbProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMongodbProfilePtrInput)(nil)).Elem(), ConnectionProfileMongodbProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMongodbProfileHostAddressInput)(nil)).Elem(), ConnectionProfileMongodbProfileHostAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMongodbProfileHostAddressArrayInput)(nil)).Elem(), ConnectionProfileMongodbProfileHostAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMongodbProfileSrvConnectionFormatInput)(nil)).Elem(), ConnectionProfileMongodbProfileSrvConnectionFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMongodbProfileSrvConnectionFormatPtrInput)(nil)).Elem(), ConnectionProfileMongodbProfileSrvConnectionFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMongodbProfileSslConfigInput)(nil)).Elem(), ConnectionProfileMongodbProfileSslConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMongodbProfileSslConfigPtrInput)(nil)).Elem(), ConnectionProfileMongodbProfileSslConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMongodbProfileStandardConnectionFormatInput)(nil)).Elem(), ConnectionProfileMongodbProfileStandardConnectionFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMongodbProfileStandardConnectionFormatPtrInput)(nil)).Elem(), ConnectionProfileMongodbProfileStandardConnectionFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMysqlProfileInput)(nil)).Elem(), ConnectionProfileMysqlProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMysqlProfilePtrInput)(nil)).Elem(), ConnectionProfileMysqlProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMysqlProfileSslConfigInput)(nil)).Elem(), ConnectionProfileMysqlProfileSslConfigArgs{})
@@ -15087,6 +17712,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigPtrInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllInput)(nil)).Elem(), StreamBackfillAllArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPtrInput)(nil)).Elem(), StreamBackfillAllArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsInput)(nil)).Elem(), StreamBackfillAllMongodbExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsPtrInput)(nil)).Elem(), StreamBackfillAllMongodbExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsDatabaseInput)(nil)).Elem(), StreamBackfillAllMongodbExcludedObjectsDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsDatabaseArrayInput)(nil)).Elem(), StreamBackfillAllMongodbExcludedObjectsDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionInput)(nil)).Elem(), StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayInput)(nil)).Elem(), StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldInput)(nil)).Elem(), StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayInput)(nil)).Elem(), StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsPtrInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs{})
@@ -15151,6 +17784,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrInput)(nil)).Elem(), StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigInput)(nil)).Elem(), StreamSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigBinaryLogPositionInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs{})
@@ -15255,6 +17906,16 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProfileForwardSshConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileGcsProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileGcsProfilePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileMongodbProfileOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileMongodbProfilePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileMongodbProfileHostAddressOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileMongodbProfileHostAddressArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileMongodbProfileSrvConnectionFormatOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileMongodbProfileSrvConnectionFormatPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileMongodbProfileSslConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileMongodbProfileSslConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileMongodbProfileStandardConnectionFormatOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileMongodbProfileStandardConnectionFormatPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileMysqlProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileMysqlProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileMysqlProfileSslConfigOutput{})
@@ -15281,6 +17942,14 @@ func init() {
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigPtrOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllPtrOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMongodbExcludedObjectsOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMongodbExcludedObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMongodbExcludedObjectsDatabaseOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMongodbExcludedObjectsDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArrayOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsPtrOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput{})
@@ -15345,6 +18014,24 @@ func init() {
 	pulumi.RegisterOutputType(StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigExcludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigExcludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigIncludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigIncludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArrayOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput{})

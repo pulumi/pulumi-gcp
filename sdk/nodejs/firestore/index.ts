@@ -35,6 +35,11 @@ export type Index = import("./index_").Index;
 export const Index: typeof import("./index_").Index = null as any;
 utilities.lazyLoad(exports, ["Index"], () => require("./index_"));
 
+export { UserCredsArgs, UserCredsState } from "./userCreds";
+export type UserCreds = import("./userCreds").UserCreds;
+export const UserCreds: typeof import("./userCreds").UserCreds = null as any;
+utilities.lazyLoad(exports, ["UserCreds"], () => require("./userCreds"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -50,6 +55,8 @@ const _module = {
                 return new Field(name, <any>undefined, { urn })
             case "gcp:firestore/index:Index":
                 return new Index(name, <any>undefined, { urn })
+            case "gcp:firestore/userCreds:UserCreds":
+                return new UserCreds(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -60,3 +67,4 @@ pulumi.runtime.registerResourceModule("gcp", "firestore/database", _module)
 pulumi.runtime.registerResourceModule("gcp", "firestore/document", _module)
 pulumi.runtime.registerResourceModule("gcp", "firestore/field", _module)
 pulumi.runtime.registerResourceModule("gcp", "firestore/index", _module)
+pulumi.runtime.registerResourceModule("gcp", "firestore/userCreds", _module)

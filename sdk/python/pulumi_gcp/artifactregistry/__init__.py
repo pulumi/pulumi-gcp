@@ -14,6 +14,7 @@ from .get_maven_artifacts import *
 from .get_npm_package import *
 from .get_npm_packages import *
 from .get_package import *
+from .get_packages import *
 from .get_python_package import *
 from .get_repositories import *
 from .get_repository import *

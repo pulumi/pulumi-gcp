@@ -50,14 +50,14 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
     }
 
     /**
-     * Specifies the metadata options for running a transfer
+     * Specifies the metadata options for running a transfer. Structure documented below.
      * 
      */
     @Import(name="metadataOptions")
     private @Nullable Output<TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs> metadataOptions;
 
     /**
-     * @return Specifies the metadata options for running a transfer
+     * @return Specifies the metadata options for running a transfer. Structure documented below.
      * 
      */
     public Optional<Output<TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs>> metadataOptions() {
@@ -167,7 +167,7 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
         }
 
         /**
-         * @param metadataOptions Specifies the metadata options for running a transfer
+         * @param metadataOptions Specifies the metadata options for running a transfer. Structure documented below.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
         }
 
         /**
-         * @param metadataOptions Specifies the metadata options for running a transfer
+         * @param metadataOptions Specifies the metadata options for running a transfer. Structure documented below.
          * 
          * @return builder
          * 

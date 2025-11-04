@@ -23,16 +23,32 @@ public final class DatasetIamBindingConditionArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Textual representation of an expression in Common Expression Language syntax.
+     * 
+     */
     @Import(name="expression", required=true)
     private Output<String> expression;
 
+    /**
+     * @return Textual representation of an expression in Common Expression Language syntax.
+     * 
+     */
     public Output<String> expression() {
         return this.expression;
     }
 
+    /**
+     * A title for the expression, i.e. a short string describing its purpose.
+     * 
+     */
     @Import(name="title", required=true)
     private Output<String> title;
 
+    /**
+     * @return A title for the expression, i.e. a short string describing its purpose.
+     * 
+     */
     public Output<String> title() {
         return this.title;
     }
@@ -72,20 +88,44 @@ public final class DatasetIamBindingConditionArgs extends com.pulumi.resources.R
             return description(Output.of(description));
         }
 
+        /**
+         * @param expression Textual representation of an expression in Common Expression Language syntax.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expression(Output<String> expression) {
             $.expression = expression;
             return this;
         }
 
+        /**
+         * @param expression Textual representation of an expression in Common Expression Language syntax.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expression(String expression) {
             return expression(Output.of(expression));
         }
 
+        /**
+         * @param title A title for the expression, i.e. a short string describing its purpose.
+         * 
+         * @return builder
+         * 
+         */
         public Builder title(Output<String> title) {
             $.title = title;
             return this;
         }
 
+        /**
+         * @param title A title for the expression, i.e. a short string describing its purpose.
+         * 
+         * @return builder
+         * 
+         */
         public Builder title(String title) {
             return title(Output.of(title));
         }

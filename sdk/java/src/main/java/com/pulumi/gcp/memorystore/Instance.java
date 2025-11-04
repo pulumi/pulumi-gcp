@@ -559,6 +559,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.automatedBackupConfig);
     }
     /**
+     * This field is used to determine the available maintenance versions for the self service update.
+     * 
+     */
+    @Export(name="availableMaintenanceVersions", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> availableMaintenanceVersions;
+
+    /**
+     * @return This field is used to determine the available maintenance versions for the self service update.
+     * 
+     */
+    public Output<List<String>> availableMaintenanceVersions() {
+        return this.availableMaintenanceVersions;
+    }
+    /**
      * The backup collection full resource name.
      * Example: projects/{project}/locations/{location}/backupCollections/{collection}
      * 
@@ -685,6 +699,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * This field represents the actual maintenance version of the cluster.
+     * 
+     */
+    @Export(name="effectiveMaintenanceVersion", refs={String.class}, tree="[0]")
+    private Output<String> effectiveMaintenanceVersion;
+
+    /**
+     * @return This field represents the actual maintenance version of the cluster.
+     * 
+     */
+    public Output<String> effectiveMaintenanceVersion() {
+        return this.effectiveMaintenanceVersion;
     }
     /**
      * Endpoints for the instance.
@@ -851,6 +879,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<List<InstanceMaintenanceSchedule>> maintenanceSchedules() {
         return this.maintenanceSchedules;
+    }
+    /**
+     * This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+     * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+     * 
+     */
+    @Export(name="maintenanceVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> maintenanceVersion;
+
+    /**
+     * @return This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+     * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+     * 
+     */
+    public Output<Optional<String>> maintenanceVersion() {
+        return Codegen.optional(this.maintenanceVersion);
     }
     /**
      * Managed backup source for the instance.

@@ -155,7 +155,7 @@ import (
 //				return err
 //			}
 //			_, err = vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-//				Name:        pulumi.String("endpoint-name_77124"),
+//				Name:        pulumi.String("endpoint-name_32270"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),
@@ -194,7 +194,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-//				Name:        pulumi.String("endpoint-name_15335"),
+//				Name:        pulumi.String("endpoint-name_44703"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),

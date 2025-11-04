@@ -5,7 +5,9 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -25,6 +27,11 @@ public final class GetRegionInstanceGroupManagerInstanceLifecyclePolicy {
      * 
      */
     private String onFailedHealthCheck;
+    /**
+     * @return Configuration for VM repairs in the MIG.
+     * 
+     */
+    private List<GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair> onRepairs;
 
     private GetRegionInstanceGroupManagerInstanceLifecyclePolicy() {}
     /**
@@ -48,6 +55,13 @@ public final class GetRegionInstanceGroupManagerInstanceLifecyclePolicy {
     public String onFailedHealthCheck() {
         return this.onFailedHealthCheck;
     }
+    /**
+     * @return Configuration for VM repairs in the MIG.
+     * 
+     */
+    public List<GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair> onRepairs() {
+        return this.onRepairs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,12 +75,14 @@ public final class GetRegionInstanceGroupManagerInstanceLifecyclePolicy {
         private String defaultActionOnFailure;
         private String forceUpdateOnRepair;
         private String onFailedHealthCheck;
+        private List<GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair> onRepairs;
         public Builder() {}
         public Builder(GetRegionInstanceGroupManagerInstanceLifecyclePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultActionOnFailure = defaults.defaultActionOnFailure;
     	      this.forceUpdateOnRepair = defaults.forceUpdateOnRepair;
     	      this.onFailedHealthCheck = defaults.onFailedHealthCheck;
+    	      this.onRepairs = defaults.onRepairs;
         }
 
         @CustomType.Setter
@@ -93,11 +109,23 @@ public final class GetRegionInstanceGroupManagerInstanceLifecyclePolicy {
             this.onFailedHealthCheck = onFailedHealthCheck;
             return this;
         }
+        @CustomType.Setter
+        public Builder onRepairs(List<GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair> onRepairs) {
+            if (onRepairs == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerInstanceLifecyclePolicy", "onRepairs");
+            }
+            this.onRepairs = onRepairs;
+            return this;
+        }
+        public Builder onRepairs(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair... onRepairs) {
+            return onRepairs(List.of(onRepairs));
+        }
         public GetRegionInstanceGroupManagerInstanceLifecyclePolicy build() {
             final var _resultValue = new GetRegionInstanceGroupManagerInstanceLifecyclePolicy();
             _resultValue.defaultActionOnFailure = defaultActionOnFailure;
             _resultValue.forceUpdateOnRepair = forceUpdateOnRepair;
             _resultValue.onFailedHealthCheck = onFailedHealthCheck;
+            _resultValue.onRepairs = onRepairs;
             return _resultValue;
         }
     }

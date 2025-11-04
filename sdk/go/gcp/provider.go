@@ -142,10 +142,12 @@ type Provider struct {
 	MonitoringCustomEndpoint               pulumi.StringPtrOutput `pulumi:"monitoringCustomEndpoint"`
 	NetappCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"netappCustomEndpoint"`
 	NetworkConnectivityCustomEndpoint      pulumi.StringPtrOutput `pulumi:"networkConnectivityCustomEndpoint"`
+	NetworkConnectivityv1CustomEndpoint    pulumi.StringPtrOutput `pulumi:"networkConnectivityv1CustomEndpoint"`
 	NetworkManagementCustomEndpoint        pulumi.StringPtrOutput `pulumi:"networkManagementCustomEndpoint"`
 	NetworkSecurityCustomEndpoint          pulumi.StringPtrOutput `pulumi:"networkSecurityCustomEndpoint"`
 	NetworkServicesCustomEndpoint          pulumi.StringPtrOutput `pulumi:"networkServicesCustomEndpoint"`
 	NotebooksCustomEndpoint                pulumi.StringPtrOutput `pulumi:"notebooksCustomEndpoint"`
+	ObservabilityCustomEndpoint            pulumi.StringPtrOutput `pulumi:"observabilityCustomEndpoint"`
 	OracleDatabaseCustomEndpoint           pulumi.StringPtrOutput `pulumi:"oracleDatabaseCustomEndpoint"`
 	OrgPolicyCustomEndpoint                pulumi.StringPtrOutput `pulumi:"orgPolicyCustomEndpoint"`
 	OsConfigCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"osConfigCustomEndpoint"`
@@ -376,10 +378,12 @@ type providerArgs struct {
 	MonitoringCustomEndpoint               *string                      `pulumi:"monitoringCustomEndpoint"`
 	NetappCustomEndpoint                   *string                      `pulumi:"netappCustomEndpoint"`
 	NetworkConnectivityCustomEndpoint      *string                      `pulumi:"networkConnectivityCustomEndpoint"`
+	NetworkConnectivityv1CustomEndpoint    *string                      `pulumi:"networkConnectivityv1CustomEndpoint"`
 	NetworkManagementCustomEndpoint        *string                      `pulumi:"networkManagementCustomEndpoint"`
 	NetworkSecurityCustomEndpoint          *string                      `pulumi:"networkSecurityCustomEndpoint"`
 	NetworkServicesCustomEndpoint          *string                      `pulumi:"networkServicesCustomEndpoint"`
 	NotebooksCustomEndpoint                *string                      `pulumi:"notebooksCustomEndpoint"`
+	ObservabilityCustomEndpoint            *string                      `pulumi:"observabilityCustomEndpoint"`
 	OracleDatabaseCustomEndpoint           *string                      `pulumi:"oracleDatabaseCustomEndpoint"`
 	OrgPolicyCustomEndpoint                *string                      `pulumi:"orgPolicyCustomEndpoint"`
 	OsConfigCustomEndpoint                 *string                      `pulumi:"osConfigCustomEndpoint"`
@@ -575,10 +579,12 @@ type ProviderArgs struct {
 	MonitoringCustomEndpoint               pulumi.StringPtrInput
 	NetappCustomEndpoint                   pulumi.StringPtrInput
 	NetworkConnectivityCustomEndpoint      pulumi.StringPtrInput
+	NetworkConnectivityv1CustomEndpoint    pulumi.StringPtrInput
 	NetworkManagementCustomEndpoint        pulumi.StringPtrInput
 	NetworkSecurityCustomEndpoint          pulumi.StringPtrInput
 	NetworkServicesCustomEndpoint          pulumi.StringPtrInput
 	NotebooksCustomEndpoint                pulumi.StringPtrInput
+	ObservabilityCustomEndpoint            pulumi.StringPtrInput
 	OracleDatabaseCustomEndpoint           pulumi.StringPtrInput
 	OrgPolicyCustomEndpoint                pulumi.StringPtrInput
 	OsConfigCustomEndpoint                 pulumi.StringPtrInput
@@ -1198,6 +1204,10 @@ func (o ProviderOutput) NetworkConnectivityCustomEndpoint() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NetworkConnectivityCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) NetworkConnectivityv1CustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NetworkConnectivityv1CustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) NetworkManagementCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NetworkManagementCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -1212,6 +1222,10 @@ func (o ProviderOutput) NetworkServicesCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) NotebooksCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NotebooksCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ObservabilityCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ObservabilityCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) OracleDatabaseCustomEndpoint() pulumi.StringPtrOutput {

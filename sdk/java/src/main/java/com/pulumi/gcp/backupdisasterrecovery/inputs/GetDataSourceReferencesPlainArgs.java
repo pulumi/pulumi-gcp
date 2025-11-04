@@ -38,14 +38,14 @@ public final class GetDataSourceReferencesPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (right now this service not available for compute Instances , it will be added soon )
+     * - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
      * 
      */
     @Import(name="resourceType", required=true)
     private String resourceType;
 
     /**
-     * @return - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (right now this service not available for compute Instances , it will be added soon )
+     * @return - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
      * 
      */
     public String resourceType() {
@@ -95,7 +95,7 @@ public final class GetDataSourceReferencesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param resourceType - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (right now this service not available for compute Instances , it will be added soon )
+         * @param resourceType - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
          * 
          * @return builder
          * 

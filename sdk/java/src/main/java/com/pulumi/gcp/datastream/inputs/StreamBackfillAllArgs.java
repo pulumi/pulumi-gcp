@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMongodbExcludedObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMysqlExcludedObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllOracleExcludedObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllPostgresqlExcludedObjectsArgs;
@@ -18,6 +19,23 @@ import javax.annotation.Nullable;
 public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final StreamBackfillAllArgs Empty = new StreamBackfillAllArgs();
+
+    /**
+     * MongoDB data source objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="mongodbExcludedObjects")
+    private @Nullable Output<StreamBackfillAllMongodbExcludedObjectsArgs> mongodbExcludedObjects;
+
+    /**
+     * @return MongoDB data source objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamBackfillAllMongodbExcludedObjectsArgs>> mongodbExcludedObjects() {
+        return Optional.ofNullable(this.mongodbExcludedObjects);
+    }
 
     /**
      * MySQL data source objects to avoid backfilling.
@@ -107,6 +125,7 @@ public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceAr
     private StreamBackfillAllArgs() {}
 
     private StreamBackfillAllArgs(StreamBackfillAllArgs $) {
+        this.mongodbExcludedObjects = $.mongodbExcludedObjects;
         this.mysqlExcludedObjects = $.mysqlExcludedObjects;
         this.oracleExcludedObjects = $.oracleExcludedObjects;
         this.postgresqlExcludedObjects = $.postgresqlExcludedObjects;
@@ -130,6 +149,29 @@ public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(StreamBackfillAllArgs defaults) {
             $ = new StreamBackfillAllArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param mongodbExcludedObjects MongoDB data source objects to avoid backfilling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mongodbExcludedObjects(@Nullable Output<StreamBackfillAllMongodbExcludedObjectsArgs> mongodbExcludedObjects) {
+            $.mongodbExcludedObjects = mongodbExcludedObjects;
+            return this;
+        }
+
+        /**
+         * @param mongodbExcludedObjects MongoDB data source objects to avoid backfilling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mongodbExcludedObjects(StreamBackfillAllMongodbExcludedObjectsArgs mongodbExcludedObjects) {
+            return mongodbExcludedObjects(Output.of(mongodbExcludedObjects));
         }
 
         /**

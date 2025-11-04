@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     orgId: "123456789",
  *     deletionPolicy: "DELETE",
  * });
- * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"}, {
+ * const wait120s = new time.Sleep("wait_120s", {createDuration: "120s"}, {
  *     dependsOn: [serviceProject],
  * });
  * const example = new gcp.apphub.ServiceProjectAttachment("example", {serviceProjectAttachmentId: serviceProject.projectId}, {
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     orgId: "123456789",
  *     deletionPolicy: "DELETE",
  * });
- * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"}, {
+ * const wait120s = new time.Sleep("wait_120s", {createDuration: "120s"}, {
  *     dependsOn: [serviceProjectFull],
  * });
  * const example2 = new gcp.apphub.ServiceProjectAttachment("example2", {

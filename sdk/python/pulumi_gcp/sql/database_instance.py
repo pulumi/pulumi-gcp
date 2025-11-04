@@ -76,7 +76,7 @@ class DatabaseInstanceArgs:
                blank, the provider will randomly generate one when the instance is first
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-        :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool.
+        :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
         :param pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs'] point_in_time_restore_context: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -283,7 +283,7 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        For a read pool instance, the number of nodes in the read pool.
+        For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
         """
         return pulumi.get(self, "node_count")
 
@@ -485,7 +485,7 @@ class _DatabaseInstanceState:
                blank, the provider will randomly generate one when the instance is first
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-        :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool.
+        :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
         :param pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs'] point_in_time_restore_context: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
         :param pulumi.Input[_builtins.str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
@@ -793,7 +793,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        For a read pool instance, the number of nodes in the read pool.
+        For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
         """
         return pulumi.get(self, "node_count")
 
@@ -1306,7 +1306,7 @@ class DatabaseInstance(pulumi.CustomResource):
                blank, the provider will randomly generate one when the instance is first
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-        :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool.
+        :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
         :param pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']] point_in_time_restore_context: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -1755,7 +1755,7 @@ class DatabaseInstance(pulumi.CustomResource):
                blank, the provider will randomly generate one when the instance is first
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-        :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool.
+        :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
         :param pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']] point_in_time_restore_context: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
         :param pulumi.Input[_builtins.str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
@@ -1972,7 +1972,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> pulumi.Output[_builtins.int]:
         """
-        For a read pool instance, the number of nodes in the read pool.
+        For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
         """
         return pulumi.get(self, "node_count")
 

@@ -314,6 +314,809 @@ func (o AclConfigIdpConfigExternalIdpConfigPtrOutput) WorkforcePoolName() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+type AssistantCustomerPolicy struct {
+	// List of banned phrases.
+	// Structure is documented below.
+	BannedPhrases []AssistantCustomerPolicyBannedPhrase `pulumi:"bannedPhrases"`
+	// Model Armor configuration to be used for sanitizing user prompts and assistant responses.
+	// Structure is documented below.
+	ModelArmorConfig *AssistantCustomerPolicyModelArmorConfig `pulumi:"modelArmorConfig"`
+}
+
+// AssistantCustomerPolicyInput is an input type that accepts AssistantCustomerPolicyArgs and AssistantCustomerPolicyOutput values.
+// You can construct a concrete instance of `AssistantCustomerPolicyInput` via:
+//
+//	AssistantCustomerPolicyArgs{...}
+type AssistantCustomerPolicyInput interface {
+	pulumi.Input
+
+	ToAssistantCustomerPolicyOutput() AssistantCustomerPolicyOutput
+	ToAssistantCustomerPolicyOutputWithContext(context.Context) AssistantCustomerPolicyOutput
+}
+
+type AssistantCustomerPolicyArgs struct {
+	// List of banned phrases.
+	// Structure is documented below.
+	BannedPhrases AssistantCustomerPolicyBannedPhraseArrayInput `pulumi:"bannedPhrases"`
+	// Model Armor configuration to be used for sanitizing user prompts and assistant responses.
+	// Structure is documented below.
+	ModelArmorConfig AssistantCustomerPolicyModelArmorConfigPtrInput `pulumi:"modelArmorConfig"`
+}
+
+func (AssistantCustomerPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssistantCustomerPolicy)(nil)).Elem()
+}
+
+func (i AssistantCustomerPolicyArgs) ToAssistantCustomerPolicyOutput() AssistantCustomerPolicyOutput {
+	return i.ToAssistantCustomerPolicyOutputWithContext(context.Background())
+}
+
+func (i AssistantCustomerPolicyArgs) ToAssistantCustomerPolicyOutputWithContext(ctx context.Context) AssistantCustomerPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantCustomerPolicyOutput)
+}
+
+func (i AssistantCustomerPolicyArgs) ToAssistantCustomerPolicyPtrOutput() AssistantCustomerPolicyPtrOutput {
+	return i.ToAssistantCustomerPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i AssistantCustomerPolicyArgs) ToAssistantCustomerPolicyPtrOutputWithContext(ctx context.Context) AssistantCustomerPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantCustomerPolicyOutput).ToAssistantCustomerPolicyPtrOutputWithContext(ctx)
+}
+
+// AssistantCustomerPolicyPtrInput is an input type that accepts AssistantCustomerPolicyArgs, AssistantCustomerPolicyPtr and AssistantCustomerPolicyPtrOutput values.
+// You can construct a concrete instance of `AssistantCustomerPolicyPtrInput` via:
+//
+//	        AssistantCustomerPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssistantCustomerPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAssistantCustomerPolicyPtrOutput() AssistantCustomerPolicyPtrOutput
+	ToAssistantCustomerPolicyPtrOutputWithContext(context.Context) AssistantCustomerPolicyPtrOutput
+}
+
+type assistantCustomerPolicyPtrType AssistantCustomerPolicyArgs
+
+func AssistantCustomerPolicyPtr(v *AssistantCustomerPolicyArgs) AssistantCustomerPolicyPtrInput {
+	return (*assistantCustomerPolicyPtrType)(v)
+}
+
+func (*assistantCustomerPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssistantCustomerPolicy)(nil)).Elem()
+}
+
+func (i *assistantCustomerPolicyPtrType) ToAssistantCustomerPolicyPtrOutput() AssistantCustomerPolicyPtrOutput {
+	return i.ToAssistantCustomerPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *assistantCustomerPolicyPtrType) ToAssistantCustomerPolicyPtrOutputWithContext(ctx context.Context) AssistantCustomerPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantCustomerPolicyPtrOutput)
+}
+
+type AssistantCustomerPolicyOutput struct{ *pulumi.OutputState }
+
+func (AssistantCustomerPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssistantCustomerPolicy)(nil)).Elem()
+}
+
+func (o AssistantCustomerPolicyOutput) ToAssistantCustomerPolicyOutput() AssistantCustomerPolicyOutput {
+	return o
+}
+
+func (o AssistantCustomerPolicyOutput) ToAssistantCustomerPolicyOutputWithContext(ctx context.Context) AssistantCustomerPolicyOutput {
+	return o
+}
+
+func (o AssistantCustomerPolicyOutput) ToAssistantCustomerPolicyPtrOutput() AssistantCustomerPolicyPtrOutput {
+	return o.ToAssistantCustomerPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AssistantCustomerPolicyOutput) ToAssistantCustomerPolicyPtrOutputWithContext(ctx context.Context) AssistantCustomerPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssistantCustomerPolicy) *AssistantCustomerPolicy {
+		return &v
+	}).(AssistantCustomerPolicyPtrOutput)
+}
+
+// List of banned phrases.
+// Structure is documented below.
+func (o AssistantCustomerPolicyOutput) BannedPhrases() AssistantCustomerPolicyBannedPhraseArrayOutput {
+	return o.ApplyT(func(v AssistantCustomerPolicy) []AssistantCustomerPolicyBannedPhrase { return v.BannedPhrases }).(AssistantCustomerPolicyBannedPhraseArrayOutput)
+}
+
+// Model Armor configuration to be used for sanitizing user prompts and assistant responses.
+// Structure is documented below.
+func (o AssistantCustomerPolicyOutput) ModelArmorConfig() AssistantCustomerPolicyModelArmorConfigPtrOutput {
+	return o.ApplyT(func(v AssistantCustomerPolicy) *AssistantCustomerPolicyModelArmorConfig { return v.ModelArmorConfig }).(AssistantCustomerPolicyModelArmorConfigPtrOutput)
+}
+
+type AssistantCustomerPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AssistantCustomerPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssistantCustomerPolicy)(nil)).Elem()
+}
+
+func (o AssistantCustomerPolicyPtrOutput) ToAssistantCustomerPolicyPtrOutput() AssistantCustomerPolicyPtrOutput {
+	return o
+}
+
+func (o AssistantCustomerPolicyPtrOutput) ToAssistantCustomerPolicyPtrOutputWithContext(ctx context.Context) AssistantCustomerPolicyPtrOutput {
+	return o
+}
+
+func (o AssistantCustomerPolicyPtrOutput) Elem() AssistantCustomerPolicyOutput {
+	return o.ApplyT(func(v *AssistantCustomerPolicy) AssistantCustomerPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AssistantCustomerPolicy
+		return ret
+	}).(AssistantCustomerPolicyOutput)
+}
+
+// List of banned phrases.
+// Structure is documented below.
+func (o AssistantCustomerPolicyPtrOutput) BannedPhrases() AssistantCustomerPolicyBannedPhraseArrayOutput {
+	return o.ApplyT(func(v *AssistantCustomerPolicy) []AssistantCustomerPolicyBannedPhrase {
+		if v == nil {
+			return nil
+		}
+		return v.BannedPhrases
+	}).(AssistantCustomerPolicyBannedPhraseArrayOutput)
+}
+
+// Model Armor configuration to be used for sanitizing user prompts and assistant responses.
+// Structure is documented below.
+func (o AssistantCustomerPolicyPtrOutput) ModelArmorConfig() AssistantCustomerPolicyModelArmorConfigPtrOutput {
+	return o.ApplyT(func(v *AssistantCustomerPolicy) *AssistantCustomerPolicyModelArmorConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ModelArmorConfig
+	}).(AssistantCustomerPolicyModelArmorConfigPtrOutput)
+}
+
+type AssistantCustomerPolicyBannedPhrase struct {
+	// If true, diacritical marks (e.g., accents, umlauts) are ignored when
+	// matching banned phrases. For example, "cafe" would match "café".
+	IgnoreDiacritics *bool `pulumi:"ignoreDiacritics"`
+	// Match type for the banned phrase.
+	// The supported values: 'SIMPLE_STRING_MATCH', 'WORD_BOUNDARY_STRING_MATCH'.
+	MatchType *string `pulumi:"matchType"`
+	// The raw string content to be banned.
+	Phrase string `pulumi:"phrase"`
+}
+
+// AssistantCustomerPolicyBannedPhraseInput is an input type that accepts AssistantCustomerPolicyBannedPhraseArgs and AssistantCustomerPolicyBannedPhraseOutput values.
+// You can construct a concrete instance of `AssistantCustomerPolicyBannedPhraseInput` via:
+//
+//	AssistantCustomerPolicyBannedPhraseArgs{...}
+type AssistantCustomerPolicyBannedPhraseInput interface {
+	pulumi.Input
+
+	ToAssistantCustomerPolicyBannedPhraseOutput() AssistantCustomerPolicyBannedPhraseOutput
+	ToAssistantCustomerPolicyBannedPhraseOutputWithContext(context.Context) AssistantCustomerPolicyBannedPhraseOutput
+}
+
+type AssistantCustomerPolicyBannedPhraseArgs struct {
+	// If true, diacritical marks (e.g., accents, umlauts) are ignored when
+	// matching banned phrases. For example, "cafe" would match "café".
+	IgnoreDiacritics pulumi.BoolPtrInput `pulumi:"ignoreDiacritics"`
+	// Match type for the banned phrase.
+	// The supported values: 'SIMPLE_STRING_MATCH', 'WORD_BOUNDARY_STRING_MATCH'.
+	MatchType pulumi.StringPtrInput `pulumi:"matchType"`
+	// The raw string content to be banned.
+	Phrase pulumi.StringInput `pulumi:"phrase"`
+}
+
+func (AssistantCustomerPolicyBannedPhraseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssistantCustomerPolicyBannedPhrase)(nil)).Elem()
+}
+
+func (i AssistantCustomerPolicyBannedPhraseArgs) ToAssistantCustomerPolicyBannedPhraseOutput() AssistantCustomerPolicyBannedPhraseOutput {
+	return i.ToAssistantCustomerPolicyBannedPhraseOutputWithContext(context.Background())
+}
+
+func (i AssistantCustomerPolicyBannedPhraseArgs) ToAssistantCustomerPolicyBannedPhraseOutputWithContext(ctx context.Context) AssistantCustomerPolicyBannedPhraseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantCustomerPolicyBannedPhraseOutput)
+}
+
+// AssistantCustomerPolicyBannedPhraseArrayInput is an input type that accepts AssistantCustomerPolicyBannedPhraseArray and AssistantCustomerPolicyBannedPhraseArrayOutput values.
+// You can construct a concrete instance of `AssistantCustomerPolicyBannedPhraseArrayInput` via:
+//
+//	AssistantCustomerPolicyBannedPhraseArray{ AssistantCustomerPolicyBannedPhraseArgs{...} }
+type AssistantCustomerPolicyBannedPhraseArrayInput interface {
+	pulumi.Input
+
+	ToAssistantCustomerPolicyBannedPhraseArrayOutput() AssistantCustomerPolicyBannedPhraseArrayOutput
+	ToAssistantCustomerPolicyBannedPhraseArrayOutputWithContext(context.Context) AssistantCustomerPolicyBannedPhraseArrayOutput
+}
+
+type AssistantCustomerPolicyBannedPhraseArray []AssistantCustomerPolicyBannedPhraseInput
+
+func (AssistantCustomerPolicyBannedPhraseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssistantCustomerPolicyBannedPhrase)(nil)).Elem()
+}
+
+func (i AssistantCustomerPolicyBannedPhraseArray) ToAssistantCustomerPolicyBannedPhraseArrayOutput() AssistantCustomerPolicyBannedPhraseArrayOutput {
+	return i.ToAssistantCustomerPolicyBannedPhraseArrayOutputWithContext(context.Background())
+}
+
+func (i AssistantCustomerPolicyBannedPhraseArray) ToAssistantCustomerPolicyBannedPhraseArrayOutputWithContext(ctx context.Context) AssistantCustomerPolicyBannedPhraseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantCustomerPolicyBannedPhraseArrayOutput)
+}
+
+type AssistantCustomerPolicyBannedPhraseOutput struct{ *pulumi.OutputState }
+
+func (AssistantCustomerPolicyBannedPhraseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssistantCustomerPolicyBannedPhrase)(nil)).Elem()
+}
+
+func (o AssistantCustomerPolicyBannedPhraseOutput) ToAssistantCustomerPolicyBannedPhraseOutput() AssistantCustomerPolicyBannedPhraseOutput {
+	return o
+}
+
+func (o AssistantCustomerPolicyBannedPhraseOutput) ToAssistantCustomerPolicyBannedPhraseOutputWithContext(ctx context.Context) AssistantCustomerPolicyBannedPhraseOutput {
+	return o
+}
+
+// If true, diacritical marks (e.g., accents, umlauts) are ignored when
+// matching banned phrases. For example, "cafe" would match "café".
+func (o AssistantCustomerPolicyBannedPhraseOutput) IgnoreDiacritics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AssistantCustomerPolicyBannedPhrase) *bool { return v.IgnoreDiacritics }).(pulumi.BoolPtrOutput)
+}
+
+// Match type for the banned phrase.
+// The supported values: 'SIMPLE_STRING_MATCH', 'WORD_BOUNDARY_STRING_MATCH'.
+func (o AssistantCustomerPolicyBannedPhraseOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssistantCustomerPolicyBannedPhrase) *string { return v.MatchType }).(pulumi.StringPtrOutput)
+}
+
+// The raw string content to be banned.
+func (o AssistantCustomerPolicyBannedPhraseOutput) Phrase() pulumi.StringOutput {
+	return o.ApplyT(func(v AssistantCustomerPolicyBannedPhrase) string { return v.Phrase }).(pulumi.StringOutput)
+}
+
+type AssistantCustomerPolicyBannedPhraseArrayOutput struct{ *pulumi.OutputState }
+
+func (AssistantCustomerPolicyBannedPhraseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssistantCustomerPolicyBannedPhrase)(nil)).Elem()
+}
+
+func (o AssistantCustomerPolicyBannedPhraseArrayOutput) ToAssistantCustomerPolicyBannedPhraseArrayOutput() AssistantCustomerPolicyBannedPhraseArrayOutput {
+	return o
+}
+
+func (o AssistantCustomerPolicyBannedPhraseArrayOutput) ToAssistantCustomerPolicyBannedPhraseArrayOutputWithContext(ctx context.Context) AssistantCustomerPolicyBannedPhraseArrayOutput {
+	return o
+}
+
+func (o AssistantCustomerPolicyBannedPhraseArrayOutput) Index(i pulumi.IntInput) AssistantCustomerPolicyBannedPhraseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssistantCustomerPolicyBannedPhrase {
+		return vs[0].([]AssistantCustomerPolicyBannedPhrase)[vs[1].(int)]
+	}).(AssistantCustomerPolicyBannedPhraseOutput)
+}
+
+type AssistantCustomerPolicyModelArmorConfig struct {
+	// Defines the failure mode for Model Armor sanitization.
+	// The supported values: 'FAIL_OPEN', 'FAIL_CLOSED'.
+	FailureMode *string `pulumi:"failureMode"`
+	// The resource name of the Model Armor template for sanitizing assistant
+	// responses. Format:
+	// `projects/{project}/locations/{location}/templates/{template_id}`
+	// If not specified, no sanitization will be applied to the assistant
+	// response.
+	ResponseTemplate string `pulumi:"responseTemplate"`
+	// The resource name of the Model Armor template for sanitizing user
+	// prompts. Format:
+	// `projects/{project}/locations/{location}/templates/{template_id}`
+	// If not specified, no sanitization will be applied to the user prompt.
+	UserPromptTemplate string `pulumi:"userPromptTemplate"`
+}
+
+// AssistantCustomerPolicyModelArmorConfigInput is an input type that accepts AssistantCustomerPolicyModelArmorConfigArgs and AssistantCustomerPolicyModelArmorConfigOutput values.
+// You can construct a concrete instance of `AssistantCustomerPolicyModelArmorConfigInput` via:
+//
+//	AssistantCustomerPolicyModelArmorConfigArgs{...}
+type AssistantCustomerPolicyModelArmorConfigInput interface {
+	pulumi.Input
+
+	ToAssistantCustomerPolicyModelArmorConfigOutput() AssistantCustomerPolicyModelArmorConfigOutput
+	ToAssistantCustomerPolicyModelArmorConfigOutputWithContext(context.Context) AssistantCustomerPolicyModelArmorConfigOutput
+}
+
+type AssistantCustomerPolicyModelArmorConfigArgs struct {
+	// Defines the failure mode for Model Armor sanitization.
+	// The supported values: 'FAIL_OPEN', 'FAIL_CLOSED'.
+	FailureMode pulumi.StringPtrInput `pulumi:"failureMode"`
+	// The resource name of the Model Armor template for sanitizing assistant
+	// responses. Format:
+	// `projects/{project}/locations/{location}/templates/{template_id}`
+	// If not specified, no sanitization will be applied to the assistant
+	// response.
+	ResponseTemplate pulumi.StringInput `pulumi:"responseTemplate"`
+	// The resource name of the Model Armor template for sanitizing user
+	// prompts. Format:
+	// `projects/{project}/locations/{location}/templates/{template_id}`
+	// If not specified, no sanitization will be applied to the user prompt.
+	UserPromptTemplate pulumi.StringInput `pulumi:"userPromptTemplate"`
+}
+
+func (AssistantCustomerPolicyModelArmorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssistantCustomerPolicyModelArmorConfig)(nil)).Elem()
+}
+
+func (i AssistantCustomerPolicyModelArmorConfigArgs) ToAssistantCustomerPolicyModelArmorConfigOutput() AssistantCustomerPolicyModelArmorConfigOutput {
+	return i.ToAssistantCustomerPolicyModelArmorConfigOutputWithContext(context.Background())
+}
+
+func (i AssistantCustomerPolicyModelArmorConfigArgs) ToAssistantCustomerPolicyModelArmorConfigOutputWithContext(ctx context.Context) AssistantCustomerPolicyModelArmorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantCustomerPolicyModelArmorConfigOutput)
+}
+
+func (i AssistantCustomerPolicyModelArmorConfigArgs) ToAssistantCustomerPolicyModelArmorConfigPtrOutput() AssistantCustomerPolicyModelArmorConfigPtrOutput {
+	return i.ToAssistantCustomerPolicyModelArmorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AssistantCustomerPolicyModelArmorConfigArgs) ToAssistantCustomerPolicyModelArmorConfigPtrOutputWithContext(ctx context.Context) AssistantCustomerPolicyModelArmorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantCustomerPolicyModelArmorConfigOutput).ToAssistantCustomerPolicyModelArmorConfigPtrOutputWithContext(ctx)
+}
+
+// AssistantCustomerPolicyModelArmorConfigPtrInput is an input type that accepts AssistantCustomerPolicyModelArmorConfigArgs, AssistantCustomerPolicyModelArmorConfigPtr and AssistantCustomerPolicyModelArmorConfigPtrOutput values.
+// You can construct a concrete instance of `AssistantCustomerPolicyModelArmorConfigPtrInput` via:
+//
+//	        AssistantCustomerPolicyModelArmorConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssistantCustomerPolicyModelArmorConfigPtrInput interface {
+	pulumi.Input
+
+	ToAssistantCustomerPolicyModelArmorConfigPtrOutput() AssistantCustomerPolicyModelArmorConfigPtrOutput
+	ToAssistantCustomerPolicyModelArmorConfigPtrOutputWithContext(context.Context) AssistantCustomerPolicyModelArmorConfigPtrOutput
+}
+
+type assistantCustomerPolicyModelArmorConfigPtrType AssistantCustomerPolicyModelArmorConfigArgs
+
+func AssistantCustomerPolicyModelArmorConfigPtr(v *AssistantCustomerPolicyModelArmorConfigArgs) AssistantCustomerPolicyModelArmorConfigPtrInput {
+	return (*assistantCustomerPolicyModelArmorConfigPtrType)(v)
+}
+
+func (*assistantCustomerPolicyModelArmorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssistantCustomerPolicyModelArmorConfig)(nil)).Elem()
+}
+
+func (i *assistantCustomerPolicyModelArmorConfigPtrType) ToAssistantCustomerPolicyModelArmorConfigPtrOutput() AssistantCustomerPolicyModelArmorConfigPtrOutput {
+	return i.ToAssistantCustomerPolicyModelArmorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *assistantCustomerPolicyModelArmorConfigPtrType) ToAssistantCustomerPolicyModelArmorConfigPtrOutputWithContext(ctx context.Context) AssistantCustomerPolicyModelArmorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantCustomerPolicyModelArmorConfigPtrOutput)
+}
+
+type AssistantCustomerPolicyModelArmorConfigOutput struct{ *pulumi.OutputState }
+
+func (AssistantCustomerPolicyModelArmorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssistantCustomerPolicyModelArmorConfig)(nil)).Elem()
+}
+
+func (o AssistantCustomerPolicyModelArmorConfigOutput) ToAssistantCustomerPolicyModelArmorConfigOutput() AssistantCustomerPolicyModelArmorConfigOutput {
+	return o
+}
+
+func (o AssistantCustomerPolicyModelArmorConfigOutput) ToAssistantCustomerPolicyModelArmorConfigOutputWithContext(ctx context.Context) AssistantCustomerPolicyModelArmorConfigOutput {
+	return o
+}
+
+func (o AssistantCustomerPolicyModelArmorConfigOutput) ToAssistantCustomerPolicyModelArmorConfigPtrOutput() AssistantCustomerPolicyModelArmorConfigPtrOutput {
+	return o.ToAssistantCustomerPolicyModelArmorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AssistantCustomerPolicyModelArmorConfigOutput) ToAssistantCustomerPolicyModelArmorConfigPtrOutputWithContext(ctx context.Context) AssistantCustomerPolicyModelArmorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssistantCustomerPolicyModelArmorConfig) *AssistantCustomerPolicyModelArmorConfig {
+		return &v
+	}).(AssistantCustomerPolicyModelArmorConfigPtrOutput)
+}
+
+// Defines the failure mode for Model Armor sanitization.
+// The supported values: 'FAIL_OPEN', 'FAIL_CLOSED'.
+func (o AssistantCustomerPolicyModelArmorConfigOutput) FailureMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssistantCustomerPolicyModelArmorConfig) *string { return v.FailureMode }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Model Armor template for sanitizing assistant
+// responses. Format:
+// `projects/{project}/locations/{location}/templates/{template_id}`
+// If not specified, no sanitization will be applied to the assistant
+// response.
+func (o AssistantCustomerPolicyModelArmorConfigOutput) ResponseTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v AssistantCustomerPolicyModelArmorConfig) string { return v.ResponseTemplate }).(pulumi.StringOutput)
+}
+
+// The resource name of the Model Armor template for sanitizing user
+// prompts. Format:
+// `projects/{project}/locations/{location}/templates/{template_id}`
+// If not specified, no sanitization will be applied to the user prompt.
+func (o AssistantCustomerPolicyModelArmorConfigOutput) UserPromptTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v AssistantCustomerPolicyModelArmorConfig) string { return v.UserPromptTemplate }).(pulumi.StringOutput)
+}
+
+type AssistantCustomerPolicyModelArmorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AssistantCustomerPolicyModelArmorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssistantCustomerPolicyModelArmorConfig)(nil)).Elem()
+}
+
+func (o AssistantCustomerPolicyModelArmorConfigPtrOutput) ToAssistantCustomerPolicyModelArmorConfigPtrOutput() AssistantCustomerPolicyModelArmorConfigPtrOutput {
+	return o
+}
+
+func (o AssistantCustomerPolicyModelArmorConfigPtrOutput) ToAssistantCustomerPolicyModelArmorConfigPtrOutputWithContext(ctx context.Context) AssistantCustomerPolicyModelArmorConfigPtrOutput {
+	return o
+}
+
+func (o AssistantCustomerPolicyModelArmorConfigPtrOutput) Elem() AssistantCustomerPolicyModelArmorConfigOutput {
+	return o.ApplyT(func(v *AssistantCustomerPolicyModelArmorConfig) AssistantCustomerPolicyModelArmorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AssistantCustomerPolicyModelArmorConfig
+		return ret
+	}).(AssistantCustomerPolicyModelArmorConfigOutput)
+}
+
+// Defines the failure mode for Model Armor sanitization.
+// The supported values: 'FAIL_OPEN', 'FAIL_CLOSED'.
+func (o AssistantCustomerPolicyModelArmorConfigPtrOutput) FailureMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssistantCustomerPolicyModelArmorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailureMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Model Armor template for sanitizing assistant
+// responses. Format:
+// `projects/{project}/locations/{location}/templates/{template_id}`
+// If not specified, no sanitization will be applied to the assistant
+// response.
+func (o AssistantCustomerPolicyModelArmorConfigPtrOutput) ResponseTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssistantCustomerPolicyModelArmorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResponseTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Model Armor template for sanitizing user
+// prompts. Format:
+// `projects/{project}/locations/{location}/templates/{template_id}`
+// If not specified, no sanitization will be applied to the user prompt.
+func (o AssistantCustomerPolicyModelArmorConfigPtrOutput) UserPromptTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssistantCustomerPolicyModelArmorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserPromptTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssistantGenerationConfig struct {
+	// The default language to use for the generation of the assistant response.
+	// Use an ISO 639-1 language code such as `en`.
+	// If not specified, the language will be automatically detected.
+	DefaultLanguage *string `pulumi:"defaultLanguage"`
+	// System instruction, also known as the prompt preamble for LLM calls.
+	// See also https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/system-instructions
+	// Structure is documented below.
+	SystemInstruction *AssistantGenerationConfigSystemInstruction `pulumi:"systemInstruction"`
+}
+
+// AssistantGenerationConfigInput is an input type that accepts AssistantGenerationConfigArgs and AssistantGenerationConfigOutput values.
+// You can construct a concrete instance of `AssistantGenerationConfigInput` via:
+//
+//	AssistantGenerationConfigArgs{...}
+type AssistantGenerationConfigInput interface {
+	pulumi.Input
+
+	ToAssistantGenerationConfigOutput() AssistantGenerationConfigOutput
+	ToAssistantGenerationConfigOutputWithContext(context.Context) AssistantGenerationConfigOutput
+}
+
+type AssistantGenerationConfigArgs struct {
+	// The default language to use for the generation of the assistant response.
+	// Use an ISO 639-1 language code such as `en`.
+	// If not specified, the language will be automatically detected.
+	DefaultLanguage pulumi.StringPtrInput `pulumi:"defaultLanguage"`
+	// System instruction, also known as the prompt preamble for LLM calls.
+	// See also https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/system-instructions
+	// Structure is documented below.
+	SystemInstruction AssistantGenerationConfigSystemInstructionPtrInput `pulumi:"systemInstruction"`
+}
+
+func (AssistantGenerationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssistantGenerationConfig)(nil)).Elem()
+}
+
+func (i AssistantGenerationConfigArgs) ToAssistantGenerationConfigOutput() AssistantGenerationConfigOutput {
+	return i.ToAssistantGenerationConfigOutputWithContext(context.Background())
+}
+
+func (i AssistantGenerationConfigArgs) ToAssistantGenerationConfigOutputWithContext(ctx context.Context) AssistantGenerationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantGenerationConfigOutput)
+}
+
+func (i AssistantGenerationConfigArgs) ToAssistantGenerationConfigPtrOutput() AssistantGenerationConfigPtrOutput {
+	return i.ToAssistantGenerationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AssistantGenerationConfigArgs) ToAssistantGenerationConfigPtrOutputWithContext(ctx context.Context) AssistantGenerationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantGenerationConfigOutput).ToAssistantGenerationConfigPtrOutputWithContext(ctx)
+}
+
+// AssistantGenerationConfigPtrInput is an input type that accepts AssistantGenerationConfigArgs, AssistantGenerationConfigPtr and AssistantGenerationConfigPtrOutput values.
+// You can construct a concrete instance of `AssistantGenerationConfigPtrInput` via:
+//
+//	        AssistantGenerationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssistantGenerationConfigPtrInput interface {
+	pulumi.Input
+
+	ToAssistantGenerationConfigPtrOutput() AssistantGenerationConfigPtrOutput
+	ToAssistantGenerationConfigPtrOutputWithContext(context.Context) AssistantGenerationConfigPtrOutput
+}
+
+type assistantGenerationConfigPtrType AssistantGenerationConfigArgs
+
+func AssistantGenerationConfigPtr(v *AssistantGenerationConfigArgs) AssistantGenerationConfigPtrInput {
+	return (*assistantGenerationConfigPtrType)(v)
+}
+
+func (*assistantGenerationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssistantGenerationConfig)(nil)).Elem()
+}
+
+func (i *assistantGenerationConfigPtrType) ToAssistantGenerationConfigPtrOutput() AssistantGenerationConfigPtrOutput {
+	return i.ToAssistantGenerationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *assistantGenerationConfigPtrType) ToAssistantGenerationConfigPtrOutputWithContext(ctx context.Context) AssistantGenerationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantGenerationConfigPtrOutput)
+}
+
+type AssistantGenerationConfigOutput struct{ *pulumi.OutputState }
+
+func (AssistantGenerationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssistantGenerationConfig)(nil)).Elem()
+}
+
+func (o AssistantGenerationConfigOutput) ToAssistantGenerationConfigOutput() AssistantGenerationConfigOutput {
+	return o
+}
+
+func (o AssistantGenerationConfigOutput) ToAssistantGenerationConfigOutputWithContext(ctx context.Context) AssistantGenerationConfigOutput {
+	return o
+}
+
+func (o AssistantGenerationConfigOutput) ToAssistantGenerationConfigPtrOutput() AssistantGenerationConfigPtrOutput {
+	return o.ToAssistantGenerationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AssistantGenerationConfigOutput) ToAssistantGenerationConfigPtrOutputWithContext(ctx context.Context) AssistantGenerationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssistantGenerationConfig) *AssistantGenerationConfig {
+		return &v
+	}).(AssistantGenerationConfigPtrOutput)
+}
+
+// The default language to use for the generation of the assistant response.
+// Use an ISO 639-1 language code such as `en`.
+// If not specified, the language will be automatically detected.
+func (o AssistantGenerationConfigOutput) DefaultLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssistantGenerationConfig) *string { return v.DefaultLanguage }).(pulumi.StringPtrOutput)
+}
+
+// System instruction, also known as the prompt preamble for LLM calls.
+// See also https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/system-instructions
+// Structure is documented below.
+func (o AssistantGenerationConfigOutput) SystemInstruction() AssistantGenerationConfigSystemInstructionPtrOutput {
+	return o.ApplyT(func(v AssistantGenerationConfig) *AssistantGenerationConfigSystemInstruction {
+		return v.SystemInstruction
+	}).(AssistantGenerationConfigSystemInstructionPtrOutput)
+}
+
+type AssistantGenerationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AssistantGenerationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssistantGenerationConfig)(nil)).Elem()
+}
+
+func (o AssistantGenerationConfigPtrOutput) ToAssistantGenerationConfigPtrOutput() AssistantGenerationConfigPtrOutput {
+	return o
+}
+
+func (o AssistantGenerationConfigPtrOutput) ToAssistantGenerationConfigPtrOutputWithContext(ctx context.Context) AssistantGenerationConfigPtrOutput {
+	return o
+}
+
+func (o AssistantGenerationConfigPtrOutput) Elem() AssistantGenerationConfigOutput {
+	return o.ApplyT(func(v *AssistantGenerationConfig) AssistantGenerationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AssistantGenerationConfig
+		return ret
+	}).(AssistantGenerationConfigOutput)
+}
+
+// The default language to use for the generation of the assistant response.
+// Use an ISO 639-1 language code such as `en`.
+// If not specified, the language will be automatically detected.
+func (o AssistantGenerationConfigPtrOutput) DefaultLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssistantGenerationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultLanguage
+	}).(pulumi.StringPtrOutput)
+}
+
+// System instruction, also known as the prompt preamble for LLM calls.
+// See also https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/system-instructions
+// Structure is documented below.
+func (o AssistantGenerationConfigPtrOutput) SystemInstruction() AssistantGenerationConfigSystemInstructionPtrOutput {
+	return o.ApplyT(func(v *AssistantGenerationConfig) *AssistantGenerationConfigSystemInstruction {
+		if v == nil {
+			return nil
+		}
+		return v.SystemInstruction
+	}).(AssistantGenerationConfigSystemInstructionPtrOutput)
+}
+
+type AssistantGenerationConfigSystemInstruction struct {
+	// Additional system instruction that will be added to the default system instruction.
+	AdditionalSystemInstruction *string `pulumi:"additionalSystemInstruction"`
+}
+
+// AssistantGenerationConfigSystemInstructionInput is an input type that accepts AssistantGenerationConfigSystemInstructionArgs and AssistantGenerationConfigSystemInstructionOutput values.
+// You can construct a concrete instance of `AssistantGenerationConfigSystemInstructionInput` via:
+//
+//	AssistantGenerationConfigSystemInstructionArgs{...}
+type AssistantGenerationConfigSystemInstructionInput interface {
+	pulumi.Input
+
+	ToAssistantGenerationConfigSystemInstructionOutput() AssistantGenerationConfigSystemInstructionOutput
+	ToAssistantGenerationConfigSystemInstructionOutputWithContext(context.Context) AssistantGenerationConfigSystemInstructionOutput
+}
+
+type AssistantGenerationConfigSystemInstructionArgs struct {
+	// Additional system instruction that will be added to the default system instruction.
+	AdditionalSystemInstruction pulumi.StringPtrInput `pulumi:"additionalSystemInstruction"`
+}
+
+func (AssistantGenerationConfigSystemInstructionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssistantGenerationConfigSystemInstruction)(nil)).Elem()
+}
+
+func (i AssistantGenerationConfigSystemInstructionArgs) ToAssistantGenerationConfigSystemInstructionOutput() AssistantGenerationConfigSystemInstructionOutput {
+	return i.ToAssistantGenerationConfigSystemInstructionOutputWithContext(context.Background())
+}
+
+func (i AssistantGenerationConfigSystemInstructionArgs) ToAssistantGenerationConfigSystemInstructionOutputWithContext(ctx context.Context) AssistantGenerationConfigSystemInstructionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantGenerationConfigSystemInstructionOutput)
+}
+
+func (i AssistantGenerationConfigSystemInstructionArgs) ToAssistantGenerationConfigSystemInstructionPtrOutput() AssistantGenerationConfigSystemInstructionPtrOutput {
+	return i.ToAssistantGenerationConfigSystemInstructionPtrOutputWithContext(context.Background())
+}
+
+func (i AssistantGenerationConfigSystemInstructionArgs) ToAssistantGenerationConfigSystemInstructionPtrOutputWithContext(ctx context.Context) AssistantGenerationConfigSystemInstructionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantGenerationConfigSystemInstructionOutput).ToAssistantGenerationConfigSystemInstructionPtrOutputWithContext(ctx)
+}
+
+// AssistantGenerationConfigSystemInstructionPtrInput is an input type that accepts AssistantGenerationConfigSystemInstructionArgs, AssistantGenerationConfigSystemInstructionPtr and AssistantGenerationConfigSystemInstructionPtrOutput values.
+// You can construct a concrete instance of `AssistantGenerationConfigSystemInstructionPtrInput` via:
+//
+//	        AssistantGenerationConfigSystemInstructionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssistantGenerationConfigSystemInstructionPtrInput interface {
+	pulumi.Input
+
+	ToAssistantGenerationConfigSystemInstructionPtrOutput() AssistantGenerationConfigSystemInstructionPtrOutput
+	ToAssistantGenerationConfigSystemInstructionPtrOutputWithContext(context.Context) AssistantGenerationConfigSystemInstructionPtrOutput
+}
+
+type assistantGenerationConfigSystemInstructionPtrType AssistantGenerationConfigSystemInstructionArgs
+
+func AssistantGenerationConfigSystemInstructionPtr(v *AssistantGenerationConfigSystemInstructionArgs) AssistantGenerationConfigSystemInstructionPtrInput {
+	return (*assistantGenerationConfigSystemInstructionPtrType)(v)
+}
+
+func (*assistantGenerationConfigSystemInstructionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssistantGenerationConfigSystemInstruction)(nil)).Elem()
+}
+
+func (i *assistantGenerationConfigSystemInstructionPtrType) ToAssistantGenerationConfigSystemInstructionPtrOutput() AssistantGenerationConfigSystemInstructionPtrOutput {
+	return i.ToAssistantGenerationConfigSystemInstructionPtrOutputWithContext(context.Background())
+}
+
+func (i *assistantGenerationConfigSystemInstructionPtrType) ToAssistantGenerationConfigSystemInstructionPtrOutputWithContext(ctx context.Context) AssistantGenerationConfigSystemInstructionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssistantGenerationConfigSystemInstructionPtrOutput)
+}
+
+type AssistantGenerationConfigSystemInstructionOutput struct{ *pulumi.OutputState }
+
+func (AssistantGenerationConfigSystemInstructionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssistantGenerationConfigSystemInstruction)(nil)).Elem()
+}
+
+func (o AssistantGenerationConfigSystemInstructionOutput) ToAssistantGenerationConfigSystemInstructionOutput() AssistantGenerationConfigSystemInstructionOutput {
+	return o
+}
+
+func (o AssistantGenerationConfigSystemInstructionOutput) ToAssistantGenerationConfigSystemInstructionOutputWithContext(ctx context.Context) AssistantGenerationConfigSystemInstructionOutput {
+	return o
+}
+
+func (o AssistantGenerationConfigSystemInstructionOutput) ToAssistantGenerationConfigSystemInstructionPtrOutput() AssistantGenerationConfigSystemInstructionPtrOutput {
+	return o.ToAssistantGenerationConfigSystemInstructionPtrOutputWithContext(context.Background())
+}
+
+func (o AssistantGenerationConfigSystemInstructionOutput) ToAssistantGenerationConfigSystemInstructionPtrOutputWithContext(ctx context.Context) AssistantGenerationConfigSystemInstructionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssistantGenerationConfigSystemInstruction) *AssistantGenerationConfigSystemInstruction {
+		return &v
+	}).(AssistantGenerationConfigSystemInstructionPtrOutput)
+}
+
+// Additional system instruction that will be added to the default system instruction.
+func (o AssistantGenerationConfigSystemInstructionOutput) AdditionalSystemInstruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssistantGenerationConfigSystemInstruction) *string { return v.AdditionalSystemInstruction }).(pulumi.StringPtrOutput)
+}
+
+type AssistantGenerationConfigSystemInstructionPtrOutput struct{ *pulumi.OutputState }
+
+func (AssistantGenerationConfigSystemInstructionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssistantGenerationConfigSystemInstruction)(nil)).Elem()
+}
+
+func (o AssistantGenerationConfigSystemInstructionPtrOutput) ToAssistantGenerationConfigSystemInstructionPtrOutput() AssistantGenerationConfigSystemInstructionPtrOutput {
+	return o
+}
+
+func (o AssistantGenerationConfigSystemInstructionPtrOutput) ToAssistantGenerationConfigSystemInstructionPtrOutputWithContext(ctx context.Context) AssistantGenerationConfigSystemInstructionPtrOutput {
+	return o
+}
+
+func (o AssistantGenerationConfigSystemInstructionPtrOutput) Elem() AssistantGenerationConfigSystemInstructionOutput {
+	return o.ApplyT(func(v *AssistantGenerationConfigSystemInstruction) AssistantGenerationConfigSystemInstruction {
+		if v != nil {
+			return *v
+		}
+		var ret AssistantGenerationConfigSystemInstruction
+		return ret
+	}).(AssistantGenerationConfigSystemInstructionOutput)
+}
+
+// Additional system instruction that will be added to the default system instruction.
+func (o AssistantGenerationConfigSystemInstructionPtrOutput) AdditionalSystemInstruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssistantGenerationConfigSystemInstruction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalSystemInstruction
+	}).(pulumi.StringPtrOutput)
+}
+
 type ChatEngineChatEngineConfig struct {
 	// The configuration to generate the Dialogflow agent that is associated to this Engine.
 	// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
@@ -1080,7 +1883,7 @@ type DataConnectorEntity struct {
 	// `description`. Supported key properties:
 	KeyPropertyMappings map[string]string `pulumi:"keyPropertyMappings"`
 	// The parameters for the entity to facilitate data ingestion.
-	Params map[string]string `pulumi:"params"`
+	Params *string `pulumi:"params"`
 }
 
 // DataConnectorEntityInput is an input type that accepts DataConnectorEntityArgs and DataConnectorEntityOutput values.
@@ -1113,7 +1916,7 @@ type DataConnectorEntityArgs struct {
 	// `description`. Supported key properties:
 	KeyPropertyMappings pulumi.StringMapInput `pulumi:"keyPropertyMappings"`
 	// The parameters for the entity to facilitate data ingestion.
-	Params pulumi.StringMapInput `pulumi:"params"`
+	Params pulumi.StringPtrInput `pulumi:"params"`
 }
 
 func (DataConnectorEntityArgs) ElementType() reflect.Type {
@@ -1194,8 +1997,8 @@ func (o DataConnectorEntityOutput) KeyPropertyMappings() pulumi.StringMapOutput 
 }
 
 // The parameters for the entity to facilitate data ingestion.
-func (o DataConnectorEntityOutput) Params() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DataConnectorEntity) map[string]string { return v.Params }).(pulumi.StringMapOutput)
+func (o DataConnectorEntityOutput) Params() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorEntity) *string { return v.Params }).(pulumi.StringPtrOutput)
 }
 
 type DataConnectorEntityArrayOutput struct{ *pulumi.OutputState }
@@ -3348,6 +4151,356 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+type LicenseConfigEndDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year *int `pulumi:"year"`
+}
+
+// LicenseConfigEndDateInput is an input type that accepts LicenseConfigEndDateArgs and LicenseConfigEndDateOutput values.
+// You can construct a concrete instance of `LicenseConfigEndDateInput` via:
+//
+//	LicenseConfigEndDateArgs{...}
+type LicenseConfigEndDateInput interface {
+	pulumi.Input
+
+	ToLicenseConfigEndDateOutput() LicenseConfigEndDateOutput
+	ToLicenseConfigEndDateOutputWithContext(context.Context) LicenseConfigEndDateOutput
+}
+
+type LicenseConfigEndDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (LicenseConfigEndDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseConfigEndDate)(nil)).Elem()
+}
+
+func (i LicenseConfigEndDateArgs) ToLicenseConfigEndDateOutput() LicenseConfigEndDateOutput {
+	return i.ToLicenseConfigEndDateOutputWithContext(context.Background())
+}
+
+func (i LicenseConfigEndDateArgs) ToLicenseConfigEndDateOutputWithContext(ctx context.Context) LicenseConfigEndDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigEndDateOutput)
+}
+
+func (i LicenseConfigEndDateArgs) ToLicenseConfigEndDatePtrOutput() LicenseConfigEndDatePtrOutput {
+	return i.ToLicenseConfigEndDatePtrOutputWithContext(context.Background())
+}
+
+func (i LicenseConfigEndDateArgs) ToLicenseConfigEndDatePtrOutputWithContext(ctx context.Context) LicenseConfigEndDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigEndDateOutput).ToLicenseConfigEndDatePtrOutputWithContext(ctx)
+}
+
+// LicenseConfigEndDatePtrInput is an input type that accepts LicenseConfigEndDateArgs, LicenseConfigEndDatePtr and LicenseConfigEndDatePtrOutput values.
+// You can construct a concrete instance of `LicenseConfigEndDatePtrInput` via:
+//
+//	        LicenseConfigEndDateArgs{...}
+//
+//	or:
+//
+//	        nil
+type LicenseConfigEndDatePtrInput interface {
+	pulumi.Input
+
+	ToLicenseConfigEndDatePtrOutput() LicenseConfigEndDatePtrOutput
+	ToLicenseConfigEndDatePtrOutputWithContext(context.Context) LicenseConfigEndDatePtrOutput
+}
+
+type licenseConfigEndDatePtrType LicenseConfigEndDateArgs
+
+func LicenseConfigEndDatePtr(v *LicenseConfigEndDateArgs) LicenseConfigEndDatePtrInput {
+	return (*licenseConfigEndDatePtrType)(v)
+}
+
+func (*licenseConfigEndDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseConfigEndDate)(nil)).Elem()
+}
+
+func (i *licenseConfigEndDatePtrType) ToLicenseConfigEndDatePtrOutput() LicenseConfigEndDatePtrOutput {
+	return i.ToLicenseConfigEndDatePtrOutputWithContext(context.Background())
+}
+
+func (i *licenseConfigEndDatePtrType) ToLicenseConfigEndDatePtrOutputWithContext(ctx context.Context) LicenseConfigEndDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigEndDatePtrOutput)
+}
+
+type LicenseConfigEndDateOutput struct{ *pulumi.OutputState }
+
+func (LicenseConfigEndDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseConfigEndDate)(nil)).Elem()
+}
+
+func (o LicenseConfigEndDateOutput) ToLicenseConfigEndDateOutput() LicenseConfigEndDateOutput {
+	return o
+}
+
+func (o LicenseConfigEndDateOutput) ToLicenseConfigEndDateOutputWithContext(ctx context.Context) LicenseConfigEndDateOutput {
+	return o
+}
+
+func (o LicenseConfigEndDateOutput) ToLicenseConfigEndDatePtrOutput() LicenseConfigEndDatePtrOutput {
+	return o.ToLicenseConfigEndDatePtrOutputWithContext(context.Background())
+}
+
+func (o LicenseConfigEndDateOutput) ToLicenseConfigEndDatePtrOutputWithContext(ctx context.Context) LicenseConfigEndDatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseConfigEndDate) *LicenseConfigEndDate {
+		return &v
+	}).(LicenseConfigEndDatePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o LicenseConfigEndDateOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseConfigEndDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o LicenseConfigEndDateOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseConfigEndDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o LicenseConfigEndDateOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseConfigEndDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+}
+
+type LicenseConfigEndDatePtrOutput struct{ *pulumi.OutputState }
+
+func (LicenseConfigEndDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseConfigEndDate)(nil)).Elem()
+}
+
+func (o LicenseConfigEndDatePtrOutput) ToLicenseConfigEndDatePtrOutput() LicenseConfigEndDatePtrOutput {
+	return o
+}
+
+func (o LicenseConfigEndDatePtrOutput) ToLicenseConfigEndDatePtrOutputWithContext(ctx context.Context) LicenseConfigEndDatePtrOutput {
+	return o
+}
+
+func (o LicenseConfigEndDatePtrOutput) Elem() LicenseConfigEndDateOutput {
+	return o.ApplyT(func(v *LicenseConfigEndDate) LicenseConfigEndDate {
+		if v != nil {
+			return *v
+		}
+		var ret LicenseConfigEndDate
+		return ret
+	}).(LicenseConfigEndDateOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o LicenseConfigEndDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseConfigEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o LicenseConfigEndDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseConfigEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o LicenseConfigEndDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseConfigEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type LicenseConfigStartDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year *int `pulumi:"year"`
+}
+
+// LicenseConfigStartDateInput is an input type that accepts LicenseConfigStartDateArgs and LicenseConfigStartDateOutput values.
+// You can construct a concrete instance of `LicenseConfigStartDateInput` via:
+//
+//	LicenseConfigStartDateArgs{...}
+type LicenseConfigStartDateInput interface {
+	pulumi.Input
+
+	ToLicenseConfigStartDateOutput() LicenseConfigStartDateOutput
+	ToLicenseConfigStartDateOutputWithContext(context.Context) LicenseConfigStartDateOutput
+}
+
+type LicenseConfigStartDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (LicenseConfigStartDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseConfigStartDate)(nil)).Elem()
+}
+
+func (i LicenseConfigStartDateArgs) ToLicenseConfigStartDateOutput() LicenseConfigStartDateOutput {
+	return i.ToLicenseConfigStartDateOutputWithContext(context.Background())
+}
+
+func (i LicenseConfigStartDateArgs) ToLicenseConfigStartDateOutputWithContext(ctx context.Context) LicenseConfigStartDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigStartDateOutput)
+}
+
+func (i LicenseConfigStartDateArgs) ToLicenseConfigStartDatePtrOutput() LicenseConfigStartDatePtrOutput {
+	return i.ToLicenseConfigStartDatePtrOutputWithContext(context.Background())
+}
+
+func (i LicenseConfigStartDateArgs) ToLicenseConfigStartDatePtrOutputWithContext(ctx context.Context) LicenseConfigStartDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigStartDateOutput).ToLicenseConfigStartDatePtrOutputWithContext(ctx)
+}
+
+// LicenseConfigStartDatePtrInput is an input type that accepts LicenseConfigStartDateArgs, LicenseConfigStartDatePtr and LicenseConfigStartDatePtrOutput values.
+// You can construct a concrete instance of `LicenseConfigStartDatePtrInput` via:
+//
+//	        LicenseConfigStartDateArgs{...}
+//
+//	or:
+//
+//	        nil
+type LicenseConfigStartDatePtrInput interface {
+	pulumi.Input
+
+	ToLicenseConfigStartDatePtrOutput() LicenseConfigStartDatePtrOutput
+	ToLicenseConfigStartDatePtrOutputWithContext(context.Context) LicenseConfigStartDatePtrOutput
+}
+
+type licenseConfigStartDatePtrType LicenseConfigStartDateArgs
+
+func LicenseConfigStartDatePtr(v *LicenseConfigStartDateArgs) LicenseConfigStartDatePtrInput {
+	return (*licenseConfigStartDatePtrType)(v)
+}
+
+func (*licenseConfigStartDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseConfigStartDate)(nil)).Elem()
+}
+
+func (i *licenseConfigStartDatePtrType) ToLicenseConfigStartDatePtrOutput() LicenseConfigStartDatePtrOutput {
+	return i.ToLicenseConfigStartDatePtrOutputWithContext(context.Background())
+}
+
+func (i *licenseConfigStartDatePtrType) ToLicenseConfigStartDatePtrOutputWithContext(ctx context.Context) LicenseConfigStartDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigStartDatePtrOutput)
+}
+
+type LicenseConfigStartDateOutput struct{ *pulumi.OutputState }
+
+func (LicenseConfigStartDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseConfigStartDate)(nil)).Elem()
+}
+
+func (o LicenseConfigStartDateOutput) ToLicenseConfigStartDateOutput() LicenseConfigStartDateOutput {
+	return o
+}
+
+func (o LicenseConfigStartDateOutput) ToLicenseConfigStartDateOutputWithContext(ctx context.Context) LicenseConfigStartDateOutput {
+	return o
+}
+
+func (o LicenseConfigStartDateOutput) ToLicenseConfigStartDatePtrOutput() LicenseConfigStartDatePtrOutput {
+	return o.ToLicenseConfigStartDatePtrOutputWithContext(context.Background())
+}
+
+func (o LicenseConfigStartDateOutput) ToLicenseConfigStartDatePtrOutputWithContext(ctx context.Context) LicenseConfigStartDatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseConfigStartDate) *LicenseConfigStartDate {
+		return &v
+	}).(LicenseConfigStartDatePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o LicenseConfigStartDateOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseConfigStartDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o LicenseConfigStartDateOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseConfigStartDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o LicenseConfigStartDateOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LicenseConfigStartDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+}
+
+type LicenseConfigStartDatePtrOutput struct{ *pulumi.OutputState }
+
+func (LicenseConfigStartDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseConfigStartDate)(nil)).Elem()
+}
+
+func (o LicenseConfigStartDatePtrOutput) ToLicenseConfigStartDatePtrOutput() LicenseConfigStartDatePtrOutput {
+	return o
+}
+
+func (o LicenseConfigStartDatePtrOutput) ToLicenseConfigStartDatePtrOutputWithContext(ctx context.Context) LicenseConfigStartDatePtrOutput {
+	return o
+}
+
+func (o LicenseConfigStartDatePtrOutput) Elem() LicenseConfigStartDateOutput {
+	return o.ApplyT(func(v *LicenseConfigStartDate) LicenseConfigStartDate {
+		if v != nil {
+			return *v
+		}
+		var ret LicenseConfigStartDate
+		return ret
+	}).(LicenseConfigStartDateOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o LicenseConfigStartDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseConfigStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o LicenseConfigStartDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseConfigStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o LicenseConfigStartDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LicenseConfigStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
 type RecommendationEngineCommonConfig struct {
 	// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
 	CompanyName *string `pulumi:"companyName"`
@@ -5096,6 +6249,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AclConfigIdpConfigPtrInput)(nil)).Elem(), AclConfigIdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclConfigIdpConfigExternalIdpConfigInput)(nil)).Elem(), AclConfigIdpConfigExternalIdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclConfigIdpConfigExternalIdpConfigPtrInput)(nil)).Elem(), AclConfigIdpConfigExternalIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssistantCustomerPolicyInput)(nil)).Elem(), AssistantCustomerPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssistantCustomerPolicyPtrInput)(nil)).Elem(), AssistantCustomerPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssistantCustomerPolicyBannedPhraseInput)(nil)).Elem(), AssistantCustomerPolicyBannedPhraseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssistantCustomerPolicyBannedPhraseArrayInput)(nil)).Elem(), AssistantCustomerPolicyBannedPhraseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssistantCustomerPolicyModelArmorConfigInput)(nil)).Elem(), AssistantCustomerPolicyModelArmorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssistantCustomerPolicyModelArmorConfigPtrInput)(nil)).Elem(), AssistantCustomerPolicyModelArmorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssistantGenerationConfigInput)(nil)).Elem(), AssistantGenerationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssistantGenerationConfigPtrInput)(nil)).Elem(), AssistantGenerationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssistantGenerationConfigSystemInstructionInput)(nil)).Elem(), AssistantGenerationConfigSystemInstructionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssistantGenerationConfigSystemInstructionPtrInput)(nil)).Elem(), AssistantGenerationConfigSystemInstructionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineChatEngineConfigInput)(nil)).Elem(), ChatEngineChatEngineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineChatEngineConfigPtrInput)(nil)).Elem(), ChatEngineChatEngineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineChatEngineConfigAgentCreationConfigInput)(nil)).Elem(), ChatEngineChatEngineConfigAgentCreationConfigArgs{})
@@ -5134,6 +6297,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseConfigEndDateInput)(nil)).Elem(), LicenseConfigEndDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseConfigEndDatePtrInput)(nil)).Elem(), LicenseConfigEndDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseConfigStartDateInput)(nil)).Elem(), LicenseConfigStartDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseConfigStartDatePtrInput)(nil)).Elem(), LicenseConfigStartDateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineCommonConfigInput)(nil)).Elem(), RecommendationEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineCommonConfigPtrInput)(nil)).Elem(), RecommendationEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigArgs{})
@@ -5160,6 +6327,16 @@ func init() {
 	pulumi.RegisterOutputType(AclConfigIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(AclConfigIdpConfigExternalIdpConfigOutput{})
 	pulumi.RegisterOutputType(AclConfigIdpConfigExternalIdpConfigPtrOutput{})
+	pulumi.RegisterOutputType(AssistantCustomerPolicyOutput{})
+	pulumi.RegisterOutputType(AssistantCustomerPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AssistantCustomerPolicyBannedPhraseOutput{})
+	pulumi.RegisterOutputType(AssistantCustomerPolicyBannedPhraseArrayOutput{})
+	pulumi.RegisterOutputType(AssistantCustomerPolicyModelArmorConfigOutput{})
+	pulumi.RegisterOutputType(AssistantCustomerPolicyModelArmorConfigPtrOutput{})
+	pulumi.RegisterOutputType(AssistantGenerationConfigOutput{})
+	pulumi.RegisterOutputType(AssistantGenerationConfigPtrOutput{})
+	pulumi.RegisterOutputType(AssistantGenerationConfigSystemInstructionOutput{})
+	pulumi.RegisterOutputType(AssistantGenerationConfigSystemInstructionPtrOutput{})
 	pulumi.RegisterOutputType(ChatEngineChatEngineConfigOutput{})
 	pulumi.RegisterOutputType(ChatEngineChatEngineConfigPtrOutput{})
 	pulumi.RegisterOutputType(ChatEngineChatEngineConfigAgentCreationConfigOutput{})
@@ -5198,6 +6375,10 @@ func init() {
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(LicenseConfigEndDateOutput{})
+	pulumi.RegisterOutputType(LicenseConfigEndDatePtrOutput{})
+	pulumi.RegisterOutputType(LicenseConfigStartDateOutput{})
+	pulumi.RegisterOutputType(LicenseConfigStartDatePtrOutput{})
 	pulumi.RegisterOutputType(RecommendationEngineCommonConfigOutput{})
 	pulumi.RegisterOutputType(RecommendationEngineCommonConfigPtrOutput{})
 	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigOutput{})

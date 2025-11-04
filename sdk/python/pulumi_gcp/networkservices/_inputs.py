@@ -159,6 +159,8 @@ __all__ = [
     'ServiceLbPoliciesAutoCapacityDrainArgsDict',
     'ServiceLbPoliciesFailoverConfigArgs',
     'ServiceLbPoliciesFailoverConfigArgsDict',
+    'ServiceLbPoliciesIsolationConfigArgs',
+    'ServiceLbPoliciesIsolationConfigArgsDict',
     'TcpRouteRuleArgs',
     'TcpRouteRuleArgsDict',
     'TcpRouteRuleActionArgs',
@@ -6550,6 +6552,67 @@ class ServiceLbPoliciesFailoverConfigArgs:
     @failover_health_threshold.setter
     def failover_health_threshold(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "failover_health_threshold", value)
+
+
+if not MYPY:
+    class ServiceLbPoliciesIsolationConfigArgsDict(TypedDict):
+        isolation_granularity: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The isolation granularity of the load balancer.
+        Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
+        """
+        isolation_mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The isolation mode of the load balancer.
+        Default value is `NEAREST`.
+        Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
+        """
+elif False:
+    ServiceLbPoliciesIsolationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceLbPoliciesIsolationConfigArgs:
+    def __init__(__self__, *,
+                 isolation_granularity: Optional[pulumi.Input[_builtins.str]] = None,
+                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] isolation_granularity: The isolation granularity of the load balancer.
+               Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
+        :param pulumi.Input[_builtins.str] isolation_mode: The isolation mode of the load balancer.
+               Default value is `NEAREST`.
+               Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
+        """
+        if isolation_granularity is not None:
+            pulumi.set(__self__, "isolation_granularity", isolation_granularity)
+        if isolation_mode is not None:
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="isolationGranularity")
+    def isolation_granularity(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The isolation granularity of the load balancer.
+        Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
+        """
+        return pulumi.get(self, "isolation_granularity")
+
+    @isolation_granularity.setter
+    def isolation_granularity(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "isolation_granularity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The isolation mode of the load balancer.
+        Default value is `NEAREST`.
+        Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
+        """
+        return pulumi.get(self, "isolation_mode")
+
+    @isolation_mode.setter
+    def isolation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "isolation_mode", value)
 
 
 if not MYPY:

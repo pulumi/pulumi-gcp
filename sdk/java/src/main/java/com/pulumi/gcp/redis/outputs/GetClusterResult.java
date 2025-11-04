@@ -33,11 +33,13 @@ import javax.annotation.Nullable;
 public final class GetClusterResult {
     private String authorizationMode;
     private List<GetClusterAutomatedBackupConfig> automatedBackupConfigs;
+    private List<String> availableMaintenanceVersions;
     private String backupCollection;
     private String createTime;
     private List<GetClusterCrossClusterReplicationConfig> crossClusterReplicationConfigs;
     private Boolean deletionProtectionEnabled;
     private List<GetClusterDiscoveryEndpoint> discoveryEndpoints;
+    private String effectiveMaintenanceVersion;
     private List<GetClusterGcsSource> gcsSources;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -47,6 +49,7 @@ public final class GetClusterResult {
     private String kmsKey;
     private List<GetClusterMaintenancePolicy> maintenancePolicies;
     private List<GetClusterMaintenanceSchedule> maintenanceSchedules;
+    private String maintenanceVersion;
     private List<GetClusterManagedBackupSource> managedBackupSources;
     private List<GetClusterManagedServerCa> managedServerCas;
     private String name;
@@ -75,6 +78,9 @@ public final class GetClusterResult {
     public List<GetClusterAutomatedBackupConfig> automatedBackupConfigs() {
         return this.automatedBackupConfigs;
     }
+    public List<String> availableMaintenanceVersions() {
+        return this.availableMaintenanceVersions;
+    }
     public String backupCollection() {
         return this.backupCollection;
     }
@@ -89,6 +95,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterDiscoveryEndpoint> discoveryEndpoints() {
         return this.discoveryEndpoints;
+    }
+    public String effectiveMaintenanceVersion() {
+        return this.effectiveMaintenanceVersion;
     }
     public List<GetClusterGcsSource> gcsSources() {
         return this.gcsSources;
@@ -108,6 +117,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterMaintenanceSchedule> maintenanceSchedules() {
         return this.maintenanceSchedules;
+    }
+    public String maintenanceVersion() {
+        return this.maintenanceVersion;
     }
     public List<GetClusterManagedBackupSource> managedBackupSources() {
         return this.managedBackupSources;
@@ -181,16 +193,19 @@ public final class GetClusterResult {
     public static final class Builder {
         private String authorizationMode;
         private List<GetClusterAutomatedBackupConfig> automatedBackupConfigs;
+        private List<String> availableMaintenanceVersions;
         private String backupCollection;
         private String createTime;
         private List<GetClusterCrossClusterReplicationConfig> crossClusterReplicationConfigs;
         private Boolean deletionProtectionEnabled;
         private List<GetClusterDiscoveryEndpoint> discoveryEndpoints;
+        private String effectiveMaintenanceVersion;
         private List<GetClusterGcsSource> gcsSources;
         private String id;
         private String kmsKey;
         private List<GetClusterMaintenancePolicy> maintenancePolicies;
         private List<GetClusterMaintenanceSchedule> maintenanceSchedules;
+        private String maintenanceVersion;
         private List<GetClusterManagedBackupSource> managedBackupSources;
         private List<GetClusterManagedServerCa> managedServerCas;
         private String name;
@@ -216,16 +231,19 @@ public final class GetClusterResult {
     	      Objects.requireNonNull(defaults);
     	      this.authorizationMode = defaults.authorizationMode;
     	      this.automatedBackupConfigs = defaults.automatedBackupConfigs;
+    	      this.availableMaintenanceVersions = defaults.availableMaintenanceVersions;
     	      this.backupCollection = defaults.backupCollection;
     	      this.createTime = defaults.createTime;
     	      this.crossClusterReplicationConfigs = defaults.crossClusterReplicationConfigs;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.discoveryEndpoints = defaults.discoveryEndpoints;
+    	      this.effectiveMaintenanceVersion = defaults.effectiveMaintenanceVersion;
     	      this.gcsSources = defaults.gcsSources;
     	      this.id = defaults.id;
     	      this.kmsKey = defaults.kmsKey;
     	      this.maintenancePolicies = defaults.maintenancePolicies;
     	      this.maintenanceSchedules = defaults.maintenanceSchedules;
+    	      this.maintenanceVersion = defaults.maintenanceVersion;
     	      this.managedBackupSources = defaults.managedBackupSources;
     	      this.managedServerCas = defaults.managedServerCas;
     	      this.name = defaults.name;
@@ -266,6 +284,17 @@ public final class GetClusterResult {
         }
         public Builder automatedBackupConfigs(GetClusterAutomatedBackupConfig... automatedBackupConfigs) {
             return automatedBackupConfigs(List.of(automatedBackupConfigs));
+        }
+        @CustomType.Setter
+        public Builder availableMaintenanceVersions(List<String> availableMaintenanceVersions) {
+            if (availableMaintenanceVersions == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "availableMaintenanceVersions");
+            }
+            this.availableMaintenanceVersions = availableMaintenanceVersions;
+            return this;
+        }
+        public Builder availableMaintenanceVersions(String... availableMaintenanceVersions) {
+            return availableMaintenanceVersions(List.of(availableMaintenanceVersions));
         }
         @CustomType.Setter
         public Builder backupCollection(String backupCollection) {
@@ -312,6 +341,14 @@ public final class GetClusterResult {
         }
         public Builder discoveryEndpoints(GetClusterDiscoveryEndpoint... discoveryEndpoints) {
             return discoveryEndpoints(List.of(discoveryEndpoints));
+        }
+        @CustomType.Setter
+        public Builder effectiveMaintenanceVersion(String effectiveMaintenanceVersion) {
+            if (effectiveMaintenanceVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "effectiveMaintenanceVersion");
+            }
+            this.effectiveMaintenanceVersion = effectiveMaintenanceVersion;
+            return this;
         }
         @CustomType.Setter
         public Builder gcsSources(List<GetClusterGcsSource> gcsSources) {
@@ -361,6 +398,14 @@ public final class GetClusterResult {
         }
         public Builder maintenanceSchedules(GetClusterMaintenanceSchedule... maintenanceSchedules) {
             return maintenanceSchedules(List.of(maintenanceSchedules));
+        }
+        @CustomType.Setter
+        public Builder maintenanceVersion(String maintenanceVersion) {
+            if (maintenanceVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "maintenanceVersion");
+            }
+            this.maintenanceVersion = maintenanceVersion;
+            return this;
         }
         @CustomType.Setter
         public Builder managedBackupSources(List<GetClusterManagedBackupSource> managedBackupSources) {
@@ -546,16 +591,19 @@ public final class GetClusterResult {
             final var _resultValue = new GetClusterResult();
             _resultValue.authorizationMode = authorizationMode;
             _resultValue.automatedBackupConfigs = automatedBackupConfigs;
+            _resultValue.availableMaintenanceVersions = availableMaintenanceVersions;
             _resultValue.backupCollection = backupCollection;
             _resultValue.createTime = createTime;
             _resultValue.crossClusterReplicationConfigs = crossClusterReplicationConfigs;
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
             _resultValue.discoveryEndpoints = discoveryEndpoints;
+            _resultValue.effectiveMaintenanceVersion = effectiveMaintenanceVersion;
             _resultValue.gcsSources = gcsSources;
             _resultValue.id = id;
             _resultValue.kmsKey = kmsKey;
             _resultValue.maintenancePolicies = maintenancePolicies;
             _resultValue.maintenanceSchedules = maintenanceSchedules;
+            _resultValue.maintenanceVersion = maintenanceVersion;
             _resultValue.managedBackupSources = managedBackupSources;
             _resultValue.managedServerCas = managedServerCas;
             _resultValue.name = name;

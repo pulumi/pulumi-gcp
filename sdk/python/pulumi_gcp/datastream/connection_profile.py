@@ -29,6 +29,7 @@ class ConnectionProfileArgs:
                  forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
                  gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mongodb_profile: Optional[pulumi.Input['ConnectionProfileMongodbProfileArgs']] = None,
                  mysql_profile: Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']] = None,
                  oracle_profile: Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']] = None,
                  postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
@@ -50,6 +51,8 @@ class ConnectionProfileArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input['ConnectionProfileMongodbProfileArgs'] mongodb_profile: Configuration for connecting to a MongoDB database.
+               Structure is documented below.
         :param pulumi.Input['ConnectionProfileMysqlProfileArgs'] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfileOracleProfileArgs'] oracle_profile: Oracle database profile.
@@ -78,6 +81,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "gcs_profile", gcs_profile)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if mongodb_profile is not None:
+            pulumi.set(__self__, "mongodb_profile", mongodb_profile)
         if mysql_profile is not None:
             pulumi.set(__self__, "mysql_profile", mysql_profile)
         if oracle_profile is not None:
@@ -194,6 +199,19 @@ class ConnectionProfileArgs:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="mongodbProfile")
+    def mongodb_profile(self) -> Optional[pulumi.Input['ConnectionProfileMongodbProfileArgs']]:
+        """
+        Configuration for connecting to a MongoDB database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mongodb_profile")
+
+    @mongodb_profile.setter
+    def mongodb_profile(self, value: Optional[pulumi.Input['ConnectionProfileMongodbProfileArgs']]):
+        pulumi.set(self, "mongodb_profile", value)
+
+    @_builtins.property
     @pulumi.getter(name="mysqlProfile")
     def mysql_profile(self) -> Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']]:
         """
@@ -297,6 +315,7 @@ class _ConnectionProfileState:
                  gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 mongodb_profile: Optional[pulumi.Input['ConnectionProfileMongodbProfileArgs']] = None,
                  mysql_profile: Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oracle_profile: Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']] = None,
@@ -321,6 +340,8 @@ class _ConnectionProfileState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The name of the location this connection profile is located in.
+        :param pulumi.Input['ConnectionProfileMongodbProfileArgs'] mongodb_profile: Configuration for connecting to a MongoDB database.
+               Structure is documented below.
         :param pulumi.Input['ConnectionProfileMysqlProfileArgs'] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The resource's name.
@@ -357,6 +378,8 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if mongodb_profile is not None:
+            pulumi.set(__self__, "mongodb_profile", mongodb_profile)
         if mysql_profile is not None:
             pulumi.set(__self__, "mysql_profile", mysql_profile)
         if name is not None:
@@ -489,6 +512,19 @@ class _ConnectionProfileState:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="mongodbProfile")
+    def mongodb_profile(self) -> Optional[pulumi.Input['ConnectionProfileMongodbProfileArgs']]:
+        """
+        Configuration for connecting to a MongoDB database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mongodb_profile")
+
+    @mongodb_profile.setter
+    def mongodb_profile(self, value: Optional[pulumi.Input['ConnectionProfileMongodbProfileArgs']]):
+        pulumi.set(self, "mongodb_profile", value)
+
+    @_builtins.property
     @pulumi.getter(name="mysqlProfile")
     def mysql_profile(self) -> Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']]:
         """
@@ -619,6 +655,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  gcs_profile: Optional[pulumi.Input[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 mongodb_profile: Optional[pulumi.Input[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict']]] = None,
                  mysql_profile: Optional[pulumi.Input[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict']]] = None,
                  oracle_profile: Optional[pulumi.Input[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict']]] = None,
                  postgresql_profile: Optional[pulumi.Input[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict']]] = None,
@@ -931,7 +968,6 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": "fake-database",
             })
         ```
-
         ## Import
 
         ConnectionProfile can be imported using any of these accepted formats:
@@ -970,6 +1006,8 @@ class ConnectionProfile(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The name of the location this connection profile is located in.
+        :param pulumi.Input[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict']] mongodb_profile: Configuration for connecting to a MongoDB database.
+               Structure is documented below.
         :param pulumi.Input[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict']] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict']] oracle_profile: Oracle database profile.
@@ -1295,7 +1333,6 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": "fake-database",
             })
         ```
-
         ## Import
 
         ConnectionProfile can be imported using any of these accepted formats:
@@ -1343,6 +1380,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  gcs_profile: Optional[pulumi.Input[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 mongodb_profile: Optional[pulumi.Input[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict']]] = None,
                  mysql_profile: Optional[pulumi.Input[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict']]] = None,
                  oracle_profile: Optional[pulumi.Input[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict']]] = None,
                  postgresql_profile: Optional[pulumi.Input[Union['ConnectionProfilePostgresqlProfileArgs', 'ConnectionProfilePostgresqlProfileArgsDict']]] = None,
@@ -1373,6 +1411,7 @@ class ConnectionProfile(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["mongodb_profile"] = mongodb_profile
             __props__.__dict__["mysql_profile"] = mysql_profile
             __props__.__dict__["oracle_profile"] = oracle_profile
             __props__.__dict__["postgresql_profile"] = postgresql_profile
@@ -1404,6 +1443,7 @@ class ConnectionProfile(pulumi.CustomResource):
             gcs_profile: Optional[pulumi.Input[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
+            mongodb_profile: Optional[pulumi.Input[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict']]] = None,
             mysql_profile: Optional[pulumi.Input[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             oracle_profile: Optional[pulumi.Input[Union['ConnectionProfileOracleProfileArgs', 'ConnectionProfileOracleProfileArgsDict']]] = None,
@@ -1433,6 +1473,8 @@ class ConnectionProfile(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The name of the location this connection profile is located in.
+        :param pulumi.Input[Union['ConnectionProfileMongodbProfileArgs', 'ConnectionProfileMongodbProfileArgsDict']] mongodb_profile: Configuration for connecting to a MongoDB database.
+               Structure is documented below.
         :param pulumi.Input[Union['ConnectionProfileMysqlProfileArgs', 'ConnectionProfileMysqlProfileArgsDict']] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The resource's name.
@@ -1464,6 +1506,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["gcs_profile"] = gcs_profile
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["mongodb_profile"] = mongodb_profile
         __props__.__dict__["mysql_profile"] = mysql_profile
         __props__.__dict__["name"] = name
         __props__.__dict__["oracle_profile"] = oracle_profile
@@ -1550,6 +1593,15 @@ class ConnectionProfile(pulumi.CustomResource):
         The name of the location this connection profile is located in.
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="mongodbProfile")
+    def mongodb_profile(self) -> pulumi.Output[Optional['outputs.ConnectionProfileMongodbProfile']]:
+        """
+        Configuration for connecting to a MongoDB database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mongodb_profile")
 
     @_builtins.property
     @pulumi.getter(name="mysqlProfile")

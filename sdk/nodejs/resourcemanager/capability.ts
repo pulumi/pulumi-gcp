@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
- * const wait60s = new time.index.Sleep("wait_60s", {createDuration: "60s"}, {
+ * const wait60s = new time.Sleep("wait_60s", {createDuration: "60s"}, {
  *     dependsOn: [folder],
  * });
  * const capability = new gcp.resourcemanager.Capability("capability", {

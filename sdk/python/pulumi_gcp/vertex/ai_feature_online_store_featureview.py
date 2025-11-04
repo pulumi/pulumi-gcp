@@ -604,16 +604,16 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_20665",
-            name="tf-test_85160",
+            project_id="tf-test_9329",
+            name="tf-test_37135",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[project]))
         vertexai = gcp.projects.Service("vertexai",
             service="aiplatform.googleapis.com",
@@ -645,7 +645,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             role="roles/bigquery.dataViewer",
             member=project.number.apply(lambda number: f"serviceAccount:service-{number}@gcp-sa-aiplatform.iam.gserviceaccount.com"),
             opts = pulumi.ResourceOptions(depends_on=[featureonlinestore]))
-        wait30_seconds = time.index.Sleep("wait_30_seconds", create_duration=30s,
+        wait30_seconds = time.Sleep("wait_30_seconds", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[viewer]))
         sample_table = gcp.bigquery.Table("sample_table",
             deletion_protection=False,
@@ -1039,16 +1039,16 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_20665",
-            name="tf-test_85160",
+            project_id="tf-test_9329",
+            name="tf-test_37135",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[project]))
         vertexai = gcp.projects.Service("vertexai",
             service="aiplatform.googleapis.com",
@@ -1080,7 +1080,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             role="roles/bigquery.dataViewer",
             member=project.number.apply(lambda number: f"serviceAccount:service-{number}@gcp-sa-aiplatform.iam.gserviceaccount.com"),
             opts = pulumi.ResourceOptions(depends_on=[featureonlinestore]))
-        wait30_seconds = time.index.Sleep("wait_30_seconds", create_duration=30s,
+        wait30_seconds = time.Sleep("wait_30_seconds", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[viewer]))
         sample_table = gcp.bigquery.Table("sample_table",
             deletion_protection=False,

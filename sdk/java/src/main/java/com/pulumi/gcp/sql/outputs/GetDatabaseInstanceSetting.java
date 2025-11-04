@@ -18,6 +18,7 @@ import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingIpConfiguration;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingLocationPreference;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingMaintenanceWindow;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingPasswordValidationPolicy;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingReadPoolAutoScaleConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingSqlServerAuditConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -150,6 +151,11 @@ public final class GetDatabaseInstanceSetting {
      * 
      */
     private String pricingPlan;
+    /**
+     * @return Configuration of Read Pool Auto Scale.
+     * 
+     */
+    private List<GetDatabaseInstanceSettingReadPoolAutoScaleConfig> readPoolAutoScaleConfigs;
     /**
      * @return When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
      * 
@@ -359,6 +365,13 @@ public final class GetDatabaseInstanceSetting {
         return this.pricingPlan;
     }
     /**
+     * @return Configuration of Read Pool Auto Scale.
+     * 
+     */
+    public List<GetDatabaseInstanceSettingReadPoolAutoScaleConfig> readPoolAutoScaleConfigs() {
+        return this.readPoolAutoScaleConfigs;
+    }
+    /**
      * @return When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
      * 
      */
@@ -435,6 +448,7 @@ public final class GetDatabaseInstanceSetting {
         private List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows;
         private List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies;
         private String pricingPlan;
+        private List<GetDatabaseInstanceSettingReadPoolAutoScaleConfig> readPoolAutoScaleConfigs;
         private Boolean retainBackupsOnDelete;
         private List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
         private String tier;
@@ -473,6 +487,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.maintenanceWindows = defaults.maintenanceWindows;
     	      this.passwordValidationPolicies = defaults.passwordValidationPolicies;
     	      this.pricingPlan = defaults.pricingPlan;
+    	      this.readPoolAutoScaleConfigs = defaults.readPoolAutoScaleConfigs;
     	      this.retainBackupsOnDelete = defaults.retainBackupsOnDelete;
     	      this.sqlServerAuditConfigs = defaults.sqlServerAuditConfigs;
     	      this.tier = defaults.tier;
@@ -753,6 +768,17 @@ public final class GetDatabaseInstanceSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder readPoolAutoScaleConfigs(List<GetDatabaseInstanceSettingReadPoolAutoScaleConfig> readPoolAutoScaleConfigs) {
+            if (readPoolAutoScaleConfigs == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "readPoolAutoScaleConfigs");
+            }
+            this.readPoolAutoScaleConfigs = readPoolAutoScaleConfigs;
+            return this;
+        }
+        public Builder readPoolAutoScaleConfigs(GetDatabaseInstanceSettingReadPoolAutoScaleConfig... readPoolAutoScaleConfigs) {
+            return readPoolAutoScaleConfigs(List.of(readPoolAutoScaleConfigs));
+        }
+        @CustomType.Setter
         public Builder retainBackupsOnDelete(Boolean retainBackupsOnDelete) {
             if (retainBackupsOnDelete == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "retainBackupsOnDelete");
@@ -834,6 +860,7 @@ public final class GetDatabaseInstanceSetting {
             _resultValue.maintenanceWindows = maintenanceWindows;
             _resultValue.passwordValidationPolicies = passwordValidationPolicies;
             _resultValue.pricingPlan = pricingPlan;
+            _resultValue.readPoolAutoScaleConfigs = readPoolAutoScaleConfigs;
             _resultValue.retainBackupsOnDelete = retainBackupsOnDelete;
             _resultValue.sqlServerAuditConfigs = sqlServerAuditConfigs;
             _resultValue.tier = tier;

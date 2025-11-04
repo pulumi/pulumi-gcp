@@ -7,10 +7,12 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .acl_config import *
+from .assistant import *
 from .chat_engine import *
 from .cmek_config import *
 from .data_connector import *
 from .data_store import *
+from .license_config import *
 from .recommendation_engine import *
 from .schema import *
 from .search_engine import *

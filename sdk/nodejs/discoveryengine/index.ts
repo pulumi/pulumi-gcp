@@ -10,6 +10,11 @@ export type AclConfig = import("./aclConfig").AclConfig;
 export const AclConfig: typeof import("./aclConfig").AclConfig = null as any;
 utilities.lazyLoad(exports, ["AclConfig"], () => require("./aclConfig"));
 
+export { AssistantArgs, AssistantState } from "./assistant";
+export type Assistant = import("./assistant").Assistant;
+export const Assistant: typeof import("./assistant").Assistant = null as any;
+utilities.lazyLoad(exports, ["Assistant"], () => require("./assistant"));
+
 export { ChatEngineArgs, ChatEngineState } from "./chatEngine";
 export type ChatEngine = import("./chatEngine").ChatEngine;
 export const ChatEngine: typeof import("./chatEngine").ChatEngine = null as any;
@@ -29,6 +34,11 @@ export { DataStoreArgs, DataStoreState } from "./dataStore";
 export type DataStore = import("./dataStore").DataStore;
 export const DataStore: typeof import("./dataStore").DataStore = null as any;
 utilities.lazyLoad(exports, ["DataStore"], () => require("./dataStore"));
+
+export { LicenseConfigArgs, LicenseConfigState } from "./licenseConfig";
+export type LicenseConfig = import("./licenseConfig").LicenseConfig;
+export const LicenseConfig: typeof import("./licenseConfig").LicenseConfig = null as any;
+utilities.lazyLoad(exports, ["LicenseConfig"], () => require("./licenseConfig"));
 
 export { RecommendationEngineArgs, RecommendationEngineState } from "./recommendationEngine";
 export type RecommendationEngine = import("./recommendationEngine").RecommendationEngine;
@@ -62,6 +72,8 @@ const _module = {
         switch (type) {
             case "gcp:discoveryengine/aclConfig:AclConfig":
                 return new AclConfig(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/assistant:Assistant":
+                return new Assistant(name, <any>undefined, { urn })
             case "gcp:discoveryengine/chatEngine:ChatEngine":
                 return new ChatEngine(name, <any>undefined, { urn })
             case "gcp:discoveryengine/cmekConfig:CmekConfig":
@@ -70,6 +82,8 @@ const _module = {
                 return new DataConnector(name, <any>undefined, { urn })
             case "gcp:discoveryengine/dataStore:DataStore":
                 return new DataStore(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/licenseConfig:LicenseConfig":
+                return new LicenseConfig(name, <any>undefined, { urn })
             case "gcp:discoveryengine/recommendationEngine:RecommendationEngine":
                 return new RecommendationEngine(name, <any>undefined, { urn })
             case "gcp:discoveryengine/schema:Schema":
@@ -86,10 +100,12 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/aclConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/assistant", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/chatEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/cmekConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/dataConnector", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/dataStore", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/licenseConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/recommendationEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/schema", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/searchEngine", _module)

@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or disabled for a project.
+    /// Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or unspecified for a project.
     /// 
     /// To get more information about PreviewFeature, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/PreviewFeatures)
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/previewFeatures)
     /// * How-to Guides
     ///     * [Use the Compute Engine alpha API](https://cloud.google.com/compute/docs/reference/rest/alpha)
     /// 
@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Compute
     ///     var gcePreviewFeature = new Gcp.Compute.PreviewFeature("gce_preview_feature", new()
     ///     {
     ///         Name = "alpha-api-access",
-    ///         ActivationStatus = "DISABLED",
+    ///         ActivationStatus = "ACTIVATION_STATE_UNSPECIFIED",
     ///         RolloutOperation = new Gcp.Compute.Inputs.PreviewFeatureRolloutOperationArgs
     ///         {
     ///             RolloutInput = new Gcp.Compute.Inputs.PreviewFeatureRolloutOperationRolloutInputArgs
@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The activation status of the preview feature.
-        /// Possible values are: `ENABLED`, `DISABLED`.
+        /// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
         /// </summary>
         [Output("activationStatus")]
         public Output<string> ActivationStatus { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The activation status of the preview feature.
-        /// Possible values are: `ENABLED`, `DISABLED`.
+        /// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
         /// </summary>
         [Input("activationStatus", required: true)]
         public Input<string> ActivationStatus { get; set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The activation status of the preview feature.
-        /// Possible values are: `ENABLED`, `DISABLED`.
+        /// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
         /// </summary>
         [Input("activationStatus")]
         public Input<string>? ActivationStatus { get; set; }

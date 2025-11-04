@@ -143,8 +143,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.securesourcemanager.Instance;
  * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
  * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
@@ -219,7 +219,7 @@ import javax.annotation.Nullable;
  *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(caPoolBinding))
+ *                 .dependsOn(caPoolBinding)
  *                 .build());
  * 
  *         var default_ = new Instance("default", InstanceArgs.builder()
@@ -267,8 +267,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.securesourcemanager.Instance;
  * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
  * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
@@ -361,7 +361,7 @@ import javax.annotation.Nullable;
  *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(caPoolBinding))
+ *                 .dependsOn(caPoolBinding)
  *                 .build());
  * 
  *         // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
@@ -509,8 +509,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.securesourcemanager.Instance;
  * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
  * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
@@ -598,7 +598,7 @@ import javax.annotation.Nullable;
  *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(caPoolBinding))
+ *                 .dependsOn(caPoolBinding)
  *                 .build());
  * 
  *         // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api

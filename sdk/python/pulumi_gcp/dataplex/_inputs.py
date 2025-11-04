@@ -123,6 +123,8 @@ __all__ = [
     'EntryGroupIamBindingConditionArgsDict',
     'EntryGroupIamMemberConditionArgs',
     'EntryGroupIamMemberConditionArgsDict',
+    'EntryLinkEntryReferenceArgs',
+    'EntryLinkEntryReferenceArgsDict',
     'EntryTypeIamBindingConditionArgs',
     'EntryTypeIamBindingConditionArgsDict',
     'EntryTypeIamMemberConditionArgs',
@@ -3882,6 +3884,86 @@ class EntryGroupIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class EntryLinkEntryReferenceArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
+        """
+        The relative resource name of the referenced Entry, of the form:
+        projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+        """
+        path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The path in the Entry that is referenced in the Entry Link.
+        Empty path denotes that the Entry itself is referenced in the Entry Link.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The reference type of the Entry.
+        Possible values are: `SOURCE`, `TARGET`.
+        """
+elif False:
+    EntryLinkEntryReferenceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EntryLinkEntryReferenceArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 path: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The relative resource name of the referenced Entry, of the form:
+               projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+        :param pulumi.Input[_builtins.str] path: The path in the Entry that is referenced in the Entry Link.
+               Empty path denotes that the Entry itself is referenced in the Entry Link.
+        :param pulumi.Input[_builtins.str] type: The reference type of the Entry.
+               Possible values are: `SOURCE`, `TARGET`.
+        """
+        pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The relative resource name of the referenced Entry, of the form:
+        projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The path in the Entry that is referenced in the Entry Link.
+        Empty path denotes that the Entry itself is referenced in the Entry Link.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The reference type of the Entry.
+        Possible values are: `SOURCE`, `TARGET`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:

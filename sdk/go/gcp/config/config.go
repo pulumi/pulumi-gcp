@@ -412,6 +412,9 @@ func GetNetappCustomEndpoint(ctx *pulumi.Context) string {
 func GetNetworkConnectivityCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:networkConnectivityCustomEndpoint")
 }
+func GetNetworkConnectivityv1CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:networkConnectivityv1CustomEndpoint")
+}
 func GetNetworkManagementCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:networkManagementCustomEndpoint")
 }
@@ -423,6 +426,9 @@ func GetNetworkServicesCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetNotebooksCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:notebooksCustomEndpoint")
+}
+func GetObservabilityCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:observabilityCustomEndpoint")
 }
 func GetOracleDatabaseCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:oracleDatabaseCustomEndpoint")

@@ -95,7 +95,7 @@ def get_data_source_references(location: Optional[_builtins.str] = None,
 
 
     :param _builtins.str project: - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-    :param _builtins.str resource_type: - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+    :param _builtins.str resource_type: - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
     """
     __args__ = dict()
     __args__['location'] = location
@@ -119,7 +119,7 @@ def get_data_source_references_output(location: Optional[pulumi.Input[_builtins.
 
 
     :param _builtins.str project: - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-    :param _builtins.str resource_type: - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+    :param _builtins.str resource_type: - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
     """
     __args__ = dict()
     __args__['location'] = location

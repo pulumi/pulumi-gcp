@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? MembershipLocation;
         /// <summary>
+        /// Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the MembershipType will be a regular membership that supports all features.
+        /// </summary>
+        public readonly string? MembershipType;
+        /// <summary>
         /// Whether the cluster has been registered via the fleet API.
         /// </summary>
         public readonly bool? PreRegistered;
@@ -42,6 +46,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? membershipLocation,
 
+            string? membershipType,
+
             bool? preRegistered,
 
             string? project)
@@ -49,6 +55,7 @@ namespace Pulumi.Gcp.Container.Outputs
             Membership = membership;
             MembershipId = membershipId;
             MembershipLocation = membershipLocation;
+            MembershipType = membershipType;
             PreRegistered = preRegistered;
             Project = project;
         }

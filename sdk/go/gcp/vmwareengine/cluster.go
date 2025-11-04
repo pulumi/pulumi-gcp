@@ -188,6 +188,10 @@ type Cluster struct {
 	// Configuration of the autoscaling applied to this cluster
 	// Structure is documented below.
 	AutoscalingSettings ClusterAutoscalingSettingsPtrOutput `pulumi:"autoscalingSettings"`
+	// Creation time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// True if the cluster is a management cluster; false otherwise.
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management pulumi.BoolOutput `pulumi:"management"`
@@ -205,6 +209,10 @@ type Cluster struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// Last updated time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -243,6 +251,10 @@ type clusterState struct {
 	// Configuration of the autoscaling applied to this cluster
 	// Structure is documented below.
 	AutoscalingSettings *ClusterAutoscalingSettings `pulumi:"autoscalingSettings"`
+	// Creation time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime *string `pulumi:"createTime"`
 	// True if the cluster is a management cluster; false otherwise.
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management *bool `pulumi:"management"`
@@ -260,12 +272,20 @@ type clusterState struct {
 	State *string `pulumi:"state"`
 	// System-generated unique identifier for the resource.
 	Uid *string `pulumi:"uid"`
+	// Last updated time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ClusterState struct {
 	// Configuration of the autoscaling applied to this cluster
 	// Structure is documented below.
 	AutoscalingSettings ClusterAutoscalingSettingsPtrInput
+	// Creation time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringPtrInput
 	// True if the cluster is a management cluster; false otherwise.
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management pulumi.BoolPtrInput
@@ -283,6 +303,10 @@ type ClusterState struct {
 	State pulumi.StringPtrInput
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringPtrInput
+	// Last updated time of this resource.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -415,6 +439,13 @@ func (o ClusterOutput) AutoscalingSettings() ClusterAutoscalingSettingsPtrOutput
 	return o.ApplyT(func(v *Cluster) ClusterAutoscalingSettingsPtrOutput { return v.AutoscalingSettings }).(ClusterAutoscalingSettingsPtrOutput)
 }
 
+// Creation time of this resource.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o ClusterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // True if the cluster is a management cluster; false otherwise.
 // There can only be one management cluster in a private cloud and it has to be the first one.
 func (o ClusterOutput) Management() pulumi.BoolOutput {
@@ -448,6 +479,13 @@ func (o ClusterOutput) State() pulumi.StringOutput {
 // System-generated unique identifier for the resource.
 func (o ClusterOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Last updated time of this resource.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o ClusterOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 type ClusterArrayOutput struct{ *pulumi.OutputState }

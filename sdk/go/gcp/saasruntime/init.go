@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RolloutKind{}
 	case "gcp:saasruntime/saaS:SaaS":
 		r = &SaaS{}
+	case "gcp:saasruntime/tenant:Tenant":
+		r = &Tenant{}
+	case "gcp:saasruntime/unit:Unit":
+		r = &Unit{}
 	case "gcp:saasruntime/unitKind:UnitKind":
 		r = &UnitKind{}
 	default:
@@ -55,6 +59,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"saasruntime/saaS",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"saasruntime/tenant",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"saasruntime/unit",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

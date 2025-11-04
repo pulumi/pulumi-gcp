@@ -675,6 +675,8 @@ type Cluster struct {
 	// The automated backup config for a instance.
 	// Structure is documented below.
 	AutomatedBackupConfig ClusterAutomatedBackupConfigPtrOutput `pulumi:"automatedBackupConfig"`
+	// This field is used to determine the available maintenance versions for the self service update.
+	AvailableMaintenanceVersions pulumi.StringArrayOutput `pulumi:"availableMaintenanceVersions"`
 	// The backup collection full resource name.
 	// Example: projects/{project}/locations/{location}/backupCollections/{collection}
 	BackupCollection pulumi.StringOutput `pulumi:"backupCollection"`
@@ -694,6 +696,8 @@ type Cluster struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints ClusterDiscoveryEndpointArrayOutput `pulumi:"discoveryEndpoints"`
+	// This field represents the actual maintenance version of the cluster.
+	EffectiveMaintenanceVersion pulumi.StringOutput `pulumi:"effectiveMaintenanceVersion"`
 	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
 	// Structure is documented below.
 	GcsSource ClusterGcsSourcePtrOutput `pulumi:"gcsSource"`
@@ -705,6 +709,9 @@ type Cluster struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules ClusterMaintenanceScheduleArrayOutput `pulumi:"maintenanceSchedules"`
+	// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+	// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+	MaintenanceVersion pulumi.StringPtrOutput `pulumi:"maintenanceVersion"`
 	// Backups that generated and managed by memorystore.
 	// Structure is documented below.
 	ManagedBackupSource ClusterManagedBackupSourcePtrOutput `pulumi:"managedBackupSource"`
@@ -806,6 +813,8 @@ type clusterState struct {
 	// The automated backup config for a instance.
 	// Structure is documented below.
 	AutomatedBackupConfig *ClusterAutomatedBackupConfig `pulumi:"automatedBackupConfig"`
+	// This field is used to determine the available maintenance versions for the self service update.
+	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
 	// The backup collection full resource name.
 	// Example: projects/{project}/locations/{location}/backupCollections/{collection}
 	BackupCollection *string `pulumi:"backupCollection"`
@@ -825,6 +834,8 @@ type clusterState struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints []ClusterDiscoveryEndpoint `pulumi:"discoveryEndpoints"`
+	// This field represents the actual maintenance version of the cluster.
+	EffectiveMaintenanceVersion *string `pulumi:"effectiveMaintenanceVersion"`
 	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
 	// Structure is documented below.
 	GcsSource *ClusterGcsSource `pulumi:"gcsSource"`
@@ -836,6 +847,9 @@ type clusterState struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules []ClusterMaintenanceSchedule `pulumi:"maintenanceSchedules"`
+	// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+	// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// Backups that generated and managed by memorystore.
 	// Structure is documented below.
 	ManagedBackupSource *ClusterManagedBackupSource `pulumi:"managedBackupSource"`
@@ -905,6 +919,8 @@ type ClusterState struct {
 	// The automated backup config for a instance.
 	// Structure is documented below.
 	AutomatedBackupConfig ClusterAutomatedBackupConfigPtrInput
+	// This field is used to determine the available maintenance versions for the self service update.
+	AvailableMaintenanceVersions pulumi.StringArrayInput
 	// The backup collection full resource name.
 	// Example: projects/{project}/locations/{location}/backupCollections/{collection}
 	BackupCollection pulumi.StringPtrInput
@@ -924,6 +940,8 @@ type ClusterState struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints ClusterDiscoveryEndpointArrayInput
+	// This field represents the actual maintenance version of the cluster.
+	EffectiveMaintenanceVersion pulumi.StringPtrInput
 	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
 	// Structure is documented below.
 	GcsSource ClusterGcsSourcePtrInput
@@ -935,6 +953,9 @@ type ClusterState struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules ClusterMaintenanceScheduleArrayInput
+	// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+	// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+	MaintenanceVersion pulumi.StringPtrInput
 	// Backups that generated and managed by memorystore.
 	// Structure is documented below.
 	ManagedBackupSource ClusterManagedBackupSourcePtrInput
@@ -1023,6 +1044,9 @@ type clusterArgs struct {
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+	// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// Backups that generated and managed by memorystore.
 	// Structure is documented below.
 	ManagedBackupSource *ClusterManagedBackupSource `pulumi:"managedBackupSource"`
@@ -1088,6 +1112,9 @@ type ClusterArgs struct {
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
+	// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+	// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+	MaintenanceVersion pulumi.StringPtrInput
 	// Backups that generated and managed by memorystore.
 	// Structure is documented below.
 	ManagedBackupSource ClusterManagedBackupSourcePtrInput
@@ -1229,6 +1256,11 @@ func (o ClusterOutput) AutomatedBackupConfig() ClusterAutomatedBackupConfigPtrOu
 	return o.ApplyT(func(v *Cluster) ClusterAutomatedBackupConfigPtrOutput { return v.AutomatedBackupConfig }).(ClusterAutomatedBackupConfigPtrOutput)
 }
 
+// This field is used to determine the available maintenance versions for the self service update.
+func (o ClusterOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
 // The backup collection full resource name.
 // Example: projects/{project}/locations/{location}/backupCollections/{collection}
 func (o ClusterOutput) BackupCollection() pulumi.StringOutput {
@@ -1263,6 +1295,11 @@ func (o ClusterOutput) DiscoveryEndpoints() ClusterDiscoveryEndpointArrayOutput 
 	return o.ApplyT(func(v *Cluster) ClusterDiscoveryEndpointArrayOutput { return v.DiscoveryEndpoints }).(ClusterDiscoveryEndpointArrayOutput)
 }
 
+// This field represents the actual maintenance version of the cluster.
+func (o ClusterOutput) EffectiveMaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EffectiveMaintenanceVersion }).(pulumi.StringOutput)
+}
+
 // Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
 // Structure is documented below.
 func (o ClusterOutput) GcsSource() ClusterGcsSourcePtrOutput {
@@ -1284,6 +1321,12 @@ func (o ClusterOutput) MaintenancePolicy() ClusterMaintenancePolicyPtrOutput {
 // Structure is documented below.
 func (o ClusterOutput) MaintenanceSchedules() ClusterMaintenanceScheduleArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMaintenanceScheduleArrayOutput { return v.MaintenanceSchedules }).(ClusterMaintenanceScheduleArrayOutput)
+}
+
+// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+func (o ClusterOutput) MaintenanceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.MaintenanceVersion }).(pulumi.StringPtrOutput)
 }
 
 // Backups that generated and managed by memorystore.

@@ -231,6 +231,21 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+     * 
+     */
+    @Import(name="sslPolicy")
+    private @Nullable Output<String> sslPolicy;
+
+    /**
+     * @return A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+     * 
+     */
+    public Optional<Output<String>> sslPolicy() {
+        return Optional.ofNullable(this.sslPolicy);
+    }
+
+    /**
      * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
      * 
      */
@@ -261,6 +276,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.servingStatus = $.servingStatus;
+        this.sslPolicy = $.sslPolicy;
         this.urlDispatchRules = $.urlDispatchRules;
     }
 
@@ -569,6 +585,27 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder servingStatus(String servingStatus) {
             return servingStatus(Output.of(servingStatus));
+        }
+
+        /**
+         * @param sslPolicy A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslPolicy(@Nullable Output<String> sslPolicy) {
+            $.sslPolicy = sslPolicy;
+            return this;
+        }
+
+        /**
+         * @param sslPolicy A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslPolicy(String sslPolicy) {
+            return sslPolicy(Output.of(sslPolicy));
         }
 
         /**

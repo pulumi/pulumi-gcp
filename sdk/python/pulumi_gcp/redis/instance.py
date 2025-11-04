@@ -27,6 +27,7 @@ class InstanceArgs:
                  authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
                  connect_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  customer_managed_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -127,6 +128,8 @@ class InstanceArgs:
             pulumi.set(__self__, "connect_mode", connect_mode)
         if customer_managed_key is not None:
             pulumi.set(__self__, "customer_managed_key", customer_managed_key)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
@@ -243,6 +246,15 @@ class InstanceArgs:
     @customer_managed_key.setter
     def customer_managed_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "customer_managed_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -496,6 +508,7 @@ class _InstanceState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  current_location_id: Optional[pulumi.Input[_builtins.str]] = None,
                  customer_managed_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  effective_reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
@@ -647,6 +660,8 @@ class _InstanceState:
             pulumi.set(__self__, "current_location_id", current_location_id)
         if customer_managed_key is not None:
             pulumi.set(__self__, "customer_managed_key", customer_managed_key)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -816,6 +831,15 @@ class _InstanceState:
     @customer_managed_key.setter
     def customer_managed_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "customer_managed_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -1228,6 +1252,7 @@ class Instance(pulumi.CustomResource):
                  authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
                  connect_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  customer_managed_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1266,7 +1291,8 @@ class Instance(pulumi.CustomResource):
 
         cache = gcp.redis.Instance("cache",
             name="memory-cache",
-            memory_size_gb=1)
+            memory_size_gb=1,
+            deletion_protection=False)
         ```
         ### Redis Instance Full
 
@@ -1558,7 +1584,8 @@ class Instance(pulumi.CustomResource):
 
         cache = gcp.redis.Instance("cache",
             name="memory-cache",
-            memory_size_gb=1)
+            memory_size_gb=1,
+            deletion_protection=False)
         ```
         ### Redis Instance Full
 
@@ -1773,6 +1800,7 @@ class Instance(pulumi.CustomResource):
                  authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
                  connect_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  customer_managed_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1805,6 +1833,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["connect_mode"] = connect_mode
             __props__.__dict__["customer_managed_key"] = customer_managed_key
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location_id"] = location_id
@@ -1859,6 +1888,7 @@ class Instance(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             current_location_id: Optional[pulumi.Input[_builtins.str]] = None,
             customer_managed_key: Optional[pulumi.Input[_builtins.str]] = None,
+            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2011,6 +2041,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["current_location_id"] = current_location_id
         __props__.__dict__["customer_managed_key"] = customer_managed_key
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["effective_reserved_ip_range"] = effective_reserved_ip_range
@@ -2120,6 +2151,11 @@ class Instance(pulumi.CustomResource):
         instance. If this is provided, CMEK is enabled.
         """
         return pulumi.get(self, "customer_managed_key")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

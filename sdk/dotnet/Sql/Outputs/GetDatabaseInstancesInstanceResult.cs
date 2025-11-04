@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string MasterInstanceName;
         public readonly string Name;
         /// <summary>
-        /// For a read pool instance, the number of nodes in the read pool.
+        /// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
         /// </summary>
         public readonly int NodeCount;
         /// <summary>

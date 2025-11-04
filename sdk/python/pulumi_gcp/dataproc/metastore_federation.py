@@ -27,7 +27,8 @@ class MetastoreFederationArgs:
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a MetastoreFederation resource.
         :param pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
@@ -42,6 +43,9 @@ class MetastoreFederationArgs:
         :param pulumi.Input[_builtins.str] location: The location where the metastore federation should reside.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         """
         pulumi.set(__self__, "backend_metastores", backend_metastores)
         pulumi.set(__self__, "federation_id", federation_id)
@@ -54,6 +58,8 @@ class MetastoreFederationArgs:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="backendMetastores")
@@ -142,6 +148,20 @@ class MetastoreFederationArgs:
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _MetastoreFederationState:
@@ -159,6 +179,7 @@ class _MetastoreFederationState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  state_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None):
@@ -183,6 +204,9 @@ class _MetastoreFederationState:
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The current state of the metastore federation.
         :param pulumi.Input[_builtins.str] state_message: Additional information about the current state of the metastore federation, if available.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[_builtins.str] uid: The globally unique resource identifier of the metastore federation.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time when the metastore federation was last updated.
         :param pulumi.Input[_builtins.str] version: The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
@@ -213,6 +237,8 @@ class _MetastoreFederationState:
             pulumi.set(__self__, "state", state)
         if state_message is not None:
             pulumi.set(__self__, "state_message", state_message)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
@@ -382,6 +408,20 @@ class _MetastoreFederationState:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The globally unique resource identifier of the metastore federation.
@@ -429,6 +469,7 @@ class MetastoreFederation(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -531,6 +572,9 @@ class MetastoreFederation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location where the metastore federation should reside.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[_builtins.str] version: The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
         """
         ...
@@ -647,6 +691,7 @@ class MetastoreFederation(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -667,6 +712,7 @@ class MetastoreFederation(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["tags"] = tags
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
@@ -704,6 +750,7 @@ class MetastoreFederation(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             state_message: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None,
             version: Optional[pulumi.Input[_builtins.str]] = None) -> 'MetastoreFederation':
@@ -733,6 +780,9 @@ class MetastoreFederation(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The current state of the metastore federation.
         :param pulumi.Input[_builtins.str] state_message: Additional information about the current state of the metastore federation, if available.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[_builtins.str] uid: The globally unique resource identifier of the metastore federation.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time when the metastore federation was last updated.
         :param pulumi.Input[_builtins.str] version: The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
@@ -754,6 +804,7 @@ class MetastoreFederation(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
         __props__.__dict__["state_message"] = state_message
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["version"] = version
@@ -866,6 +917,16 @@ class MetastoreFederation(pulumi.CustomResource):
         Additional information about the current state of the metastore federation, if available.
         """
         return pulumi.get(self, "state_message")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter

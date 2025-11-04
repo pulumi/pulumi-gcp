@@ -506,6 +506,8 @@ type Instance struct {
 	// The automated backup config for a instance.
 	// Structure is documented below.
 	AutomatedBackupConfig InstanceAutomatedBackupConfigPtrOutput `pulumi:"automatedBackupConfig"`
+	// This field is used to determine the available maintenance versions for the self service update.
+	AvailableMaintenanceVersions pulumi.StringArrayOutput `pulumi:"availableMaintenanceVersions"`
 	// The backup collection full resource name.
 	// Example: projects/{project}/locations/{location}/backupCollections/{collection}
 	BackupCollection pulumi.StringOutput `pulumi:"backupCollection"`
@@ -530,6 +532,8 @@ type Instance struct {
 	DiscoveryEndpoints InstanceDiscoveryEndpointArrayOutput `pulumi:"discoveryEndpoints"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// This field represents the actual maintenance version of the cluster.
+	EffectiveMaintenanceVersion pulumi.StringOutput `pulumi:"effectiveMaintenanceVersion"`
 	// Endpoints for the instance.
 	// Structure is documented below.
 	Endpoints InstanceEndpointArrayOutput `pulumi:"endpoints"`
@@ -563,6 +567,9 @@ type Instance struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules InstanceMaintenanceScheduleArrayOutput `pulumi:"maintenanceSchedules"`
+	// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+	// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+	MaintenanceVersion pulumi.StringPtrOutput `pulumi:"maintenanceVersion"`
 	// Managed backup source for the instance.
 	// Structure is documented below.
 	ManagedBackupSource InstanceManagedBackupSourcePtrOutput `pulumi:"managedBackupSource"`
@@ -685,6 +692,8 @@ type instanceState struct {
 	// The automated backup config for a instance.
 	// Structure is documented below.
 	AutomatedBackupConfig *InstanceAutomatedBackupConfig `pulumi:"automatedBackupConfig"`
+	// This field is used to determine the available maintenance versions for the self service update.
+	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
 	// The backup collection full resource name.
 	// Example: projects/{project}/locations/{location}/backupCollections/{collection}
 	BackupCollection *string `pulumi:"backupCollection"`
@@ -709,6 +718,8 @@ type instanceState struct {
 	DiscoveryEndpoints []InstanceDiscoveryEndpoint `pulumi:"discoveryEndpoints"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// This field represents the actual maintenance version of the cluster.
+	EffectiveMaintenanceVersion *string `pulumi:"effectiveMaintenanceVersion"`
 	// Endpoints for the instance.
 	// Structure is documented below.
 	Endpoints []InstanceEndpoint `pulumi:"endpoints"`
@@ -742,6 +753,9 @@ type instanceState struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules []InstanceMaintenanceSchedule `pulumi:"maintenanceSchedules"`
+	// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+	// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// Managed backup source for the instance.
 	// Structure is documented below.
 	ManagedBackupSource *InstanceManagedBackupSource `pulumi:"managedBackupSource"`
@@ -821,6 +835,8 @@ type InstanceState struct {
 	// The automated backup config for a instance.
 	// Structure is documented below.
 	AutomatedBackupConfig InstanceAutomatedBackupConfigPtrInput
+	// This field is used to determine the available maintenance versions for the self service update.
+	AvailableMaintenanceVersions pulumi.StringArrayInput
 	// The backup collection full resource name.
 	// Example: projects/{project}/locations/{location}/backupCollections/{collection}
 	BackupCollection pulumi.StringPtrInput
@@ -845,6 +861,8 @@ type InstanceState struct {
 	DiscoveryEndpoints InstanceDiscoveryEndpointArrayInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// This field represents the actual maintenance version of the cluster.
+	EffectiveMaintenanceVersion pulumi.StringPtrInput
 	// Endpoints for the instance.
 	// Structure is documented below.
 	Endpoints InstanceEndpointArrayInput
@@ -878,6 +896,9 @@ type InstanceState struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules InstanceMaintenanceScheduleArrayInput
+	// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+	// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+	MaintenanceVersion pulumi.StringPtrInput
 	// Managed backup source for the instance.
 	// Structure is documented below.
 	ManagedBackupSource InstanceManagedBackupSourcePtrInput
@@ -999,6 +1020,9 @@ type instanceArgs struct {
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+	// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// Managed backup source for the instance.
 	// Structure is documented below.
 	ManagedBackupSource *InstanceManagedBackupSource `pulumi:"managedBackupSource"`
@@ -1082,6 +1106,9 @@ type InstanceArgs struct {
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy InstanceMaintenancePolicyPtrInput
+	// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+	// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+	MaintenanceVersion pulumi.StringPtrInput
 	// Managed backup source for the instance.
 	// Structure is documented below.
 	ManagedBackupSource InstanceManagedBackupSourcePtrInput
@@ -1218,6 +1245,11 @@ func (o InstanceOutput) AutomatedBackupConfig() InstanceAutomatedBackupConfigPtr
 	return o.ApplyT(func(v *Instance) InstanceAutomatedBackupConfigPtrOutput { return v.AutomatedBackupConfig }).(InstanceAutomatedBackupConfigPtrOutput)
 }
 
+// This field is used to determine the available maintenance versions for the self service update.
+func (o InstanceOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
 // The backup collection full resource name.
 // Example: projects/{project}/locations/{location}/backupCollections/{collection}
 func (o InstanceOutput) BackupCollection() pulumi.StringOutput {
@@ -1266,6 +1298,11 @@ func (o InstanceOutput) DiscoveryEndpoints() InstanceDiscoveryEndpointArrayOutpu
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// This field represents the actual maintenance version of the cluster.
+func (o InstanceOutput) EffectiveMaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EffectiveMaintenanceVersion }).(pulumi.StringOutput)
 }
 
 // Endpoints for the instance.
@@ -1329,6 +1366,12 @@ func (o InstanceOutput) MaintenancePolicy() InstanceMaintenancePolicyPtrOutput {
 // Structure is documented below.
 func (o InstanceOutput) MaintenanceSchedules() InstanceMaintenanceScheduleArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceMaintenanceScheduleArrayOutput { return v.MaintenanceSchedules }).(InstanceMaintenanceScheduleArrayOutput)
+}
+
+// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
+// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+func (o InstanceOutput) MaintenanceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.MaintenanceVersion }).(pulumi.StringPtrOutput)
 }
 
 // Managed backup source for the instance.

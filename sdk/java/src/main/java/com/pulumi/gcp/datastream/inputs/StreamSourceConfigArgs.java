@@ -6,6 +6,7 @@ package com.pulumi.gcp.datastream.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMongodbSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigArgs;
@@ -20,6 +21,23 @@ import javax.annotation.Nullable;
 public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final StreamSourceConfigArgs Empty = new StreamSourceConfigArgs();
+
+    /**
+     * MongoDB source configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="mongodbSourceConfig")
+    private @Nullable Output<StreamSourceConfigMongodbSourceConfigArgs> mongodbSourceConfig;
+
+    /**
+     * @return MongoDB source configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamSourceConfigMongodbSourceConfigArgs>> mongodbSourceConfig() {
+        return Optional.ofNullable(this.mongodbSourceConfig);
+    }
 
     /**
      * MySQL data source configuration.
@@ -124,6 +142,7 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
     private StreamSourceConfigArgs() {}
 
     private StreamSourceConfigArgs(StreamSourceConfigArgs $) {
+        this.mongodbSourceConfig = $.mongodbSourceConfig;
         this.mysqlSourceConfig = $.mysqlSourceConfig;
         this.oracleSourceConfig = $.oracleSourceConfig;
         this.postgresqlSourceConfig = $.postgresqlSourceConfig;
@@ -148,6 +167,29 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder(StreamSourceConfigArgs defaults) {
             $ = new StreamSourceConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param mongodbSourceConfig MongoDB source configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mongodbSourceConfig(@Nullable Output<StreamSourceConfigMongodbSourceConfigArgs> mongodbSourceConfig) {
+            $.mongodbSourceConfig = mongodbSourceConfig;
+            return this;
+        }
+
+        /**
+         * @param mongodbSourceConfig MongoDB source configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mongodbSourceConfig(StreamSourceConfigMongodbSourceConfigArgs mongodbSourceConfig) {
+            return mongodbSourceConfig(Output.of(mongodbSourceConfig));
         }
 
         /**

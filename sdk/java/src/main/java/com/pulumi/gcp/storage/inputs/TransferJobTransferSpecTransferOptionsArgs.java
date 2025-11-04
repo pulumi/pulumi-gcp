@@ -50,14 +50,14 @@ public final class TransferJobTransferSpecTransferOptionsArgs extends com.pulumi
     }
 
     /**
-     * Specifies the metadata options for running a transfer
+     * Specifies the metadata options for running a transfer. Structure documented below.
      * 
      */
     @Import(name="metadataOptions")
     private @Nullable Output<TransferJobTransferSpecTransferOptionsMetadataOptionsArgs> metadataOptions;
 
     /**
-     * @return Specifies the metadata options for running a transfer
+     * @return Specifies the metadata options for running a transfer. Structure documented below.
      * 
      */
     public Optional<Output<TransferJobTransferSpecTransferOptionsMetadataOptionsArgs>> metadataOptions() {
@@ -167,7 +167,7 @@ public final class TransferJobTransferSpecTransferOptionsArgs extends com.pulumi
         }
 
         /**
-         * @param metadataOptions Specifies the metadata options for running a transfer
+         * @param metadataOptions Specifies the metadata options for running a transfer. Structure documented below.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class TransferJobTransferSpecTransferOptionsArgs extends com.pulumi
         }
 
         /**
-         * @param metadataOptions Specifies the metadata options for running a transfer
+         * @param metadataOptions Specifies the metadata options for running a transfer. Structure documented below.
          * 
          * @return builder
          * 

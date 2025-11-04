@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Diagflow
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// using Std = Pulumi.Std;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         ServiceName = "dialogflow.googleapis.com",
     ///     });
     /// 
-    ///     var waitEnableServiceApi = new Time.Index.Sleep("wait_enable_service_api", new()
+    ///     var waitEnableServiceApi = new Time.Sleep("wait_enable_service_api", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
-    ///     var waitCreateSa = new Time.Index.Sleep("wait_create_sa", new()
+    ///     var waitCreateSa = new Time.Sleep("wait_create_sa", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions

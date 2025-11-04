@@ -62,6 +62,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string? SourceAgentPoolName;
         /// <summary>
+        /// Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+        /// </summary>
+        public readonly Outputs.TransferJobTransferSpecTransferManifest? TransferManifest;
+        /// <summary>
         /// Characteristics of how to treat files from datasource and sink during job. If the option `DeleteObjectsUniqueInSink` is true, object conditions based on objects' `LastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecTransferOptions? TransferOptions;
@@ -92,6 +96,8 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             string? sourceAgentPoolName,
 
+            Outputs.TransferJobTransferSpecTransferManifest? transferManifest,
+
             Outputs.TransferJobTransferSpecTransferOptions? transferOptions)
         {
             AwsS3CompatibleDataSource = awsS3CompatibleDataSource;
@@ -106,6 +112,7 @@ namespace Pulumi.Gcp.Storage.Outputs
             PosixDataSource = posixDataSource;
             SinkAgentPoolName = sinkAgentPoolName;
             SourceAgentPoolName = sourceAgentPoolName;
+            TransferManifest = transferManifest;
             TransferOptions = transferOptions;
         }
     }

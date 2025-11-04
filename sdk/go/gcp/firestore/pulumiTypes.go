@@ -1329,6 +1329,109 @@ func (o IndexFieldVectorConfigFlatPtrOutput) Elem() IndexFieldVectorConfigFlatOu
 	}).(IndexFieldVectorConfigFlatOutput)
 }
 
+type UserCredsResourceIdentity struct {
+	// (Output)
+	// The principal identifier string.
+	// See https://cloud.google.com/iam/docs/principal-identifiers.
+	Principal *string `pulumi:"principal"`
+}
+
+// UserCredsResourceIdentityInput is an input type that accepts UserCredsResourceIdentityArgs and UserCredsResourceIdentityOutput values.
+// You can construct a concrete instance of `UserCredsResourceIdentityInput` via:
+//
+//	UserCredsResourceIdentityArgs{...}
+type UserCredsResourceIdentityInput interface {
+	pulumi.Input
+
+	ToUserCredsResourceIdentityOutput() UserCredsResourceIdentityOutput
+	ToUserCredsResourceIdentityOutputWithContext(context.Context) UserCredsResourceIdentityOutput
+}
+
+type UserCredsResourceIdentityArgs struct {
+	// (Output)
+	// The principal identifier string.
+	// See https://cloud.google.com/iam/docs/principal-identifiers.
+	Principal pulumi.StringPtrInput `pulumi:"principal"`
+}
+
+func (UserCredsResourceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserCredsResourceIdentity)(nil)).Elem()
+}
+
+func (i UserCredsResourceIdentityArgs) ToUserCredsResourceIdentityOutput() UserCredsResourceIdentityOutput {
+	return i.ToUserCredsResourceIdentityOutputWithContext(context.Background())
+}
+
+func (i UserCredsResourceIdentityArgs) ToUserCredsResourceIdentityOutputWithContext(ctx context.Context) UserCredsResourceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserCredsResourceIdentityOutput)
+}
+
+// UserCredsResourceIdentityArrayInput is an input type that accepts UserCredsResourceIdentityArray and UserCredsResourceIdentityArrayOutput values.
+// You can construct a concrete instance of `UserCredsResourceIdentityArrayInput` via:
+//
+//	UserCredsResourceIdentityArray{ UserCredsResourceIdentityArgs{...} }
+type UserCredsResourceIdentityArrayInput interface {
+	pulumi.Input
+
+	ToUserCredsResourceIdentityArrayOutput() UserCredsResourceIdentityArrayOutput
+	ToUserCredsResourceIdentityArrayOutputWithContext(context.Context) UserCredsResourceIdentityArrayOutput
+}
+
+type UserCredsResourceIdentityArray []UserCredsResourceIdentityInput
+
+func (UserCredsResourceIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserCredsResourceIdentity)(nil)).Elem()
+}
+
+func (i UserCredsResourceIdentityArray) ToUserCredsResourceIdentityArrayOutput() UserCredsResourceIdentityArrayOutput {
+	return i.ToUserCredsResourceIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i UserCredsResourceIdentityArray) ToUserCredsResourceIdentityArrayOutputWithContext(ctx context.Context) UserCredsResourceIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserCredsResourceIdentityArrayOutput)
+}
+
+type UserCredsResourceIdentityOutput struct{ *pulumi.OutputState }
+
+func (UserCredsResourceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserCredsResourceIdentity)(nil)).Elem()
+}
+
+func (o UserCredsResourceIdentityOutput) ToUserCredsResourceIdentityOutput() UserCredsResourceIdentityOutput {
+	return o
+}
+
+func (o UserCredsResourceIdentityOutput) ToUserCredsResourceIdentityOutputWithContext(ctx context.Context) UserCredsResourceIdentityOutput {
+	return o
+}
+
+// (Output)
+// The principal identifier string.
+// See https://cloud.google.com/iam/docs/principal-identifiers.
+func (o UserCredsResourceIdentityOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserCredsResourceIdentity) *string { return v.Principal }).(pulumi.StringPtrOutput)
+}
+
+type UserCredsResourceIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (UserCredsResourceIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserCredsResourceIdentity)(nil)).Elem()
+}
+
+func (o UserCredsResourceIdentityArrayOutput) ToUserCredsResourceIdentityArrayOutput() UserCredsResourceIdentityArrayOutput {
+	return o
+}
+
+func (o UserCredsResourceIdentityArrayOutput) ToUserCredsResourceIdentityArrayOutputWithContext(ctx context.Context) UserCredsResourceIdentityArrayOutput {
+	return o
+}
+
+func (o UserCredsResourceIdentityArrayOutput) Index(i pulumi.IntInput) UserCredsResourceIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserCredsResourceIdentity {
+		return vs[0].([]UserCredsResourceIdentity)[vs[1].(int)]
+	}).(UserCredsResourceIdentityOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleDailyRecurrenceInput)(nil)).Elem(), BackupScheduleDailyRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleDailyRecurrencePtrInput)(nil)).Elem(), BackupScheduleDailyRecurrenceArgs{})
@@ -1348,6 +1451,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigPtrInput)(nil)).Elem(), IndexFieldVectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigFlatInput)(nil)).Elem(), IndexFieldVectorConfigFlatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigFlatPtrInput)(nil)).Elem(), IndexFieldVectorConfigFlatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserCredsResourceIdentityInput)(nil)).Elem(), UserCredsResourceIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserCredsResourceIdentityArrayInput)(nil)).Elem(), UserCredsResourceIdentityArray{})
 	pulumi.RegisterOutputType(BackupScheduleDailyRecurrenceOutput{})
 	pulumi.RegisterOutputType(BackupScheduleDailyRecurrencePtrOutput{})
 	pulumi.RegisterOutputType(BackupScheduleWeeklyRecurrenceOutput{})
@@ -1366,4 +1471,6 @@ func init() {
 	pulumi.RegisterOutputType(IndexFieldVectorConfigPtrOutput{})
 	pulumi.RegisterOutputType(IndexFieldVectorConfigFlatOutput{})
 	pulumi.RegisterOutputType(IndexFieldVectorConfigFlatPtrOutput{})
+	pulumi.RegisterOutputType(UserCredsResourceIdentityOutput{})
+	pulumi.RegisterOutputType(UserCredsResourceIdentityArrayOutput{})
 }

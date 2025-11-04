@@ -44,6 +44,8 @@ class DatasetIamBindingArgs:
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input['DatasetIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -107,6 +109,10 @@ class DatasetIamBindingArgs:
     @_builtins.property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['DatasetIamBindingConditionArgs']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -138,6 +144,8 @@ class _DatasetIamBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatasetIamBinding resources.
+        :param pulumi.Input['DatasetIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset_id: The dataset ID.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the dataset's IAM policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
@@ -174,6 +182,10 @@ class _DatasetIamBindingState:
     @_builtins.property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['DatasetIamBindingConditionArgs']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -302,33 +314,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             policy_data=owner.policy_data)
         ```
 
-        ## bigquery.DatasetIamBinding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        reader = gcp.bigquery.DatasetIamBinding("reader",
-            dataset_id=dataset.dataset_id,
-            role="roles/bigquery.dataViewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## bigquery.DatasetIamMember
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        editor = gcp.bigquery.DatasetIamMember("editor",
-            dataset_id=dataset.dataset_id,
-            role="roles/bigquery.dataEditor",
-            member="user:jane@example.com")
-        ```
-
-        ## bigquery.DatasetIamPolicy
+        ## With IAM condition
 
         ```python
         import pulumi
@@ -337,6 +323,11 @@ class DatasetIamBinding(pulumi.CustomResource):
         owner = gcp.organizations.get_iam_policy(bindings=[{
             "role": "roles/bigquery.dataOwner",
             "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2029_12_31",
+                "description": "Expiring at midnight of 2029-12-31",
+                "expression": "request.time < timestamp(\\"2030-01-01T00:00:00Z\\")",
+            },
         }])
         dataset_dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
         dataset = gcp.bigquery.DatasetIamPolicy("dataset",
@@ -357,6 +348,24 @@ class DatasetIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
+        ## With IAM condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        reader = gcp.bigquery.DatasetIamBinding("reader",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataViewer",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2029_12_31",
+                "description": "Expiring at midnight of 2029-12-31",
+                "expression": "request.time < timestamp(\\"2030-01-01T00:00:00Z\\")",
+            })
+        ```
+
         ## bigquery.DatasetIamMember
 
         ```python
@@ -368,6 +377,123 @@ class DatasetIamBinding(pulumi.CustomResource):
             dataset_id=dataset.dataset_id,
             role="roles/bigquery.dataEditor",
             member="user:jane@example.com")
+        ```
+
+        ## With IAM condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        editor = gcp.bigquery.DatasetIamMember("editor",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataEditor",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2029_12_31",
+                "description": "Expiring at midnight of 2029-12-31",
+                "expression": "request.time < timestamp(\\"2030-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## bigquery.DatasetIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        owner = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+        }])
+        dataset_dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        dataset = gcp.bigquery.DatasetIamPolicy("dataset",
+            dataset_id=dataset_dataset.dataset_id,
+            policy_data=owner.policy_data)
+        ```
+
+        ## With IAM condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        owner = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2029_12_31",
+                "description": "Expiring at midnight of 2029-12-31",
+                "expression": "request.time < timestamp(\\"2030-01-01T00:00:00Z\\")",
+            },
+        }])
+        dataset_dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        dataset = gcp.bigquery.DatasetIamPolicy("dataset",
+            dataset_id=dataset_dataset.dataset_id,
+            policy_data=owner.policy_data)
+        ```
+
+        ## bigquery.DatasetIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        reader = gcp.bigquery.DatasetIamBinding("reader",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataViewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## With IAM condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        reader = gcp.bigquery.DatasetIamBinding("reader",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataViewer",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2029_12_31",
+                "description": "Expiring at midnight of 2029-12-31",
+                "expression": "request.time < timestamp(\\"2030-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## bigquery.DatasetIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        editor = gcp.bigquery.DatasetIamMember("editor",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataEditor",
+            member="user:jane@example.com")
+        ```
+
+        ## With IAM condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        editor = gcp.bigquery.DatasetIamMember("editor",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataEditor",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2029_12_31",
+                "description": "Expiring at midnight of 2029-12-31",
+                "expression": "request.time < timestamp(\\"2030-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -398,6 +524,8 @@ class DatasetIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DatasetIamBindingConditionArgs', 'DatasetIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset_id: The dataset ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -458,33 +586,7 @@ class DatasetIamBinding(pulumi.CustomResource):
             policy_data=owner.policy_data)
         ```
 
-        ## bigquery.DatasetIamBinding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        reader = gcp.bigquery.DatasetIamBinding("reader",
-            dataset_id=dataset.dataset_id,
-            role="roles/bigquery.dataViewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## bigquery.DatasetIamMember
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        editor = gcp.bigquery.DatasetIamMember("editor",
-            dataset_id=dataset.dataset_id,
-            role="roles/bigquery.dataEditor",
-            member="user:jane@example.com")
-        ```
-
-        ## bigquery.DatasetIamPolicy
+        ## With IAM condition
 
         ```python
         import pulumi
@@ -493,6 +595,11 @@ class DatasetIamBinding(pulumi.CustomResource):
         owner = gcp.organizations.get_iam_policy(bindings=[{
             "role": "roles/bigquery.dataOwner",
             "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2029_12_31",
+                "description": "Expiring at midnight of 2029-12-31",
+                "expression": "request.time < timestamp(\\"2030-01-01T00:00:00Z\\")",
+            },
         }])
         dataset_dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
         dataset = gcp.bigquery.DatasetIamPolicy("dataset",
@@ -513,6 +620,24 @@ class DatasetIamBinding(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
+        ## With IAM condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        reader = gcp.bigquery.DatasetIamBinding("reader",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataViewer",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2029_12_31",
+                "description": "Expiring at midnight of 2029-12-31",
+                "expression": "request.time < timestamp(\\"2030-01-01T00:00:00Z\\")",
+            })
+        ```
+
         ## bigquery.DatasetIamMember
 
         ```python
@@ -524,6 +649,123 @@ class DatasetIamBinding(pulumi.CustomResource):
             dataset_id=dataset.dataset_id,
             role="roles/bigquery.dataEditor",
             member="user:jane@example.com")
+        ```
+
+        ## With IAM condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        editor = gcp.bigquery.DatasetIamMember("editor",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataEditor",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2029_12_31",
+                "description": "Expiring at midnight of 2029-12-31",
+                "expression": "request.time < timestamp(\\"2030-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## bigquery.DatasetIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        owner = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+        }])
+        dataset_dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        dataset = gcp.bigquery.DatasetIamPolicy("dataset",
+            dataset_id=dataset_dataset.dataset_id,
+            policy_data=owner.policy_data)
+        ```
+
+        ## With IAM condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        owner = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2029_12_31",
+                "description": "Expiring at midnight of 2029-12-31",
+                "expression": "request.time < timestamp(\\"2030-01-01T00:00:00Z\\")",
+            },
+        }])
+        dataset_dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        dataset = gcp.bigquery.DatasetIamPolicy("dataset",
+            dataset_id=dataset_dataset.dataset_id,
+            policy_data=owner.policy_data)
+        ```
+
+        ## bigquery.DatasetIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        reader = gcp.bigquery.DatasetIamBinding("reader",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataViewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## With IAM condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        reader = gcp.bigquery.DatasetIamBinding("reader",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataViewer",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2029_12_31",
+                "description": "Expiring at midnight of 2029-12-31",
+                "expression": "request.time < timestamp(\\"2030-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## bigquery.DatasetIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        editor = gcp.bigquery.DatasetIamMember("editor",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataEditor",
+            member="user:jane@example.com")
+        ```
+
+        ## With IAM condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        editor = gcp.bigquery.DatasetIamMember("editor",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataEditor",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2029_12_31",
+                "description": "Expiring at midnight of 2029-12-31",
+                "expression": "request.time < timestamp(\\"2030-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -616,6 +858,8 @@ class DatasetIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DatasetIamBindingConditionArgs', 'DatasetIamBindingConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset_id: The dataset ID.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the dataset's IAM policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
@@ -651,6 +895,10 @@ class DatasetIamBinding(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.DatasetIamBindingCondition']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @_builtins.property

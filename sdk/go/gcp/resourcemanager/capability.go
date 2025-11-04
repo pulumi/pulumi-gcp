@@ -31,8 +31,8 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/resourcemanager"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			wait60s, err := time.NewSleep(ctx, "wait_60s", &time.SleepArgs{
-//				CreateDuration: "60s",
+//				CreateDuration: pulumi.String("60s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				folder,
 //			}))

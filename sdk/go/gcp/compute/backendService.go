@@ -514,6 +514,113 @@ import (
 //	}
 //
 // ```
+// ### Backend Service In Flight
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			custom, err := compute.NewNetwork(ctx, "custom", &compute.NetworkArgs{
+//				Name:                  pulumi.String("custom-vpc"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("custom-subnet"),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     custom.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "default", &compute.InstanceTemplateArgs{
+//				Name:        pulumi.String("instance-template"),
+//				MachineType: pulumi.String("e2-micro"),
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String("debian-cloud/debian-11"),
+//						AutoDelete:  pulumi.Bool(true),
+//						Boot:        pulumi.Bool(true),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						Network:    custom.ID(),
+//						Subnetwork: _default.ID(),
+//					},
+//				},
+//				Metadata: pulumi.StringMap{
+//					"startup-script": pulumi.String(`#!/bin/bash
+//
+// echo "Hello World from MIG VM" > /var/www/html/index.html
+// apt-get update -y
+// apt-get install -y apache2
+// systemctl start apache2
+// `),
+//
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foobar, err := compute.NewRegionInstanceGroupManager(ctx, "foobar", &compute.RegionInstanceGroupManagerArgs{
+//				Name:             pulumi.String("instance-group-manager"),
+//				BaseInstanceName: pulumi.String("vm"),
+//				Region:           pulumi.String("us-central1"),
+//				Versions: compute.RegionInstanceGroupManagerVersionArray{
+//					&compute.RegionInstanceGroupManagerVersionArgs{
+//						InstanceTemplate: defaultInstanceTemplate.ID(),
+//					},
+//				},
+//				TargetSize: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				Description:         pulumi.String("Hello World 1234"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("TCP"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				Backends: compute.BackendServiceBackendArray{
+//					&compute.BackendServiceBackendArgs{
+//						Group:               foobar.InstanceGroup,
+//						BalancingMode:       pulumi.String("IN_FLIGHT"),
+//						MaxInFlightRequests: pulumi.Int(1000),
+//						TrafficDuration:     pulumi.String("LONG"),
+//					},
+//				},
+//				HealthChecks: defaultHealthCheck.SelfLink,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Backend Service External Managed
 //
 // ```go

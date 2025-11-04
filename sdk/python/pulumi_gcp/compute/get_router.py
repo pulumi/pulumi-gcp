@@ -27,7 +27,7 @@ class GetRouterResult:
     """
     A collection of values returned by getRouter.
     """
-    def __init__(__self__, bgps=None, creation_timestamp=None, description=None, encrypted_interconnect_router=None, id=None, md5_authentication_keys=None, name=None, network=None, params=None, project=None, region=None, self_link=None):
+    def __init__(__self__, bgps=None, creation_timestamp=None, description=None, encrypted_interconnect_router=None, id=None, md5_authentication_keys=None, name=None, ncc_gateway=None, network=None, params=None, project=None, region=None, self_link=None):
         if bgps and not isinstance(bgps, list):
             raise TypeError("Expected argument 'bgps' to be a list")
         pulumi.set(__self__, "bgps", bgps)
@@ -49,6 +49,9 @@ class GetRouterResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if ncc_gateway and not isinstance(ncc_gateway, str):
+            raise TypeError("Expected argument 'ncc_gateway' to be a str")
+        pulumi.set(__self__, "ncc_gateway", ncc_gateway)
         if network and not isinstance(network, str):
             raise TypeError("Expected argument 'network' to be a str")
         pulumi.set(__self__, "network", network)
@@ -104,6 +107,11 @@ class GetRouterResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="nccGateway")
+    def ncc_gateway(self) -> _builtins.str:
+        return pulumi.get(self, "ncc_gateway")
+
+    @_builtins.property
     @pulumi.getter
     def network(self) -> _builtins.str:
         return pulumi.get(self, "network")
@@ -142,6 +150,7 @@ class AwaitableGetRouterResult(GetRouterResult):
             id=self.id,
             md5_authentication_keys=self.md5_authentication_keys,
             name=self.name,
+            ncc_gateway=self.ncc_gateway,
             network=self.network,
             params=self.params,
             project=self.project,
@@ -191,6 +200,7 @@ def get_router(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         md5_authentication_keys=pulumi.get(__ret__, 'md5_authentication_keys'),
         name=pulumi.get(__ret__, 'name'),
+        ncc_gateway=pulumi.get(__ret__, 'ncc_gateway'),
         network=pulumi.get(__ret__, 'network'),
         params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
@@ -237,6 +247,7 @@ def get_router_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         id=pulumi.get(__response__, 'id'),
         md5_authentication_keys=pulumi.get(__response__, 'md5_authentication_keys'),
         name=pulumi.get(__response__, 'name'),
+        ncc_gateway=pulumi.get(__response__, 'ncc_gateway'),
         network=pulumi.get(__response__, 'network'),
         params=pulumi.get(__response__, 'params'),
         project=pulumi.get(__response__, 'project'),

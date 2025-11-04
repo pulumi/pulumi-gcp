@@ -69,6 +69,7 @@ export interface GetRouterResult {
     readonly id: string;
     readonly md5AuthenticationKeys: outputs.compute.GetRouterMd5AuthenticationKey[];
     readonly name: string;
+    readonly nccGateway: string;
     readonly network: string;
     readonly params: outputs.compute.GetRouterParam[];
     readonly project?: string;

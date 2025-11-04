@@ -513,6 +513,12 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<Outputs.InstanceAutomatedBackupConfig?> AutomatedBackupConfig { get; private set; } = null!;
 
         /// <summary>
+        /// This field is used to determine the available maintenance versions for the self service update.
+        /// </summary>
+        [Output("availableMaintenanceVersions")]
+        public Output<ImmutableArray<string>> AvailableMaintenanceVersions { get; private set; } = null!;
+
+        /// <summary>
         /// The backup collection full resource name.
         /// Example: projects/{project}/locations/{location}/backupCollections/{collection}
         /// </summary>
@@ -563,6 +569,12 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// This field represents the actual maintenance version of the cluster.
+        /// </summary>
+        [Output("effectiveMaintenanceVersion")]
+        public Output<string> EffectiveMaintenanceVersion { get; private set; } = null!;
 
         /// <summary>
         /// Endpoints for the instance.
@@ -636,6 +648,13 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Output("maintenanceSchedules")]
         public Output<ImmutableArray<Outputs.InstanceMaintenanceSchedule>> MaintenanceSchedules { get; private set; } = null!;
+
+        /// <summary>
+        /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the AvailableMaintenanceVersions field.
+        /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+        /// </summary>
+        [Output("maintenanceVersion")]
+        public Output<string?> MaintenanceVersion { get; private set; } = null!;
 
         /// <summary>
         /// Managed backup source for the instance.
@@ -956,6 +975,13 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<Inputs.InstanceMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
+        /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the AvailableMaintenanceVersions field.
+        /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+        /// </summary>
+        [Input("maintenanceVersion")]
+        public Input<string>? MaintenanceVersion { get; set; }
+
+        /// <summary>
         /// Managed backup source for the instance.
         /// Structure is documented below.
         /// </summary>
@@ -1048,6 +1074,18 @@ namespace Pulumi.Gcp.MemoryStore
         [Input("automatedBackupConfig")]
         public Input<Inputs.InstanceAutomatedBackupConfigGetArgs>? AutomatedBackupConfig { get; set; }
 
+        [Input("availableMaintenanceVersions")]
+        private InputList<string>? _availableMaintenanceVersions;
+
+        /// <summary>
+        /// This field is used to determine the available maintenance versions for the self service update.
+        /// </summary>
+        public InputList<string> AvailableMaintenanceVersions
+        {
+            get => _availableMaintenanceVersions ?? (_availableMaintenanceVersions = new InputList<string>());
+            set => _availableMaintenanceVersions = value;
+        }
+
         /// <summary>
         /// The backup collection full resource name.
         /// Example: projects/{project}/locations/{location}/backupCollections/{collection}
@@ -1129,6 +1167,12 @@ namespace Pulumi.Gcp.MemoryStore
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// This field represents the actual maintenance version of the cluster.
+        /// </summary>
+        [Input("effectiveMaintenanceVersion")]
+        public Input<string>? EffectiveMaintenanceVersion { get; set; }
 
         [Input("endpoints")]
         private InputList<Inputs.InstanceEndpointGetArgs>? _endpoints;
@@ -1226,6 +1270,13 @@ namespace Pulumi.Gcp.MemoryStore
             get => _maintenanceSchedules ?? (_maintenanceSchedules = new InputList<Inputs.InstanceMaintenanceScheduleGetArgs>());
             set => _maintenanceSchedules = value;
         }
+
+        /// <summary>
+        /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the AvailableMaintenanceVersions field.
+        /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
+        /// </summary>
+        [Input("maintenanceVersion")]
+        public Input<string>? MaintenanceVersion { get; set; }
 
         /// <summary>
         /// Managed backup source for the instance.

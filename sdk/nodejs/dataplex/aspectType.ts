@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     aspectTypeId: "aspect-type-basic",
  *     project: "my-project-name",
  *     location: "us-central1",
+ *     dataClassification: "DATA_CLASSIFICATION_UNSPECIFIED",
  *     metadataTemplate: `{
  *   "name": "tf-test-template",
  *   "type": "record",
@@ -60,7 +61,8 @@ import * as utilities from "../utilities";
  *         tag: "test-tf",
  *     },
  *     displayName: "terraform aspect type",
- *     description: "aspect type created by Terraform",
+ *     description: "data aspect type created by Terraform",
+ *     dataClassification: "METADATA_AND_DATA",
  *     metadataTemplate: `{
  *   "type": "record",
  *   "name": "Schema",
@@ -254,6 +256,14 @@ export class AspectType extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Classifies the data stored by the aspect.
+     * `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+     * while `METADATA_AND_DATA` indicates data derived content.
+     * <br><br>
+     * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+     */
+    declare public readonly dataClassification: pulumi.Output<string | undefined>;
+    /**
      * Description of the AspectType.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -323,6 +333,7 @@ export class AspectType extends pulumi.CustomResource {
             const state = argsOrState as AspectTypeState | undefined;
             resourceInputs["aspectTypeId"] = state?.aspectTypeId;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataClassification"] = state?.dataClassification;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -338,6 +349,7 @@ export class AspectType extends pulumi.CustomResource {
         } else {
             const args = argsOrState as AspectTypeArgs | undefined;
             resourceInputs["aspectTypeId"] = args?.aspectTypeId;
+            resourceInputs["dataClassification"] = args?.dataClassification;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labels"] = args?.labels;
@@ -371,6 +383,14 @@ export interface AspectTypeState {
      * The time when the AspectType was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Classifies the data stored by the aspect.
+     * `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+     * while `METADATA_AND_DATA` indicates data derived content.
+     * <br><br>
+     * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+     */
+    dataClassification?: pulumi.Input<string>;
     /**
      * Description of the AspectType.
      */
@@ -435,6 +455,14 @@ export interface AspectTypeArgs {
      * The aspect type id of the aspect type.
      */
     aspectTypeId?: pulumi.Input<string>;
+    /**
+     * Classifies the data stored by the aspect.
+     * `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
+     * while `METADATA_AND_DATA` indicates data derived content.
+     * <br><br>
+     * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
+     */
+    dataClassification?: pulumi.Input<string>;
     /**
      * Description of the AspectType.
      */

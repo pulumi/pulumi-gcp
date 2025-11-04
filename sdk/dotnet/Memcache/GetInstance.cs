@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.Memcache
     {
         public readonly string AuthorizedNetwork;
         public readonly string CreateTime;
+        public readonly bool DeletionProtection;
         public readonly string DiscoveryEndpoint;
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -168,6 +169,8 @@ namespace Pulumi.Gcp.Memcache
             string authorizedNetwork,
 
             string createTime,
+
+            bool deletionProtection,
 
             string discoveryEndpoint,
 
@@ -209,6 +212,7 @@ namespace Pulumi.Gcp.Memcache
         {
             AuthorizedNetwork = authorizedNetwork;
             CreateTime = createTime;
+            DeletionProtection = deletionProtection;
             DiscoveryEndpoint = discoveryEndpoint;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;

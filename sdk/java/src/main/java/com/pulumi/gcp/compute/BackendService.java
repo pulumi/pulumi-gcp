@@ -620,6 +620,114 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Backend Service In Flight
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.RegionInstanceGroupManager;
+ * import com.pulumi.gcp.compute.RegionInstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var custom = new Network("custom", NetworkArgs.builder()
+ *             .name("custom-vpc")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var default_ = new Subnetwork("default", SubnetworkArgs.builder()
+ *             .name("custom-subnet")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
+ *             .network(custom.id())
+ *             .build());
+ * 
+ *         var defaultInstanceTemplate = new InstanceTemplate("defaultInstanceTemplate", InstanceTemplateArgs.builder()
+ *             .name("instance-template")
+ *             .machineType("e2-micro")
+ *             .disks(InstanceTemplateDiskArgs.builder()
+ *                 .sourceImage("debian-cloud/debian-11")
+ *                 .autoDelete(true)
+ *                 .boot(true)
+ *                 .build())
+ *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .network(custom.id())
+ *                 .subnetwork(default_.id())
+ *                 .build())
+ *             .metadata(Map.of("startup-script", """
+ * #!/bin/bash
+ * echo "Hello World from MIG VM" > /var/www/html/index.html
+ * apt-get update -y
+ * apt-get install -y apache2
+ * systemctl start apache2
+ *             """))
+ *             .build());
+ * 
+ *         var foobar = new RegionInstanceGroupManager("foobar", RegionInstanceGroupManagerArgs.builder()
+ *             .name("instance-group-manager")
+ *             .baseInstanceName("vm")
+ *             .region("us-central1")
+ *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
+ *                 .instanceTemplate(defaultInstanceTemplate.id())
+ *                 .build())
+ *             .targetSize(1)
+ *             .build());
+ * 
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .description("Hello World 1234")
+ *             .portName("http")
+ *             .protocol("TCP")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .backends(BackendServiceBackendArgs.builder()
+ *                 .group(foobar.instanceGroup())
+ *                 .balancingMode("IN_FLIGHT")
+ *                 .maxInFlightRequests(1000)
+ *                 .trafficDuration("LONG")
+ *                 .build())
+ *             .healthChecks(defaultHealthCheck.selfLink())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Backend Service External Managed
  * 
  * <pre>

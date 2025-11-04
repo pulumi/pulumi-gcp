@@ -28,6 +28,7 @@ public final class GetRouterResult {
     private String id;
     private List<GetRouterMd5AuthenticationKey> md5AuthenticationKeys;
     private String name;
+    private String nccGateway;
     private String network;
     private List<GetRouterParam> params;
     private @Nullable String project;
@@ -59,6 +60,9 @@ public final class GetRouterResult {
     }
     public String name() {
         return this.name;
+    }
+    public String nccGateway() {
+        return this.nccGateway;
     }
     public String network() {
         return this.network;
@@ -92,6 +96,7 @@ public final class GetRouterResult {
         private String id;
         private List<GetRouterMd5AuthenticationKey> md5AuthenticationKeys;
         private String name;
+        private String nccGateway;
         private String network;
         private List<GetRouterParam> params;
         private @Nullable String project;
@@ -107,6 +112,7 @@ public final class GetRouterResult {
     	      this.id = defaults.id;
     	      this.md5AuthenticationKeys = defaults.md5AuthenticationKeys;
     	      this.name = defaults.name;
+    	      this.nccGateway = defaults.nccGateway;
     	      this.network = defaults.network;
     	      this.params = defaults.params;
     	      this.project = defaults.project;
@@ -177,6 +183,14 @@ public final class GetRouterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder nccGateway(String nccGateway) {
+            if (nccGateway == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "nccGateway");
+            }
+            this.nccGateway = nccGateway;
+            return this;
+        }
+        @CustomType.Setter
         public Builder network(String network) {
             if (network == null) {
               throw new MissingRequiredPropertyException("GetRouterResult", "network");
@@ -224,6 +238,7 @@ public final class GetRouterResult {
             _resultValue.id = id;
             _resultValue.md5AuthenticationKeys = md5AuthenticationKeys;
             _resultValue.name = name;
+            _resultValue.nccGateway = nccGateway;
             _resultValue.network = network;
             _resultValue.params = params;
             _resultValue.project = project;

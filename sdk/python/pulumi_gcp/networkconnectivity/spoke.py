@@ -24,6 +24,7 @@ class SpokeArgs:
                  hub: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 gateway: Optional[pulumi.Input['SpokeGatewayArgs']] = None,
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
@@ -38,6 +39,8 @@ class SpokeArgs:
         :param pulumi.Input[_builtins.str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] description: An optional description of the spoke.
+        :param pulumi.Input['SpokeGatewayArgs'] gateway: This is a gateway that can apply specialized processing to traffic going through it.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] group: The name of the group that this spoke is associated with.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -60,6 +63,8 @@ class SpokeArgs:
         pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
         if group is not None:
             pulumi.set(__self__, "group", group)
         if labels is not None:
@@ -114,6 +119,19 @@ class SpokeArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> Optional[pulumi.Input['SpokeGatewayArgs']]:
+        """
+        This is a gateway that can apply specialized processing to traffic going through it.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: Optional[pulumi.Input['SpokeGatewayArgs']]):
+        pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
@@ -238,6 +256,7 @@ class _SpokeState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 gateway: Optional[pulumi.Input['SpokeGatewayArgs']] = None,
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  hub: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -259,6 +278,8 @@ class _SpokeState:
         :param pulumi.Input[_builtins.str] create_time: Output only. The time the spoke was created.
         :param pulumi.Input[_builtins.str] description: An optional description of the spoke.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input['SpokeGatewayArgs'] gateway: This is a gateway that can apply specialized processing to traffic going through it.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] group: The name of the group that this spoke is associated with.
         :param pulumi.Input[_builtins.str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -292,6 +313,8 @@ class _SpokeState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
         if group is not None:
             pulumi.set(__self__, "group", group)
         if hub is not None:
@@ -360,6 +383,19 @@ class _SpokeState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> Optional[pulumi.Input['SpokeGatewayArgs']]:
+        """
+        This is a gateway that can apply specialized processing to traffic going through it.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: Optional[pulumi.Input['SpokeGatewayArgs']]):
+        pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
@@ -571,6 +607,7 @@ class Spoke(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 gateway: Optional[pulumi.Input[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']]] = None,
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  hub: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -588,7 +625,7 @@ class Spoke(pulumi.CustomResource):
 
         To get more information about Spoke, see:
 
-        * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
+        * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.spokes)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
 
@@ -676,15 +713,15 @@ class Spoke(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         network = gcp.compute.Network("network",
-            name="tf-test-network_60365",
+            name="tf-test-network_50610",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_80215",
+            name="tf-test-subnet_77124",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
         instance = gcp.compute.Instance("instance",
-            name="tf-test-instance_59033",
+            name="tf-test-instance_15335",
             machine_type="e2-medium",
             can_ip_forward=True,
             zone="us-central1-a",
@@ -701,13 +738,13 @@ class Spoke(pulumi.CustomResource):
                 }],
             }])
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-            name="tf-test-hub_32081",
+            name="tf-test-hub_20665",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
-            name="tf-test-name_10393",
+            name="tf-test-name_85160",
             location="us-central1",
             description="A sample spoke with a linked routher appliance instance",
             labels={
@@ -939,8 +976,8 @@ class Spoke(pulumi.CustomResource):
             hub=star_hub.id,
             auto_accept={
                 "auto_accept_projects": [
-                    "foo_33052",
-                    "bar_3684",
+                    "foo_92130",
+                    "bar_16199",
                 ],
             })
         primary = gcp.networkconnectivity.Spoke("primary",
@@ -987,6 +1024,43 @@ class Spoke(pulumi.CustomResource):
                 "uri": network.self_link,
             })
         ```
+        ### Network Connectivity Spoke Gateway
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="net-spoke",
+            auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="tf-test-subnet_21563",
+            ip_cidr_range="10.0.0.0/28",
+            region="us-central1",
+            network=network.self_link)
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="hub",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            },
+            preset_topology="HYBRID_INSPECTION")
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="gateway",
+            location="us-central1",
+            description="A sample spoke of type Gateway",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            gateway={
+                "ip_range_reservations": [{
+                    "ip_range": "10.0.0.0/23",
+                }],
+                "capacity": "CAPACITY_1_GBPS",
+            },
+            group="gateways")
+        ```
 
         ## Import
 
@@ -1015,6 +1089,8 @@ class Spoke(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description of the spoke.
+        :param pulumi.Input[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']] gateway: This is a gateway that can apply specialized processing to traffic going through it.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] group: The name of the group that this spoke is associated with.
         :param pulumi.Input[_builtins.str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -1046,7 +1122,7 @@ class Spoke(pulumi.CustomResource):
 
         To get more information about Spoke, see:
 
-        * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
+        * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.spokes)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
 
@@ -1134,15 +1210,15 @@ class Spoke(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         network = gcp.compute.Network("network",
-            name="tf-test-network_60365",
+            name="tf-test-network_50610",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_80215",
+            name="tf-test-subnet_77124",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
         instance = gcp.compute.Instance("instance",
-            name="tf-test-instance_59033",
+            name="tf-test-instance_15335",
             machine_type="e2-medium",
             can_ip_forward=True,
             zone="us-central1-a",
@@ -1159,13 +1235,13 @@ class Spoke(pulumi.CustomResource):
                 }],
             }])
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-            name="tf-test-hub_32081",
+            name="tf-test-hub_20665",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
-            name="tf-test-name_10393",
+            name="tf-test-name_85160",
             location="us-central1",
             description="A sample spoke with a linked routher appliance instance",
             labels={
@@ -1397,8 +1473,8 @@ class Spoke(pulumi.CustomResource):
             hub=star_hub.id,
             auto_accept={
                 "auto_accept_projects": [
-                    "foo_33052",
-                    "bar_3684",
+                    "foo_92130",
+                    "bar_16199",
                 ],
             })
         primary = gcp.networkconnectivity.Spoke("primary",
@@ -1444,6 +1520,43 @@ class Spoke(pulumi.CustomResource):
                 ],
                 "uri": network.self_link,
             })
+        ```
+        ### Network Connectivity Spoke Gateway
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="net-spoke",
+            auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="tf-test-subnet_21563",
+            ip_cidr_range="10.0.0.0/28",
+            region="us-central1",
+            network=network.self_link)
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="hub",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            },
+            preset_topology="HYBRID_INSPECTION")
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="gateway",
+            location="us-central1",
+            description="A sample spoke of type Gateway",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            gateway={
+                "ip_range_reservations": [{
+                    "ip_range": "10.0.0.0/23",
+                }],
+                "capacity": "CAPACITY_1_GBPS",
+            },
+            group="gateways")
         ```
 
         ## Import
@@ -1486,6 +1599,7 @@ class Spoke(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 gateway: Optional[pulumi.Input[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']]] = None,
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  hub: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1507,6 +1621,7 @@ class Spoke(pulumi.CustomResource):
             __props__ = SpokeArgs.__new__(SpokeArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["gateway"] = gateway
             __props__.__dict__["group"] = group
             if hub is None and not opts.urn:
                 raise TypeError("Missing required property 'hub'")
@@ -1544,6 +1659,7 @@ class Spoke(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            gateway: Optional[pulumi.Input[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']]] = None,
             group: Optional[pulumi.Input[_builtins.str]] = None,
             hub: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1570,6 +1686,8 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Output only. The time the spoke was created.
         :param pulumi.Input[_builtins.str] description: An optional description of the spoke.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']] gateway: This is a gateway that can apply specialized processing to traffic going through it.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] group: The name of the group that this spoke is associated with.
         :param pulumi.Input[_builtins.str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -1604,6 +1722,7 @@ class Spoke(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["gateway"] = gateway
         __props__.__dict__["group"] = group
         __props__.__dict__["hub"] = hub
         __props__.__dict__["labels"] = labels
@@ -1645,6 +1764,15 @@ class Spoke(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> pulumi.Output[Optional['outputs.SpokeGateway']]:
+        """
+        This is a gateway that can apply specialized processing to traffic going through it.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway")
 
     @_builtins.property
     @pulumi.getter

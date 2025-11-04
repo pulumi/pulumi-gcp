@@ -8,6 +8,7 @@ import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionDeide
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionJobNotificationEmails;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPubSub;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishToStackdriver;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionSaveFindings;
@@ -39,6 +40,11 @@ public final class PreventionJobTriggerInspectJobAction {
      * 
      */
     private @Nullable PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog publishFindingsToCloudDataCatalog;
+    /**
+     * @return Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
+     * 
+     */
+    private @Nullable PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog publishFindingsToDataplexCatalog;
     /**
      * @return Publish the result summary of a DlpJob to the Cloud Security Command Center.
      * 
@@ -88,6 +94,13 @@ public final class PreventionJobTriggerInspectJobAction {
         return Optional.ofNullable(this.publishFindingsToCloudDataCatalog);
     }
     /**
+     * @return Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog> publishFindingsToDataplexCatalog() {
+        return Optional.ofNullable(this.publishFindingsToDataplexCatalog);
+    }
+    /**
      * @return Publish the result summary of a DlpJob to the Cloud Security Command Center.
      * 
      */
@@ -123,6 +136,7 @@ public final class PreventionJobTriggerInspectJobAction {
         private @Nullable PreventionJobTriggerInspectJobActionJobNotificationEmails jobNotificationEmails;
         private @Nullable PreventionJobTriggerInspectJobActionPubSub pubSub;
         private @Nullable PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog publishFindingsToCloudDataCatalog;
+        private @Nullable PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog publishFindingsToDataplexCatalog;
         private @Nullable PreventionJobTriggerInspectJobActionPublishSummaryToCscc publishSummaryToCscc;
         private @Nullable PreventionJobTriggerInspectJobActionPublishToStackdriver publishToStackdriver;
         private @Nullable PreventionJobTriggerInspectJobActionSaveFindings saveFindings;
@@ -133,6 +147,7 @@ public final class PreventionJobTriggerInspectJobAction {
     	      this.jobNotificationEmails = defaults.jobNotificationEmails;
     	      this.pubSub = defaults.pubSub;
     	      this.publishFindingsToCloudDataCatalog = defaults.publishFindingsToCloudDataCatalog;
+    	      this.publishFindingsToDataplexCatalog = defaults.publishFindingsToDataplexCatalog;
     	      this.publishSummaryToCscc = defaults.publishSummaryToCscc;
     	      this.publishToStackdriver = defaults.publishToStackdriver;
     	      this.saveFindings = defaults.saveFindings;
@@ -163,6 +178,12 @@ public final class PreventionJobTriggerInspectJobAction {
             return this;
         }
         @CustomType.Setter
+        public Builder publishFindingsToDataplexCatalog(@Nullable PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog publishFindingsToDataplexCatalog) {
+
+            this.publishFindingsToDataplexCatalog = publishFindingsToDataplexCatalog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder publishSummaryToCscc(@Nullable PreventionJobTriggerInspectJobActionPublishSummaryToCscc publishSummaryToCscc) {
 
             this.publishSummaryToCscc = publishSummaryToCscc;
@@ -186,6 +207,7 @@ public final class PreventionJobTriggerInspectJobAction {
             _resultValue.jobNotificationEmails = jobNotificationEmails;
             _resultValue.pubSub = pubSub;
             _resultValue.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
+            _resultValue.publishFindingsToDataplexCatalog = publishFindingsToDataplexCatalog;
             _resultValue.publishSummaryToCscc = publishSummaryToCscc;
             _resultValue.publishToStackdriver = publishToStackdriver;
             _resultValue.saveFindings = saveFindings;

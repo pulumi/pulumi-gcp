@@ -18,6 +18,7 @@ import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsIpConfiguration;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsLocationPreference;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsMaintenanceWindow;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsPasswordValidationPolicy;
+import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsReadPoolAutoScaleConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsSqlServerAuditConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -155,6 +156,11 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable String pricingPlan;
+    /**
+     * @return Configuration of Read Pool Auto Scale.
+     * 
+     */
+    private @Nullable DatabaseInstanceSettingsReadPoolAutoScaleConfig readPoolAutoScaleConfig;
     /**
      * @return When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
      * 
@@ -370,6 +376,13 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.pricingPlan);
     }
     /**
+     * @return Configuration of Read Pool Auto Scale.
+     * 
+     */
+    public Optional<DatabaseInstanceSettingsReadPoolAutoScaleConfig> readPoolAutoScaleConfig() {
+        return Optional.ofNullable(this.readPoolAutoScaleConfig);
+    }
+    /**
      * @return When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
      * 
      */
@@ -449,6 +462,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow;
         private @Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy;
         private @Nullable String pricingPlan;
+        private @Nullable DatabaseInstanceSettingsReadPoolAutoScaleConfig readPoolAutoScaleConfig;
         private @Nullable Boolean retainBackupsOnDelete;
         private @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig;
         private String tier;
@@ -487,6 +501,7 @@ public final class DatabaseInstanceSettings {
     	      this.maintenanceWindow = defaults.maintenanceWindow;
     	      this.passwordValidationPolicy = defaults.passwordValidationPolicy;
     	      this.pricingPlan = defaults.pricingPlan;
+    	      this.readPoolAutoScaleConfig = defaults.readPoolAutoScaleConfig;
     	      this.retainBackupsOnDelete = defaults.retainBackupsOnDelete;
     	      this.sqlServerAuditConfig = defaults.sqlServerAuditConfig;
     	      this.tier = defaults.tier;
@@ -676,6 +691,12 @@ public final class DatabaseInstanceSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder readPoolAutoScaleConfig(@Nullable DatabaseInstanceSettingsReadPoolAutoScaleConfig readPoolAutoScaleConfig) {
+
+            this.readPoolAutoScaleConfig = readPoolAutoScaleConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder retainBackupsOnDelete(@Nullable Boolean retainBackupsOnDelete) {
 
             this.retainBackupsOnDelete = retainBackupsOnDelete;
@@ -744,6 +765,7 @@ public final class DatabaseInstanceSettings {
             _resultValue.maintenanceWindow = maintenanceWindow;
             _resultValue.passwordValidationPolicy = passwordValidationPolicy;
             _resultValue.pricingPlan = pricingPlan;
+            _resultValue.readPoolAutoScaleConfig = readPoolAutoScaleConfig;
             _resultValue.retainBackupsOnDelete = retainBackupsOnDelete;
             _resultValue.sqlServerAuditConfig = sqlServerAuditConfig;
             _resultValue.tier = tier;

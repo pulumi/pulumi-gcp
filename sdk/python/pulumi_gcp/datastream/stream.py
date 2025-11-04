@@ -1248,16 +1248,16 @@ class Stream(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
         import pulumi_random as random
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_79169",
-            name="tf-test_56529",
+            project_id="tf-test_76044",
+            name="tf-test_69391",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[cross_project_dataset]))
         bigquery = gcp.projects.Service("bigquery",
             project=cross_project_dataset.project_id,
@@ -1539,6 +1539,8 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+        ### Datastream Stream Mongodb
+
         ## Import
 
         Stream can be imported using any of these accepted formats:
@@ -2304,16 +2306,16 @@ class Stream(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
         import pulumi_random as random
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_79169",
-            name="tf-test_56529",
+            project_id="tf-test_76044",
+            name="tf-test_69391",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[cross_project_dataset]))
         bigquery = gcp.projects.Service("bigquery",
             project=cross_project_dataset.project_id,
@@ -2595,6 +2597,8 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+        ### Datastream Stream Mongodb
+
         ## Import
 
         Stream can be imported using any of these accepted formats:

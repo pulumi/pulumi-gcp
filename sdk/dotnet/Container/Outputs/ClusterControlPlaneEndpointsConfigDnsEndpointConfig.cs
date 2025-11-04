@@ -18,6 +18,14 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool? AllowExternalTraffic;
         /// <summary>
+        /// Controls whether the k8s certs auth is allowed via Dns.
+        /// </summary>
+        public readonly bool? EnableK8sCertsViaDns;
+        /// <summary>
+        /// Controls whether the k8s token auth is allowed via Dns.
+        /// </summary>
+        public readonly bool? EnableK8sTokensViaDns;
+        /// <summary>
         /// The cluster's DNS endpoint.
         /// </summary>
         public readonly string? Endpoint;
@@ -26,9 +34,15 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterControlPlaneEndpointsConfigDnsEndpointConfig(
             bool? allowExternalTraffic,
 
+            bool? enableK8sCertsViaDns,
+
+            bool? enableK8sTokensViaDns,
+
             string? endpoint)
         {
             AllowExternalTraffic = allowExternalTraffic;
+            EnableK8sCertsViaDns = enableK8sCertsViaDns;
+            EnableK8sTokensViaDns = enableK8sTokensViaDns;
             Endpoint = endpoint;
         }
     }

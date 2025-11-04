@@ -116,6 +116,13 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.customerManagedKey);
     }
 
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
+
     /**
      * An arbitrary and optional user-provided name for the instance.
      * 
@@ -466,6 +473,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.authorizedNetwork = $.authorizedNetwork;
         this.connectMode = $.connectMode;
         this.customerManagedKey = $.customerManagedKey;
+        this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
         this.labels = $.labels;
         this.locationId = $.locationId;
@@ -627,6 +635,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customerManagedKey(String customerManagedKey) {
             return customerManagedKey(Output.of(customerManagedKey));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

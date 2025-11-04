@@ -5838,8 +5838,10 @@ func (o DatasetExternalDatasetReferencePtrOutput) ExternalSource() pulumi.String
 
 type DatasetIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // DatasetIamBindingConditionInput is an input type that accepts DatasetIamBindingConditionArgs and DatasetIamBindingConditionOutput values.
@@ -5855,8 +5857,10 @@ type DatasetIamBindingConditionInput interface {
 
 type DatasetIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (DatasetIamBindingConditionArgs) ElementType() reflect.Type {
@@ -5940,10 +5944,12 @@ func (o DatasetIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o DatasetIamBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v DatasetIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o DatasetIamBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v DatasetIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -5981,6 +5987,7 @@ func (o DatasetIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o DatasetIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatasetIamBindingCondition) *string {
 		if v == nil {
@@ -5990,6 +5997,7 @@ func (o DatasetIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o DatasetIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatasetIamBindingCondition) *string {
 		if v == nil {
@@ -6001,8 +6009,10 @@ func (o DatasetIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type DatasetIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // DatasetIamMemberConditionInput is an input type that accepts DatasetIamMemberConditionArgs and DatasetIamMemberConditionOutput values.
@@ -6018,8 +6028,10 @@ type DatasetIamMemberConditionInput interface {
 
 type DatasetIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (DatasetIamMemberConditionArgs) ElementType() reflect.Type {
@@ -6103,10 +6115,12 @@ func (o DatasetIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o DatasetIamMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v DatasetIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o DatasetIamMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v DatasetIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -6144,6 +6158,7 @@ func (o DatasetIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o DatasetIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatasetIamMemberCondition) *string {
 		if v == nil {
@@ -6153,6 +6168,7 @@ func (o DatasetIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o DatasetIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatasetIamMemberCondition) *string {
 		if v == nil {

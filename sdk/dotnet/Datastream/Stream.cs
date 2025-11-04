@@ -1144,7 +1144,7 @@ namespace Pulumi.Gcp.Datastream
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -1152,14 +1152,14 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var cross_project_dataset = new Gcp.Organizations.Project("cross-project-dataset", new()
     ///     {
-    ///         ProjectId = "tf-test_79169",
-    ///         Name = "tf-test_56529",
+    ///         ProjectId = "tf-test_76044",
+    ///         Name = "tf-test_69391",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
-    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     var wait60Seconds = new Time.Sleep("wait_60_seconds", new()
     ///     {
     ///         CreateDuration = "60s",
     ///     }, new CustomResourceOptions
@@ -1597,6 +1597,8 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Stream Mongodb
+    /// 
     /// ## Import
     /// 
     /// Stream can be imported using any of these accepted formats:

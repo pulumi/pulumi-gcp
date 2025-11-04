@@ -39,6 +39,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.saasruntime.UnitKind;
  * import com.pulumi.gcp.saasruntime.UnitKindArgs;
  * import com.pulumi.gcp.saasruntime.inputs.UnitKindDependencyArgs;
+ * import com.pulumi.gcp.saasruntime.Release;
+ * import com.pulumi.gcp.saasruntime.ReleaseArgs;
+ * import com.pulumi.gcp.saasruntime.inputs.ReleaseBlueprintArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,28 +49,29 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleSaas = new SaaS("exampleSaas", SaaSArgs.builder()
  *             .saasId("example-saas")
- *             .location("global")
+ *             .location("us-east1")
  *             .locations(SaaSLocationArgs.builder()
- *                 .name("us-central1")
+ *                 .name("us-east1")
  *                 .build())
  *             .build());
  * 
  *         var clusterUnitKind = new UnitKind("clusterUnitKind", UnitKindArgs.builder()
- *             .location("global")
+ *             .location("us-east1")
  *             .unitKindId("cluster-unitkind")
  *             .saas(exampleSaas.id())
+ *             .defaultRelease("projects/my-project-name/locations/us-east1/releases/example-release")
  *             .build());
  * 
  *         var example = new UnitKind("example", UnitKindArgs.builder()
- *             .location("global")
+ *             .location("us-east1")
  *             .unitKindId("app-unitkind")
  *             .saas(exampleSaas.id())
  *             .dependencies(UnitKindDependencyArgs.builder()
@@ -76,8 +80,17 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *         var exampleRelease = new Release("exampleRelease", ReleaseArgs.builder()
+ *             .location("us-east1")
+ *             .releaseId("example-release")
+ *             .unitKind(clusterUnitKind.id())
+ *             .blueprint(ReleaseBlueprintArgs.builder()
+ *                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image}{@literal @}{@code sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -145,6 +158,26 @@ public class UnitKind extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * A reference to the Release object to use as default for creating new units
+     * of this UnitKind.
+     * If not specified, a new unit must explicitly reference which release to use
+     * for its creation.
+     * 
+     */
+    @Export(name="defaultRelease", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> defaultRelease;
+
+    /**
+     * @return A reference to the Release object to use as default for creating new units
+     * of this UnitKind.
+     * If not specified, a new unit must explicitly reference which release to use
+     * for its creation.
+     * 
+     */
+    public Output<Optional<String>> defaultRelease() {
+        return Codegen.optional(this.defaultRelease);
     }
     /**
      * List of other unit kinds that this release will depend on. Dependencies

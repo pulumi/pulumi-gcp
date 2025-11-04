@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<bool>? DeleteObjectsUniqueInSink { get; set; }
 
         /// <summary>
-        /// Specifies the metadata options for running a transfer
+        /// Specifies the metadata options for running a transfer. Structure documented below.
         /// </summary>
         [Input("metadataOptions")]
         public Input<Inputs.TransferJobReplicationSpecTransferOptionsMetadataOptionsGetArgs>? MetadataOptions { get; set; }

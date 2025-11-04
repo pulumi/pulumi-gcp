@@ -39,7 +39,7 @@ class HubArgs:
         :param pulumi.Input[_builtins.str] policy_mode: Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
                Possible values are: `CUSTOM`, `PRESET`.
         :param pulumi.Input[_builtins.str] preset_topology: Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-               Possible values are: `MESH`, `STAR`.
+               Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -126,7 +126,7 @@ class HubArgs:
     def preset_topology(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-        Possible values are: `MESH`, `STAR`.
+        Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
         """
         return pulumi.get(self, "preset_topology")
 
@@ -178,7 +178,7 @@ class _HubState:
         :param pulumi.Input[_builtins.str] policy_mode: Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
                Possible values are: `CUSTOM`, `PRESET`.
         :param pulumi.Input[_builtins.str] preset_topology: Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-               Possible values are: `MESH`, `STAR`.
+               Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -310,7 +310,7 @@ class _HubState:
     def preset_topology(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-        Possible values are: `MESH`, `STAR`.
+        Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
         """
         return pulumi.get(self, "preset_topology")
 
@@ -521,7 +521,7 @@ class Hub(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] policy_mode: Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
                Possible values are: `CUSTOM`, `PRESET`.
         :param pulumi.Input[_builtins.str] preset_topology: Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-               Possible values are: `MESH`, `STAR`.
+               Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -722,7 +722,7 @@ class Hub(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] policy_mode: Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
                Possible values are: `CUSTOM`, `PRESET`.
         :param pulumi.Input[_builtins.str] preset_topology: Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-               Possible values are: `MESH`, `STAR`.
+               Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -817,7 +817,7 @@ class Hub(pulumi.CustomResource):
     def preset_topology(self) -> pulumi.Output[_builtins.str]:
         """
         Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
-        Possible values are: `MESH`, `STAR`.
+        Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
         """
         return pulumi.get(self, "preset_topology")
 

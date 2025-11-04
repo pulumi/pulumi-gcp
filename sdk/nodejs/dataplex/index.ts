@@ -90,6 +90,11 @@ export type EntryGroupIamPolicy = import("./entryGroupIamPolicy").EntryGroupIamP
 export const EntryGroupIamPolicy: typeof import("./entryGroupIamPolicy").EntryGroupIamPolicy = null as any;
 utilities.lazyLoad(exports, ["EntryGroupIamPolicy"], () => require("./entryGroupIamPolicy"));
 
+export { EntryLinkArgs, EntryLinkState } from "./entryLink";
+export type EntryLink = import("./entryLink").EntryLink;
+export const EntryLink: typeof import("./entryLink").EntryLink = null as any;
+utilities.lazyLoad(exports, ["EntryLink"], () => require("./entryLink"));
+
 export { EntryTypeArgs, EntryTypeState } from "./entryType";
 export type EntryType = import("./entryType").EntryType;
 export const EntryType: typeof import("./entryType").EntryType = null as any;
@@ -289,6 +294,8 @@ const _module = {
                 return new EntryGroupIamMember(name, <any>undefined, { urn })
             case "gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy":
                 return new EntryGroupIamPolicy(name, <any>undefined, { urn })
+            case "gcp:dataplex/entryLink:EntryLink":
+                return new EntryLink(name, <any>undefined, { urn })
             case "gcp:dataplex/entryType:EntryType":
                 return new EntryType(name, <any>undefined, { urn })
             case "gcp:dataplex/entryTypeIamBinding:EntryTypeIamBinding":
@@ -355,6 +362,7 @@ pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroupIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroupIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryGroupIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/entryLink", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryType", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryTypeIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/entryTypeIamMember", _module)

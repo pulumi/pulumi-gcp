@@ -640,6 +640,21 @@ namespace Pulumi.Gcp.Iam
         public Output<Outputs.WorkforcePoolProviderSaml?> Saml { get; private set; } = null!;
 
         /// <summary>
+        /// Agentspace only. Specifies whether the workforce identity pool
+        /// provider uses SCIM-managed groups instead of the `google.groups`
+        /// attribute mapping for authorization checks.
+        /// The `scimUsage` and `extendedAttributesOauth2Client` fields are
+        /// mutually exclusive. A request that enables both fields on the same
+        /// workforce identity pool provider will produce an error.
+        /// * SCIM_USAGE_UNSPECIFIED: Default behaviour
+        /// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+        /// attribute mapping for authorization checks
+        /// Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+        /// </summary>
+        [Output("scimUsage")]
+        public Output<string?> ScimUsage { get; private set; } = null!;
+
+        /// <summary>
         /// The current state of the provider.
         /// * STATE_UNSPECIFIED: State unspecified.
         /// * ACTIVE: The provider is active and may be used to validate authentication credentials.
@@ -842,6 +857,21 @@ namespace Pulumi.Gcp.Iam
         public Input<Inputs.WorkforcePoolProviderSamlArgs>? Saml { get; set; }
 
         /// <summary>
+        /// Agentspace only. Specifies whether the workforce identity pool
+        /// provider uses SCIM-managed groups instead of the `google.groups`
+        /// attribute mapping for authorization checks.
+        /// The `scimUsage` and `extendedAttributesOauth2Client` fields are
+        /// mutually exclusive. A request that enables both fields on the same
+        /// workforce identity pool provider will produce an error.
+        /// * SCIM_USAGE_UNSPECIFIED: Default behaviour
+        /// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+        /// attribute mapping for authorization checks
+        /// Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+        /// </summary>
+        [Input("scimUsage")]
+        public Input<string>? ScimUsage { get; set; }
+
+        /// <summary>
         /// The ID to use for the pool, which becomes the final component of the resource name.
         /// The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
         /// It must start with a letter, and cannot have a trailing hyphen.
@@ -1000,6 +1030,21 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         [Input("saml")]
         public Input<Inputs.WorkforcePoolProviderSamlGetArgs>? Saml { get; set; }
+
+        /// <summary>
+        /// Agentspace only. Specifies whether the workforce identity pool
+        /// provider uses SCIM-managed groups instead of the `google.groups`
+        /// attribute mapping for authorization checks.
+        /// The `scimUsage` and `extendedAttributesOauth2Client` fields are
+        /// mutually exclusive. A request that enables both fields on the same
+        /// workforce identity pool provider will produce an error.
+        /// * SCIM_USAGE_UNSPECIFIED: Default behaviour
+        /// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
+        /// attribute mapping for authorization checks
+        /// Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+        /// </summary>
+        [Input("scimUsage")]
+        public Input<string>? ScimUsage { get; set; }
 
         /// <summary>
         /// The current state of the provider.

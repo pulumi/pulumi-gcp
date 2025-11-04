@@ -133,6 +133,7 @@ const (
 	gcpNetworkSecurity          = "NetworkSecurity"          // Network Security resources
 	gcpNetworkServices          = "NetworkServices"          // Network Services resources
 	gcpNotebooks                = "Notebooks"                // Notebooks resources
+	gcpObservability            = "Observability"            // Observability resources
 	gcpOracleDatabase           = "OracleDatabase"           // Oracle Database
 	gcpOrgPolicy                = "OrgPolicy"                // Org Policy
 	gcpOrganization             = "Organizations"            // Organization resources
@@ -271,6 +272,7 @@ var moduleMapping = map[string]string{
 	"network_security":           gcpNetworkSecurity,
 	"network_services":           gcpNetworkServices,
 	"notebooks":                  gcpNotebooks,
+	"observability":              gcpObservability,
 	"org_policy":                 gcpOrgPolicy,
 	"oracle_database":            gcpOracleDatabase,
 	"organization":               gcpOrganization,

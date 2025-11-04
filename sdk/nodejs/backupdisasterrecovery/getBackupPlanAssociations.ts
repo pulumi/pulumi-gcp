@@ -7,7 +7,19 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+ *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const computeInstanceAssociations = gcp.backupdisasterrecovery.getBackupPlanAssociations({
+ *     location: "us-central1",
+ *     resourceType: "compute.googleapis.com/Instance",
+ * });
+ * ```
  */
 export function getBackupPlanAssociations(args: GetBackupPlanAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPlanAssociationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,8 +34,20 @@ export function getBackupPlanAssociations(args: GetBackupPlanAssociationsArgs, o
  * A collection of arguments for invoking getBackupPlanAssociations.
  */
 export interface GetBackupPlanAssociationsArgs {
+    /**
+     * The location where the Backup Plan Association resources reside.
+     */
     location: string;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     project?: string;
+    /**
+     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+     *
+     * - - -
+     */
     resourceType: string;
 }
 
@@ -31,17 +55,35 @@ export interface GetBackupPlanAssociationsArgs {
  * A collection of values returned by getBackupPlanAssociations.
  */
 export interface GetBackupPlanAssociationsResult {
+    /**
+     * A list of the backup plan associations found.
+     */
     readonly associations: outputs.backupdisasterrecovery.GetBackupPlanAssociationsAssociation[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly location: string;
+    /**
+     * The ID of the project in which the resource belongs.
+     */
     readonly project: string;
     readonly resourceType: string;
 }
 /**
+ * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+ *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const computeInstanceAssociations = gcp.backupdisasterrecovery.getBackupPlanAssociations({
+ *     location: "us-central1",
+ *     resourceType: "compute.googleapis.com/Instance",
+ * });
+ * ```
  */
 export function getBackupPlanAssociationsOutput(args: GetBackupPlanAssociationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupPlanAssociationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,7 +98,19 @@ export function getBackupPlanAssociationsOutput(args: GetBackupPlanAssociationsO
  * A collection of arguments for invoking getBackupPlanAssociations.
  */
 export interface GetBackupPlanAssociationsOutputArgs {
+    /**
+     * The location where the Backup Plan Association resources reside.
+     */
     location: pulumi.Input<string>;
+    /**
+     * The project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
+    /**
+     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
+     *
+     * - - -
+     */
     resourceType: pulumi.Input<string>;
 }

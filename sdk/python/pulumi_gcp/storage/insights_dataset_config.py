@@ -25,7 +25,6 @@ class InsightsDatasetConfigArgs:
                  identity: pulumi.Input['InsightsDatasetConfigIdentityArgs'],
                  location: pulumi.Input[_builtins.str],
                  retention_period_days: pulumi.Input[_builtins.int],
-                 activity_data_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  exclude_cloud_storage_buckets: Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']] = None,
                  exclude_cloud_storage_locations: Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']] = None,
@@ -45,7 +44,6 @@ class InsightsDatasetConfigArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the DatasetConfig.
         :param pulumi.Input[_builtins.int] retention_period_days: Number of days of history that must be retained.
-        :param pulumi.Input[_builtins.int] activity_data_retention_period_days: Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
         :param pulumi.Input[_builtins.str] description: An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
         :param pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsArgs'] exclude_cloud_storage_buckets: Defined the options for excluding cloud storage buckets for the DatasetConfig.
                Structure is documented below.
@@ -70,8 +68,6 @@ class InsightsDatasetConfigArgs:
         pulumi.set(__self__, "identity", identity)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "retention_period_days", retention_period_days)
-        if activity_data_retention_period_days is not None:
-            pulumi.set(__self__, "activity_data_retention_period_days", activity_data_retention_period_days)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if exclude_cloud_storage_buckets is not None:
@@ -145,18 +141,6 @@ class InsightsDatasetConfigArgs:
     @retention_period_days.setter
     def retention_period_days(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "retention_period_days", value)
-
-    @_builtins.property
-    @pulumi.getter(name="activityDataRetentionPeriodDays")
-    def activity_data_retention_period_days(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-        """
-        return pulumi.get(self, "activity_data_retention_period_days")
-
-    @activity_data_retention_period_days.setter
-    def activity_data_retention_period_days(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "activity_data_retention_period_days", value)
 
     @_builtins.property
     @pulumi.getter
@@ -311,7 +295,6 @@ class InsightsDatasetConfigArgs:
 @pulumi.input_type
 class _InsightsDatasetConfigState:
     def __init__(__self__, *,
-                 activity_data_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dataset_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  dataset_config_state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -336,7 +319,6 @@ class _InsightsDatasetConfigState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InsightsDatasetConfig resources.
-        :param pulumi.Input[_builtins.int] activity_data_retention_period_days: Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
         :param pulumi.Input[_builtins.str] create_time: The UTC time at which the DatasetConfig was created. This is auto-populated.
         :param pulumi.Input[_builtins.str] dataset_config_id: The user-defined ID of the DatasetConfig
         :param pulumi.Input[_builtins.str] dataset_config_state: State of the DatasetConfig.
@@ -369,8 +351,6 @@ class _InsightsDatasetConfigState:
         :param pulumi.Input[_builtins.str] uid: System generated unique identifier for the resource.
         :param pulumi.Input[_builtins.str] update_time: The UTC time at which the DatasetConfig was updated. This is auto-populated.
         """
-        if activity_data_retention_period_days is not None:
-            pulumi.set(__self__, "activity_data_retention_period_days", activity_data_retention_period_days)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if dataset_config_id is not None:
@@ -415,18 +395,6 @@ class _InsightsDatasetConfigState:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
-
-    @_builtins.property
-    @pulumi.getter(name="activityDataRetentionPeriodDays")
-    def activity_data_retention_period_days(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-        """
-        return pulumi.get(self, "activity_data_retention_period_days")
-
-    @activity_data_retention_period_days.setter
-    def activity_data_retention_period_days(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "activity_data_retention_period_days", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -706,7 +674,6 @@ class InsightsDatasetConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activity_data_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
                  dataset_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  exclude_cloud_storage_buckets: Optional[pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
@@ -782,7 +749,6 @@ class InsightsDatasetConfig(pulumi.CustomResource):
             location="us-central1",
             dataset_config_id="my_config_excludes",
             retention_period_days=1,
-            activity_data_retention_period_days=2,
             organization_scope=True,
             identity={
                 "type": "IDENTITY_TYPE_PER_PROJECT",
@@ -828,7 +794,6 @@ class InsightsDatasetConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] activity_data_retention_period_days: Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
         :param pulumi.Input[_builtins.str] dataset_config_id: The user-defined ID of the DatasetConfig
         :param pulumi.Input[_builtins.str] description: An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
         :param pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']] exclude_cloud_storage_buckets: Defined the options for excluding cloud storage buckets for the DatasetConfig.
@@ -918,7 +883,6 @@ class InsightsDatasetConfig(pulumi.CustomResource):
             location="us-central1",
             dataset_config_id="my_config_excludes",
             retention_period_days=1,
-            activity_data_retention_period_days=2,
             organization_scope=True,
             identity={
                 "type": "IDENTITY_TYPE_PER_PROJECT",
@@ -977,7 +941,6 @@ class InsightsDatasetConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activity_data_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
                  dataset_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  exclude_cloud_storage_buckets: Optional[pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
@@ -1003,7 +966,6 @@ class InsightsDatasetConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InsightsDatasetConfigArgs.__new__(InsightsDatasetConfigArgs)
 
-            __props__.__dict__["activity_data_retention_period_days"] = activity_data_retention_period_days
             if dataset_config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_config_id'")
             __props__.__dict__["dataset_config_id"] = dataset_config_id
@@ -1044,7 +1006,6 @@ class InsightsDatasetConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            activity_data_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             dataset_config_id: Optional[pulumi.Input[_builtins.str]] = None,
             dataset_config_state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1074,7 +1035,6 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] activity_data_retention_period_days: Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
         :param pulumi.Input[_builtins.str] create_time: The UTC time at which the DatasetConfig was created. This is auto-populated.
         :param pulumi.Input[_builtins.str] dataset_config_id: The user-defined ID of the DatasetConfig
         :param pulumi.Input[_builtins.str] dataset_config_state: State of the DatasetConfig.
@@ -1111,7 +1071,6 @@ class InsightsDatasetConfig(pulumi.CustomResource):
 
         __props__ = _InsightsDatasetConfigState.__new__(_InsightsDatasetConfigState)
 
-        __props__.__dict__["activity_data_retention_period_days"] = activity_data_retention_period_days
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dataset_config_id"] = dataset_config_id
         __props__.__dict__["dataset_config_state"] = dataset_config_state
@@ -1135,14 +1094,6 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return InsightsDatasetConfig(resource_name, opts=opts, __props__=__props__)
-
-    @_builtins.property
-    @pulumi.getter(name="activityDataRetentionPeriodDays")
-    def activity_data_retention_period_days(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-        """
-        return pulumi.get(self, "activity_data_retention_period_days")
 
     @_builtins.property
     @pulumi.getter(name="createTime")

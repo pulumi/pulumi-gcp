@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Redis
     ///     {
     ///         Name = "memory-cache",
     ///         MemorySizeGb = 1,
+    ///         DeletionProtection = false,
     ///     });
     /// 
     /// });
@@ -383,6 +384,9 @@ namespace Pulumi.Gcp.Redis
         [Output("customerManagedKey")]
         public Output<string?> CustomerManagedKey { get; private set; } = null!;
 
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
         /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
         /// </summary>
@@ -700,6 +704,9 @@ namespace Pulumi.Gcp.Redis
         [Input("customerManagedKey")]
         public Input<string>? CustomerManagedKey { get; set; }
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
         /// </summary>
@@ -936,6 +943,9 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("customerManagedKey")]
         public Input<string>? CustomerManagedKey { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// An arbitrary and optional user-provided name for the instance.

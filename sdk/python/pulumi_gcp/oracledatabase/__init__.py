@@ -9,6 +9,7 @@ import typing
 from .autonomous_database import *
 from .cloud_exadata_infrastructure import *
 from .cloud_vm_cluster import *
+from .db_system import *
 from .get_autonomous_database import *
 from .get_autonomous_databases import *
 from .get_cloud_exadata_infrastructure import *

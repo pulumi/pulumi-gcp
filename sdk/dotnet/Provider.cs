@@ -390,6 +390,9 @@ namespace Pulumi.Gcp
         [Output("networkConnectivityCustomEndpoint")]
         public Output<string?> NetworkConnectivityCustomEndpoint { get; private set; } = null!;
 
+        [Output("networkConnectivityv1CustomEndpoint")]
+        public Output<string?> NetworkConnectivityv1CustomEndpoint { get; private set; } = null!;
+
         [Output("networkManagementCustomEndpoint")]
         public Output<string?> NetworkManagementCustomEndpoint { get; private set; } = null!;
 
@@ -401,6 +404,9 @@ namespace Pulumi.Gcp
 
         [Output("notebooksCustomEndpoint")]
         public Output<string?> NotebooksCustomEndpoint { get; private set; } = null!;
+
+        [Output("observabilityCustomEndpoint")]
+        public Output<string?> ObservabilityCustomEndpoint { get; private set; } = null!;
 
         [Output("oracleDatabaseCustomEndpoint")]
         public Output<string?> OracleDatabaseCustomEndpoint { get; private set; } = null!;
@@ -1026,6 +1032,9 @@ namespace Pulumi.Gcp
         [Input("networkConnectivityCustomEndpoint")]
         public Input<string>? NetworkConnectivityCustomEndpoint { get; set; }
 
+        [Input("networkConnectivityv1CustomEndpoint")]
+        public Input<string>? NetworkConnectivityv1CustomEndpoint { get; set; }
+
         [Input("networkManagementCustomEndpoint")]
         public Input<string>? NetworkManagementCustomEndpoint { get; set; }
 
@@ -1037,6 +1046,9 @@ namespace Pulumi.Gcp
 
         [Input("notebooksCustomEndpoint")]
         public Input<string>? NotebooksCustomEndpoint { get; set; }
+
+        [Input("observabilityCustomEndpoint")]
+        public Input<string>? ObservabilityCustomEndpoint { get; set; }
 
         [Input("oracleDatabaseCustomEndpoint")]
         public Input<string>? OracleDatabaseCustomEndpoint { get; set; }

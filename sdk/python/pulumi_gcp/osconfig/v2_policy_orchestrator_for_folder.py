@@ -541,7 +541,7 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         my_folder = gcp.organizations.Folder("my_folder",
             display_name="po-folder",
@@ -553,7 +553,7 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
         ripple_sa = gcp.folder.ServiceIdentity("ripple_sa",
             folder=my_folder.folder_id,
             service="progressiverollout.googleapis.com")
-        wait30_sec = time.index.Sleep("wait_30_sec", create_duration=30s,
+        wait30_sec = time.Sleep("wait_30_sec", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[
                 osconfig_sa,
                 ripple_sa,
@@ -573,7 +573,7 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
             role="roles/progressiverollout.serviceAgent",
             member=ripple_sa.member,
             opts = pulumi.ResourceOptions(depends_on=[iam_osconfig_rollout_service_agent]))
-        wait3_min = time.index.Sleep("wait_3_min", create_duration=180s,
+        wait3_min = time.Sleep("wait_3_min", create_duration="180s",
         opts = pulumi.ResourceOptions(depends_on=[iam_progressiverollout_service_agent]))
         policy_orchestrator_for_folder = gcp.osconfig.V2PolicyOrchestratorForFolder("policy_orchestrator_for_folder",
             policy_orchestrator_id="po-folder",
@@ -691,7 +691,7 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         my_folder = gcp.organizations.Folder("my_folder",
             display_name="po-folder",
@@ -703,7 +703,7 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
         ripple_sa = gcp.folder.ServiceIdentity("ripple_sa",
             folder=my_folder.folder_id,
             service="progressiverollout.googleapis.com")
-        wait30_sec = time.index.Sleep("wait_30_sec", create_duration=30s,
+        wait30_sec = time.Sleep("wait_30_sec", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[
                 osconfig_sa,
                 ripple_sa,
@@ -723,7 +723,7 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
             role="roles/progressiverollout.serviceAgent",
             member=ripple_sa.member,
             opts = pulumi.ResourceOptions(depends_on=[iam_osconfig_rollout_service_agent]))
-        wait3_min = time.index.Sleep("wait_3_min", create_duration=180s,
+        wait3_min = time.Sleep("wait_3_min", create_duration="180s",
         opts = pulumi.ResourceOptions(depends_on=[iam_progressiverollout_service_agent]))
         policy_orchestrator_for_folder = gcp.osconfig.V2PolicyOrchestratorForFolder("policy_orchestrator_for_folder",
             policy_orchestrator_id="po-folder",

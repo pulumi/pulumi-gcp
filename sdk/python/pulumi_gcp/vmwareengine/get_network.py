@@ -27,10 +27,16 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, description=None, id=None, location=None, name=None, project=None, state=None, type=None, uid=None, vpc_networks=None):
+    def __init__(__self__, create_time=None, description=None, etag=None, id=None, location=None, name=None, project=None, state=None, type=None, uid=None, update_time=None, vpc_networks=None):
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -52,14 +58,27 @@ class GetNetworkResult:
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
         if vpc_networks and not isinstance(vpc_networks, list):
             raise TypeError("Expected argument 'vpc_networks' to be a list")
         pulumi.set(__self__, "vpc_networks", vpc_networks)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> _builtins.str:
+        return pulumi.get(self, "etag")
 
     @_builtins.property
     @pulumi.getter
@@ -100,6 +119,11 @@ class GetNetworkResult:
         return pulumi.get(self, "uid")
 
     @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
     @pulumi.getter(name="vpcNetworks")
     def vpc_networks(self) -> Sequence['outputs.GetNetworkVpcNetworkResult']:
         return pulumi.get(self, "vpc_networks")
@@ -111,7 +135,9 @@ class AwaitableGetNetworkResult(GetNetworkResult):
         if False:
             yield self
         return GetNetworkResult(
+            create_time=self.create_time,
             description=self.description,
+            etag=self.etag,
             id=self.id,
             location=self.location,
             name=self.name,
@@ -119,6 +145,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             state=self.state,
             type=self.type,
             uid=self.uid,
+            update_time=self.update_time,
             vpc_networks=self.vpc_networks)
 
 
@@ -157,7 +184,9 @@ def get_network(location: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:vmwareengine/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult).value
 
     return AwaitableGetNetworkResult(
+        create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
@@ -165,6 +194,7 @@ def get_network(location: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'),
         uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'),
         vpc_networks=pulumi.get(__ret__, 'vpc_networks'))
 def get_network_output(location: Optional[pulumi.Input[_builtins.str]] = None,
                        name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -200,7 +230,9 @@ def get_network_output(location: Optional[pulumi.Input[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
     return __ret__.apply(lambda __response__: GetNetworkResult(
+        create_time=pulumi.get(__response__, 'create_time'),
         description=pulumi.get(__response__, 'description'),
+        etag=pulumi.get(__response__, 'etag'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),
@@ -208,4 +240,5 @@ def get_network_output(location: Optional[pulumi.Input[_builtins.str]] = None,
         state=pulumi.get(__response__, 'state'),
         type=pulumi.get(__response__, 'type'),
         uid=pulumi.get(__response__, 'uid'),
+        update_time=pulumi.get(__response__, 'update_time'),
         vpc_networks=pulumi.get(__response__, 'vpc_networks')))

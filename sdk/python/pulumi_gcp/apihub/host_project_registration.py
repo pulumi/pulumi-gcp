@@ -241,7 +241,7 @@ class HostProjectRegistration(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
             name="apihub-proj",
@@ -249,7 +249,7 @@ class HostProjectRegistration(pulumi.CustomResource):
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[project]))
         # Enable API hub API
         apihub_service = gcp.projects.Service("apihub_service",
@@ -320,7 +320,7 @@ class HostProjectRegistration(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
             name="apihub-proj",
@@ -328,7 +328,7 @@ class HostProjectRegistration(pulumi.CustomResource):
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[project]))
         # Enable API hub API
         apihub_service = gcp.projects.Service("apihub_service",

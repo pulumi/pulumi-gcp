@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly bool? DeleteObjectsUniqueInSink;
         /// <summary>
-        /// Specifies the metadata options for running a transfer
+        /// Specifies the metadata options for running a transfer. Structure documented below.
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecTransferOptionsMetadataOptions? MetadataOptions;
         /// <summary>

@@ -344,7 +344,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_91042",
+    ///         Name = "tf-test-bucket-name-_72490",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -387,16 +387,16 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_72490",
+    ///         Name = "tf-test-bucket-name-_89605",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
     ///     var tfTestConnection = new Gcp.BigQuery.Connection("tf_test_connection", new()
     ///     {
-    ///         ConnectionId = "tf-test-connection-_89605",
+    ///         ConnectionId = "tf-test-connection-_56730",
     ///         Location = "us-central1",
-    ///         FriendlyName = "tf-test-connection-_56730",
+    ///         FriendlyName = "tf-test-connection-_95154",
     ///         Description = "a bigquery connection for tf test",
     ///         CloudResource = null,
     ///     });

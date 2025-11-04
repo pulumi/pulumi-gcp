@@ -24,7 +24,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigActionPubSubNotification? PubSubNotification;
         /// <summary>
-        /// Publish a message into the Pub/Sub topic.
+        /// Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+        /// </summary>
+        public readonly Outputs.PreventionDiscoveryConfigActionPublishToDataplexCatalog? PublishToDataplexCatalog;
+        /// <summary>
+        /// Tag the profiled resources with the specified tag values.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigActionTagResources? TagResources;
@@ -35,10 +39,13 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionDiscoveryConfigActionPubSubNotification? pubSubNotification,
 
+            Outputs.PreventionDiscoveryConfigActionPublishToDataplexCatalog? publishToDataplexCatalog,
+
             Outputs.PreventionDiscoveryConfigActionTagResources? tagResources)
         {
             ExportData = exportData;
             PubSubNotification = pubSubNotification;
+            PublishToDataplexCatalog = publishToDataplexCatalog;
             TagResources = tagResources;
         }
     }

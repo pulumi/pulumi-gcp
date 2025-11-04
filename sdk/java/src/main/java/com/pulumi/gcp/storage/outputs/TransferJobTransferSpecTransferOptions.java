@@ -25,7 +25,7 @@ public final class TransferJobTransferSpecTransferOptions {
      */
     private @Nullable Boolean deleteObjectsUniqueInSink;
     /**
-     * @return Specifies the metadata options for running a transfer
+     * @return Specifies the metadata options for running a transfer. Structure documented below.
      * 
      */
     private @Nullable TransferJobTransferSpecTransferOptionsMetadataOptions metadataOptions;
@@ -57,7 +57,7 @@ public final class TransferJobTransferSpecTransferOptions {
         return Optional.ofNullable(this.deleteObjectsUniqueInSink);
     }
     /**
-     * @return Specifies the metadata options for running a transfer
+     * @return Specifies the metadata options for running a transfer. Structure documented below.
      * 
      */
     public Optional<TransferJobTransferSpecTransferOptionsMetadataOptions> metadataOptions() {

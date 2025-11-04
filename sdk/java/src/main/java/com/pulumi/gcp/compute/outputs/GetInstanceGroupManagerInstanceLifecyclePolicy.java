@@ -5,7 +5,9 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -25,6 +27,11 @@ public final class GetInstanceGroupManagerInstanceLifecyclePolicy {
      * 
      */
     private String onFailedHealthCheck;
+    /**
+     * @return Configuration for VM repairs in the MIG.
+     * 
+     */
+    private List<GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair> onRepairs;
 
     private GetInstanceGroupManagerInstanceLifecyclePolicy() {}
     /**
@@ -48,6 +55,13 @@ public final class GetInstanceGroupManagerInstanceLifecyclePolicy {
     public String onFailedHealthCheck() {
         return this.onFailedHealthCheck;
     }
+    /**
+     * @return Configuration for VM repairs in the MIG.
+     * 
+     */
+    public List<GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair> onRepairs() {
+        return this.onRepairs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,12 +75,14 @@ public final class GetInstanceGroupManagerInstanceLifecyclePolicy {
         private String defaultActionOnFailure;
         private String forceUpdateOnRepair;
         private String onFailedHealthCheck;
+        private List<GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair> onRepairs;
         public Builder() {}
         public Builder(GetInstanceGroupManagerInstanceLifecyclePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultActionOnFailure = defaults.defaultActionOnFailure;
     	      this.forceUpdateOnRepair = defaults.forceUpdateOnRepair;
     	      this.onFailedHealthCheck = defaults.onFailedHealthCheck;
+    	      this.onRepairs = defaults.onRepairs;
         }
 
         @CustomType.Setter
@@ -93,11 +109,23 @@ public final class GetInstanceGroupManagerInstanceLifecyclePolicy {
             this.onFailedHealthCheck = onFailedHealthCheck;
             return this;
         }
+        @CustomType.Setter
+        public Builder onRepairs(List<GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair> onRepairs) {
+            if (onRepairs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerInstanceLifecyclePolicy", "onRepairs");
+            }
+            this.onRepairs = onRepairs;
+            return this;
+        }
+        public Builder onRepairs(GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair... onRepairs) {
+            return onRepairs(List.of(onRepairs));
+        }
         public GetInstanceGroupManagerInstanceLifecyclePolicy build() {
             final var _resultValue = new GetInstanceGroupManagerInstanceLifecyclePolicy();
             _resultValue.defaultActionOnFailure = defaultActionOnFailure;
             _resultValue.forceUpdateOnRepair = forceUpdateOnRepair;
             _resultValue.onFailedHealthCheck = onFailedHealthCheck;
+            _resultValue.onRepairs = onRepairs;
             return _resultValue;
         }
     }

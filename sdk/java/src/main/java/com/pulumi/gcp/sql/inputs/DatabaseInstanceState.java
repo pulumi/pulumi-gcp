@@ -308,14 +308,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * For a read pool instance, the number of nodes in the read pool.
+     * For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
      * 
      */
     @Import(name="nodeCount")
     private @Nullable Output<Integer> nodeCount;
 
     /**
-     * @return For a read pool instance, the number of nodes in the read pool.
+     * @return For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
      * 
      */
     public Optional<Output<Integer>> nodeCount() {
@@ -1011,7 +1011,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nodeCount For a read pool instance, the number of nodes in the read pool.
+         * @param nodeCount For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
          * 
          * @return builder
          * 
@@ -1022,7 +1022,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nodeCount For a read pool instance, the number of nodes in the read pool.
+         * @param nodeCount For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
          * 
          * @return builder
          * 

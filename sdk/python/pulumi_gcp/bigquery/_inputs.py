@@ -2559,7 +2559,13 @@ class DatasetExternalDatasetReferenceArgs:
 if not MYPY:
     class DatasetIamBindingConditionArgsDict(TypedDict):
         expression: pulumi.Input[_builtins.str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         title: pulumi.Input[_builtins.str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         description: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
     DatasetIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
@@ -2570,6 +2576,10 @@ class DatasetIamBindingConditionArgs:
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -2578,6 +2588,9 @@ class DatasetIamBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -2587,6 +2600,9 @@ class DatasetIamBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -2606,7 +2622,13 @@ class DatasetIamBindingConditionArgs:
 if not MYPY:
     class DatasetIamMemberConditionArgsDict(TypedDict):
         expression: pulumi.Input[_builtins.str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         title: pulumi.Input[_builtins.str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         description: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
     DatasetIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
@@ -2617,6 +2639,10 @@ class DatasetIamMemberConditionArgs:
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -2625,6 +2651,9 @@ class DatasetIamMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -2634,6 +2663,9 @@ class DatasetIamMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @title.setter

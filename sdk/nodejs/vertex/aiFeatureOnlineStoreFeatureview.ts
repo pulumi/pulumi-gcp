@@ -179,13 +179,13 @@ import * as utilities from "../utilities";
  *
  * const testProject = gcp.organizations.getProject({});
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "tf-test_20665",
- *     name: "tf-test_85160",
+ *     projectId: "tf-test_9329",
+ *     name: "tf-test_37135",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
  * });
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ * const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
  *     dependsOn: [project],
  * });
  * const vertexai = new gcp.projects.Service("vertexai", {
@@ -225,7 +225,7 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [featureonlinestore],
  * });
- * const wait30Seconds = new time.index.Sleep("wait_30_seconds", {createDuration: "30s"}, {
+ * const wait30Seconds = new time.Sleep("wait_30_seconds", {createDuration: "30s"}, {
  *     dependsOn: [viewer],
  * });
  * const sampleTable = new gcp.bigquery.Table("sample_table", {

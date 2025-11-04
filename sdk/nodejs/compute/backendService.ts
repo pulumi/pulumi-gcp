@@ -306,6 +306,73 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Backend Service In Flight
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const custom = new gcp.compute.Network("custom", {
+ *     name: "custom-vpc",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const _default = new gcp.compute.Subnetwork("default", {
+ *     name: "custom-subnet",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: custom.id,
+ * });
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
+ *     name: "instance-template",
+ *     machineType: "e2-micro",
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-11",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     networkInterfaces: [{
+ *         network: custom.id,
+ *         subnetwork: _default.id,
+ *     }],
+ *     metadata: {
+ *         "startup-script": `#!/bin/bash
+ * echo "Hello World from MIG VM" > /var/www/html/index.html
+ * apt-get update -y
+ * apt-get install -y apache2
+ * systemctl start apache2
+ * `,
+ *     },
+ * });
+ * const foobar = new gcp.compute.RegionInstanceGroupManager("foobar", {
+ *     name: "instance-group-manager",
+ *     baseInstanceName: "vm",
+ *     region: "us-central1",
+ *     versions: [{
+ *         instanceTemplate: defaultInstanceTemplate.id,
+ *     }],
+ *     targetSize: 1,
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     description: "Hello World 1234",
+ *     portName: "http",
+ *     protocol: "TCP",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     backends: [{
+ *         group: foobar.instanceGroup,
+ *         balancingMode: "IN_FLIGHT",
+ *         maxInFlightRequests: 1000,
+ *         trafficDuration: "LONG",
+ *     }],
+ *     healthChecks: defaultHealthCheck.selfLink,
+ * });
+ * ```
  * ### Backend Service External Managed
  *
  * ```typescript

@@ -8732,6 +8732,130 @@ func (o EntryGroupIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type EntryLinkEntryReference struct {
+	// The relative resource name of the referenced Entry, of the form:
+	// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+	Name string `pulumi:"name"`
+	// The path in the Entry that is referenced in the Entry Link.
+	// Empty path denotes that the Entry itself is referenced in the Entry Link.
+	Path *string `pulumi:"path"`
+	// The reference type of the Entry.
+	// Possible values are: `SOURCE`, `TARGET`.
+	Type *string `pulumi:"type"`
+}
+
+// EntryLinkEntryReferenceInput is an input type that accepts EntryLinkEntryReferenceArgs and EntryLinkEntryReferenceOutput values.
+// You can construct a concrete instance of `EntryLinkEntryReferenceInput` via:
+//
+//	EntryLinkEntryReferenceArgs{...}
+type EntryLinkEntryReferenceInput interface {
+	pulumi.Input
+
+	ToEntryLinkEntryReferenceOutput() EntryLinkEntryReferenceOutput
+	ToEntryLinkEntryReferenceOutputWithContext(context.Context) EntryLinkEntryReferenceOutput
+}
+
+type EntryLinkEntryReferenceArgs struct {
+	// The relative resource name of the referenced Entry, of the form:
+	// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+	Name pulumi.StringInput `pulumi:"name"`
+	// The path in the Entry that is referenced in the Entry Link.
+	// Empty path denotes that the Entry itself is referenced in the Entry Link.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The reference type of the Entry.
+	// Possible values are: `SOURCE`, `TARGET`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (EntryLinkEntryReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryLinkEntryReference)(nil)).Elem()
+}
+
+func (i EntryLinkEntryReferenceArgs) ToEntryLinkEntryReferenceOutput() EntryLinkEntryReferenceOutput {
+	return i.ToEntryLinkEntryReferenceOutputWithContext(context.Background())
+}
+
+func (i EntryLinkEntryReferenceArgs) ToEntryLinkEntryReferenceOutputWithContext(ctx context.Context) EntryLinkEntryReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryLinkEntryReferenceOutput)
+}
+
+// EntryLinkEntryReferenceArrayInput is an input type that accepts EntryLinkEntryReferenceArray and EntryLinkEntryReferenceArrayOutput values.
+// You can construct a concrete instance of `EntryLinkEntryReferenceArrayInput` via:
+//
+//	EntryLinkEntryReferenceArray{ EntryLinkEntryReferenceArgs{...} }
+type EntryLinkEntryReferenceArrayInput interface {
+	pulumi.Input
+
+	ToEntryLinkEntryReferenceArrayOutput() EntryLinkEntryReferenceArrayOutput
+	ToEntryLinkEntryReferenceArrayOutputWithContext(context.Context) EntryLinkEntryReferenceArrayOutput
+}
+
+type EntryLinkEntryReferenceArray []EntryLinkEntryReferenceInput
+
+func (EntryLinkEntryReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryLinkEntryReference)(nil)).Elem()
+}
+
+func (i EntryLinkEntryReferenceArray) ToEntryLinkEntryReferenceArrayOutput() EntryLinkEntryReferenceArrayOutput {
+	return i.ToEntryLinkEntryReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i EntryLinkEntryReferenceArray) ToEntryLinkEntryReferenceArrayOutputWithContext(ctx context.Context) EntryLinkEntryReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryLinkEntryReferenceArrayOutput)
+}
+
+type EntryLinkEntryReferenceOutput struct{ *pulumi.OutputState }
+
+func (EntryLinkEntryReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryLinkEntryReference)(nil)).Elem()
+}
+
+func (o EntryLinkEntryReferenceOutput) ToEntryLinkEntryReferenceOutput() EntryLinkEntryReferenceOutput {
+	return o
+}
+
+func (o EntryLinkEntryReferenceOutput) ToEntryLinkEntryReferenceOutputWithContext(ctx context.Context) EntryLinkEntryReferenceOutput {
+	return o
+}
+
+// The relative resource name of the referenced Entry, of the form:
+// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+func (o EntryLinkEntryReferenceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EntryLinkEntryReference) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The path in the Entry that is referenced in the Entry Link.
+// Empty path denotes that the Entry itself is referenced in the Entry Link.
+func (o EntryLinkEntryReferenceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryLinkEntryReference) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The reference type of the Entry.
+// Possible values are: `SOURCE`, `TARGET`.
+func (o EntryLinkEntryReferenceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryLinkEntryReference) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type EntryLinkEntryReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (EntryLinkEntryReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryLinkEntryReference)(nil)).Elem()
+}
+
+func (o EntryLinkEntryReferenceArrayOutput) ToEntryLinkEntryReferenceArrayOutput() EntryLinkEntryReferenceArrayOutput {
+	return o
+}
+
+func (o EntryLinkEntryReferenceArrayOutput) ToEntryLinkEntryReferenceArrayOutputWithContext(ctx context.Context) EntryLinkEntryReferenceArrayOutput {
+	return o
+}
+
+func (o EntryLinkEntryReferenceArrayOutput) Index(i pulumi.IntInput) EntryLinkEntryReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntryLinkEntryReference {
+		return vs[0].([]EntryLinkEntryReference)[vs[1].(int)]
+	}).(EntryLinkEntryReferenceOutput)
+}
+
 type EntryTypeIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -15607,6 +15731,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamBindingConditionPtrInput)(nil)).Elem(), EntryGroupIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamMemberConditionInput)(nil)).Elem(), EntryGroupIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamMemberConditionPtrInput)(nil)).Elem(), EntryGroupIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryLinkEntryReferenceInput)(nil)).Elem(), EntryLinkEntryReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryLinkEntryReferenceArrayInput)(nil)).Elem(), EntryLinkEntryReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypeIamBindingConditionInput)(nil)).Elem(), EntryTypeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypeIamBindingConditionPtrInput)(nil)).Elem(), EntryTypeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypeIamMemberConditionInput)(nil)).Elem(), EntryTypeIamMemberConditionArgs{})
@@ -15800,6 +15926,8 @@ func init() {
 	pulumi.RegisterOutputType(EntryGroupIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(EntryLinkEntryReferenceOutput{})
+	pulumi.RegisterOutputType(EntryLinkEntryReferenceArrayOutput{})
 	pulumi.RegisterOutputType(EntryTypeIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(EntryTypeIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(EntryTypeIamMemberConditionOutput{})

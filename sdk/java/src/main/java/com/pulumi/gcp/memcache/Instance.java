@@ -15,6 +15,7 @@ import com.pulumi.gcp.memcache.outputs.InstanceMaintenanceSchedule;
 import com.pulumi.gcp.memcache.outputs.InstanceMemcacheNode;
 import com.pulumi.gcp.memcache.outputs.InstanceMemcacheParameters;
 import com.pulumi.gcp.memcache.outputs.InstanceNodeConfig;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -94,6 +95,7 @@ import javax.annotation.Nullable;
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("test-instance")
  *             .authorizedNetwork(privateServiceConnection.network())
+ *             .deletionProtection(false)
  *             .labels(Map.of("env", "test"))
  *             .nodeConfig(InstanceNodeConfigArgs.builder()
  *                 .cpuCount(1)
@@ -182,6 +184,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
      * Endpoint for Discovery API

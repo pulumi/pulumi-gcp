@@ -166,10 +166,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.kms.KeyRing;
- * import com.pulumi.gcp.kms.KeyRingArgs;
- * import com.pulumi.gcp.kms.CryptoKey;
- * import com.pulumi.gcp.kms.CryptoKeyArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.managedkafka.Cluster;
@@ -179,8 +175,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
  * import com.pulumi.gcp.projects.ServiceIdentity;
  * import com.pulumi.gcp.projects.ServiceIdentityArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -188,22 +182,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
- *             .name("example-key-ring")
- *             .location("us-central1")
- *             .build());
- * 
- *         var key = new CryptoKey("key", CryptoKeyArgs.builder()
- *             .name("example-key")
- *             .keyRing(keyRing.id())
- *             .build());
- * 
+ *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
@@ -220,7 +204,7 @@ import javax.annotation.Nullable;
  *                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.number()))
  *                         .build())
  *                     .build())
- *                 .kmsKey(key.id())
+ *                 .kmsKey("example-key")
  *                 .build())
  *             .build());
  * 
@@ -229,14 +213,8 @@ import javax.annotation.Nullable;
  *             .service("managedkafka.googleapis.com")
  *             .build());
  * 
- *         var cryptoKeyBinding = new CryptoKeyIAMBinding("cryptoKeyBinding", CryptoKeyIAMBindingArgs.builder()
- *             .cryptoKeyId(key.id())
- *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-managedkafka.iam.gserviceaccount.com", project.number()))
- *             .build());
- * 
- *     }}{@code
- * }}{@code
+ *     }
+ * }
  * }
  * </pre>
  * 

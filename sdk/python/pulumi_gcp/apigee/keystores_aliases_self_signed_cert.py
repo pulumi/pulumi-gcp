@@ -398,7 +398,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
             project_id="my-project",
@@ -417,7 +417,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             project=project.project_id,
             service="compute.googleapis.com",
             opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
         opts = pulumi.ResourceOptions(depends_on=[compute]))
         apigee_network = gcp.compute.Network("apigee_network",
             name="apigee-network",
@@ -524,7 +524,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
             project_id="my-project",
@@ -543,7 +543,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             project=project.project_id,
             service="compute.googleapis.com",
             opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
         opts = pulumi.ResourceOptions(depends_on=[compute]))
         apigee_network = gcp.compute.Network("apigee_network",
             name="apigee-network",

@@ -475,7 +475,6 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
-    /// 
     /// ## Import
     /// 
     /// ConnectionProfile can be imported using any of these accepted formats:
@@ -560,6 +559,13 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for connecting to a MongoDB database.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("mongodbProfile")]
+        public Output<Outputs.ConnectionProfileMongodbProfile?> MongodbProfile { get; private set; } = null!;
 
         /// <summary>
         /// MySQL database profile.
@@ -733,6 +739,13 @@ namespace Pulumi.Gcp.Datastream
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// Configuration for connecting to a MongoDB database.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("mongodbProfile")]
+        public Input<Inputs.ConnectionProfileMongodbProfileArgs>? MongodbProfile { get; set; }
+
+        /// <summary>
         /// MySQL database profile.
         /// Structure is documented below.
         /// </summary>
@@ -862,6 +875,13 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Configuration for connecting to a MongoDB database.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("mongodbProfile")]
+        public Input<Inputs.ConnectionProfileMongodbProfileGetArgs>? MongodbProfile { get; set; }
 
         /// <summary>
         /// MySQL database profile.

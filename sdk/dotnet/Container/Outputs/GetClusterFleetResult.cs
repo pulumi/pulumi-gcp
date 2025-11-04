@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string MembershipLocation;
         /// <summary>
+        /// The type of the cluster's fleet membership.
+        /// </summary>
+        public readonly string MembershipType;
+        /// <summary>
         /// Whether the cluster has been registered via the fleet API.
         /// </summary>
         public readonly bool PreRegistered;
@@ -43,6 +47,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string membershipLocation,
 
+            string membershipType,
+
             bool preRegistered,
 
             string project)
@@ -50,6 +56,7 @@ namespace Pulumi.Gcp.Container.Outputs
             Membership = membership;
             MembershipId = membershipId;
             MembershipLocation = membershipLocation;
+            MembershipType = membershipType;
             PreRegistered = preRegistered;
             Project = project;
         }

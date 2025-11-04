@@ -1515,7 +1515,7 @@ if not MYPY:
     class JobTemplateTemplateContainerResourcesArgsDict(TypedDict):
         limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
-        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
 elif False:
     JobTemplateTemplateContainerResourcesArgsDict: TypeAlias = Mapping[str, Any]
@@ -1525,7 +1525,7 @@ class JobTemplateTemplateContainerResourcesArgs:
     def __init__(__self__, *,
                  limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] limits: Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] limits: Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
@@ -1534,7 +1534,7 @@ class JobTemplateTemplateContainerResourcesArgs:
     @pulumi.getter
     def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
@@ -3671,6 +3671,10 @@ if not MYPY:
         """
         True if GPU zonal redundancy is disabled on this revision.
         """
+        health_check_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Disables health checking containers during deployment.
+        """
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
@@ -3736,6 +3740,7 @@ class ServiceTemplateArgs:
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  execution_environment: Optional[pulumi.Input[_builtins.str]] = None,
                  gpu_zonal_redundancy_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 health_check_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_instance_request_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
                  node_selector: Optional[pulumi.Input['ServiceTemplateNodeSelectorArgs']] = None,
@@ -3758,6 +3763,7 @@ class ServiceTemplateArgs:
         :param pulumi.Input[_builtins.str] execution_environment: The sandbox environment to host this Revision.
                Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         :param pulumi.Input[_builtins.bool] gpu_zonal_redundancy_disabled: True if GPU zonal redundancy is disabled on this revision.
+        :param pulumi.Input[_builtins.bool] health_check_disabled: Disables health checking containers during deployment.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
                For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -3790,6 +3796,8 @@ class ServiceTemplateArgs:
             pulumi.set(__self__, "execution_environment", execution_environment)
         if gpu_zonal_redundancy_disabled is not None:
             pulumi.set(__self__, "gpu_zonal_redundancy_disabled", gpu_zonal_redundancy_disabled)
+        if health_check_disabled is not None:
+            pulumi.set(__self__, "health_check_disabled", health_check_disabled)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_instance_request_concurrency is not None:
@@ -3877,6 +3885,18 @@ class ServiceTemplateArgs:
     @gpu_zonal_redundancy_disabled.setter
     def gpu_zonal_redundancy_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "gpu_zonal_redundancy_disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckDisabled")
+    def health_check_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Disables health checking containers during deployment.
+        """
+        return pulumi.get(self, "health_check_disabled")
+
+    @health_check_disabled.setter
+    def health_check_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "health_check_disabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -5003,7 +5023,7 @@ if not MYPY:
         """
         limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
-        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6' and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         startup_cpu_boost: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -5021,7 +5041,7 @@ class ServiceTemplateContainerResourcesArgs:
         """
         :param pulumi.Input[_builtins.bool] cpu_idle: Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
                `resources` is set, this field must be explicitly set to true to preserve the default behavior.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] limits: Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] limits: Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6' and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         :param pulumi.Input[_builtins.bool] startup_cpu_boost: Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
         """
         if cpu_idle is not None:
@@ -5048,7 +5068,7 @@ class ServiceTemplateContainerResourcesArgs:
     @pulumi.getter
     def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6' and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
@@ -8419,7 +8439,7 @@ if not MYPY:
     class WorkerPoolTemplateContainerResourcesArgsDict(TypedDict):
         limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
-        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
 elif False:
     WorkerPoolTemplateContainerResourcesArgsDict: TypeAlias = Mapping[str, Any]
@@ -8429,7 +8449,7 @@ class WorkerPoolTemplateContainerResourcesArgs:
     def __init__(__self__, *,
                  limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] limits: Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] limits: Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
@@ -8438,7 +8458,7 @@ class WorkerPoolTemplateContainerResourcesArgs:
     @pulumi.getter
     def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 

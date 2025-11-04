@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -17,92 +18,200 @@ public final class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs extends com.pul
     public static final AuthzPolicyHttpRuleFromNotSourcePrincipalArgs Empty = new AuthzPolicyHttpRuleFromNotSourcePrincipalArgs();
 
     /**
+     * (Optional, Deprecated)
      * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
      * Examples:
      * * abc matches the value xyz.abc.def
      * 
+     * &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+     * 
+     * @deprecated
+     * `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+     * 
      */
+    @Deprecated /* `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead. */
     @Import(name="contains")
     private @Nullable Output<String> contains;
 
     /**
-     * @return The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+     * @return (Optional, Deprecated)
+     * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
      * Examples:
      * * abc matches the value xyz.abc.def
      * 
+     * &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+     * 
+     * @deprecated
+     * `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+     * 
      */
+    @Deprecated /* `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead. */
     public Optional<Output<String>> contains() {
         return Optional.ofNullable(this.contains);
     }
 
     /**
+     * (Optional, Deprecated)
      * The input string must match exactly the string specified here.
      * Examples:
      * * abc only matches the value abc.
      * 
+     * &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+     * 
+     * @deprecated
+     * `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+     * 
      */
+    @Deprecated /* `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead. */
     @Import(name="exact")
     private @Nullable Output<String> exact;
 
     /**
-     * @return The input string must match exactly the string specified here.
+     * @return (Optional, Deprecated)
+     * The input string must match exactly the string specified here.
      * Examples:
      * * abc only matches the value abc.
      * 
+     * &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+     * 
+     * @deprecated
+     * `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+     * 
      */
+    @Deprecated /* `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead. */
     public Optional<Output<String>> exact() {
         return Optional.ofNullable(this.exact);
     }
 
     /**
+     * (Optional, Deprecated)
      * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
      * 
+     * &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+     * 
+     * @deprecated
+     * `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+     * 
      */
+    @Deprecated /* `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead. */
     @Import(name="ignoreCase")
     private @Nullable Output<Boolean> ignoreCase;
 
     /**
-     * @return If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+     * @return (Optional, Deprecated)
+     * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+     * 
+     * &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+     * 
+     * @deprecated
+     * `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
      * 
      */
+    @Deprecated /* `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead. */
     public Optional<Output<Boolean>> ignoreCase() {
         return Optional.ofNullable(this.ignoreCase);
     }
 
     /**
+     * (Optional, Deprecated)
      * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
      * Examples:
      * * abc matches the value abc.xyz
      * 
+     * &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+     * 
+     * @deprecated
+     * `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+     * 
      */
+    @Deprecated /* `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead. */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
     /**
-     * @return The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+     * @return (Optional, Deprecated)
+     * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
      * Examples:
      * * abc matches the value abc.xyz
      * 
+     * &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+     * 
+     * @deprecated
+     * `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+     * 
      */
+    @Deprecated /* `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead. */
     public Optional<Output<String>> prefix() {
         return Optional.ofNullable(this.prefix);
     }
 
     /**
+     * Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+     * Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="principal")
+    private @Nullable Output<AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs> principal;
+
+    /**
+     * @return Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+     * Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs>> principal() {
+        return Optional.ofNullable(this.principal);
+    }
+
+    /**
+     * An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+     * Default value is `CLIENT_CERT_URI_SAN`.
+     * Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+     * 
+     */
+    @Import(name="principalSelector")
+    private @Nullable Output<String> principalSelector;
+
+    /**
+     * @return An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+     * Default value is `CLIENT_CERT_URI_SAN`.
+     * Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+     * 
+     */
+    public Optional<Output<String>> principalSelector() {
+        return Optional.ofNullable(this.principalSelector);
+    }
+
+    /**
+     * (Optional, Deprecated)
      * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
      * Examples:
      * * abc matches the value xyz.abc
      * 
+     * &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+     * 
+     * @deprecated
+     * `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+     * 
      */
+    @Deprecated /* `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead. */
     @Import(name="suffix")
     private @Nullable Output<String> suffix;
 
     /**
-     * @return The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+     * @return (Optional, Deprecated)
+     * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
      * Examples:
      * * abc matches the value xyz.abc
      * 
+     * &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+     * 
+     * @deprecated
+     * `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+     * 
      */
+    @Deprecated /* `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead. */
     public Optional<Output<String>> suffix() {
         return Optional.ofNullable(this.suffix);
     }
@@ -114,6 +223,8 @@ public final class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs extends com.pul
         this.exact = $.exact;
         this.ignoreCase = $.ignoreCase;
         this.prefix = $.prefix;
+        this.principal = $.principal;
+        this.principalSelector = $.principalSelector;
         this.suffix = $.suffix;
     }
 
@@ -136,122 +247,242 @@ public final class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs extends com.pul
         }
 
         /**
-         * @param contains The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+         * @param contains (Optional, Deprecated)
+         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
          * Examples:
          * * abc matches the value xyz.abc.def
          * 
+         * &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+         * 
          */
+        @Deprecated /* `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead. */
         public Builder contains(@Nullable Output<String> contains) {
             $.contains = contains;
             return this;
         }
 
         /**
-         * @param contains The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+         * @param contains (Optional, Deprecated)
+         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
          * Examples:
          * * abc matches the value xyz.abc.def
          * 
+         * &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
+         * 
          */
+        @Deprecated /* `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead. */
         public Builder contains(String contains) {
             return contains(Output.of(contains));
         }
 
         /**
-         * @param exact The input string must match exactly the string specified here.
+         * @param exact (Optional, Deprecated)
+         * The input string must match exactly the string specified here.
          * Examples:
          * * abc only matches the value abc.
          * 
+         * &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+         * 
          */
+        @Deprecated /* `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead. */
         public Builder exact(@Nullable Output<String> exact) {
             $.exact = exact;
             return this;
         }
 
         /**
-         * @param exact The input string must match exactly the string specified here.
+         * @param exact (Optional, Deprecated)
+         * The input string must match exactly the string specified here.
          * Examples:
          * * abc only matches the value abc.
          * 
+         * &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
+         * 
          */
+        @Deprecated /* `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead. */
         public Builder exact(String exact) {
             return exact(Output.of(exact));
         }
 
         /**
-         * @param ignoreCase If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         * @param ignoreCase (Optional, Deprecated)
+         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         * 
+         * &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+         * 
          */
+        @Deprecated /* `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead. */
         public Builder ignoreCase(@Nullable Output<Boolean> ignoreCase) {
             $.ignoreCase = ignoreCase;
             return this;
         }
 
         /**
-         * @param ignoreCase If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         * @param ignoreCase (Optional, Deprecated)
+         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         * 
+         * &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
+         * 
          */
+        @Deprecated /* `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead. */
         public Builder ignoreCase(Boolean ignoreCase) {
             return ignoreCase(Output.of(ignoreCase));
         }
 
         /**
-         * @param prefix The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * @param prefix (Optional, Deprecated)
+         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
          * Examples:
          * * abc matches the value abc.xyz
          * 
+         * &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+         * 
          */
+        @Deprecated /* `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead. */
         public Builder prefix(@Nullable Output<String> prefix) {
             $.prefix = prefix;
             return this;
         }
 
         /**
-         * @param prefix The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * @param prefix (Optional, Deprecated)
+         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
          * Examples:
          * * abc matches the value abc.xyz
          * 
+         * &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
+         * 
          */
+        @Deprecated /* `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead. */
         public Builder prefix(String prefix) {
             return prefix(Output.of(prefix));
         }
 
         /**
-         * @param suffix The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc
+         * @param principal Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+         * Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+         * Structure is documented below.
          * 
          * @return builder
          * 
          */
+        public Builder principal(@Nullable Output<AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs> principal) {
+            $.principal = principal;
+            return this;
+        }
+
+        /**
+         * @param principal Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
+         * Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder principal(AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs principal) {
+            return principal(Output.of(principal));
+        }
+
+        /**
+         * @param principalSelector An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+         * Default value is `CLIENT_CERT_URI_SAN`.
+         * Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder principalSelector(@Nullable Output<String> principalSelector) {
+            $.principalSelector = principalSelector;
+            return this;
+        }
+
+        /**
+         * @param principalSelector An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+         * Default value is `CLIENT_CERT_URI_SAN`.
+         * Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder principalSelector(String principalSelector) {
+            return principalSelector(Output.of(principalSelector));
+        }
+
+        /**
+         * @param suffix (Optional, Deprecated)
+         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc
+         * 
+         * &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+         * 
+         */
+        @Deprecated /* `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead. */
         public Builder suffix(@Nullable Output<String> suffix) {
             $.suffix = suffix;
             return this;
         }
 
         /**
-         * @param suffix The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * @param suffix (Optional, Deprecated)
+         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
          * Examples:
          * * abc matches the value xyz.abc
          * 
+         * &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
+         * 
          */
+        @Deprecated /* `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead. */
         public Builder suffix(String suffix) {
             return suffix(Output.of(suffix));
         }

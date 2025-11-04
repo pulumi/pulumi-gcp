@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
 public final class GetInstanceResult {
     private String authorizationMode;
     private List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs;
+    private List<String> availableMaintenanceVersions;
     private String backupCollection;
     private String createTime;
     private List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
@@ -43,6 +44,7 @@ public final class GetInstanceResult {
     private List<GetInstanceDesiredPscAutoConnection> desiredPscAutoConnections;
     private List<GetInstanceDiscoveryEndpoint> discoveryEndpoints;
     private Map<String,String> effectiveLabels;
+    private String effectiveMaintenanceVersion;
     private List<GetInstanceEndpoint> endpoints;
     private Map<String,String> engineConfigs;
     private String engineVersion;
@@ -58,6 +60,7 @@ public final class GetInstanceResult {
     private @Nullable String location;
     private List<GetInstanceMaintenancePolicy> maintenancePolicies;
     private List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
+    private String maintenanceVersion;
     private List<GetInstanceManagedBackupSource> managedBackupSources;
     private List<GetInstanceManagedServerCa> managedServerCas;
     private String mode;
@@ -85,6 +88,9 @@ public final class GetInstanceResult {
     public List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs() {
         return this.automatedBackupConfigs;
     }
+    public List<String> availableMaintenanceVersions() {
+        return this.availableMaintenanceVersions;
+    }
     public String backupCollection() {
         return this.backupCollection;
     }
@@ -108,6 +114,9 @@ public final class GetInstanceResult {
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    public String effectiveMaintenanceVersion() {
+        return this.effectiveMaintenanceVersion;
     }
     public List<GetInstanceEndpoint> endpoints() {
         return this.endpoints;
@@ -145,6 +154,9 @@ public final class GetInstanceResult {
     }
     public List<GetInstanceMaintenanceSchedule> maintenanceSchedules() {
         return this.maintenanceSchedules;
+    }
+    public String maintenanceVersion() {
+        return this.maintenanceVersion;
     }
     public List<GetInstanceManagedBackupSource> managedBackupSources() {
         return this.managedBackupSources;
@@ -215,6 +227,7 @@ public final class GetInstanceResult {
     public static final class Builder {
         private String authorizationMode;
         private List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs;
+        private List<String> availableMaintenanceVersions;
         private String backupCollection;
         private String createTime;
         private List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
@@ -223,6 +236,7 @@ public final class GetInstanceResult {
         private List<GetInstanceDesiredPscAutoConnection> desiredPscAutoConnections;
         private List<GetInstanceDiscoveryEndpoint> discoveryEndpoints;
         private Map<String,String> effectiveLabels;
+        private String effectiveMaintenanceVersion;
         private List<GetInstanceEndpoint> endpoints;
         private Map<String,String> engineConfigs;
         private String engineVersion;
@@ -234,6 +248,7 @@ public final class GetInstanceResult {
         private @Nullable String location;
         private List<GetInstanceMaintenancePolicy> maintenancePolicies;
         private List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
+        private String maintenanceVersion;
         private List<GetInstanceManagedBackupSource> managedBackupSources;
         private List<GetInstanceManagedServerCa> managedServerCas;
         private String mode;
@@ -258,6 +273,7 @@ public final class GetInstanceResult {
     	      Objects.requireNonNull(defaults);
     	      this.authorizationMode = defaults.authorizationMode;
     	      this.automatedBackupConfigs = defaults.automatedBackupConfigs;
+    	      this.availableMaintenanceVersions = defaults.availableMaintenanceVersions;
     	      this.backupCollection = defaults.backupCollection;
     	      this.createTime = defaults.createTime;
     	      this.crossInstanceReplicationConfigs = defaults.crossInstanceReplicationConfigs;
@@ -266,6 +282,7 @@ public final class GetInstanceResult {
     	      this.desiredPscAutoConnections = defaults.desiredPscAutoConnections;
     	      this.discoveryEndpoints = defaults.discoveryEndpoints;
     	      this.effectiveLabels = defaults.effectiveLabels;
+    	      this.effectiveMaintenanceVersion = defaults.effectiveMaintenanceVersion;
     	      this.endpoints = defaults.endpoints;
     	      this.engineConfigs = defaults.engineConfigs;
     	      this.engineVersion = defaults.engineVersion;
@@ -277,6 +294,7 @@ public final class GetInstanceResult {
     	      this.location = defaults.location;
     	      this.maintenancePolicies = defaults.maintenancePolicies;
     	      this.maintenanceSchedules = defaults.maintenanceSchedules;
+    	      this.maintenanceVersion = defaults.maintenanceVersion;
     	      this.managedBackupSources = defaults.managedBackupSources;
     	      this.managedServerCas = defaults.managedServerCas;
     	      this.mode = defaults.mode;
@@ -316,6 +334,17 @@ public final class GetInstanceResult {
         }
         public Builder automatedBackupConfigs(GetInstanceAutomatedBackupConfig... automatedBackupConfigs) {
             return automatedBackupConfigs(List.of(automatedBackupConfigs));
+        }
+        @CustomType.Setter
+        public Builder availableMaintenanceVersions(List<String> availableMaintenanceVersions) {
+            if (availableMaintenanceVersions == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "availableMaintenanceVersions");
+            }
+            this.availableMaintenanceVersions = availableMaintenanceVersions;
+            return this;
+        }
+        public Builder availableMaintenanceVersions(String... availableMaintenanceVersions) {
+            return availableMaintenanceVersions(List.of(availableMaintenanceVersions));
         }
         @CustomType.Setter
         public Builder backupCollection(String backupCollection) {
@@ -391,6 +420,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "effectiveLabels");
             }
             this.effectiveLabels = effectiveLabels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveMaintenanceVersion(String effectiveMaintenanceVersion) {
+            if (effectiveMaintenanceVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "effectiveMaintenanceVersion");
+            }
+            this.effectiveMaintenanceVersion = effectiveMaintenanceVersion;
             return this;
         }
         @CustomType.Setter
@@ -490,6 +527,14 @@ public final class GetInstanceResult {
         }
         public Builder maintenanceSchedules(GetInstanceMaintenanceSchedule... maintenanceSchedules) {
             return maintenanceSchedules(List.of(maintenanceSchedules));
+        }
+        @CustomType.Setter
+        public Builder maintenanceVersion(String maintenanceVersion) {
+            if (maintenanceVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "maintenanceVersion");
+            }
+            this.maintenanceVersion = maintenanceVersion;
+            return this;
         }
         @CustomType.Setter
         public Builder managedBackupSources(List<GetInstanceManagedBackupSource> managedBackupSources) {
@@ -669,6 +714,7 @@ public final class GetInstanceResult {
             final var _resultValue = new GetInstanceResult();
             _resultValue.authorizationMode = authorizationMode;
             _resultValue.automatedBackupConfigs = automatedBackupConfigs;
+            _resultValue.availableMaintenanceVersions = availableMaintenanceVersions;
             _resultValue.backupCollection = backupCollection;
             _resultValue.createTime = createTime;
             _resultValue.crossInstanceReplicationConfigs = crossInstanceReplicationConfigs;
@@ -677,6 +723,7 @@ public final class GetInstanceResult {
             _resultValue.desiredPscAutoConnections = desiredPscAutoConnections;
             _resultValue.discoveryEndpoints = discoveryEndpoints;
             _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.effectiveMaintenanceVersion = effectiveMaintenanceVersion;
             _resultValue.endpoints = endpoints;
             _resultValue.engineConfigs = engineConfigs;
             _resultValue.engineVersion = engineVersion;
@@ -688,6 +735,7 @@ public final class GetInstanceResult {
             _resultValue.location = location;
             _resultValue.maintenancePolicies = maintenancePolicies;
             _resultValue.maintenanceSchedules = maintenanceSchedules;
+            _resultValue.maintenanceVersion = maintenanceVersion;
             _resultValue.managedBackupSources = managedBackupSources;
             _resultValue.managedServerCas = managedServerCas;
             _resultValue.mode = mode;

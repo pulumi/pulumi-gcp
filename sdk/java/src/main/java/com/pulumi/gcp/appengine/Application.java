@@ -281,6 +281,20 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.servingStatus;
     }
     /**
+     * A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+     * 
+     */
+    @Export(name="sslPolicy", refs={String.class}, tree="[0]")
+    private Output<String> sslPolicy;
+
+    /**
+     * @return A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
+     * 
+     */
+    public Output<String> sslPolicy() {
+        return this.sslPolicy;
+    }
+    /**
      * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
      * 
      */

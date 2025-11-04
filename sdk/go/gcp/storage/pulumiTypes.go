@@ -11921,7 +11921,7 @@ type TransferJobReplicationSpecTransferOptions struct {
 	// Whether objects that exist only in the sink should be deleted. Note that this option and
 	// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
 	DeleteObjectsUniqueInSink *bool `pulumi:"deleteObjectsUniqueInSink"`
-	// Specifies the metadata options for running a transfer
+	// Specifies the metadata options for running a transfer. Structure documented below.
 	MetadataOptions *TransferJobReplicationSpecTransferOptionsMetadataOptions `pulumi:"metadataOptions"`
 	// Whether overwriting objects that already exist in the sink is allowed.
 	OverwriteObjectsAlreadyExistingInSink *bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
@@ -11946,7 +11946,7 @@ type TransferJobReplicationSpecTransferOptionsArgs struct {
 	// Whether objects that exist only in the sink should be deleted. Note that this option and
 	// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
 	DeleteObjectsUniqueInSink pulumi.BoolPtrInput `pulumi:"deleteObjectsUniqueInSink"`
-	// Specifies the metadata options for running a transfer
+	// Specifies the metadata options for running a transfer. Structure documented below.
 	MetadataOptions TransferJobReplicationSpecTransferOptionsMetadataOptionsPtrInput `pulumi:"metadataOptions"`
 	// Whether overwriting objects that already exist in the sink is allowed.
 	OverwriteObjectsAlreadyExistingInSink pulumi.BoolPtrInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
@@ -12042,7 +12042,7 @@ func (o TransferJobReplicationSpecTransferOptionsOutput) DeleteObjectsUniqueInSi
 	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the metadata options for running a transfer
+// Specifies the metadata options for running a transfer. Structure documented below.
 func (o TransferJobReplicationSpecTransferOptionsOutput) MetadataOptions() TransferJobReplicationSpecTransferOptionsMetadataOptionsPtrOutput {
 	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptions) *TransferJobReplicationSpecTransferOptionsMetadataOptions {
 		return v.MetadataOptions
@@ -12106,7 +12106,7 @@ func (o TransferJobReplicationSpecTransferOptionsPtrOutput) DeleteObjectsUniqueI
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the metadata options for running a transfer
+// Specifies the metadata options for running a transfer. Structure documented below.
 func (o TransferJobReplicationSpecTransferOptionsPtrOutput) MetadataOptions() TransferJobReplicationSpecTransferOptionsMetadataOptionsPtrOutput {
 	return o.ApplyT(func(v *TransferJobReplicationSpecTransferOptions) *TransferJobReplicationSpecTransferOptionsMetadataOptions {
 		if v == nil {
@@ -12137,19 +12137,19 @@ func (o TransferJobReplicationSpecTransferOptionsPtrOutput) OverwriteWhen() pulu
 }
 
 type TransferJobReplicationSpecTransferOptionsMetadataOptions struct {
-	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
 	Acl *string `pulumi:"acl"`
 	// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
 	Gid *string `pulumi:"gid"`
-	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
 	KmsKey *string `pulumi:"kmsKey"`
 	// Specifies how each file's mode attribute should be handled by the transfer.
 	Mode *string `pulumi:"mode"`
-	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
 	StorageClass *string `pulumi:"storageClass"`
 	// Specifies how symlinks should be handled by the transfer.
 	Symlink *string `pulumi:"symlink"`
-	// SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
 	TemporaryHold *string `pulumi:"temporaryHold"`
 	// Specifies how each object's timeCreated metadata is preserved for transfers.
 	TimeCreated *string `pulumi:"timeCreated"`
@@ -12169,19 +12169,19 @@ type TransferJobReplicationSpecTransferOptionsMetadataOptionsInput interface {
 }
 
 type TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs struct {
-	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
 	Acl pulumi.StringPtrInput `pulumi:"acl"`
 	// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
 	Gid pulumi.StringPtrInput `pulumi:"gid"`
-	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// Specifies how each file's mode attribute should be handled by the transfer.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
 	// Specifies how symlinks should be handled by the transfer.
 	Symlink pulumi.StringPtrInput `pulumi:"symlink"`
-	// SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
 	TemporaryHold pulumi.StringPtrInput `pulumi:"temporaryHold"`
 	// Specifies how each object's timeCreated metadata is preserved for transfers.
 	TimeCreated pulumi.StringPtrInput `pulumi:"timeCreated"`
@@ -12266,7 +12266,7 @@ func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsOutput) ToTransf
 	}).(TransferJobReplicationSpecTransferOptionsMetadataOptionsPtrOutput)
 }
 
-// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
 func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsOutput) Acl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptionsMetadataOptions) *string { return v.Acl }).(pulumi.StringPtrOutput)
 }
@@ -12276,7 +12276,7 @@ func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsOutput) Gid() pu
 	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptionsMetadataOptions) *string { return v.Gid }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
 func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptionsMetadataOptions) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
@@ -12286,7 +12286,7 @@ func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsOutput) Mode() p
 	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptionsMetadataOptions) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
 func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptionsMetadataOptions) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
 }
@@ -12296,7 +12296,7 @@ func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsOutput) Symlink(
 	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptionsMetadataOptions) *string { return v.Symlink }).(pulumi.StringPtrOutput)
 }
 
-// SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
 func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsOutput) TemporaryHold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptionsMetadataOptions) *string { return v.TemporaryHold }).(pulumi.StringPtrOutput)
 }
@@ -12335,7 +12335,7 @@ func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsPtrOutput) Elem(
 	}).(TransferJobReplicationSpecTransferOptionsMetadataOptionsOutput)
 }
 
-// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
 func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsPtrOutput) Acl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobReplicationSpecTransferOptionsMetadataOptions) *string {
 		if v == nil {
@@ -12355,7 +12355,7 @@ func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsPtrOutput) Gid()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
 func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobReplicationSpecTransferOptionsMetadataOptions) *string {
 		if v == nil {
@@ -12375,7 +12375,7 @@ func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsPtrOutput) Mode(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
 func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsPtrOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobReplicationSpecTransferOptionsMetadataOptions) *string {
 		if v == nil {
@@ -12395,7 +12395,7 @@ func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsPtrOutput) Symli
 	}).(pulumi.StringPtrOutput)
 }
 
-// SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
 func (o TransferJobReplicationSpecTransferOptionsMetadataOptionsPtrOutput) TemporaryHold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobReplicationSpecTransferOptionsMetadataOptions) *string {
 		if v == nil {
@@ -13188,6 +13188,8 @@ type TransferJobTransferSpec struct {
 	SinkAgentPoolName *string `pulumi:"sinkAgentPoolName"`
 	// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
 	SourceAgentPoolName *string `pulumi:"sourceAgentPoolName"`
+	// Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+	TransferManifest *TransferJobTransferSpecTransferManifest `pulumi:"transferManifest"`
 	// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
 	TransferOptions *TransferJobTransferSpecTransferOptions `pulumi:"transferOptions"`
 }
@@ -13228,6 +13230,8 @@ type TransferJobTransferSpecArgs struct {
 	SinkAgentPoolName pulumi.StringPtrInput `pulumi:"sinkAgentPoolName"`
 	// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
 	SourceAgentPoolName pulumi.StringPtrInput `pulumi:"sourceAgentPoolName"`
+	// Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+	TransferManifest TransferJobTransferSpecTransferManifestPtrInput `pulumi:"transferManifest"`
 	// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
 	TransferOptions TransferJobTransferSpecTransferOptionsPtrInput `pulumi:"transferOptions"`
 }
@@ -13371,6 +13375,11 @@ func (o TransferJobTransferSpecOutput) SinkAgentPoolName() pulumi.StringPtrOutpu
 // Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
 func (o TransferJobTransferSpecOutput) SourceAgentPoolName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *string { return v.SourceAgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+func (o TransferJobTransferSpecOutput) TransferManifest() TransferJobTransferSpecTransferManifestPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecTransferManifest { return v.TransferManifest }).(TransferJobTransferSpecTransferManifestPtrOutput)
 }
 
 // Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
@@ -13520,6 +13529,16 @@ func (o TransferJobTransferSpecPtrOutput) SourceAgentPoolName() pulumi.StringPtr
 		}
 		return v.SourceAgentPoolName
 	}).(pulumi.StringPtrOutput)
+}
+
+// Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
+func (o TransferJobTransferSpecPtrOutput) TransferManifest() TransferJobTransferSpecTransferManifestPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecTransferManifest {
+		if v == nil {
+			return nil
+		}
+		return v.TransferManifest
+	}).(TransferJobTransferSpecTransferManifestPtrOutput)
 }
 
 // Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
@@ -15983,13 +16002,150 @@ func (o TransferJobTransferSpecPosixDataSourcePtrOutput) RootDirectory() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type TransferJobTransferSpecTransferManifest struct {
+	// The **GCS URI** to the manifest file (CSV or line-delimited). Example: `gs://my-bucket/manifest.csv`
+	Location string `pulumi:"location"`
+}
+
+// TransferJobTransferSpecTransferManifestInput is an input type that accepts TransferJobTransferSpecTransferManifestArgs and TransferJobTransferSpecTransferManifestOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecTransferManifestInput` via:
+//
+//	TransferJobTransferSpecTransferManifestArgs{...}
+type TransferJobTransferSpecTransferManifestInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecTransferManifestOutput() TransferJobTransferSpecTransferManifestOutput
+	ToTransferJobTransferSpecTransferManifestOutputWithContext(context.Context) TransferJobTransferSpecTransferManifestOutput
+}
+
+type TransferJobTransferSpecTransferManifestArgs struct {
+	// The **GCS URI** to the manifest file (CSV or line-delimited). Example: `gs://my-bucket/manifest.csv`
+	Location pulumi.StringInput `pulumi:"location"`
+}
+
+func (TransferJobTransferSpecTransferManifestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecTransferManifest)(nil)).Elem()
+}
+
+func (i TransferJobTransferSpecTransferManifestArgs) ToTransferJobTransferSpecTransferManifestOutput() TransferJobTransferSpecTransferManifestOutput {
+	return i.ToTransferJobTransferSpecTransferManifestOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecTransferManifestArgs) ToTransferJobTransferSpecTransferManifestOutputWithContext(ctx context.Context) TransferJobTransferSpecTransferManifestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecTransferManifestOutput)
+}
+
+func (i TransferJobTransferSpecTransferManifestArgs) ToTransferJobTransferSpecTransferManifestPtrOutput() TransferJobTransferSpecTransferManifestPtrOutput {
+	return i.ToTransferJobTransferSpecTransferManifestPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecTransferManifestArgs) ToTransferJobTransferSpecTransferManifestPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecTransferManifestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecTransferManifestOutput).ToTransferJobTransferSpecTransferManifestPtrOutputWithContext(ctx)
+}
+
+// TransferJobTransferSpecTransferManifestPtrInput is an input type that accepts TransferJobTransferSpecTransferManifestArgs, TransferJobTransferSpecTransferManifestPtr and TransferJobTransferSpecTransferManifestPtrOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecTransferManifestPtrInput` via:
+//
+//	        TransferJobTransferSpecTransferManifestArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferJobTransferSpecTransferManifestPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecTransferManifestPtrOutput() TransferJobTransferSpecTransferManifestPtrOutput
+	ToTransferJobTransferSpecTransferManifestPtrOutputWithContext(context.Context) TransferJobTransferSpecTransferManifestPtrOutput
+}
+
+type transferJobTransferSpecTransferManifestPtrType TransferJobTransferSpecTransferManifestArgs
+
+func TransferJobTransferSpecTransferManifestPtr(v *TransferJobTransferSpecTransferManifestArgs) TransferJobTransferSpecTransferManifestPtrInput {
+	return (*transferJobTransferSpecTransferManifestPtrType)(v)
+}
+
+func (*transferJobTransferSpecTransferManifestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecTransferManifest)(nil)).Elem()
+}
+
+func (i *transferJobTransferSpecTransferManifestPtrType) ToTransferJobTransferSpecTransferManifestPtrOutput() TransferJobTransferSpecTransferManifestPtrOutput {
+	return i.ToTransferJobTransferSpecTransferManifestPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobTransferSpecTransferManifestPtrType) ToTransferJobTransferSpecTransferManifestPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecTransferManifestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecTransferManifestPtrOutput)
+}
+
+type TransferJobTransferSpecTransferManifestOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecTransferManifestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecTransferManifest)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecTransferManifestOutput) ToTransferJobTransferSpecTransferManifestOutput() TransferJobTransferSpecTransferManifestOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecTransferManifestOutput) ToTransferJobTransferSpecTransferManifestOutputWithContext(ctx context.Context) TransferJobTransferSpecTransferManifestOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecTransferManifestOutput) ToTransferJobTransferSpecTransferManifestPtrOutput() TransferJobTransferSpecTransferManifestPtrOutput {
+	return o.ToTransferJobTransferSpecTransferManifestPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobTransferSpecTransferManifestOutput) ToTransferJobTransferSpecTransferManifestPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecTransferManifestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecTransferManifest) *TransferJobTransferSpecTransferManifest {
+		return &v
+	}).(TransferJobTransferSpecTransferManifestPtrOutput)
+}
+
+// The **GCS URI** to the manifest file (CSV or line-delimited). Example: `gs://my-bucket/manifest.csv`
+func (o TransferJobTransferSpecTransferManifestOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecTransferManifest) string { return v.Location }).(pulumi.StringOutput)
+}
+
+type TransferJobTransferSpecTransferManifestPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecTransferManifestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecTransferManifest)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecTransferManifestPtrOutput) ToTransferJobTransferSpecTransferManifestPtrOutput() TransferJobTransferSpecTransferManifestPtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecTransferManifestPtrOutput) ToTransferJobTransferSpecTransferManifestPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecTransferManifestPtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecTransferManifestPtrOutput) Elem() TransferJobTransferSpecTransferManifestOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecTransferManifest) TransferJobTransferSpecTransferManifest {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecTransferManifest
+		return ret
+	}).(TransferJobTransferSpecTransferManifestOutput)
+}
+
+// The **GCS URI** to the manifest file (CSV or line-delimited). Example: `gs://my-bucket/manifest.csv`
+func (o TransferJobTransferSpecTransferManifestPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecTransferManifest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
 type TransferJobTransferSpecTransferOptions struct {
 	// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
 	DeleteObjectsFromSourceAfterTransfer *bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. Note that this option and
 	// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
 	DeleteObjectsUniqueInSink *bool `pulumi:"deleteObjectsUniqueInSink"`
-	// Specifies the metadata options for running a transfer
+	// Specifies the metadata options for running a transfer. Structure documented below.
 	MetadataOptions *TransferJobTransferSpecTransferOptionsMetadataOptions `pulumi:"metadataOptions"`
 	// Whether overwriting objects that already exist in the sink is allowed.
 	OverwriteObjectsAlreadyExistingInSink *bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
@@ -16014,7 +16170,7 @@ type TransferJobTransferSpecTransferOptionsArgs struct {
 	// Whether objects that exist only in the sink should be deleted. Note that this option and
 	// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
 	DeleteObjectsUniqueInSink pulumi.BoolPtrInput `pulumi:"deleteObjectsUniqueInSink"`
-	// Specifies the metadata options for running a transfer
+	// Specifies the metadata options for running a transfer. Structure documented below.
 	MetadataOptions TransferJobTransferSpecTransferOptionsMetadataOptionsPtrInput `pulumi:"metadataOptions"`
 	// Whether overwriting objects that already exist in the sink is allowed.
 	OverwriteObjectsAlreadyExistingInSink pulumi.BoolPtrInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
@@ -16110,7 +16266,7 @@ func (o TransferJobTransferSpecTransferOptionsOutput) DeleteObjectsUniqueInSink(
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the metadata options for running a transfer
+// Specifies the metadata options for running a transfer. Structure documented below.
 func (o TransferJobTransferSpecTransferOptionsOutput) MetadataOptions() TransferJobTransferSpecTransferOptionsMetadataOptionsPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *TransferJobTransferSpecTransferOptionsMetadataOptions {
 		return v.MetadataOptions
@@ -16172,7 +16328,7 @@ func (o TransferJobTransferSpecTransferOptionsPtrOutput) DeleteObjectsUniqueInSi
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the metadata options for running a transfer
+// Specifies the metadata options for running a transfer. Structure documented below.
 func (o TransferJobTransferSpecTransferOptionsPtrOutput) MetadataOptions() TransferJobTransferSpecTransferOptionsMetadataOptionsPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptions) *TransferJobTransferSpecTransferOptionsMetadataOptions {
 		if v == nil {
@@ -16203,19 +16359,19 @@ func (o TransferJobTransferSpecTransferOptionsPtrOutput) OverwriteWhen() pulumi.
 }
 
 type TransferJobTransferSpecTransferOptionsMetadataOptions struct {
-	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
 	Acl *string `pulumi:"acl"`
 	// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
 	Gid *string `pulumi:"gid"`
-	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
 	KmsKey *string `pulumi:"kmsKey"`
 	// Specifies how each file's mode attribute should be handled by the transfer.
 	Mode *string `pulumi:"mode"`
-	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
 	StorageClass *string `pulumi:"storageClass"`
 	// Specifies how symlinks should be handled by the transfer.
 	Symlink *string `pulumi:"symlink"`
-	// SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
 	TemporaryHold *string `pulumi:"temporaryHold"`
 	// Specifies how each object's timeCreated metadata is preserved for transfers.
 	TimeCreated *string `pulumi:"timeCreated"`
@@ -16235,19 +16391,19 @@ type TransferJobTransferSpecTransferOptionsMetadataOptionsInput interface {
 }
 
 type TransferJobTransferSpecTransferOptionsMetadataOptionsArgs struct {
-	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+	// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
 	Acl pulumi.StringPtrInput `pulumi:"acl"`
 	// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
 	Gid pulumi.StringPtrInput `pulumi:"gid"`
-	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+	// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// Specifies how each file's mode attribute should be handled by the transfer.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+	// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
 	// Specifies how symlinks should be handled by the transfer.
 	Symlink pulumi.StringPtrInput `pulumi:"symlink"`
-	// SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
 	TemporaryHold pulumi.StringPtrInput `pulumi:"temporaryHold"`
 	// Specifies how each object's timeCreated metadata is preserved for transfers.
 	TimeCreated pulumi.StringPtrInput `pulumi:"timeCreated"`
@@ -16332,7 +16488,7 @@ func (o TransferJobTransferSpecTransferOptionsMetadataOptionsOutput) ToTransferJ
 	}).(TransferJobTransferSpecTransferOptionsMetadataOptionsPtrOutput)
 }
 
-// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
 func (o TransferJobTransferSpecTransferOptionsMetadataOptionsOutput) Acl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptionsMetadataOptions) *string { return v.Acl }).(pulumi.StringPtrOutput)
 }
@@ -16342,7 +16498,7 @@ func (o TransferJobTransferSpecTransferOptionsMetadataOptionsOutput) Gid() pulum
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptionsMetadataOptions) *string { return v.Gid }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
 func (o TransferJobTransferSpecTransferOptionsMetadataOptionsOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptionsMetadataOptions) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
@@ -16352,7 +16508,7 @@ func (o TransferJobTransferSpecTransferOptionsMetadataOptionsOutput) Mode() pulu
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptionsMetadataOptions) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
 func (o TransferJobTransferSpecTransferOptionsMetadataOptionsOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptionsMetadataOptions) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
 }
@@ -16362,7 +16518,7 @@ func (o TransferJobTransferSpecTransferOptionsMetadataOptionsOutput) Symlink() p
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptionsMetadataOptions) *string { return v.Symlink }).(pulumi.StringPtrOutput)
 }
 
-// SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
 func (o TransferJobTransferSpecTransferOptionsMetadataOptionsOutput) TemporaryHold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptionsMetadataOptions) *string { return v.TemporaryHold }).(pulumi.StringPtrOutput)
 }
@@ -16401,7 +16557,7 @@ func (o TransferJobTransferSpecTransferOptionsMetadataOptionsPtrOutput) Elem() T
 	}).(TransferJobTransferSpecTransferOptionsMetadataOptionsOutput)
 }
 
-// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets
+// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
 func (o TransferJobTransferSpecTransferOptionsMetadataOptionsPtrOutput) Acl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptionsMetadataOptions) *string {
 		if v == nil {
@@ -16421,7 +16577,7 @@ func (o TransferJobTransferSpecTransferOptionsMetadataOptionsPtrOutput) Gid() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets
+// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
 func (o TransferJobTransferSpecTransferOptionsMetadataOptionsPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptionsMetadataOptions) *string {
 		if v == nil {
@@ -16441,7 +16597,7 @@ func (o TransferJobTransferSpecTransferOptionsMetadataOptionsPtrOutput) Mode() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
+// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
 func (o TransferJobTransferSpecTransferOptionsMetadataOptionsPtrOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptionsMetadataOptions) *string {
 		if v == nil {
@@ -16461,7 +16617,7 @@ func (o TransferJobTransferSpecTransferOptionsMetadataOptionsPtrOutput) Symlink(
 	}).(pulumi.StringPtrOutput)
 }
 
-// SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets
+// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
 func (o TransferJobTransferSpecTransferOptionsMetadataOptionsPtrOutput) TemporaryHold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptionsMetadataOptions) *string {
 		if v == nil {
@@ -22438,6 +22594,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecPosixDataSinkPtrInput)(nil)).Elem(), TransferJobTransferSpecPosixDataSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecPosixDataSourceInput)(nil)).Elem(), TransferJobTransferSpecPosixDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecPosixDataSourcePtrInput)(nil)).Elem(), TransferJobTransferSpecPosixDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecTransferManifestInput)(nil)).Elem(), TransferJobTransferSpecTransferManifestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecTransferManifestPtrInput)(nil)).Elem(), TransferJobTransferSpecTransferManifestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecTransferOptionsInput)(nil)).Elem(), TransferJobTransferSpecTransferOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecTransferOptionsPtrInput)(nil)).Elem(), TransferJobTransferSpecTransferOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecTransferOptionsMetadataOptionsInput)(nil)).Elem(), TransferJobTransferSpecTransferOptionsMetadataOptionsArgs{})
@@ -22746,6 +22904,8 @@ func init() {
 	pulumi.RegisterOutputType(TransferJobTransferSpecPosixDataSinkPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecPosixDataSourceOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecPosixDataSourcePtrOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecTransferManifestOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecTransferManifestPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecTransferOptionsOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecTransferOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecTransferOptionsMetadataOptionsOutput{})

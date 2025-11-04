@@ -25,6 +25,7 @@ __all__ = [
     'IndexField',
     'IndexFieldVectorConfig',
     'IndexFieldVectorConfigFlat',
+    'UserCredsResourceIdentity',
 ]
 
 @pulumi.output_type
@@ -378,5 +379,28 @@ class IndexFieldVectorConfig(dict):
 class IndexFieldVectorConfigFlat(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class UserCredsResourceIdentity(dict):
+    def __init__(__self__, *,
+                 principal: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str principal: (Output)
+               The principal identifier string.
+               See https://cloud.google.com/iam/docs/principal-identifiers.
+        """
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The principal identifier string.
+        See https://cloud.google.com/iam/docs/principal-identifiers.
+        """
+        return pulumi.get(self, "principal")
 
 

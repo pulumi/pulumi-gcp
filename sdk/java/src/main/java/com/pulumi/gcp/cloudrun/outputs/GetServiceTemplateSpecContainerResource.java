@@ -13,8 +13,12 @@ import java.util.Objects;
 public final class GetServiceTemplateSpecContainerResource {
     /**
      * @return Limits describes the maximum amount of compute resources allowed.
-     * The values of the map is string form of the &#39;quantity&#39; k8s type:
-     * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+     * CPU Limit details:
+     * - For fractional CPU values (e.g. &#39;0.5&#39;, &#39;0.75&#39;, min &#39;0.08&#39;) are also supported.
+     * - CPU allocation must comply with memory limits and concurrency rules described in:
+     *   https://cloud.google.com/run/docs/configuring/services/cpu
+     *   The values of the map is string form of the &#39;quantity&#39; k8s type:
+     *   https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
      * 
      */
     private Map<String,String> limits;
@@ -31,8 +35,12 @@ public final class GetServiceTemplateSpecContainerResource {
     private GetServiceTemplateSpecContainerResource() {}
     /**
      * @return Limits describes the maximum amount of compute resources allowed.
-     * The values of the map is string form of the &#39;quantity&#39; k8s type:
-     * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+     * CPU Limit details:
+     * - For fractional CPU values (e.g. &#39;0.5&#39;, &#39;0.75&#39;, min &#39;0.08&#39;) are also supported.
+     * - CPU allocation must comply with memory limits and concurrency rules described in:
+     *   https://cloud.google.com/run/docs/configuring/services/cpu
+     *   The values of the map is string form of the &#39;quantity&#39; k8s type:
+     *   https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
      * 
      */
     public Map<String,String> limits() {

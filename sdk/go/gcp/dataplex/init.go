@@ -55,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EntryGroupIamMember{}
 	case "gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy":
 		r = &EntryGroupIamPolicy{}
+	case "gcp:dataplex/entryLink:EntryLink":
+		r = &EntryLink{}
 	case "gcp:dataplex/entryType:EntryType":
 		r = &EntryType{}
 	case "gcp:dataplex/entryTypeIamBinding:EntryTypeIamBinding":
@@ -195,6 +197,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataplex/entryGroupIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/entryLink",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

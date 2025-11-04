@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
 import com.pulumi.gcp.compute.inputs.RouterMd5AuthenticationKeysArgs;
 import com.pulumi.gcp.compute.inputs.RouterParamsArgs;
@@ -112,18 +111,33 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A URI of an NCC Gateway spoke
+     * 
+     */
+    @Import(name="nccGateway")
+    private @Nullable Output<String> nccGateway;
+
+    /**
+     * @return A URI of an NCC Gateway spoke
+     * 
+     */
+    public Optional<Output<String>> nccGateway() {
+        return Optional.ofNullable(this.nccGateway);
+    }
+
+    /**
      * A reference to the network to which this router belongs.
      * 
      */
-    @Import(name="network", required=true)
-    private Output<String> network;
+    @Import(name="network")
+    private @Nullable Output<String> network;
 
     /**
      * @return A reference to the network to which this router belongs.
      * 
      */
-    public Output<String> network() {
-        return this.network;
+    public Optional<Output<String>> network() {
+        return Optional.ofNullable(this.network);
     }
 
     /**
@@ -183,6 +197,7 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
         this.encryptedInterconnectRouter = $.encryptedInterconnectRouter;
         this.md5AuthenticationKeys = $.md5AuthenticationKeys;
         this.name = $.name;
+        this.nccGateway = $.nccGateway;
         this.network = $.network;
         this.params = $.params;
         this.project = $.project;
@@ -329,12 +344,33 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param nccGateway A URI of an NCC Gateway spoke
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nccGateway(@Nullable Output<String> nccGateway) {
+            $.nccGateway = nccGateway;
+            return this;
+        }
+
+        /**
+         * @param nccGateway A URI of an NCC Gateway spoke
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nccGateway(String nccGateway) {
+            return nccGateway(Output.of(nccGateway));
+        }
+
+        /**
          * @param network A reference to the network to which this router belongs.
          * 
          * @return builder
          * 
          */
-        public Builder network(Output<String> network) {
+        public Builder network(@Nullable Output<String> network) {
             $.network = network;
             return this;
         }
@@ -417,9 +453,6 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouterArgs build() {
-            if ($.network == null) {
-                throw new MissingRequiredPropertyException("RouterArgs", "network");
-            }
             return $;
         }
     }

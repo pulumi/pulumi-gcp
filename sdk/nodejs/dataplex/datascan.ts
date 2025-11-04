@@ -243,7 +243,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
- *     name: "tf-test-bucket-name-_91042",
+ *     name: "tf-test-bucket-name-_72490",
  *     location: "us-west1",
  *     uniformBucketLevelAccess: true,
  * });
@@ -269,14 +269,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
- *     name: "tf-test-bucket-name-_72490",
+ *     name: "tf-test-bucket-name-_89605",
  *     location: "us-west1",
  *     uniformBucketLevelAccess: true,
  * });
  * const tfTestConnection = new gcp.bigquery.Connection("tf_test_connection", {
- *     connectionId: "tf-test-connection-_89605",
+ *     connectionId: "tf-test-connection-_56730",
  *     location: "us-central1",
- *     friendlyName: "tf-test-connection-_56730",
+ *     friendlyName: "tf-test-connection-_95154",
  *     description: "a bigquery connection for tf test",
  *     cloudResource: {},
  * });

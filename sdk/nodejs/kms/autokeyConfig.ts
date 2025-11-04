@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [keyProject],
  * });
  * // Wait delay after enabling APIs
- * const waitEnableServiceApi = new time.index.Sleep("wait_enable_service_api", {createDuration: "30s"}, {
+ * const waitEnableServiceApi = new time.Sleep("wait_enable_service_api", {createDuration: "30s"}, {
  *     dependsOn: [kmsApiService],
  * });
  * //Create KMS Service Agent
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [waitEnableServiceApi],
  * });
  * // Wait delay after creating service agent.
- * const waitServiceAgent = new time.index.Sleep("wait_service_agent", {createDuration: "10s"}, {
+ * const waitServiceAgent = new time.Sleep("wait_service_agent", {createDuration: "10s"}, {
  *     dependsOn: [kmsServiceAgent],
  * });
  * //Grant the KMS Service Agent the Cloud KMS Admin role
@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [waitServiceAgent],
  * });
  * // Wait delay after granting IAM permissions
- * const waitSrvAccPermissions = new time.index.Sleep("wait_srv_acc_permissions", {createDuration: "10s"}, {
+ * const waitSrvAccPermissions = new time.Sleep("wait_srv_acc_permissions", {createDuration: "10s"}, {
  *     dependsOn: [autokeyProjectAdmin],
  * });
  * const example_autokeyconfig = new gcp.kms.AutokeyConfig("example-autokeyconfig", {
@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * });
  * // Wait delay after setting AutokeyConfig, to prevent diffs on reapply,
  * // because setting the config takes a little to fully propagate.
- * const waitAutokeyPropagation = new time.index.Sleep("wait_autokey_propagation", {createDuration: "30s"}, {
+ * const waitAutokeyPropagation = new time.Sleep("wait_autokey_propagation", {createDuration: "30s"}, {
  *     dependsOn: [example_autokeyconfig],
  * });
  * ```

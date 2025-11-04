@@ -157,6 +157,55 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Network Security Security Profile Group Url Filtering
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var securityProfile = new Gcp.NetworkSecurity.SecurityProfile("security_profile", new()
+    ///     {
+    ///         Name = "sec-profile",
+    ///         Location = "global",
+    ///         Type = "URL_FILTERING",
+    ///         UrlFilteringProfile = new Gcp.NetworkSecurity.Inputs.SecurityProfileUrlFilteringProfileArgs
+    ///         {
+    ///             UrlFilters = new[]
+    ///             {
+    ///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileUrlFilteringProfileUrlFilterArgs
+    ///                 {
+    ///                     Priority = 1,
+    ///                     FilteringAction = "ALLOW",
+    ///                     Urls = new[]
+    ///                     {
+    ///                         "*example.com",
+    ///                         "*about.example.com",
+    ///                         "*help.example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "organizations/123456789",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkSecurity.SecurityProfileGroup("default", new()
+    ///     {
+    ///         Name = "sec-profile-group",
+    ///         Parent = "organizations/123456789",
+    ///         Description = "my description",
+    ///         UrlFilteringProfile = securityProfile.Id,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -258,6 +307,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+        /// </summary>
+        [Output("urlFilteringProfile")]
+        public Output<string?> UrlFilteringProfile { get; private set; } = null!;
 
 
         /// <summary>
@@ -368,6 +423,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("threatPreventionProfile")]
         public Input<string>? ThreatPreventionProfile { get; set; }
+
+        /// <summary>
+        /// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+        /// </summary>
+        [Input("urlFilteringProfile")]
+        public Input<string>? UrlFilteringProfile { get; set; }
 
         public SecurityProfileGroupArgs()
         {
@@ -488,6 +549,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+        /// </summary>
+        [Input("urlFilteringProfile")]
+        public Input<string>? UrlFilteringProfile { get; set; }
 
         public SecurityProfileGroupState()
         {

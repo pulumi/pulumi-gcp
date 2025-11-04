@@ -27,8 +27,8 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			destroyWait5000Seconds, err := time.NewSleep(ctx, "destroy_wait_5000_seconds", &time.SleepArgs{
-//				DestroyDuration: "5000s",
+//				DestroyDuration: pulumi.String("5000s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				bucket,
 //			}))

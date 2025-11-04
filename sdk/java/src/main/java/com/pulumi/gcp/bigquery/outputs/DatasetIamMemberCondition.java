@@ -13,16 +13,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DatasetIamMemberCondition {
     private @Nullable String description;
+    /**
+     * @return Textual representation of an expression in Common Expression Language syntax.
+     * 
+     */
     private String expression;
+    /**
+     * @return A title for the expression, i.e. a short string describing its purpose.
+     * 
+     */
     private String title;
 
     private DatasetIamMemberCondition() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Textual representation of an expression in Common Expression Language syntax.
+     * 
+     */
     public String expression() {
         return this.expression;
     }
+    /**
+     * @return A title for the expression, i.e. a short string describing its purpose.
+     * 
+     */
     public String title() {
         return this.title;
     }

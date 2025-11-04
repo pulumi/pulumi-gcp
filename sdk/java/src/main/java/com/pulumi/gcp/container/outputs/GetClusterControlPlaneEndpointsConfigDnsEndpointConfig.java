@@ -17,6 +17,16 @@ public final class GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
      */
     private Boolean allowExternalTraffic;
     /**
+     * @return Controls whether the k8s certs auth is allowed via dns.
+     * 
+     */
+    private Boolean enableK8sCertsViaDns;
+    /**
+     * @return Controls whether the k8s token auth is allowed via dns.
+     * 
+     */
+    private Boolean enableK8sTokensViaDns;
+    /**
      * @return The cluster&#39;s DNS endpoint.
      * 
      */
@@ -29,6 +39,20 @@ public final class GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
      */
     public Boolean allowExternalTraffic() {
         return this.allowExternalTraffic;
+    }
+    /**
+     * @return Controls whether the k8s certs auth is allowed via dns.
+     * 
+     */
+    public Boolean enableK8sCertsViaDns() {
+        return this.enableK8sCertsViaDns;
+    }
+    /**
+     * @return Controls whether the k8s token auth is allowed via dns.
+     * 
+     */
+    public Boolean enableK8sTokensViaDns() {
+        return this.enableK8sTokensViaDns;
     }
     /**
      * @return The cluster&#39;s DNS endpoint.
@@ -48,11 +72,15 @@ public final class GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean allowExternalTraffic;
+        private Boolean enableK8sCertsViaDns;
+        private Boolean enableK8sTokensViaDns;
         private String endpoint;
         public Builder() {}
         public Builder(GetClusterControlPlaneEndpointsConfigDnsEndpointConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowExternalTraffic = defaults.allowExternalTraffic;
+    	      this.enableK8sCertsViaDns = defaults.enableK8sCertsViaDns;
+    	      this.enableK8sTokensViaDns = defaults.enableK8sTokensViaDns;
     	      this.endpoint = defaults.endpoint;
         }
 
@@ -62,6 +90,22 @@ public final class GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
               throw new MissingRequiredPropertyException("GetClusterControlPlaneEndpointsConfigDnsEndpointConfig", "allowExternalTraffic");
             }
             this.allowExternalTraffic = allowExternalTraffic;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableK8sCertsViaDns(Boolean enableK8sCertsViaDns) {
+            if (enableK8sCertsViaDns == null) {
+              throw new MissingRequiredPropertyException("GetClusterControlPlaneEndpointsConfigDnsEndpointConfig", "enableK8sCertsViaDns");
+            }
+            this.enableK8sCertsViaDns = enableK8sCertsViaDns;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableK8sTokensViaDns(Boolean enableK8sTokensViaDns) {
+            if (enableK8sTokensViaDns == null) {
+              throw new MissingRequiredPropertyException("GetClusterControlPlaneEndpointsConfigDnsEndpointConfig", "enableK8sTokensViaDns");
+            }
+            this.enableK8sTokensViaDns = enableK8sTokensViaDns;
             return this;
         }
         @CustomType.Setter
@@ -75,6 +119,8 @@ public final class GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
         public GetClusterControlPlaneEndpointsConfigDnsEndpointConfig build() {
             final var _resultValue = new GetClusterControlPlaneEndpointsConfigDnsEndpointConfig();
             _resultValue.allowExternalTraffic = allowExternalTraffic;
+            _resultValue.enableK8sCertsViaDns = enableK8sCertsViaDns;
+            _resultValue.enableK8sTokensViaDns = enableK8sTokensViaDns;
             _resultValue.endpoint = endpoint;
             return _resultValue;
         }

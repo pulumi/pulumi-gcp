@@ -409,6 +409,9 @@ public final class Config {
     public Optional<String> networkConnectivityCustomEndpoint() {
         return Codegen.stringProp("networkConnectivityCustomEndpoint").config(config).get();
     }
+    public Optional<String> networkConnectivityv1CustomEndpoint() {
+        return Codegen.stringProp("networkConnectivityv1CustomEndpoint").config(config).get();
+    }
     public Optional<String> networkManagementCustomEndpoint() {
         return Codegen.stringProp("networkManagementCustomEndpoint").config(config).get();
     }
@@ -420,6 +423,9 @@ public final class Config {
     }
     public Optional<String> notebooksCustomEndpoint() {
         return Codegen.stringProp("notebooksCustomEndpoint").config(config).get();
+    }
+    public Optional<String> observabilityCustomEndpoint() {
+        return Codegen.stringProp("observabilityCustomEndpoint").config(config).get();
     }
     public Optional<String> oracleDatabaseCustomEndpoint() {
         return Codegen.stringProp("oracleDatabaseCustomEndpoint").config(config).get();

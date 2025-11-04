@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firestore.Database;
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(project))
+ *                 .dependsOn(project)
  *                 .build());
  * 
  *         var firestore = new Service("firestore", ServiceArgs.builder()
@@ -120,8 +120,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.sleepArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firestore.Database;
@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(project))
+ *                 .dependsOn(project)
  *                 .build());
  * 
  *         var firestore = new Service("firestore", ServiceArgs.builder()

@@ -111,17 +111,25 @@ class NetworkArgs:
 @pulumi.input_type
 class _NetworkState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 etag: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArgs']]]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+        :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] description: User-provided description for this VMware Engine network.
+        :param pulumi.Input[_builtins.str] etag: Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+               The server computes checksums based on the value of other fields in the request.
         :param pulumi.Input[_builtins.str] location: The location where the VMwareEngineNetwork should reside.
         :param pulumi.Input[_builtins.str] name: The ID of the VMwareEngineNetwork.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -130,12 +138,19 @@ class _NetworkState:
         :param pulumi.Input[_builtins.str] type: VMware Engine network type.
                Possible values are: `LEGACY`, `STANDARD`.
         :param pulumi.Input[_builtins.str] uid: System-generated unique identifier for the resource.
+        :param pulumi.Input[_builtins.str] update_time: Last update time of this resource.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArgs']]] vpc_networks: VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
                the internet, and other Google Cloud services.
                Structure is documented below.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -148,8 +163,24 @@ class _NetworkState:
             pulumi.set(__self__, "type", type)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
         if vpc_networks is not None:
             pulumi.set(__self__, "vpc_networks", vpc_networks)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Creation time of this resource.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -162,6 +193,19 @@ class _NetworkState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+        The server computes checksums based on the value of other fields in the request.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
@@ -238,6 +282,20 @@ class _NetworkState:
         pulumi.set(self, "uid", value)
 
     @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Last update time of this resource.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcNetworks")
     def vpc_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArgs']]]]:
         """
@@ -290,7 +348,7 @@ class Network(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         # there can be only 1 Legacy network per region for a given project,
         # so creating new project for isolation in CI.
@@ -300,7 +358,7 @@ class Network(pulumi.CustomResource):
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[acceptance_project]))
         acceptance = gcp.projects.Service("acceptance",
             project=acceptance_project.project_id,
@@ -380,7 +438,7 @@ class Network(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
+        import pulumiverse_time as time
 
         # there can be only 1 Legacy network per region for a given project,
         # so creating new project for isolation in CI.
@@ -390,7 +448,7 @@ class Network(pulumi.CustomResource):
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
         opts = pulumi.ResourceOptions(depends_on=[acceptance_project]))
         acceptance = gcp.projects.Service("acceptance",
             project=acceptance_project.project_id,
@@ -466,8 +524,11 @@ class Network(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["etag"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
+            __props__.__dict__["update_time"] = None
             __props__.__dict__["vpc_networks"] = None
         super(Network, __self__).__init__(
             'gcp:vmwareengine/network:Network',
@@ -479,13 +540,16 @@ class Network(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            etag: Optional[pulumi.Input[_builtins.str]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
+            update_time: Optional[pulumi.Input[_builtins.str]] = None,
             vpc_networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkVpcNetworkArgs', 'NetworkVpcNetworkArgsDict']]]]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
@@ -494,7 +558,12 @@ class Network(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] description: User-provided description for this VMware Engine network.
+        :param pulumi.Input[_builtins.str] etag: Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+               The server computes checksums based on the value of other fields in the request.
         :param pulumi.Input[_builtins.str] location: The location where the VMwareEngineNetwork should reside.
         :param pulumi.Input[_builtins.str] name: The ID of the VMwareEngineNetwork.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -503,6 +572,9 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] type: VMware Engine network type.
                Possible values are: `LEGACY`, `STANDARD`.
         :param pulumi.Input[_builtins.str] uid: System-generated unique identifier for the resource.
+        :param pulumi.Input[_builtins.str] update_time: Last update time of this resource.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkVpcNetworkArgs', 'NetworkVpcNetworkArgsDict']]]] vpc_networks: VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
                the internet, and other Google Cloud services.
                Structure is documented below.
@@ -511,15 +583,28 @@ class Network(pulumi.CustomResource):
 
         __props__ = _NetworkState.__new__(_NetworkState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["etag"] = etag
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
         __props__.__dict__["type"] = type
         __props__.__dict__["uid"] = uid
+        __props__.__dict__["update_time"] = update_time
         __props__.__dict__["vpc_networks"] = vpc_networks
         return Network(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        Creation time of this resource.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
@@ -528,6 +613,15 @@ class Network(pulumi.CustomResource):
         User-provided description for this VMware Engine network.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[_builtins.str]:
+        """
+        Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
+        The server computes checksums based on the value of other fields in the request.
+        """
+        return pulumi.get(self, "etag")
 
     @_builtins.property
     @pulumi.getter
@@ -578,6 +672,16 @@ class Network(pulumi.CustomResource):
         System-generated unique identifier for the resource.
         """
         return pulumi.get(self, "uid")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        Last update time of this resource.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "update_time")
 
     @_builtins.property
     @pulumi.getter(name="vpcNetworks")

@@ -29,6 +29,7 @@ public final class GetInstanceResult {
     private String createTime;
     private String currentLocationId;
     private String customerManagedKey;
+    private Boolean deletionProtection;
     private String displayName;
     private Map<String,String> effectiveLabels;
     private String effectiveReservedIpRange;
@@ -88,6 +89,9 @@ public final class GetInstanceResult {
     }
     public String customerManagedKey() {
         return this.customerManagedKey;
+    }
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
     }
     public String displayName() {
         return this.displayName;
@@ -201,6 +205,7 @@ public final class GetInstanceResult {
         private String createTime;
         private String currentLocationId;
         private String customerManagedKey;
+        private Boolean deletionProtection;
         private String displayName;
         private Map<String,String> effectiveLabels;
         private String effectiveReservedIpRange;
@@ -242,6 +247,7 @@ public final class GetInstanceResult {
     	      this.createTime = defaults.createTime;
     	      this.currentLocationId = defaults.currentLocationId;
     	      this.customerManagedKey = defaults.customerManagedKey;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.effectiveReservedIpRange = defaults.effectiveReservedIpRange;
@@ -336,6 +342,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "customerManagedKey");
             }
             this.customerManagedKey = customerManagedKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
@@ -599,6 +613,7 @@ public final class GetInstanceResult {
             _resultValue.createTime = createTime;
             _resultValue.currentLocationId = currentLocationId;
             _resultValue.customerManagedKey = customerManagedKey;
+            _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.effectiveReservedIpRange = effectiveReservedIpRange;

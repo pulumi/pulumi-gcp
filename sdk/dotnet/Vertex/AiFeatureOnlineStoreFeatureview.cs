@@ -250,7 +250,7 @@ namespace Pulumi.Gcp.Vertex
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -258,14 +258,14 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "tf-test_20665",
-    ///         Name = "tf-test_85160",
+    ///         ProjectId = "tf-test_9329",
+    ///         Name = "tf-test_37135",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
-    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
+    ///     var wait60Seconds = new Time.Sleep("wait_60_seconds", new()
     ///     {
     ///         CreateDuration = "60s",
     ///     }, new CustomResourceOptions
@@ -336,7 +336,7 @@ namespace Pulumi.Gcp.Vertex
     ///         },
     ///     });
     /// 
-    ///     var wait30Seconds = new Time.Index.Sleep("wait_30_seconds", new()
+    ///     var wait30Seconds = new Time.Sleep("wait_30_seconds", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions

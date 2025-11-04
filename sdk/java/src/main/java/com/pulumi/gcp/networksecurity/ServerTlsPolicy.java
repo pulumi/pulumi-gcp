@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * To get more information about ServerTlsPolicy, see:
  * 
  * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.serverTlsPolicies)
+ * * How-to Guides
+ *     * [Use ServerTlsPolicy](https://cloud.google.com/load-balancing/docs/mtls)
  * 
  * ## Example Usage
  * 

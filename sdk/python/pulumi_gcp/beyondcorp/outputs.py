@@ -26,11 +26,26 @@ __all__ = [
     'SecurityGatewayApplicationIamMemberCondition',
     'SecurityGatewayApplicationUpstream',
     'SecurityGatewayApplicationUpstreamEgressPolicy',
+    'SecurityGatewayApplicationUpstreamExternal',
+    'SecurityGatewayApplicationUpstreamExternalEndpoint',
     'SecurityGatewayApplicationUpstreamNetwork',
+    'SecurityGatewayApplicationUpstreamProxyProtocol',
+    'SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders',
+    'SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo',
+    'SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo',
+    'SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo',
     'SecurityGatewayHub',
     'SecurityGatewayHubInternetGateway',
     'SecurityGatewayIamBindingCondition',
     'SecurityGatewayIamMemberCondition',
+    'SecurityGatewayProxyProtocolConfig',
+    'SecurityGatewayProxyProtocolConfigContextualHeaders',
+    'SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo',
+    'SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo',
+    'SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo',
+    'SecurityGatewayServiceDiscovery',
+    'SecurityGatewayServiceDiscoveryApiGateway',
+    'SecurityGatewayServiceDiscoveryApiGatewayResourceOverride',
     'GetAppConnectionApplicationEndpointResult',
     'GetAppConnectionGatewayResult',
     'GetAppConnectorPrincipalInfoResult',
@@ -38,6 +53,14 @@ __all__ = [
     'GetAppGatewayAllocatedConnectionResult',
     'GetSecurityGatewayHubResult',
     'GetSecurityGatewayHubInternetGatewayResult',
+    'GetSecurityGatewayProxyProtocolConfigResult',
+    'GetSecurityGatewayProxyProtocolConfigContextualHeaderResult',
+    'GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoResult',
+    'GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoResult',
+    'GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoResult',
+    'GetSecurityGatewayServiceDiscoveryResult',
+    'GetSecurityGatewayServiceDiscoveryApiGatewayResult',
+    'GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideResult',
 ]
 
 @pulumi.output_type
@@ -259,14 +282,13 @@ class AppGatewayAllocatedConnection(dict):
 class SecurityGatewayApplicationEndpointMatcher(dict):
     def __init__(__self__, *,
                  hostname: _builtins.str,
-                 ports: Optional[Sequence[_builtins.int]] = None):
+                 ports: Sequence[_builtins.int]):
         """
         :param _builtins.str hostname: Required. Hostname of the application.
         :param Sequence[_builtins.int] ports: Optional. Ports of the application.
         """
         pulumi.set(__self__, "hostname", hostname)
-        if ports is not None:
-            pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "ports", ports)
 
     @_builtins.property
     @pulumi.getter
@@ -278,7 +300,7 @@ class SecurityGatewayApplicationEndpointMatcher(dict):
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[Sequence[_builtins.int]]:
+    def ports(self) -> Sequence[_builtins.int]:
         """
         Optional. Ports of the application.
         """
@@ -366,6 +388,8 @@ class SecurityGatewayApplicationUpstream(dict):
         suggest = None
         if key == "egressPolicy":
             suggest = "egress_policy"
+        elif key == "proxyProtocol":
+            suggest = "proxy_protocol"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayApplicationUpstream. Access the value via the '{suggest}' property getter instead.")
@@ -380,17 +404,27 @@ class SecurityGatewayApplicationUpstream(dict):
 
     def __init__(__self__, *,
                  egress_policy: Optional['outputs.SecurityGatewayApplicationUpstreamEgressPolicy'] = None,
-                 network: Optional['outputs.SecurityGatewayApplicationUpstreamNetwork'] = None):
+                 external: Optional['outputs.SecurityGatewayApplicationUpstreamExternal'] = None,
+                 network: Optional['outputs.SecurityGatewayApplicationUpstreamNetwork'] = None,
+                 proxy_protocol: Optional['outputs.SecurityGatewayApplicationUpstreamProxyProtocol'] = None):
         """
         :param 'SecurityGatewayApplicationUpstreamEgressPolicyArgs' egress_policy: Optional. Routing policy information.
                Structure is documented below.
+        :param 'SecurityGatewayApplicationUpstreamExternalArgs' external: List of the external endpoints to forward traffic to.
+               Structure is documented below.
         :param 'SecurityGatewayApplicationUpstreamNetworkArgs' network: Network to forward traffic to.
+               Structure is documented below.
+        :param 'SecurityGatewayApplicationUpstreamProxyProtocolArgs' proxy_protocol: Shared proxy configuration for all apps.
                Structure is documented below.
         """
         if egress_policy is not None:
             pulumi.set(__self__, "egress_policy", egress_policy)
+        if external is not None:
+            pulumi.set(__self__, "external", external)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if proxy_protocol is not None:
+            pulumi.set(__self__, "proxy_protocol", proxy_protocol)
 
     @_builtins.property
     @pulumi.getter(name="egressPolicy")
@@ -403,12 +437,30 @@ class SecurityGatewayApplicationUpstream(dict):
 
     @_builtins.property
     @pulumi.getter
+    def external(self) -> Optional['outputs.SecurityGatewayApplicationUpstreamExternal']:
+        """
+        List of the external endpoints to forward traffic to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "external")
+
+    @_builtins.property
+    @pulumi.getter
     def network(self) -> Optional['outputs.SecurityGatewayApplicationUpstreamNetwork']:
         """
         Network to forward traffic to.
         Structure is documented below.
         """
         return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyProtocol")
+    def proxy_protocol(self) -> Optional['outputs.SecurityGatewayApplicationUpstreamProxyProtocol']:
+        """
+        Shared proxy configuration for all apps.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proxy_protocol")
 
 
 @pulumi.output_type
@@ -430,6 +482,55 @@ class SecurityGatewayApplicationUpstreamEgressPolicy(dict):
 
 
 @pulumi.output_type
+class SecurityGatewayApplicationUpstreamExternal(dict):
+    def __init__(__self__, *,
+                 endpoints: Sequence['outputs.SecurityGatewayApplicationUpstreamExternalEndpoint']):
+        """
+        :param Sequence['SecurityGatewayApplicationUpstreamExternalEndpointArgs'] endpoints: List of the endpoints to forward traffic to.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "endpoints", endpoints)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoints(self) -> Sequence['outputs.SecurityGatewayApplicationUpstreamExternalEndpoint']:
+        """
+        List of the endpoints to forward traffic to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "endpoints")
+
+
+@pulumi.output_type
+class SecurityGatewayApplicationUpstreamExternalEndpoint(dict):
+    def __init__(__self__, *,
+                 hostname: _builtins.str,
+                 port: _builtins.int):
+        """
+        :param _builtins.str hostname: Hostname of the endpoint.
+        :param _builtins.int port: Port of the endpoint.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> _builtins.str:
+        """
+        Hostname of the endpoint.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Port of the endpoint.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
 class SecurityGatewayApplicationUpstreamNetwork(dict):
     def __init__(__self__, *,
                  name: _builtins.str):
@@ -447,6 +548,310 @@ class SecurityGatewayApplicationUpstreamNetwork(dict):
         `projects/{project}/global/networks/{network}`
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class SecurityGatewayApplicationUpstreamProxyProtocol(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedClientHeaders":
+            suggest = "allowed_client_headers"
+        elif key == "clientIp":
+            suggest = "client_ip"
+        elif key == "contextualHeaders":
+            suggest = "contextual_headers"
+        elif key == "gatewayIdentity":
+            suggest = "gateway_identity"
+        elif key == "metadataHeaders":
+            suggest = "metadata_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayApplicationUpstreamProxyProtocol. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayApplicationUpstreamProxyProtocol.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayApplicationUpstreamProxyProtocol.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_client_headers: Optional[Sequence[_builtins.str]] = None,
+                 client_ip: Optional[_builtins.bool] = None,
+                 contextual_headers: Optional['outputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders'] = None,
+                 gateway_identity: Optional[_builtins.str] = None,
+                 metadata_headers: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] allowed_client_headers: The configuration for the proxy.
+        :param _builtins.bool client_ip: Client IP configuration. The client IP address is included if true.
+        :param 'SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs' contextual_headers: Configuration for the contextual headers.
+               Structure is documented below.
+        :param _builtins.str gateway_identity: Gateway identity configuration.
+               Possible values are: `RESOURCE_NAME`.
+        :param Mapping[str, _builtins.str] metadata_headers: Custom resource specific headers along with the values.
+               The names should conform to RFC 9110:
+               > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+               and ".", and SHOULD begin with a letter.
+               > Field values SHOULD contain only ASCII printable characters and tab.
+        """
+        if allowed_client_headers is not None:
+            pulumi.set(__self__, "allowed_client_headers", allowed_client_headers)
+        if client_ip is not None:
+            pulumi.set(__self__, "client_ip", client_ip)
+        if contextual_headers is not None:
+            pulumi.set(__self__, "contextual_headers", contextual_headers)
+        if gateway_identity is not None:
+            pulumi.set(__self__, "gateway_identity", gateway_identity)
+        if metadata_headers is not None:
+            pulumi.set(__self__, "metadata_headers", metadata_headers)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedClientHeaders")
+    def allowed_client_headers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The configuration for the proxy.
+        """
+        return pulumi.get(self, "allowed_client_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="clientIp")
+    def client_ip(self) -> Optional[_builtins.bool]:
+        """
+        Client IP configuration. The client IP address is included if true.
+        """
+        return pulumi.get(self, "client_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="contextualHeaders")
+    def contextual_headers(self) -> Optional['outputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders']:
+        """
+        Configuration for the contextual headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "contextual_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayIdentity")
+    def gateway_identity(self) -> Optional[_builtins.str]:
+        """
+        Gateway identity configuration.
+        Possible values are: `RESOURCE_NAME`.
+        """
+        return pulumi.get(self, "gateway_identity")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataHeaders")
+    def metadata_headers(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Custom resource specific headers along with the values.
+        The names should conform to RFC 9110:
+        > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+        and ".", and SHOULD begin with a letter.
+        > Field values SHOULD contain only ASCII printable characters and tab.
+        """
+        return pulumi.get(self, "metadata_headers")
+
+
+@pulumi.output_type
+class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deviceInfo":
+            suggest = "device_info"
+        elif key == "groupInfo":
+            suggest = "group_info"
+        elif key == "outputType":
+            suggest = "output_type"
+        elif key == "userInfo":
+            suggest = "user_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 device_info: Optional['outputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo'] = None,
+                 group_info: Optional['outputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo'] = None,
+                 output_type: Optional[_builtins.str] = None,
+                 user_info: Optional['outputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo'] = None):
+        """
+        :param 'SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs' device_info: Device info configuration.
+               Structure is documented below.
+        :param 'SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs' group_info: Group info configuration.
+               Structure is documented below.
+        :param _builtins.str output_type: Default output type for all enabled headers.
+               Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        :param 'SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs' user_info: User info configuration.
+               Structure is documented below.
+        """
+        if device_info is not None:
+            pulumi.set(__self__, "device_info", device_info)
+        if group_info is not None:
+            pulumi.set(__self__, "group_info", group_info)
+        if output_type is not None:
+            pulumi.set(__self__, "output_type", output_type)
+        if user_info is not None:
+            pulumi.set(__self__, "user_info", user_info)
+
+    @_builtins.property
+    @pulumi.getter(name="deviceInfo")
+    def device_info(self) -> Optional['outputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo']:
+        """
+        Device info configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "device_info")
+
+    @_builtins.property
+    @pulumi.getter(name="groupInfo")
+    def group_info(self) -> Optional['outputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo']:
+        """
+        Group info configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "group_info")
+
+    @_builtins.property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> Optional[_builtins.str]:
+        """
+        Default output type for all enabled headers.
+        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        return pulumi.get(self, "output_type")
+
+    @_builtins.property
+    @pulumi.getter(name="userInfo")
+    def user_info(self) -> Optional['outputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo']:
+        """
+        User info configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_info")
+
+
+@pulumi.output_type
+class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputType":
+            suggest = "output_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 output_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str output_type: The output type of the delegated device info.
+               Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        if output_type is not None:
+            pulumi.set(__self__, "output_type", output_type)
+
+    @_builtins.property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> Optional[_builtins.str]:
+        """
+        The output type of the delegated device info.
+        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        return pulumi.get(self, "output_type")
+
+
+@pulumi.output_type
+class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputType":
+            suggest = "output_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 output_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str output_type: The output type of the delegated group info.
+               Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        if output_type is not None:
+            pulumi.set(__self__, "output_type", output_type)
+
+    @_builtins.property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> Optional[_builtins.str]:
+        """
+        The output type of the delegated group info.
+        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        return pulumi.get(self, "output_type")
+
+
+@pulumi.output_type
+class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputType":
+            suggest = "output_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 output_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str output_type: The output type of the delegated user info.
+               Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        if output_type is not None:
+            pulumi.set(__self__, "output_type", output_type)
+
+    @_builtins.property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> Optional[_builtins.str]:
+        """
+        The output type of the delegated user info.
+        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        return pulumi.get(self, "output_type")
 
 
 @pulumi.output_type
@@ -608,6 +1013,405 @@ class SecurityGatewayIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class SecurityGatewayProxyProtocolConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedClientHeaders":
+            suggest = "allowed_client_headers"
+        elif key == "clientIp":
+            suggest = "client_ip"
+        elif key == "contextualHeaders":
+            suggest = "contextual_headers"
+        elif key == "gatewayIdentity":
+            suggest = "gateway_identity"
+        elif key == "metadataHeaders":
+            suggest = "metadata_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayProxyProtocolConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayProxyProtocolConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayProxyProtocolConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_client_headers: Optional[Sequence[_builtins.str]] = None,
+                 client_ip: Optional[_builtins.bool] = None,
+                 contextual_headers: Optional['outputs.SecurityGatewayProxyProtocolConfigContextualHeaders'] = None,
+                 gateway_identity: Optional[_builtins.str] = None,
+                 metadata_headers: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] allowed_client_headers: The configuration for the proxy.
+        :param _builtins.bool client_ip: Client IP configuration. The client IP address is included if true.
+        :param 'SecurityGatewayProxyProtocolConfigContextualHeadersArgs' contextual_headers: Configuration for the contextual headers.
+               Structure is documented below.
+        :param _builtins.str gateway_identity: Gateway identity configuration.
+               Possible values are: `RESOURCE_NAME`.
+        :param Mapping[str, _builtins.str] metadata_headers: Custom resource specific headers along with the values.
+               The names should conform to RFC 9110:
+               > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+               and ".", and SHOULD begin with a letter.
+               > Field values SHOULD contain only ASCII printable characters and tab.
+        """
+        if allowed_client_headers is not None:
+            pulumi.set(__self__, "allowed_client_headers", allowed_client_headers)
+        if client_ip is not None:
+            pulumi.set(__self__, "client_ip", client_ip)
+        if contextual_headers is not None:
+            pulumi.set(__self__, "contextual_headers", contextual_headers)
+        if gateway_identity is not None:
+            pulumi.set(__self__, "gateway_identity", gateway_identity)
+        if metadata_headers is not None:
+            pulumi.set(__self__, "metadata_headers", metadata_headers)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedClientHeaders")
+    def allowed_client_headers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The configuration for the proxy.
+        """
+        return pulumi.get(self, "allowed_client_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="clientIp")
+    def client_ip(self) -> Optional[_builtins.bool]:
+        """
+        Client IP configuration. The client IP address is included if true.
+        """
+        return pulumi.get(self, "client_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="contextualHeaders")
+    def contextual_headers(self) -> Optional['outputs.SecurityGatewayProxyProtocolConfigContextualHeaders']:
+        """
+        Configuration for the contextual headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "contextual_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayIdentity")
+    def gateway_identity(self) -> Optional[_builtins.str]:
+        """
+        Gateway identity configuration.
+        Possible values are: `RESOURCE_NAME`.
+        """
+        return pulumi.get(self, "gateway_identity")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataHeaders")
+    def metadata_headers(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Custom resource specific headers along with the values.
+        The names should conform to RFC 9110:
+        > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+        and ".", and SHOULD begin with a letter.
+        > Field values SHOULD contain only ASCII printable characters and tab.
+        """
+        return pulumi.get(self, "metadata_headers")
+
+
+@pulumi.output_type
+class SecurityGatewayProxyProtocolConfigContextualHeaders(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deviceInfo":
+            suggest = "device_info"
+        elif key == "groupInfo":
+            suggest = "group_info"
+        elif key == "outputType":
+            suggest = "output_type"
+        elif key == "userInfo":
+            suggest = "user_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayProxyProtocolConfigContextualHeaders. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayProxyProtocolConfigContextualHeaders.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayProxyProtocolConfigContextualHeaders.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 device_info: Optional['outputs.SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo'] = None,
+                 group_info: Optional['outputs.SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo'] = None,
+                 output_type: Optional[_builtins.str] = None,
+                 user_info: Optional['outputs.SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo'] = None):
+        """
+        :param 'SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs' device_info: Device info configuration.
+               Structure is documented below.
+        :param 'SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs' group_info: Group info configuration.
+               Structure is documented below.
+        :param _builtins.str output_type: Default output type for all enabled headers.
+               Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        :param 'SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs' user_info: User info configuration.
+               Structure is documented below.
+        """
+        if device_info is not None:
+            pulumi.set(__self__, "device_info", device_info)
+        if group_info is not None:
+            pulumi.set(__self__, "group_info", group_info)
+        if output_type is not None:
+            pulumi.set(__self__, "output_type", output_type)
+        if user_info is not None:
+            pulumi.set(__self__, "user_info", user_info)
+
+    @_builtins.property
+    @pulumi.getter(name="deviceInfo")
+    def device_info(self) -> Optional['outputs.SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo']:
+        """
+        Device info configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "device_info")
+
+    @_builtins.property
+    @pulumi.getter(name="groupInfo")
+    def group_info(self) -> Optional['outputs.SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo']:
+        """
+        Group info configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "group_info")
+
+    @_builtins.property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> Optional[_builtins.str]:
+        """
+        Default output type for all enabled headers.
+        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        return pulumi.get(self, "output_type")
+
+    @_builtins.property
+    @pulumi.getter(name="userInfo")
+    def user_info(self) -> Optional['outputs.SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo']:
+        """
+        User info configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_info")
+
+
+@pulumi.output_type
+class SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputType":
+            suggest = "output_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 output_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str output_type: The output type of the delegated device info.
+               Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        if output_type is not None:
+            pulumi.set(__self__, "output_type", output_type)
+
+    @_builtins.property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> Optional[_builtins.str]:
+        """
+        The output type of the delegated device info.
+        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        return pulumi.get(self, "output_type")
+
+
+@pulumi.output_type
+class SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputType":
+            suggest = "output_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 output_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str output_type: The output type of the delegated group info.
+               Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        if output_type is not None:
+            pulumi.set(__self__, "output_type", output_type)
+
+    @_builtins.property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> Optional[_builtins.str]:
+        """
+        The output type of the delegated group info.
+        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        return pulumi.get(self, "output_type")
+
+
+@pulumi.output_type
+class SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputType":
+            suggest = "output_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 output_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str output_type: The output type of the delegated user info.
+               Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        if output_type is not None:
+            pulumi.set(__self__, "output_type", output_type)
+
+    @_builtins.property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> Optional[_builtins.str]:
+        """
+        The output type of the delegated user info.
+        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+        """
+        return pulumi.get(self, "output_type")
+
+
+@pulumi.output_type
+class SecurityGatewayServiceDiscovery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiGateway":
+            suggest = "api_gateway"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayServiceDiscovery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayServiceDiscovery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayServiceDiscovery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_gateway: Optional['outputs.SecurityGatewayServiceDiscoveryApiGateway'] = None):
+        """
+        :param 'SecurityGatewayServiceDiscoveryApiGatewayArgs' api_gateway: External API configuration.
+               Structure is documented below.
+        """
+        if api_gateway is not None:
+            pulumi.set(__self__, "api_gateway", api_gateway)
+
+    @_builtins.property
+    @pulumi.getter(name="apiGateway")
+    def api_gateway(self) -> Optional['outputs.SecurityGatewayServiceDiscoveryApiGateway']:
+        """
+        External API configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_gateway")
+
+
+@pulumi.output_type
+class SecurityGatewayServiceDiscoveryApiGateway(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceOverride":
+            suggest = "resource_override"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayServiceDiscoveryApiGateway. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayServiceDiscoveryApiGateway.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayServiceDiscoveryApiGateway.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_override: Optional['outputs.SecurityGatewayServiceDiscoveryApiGatewayResourceOverride'] = None):
+        """
+        :param 'SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs' resource_override: Enables fetching resource model updates to alter service behavior per Chrome profile.
+               Structure is documented below.
+        """
+        if resource_override is not None:
+            pulumi.set(__self__, "resource_override", resource_override)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceOverride")
+    def resource_override(self) -> Optional['outputs.SecurityGatewayServiceDiscoveryApiGatewayResourceOverride']:
+        """
+        Enables fetching resource model updates to alter service behavior per Chrome profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "resource_override")
+
+
+@pulumi.output_type
+class SecurityGatewayServiceDiscoveryApiGatewayResourceOverride(dict):
+    def __init__(__self__, *,
+                 path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str path: Contains uri path fragment where HTTP request is sent.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        Contains uri path fragment where HTTP request is sent.
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type
@@ -800,5 +1604,234 @@ class GetSecurityGatewayHubInternetGatewayResult(dict):
         Output only. List of IP addresses assigned to the Cloud NAT.
         """
         return pulumi.get(self, "assigned_ips")
+
+
+@pulumi.output_type
+class GetSecurityGatewayProxyProtocolConfigResult(dict):
+    def __init__(__self__, *,
+                 allowed_client_headers: Sequence[_builtins.str],
+                 client_ip: _builtins.bool,
+                 contextual_headers: Sequence['outputs.GetSecurityGatewayProxyProtocolConfigContextualHeaderResult'],
+                 gateway_identity: _builtins.str,
+                 metadata_headers: Mapping[str, _builtins.str]):
+        """
+        :param Sequence[_builtins.str] allowed_client_headers: The configuration for the proxy.
+        :param _builtins.bool client_ip: Client IP configuration. The client IP address is included if true.
+        :param Sequence['GetSecurityGatewayProxyProtocolConfigContextualHeaderArgs'] contextual_headers: Configuration for the contextual headers.
+        :param _builtins.str gateway_identity: Gateway identity configuration. Possible values: ["RESOURCE_NAME"]
+        :param Mapping[str, _builtins.str] metadata_headers: Custom resource specific headers along with the values.
+               The names should conform to RFC 9110:
+               > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+                 and ".", and SHOULD begin with a letter.
+               > Field values SHOULD contain only ASCII printable characters and tab.
+        """
+        pulumi.set(__self__, "allowed_client_headers", allowed_client_headers)
+        pulumi.set(__self__, "client_ip", client_ip)
+        pulumi.set(__self__, "contextual_headers", contextual_headers)
+        pulumi.set(__self__, "gateway_identity", gateway_identity)
+        pulumi.set(__self__, "metadata_headers", metadata_headers)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedClientHeaders")
+    def allowed_client_headers(self) -> Sequence[_builtins.str]:
+        """
+        The configuration for the proxy.
+        """
+        return pulumi.get(self, "allowed_client_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="clientIp")
+    def client_ip(self) -> _builtins.bool:
+        """
+        Client IP configuration. The client IP address is included if true.
+        """
+        return pulumi.get(self, "client_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="contextualHeaders")
+    def contextual_headers(self) -> Sequence['outputs.GetSecurityGatewayProxyProtocolConfigContextualHeaderResult']:
+        """
+        Configuration for the contextual headers.
+        """
+        return pulumi.get(self, "contextual_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayIdentity")
+    def gateway_identity(self) -> _builtins.str:
+        """
+        Gateway identity configuration. Possible values: ["RESOURCE_NAME"]
+        """
+        return pulumi.get(self, "gateway_identity")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataHeaders")
+    def metadata_headers(self) -> Mapping[str, _builtins.str]:
+        """
+        Custom resource specific headers along with the values.
+        The names should conform to RFC 9110:
+        > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+          and ".", and SHOULD begin with a letter.
+        > Field values SHOULD contain only ASCII printable characters and tab.
+        """
+        return pulumi.get(self, "metadata_headers")
+
+
+@pulumi.output_type
+class GetSecurityGatewayProxyProtocolConfigContextualHeaderResult(dict):
+    def __init__(__self__, *,
+                 device_infos: Sequence['outputs.GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoResult'],
+                 group_infos: Sequence['outputs.GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoResult'],
+                 output_type: _builtins.str,
+                 user_infos: Sequence['outputs.GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoResult']):
+        """
+        :param Sequence['GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoArgs'] device_infos: Device info configuration.
+        :param Sequence['GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoArgs'] group_infos: Group info configuration.
+        :param _builtins.str output_type: Default output type for all enabled headers. Possible values: ["PROTOBUF", "JSON", "NONE"]
+        :param Sequence['GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoArgs'] user_infos: User info configuration.
+        """
+        pulumi.set(__self__, "device_infos", device_infos)
+        pulumi.set(__self__, "group_infos", group_infos)
+        pulumi.set(__self__, "output_type", output_type)
+        pulumi.set(__self__, "user_infos", user_infos)
+
+    @_builtins.property
+    @pulumi.getter(name="deviceInfos")
+    def device_infos(self) -> Sequence['outputs.GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoResult']:
+        """
+        Device info configuration.
+        """
+        return pulumi.get(self, "device_infos")
+
+    @_builtins.property
+    @pulumi.getter(name="groupInfos")
+    def group_infos(self) -> Sequence['outputs.GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoResult']:
+        """
+        Group info configuration.
+        """
+        return pulumi.get(self, "group_infos")
+
+    @_builtins.property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> _builtins.str:
+        """
+        Default output type for all enabled headers. Possible values: ["PROTOBUF", "JSON", "NONE"]
+        """
+        return pulumi.get(self, "output_type")
+
+    @_builtins.property
+    @pulumi.getter(name="userInfos")
+    def user_infos(self) -> Sequence['outputs.GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoResult']:
+        """
+        User info configuration.
+        """
+        return pulumi.get(self, "user_infos")
+
+
+@pulumi.output_type
+class GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfoResult(dict):
+    def __init__(__self__, *,
+                 output_type: _builtins.str):
+        """
+        :param _builtins.str output_type: The output type of the delegated device info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+        """
+        pulumi.set(__self__, "output_type", output_type)
+
+    @_builtins.property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> _builtins.str:
+        """
+        The output type of the delegated device info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+        """
+        return pulumi.get(self, "output_type")
+
+
+@pulumi.output_type
+class GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfoResult(dict):
+    def __init__(__self__, *,
+                 output_type: _builtins.str):
+        """
+        :param _builtins.str output_type: The output type of the delegated group info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+        """
+        pulumi.set(__self__, "output_type", output_type)
+
+    @_builtins.property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> _builtins.str:
+        """
+        The output type of the delegated group info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+        """
+        return pulumi.get(self, "output_type")
+
+
+@pulumi.output_type
+class GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfoResult(dict):
+    def __init__(__self__, *,
+                 output_type: _builtins.str):
+        """
+        :param _builtins.str output_type: The output type of the delegated user info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+        """
+        pulumi.set(__self__, "output_type", output_type)
+
+    @_builtins.property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> _builtins.str:
+        """
+        The output type of the delegated user info. Possible values: ["PROTOBUF", "JSON", "NONE"]
+        """
+        return pulumi.get(self, "output_type")
+
+
+@pulumi.output_type
+class GetSecurityGatewayServiceDiscoveryResult(dict):
+    def __init__(__self__, *,
+                 api_gateways: Sequence['outputs.GetSecurityGatewayServiceDiscoveryApiGatewayResult']):
+        """
+        :param Sequence['GetSecurityGatewayServiceDiscoveryApiGatewayArgs'] api_gateways: External API configuration.
+        """
+        pulumi.set(__self__, "api_gateways", api_gateways)
+
+    @_builtins.property
+    @pulumi.getter(name="apiGateways")
+    def api_gateways(self) -> Sequence['outputs.GetSecurityGatewayServiceDiscoveryApiGatewayResult']:
+        """
+        External API configuration.
+        """
+        return pulumi.get(self, "api_gateways")
+
+
+@pulumi.output_type
+class GetSecurityGatewayServiceDiscoveryApiGatewayResult(dict):
+    def __init__(__self__, *,
+                 resource_overrides: Sequence['outputs.GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideResult']):
+        """
+        :param Sequence['GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs'] resource_overrides: Enables fetching resource model updates to alter service behavior per Chrome profile.
+        """
+        pulumi.set(__self__, "resource_overrides", resource_overrides)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceOverrides")
+    def resource_overrides(self) -> Sequence['outputs.GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideResult']:
+        """
+        Enables fetching resource model updates to alter service behavior per Chrome profile.
+        """
+        return pulumi.get(self, "resource_overrides")
+
+
+@pulumi.output_type
+class GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverrideResult(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str):
+        """
+        :param _builtins.str path: Contains uri path fragment where HTTP request is sent.
+        """
+        pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        Contains uri path fragment where HTTP request is sent.
+        """
+        return pulumi.get(self, "path")
 
 

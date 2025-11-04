@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.ResourceManager
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.ResourceManager
     ///         DeletionProtection = false,
     ///     });
     /// 
-    ///     var wait60s = new Time.Index.Sleep("wait_60s", new()
+    ///     var wait60s = new Time.Sleep("wait_60s", new()
     ///     {
     ///         CreateDuration = "60s",
     ///     }, new CustomResourceOptions

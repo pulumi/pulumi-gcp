@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
- * const wait120s = new time.index.Sleep("wait_120s", {createDuration: "120s"}, {
+ * const wait120s = new time.Sleep("wait_120s", {createDuration: "120s"}, {
  *     dependsOn: [folder],
  * });
  * const binding_for_all_folder_principals = new gcp.iam.FoldersPolicyBinding("binding-for-all-folder-principals", {

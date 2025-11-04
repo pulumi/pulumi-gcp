@@ -949,6 +949,13 @@ namespace Pulumi.Gcp
             set => _networkConnectivityCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _networkConnectivityv1CustomEndpoint = new __Value<string?>(() => __config.Get("networkConnectivityv1CustomEndpoint"));
+        public static string? NetworkConnectivityv1CustomEndpoint
+        {
+            get => _networkConnectivityv1CustomEndpoint.Get();
+            set => _networkConnectivityv1CustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _networkManagementCustomEndpoint = new __Value<string?>(() => __config.Get("networkManagementCustomEndpoint"));
         public static string? NetworkManagementCustomEndpoint
         {
@@ -975,6 +982,13 @@ namespace Pulumi.Gcp
         {
             get => _notebooksCustomEndpoint.Get();
             set => _notebooksCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _observabilityCustomEndpoint = new __Value<string?>(() => __config.Get("observabilityCustomEndpoint"));
+        public static string? ObservabilityCustomEndpoint
+        {
+            get => _observabilityCustomEndpoint.Get();
+            set => _observabilityCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _oracleDatabaseCustomEndpoint = new __Value<string?>(() => __config.Get("oracleDatabaseCustomEndpoint"));

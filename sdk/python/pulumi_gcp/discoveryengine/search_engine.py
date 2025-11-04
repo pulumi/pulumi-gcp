@@ -31,6 +31,7 @@ class SearchEngineArgs:
                  common_config: Optional[pulumi.Input['SearchEngineCommonConfigArgs']] = None,
                  features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SearchEngine resource.
@@ -49,6 +50,11 @@ class SearchEngineArgs:
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
                Default value is `GENERIC`.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
+        :param pulumi.Input[_builtins.str] kms_key_name: The KMS key to be used to protect this Engine at creation time.
+               Must be set for requests that need to comply with CMEK Org Policy
+               protections.
+               If this field is set and processed successfully, the Engine will be
+               protected by the KMS key, as indicated in the cmek_config field.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -66,6 +72,8 @@ class SearchEngineArgs:
             pulumi.set(__self__, "features", features)
         if industry_vertical is not None:
             pulumi.set(__self__, "industry_vertical", industry_vertical)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -195,6 +203,22 @@ class SearchEngineArgs:
         pulumi.set(self, "industry_vertical", value)
 
     @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The KMS key to be used to protect this Engine at creation time.
+        Must be set for requests that need to comply with CMEK Org Policy
+        protections.
+        If this field is set and processed successfully, the Engine will be
+        protected by the KMS key, as indicated in the cmek_config field.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -220,6 +244,7 @@ class _SearchEngineState:
                  engine_id: Optional[pulumi.Input[_builtins.str]] = None,
                  features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -240,6 +265,11 @@ class _SearchEngineState:
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
                Default value is `GENERIC`.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
+        :param pulumi.Input[_builtins.str] kms_key_name: The KMS key to be used to protect this Engine at creation time.
+               Must be set for requests that need to comply with CMEK Org Policy
+               protections.
+               If this field is set and processed successfully, the Engine will be
+               protected by the KMS key, as indicated in the cmek_config field.
         :param pulumi.Input[_builtins.str] location: Location.
         :param pulumi.Input[_builtins.str] name: The unique full resource name of the search engine. Values are of the format
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
@@ -269,6 +299,8 @@ class _SearchEngineState:
             pulumi.set(__self__, "features", features)
         if industry_vertical is not None:
             pulumi.set(__self__, "industry_vertical", industry_vertical)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -393,6 +425,22 @@ class _SearchEngineState:
         pulumi.set(self, "industry_vertical", value)
 
     @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The KMS key to be used to protect this Engine at creation time.
+        Must be set for requests that need to comply with CMEK Org Policy
+        protections.
+        If this field is set and processed successfully, the Engine will be
+        protected by the KMS key, as indicated in the cmek_config field.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+    @_builtins.property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -472,6 +520,7 @@ class SearchEngine(pulumi.CustomResource):
                  engine_id: Optional[pulumi.Input[_builtins.str]] = None,
                  features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  search_engine_config: Optional[pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
@@ -530,6 +579,7 @@ class SearchEngine(pulumi.CustomResource):
             display_name="tf-test-agentspace-search-engine",
             data_store_ids=[agentspace_basic.data_store_id],
             industry_vertical="GENERIC",
+            app_type="APP_TYPE_INTRANET",
             search_engine_config={})
         ```
 
@@ -571,6 +621,11 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
                Default value is `GENERIC`.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
+        :param pulumi.Input[_builtins.str] kms_key_name: The KMS key to be used to protect this Engine at creation time.
+               Must be set for requests that need to comply with CMEK Org Policy
+               protections.
+               If this field is set and processed successfully, the Engine will be
+               protected by the KMS key, as indicated in the cmek_config field.
         :param pulumi.Input[_builtins.str] location: Location.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -637,6 +692,7 @@ class SearchEngine(pulumi.CustomResource):
             display_name="tf-test-agentspace-search-engine",
             data_store_ids=[agentspace_basic.data_store_id],
             industry_vertical="GENERIC",
+            app_type="APP_TYPE_INTRANET",
             search_engine_config={})
         ```
 
@@ -687,6 +743,7 @@ class SearchEngine(pulumi.CustomResource):
                  engine_id: Optional[pulumi.Input[_builtins.str]] = None,
                  features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  search_engine_config: Optional[pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
@@ -715,6 +772,7 @@ class SearchEngine(pulumi.CustomResource):
             __props__.__dict__["engine_id"] = engine_id
             __props__.__dict__["features"] = features
             __props__.__dict__["industry_vertical"] = industry_vertical
+            __props__.__dict__["kms_key_name"] = kms_key_name
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -744,6 +802,7 @@ class SearchEngine(pulumi.CustomResource):
             engine_id: Optional[pulumi.Input[_builtins.str]] = None,
             features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
+            kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -769,6 +828,11 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
                Default value is `GENERIC`.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
+        :param pulumi.Input[_builtins.str] kms_key_name: The KMS key to be used to protect this Engine at creation time.
+               Must be set for requests that need to comply with CMEK Org Policy
+               protections.
+               If this field is set and processed successfully, the Engine will be
+               protected by the KMS key, as indicated in the cmek_config field.
         :param pulumi.Input[_builtins.str] location: Location.
         :param pulumi.Input[_builtins.str] name: The unique full resource name of the search engine. Values are of the format
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
@@ -793,6 +857,7 @@ class SearchEngine(pulumi.CustomResource):
         __props__.__dict__["engine_id"] = engine_id
         __props__.__dict__["features"] = features
         __props__.__dict__["industry_vertical"] = industry_vertical
+        __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -875,6 +940,18 @@ class SearchEngine(pulumi.CustomResource):
         Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         """
         return pulumi.get(self, "industry_vertical")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The KMS key to be used to protect this Engine at creation time.
+        Must be set for requests that need to comply with CMEK Org Policy
+        protections.
+        If this field is set and processed successfully, the Engine will be
+        protected by the KMS key, as indicated in the cmek_config field.
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @_builtins.property
     @pulumi.getter

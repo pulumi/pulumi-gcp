@@ -439,6 +439,108 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Backend Service In Flight
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var custom = new Gcp.Compute.Network("custom", new()
+    ///     {
+    ///         Name = "custom-vpc",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "custom-subnet",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = custom.Id,
+    ///     });
+    /// 
+    ///     var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("default", new()
+    ///     {
+    ///         Name = "instance-template",
+    ///         MachineType = "e2-micro",
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "debian-cloud/debian-11",
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = custom.Id,
+    ///                 Subnetwork = @default.Id,
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "startup-script", @"#!/bin/bash
+    /// echo ""Hello World from MIG VM"" &gt; /var/www/html/index.html
+    /// apt-get update -y
+    /// apt-get install -y apache2
+    /// systemctl start apache2
+    /// " },
+    ///         },
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.Compute.RegionInstanceGroupManager("foobar", new()
+    ///     {
+    ///         Name = "instance-group-manager",
+    ///         BaseInstanceName = "vm",
+    ///         Region = "us-central1",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = defaultInstanceTemplate.Id,
+    ///             },
+    ///         },
+    ///         TargetSize = 1,
+    ///     });
+    /// 
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         Description = "Hello World 1234",
+    ///         PortName = "http",
+    ///         Protocol = "TCP",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.BackendServiceBackendArgs
+    ///             {
+    ///                 Group = foobar.InstanceGroup,
+    ///                 BalancingMode = "IN_FLIGHT",
+    ///                 MaxInFlightRequests = 1000,
+    ///                 TrafficDuration = "LONG",
+    ///             },
+    ///         },
+    ///         HealthChecks = defaultHealthCheck.SelfLink,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Backend Service External Managed
     /// 
     /// ```csharp

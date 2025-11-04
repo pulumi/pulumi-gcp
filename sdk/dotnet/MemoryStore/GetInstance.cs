@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.MemoryStore
     {
         public readonly string AuthorizationMode;
         public readonly ImmutableArray<Outputs.GetInstanceAutomatedBackupConfigResult> AutomatedBackupConfigs;
+        public readonly ImmutableArray<string> AvailableMaintenanceVersions;
         public readonly string BackupCollection;
         public readonly string CreateTime;
         public readonly ImmutableArray<Outputs.GetInstanceCrossInstanceReplicationConfigResult> CrossInstanceReplicationConfigs;
@@ -148,6 +149,7 @@ namespace Pulumi.Gcp.MemoryStore
         public readonly ImmutableArray<Outputs.GetInstanceDesiredPscAutoConnectionResult> DesiredPscAutoConnections;
         public readonly ImmutableArray<Outputs.GetInstanceDiscoveryEndpointResult> DiscoveryEndpoints;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
+        public readonly string EffectiveMaintenanceVersion;
         public readonly ImmutableArray<Outputs.GetInstanceEndpointResult> Endpoints;
         public readonly ImmutableDictionary<string, string> EngineConfigs;
         public readonly string EngineVersion;
@@ -162,6 +164,7 @@ namespace Pulumi.Gcp.MemoryStore
         public readonly string? Location;
         public readonly ImmutableArray<Outputs.GetInstanceMaintenancePolicyResult> MaintenancePolicies;
         public readonly ImmutableArray<Outputs.GetInstanceMaintenanceScheduleResult> MaintenanceSchedules;
+        public readonly string MaintenanceVersion;
         public readonly ImmutableArray<Outputs.GetInstanceManagedBackupSourceResult> ManagedBackupSources;
         public readonly ImmutableArray<Outputs.GetInstanceManagedServerCaResult> ManagedServerCas;
         public readonly string Mode;
@@ -188,6 +191,8 @@ namespace Pulumi.Gcp.MemoryStore
 
             ImmutableArray<Outputs.GetInstanceAutomatedBackupConfigResult> automatedBackupConfigs,
 
+            ImmutableArray<string> availableMaintenanceVersions,
+
             string backupCollection,
 
             string createTime,
@@ -203,6 +208,8 @@ namespace Pulumi.Gcp.MemoryStore
             ImmutableArray<Outputs.GetInstanceDiscoveryEndpointResult> discoveryEndpoints,
 
             ImmutableDictionary<string, string> effectiveLabels,
+
+            string effectiveMaintenanceVersion,
 
             ImmutableArray<Outputs.GetInstanceEndpointResult> endpoints,
 
@@ -225,6 +232,8 @@ namespace Pulumi.Gcp.MemoryStore
             ImmutableArray<Outputs.GetInstanceMaintenancePolicyResult> maintenancePolicies,
 
             ImmutableArray<Outputs.GetInstanceMaintenanceScheduleResult> maintenanceSchedules,
+
+            string maintenanceVersion,
 
             ImmutableArray<Outputs.GetInstanceManagedBackupSourceResult> managedBackupSources,
 
@@ -266,6 +275,7 @@ namespace Pulumi.Gcp.MemoryStore
         {
             AuthorizationMode = authorizationMode;
             AutomatedBackupConfigs = automatedBackupConfigs;
+            AvailableMaintenanceVersions = availableMaintenanceVersions;
             BackupCollection = backupCollection;
             CreateTime = createTime;
             CrossInstanceReplicationConfigs = crossInstanceReplicationConfigs;
@@ -274,6 +284,7 @@ namespace Pulumi.Gcp.MemoryStore
             DesiredPscAutoConnections = desiredPscAutoConnections;
             DiscoveryEndpoints = discoveryEndpoints;
             EffectiveLabels = effectiveLabels;
+            EffectiveMaintenanceVersion = effectiveMaintenanceVersion;
             Endpoints = endpoints;
             EngineConfigs = engineConfigs;
             EngineVersion = engineVersion;
@@ -285,6 +296,7 @@ namespace Pulumi.Gcp.MemoryStore
             Location = location;
             MaintenancePolicies = maintenancePolicies;
             MaintenanceSchedules = maintenanceSchedules;
+            MaintenanceVersion = maintenanceVersion;
             ManagedBackupSources = managedBackupSources;
             ManagedServerCas = managedServerCas;
             Mode = mode;

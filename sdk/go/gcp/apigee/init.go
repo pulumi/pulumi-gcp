@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ControlPlaneAccess{}
 	case "gcp:apigee/developer:Developer":
 		r = &Developer{}
+	case "gcp:apigee/developerApp:DeveloperApp":
+		r = &DeveloperApp{}
 	case "gcp:apigee/dnsZone:DnsZone":
 		r = &DnsZone{}
 	case "gcp:apigee/endpointAttachment:EndpointAttachment":
@@ -51,6 +53,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Environment{}
 	case "gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig":
 		r = &EnvironmentAddonsConfig{}
+	case "gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment":
+		r = &EnvironmentApiRevisionDeployment{}
 	case "gcp:apigee/environmentIamBinding:EnvironmentIamBinding":
 		r = &EnvironmentIamBinding{}
 	case "gcp:apigee/environmentIamMember:EnvironmentIamMember":
@@ -141,6 +145,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"apigee/developerApp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"apigee/dnsZone",
 		&module{version},
 	)
@@ -177,6 +186,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/environmentAddonsConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/environmentApiRevisionDeployment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -134,18 +134,6 @@ namespace Pulumi.Gcp.ManagedKafka
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
-    ///     {
-    ///         Name = "example-key-ring",
-    ///         Location = "us-central1",
-    ///     });
-    /// 
-    ///     var key = new Gcp.Kms.CryptoKey("key", new()
-    ///     {
-    ///         Name = "example-key",
-    ///         KeyRing = keyRing.Id,
-    ///     });
-    /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     ///     var example = new Gcp.ManagedKafka.Cluster("example", new()
@@ -169,7 +157,7 @@ namespace Pulumi.Gcp.ManagedKafka
     ///                     },
     ///                 },
     ///             },
-    ///             KmsKey = key.Id,
+    ///             KmsKey = "example-key",
     ///         },
     ///     });
     /// 
@@ -177,16 +165,6 @@ namespace Pulumi.Gcp.ManagedKafka
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Service = "managedkafka.googleapis.com",
-    ///     });
-    /// 
-    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMBinding("crypto_key_binding", new()
-    ///     {
-    ///         CryptoKeyId = key.Id,
-    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Members = new[]
-    ///         {
-    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-managedkafka.iam.gserviceaccount.com",
-    ///         },
     ///     });
     /// 
     /// });

@@ -37,8 +37,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
-//				Name:         pulumi.String("memory-cache"),
-//				MemorySizeGb: pulumi.Int(1),
+//				Name:               pulumi.String("memory-cache"),
+//				MemorySizeGb:       pulumi.Int(1),
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -401,6 +402,7 @@ type Instance struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey pulumi.StringPtrOutput `pulumi:"customerManagedKey"`
+	DeletionProtection pulumi.BoolPtrOutput   `pulumi:"deletionProtection"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -582,6 +584,7 @@ type instanceState struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey *string `pulumi:"customerManagedKey"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -725,6 +728,7 @@ type InstanceState struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -861,6 +865,7 @@ type instanceArgs struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey *string `pulumi:"customerManagedKey"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user provided metadata.
@@ -957,6 +962,7 @@ type InstanceArgs struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
@@ -1171,6 +1177,10 @@ func (o InstanceOutput) CurrentLocationId() pulumi.StringOutput {
 // instance. If this is provided, CMEK is enabled.
 func (o InstanceOutput) CustomerManagedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CustomerManagedKey }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // An arbitrary and optional user-provided name for the instance.
