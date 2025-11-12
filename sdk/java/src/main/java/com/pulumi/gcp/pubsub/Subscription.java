@@ -173,8 +173,8 @@ import javax.annotation.Nullable;
  *             .topic(example.id())
  *             .labels(Map.of("foo", "bar"))
  *             .filter("""
- *     attributes.foo = "foo"
- *     AND attributes.bar = "bar"
+ *     attributes.foo = \"foo\"
+ *     AND attributes.bar = \"bar\"
  *             """)
  *             .ackDeadlineSeconds(20)
  *             .build());
@@ -278,10 +278,10 @@ import javax.annotation.Nullable;
  *             .schema("""
  * [
  *   {
- *     "name": "data",
- *     "type": "STRING",
- *     "mode": "NULLABLE",
- *     "description": "The data"
+ *     \"name\": \"data\",
+ *     \"type\": \"STRING\",
+ *     \"mode\": \"NULLABLE\",
+ *     \"description\": \"The data\"
  *   }
  * ]
  *             """)
@@ -355,10 +355,10 @@ import javax.annotation.Nullable;
  *             .schema("""
  * [
  *   {
- *     "name": "data",
- *     "type": "STRING",
- *     "mode": "NULLABLE",
- *     "description": "The data"
+ *     \"name\": \"data\",
+ *     \"type\": \"STRING\",
+ *     \"mode\": \"NULLABLE\",
+ *     \"description\": \"The data\"
  *   }
  * ]
  *             """)
@@ -459,10 +459,10 @@ import javax.annotation.Nullable;
  *             .schema("""
  * [
  *   {
- *     "name": "data",
- *     "type": "STRING",
- *     "mode": "NULLABLE",
- *     "description": "The data"
+ *     \"name\": \"data\",
+ *     \"type\": \"STRING\",
+ *     \"mode\": \"NULLABLE\",
+ *     \"description\": \"The data\"
  *   }
  * ]
  *             """)

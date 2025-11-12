@@ -1046,6 +1046,8 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
+        ### Granular restriction of network access
+
         ### Private IP Instance
         > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
 
@@ -1065,9 +1067,9 @@ class DatabaseInstance(pulumi.CustomResource):
             network=private_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_address.name])
-        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
         instance = gcp.sql.DatabaseInstance("instance",
-            name=db_name_suffix.hex.apply(lambda hex: f"private-instance-{hex}"),
+            name=f"private-instance-{db_name_suffix['hex']}",
             region="us-central1",
             database_version="MYSQL_5_7",
             settings={
@@ -1362,6 +1364,8 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
+        ### Granular restriction of network access
+
         ### Private IP Instance
         > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
 
@@ -1381,9 +1385,9 @@ class DatabaseInstance(pulumi.CustomResource):
             network=private_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_address.name])
-        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
         instance = gcp.sql.DatabaseInstance("instance",
-            name=db_name_suffix.hex.apply(lambda hex: f"private-instance-{hex}"),
+            name=f"private-instance-{db_name_suffix['hex']}",
             region="us-central1",
             database_version="MYSQL_5_7",
             settings={

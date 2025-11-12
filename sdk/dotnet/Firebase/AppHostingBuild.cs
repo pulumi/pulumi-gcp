@@ -158,6 +158,94 @@ namespace Pulumi.Gcp.Firebase
     /// ```
     /// ### Firebase App Hosting Build Github
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_repository = new Gcp.DeveloperConnect.GitRepositoryLink("my-repository", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Location = "us-central1",
+    ///         Service = "developerconnect.googleapis.com",
+    ///     });
+    /// 
+    ///     var exampleAppHostingBackend = new Gcp.Firebase.AppHostingBackend("example", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Location = "us-central1",
+    ///         BackendId = "mini",
+    ///         AppId = "1:0000000000:web:674cde32020e16fbce9dbd",
+    ///         DisplayName = "My Backend",
+    ///         ServingLocality = "GLOBAL_ACCESS",
+    ///         ServiceAccount = "firebase-app-hosting-compute@my-project-name.iam.gserviceaccount.com",
+    ///         Environment = "prod",
+    ///         Annotations = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///         Codebase = new Gcp.Firebase.Inputs.AppHostingBackendCodebaseArgs
+    ///         {
+    ///             Repository = my_repository.Name,
+    ///             RootDirectory = "/",
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new Gcp.Firebase.AppHostingBuild("example", new()
+    ///     {
+    ///         Project = exampleAppHostingBackend.Project,
+    ///         Location = exampleAppHostingBackend.Location,
+    ///         Backend = exampleAppHostingBackend.BackendId,
+    ///         BuildId = "gh-build",
+    ///         Source = new Gcp.Firebase.Inputs.AppHostingBuildSourceArgs
+    ///         {
+    ///             Codebase = new Gcp.Firebase.Inputs.AppHostingBuildSourceCodebaseArgs
+    ///             {
+    ///                 Branch = "main",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var devconnect_secret = new Gcp.Projects.IAMMember("devconnect-secret", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/secretmanager.admin",
+    ///         Member = devconnect_p4sa.Member,
+    ///     });
+    /// 
+    ///     //##
+    ///     //## Include these blocks only once per Github account ###
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Location = "us-central1",
+    ///         ConnectionId = "tf-test-connection-new",
+    ///         GithubConfig = new Gcp.DeveloperConnect.Inputs.ConnectionGithubConfigArgs
+    ///         {
+    ///             GithubApp = "FIREBASE",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             devconnect_secret,
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["nextSteps"] = my_connection.InstallationStates,
+    ///     };
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Build can be imported using any of these accepted formats:

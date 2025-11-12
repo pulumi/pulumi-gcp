@@ -81,8 +81,8 @@ import * as utilities from "../utilities";
  *     labels: {
  *         foo: "bar",
  *     },
- *     filter: `    attributes.foo = "foo"
- *     AND attributes.bar = "bar"
+ *     filter: `    attributes.foo = \\"foo\\"
+ *     AND attributes.bar = \\"bar\\"
  * `,
  *     ackDeadlineSeconds: 20,
  * });
@@ -117,10 +117,10 @@ import * as utilities from "../utilities";
  *     datasetId: test.datasetId,
  *     schema: `[
  *   {
- *     "name": "data",
- *     "type": "STRING",
- *     "mode": "NULLABLE",
- *     "description": "The data"
+ *     \\"name\\": \\"data\\",
+ *     \\"type\\": \\"STRING\\",
+ *     \\"mode\\": \\"NULLABLE\\",
+ *     \\"description\\": \\"The data\\"
  *   }
  * ]
  * `,
@@ -148,10 +148,10 @@ import * as utilities from "../utilities";
  *     datasetId: test.datasetId,
  *     schema: `[
  *   {
- *     "name": "data",
- *     "type": "STRING",
- *     "mode": "NULLABLE",
- *     "description": "The data"
+ *     \\"name\\": \\"data\\",
+ *     \\"type\\": \\"STRING\\",
+ *     \\"mode\\": \\"NULLABLE\\",
+ *     \\"description\\": \\"The data\\"
  *   }
  * ]
  * `,
@@ -196,10 +196,10 @@ import * as utilities from "../utilities";
  *     datasetId: test.datasetId,
  *     schema: `[
  *   {
- *     "name": "data",
- *     "type": "STRING",
- *     "mode": "NULLABLE",
- *     "description": "The data"
+ *     \\"name\\": \\"data\\",
+ *     \\"type\\": \\"STRING\\",
+ *     \\"mode\\": \\"NULLABLE\\",
+ *     \\"description\\": \\"The data\\"
  *   }
  * ]
  * `,

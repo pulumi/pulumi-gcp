@@ -193,6 +193,101 @@ import javax.annotation.Nullable;
  * </pre>
  * ### Firebase App Hosting Build Github
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.developerconnect.GitRepositoryLink;
+ * import com.pulumi.gcp.developerconnect.GitRepositoryLinkArgs;
+ * import com.pulumi.gcp.firebase.AppHostingBackend;
+ * import com.pulumi.gcp.firebase.AppHostingBackendArgs;
+ * import com.pulumi.gcp.firebase.inputs.AppHostingBackendCodebaseArgs;
+ * import com.pulumi.gcp.firebase.AppHostingBuild;
+ * import com.pulumi.gcp.firebase.AppHostingBuildArgs;
+ * import com.pulumi.gcp.firebase.inputs.AppHostingBuildSourceArgs;
+ * import com.pulumi.gcp.firebase.inputs.AppHostingBuildSourceCodebaseArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var my_repository = new GitRepositoryLink("my-repository", GitRepositoryLinkArgs.builder()
+ *             .project("my-project-name")
+ *             .location("us-central1")
+ *             .service("developerconnect.googleapis.com")
+ *             .build());
+ * 
+ *         var exampleAppHostingBackend = new AppHostingBackend("exampleAppHostingBackend", AppHostingBackendArgs.builder()
+ *             .project("my-project-name")
+ *             .location("us-central1")
+ *             .backendId("mini")
+ *             .appId("1:0000000000:web:674cde32020e16fbce9dbd")
+ *             .displayName("My Backend")
+ *             .servingLocality("GLOBAL_ACCESS")
+ *             .serviceAccount("firebase-app-hosting-compute}{@literal @}{@code my-project-name.iam.gserviceaccount.com")
+ *             .environment("prod")
+ *             .annotations(Map.of("key", "value"))
+ *             .labels(Map.of("key", "value"))
+ *             .codebase(AppHostingBackendCodebaseArgs.builder()
+ *                 .repository(my_repository.name())
+ *                 .rootDirectory("/")
+ *                 .build())
+ *             .build());
+ * 
+ *         var example = new AppHostingBuild("example", AppHostingBuildArgs.builder()
+ *             .project(exampleAppHostingBackend.project())
+ *             .location(exampleAppHostingBackend.location())
+ *             .backend(exampleAppHostingBackend.backendId())
+ *             .buildId("gh-build")
+ *             .source(AppHostingBuildSourceArgs.builder()
+ *                 .codebase(AppHostingBuildSourceCodebaseArgs.builder()
+ *                     .branch("main")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var devconnect_secret = new IAMMember("devconnect-secret", IAMMemberArgs.builder()
+ *             .project("my-project-name")
+ *             .role("roles/secretmanager.admin")
+ *             .member(devconnect_p4sa.member())
+ *             .build());
+ * 
+ *         //##
+ *         //## Include these blocks only once per Github account ###
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .project("my-project-name")
+ *             .location("us-central1")
+ *             .connectionId("tf-test-connection-new")
+ *             .githubConfig(ConnectionGithubConfigArgs.builder()
+ *                 .githubApp("FIREBASE")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(devconnect_secret)
+ *                 .build());
+ * 
+ *         ctx.export("nextSteps", my_connection.installationStates());
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Build can be imported using any of these accepted formats:

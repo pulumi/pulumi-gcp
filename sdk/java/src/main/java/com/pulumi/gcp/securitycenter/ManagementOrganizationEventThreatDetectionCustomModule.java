@@ -29,6 +29,55 @@ import javax.annotation.Nullable;
  * 
  * ### Scc Management Organization Event Threat Detection Custom Module
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.securitycenter.ManagementOrganizationEventThreatDetectionCustomModule;
+ * import com.pulumi.gcp.securitycenter.ManagementOrganizationEventThreatDetectionCustomModuleArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ManagementOrganizationEventThreatDetectionCustomModule("example", ManagementOrganizationEventThreatDetectionCustomModuleArgs.builder()
+ *             .organization("123456789")
+ *             .location("global")
+ *             .displayName("basic_custom_module")
+ *             .enablementState("ENABLED")
+ *             .type("CONFIGURABLE_BAD_IP")
+ *             .description("My Event Threat Detection Custom Module")
+ *             .config(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("metadata", jsonObject(
+ *                         jsonProperty("severity", "LOW"),
+ *                         jsonProperty("description", "Flagged by Forcepoint as malicious"),
+ *                         jsonProperty("recommendation", "Contact the owner of the relevant project.")
+ *                     )),
+ *                     jsonProperty("ips", jsonArray(
+ *                         "192.0.2.1", 
+ *                         "192.0.2.0/24"
+ *                     ))
+ *                 )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * OrganizationEventThreatDetectionCustomModule can be imported using any of these accepted formats:

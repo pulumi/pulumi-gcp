@@ -506,6 +506,45 @@ class DeveloperApp(pulumi.CustomResource):
 
         ### Apigee Developer App Basic
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        apigee_org = gcp.apigee.Organization("apigee_org",
+            analytics_region="us-central1",
+            project_id=project_google_project["projectId"],
+            disable_vpc_peering=True)
+        apigee_instance = gcp.apigee.Instance("apigee_instance",
+            name="instance",
+            location="us-central1",
+            org_id=apigee_org.id)
+        api_product = gcp.apigee.ApiProduct("api_product",
+            org_id=apigee_org.id,
+            name="sample-api",
+            display_name="A sample API Product",
+            approval_type="auto",
+            scopes=[
+                "read:weather",
+                "write:reports",
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[apigee_instance]))
+        developer = gcp.apigee.Developer("developer",
+            email="john.doe@acme.com",
+            first_name="John",
+            last_name="Doe",
+            user_name="john.doe",
+            org_id=apigee_org.id,
+            opts = pulumi.ResourceOptions(depends_on=[apigee_instance]))
+        apigee_developer_app = gcp.apigee.DeveloperApp("apigee_developer_app",
+            name="sample-app",
+            org_id=apigee_org.id,
+            developer_id=developer.id,
+            developer_email=developer.email,
+            callback_url="https://example-call.url",
+            api_products=[api_product.name],
+            scopes=api_product.scopes)
+        project = gcp.organizations.get_project()
+        ```
         ### Apigee Developer App Basic Test
 
         ```python
@@ -630,6 +669,45 @@ class DeveloperApp(pulumi.CustomResource):
 
         ### Apigee Developer App Basic
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        apigee_org = gcp.apigee.Organization("apigee_org",
+            analytics_region="us-central1",
+            project_id=project_google_project["projectId"],
+            disable_vpc_peering=True)
+        apigee_instance = gcp.apigee.Instance("apigee_instance",
+            name="instance",
+            location="us-central1",
+            org_id=apigee_org.id)
+        api_product = gcp.apigee.ApiProduct("api_product",
+            org_id=apigee_org.id,
+            name="sample-api",
+            display_name="A sample API Product",
+            approval_type="auto",
+            scopes=[
+                "read:weather",
+                "write:reports",
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[apigee_instance]))
+        developer = gcp.apigee.Developer("developer",
+            email="john.doe@acme.com",
+            first_name="John",
+            last_name="Doe",
+            user_name="john.doe",
+            org_id=apigee_org.id,
+            opts = pulumi.ResourceOptions(depends_on=[apigee_instance]))
+        apigee_developer_app = gcp.apigee.DeveloperApp("apigee_developer_app",
+            name="sample-app",
+            org_id=apigee_org.id,
+            developer_id=developer.id,
+            developer_email=developer.email,
+            callback_url="https://example-call.url",
+            api_products=[api_product.name],
+            scopes=api_product.scopes)
+        project = gcp.organizations.get_project()
+        ```
         ### Apigee Developer App Basic Test
 
         ```python

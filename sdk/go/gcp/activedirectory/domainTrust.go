@@ -24,6 +24,38 @@ import (
 //
 // ### Active Directory Domain Trust Basic
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/activedirectory"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := activedirectory.NewDomainTrust(ctx, "ad-domain-trust", &activedirectory.DomainTrustArgs{
+//				Domain:           pulumi.String("test-managed-ad.com"),
+//				TargetDomainName: pulumi.String("example-gcp.com"),
+//				TargetDnsIpAddresses: pulumi.StringArray{
+//					pulumi.String("10.1.0.100"),
+//				},
+//				TrustDirection:       pulumi.String("OUTBOUND"),
+//				TrustType:            pulumi.String("FOREST"),
+//				TrustHandshakeSecret: pulumi.String("Testing1!"),
+//				DeletionProtection:   false,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // DomainTrust can be imported using any of these accepted formats:

@@ -702,6 +702,60 @@ class AppHostingBuild(pulumi.CustomResource):
         ```
         ### Firebase App Hosting Build Github
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repository = gcp.developerconnect.GitRepositoryLink("my-repository",
+            project="my-project-name",
+            location="us-central1",
+            service="developerconnect.googleapis.com")
+        example_app_hosting_backend = gcp.firebase.AppHostingBackend("example",
+            project="my-project-name",
+            location="us-central1",
+            backend_id="mini",
+            app_id="1:0000000000:web:674cde32020e16fbce9dbd",
+            display_name="My Backend",
+            serving_locality="GLOBAL_ACCESS",
+            service_account="firebase-app-hosting-compute@my-project-name.iam.gserviceaccount.com",
+            environment="prod",
+            annotations={
+                "key": "value",
+            },
+            labels={
+                "key": "value",
+            },
+            codebase={
+                "repository": my_repository.name,
+                "root_directory": "/",
+            })
+        example = gcp.firebase.AppHostingBuild("example",
+            project=example_app_hosting_backend.project,
+            location=example_app_hosting_backend.location,
+            backend=example_app_hosting_backend.backend_id,
+            build_id="gh-build",
+            source={
+                "codebase": {
+                    "branch": "main",
+                },
+            })
+        devconnect_secret = gcp.projects.IAMMember("devconnect-secret",
+            project="my-project-name",
+            role="roles/secretmanager.admin",
+            member=devconnect_p4sa["member"])
+        ###
+        ### Include these blocks only once per Github account ###
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            project="my-project-name",
+            location="us-central1",
+            connection_id="tf-test-connection-new",
+            github_config={
+                "github_app": "FIREBASE",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[devconnect_secret]))
+        pulumi.export("nextSteps", my_connection.installation_states)
+        ```
+
         ## Import
 
         Build can be imported using any of these accepted formats:
@@ -844,6 +898,60 @@ class AppHostingBuild(pulumi.CustomResource):
             member=service_account.member)
         ```
         ### Firebase App Hosting Build Github
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repository = gcp.developerconnect.GitRepositoryLink("my-repository",
+            project="my-project-name",
+            location="us-central1",
+            service="developerconnect.googleapis.com")
+        example_app_hosting_backend = gcp.firebase.AppHostingBackend("example",
+            project="my-project-name",
+            location="us-central1",
+            backend_id="mini",
+            app_id="1:0000000000:web:674cde32020e16fbce9dbd",
+            display_name="My Backend",
+            serving_locality="GLOBAL_ACCESS",
+            service_account="firebase-app-hosting-compute@my-project-name.iam.gserviceaccount.com",
+            environment="prod",
+            annotations={
+                "key": "value",
+            },
+            labels={
+                "key": "value",
+            },
+            codebase={
+                "repository": my_repository.name,
+                "root_directory": "/",
+            })
+        example = gcp.firebase.AppHostingBuild("example",
+            project=example_app_hosting_backend.project,
+            location=example_app_hosting_backend.location,
+            backend=example_app_hosting_backend.backend_id,
+            build_id="gh-build",
+            source={
+                "codebase": {
+                    "branch": "main",
+                },
+            })
+        devconnect_secret = gcp.projects.IAMMember("devconnect-secret",
+            project="my-project-name",
+            role="roles/secretmanager.admin",
+            member=devconnect_p4sa["member"])
+        ###
+        ### Include these blocks only once per Github account ###
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            project="my-project-name",
+            location="us-central1",
+            connection_id="tf-test-connection-new",
+            github_config={
+                "github_app": "FIREBASE",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[devconnect_secret]))
+        pulumi.export("nextSteps", my_connection.installation_states)
+        ```
 
         ## Import
 

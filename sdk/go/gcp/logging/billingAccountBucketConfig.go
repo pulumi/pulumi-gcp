@@ -56,6 +56,39 @@ import (
 //
 // # Create logging bucket with index configs
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.NewBillingAccountBucketConfig(ctx, "example-billing-account-bucket-index-configs", &logging.BillingAccountBucketConfigArgs{
+//				Folder:        _default.BillingAccount,
+//				Location:      pulumi.String("global"),
+//				RetentionDays: pulumi.Int(30),
+//				BucketId:      pulumi.String("_Default"),
+//				IndexConfigs: logging.BillingAccountBucketConfigIndexConfigArray{
+//					&logging.BillingAccountBucketConfigIndexConfigArgs{
+//						FieldPath: pulumi.String("jsonPayload.request.status"),
+//						Type:      pulumi.String("INDEX_TYPE_STRING"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported using the following format:

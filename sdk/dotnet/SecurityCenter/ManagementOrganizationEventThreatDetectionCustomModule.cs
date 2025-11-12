@@ -24,6 +24,42 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// ### Scc Management Organization Event Threat Detection Custom Module
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.SecurityCenter.ManagementOrganizationEventThreatDetectionCustomModule("example", new()
+    ///     {
+    ///         Organization = "123456789",
+    ///         Location = "global",
+    ///         DisplayName = "basic_custom_module",
+    ///         EnablementState = "ENABLED",
+    ///         Type = "CONFIGURABLE_BAD_IP",
+    ///         Description = "My Event Threat Detection Custom Module",
+    ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["metadata"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["severity"] = "LOW",
+    ///                 ["description"] = "Flagged by Forcepoint as malicious",
+    ///                 ["recommendation"] = "Contact the owner of the relevant project.",
+    ///             },
+    ///             ["ips"] = new[]
+    ///             {
+    ///                 "192.0.2.1",
+    ///                 "192.0.2.0/24",
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// OrganizationEventThreatDetectionCustomModule can be imported using any of these accepted formats:

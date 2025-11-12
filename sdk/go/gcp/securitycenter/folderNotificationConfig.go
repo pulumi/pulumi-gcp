@@ -30,6 +30,52 @@ import (
 //
 // ### Scc Folder Notification Config Basic
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
+//				Parent:      pulumi.String("organizations/123456789"),
+//				DisplayName: pulumi.String("folder-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sccFolderNotificationConfig, err := pubsub.NewTopic(ctx, "scc_folder_notification_config", &pubsub.TopicArgs{
+//				Name: pulumi.String("my-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = securitycenter.NewFolderNotificationConfig(ctx, "custom_notification_config", &securitycenter.FolderNotificationConfigArgs{
+//				ConfigId:    pulumi.String("my-config"),
+//				Folder:      folder.FolderId,
+//				Location:    "global",
+//				Description: pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
+//				PubsubTopic: sccFolderNotificationConfig.ID(),
+//				StreamingConfig: &securitycenter.FolderNotificationConfigStreamingConfigArgs{
+//					Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // FolderNotificationConfig can be imported using any of these accepted formats:

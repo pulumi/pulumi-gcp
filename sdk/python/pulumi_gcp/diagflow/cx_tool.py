@@ -349,34 +349,34 @@ class CxTool(pulumi.CustomResource):
                     "service": "projects/-/locations/-/namespaces/-/services/-",
                 },
                 "text_schema": \"\"\"    {
-              "openapi": "3.0.0",
-              "info": {
-                "title": "Time API",
-                "version": "1.0.0",
-                "description": "A simple API to get the current time."
+              \\"openapi\\": \\"3.0.0\\",
+              \\"info\\": {
+                \\"title\\": \\"Time API\\",
+                \\"version\\": \\"1.0.0\\",
+                \\"description\\": \\"A simple API to get the current time.\\"
               },
-              "servers": [
+              \\"servers\\": [
                 {
-                  "url": "https://example-api-endpoint.com"
+                  \\"url\\": \\"https://example-api-endpoint.com\\"
                 }
               ],
-              "paths": {
-                "/time": {
-                  "get": {
-                    "operationId": "getCurrentTime",
-                    "summary": "Gets the current server time.",
-                    "responses": {
-                      "200": {
-                        "description": "Successful response with the current time.",
-                        "content": {
-                          "application/json": {
-                            "schema": {
-                              "type": "object",
-                              "properties": {
-                                "currentTime": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "description": "The current time in ISO 8601 format."
+              \\"paths\\": {
+                \\"/time\\": {
+                  \\"get\\": {
+                    \\"operationId\\": \\"getCurrentTime\\",
+                    \\"summary\\": \\"Gets the current server time.\\",
+                    \\"responses\\": {
+                      \\"200\\": {
+                        \\"description\\": \\"Successful response with the current time.\\",
+                        \\"content\\": {
+                          \\"application/json\\": {
+                            \\"schema\\": {
+                              \\"type\\": \\"object\\",
+                              \\"properties\\": {
+                                \\"currentTime\\": {
+                                  \\"type\\": \\"string\\",
+                                  \\"format\\": \\"date-time\\",
+                                  \\"description\\": \\"The current time in ISO 8601 format.\\"
                                 }
                               }
                             }
@@ -448,24 +448,24 @@ class CxTool(pulumi.CustomResource):
             description="Example Description",
             function_spec={
                 "input_schema": \"\"\"      {
-                "type": "object",
-                "properties": {
-                  "message_to_echo": {
-                    "type": "string",
-                    "description": "The message that should be echoed back."
+                \\"type\\": \\"object\\",
+                \\"properties\\": {
+                  \\"message_to_echo\\": {
+                    \\"type\\": \\"string\\",
+                    \\"description\\": \\"The message that should be echoed back.\\"
                   }
                 },
-                "required": [
-                  "message_to_echo"
+                \\"required\\": [
+                  \\"message_to_echo\\"
                 ]
               }
         \"\"\",
                 "output_schema": \"\"\"      {
-                "type": "object",
-                "properties": {
-                  "echoed_message": {
-                    "type": "string",
-                    "description": "The message that is echoed back."
+                \\"type\\": \\"object\\",
+                \\"properties\\": {
+                  \\"echoed_message\\": {
+                    \\"type\\": \\"string\\",
+                    \\"description\\": \\"The message that is echoed back.\\"
                   }
                 }
               }
@@ -563,34 +563,34 @@ class CxTool(pulumi.CustomResource):
                     "service": "projects/-/locations/-/namespaces/-/services/-",
                 },
                 "text_schema": \"\"\"    {
-              "openapi": "3.0.0",
-              "info": {
-                "title": "Time API",
-                "version": "1.0.0",
-                "description": "A simple API to get the current time."
+              \\"openapi\\": \\"3.0.0\\",
+              \\"info\\": {
+                \\"title\\": \\"Time API\\",
+                \\"version\\": \\"1.0.0\\",
+                \\"description\\": \\"A simple API to get the current time.\\"
               },
-              "servers": [
+              \\"servers\\": [
                 {
-                  "url": "https://example-api-endpoint.com"
+                  \\"url\\": \\"https://example-api-endpoint.com\\"
                 }
               ],
-              "paths": {
-                "/time": {
-                  "get": {
-                    "operationId": "getCurrentTime",
-                    "summary": "Gets the current server time.",
-                    "responses": {
-                      "200": {
-                        "description": "Successful response with the current time.",
-                        "content": {
-                          "application/json": {
-                            "schema": {
-                              "type": "object",
-                              "properties": {
-                                "currentTime": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "description": "The current time in ISO 8601 format."
+              \\"paths\\": {
+                \\"/time\\": {
+                  \\"get\\": {
+                    \\"operationId\\": \\"getCurrentTime\\",
+                    \\"summary\\": \\"Gets the current server time.\\",
+                    \\"responses\\": {
+                      \\"200\\": {
+                        \\"description\\": \\"Successful response with the current time.\\",
+                        \\"content\\": {
+                          \\"application/json\\": {
+                            \\"schema\\": {
+                              \\"type\\": \\"object\\",
+                              \\"properties\\": {
+                                \\"currentTime\\": {
+                                  \\"type\\": \\"string\\",
+                                  \\"format\\": \\"date-time\\",
+                                  \\"description\\": \\"The current time in ISO 8601 format.\\"
                                 }
                               }
                             }
@@ -662,24 +662,24 @@ class CxTool(pulumi.CustomResource):
             description="Example Description",
             function_spec={
                 "input_schema": \"\"\"      {
-                "type": "object",
-                "properties": {
-                  "message_to_echo": {
-                    "type": "string",
-                    "description": "The message that should be echoed back."
+                \\"type\\": \\"object\\",
+                \\"properties\\": {
+                  \\"message_to_echo\\": {
+                    \\"type\\": \\"string\\",
+                    \\"description\\": \\"The message that should be echoed back.\\"
                   }
                 },
-                "required": [
-                  "message_to_echo"
+                \\"required\\": [
+                  \\"message_to_echo\\"
                 ]
               }
         \"\"\",
                 "output_schema": \"\"\"      {
-                "type": "object",
-                "properties": {
-                  "echoed_message": {
-                    "type": "string",
-                    "description": "The message that is echoed back."
+                \\"type\\": \\"object\\",
+                \\"properties\\": {
+                  \\"echoed_message\\": {
+                    \\"type\\": \\"string\\",
+                    \\"description\\": \\"The message that is echoed back.\\"
                   }
                 }
               }

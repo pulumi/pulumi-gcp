@@ -65,7 +65,7 @@ import (
 //				MaterializedViewId: pulumi.String("bt-materialized-view"),
 //				Instance:           instance.Name,
 //				DeletionProtection: pulumi.Bool(false),
-//				Query:              pulumi.String("SELECT _key, COUNT(CF['col1']) as Count\nFROM ` + \"`bt-table`\" + `\nGROUP BY _key\n"),
+//				Query:              pulumi.String("SELECT _key, COUNT(CF['col1']) as Count\nFROM ` + \\\"`bt-table`\\\" + `\nGROUP BY _key\n"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				table,
 //			}))

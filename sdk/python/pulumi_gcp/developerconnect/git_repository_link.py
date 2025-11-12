@@ -494,6 +494,43 @@ class GitRepositoryLink(pulumi.CustomResource):
 
         ### Developer Connect Git Repository Link Github Doc
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        github_token_secret = gcp.secretmanager.Secret("github-token-secret",
+            secret_id="github-token-secret",
+            replication={
+                "auto": {},
+            })
+        github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
+            secret=github_token_secret.id,
+            secret_data=std.file(input="my-github-token.txt").result)
+        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"],
+        }])
+        policy = gcp.secretmanager.SecretIamPolicy("policy",
+            secret_id=github_token_secret.secret_id,
+            policy_data=p4sa_secret_accessor.policy_data)
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="my-connection",
+            github_config={
+                "github_app": "DEVELOPER_CONNECT",
+                "app_installation_id": "123123",
+                "authorizer_credential": {
+                    "oauth_token_secret_version": github_token_secret_version.id,
+                },
+            })
+        my_repository = gcp.developerconnect.GitRepositoryLink("my-repository",
+            location="us-central1",
+            git_repository_link_id="my-repo",
+            parent_connection=my_connection.connection_id,
+            remote_uri="https://github.com/myuser/myrepo.git")
+        ```
+
         ## Import
 
         GitRepositoryLink can be imported using any of these accepted formats:
@@ -556,6 +593,43 @@ class GitRepositoryLink(pulumi.CustomResource):
         ## Example Usage
 
         ### Developer Connect Git Repository Link Github Doc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        github_token_secret = gcp.secretmanager.Secret("github-token-secret",
+            secret_id="github-token-secret",
+            replication={
+                "auto": {},
+            })
+        github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
+            secret=github_token_secret.id,
+            secret_data=std.file(input="my-github-token.txt").result)
+        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"],
+        }])
+        policy = gcp.secretmanager.SecretIamPolicy("policy",
+            secret_id=github_token_secret.secret_id,
+            policy_data=p4sa_secret_accessor.policy_data)
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="my-connection",
+            github_config={
+                "github_app": "DEVELOPER_CONNECT",
+                "app_installation_id": "123123",
+                "authorizer_credential": {
+                    "oauth_token_secret_version": github_token_secret_version.id,
+                },
+            })
+        my_repository = gcp.developerconnect.GitRepositoryLink("my-repository",
+            location="us-central1",
+            git_repository_link_id="my-repo",
+            parent_connection=my_connection.connection_id,
+            remote_uri="https://github.com/myuser/myrepo.git")
+        ```
 
         ## Import
 

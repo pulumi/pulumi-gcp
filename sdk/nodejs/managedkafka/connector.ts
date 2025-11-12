@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  *             networkConfigs: [{
  *                 primarySubnet: project.then(project => `projects/${project.number}/regions/us-central1/subnetworks/default`),
  *                 additionalSubnets: [mkcSecondarySubnet.id],
- *                 dnsDomainNames: [pulumi.all([gmkCluster.clusterId, project]).apply(([clusterId, project]) => `${clusterId}.us-central1.managedkafka.${project.projectId}.cloud.goog`)],
+ *                 dnsDomainNames: [Promise.all([gmkCluster.clusterId, project]).then(([clusterId, project]) => `${clusterId}.us-central1.managedkafka.${project.projectId}.cloud.goog`)],
  *             }],
  *         },
  *     },

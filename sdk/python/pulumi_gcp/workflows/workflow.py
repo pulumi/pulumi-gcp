@@ -718,7 +718,7 @@ class Workflow(pulumi.CustomResource):
         - getCurrentTime:
             call: http.get
             args:
-                url: ${sys.get_env("url")}
+                url: ${sys.get_env(\\"url\\")}
             result: currentTime
         - readWikipedia:
             call: http.get
@@ -775,7 +775,7 @@ class Workflow(pulumi.CustomResource):
         - getCurrentTime:
             call: http.get
             args:
-                url: ${sys.get_env("url")}
+                url: ${sys.get_env(\\"url\\")}
             result: currentTime
         - readWikipedia:
             call: http.get
@@ -883,7 +883,7 @@ class Workflow(pulumi.CustomResource):
         - getCurrentTime:
             call: http.get
             args:
-                url: ${sys.get_env("url")}
+                url: ${sys.get_env(\\"url\\")}
             result: currentTime
         - readWikipedia:
             call: http.get
@@ -940,7 +940,7 @@ class Workflow(pulumi.CustomResource):
         - getCurrentTime:
             call: http.get
             args:
-                url: ${sys.get_env("url")}
+                url: ${sys.get_env(\\"url\\")}
             result: currentTime
         - readWikipedia:
             call: http.get

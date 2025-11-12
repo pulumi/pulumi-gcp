@@ -137,6 +137,76 @@ import * as utilities from "../utilities";
  * ```
  * ### Alloydb Cluster Restore
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = gcp.compute.getNetwork({
+ *     name: "alloydb-network",
+ * });
+ * const source = new gcp.alloydb.Cluster("source", {
+ *     clusterId: "alloydb-source-cluster",
+ *     location: "us-central1",
+ *     network: _default.then(_default => _default.id),
+ *     initialUser: {
+ *         password: "alloydb-source-cluster",
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: "alloydb-source-cluster",
+ *     addressType: "INTERNAL",
+ *     purpose: "VPC_PEERING",
+ *     prefixLength: 16,
+ *     network: _default.then(_default => _default.id),
+ * });
+ * const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
+ *     network: _default.then(_default => _default.id),
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const sourceInstance = new gcp.alloydb.Instance("source", {
+ *     cluster: source.name,
+ *     instanceId: "alloydb-instance",
+ *     instanceType: "PRIMARY",
+ *     machineConfig: {
+ *         cpuCount: 2,
+ *     },
+ * }, {
+ *     dependsOn: [vpcConnection],
+ * });
+ * const sourceBackup = new gcp.alloydb.Backup("source", {
+ *     backupId: "alloydb-backup",
+ *     location: "us-central1",
+ *     clusterName: source.name,
+ * }, {
+ *     dependsOn: [sourceInstance],
+ * });
+ * const restoredFromBackup = new gcp.alloydb.Cluster("restored_from_backup", {
+ *     clusterId: "alloydb-backup-restored",
+ *     location: "us-central1",
+ *     networkConfig: {
+ *         network: _default.then(_default => _default.id),
+ *     },
+ *     restoreBackupSource: {
+ *         backupName: sourceBackup.name,
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const restoredViaPitr = new gcp.alloydb.Cluster("restored_via_pitr", {
+ *     clusterId: "alloydb-pitr-restored",
+ *     location: "us-central1",
+ *     networkConfig: {
+ *         network: _default.then(_default => _default.id),
+ *     },
+ *     restoreContinuousBackupSource: {
+ *         cluster: source.name,
+ *         pointInTime: "2023-08-03T19:19:00.094Z",
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * ```
  * ### Alloydb Secondary Cluster Basic
  *
  * ```typescript

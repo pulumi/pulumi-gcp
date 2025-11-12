@@ -1999,8 +1999,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.google.artifactRegistryPackage;
-     * import com.pulumi.google.artifactRegistryPackageArgs;
+     * import com.pulumi.google.ArtifactRegistryPackage;
+     * import com.pulumi.google.ArtifactRegistryPackageArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2040,8 +2040,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.google.artifactRegistryPackage;
-     * import com.pulumi.google.artifactRegistryPackageArgs;
+     * import com.pulumi.google.ArtifactRegistryPackage;
+     * import com.pulumi.google.ArtifactRegistryPackageArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2081,8 +2081,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.google.artifactRegistryPackage;
-     * import com.pulumi.google.artifactRegistryPackageArgs;
+     * import com.pulumi.google.ArtifactRegistryPackage;
+     * import com.pulumi.google.ArtifactRegistryPackageArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2122,8 +2122,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.google.artifactRegistryPackage;
-     * import com.pulumi.google.artifactRegistryPackageArgs;
+     * import com.pulumi.google.ArtifactRegistryPackage;
+     * import com.pulumi.google.ArtifactRegistryPackageArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2163,8 +2163,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.google.artifactRegistryPackage;
-     * import com.pulumi.google.artifactRegistryPackageArgs;
+     * import com.pulumi.google.ArtifactRegistryPackage;
+     * import com.pulumi.google.ArtifactRegistryPackageArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

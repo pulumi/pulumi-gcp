@@ -153,9 +153,9 @@ def get_kms_secret_asymmetric(ciphertext: Optional[_builtins.str] = None,
         mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
         A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
     \"\"\")
-    db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+    db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
     main = gcp.sql.DatabaseInstance("main",
-        name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+        name=f"main-instance-{db_name_suffix['hex']}",
         database_version="MYSQL_5_7",
         settings={
             "tier": "db-f1-micro",
@@ -251,9 +251,9 @@ def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[_builtins
         mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
         A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
     \"\"\")
-    db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+    db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
     main = gcp.sql.DatabaseInstance("main",
-        name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+        name=f"main-instance-{db_name_suffix['hex']}",
         database_version="MYSQL_5_7",
         settings={
             "tier": "db-f1-micro",

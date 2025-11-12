@@ -20,6 +20,54 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// ## Example Usage
     /// 
+    /// ### Chronicle Retrohunt Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_rule = new Gcp.Chronicle.Rule("my-rule", new()
+    ///     {
+    ///         Location = "us",
+    ///         Instance = "00000000-0000-0000-0000-000000000000",
+    ///         DeletionPolicy = "FORCE",
+    ///         Text = @"rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
+    /// ",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Chronicle.Retrohunt("example", new()
+    ///     {
+    ///         Location = "us",
+    ///         Instance = "00000000-0000-0000-0000-000000000000",
+    ///         Rule = Output.Tuple(Std.Split.Invoke(new()
+    ///         {
+    ///             Separator = "/",
+    ///             Text = googleChronicleRule.My_rule.Name,
+    ///         }), Std.Split.Invoke(new()
+    ///         {
+    ///             Separator = "/",
+    ///             Text = googleChronicleRule.My_rule.Name,
+    ///         }).Apply(invoke =&gt; invoke.Result).Length).Apply(values =&gt;
+    ///         {
+    ///             var invoke = values.Item1;
+    ///             var length = values.Item2;
+    ///             return invoke.Result[length - 1];
+    ///         }),
+    ///         ProcessInterval = new Gcp.Chronicle.Inputs.RetrohuntProcessIntervalArgs
+    ///         {
+    ///             StartTime = "2025-01-01T00:00:00Z",
+    ///             EndTime = "2025-01-01T12:00:00Z",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Retrohunt can be imported using any of these accepted formats:

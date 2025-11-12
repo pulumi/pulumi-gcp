@@ -27,6 +27,172 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Chronicle Ruledeployment Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.chronicle.Rule;
+ * import com.pulumi.gcp.chronicle.RuleArgs;
+ * import com.pulumi.gcp.chronicle.RuleDeployment;
+ * import com.pulumi.gcp.chronicle.RuleDeploymentArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.SplitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_rule = new Rule("my-rule", RuleArgs.builder()
+ *             .location("us")
+ *             .instance("00000000-0000-0000-0000-000000000000")
+ *             .text("""
+ * rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
+ *             """)
+ *             .build());
+ * 
+ *         var example = new RuleDeployment("example", RuleDeploymentArgs.builder()
+ *             .location("us")
+ *             .instance("00000000-0000-0000-0000-000000000000")
+ *             .rule(StdFunctions.split(SplitArgs.builder()
+ *                 .separator("/")
+ *                 .text(googleChronicleRule.my-rule().name())
+ *                 .build()).result().length().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+ *                 .separator("/")
+ *                 .text(googleChronicleRule.my-rule().name())
+ *                 .build()).result()[_length - 1]))
+ *             .enabled(true)
+ *             .alerting(true)
+ *             .archived(false)
+ *             .runFrequency("DAILY")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Chronicle Ruledeployment Disabled
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.chronicle.Rule;
+ * import com.pulumi.gcp.chronicle.RuleArgs;
+ * import com.pulumi.gcp.chronicle.RuleDeployment;
+ * import com.pulumi.gcp.chronicle.RuleDeploymentArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.SplitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_rule = new Rule("my-rule", RuleArgs.builder()
+ *             .location("us")
+ *             .instance("00000000-0000-0000-0000-000000000000")
+ *             .text("""
+ * rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
+ *             """)
+ *             .build());
+ * 
+ *         var example = new RuleDeployment("example", RuleDeploymentArgs.builder()
+ *             .location("us")
+ *             .instance("00000000-0000-0000-0000-000000000000")
+ *             .rule(StdFunctions.split(SplitArgs.builder()
+ *                 .separator("/")
+ *                 .text(googleChronicleRule.my-rule().name())
+ *                 .build()).result().length().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+ *                 .separator("/")
+ *                 .text(googleChronicleRule.my-rule().name())
+ *                 .build()).result()[_length - 1]))
+ *             .enabled(false)
+ *             .runFrequency("LIVE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Chronicle Ruledeployment Run Frequency Missing
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.chronicle.Rule;
+ * import com.pulumi.gcp.chronicle.RuleArgs;
+ * import com.pulumi.gcp.chronicle.RuleDeployment;
+ * import com.pulumi.gcp.chronicle.RuleDeploymentArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.SplitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_rule = new Rule("my-rule", RuleArgs.builder()
+ *             .location("us")
+ *             .instance("00000000-0000-0000-0000-000000000000")
+ *             .text("""
+ * rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
+ *             """)
+ *             .build());
+ * 
+ *         var example = new RuleDeployment("example", RuleDeploymentArgs.builder()
+ *             .location("us")
+ *             .instance("00000000-0000-0000-0000-000000000000")
+ *             .rule(StdFunctions.split(SplitArgs.builder()
+ *                 .separator("/")
+ *                 .text(googleChronicleRule.my-rule().name())
+ *                 .build()).result().length().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+ *                 .separator("/")
+ *                 .text(googleChronicleRule.my-rule().name())
+ *                 .build()).result()[_length - 1]))
+ *             .enabled(true)
+ *             .alerting(true)
+ *             .archived(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * RuleDeployment can be imported using any of these accepted formats:

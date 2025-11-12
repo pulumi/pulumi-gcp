@@ -29,6 +29,50 @@ import (
 //
 // ### Scc Project Big Query Export Config Basic
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := bigquery.NewDataset(ctx, "default", &bigquery.DatasetArgs{
+//				DatasetId:                    pulumi.String("my_dataset_id"),
+//				FriendlyName:                 pulumi.String("test"),
+//				Description:                  pulumi.String("This is a test description"),
+//				Location:                     pulumi.String("US"),
+//				DefaultTableExpirationMs:     pulumi.Int(3600000),
+//				DefaultPartitionExpirationMs: nil,
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = securitycenter.NewProjectSccBigQueryExport(ctx, "custom_big_query_export_config", &securitycenter.ProjectSccBigQueryExportArgs{
+//				Name:             "my-export",
+//				BigQueryExportId: pulumi.String("my-export"),
+//				Project:          pulumi.String("my-project-name"),
+//				Dataset:          _default.ID(),
+//				Description:      pulumi.String("Cloud Security Command Center Findings Big Query Export Config"),
+//				Filter:           pulumi.String("state=\"ACTIVE\" AND NOT mute=\"MUTED\""),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ProjectSccBigQueryExport can be imported using any of these accepted formats:

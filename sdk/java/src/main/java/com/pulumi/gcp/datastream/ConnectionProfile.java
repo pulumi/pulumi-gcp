@@ -101,8 +101,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
  * import com.pulumi.gcp.sql.Database;
  * import com.pulumi.gcp.sql.DatabaseArgs;
- * import com.pulumi.random.RandomPassword;
- * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.random.Password;
+ * import com.pulumi.random.PasswordArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
  * import com.pulumi.gcp.compute.Instance;
@@ -176,7 +176,7 @@ import javax.annotation.Nullable;
  *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
+ *         var pwd = new Password("pwd", PasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());
@@ -210,16 +210,16 @@ import javax.annotation.Nullable;
  * export DB_ADDR=%s
  * export DB_PORT=5432
  * echo 1 > /proc/sys/net/ipv4/ip_forward
- * md_url_prefix="http://169.254.169.254/computeMetadata/v1/instance"
- * vm_nic_ip="$(curl -H "Metadata-Flavor: Google" ${md_url_prefix}/network-interfaces/0/ip)"
+ * md_url_prefix=\"http://169.254.169.254/computeMetadata/v1/instance\"
+ * vm_nic_ip=\"$(curl -H \"Metadata-Flavor: Google\" ${md_url_prefix}/network-interfaces/0/ip)\"
  * iptables -t nat -F
- * iptables -t nat -A PREROUTING \
- *      -p tcp --dport $DB_PORT \
- *      -j DNAT \
+ * iptables -t nat -A PREROUTING \\
+ *      -p tcp --dport $DB_PORT \\
+ *      -j DNAT \\
  *      --to-destination $DB_ADDR
- * iptables -t nat -A POSTROUTING \
- *      -p tcp --dport $DB_PORT \
- *      -j SNAT \
+ * iptables -t nat -A POSTROUTING \\
+ *      -p tcp --dport $DB_PORT \\
+ *      -j SNAT \\
  *      --to-source $vm_nic_ip
  * iptables-save
  * ", _publicIpAddress)))
@@ -319,8 +319,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
  * import com.pulumi.gcp.sql.Database;
  * import com.pulumi.gcp.sql.DatabaseArgs;
- * import com.pulumi.random.RandomPassword;
- * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.random.Password;
+ * import com.pulumi.random.PasswordArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
  * import com.pulumi.gcp.datastream.ConnectionProfile;
@@ -372,7 +372,7 @@ import javax.annotation.Nullable;
  *             .name("db")
  *             .build());
  * 
- *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
+ *         var pwd = new Password("pwd", PasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());
@@ -577,6 +577,54 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Datastream Connection Profile Mongodb
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datastream.ConnectionProfile;
+ * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()
+ *             .displayName("Mongodb Source")
+ *             .location("us-central1")
+ *             .connectionProfileId("source-profile")
+ *             .mongodbProfile(ConnectionProfileMongodbProfileArgs.builder()
+ *                 .hostAddresses(ConnectionProfileMongodbProfileHostAddressArgs.builder()
+ *                     .hostname("mongodb-primary.example.com")
+ *                     .port(27017)
+ *                     .build())
+ *                 .replicaSet("myReplicaSet")
+ *                 .username("mongoUser")
+ *                 .password("mongoPassword")
+ *                 .database("myDatabase")
+ *                 .standardConnectionFormat(ConnectionProfileMongodbProfileStandardConnectionFormatArgs.builder()
+ *                     .build()[0])
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ConnectionProfile can be imported using any of these accepted formats:

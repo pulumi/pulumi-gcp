@@ -105,9 +105,9 @@ import (
 //			serial := pulumi.All(windows.Name, windows.Zone).ApplyT(func(_args []interface{}) (compute.GetInstanceSerialPortResult, error) {
 //				name := _args[0].(string)
 //				zone := _args[1].(string)
-//				return compute.GetInstanceSerialPortResult(interface{}(compute.GetInstanceSerialPortOutput(ctx, compute.GetInstanceSerialPortOutputArgs{
+//				return compute.GetInstanceSerialPortResult(interface{}(compute.GetInstanceSerialPort(ctx, &compute.GetInstanceSerialPortArgs{
 //					Instance: name,
-//					Zone:     zone,
+//					Zone:     pulumi.StringRef(pulumi.StringRef(zone)),
 //					Port:     4,
 //				}, nil))), nil
 //			}).(compute.GetInstanceSerialPortResultOutput)

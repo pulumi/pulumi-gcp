@@ -174,6 +174,94 @@ import (
 // ```
 // ### Firebase App Hosting Build Github
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			my_repository, err := developerconnect.NewGitRepositoryLink(ctx, "my-repository", &developerconnect.GitRepositoryLinkArgs{
+//				Project:  pulumi.String("my-project-name"),
+//				Location: pulumi.String("us-central1"),
+//				Service:  "developerconnect.googleapis.com",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAppHostingBackend, err := firebase.NewAppHostingBackend(ctx, "example", &firebase.AppHostingBackendArgs{
+//				Project:         pulumi.String("my-project-name"),
+//				Location:        pulumi.String("us-central1"),
+//				BackendId:       pulumi.String("mini"),
+//				AppId:           pulumi.String("1:0000000000:web:674cde32020e16fbce9dbd"),
+//				DisplayName:     pulumi.String("My Backend"),
+//				ServingLocality: pulumi.String("GLOBAL_ACCESS"),
+//				ServiceAccount:  pulumi.String("firebase-app-hosting-compute@my-project-name.iam.gserviceaccount.com"),
+//				Environment:     pulumi.String("prod"),
+//				Annotations: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
+//				Codebase: &firebase.AppHostingBackendCodebaseArgs{
+//					Repository:    my_repository.Name,
+//					RootDirectory: pulumi.String("/"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewAppHostingBuild(ctx, "example", &firebase.AppHostingBuildArgs{
+//				Project:  exampleAppHostingBackend.Project,
+//				Location: exampleAppHostingBackend.Location,
+//				Backend:  exampleAppHostingBackend.BackendId,
+//				BuildId:  pulumi.String("gh-build"),
+//				Source: &firebase.AppHostingBuildSourceArgs{
+//					Codebase: &firebase.AppHostingBuildSourceCodebaseArgs{
+//						Branch: pulumi.String("main"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			devconnect_secret, err := projects.NewIAMMember(ctx, "devconnect-secret", &projects.IAMMemberArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Role:    pulumi.String("roles/secretmanager.admin"),
+//				Member:  pulumi.Any(devconnect_p4sa.Member),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// ## Include these blocks only once per Github account ###
+//			my_connection, err := developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
+//				Project:      pulumi.String("my-project-name"),
+//				Location:     pulumi.String("us-central1"),
+//				ConnectionId: pulumi.String("tf-test-connection-new"),
+//				GithubConfig: &developerconnect.ConnectionGithubConfigArgs{
+//					GithubApp: pulumi.String("FIREBASE"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				devconnect_secret,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("nextSteps", my_connection.InstallationStates)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Build can be imported using any of these accepted formats:

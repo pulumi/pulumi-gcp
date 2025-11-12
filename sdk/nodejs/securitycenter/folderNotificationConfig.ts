@@ -25,6 +25,27 @@ import * as utilities from "../utilities";
  *
  * ### Scc Folder Notification Config Basic
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.organizations.Folder("folder", {
+ *     parent: "organizations/123456789",
+ *     displayName: "folder-name",
+ * });
+ * const sccFolderNotificationConfig = new gcp.pubsub.Topic("scc_folder_notification_config", {name: "my-topic"});
+ * const customNotificationConfig = new gcp.securitycenter.FolderNotificationConfig("custom_notification_config", {
+ *     configId: "my-config",
+ *     folder: folder.folderId,
+ *     location: "global",
+ *     description: "My custom Cloud Security Command Center Finding Notification Configuration",
+ *     pubsubTopic: sccFolderNotificationConfig.id,
+ *     streamingConfig: {
+ *         filter: "category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\"",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * FolderNotificationConfig can be imported using any of these accepted formats:

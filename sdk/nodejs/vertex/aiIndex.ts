@@ -32,8 +32,8 @@ import * as utilities from "../utilities";
  * const data = new gcp.storage.BucketObject("data", {
  *     name: "contents/data.json",
  *     bucket: bucket.name,
- *     content: `{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
- * {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+ *     content: `{\\"id\\": \\"42\\", \\"embedding\\": [0.5, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"cat\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"feline\\"]}]}
+ * {\\"id\\": \\"43\\", \\"embedding\\": [0.6, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"dog\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"canine\\"]}]}
  * `,
  * });
  * const vertexaiEncrypterdecrypter = new gcp.kms.CryptoKeyIAMMember("vertexai_encrypterdecrypter", {
@@ -87,8 +87,8 @@ import * as utilities from "../utilities";
  * const data = new gcp.storage.BucketObject("data", {
  *     name: "contents/data.json",
  *     bucket: bucket.name,
- *     content: `{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
- * {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+ *     content: `{\\"id\\": \\"42\\", \\"embedding\\": [0.5, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"cat\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"feline\\"]}]}
+ * {\\"id\\": \\"43\\", \\"embedding\\": [0.6, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"dog\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"canine\\"]}]}
  * `,
  * });
  * const index = new gcp.vertex.AiIndex("index", {

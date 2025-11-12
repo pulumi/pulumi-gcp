@@ -290,6 +290,125 @@ import javax.annotation.Nullable;
  * </pre>
  * ### Alloydb Cluster Restore
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.alloydb.Cluster;
+ * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.alloydb.Instance;
+ * import com.pulumi.gcp.alloydb.InstanceArgs;
+ * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+ * import com.pulumi.gcp.alloydb.Backup;
+ * import com.pulumi.gcp.alloydb.BackupArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterRestoreContinuousBackupSourceArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("alloydb-network")
+ *             .build());
+ * 
+ *         var source = new Cluster("source", ClusterArgs.builder()
+ *             .clusterId("alloydb-source-cluster")
+ *             .location("us-central1")
+ *             .network(default_.id())
+ *             .initialUser(ClusterInitialUserArgs.builder()
+ *                 .password("alloydb-source-cluster")
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
+ *             .name("alloydb-source-cluster")
+ *             .addressType("INTERNAL")
+ *             .purpose("VPC_PEERING")
+ *             .prefixLength(16)
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()
+ *             .network(default_.id())
+ *             .service("servicenetworking.googleapis.com")
+ *             .reservedPeeringRanges(privateIpAlloc.name())
+ *             .build());
+ * 
+ *         var sourceInstance = new Instance("sourceInstance", InstanceArgs.builder()
+ *             .cluster(source.name())
+ *             .instanceId("alloydb-instance")
+ *             .instanceType("PRIMARY")
+ *             .machineConfig(InstanceMachineConfigArgs.builder()
+ *                 .cpuCount(2)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         var sourceBackup = new Backup("sourceBackup", BackupArgs.builder()
+ *             .backupId("alloydb-backup")
+ *             .location("us-central1")
+ *             .clusterName(source.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sourceInstance)
+ *                 .build());
+ * 
+ *         var restoredFromBackup = new Cluster("restoredFromBackup", ClusterArgs.builder()
+ *             .clusterId("alloydb-backup-restored")
+ *             .location("us-central1")
+ *             .networkConfig(ClusterNetworkConfigArgs.builder()
+ *                 .network(default_.id())
+ *                 .build())
+ *             .restoreBackupSource(ClusterRestoreBackupSourceArgs.builder()
+ *                 .backupName(sourceBackup.name())
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var restoredViaPitr = new Cluster("restoredViaPitr", ClusterArgs.builder()
+ *             .clusterId("alloydb-pitr-restored")
+ *             .location("us-central1")
+ *             .networkConfig(ClusterNetworkConfigArgs.builder()
+ *                 .network(default_.id())
+ *                 .build())
+ *             .restoreContinuousBackupSource(ClusterRestoreContinuousBackupSourceArgs.builder()
+ *                 .cluster(source.name())
+ *                 .pointInTime("2023-08-03T19:19:00.094Z")
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Alloydb Secondary Cluster Basic
  * 
  * <pre>

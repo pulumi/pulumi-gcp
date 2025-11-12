@@ -48,6 +48,88 @@ namespace Pulumi.Gcp.Sql
     /// });
     /// ```
     /// 
+    /// ### Granular restriction of network access
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var apps = new List&lt;Gcp.Compute.Instance&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 8; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         apps.Add(new Gcp.Compute.Instance($"apps-{range.Value}", new()
+    ///         {
+    ///             NetworkInterfaces = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     AccessConfigs = new[]
+    ///                     {
+    ///                         null,
+    ///                     },
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///             Name = $"apps-{range.Value + 1}",
+    ///             MachineType = "f1-micro",
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = "ubuntu-os-cloud/ubuntu-1804-lts",
+    ///                 },
+    ///             },
+    ///         }));
+    ///     }
+    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+    ///     {
+    ///         ByteLength = 4,
+    ///     });
+    /// 
+    ///     var onprem = new[]
+    ///     {
+    ///         "192.168.1.2",
+    ///         "192.168.2.3",
+    ///     };
+    /// 
+    ///     var postgres = new Gcp.Sql.DatabaseInstance("postgres", new()
+    ///     {
+    ///         Name = $"postgres-instance-{dbNameSuffix.Hex}",
+    ///         DatabaseVersion = "POSTGRES_15",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 AuthorizedNetworks = .Apply(entries =&gt; entries.Select(entry =&gt; 
+    ///                 {
+    ///                     return 
+    ///                     {
+    ///                         { "name", entry.Value.Name },
+    ///                         { "value", entry.Value.NetworkInterface[0].AccessConfig[0].NatIp },
+    ///                     };
+    ///                 }).ToList()),
+    ///                 AuthorizedNetworks = onprem.Select((v, k) =&gt; new { Key = k, Value = v }).Select(entry2 =&gt; 
+    ///                 {
+    ///                     return new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Name = $"onprem-{entry2.Key}",
+    ///                         Value = entry2.Value,
+    ///                     };
+    ///                 }).ToList(),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Private IP Instance
     /// &gt; **NOTE:** For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `DependsOn`reference as shown below.
     /// 
@@ -84,14 +166,14 @@ namespace Pulumi.Gcp.Sql
     ///         },
     ///     });
     /// 
-    ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
     /// 
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
-    ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"private-instance-{hex}"),
+    ///         Name = $"private-instance-{dbNameSuffix.Hex}",
     ///         Region = "us-central1",
     ///         DatabaseVersion = "MYSQL_5_7",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs

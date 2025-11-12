@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,

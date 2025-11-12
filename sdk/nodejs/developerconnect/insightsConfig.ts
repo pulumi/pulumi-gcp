@@ -11,6 +11,151 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Developer Connect Insights Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "dci-tf-_8270",
+ *     name: "Service Project",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
+ * });
+ * // Grant Permissions
+ * const apphubPermissions = new gcp.projects.IAMMember("apphub_permissions", {
+ *     project: project.projectId,
+ *     role: "roles/apphub.admin",
+ *     member: "serviceAccount:hashicorp-test-runner@ci-test-project-188019.iam.gserviceaccount.com",
+ * });
+ * const insightsAgent = new gcp.projects.IAMMember("insights_agent", {
+ *     project: project.projectId,
+ *     role: "roles/developerconnect.insightsAgent",
+ *     member: "serviceAccount:66214305248-compute@developer.gserviceaccount.com",
+ * });
+ * // Enable APIs
+ * const apphubApiService = new gcp.projects.Service("apphub_api_service", {
+ *     project: project.projectId,
+ *     service: "apphub.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const containeranalysisApi = new gcp.projects.Service("containeranalysis_api", {
+ *     project: project.projectId,
+ *     service: "containeranalysis.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const containerscanningApi = new gcp.projects.Service("containerscanning_api", {
+ *     project: project.projectId,
+ *     service: "containerscanning.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const containerApi = new gcp.projects.Service("container_api", {
+ *     project: project.projectId,
+ *     service: "container.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const artifactregistryApi = new gcp.projects.Service("artifactregistry_api", {
+ *     project: project.projectId,
+ *     service: "artifactregistry.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const cloudbuildApi = new gcp.projects.Service("cloudbuild_api", {
+ *     project: project.projectId,
+ *     service: "cloudbuild.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const cloudassetApi = new gcp.projects.Service("cloudasset_api", {
+ *     project: project.projectId,
+ *     service: "cloudasset.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const computeApi = new gcp.projects.Service("compute_api", {
+ *     project: project.projectId,
+ *     service: "compute.googleapis.com",
+ *     disableDependentServices: true,
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * const devconnectApi = new gcp.projects.Service("devconnect_api", {
+ *     project: project.projectId,
+ *     service: "developerconnect.googleapis.com",
+ * }, {
+ *     dependsOn: [project],
+ * });
+ * // Wait delay after enabling APIs and granting permissions
+ * const waitForPropagation = new time.Sleep("wait_for_propagation", {createDuration: "120s"}, {
+ *     dependsOn: [
+ *         apphubPermissions,
+ *         insightsAgent,
+ *         apphubApiService,
+ *         containeranalysisApi,
+ *         containerscanningApi,
+ *         containerApi,
+ *         artifactregistryApi,
+ *         artifactregistryApi,
+ *         cloudbuildApi,
+ *         cloudassetApi,
+ *         computeApi,
+ *         devconnectApi,
+ *     ],
+ * });
+ * const myApphubApplication = new gcp.apphub.Application("my_apphub_application", {
+ *     location: "us-central1",
+ *     applicationId: "tf-test-example-application_41150",
+ *     scope: {
+ *         type: "REGIONAL",
+ *     },
+ *     project: project.projectId,
+ * }, {
+ *     dependsOn: [waitForPropagation],
+ * });
+ * const insightsConfig = new gcp.developerconnect.InsightsConfig("insights_config", {
+ *     location: "us-central1",
+ *     insightsConfigId: "tf-test-ic_89313",
+ *     project: project.projectId,
+ *     annotations: {},
+ *     labels: {},
+ *     appHubApplication: std.format({
+ *         input: "//apphub.googleapis.com/projects/%s/locations/%s/applications/%s",
+ *         args: [
+ *             project.number,
+ *             myApphubApplication.location,
+ *             myApphubApplication.applicationId,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     artifactConfigs: [{
+ *         googleArtifactAnalysis: {
+ *             projectId: project.projectId,
+ *         },
+ *         googleArtifactRegistry: {
+ *             artifactRegistryPackage: "my-package",
+ *             projectId: project.projectId,
+ *         },
+ *         uri: "us-docker.pkg.dev/my-project/my-repo/my-image",
+ *     }],
+ * }, {
+ *     dependsOn: [waitForPropagation],
+ * });
+ * ```
+ *
  * ## Import
  *
  * InsightsConfig can be imported using any of these accepted formats:

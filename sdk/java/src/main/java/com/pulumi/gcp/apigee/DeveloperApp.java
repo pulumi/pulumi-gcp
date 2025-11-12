@@ -33,6 +33,90 @@ import javax.annotation.Nullable;
  * 
  * ### Apigee Developer App Basic
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.apigee.Organization;
+ * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import com.pulumi.gcp.apigee.Instance;
+ * import com.pulumi.gcp.apigee.InstanceArgs;
+ * import com.pulumi.gcp.apigee.ApiProduct;
+ * import com.pulumi.gcp.apigee.ApiProductArgs;
+ * import com.pulumi.gcp.apigee.Developer;
+ * import com.pulumi.gcp.apigee.DeveloperArgs;
+ * import com.pulumi.gcp.apigee.DeveloperApp;
+ * import com.pulumi.gcp.apigee.DeveloperAppArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
+ *             .analyticsRegion("us-central1")
+ *             .projectId(projectGoogleProject.projectId())
+ *             .disableVpcPeering(true)
+ *             .build());
+ * 
+ *         var apigeeInstance = new Instance("apigeeInstance", InstanceArgs.builder()
+ *             .name("instance")
+ *             .location("us-central1")
+ *             .orgId(apigeeOrg.id())
+ *             .build());
+ * 
+ *         var apiProduct = new ApiProduct("apiProduct", ApiProductArgs.builder()
+ *             .orgId(apigeeOrg.id())
+ *             .name("sample-api")
+ *             .displayName("A sample API Product")
+ *             .approvalType("auto")
+ *             .scopes(            
+ *                 "read:weather",
+ *                 "write:reports")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigeeInstance)
+ *                 .build());
+ * 
+ *         var developer = new Developer("developer", DeveloperArgs.builder()
+ *             .email("john.doe}{@literal @}{@code acme.com")
+ *             .firstName("John")
+ *             .lastName("Doe")
+ *             .userName("john.doe")
+ *             .orgId(apigeeOrg.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigeeInstance)
+ *                 .build());
+ * 
+ *         var apigeeDeveloperApp = new DeveloperApp("apigeeDeveloperApp", DeveloperAppArgs.builder()
+ *             .name("sample-app")
+ *             .orgId(apigeeOrg.id())
+ *             .developerId(developer.id())
+ *             .developerEmail(developer.email())
+ *             .callbackUrl("https://example-call.url")
+ *             .apiProducts(apiProduct.name())
+ *             .scopes(apiProduct.scopes())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * ### Apigee Developer App Basic Test
  * 
  * <pre>

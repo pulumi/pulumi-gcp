@@ -22,6 +22,52 @@ import * as utilities from "../utilities";
  *
  * ### Apigee Developer App Basic
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const apigeeOrg = new gcp.apigee.Organization("apigee_org", {
+ *     analyticsRegion: "us-central1",
+ *     projectId: projectGoogleProject.projectId,
+ *     disableVpcPeering: true,
+ * });
+ * const apigeeInstance = new gcp.apigee.Instance("apigee_instance", {
+ *     name: "instance",
+ *     location: "us-central1",
+ *     orgId: apigeeOrg.id,
+ * });
+ * const apiProduct = new gcp.apigee.ApiProduct("api_product", {
+ *     orgId: apigeeOrg.id,
+ *     name: "sample-api",
+ *     displayName: "A sample API Product",
+ *     approvalType: "auto",
+ *     scopes: [
+ *         "read:weather",
+ *         "write:reports",
+ *     ],
+ * }, {
+ *     dependsOn: [apigeeInstance],
+ * });
+ * const developer = new gcp.apigee.Developer("developer", {
+ *     email: "john.doe@acme.com",
+ *     firstName: "John",
+ *     lastName: "Doe",
+ *     userName: "john.doe",
+ *     orgId: apigeeOrg.id,
+ * }, {
+ *     dependsOn: [apigeeInstance],
+ * });
+ * const apigeeDeveloperApp = new gcp.apigee.DeveloperApp("apigee_developer_app", {
+ *     name: "sample-app",
+ *     orgId: apigeeOrg.id,
+ *     developerId: developer.id,
+ *     developerEmail: developer.email,
+ *     callbackUrl: "https://example-call.url",
+ *     apiProducts: [apiProduct.name],
+ *     scopes: apiProduct.scopes,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * ```
  * ### Apigee Developer App Basic Test
  *
  * ```typescript

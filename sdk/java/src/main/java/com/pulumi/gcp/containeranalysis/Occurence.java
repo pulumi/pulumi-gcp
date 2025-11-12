@@ -29,6 +29,100 @@ import javax.annotation.Nullable;
  * 
  * ### Container Analysis Occurrence Kms
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.containeranalysis.Note;
+ * import com.pulumi.gcp.containeranalysis.NoteArgs;
+ * import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityArgs;
+ * import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityHintArgs;
+ * import com.pulumi.gcp.kms.KmsFunctions;
+ * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+ * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+ * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
+ * import com.pulumi.gcp.binaryauthorization.Attestor;
+ * import com.pulumi.gcp.binaryauthorization.AttestorArgs;
+ * import com.pulumi.gcp.binaryauthorization.inputs.AttestorAttestationAuthorityNoteArgs;
+ * import com.pulumi.gcp.containeranalysis.Occurence;
+ * import com.pulumi.gcp.containeranalysis.OccurenceArgs;
+ * import com.pulumi.gcp.containeranalysis.inputs.OccurenceAttestationArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filebase64Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var note = new Note("note", NoteArgs.builder()
+ *             .name("attestation-note")
+ *             .attestationAuthority(NoteAttestationAuthorityArgs.builder()
+ *                 .hint(NoteAttestationAuthorityHintArgs.builder()
+ *                     .humanReadableName("Attestor Note")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var keyring = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+ *             .name("my-key-ring")
+ *             .location("global")
+ *             .build());
+ * 
+ *         final var crypto-key = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+ *             .name("my-key")
+ *             .keyRing(keyring.id())
+ *             .build());
+ * 
+ *         final var version = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
+ *             .cryptoKey(crypto_key.id())
+ *             .build());
+ * 
+ *         var attestor = new Attestor("attestor", AttestorArgs.builder()
+ *             .name("attestor")
+ *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
+ *                 .noteReference(note.name())
+ *                 .publicKeys(AttestorAttestationAuthorityNotePublicKeyArgs.builder()
+ *                     .id(version.id())
+ *                     .pkixPublicKey(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs.builder()
+ *                         .publicKeyPem(version.publicKeys()[0].pem())
+ *                         .signatureAlgorithm(version.publicKeys()[0].algorithm())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var occurrence = new Occurence("occurrence", OccurenceArgs.builder()
+ *             .resourceUri("gcr.io/my-project/my-image")
+ *             .noteName(note.id())
+ *             .attestation(OccurenceAttestationArgs.builder()
+ *                 .serializedPayload(StdFunctions.filebase64(Filebase64Args.builder()
+ *                     .input("path/to/my/payload.json")
+ *                     .build()).result())
+ *                 .signatures(OccurenceAttestationSignatureArgs.builder()
+ *                     .publicKeyId(version.id())
+ *                     .serializedPayload(StdFunctions.filebase64(Filebase64Args.builder()
+ *                         .input("path/to/my/payload.json.sig")
+ *                         .build()).result())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Occurrence can be imported using any of these accepted formats:

@@ -29,6 +29,43 @@ import javax.annotation.Nullable;
  * 
  * ### Active Directory Domain Trust Basic
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.activedirectory.DomainTrust;
+ * import com.pulumi.gcp.activedirectory.DomainTrustArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ad_domain_trust = new DomainTrust("ad-domain-trust", DomainTrustArgs.builder()
+ *             .domain("test-managed-ad.com")
+ *             .targetDomainName("example-gcp.com")
+ *             .targetDnsIpAddresses("10.1.0.100")
+ *             .trustDirection("OUTBOUND")
+ *             .trustType("FOREST")
+ *             .trustHandshakeSecret("Testing1!")
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * DomainTrust can be imported using any of these accepted formats:

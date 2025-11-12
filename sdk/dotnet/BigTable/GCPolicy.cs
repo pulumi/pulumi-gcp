@@ -67,9 +67,9 @@ namespace Pulumi.Gcp.BigTable
     ///         ColumnFamily = "name",
     ///         DeletionPolicy = "ABANDON",
     ///         GcRules = @"  {
-    ///     ""rules"": [
+    ///     \""rules\"": [
     ///       {
-    ///         ""max_age"": ""168h""
+    ///         \""max_age\"": \""168h\""
     ///       }
     ///     ]
     ///   }
@@ -96,13 +96,13 @@ namespace Pulumi.Gcp.BigTable
     ///         ColumnFamily = "name",
     ///         DeletionPolicy = "ABANDON",
     ///         GcRules = @"  {
-    ///     ""mode"": ""union"",
-    ///     ""rules"": [
+    ///     \""mode\"": \""union\"",
+    ///     \""rules\"": [
     ///       {
-    ///         ""max_age"": ""168h""
+    ///         \""max_age\"": \""168h\""
     ///       },
     ///       {
-    ///         ""max_version"": 10
+    ///         \""max_version\"": 10
     ///       }
     ///     ]
     ///   }
@@ -156,19 +156,19 @@ namespace Pulumi.Gcp.BigTable
     ///         ColumnFamily = "cf1",
     ///         DeletionPolicy = "ABANDON",
     ///         GcRules = @"  {
-    ///     ""mode"": ""union"",
-    ///     ""rules"": [
+    ///     \""mode\"": \""union\"",
+    ///     \""rules\"": [
     ///       {
-    ///         ""max_age"": ""10h""
+    ///         \""max_age\"": \""10h\""
     ///       },
     ///       {
-    ///         ""mode"": ""intersection"",
-    ///         ""rules"": [
+    ///         \""mode\"": \""intersection\"",
+    ///         \""rules\"": [
     ///           {
-    ///             ""max_age"": ""2h""
+    ///             \""max_age\"": \""2h\""
     ///           },
     ///           {
-    ///             ""max_version"": 2
+    ///             \""max_version\"": 2
     ///           }
     ///         ]
     ///       }

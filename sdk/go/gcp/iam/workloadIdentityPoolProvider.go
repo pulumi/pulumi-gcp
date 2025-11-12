@@ -127,7 +127,7 @@ import (
 //				DisplayName:                    pulumi.String("Name of provider"),
 //				Description:                    pulumi.String("GitHub Actions identity pool provider for automated test"),
 //				Disabled:                       pulumi.Bool(true),
-//				AttributeCondition:             pulumi.String("    assertion.repository_owner_id == \"123456789\" &&\n    attribute.repository == \"gh-org/gh-repo\" &&\n    assertion.ref == \"refs/heads/main\" &&\n    assertion.ref_type == \"branch\"\n"),
+//				AttributeCondition:             pulumi.String("    assertion.repository_owner_id == \\\"123456789\\\" &&\n    attribute.repository == \\\"gh-org/gh-repo\\\" &&\n    assertion.ref == \\\"refs/heads/main\\\" &&\n    assertion.ref_type == \\\"branch\\\"\n"),
 //				AttributeMapping: pulumi.StringMap{
 //					"google.subject":       pulumi.String("assertion.sub"),
 //					"attribute.actor":      pulumi.String("assertion.actor"),
@@ -214,7 +214,7 @@ import (
 //				AttributeMapping: pulumi.StringMap{
 //					"google.subject":                  pulumi.String("\"azure::\" + assertion.tid + \"::\" + assertion.sub"),
 //					"attribute.tid":                   pulumi.String("assertion.tid"),
-//					"attribute.managed_identity_name": pulumi.String("      {\n        \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",\n        \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"\n      }[assertion.oid]\n"),
+//					"attribute.managed_identity_name": pulumi.String("      {\n        \\\"8bb39bdb-1cc5-4447-b7db-a19e920eb111\\\":\\\"workload1\\\",\n        \\\"55d36609-9bcf-48e0-a366-a3cf19027d2a\\\":\\\"workload2\\\"\n      }[assertion.oid]\n"),
 //				},
 //				Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
 //					AllowedAudiences: pulumi.StringArray{
@@ -359,7 +359,7 @@ import (
 //				AttributeMapping: pulumi.StringMap{
 //					"google.subject":                  pulumi.String("\"azure::\" + assertion.tid + \"::\" + assertion.sub"),
 //					"attribute.tid":                   pulumi.String("assertion.tid"),
-//					"attribute.managed_identity_name": pulumi.String("      {\n        \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",\n        \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"\n      }[assertion.oid]\n"),
+//					"attribute.managed_identity_name": pulumi.String("      {\n        \\\"8bb39bdb-1cc5-4447-b7db-a19e920eb111\\\":\\\"workload1\\\",\n        \\\"55d36609-9bcf-48e0-a366-a3cf19027d2a\\\":\\\"workload2\\\"\n      }[assertion.oid]\n"),
 //				},
 //				Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
 //					AllowedAudiences: pulumi.StringArray{

@@ -2165,8 +2165,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.kms.KmsFunctions;
      * import com.pulumi.gcp.kms.inputs.GetKMSSecretArgs;
-     * import com.pulumi.random.RandomId;
-     * import com.pulumi.random.RandomIdArgs;
+     * import com.pulumi.random.Id;
+     * import com.pulumi.random.IdArgs;
      * import com.pulumi.gcp.sql.DatabaseInstance;
      * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
      * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -2190,12 +2190,12 @@ public final class KmsFunctions {
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
+     *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2290,8 +2290,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.kms.KmsFunctions;
      * import com.pulumi.gcp.kms.inputs.GetKMSSecretArgs;
-     * import com.pulumi.random.RandomId;
-     * import com.pulumi.random.RandomIdArgs;
+     * import com.pulumi.random.Id;
+     * import com.pulumi.random.IdArgs;
      * import com.pulumi.gcp.sql.DatabaseInstance;
      * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
      * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -2315,12 +2315,12 @@ public final class KmsFunctions {
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
+     *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2415,8 +2415,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.kms.KmsFunctions;
      * import com.pulumi.gcp.kms.inputs.GetKMSSecretArgs;
-     * import com.pulumi.random.RandomId;
-     * import com.pulumi.random.RandomIdArgs;
+     * import com.pulumi.random.Id;
+     * import com.pulumi.random.IdArgs;
      * import com.pulumi.gcp.sql.DatabaseInstance;
      * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
      * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -2440,12 +2440,12 @@ public final class KmsFunctions {
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
+     *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2540,8 +2540,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.kms.KmsFunctions;
      * import com.pulumi.gcp.kms.inputs.GetKMSSecretArgs;
-     * import com.pulumi.random.RandomId;
-     * import com.pulumi.random.RandomIdArgs;
+     * import com.pulumi.random.Id;
+     * import com.pulumi.random.IdArgs;
      * import com.pulumi.gcp.sql.DatabaseInstance;
      * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
      * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -2565,12 +2565,12 @@ public final class KmsFunctions {
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
+     *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2665,8 +2665,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.kms.KmsFunctions;
      * import com.pulumi.gcp.kms.inputs.GetKMSSecretArgs;
-     * import com.pulumi.random.RandomId;
-     * import com.pulumi.random.RandomIdArgs;
+     * import com.pulumi.random.Id;
+     * import com.pulumi.random.IdArgs;
      * import com.pulumi.gcp.sql.DatabaseInstance;
      * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
      * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -2690,12 +2690,12 @@ public final class KmsFunctions {
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
+     *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2801,8 +2801,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.kms.KmsFunctions;
      * import com.pulumi.gcp.kms.inputs.GetKMSSecretAsymmetricArgs;
-     * import com.pulumi.random.RandomId;
-     * import com.pulumi.random.RandomIdArgs;
+     * import com.pulumi.random.Id;
+     * import com.pulumi.random.IdArgs;
      * import com.pulumi.gcp.sql.DatabaseInstance;
      * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
      * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -2839,12 +2839,12 @@ public final class KmsFunctions {
      *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
+     *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2950,8 +2950,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.kms.KmsFunctions;
      * import com.pulumi.gcp.kms.inputs.GetKMSSecretAsymmetricArgs;
-     * import com.pulumi.random.RandomId;
-     * import com.pulumi.random.RandomIdArgs;
+     * import com.pulumi.random.Id;
+     * import com.pulumi.random.IdArgs;
      * import com.pulumi.gcp.sql.DatabaseInstance;
      * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
      * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -2988,12 +2988,12 @@ public final class KmsFunctions {
      *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
+     *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -3099,8 +3099,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.kms.KmsFunctions;
      * import com.pulumi.gcp.kms.inputs.GetKMSSecretAsymmetricArgs;
-     * import com.pulumi.random.RandomId;
-     * import com.pulumi.random.RandomIdArgs;
+     * import com.pulumi.random.Id;
+     * import com.pulumi.random.IdArgs;
      * import com.pulumi.gcp.sql.DatabaseInstance;
      * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
      * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -3137,12 +3137,12 @@ public final class KmsFunctions {
      *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
+     *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -3248,8 +3248,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.kms.KmsFunctions;
      * import com.pulumi.gcp.kms.inputs.GetKMSSecretAsymmetricArgs;
-     * import com.pulumi.random.RandomId;
-     * import com.pulumi.random.RandomIdArgs;
+     * import com.pulumi.random.Id;
+     * import com.pulumi.random.IdArgs;
      * import com.pulumi.gcp.sql.DatabaseInstance;
      * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
      * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -3286,12 +3286,12 @@ public final class KmsFunctions {
      *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
+     *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -3397,8 +3397,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.kms.KmsFunctions;
      * import com.pulumi.gcp.kms.inputs.GetKMSSecretAsymmetricArgs;
-     * import com.pulumi.random.RandomId;
-     * import com.pulumi.random.RandomIdArgs;
+     * import com.pulumi.random.Id;
+     * import com.pulumi.random.IdArgs;
      * import com.pulumi.gcp.sql.DatabaseInstance;
      * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
      * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -3435,12 +3435,12 @@ public final class KmsFunctions {
      *             """)
      *             .build());
      * 
-     *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
+     *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
      *             .byteLength(4)
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")

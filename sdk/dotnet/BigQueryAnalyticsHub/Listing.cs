@@ -144,19 +144,19 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     ///         DatasetId = listingDataset.DatasetId,
     ///         Schema = @"[
     ///   {
-    ///     ""name"": ""name"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE""
+    ///     \""name\"": \""name\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\""
     ///   },
     ///   {
-    ///     ""name"": ""post_abbr"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE""
+    ///     \""name\"": \""post_abbr\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\""
     ///   },
     ///   {
-    ///     ""name"": ""date"",
-    ///     ""type"": ""DATE"",
-    ///     ""mode"": ""NULLABLE""
+    ///     \""name\"": \""date\"",
+    ///     \""type\"": \""DATE\"",
+    ///     \""mode\"": \""NULLABLE\""
     ///   }
     /// ]
     /// ",

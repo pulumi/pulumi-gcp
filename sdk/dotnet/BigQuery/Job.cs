@@ -207,8 +207,8 @@ namespace Pulumi.Gcp.BigQuery
     ///     {
     ///         Name = "geojson-data.jsonl",
     ///         Bucket = bucket.Name,
-    ///         Content = @"{""type"":""Feature"",""properties"":{""continent"":""Europe"",""region"":""Scandinavia""},""geometry"":{""type"":""Polygon"",""coordinates"":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
-    /// {""type"":""Feature"",""properties"":{""continent"":""Africa"",""region"":""West Africa""},""geometry"":{""type"":""Polygon"",""coordinates"":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
+    ///         Content = @"{\""type\"":\""Feature\"",\""properties\"":{\""continent\"":\""Europe\"",\""region\"":\""Scandinavia\""},\""geometry\"":{\""type\"":\""Polygon\"",\""coordinates\"":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
+    /// {\""type\"":\""Feature\"",\""properties\"":{\""continent\"":\""Africa\"",\""region\"":\""West Africa\""},\""geometry\"":{\""type\"":\""Polygon\"",\""coordinates\"":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
     /// ",
     ///     });
     /// 
@@ -382,19 +382,19 @@ namespace Pulumi.Gcp.BigQuery
     ///             DeletionProtection = false,
     ///             Schema = @"[
     ///   {
-    ///     ""name"": ""name"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE""
+    ///     \""name\"": \""name\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\""
     ///   },
     ///   {
-    ///     ""name"": ""post_abbr"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE""
+    ///     \""name\"": \""post_abbr\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\""
     ///   },
     ///   {
-    ///     ""name"": ""date"",
-    ///     ""type"": ""DATE"",
-    ///     ""mode"": ""NULLABLE""
+    ///     \""name\"": \""date\"",
+    ///     \""type\"": \""DATE\"",
+    ///     \""mode\"": \""NULLABLE\""
     ///   }
     /// ]
     /// ",
@@ -427,19 +427,19 @@ namespace Pulumi.Gcp.BigQuery
     ///         TableId = "job_copy_dest_table",
     ///         Schema = @"[
     ///   {
-    ///     ""name"": ""name"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE""
+    ///     \""name\"": \""name\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\""
     ///   },
     ///   {
-    ///     ""name"": ""post_abbr"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE""
+    ///     \""name\"": \""post_abbr\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\""
     ///   },
     ///   {
-    ///     ""name"": ""date"",
-    ///     ""type"": ""DATE"",
-    ///     ""mode"": ""NULLABLE""
+    ///     \""name\"": \""date\"",
+    ///     \""type\"": \""DATE\"",
+    ///     \""mode\"": \""NULLABLE\""
     ///   }
     /// ]
     /// ",
@@ -521,19 +521,19 @@ namespace Pulumi.Gcp.BigQuery
     ///         TableId = "job_extract_table",
     ///         Schema = @"[
     ///   {
-    ///     ""name"": ""name"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE""
+    ///     \""name\"": \""name\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\""
     ///   },
     ///   {
-    ///     ""name"": ""post_abbr"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE""
+    ///     \""name\"": \""post_abbr\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\""
     ///   },
     ///   {
-    ///     ""name"": ""date"",
-    ///     ""type"": ""DATE"",
-    ///     ""mode"": ""NULLABLE""
+    ///     \""name\"": \""date\"",
+    ///     \""type\"": \""DATE\"",
+    ///     \""mode\"": \""NULLABLE\""
     ///   }
     /// ]
     /// ",

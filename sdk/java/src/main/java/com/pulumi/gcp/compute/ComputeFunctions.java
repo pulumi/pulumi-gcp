@@ -8895,6 +8895,63 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Property-Based Availability
+     * 
+     * Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetMachineTypesArgs;
+     * import com.pulumi.gcp.compute.InstanceTemplate;
+     * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ComputeFunctions.getMachineTypes(GetMachineTypesArgs.builder()
+     *             .filter("memoryMb = 16384 AND guestCpus = 8")
+     *             .zone(zone)
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
+     *             .build()).result())) {
+     *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
+     *                 .machineType(range.value())
+     *                 .disks(InstanceTemplateDiskArgs.builder()
+     *                     .sourceImage("debian-cloud/debian-11")
+     *                     .autoDelete(true)
+     *                     .boot(true)
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Machine Family Preference
+     * 
+     * Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
+     * 
      */
     public static Output<GetMachineTypesResult> getMachineTypes() {
         return getMachineTypes(GetMachineTypesArgs.Empty, InvokeOptions.Empty);
@@ -8909,6 +8966,63 @@ public final class ComputeFunctions {
      * * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
      * 
      * ## Example Usage
+     * 
+     * ### Property-Based Availability
+     * 
+     * Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetMachineTypesArgs;
+     * import com.pulumi.gcp.compute.InstanceTemplate;
+     * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ComputeFunctions.getMachineTypes(GetMachineTypesArgs.builder()
+     *             .filter("memoryMb = 16384 AND guestCpus = 8")
+     *             .zone(zone)
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
+     *             .build()).result())) {
+     *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
+     *                 .machineType(range.value())
+     *                 .disks(InstanceTemplateDiskArgs.builder()
+     *                     .sourceImage("debian-cloud/debian-11")
+     *                     .autoDelete(true)
+     *                     .boot(true)
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Machine Family Preference
+     * 
+     * Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
      * 
      */
     public static CompletableFuture<GetMachineTypesResult> getMachineTypesPlain() {
@@ -8925,6 +9039,63 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Property-Based Availability
+     * 
+     * Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetMachineTypesArgs;
+     * import com.pulumi.gcp.compute.InstanceTemplate;
+     * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ComputeFunctions.getMachineTypes(GetMachineTypesArgs.builder()
+     *             .filter("memoryMb = 16384 AND guestCpus = 8")
+     *             .zone(zone)
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
+     *             .build()).result())) {
+     *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
+     *                 .machineType(range.value())
+     *                 .disks(InstanceTemplateDiskArgs.builder()
+     *                     .sourceImage("debian-cloud/debian-11")
+     *                     .autoDelete(true)
+     *                     .boot(true)
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Machine Family Preference
+     * 
+     * Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
+     * 
      */
     public static Output<GetMachineTypesResult> getMachineTypes(GetMachineTypesArgs args) {
         return getMachineTypes(args, InvokeOptions.Empty);
@@ -8939,6 +9110,63 @@ public final class ComputeFunctions {
      * * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
      * 
      * ## Example Usage
+     * 
+     * ### Property-Based Availability
+     * 
+     * Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetMachineTypesArgs;
+     * import com.pulumi.gcp.compute.InstanceTemplate;
+     * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ComputeFunctions.getMachineTypes(GetMachineTypesArgs.builder()
+     *             .filter("memoryMb = 16384 AND guestCpus = 8")
+     *             .zone(zone)
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
+     *             .build()).result())) {
+     *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
+     *                 .machineType(range.value())
+     *                 .disks(InstanceTemplateDiskArgs.builder()
+     *                     .sourceImage("debian-cloud/debian-11")
+     *                     .autoDelete(true)
+     *                     .boot(true)
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Machine Family Preference
+     * 
+     * Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
      * 
      */
     public static CompletableFuture<GetMachineTypesResult> getMachineTypesPlain(GetMachineTypesPlainArgs args) {
@@ -8955,6 +9183,63 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Property-Based Availability
+     * 
+     * Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetMachineTypesArgs;
+     * import com.pulumi.gcp.compute.InstanceTemplate;
+     * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ComputeFunctions.getMachineTypes(GetMachineTypesArgs.builder()
+     *             .filter("memoryMb = 16384 AND guestCpus = 8")
+     *             .zone(zone)
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
+     *             .build()).result())) {
+     *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
+     *                 .machineType(range.value())
+     *                 .disks(InstanceTemplateDiskArgs.builder()
+     *                     .sourceImage("debian-cloud/debian-11")
+     *                     .autoDelete(true)
+     *                     .boot(true)
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Machine Family Preference
+     * 
+     * Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
+     * 
      */
     public static Output<GetMachineTypesResult> getMachineTypes(GetMachineTypesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getMachineTypes:getMachineTypes", TypeShape.of(GetMachineTypesResult.class), args, Utilities.withVersion(options));
@@ -8970,6 +9255,63 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Property-Based Availability
+     * 
+     * Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetMachineTypesArgs;
+     * import com.pulumi.gcp.compute.InstanceTemplate;
+     * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ComputeFunctions.getMachineTypes(GetMachineTypesArgs.builder()
+     *             .filter("memoryMb = 16384 AND guestCpus = 8")
+     *             .zone(zone)
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
+     *             .build()).result())) {
+     *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
+     *                 .machineType(range.value())
+     *                 .disks(InstanceTemplateDiskArgs.builder()
+     *                     .sourceImage("debian-cloud/debian-11")
+     *                     .autoDelete(true)
+     *                     .boot(true)
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Machine Family Preference
+     * 
+     * Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
+     * 
      */
     public static Output<GetMachineTypesResult> getMachineTypes(GetMachineTypesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getMachineTypes:getMachineTypes", TypeShape.of(GetMachineTypesResult.class), args, Utilities.withVersion(options));
@@ -8984,6 +9326,63 @@ public final class ComputeFunctions {
      * * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
      * 
      * ## Example Usage
+     * 
+     * ### Property-Based Availability
+     * 
+     * Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetMachineTypesArgs;
+     * import com.pulumi.gcp.compute.InstanceTemplate;
+     * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ComputeFunctions.getMachineTypes(GetMachineTypesArgs.builder()
+     *             .filter("memoryMb = 16384 AND guestCpus = 8")
+     *             .zone(zone)
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
+     *             .build()).result())) {
+     *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
+     *                 .machineType(range.value())
+     *                 .disks(InstanceTemplateDiskArgs.builder()
+     *                     .sourceImage("debian-cloud/debian-11")
+     *                     .autoDelete(true)
+     *                     .boot(true)
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Machine Family Preference
+     * 
+     * Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
      * 
      */
     public static CompletableFuture<GetMachineTypesResult> getMachineTypesPlain(GetMachineTypesPlainArgs args, InvokeOptions options) {
@@ -17131,6 +17530,50 @@ public final class ComputeFunctions {
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         for (var i = 0; i < available.names().length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
+     *                 .name(String.format("test-%s", range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.names()[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetZonesResult> getZones() {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
@@ -17138,6 +17581,50 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         for (var i = 0; i < available.names().length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
+     *                 .name(String.format("test-%s", range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.names()[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -17147,6 +17634,50 @@ public final class ComputeFunctions {
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         for (var i = 0; i < available.names().length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
+     *                 .name(String.format("test-%s", range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.names()[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
@@ -17154,6 +17685,50 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         for (var i = 0; i < available.names().length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
+     *                 .name(String.format("test-%s", range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.names()[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -17163,6 +17738,50 @@ public final class ComputeFunctions {
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         for (var i = 0; i < available.names().length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
+     *                 .name(String.format("test-%s", range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.names()[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -17171,6 +17790,50 @@ public final class ComputeFunctions {
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         for (var i = 0; i < available.names().length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
+     *                 .name(String.format("test-%s", range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.names()[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -17178,6 +17841,50 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         for (var i = 0; i < available.names().length(); i++) {
+     *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
+     *                 .name(String.format("test-%s", range.value()))
+     *                 .instanceTemplate(foobar.selfLink())
+     *                 .baseInstanceName(String.format("foobar-%s", range.value()))
+     *                 .zone(available.names()[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

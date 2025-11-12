@@ -313,6 +313,31 @@ class ManagementOrganizationEventThreatDetectionCustomModule(pulumi.CustomResour
 
         ### Scc Management Organization Event Threat Detection Custom Module
 
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        example = gcp.securitycenter.ManagementOrganizationEventThreatDetectionCustomModule("example",
+            organization="123456789",
+            location="global",
+            display_name="basic_custom_module",
+            enablement_state="ENABLED",
+            type="CONFIGURABLE_BAD_IP",
+            description="My Event Threat Detection Custom Module",
+            config=json.dumps({
+                "metadata": {
+                    "severity": "LOW",
+                    "description": "Flagged by Forcepoint as malicious",
+                    "recommendation": "Contact the owner of the relevant project.",
+                },
+                "ips": [
+                    "192.0.2.1",
+                    "192.0.2.0/24",
+                ],
+            }))
+        ```
+
         ## Import
 
         OrganizationEventThreatDetectionCustomModule can be imported using any of these accepted formats:
@@ -362,6 +387,31 @@ class ManagementOrganizationEventThreatDetectionCustomModule(pulumi.CustomResour
         ## Example Usage
 
         ### Scc Management Organization Event Threat Detection Custom Module
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        example = gcp.securitycenter.ManagementOrganizationEventThreatDetectionCustomModule("example",
+            organization="123456789",
+            location="global",
+            display_name="basic_custom_module",
+            enablement_state="ENABLED",
+            type="CONFIGURABLE_BAD_IP",
+            description="My Event Threat Detection Custom Module",
+            config=json.dumps({
+                "metadata": {
+                    "severity": "LOW",
+                    "description": "Flagged by Forcepoint as malicious",
+                    "recommendation": "Contact the owner of the relevant project.",
+                },
+                "ips": [
+                    "192.0.2.1",
+                    "192.0.2.0/24",
+                ],
+            }))
+        ```
 
         ## Import
 

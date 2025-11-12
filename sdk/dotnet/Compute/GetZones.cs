@@ -14,6 +14,32 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Provides access to available Google Compute zones in a region for a given project.
         /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = Gcp.Compute.GetZones.Invoke();
+        /// 
+        ///     var foo = new List&lt;Gcp.Compute.InstanceGroupManager&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Apply(getZonesResult =&gt; getZonesResult.Names).Length; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
+        ///         {
+        ///             Name = $"test-{range.Value}",
+        ///             InstanceTemplate = foobar.SelfLink,
+        ///             BaseInstanceName = $"foobar-{range.Value}",
+        ///             Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
+        ///             TargetSize = 1,
+        ///         }));
+        ///     }
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("gcp:compute/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
@@ -21,6 +47,32 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Provides access to available Google Compute zones in a region for a given project.
         /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = Gcp.Compute.GetZones.Invoke();
+        /// 
+        ///     var foo = new List&lt;Gcp.Compute.InstanceGroupManager&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Apply(getZonesResult =&gt; getZonesResult.Names).Length; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
+        ///         {
+        ///             Name = $"test-{range.Value}",
+        ///             InstanceTemplate = foobar.SelfLink,
+        ///             BaseInstanceName = $"foobar-{range.Value}",
+        ///             Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
+        ///             TargetSize = 1,
+        ///         }));
+        ///     }
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("gcp:compute/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
@@ -28,6 +80,32 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Provides access to available Google Compute zones in a region for a given project.
         /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = Gcp.Compute.GetZones.Invoke();
+        /// 
+        ///     var foo = new List&lt;Gcp.Compute.InstanceGroupManager&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Apply(getZonesResult =&gt; getZonesResult.Names).Length; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
+        ///         {
+        ///             Name = $"test-{range.Value}",
+        ///             InstanceTemplate = foobar.SelfLink,
+        ///             BaseInstanceName = $"foobar-{range.Value}",
+        ///             Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
+        ///             TargetSize = 1,
+        ///         }));
+        ///     }
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("gcp:compute/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());

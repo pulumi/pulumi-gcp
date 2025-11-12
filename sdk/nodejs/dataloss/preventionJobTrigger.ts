@@ -194,16 +194,16 @@ import * as utilities from "../utilities";
  *     },
  *     schema: `    [
  *     {
- *       "name": "quantity",
- *       "type": "NUMERIC",
- *       "mode": "NULLABLE",
- *       "description": "The quantity"
+ *       \\"name\\": \\"quantity\\",
+ *       \\"type\\": \\"NUMERIC\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The quantity\\"
  *     },
  *     {
- *       "name": "name",
- *       "type": "STRING",
- *       "mode": "NULLABLE",
- *       "description": "Name of the object"
+ *       \\"name\\": \\"name\\",
+ *       \\"type\\": \\"STRING\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"Name of the object\\"
  *     }
  *     ]
  * `,

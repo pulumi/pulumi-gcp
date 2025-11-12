@@ -21,24 +21,24 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     dataClassification: "DATA_CLASSIFICATION_UNSPECIFIED",
  *     metadataTemplate: `{
- *   "name": "tf-test-template",
- *   "type": "record",
- *   "recordFields": [
+ *   \\"name\\": \\"tf-test-template\\",
+ *   \\"type\\": \\"record\\",
+ *   \\"recordFields\\": [
  *     {
- *       "name": "type",
- *       "type": "enum",
- *       "annotations": {
- *         "displayName": "Type",
- *         "description": "Specifies the type of view represented by the entry."
+ *       \\"name\\": \\"type\\",
+ *       \\"type\\": \\"enum\\",
+ *       \\"annotations\\": {
+ *         \\"displayName\\": \\"Type\\",
+ *         \\"description\\": \\"Specifies the type of view represented by the entry.\\"
  *       },
- *       "index": 1,
- *       "constraints": {
- *         "required": true
+ *       \\"index\\": 1,
+ *       \\"constraints\\": {
+ *         \\"required\\": true
  *       },
- *       "enumValues": [
+ *       \\"enumValues\\": [
  *         {
- *           "name": "VIEW",
- *           "index": 1
+ *           \\"name\\": \\"VIEW\\",
+ *           \\"index\\": 1
  *         }
  *       ]
  *     }
@@ -64,126 +64,126 @@ import * as utilities from "../utilities";
  *     description: "data aspect type created by Terraform",
  *     dataClassification: "METADATA_AND_DATA",
  *     metadataTemplate: `{
- *   "type": "record",
- *   "name": "Schema",
- *   "recordFields": [
+ *   \\"type\\": \\"record\\",
+ *   \\"name\\": \\"Schema\\",
+ *   \\"recordFields\\": [
  *     {
- *       "name": "fields",
- *       "type": "array",
- *       "index": 1,
- *       "arrayItems": {
- *         "name": "field",
- *         "type": "record",
- *         "typeId": "field",
- *         "recordFields": [
+ *       \\"name\\": \\"fields\\",
+ *       \\"type\\": \\"array\\",
+ *       \\"index\\": 1,
+ *       \\"arrayItems\\": {
+ *         \\"name\\": \\"field\\",
+ *         \\"type\\": \\"record\\",
+ *         \\"typeId\\": \\"field\\",
+ *         \\"recordFields\\": [
  *           {
- *             "name": "name",
- *             "type": "string",
- *             "index": 1,
- *             "constraints": {
- *               "required": true
+ *             \\"name\\": \\"name\\",
+ *             \\"type\\": \\"string\\",
+ *             \\"index\\": 1,
+ *             \\"constraints\\": {
+ *               \\"required\\": true
  *             }
  *           },
  *           {
- *             "name": "description",
- *             "type": "string",
- *             "index": 2
+ *             \\"name\\": \\"description\\",
+ *             \\"type\\": \\"string\\",
+ *             \\"index\\": 2
  *           },
  *           {
- *             "name": "dataType",
- *             "type": "string",
- *             "index": 3,
- *             "constraints": {
- *               "required": true
+ *             \\"name\\": \\"dataType\\",
+ *             \\"type\\": \\"string\\",
+ *             \\"index\\": 3,
+ *             \\"constraints\\": {
+ *               \\"required\\": true
  *             }
  *           },
  *           {
- *             "name": "metadataType",
- *             "type": "enum",
- *             "index": 4,
- *             "constraints": {
- *               "required": true
+ *             \\"name\\": \\"metadataType\\",
+ *             \\"type\\": \\"enum\\",
+ *             \\"index\\": 4,
+ *             \\"constraints\\": {
+ *               \\"required\\": true
  *             },
- *             "enumValues": [
+ *             \\"enumValues\\": [
  *               {
- *                 "name": "BOOLEAN",
- *                 "index": 1
+ *                 \\"name\\": \\"BOOLEAN\\",
+ *                 \\"index\\": 1
  *               },
  *               {
- *                 "name": "NUMBER",
- *                 "index": 2
+ *                 \\"name\\": \\"NUMBER\\",
+ *                 \\"index\\": 2
  *               },
  *               {
- *                 "name": "STRING",
- *                 "index": 3
+ *                 \\"name\\": \\"STRING\\",
+ *                 \\"index\\": 3
  *               },
  *               {
- *                 "name": "BYTES",
- *                 "index": 4
+ *                 \\"name\\": \\"BYTES\\",
+ *                 \\"index\\": 4
  *               },
  *               {
- *                 "name": "DATETIME",
- *                 "index": 5
+ *                 \\"name\\": \\"DATETIME\\",
+ *                 \\"index\\": 5
  *               },
  *               {
- *                 "name": "TIMESTAMP",
- *                 "index": 6
+ *                 \\"name\\": \\"TIMESTAMP\\",
+ *                 \\"index\\": 6
  *               },
  *               {
- *                 "name": "GEOSPATIAL",
- *                 "index": 7
+ *                 \\"name\\": \\"GEOSPATIAL\\",
+ *                 \\"index\\": 7
  *               },
  *               {
- *                 "name": "STRUCT",
- *                 "index": 8
+ *                 \\"name\\": \\"STRUCT\\",
+ *                 \\"index\\": 8
  *               },
  *               {
- *                 "name": "OTHER",
- *                 "index": 100
+ *                 \\"name\\": \\"OTHER\\",
+ *                 \\"index\\": 100
  *               }
  *             ]
  *           },
  *           {
- *             "name": "mode",
- *             "type": "enum",
- *             "index": 5,
- *             "enumValues": [
+ *             \\"name\\": \\"mode\\",
+ *             \\"type\\": \\"enum\\",
+ *             \\"index\\": 5,
+ *             \\"enumValues\\": [
  *               {
- *                 "name": "NULLABLE",
- *                 "index": 1
+ *                 \\"name\\": \\"NULLABLE\\",
+ *                 \\"index\\": 1
  *               },
  *               {
- *                 "name": "REPEATED",
- *                 "index": 2
+ *                 \\"name\\": \\"REPEATED\\",
+ *                 \\"index\\": 2
  *               },
  *               {
- *                 "name": "REQUIRED",
- *                 "index": 3
+ *                 \\"name\\": \\"REQUIRED\\",
+ *                 \\"index\\": 3
  *               }
  *             ]
  *           },
  *           {
- *             "name": "defaultValue",
- *             "type": "string",
- *             "index": 6
+ *             \\"name\\": \\"defaultValue\\",
+ *             \\"type\\": \\"string\\",
+ *             \\"index\\": 6
  *           },
  *           {
- *             "name": "annotations",
- *             "type": "map",
- *             "index": 7,
- *             "mapItems": {
- *               "name": "label",
- *               "type": "string"
+ *             \\"name\\": \\"annotations\\",
+ *             \\"type\\": \\"map\\",
+ *             \\"index\\": 7,
+ *             \\"mapItems\\": {
+ *               \\"name\\": \\"label\\",
+ *               \\"type\\": \\"string\\"
  *             }
  *           },
  *           {
- *             "name": "fields",
- *             "type": "array",
- *             "index": 20,
- *             "arrayItems": {
- *               "name": "field",
- *               "type": "record",
- *               "typeRef": "field"
+ *             \\"name\\": \\"fields\\",
+ *             \\"type\\": \\"array\\",
+ *             \\"index\\": 20,
+ *             \\"arrayItems\\": {
+ *               \\"name\\": \\"field\\",
+ *               \\"type\\": \\"record\\",
+ *               \\"typeRef\\": \\"field\\"
  *             }
  *           }
  *         ]

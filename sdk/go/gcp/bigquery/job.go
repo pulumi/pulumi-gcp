@@ -231,7 +231,7 @@ import (
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
 //				Name:    pulumi.String("geojson-data.jsonl"),
 //				Bucket:  bucket.Name,
-//				Content: pulumi.String("{\"type\":\"Feature\",\"properties\":{\"continent\":\"Europe\",\"region\":\"Scandinavia\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}\n{\"type\":\"Feature\",\"properties\":{\"continent\":\"Africa\",\"region\":\"West Africa\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}\n"),
+//				Content: pulumi.String("{\\\"type\\\":\\\"Feature\\\",\\\"properties\\\":{\\\"continent\\\":\\\"Europe\\\",\\\"region\\\":\\\"Scandinavia\\\"},\\\"geometry\\\":{\\\"type\\\":\\\"Polygon\\\",\\\"coordinates\\\":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}\n{\\\"type\\\":\\\"Feature\\\",\\\"properties\\\":{\\\"continent\\\":\\\"Africa\\\",\\\"region\\\":\\\"West Africa\\\"},\\\"geometry\\\":{\\\"type\\\":\\\"Polygon\\\",\\\"coordinates\\\":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -420,19 +420,19 @@ import (
 //					DeletionProtection: pulumi.Bool(false),
 //					Schema: pulumi.String(`[
 //	  {
-//	    "name": "name",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE"
+//	    \"name\": \"name\",
+//	    \"type\": \"STRING\",
+//	    \"mode\": \"NULLABLE\"
 //	  },
 //	  {
-//	    "name": "post_abbr",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE"
+//	    \"name\": \"post_abbr\",
+//	    \"type\": \"STRING\",
+//	    \"mode\": \"NULLABLE\"
 //	  },
 //	  {
-//	    "name": "date",
-//	    "type": "DATE",
-//	    "mode": "NULLABLE"
+//	    \"name\": \"date\",
+//	    \"type\": \"DATE\",
+//	    \"mode\": \"NULLABLE\"
 //	  }
 //
 // ]
@@ -473,19 +473,19 @@ import (
 //				TableId:            pulumi.String("job_copy_dest_table"),
 //				Schema: pulumi.String(`[
 //	  {
-//	    "name": "name",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE"
+//	    \"name\": \"name\",
+//	    \"type\": \"STRING\",
+//	    \"mode\": \"NULLABLE\"
 //	  },
 //	  {
-//	    "name": "post_abbr",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE"
+//	    \"name\": \"post_abbr\",
+//	    \"type\": \"STRING\",
+//	    \"mode\": \"NULLABLE\"
 //	  },
 //	  {
-//	    "name": "date",
-//	    "type": "DATE",
-//	    "mode": "NULLABLE"
+//	    \"name\": \"date\",
+//	    \"type\": \"DATE\",
+//	    \"mode\": \"NULLABLE\"
 //	  }
 //
 // ]
@@ -567,19 +567,19 @@ import (
 //				TableId:            pulumi.String("job_extract_table"),
 //				Schema: pulumi.String(`[
 //	  {
-//	    "name": "name",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE"
+//	    \"name\": \"name\",
+//	    \"type\": \"STRING\",
+//	    \"mode\": \"NULLABLE\"
 //	  },
 //	  {
-//	    "name": "post_abbr",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE"
+//	    \"name\": \"post_abbr\",
+//	    \"type\": \"STRING\",
+//	    \"mode\": \"NULLABLE\"
 //	  },
 //	  {
-//	    "name": "date",
-//	    "type": "DATE",
-//	    "mode": "NULLABLE"
+//	    \"name\": \"date\",
+//	    \"type\": \"DATE\",
+//	    \"mode\": \"NULLABLE\"
 //	  }
 //
 // ]

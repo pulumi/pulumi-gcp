@@ -257,7 +257,7 @@ class MaterializedView(pulumi.CustomResource):
             instance=instance.name,
             deletion_protection=False,
             query=\"\"\"SELECT _key, COUNT(CF['col1']) as Count
-        FROM ` + "`bt-table`" + `
+        FROM ` + \\"`bt-table`\\" + `
         GROUP BY _key
         \"\"\",
             opts = pulumi.ResourceOptions(depends_on=[table]))
@@ -337,7 +337,7 @@ class MaterializedView(pulumi.CustomResource):
             instance=instance.name,
             deletion_protection=False,
             query=\"\"\"SELECT _key, COUNT(CF['col1']) as Count
-        FROM ` + "`bt-table`" + `
+        FROM ` + \\"`bt-table`\\" + `
         GROUP BY _key
         \"\"\",
             opts = pulumi.ResourceOptions(depends_on=[table]))

@@ -55,16 +55,16 @@ namespace Pulumi.Gcp.BigQuery
     ///         },
     ///         Schema = @"[
     ///   {
-    ///     ""name"": ""permalink"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE"",
-    ///     ""description"": ""The Permalink""
+    ///     \""name\"": \""permalink\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\"",
+    ///     \""description\"": \""The Permalink\""
     ///   },
     ///   {
-    ///     ""name"": ""state"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE"",
-    ///     ""description"": ""State where the head office is located""
+    ///     \""name\"": \""state\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\"",
+    ///     \""description\"": \""State where the head office is located\""
     ///   }
     /// ]
     /// ",

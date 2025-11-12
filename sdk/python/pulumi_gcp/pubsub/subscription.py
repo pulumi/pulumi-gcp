@@ -1041,8 +1041,8 @@ class Subscription(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            filter=\"\"\"    attributes.foo = "foo"
-            AND attributes.bar = "bar"
+            filter=\"\"\"    attributes.foo = \\"foo\\"
+            AND attributes.bar = \\"bar\\"
         \"\"\",
             ack_deadline_seconds=20)
         ```
@@ -1075,10 +1075,10 @@ class Subscription(pulumi.CustomResource):
             dataset_id=test.dataset_id,
             schema=\"\"\"[
           {
-            "name": "data",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "The data"
+            \\"name\\": \\"data\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\",
+            \\"description\\": \\"The data\\"
           }
         ]
         \"\"\",
@@ -1109,10 +1109,10 @@ class Subscription(pulumi.CustomResource):
             dataset_id=test.dataset_id,
             schema=\"\"\"[
           {
-            "name": "data",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "The data"
+            \\"name\\": \\"data\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\",
+            \\"description\\": \\"The data\\"
           }
         ]
         \"\"\",
@@ -1157,10 +1157,10 @@ class Subscription(pulumi.CustomResource):
             dataset_id=test.dataset_id,
             schema=\"\"\"[
           {
-            "name": "data",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "The data"
+            \\"name\\": \\"data\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\",
+            \\"description\\": \\"The data\\"
           }
         ]
         \"\"\")
@@ -1576,8 +1576,8 @@ class Subscription(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            filter=\"\"\"    attributes.foo = "foo"
-            AND attributes.bar = "bar"
+            filter=\"\"\"    attributes.foo = \\"foo\\"
+            AND attributes.bar = \\"bar\\"
         \"\"\",
             ack_deadline_seconds=20)
         ```
@@ -1610,10 +1610,10 @@ class Subscription(pulumi.CustomResource):
             dataset_id=test.dataset_id,
             schema=\"\"\"[
           {
-            "name": "data",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "The data"
+            \\"name\\": \\"data\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\",
+            \\"description\\": \\"The data\\"
           }
         ]
         \"\"\",
@@ -1644,10 +1644,10 @@ class Subscription(pulumi.CustomResource):
             dataset_id=test.dataset_id,
             schema=\"\"\"[
           {
-            "name": "data",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "The data"
+            \\"name\\": \\"data\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\",
+            \\"description\\": \\"The data\\"
           }
         ]
         \"\"\",
@@ -1692,10 +1692,10 @@ class Subscription(pulumi.CustomResource):
             dataset_id=test.dataset_id,
             schema=\"\"\"[
           {
-            "name": "data",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "The data"
+            \\"name\\": \\"data\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\",
+            \\"description\\": \\"The data\\"
           }
         ]
         \"\"\")

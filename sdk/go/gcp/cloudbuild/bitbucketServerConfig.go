@@ -116,84 +116,82 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			vpcNetwork, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
-//				Name: pulumi.String("vpc-network"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
-//				Name:         pulumi.String("private-ip-alloc"),
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      vpcNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-//				Network: vpcNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					privateIpAlloc.Name,
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			invokeReplace, err := std.Replace(ctx, &std.ReplaceArgs{
-//				Text:    id,
-//				Search:  project.Name,
-//				Replace: project.Number,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config-with-peered-network", &cloudbuild.BitbucketServerConfigArgs{
-//				ConfigId: pulumi.String("bbs-config"),
-//				Location: pulumi.String("us-central1"),
-//				HostUri:  pulumi.String("https://bbs.com"),
-//				Secrets: &cloudbuild.BitbucketServerConfigSecretsArgs{
-//					AdminAccessTokenVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
-//					ReadAccessTokenVersionName:  pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
-//					WebhookSecretVersionName:    pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
-//				},
-//				Username: pulumi.String("test"),
-//				ApiKey:   pulumi.String("<api-key>"),
-//				PeeredNetwork: pulumi.String(vpcNetwork.ID().ApplyT(func(id string) (std.ReplaceResult, error) {
-//					return std.ReplaceResult(invokeReplace), nil
-//				}).(std.ReplaceResultOutput).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
-//					return invoke.Result, nil
-//				}).(pulumi.StringPtrOutput)),
-//				SslCa: pulumi.String("-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				_default,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+// Service: pulumi.String("servicenetworking.googleapis.com"),
+// })
+// if err != nil {
+// return err
+// }
+// vpcNetwork, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
+// Name: pulumi.String("vpc-network"),
+// }, pulumi.DependsOn([]pulumi.Resource{
+// servicenetworking,
+// }))
+// if err != nil {
+// return err
+// }
+// privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+// Name: pulumi.String("private-ip-alloc"),
+// Purpose: pulumi.String("VPC_PEERING"),
+// AddressType: pulumi.String("INTERNAL"),
+// PrefixLength: pulumi.Int(16),
+// Network: vpcNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// _default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
+// Network: vpcNetwork.ID(),
+// Service: pulumi.String("servicenetworking.googleapis.com"),
+// ReservedPeeringRanges: pulumi.StringArray{
+// privateIpAlloc.Name,
+// },
+// }, pulumi.DependsOn([]pulumi.Resource{
+// servicenetworking,
+// }))
+// if err != nil {
+// return err
+// }
+// invokeReplace, err := std.Replace(ctx, &std.ReplaceArgs{
+// Text: id,
+// Search: project.Name,
+// Replace: project.Number,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// _, err = cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config-with-peered-network", &cloudbuild.BitbucketServerConfigArgs{
+// ConfigId: pulumi.String("bbs-config"),
+// Location: pulumi.String("us-central1"),
+// HostUri: pulumi.String("https://bbs.com"),
+// Secrets: &cloudbuild.BitbucketServerConfigSecretsArgs{
+// AdminAccessTokenVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
+// ReadAccessTokenVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
+// WebhookSecretVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
+// },
+// Username: pulumi.String("test"),
+// ApiKey: pulumi.String("<api-key>"),
+// PeeredNetwork: pulumi.String(vpcNetwork.ID().ApplyT(func(id string) (std.ReplaceResult, error) {
+// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.ReplaceResultOutput).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
+// return invoke.Result, nil
+// }).(pulumi.StringPtrOutput)),
+// SslCa: pulumi.String("-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"),
+// }, pulumi.DependsOn([]pulumi.Resource{
+// _default,
+// }))
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

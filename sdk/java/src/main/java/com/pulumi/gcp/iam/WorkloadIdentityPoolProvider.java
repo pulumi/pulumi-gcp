@@ -164,10 +164,10 @@ import javax.annotation.Nullable;
  *             .description("GitHub Actions identity pool provider for automated test")
  *             .disabled(true)
  *             .attributeCondition("""
- *     assertion.repository_owner_id == "123456789" &&
- *     attribute.repository == "gh-org/gh-repo" &&
- *     assertion.ref == "refs/heads/main" &&
- *     assertion.ref_type == "branch"
+ *     assertion.repository_owner_id == \"123456789\" &&
+ *     attribute.repository == \"gh-org/gh-repo\" &&
+ *     assertion.ref == \"refs/heads/main\" &&
+ *     assertion.ref_type == \"branch\"
  *             """)
  *             .attributeMapping(Map.ofEntries(
  *                 Map.entry("google.subject", "assertion.sub"),
@@ -271,8 +271,8 @@ import javax.annotation.Nullable;
  *                 Map.entry("attribute.tid", "assertion.tid"),
  *                 Map.entry("attribute.managed_identity_name", """
  *       {
- *         "8bb39bdb-1cc5-4447-b7db-a19e920eb111":"workload1",
- *         "55d36609-9bcf-48e0-a366-a3cf19027d2a":"workload2"
+ *         \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",
+ *         \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"
  *       }[assertion.oid]
  *                 """)
  *             ))
@@ -438,8 +438,8 @@ import javax.annotation.Nullable;
  *                 Map.entry("attribute.tid", "assertion.tid"),
  *                 Map.entry("attribute.managed_identity_name", """
  *       {
- *         "8bb39bdb-1cc5-4447-b7db-a19e920eb111":"workload1",
- *         "55d36609-9bcf-48e0-a366-a3cf19027d2a":"workload2"
+ *         \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",
+ *         \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"
  *       }[assertion.oid]
  *                 """)
  *             ))

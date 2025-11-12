@@ -475,38 +475,38 @@ class Schedule(pulumi.CustomResource):
             name="hello_world.ipynb",
             bucket=output_bucket.name,
             content=\"\"\"    {
-              "cells": [
+              \\"cells\\": [
                 {
-                  "cell_type": "code",
-                  "execution_count": null,
-                  "metadata": {},
-                  "outputs": [],
-                  "source": [
-                    "print(\\"Hello, World!\\")"
+                  \\"cell_type\\": \\"code\\",
+                  \\"execution_count\\": null,
+                  \\"metadata\\": {},
+                  \\"outputs\\": [],
+                  \\"source\\": [
+                    \\"print(\\\\\\"Hello, World!\\\\\\")\\"
                   ]
                 }
               ],
-              "metadata": {
-                "kernelspec": {
-                  "display_name": "Python 3",
-                  "language": "python",
-                  "name": "python3"
+              \\"metadata\\": {
+                \\"kernelspec\\": {
+                  \\"display_name\\": \\"Python 3\\",
+                  \\"language\\": \\"python\\",
+                  \\"name\\": \\"python3\\"
                 },
-                "language_info": {
-                  "codemirror_mode": {
-                    "name": "ipython",
-                    "version": 3
+                \\"language_info\\": {
+                  \\"codemirror_mode\\": {
+                    \\"name\\": \\"ipython\\",
+                    \\"version\\": 3
                   },
-                  "file_extension": ".py",
-                  "mimetype": "text/x-python",
-                  "name": "python",
-                  "nbconvert_exporter": "python",
-                  "pygments_lexer": "ipython3",
-                  "version": "3.8.5"
+                  \\"file_extension\\": \\".py\\",
+                  \\"mimetype\\": \\"text/x-python\\",
+                  \\"name\\": \\"python\\",
+                  \\"nbconvert_exporter\\": \\"python\\",
+                  \\"pygments_lexer\\": \\"ipython3\\",
+                  \\"version\\": \\"3.8.5\\"
                 }
               },
-              "nbformat": 4,
-              "nbformat_minor": 4
+              \\"nbformat\\": 4,
+              \\"nbformat_minor\\": 4
             }
         \"\"\")
         schedule = gcp.colab.Schedule("schedule",
@@ -565,38 +565,38 @@ class Schedule(pulumi.CustomResource):
             name="hello_world.ipynb",
             bucket=output_bucket.name,
             content=\"\"\"    {
-              "cells": [
+              \\"cells\\": [
                 {
-                  "cell_type": "code",
-                  "execution_count": null,
-                  "metadata": {},
-                  "outputs": [],
-                  "source": [
-                    "print(\\"Hello, World!\\")"
+                  \\"cell_type\\": \\"code\\",
+                  \\"execution_count\\": null,
+                  \\"metadata\\": {},
+                  \\"outputs\\": [],
+                  \\"source\\": [
+                    \\"print(\\\\\\"Hello, World!\\\\\\")\\"
                   ]
                 }
               ],
-              "metadata": {
-                "kernelspec": {
-                  "display_name": "Python 3",
-                  "language": "python",
-                  "name": "python3"
+              \\"metadata\\": {
+                \\"kernelspec\\": {
+                  \\"display_name\\": \\"Python 3\\",
+                  \\"language\\": \\"python\\",
+                  \\"name\\": \\"python3\\"
                 },
-                "language_info": {
-                  "codemirror_mode": {
-                    "name": "ipython",
-                    "version": 3
+                \\"language_info\\": {
+                  \\"codemirror_mode\\": {
+                    \\"name\\": \\"ipython\\",
+                    \\"version\\": 3
                   },
-                  "file_extension": ".py",
-                  "mimetype": "text/x-python",
-                  "name": "python",
-                  "nbconvert_exporter": "python",
-                  "pygments_lexer": "ipython3",
-                  "version": "3.8.5"
+                  \\"file_extension\\": \\".py\\",
+                  \\"mimetype\\": \\"text/x-python\\",
+                  \\"name\\": \\"python\\",
+                  \\"nbconvert_exporter\\": \\"python\\",
+                  \\"pygments_lexer\\": \\"ipython3\\",
+                  \\"version\\": \\"3.8.5\\"
                 }
               },
-              "nbformat": 4,
-              "nbformat_minor": 4
+              \\"nbformat\\": 4,
+              \\"nbformat_minor\\": 4
             }
         \"\"\")
         schedule = gcp.colab.Schedule("schedule",
@@ -796,38 +796,38 @@ class Schedule(pulumi.CustomResource):
             name="hello_world.ipynb",
             bucket=output_bucket.name,
             content=\"\"\"    {
-              "cells": [
+              \\"cells\\": [
                 {
-                  "cell_type": "code",
-                  "execution_count": null,
-                  "metadata": {},
-                  "outputs": [],
-                  "source": [
-                    "print(\\"Hello, World!\\")"
+                  \\"cell_type\\": \\"code\\",
+                  \\"execution_count\\": null,
+                  \\"metadata\\": {},
+                  \\"outputs\\": [],
+                  \\"source\\": [
+                    \\"print(\\\\\\"Hello, World!\\\\\\")\\"
                   ]
                 }
               ],
-              "metadata": {
-                "kernelspec": {
-                  "display_name": "Python 3",
-                  "language": "python",
-                  "name": "python3"
+              \\"metadata\\": {
+                \\"kernelspec\\": {
+                  \\"display_name\\": \\"Python 3\\",
+                  \\"language\\": \\"python\\",
+                  \\"name\\": \\"python3\\"
                 },
-                "language_info": {
-                  "codemirror_mode": {
-                    "name": "ipython",
-                    "version": 3
+                \\"language_info\\": {
+                  \\"codemirror_mode\\": {
+                    \\"name\\": \\"ipython\\",
+                    \\"version\\": 3
                   },
-                  "file_extension": ".py",
-                  "mimetype": "text/x-python",
-                  "name": "python",
-                  "nbconvert_exporter": "python",
-                  "pygments_lexer": "ipython3",
-                  "version": "3.8.5"
+                  \\"file_extension\\": \\".py\\",
+                  \\"mimetype\\": \\"text/x-python\\",
+                  \\"name\\": \\"python\\",
+                  \\"nbconvert_exporter\\": \\"python\\",
+                  \\"pygments_lexer\\": \\"ipython3\\",
+                  \\"version\\": \\"3.8.5\\"
                 }
               },
-              "nbformat": 4,
-              "nbformat_minor": 4
+              \\"nbformat\\": 4,
+              \\"nbformat_minor\\": 4
             }
         \"\"\")
         schedule = gcp.colab.Schedule("schedule",
@@ -886,38 +886,38 @@ class Schedule(pulumi.CustomResource):
             name="hello_world.ipynb",
             bucket=output_bucket.name,
             content=\"\"\"    {
-              "cells": [
+              \\"cells\\": [
                 {
-                  "cell_type": "code",
-                  "execution_count": null,
-                  "metadata": {},
-                  "outputs": [],
-                  "source": [
-                    "print(\\"Hello, World!\\")"
+                  \\"cell_type\\": \\"code\\",
+                  \\"execution_count\\": null,
+                  \\"metadata\\": {},
+                  \\"outputs\\": [],
+                  \\"source\\": [
+                    \\"print(\\\\\\"Hello, World!\\\\\\")\\"
                   ]
                 }
               ],
-              "metadata": {
-                "kernelspec": {
-                  "display_name": "Python 3",
-                  "language": "python",
-                  "name": "python3"
+              \\"metadata\\": {
+                \\"kernelspec\\": {
+                  \\"display_name\\": \\"Python 3\\",
+                  \\"language\\": \\"python\\",
+                  \\"name\\": \\"python3\\"
                 },
-                "language_info": {
-                  "codemirror_mode": {
-                    "name": "ipython",
-                    "version": 3
+                \\"language_info\\": {
+                  \\"codemirror_mode\\": {
+                    \\"name\\": \\"ipython\\",
+                    \\"version\\": 3
                   },
-                  "file_extension": ".py",
-                  "mimetype": "text/x-python",
-                  "name": "python",
-                  "nbconvert_exporter": "python",
-                  "pygments_lexer": "ipython3",
-                  "version": "3.8.5"
+                  \\"file_extension\\": \\".py\\",
+                  \\"mimetype\\": \\"text/x-python\\",
+                  \\"name\\": \\"python\\",
+                  \\"nbconvert_exporter\\": \\"python\\",
+                  \\"pygments_lexer\\": \\"ipython3\\",
+                  \\"version\\": \\"3.8.5\\"
                 }
               },
-              "nbformat": 4,
-              "nbformat_minor": 4
+              \\"nbformat\\": 4,
+              \\"nbformat_minor\\": 4
             }
         \"\"\")
         schedule = gcp.colab.Schedule("schedule",

@@ -802,10 +802,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             display_name="Name of provider",
             description="GitHub Actions identity pool provider for automated test",
             disabled=True,
-            attribute_condition=\"\"\"    assertion.repository_owner_id == "123456789" &&
-            attribute.repository == "gh-org/gh-repo" &&
-            assertion.ref == "refs/heads/main" &&
-            assertion.ref_type == "branch"
+            attribute_condition=\"\"\"    assertion.repository_owner_id == \\"123456789\\" &&
+            attribute.repository == \\"gh-org/gh-repo\\" &&
+            assertion.ref == \\"refs/heads/main\\" &&
+            assertion.ref_type == \\"branch\\"
         \"\"\",
             attribute_mapping={
                 "google.subject": "assertion.sub",
@@ -852,8 +852,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "google.subject": "\\"azure::\\" + assertion.tid + \\"::\\" + assertion.sub",
                 "attribute.tid": "assertion.tid",
                 "attribute.managed_identity_name": \"\"\"      {
-                "8bb39bdb-1cc5-4447-b7db-a19e920eb111":"workload1",
-                "55d36609-9bcf-48e0-a366-a3cf19027d2a":"workload2"
+                \\"8bb39bdb-1cc5-4447-b7db-a19e920eb111\\":\\"workload1\\",
+                \\"55d36609-9bcf-48e0-a366-a3cf19027d2a\\":\\"workload2\\"
               }[assertion.oid]
         \"\"\",
             },
@@ -926,8 +926,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "google.subject": "\\"azure::\\" + assertion.tid + \\"::\\" + assertion.sub",
                 "attribute.tid": "assertion.tid",
                 "attribute.managed_identity_name": \"\"\"      {
-                "8bb39bdb-1cc5-4447-b7db-a19e920eb111":"workload1",
-                "55d36609-9bcf-48e0-a366-a3cf19027d2a":"workload2"
+                \\"8bb39bdb-1cc5-4447-b7db-a19e920eb111\\":\\"workload1\\",
+                \\"55d36609-9bcf-48e0-a366-a3cf19027d2a\\":\\"workload2\\"
               }[assertion.oid]
         \"\"\",
             },
@@ -1162,10 +1162,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             display_name="Name of provider",
             description="GitHub Actions identity pool provider for automated test",
             disabled=True,
-            attribute_condition=\"\"\"    assertion.repository_owner_id == "123456789" &&
-            attribute.repository == "gh-org/gh-repo" &&
-            assertion.ref == "refs/heads/main" &&
-            assertion.ref_type == "branch"
+            attribute_condition=\"\"\"    assertion.repository_owner_id == \\"123456789\\" &&
+            attribute.repository == \\"gh-org/gh-repo\\" &&
+            assertion.ref == \\"refs/heads/main\\" &&
+            assertion.ref_type == \\"branch\\"
         \"\"\",
             attribute_mapping={
                 "google.subject": "assertion.sub",
@@ -1212,8 +1212,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "google.subject": "\\"azure::\\" + assertion.tid + \\"::\\" + assertion.sub",
                 "attribute.tid": "assertion.tid",
                 "attribute.managed_identity_name": \"\"\"      {
-                "8bb39bdb-1cc5-4447-b7db-a19e920eb111":"workload1",
-                "55d36609-9bcf-48e0-a366-a3cf19027d2a":"workload2"
+                \\"8bb39bdb-1cc5-4447-b7db-a19e920eb111\\":\\"workload1\\",
+                \\"55d36609-9bcf-48e0-a366-a3cf19027d2a\\":\\"workload2\\"
               }[assertion.oid]
         \"\"\",
             },
@@ -1286,8 +1286,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "google.subject": "\\"azure::\\" + assertion.tid + \\"::\\" + assertion.sub",
                 "attribute.tid": "assertion.tid",
                 "attribute.managed_identity_name": \"\"\"      {
-                "8bb39bdb-1cc5-4447-b7db-a19e920eb111":"workload1",
-                "55d36609-9bcf-48e0-a366-a3cf19027d2a":"workload2"
+                \\"8bb39bdb-1cc5-4447-b7db-a19e920eb111\\":\\"workload1\\",
+                \\"55d36609-9bcf-48e0-a366-a3cf19027d2a\\":\\"workload2\\"
               }[assertion.oid]
         \"\"\",
             },

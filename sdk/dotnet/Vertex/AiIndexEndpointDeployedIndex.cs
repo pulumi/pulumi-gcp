@@ -129,8 +129,8 @@ namespace Pulumi.Gcp.Vertex
     ///     {
     ///         Name = "contents/data.json",
     ///         Bucket = bucket.Name,
-    ///         Content = @"{""id"": ""42"", ""embedding"": [0.5, 1.0], ""restricts"": [{""namespace"": ""class"", ""allow"": [""cat"", ""pet""]},{""namespace"": ""category"", ""allow"": [""feline""]}]}
-    /// {""id"": ""43"", ""embedding"": [0.6, 1.0], ""restricts"": [{""namespace"": ""class"", ""allow"": [""dog"", ""pet""]},{""namespace"": ""category"", ""allow"": [""canine""]}]}
+    ///         Content = @"{\""id\"": \""42\"", \""embedding\"": [0.5, 1.0], \""restricts\"": [{\""namespace\"": \""class\"", \""allow\"": [\""cat\"", \""pet\""]},{\""namespace\"": \""category\"", \""allow\"": [\""feline\""]}]}
+    /// {\""id\"": \""43\"", \""embedding\"": [0.6, 1.0], \""restricts\"": [{\""namespace\"": \""class\"", \""allow\"": [\""dog\"", \""pet\""]},{\""namespace\"": \""category\"", \""allow\"": [\""canine\""]}]}
     /// ",
     ///     });
     /// 
@@ -251,8 +251,8 @@ namespace Pulumi.Gcp.Vertex
     ///     {
     ///         Name = "contents/data.json",
     ///         Bucket = bucket.Name,
-    ///         Content = @"{""id"": ""42"", ""embedding"": [0.5, 1.0], ""restricts"": [{""namespace"": ""class"", ""allow"": [""cat"", ""pet""]},{""namespace"": ""category"", ""allow"": [""feline""]}]}
-    /// {""id"": ""43"", ""embedding"": [0.6, 1.0], ""restricts"": [{""namespace"": ""class"", ""allow"": [""dog"", ""pet""]},{""namespace"": ""category"", ""allow"": [""canine""]}]}
+    ///         Content = @"{\""id\"": \""42\"", \""embedding\"": [0.5, 1.0], \""restricts\"": [{\""namespace\"": \""class\"", \""allow\"": [\""cat\"", \""pet\""]},{\""namespace\"": \""category\"", \""allow\"": [\""feline\""]}]}
+    /// {\""id\"": \""43\"", \""embedding\"": [0.6, 1.0], \""restricts\"": [{\""namespace\"": \""class\"", \""allow\"": [\""dog\"", \""pet\""]},{\""namespace\"": \""category\"", \""allow\"": [\""canine\""]}]}
     /// ",
     ///     });
     /// 

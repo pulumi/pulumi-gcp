@@ -374,19 +374,19 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
             table_id="job_load_table",
             schema=\"\"\"[
             {
-                "name": "feature_id",
-                "type": "STRING",
-                "mode": "NULLABLE"
+                \\"name\\": \\"feature_id\\",
+                \\"type\\": \\"STRING\\",
+                \\"mode\\": \\"NULLABLE\\"
             },
             {
-                "name": "example_feature",
-                "type": "STRING",
-                "mode": "NULLABLE"
+                \\"name\\": \\"example_feature\\",
+                \\"type\\": \\"STRING\\",
+                \\"mode\\": \\"NULLABLE\\"
             },
             {
-                "name": "feature_timestamp",
-                "type": "TIMESTAMP",
-                "mode": "NULLABLE"
+                \\"name\\": \\"feature_timestamp\\",
+                \\"type\\": \\"TIMESTAMP\\",
+                \\"mode\\": \\"NULLABLE\\"
             }
         ]
         \"\"\")
@@ -495,19 +495,19 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
             table_id="job_load_table",
             schema=\"\"\"[
             {
-                "name": "feature_id",
-                "type": "STRING",
-                "mode": "NULLABLE"
+                \\"name\\": \\"feature_id\\",
+                \\"type\\": \\"STRING\\",
+                \\"mode\\": \\"NULLABLE\\"
             },
             {
-                "name": "example_feature",
-                "type": "STRING",
-                "mode": "NULLABLE"
+                \\"name\\": \\"example_feature\\",
+                \\"type\\": \\"STRING\\",
+                \\"mode\\": \\"NULLABLE\\"
             },
             {
-                "name": "feature_timestamp",
-                "type": "TIMESTAMP",
-                "mode": "NULLABLE"
+                \\"name\\": \\"feature_timestamp\\",
+                \\"type\\": \\"TIMESTAMP\\",
+                \\"mode\\": \\"NULLABLE\\"
             }
         ]
         \"\"\")

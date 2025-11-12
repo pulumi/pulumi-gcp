@@ -34,6 +34,58 @@ import javax.annotation.Nullable;
  * 
  * ### Scc Folder Notification Config Basic
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Folder;
+ * import com.pulumi.gcp.organizations.FolderArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.securitycenter.FolderNotificationConfig;
+ * import com.pulumi.gcp.securitycenter.FolderNotificationConfigArgs;
+ * import com.pulumi.gcp.securitycenter.inputs.FolderNotificationConfigStreamingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var folder = new Folder("folder", FolderArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .displayName("folder-name")
+ *             .build());
+ * 
+ *         var sccFolderNotificationConfig = new Topic("sccFolderNotificationConfig", TopicArgs.builder()
+ *             .name("my-topic")
+ *             .build());
+ * 
+ *         var customNotificationConfig = new FolderNotificationConfig("customNotificationConfig", FolderNotificationConfigArgs.builder()
+ *             .configId("my-config")
+ *             .folder(folder.folderId())
+ *             .location("global")
+ *             .description("My custom Cloud Security Command Center Finding Notification Configuration")
+ *             .pubsubTopic(sccFolderNotificationConfig.id())
+ *             .streamingConfig(FolderNotificationConfigStreamingConfigArgs.builder()
+ *                 .filter("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\"")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * FolderNotificationConfig can be imported using any of these accepted formats:
