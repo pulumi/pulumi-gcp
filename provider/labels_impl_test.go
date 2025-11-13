@@ -140,6 +140,36 @@ func TestEnsureLabelPathsExist(t *testing.T) {
 			},
 		},
 		{
+			name: "insert top level labels with existing raw state delta",
+			paths: []resource.PropertyPath{
+				{"__pulumi_raw_state_delta", "obj", "ps", "pulumiLabels"},
+				{"__pulumi_raw_state_delta", "obj", "ps", "pulumiLabels", "map"},
+				{"pulumiLabels"},
+			},
+			input: resource.PropertyMap{
+				"s": resource.NewStringProperty("v"),
+				// here, the raw state delta exists but is missing the pulumiLabels piece
+				"__pulumi_raw_state_delta": resource.NewObjectProperty(resource.PropertyMap{
+					"obj": resource.NewObjectProperty(resource.PropertyMap{
+						"ps": resource.NewObjectProperty(resource.PropertyMap{}),
+					}),
+				}),
+			},
+			expected: resource.PropertyMap{
+				"s":            resource.NewStringProperty("v"),
+				"pulumiLabels": resource.NewObjectProperty(resource.PropertyMap{}),
+				"__pulumi_raw_state_delta": resource.NewObjectProperty(resource.PropertyMap{
+					"obj": resource.NewObjectProperty(resource.PropertyMap{
+						"ps": resource.NewObjectProperty(resource.PropertyMap{
+							"pulumiLabels": resource.NewObjectProperty(resource.PropertyMap{
+								"map": resource.NewObjectProperty(resource.PropertyMap{}),
+							}),
+						}),
+					}),
+				}),
+			},
+		},
+		{
 			name: "ignore existing labels",
 			paths: []resource.PropertyPath{
 				{"pulumiLabels"},
