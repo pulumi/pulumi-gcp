@@ -399,6 +399,29 @@ class ProjectSccBigQueryExport(pulumi.CustomResource):
 
         ### Scc Project Big Query Export Config Basic
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.bigquery.Dataset("default",
+            dataset_id="my_dataset_id",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            default_table_expiration_ms=3600000,
+            default_partition_expiration_ms=None,
+            labels={
+                "env": "default",
+            })
+        custom_big_query_export_config = gcp.securitycenter.ProjectSccBigQueryExport("custom_big_query_export_config",
+            name="my-export",
+            big_query_export_id="my-export",
+            project="my-project-name",
+            dataset=default.id,
+            description="Cloud Security Command Center Findings Big Query Export Config",
+            filter="state=\\"ACTIVE\\" AND NOT mute=\\"MUTED\\"")
+        ```
+
         ## Import
 
         ProjectSccBigQueryExport can be imported using any of these accepted formats:
@@ -475,6 +498,29 @@ class ProjectSccBigQueryExport(pulumi.CustomResource):
         ## Example Usage
 
         ### Scc Project Big Query Export Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.bigquery.Dataset("default",
+            dataset_id="my_dataset_id",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            default_table_expiration_ms=3600000,
+            default_partition_expiration_ms=None,
+            labels={
+                "env": "default",
+            })
+        custom_big_query_export_config = gcp.securitycenter.ProjectSccBigQueryExport("custom_big_query_export_config",
+            name="my-export",
+            big_query_export_id="my-export",
+            project="my-project-name",
+            dataset=default.id,
+            description="Cloud Security Command Center Findings Big Query Export Config",
+            filter="state=\\"ACTIVE\\" AND NOT mute=\\"MUTED\\"")
+        ```
 
         ## Import
 

@@ -22,6 +22,93 @@ import (
 //
 // ## Example Usage
 //
+// ### Firebase Web App Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basicWebApp, err := firebase.NewWebApp(ctx, "basic", &firebase.WebAppArgs{
+//				Project:     pulumi.String("my-project-name"),
+//				DisplayName: pulumi.String("Display Name Basic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basic := firebase.GetWebAppConfigOutput(ctx, firebase.GetWebAppConfigOutputArgs{
+//				WebAppId: basicWebApp.AppId,
+//			}, nil)
+//			_default, err := storage.NewBucket(ctx, "default", &storage.BucketArgs{
+//				Name:     pulumi.String("fb-webapp-"),
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewBucketObject(ctx, "default", &storage.BucketObjectArgs{
+//				Bucket: _default.Name,
+//				Name:   pulumi.String("firebase-config.json"),
+//				Content: pulumi.All(basicWebApp.AppId, basic, basic, std.LookupOutput(ctx, std.LookupOutputArgs{
+//					Map:     firebase.GetWebAppConfigResult(basic),
+//					Key:     pulumi.String("database_url"),
+//					Default: pulumi.Any(""),
+//				}, nil), std.LookupOutput(ctx, std.LookupOutputArgs{
+//					Map:     firebase.GetWebAppConfigResult(basic),
+//					Key:     pulumi.String("storage_bucket"),
+//					Default: pulumi.Any(""),
+//				}, nil), std.LookupOutput(ctx, std.LookupOutputArgs{
+//					Map:     firebase.GetWebAppConfigResult(basic),
+//					Key:     pulumi.String("messaging_sender_id"),
+//					Default: pulumi.Any(""),
+//				}, nil), std.LookupOutput(ctx, std.LookupOutputArgs{
+//					Map:     firebase.GetWebAppConfigResult(basic),
+//					Key:     pulumi.String("measurement_id"),
+//					Default: pulumi.Any(""),
+//				}, nil)).ApplyT(func(_args []interface{}) (string, error) {
+//					appId := _args[0].(string)
+//					basic := _args[1].(firebase.GetWebAppConfigResult)
+//					basic1 := _args[2].(firebase.GetWebAppConfigResult)
+//					invoke := _args[3].(std.LookupResult)
+//					invoke1 := _args[4].(std.LookupResult)
+//					invoke2 := _args[5].(std.LookupResult)
+//					invoke3 := _args[6].(std.LookupResult)
+//					var _zero string
+//					tmpJSON0, err := json.Marshal(map[string]interface{}{
+//						"appId":             appId,
+//						"apiKey":            basic.ApiKey,
+//						"authDomain":        basic1.AuthDomain,
+//						"databaseURL":       invoke.Result,
+//						"storageBucket":     invoke1.Result,
+//						"messagingSenderId": invoke2.Result,
+//						"measurementId":     invoke3.Result,
+//					})
+//					if err != nil {
+//						return _zero, err
+//					}
+//					json0 := string(tmpJSON0)
+//					return json0, nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Firebase Web App Custom Api Key
 //
 // ```go

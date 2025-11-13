@@ -591,14 +591,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd.result)
+            password=pwd["result"])
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -1064,6 +1064,93 @@ class Stream(pulumi.CustomResource):
         ```
         ### Datastream Stream Mysql Gtid
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="<%= ctx[:vars]['mysql_name'] %>",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            root_password="<%= ctx[:vars]['mysql_root_password'] %>",
+            deletion_protection="<%= ctx[:vars]['deletion_protection'] %>",
+            settings={
+                "tier": "db-custom-2-4096",
+                "ip_configuration": {
+                    "authorized_networks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
+                    ],
+                },
+            })
+        user = gcp.sql.User("user",
+            name="<%= ctx[:vars]['database_user'] %>",
+            instance=instance.name,
+            password="<%= ctx[:vars]['database_password'] %>")
+        db = gcp.sql.Database("db",
+            name="<%= ctx[:vars]['database_name'] %>",
+            instance=instance.name,
+            opts = pulumi.ResourceOptions(depends_on=[user]))
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="MySQL Source",
+            location="us-central1",
+            connection_profile_id="<%= ctx[:vars]['source_connection_profile_id'] %>",
+            mysql_profile={
+                "hostname": instance.public_ip_address,
+                "port": 1433,
+                "username": user.name,
+                "password": user.password,
+                "database": db.name,
+            })
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="<%= ctx[:vars]['destination_connection_profile_id'] %>",
+            bigquery_profile={})
+        default = gcp.datastream.Stream("default",
+            display_name="MySQL to BigQuery",
+            location="us-central1",
+            stream_id="<%= ctx[:vars]['stream_id'] %>",
+            source_config={
+                "source_connection_profile": source.id,
+                "mysql_source_config": {
+                    "include_objects": {
+                        "schemas": [{
+                            "schema": "schema",
+                            "tables": [{
+                                "table": "table",
+                            }],
+                        }],
+                    },
+                    "gtid": {},
+                },
+            },
+            destination_config={
+                "destination_connection_profile": destination.id,
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
+                            "location": "us-central1",
+                        },
+                    },
+                },
+            },
+            backfill_none={})
+        ```
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
         ```python
@@ -1112,14 +1199,14 @@ class Stream(pulumi.CustomResource):
                 },
             },
             deletion_protection=False)
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="my-user",
             instance=instance.name,
             host="%",
-            password=pwd.result)
+            password=pwd["result"])
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -1193,14 +1280,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd.result)
+            password=pwd["result"])
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -1303,14 +1390,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd.result)
+            password=pwd["result"])
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -1388,14 +1475,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd.result)
+            password=pwd["result"])
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -1469,14 +1556,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd.result)
+            password=pwd["result"])
         blmt_bucket = gcp.storage.Bucket("blmt_bucket",
             name="blmt-bucket",
             location="us-central1",
@@ -1540,6 +1627,56 @@ class Stream(pulumi.CustomResource):
             backfill_none={})
         ```
         ### Datastream Stream Mongodb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.Stream("default",
+            display_name="Mongodb to BigQuery",
+            location="us-central1",
+            stream_id="mongodb-stream",
+            source_config={
+                "source_connection_profile": "source-profile",
+                "mongodb_source_config": {
+                    "include_objects": {
+                        "databases": [{
+                            "database": "mydb",
+                            "collections": [
+                                {
+                                    "collection": "mycollection1",
+                                },
+                                {
+                                    "collection": "mycollection2",
+                                },
+                            ],
+                        }],
+                    },
+                    "excludee_objects": [{
+                        "databases": [{
+                            "database": "mydb",
+                            "collections": [{
+                                "fields": [{
+                                    "field": "excludedField",
+                                }],
+                            }],
+                        }],
+                    }],
+                },
+            },
+            destination_config={
+                "destination_connection_profile": "destination-profile",
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
+                            "location": "us-central1",
+                        },
+                    },
+                },
+            },
+            backfill_none={})
+        ```
 
         ## Import
 
@@ -1649,14 +1786,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd.result)
+            password=pwd["result"])
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -2122,6 +2259,93 @@ class Stream(pulumi.CustomResource):
         ```
         ### Datastream Stream Mysql Gtid
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="<%= ctx[:vars]['mysql_name'] %>",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            root_password="<%= ctx[:vars]['mysql_root_password'] %>",
+            deletion_protection="<%= ctx[:vars]['deletion_protection'] %>",
+            settings={
+                "tier": "db-custom-2-4096",
+                "ip_configuration": {
+                    "authorized_networks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
+                    ],
+                },
+            })
+        user = gcp.sql.User("user",
+            name="<%= ctx[:vars]['database_user'] %>",
+            instance=instance.name,
+            password="<%= ctx[:vars]['database_password'] %>")
+        db = gcp.sql.Database("db",
+            name="<%= ctx[:vars]['database_name'] %>",
+            instance=instance.name,
+            opts = pulumi.ResourceOptions(depends_on=[user]))
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="MySQL Source",
+            location="us-central1",
+            connection_profile_id="<%= ctx[:vars]['source_connection_profile_id'] %>",
+            mysql_profile={
+                "hostname": instance.public_ip_address,
+                "port": 1433,
+                "username": user.name,
+                "password": user.password,
+                "database": db.name,
+            })
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="<%= ctx[:vars]['destination_connection_profile_id'] %>",
+            bigquery_profile={})
+        default = gcp.datastream.Stream("default",
+            display_name="MySQL to BigQuery",
+            location="us-central1",
+            stream_id="<%= ctx[:vars]['stream_id'] %>",
+            source_config={
+                "source_connection_profile": source.id,
+                "mysql_source_config": {
+                    "include_objects": {
+                        "schemas": [{
+                            "schema": "schema",
+                            "tables": [{
+                                "table": "table",
+                            }],
+                        }],
+                    },
+                    "gtid": {},
+                },
+            },
+            destination_config={
+                "destination_connection_profile": destination.id,
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
+                            "location": "us-central1",
+                        },
+                    },
+                },
+            },
+            backfill_none={})
+        ```
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
         ```python
@@ -2170,14 +2394,14 @@ class Stream(pulumi.CustomResource):
                 },
             },
             deletion_protection=False)
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="my-user",
             instance=instance.name,
             host="%",
-            password=pwd.result)
+            password=pwd["result"])
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -2251,14 +2475,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd.result)
+            password=pwd["result"])
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -2361,14 +2585,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd.result)
+            password=pwd["result"])
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -2446,14 +2670,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd.result)
+            password=pwd["result"])
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -2527,14 +2751,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd.result)
+            password=pwd["result"])
         blmt_bucket = gcp.storage.Bucket("blmt_bucket",
             name="blmt-bucket",
             location="us-central1",
@@ -2598,6 +2822,56 @@ class Stream(pulumi.CustomResource):
             backfill_none={})
         ```
         ### Datastream Stream Mongodb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.Stream("default",
+            display_name="Mongodb to BigQuery",
+            location="us-central1",
+            stream_id="mongodb-stream",
+            source_config={
+                "source_connection_profile": "source-profile",
+                "mongodb_source_config": {
+                    "include_objects": {
+                        "databases": [{
+                            "database": "mydb",
+                            "collections": [
+                                {
+                                    "collection": "mycollection1",
+                                },
+                                {
+                                    "collection": "mycollection2",
+                                },
+                            ],
+                        }],
+                    },
+                    "excludee_objects": [{
+                        "databases": [{
+                            "database": "mydb",
+                            "collections": [{
+                                "fields": [{
+                                    "field": "excludedField",
+                                }],
+                            }],
+                        }],
+                    }],
+                },
+            },
+            destination_config={
+                "destination_connection_profile": "destination-profile",
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
+                            "location": "us-central1",
+                        },
+                    },
+                },
+            },
+            backfill_none={})
+        ```
 
         ## Import
 

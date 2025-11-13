@@ -22,6 +22,31 @@ import * as utilities from "../utilities";
  *
  * ### Scc Organization Big Query Export Config Basic
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.bigquery.Dataset("default", {
+ *     datasetId: "my-dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ *     defaultTableExpirationMs: 3600000,
+ *     defaultPartitionExpirationMs: null,
+ *     labels: {
+ *         env: "default",
+ *     },
+ * });
+ * const customBigQueryExportConfig = new gcp.securitycenter.OrganizationSccBigQueryExport("custom_big_query_export_config", {
+ *     name: "my-export",
+ *     bigQueryExportId: "my-export",
+ *     organization: "123456789",
+ *     dataset: _default.id,
+ *     description: "Cloud Security Command Center Findings Big Query Export Config",
+ *     filter: "state=\"ACTIVE\" AND NOT mute=\"MUTED\"",
+ * });
+ * ```
+ *
  * ## Import
  *
  * OrganizationSccBigQueryExport can be imported using any of these accepted formats:

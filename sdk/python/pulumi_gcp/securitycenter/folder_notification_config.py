@@ -265,6 +265,25 @@ class FolderNotificationConfig(pulumi.CustomResource):
 
         ### Scc Folder Notification Config Basic
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.organizations.Folder("folder",
+            parent="organizations/123456789",
+            display_name="folder-name")
+        scc_folder_notification_config = gcp.pubsub.Topic("scc_folder_notification_config", name="my-topic")
+        custom_notification_config = gcp.securitycenter.FolderNotificationConfig("custom_notification_config",
+            config_id="my-config",
+            folder=folder.folder_id,
+            location="global",
+            description="My custom Cloud Security Command Center Finding Notification Configuration",
+            pubsub_topic=scc_folder_notification_config.id,
+            streaming_config={
+                "filter": "category = \\"OPEN_FIREWALL\\" AND state = \\"ACTIVE\\"",
+            })
+        ```
+
         ## Import
 
         FolderNotificationConfig can be imported using any of these accepted formats:
@@ -317,6 +336,25 @@ class FolderNotificationConfig(pulumi.CustomResource):
         ## Example Usage
 
         ### Scc Folder Notification Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.organizations.Folder("folder",
+            parent="organizations/123456789",
+            display_name="folder-name")
+        scc_folder_notification_config = gcp.pubsub.Topic("scc_folder_notification_config", name="my-topic")
+        custom_notification_config = gcp.securitycenter.FolderNotificationConfig("custom_notification_config",
+            config_id="my-config",
+            folder=folder.folder_id,
+            location="global",
+            description="My custom Cloud Security Command Center Finding Notification Configuration",
+            pubsub_topic=scc_folder_notification_config.id,
+            streaming_config={
+                "filter": "category = \\"OPEN_FIREWALL\\" AND state = \\"ACTIVE\\"",
+            })
+        ```
 
         ## Import
 

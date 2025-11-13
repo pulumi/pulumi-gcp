@@ -362,6 +362,30 @@ class Retrohunt(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Chronicle Retrohunt Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_rule = gcp.chronicle.Rule("my-rule",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            deletion_policy="FORCE",
+            text="rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\\n")
+        example = gcp.chronicle.Retrohunt("example",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            rule=len(std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+            process_interval={
+                "start_time": "2025-01-01T00:00:00Z",
+                "end_time": "2025-01-01T12:00:00Z",
+            })
+        ```
+
         ## Import
 
         Retrohunt can be imported using any of these accepted formats:
@@ -417,6 +441,30 @@ class Retrohunt(pulumi.CustomResource):
             * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 
         ## Example Usage
+
+        ### Chronicle Retrohunt Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_rule = gcp.chronicle.Rule("my-rule",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            deletion_policy="FORCE",
+            text="rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\\n")
+        example = gcp.chronicle.Retrohunt("example",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            rule=len(std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+            process_interval={
+                "start_time": "2025-01-01T00:00:00Z",
+                "end_time": "2025-01-01T12:00:00Z",
+            })
+        ```
 
         ## Import
 

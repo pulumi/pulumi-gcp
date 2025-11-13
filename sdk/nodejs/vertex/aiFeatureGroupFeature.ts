@@ -33,19 +33,19 @@ import * as utilities from "../utilities";
  *     tableId: "job_load_table",
  *     schema: `[
  *     {
- *         "name": "feature_id",
- *         "type": "STRING",
- *         "mode": "NULLABLE"
+ *         \\"name\\": \\"feature_id\\",
+ *         \\"type\\": \\"STRING\\",
+ *         \\"mode\\": \\"NULLABLE\\"
  *     },
  *     {
- *         "name": "example_feature",
- *         "type": "STRING",
- *         "mode": "NULLABLE"
+ *         \\"name\\": \\"example_feature\\",
+ *         \\"type\\": \\"STRING\\",
+ *         \\"mode\\": \\"NULLABLE\\"
  *     },
  *     {
- *         "name": "feature_timestamp",
- *         "type": "TIMESTAMP",
- *         "mode": "NULLABLE"
+ *         \\"name\\": \\"feature_timestamp\\",
+ *         \\"type\\": \\"TIMESTAMP\\",
+ *         \\"mode\\": \\"NULLABLE\\"
  *     }
  * ]
  * `,

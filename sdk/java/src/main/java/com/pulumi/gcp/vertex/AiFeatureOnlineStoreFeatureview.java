@@ -94,22 +94,22 @@ import javax.annotation.Nullable;
  *             .schema("""
  *   [
  *   {
- *     "name": "entity_id",
- *     "mode": "NULLABLE",
- *     "type": "STRING",
- *     "description": "Test default entity_id"
+ *     \"name\": \"entity_id\",
+ *     \"mode\": \"NULLABLE\",
+ *     \"type\": \"STRING\",
+ *     \"description\": \"Test default entity_id\"
  *   },
  *     {
- *     "name": "test_entity_column",
- *     "mode": "NULLABLE",
- *     "type": "STRING",
- *     "description": "test secondary entity column"
+ *     \"name\": \"test_entity_column\",
+ *     \"mode\": \"NULLABLE\",
+ *     \"type\": \"STRING\",
+ *     \"description\": \"test secondary entity column\"
  *   },
  *   {
- *     "name": "feature_timestamp",
- *     "mode": "NULLABLE",
- *     "type": "TIMESTAMP",
- *     "description": "Default timestamp value"
+ *     \"name\": \"feature_timestamp\",
+ *     \"mode\": \"NULLABLE\",
+ *     \"type\": \"TIMESTAMP\",
+ *     \"description\": \"Default timestamp value\"
  *   }
  * ]
  *             """)
@@ -207,19 +207,19 @@ import javax.annotation.Nullable;
  *             .schema("""
  * [
  *     {
- *         "name": "feature_id",
- *         "type": "STRING",
- *         "mode": "NULLABLE"
+ *         \"name\": \"feature_id\",
+ *         \"type\": \"STRING\",
+ *         \"mode\": \"NULLABLE\"
  *     },
  *     {
- *         "name": "example_feature_view_feature_registry",
- *         "type": "STRING",
- *         "mode": "NULLABLE"
+ *         \"name\": \"example_feature_view_feature_registry\",
+ *         \"type\": \"STRING\",
+ *         \"mode\": \"NULLABLE\"
  *     },
  *     {
- *         "name": "feature_timestamp",
- *         "type": "TIMESTAMP",
- *         "mode": "NULLABLE"
+ *         \"name\": \"feature_timestamp\",
+ *         \"type\": \"TIMESTAMP\",
+ *         \"mode\": \"NULLABLE\"
  *     }
  * ]
  *             """)
@@ -390,19 +390,19 @@ import javax.annotation.Nullable;
  *             .schema("""
  * [
  *     }{{@code
- *         "name": "feature_id",
- *         "type": "STRING",
- *         "mode": "NULLABLE"
+ *         \"name\": \"feature_id\",
+ *         \"type\": \"STRING\",
+ *         \"mode\": \"NULLABLE\"
  *     }}{@code ,
  *     }{{@code
- *         "name": "example_cross_project_featureview",
- *         "type": "STRING",
- *         "mode": "NULLABLE"
+ *         \"name\": \"example_cross_project_featureview\",
+ *         \"type\": \"STRING\",
+ *         \"mode\": \"NULLABLE\"
  *     }}{@code ,
  *     }{{@code
- *         "name": "feature_timestamp",
- *         "type": "TIMESTAMP",
- *         "mode": "NULLABLE"
+ *         \"name\": \"feature_timestamp\",
+ *         \"type\": \"TIMESTAMP\",
+ *         \"mode\": \"NULLABLE\"
  *     }}{@code
  * ]
  *             """)
@@ -522,46 +522,46 @@ import javax.annotation.Nullable;
  *             .schema("""
  * [
  * {
- *   "name": "test_primary_id",
- *   "mode": "NULLABLE",
- *   "type": "STRING",
- *   "description": "primary test id"
+ *   \"name\": \"test_primary_id\",
+ *   \"mode\": \"NULLABLE\",
+ *   \"type\": \"STRING\",
+ *   \"description\": \"primary test id\"
  * },
  * {
- *   "name": "embedding",
- *   "mode": "REPEATED",
- *   "type": "FLOAT",
- *   "description": "embedding column for primary_id column"
+ *   \"name\": \"embedding\",
+ *   \"mode\": \"REPEATED\",
+ *   \"type\": \"FLOAT\",
+ *   \"description\": \"embedding column for primary_id column\"
  * },
  * {
- *   "name": "country",
- *   "mode": "NULLABLE",
- *   "type": "STRING",
- *   "description": "country"
+ *   \"name\": \"country\",
+ *   \"mode\": \"NULLABLE\",
+ *   \"type\": \"STRING\",
+ *   \"description\": \"country\"
  * },
  * {
- *   "name": "test_crowding_column",
- *   "mode": "NULLABLE",
- *   "type": "INTEGER",
- *   "description": "test crowding column"
+ *   \"name\": \"test_crowding_column\",
+ *   \"mode\": \"NULLABLE\",
+ *   \"type\": \"INTEGER\",
+ *   \"description\": \"test crowding column\"
  * },
  * {
- *   "name": "entity_id",
- *   "mode": "NULLABLE",
- *   "type": "STRING",
- *   "description": "Test default entity_id"
+ *   \"name\": \"entity_id\",
+ *   \"mode\": \"NULLABLE\",
+ *   \"type\": \"STRING\",
+ *   \"description\": \"Test default entity_id\"
  * },
  * {
- *   "name": "test_entity_column",
- *   "mode": "NULLABLE",
- *   "type": "STRING",
- *   "description": "test secondary entity column"
+ *   \"name\": \"test_entity_column\",
+ *   \"mode\": \"NULLABLE\",
+ *   \"type\": \"STRING\",
+ *   \"description\": \"test secondary entity column\"
  * },
  * {
- *   "name": "feature_timestamp",
- *   "mode": "NULLABLE",
- *   "type": "TIMESTAMP",
- *   "description": "Default timestamp value"
+ *   \"name\": \"feature_timestamp\",
+ *   \"mode\": \"NULLABLE\",
+ *   \"type\": \"TIMESTAMP\",
+ *   \"description\": \"Default timestamp value\"
  * }
  * ]
  *             """)

@@ -65,7 +65,7 @@ import (
 //				LogicalViewId:      pulumi.String("bt-logical-view"),
 //				Instance:           instance.Name,
 //				DeletionProtection: pulumi.Bool(false),
-//				Query:              pulumi.String("SELECT _key, CF\nFROM ` + \"`bt-table`\" + `\n"),
+//				Query:              pulumi.String("SELECT _key, CF\nFROM ` + \\\"`bt-table`\\\" + `\n"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				table,
 //			}))

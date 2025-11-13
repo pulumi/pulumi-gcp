@@ -761,7 +761,7 @@ class Pipeline(pulumi.CustomResource):
         - getCurrentTime:
             call: http.get
             args:
-                url: ${sys.get_env("url")}
+                url: ${sys.get_env(\\"url\\")}
             result: CurrentDateTime
         - readWikipedia:
             call: http.get
@@ -819,9 +819,9 @@ class Pipeline(pulumi.CustomResource):
             mediations=[{
                 "transformation": {
                     "transformation_template": \"\"\"{
-        "id": message.id,
-        "datacontenttype": "application/json",
-        "data": "{ \\"scrubbed\\": \\"true\\" }"
+        \\"id\\": message.id,
+        \\"datacontenttype\\": \\"application/json\\",
+        \\"data\\": \\"{ \\\\\\"scrubbed\\\\\\": \\\\\\"true\\\\\\" }\\"
         }
         \"\"\",
                 },
@@ -855,7 +855,7 @@ class Pipeline(pulumi.CustomResource):
                 },
                 "output_payload_format": {
                     "protobuf": {
-                        "schema_definition": \"\"\"syntax = "proto3";
+                        "schema_definition": \"\"\"syntax = \\"proto3\\";
         message schema {
         string name = 1;
         string severity = 2;
@@ -866,7 +866,7 @@ class Pipeline(pulumi.CustomResource):
             }],
             input_payload_format={
                 "protobuf": {
-                    "schema_definition": \"\"\"syntax = "proto3";
+                    "schema_definition": \"\"\"syntax = \\"proto3\\";
         message schema {
         string name = 1;
         string severity = 2;
@@ -882,9 +882,9 @@ class Pipeline(pulumi.CustomResource):
             mediations=[{
                 "transformation": {
                     "transformation_template": \"\"\"{
-        "id": message.id,
-        "datacontenttype": "application/json",
-        "data": "{ \\"scrubbed\\": \\"true\\" }"
+        \\"id\\": message.id,
+        \\"datacontenttype\\": \\"application/json\\",
+        \\"data\\": \\"{ \\\\\\"scrubbed\\\\\\": \\\\\\"true\\\\\\" }\\"
         }
         \"\"\",
                 },
@@ -930,9 +930,9 @@ class Pipeline(pulumi.CustomResource):
             mediations=[{
                 "transformation": {
                     "transformation_template": \"\"\"{
-        "id": message.id,
-        "datacontenttype": "application/json",
-        "data": "{ \\"scrubbed\\": \\"true\\" }"
+        \\"id\\": message.id,
+        \\"datacontenttype\\": \\"application/json\\",
+        \\"data\\": \\"{ \\\\\\"scrubbed\\\\\\": \\\\\\"true\\\\\\" }\\"
         }
         \"\"\",
                 },
@@ -1086,7 +1086,7 @@ class Pipeline(pulumi.CustomResource):
         - getCurrentTime:
             call: http.get
             args:
-                url: ${sys.get_env("url")}
+                url: ${sys.get_env(\\"url\\")}
             result: CurrentDateTime
         - readWikipedia:
             call: http.get
@@ -1144,9 +1144,9 @@ class Pipeline(pulumi.CustomResource):
             mediations=[{
                 "transformation": {
                     "transformation_template": \"\"\"{
-        "id": message.id,
-        "datacontenttype": "application/json",
-        "data": "{ \\"scrubbed\\": \\"true\\" }"
+        \\"id\\": message.id,
+        \\"datacontenttype\\": \\"application/json\\",
+        \\"data\\": \\"{ \\\\\\"scrubbed\\\\\\": \\\\\\"true\\\\\\" }\\"
         }
         \"\"\",
                 },
@@ -1180,7 +1180,7 @@ class Pipeline(pulumi.CustomResource):
                 },
                 "output_payload_format": {
                     "protobuf": {
-                        "schema_definition": \"\"\"syntax = "proto3";
+                        "schema_definition": \"\"\"syntax = \\"proto3\\";
         message schema {
         string name = 1;
         string severity = 2;
@@ -1191,7 +1191,7 @@ class Pipeline(pulumi.CustomResource):
             }],
             input_payload_format={
                 "protobuf": {
-                    "schema_definition": \"\"\"syntax = "proto3";
+                    "schema_definition": \"\"\"syntax = \\"proto3\\";
         message schema {
         string name = 1;
         string severity = 2;
@@ -1207,9 +1207,9 @@ class Pipeline(pulumi.CustomResource):
             mediations=[{
                 "transformation": {
                     "transformation_template": \"\"\"{
-        "id": message.id,
-        "datacontenttype": "application/json",
-        "data": "{ \\"scrubbed\\": \\"true\\" }"
+        \\"id\\": message.id,
+        \\"datacontenttype\\": \\"application/json\\",
+        \\"data\\": \\"{ \\\\\\"scrubbed\\\\\\": \\\\\\"true\\\\\\" }\\"
         }
         \"\"\",
                 },
@@ -1255,9 +1255,9 @@ class Pipeline(pulumi.CustomResource):
             mediations=[{
                 "transformation": {
                     "transformation_template": \"\"\"{
-        "id": message.id,
-        "datacontenttype": "application/json",
-        "data": "{ \\"scrubbed\\": \\"true\\" }"
+        \\"id\\": message.id,
+        \\"datacontenttype\\": \\"application/json\\",
+        \\"data\\": \\"{ \\\\\\"scrubbed\\\\\\": \\\\\\"true\\\\\\" }\\"
         }
         \"\"\",
                 },

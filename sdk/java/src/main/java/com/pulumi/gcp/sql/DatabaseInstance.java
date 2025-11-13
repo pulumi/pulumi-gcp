@@ -80,6 +80,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Granular restriction of network access
+ * 
  * ### Private IP Instance
  * &gt; **NOTE:** For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `dependsOn`reference as shown below.
  * 
@@ -96,8 +98,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
- * import com.pulumi.random.RandomId;
- * import com.pulumi.random.RandomIdArgs;
+ * import com.pulumi.random.Id;
+ * import com.pulumi.random.IdArgs;
  * import com.pulumi.gcp.sql.DatabaseInstance;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -134,12 +136,12 @@ import javax.annotation.Nullable;
  *             .reservedPeeringRanges(privateIpAddress.name())
  *             .build());
  * 
- *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
+ *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
  *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
- *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("private-instance-%s", _hex)))
+ *             .name(String.format("private-instance-%s", dbNameSuffix.hex()))
  *             .region("us-central1")
  *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()

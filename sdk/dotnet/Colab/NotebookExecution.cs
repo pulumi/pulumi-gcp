@@ -63,38 +63,38 @@ namespace Pulumi.Gcp.Colab
     ///             Content = Std.Base64encode.Invoke(new()
     ///             {
     ///                 Input = @"    {
-    ///       ""cells"": [
+    ///       \""cells\"": [
     ///         {
-    ///           ""cell_type"": ""code"",
-    ///           ""execution_count"": null,
-    ///           ""metadata"": {},
-    ///           ""outputs"": [],
-    ///           ""source"": [
-    ///             ""print(\""Hello, World!\"")""
+    ///           \""cell_type\"": \""code\"",
+    ///           \""execution_count\"": null,
+    ///           \""metadata\"": {},
+    ///           \""outputs\"": [],
+    ///           \""source\"": [
+    ///             \""print(\\\""Hello, World!\\\"")\""
     ///           ]
     ///         }
     ///       ],
-    ///       ""metadata"": {
-    ///         ""kernelspec"": {
-    ///           ""display_name"": ""Python 3"",
-    ///           ""language"": ""python"",
-    ///           ""name"": ""python3""
+    ///       \""metadata\"": {
+    ///         \""kernelspec\"": {
+    ///           \""display_name\"": \""Python 3\"",
+    ///           \""language\"": \""python\"",
+    ///           \""name\"": \""python3\""
     ///         },
-    ///         ""language_info"": {
-    ///           ""codemirror_mode"": {
-    ///             ""name"": ""ipython"",
-    ///             ""version"": 3
+    ///         \""language_info\"": {
+    ///           \""codemirror_mode\"": {
+    ///             \""name\"": \""ipython\"",
+    ///             \""version\"": 3
     ///           },
-    ///           ""file_extension"": "".py"",
-    ///           ""mimetype"": ""text/x-python"",
-    ///           ""name"": ""python"",
-    ///           ""nbconvert_exporter"": ""python"",
-    ///           ""pygments_lexer"": ""ipython3"",
-    ///           ""version"": ""3.8.5""
+    ///           \""file_extension\"": \"".py\"",
+    ///           \""mimetype\"": \""text/x-python\"",
+    ///           \""name\"": \""python\"",
+    ///           \""nbconvert_exporter\"": \""python\"",
+    ///           \""pygments_lexer\"": \""ipython3\"",
+    ///           \""version\"": \""3.8.5\""
     ///         }
     ///       },
-    ///       ""nbformat"": 4,
-    ///       ""nbformat_minor"": 4
+    ///       \""nbformat\"": 4,
+    ///       \""nbformat_minor\"": 4
     ///     }
     /// ",
     ///             }).Apply(invoke =&gt; invoke.Result),
@@ -157,38 +157,38 @@ namespace Pulumi.Gcp.Colab
     ///         Name = "hello_world.ipynb",
     ///         Bucket = outputBucket.Name,
     ///         Content = @"    {
-    ///       ""cells"": [
+    ///       \""cells\"": [
     ///         {
-    ///           ""cell_type"": ""code"",
-    ///           ""execution_count"": null,
-    ///           ""metadata"": {},
-    ///           ""outputs"": [],
-    ///           ""source"": [
-    ///             ""print(\""Hello, World!\"")""
+    ///           \""cell_type\"": \""code\"",
+    ///           \""execution_count\"": null,
+    ///           \""metadata\"": {},
+    ///           \""outputs\"": [],
+    ///           \""source\"": [
+    ///             \""print(\\\""Hello, World!\\\"")\""
     ///           ]
     ///         }
     ///       ],
-    ///       ""metadata"": {
-    ///         ""kernelspec"": {
-    ///           ""display_name"": ""Python 3"",
-    ///           ""language"": ""python"",
-    ///           ""name"": ""python3""
+    ///       \""metadata\"": {
+    ///         \""kernelspec\"": {
+    ///           \""display_name\"": \""Python 3\"",
+    ///           \""language\"": \""python\"",
+    ///           \""name\"": \""python3\""
     ///         },
-    ///         ""language_info"": {
-    ///           ""codemirror_mode"": {
-    ///             ""name"": ""ipython"",
-    ///             ""version"": 3
+    ///         \""language_info\"": {
+    ///           \""codemirror_mode\"": {
+    ///             \""name\"": \""ipython\"",
+    ///             \""version\"": 3
     ///           },
-    ///           ""file_extension"": "".py"",
-    ///           ""mimetype"": ""text/x-python"",
-    ///           ""name"": ""python"",
-    ///           ""nbconvert_exporter"": ""python"",
-    ///           ""pygments_lexer"": ""ipython3"",
-    ///           ""version"": ""3.8.5""
+    ///           \""file_extension\"": \"".py\"",
+    ///           \""mimetype\"": \""text/x-python\"",
+    ///           \""name\"": \""python\"",
+    ///           \""nbconvert_exporter\"": \""python\"",
+    ///           \""pygments_lexer\"": \""ipython3\"",
+    ///           \""version\"": \""3.8.5\""
     ///         }
     ///       },
-    ///       ""nbformat"": 4,
-    ///       ""nbformat_minor"": 4
+    ///       \""nbformat\"": 4,
+    ///       \""nbformat_minor\"": 4
     ///     }
     /// ",
     ///     });

@@ -22,6 +22,80 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// ### Developer Connect Git Repository Link Github Doc
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var github_token_secret = new Gcp.SecretManager.Secret("github-token-secret", new()
+    ///     {
+    ///         SecretId = "github-token-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var github_token_secret_version = new Gcp.SecretManager.SecretVersion("github-token-secret-version", new()
+    ///     {
+    ///         Secret = github_token_secret.Id,
+    ///         SecretData = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "my-github-token.txt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/secretmanager.secretAccessor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.SecretManager.SecretIamPolicy("policy", new()
+    ///     {
+    ///         SecretId = github_token_secret.SecretId,
+    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
+    ///     });
+    /// 
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionId = "my-connection",
+    ///         GithubConfig = new Gcp.DeveloperConnect.Inputs.ConnectionGithubConfigArgs
+    ///         {
+    ///             GithubApp = "DEVELOPER_CONNECT",
+    ///             AppInstallationId = "123123",
+    ///             AuthorizerCredential = new Gcp.DeveloperConnect.Inputs.ConnectionGithubConfigAuthorizerCredentialArgs
+    ///             {
+    ///                 OauthTokenSecretVersion = github_token_secret_version.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var my_repository = new Gcp.DeveloperConnect.GitRepositoryLink("my-repository", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         GitRepositoryLinkId = "my-repo",
+    ///         ParentConnection = my_connection.ConnectionId,
+    ///         RemoteUri = "https://github.com/myuser/myrepo.git",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// GitRepositoryLink can be imported using any of these accepted formats:

@@ -337,6 +337,47 @@ class Occurence(pulumi.CustomResource):
 
         ### Container Analysis Occurrence Kms
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        note = gcp.containeranalysis.Note("note",
+            name="attestation-note",
+            attestation_authority={
+                "hint": {
+                    "human_readable_name": "Attestor Note",
+                },
+            })
+        keyring = gcp.kms.get_kms_key_ring(name="my-key-ring",
+            location="global")
+        crypto_key = gcp.kms.get_kms_crypto_key(name="my-key",
+            key_ring=keyring.id)
+        version = gcp.kms.get_kms_crypto_key_version(crypto_key=crypto_key.id)
+        attestor = gcp.binaryauthorization.Attestor("attestor",
+            name="attestor",
+            attestation_authority_note={
+                "note_reference": note.name,
+                "public_keys": [{
+                    "id": version.id,
+                    "pkix_public_key": {
+                        "public_key_pem": version.public_keys[0].pem,
+                        "signature_algorithm": version.public_keys[0].algorithm,
+                    },
+                }],
+            })
+        occurrence = gcp.containeranalysis.Occurence("occurrence",
+            resource_uri="gcr.io/my-project/my-image",
+            note_name=note.id,
+            attestation={
+                "serialized_payload": std.filebase64(input="path/to/my/payload.json").result,
+                "signatures": [{
+                    "public_key_id": version.id,
+                    "serialized_payload": std.filebase64(input="path/to/my/payload.json.sig").result,
+                }],
+            })
+        ```
+
         ## Import
 
         Occurrence can be imported using any of these accepted formats:
@@ -401,6 +442,47 @@ class Occurence(pulumi.CustomResource):
         ## Example Usage
 
         ### Container Analysis Occurrence Kms
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        note = gcp.containeranalysis.Note("note",
+            name="attestation-note",
+            attestation_authority={
+                "hint": {
+                    "human_readable_name": "Attestor Note",
+                },
+            })
+        keyring = gcp.kms.get_kms_key_ring(name="my-key-ring",
+            location="global")
+        crypto_key = gcp.kms.get_kms_crypto_key(name="my-key",
+            key_ring=keyring.id)
+        version = gcp.kms.get_kms_crypto_key_version(crypto_key=crypto_key.id)
+        attestor = gcp.binaryauthorization.Attestor("attestor",
+            name="attestor",
+            attestation_authority_note={
+                "note_reference": note.name,
+                "public_keys": [{
+                    "id": version.id,
+                    "pkix_public_key": {
+                        "public_key_pem": version.public_keys[0].pem,
+                        "signature_algorithm": version.public_keys[0].algorithm,
+                    },
+                }],
+            })
+        occurrence = gcp.containeranalysis.Occurence("occurrence",
+            resource_uri="gcr.io/my-project/my-image",
+            note_name=note.id,
+            attestation={
+                "serialized_payload": std.filebase64(input="path/to/my/payload.json").result,
+                "signatures": [{
+                    "public_key_id": version.id,
+                    "serialized_payload": std.filebase64(input="path/to/my/payload.json.sig").result,
+                }],
+            })
+        ```
 
         ## Import
 

@@ -15,6 +15,54 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Firebase Web App Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const basicWebApp = new gcp.firebase.WebApp("basic", {
+ *     project: "my-project-name",
+ *     displayName: "Display Name Basic",
+ * });
+ * const basic = gcp.firebase.getWebAppConfigOutput({
+ *     webAppId: basicWebApp.appId,
+ * });
+ * const _default = new gcp.storage.Bucket("default", {
+ *     name: "fb-webapp-",
+ *     location: "US",
+ * });
+ * const defaultBucketObject = new gcp.storage.BucketObject("default", {
+ *     bucket: _default.name,
+ *     name: "firebase-config.json",
+ *     content: pulumi.jsonStringify({
+ *         appId: basicWebApp.appId,
+ *         apiKey: basic.apply(basic => basic.apiKey),
+ *         authDomain: basic.apply(basic => basic.authDomain),
+ *         databaseURL: std.lookupOutput({
+ *             map: basic,
+ *             key: "database_url",
+ *             "default": "",
+ *         }).apply(invoke => invoke.result),
+ *         storageBucket: std.lookupOutput({
+ *             map: basic,
+ *             key: "storage_bucket",
+ *             "default": "",
+ *         }).apply(invoke => invoke.result),
+ *         messagingSenderId: std.lookupOutput({
+ *             map: basic,
+ *             key: "messaging_sender_id",
+ *             "default": "",
+ *         }).apply(invoke => invoke.result),
+ *         measurementId: std.lookupOutput({
+ *             map: basic,
+ *             key: "measurement_id",
+ *             "default": "",
+ *         }).apply(invoke => invoke.result),
+ *     }),
+ * });
+ * ```
  * ### Firebase Web App Custom Api Key
  *
  * ```typescript

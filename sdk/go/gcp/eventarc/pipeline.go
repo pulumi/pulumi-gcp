@@ -136,7 +136,7 @@ import (
 //   - getCurrentTime:
 //     call: http.get
 //     args:
-//     url: ${sys.get_env("url")}
+//     url: ${sys.get_env(\"url\")}
 //     result: CurrentDateTime
 //   - readWikipedia:
 //     call: http.get
@@ -222,9 +222,9 @@ import (
 //						Transformation: &eventarc.PipelineMediationTransformationArgs{
 //							TransformationTemplate: pulumi.String(`{
 //
-// "id": message.id,
-// "datacontenttype": "application/json",
-// "data": "{ \"scrubbed\": \"true\" }"
+// \"id\": message.id,
+// \"datacontenttype\": \"application/json\",
+// \"data\": \"{ \\\"scrubbed\\\": \\\"true\\\" }\"
 // }
 // `),
 //
@@ -277,7 +277,7 @@ import (
 //						},
 //						OutputPayloadFormat: &eventarc.PipelineDestinationOutputPayloadFormatArgs{
 //							Protobuf: &eventarc.PipelineDestinationOutputPayloadFormatProtobufArgs{
-//								SchemaDefinition: pulumi.String(`syntax = "proto3";
+//								SchemaDefinition: pulumi.String(`syntax = \"proto3\";
 //
 // message schema {
 // string name = 1;
@@ -291,7 +291,7 @@ import (
 //	},
 //	InputPayloadFormat: &eventarc.PipelineInputPayloadFormatArgs{
 //		Protobuf: &eventarc.PipelineInputPayloadFormatProtobufArgs{
-//			SchemaDefinition: pulumi.String(`syntax = "proto3";
+//			SchemaDefinition: pulumi.String(`syntax = \"proto3\";
 //
 // message schema {
 // string name = 1;
@@ -311,9 +311,9 @@ import (
 //			Transformation: &eventarc.PipelineMediationTransformationArgs{
 //				TransformationTemplate: pulumi.String(`{
 //
-// "id": message.id,
-// "datacontenttype": "application/json",
-// "data": "{ \"scrubbed\": \"true\" }"
+// \"id\": message.id,
+// \"datacontenttype\": \"application/json\",
+// \"data\": \"{ \\\"scrubbed\\\": \\\"true\\\" }\"
 // }
 // `),
 //
@@ -381,9 +381,9 @@ import (
 //						Transformation: &eventarc.PipelineMediationTransformationArgs{
 //							TransformationTemplate: pulumi.String(`{
 //
-// "id": message.id,
-// "datacontenttype": "application/json",
-// "data": "{ \"scrubbed\": \"true\" }"
+// \"id\": message.id,
+// \"datacontenttype\": \"application/json\",
+// \"data\": \"{ \\\"scrubbed\\\": \\\"true\\\" }\"
 // }
 // `),
 //

@@ -280,13 +280,13 @@ import javax.annotation.Nullable;
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .payload("""
- *           {"some-key": "some-value", "other-key": ["other-value"]}
+ *           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
  *                                 """)
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .conversationSuccess(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs.builder()
  *                                     .metadata("""
- *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
  *                                     """)
  *                                     .build())
  *                                 .build(),
@@ -298,14 +298,14 @@ import javax.annotation.Nullable;
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .outputAudioText(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs.builder()
  *                                     .ssml("""
- *             <speak>Some example <say-as interpret-as="characters">SSML XML</say-as></speak>
+ *             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
  *                                     """)
  *                                     .build())
  *                                 .build(),
  *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
  *                                 .liveAgentHandoff(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
  *                                     .metadata("""
- *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
  *                                     """)
  *                                     .build())
  *                                 .build(),
@@ -390,13 +390,13 @@ import javax.annotation.Nullable;
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .payload("""
- *           {"some-key": "some-value", "other-key": ["other-value"]}
+ *           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
  *                             """)
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .conversationSuccess(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs.builder()
  *                                 .metadata("""
- *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -408,14 +408,14 @@ import javax.annotation.Nullable;
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .outputAudioText(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs.builder()
  *                                 .ssml("""
- *             <speak>Some example <say-as interpret-as="characters">SSML XML</say-as></speak>
+ *             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
  *                                 """)
  *                                 .build())
  *                             .build(),
  *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
  *                             .liveAgentHandoff(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
  *                                 .metadata("""
- *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -524,13 +524,13 @@ import javax.annotation.Nullable;
  *                             .build(),
  *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
  *                             .payload("""
- *           {"some-key": "some-value", "other-key": ["other-value"]}
+ *           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
  *                             """)
  *                             .build(),
  *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
  *                             .conversationSuccess(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs.builder()
  *                                 .metadata("""
- *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
  *                                 """)
  *                                 .build())
  *                             .build(),
@@ -542,14 +542,14 @@ import javax.annotation.Nullable;
  *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
  *                             .outputAudioText(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs.builder()
  *                                 .ssml("""
- *             <speak>Some example <say-as interpret-as="characters">SSML XML</say-as></speak>
+ *             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
  *                                 """)
  *                                 .build())
  *                             .build(),
  *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
  *                             .liveAgentHandoff(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
  *                                 .metadata("""
- *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
  *                                 """)
  *                                 .build())
  *                             .build(),

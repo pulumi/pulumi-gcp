@@ -37,6 +37,53 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Granular restriction of network access
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const apps: gcp.compute.Instance[] = [];
+ * for (const range = {value: 0}; range.value < 8; range.value++) {
+ *     apps.push(new gcp.compute.Instance(`apps-${range.value}`, {
+ *         networkInterfaces: [{
+ *             accessConfigs: [{}],
+ *             network: "default",
+ *         }],
+ *         name: `apps-${range.value + 1}`,
+ *         machineType: "f1-micro",
+ *         bootDisk: {
+ *             initializeParams: {
+ *                 image: "ubuntu-os-cloud/ubuntu-1804-lts",
+ *             },
+ *         },
+ *     }));
+ * }
+ * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
+ * const onprem = [
+ *     "192.168.1.2",
+ *     "192.168.2.3",
+ * ];
+ * const postgres = new gcp.sql.DatabaseInstance("postgres", {
+ *     name: `postgres-instance-${dbNameSuffix.hex}`,
+ *     databaseVersion: "POSTGRES_15",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         ipConfiguration: {
+ *             authorizedNetworks: Object.entries(apps).map(([k, v]) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
+ *                 name: entry.value.name,
+ *                 value: entry.value.networkInterface[0].accessConfig[0].natIp,
+ *             }))),
+ *             authorizedNetworks: onprem.map((v, k) => ({key: k, value: v})).map(entry2 => ({
+ *                 name: `onprem-${entry2.key}`,
+ *                 value: entry2.value,
+ *             })),
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ### Private IP Instance
  * > **NOTE:** For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `dependsOn`reference as shown below.
  *
@@ -58,9 +105,9 @@ import * as utilities from "../utilities";
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAddress.name],
  * });
- * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
  * const instance = new gcp.sql.DatabaseInstance("instance", {
- *     name: pulumi.interpolate`private-instance-${dbNameSuffix.hex}`,
+ *     name: `private-instance-${dbNameSuffix.hex}`,
  *     region: "us-central1",
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {

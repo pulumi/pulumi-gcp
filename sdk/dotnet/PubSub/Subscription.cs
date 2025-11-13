@@ -122,8 +122,8 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         Filter = @"    attributes.foo = ""foo""
-    ///     AND attributes.bar = ""bar""
+    ///         Filter = @"    attributes.foo = \""foo\""
+    ///     AND attributes.bar = \""bar\""
     /// ",
     ///         AckDeadlineSeconds = 20,
     ///     });
@@ -189,10 +189,10 @@ namespace Pulumi.Gcp.PubSub
     ///         DatasetId = test.DatasetId,
     ///         Schema = @"[
     ///   {
-    ///     ""name"": ""data"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE"",
-    ///     ""description"": ""The data""
+    ///     \""name\"": \""data\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\"",
+    ///     \""description\"": \""The data\""
     ///   }
     /// ]
     /// ",
@@ -245,10 +245,10 @@ namespace Pulumi.Gcp.PubSub
     ///         DatasetId = test.DatasetId,
     ///         Schema = @"[
     ///   {
-    ///     ""name"": ""data"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE"",
-    ///     ""description"": ""The data""
+    ///     \""name\"": \""data\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\"",
+    ///     \""description\"": \""The data\""
     ///   }
     /// ]
     /// ",
@@ -325,10 +325,10 @@ namespace Pulumi.Gcp.PubSub
     ///         DatasetId = test.DatasetId,
     ///         Schema = @"[
     ///   {
-    ///     ""name"": ""data"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE"",
-    ///     ""description"": ""The data""
+    ///     \""name\"": \""data\"",
+    ///     \""type\"": \""STRING\"",
+    ///     \""mode\"": \""NULLABLE\"",
+    ///     \""description\"": \""The data\""
     ///   }
     /// ]
     /// ",

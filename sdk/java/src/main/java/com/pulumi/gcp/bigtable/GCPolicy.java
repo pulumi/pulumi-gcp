@@ -86,9 +86,9 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("ABANDON")
  *             .gcRules("""
  *   {
- *     "rules": [
+ *     \"rules\": [
  *       {
- *         "max_age": "168h"
+ *         \"max_age\": \"168h\"
  *       }
  *     ]
  *   }
@@ -131,13 +131,13 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("ABANDON")
  *             .gcRules("""
  *   {
- *     "mode": "union",
- *     "rules": [
+ *     \"mode\": \"union\",
+ *     \"rules\": [
  *       {
- *         "max_age": "168h"
+ *         \"max_age\": \"168h\"
  *       },
  *       {
- *         "max_version": 10
+ *         \"max_version\": 10
  *       }
  *     ]
  *   }
@@ -203,19 +203,19 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("ABANDON")
  *             .gcRules("""
  *   {
- *     "mode": "union",
- *     "rules": [
+ *     \"mode\": \"union\",
+ *     \"rules\": [
  *       {
- *         "max_age": "10h"
+ *         \"max_age\": \"10h\"
  *       },
  *       {
- *         "mode": "intersection",
- *         "rules": [
+ *         \"mode\": \"intersection\",
+ *         \"rules\": [
  *           {
- *             "max_age": "2h"
+ *             \"max_age\": \"2h\"
  *           },
  *           {
- *             "max_version": 2
+ *             \"max_version\": 2
  *           }
  *         ]
  *       }

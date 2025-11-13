@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.BigTable
     ///         Instance = instance.Name,
     ///         DeletionProtection = false,
     ///         Query = @"SELECT _key, CF
-    /// FROM ` + ""`bt-table`"" + `
+    /// FROM ` + \""`bt-table`\"" + `
     /// ",
     ///     }, new CustomResourceOptions
     ///     {

@@ -627,8 +627,8 @@ class Job(pulumi.CustomResource):
         object = gcp.storage.BucketObject("object",
             name="geojson-data.jsonl",
             bucket=bucket.name,
-            content=\"\"\"{"type":"Feature","properties":{"continent":"Europe","region":"Scandinavia"},"geometry":{"type":"Polygon","coordinates":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
-        {"type":"Feature","properties":{"continent":"Africa","region":"West Africa"},"geometry":{"type":"Polygon","coordinates":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
+            content=\"\"\"{\\"type\\":\\"Feature\\",\\"properties\\":{\\"continent\\":\\"Europe\\",\\"region\\":\\"Scandinavia\\"},\\"geometry\\":{\\"type\\":\\"Polygon\\",\\"coordinates\\":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
+        {\\"type\\":\\"Feature\\",\\"properties\\":{\\"continent\\":\\"Africa\\",\\"region\\":\\"West Africa\\"},\\"geometry\\":{\\"type\\":\\"Polygon\\",\\"coordinates\\":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
         \"\"\")
         bar = gcp.bigquery.Dataset("bar",
             dataset_id="job_load_dataset",
@@ -736,19 +736,19 @@ class Job(pulumi.CustomResource):
                 deletion_protection=False,
                 schema=\"\"\"[
           {
-            "name": "name",
-            "type": "STRING",
-            "mode": "NULLABLE"
+            \\"name\\": \\"name\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\"
           },
           {
-            "name": "post_abbr",
-            "type": "STRING",
-            "mode": "NULLABLE"
+            \\"name\\": \\"post_abbr\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\"
           },
           {
-            "name": "date",
-            "type": "DATE",
-            "mode": "NULLABLE"
+            \\"name\\": \\"date\\",
+            \\"type\\": \\"DATE\\",
+            \\"mode\\": \\"NULLABLE\\"
           }
         ]
         \"\"\"))
@@ -768,19 +768,19 @@ class Job(pulumi.CustomResource):
             table_id="job_copy_dest_table",
             schema=\"\"\"[
           {
-            "name": "name",
-            "type": "STRING",
-            "mode": "NULLABLE"
+            \\"name\\": \\"name\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\"
           },
           {
-            "name": "post_abbr",
-            "type": "STRING",
-            "mode": "NULLABLE"
+            \\"name\\": \\"post_abbr\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\"
           },
           {
-            "name": "date",
-            "type": "DATE",
-            "mode": "NULLABLE"
+            \\"name\\": \\"date\\",
+            \\"type\\": \\"DATE\\",
+            \\"mode\\": \\"NULLABLE\\"
           }
         ]
         \"\"\",
@@ -831,19 +831,19 @@ class Job(pulumi.CustomResource):
             table_id="job_extract_table",
             schema=\"\"\"[
           {
-            "name": "name",
-            "type": "STRING",
-            "mode": "NULLABLE"
+            \\"name\\": \\"name\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\"
           },
           {
-            "name": "post_abbr",
-            "type": "STRING",
-            "mode": "NULLABLE"
+            \\"name\\": \\"post_abbr\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\"
           },
           {
-            "name": "date",
-            "type": "DATE",
-            "mode": "NULLABLE"
+            \\"name\\": \\"date\\",
+            \\"type\\": \\"DATE\\",
+            \\"mode\\": \\"NULLABLE\\"
           }
         ]
         \"\"\")
@@ -1066,8 +1066,8 @@ class Job(pulumi.CustomResource):
         object = gcp.storage.BucketObject("object",
             name="geojson-data.jsonl",
             bucket=bucket.name,
-            content=\"\"\"{"type":"Feature","properties":{"continent":"Europe","region":"Scandinavia"},"geometry":{"type":"Polygon","coordinates":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
-        {"type":"Feature","properties":{"continent":"Africa","region":"West Africa"},"geometry":{"type":"Polygon","coordinates":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
+            content=\"\"\"{\\"type\\":\\"Feature\\",\\"properties\\":{\\"continent\\":\\"Europe\\",\\"region\\":\\"Scandinavia\\"},\\"geometry\\":{\\"type\\":\\"Polygon\\",\\"coordinates\\":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
+        {\\"type\\":\\"Feature\\",\\"properties\\":{\\"continent\\":\\"Africa\\",\\"region\\":\\"West Africa\\"},\\"geometry\\":{\\"type\\":\\"Polygon\\",\\"coordinates\\":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
         \"\"\")
         bar = gcp.bigquery.Dataset("bar",
             dataset_id="job_load_dataset",
@@ -1175,19 +1175,19 @@ class Job(pulumi.CustomResource):
                 deletion_protection=False,
                 schema=\"\"\"[
           {
-            "name": "name",
-            "type": "STRING",
-            "mode": "NULLABLE"
+            \\"name\\": \\"name\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\"
           },
           {
-            "name": "post_abbr",
-            "type": "STRING",
-            "mode": "NULLABLE"
+            \\"name\\": \\"post_abbr\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\"
           },
           {
-            "name": "date",
-            "type": "DATE",
-            "mode": "NULLABLE"
+            \\"name\\": \\"date\\",
+            \\"type\\": \\"DATE\\",
+            \\"mode\\": \\"NULLABLE\\"
           }
         ]
         \"\"\"))
@@ -1207,19 +1207,19 @@ class Job(pulumi.CustomResource):
             table_id="job_copy_dest_table",
             schema=\"\"\"[
           {
-            "name": "name",
-            "type": "STRING",
-            "mode": "NULLABLE"
+            \\"name\\": \\"name\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\"
           },
           {
-            "name": "post_abbr",
-            "type": "STRING",
-            "mode": "NULLABLE"
+            \\"name\\": \\"post_abbr\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\"
           },
           {
-            "name": "date",
-            "type": "DATE",
-            "mode": "NULLABLE"
+            \\"name\\": \\"date\\",
+            \\"type\\": \\"DATE\\",
+            \\"mode\\": \\"NULLABLE\\"
           }
         ]
         \"\"\",
@@ -1270,19 +1270,19 @@ class Job(pulumi.CustomResource):
             table_id="job_extract_table",
             schema=\"\"\"[
           {
-            "name": "name",
-            "type": "STRING",
-            "mode": "NULLABLE"
+            \\"name\\": \\"name\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\"
           },
           {
-            "name": "post_abbr",
-            "type": "STRING",
-            "mode": "NULLABLE"
+            \\"name\\": \\"post_abbr\\",
+            \\"type\\": \\"STRING\\",
+            \\"mode\\": \\"NULLABLE\\"
           },
           {
-            "name": "date",
-            "type": "DATE",
-            "mode": "NULLABLE"
+            \\"name\\": \\"date\\",
+            \\"type\\": \\"DATE\\",
+            \\"mode\\": \\"NULLABLE\\"
           }
         ]
         \"\"\")

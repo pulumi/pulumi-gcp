@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  * - getCurrentTime:
  *     call: http.get
  *     args:
- *         url: \${sys.get_env("url")}
+ *         url: \${sys.get_env(\\"url\\")}
  *     result: CurrentDateTime
  * - readWikipedia:
  *     call: http.get
@@ -141,9 +141,9 @@ import * as utilities from "../utilities";
  *     mediations: [{
  *         transformation: {
  *             transformationTemplate: `{
- * "id": message.id,
- * "datacontenttype": "application/json",
- * "data": "{ \\"scrubbed\\": \\"true\\" }"
+ * \\"id\\": message.id,
+ * \\"datacontenttype\\": \\"application/json\\",
+ * \\"data\\": \\"{ \\\\\\"scrubbed\\\\\\": \\\\\\"true\\\\\\" }\\"
  * }
  * `,
  *         },
@@ -178,7 +178,7 @@ import * as utilities from "../utilities";
  *         },
  *         outputPayloadFormat: {
  *             protobuf: {
- *                 schemaDefinition: `syntax = "proto3";
+ *                 schemaDefinition: `syntax = \\"proto3\\";
  * message schema {
  * string name = 1;
  * string severity = 2;
@@ -189,7 +189,7 @@ import * as utilities from "../utilities";
  *     }],
  *     inputPayloadFormat: {
  *         protobuf: {
- *             schemaDefinition: `syntax = "proto3";
+ *             schemaDefinition: `syntax = \\"proto3\\";
  * message schema {
  * string name = 1;
  * string severity = 2;
@@ -205,9 +205,9 @@ import * as utilities from "../utilities";
  *     mediations: [{
  *         transformation: {
  *             transformationTemplate: `{
- * "id": message.id,
- * "datacontenttype": "application/json",
- * "data": "{ \\"scrubbed\\": \\"true\\" }"
+ * \\"id\\": message.id,
+ * \\"datacontenttype\\": \\"application/json\\",
+ * \\"data\\": \\"{ \\\\\\"scrubbed\\\\\\": \\\\\\"true\\\\\\" }\\"
  * }
  * `,
  *         },
@@ -254,9 +254,9 @@ import * as utilities from "../utilities";
  *     mediations: [{
  *         transformation: {
  *             transformationTemplate: `{
- * "id": message.id,
- * "datacontenttype": "application/json",
- * "data": "{ \\"scrubbed\\": \\"true\\" }"
+ * \\"id\\": message.id,
+ * \\"datacontenttype\\": \\"application/json\\",
+ * \\"data\\": \\"{ \\\\\\"scrubbed\\\\\\": \\\\\\"true\\\\\\" }\\"
  * }
  * `,
  *         },

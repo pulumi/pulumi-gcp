@@ -7,6 +7,25 @@ import * as utilities from "../utilities";
 /**
  * Provides access to available Google Compute zones in a region for a given project.
  * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const available = gcp.compute.getZones({});
+ * const foo: gcp.compute.InstanceGroupManager[] = [];
+ * available.then(available => available.names).length.apply(rangeBody => {
+ *     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
+ *         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range.value}`, {
+ *             name: `test-${range.value}`,
+ *             instanceTemplate: foobar.selfLink,
+ *             baseInstanceName: `foobar-${range.value}`,
+ *             zone: available.then(available => available.names[range.value]),
+ *             targetSize: 1,
+ *         }));
+ *     }
+ * });
+ * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
@@ -56,6 +75,25 @@ export interface GetZonesResult {
 /**
  * Provides access to available Google Compute zones in a region for a given project.
  * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const available = gcp.compute.getZones({});
+ * const foo: gcp.compute.InstanceGroupManager[] = [];
+ * available.then(available => available.names).length.apply(rangeBody => {
+ *     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
+ *         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range.value}`, {
+ *             name: `test-${range.value}`,
+ *             instanceTemplate: foobar.selfLink,
+ *             baseInstanceName: `foobar-${range.value}`,
+ *             zone: available.then(available => available.names[range.value]),
+ *             targetSize: 1,
+ *         }));
+ *     }
+ * });
+ * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
     args = args || {};

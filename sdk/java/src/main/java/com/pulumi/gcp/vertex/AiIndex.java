@@ -83,8 +83,8 @@ import javax.annotation.Nullable;
  *             .name("contents/data.json")
  *             .bucket(bucket.name())
  *             .content("""
- * {"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
- * {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+ * {\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}
+ * {\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}
  *             """)
  *             .build());
  * 
@@ -170,8 +170,8 @@ import javax.annotation.Nullable;
  *             .name("contents/data.json")
  *             .bucket(bucket.name())
  *             .content("""
- * {"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
- * {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+ * {\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}
+ * {\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}
  *             """)
  *             .build());
  * 

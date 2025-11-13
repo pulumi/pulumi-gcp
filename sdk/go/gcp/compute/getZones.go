@@ -13,6 +13,46 @@ import (
 
 // Provides access to available Google Compute zones in a region for a given project.
 // See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			available, err := compute.GetZones(ctx, &compute.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var foo []*compute.InstanceGroupManager
+//			for index := 0; index < int(len(available.Names)); index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := compute.NewInstanceGroupManager(ctx, fmt.Sprintf("foo-%v", key0), &compute.InstanceGroupManagerArgs{
+//					Name:             pulumi.Sprintf("test-%v", val0),
+//					InstanceTemplate: foobar.SelfLink,
+//					BaseInstanceName: pulumi.Sprintf("foobar-%v", val0),
+//					Zone:             pulumi.String(available.Names[val0]),
+//					TargetSize:       pulumi.Int(1),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				foo = append(foo, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZonesResult

@@ -14,6 +14,243 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// ## Example Usage
     /// 
+    /// ### Developer Connect Insights Config Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "dci-tf-_8270",
+    ///         Name = "Service Project",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     // Grant Permissions
+    ///     var apphubPermissions = new Gcp.Projects.IAMMember("apphub_permissions", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Role = "roles/apphub.admin",
+    ///         Member = "serviceAccount:hashicorp-test-runner@ci-test-project-188019.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var insightsAgent = new Gcp.Projects.IAMMember("insights_agent", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Role = "roles/developerconnect.insightsAgent",
+    ///         Member = "serviceAccount:66214305248-compute@developer.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     // Enable APIs
+    ///     var apphubApiService = new Gcp.Projects.Service("apphub_api_service", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "apphub.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var containeranalysisApi = new Gcp.Projects.Service("containeranalysis_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "containeranalysis.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var containerscanningApi = new Gcp.Projects.Service("containerscanning_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "containerscanning.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var containerApi = new Gcp.Projects.Service("container_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "container.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var artifactregistryApi = new Gcp.Projects.Service("artifactregistry_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "artifactregistry.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var cloudbuildApi = new Gcp.Projects.Service("cloudbuild_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "cloudbuild.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var cloudassetApi = new Gcp.Projects.Service("cloudasset_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "cloudasset.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var computeApi = new Gcp.Projects.Service("compute_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "compute.googleapis.com",
+    ///         DisableDependentServices = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var devconnectApi = new Gcp.Projects.Service("devconnect_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "developerconnect.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     // Wait delay after enabling APIs and granting permissions
+    ///     var waitForPropagation = new Time.Sleep("wait_for_propagation", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apphubPermissions,
+    ///             insightsAgent,
+    ///             apphubApiService,
+    ///             containeranalysisApi,
+    ///             containerscanningApi,
+    ///             containerApi,
+    ///             artifactregistryApi,
+    ///             artifactregistryApi,
+    ///             cloudbuildApi,
+    ///             cloudassetApi,
+    ///             computeApi,
+    ///             devconnectApi,
+    ///         },
+    ///     });
+    /// 
+    ///     var myApphubApplication = new Gcp.Apphub.Application("my_apphub_application", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ApplicationId = "tf-test-example-application_41150",
+    ///         Scope = new Gcp.Apphub.Inputs.ApplicationScopeArgs
+    ///         {
+    ///             Type = "REGIONAL",
+    ///         },
+    ///         Project = project.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             waitForPropagation,
+    ///         },
+    ///     });
+    /// 
+    ///     var insightsConfig = new Gcp.DeveloperConnect.InsightsConfig("insights_config", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         InsightsConfigId = "tf-test-ic_89313",
+    ///         Project = project.ProjectId,
+    ///         Annotations = null,
+    ///         Labels = null,
+    ///         AppHubApplication = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "//apphub.googleapis.com/projects/%s/locations/%s/applications/%s",
+    ///             Args = new[]
+    ///             {
+    ///                 project.Number,
+    ///                 myApphubApplication.Location,
+    ///                 myApphubApplication.ApplicationId,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ArtifactConfigs = new[]
+    ///         {
+    ///             new Gcp.DeveloperConnect.Inputs.InsightsConfigArtifactConfigArgs
+    ///             {
+    ///                 GoogleArtifactAnalysis = new Gcp.DeveloperConnect.Inputs.InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs
+    ///                 {
+    ///                     ProjectId = project.ProjectId,
+    ///                 },
+    ///                 GoogleArtifactRegistry = new Gcp.DeveloperConnect.Inputs.InsightsConfigArtifactConfigGoogleArtifactRegistryArgs
+    ///                 {
+    ///                     ArtifactRegistryPackage = "my-package",
+    ///                     ProjectId = project.ProjectId,
+    ///                 },
+    ///                 Uri = "us-docker.pkg.dev/my-project/my-repo/my-image",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             waitForPropagation,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// InsightsConfig can be imported using any of these accepted formats:

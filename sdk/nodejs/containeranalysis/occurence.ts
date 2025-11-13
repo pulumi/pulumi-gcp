@@ -20,6 +20,60 @@ import * as utilities from "../utilities";
  *
  * ### Container Analysis Occurrence Kms
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const note = new gcp.containeranalysis.Note("note", {
+ *     name: "attestation-note",
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "Attestor Note",
+ *         },
+ *     },
+ * });
+ * const keyring = gcp.kms.getKMSKeyRing({
+ *     name: "my-key-ring",
+ *     location: "global",
+ * });
+ * const crypto_key = keyring.then(keyring => gcp.kms.getKMSCryptoKey({
+ *     name: "my-key",
+ *     keyRing: keyring.id,
+ * }));
+ * const version = crypto_key.then(crypto_key => gcp.kms.getKMSCryptoKeyVersion({
+ *     cryptoKey: crypto_key.id,
+ * }));
+ * const attestor = new gcp.binaryauthorization.Attestor("attestor", {
+ *     name: "attestor",
+ *     attestationAuthorityNote: {
+ *         noteReference: note.name,
+ *         publicKeys: [{
+ *             id: version.then(version => version.id),
+ *             pkixPublicKey: {
+ *                 publicKeyPem: version.then(version => version.publicKeys?.[0]?.pem),
+ *                 signatureAlgorithm: version.then(version => version.publicKeys?.[0]?.algorithm),
+ *             },
+ *         }],
+ *     },
+ * });
+ * const occurrence = new gcp.containeranalysis.Occurence("occurrence", {
+ *     resourceUri: "gcr.io/my-project/my-image",
+ *     noteName: note.id,
+ *     attestation: {
+ *         serializedPayload: std.filebase64({
+ *             input: "path/to/my/payload.json",
+ *         }).then(invoke => invoke.result),
+ *         signatures: [{
+ *             publicKeyId: version.then(version => version.id),
+ *             serializedPayload: std.filebase64({
+ *                 input: "path/to/my/payload.json.sig",
+ *             }).then(invoke => invoke.result),
+ *         }],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Occurrence can be imported using any of these accepted formats:

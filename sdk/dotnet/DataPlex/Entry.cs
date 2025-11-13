@@ -80,24 +80,24 @@ namespace Pulumi.Gcp.DataPlex
     ///         Location = "us-central1",
     ///         Project = "1111111111111",
     ///         MetadataTemplate = @"{
-    ///   ""name"": ""tf-test-template"",
-    ///   ""type"": ""record"",
-    ///   ""recordFields"": [
+    ///   \""name\"": \""tf-test-template\"",
+    ///   \""type\"": \""record\"",
+    ///   \""recordFields\"": [
     ///     {
-    ///       ""name"": ""type"",
-    ///       ""type"": ""enum"",
-    ///       ""annotations"": {
-    ///         ""displayName"": ""Type"",
-    ///         ""description"": ""Specifies the type of view represented by the entry.""
+    ///       \""name\"": \""type\"",
+    ///       \""type\"": \""enum\"",
+    ///       \""annotations\"": {
+    ///         \""displayName\"": \""Type\"",
+    ///         \""description\"": \""Specifies the type of view represented by the entry.\""
     ///       },
-    ///       ""index"": 1,
-    ///       ""constraints"": {
-    ///         ""required"": true
+    ///       \""index\"": 1,
+    ///       \""constraints\"": {
+    ///         \""required\"": true
     ///       },
-    ///       ""enumValues"": [
+    ///       \""enumValues\"": [
     ///         {
-    ///           ""name"": ""VIEW"",
-    ///           ""index"": 1
+    ///           \""name\"": \""VIEW\"",
+    ///           \""index\"": 1
     ///         }
     ///       ]
     ///     }
@@ -112,24 +112,24 @@ namespace Pulumi.Gcp.DataPlex
     ///         Location = "us-central1",
     ///         Project = "1111111111111",
     ///         MetadataTemplate = @"{
-    ///   ""name"": ""tf-test-template"",
-    ///   ""type"": ""record"",
-    ///   ""recordFields"": [
+    ///   \""name\"": \""tf-test-template\"",
+    ///   \""type\"": \""record\"",
+    ///   \""recordFields\"": [
     ///     {
-    ///       ""name"": ""story"",
-    ///       ""type"": ""enum"",
-    ///       ""annotations"": {
-    ///         ""displayName"": ""Story"",
-    ///         ""description"": ""Specifies the story of an entry.""
+    ///       \""name\"": \""story\"",
+    ///       \""type\"": \""enum\"",
+    ///       \""annotations\"": {
+    ///         \""displayName\"": \""Story\"",
+    ///         \""description\"": \""Specifies the story of an entry.\""
     ///       },
-    ///       ""index"": 1,
-    ///       ""constraints"": {
-    ///         ""required"": true
+    ///       \""index\"": 1,
+    ///       \""constraints\"": {
+    ///         \""required\"": true
     ///       },
-    ///       ""enumValues"": [
+    ///       \""enumValues\"": [
     ///         {
-    ///           ""name"": ""SEQUENCE"",
-    ///           ""index"": 1
+    ///           \""name\"": \""SEQUENCE\"",
+    ///           \""index\"": 1
     ///         }
     ///       ]
     ///     }
@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 AspectKey = "1111111111111.us-central1.aspect-type-full-one",
     ///                 Aspect = new Gcp.DataPlex.Inputs.EntryAspectAspectArgs
     ///                 {
-    ///                     Data = @"          {""type"": ""VIEW""    }
+    ///                     Data = @"          {\""type\"": \""VIEW\""    }
     /// ",
     ///                 },
     ///             },
@@ -211,7 +211,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 AspectKey = "1111111111111.us-central1.aspect-type-full-two",
     ///                 Aspect = new Gcp.DataPlex.Inputs.EntryAspectAspectArgs
     ///                 {
-    ///                     Data = @"          {""story"": ""SEQUENCE""    }
+    ///                     Data = @"          {\""story\"": \""SEQUENCE\""    }
     /// ",
     ///                 },
     ///             },

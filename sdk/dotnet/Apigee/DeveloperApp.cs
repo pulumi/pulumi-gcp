@@ -25,6 +25,80 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// ### Apigee Developer App Basic
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigee_org", new()
+    ///     {
+    ///         AnalyticsRegion = "us-central1",
+    ///         ProjectId = projectGoogleProject.ProjectId,
+    ///         DisableVpcPeering = true,
+    ///     });
+    /// 
+    ///     var apigeeInstance = new Gcp.Apigee.Instance("apigee_instance", new()
+    ///     {
+    ///         Name = "instance",
+    ///         Location = "us-central1",
+    ///         OrgId = apigeeOrg.Id,
+    ///     });
+    /// 
+    ///     var apiProduct = new Gcp.Apigee.ApiProduct("api_product", new()
+    ///     {
+    ///         OrgId = apigeeOrg.Id,
+    ///         Name = "sample-api",
+    ///         DisplayName = "A sample API Product",
+    ///         ApprovalType = "auto",
+    ///         Scopes = new[]
+    ///         {
+    ///             "read:weather",
+    ///             "write:reports",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigeeInstance,
+    ///         },
+    ///     });
+    /// 
+    ///     var developer = new Gcp.Apigee.Developer("developer", new()
+    ///     {
+    ///         Email = "john.doe@acme.com",
+    ///         FirstName = "John",
+    ///         LastName = "Doe",
+    ///         UserName = "john.doe",
+    ///         OrgId = apigeeOrg.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigeeInstance,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeDeveloperApp = new Gcp.Apigee.DeveloperApp("apigee_developer_app", new()
+    ///     {
+    ///         Name = "sample-app",
+    ///         OrgId = apigeeOrg.Id,
+    ///         DeveloperId = developer.Id,
+    ///         DeveloperEmail = developer.Email,
+    ///         CallbackUrl = "https://example-call.url",
+    ///         ApiProducts = new[]
+    ///         {
+    ///             apiProduct.Name,
+    ///         },
+    ///         Scopes = apiProduct.Scopes,
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    /// });
+    /// ```
     /// ### Apigee Developer App Basic Test
     /// 
     /// ```csharp

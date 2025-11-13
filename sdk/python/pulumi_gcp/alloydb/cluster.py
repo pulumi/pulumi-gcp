@@ -1225,6 +1225,65 @@ class Cluster(pulumi.CustomResource):
         ```
         ### Alloydb Cluster Restore
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_network(name="alloydb-network")
+        source = gcp.alloydb.Cluster("source",
+            cluster_id="alloydb-source-cluster",
+            location="us-central1",
+            network=default.id,
+            initial_user={
+                "password": "alloydb-source-cluster",
+            },
+            deletion_protection=False)
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-source-cluster",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        source_instance = gcp.alloydb.Instance("source",
+            cluster=source.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY",
+            machine_config={
+                "cpu_count": 2,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        source_backup = gcp.alloydb.Backup("source",
+            backup_id="alloydb-backup",
+            location="us-central1",
+            cluster_name=source.name,
+            opts = pulumi.ResourceOptions(depends_on=[source_instance]))
+        restored_from_backup = gcp.alloydb.Cluster("restored_from_backup",
+            cluster_id="alloydb-backup-restored",
+            location="us-central1",
+            network_config={
+                "network": default.id,
+            },
+            restore_backup_source={
+                "backup_name": source_backup.name,
+            },
+            deletion_protection=False)
+        restored_via_pitr = gcp.alloydb.Cluster("restored_via_pitr",
+            cluster_id="alloydb-pitr-restored",
+            location="us-central1",
+            network_config={
+                "network": default.id,
+            },
+            restore_continuous_backup_source={
+                "cluster": source.name,
+                "point_in_time": "2023-08-03T19:19:00.094Z",
+            },
+            deletion_protection=False)
+        project = gcp.organizations.get_project()
+        ```
         ### Alloydb Secondary Cluster Basic
 
         ```python
@@ -1484,6 +1543,65 @@ class Cluster(pulumi.CustomResource):
         ```
         ### Alloydb Cluster Restore
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_network(name="alloydb-network")
+        source = gcp.alloydb.Cluster("source",
+            cluster_id="alloydb-source-cluster",
+            location="us-central1",
+            network=default.id,
+            initial_user={
+                "password": "alloydb-source-cluster",
+            },
+            deletion_protection=False)
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="alloydb-source-cluster",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        source_instance = gcp.alloydb.Instance("source",
+            cluster=source.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY",
+            machine_config={
+                "cpu_count": 2,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        source_backup = gcp.alloydb.Backup("source",
+            backup_id="alloydb-backup",
+            location="us-central1",
+            cluster_name=source.name,
+            opts = pulumi.ResourceOptions(depends_on=[source_instance]))
+        restored_from_backup = gcp.alloydb.Cluster("restored_from_backup",
+            cluster_id="alloydb-backup-restored",
+            location="us-central1",
+            network_config={
+                "network": default.id,
+            },
+            restore_backup_source={
+                "backup_name": source_backup.name,
+            },
+            deletion_protection=False)
+        restored_via_pitr = gcp.alloydb.Cluster("restored_via_pitr",
+            cluster_id="alloydb-pitr-restored",
+            location="us-central1",
+            network_config={
+                "network": default.id,
+            },
+            restore_continuous_backup_source={
+                "cluster": source.name,
+                "point_in_time": "2023-08-03T19:19:00.094Z",
+            },
+            deletion_protection=False)
+        project = gcp.organizations.get_project()
+        ```
         ### Alloydb Secondary Cluster Basic
 
         ```python

@@ -26,6 +26,52 @@ import (
 //
 // ### Scc Event Threat Detection Custom Module
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"metadata": map[string]interface{}{
+//					"severity":       "LOW",
+//					"description":    "Flagged by Forcepoint as malicious",
+//					"recommendation": "Contact the owner of the relevant project.",
+//				},
+//				"ips": []string{
+//					"192.0.2.1",
+//					"192.0.2.0/24",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = securitycenter.NewEventThreatDetectionCustomModule(ctx, "example", &securitycenter.EventThreatDetectionCustomModuleArgs{
+//				Organization:    pulumi.String("123456789"),
+//				DisplayName:     pulumi.String("basic_custom_module"),
+//				EnablementState: pulumi.String("ENABLED"),
+//				Type:            pulumi.String("CONFIGURABLE_BAD_IP"),
+//				Description:     "My Event Threat Detection Custom Module",
+//				Config:          pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // EventThreatDetectionCustomModule can be imported using any of these accepted formats:

@@ -134,7 +134,7 @@ import (
 //			_, err = storage.NewBucketObject(ctx, "data", &storage.BucketObjectArgs{
 //				Name:    pulumi.String("contents/data.json"),
 //				Bucket:  bucket.Name,
-//				Content: pulumi.String("{\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}\n{\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}\n"),
+//				Content: pulumi.String("{\\\"id\\\": \\\"42\\\", \\\"embedding\\\": [0.5, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"cat\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"feline\\\"]}]}\n{\\\"id\\\": \\\"43\\\", \\\"embedding\\\": [0.6, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"dog\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"canine\\\"]}]}\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -261,7 +261,7 @@ import (
 //			_, err = storage.NewBucketObject(ctx, "data", &storage.BucketObjectArgs{
 //				Name:    pulumi.String("contents/data.json"),
 //				Bucket:  bucket.Name,
-//				Content: pulumi.String("{\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}\n{\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}\n"),
+//				Content: pulumi.String("{\\\"id\\\": \\\"42\\\", \\\"embedding\\\": [0.5, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"cat\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"feline\\\"]}]}\n{\\\"id\\\": \\\"43\\\", \\\"embedding\\\": [0.6, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"dog\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"canine\\\"]}]}\n"),
 //			})
 //			if err != nil {
 //				return err

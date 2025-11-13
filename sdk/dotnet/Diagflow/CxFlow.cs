@@ -293,14 +293,14 @@ namespace Pulumi.Gcp.Diagflow
     ///                         },
     ///                         new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs
     ///                         {
-    ///                             Payload = @"          {""some-key"": ""some-value"", ""other-key"": [""other-value""]}
+    ///                             Payload = @"          {\""some-key\"": \""some-value\"", \""other-key\"": [\""other-value\""]}
     /// ",
     ///                         },
     ///                         new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs
     ///                         {
     ///                             ConversationSuccess = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs
     ///                             {
-    ///                                 Metadata = @"            {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    ///                                 Metadata = @"            {\""some-metadata-key\"": \""some-value\"", \""other-metadata-key\"": 1234}
     /// ",
     ///                             },
     ///                         },
@@ -315,7 +315,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                         {
     ///                             OutputAudioText = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs
     ///                             {
-    ///                                 Ssml = @"            &lt;speak&gt;Some example &lt;say-as interpret-as=""characters""&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
+    ///                                 Ssml = @"            &lt;speak&gt;Some example &lt;say-as interpret-as=\""characters\""&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
     /// ",
     ///                             },
     ///                         },
@@ -323,7 +323,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                         {
     ///                             LiveAgentHandoff = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs
     ///                             {
-    ///                                 Metadata = @"            {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    ///                                 Metadata = @"            {\""some-metadata-key\"": \""some-value\"", \""other-metadata-key\"": 1234}
     /// ",
     ///                             },
     ///                         },
@@ -467,14 +467,14 @@ namespace Pulumi.Gcp.Diagflow
     ///                         },
     ///                         new Gcp.Diagflow.Inputs.CxFlowTransitionRouteTriggerFulfillmentMessageArgs
     ///                         {
-    ///                             Payload = @"          {""some-key"": ""some-value"", ""other-key"": [""other-value""]}
+    ///                             Payload = @"          {\""some-key\"": \""some-value\"", \""other-key\"": [\""other-value\""]}
     /// ",
     ///                         },
     ///                         new Gcp.Diagflow.Inputs.CxFlowTransitionRouteTriggerFulfillmentMessageArgs
     ///                         {
     ///                             ConversationSuccess = new Gcp.Diagflow.Inputs.CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs
     ///                             {
-    ///                                 Metadata = @"            {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    ///                                 Metadata = @"            {\""some-metadata-key\"": \""some-value\"", \""other-metadata-key\"": 1234}
     /// ",
     ///                             },
     ///                         },
@@ -489,7 +489,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                         {
     ///                             OutputAudioText = new Gcp.Diagflow.Inputs.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs
     ///                             {
-    ///                                 Ssml = @"            &lt;speak&gt;Some example &lt;say-as interpret-as=""characters""&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
+    ///                                 Ssml = @"            &lt;speak&gt;Some example &lt;say-as interpret-as=\""characters\""&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
     /// ",
     ///                             },
     ///                         },
@@ -497,7 +497,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                         {
     ///                             LiveAgentHandoff = new Gcp.Diagflow.Inputs.CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs
     ///                             {
-    ///                                 Metadata = @"            {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    ///                                 Metadata = @"            {\""some-metadata-key\"": \""some-value\"", \""other-metadata-key\"": 1234}
     /// ",
     ///                             },
     ///                         },
@@ -669,14 +669,14 @@ namespace Pulumi.Gcp.Diagflow
     ///                     },
     ///                     new Gcp.Diagflow.Inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs
     ///                     {
-    ///                         Payload = @"          {""some-key"": ""some-value"", ""other-key"": [""other-value""]}
+    ///                         Payload = @"          {\""some-key\"": \""some-value\"", \""other-key\"": [\""other-value\""]}
     /// ",
     ///                     },
     ///                     new Gcp.Diagflow.Inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs
     ///                     {
     ///                         ConversationSuccess = new Gcp.Diagflow.Inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs
     ///                         {
-    ///                             Metadata = @"            {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    ///                             Metadata = @"            {\""some-metadata-key\"": \""some-value\"", \""other-metadata-key\"": 1234}
     /// ",
     ///                         },
     ///                     },
@@ -691,7 +691,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                     {
     ///                         OutputAudioText = new Gcp.Diagflow.Inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs
     ///                         {
-    ///                             Ssml = @"            &lt;speak&gt;Some example &lt;say-as interpret-as=""characters""&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
+    ///                             Ssml = @"            &lt;speak&gt;Some example &lt;say-as interpret-as=\""characters\""&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
     /// ",
     ///                         },
     ///                     },
@@ -699,7 +699,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                     {
     ///                         LiveAgentHandoff = new Gcp.Diagflow.Inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs
     ///                         {
-    ///                             Metadata = @"            {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    ///                             Metadata = @"            {\""some-metadata-key\"": \""some-value\"", \""other-metadata-key\"": 1234}
     /// ",
     ///                         },
     ///                     },

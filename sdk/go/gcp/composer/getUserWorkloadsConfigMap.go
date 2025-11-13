@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			example := exampleEnvironment.Name.ApplyT(func(name string) (composer.GetUserWorkloadsConfigMapResult, error) {
-//				return composer.GetUserWorkloadsConfigMapResult(interface{}(composer.LookupUserWorkloadsConfigMapOutput(ctx, composer.GetUserWorkloadsConfigMapOutputArgs{
+//				return composer.GetUserWorkloadsConfigMapResult(interface{}(composer.LookupUserWorkloadsConfigMap(ctx, &composer.LookupUserWorkloadsConfigMapArgs{
 //					Environment: name,
 //					Name:        googleComposerUserWorkloadsConfigMap.Example.Name,
 //				}, nil))), nil

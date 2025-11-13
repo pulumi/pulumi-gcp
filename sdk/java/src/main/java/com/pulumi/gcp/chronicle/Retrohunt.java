@@ -28,6 +28,65 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Chronicle Retrohunt Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.chronicle.Rule;
+ * import com.pulumi.gcp.chronicle.RuleArgs;
+ * import com.pulumi.gcp.chronicle.Retrohunt;
+ * import com.pulumi.gcp.chronicle.RetrohuntArgs;
+ * import com.pulumi.gcp.chronicle.inputs.RetrohuntProcessIntervalArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.SplitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_rule = new Rule("my-rule", RuleArgs.builder()
+ *             .location("us")
+ *             .instance("00000000-0000-0000-0000-000000000000")
+ *             .deletionPolicy("FORCE")
+ *             .text("""
+ * rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
+ *             """)
+ *             .build());
+ * 
+ *         var example = new Retrohunt("example", RetrohuntArgs.builder()
+ *             .location("us")
+ *             .instance("00000000-0000-0000-0000-000000000000")
+ *             .rule(StdFunctions.split(SplitArgs.builder()
+ *                 .separator("/")
+ *                 .text(googleChronicleRule.my-rule().name())
+ *                 .build()).result().length().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+ *                 .separator("/")
+ *                 .text(googleChronicleRule.my-rule().name())
+ *                 .build()).result()[_length - 1]))
+ *             .processInterval(RetrohuntProcessIntervalArgs.builder()
+ *                 .startTime("2025-01-01T00:00:00Z")
+ *                 .endTime("2025-01-01T12:00:00Z")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Retrohunt can be imported using any of these accepted formats:

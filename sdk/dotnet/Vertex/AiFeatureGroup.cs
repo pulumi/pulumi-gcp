@@ -45,14 +45,14 @@ namespace Pulumi.Gcp.Vertex
     ///         TableId = "job_load_table",
     ///         Schema = @"[
     ///     {
-    ///         ""name"": ""feature_id"",
-    ///         ""type"": ""STRING"",
-    ///         ""mode"": ""NULLABLE""
+    ///         \""name\"": \""feature_id\"",
+    ///         \""type\"": \""STRING\"",
+    ///         \""mode\"": \""NULLABLE\""
     ///     },
     ///     {
-    ///         ""name"": ""feature_timestamp"",
-    ///         ""type"": ""TIMESTAMP"",
-    ///         ""mode"": ""NULLABLE""
+    ///         \""name\"": \""feature_timestamp\"",
+    ///         \""type\"": \""TIMESTAMP\"",
+    ///         \""mode\"": \""NULLABLE\""
     ///     }
     /// ]
     /// ",

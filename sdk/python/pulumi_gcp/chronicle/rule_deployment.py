@@ -485,6 +485,70 @@ class RuleDeployment(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Chronicle Ruledeployment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_rule = gcp.chronicle.Rule("my-rule",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            text="rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\\n")
+        example = gcp.chronicle.RuleDeployment("example",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            rule=len(std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+            enabled=True,
+            alerting=True,
+            archived=False,
+            run_frequency="DAILY")
+        ```
+        ### Chronicle Ruledeployment Disabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_rule = gcp.chronicle.Rule("my-rule",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            text="rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\\n")
+        example = gcp.chronicle.RuleDeployment("example",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            rule=len(std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+            enabled=False,
+            run_frequency="LIVE")
+        ```
+        ### Chronicle Ruledeployment Run Frequency Missing
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_rule = gcp.chronicle.Rule("my-rule",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            text="rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\\n")
+        example = gcp.chronicle.RuleDeployment("example",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            rule=len(std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+            enabled=True,
+            alerting=True,
+            archived=False)
+        ```
+
         ## Import
 
         RuleDeployment can be imported using any of these accepted formats:
@@ -548,6 +612,70 @@ class RuleDeployment(pulumi.CustomResource):
             * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 
         ## Example Usage
+
+        ### Chronicle Ruledeployment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_rule = gcp.chronicle.Rule("my-rule",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            text="rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\\n")
+        example = gcp.chronicle.RuleDeployment("example",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            rule=len(std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+            enabled=True,
+            alerting=True,
+            archived=False,
+            run_frequency="DAILY")
+        ```
+        ### Chronicle Ruledeployment Disabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_rule = gcp.chronicle.Rule("my-rule",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            text="rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\\n")
+        example = gcp.chronicle.RuleDeployment("example",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            rule=len(std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+            enabled=False,
+            run_frequency="LIVE")
+        ```
+        ### Chronicle Ruledeployment Run Frequency Missing
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_rule = gcp.chronicle.Rule("my-rule",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            text="rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\\n")
+        example = gcp.chronicle.RuleDeployment("example",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            rule=len(std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
+                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+            enabled=True,
+            alerting=True,
+            archived=False)
+        ```
 
         ## Import
 

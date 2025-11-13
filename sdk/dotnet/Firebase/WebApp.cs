@@ -20,6 +20,73 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// ## Example Usage
     /// 
+    /// ### Firebase Web App Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basicWebApp = new Gcp.Firebase.WebApp("basic", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         DisplayName = "Display Name Basic",
+    ///     });
+    /// 
+    ///     var basic = Gcp.Firebase.GetWebAppConfig.Invoke(new()
+    ///     {
+    ///         WebAppId = basicWebApp.AppId,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Storage.Bucket("default", new()
+    ///     {
+    ///         Name = "fb-webapp-",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var defaultBucketObject = new Gcp.Storage.BucketObject("default", new()
+    ///     {
+    ///         Bucket = @default.Name,
+    ///         Name = "firebase-config.json",
+    ///         Content = Output.JsonSerialize(Output.Create(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["appId"] = basicWebApp.AppId,
+    ///             ["apiKey"] = basic.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.ApiKey),
+    ///             ["authDomain"] = basic.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.AuthDomain),
+    ///             ["databaseURL"] = Std.Lookup.Invoke(new()
+    ///             {
+    ///                 Map = basic,
+    ///                 Key = "database_url",
+    ///                 Default = "",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             ["storageBucket"] = Std.Lookup.Invoke(new()
+    ///             {
+    ///                 Map = basic,
+    ///                 Key = "storage_bucket",
+    ///                 Default = "",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             ["messagingSenderId"] = Std.Lookup.Invoke(new()
+    ///             {
+    ///                 Map = basic,
+    ///                 Key = "messaging_sender_id",
+    ///                 Default = "",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             ["measurementId"] = Std.Lookup.Invoke(new()
+    ///             {
+    ///                 Map = basic,
+    ///                 Key = "measurement_id",
+    ///                 Default = "",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         })),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Firebase Web App Custom Api Key
     /// 
     /// ```csharp

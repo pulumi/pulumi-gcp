@@ -65,11 +65,11 @@ import * as utilities from "../utilities";
  *                 },
  *             },
  *             {
- *                 payload: "        {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n",
+ *                 payload: "        {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n",
  *             },
  *             {
  *                 conversationSuccess: {
- *                     metadata: "          {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                     metadata: "          {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n",
  *                 },
  *             },
  *             {
@@ -79,12 +79,12 @@ import * as utilities from "../utilities";
  *             },
  *             {
  *                 outputAudioText: {
- *                     ssml: "          <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n",
+ *                     ssml: "          <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n",
  *                 },
  *             },
  *             {
  *                 liveAgentHandoff: {
- *                     metadata: "          {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                     metadata: "          {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n",
  *                 },
  *             },
  *             {
@@ -164,11 +164,11 @@ import * as utilities from "../utilities";
  *                     },
  *                 },
  *                 {
- *                     payload: "          {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n",
+ *                     payload: "          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n",
  *                 },
  *                 {
  *                     conversationSuccess: {
- *                         metadata: "            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                         metadata: "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n",
  *                     },
  *                 },
  *                 {
@@ -178,12 +178,12 @@ import * as utilities from "../utilities";
  *                 },
  *                 {
  *                     outputAudioText: {
- *                         ssml: "            <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n",
+ *                         ssml: "            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n",
  *                     },
  *                 },
  *                 {
  *                     liveAgentHandoff: {
- *                         metadata: "            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                         metadata: "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n",
  *                     },
  *                 },
  *                 {
@@ -267,11 +267,11 @@ import * as utilities from "../utilities";
  *                             },
  *                         },
  *                         {
- *                             payload: "              {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n",
+ *                             payload: "              {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n",
  *                         },
  *                         {
  *                             conversationSuccess: {
- *                                 metadata: "                {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                                 metadata: "                {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n",
  *                             },
  *                         },
  *                         {
@@ -281,12 +281,12 @@ import * as utilities from "../utilities";
  *                         },
  *                         {
  *                             outputAudioText: {
- *                                 ssml: "                <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n",
+ *                                 ssml: "                <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n",
  *                             },
  *                         },
  *                         {
  *                             liveAgentHandoff: {
- *                                 metadata: "                {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                                 metadata: "                {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n",
  *                             },
  *                         },
  *                         {
@@ -369,11 +369,11 @@ import * as utilities from "../utilities";
  *                                     },
  *                                 },
  *                                 {
- *                                     payload: "                {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n",
+ *                                     payload: "                {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n",
  *                                 },
  *                                 {
  *                                     conversationSuccess: {
- *                                         metadata: "                  {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                                         metadata: "                  {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n",
  *                                     },
  *                                 },
  *                                 {
@@ -383,12 +383,12 @@ import * as utilities from "../utilities";
  *                                 },
  *                                 {
  *                                     outputAudioText: {
- *                                         ssml: "                  <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n",
+ *                                         ssml: "                  <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n",
  *                                     },
  *                                 },
  *                                 {
  *                                     liveAgentHandoff: {
- *                                         metadata: "                  {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                                         metadata: "                  {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n",
  *                                     },
  *                                 },
  *                                 {
@@ -489,11 +489,11 @@ import * as utilities from "../utilities";
  *                     },
  *                 },
  *                 {
- *                     payload: "          {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n",
+ *                     payload: "          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n",
  *                 },
  *                 {
  *                     conversationSuccess: {
- *                         metadata: "            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                         metadata: "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n",
  *                     },
  *                 },
  *                 {
@@ -503,12 +503,12 @@ import * as utilities from "../utilities";
  *                 },
  *                 {
  *                     outputAudioText: {
- *                         ssml: "            <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n",
+ *                         ssml: "            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n",
  *                     },
  *                 },
  *                 {
  *                     liveAgentHandoff: {
- *                         metadata: "            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                         metadata: "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n",
  *                     },
  *                 },
  *                 {
@@ -600,11 +600,11 @@ import * as utilities from "../utilities";
  *                     },
  *                 },
  *                 {
- *                     payload: "          {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n",
+ *                     payload: "          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n",
  *                 },
  *                 {
  *                     conversationSuccess: {
- *                         metadata: "            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                         metadata: "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n",
  *                     },
  *                 },
  *                 {
@@ -614,12 +614,12 @@ import * as utilities from "../utilities";
  *                 },
  *                 {
  *                     outputAudioText: {
- *                         ssml: "            <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n",
+ *                         ssml: "            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n",
  *                     },
  *                 },
  *                 {
  *                     liveAgentHandoff: {
- *                         metadata: "            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                         metadata: "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n",
  *                     },
  *                 },
  *                 {

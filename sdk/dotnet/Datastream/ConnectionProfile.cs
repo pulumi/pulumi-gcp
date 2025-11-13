@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -160,16 +160,16 @@ namespace Pulumi.Gcp.Datastream
     /// export DB_ADDR={publicIpAddress}
     /// export DB_PORT=5432
     /// echo 1 &gt; /proc/sys/net/ipv4/ip_forward
-    /// md_url_prefix=""http://169.254.169.254/computeMetadata/v1/instance""
-    /// vm_nic_ip=""$(curl -H ""Metadata-Flavor: Google"" ${{md_url_prefix}}/network-interfaces/0/ip)""
+    /// md_url_prefix=\""http://169.254.169.254/computeMetadata/v1/instance\""
+    /// vm_nic_ip=\""$(curl -H \""Metadata-Flavor: Google\"" ${{md_url_prefix}}/network-interfaces/0/ip)\""
     /// iptables -t nat -F
-    /// iptables -t nat -A PREROUTING \
-    ///      -p tcp --dport $DB_PORT \
-    ///      -j DNAT \
+    /// iptables -t nat -A PREROUTING \\
+    ///      -p tcp --dport $DB_PORT \\
+    ///      -j DNAT \\
     ///      --to-destination $DB_ADDR
-    /// iptables -t nat -A POSTROUTING \
-    ///      -p tcp --dport $DB_PORT \
-    ///      -j SNAT \
+    /// iptables -t nat -A POSTROUTING \\
+    ///      -p tcp --dport $DB_PORT \\
+    ///      -j SNAT \\
     ///      --to-source $vm_nic_ip
     /// iptables-save
     /// "),
@@ -309,7 +309,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -475,6 +475,42 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Connection Profile Mongodb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
+    ///     {
+    ///         DisplayName = "Mongodb Source",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "source-profile",
+    ///         MongodbProfile = new Gcp.Datastream.Inputs.ConnectionProfileMongodbProfileArgs
+    ///         {
+    ///             HostAddresses = new[]
+    ///             {
+    ///                 new Gcp.Datastream.Inputs.ConnectionProfileMongodbProfileHostAddressArgs
+    ///                 {
+    ///                     Hostname = "mongodb-primary.example.com",
+    ///                     Port = 27017,
+    ///                 },
+    ///             },
+    ///             ReplicaSet = "myReplicaSet",
+    ///             Username = "mongoUser",
+    ///             Password = "mongoPassword",
+    ///             Database = "myDatabase",
+    ///             StandardConnectionFormat = null[0],
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ConnectionProfile can be imported using any of these accepted formats:

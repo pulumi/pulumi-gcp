@@ -593,8 +593,8 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         data = gcp.storage.BucketObject("data",
             name="contents/data.json",
             bucket=bucket.name,
-            content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
-        {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+            content=\"\"\"{\\"id\\": \\"42\\", \\"embedding\\": [0.5, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"cat\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"feline\\"]}]}
+        {\\"id\\": \\"43\\", \\"embedding\\": [0.6, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"dog\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"canine\\"]}]}
         \"\"\")
         ```
         ### Vertex Ai Index Endpoint Deployed Index Basic Two
@@ -663,8 +663,8 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         data = gcp.storage.BucketObject("data",
             name="contents/data.json",
             bucket=bucket.name,
-            content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
-        {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+            content=\"\"\"{\\"id\\": \\"42\\", \\"embedding\\": [0.5, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"cat\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"feline\\"]}]}
+        {\\"id\\": \\"43\\", \\"embedding\\": [0.6, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"dog\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"canine\\"]}]}
         \"\"\")
         ```
 
@@ -803,8 +803,8 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         data = gcp.storage.BucketObject("data",
             name="contents/data.json",
             bucket=bucket.name,
-            content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
-        {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+            content=\"\"\"{\\"id\\": \\"42\\", \\"embedding\\": [0.5, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"cat\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"feline\\"]}]}
+        {\\"id\\": \\"43\\", \\"embedding\\": [0.6, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"dog\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"canine\\"]}]}
         \"\"\")
         ```
         ### Vertex Ai Index Endpoint Deployed Index Basic Two
@@ -873,8 +873,8 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         data = gcp.storage.BucketObject("data",
             name="contents/data.json",
             bucket=bucket.name,
-            content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
-        {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+            content=\"\"\"{\\"id\\": \\"42\\", \\"embedding\\": [0.5, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"cat\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"feline\\"]}]}
+        {\\"id\\": \\"43\\", \\"embedding\\": [0.6, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"dog\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"canine\\"]}]}
         \"\"\")
         ```
 

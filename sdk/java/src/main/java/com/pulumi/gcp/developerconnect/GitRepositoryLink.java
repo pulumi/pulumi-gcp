@@ -30,6 +30,95 @@ import javax.annotation.Nullable;
  * 
  * ### Developer Connect Git Repository Link Github Doc
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigAuthorizerCredentialArgs;
+ * import com.pulumi.gcp.developerconnect.GitRepositoryLink;
+ * import com.pulumi.gcp.developerconnect.GitRepositoryLinkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var github_token_secret = new Secret("github-token-secret", SecretArgs.builder()
+ *             .secretId("github-token-secret")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var github_token_secret_version = new SecretVersion("github-token-secret-version", SecretVersionArgs.builder()
+ *             .secret(github_token_secret.id())
+ *             .secretData(StdFunctions.file(FileArgs.builder()
+ *                 .input("my-github-token.txt")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/secretmanager.secretAccessor")
+ *                 .members("serviceAccount:service-123456789}{@literal @}{@code gcp-sa-devconnect.iam.gserviceaccount.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
+ *             .secretId(github_token_secret.secretId())
+ *             .policyData(p4sa_secretAccessor.policyData())
+ *             .build());
+ * 
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .location("us-central1")
+ *             .connectionId("my-connection")
+ *             .githubConfig(ConnectionGithubConfigArgs.builder()
+ *                 .githubApp("DEVELOPER_CONNECT")
+ *                 .appInstallationId("123123")
+ *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
+ *                     .oauthTokenSecretVersion(github_token_secret_version.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var my_repository = new GitRepositoryLink("my-repository", GitRepositoryLinkArgs.builder()
+ *             .location("us-central1")
+ *             .gitRepositoryLinkId("my-repo")
+ *             .parentConnection(my_connection.connectionId())
+ *             .remoteUri("https://github.com/myuser/myrepo.git")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * GitRepositoryLink can be imported using any of these accepted formats:

@@ -21,6 +21,120 @@ namespace Pulumi.Gcp.Compute
         /// * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Property-Based Availability
+        /// 
+        /// Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var example = await Gcp.Compute.GetMachineTypes.InvokeAsync(new()
+        ///     {
+        ///         Filter = "memoryMb = 16384 AND guestCpus = 8",
+        ///         Zone = zone,
+        ///     });
+        /// 
+        ///     var exampleInstanceTemplate = new List&lt;Gcp.Compute.InstanceTemplate&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         exampleInstanceTemplate.Add(new Gcp.Compute.InstanceTemplate($"example-{range.Key}", new()
+        ///         {
+        ///             MachineType = range.Value,
+        ///             Disks = new[]
+        ///             {
+        ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+        ///                 {
+        ///                     SourceImage = "debian-cloud/debian-11",
+        ///                     AutoDelete = true,
+        ///                     Boot = true,
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// 
+        /// ### Machine Family Preference
+        /// 
+        /// Create an instance template, preferring `C3` machine family if available in the provided zone, otherwise falling back to `C2` and finally `N2`.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.Compute.GetMachineTypes.Invoke(new()
+        ///     {
+        ///         Filter = "memoryMb = 16384 AND guestCpus = 4",
+        ///         Zone = zone,
+        ///     });
+        /// 
+        ///     var exampleInstanceTemplate = new Gcp.Compute.InstanceTemplate("example", new()
+        ///     {
+        ///         MachineType = Output.Tuple(example, Std.Startswith.Invoke(new()
+        ///         {
+        ///             Input = mt.Name,
+        ///             Prefix = "c3-",
+        ///         }), example, Std.Startswith.Invoke(new()
+        ///         {
+        ///             Input = mt.Name,
+        ///             Prefix = "c2-",
+        ///         }), example, Std.Startswith.Invoke(new()
+        ///         {
+        ///             Input = mt.Name,
+        ///             Prefix = "n2-",
+        ///         })).Apply(values =&gt;
+        ///         {
+        ///             var example = values.Item1;
+        ///             var invoke = values.Item2;
+        ///             var example1 = values.Item3;
+        ///             var invoke1 = values.Item4;
+        ///             var example2 = values.Item5;
+        ///             var invoke2 = values.Item6;
+        ///             return Std.Coalescelist.Invoke(new()
+        ///             {
+        ///                 Input = new[]
+        ///                 {
+        ///                     .Where(mt =&gt; invoke.Result).Select(mt =&gt; 
+        ///                     {
+        ///                         return mt.Name;
+        ///                     }).ToList(),
+        ///                     .Where(mt =&gt; invoke1.Result).Select(mt =&gt; 
+        ///                     {
+        ///                         return mt.Name;
+        ///                     }).ToList(),
+        ///                     .Where(mt =&gt; invoke2.Result).Select(mt =&gt; 
+        ///                     {
+        ///                         return mt.Name;
+        ///                     }).ToList(),
+        ///                 },
+        ///             });
+        ///         }).Apply(invoke =&gt; invoke.Result[0]),
+        ///         Disks = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+        ///             {
+        ///                 SourceImage = "debian-cloud/debian-11",
+        ///                 AutoDelete = true,
+        ///                 Boot = true,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetMachineTypesResult> InvokeAsync(GetMachineTypesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMachineTypesResult>("gcp:compute/getMachineTypes:getMachineTypes", args ?? new GetMachineTypesArgs(), options.WithDefaults());
@@ -35,6 +149,120 @@ namespace Pulumi.Gcp.Compute
         /// * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Property-Based Availability
+        /// 
+        /// Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var example = await Gcp.Compute.GetMachineTypes.InvokeAsync(new()
+        ///     {
+        ///         Filter = "memoryMb = 16384 AND guestCpus = 8",
+        ///         Zone = zone,
+        ///     });
+        /// 
+        ///     var exampleInstanceTemplate = new List&lt;Gcp.Compute.InstanceTemplate&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         exampleInstanceTemplate.Add(new Gcp.Compute.InstanceTemplate($"example-{range.Key}", new()
+        ///         {
+        ///             MachineType = range.Value,
+        ///             Disks = new[]
+        ///             {
+        ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+        ///                 {
+        ///                     SourceImage = "debian-cloud/debian-11",
+        ///                     AutoDelete = true,
+        ///                     Boot = true,
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// 
+        /// ### Machine Family Preference
+        /// 
+        /// Create an instance template, preferring `C3` machine family if available in the provided zone, otherwise falling back to `C2` and finally `N2`.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.Compute.GetMachineTypes.Invoke(new()
+        ///     {
+        ///         Filter = "memoryMb = 16384 AND guestCpus = 4",
+        ///         Zone = zone,
+        ///     });
+        /// 
+        ///     var exampleInstanceTemplate = new Gcp.Compute.InstanceTemplate("example", new()
+        ///     {
+        ///         MachineType = Output.Tuple(example, Std.Startswith.Invoke(new()
+        ///         {
+        ///             Input = mt.Name,
+        ///             Prefix = "c3-",
+        ///         }), example, Std.Startswith.Invoke(new()
+        ///         {
+        ///             Input = mt.Name,
+        ///             Prefix = "c2-",
+        ///         }), example, Std.Startswith.Invoke(new()
+        ///         {
+        ///             Input = mt.Name,
+        ///             Prefix = "n2-",
+        ///         })).Apply(values =&gt;
+        ///         {
+        ///             var example = values.Item1;
+        ///             var invoke = values.Item2;
+        ///             var example1 = values.Item3;
+        ///             var invoke1 = values.Item4;
+        ///             var example2 = values.Item5;
+        ///             var invoke2 = values.Item6;
+        ///             return Std.Coalescelist.Invoke(new()
+        ///             {
+        ///                 Input = new[]
+        ///                 {
+        ///                     .Where(mt =&gt; invoke.Result).Select(mt =&gt; 
+        ///                     {
+        ///                         return mt.Name;
+        ///                     }).ToList(),
+        ///                     .Where(mt =&gt; invoke1.Result).Select(mt =&gt; 
+        ///                     {
+        ///                         return mt.Name;
+        ///                     }).ToList(),
+        ///                     .Where(mt =&gt; invoke2.Result).Select(mt =&gt; 
+        ///                     {
+        ///                         return mt.Name;
+        ///                     }).ToList(),
+        ///                 },
+        ///             });
+        ///         }).Apply(invoke =&gt; invoke.Result[0]),
+        ///         Disks = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+        ///             {
+        ///                 SourceImage = "debian-cloud/debian-11",
+        ///                 AutoDelete = true,
+        ///                 Boot = true,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetMachineTypesResult> Invoke(GetMachineTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMachineTypesResult>("gcp:compute/getMachineTypes:getMachineTypes", args ?? new GetMachineTypesInvokeArgs(), options.WithDefaults());
@@ -49,6 +277,120 @@ namespace Pulumi.Gcp.Compute
         /// * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Property-Based Availability
+        /// 
+        /// Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var example = await Gcp.Compute.GetMachineTypes.InvokeAsync(new()
+        ///     {
+        ///         Filter = "memoryMb = 16384 AND guestCpus = 8",
+        ///         Zone = zone,
+        ///     });
+        /// 
+        ///     var exampleInstanceTemplate = new List&lt;Gcp.Compute.InstanceTemplate&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         exampleInstanceTemplate.Add(new Gcp.Compute.InstanceTemplate($"example-{range.Key}", new()
+        ///         {
+        ///             MachineType = range.Value,
+        ///             Disks = new[]
+        ///             {
+        ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+        ///                 {
+        ///                     SourceImage = "debian-cloud/debian-11",
+        ///                     AutoDelete = true,
+        ///                     Boot = true,
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// 
+        /// ### Machine Family Preference
+        /// 
+        /// Create an instance template, preferring `C3` machine family if available in the provided zone, otherwise falling back to `C2` and finally `N2`.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.Compute.GetMachineTypes.Invoke(new()
+        ///     {
+        ///         Filter = "memoryMb = 16384 AND guestCpus = 4",
+        ///         Zone = zone,
+        ///     });
+        /// 
+        ///     var exampleInstanceTemplate = new Gcp.Compute.InstanceTemplate("example", new()
+        ///     {
+        ///         MachineType = Output.Tuple(example, Std.Startswith.Invoke(new()
+        ///         {
+        ///             Input = mt.Name,
+        ///             Prefix = "c3-",
+        ///         }), example, Std.Startswith.Invoke(new()
+        ///         {
+        ///             Input = mt.Name,
+        ///             Prefix = "c2-",
+        ///         }), example, Std.Startswith.Invoke(new()
+        ///         {
+        ///             Input = mt.Name,
+        ///             Prefix = "n2-",
+        ///         })).Apply(values =&gt;
+        ///         {
+        ///             var example = values.Item1;
+        ///             var invoke = values.Item2;
+        ///             var example1 = values.Item3;
+        ///             var invoke1 = values.Item4;
+        ///             var example2 = values.Item5;
+        ///             var invoke2 = values.Item6;
+        ///             return Std.Coalescelist.Invoke(new()
+        ///             {
+        ///                 Input = new[]
+        ///                 {
+        ///                     .Where(mt =&gt; invoke.Result).Select(mt =&gt; 
+        ///                     {
+        ///                         return mt.Name;
+        ///                     }).ToList(),
+        ///                     .Where(mt =&gt; invoke1.Result).Select(mt =&gt; 
+        ///                     {
+        ///                         return mt.Name;
+        ///                     }).ToList(),
+        ///                     .Where(mt =&gt; invoke2.Result).Select(mt =&gt; 
+        ///                     {
+        ///                         return mt.Name;
+        ///                     }).ToList(),
+        ///                 },
+        ///             });
+        ///         }).Apply(invoke =&gt; invoke.Result[0]),
+        ///         Disks = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+        ///             {
+        ///                 SourceImage = "debian-cloud/debian-11",
+        ///                 AutoDelete = true,
+        ///                 Boot = true,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetMachineTypesResult> Invoke(GetMachineTypesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMachineTypesResult>("gcp:compute/getMachineTypes:getMachineTypes", args ?? new GetMachineTypesInvokeArgs(), options.WithDefaults());

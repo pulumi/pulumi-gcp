@@ -27,6 +27,42 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// ### Scc V2 Project Big Query Export Config Basic
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.BigQuery.Dataset("default", new()
+    ///     {
+    ///         DatasetId = "my_dataset_id",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///         DefaultPartitionExpirationMs = null,
+    ///         Labels = 
+    ///         {
+    ///             { "env", "default" },
+    ///         },
+    ///     });
+    /// 
+    ///     var customBigQueryExportConfig = new Gcp.SecurityCenter.V2ProjectSccBigQueryExport("custom_big_query_export_config", new()
+    ///     {
+    ///         Name = "my-export",
+    ///         BigQueryExportId = "my-export",
+    ///         Project = "my-project-name",
+    ///         Dataset = @default.Id,
+    ///         Location = "global",
+    ///         Description = "Cloud Security Command Center Findings Big Query Export Config",
+    ///         Filter = "state=\"ACTIVE\" AND NOT mute=\"MUTED\"",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ProjectSccBigQueryExport can be imported using any of these accepted formats:

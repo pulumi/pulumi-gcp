@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .query("""
  * SELECT _key, COUNT(CF['col1']) as Count
- * FROM ` + "`bt-table`" + `
+ * FROM ` + \"`bt-table`\" + `
  * GROUP BY _key
  *             """)
  *             .build(), CustomResourceOptions.builder()

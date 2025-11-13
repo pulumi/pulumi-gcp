@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .query("""
  * SELECT _key, CF
- * FROM ` + "`bt-table`" + `
+ * FROM ` + \"`bt-table`\" + `
  *             """)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(table)

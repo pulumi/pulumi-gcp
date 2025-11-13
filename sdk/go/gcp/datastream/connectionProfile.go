@@ -132,9 +132,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
-//				Length:  pulumi.Int(16),
-//				Special: pulumi.Bool(false),
+//			pwd, err := random.NewPassword(ctx, "pwd", &random.PasswordArgs{
+//				Length:  16,
+//				Special: false,
 //			})
 //			if err != nil {
 //				return err
@@ -177,18 +177,18 @@ import (
 // export DB_ADDR=%v
 // export DB_PORT=5432
 // echo 1 > /proc/sys/net/ipv4/ip_forward
-// md_url_prefix="http://169.254.169.254/computeMetadata/v1/instance"
-// vm_nic_ip="$(curl -H "Metadata-Flavor: Google" ${md_url_prefix}/network-interfaces/0/ip)"
+// md_url_prefix=\"http://169.254.169.254/computeMetadata/v1/instance\"
+// vm_nic_ip=\"$(curl -H \"Metadata-Flavor: Google\" ${md_url_prefix}/network-interfaces/0/ip)\"
 // iptables -t nat -F
 //
-//	iptables -t nat -A PREROUTING \
-//	     -p tcp --dport $DB_PORT \
-//	     -j DNAT \
+//	iptables -t nat -A PREROUTING \\
+//	     -p tcp --dport $DB_PORT \\
+//	     -j DNAT \\
 //	     --to-destination $DB_ADDR
 //
-//	iptables -t nat -A POSTROUTING \
-//	     -p tcp --dport $DB_PORT \
-//	     -j SNAT \
+//	iptables -t nat -A POSTROUTING \\
+//	     -p tcp --dport $DB_PORT \\
+//	     -j SNAT \\
 //	     --to-source $vm_nic_ip
 //
 // iptables-save
@@ -342,9 +342,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
-//				Length:  pulumi.Int(16),
-//				Special: pulumi.Bool(false),
+//			pwd, err := random.NewPassword(ctx, "pwd", &random.PasswordArgs{
+//				Length:  16,
+//				Special: false,
 //			})
 //			if err != nil {
 //				return err
@@ -529,6 +529,47 @@ import (
 //	}
 //
 // ```
+// ### Datastream Connection Profile Mongodb
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datastream.NewConnectionProfile(ctx, "default", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Mongodb Source"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("source-profile"),
+//				MongodbProfile: &datastream.ConnectionProfileMongodbProfileArgs{
+//					HostAddresses: datastream.ConnectionProfileMongodbProfileHostAddressArray{
+//						&datastream.ConnectionProfileMongodbProfileHostAddressArgs{
+//							Hostname: pulumi.String("mongodb-primary.example.com"),
+//							Port:     pulumi.Int(27017),
+//						},
+//					},
+//					ReplicaSet:               pulumi.String("myReplicaSet"),
+//					Username:                 pulumi.String("mongoUser"),
+//					Password:                 pulumi.String("mongoPassword"),
+//					Database:                 "myDatabase",
+//					StandardConnectionFormat: map[string]interface{}{}[0],
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ConnectionProfile can be imported using any of these accepted formats:

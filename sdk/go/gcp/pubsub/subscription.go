@@ -139,7 +139,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Filter:             pulumi.String("    attributes.foo = \"foo\"\n    AND attributes.bar = \"bar\"\n"),
+//				Filter:             pulumi.String("    attributes.foo = \\\"foo\\\"\n    AND attributes.bar = \\\"bar\\\"\n"),
 //				AckDeadlineSeconds: pulumi.Int(20),
 //			})
 //			if err != nil {
@@ -227,10 +227,10 @@ import (
 //				DatasetId: test.DatasetId,
 //				Schema: pulumi.String(`[
 //	  {
-//	    "name": "data",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE",
-//	    "description": "The data"
+//	    \"name\": \"data\",
+//	    \"type\": \"STRING\",
+//	    \"mode\": \"NULLABLE\",
+//	    \"description\": \"The data\"
 //	  }
 //
 // ]
@@ -300,10 +300,10 @@ import (
 //				DatasetId: test.DatasetId,
 //				Schema: pulumi.String(`[
 //	  {
-//	    "name": "data",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE",
-//	    "description": "The data"
+//	    \"name\": \"data\",
+//	    \"type\": \"STRING\",
+//	    \"mode\": \"NULLABLE\",
+//	    \"description\": \"The data\"
 //	  }
 //
 // ]
@@ -408,10 +408,10 @@ import (
 //				DatasetId:          test.DatasetId,
 //				Schema: pulumi.String(`[
 //	  {
-//	    "name": "data",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE",
-//	    "description": "The data"
+//	    \"name\": \"data\",
+//	    \"type\": \"STRING\",
+//	    \"mode\": \"NULLABLE\",
+//	    \"description\": \"The data\"
 //	  }
 //
 // ]

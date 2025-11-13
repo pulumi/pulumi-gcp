@@ -61,24 +61,24 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     project: "1111111111111",
  *     metadataTemplate: `{
- *   "name": "tf-test-template",
- *   "type": "record",
- *   "recordFields": [
+ *   \\"name\\": \\"tf-test-template\\",
+ *   \\"type\\": \\"record\\",
+ *   \\"recordFields\\": [
  *     {
- *       "name": "type",
- *       "type": "enum",
- *       "annotations": {
- *         "displayName": "Type",
- *         "description": "Specifies the type of view represented by the entry."
+ *       \\"name\\": \\"type\\",
+ *       \\"type\\": \\"enum\\",
+ *       \\"annotations\\": {
+ *         \\"displayName\\": \\"Type\\",
+ *         \\"description\\": \\"Specifies the type of view represented by the entry.\\"
  *       },
- *       "index": 1,
- *       "constraints": {
- *         "required": true
+ *       \\"index\\": 1,
+ *       \\"constraints\\": {
+ *         \\"required\\": true
  *       },
- *       "enumValues": [
+ *       \\"enumValues\\": [
  *         {
- *           "name": "VIEW",
- *           "index": 1
+ *           \\"name\\": \\"VIEW\\",
+ *           \\"index\\": 1
  *         }
  *       ]
  *     }
@@ -91,24 +91,24 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     project: "1111111111111",
  *     metadataTemplate: `{
- *   "name": "tf-test-template",
- *   "type": "record",
- *   "recordFields": [
+ *   \\"name\\": \\"tf-test-template\\",
+ *   \\"type\\": \\"record\\",
+ *   \\"recordFields\\": [
  *     {
- *       "name": "story",
- *       "type": "enum",
- *       "annotations": {
- *         "displayName": "Story",
- *         "description": "Specifies the story of an entry."
+ *       \\"name\\": \\"story\\",
+ *       \\"type\\": \\"enum\\",
+ *       \\"annotations\\": {
+ *         \\"displayName\\": \\"Story\\",
+ *         \\"description\\": \\"Specifies the story of an entry.\\"
  *       },
- *       "index": 1,
- *       "constraints": {
- *         "required": true
+ *       \\"index\\": 1,
+ *       \\"constraints\\": {
+ *         \\"required\\": true
  *       },
- *       "enumValues": [
+ *       \\"enumValues\\": [
  *         {
- *           "name": "SEQUENCE",
- *           "index": 1
+ *           \\"name\\": \\"SEQUENCE\\",
+ *           \\"index\\": 1
  *         }
  *       ]
  *     }
@@ -163,13 +163,13 @@ import * as utilities from "../utilities";
  *         {
  *             aspectKey: "1111111111111.us-central1.aspect-type-full-one",
  *             aspect: {
- *                 data: "          {\"type\": \"VIEW\"    }\n",
+ *                 data: "          {\\\"type\\\": \\\"VIEW\\\"    }\n",
  *             },
  *         },
  *         {
  *             aspectKey: "1111111111111.us-central1.aspect-type-full-two",
  *             aspect: {
- *                 data: "          {\"story\": \"SEQUENCE\"    }\n",
+ *                 data: "          {\\\"story\\\": \\\"SEQUENCE\\\"    }\n",
  *             },
  *         },
  *     ],

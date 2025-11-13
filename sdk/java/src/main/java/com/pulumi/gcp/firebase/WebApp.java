@@ -26,6 +26,97 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Firebase Web App Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firebase.WebApp;
+ * import com.pulumi.gcp.firebase.WebAppArgs;
+ * import com.pulumi.gcp.firebase.FirebaseFunctions;
+ * import com.pulumi.gcp.firebase.inputs.GetWebAppConfigArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.LookupArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicWebApp = new WebApp("basicWebApp", WebAppArgs.builder()
+ *             .project("my-project-name")
+ *             .displayName("Display Name Basic")
+ *             .build());
+ * 
+ *         final var basic = FirebaseFunctions.getWebAppConfig(GetWebAppConfigArgs.builder()
+ *             .webAppId(basicWebApp.appId())
+ *             .build());
+ * 
+ *         var default_ = new Bucket("default", BucketArgs.builder()
+ *             .name("fb-webapp-")
+ *             .location("US")
+ *             .build());
+ * 
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
+ *             .bucket(default_.name())
+ *             .name("firebase-config.json")
+ *             .content(Output.tuple(basicWebApp.appId(), basic, basic, StdFunctions.lookup(LookupArgs.builder()
+ *                 .map(basic)
+ *                 .key("database_url")
+ *                 .default_("")
+ *                 .build()), StdFunctions.lookup(LookupArgs.builder()
+ *                 .map(basic)
+ *                 .key("storage_bucket")
+ *                 .default_("")
+ *                 .build()), StdFunctions.lookup(LookupArgs.builder()
+ *                 .map(basic)
+ *                 .key("messaging_sender_id")
+ *                 .default_("")
+ *                 .build()), StdFunctions.lookup(LookupArgs.builder()
+ *                 .map(basic)
+ *                 .key("measurement_id")
+ *                 .default_("")
+ *                 .build())).applyValue(values -> {
+ *                 var appId = values.t1;
+ *                 var basic = values.t2;
+ *                 var basic1 = values.t3;
+ *                 var invoke = values.t4;
+ *                 var invoke1 = values.t5;
+ *                 var invoke2 = values.t6;
+ *                 var invoke3 = values.t7;
+ *                 return serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty("appId", appId),
+ *                         jsonProperty("apiKey", basic.apiKey()),
+ *                         jsonProperty("authDomain", basic1.authDomain()),
+ *                         jsonProperty("databaseURL", invoke.result()),
+ *                         jsonProperty("storageBucket", invoke1.result()),
+ *                         jsonProperty("messagingSenderId", invoke2.result()),
+ *                         jsonProperty("measurementId", invoke3.result())
+ *                     ));
+ *             }))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Firebase Web App Custom Api Key
  * 
  * <pre>

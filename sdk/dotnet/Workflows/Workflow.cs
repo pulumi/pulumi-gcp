@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Workflows
     /// - getCurrentTime:
     ///     call: http.get
     ///     args:
-    ///         url: ${sys.get_env(""url"")}
+    ///         url: ${sys.get_env(\""url\"")}
     ///     result: currentTime
     /// - readWikipedia:
     ///     call: http.get
@@ -144,7 +144,7 @@ namespace Pulumi.Gcp.Workflows
     /// - getCurrentTime:
     ///     call: http.get
     ///     args:
-    ///         url: ${sys.get_env(""url"")}
+    ///         url: ${sys.get_env(\""url\"")}
     ///     result: currentTime
     /// - readWikipedia:
     ///     call: http.get

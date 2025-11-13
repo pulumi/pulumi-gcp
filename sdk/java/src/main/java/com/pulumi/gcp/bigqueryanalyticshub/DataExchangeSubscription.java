@@ -95,19 +95,19 @@ import javax.annotation.Nullable;
  *             .schema("""
  * [
  *   }{{@code
- *     "name": "name",
- *     "type": "STRING",
- *     "mode": "NULLABLE"
+ *     \"name\": \"name\",
+ *     \"type\": \"STRING\",
+ *     \"mode\": \"NULLABLE\"
  *   }}{@code ,
  *   }{{@code
- *     "name": "post_abbr",
- *     "type": "STRING",
- *     "mode": "NULLABLE"
+ *     \"name\": \"post_abbr\",
+ *     \"type\": \"STRING\",
+ *     \"mode\": \"NULLABLE\"
  *   }}{@code ,
  *   }{{@code
- *     "name": "date",
- *     "type": "DATE",
- *     "mode": "NULLABLE"
+ *     \"name\": \"date\",
+ *     \"type\": \"DATE\",
+ *     \"mode\": \"NULLABLE\"
  *   }}{@code
  * ]
  *             """)

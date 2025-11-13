@@ -17,6 +17,21 @@ import * as utilities from "../utilities";
  *
  * ### Active Directory Domain Trust Basic
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const ad_domain_trust = new gcp.activedirectory.DomainTrust("ad-domain-trust", {
+ *     domain: "test-managed-ad.com",
+ *     targetDomainName: "example-gcp.com",
+ *     targetDnsIpAddresses: ["10.1.0.100"],
+ *     trustDirection: "OUTBOUND",
+ *     trustType: "FOREST",
+ *     trustHandshakeSecret: "Testing1!",
+ *     deletionProtection: false,
+ * });
+ * ```
+ *
  * ## Import
  *
  * DomainTrust can be imported using any of these accepted formats:

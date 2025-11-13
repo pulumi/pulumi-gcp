@@ -24,6 +24,92 @@ import (
 //
 // ### Developer Connect Git Repository Link Github Doc
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			github_token_secret, err := secretmanager.NewSecret(ctx, "github-token-secret", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("github-token-secret"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "my-github-token.txt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			github_token_secret_version, err := secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
+//				Secret:     github_token_secret.ID(),
+//				SecretData: pulumi.String(invokeFile.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			p4sa_secretAccessor, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/secretmanager.secretAccessor",
+//						Members: []string{
+//							"serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
+//				SecretId:   github_token_secret.SecretId,
+//				PolicyData: pulumi.String(p4sa_secretAccessor.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			my_connection, err := developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
+//				Location:     pulumi.String("us-central1"),
+//				ConnectionId: pulumi.String("my-connection"),
+//				GithubConfig: &developerconnect.ConnectionGithubConfigArgs{
+//					GithubApp:         pulumi.String("DEVELOPER_CONNECT"),
+//					AppInstallationId: pulumi.String("123123"),
+//					AuthorizerCredential: &developerconnect.ConnectionGithubConfigAuthorizerCredentialArgs{
+//						OauthTokenSecretVersion: github_token_secret_version.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = developerconnect.NewGitRepositoryLink(ctx, "my-repository", &developerconnect.GitRepositoryLinkArgs{
+//				Location:            pulumi.String("us-central1"),
+//				GitRepositoryLinkId: pulumi.String("my-repo"),
+//				ParentConnection:    my_connection.ConnectionId,
+//				RemoteUri:           "https://github.com/myuser/myrepo.git",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // GitRepositoryLink can be imported using any of these accepted formats:
