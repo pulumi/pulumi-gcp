@@ -17,6 +17,52 @@ import * as utilities from "../utilities";
  *
  * ### Developer Connect Git Repository Link Github Doc
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const github_token_secret = new gcp.secretmanager.Secret("github-token-secret", {
+ *     secretId: "github-token-secret",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const github_token_secret_version = new gcp.secretmanager.SecretVersion("github-token-secret-version", {
+ *     secret: github_token_secret.id,
+ *     secretData: std.file({
+ *         input: "my-github-token.txt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const p4sa_secretAccessor = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/secretmanager.secretAccessor",
+ *         members: ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"],
+ *     }],
+ * });
+ * const policy = new gcp.secretmanager.SecretIamPolicy("policy", {
+ *     secretId: github_token_secret.secretId,
+ *     policyData: p4sa_secretAccessor.then(p4sa_secretAccessor => p4sa_secretAccessor.policyData),
+ * });
+ * const my_connection = new gcp.developerconnect.Connection("my-connection", {
+ *     location: "us-central1",
+ *     connectionId: "my-connection",
+ *     githubConfig: {
+ *         githubApp: "DEVELOPER_CONNECT",
+ *         appInstallationId: "123123",
+ *         authorizerCredential: {
+ *             oauthTokenSecretVersion: github_token_secret_version.id,
+ *         },
+ *     },
+ * });
+ * const my_repository = new gcp.developerconnect.GitRepositoryLink("my-repository", {
+ *     location: "us-central1",
+ *     gitRepositoryLinkId: "my-repo",
+ *     parentConnection: my_connection.connectionId,
+ *     remoteUri: "https://github.com/myuser/myrepo.git",
+ * });
+ * ```
+ *
  * ## Import
  *
  * GitRepositoryLink can be imported using any of these accepted formats:

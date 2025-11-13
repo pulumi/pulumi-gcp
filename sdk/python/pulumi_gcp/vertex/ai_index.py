@@ -514,8 +514,8 @@ class AiIndex(pulumi.CustomResource):
         data = gcp.storage.BucketObject("data",
             name="contents/data.json",
             bucket=bucket.name,
-            content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
-        {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+            content=\"\"\"{\\"id\\": \\"42\\", \\"embedding\\": [0.5, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"cat\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"feline\\"]}]}
+        {\\"id\\": \\"43\\", \\"embedding\\": [0.6, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"dog\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"canine\\"]}]}
         \"\"\")
         vertexai_encrypterdecrypter = gcp.kms.CryptoKeyIAMMember("vertexai_encrypterdecrypter",
             crypto_key_id="kms-name",
@@ -564,8 +564,8 @@ class AiIndex(pulumi.CustomResource):
         data = gcp.storage.BucketObject("data",
             name="contents/data.json",
             bucket=bucket.name,
-            content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
-        {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+            content=\"\"\"{\\"id\\": \\"42\\", \\"embedding\\": [0.5, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"cat\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"feline\\"]}]}
+        {\\"id\\": \\"43\\", \\"embedding\\": [0.6, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"dog\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"canine\\"]}]}
         \"\"\")
         index = gcp.vertex.AiIndex("index",
             labels={
@@ -670,8 +670,8 @@ class AiIndex(pulumi.CustomResource):
         data = gcp.storage.BucketObject("data",
             name="contents/data.json",
             bucket=bucket.name,
-            content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
-        {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+            content=\"\"\"{\\"id\\": \\"42\\", \\"embedding\\": [0.5, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"cat\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"feline\\"]}]}
+        {\\"id\\": \\"43\\", \\"embedding\\": [0.6, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"dog\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"canine\\"]}]}
         \"\"\")
         vertexai_encrypterdecrypter = gcp.kms.CryptoKeyIAMMember("vertexai_encrypterdecrypter",
             crypto_key_id="kms-name",
@@ -720,8 +720,8 @@ class AiIndex(pulumi.CustomResource):
         data = gcp.storage.BucketObject("data",
             name="contents/data.json",
             bucket=bucket.name,
-            content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
-        {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+            content=\"\"\"{\\"id\\": \\"42\\", \\"embedding\\": [0.5, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"cat\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"feline\\"]}]}
+        {\\"id\\": \\"43\\", \\"embedding\\": [0.6, 1.0], \\"restricts\\": [{\\"namespace\\": \\"class\\", \\"allow\\": [\\"dog\\", \\"pet\\"]},{\\"namespace\\": \\"category\\", \\"allow\\": [\\"canine\\"]}]}
         \"\"\")
         index = gcp.vertex.AiIndex("index",
             labels={

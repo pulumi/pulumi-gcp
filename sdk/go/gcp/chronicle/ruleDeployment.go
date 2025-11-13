@@ -22,6 +22,163 @@ import (
 //
 // ## Example Usage
 //
+// ### Chronicle Ruledeployment Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := chronicle.NewRule(ctx, "my-rule", &chronicle.RuleArgs{
+// Location: pulumi.String("us"),
+// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
+// Text: pulumi.String("rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"),
+// })
+// if err != nil {
+// return err
+// }
+// invokeSplit, err := std.Split(ctx, &std.SplitArgs{
+// Separator: "/",
+// Text: googleChronicleRule.MyRule.Name,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
+// Separator: "/",
+// Text: googleChronicleRule.MyRule.Name,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// _, err = chronicle.NewRuleDeployment(ctx, "example", &chronicle.RuleDeploymentArgs{
+// Location: pulumi.String("us"),
+// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
+// Rule: pulumi.String(len(invokeSplit.Result).ApplyT(func(length int) (pulumi.Any, error) {
+// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(pulumi.AnyOutput)),
+// Enabled: pulumi.Bool(true),
+// Alerting: pulumi.Bool(true),
+// Archived: pulumi.Bool(false),
+// RunFrequency: pulumi.String("DAILY"),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+// ### Chronicle Ruledeployment Disabled
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := chronicle.NewRule(ctx, "my-rule", &chronicle.RuleArgs{
+// Location: pulumi.String("us"),
+// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
+// Text: pulumi.String("rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"),
+// })
+// if err != nil {
+// return err
+// }
+// invokeSplit, err := std.Split(ctx, &std.SplitArgs{
+// Separator: "/",
+// Text: googleChronicleRule.MyRule.Name,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
+// Separator: "/",
+// Text: googleChronicleRule.MyRule.Name,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// _, err = chronicle.NewRuleDeployment(ctx, "example", &chronicle.RuleDeploymentArgs{
+// Location: pulumi.String("us"),
+// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
+// Rule: pulumi.String(len(invokeSplit.Result).ApplyT(func(length int) (pulumi.Any, error) {
+// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(pulumi.AnyOutput)),
+// Enabled: pulumi.Bool(false),
+// RunFrequency: pulumi.String("LIVE"),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+// ### Chronicle Ruledeployment Run Frequency Missing
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := chronicle.NewRule(ctx, "my-rule", &chronicle.RuleArgs{
+// Location: pulumi.String("us"),
+// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
+// Text: pulumi.String("rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"),
+// })
+// if err != nil {
+// return err
+// }
+// invokeSplit, err := std.Split(ctx, &std.SplitArgs{
+// Separator: "/",
+// Text: googleChronicleRule.MyRule.Name,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
+// Separator: "/",
+// Text: googleChronicleRule.MyRule.Name,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// _, err = chronicle.NewRuleDeployment(ctx, "example", &chronicle.RuleDeploymentArgs{
+// Location: pulumi.String("us"),
+// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
+// Rule: pulumi.String(len(invokeSplit.Result).ApplyT(func(length int) (pulumi.Any, error) {
+// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(pulumi.AnyOutput)),
+// Enabled: pulumi.Bool(true),
+// Alerting: pulumi.Bool(true),
+// Archived: pulumi.Bool(false),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // ## Import
 //
 // RuleDeployment can be imported using any of these accepted formats:

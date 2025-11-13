@@ -147,8 +147,8 @@ import * as utilities from "../utilities";
  * const object = new gcp.storage.BucketObject("object", {
  *     name: "geojson-data.jsonl",
  *     bucket: bucket.name,
- *     content: `{"type":"Feature","properties":{"continent":"Europe","region":"Scandinavia"},"geometry":{"type":"Polygon","coordinates":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
- * {"type":"Feature","properties":{"continent":"Africa","region":"West Africa"},"geometry":{"type":"Polygon","coordinates":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
+ *     content: `{\\"type\\":\\"Feature\\",\\"properties\\":{\\"continent\\":\\"Europe\\",\\"region\\":\\"Scandinavia\\"},\\"geometry\\":{\\"type\\":\\"Polygon\\",\\"coordinates\\":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
+ * {\\"type\\":\\"Feature\\",\\"properties\\":{\\"continent\\":\\"Africa\\",\\"region\\":\\"West Africa\\"},\\"geometry\\":{\\"type\\":\\"Polygon\\",\\"coordinates\\":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
  * `,
  * });
  * const bar = new gcp.bigquery.Dataset("bar", {
@@ -260,19 +260,19 @@ import * as utilities from "../utilities";
  *         deletionProtection: false,
  *         schema: `[
  *   {
- *     "name": "name",
- *     "type": "STRING",
- *     "mode": "NULLABLE"
+ *     \\"name\\": \\"name\\",
+ *     \\"type\\": \\"STRING\\",
+ *     \\"mode\\": \\"NULLABLE\\"
  *   },
  *   {
- *     "name": "post_abbr",
- *     "type": "STRING",
- *     "mode": "NULLABLE"
+ *     \\"name\\": \\"post_abbr\\",
+ *     \\"type\\": \\"STRING\\",
+ *     \\"mode\\": \\"NULLABLE\\"
  *   },
  *   {
- *     "name": "date",
- *     "type": "DATE",
- *     "mode": "NULLABLE"
+ *     \\"name\\": \\"date\\",
+ *     \\"type\\": \\"DATE\\",
+ *     \\"mode\\": \\"NULLABLE\\"
  *   }
  * ]
  * `,
@@ -298,19 +298,19 @@ import * as utilities from "../utilities";
  *     tableId: "job_copy_dest_table",
  *     schema: `[
  *   {
- *     "name": "name",
- *     "type": "STRING",
- *     "mode": "NULLABLE"
+ *     \\"name\\": \\"name\\",
+ *     \\"type\\": \\"STRING\\",
+ *     \\"mode\\": \\"NULLABLE\\"
  *   },
  *   {
- *     "name": "post_abbr",
- *     "type": "STRING",
- *     "mode": "NULLABLE"
+ *     \\"name\\": \\"post_abbr\\",
+ *     \\"type\\": \\"STRING\\",
+ *     \\"mode\\": \\"NULLABLE\\"
  *   },
  *   {
- *     "name": "date",
- *     "type": "DATE",
- *     "mode": "NULLABLE"
+ *     \\"name\\": \\"date\\",
+ *     \\"type\\": \\"DATE\\",
+ *     \\"mode\\": \\"NULLABLE\\"
  *   }
  * ]
  * `,
@@ -366,19 +366,19 @@ import * as utilities from "../utilities";
  *     tableId: "job_extract_table",
  *     schema: `[
  *   {
- *     "name": "name",
- *     "type": "STRING",
- *     "mode": "NULLABLE"
+ *     \\"name\\": \\"name\\",
+ *     \\"type\\": \\"STRING\\",
+ *     \\"mode\\": \\"NULLABLE\\"
  *   },
  *   {
- *     "name": "post_abbr",
- *     "type": "STRING",
- *     "mode": "NULLABLE"
+ *     \\"name\\": \\"post_abbr\\",
+ *     \\"type\\": \\"STRING\\",
+ *     \\"mode\\": \\"NULLABLE\\"
  *   },
  *   {
- *     "name": "date",
- *     "type": "DATE",
- *     "mode": "NULLABLE"
+ *     \\"name\\": \\"date\\",
+ *     \\"type\\": \\"DATE\\",
+ *     \\"mode\\": \\"NULLABLE\\"
  *   }
  * ]
  * `,

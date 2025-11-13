@@ -27,6 +27,85 @@ import (
 //
 // ### Apigee Developer App Basic
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
+//				AnalyticsRegion:   pulumi.String("us-central1"),
+//				ProjectId:         pulumi.Any(projectGoogleProject.ProjectId),
+//				DisableVpcPeering: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeInstance, err := apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
+//				Name:     pulumi.String("instance"),
+//				Location: pulumi.String("us-central1"),
+//				OrgId:    apigeeOrg.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apiProduct, err := apigee.NewApiProduct(ctx, "api_product", &apigee.ApiProductArgs{
+//				OrgId:        apigeeOrg.ID(),
+//				Name:         pulumi.String("sample-api"),
+//				DisplayName:  pulumi.String("A sample API Product"),
+//				ApprovalType: pulumi.String("auto"),
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("read:weather"),
+//					pulumi.String("write:reports"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeInstance,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			developer, err := apigee.NewDeveloper(ctx, "developer", &apigee.DeveloperArgs{
+//				Email:     pulumi.String("john.doe@acme.com"),
+//				FirstName: pulumi.String("John"),
+//				LastName:  pulumi.String("Doe"),
+//				UserName:  pulumi.String("john.doe"),
+//				OrgId:     apigeeOrg.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeInstance,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewDeveloperApp(ctx, "apigee_developer_app", &apigee.DeveloperAppArgs{
+//				Name:           pulumi.String("sample-app"),
+//				OrgId:          apigeeOrg.ID(),
+//				DeveloperId:    developer.ID(),
+//				DeveloperEmail: developer.Email,
+//				CallbackUrl:    pulumi.String("https://example-call.url"),
+//				ApiProducts: pulumi.StringArray{
+//					apiProduct.Name,
+//				},
+//				Scopes: apiProduct.Scopes,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Apigee Developer App Basic Test
 //
 // ```go

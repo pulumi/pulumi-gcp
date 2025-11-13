@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -109,16 +109,16 @@ import * as utilities from "../utilities";
  * export DB_ADDR=${instance.publicIpAddress}
  * export DB_PORT=5432
  * echo 1 > /proc/sys/net/ipv4/ip_forward
- * md_url_prefix="http://169.254.169.254/computeMetadata/v1/instance"
- * vm_nic_ip="$(curl -H "Metadata-Flavor: Google" ${md_url_prefix}/network-interfaces/0/ip)"
+ * md_url_prefix=\"http://169.254.169.254/computeMetadata/v1/instance\"
+ * vm_nic_ip=\"$(curl -H \"Metadata-Flavor: Google\" ${md_url_prefix}/network-interfaces/0/ip)\"
  * iptables -t nat -F
- * iptables -t nat -A PREROUTING \
- *      -p tcp --dport $DB_PORT \
- *      -j DNAT \
+ * iptables -t nat -A PREROUTING \\
+ *      -p tcp --dport $DB_PORT \\
+ *      -j DNAT \\
  *      --to-destination $DB_ADDR
- * iptables -t nat -A POSTROUTING \
- *      -p tcp --dport $DB_PORT \
- *      -j SNAT \
+ * iptables -t nat -A POSTROUTING \\
+ *      -p tcp --dport $DB_PORT \\
+ *      -j SNAT \\
  *      --to-source $vm_nic_ip
  * iptables-save
  * `,
@@ -214,7 +214,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -333,6 +333,30 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Datastream Connection Profile Mongodb
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.datastream.ConnectionProfile("default", {
+ *     displayName: "Mongodb Source",
+ *     location: "us-central1",
+ *     connectionProfileId: "source-profile",
+ *     mongodbProfile: {
+ *         hostAddresses: [{
+ *             hostname: "mongodb-primary.example.com",
+ *             port: 27017,
+ *         }],
+ *         replicaSet: "myReplicaSet",
+ *         username: "mongoUser",
+ *         password: "mongoPassword",
+ *         database: "myDatabase",
+ *         standardConnectionFormat: {}[0],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ConnectionProfile can be imported using any of these accepted formats:

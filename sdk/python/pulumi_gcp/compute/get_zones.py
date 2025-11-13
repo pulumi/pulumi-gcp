@@ -96,6 +96,24 @@ def get_zones(project: Optional[_builtins.str] = None,
     Provides access to available Google Compute zones in a region for a given project.
     See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    available = gcp.compute.get_zones()
+    foo = []
+    def create_foo(range_body):
+        for range in [{"value": i} for i in range(0, range_body)]:
+            foo.append(gcp.compute.InstanceGroupManager(f"foo-{range['value']}",
+                name=f"test-{range['value']}",
+                instance_template=foobar["selfLink"],
+                base_instance_name=f"foobar-{range['value']}",
+                zone=available.names[range["value"]],
+                target_size=1))
+
+    (len(available.names)).apply(create_foo)
+    ```
+
 
     :param _builtins.str project: Project from which to list available zones. Defaults to project declared in the provider.
     :param _builtins.str region: Region from which to list available zones. Defaults to region declared in the provider.
@@ -122,6 +140,24 @@ def get_zones_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = 
     """
     Provides access to available Google Compute zones in a region for a given project.
     See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    available = gcp.compute.get_zones()
+    foo = []
+    def create_foo(range_body):
+        for range in [{"value": i} for i in range(0, range_body)]:
+            foo.append(gcp.compute.InstanceGroupManager(f"foo-{range['value']}",
+                name=f"test-{range['value']}",
+                instance_template=foobar["selfLink"],
+                base_instance_name=f"foobar-{range['value']}",
+                zone=available.names[range["value"]],
+                target_size=1))
+
+    (len(available.names)).apply(create_foo)
+    ```
 
 
     :param _builtins.str project: Project from which to list available zones. Defaults to project declared in the provider.

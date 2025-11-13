@@ -487,7 +487,7 @@ namespace Pulumi.Gcp.Compute
     ///         Metadata = 
     ///         {
     ///             { "startup-script", @"#!/bin/bash
-    /// echo ""Hello World from MIG VM"" &gt; /var/www/html/index.html
+    /// echo \""Hello World from MIG VM\"" &gt; /var/www/html/index.html
     /// apt-get update -y
     /// apt-get install -y apache2
     /// systemctl start apache2

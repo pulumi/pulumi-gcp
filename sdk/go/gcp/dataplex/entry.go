@@ -95,24 +95,24 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				Project:      pulumi.String("1111111111111"),
 //				MetadataTemplate: pulumi.String(`{
-//	  "name": "tf-test-template",
-//	  "type": "record",
-//	  "recordFields": [
+//	  \"name\": \"tf-test-template\",
+//	  \"type\": \"record\",
+//	  \"recordFields\": [
 //	    {
-//	      "name": "type",
-//	      "type": "enum",
-//	      "annotations": {
-//	        "displayName": "Type",
-//	        "description": "Specifies the type of view represented by the entry."
+//	      \"name\": \"type\",
+//	      \"type\": \"enum\",
+//	      \"annotations\": {
+//	        \"displayName\": \"Type\",
+//	        \"description\": \"Specifies the type of view represented by the entry.\"
 //	      },
-//	      "index": 1,
-//	      "constraints": {
-//	        "required": true
+//	      \"index\": 1,
+//	      \"constraints\": {
+//	        \"required\": true
 //	      },
-//	      "enumValues": [
+//	      \"enumValues\": [
 //	        {
-//	          "name": "VIEW",
-//	          "index": 1
+//	          \"name\": \"VIEW\",
+//	          \"index\": 1
 //	        }
 //	      ]
 //	    }
@@ -130,24 +130,24 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				Project:      pulumi.String("1111111111111"),
 //				MetadataTemplate: pulumi.String(`{
-//	  "name": "tf-test-template",
-//	  "type": "record",
-//	  "recordFields": [
+//	  \"name\": \"tf-test-template\",
+//	  \"type\": \"record\",
+//	  \"recordFields\": [
 //	    {
-//	      "name": "story",
-//	      "type": "enum",
-//	      "annotations": {
-//	        "displayName": "Story",
-//	        "description": "Specifies the story of an entry."
+//	      \"name\": \"story\",
+//	      \"type\": \"enum\",
+//	      \"annotations\": {
+//	        \"displayName\": \"Story\",
+//	        \"description\": \"Specifies the story of an entry.\"
 //	      },
-//	      "index": 1,
-//	      "constraints": {
-//	        "required": true
+//	      \"index\": 1,
+//	      \"constraints\": {
+//	        \"required\": true
 //	      },
-//	      "enumValues": [
+//	      \"enumValues\": [
 //	        {
-//	          "name": "SEQUENCE",
-//	          "index": 1
+//	          \"name\": \"SEQUENCE\",
+//	          \"index\": 1
 //	        }
 //	      ]
 //	    }
@@ -215,13 +215,13 @@ import (
 //					&dataplex.EntryAspectArgs{
 //						AspectKey: pulumi.String("1111111111111.us-central1.aspect-type-full-one"),
 //						Aspect: &dataplex.EntryAspectAspectArgs{
-//							Data: pulumi.String("          {\"type\": \"VIEW\"    }\n"),
+//							Data: pulumi.String("          {\\\"type\\\": \\\"VIEW\\\"    }\n"),
 //						},
 //					},
 //					&dataplex.EntryAspectArgs{
 //						AspectKey: pulumi.String("1111111111111.us-central1.aspect-type-full-two"),
 //						Aspect: &dataplex.EntryAspectAspectArgs{
-//							Data: pulumi.String("          {\"story\": \"SEQUENCE\"    }\n"),
+//							Data: pulumi.String("          {\\\"story\\\": \\\"SEQUENCE\\\"    }\n"),
 //						},
 //					},
 //				},

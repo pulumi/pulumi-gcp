@@ -104,6 +104,55 @@ def get_machine_types(filter: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ### Property-Based Availability
+
+    Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+    import pulumi_std as std
+
+    example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 8",
+        zone=zone)
+    example_instance_template = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=[__item.name for __item in example.machine_types]).result)]:
+        example_instance_template.append(gcp.compute.InstanceTemplate(f"example-{range['key']}",
+            machine_type=range["value"],
+            disks=[{
+                "source_image": "debian-cloud/debian-11",
+                "auto_delete": True,
+                "boot": True,
+            }]))
+    ```
+
+    ### Machine Family Preference
+
+    Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+    import pulumi_std as std
+
+    example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 4",
+        zone=zone)
+    example_instance_template = gcp.compute.InstanceTemplate("example",
+        machine_type=std.coalescelist(input=[
+            [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
+                prefix="c3-").result],
+            [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
+                prefix="c2-").result],
+            [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
+                prefix="n2-").result],
+        ]).result[0],
+        disks=[{
+            "source_image": "debian-cloud/debian-11",
+            "auto_delete": True,
+            "boot": True,
+        }])
+    ```
+
 
     :param _builtins.str filter: A filter expression that filters machine types listed in the response.
     :param _builtins.str project: Project from which to list available zones. Defaults to project declared in the provider.
@@ -136,6 +185,55 @@ def get_machine_types_output(filter: Optional[pulumi.Input[Optional[_builtins.st
     * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
 
     ## Example Usage
+
+    ### Property-Based Availability
+
+    Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+    import pulumi_std as std
+
+    example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 8",
+        zone=zone)
+    example_instance_template = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=[__item.name for __item in example.machine_types]).result)]:
+        example_instance_template.append(gcp.compute.InstanceTemplate(f"example-{range['key']}",
+            machine_type=range["value"],
+            disks=[{
+                "source_image": "debian-cloud/debian-11",
+                "auto_delete": True,
+                "boot": True,
+            }]))
+    ```
+
+    ### Machine Family Preference
+
+    Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+    import pulumi_std as std
+
+    example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 4",
+        zone=zone)
+    example_instance_template = gcp.compute.InstanceTemplate("example",
+        machine_type=std.coalescelist(input=[
+            [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
+                prefix="c3-").result],
+            [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
+                prefix="c2-").result],
+            [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
+                prefix="n2-").result],
+        ]).result[0],
+        disks=[{
+            "source_image": "debian-cloud/debian-11",
+            "auto_delete": True,
+            "boot": True,
+        }])
+    ```
 
 
     :param _builtins.str filter: A filter expression that filters machine types listed in the response.

@@ -49,24 +49,24 @@ namespace Pulumi.Gcp.DataPlex
     ///         Location = "us-central1",
     ///         Project = "my-project-name",
     ///         MetadataTemplate = @"{
-    ///   ""name"": ""tf-test-template"",
-    ///   ""type"": ""record"",
-    ///   ""recordFields"": [
+    ///   \""name\"": \""tf-test-template\"",
+    ///   \""type\"": \""record\"",
+    ///   \""recordFields\"": [
     ///     {
-    ///       ""name"": ""type"",
-    ///       ""type"": ""enum"",
-    ///       ""annotations"": {
-    ///         ""displayName"": ""Type"",
-    ///         ""description"": ""Specifies the type of view represented by the entry.""
+    ///       \""name\"": \""type\"",
+    ///       \""type\"": \""enum\"",
+    ///       \""annotations\"": {
+    ///         \""displayName\"": \""Type\"",
+    ///         \""description\"": \""Specifies the type of view represented by the entry.\""
     ///       },
-    ///       ""index"": 1,
-    ///       ""constraints"": {
-    ///         ""required"": true
+    ///       \""index\"": 1,
+    ///       \""constraints\"": {
+    ///         \""required\"": true
     ///       },
-    ///       ""enumValues"": [
+    ///       \""enumValues\"": [
     ///         {
-    ///           ""name"": ""VIEW"",
-    ///           ""index"": 1
+    ///           \""name\"": \""VIEW\"",
+    ///           \""index\"": 1
     ///         }
     ///       ]
     ///     }

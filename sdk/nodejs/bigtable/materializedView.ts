@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     deletionProtection: false,
  *     query: `SELECT _key, COUNT(CF['col1']) as Count
- * FROM \` + "\`bt-table\`" + \`
+ * FROM \` + \\"\`bt-table\`\\" + \`
  * GROUP BY _key
  * `,
  * }, {

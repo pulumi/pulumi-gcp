@@ -330,6 +330,20 @@ class DomainTrust(pulumi.CustomResource):
 
         ### Active Directory Domain Trust Basic
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ad_domain_trust = gcp.activedirectory.DomainTrust("ad-domain-trust",
+            domain="test-managed-ad.com",
+            target_domain_name="example-gcp.com",
+            target_dns_ip_addresses=["10.1.0.100"],
+            trust_direction="OUTBOUND",
+            trust_type="FOREST",
+            trust_handshake_secret="Testing1!",
+            deletion_protection=False)
+        ```
+
         ## Import
 
         DomainTrust can be imported using any of these accepted formats:
@@ -388,6 +402,20 @@ class DomainTrust(pulumi.CustomResource):
         ## Example Usage
 
         ### Active Directory Domain Trust Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ad_domain_trust = gcp.activedirectory.DomainTrust("ad-domain-trust",
+            domain="test-managed-ad.com",
+            target_domain_name="example-gcp.com",
+            target_dns_ip_addresses=["10.1.0.100"],
+            trust_direction="OUTBOUND",
+            trust_type="FOREST",
+            trust_handshake_secret="Testing1!",
+            deletion_protection=False)
+        ```
 
         ## Import
 

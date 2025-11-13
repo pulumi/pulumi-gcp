@@ -22,6 +22,110 @@ import (
 //
 // ### App Engine Service Split Traffic
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// Name: pulumi.String("appengine-static-content"),
+// Location: pulumi.String("US"),
+// })
+// if err != nil {
+// return err
+// }
+// object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+// Name: pulumi.String("hello-world.zip"),
+// Bucket: bucket.Name,
+// Source: pulumi.NewFileAsset("./test-fixtures/hello-world.zip"),
+// })
+// if err != nil {
+// return err
+// }
+// liveappV1, err := appengine.NewStandardAppVersion(ctx, "liveapp_v1", &appengine.StandardAppVersionArgs{
+// VersionId: pulumi.String("v1"),
+// Service: pulumi.String("liveapp"),
+// DeleteServiceOnDestroy: pulumi.Bool(true),
+// Runtime: pulumi.String("nodejs20"),
+// Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
+// Shell: pulumi.String("node ./app.js"),
+// },
+// Deployment: &appengine.StandardAppVersionDeploymentArgs{
+// Zip: &appengine.StandardAppVersionDeploymentZipArgs{
+// SourceUrl: pulumi.All(bucket.Name,object.Name).ApplyT(func(_args []interface{}) (string, error) {
+// bucketName := _args[0].(string)
+// objectName := _args[1].(string)
+// return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
+// }).(pulumi.StringOutput),
+// },
+// },
+// EnvVariables: pulumi.StringMap{
+// "port": pulumi.String("8080"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// liveappV2, err := appengine.NewStandardAppVersion(ctx, "liveapp_v2", &appengine.StandardAppVersionArgs{
+// VersionId: pulumi.String("v2"),
+// Service: pulumi.String("liveapp"),
+// NoopOnDestroy: pulumi.Bool(true),
+// Runtime: pulumi.String("nodejs20"),
+// Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
+// Shell: pulumi.String("node ./app.js"),
+// },
+// Deployment: &appengine.StandardAppVersionDeploymentArgs{
+// Zip: &appengine.StandardAppVersionDeploymentZipArgs{
+// SourceUrl: pulumi.All(bucket.Name,object.Name).ApplyT(func(_args []interface{}) (string, error) {
+// bucketName := _args[0].(string)
+// objectName := _args[1].(string)
+// return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
+// }).(pulumi.StringOutput),
+// },
+// },
+// EnvVariables: pulumi.StringMap{
+// "port": pulumi.String("8080"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = appengine.NewEngineSplitTraffic(ctx, "liveapp", &appengine.EngineSplitTrafficArgs{
+// Service: liveappV2.Service,
+// MigrateTraffic: pulumi.Bool(false),
+// Split: &appengine.EngineSplitTrafficSplitArgs{
+// ShardBy: pulumi.String("IP"),
+// Allocations: pulumi.StringMap(pulumi.All(liveappV1.VersionId,liveappV2.VersionId).ApplyT(func(_args []interface{}) (map[string]float64, error) {
+// liveappV1VersionId := _args[0].(*string)
+// liveappV2VersionId := _args[1].(*string)
+// return map[string]float64(pulumi.All(liveappV1VersionId,liveappV2VersionId).ApplyT(func(_args []interface{}) (map[string]float64, error) {
+// __convert := _args[0].(string)
+// __convert1 := _args[1].(string)
+// return map[string]float64{
+// __convert: 0.75,
+// __convert1: 0.25,
+// }, nil
+// }).(pulumi.Map[string]float64Output)), nil
+// }).(pulumi.Map[string]float64Output)),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // ## Import
 //
 // ServiceSplitTraffic can be imported using any of these accepted formats:

@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -864,6 +864,145 @@ namespace Pulumi.Gcp.Datastream
     /// ```
     /// ### Datastream Stream Mysql Gtid
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Name = "&lt;%= ctx[:vars]['mysql_name'] %&gt;",
+    ///         DatabaseVersion = "MYSQL_8_0",
+    ///         Region = "us-central1",
+    ///         RootPassword = "&lt;%= ctx[:vars]['mysql_root_password'] %&gt;",
+    ///         DeletionProtection = "&lt;%= ctx[:vars]['deletion_protection'] %&gt;",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-custom-2-4096",
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 AuthorizedNetworks = new[]
+    ///                 {
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.71.242.81",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.28.29",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.6.157",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.234.134",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.239.218",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Name = "&lt;%= ctx[:vars]['database_user'] %&gt;",
+    ///         Instance = instance.Name,
+    ///         Password = "&lt;%= ctx[:vars]['database_password'] %&gt;",
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Name = "&lt;%= ctx[:vars]['database_name'] %&gt;",
+    ///         Instance = instance.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             user,
+    ///         },
+    ///     });
+    /// 
+    ///     var source = new Gcp.Datastream.ConnectionProfile("source", new()
+    ///     {
+    ///         DisplayName = "MySQL Source",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "&lt;%= ctx[:vars]['source_connection_profile_id'] %&gt;",
+    ///         MysqlProfile = new Gcp.Datastream.Inputs.ConnectionProfileMysqlProfileArgs
+    ///         {
+    ///             Hostname = instance.PublicIpAddress,
+    ///             Port = 1433,
+    ///             Username = user.Name,
+    ///             Password = user.Password,
+    ///             Database = db.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var destination = new Gcp.Datastream.ConnectionProfile("destination", new()
+    ///     {
+    ///         DisplayName = "BigQuery Destination",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "&lt;%= ctx[:vars]['destination_connection_profile_id'] %&gt;",
+    ///         BigqueryProfile = null,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Datastream.Stream("default", new()
+    ///     {
+    ///         DisplayName = "MySQL to BigQuery",
+    ///         Location = "us-central1",
+    ///         StreamId = "&lt;%= ctx[:vars]['stream_id'] %&gt;",
+    ///         SourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigArgs
+    ///         {
+    ///             SourceConnectionProfile = source.Id,
+    ///             MysqlSourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigMysqlSourceConfigArgs
+    ///             {
+    ///                 IncludeObjects = new Gcp.Datastream.Inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs
+    ///                 {
+    ///                     Schemas = new[]
+    ///                     {
+    ///                         
+    ///                         {
+    ///                             { "schema", "schema" },
+    ///                             { "tables", new[]
+    ///                             {
+    ///                                 
+    ///                                 {
+    ///                                     { "table", "table" },
+    ///                                 },
+    ///                             } },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Gtid = null,
+    ///             },
+    ///         },
+    ///         DestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigArgs
+    ///         {
+    ///             DestinationConnectionProfile = destination.Id,
+    ///             BigqueryDestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigArgs
+    ///             {
+    ///                 DataFreshness = "900s",
+    ///                 SourceHierarchyDatasets = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs
+    ///                 {
+    ///                     DatasetTemplate = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         BackfillNone = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Datastream Stream Postgresql Bigquery Dataset Id
     /// 
     /// ```csharp
@@ -934,7 +1073,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DeletionProtection = false,
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1056,7 +1195,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1245,7 +1384,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1372,7 +1511,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1494,7 +1633,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1598,6 +1737,94 @@ namespace Pulumi.Gcp.Datastream
     /// });
     /// ```
     /// ### Datastream Stream Mongodb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Datastream.Stream("default", new()
+    ///     {
+    ///         DisplayName = "Mongodb to BigQuery",
+    ///         Location = "us-central1",
+    ///         StreamId = "mongodb-stream",
+    ///         SourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigArgs
+    ///         {
+    ///             SourceConnectionProfile = "source-profile",
+    ///             MongodbSourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigMongodbSourceConfigArgs
+    ///             {
+    ///                 IncludeObjects = new Gcp.Datastream.Inputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs
+    ///                 {
+    ///                     Databases = new[]
+    ///                     {
+    ///                         new Gcp.Datastream.Inputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs
+    ///                         {
+    ///                             Database = "mydb",
+    ///                             Collections = new[]
+    ///                             {
+    ///                                 new Gcp.Datastream.Inputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs
+    ///                                 {
+    ///                                     Collection = "mycollection1",
+    ///                                 },
+    ///                                 new Gcp.Datastream.Inputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs
+    ///                                 {
+    ///                                     Collection = "mycollection2",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 ExcludeeObjects = new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "databases", new[]
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "database", "mydb" },
+    ///                                 { "collections", new[]
+    ///                                 {
+    ///                                     
+    ///                                     {
+    ///                                         { "fields", new[]
+    ///                                         {
+    ///                                             
+    ///                                             {
+    ///                                                 { "field", "excludedField" },
+    ///                                             },
+    ///                                         } },
+    ///                                     },
+    ///                                 } },
+    ///                             },
+    ///                         } },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         DestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigArgs
+    ///         {
+    ///             DestinationConnectionProfile = "destination-profile",
+    ///             BigqueryDestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigArgs
+    ///             {
+    ///                 DataFreshness = "900s",
+    ///                 SourceHierarchyDatasets = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs
+    ///                 {
+    ///                     DatasetTemplate = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         BackfillNone = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

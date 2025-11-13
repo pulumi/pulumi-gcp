@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.BigTable
     ///         Instance = instance.Name,
     ///         DeletionProtection = false,
     ///         Query = @"SELECT _key, COUNT(CF['col1']) as Count
-    /// FROM ` + ""`bt-table`"" + `
+    /// FROM ` + \""`bt-table`\"" + `
     /// GROUP BY _key
     /// ",
     ///     }, new CustomResourceOptions

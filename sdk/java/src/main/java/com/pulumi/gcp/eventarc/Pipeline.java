@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  * - getCurrentTime:
  *     call: http.get
  *     args:
- *         url: ${sys.get_env("url")}
+ *         url: ${sys.get_env(\"url\")}
  *     result: CurrentDateTime
  * - readWikipedia:
  *     call: http.get
@@ -266,9 +266,9 @@ import javax.annotation.Nullable;
  *                 .transformation(PipelineMediationTransformationArgs.builder()
  *                     .transformationTemplate("""
  * }{{@code
- * "id": message.id,
- * "datacontenttype": "application/json",
- * "data": "}{{@code  \"scrubbed\": \"true\" }}{@code "
+ * \"id\": message.id,
+ * \"datacontenttype\": \"application/json\",
+ * \"data\": \"}{{@code  \\\"scrubbed\\\": \\\"true\\\" }}{@code \"
  * }}{@code
  *                     """)
  *                     .build())
@@ -339,7 +339,7 @@ import javax.annotation.Nullable;
  *                 .outputPayloadFormat(PipelineDestinationOutputPayloadFormatArgs.builder()
  *                     .protobuf(PipelineDestinationOutputPayloadFormatProtobufArgs.builder()
  *                         .schemaDefinition("""
- * syntax = "proto3";
+ * syntax = \"proto3\";
  * message schema }{{@code
  * string name = 1;
  * string severity = 2;
@@ -351,7 +351,7 @@ import javax.annotation.Nullable;
  *             .inputPayloadFormat(PipelineInputPayloadFormatArgs.builder()
  *                 .protobuf(PipelineInputPayloadFormatProtobufArgs.builder()
  *                     .schemaDefinition("""
- * syntax = "proto3";
+ * syntax = \"proto3\";
  * message schema }{{@code
  * string name = 1;
  * string severity = 2;
@@ -368,9 +368,9 @@ import javax.annotation.Nullable;
  *                 .transformation(PipelineMediationTransformationArgs.builder()
  *                     .transformationTemplate("""
  * }{{@code
- * "id": message.id,
- * "datacontenttype": "application/json",
- * "data": "}{{@code  \"scrubbed\": \"true\" }}{@code "
+ * \"id\": message.id,
+ * \"datacontenttype\": \"application/json\",
+ * \"data\": \"}{{@code  \\\"scrubbed\\\": \\\"true\\\" }}{@code \"
  * }}{@code
  *                     """)
  *                     .build())
@@ -451,9 +451,9 @@ import javax.annotation.Nullable;
  *                 .transformation(PipelineMediationTransformationArgs.builder()
  *                     .transformationTemplate("""
  * {
- * "id": message.id,
- * "datacontenttype": "application/json",
- * "data": "{ \"scrubbed\": \"true\" }"
+ * \"id\": message.id,
+ * \"datacontenttype\": \"application/json\",
+ * \"data\": \"{ \\\"scrubbed\\\": \\\"true\\\" }\"
  * }
  *                     """)
  *                     .build())

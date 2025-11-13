@@ -32,6 +32,54 @@ import javax.annotation.Nullable;
  * 
  * ### Scc Project Big Query Export Config Basic
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.securitycenter.ProjectSccBigQueryExport;
+ * import com.pulumi.gcp.securitycenter.ProjectSccBigQueryExportArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Dataset("default", DatasetArgs.builder()
+ *             .datasetId("my_dataset_id")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
+ *             .defaultTableExpirationMs(3600000)
+ *             .defaultPartitionExpirationMs(null)
+ *             .labels(Map.of("env", "default"))
+ *             .build());
+ * 
+ *         var customBigQueryExportConfig = new ProjectSccBigQueryExport("customBigQueryExportConfig", ProjectSccBigQueryExportArgs.builder()
+ *             .name("my-export")
+ *             .bigQueryExportId("my-export")
+ *             .project("my-project-name")
+ *             .dataset(default_.id())
+ *             .description("Cloud Security Command Center Findings Big Query Export Config")
+ *             .filter("state=\"ACTIVE\" AND NOT mute=\"MUTED\"")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ProjectSccBigQueryExport can be imported using any of these accepted formats:

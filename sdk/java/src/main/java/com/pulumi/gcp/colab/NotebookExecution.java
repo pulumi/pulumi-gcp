@@ -88,38 +88,38 @@ import javax.annotation.Nullable;
  *                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                     .input("""
  *     }{{@code
- *       "cells": [
+ *       \"cells\": [
  *         }{{@code
- *           "cell_type": "code",
- *           "execution_count": null,
- *           "metadata": }{}{@code ,
- *           "outputs": [],
- *           "source": [
- *             "print(\"Hello, World!\")"
+ *           \"cell_type\": \"code\",
+ *           \"execution_count\": null,
+ *           \"metadata\": }{}{@code ,
+ *           \"outputs\": [],
+ *           \"source\": [
+ *             \"print(\\\"Hello, World!\\\")\"
  *           ]
  *         }}{@code
  *       ],
- *       "metadata": }{{@code
- *         "kernelspec": }{{@code
- *           "display_name": "Python 3",
- *           "language": "python",
- *           "name": "python3"
+ *       \"metadata\": }{{@code
+ *         \"kernelspec\": }{{@code
+ *           \"display_name\": \"Python 3\",
+ *           \"language\": \"python\",
+ *           \"name\": \"python3\"
  *         }}{@code ,
- *         "language_info": }{{@code
- *           "codemirror_mode": }{{@code
- *             "name": "ipython",
- *             "version": 3
+ *         \"language_info\": }{{@code
+ *           \"codemirror_mode\": }{{@code
+ *             \"name\": \"ipython\",
+ *             \"version\": 3
  *           }}{@code ,
- *           "file_extension": ".py",
- *           "mimetype": "text/x-python",
- *           "name": "python",
- *           "nbconvert_exporter": "python",
- *           "pygments_lexer": "ipython3",
- *           "version": "3.8.5"
+ *           \"file_extension\": \".py\",
+ *           \"mimetype\": \"text/x-python\",
+ *           \"name\": \"python\",
+ *           \"nbconvert_exporter\": \"python\",
+ *           \"pygments_lexer\": \"ipython3\",
+ *           \"version\": \"3.8.5\"
  *         }}{@code
  *       }}{@code ,
- *       "nbformat": 4,
- *       "nbformat_minor": 4
+ *       \"nbformat\": 4,
+ *       \"nbformat_minor\": 4
  *     }}{@code
  *                     """)
  *                     .build()).result())
@@ -200,38 +200,38 @@ import javax.annotation.Nullable;
  *             .bucket(outputBucket.name())
  *             .content("""
  *     }{{@code
- *       "cells": [
+ *       \"cells\": [
  *         }{{@code
- *           "cell_type": "code",
- *           "execution_count": null,
- *           "metadata": }{}{@code ,
- *           "outputs": [],
- *           "source": [
- *             "print(\"Hello, World!\")"
+ *           \"cell_type\": \"code\",
+ *           \"execution_count\": null,
+ *           \"metadata\": }{}{@code ,
+ *           \"outputs\": [],
+ *           \"source\": [
+ *             \"print(\\\"Hello, World!\\\")\"
  *           ]
  *         }}{@code
  *       ],
- *       "metadata": }{{@code
- *         "kernelspec": }{{@code
- *           "display_name": "Python 3",
- *           "language": "python",
- *           "name": "python3"
+ *       \"metadata\": }{{@code
+ *         \"kernelspec\": }{{@code
+ *           \"display_name\": \"Python 3\",
+ *           \"language\": \"python\",
+ *           \"name\": \"python3\"
  *         }}{@code ,
- *         "language_info": }{{@code
- *           "codemirror_mode": }{{@code
- *             "name": "ipython",
- *             "version": 3
+ *         \"language_info\": }{{@code
+ *           \"codemirror_mode\": }{{@code
+ *             \"name\": \"ipython\",
+ *             \"version\": 3
  *           }}{@code ,
- *           "file_extension": ".py",
- *           "mimetype": "text/x-python",
- *           "name": "python",
- *           "nbconvert_exporter": "python",
- *           "pygments_lexer": "ipython3",
- *           "version": "3.8.5"
+ *           \"file_extension\": \".py\",
+ *           \"mimetype\": \"text/x-python\",
+ *           \"name\": \"python\",
+ *           \"nbconvert_exporter\": \"python\",
+ *           \"pygments_lexer\": \"ipython3\",
+ *           \"version\": \"3.8.5\"
  *         }}{@code
  *       }}{@code ,
- *       "nbformat": 4,
- *       "nbformat_minor": 4
+ *       \"nbformat\": 4,
+ *       \"nbformat_minor\": 4
  *     }}{@code
  *             """)
  *             .build());

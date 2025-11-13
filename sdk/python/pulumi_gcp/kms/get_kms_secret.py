@@ -133,9 +133,9 @@ def get_kms_secret(additional_authenticated_data: Optional[_builtins.str] = None
 
     sql_user_password = gcp.kms.get_kms_secret(crypto_key=my_crypto_key["id"],
         ciphertext="CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
-    db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+    db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
     main = gcp.sql.DatabaseInstance("main",
-        name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+        name=f"main-instance-{db_name_suffix['hex']}",
         database_version="MYSQL_5_7",
         settings={
             "tier": "db-f1-micro",
@@ -214,9 +214,9 @@ def get_kms_secret_output(additional_authenticated_data: Optional[pulumi.Input[O
 
     sql_user_password = gcp.kms.get_kms_secret(crypto_key=my_crypto_key["id"],
         ciphertext="CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
-    db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+    db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
     main = gcp.sql.DatabaseInstance("main",
-        name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+        name=f"main-instance-{db_name_suffix['hex']}",
         database_version="MYSQL_5_7",
         settings={
             "tier": "db-f1-micro",

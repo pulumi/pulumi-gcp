@@ -108,38 +108,38 @@ namespace Pulumi.Gcp.DataCatalog
     ///         DisplayName = "my custom type entry",
     ///         Description = "a custom type entry for a user specified system",
     ///         Schema = @"{
-    ///   ""columns"": [
+    ///   \""columns\"": [
     ///     {
-    ///       ""column"": ""first_name"",
-    ///       ""description"": ""First name"",
-    ///       ""mode"": ""REQUIRED"",
-    ///       ""type"": ""STRING""
+    ///       \""column\"": \""first_name\"",
+    ///       \""description\"": \""First name\"",
+    ///       \""mode\"": \""REQUIRED\"",
+    ///       \""type\"": \""STRING\""
     ///     },
     ///     {
-    ///       ""column"": ""last_name"",
-    ///       ""description"": ""Last name"",
-    ///       ""mode"": ""REQUIRED"",
-    ///       ""type"": ""STRING""
+    ///       \""column\"": \""last_name\"",
+    ///       \""description\"": \""Last name\"",
+    ///       \""mode\"": \""REQUIRED\"",
+    ///       \""type\"": \""STRING\""
     ///     },
     ///     {
-    ///       ""column"": ""address"",
-    ///       ""description"": ""Address"",
-    ///       ""mode"": ""REPEATED"",
-    ///       ""subcolumns"": [
+    ///       \""column\"": \""address\"",
+    ///       \""description\"": \""Address\"",
+    ///       \""mode\"": \""REPEATED\"",
+    ///       \""subcolumns\"": [
     ///         {
-    ///           ""column"": ""city"",
-    ///           ""description"": ""City"",
-    ///           ""mode"": ""NULLABLE"",
-    ///           ""type"": ""STRING""
+    ///           \""column\"": \""city\"",
+    ///           \""description\"": \""City\"",
+    ///           \""mode\"": \""NULLABLE\"",
+    ///           \""type\"": \""STRING\""
     ///         },
     ///         {
-    ///           ""column"": ""state"",
-    ///           ""description"": ""State"",
-    ///           ""mode"": ""NULLABLE"",
-    ///           ""type"": ""STRING""
+    ///           \""column\"": \""state\"",
+    ///           \""description\"": \""State\"",
+    ///           \""mode\"": \""NULLABLE\"",
+    ///           \""type\"": \""STRING\""
     ///         }
     ///       ],
-    ///       ""type"": ""RECORD""
+    ///       \""type\"": \""RECORD\""
     ///     }
     ///   ]
     /// }

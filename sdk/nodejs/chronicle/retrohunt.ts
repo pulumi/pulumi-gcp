@@ -17,6 +17,36 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Chronicle Retrohunt Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const my_rule = new gcp.chronicle.Rule("my-rule", {
+ *     location: "us",
+ *     instance: "00000000-0000-0000-0000-000000000000",
+ *     deletionPolicy: "FORCE",
+ *     text: "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n",
+ * });
+ * const example = new gcp.chronicle.Retrohunt("example", {
+ *     location: "us",
+ *     instance: "00000000-0000-0000-0000-000000000000",
+ *     rule: pulumi.all([std.split({
+ *         separator: "/",
+ *         text: googleChronicleRule["my-rule"].name,
+ *     }), std.split({
+ *         separator: "/",
+ *         text: googleChronicleRule["my-rule"].name,
+ *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+ *     processInterval: {
+ *         startTime: "2025-01-01T00:00:00Z",
+ *         endTime: "2025-01-01T12:00:00Z",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Retrohunt can be imported using any of these accepted formats:

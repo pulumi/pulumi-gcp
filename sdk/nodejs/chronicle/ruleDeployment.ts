@@ -15,6 +15,88 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Chronicle Ruledeployment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const my_rule = new gcp.chronicle.Rule("my-rule", {
+ *     location: "us",
+ *     instance: "00000000-0000-0000-0000-000000000000",
+ *     text: "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n",
+ * });
+ * const example = new gcp.chronicle.RuleDeployment("example", {
+ *     location: "us",
+ *     instance: "00000000-0000-0000-0000-000000000000",
+ *     rule: pulumi.all([std.split({
+ *         separator: "/",
+ *         text: googleChronicleRule["my-rule"].name,
+ *     }), std.split({
+ *         separator: "/",
+ *         text: googleChronicleRule["my-rule"].name,
+ *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+ *     enabled: true,
+ *     alerting: true,
+ *     archived: false,
+ *     runFrequency: "DAILY",
+ * });
+ * ```
+ * ### Chronicle Ruledeployment Disabled
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const my_rule = new gcp.chronicle.Rule("my-rule", {
+ *     location: "us",
+ *     instance: "00000000-0000-0000-0000-000000000000",
+ *     text: "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n",
+ * });
+ * const example = new gcp.chronicle.RuleDeployment("example", {
+ *     location: "us",
+ *     instance: "00000000-0000-0000-0000-000000000000",
+ *     rule: pulumi.all([std.split({
+ *         separator: "/",
+ *         text: googleChronicleRule["my-rule"].name,
+ *     }), std.split({
+ *         separator: "/",
+ *         text: googleChronicleRule["my-rule"].name,
+ *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+ *     enabled: false,
+ *     runFrequency: "LIVE",
+ * });
+ * ```
+ * ### Chronicle Ruledeployment Run Frequency Missing
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const my_rule = new gcp.chronicle.Rule("my-rule", {
+ *     location: "us",
+ *     instance: "00000000-0000-0000-0000-000000000000",
+ *     text: "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n",
+ * });
+ * const example = new gcp.chronicle.RuleDeployment("example", {
+ *     location: "us",
+ *     instance: "00000000-0000-0000-0000-000000000000",
+ *     rule: pulumi.all([std.split({
+ *         separator: "/",
+ *         text: googleChronicleRule["my-rule"].name,
+ *     }), std.split({
+ *         separator: "/",
+ *         text: googleChronicleRule["my-rule"].name,
+ *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+ *     enabled: true,
+ *     alerting: true,
+ *     archived: false,
+ * });
+ * ```
+ *
  * ## Import
  *
  * RuleDeployment can be imported using any of these accepted formats:

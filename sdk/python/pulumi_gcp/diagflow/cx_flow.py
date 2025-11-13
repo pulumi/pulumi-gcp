@@ -703,11 +703,11 @@ class CxFlow(pulumi.CustomResource):
                                 },
                             },
                             {
-                                "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                                "payload": "          {\\\\\\"some-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-key\\\\\\": [\\\\\\"other-value\\\\\\"]}\\n",
                             },
                             {
                                 "conversation_success": {
-                                    "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                    "metadata": "            {\\\\\\"some-metadata-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-metadata-key\\\\\\": 1234}\\n",
                                 },
                             },
                             {
@@ -717,12 +717,12 @@ class CxFlow(pulumi.CustomResource):
                             },
                             {
                                 "output_audio_text": {
-                                    "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                                    "ssml": "            <speak>Some example <say-as interpret-as=\\\\\\"characters\\\\\\">SSML XML</say-as></speak>\\n",
                                 },
                             },
                             {
                                 "live_agent_handoff": {
-                                    "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                    "metadata": "            {\\\\\\"some-metadata-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-metadata-key\\\\\\": 1234}\\n",
                                 },
                             },
                             {
@@ -805,11 +805,11 @@ class CxFlow(pulumi.CustomResource):
                             },
                         },
                         {
-                            "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                            "payload": "          {\\\\\\"some-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-key\\\\\\": [\\\\\\"other-value\\\\\\"]}\\n",
                         },
                         {
                             "conversation_success": {
-                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                "metadata": "            {\\\\\\"some-metadata-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-metadata-key\\\\\\": 1234}\\n",
                             },
                         },
                         {
@@ -819,12 +819,12 @@ class CxFlow(pulumi.CustomResource):
                         },
                         {
                             "output_audio_text": {
-                                "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                                "ssml": "            <speak>Some example <say-as interpret-as=\\\\\\"characters\\\\\\">SSML XML</say-as></speak>\\n",
                             },
                         },
                         {
                             "live_agent_handoff": {
-                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                "metadata": "            {\\\\\\"some-metadata-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-metadata-key\\\\\\": 1234}\\n",
                             },
                         },
                         {
@@ -930,11 +930,11 @@ class CxFlow(pulumi.CustomResource):
                             },
                         },
                         {
-                            "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                            "payload": "          {\\\\\\"some-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-key\\\\\\": [\\\\\\"other-value\\\\\\"]}\\n",
                         },
                         {
                             "conversation_success": {
-                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                "metadata": "            {\\\\\\"some-metadata-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-metadata-key\\\\\\": 1234}\\n",
                             },
                         },
                         {
@@ -944,12 +944,12 @@ class CxFlow(pulumi.CustomResource):
                         },
                         {
                             "output_audio_text": {
-                                "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                                "ssml": "            <speak>Some example <say-as interpret-as=\\\\\\"characters\\\\\\">SSML XML</say-as></speak>\\n",
                             },
                         },
                         {
                             "live_agent_handoff": {
-                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                "metadata": "            {\\\\\\"some-metadata-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-metadata-key\\\\\\": 1234}\\n",
                             },
                         },
                         {
@@ -1271,11 +1271,11 @@ class CxFlow(pulumi.CustomResource):
                                 },
                             },
                             {
-                                "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                                "payload": "          {\\\\\\"some-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-key\\\\\\": [\\\\\\"other-value\\\\\\"]}\\n",
                             },
                             {
                                 "conversation_success": {
-                                    "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                    "metadata": "            {\\\\\\"some-metadata-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-metadata-key\\\\\\": 1234}\\n",
                                 },
                             },
                             {
@@ -1285,12 +1285,12 @@ class CxFlow(pulumi.CustomResource):
                             },
                             {
                                 "output_audio_text": {
-                                    "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                                    "ssml": "            <speak>Some example <say-as interpret-as=\\\\\\"characters\\\\\\">SSML XML</say-as></speak>\\n",
                                 },
                             },
                             {
                                 "live_agent_handoff": {
-                                    "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                    "metadata": "            {\\\\\\"some-metadata-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-metadata-key\\\\\\": 1234}\\n",
                                 },
                             },
                             {
@@ -1373,11 +1373,11 @@ class CxFlow(pulumi.CustomResource):
                             },
                         },
                         {
-                            "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                            "payload": "          {\\\\\\"some-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-key\\\\\\": [\\\\\\"other-value\\\\\\"]}\\n",
                         },
                         {
                             "conversation_success": {
-                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                "metadata": "            {\\\\\\"some-metadata-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-metadata-key\\\\\\": 1234}\\n",
                             },
                         },
                         {
@@ -1387,12 +1387,12 @@ class CxFlow(pulumi.CustomResource):
                         },
                         {
                             "output_audio_text": {
-                                "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                                "ssml": "            <speak>Some example <say-as interpret-as=\\\\\\"characters\\\\\\">SSML XML</say-as></speak>\\n",
                             },
                         },
                         {
                             "live_agent_handoff": {
-                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                "metadata": "            {\\\\\\"some-metadata-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-metadata-key\\\\\\": 1234}\\n",
                             },
                         },
                         {
@@ -1498,11 +1498,11 @@ class CxFlow(pulumi.CustomResource):
                             },
                         },
                         {
-                            "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                            "payload": "          {\\\\\\"some-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-key\\\\\\": [\\\\\\"other-value\\\\\\"]}\\n",
                         },
                         {
                             "conversation_success": {
-                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                "metadata": "            {\\\\\\"some-metadata-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-metadata-key\\\\\\": 1234}\\n",
                             },
                         },
                         {
@@ -1512,12 +1512,12 @@ class CxFlow(pulumi.CustomResource):
                         },
                         {
                             "output_audio_text": {
-                                "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                                "ssml": "            <speak>Some example <say-as interpret-as=\\\\\\"characters\\\\\\">SSML XML</say-as></speak>\\n",
                             },
                         },
                         {
                             "live_agent_handoff": {
-                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                "metadata": "            {\\\\\\"some-metadata-key\\\\\\": \\\\\\"some-value\\\\\\", \\\\\\"other-metadata-key\\\\\\": 1234}\\n",
                             },
                         },
                         {

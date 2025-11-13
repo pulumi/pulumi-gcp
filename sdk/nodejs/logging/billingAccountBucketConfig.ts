@@ -32,6 +32,22 @@ import * as utilities from "../utilities";
  *
  * Create logging bucket with index configs
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example_billing_account_bucket_index_configs = new gcp.logging.BillingAccountBucketConfig("example-billing-account-bucket-index-configs", {
+ *     folder: _default.billingAccount,
+ *     location: "global",
+ *     retentionDays: 30,
+ *     bucketId: "_Default",
+ *     indexConfigs: [{
+ *         fieldPath: "jsonPayload.request.status",
+ *         type: "INDEX_TYPE_STRING",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported using the following format:

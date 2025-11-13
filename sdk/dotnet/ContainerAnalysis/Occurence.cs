@@ -23,6 +23,92 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// 
     /// ### Container Analysis Occurrence Kms
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
+    ///     {
+    ///         Name = "attestation-note",
+    ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///         {
+    ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
+    ///             {
+    ///                 HumanReadableName = "Attestor Note",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var keyring = Gcp.Kms.GetKMSKeyRing.Invoke(new()
+    ///     {
+    ///         Name = "my-key-ring",
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var crypto_key = Gcp.Kms.GetKMSCryptoKey.Invoke(new()
+    ///     {
+    ///         Name = "my-key",
+    ///         KeyRing = keyring.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
+    ///     });
+    /// 
+    ///     var version = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new()
+    ///     {
+    ///         CryptoKey = crypto_key.Apply(getKMSCryptoKeyResult =&gt; getKMSCryptoKeyResult.Id),
+    ///     });
+    /// 
+    ///     var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new()
+    ///     {
+    ///         Name = "attestor",
+    ///         AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
+    ///         {
+    ///             NoteReference = note.Name,
+    ///             PublicKeys = new[]
+    ///             {
+    ///                 new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNotePublicKeyArgs
+    ///                 {
+    ///                     Id = version.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Id),
+    ///                     PkixPublicKey = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs
+    ///                     {
+    ///                         PublicKeyPem = version.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.PublicKeys[0]?.Pem),
+    ///                         SignatureAlgorithm = version.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.PublicKeys[0]?.Algorithm),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var occurrence = new Gcp.ContainerAnalysis.Occurence("occurrence", new()
+    ///     {
+    ///         ResourceUri = "gcr.io/my-project/my-image",
+    ///         NoteName = note.Id,
+    ///         Attestation = new Gcp.ContainerAnalysis.Inputs.OccurenceAttestationArgs
+    ///         {
+    ///             SerializedPayload = Std.Filebase64.Invoke(new()
+    ///             {
+    ///                 Input = "path/to/my/payload.json",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             Signatures = new[]
+    ///             {
+    ///                 new Gcp.ContainerAnalysis.Inputs.OccurenceAttestationSignatureArgs
+    ///                 {
+    ///                     PublicKeyId = version.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Id),
+    ///                     SerializedPayload = Std.Filebase64.Invoke(new()
+    ///                     {
+    ///                         Input = "path/to/my/payload.json.sig",
+    ///                     }).Apply(invoke =&gt; invoke.Result),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Occurrence can be imported using any of these accepted formats:

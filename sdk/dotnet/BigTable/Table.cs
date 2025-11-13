@@ -64,17 +64,17 @@ namespace Pulumi.Gcp.BigTable
     ///             {
     ///                 Family = "family-third",
     ///                 Type = @"        {
-    /// 					""aggregateType"": {
-    /// 						""max"": {},
-    /// 						""inputType"": {
-    /// 							""int64Type"": {
-    /// 								""encoding"": {
-    /// 									""bigEndianBytes"": {}
-    /// 								}
-    /// 							}
-    /// 						}
-    /// 					}
-    /// 				}
+    /// \t\t\t\t\t\""aggregateType\"": {
+    /// \t\t\t\t\t\t\""max\"": {},
+    /// \t\t\t\t\t\t\""inputType\"": {
+    /// \t\t\t\t\t\t\t\""int64Type\"": {
+    /// \t\t\t\t\t\t\t\t\""encoding\"": {
+    /// \t\t\t\t\t\t\t\t\t\""bigEndianBytes\"": {}
+    /// \t\t\t\t\t\t\t\t}
+    /// \t\t\t\t\t\t\t}
+    /// \t\t\t\t\t\t}
+    /// \t\t\t\t\t}
+    /// \t\t\t\t}
     /// ",
     ///             },
     ///         },

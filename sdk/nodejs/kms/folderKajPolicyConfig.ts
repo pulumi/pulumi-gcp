@@ -23,11 +23,11 @@ import * as utilities from "../utilities";
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
- * const projectSuffix = new random.RandomId("project_suffix", {byteLength: 4});
+ * const projectSuffix = new random.index.Id("project_suffix", {byteLength: 4});
  * // Create a project for enabling KMS API.
  * const kmsProject = new gcp.organizations.Project("kms_project", {
- *     projectId: pulumi.interpolate`kms-api-project${projectSuffix.hex}`,
- *     name: pulumi.interpolate`kms-api-project${projectSuffix.hex}`,
+ *     projectId: `kms-api-project${projectSuffix.hex}`,
+ *     name: `kms-api-project${projectSuffix.hex}`,
  *     folderId: kajFolder.folderId,
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",

@@ -428,11 +428,11 @@ import (
 //									},
 //								},
 //								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
-//									Payload: pulumi.String("          {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n"),
+//									Payload: pulumi.String("          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"),
 //								},
 //								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
 //									ConversationSuccess: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{
-//										Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//										Metadata: pulumi.String("            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"),
 //									},
 //								},
 //								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
@@ -442,12 +442,12 @@ import (
 //								},
 //								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
 //									OutputAudioText: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{
-//										Ssml: pulumi.String("            <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n"),
+//										Ssml: pulumi.String("            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"),
 //									},
 //								},
 //								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
 //									LiveAgentHandoff: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{
-//										Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//										Metadata: pulumi.String("            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"),
 //									},
 //								},
 //								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
@@ -499,11 +499,11 @@ import (
 //									},
 //								},
 //								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
-//									Payload: pulumi.String("          {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n"),
+//									Payload: pulumi.String("          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"),
 //								},
 //								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
 //									ConversationSuccess: &diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs{
-//										Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//										Metadata: pulumi.String("            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"),
 //									},
 //								},
 //								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
@@ -513,12 +513,12 @@ import (
 //								},
 //								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
 //									OutputAudioText: &diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs{
-//										Ssml: pulumi.String("            <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n"),
+//										Ssml: pulumi.String("            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"),
 //									},
 //								},
 //								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
 //									LiveAgentHandoff: &diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs{
-//										Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//										Metadata: pulumi.String("            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"),
 //									},
 //								},
 //								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
@@ -595,11 +595,11 @@ import (
 //								},
 //							},
 //							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
-//								Payload: pulumi.String("          {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n"),
+//								Payload: pulumi.String("          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"),
 //							},
 //							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
 //								ConversationSuccess: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs{
-//									Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//									Metadata: pulumi.String("            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"),
 //								},
 //							},
 //							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
@@ -609,12 +609,12 @@ import (
 //							},
 //							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
 //								OutputAudioText: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{
-//									Ssml: pulumi.String("            <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n"),
+//									Ssml: pulumi.String("            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"),
 //								},
 //							},
 //							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
 //								LiveAgentHandoff: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs{
-//									Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//									Metadata: pulumi.String("            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"),
 //								},
 //							},
 //							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{

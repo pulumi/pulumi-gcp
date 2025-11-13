@@ -25,6 +25,204 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Developer Connect Insights Config Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.apphub.Application;
+ * import com.pulumi.gcp.apphub.ApplicationArgs;
+ * import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
+ * import com.pulumi.gcp.developerconnect.InsightsConfig;
+ * import com.pulumi.gcp.developerconnect.InsightsConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.InsightsConfigArtifactConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.InsightsConfigArtifactConfigGoogleArtifactRegistryArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var project = new Project("project", ProjectArgs.builder()
+ *             .projectId("dci-tf-_8270")
+ *             .name("Service Project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         // Grant Permissions
+ *         var apphubPermissions = new IAMMember("apphubPermissions", IAMMemberArgs.builder()
+ *             .project(project.projectId())
+ *             .role("roles/apphub.admin")
+ *             .member("serviceAccount:hashicorp-test-runner}{@literal @}{@code ci-test-project-188019.iam.gserviceaccount.com")
+ *             .build());
+ * 
+ *         var insightsAgent = new IAMMember("insightsAgent", IAMMemberArgs.builder()
+ *             .project(project.projectId())
+ *             .role("roles/developerconnect.insightsAgent")
+ *             .member("serviceAccount:66214305248-compute}{@literal @}{@code developer.gserviceaccount.com")
+ *             .build());
+ * 
+ *         // Enable APIs
+ *         var apphubApiService = new Service("apphubApiService", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("apphub.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var containeranalysisApi = new Service("containeranalysisApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("containeranalysis.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var containerscanningApi = new Service("containerscanningApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("containerscanning.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var containerApi = new Service("containerApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("container.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var artifactregistryApi = new Service("artifactregistryApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("artifactregistry.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var cloudbuildApi = new Service("cloudbuildApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("cloudbuild.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var cloudassetApi = new Service("cloudassetApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("cloudasset.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var computeApi = new Service("computeApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("compute.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var devconnectApi = new Service("devconnectApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("developerconnect.googleapis.com")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         // Wait delay after enabling APIs and granting permissions
+ *         var waitForPropagation = new Sleep("waitForPropagation", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     apphubPermissions,
+ *                     insightsAgent,
+ *                     apphubApiService,
+ *                     containeranalysisApi,
+ *                     containerscanningApi,
+ *                     containerApi,
+ *                     artifactregistryApi,
+ *                     artifactregistryApi,
+ *                     cloudbuildApi,
+ *                     cloudassetApi,
+ *                     computeApi,
+ *                     devconnectApi)
+ *                 .build());
+ * 
+ *         var myApphubApplication = new Application("myApphubApplication", ApplicationArgs.builder()
+ *             .location("us-central1")
+ *             .applicationId("tf-test-example-application_41150")
+ *             .scope(ApplicationScopeArgs.builder()
+ *                 .type("REGIONAL")
+ *                 .build())
+ *             .project(project.projectId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(waitForPropagation)
+ *                 .build());
+ * 
+ *         var insightsConfig = new InsightsConfig("insightsConfig", InsightsConfigArgs.builder()
+ *             .location("us-central1")
+ *             .insightsConfigId("tf-test-ic_89313")
+ *             .project(project.projectId())
+ *             .annotations(Map.ofEntries(
+ *             ))
+ *             .labels(Map.ofEntries(
+ *             ))
+ *             .appHubApplication(StdFunctions.format(FormatArgs.builder()
+ *                 .input("//apphub.googleapis.com/projects/%s/locations/%s/applications/%s")
+ *                 .args(                
+ *                     project.number(),
+ *                     myApphubApplication.location(),
+ *                     myApphubApplication.applicationId())
+ *                 .build()).result())
+ *             .artifactConfigs(InsightsConfigArtifactConfigArgs.builder()
+ *                 .googleArtifactAnalysis(InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs.builder()
+ *                     .projectId(project.projectId())
+ *                     .build())
+ *                 .googleArtifactRegistry(InsightsConfigArtifactConfigGoogleArtifactRegistryArgs.builder()
+ *                     .artifactRegistryPackage("my-package")
+ *                     .projectId(project.projectId())
+ *                     .build())
+ *                 .uri("us-docker.pkg.dev/my-project/my-repo/my-image")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(waitForPropagation)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * InsightsConfig can be imported using any of these accepted formats:

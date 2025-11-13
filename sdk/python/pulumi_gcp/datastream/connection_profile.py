@@ -730,13 +730,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd.result)
+            password=pwd["result"])
         nat_vm = gcp.compute.Instance("nat_vm",
             name="nat-vm",
             machine_type="e2-medium",
@@ -759,16 +759,16 @@ class ConnectionProfile(pulumi.CustomResource):
         export DB_ADDR={public_ip_address}
         export DB_PORT=5432
         echo 1 > /proc/sys/net/ipv4/ip_forward
-        md_url_prefix="http://169.254.169.254/computeMetadata/v1/instance"
-        vm_nic_ip="$(curl -H "Metadata-Flavor: Google" ${{md_url_prefix}}/network-interfaces/0/ip)"
+        md_url_prefix=\\"http://169.254.169.254/computeMetadata/v1/instance\\"
+        vm_nic_ip=\\"$(curl -H \\"Metadata-Flavor: Google\\" ${{md_url_prefix}}/network-interfaces/0/ip)\\"
         iptables -t nat -F
-        iptables -t nat -A PREROUTING \\
-             -p tcp --dport $DB_PORT \\
-             -j DNAT \\
+        iptables -t nat -A PREROUTING \\\\
+             -p tcp --dport $DB_PORT \\\\
+             -j DNAT \\\\
              --to-destination $DB_ADDR
-        iptables -t nat -A POSTROUTING \\
-             -p tcp --dport $DB_PORT \\
-             -j SNAT \\
+        iptables -t nat -A POSTROUTING \\\\
+             -p tcp --dport $DB_PORT \\\\
+             -j SNAT \\\\
              --to-source $vm_nic_ip
         iptables-save
         \"\"\"))
@@ -858,13 +858,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd.result)
+            password=pwd["result"])
         default = gcp.datastream.ConnectionProfile("default",
             display_name="Connection profile",
             location="us-central1",
@@ -968,6 +968,29 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": "fake-database",
             })
         ```
+        ### Datastream Connection Profile Mongodb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.ConnectionProfile("default",
+            display_name="Mongodb Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mongodb_profile={
+                "host_addresses": [{
+                    "hostname": "mongodb-primary.example.com",
+                    "port": 27017,
+                }],
+                "replica_set": "myReplicaSet",
+                "username": "mongoUser",
+                "password": "mongoPassword",
+                "database": "myDatabase",
+                "standard_connection_format": {}[0],
+            })
+        ```
+
         ## Import
 
         ConnectionProfile can be imported using any of these accepted formats:
@@ -1095,13 +1118,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd.result)
+            password=pwd["result"])
         nat_vm = gcp.compute.Instance("nat_vm",
             name="nat-vm",
             machine_type="e2-medium",
@@ -1124,16 +1147,16 @@ class ConnectionProfile(pulumi.CustomResource):
         export DB_ADDR={public_ip_address}
         export DB_PORT=5432
         echo 1 > /proc/sys/net/ipv4/ip_forward
-        md_url_prefix="http://169.254.169.254/computeMetadata/v1/instance"
-        vm_nic_ip="$(curl -H "Metadata-Flavor: Google" ${{md_url_prefix}}/network-interfaces/0/ip)"
+        md_url_prefix=\\"http://169.254.169.254/computeMetadata/v1/instance\\"
+        vm_nic_ip=\\"$(curl -H \\"Metadata-Flavor: Google\\" ${{md_url_prefix}}/network-interfaces/0/ip)\\"
         iptables -t nat -F
-        iptables -t nat -A PREROUTING \\
-             -p tcp --dport $DB_PORT \\
-             -j DNAT \\
+        iptables -t nat -A PREROUTING \\\\
+             -p tcp --dport $DB_PORT \\\\
+             -j DNAT \\\\
              --to-destination $DB_ADDR
-        iptables -t nat -A POSTROUTING \\
-             -p tcp --dport $DB_PORT \\
-             -j SNAT \\
+        iptables -t nat -A POSTROUTING \\\\
+             -p tcp --dport $DB_PORT \\\\
+             -j SNAT \\\\
              --to-source $vm_nic_ip
         iptables-save
         \"\"\"))
@@ -1223,13 +1246,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.RandomPassword("pwd",
+        pwd = random.index.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd.result)
+            password=pwd["result"])
         default = gcp.datastream.ConnectionProfile("default",
             display_name="Connection profile",
             location="us-central1",
@@ -1333,6 +1356,29 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": "fake-database",
             })
         ```
+        ### Datastream Connection Profile Mongodb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.ConnectionProfile("default",
+            display_name="Mongodb Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mongodb_profile={
+                "host_addresses": [{
+                    "hostname": "mongodb-primary.example.com",
+                    "port": 27017,
+                }],
+                "replica_set": "myReplicaSet",
+                "username": "mongoUser",
+                "password": "mongoPassword",
+                "database": "myDatabase",
+                "standard_connection_format": {}[0],
+            })
+        ```
+
         ## Import
 
         ConnectionProfile can be imported using any of these accepted formats:

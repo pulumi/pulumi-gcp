@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     deletionProtection: false,
  *     query: `SELECT _key, CF
- * FROM \` + "\`bt-table\`" + \`
+ * FROM \` + \\"\`bt-table\`\\" + \`
  * `,
  * }, {
  *     dependsOn: [table],

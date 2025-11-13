@@ -324,6 +324,21 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
         Create logging bucket with index configs
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_billing_account_bucket_index_configs = gcp.logging.BillingAccountBucketConfig("example-billing-account-bucket-index-configs",
+            folder=default["billingAccount"],
+            location="global",
+            retention_days=30,
+            bucket_id="_Default",
+            index_configs=[{
+                "field_path": "jsonPayload.request.status",
+                "type": "INDEX_TYPE_STRING",
+            }])
+        ```
+
         ## Import
 
         This resource can be imported using the following format:
@@ -374,6 +389,21 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         ```
 
         Create logging bucket with index configs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_billing_account_bucket_index_configs = gcp.logging.BillingAccountBucketConfig("example-billing-account-bucket-index-configs",
+            folder=default["billingAccount"],
+            location="global",
+            retention_days=30,
+            bucket_id="_Default",
+            index_configs=[{
+                "field_path": "jsonPayload.request.status",
+                "type": "INDEX_TYPE_STRING",
+            }])
+        ```
 
         ## Import
 

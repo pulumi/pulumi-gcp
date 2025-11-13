@@ -28,6 +28,41 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// ### Scc Folder Notification Config Basic
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Organizations.Folder("folder", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         DisplayName = "folder-name",
+    ///     });
+    /// 
+    ///     var sccFolderNotificationConfig = new Gcp.PubSub.Topic("scc_folder_notification_config", new()
+    ///     {
+    ///         Name = "my-topic",
+    ///     });
+    /// 
+    ///     var customNotificationConfig = new Gcp.SecurityCenter.FolderNotificationConfig("custom_notification_config", new()
+    ///     {
+    ///         ConfigId = "my-config",
+    ///         Folder = folder.FolderId,
+    ///         Location = "global",
+    ///         Description = "My custom Cloud Security Command Center Finding Notification Configuration",
+    ///         PubsubTopic = sccFolderNotificationConfig.Id,
+    ///         StreamingConfig = new Gcp.SecurityCenter.Inputs.FolderNotificationConfigStreamingConfigArgs
+    ///         {
+    ///             Filter = "category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\"",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// FolderNotificationConfig can be imported using any of these accepted formats:

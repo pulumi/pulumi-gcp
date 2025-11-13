@@ -20,6 +20,57 @@ import (
 // * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
 //
 // ## Example Usage
+//
+// ### Property-Based Availability
+//
+// Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := compute.GetMachineTypes(ctx, &compute.GetMachineTypesArgs{
+// Filter: pulumi.StringRef("memoryMb = 16384 AND guestCpus = 8"),
+// Zone: pulumi.StringRef(zone),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var exampleInstanceTemplate []*compute.InstanceTemplate
+// for key0, val0 := range interface{}(std.Toset(ctx, &std.TosetArgs{
+// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:9,15-43),
+// }, nil).Result) {
+// __res, err := compute.NewInstanceTemplate(ctx, fmt.Sprintf("example-%v", key0), &compute.InstanceTemplateArgs{
+// MachineType: pulumi.Any(val0),
+// Disks: compute.InstanceTemplateDiskArray{
+// &compute.InstanceTemplateDiskArgs{
+// SourceImage: pulumi.String("debian-cloud/debian-11"),
+// AutoDelete: pulumi.Bool(true),
+// Boot: pulumi.Bool(true),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// exampleInstanceTemplate = append(exampleInstanceTemplate, __res)
+// }
+// return nil
+// })
+// }
+// ```
+//
+// ### Machine Family Preference
+//
+// Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
 func GetMachineTypes(ctx *pulumi.Context, args *GetMachineTypesArgs, opts ...pulumi.InvokeOption) (*GetMachineTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMachineTypesResult

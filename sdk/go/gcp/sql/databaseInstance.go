@@ -57,6 +57,8 @@ import (
 //
 // ```
 //
+// ### Granular restriction of network access
+//
 // ### Private IP Instance
 // > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `dependsOn`reference as shown below.
 //
@@ -103,16 +105,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			dbNameSuffix, err := random.NewRandomId(ctx, "db_name_suffix", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
+//			dbNameSuffix, err := random.NewId(ctx, "db_name_suffix", &random.IdArgs{
+//				ByteLength: 4,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
-//				Name: dbNameSuffix.Hex.ApplyT(func(hex string) (string, error) {
-//					return fmt.Sprintf("private-instance-%v", hex), nil
-//				}).(pulumi.StringOutput),
+//				Name:            pulumi.Sprintf("private-instance-%v", dbNameSuffix.Hex),
 //				Region:          pulumi.String("us-central1"),
 //				DatabaseVersion: pulumi.String("MYSQL_5_7"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{

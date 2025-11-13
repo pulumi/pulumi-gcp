@@ -16,6 +16,217 @@ import (
 //
 // ## Example Usage
 //
+// ### Developer Connect Insights Config Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("dci-tf-_8270"),
+//				Name:           pulumi.String("Service Project"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Grant Permissions
+//			apphubPermissions, err := projects.NewIAMMember(ctx, "apphub_permissions", &projects.IAMMemberArgs{
+//				Project: project.ProjectId,
+//				Role:    pulumi.String("roles/apphub.admin"),
+//				Member:  pulumi.String("serviceAccount:hashicorp-test-runner@ci-test-project-188019.iam.gserviceaccount.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			insightsAgent, err := projects.NewIAMMember(ctx, "insights_agent", &projects.IAMMemberArgs{
+//				Project: project.ProjectId,
+//				Role:    pulumi.String("roles/developerconnect.insightsAgent"),
+//				Member:  pulumi.String("serviceAccount:66214305248-compute@developer.gserviceaccount.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Enable APIs
+//			apphubApiService, err := projects.NewService(ctx, "apphub_api_service", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("apphub.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			containeranalysisApi, err := projects.NewService(ctx, "containeranalysis_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("containeranalysis.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			containerscanningApi, err := projects.NewService(ctx, "containerscanning_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("containerscanning.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			containerApi, err := projects.NewService(ctx, "container_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("container.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			artifactregistryApi, err := projects.NewService(ctx, "artifactregistry_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("artifactregistry.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			cloudbuildApi, err := projects.NewService(ctx, "cloudbuild_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("cloudbuild.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			cloudassetApi, err := projects.NewService(ctx, "cloudasset_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("cloudasset.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			computeApi, err := projects.NewService(ctx, "compute_api", &projects.ServiceArgs{
+//				Project:                  project.ProjectId,
+//				Service:                  pulumi.String("compute.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			devconnectApi, err := projects.NewService(ctx, "devconnect_api", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("developerconnect.googleapis.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// Wait delay after enabling APIs and granting permissions
+//			waitForPropagation, err := time.NewSleep(ctx, "wait_for_propagation", &time.SleepArgs{
+//				CreateDuration: pulumi.String("120s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apphubPermissions,
+//				insightsAgent,
+//				apphubApiService,
+//				containeranalysisApi,
+//				containerscanningApi,
+//				containerApi,
+//				artifactregistryApi,
+//				artifactregistryApi,
+//				cloudbuildApi,
+//				cloudassetApi,
+//				computeApi,
+//				devconnectApi,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			myApphubApplication, err := apphub.NewApplication(ctx, "my_apphub_application", &apphub.ApplicationArgs{
+//				Location:      pulumi.String("us-central1"),
+//				ApplicationId: pulumi.String("tf-test-example-application_41150"),
+//				Scope: &apphub.ApplicationScopeArgs{
+//					Type: pulumi.String("REGIONAL"),
+//				},
+//				Project: project.ProjectId,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				waitForPropagation,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "//apphub.googleapis.com/projects/%s/locations/%s/applications/%s",
+//				Args: pulumi.StringArray{
+//					project.Number,
+//					myApphubApplication.Location,
+//					myApphubApplication.ApplicationId,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = developerconnect.NewInsightsConfig(ctx, "insights_config", &developerconnect.InsightsConfigArgs{
+//				Location:          pulumi.String("us-central1"),
+//				InsightsConfigId:  pulumi.String("tf-test-ic_89313"),
+//				Project:           project.ProjectId,
+//				Annotations:       pulumi.StringMap{},
+//				Labels:            pulumi.StringMap{},
+//				AppHubApplication: pulumi.String(invokeFormat.Result),
+//				ArtifactConfigs: developerconnect.InsightsConfigArtifactConfigArray{
+//					&developerconnect.InsightsConfigArtifactConfigArgs{
+//						GoogleArtifactAnalysis: &developerconnect.InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs{
+//							ProjectId: project.ProjectId,
+//						},
+//						GoogleArtifactRegistry: &developerconnect.InsightsConfigArtifactConfigGoogleArtifactRegistryArgs{
+//							ArtifactRegistryPackage: pulumi.String("my-package"),
+//							ProjectId:               project.ProjectId,
+//						},
+//						Uri: pulumi.String("us-docker.pkg.dev/my-project/my-repo/my-image"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				waitForPropagation,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // InsightsConfig can be imported using any of these accepted formats:

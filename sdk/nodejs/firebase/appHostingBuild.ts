@@ -111,6 +111,66 @@ import * as utilities from "../utilities";
  * ```
  * ### Firebase App Hosting Build Github
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repository = new gcp.developerconnect.GitRepositoryLink("my-repository", {
+ *     project: "my-project-name",
+ *     location: "us-central1",
+ *     service: "developerconnect.googleapis.com",
+ * });
+ * const exampleAppHostingBackend = new gcp.firebase.AppHostingBackend("example", {
+ *     project: "my-project-name",
+ *     location: "us-central1",
+ *     backendId: "mini",
+ *     appId: "1:0000000000:web:674cde32020e16fbce9dbd",
+ *     displayName: "My Backend",
+ *     servingLocality: "GLOBAL_ACCESS",
+ *     serviceAccount: "firebase-app-hosting-compute@my-project-name.iam.gserviceaccount.com",
+ *     environment: "prod",
+ *     annotations: {
+ *         key: "value",
+ *     },
+ *     labels: {
+ *         key: "value",
+ *     },
+ *     codebase: {
+ *         repository: my_repository.name,
+ *         rootDirectory: "/",
+ *     },
+ * });
+ * const example = new gcp.firebase.AppHostingBuild("example", {
+ *     project: exampleAppHostingBackend.project,
+ *     location: exampleAppHostingBackend.location,
+ *     backend: exampleAppHostingBackend.backendId,
+ *     buildId: "gh-build",
+ *     source: {
+ *         codebase: {
+ *             branch: "main",
+ *         },
+ *     },
+ * });
+ * const devconnect_secret = new gcp.projects.IAMMember("devconnect-secret", {
+ *     project: "my-project-name",
+ *     role: "roles/secretmanager.admin",
+ *     member: devconnect_p4sa.member,
+ * });
+ * //##
+ * //## Include these blocks only once per Github account ###
+ * const my_connection = new gcp.developerconnect.Connection("my-connection", {
+ *     project: "my-project-name",
+ *     location: "us-central1",
+ *     connectionId: "tf-test-connection-new",
+ *     githubConfig: {
+ *         githubApp: "FIREBASE",
+ *     },
+ * }, {
+ *     dependsOn: [devconnect_secret],
+ * });
+ * export const nextSteps = my_connection.installationStates;
+ * ```
+ *
  * ## Import
  *
  * Build can be imported using any of these accepted formats:

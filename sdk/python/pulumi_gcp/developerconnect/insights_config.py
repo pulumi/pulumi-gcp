@@ -500,6 +500,123 @@ class InsightsConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Developer Connect Insights Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="dci-tf-_8270",
+            name="Service Project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        # Grant Permissions
+        apphub_permissions = gcp.projects.IAMMember("apphub_permissions",
+            project=project.project_id,
+            role="roles/apphub.admin",
+            member="serviceAccount:hashicorp-test-runner@ci-test-project-188019.iam.gserviceaccount.com")
+        insights_agent = gcp.projects.IAMMember("insights_agent",
+            project=project.project_id,
+            role="roles/developerconnect.insightsAgent",
+            member="serviceAccount:66214305248-compute@developer.gserviceaccount.com")
+        # Enable APIs
+        apphub_api_service = gcp.projects.Service("apphub_api_service",
+            project=project.project_id,
+            service="apphub.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        containeranalysis_api = gcp.projects.Service("containeranalysis_api",
+            project=project.project_id,
+            service="containeranalysis.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        containerscanning_api = gcp.projects.Service("containerscanning_api",
+            project=project.project_id,
+            service="containerscanning.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        container_api = gcp.projects.Service("container_api",
+            project=project.project_id,
+            service="container.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        artifactregistry_api = gcp.projects.Service("artifactregistry_api",
+            project=project.project_id,
+            service="artifactregistry.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        cloudbuild_api = gcp.projects.Service("cloudbuild_api",
+            project=project.project_id,
+            service="cloudbuild.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        cloudasset_api = gcp.projects.Service("cloudasset_api",
+            project=project.project_id,
+            service="cloudasset.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        compute_api = gcp.projects.Service("compute_api",
+            project=project.project_id,
+            service="compute.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        devconnect_api = gcp.projects.Service("devconnect_api",
+            project=project.project_id,
+            service="developerconnect.googleapis.com",
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        # Wait delay after enabling APIs and granting permissions
+        wait_for_propagation = time.Sleep("wait_for_propagation", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[
+                apphub_permissions,
+                insights_agent,
+                apphub_api_service,
+                containeranalysis_api,
+                containerscanning_api,
+                container_api,
+                artifactregistry_api,
+                artifactregistry_api,
+                cloudbuild_api,
+                cloudasset_api,
+                compute_api,
+                devconnect_api,
+            ]))
+        my_apphub_application = gcp.apphub.Application("my_apphub_application",
+            location="us-central1",
+            application_id="tf-test-example-application_41150",
+            scope={
+                "type": "REGIONAL",
+            },
+            project=project.project_id,
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
+        insights_config = gcp.developerconnect.InsightsConfig("insights_config",
+            location="us-central1",
+            insights_config_id="tf-test-ic_89313",
+            project=project.project_id,
+            annotations={},
+            labels={},
+            app_hub_application=std.format(input="//apphub.googleapis.com/projects/%s/locations/%s/applications/%s",
+                args=[
+                    project.number,
+                    my_apphub_application.location,
+                    my_apphub_application.application_id,
+                ]).result,
+            artifact_configs=[{
+                "google_artifact_analysis": {
+                    "project_id": project.project_id,
+                },
+                "google_artifact_registry": {
+                    "artifact_registry_package": "my-package",
+                    "project_id": project.project_id,
+                },
+                "uri": "us-docker.pkg.dev/my-project/my-repo/my-image",
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
+        ```
+
         ## Import
 
         InsightsConfig can be imported using any of these accepted formats:
@@ -553,6 +670,123 @@ class InsightsConfig(pulumi.CustomResource):
         Description
 
         ## Example Usage
+
+        ### Developer Connect Insights Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="dci-tf-_8270",
+            name="Service Project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        # Grant Permissions
+        apphub_permissions = gcp.projects.IAMMember("apphub_permissions",
+            project=project.project_id,
+            role="roles/apphub.admin",
+            member="serviceAccount:hashicorp-test-runner@ci-test-project-188019.iam.gserviceaccount.com")
+        insights_agent = gcp.projects.IAMMember("insights_agent",
+            project=project.project_id,
+            role="roles/developerconnect.insightsAgent",
+            member="serviceAccount:66214305248-compute@developer.gserviceaccount.com")
+        # Enable APIs
+        apphub_api_service = gcp.projects.Service("apphub_api_service",
+            project=project.project_id,
+            service="apphub.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        containeranalysis_api = gcp.projects.Service("containeranalysis_api",
+            project=project.project_id,
+            service="containeranalysis.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        containerscanning_api = gcp.projects.Service("containerscanning_api",
+            project=project.project_id,
+            service="containerscanning.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        container_api = gcp.projects.Service("container_api",
+            project=project.project_id,
+            service="container.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        artifactregistry_api = gcp.projects.Service("artifactregistry_api",
+            project=project.project_id,
+            service="artifactregistry.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        cloudbuild_api = gcp.projects.Service("cloudbuild_api",
+            project=project.project_id,
+            service="cloudbuild.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        cloudasset_api = gcp.projects.Service("cloudasset_api",
+            project=project.project_id,
+            service="cloudasset.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        compute_api = gcp.projects.Service("compute_api",
+            project=project.project_id,
+            service="compute.googleapis.com",
+            disable_dependent_services=True,
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        devconnect_api = gcp.projects.Service("devconnect_api",
+            project=project.project_id,
+            service="developerconnect.googleapis.com",
+            opts = pulumi.ResourceOptions(depends_on=[project]))
+        # Wait delay after enabling APIs and granting permissions
+        wait_for_propagation = time.Sleep("wait_for_propagation", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[
+                apphub_permissions,
+                insights_agent,
+                apphub_api_service,
+                containeranalysis_api,
+                containerscanning_api,
+                container_api,
+                artifactregistry_api,
+                artifactregistry_api,
+                cloudbuild_api,
+                cloudasset_api,
+                compute_api,
+                devconnect_api,
+            ]))
+        my_apphub_application = gcp.apphub.Application("my_apphub_application",
+            location="us-central1",
+            application_id="tf-test-example-application_41150",
+            scope={
+                "type": "REGIONAL",
+            },
+            project=project.project_id,
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
+        insights_config = gcp.developerconnect.InsightsConfig("insights_config",
+            location="us-central1",
+            insights_config_id="tf-test-ic_89313",
+            project=project.project_id,
+            annotations={},
+            labels={},
+            app_hub_application=std.format(input="//apphub.googleapis.com/projects/%s/locations/%s/applications/%s",
+                args=[
+                    project.number,
+                    my_apphub_application.location,
+                    my_apphub_application.application_id,
+                ]).result,
+            artifact_configs=[{
+                "google_artifact_analysis": {
+                    "project_id": project.project_id,
+                },
+                "google_artifact_registry": {
+                    "artifact_registry_package": "my-package",
+                    "project_id": project.project_id,
+                },
+                "uri": "us-docker.pkg.dev/my-project/my-repo/my-image",
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
+        ```
 
         ## Import
 

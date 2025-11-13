@@ -44,6 +44,33 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// Create logging bucket with index configs
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example_billing_account_bucket_index_configs = new Gcp.Logging.BillingAccountBucketConfig("example-billing-account-bucket-index-configs", new()
+    ///     {
+    ///         Folder = @default.BillingAccount,
+    ///         Location = "global",
+    ///         RetentionDays = 30,
+    ///         BucketId = "_Default",
+    ///         IndexConfigs = new[]
+    ///         {
+    ///             new Gcp.Logging.Inputs.BillingAccountBucketConfigIndexConfigArgs
+    ///             {
+    ///                 FieldPath = "jsonPayload.request.status",
+    ///                 Type = "INDEX_TYPE_STRING",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported using the following format:

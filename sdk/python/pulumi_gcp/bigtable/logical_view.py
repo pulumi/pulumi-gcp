@@ -257,7 +257,7 @@ class LogicalView(pulumi.CustomResource):
             instance=instance.name,
             deletion_protection=False,
             query=\"\"\"SELECT _key, CF
-        FROM ` + "`bt-table`" + `
+        FROM ` + \\"`bt-table`\\" + `
         \"\"\",
             opts = pulumi.ResourceOptions(depends_on=[table]))
         ```
@@ -336,7 +336,7 @@ class LogicalView(pulumi.CustomResource):
             instance=instance.name,
             deletion_protection=False,
             query=\"\"\"SELECT _key, CF
-        FROM ` + "`bt-table`" + `
+        FROM ` + \\"`bt-table`\\" + `
         \"\"\",
             opts = pulumi.ResourceOptions(depends_on=[table]))
         ```

@@ -54,19 +54,19 @@ import (
 //				TableId:            pulumi.String("job_load_table"),
 //				Schema: pulumi.String(`[
 //	    {
-//	        "name": "feature_id",
-//	        "type": "STRING",
-//	        "mode": "NULLABLE"
+//	        \"name\": \"feature_id\",
+//	        \"type\": \"STRING\",
+//	        \"mode\": \"NULLABLE\"
 //	    },
 //	    {
-//	        "name": "example_feature",
-//	        "type": "STRING",
-//	        "mode": "NULLABLE"
+//	        \"name\": \"example_feature\",
+//	        \"type\": \"STRING\",
+//	        \"mode\": \"NULLABLE\"
 //	    },
 //	    {
-//	        "name": "feature_timestamp",
-//	        "type": "TIMESTAMP",
-//	        "mode": "NULLABLE"
+//	        \"name\": \"feature_timestamp\",
+//	        \"type\": \"TIMESTAMP\",
+//	        \"mode\": \"NULLABLE\"
 //	    }
 //
 // ]

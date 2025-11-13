@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -565,6 +565,100 @@ import * as utilities from "../utilities";
  * ```
  * ### Datastream Stream Mysql Gtid
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "<%= ctx[:vars]['mysql_name'] %>",
+ *     databaseVersion: "MYSQL_8_0",
+ *     region: "us-central1",
+ *     rootPassword: "<%= ctx[:vars]['mysql_root_password'] %>",
+ *     deletionProtection: "<%= ctx[:vars]['deletion_protection'] %>",
+ *     settings: {
+ *         tier: "db-custom-2-4096",
+ *         ipConfiguration: {
+ *             authorizedNetworks: [
+ *                 {
+ *                     value: "34.71.242.81",
+ *                 },
+ *                 {
+ *                     value: "34.72.28.29",
+ *                 },
+ *                 {
+ *                     value: "34.67.6.157",
+ *                 },
+ *                 {
+ *                     value: "34.67.234.134",
+ *                 },
+ *                 {
+ *                     value: "34.72.239.218",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     name: "<%= ctx[:vars]['database_user'] %>",
+ *     instance: instance.name,
+ *     password: "<%= ctx[:vars]['database_password'] %>",
+ * });
+ * const db = new gcp.sql.Database("db", {
+ *     name: "<%= ctx[:vars]['database_name'] %>",
+ *     instance: instance.name,
+ * }, {
+ *     dependsOn: [user],
+ * });
+ * const source = new gcp.datastream.ConnectionProfile("source", {
+ *     displayName: "MySQL Source",
+ *     location: "us-central1",
+ *     connectionProfileId: "<%= ctx[:vars]['source_connection_profile_id'] %>",
+ *     mysqlProfile: {
+ *         hostname: instance.publicIpAddress,
+ *         port: 1433,
+ *         username: user.name,
+ *         password: user.password,
+ *         database: db.name,
+ *     },
+ * });
+ * const destination = new gcp.datastream.ConnectionProfile("destination", {
+ *     displayName: "BigQuery Destination",
+ *     location: "us-central1",
+ *     connectionProfileId: "<%= ctx[:vars]['destination_connection_profile_id'] %>",
+ *     bigqueryProfile: {},
+ * });
+ * const _default = new gcp.datastream.Stream("default", {
+ *     displayName: "MySQL to BigQuery",
+ *     location: "us-central1",
+ *     streamId: "<%= ctx[:vars]['stream_id'] %>",
+ *     sourceConfig: {
+ *         sourceConnectionProfile: source.id,
+ *         mysqlSourceConfig: {
+ *             includeObjects: {
+ *                 schemas: [{
+ *                     schema: "schema",
+ *                     tables: [{
+ *                         table: "table",
+ *                     }],
+ *                 }],
+ *             },
+ *             gtid: {},
+ *         },
+ *     },
+ *     destinationConfig: {
+ *         destinationConnectionProfile: destination.id,
+ *         bigqueryDestinationConfig: {
+ *             dataFreshness: "900s",
+ *             sourceHierarchyDatasets: {
+ *                 datasetTemplate: {
+ *                     location: "us-central1",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     backfillNone: {},
+ * });
+ * ```
  * ### Datastream Stream Postgresql Bigquery Dataset Id
  *
  * ```typescript
@@ -616,7 +710,7 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: false,
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -704,7 +798,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -829,7 +923,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -921,7 +1015,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -1009,7 +1103,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -1083,6 +1177,57 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ### Datastream Stream Mongodb
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.datastream.Stream("default", {
+ *     displayName: "Mongodb to BigQuery",
+ *     location: "us-central1",
+ *     streamId: "mongodb-stream",
+ *     sourceConfig: {
+ *         sourceConnectionProfile: "source-profile",
+ *         mongodbSourceConfig: {
+ *             includeObjects: {
+ *                 databases: [{
+ *                     database: "mydb",
+ *                     collections: [
+ *                         {
+ *                             collection: "mycollection1",
+ *                         },
+ *                         {
+ *                             collection: "mycollection2",
+ *                         },
+ *                     ],
+ *                 }],
+ *             },
+ *             excludeeObjects: [{
+ *                 databases: [{
+ *                     database: "mydb",
+ *                     collections: [{
+ *                         fields: [{
+ *                             field: "excludedField",
+ *                         }],
+ *                     }],
+ *                 }],
+ *             }],
+ *         },
+ *     },
+ *     destinationConfig: {
+ *         destinationConnectionProfile: "destination-profile",
+ *         bigqueryDestinationConfig: {
+ *             dataFreshness: "900s",
+ *             sourceHierarchyDatasets: {
+ *                 datasetTemplate: {
+ *                     location: "us-central1",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     backfillNone: {},
+ * });
+ * ```
  *
  * ## Import
  *

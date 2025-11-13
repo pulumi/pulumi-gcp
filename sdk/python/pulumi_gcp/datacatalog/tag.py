@@ -396,38 +396,38 @@ class Tag(pulumi.CustomResource):
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal",
             schema=\"\"\"{
-          "columns": [
+          \\"columns\\": [
             {
-              "column": "first_name",
-              "description": "First name",
-              "mode": "REQUIRED",
-              "type": "STRING"
+              \\"column\\": \\"first_name\\",
+              \\"description\\": \\"First name\\",
+              \\"mode\\": \\"REQUIRED\\",
+              \\"type\\": \\"STRING\\"
             },
             {
-              "column": "last_name",
-              "description": "Last name",
-              "mode": "REQUIRED",
-              "type": "STRING"
+              \\"column\\": \\"last_name\\",
+              \\"description\\": \\"Last name\\",
+              \\"mode\\": \\"REQUIRED\\",
+              \\"type\\": \\"STRING\\"
             },
             {
-              "column": "address",
-              "description": "Address",
-              "mode": "REPEATED",
-              "subcolumns": [
+              \\"column\\": \\"address\\",
+              \\"description\\": \\"Address\\",
+              \\"mode\\": \\"REPEATED\\",
+              \\"subcolumns\\": [
                 {
-                  "column": "city",
-                  "description": "City",
-                  "mode": "NULLABLE",
-                  "type": "STRING"
+                  \\"column\\": \\"city\\",
+                  \\"description\\": \\"City\\",
+                  \\"mode\\": \\"NULLABLE\\",
+                  \\"type\\": \\"STRING\\"
                 },
                 {
-                  "column": "state",
-                  "description": "State",
-                  "mode": "NULLABLE",
-                  "type": "STRING"
+                  \\"column\\": \\"state\\",
+                  \\"description\\": \\"State\\",
+                  \\"mode\\": \\"NULLABLE\\",
+                  \\"type\\": \\"STRING\\"
                 }
               ],
-              "type": "RECORD"
+              \\"type\\": \\"RECORD\\"
             }
           ]
         }
@@ -695,38 +695,38 @@ class Tag(pulumi.CustomResource):
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal",
             schema=\"\"\"{
-          "columns": [
+          \\"columns\\": [
             {
-              "column": "first_name",
-              "description": "First name",
-              "mode": "REQUIRED",
-              "type": "STRING"
+              \\"column\\": \\"first_name\\",
+              \\"description\\": \\"First name\\",
+              \\"mode\\": \\"REQUIRED\\",
+              \\"type\\": \\"STRING\\"
             },
             {
-              "column": "last_name",
-              "description": "Last name",
-              "mode": "REQUIRED",
-              "type": "STRING"
+              \\"column\\": \\"last_name\\",
+              \\"description\\": \\"Last name\\",
+              \\"mode\\": \\"REQUIRED\\",
+              \\"type\\": \\"STRING\\"
             },
             {
-              "column": "address",
-              "description": "Address",
-              "mode": "REPEATED",
-              "subcolumns": [
+              \\"column\\": \\"address\\",
+              \\"description\\": \\"Address\\",
+              \\"mode\\": \\"REPEATED\\",
+              \\"subcolumns\\": [
                 {
-                  "column": "city",
-                  "description": "City",
-                  "mode": "NULLABLE",
-                  "type": "STRING"
+                  \\"column\\": \\"city\\",
+                  \\"description\\": \\"City\\",
+                  \\"mode\\": \\"NULLABLE\\",
+                  \\"type\\": \\"STRING\\"
                 },
                 {
-                  "column": "state",
-                  "description": "State",
-                  "mode": "NULLABLE",
-                  "type": "STRING"
+                  \\"column\\": \\"state\\",
+                  \\"description\\": \\"State\\",
+                  \\"mode\\": \\"NULLABLE\\",
+                  \\"type\\": \\"STRING\\"
                 }
               ],
-              "type": "RECORD"
+              \\"type\\": \\"RECORD\\"
             }
           ]
         }

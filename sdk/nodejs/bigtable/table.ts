@@ -45,17 +45,17 @@ import * as utilities from "../utilities";
  *         {
  *             family: "family-third",
  *             type: `        {
- * \x09\x09\x09\x09\x09"aggregateType": {
- * \x09\x09\x09\x09\x09\x09"max": {},
- * \x09\x09\x09\x09\x09\x09"inputType": {
- * \x09\x09\x09\x09\x09\x09\x09"int64Type": {
- * \x09\x09\x09\x09\x09\x09\x09\x09"encoding": {
- * \x09\x09\x09\x09\x09\x09\x09\x09\x09"bigEndianBytes": {}
- * \x09\x09\x09\x09\x09\x09\x09\x09}
- * \x09\x09\x09\x09\x09\x09\x09}
- * \x09\x09\x09\x09\x09\x09}
- * \x09\x09\x09\x09\x09}
- * \x09\x09\x09\x09}
+ * \\t\\t\\t\\t\\t\\"aggregateType\\": {
+ * \\t\\t\\t\\t\\t\\t\\"max\\": {},
+ * \\t\\t\\t\\t\\t\\t\\"inputType\\": {
+ * \\t\\t\\t\\t\\t\\t\\t\\"int64Type\\": {
+ * \\t\\t\\t\\t\\t\\t\\t\\t\\"encoding\\": {
+ * \\t\\t\\t\\t\\t\\t\\t\\t\\t\\"bigEndianBytes\\": {}
+ * \\t\\t\\t\\t\\t\\t\\t\\t}
+ * \\t\\t\\t\\t\\t\\t\\t}
+ * \\t\\t\\t\\t\\t\\t}
+ * \\t\\t\\t\\t\\t}
+ * \\t\\t\\t\\t}
  * `,
  *         },
  *     ],

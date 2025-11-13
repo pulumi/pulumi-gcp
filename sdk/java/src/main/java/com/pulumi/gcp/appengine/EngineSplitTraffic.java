@@ -27,6 +27,115 @@ import javax.annotation.Nullable;
  * 
  * ### App Engine Service Split Traffic
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.appengine.StandardAppVersion;
+ * import com.pulumi.gcp.appengine.StandardAppVersionArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionEntrypointArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentZipArgs;
+ * import com.pulumi.gcp.appengine.EngineSplitTraffic;
+ * import com.pulumi.gcp.appengine.EngineSplitTrafficArgs;
+ * import com.pulumi.gcp.appengine.inputs.EngineSplitTrafficSplitArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .name("appengine-static-content")
+ *             .location("US")
+ *             .build());
+ * 
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
+ *             .name("hello-world.zip")
+ *             .bucket(bucket.name())
+ *             .source(new FileAsset("./test-fixtures/hello-world.zip"))
+ *             .build());
+ * 
+ *         var liveappV1 = new StandardAppVersion("liveappV1", StandardAppVersionArgs.builder()
+ *             .versionId("v1")
+ *             .service("liveapp")
+ *             .deleteServiceOnDestroy(true)
+ *             .runtime("nodejs20")
+ *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
+ *                 .shell("node ./app.js")
+ *                 .build())
+ *             .deployment(StandardAppVersionDeploymentArgs.builder()
+ *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
+ *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
+ *                         var bucketName = values.t1;
+ *                         var objectName = values.t2;
+ *                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
+ *                     }))
+ *                     .build())
+ *                 .build())
+ *             .envVariables(Map.of("port", "8080"))
+ *             .build());
+ * 
+ *         var liveappV2 = new StandardAppVersion("liveappV2", StandardAppVersionArgs.builder()
+ *             .versionId("v2")
+ *             .service("liveapp")
+ *             .noopOnDestroy(true)
+ *             .runtime("nodejs20")
+ *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
+ *                 .shell("node ./app.js")
+ *                 .build())
+ *             .deployment(StandardAppVersionDeploymentArgs.builder()
+ *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
+ *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
+ *                         var bucketName = values.t1;
+ *                         var objectName = values.t2;
+ *                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
+ *                     }))
+ *                     .build())
+ *                 .build())
+ *             .envVariables(Map.of("port", "8080"))
+ *             .build());
+ * 
+ *         var liveapp = new EngineSplitTraffic("liveapp", EngineSplitTrafficArgs.builder()
+ *             .service(liveappV2.service())
+ *             .migrateTraffic(false)
+ *             .split(EngineSplitTrafficSplitArgs.builder()
+ *                 .shardBy("IP")
+ *                 .allocations(Output.tuple(liveappV1.versionId(), liveappV2.versionId()).applyValue(values -> {
+ *                     var liveappV1VersionId = values.t1;
+ *                     var liveappV2VersionId = values.t2;
+ *                     return Output.tuple(liveappV1VersionId, liveappV2VersionId).applyValue(values -> {
+ *                         var __convert = values.t1;
+ *                         var __convert1 = values.t2;
+ *                         return Map.ofEntries(
+ *                             Map.entry(__convert, 0.75),
+ *                             Map.entry(__convert1, 0.25)
+ *                         );
+ *                     });
+ *                 }))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ServiceSplitTraffic can be imported using any of these accepted formats:

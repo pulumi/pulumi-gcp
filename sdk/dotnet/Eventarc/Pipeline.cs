@@ -119,7 +119,7 @@ namespace Pulumi.Gcp.Eventarc
     /// - getCurrentTime:
     ///     call: http.get
     ///     args:
-    ///         url: ${sys.get_env(""url"")}
+    ///         url: ${sys.get_env(\""url\"")}
     ///     result: CurrentDateTime
     /// - readWikipedia:
     ///     call: http.get
@@ -207,9 +207,9 @@ namespace Pulumi.Gcp.Eventarc
     ///                 Transformation = new Gcp.Eventarc.Inputs.PipelineMediationTransformationArgs
     ///                 {
     ///                     TransformationTemplate = @"{
-    /// ""id"": message.id,
-    /// ""datacontenttype"": ""application/json"",
-    /// ""data"": ""{ \""scrubbed\"": \""true\"" }""
+    /// \""id\"": message.id,
+    /// \""datacontenttype\"": \""application/json\"",
+    /// \""data\"": \""{ \\\""scrubbed\\\"": \\\""true\\\"" }\""
     /// }
     /// ",
     ///                 },
@@ -262,7 +262,7 @@ namespace Pulumi.Gcp.Eventarc
     ///                 {
     ///                     Protobuf = new Gcp.Eventarc.Inputs.PipelineDestinationOutputPayloadFormatProtobufArgs
     ///                     {
-    ///                         SchemaDefinition = @"syntax = ""proto3"";
+    ///                         SchemaDefinition = @"syntax = \""proto3\"";
     /// message schema {
     /// string name = 1;
     /// string severity = 2;
@@ -276,7 +276,7 @@ namespace Pulumi.Gcp.Eventarc
     ///         {
     ///             Protobuf = new Gcp.Eventarc.Inputs.PipelineInputPayloadFormatProtobufArgs
     ///             {
-    ///                 SchemaDefinition = @"syntax = ""proto3"";
+    ///                 SchemaDefinition = @"syntax = \""proto3\"";
     /// message schema {
     /// string name = 1;
     /// string severity = 2;
@@ -297,9 +297,9 @@ namespace Pulumi.Gcp.Eventarc
     ///                 Transformation = new Gcp.Eventarc.Inputs.PipelineMediationTransformationArgs
     ///                 {
     ///                     TransformationTemplate = @"{
-    /// ""id"": message.id,
-    /// ""datacontenttype"": ""application/json"",
-    /// ""data"": ""{ \""scrubbed\"": \""true\"" }""
+    /// \""id\"": message.id,
+    /// \""datacontenttype\"": \""application/json\"",
+    /// \""data\"": \""{ \\\""scrubbed\\\"": \\\""true\\\"" }\""
     /// }
     /// ",
     ///                 },
@@ -370,9 +370,9 @@ namespace Pulumi.Gcp.Eventarc
     ///                 Transformation = new Gcp.Eventarc.Inputs.PipelineMediationTransformationArgs
     ///                 {
     ///                     TransformationTemplate = @"{
-    /// ""id"": message.id,
-    /// ""datacontenttype"": ""application/json"",
-    /// ""data"": ""{ \""scrubbed\"": \""true\"" }""
+    /// \""id\"": message.id,
+    /// \""datacontenttype\"": \""application/json\"",
+    /// \""data\"": \""{ \\\""scrubbed\\\"": \\\""true\\\"" }\""
     /// }
     /// ",
     ///                 },

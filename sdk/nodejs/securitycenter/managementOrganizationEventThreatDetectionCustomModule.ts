@@ -19,6 +19,31 @@ import * as utilities from "../utilities";
  *
  * ### Scc Management Organization Event Threat Detection Custom Module
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.securitycenter.ManagementOrganizationEventThreatDetectionCustomModule("example", {
+ *     organization: "123456789",
+ *     location: "global",
+ *     displayName: "basic_custom_module",
+ *     enablementState: "ENABLED",
+ *     type: "CONFIGURABLE_BAD_IP",
+ *     description: "My Event Threat Detection Custom Module",
+ *     config: JSON.stringify({
+ *         metadata: {
+ *             severity: "LOW",
+ *             description: "Flagged by Forcepoint as malicious",
+ *             recommendation: "Contact the owner of the relevant project.",
+ *         },
+ *         ips: [
+ *             "192.0.2.1",
+ *             "192.0.2.0/24",
+ *         ],
+ *     }),
+ * });
+ * ```
+ *
  * ## Import
  *
  * OrganizationEventThreatDetectionCustomModule can be imported using any of these accepted formats:

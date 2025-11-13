@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * - getCurrentTime:
  *     call: http.get
  *     args:
- *         url: \${sys.get_env("url")}
+ *         url: \${sys.get_env(\\"url\\")}
  *     result: currentTime
  * - readWikipedia:
  *     call: http.get
@@ -109,7 +109,7 @@ import * as utilities from "../utilities";
  * - getCurrentTime:
  *     call: http.get
  *     args:
- *         url: \${sys.get_env("url")}
+ *         url: \${sys.get_env(\\"url\\")}
  *     result: currentTime
  * - readWikipedia:
  *     call: http.get

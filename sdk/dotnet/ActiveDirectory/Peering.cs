@@ -22,6 +22,70 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     /// ### Active Directory Peering Basic
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var source_network = new Gcp.Compute.Network("source-network", new()
+    ///     {
+    ///         Name = "ad-network",
+    ///     });
+    /// 
+    ///     var ad_domain = new Gcp.ActiveDirectory.Domain("ad-domain", new()
+    ///     {
+    ///         DomainName = "ad.test.hashicorptest.com",
+    ///         Locations = new[]
+    ///         {
+    ///             "us-central1",
+    ///         },
+    ///         ReservedIpRange = "192.168.255.0/24",
+    ///         AuthorizedNetworks = new[]
+    ///         {
+    ///             source_network.Id,
+    ///         },
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var peered_project = new Gcp.Organizations.Project("peered-project", new()
+    ///     {
+    ///         Name = "my-peered-project",
+    ///         ProjectId = "my-peered-project",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var compute = new Gcp.Projects.Service("compute", new()
+    ///     {
+    ///         Project = peered_project.ProjectId,
+    ///         ServiceName = "compute.googleapis.com",
+    ///     });
+    /// 
+    ///     var peered_network = new Gcp.Compute.Network("peered-network", new()
+    ///     {
+    ///         Project = compute.Project,
+    ///         Name = "ad-peered-network",
+    ///     });
+    /// 
+    ///     var ad_domain_peering = new Gcp.ActiveDirectory.Peering("ad-domain-peering", new()
+    ///     {
+    ///         DomainResource = ad_domain.Name,
+    ///         PeeringId = "ad-domain-peering",
+    ///         AuthorizedNetwork = peered_network.Id,
+    ///         DeletionProtection = false,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource does not support import.
