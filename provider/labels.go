@@ -114,7 +114,8 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 		}
 		switch key.Name {
 		case "terraform_labels":
-			ctx.SchemaInfo().Name = "pulumiLabels"
+			replacingProperty := "pulumiLabels"
+			ctx.SchemaInfo().Name = replacingProperty
 
 			// We only apply this transform for resources
 			if root, ok := ctx.Root.(tfbridge.VisitResourceRoot); ok {
@@ -123,6 +124,17 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 					root.Info.Fields)
 
 				toUpdate[root.TfToken] = append(toUpdate[root.TfToken], schemaPath)
+				if len(path) == 1 {
+					// assuming these properties are top-level, we also need
+					// to inject an empty raw state delta piece for the field
+					// to handle state upgrades from v8.x to v9
+					// see https://github.com/pulumi/pulumi-terraform-bridge/issues/3225
+					rawStateDeltaKey := "__pulumi_raw_state_delta"
+					toUpdate[root.TfToken] = append(toUpdate[root.TfToken],
+						resource.PropertyPath{rawStateDeltaKey, "obj", "ps", replacingProperty},
+						resource.PropertyPath{rawStateDeltaKey, "obj", "ps", replacingProperty, "map"},
+					)
+				}
 			}
 
 			ctx.SchemaInfo().Secret = tfbridge.True()

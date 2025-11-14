@@ -130,3 +130,7 @@ func TestTopicUpgrade(t *testing.T) {
 func TestServerlessUpgrade(t *testing.T) {
 	defaultUpgradeTest(t, "serverless")
 }
+
+func TestSecurityPolicyUpgrade(t *testing.T) {
+	defaultUpgradeTest(t, "security-policy-ts")
+}
