@@ -127,6 +127,25 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
     }
 
     /**
+     * A map of resource manager tags to add to all instances.
+     * Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+     * (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+     * 
+     */
+    @Import(name="resourceManagerTags")
+    private @Nullable Output<Map<String,String>> resourceManagerTags;
+
+    /**
+     * @return A map of resource manager tags to add to all instances.
+     * Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+     * (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+     * 
+     */
+    public Optional<Output<Map<String,String>>> resourceManagerTags() {
+        return Optional.ofNullable(this.resourceManagerTags);
+    }
+
+    /**
      * The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
      * 
@@ -255,6 +274,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
         this.network = $.network;
         this.nodeGroupAffinity = $.nodeGroupAffinity;
         this.reservationAffinity = $.reservationAffinity;
+        this.resourceManagerTags = $.resourceManagerTags;
         this.serviceAccount = $.serviceAccount;
         this.serviceAccountScopes = $.serviceAccountScopes;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
@@ -419,6 +439,31 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
          */
         public Builder reservationAffinity(ClusterClusterConfigGceClusterConfigReservationAffinityArgs reservationAffinity) {
             return reservationAffinity(Output.of(reservationAffinity));
+        }
+
+        /**
+         * @param resourceManagerTags A map of resource manager tags to add to all instances.
+         * Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+         * (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagerTags(@Nullable Output<Map<String,String>> resourceManagerTags) {
+            $.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
+
+        /**
+         * @param resourceManagerTags A map of resource manager tags to add to all instances.
+         * Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+         * (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
+            return resourceManagerTags(Output.of(resourceManagerTags));
         }
 
         /**

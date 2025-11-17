@@ -242,6 +242,11 @@ export class SecretVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * The ID of the project in which the resource belongs. If it is not provided,
+     * the provider project is used
+     */
+    declare public readonly project: pulumi.Output<string>;
+    /**
      * Secret Manager secret resource
      */
     declare public readonly secret: pulumi.Output<string>;
@@ -283,6 +288,7 @@ export class SecretVersion extends pulumi.CustomResource {
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["isSecretDataBase64"] = state?.isSecretDataBase64;
             resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
             resourceInputs["secret"] = state?.secret;
             resourceInputs["secretData"] = state?.secretData;
             resourceInputs["secretDataWo"] = state?.secretDataWo;
@@ -296,6 +302,7 @@ export class SecretVersion extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["isSecretDataBase64"] = args?.isSecretDataBase64;
+            resourceInputs["project"] = args?.project;
             resourceInputs["secret"] = args?.secret;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
             resourceInputs["secretDataWo"] = args?.secretDataWo ? pulumi.secret(args.secretDataWo) : undefined;
@@ -347,6 +354,11 @@ export interface SecretVersionState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The ID of the project in which the resource belongs. If it is not provided,
+     * the provider project is used
+     */
+    project?: pulumi.Input<string>;
+    /**
      * Secret Manager secret resource
      */
     secret?: pulumi.Input<string>;
@@ -391,6 +403,11 @@ export interface SecretVersionArgs {
      * If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
      */
     isSecretDataBase64?: pulumi.Input<boolean>;
+    /**
+     * The ID of the project in which the resource belongs. If it is not provided,
+     * the provider project is used
+     */
+    project?: pulumi.Input<string>;
     /**
      * Secret Manager secret resource
      */

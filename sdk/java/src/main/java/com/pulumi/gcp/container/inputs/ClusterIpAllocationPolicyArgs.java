@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyAutoIpamConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyNetworkTierConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -59,16 +60,12 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     /**
      * All the information related to Auto IPAM. Structure is documented below
      * 
-     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
-     * 
      */
     @Import(name="autoIpamConfig")
     private @Nullable Output<ClusterIpAllocationPolicyAutoIpamConfigArgs> autoIpamConfig;
 
     /**
      * @return All the information related to Auto IPAM. Structure is documented below
-     * 
-     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
      * 
      */
     public Optional<Output<ClusterIpAllocationPolicyAutoIpamConfigArgs>> autoIpamConfig() {
@@ -115,6 +112,25 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> clusterSecondaryRangeName() {
         return Optional.ofNullable(this.clusterSecondaryRangeName);
+    }
+
+    /**
+     * Contains network tier information. Structure is documented below
+     * 
+     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+     * 
+     */
+    @Import(name="networkTierConfig")
+    private @Nullable Output<ClusterIpAllocationPolicyNetworkTierConfigArgs> networkTierConfig;
+
+    /**
+     * @return Contains network tier information. Structure is documented below
+     * 
+     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+     * 
+     */
+    public Optional<Output<ClusterIpAllocationPolicyNetworkTierConfigArgs>> networkTierConfig() {
+        return Optional.ofNullable(this.networkTierConfig);
     }
 
     /**
@@ -203,6 +219,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         this.autoIpamConfig = $.autoIpamConfig;
         this.clusterIpv4CidrBlock = $.clusterIpv4CidrBlock;
         this.clusterSecondaryRangeName = $.clusterSecondaryRangeName;
+        this.networkTierConfig = $.networkTierConfig;
         this.podCidrOverprovisionConfig = $.podCidrOverprovisionConfig;
         this.servicesIpv4CidrBlock = $.servicesIpv4CidrBlock;
         this.servicesSecondaryRangeName = $.servicesSecondaryRangeName;
@@ -289,8 +306,6 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param autoIpamConfig All the information related to Auto IPAM. Structure is documented below
          * 
-         * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
-         * 
          * @return builder
          * 
          */
@@ -301,8 +316,6 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
 
         /**
          * @param autoIpamConfig All the information related to Auto IPAM. Structure is documented below
-         * 
-         * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
          * 
          * @return builder
          * 
@@ -363,6 +376,31 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
          */
         public Builder clusterSecondaryRangeName(String clusterSecondaryRangeName) {
             return clusterSecondaryRangeName(Output.of(clusterSecondaryRangeName));
+        }
+
+        /**
+         * @param networkTierConfig Contains network tier information. Structure is documented below
+         * 
+         * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkTierConfig(@Nullable Output<ClusterIpAllocationPolicyNetworkTierConfigArgs> networkTierConfig) {
+            $.networkTierConfig = networkTierConfig;
+            return this;
+        }
+
+        /**
+         * @param networkTierConfig Contains network tier information. Structure is documented below
+         * 
+         * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkTierConfig(ClusterIpAllocationPolicyNetworkTierConfigArgs networkTierConfig) {
+            return networkTierConfig(Output.of(networkTierConfig));
         }
 
         /**

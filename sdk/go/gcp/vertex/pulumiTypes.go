@@ -2301,6 +2301,9 @@ type AiEndpointPrivateServiceConnectConfig struct {
 	EnableSecurePrivateServiceConnect *bool `pulumi:"enableSecurePrivateServiceConnect"`
 	// A list of Projects from which the forwarding rule will target the service attachment.
 	ProjectAllowlists []string `pulumi:"projectAllowlists"`
+	// List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+	// Structure is documented below.
+	PscAutomationConfigs []AiEndpointPrivateServiceConnectConfigPscAutomationConfig `pulumi:"pscAutomationConfigs"`
 }
 
 // AiEndpointPrivateServiceConnectConfigInput is an input type that accepts AiEndpointPrivateServiceConnectConfigArgs and AiEndpointPrivateServiceConnectConfigOutput values.
@@ -2321,6 +2324,9 @@ type AiEndpointPrivateServiceConnectConfigArgs struct {
 	EnableSecurePrivateServiceConnect pulumi.BoolPtrInput `pulumi:"enableSecurePrivateServiceConnect"`
 	// A list of Projects from which the forwarding rule will target the service attachment.
 	ProjectAllowlists pulumi.StringArrayInput `pulumi:"projectAllowlists"`
+	// List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+	// Structure is documented below.
+	PscAutomationConfigs AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayInput `pulumi:"pscAutomationConfigs"`
 }
 
 func (AiEndpointPrivateServiceConnectConfigArgs) ElementType() reflect.Type {
@@ -2415,6 +2421,14 @@ func (o AiEndpointPrivateServiceConnectConfigOutput) ProjectAllowlists() pulumi.
 	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfig) []string { return v.ProjectAllowlists }).(pulumi.StringArrayOutput)
 }
 
+// List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+// Structure is documented below.
+func (o AiEndpointPrivateServiceConnectConfigOutput) PscAutomationConfigs() AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput {
+	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfig) []AiEndpointPrivateServiceConnectConfigPscAutomationConfig {
+		return v.PscAutomationConfigs
+	}).(AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput)
+}
+
 type AiEndpointPrivateServiceConnectConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (AiEndpointPrivateServiceConnectConfigPtrOutput) ElementType() reflect.Type {
@@ -2467,6 +2481,171 @@ func (o AiEndpointPrivateServiceConnectConfigPtrOutput) ProjectAllowlists() pulu
 		}
 		return v.ProjectAllowlists
 	}).(pulumi.StringArrayOutput)
+}
+
+// List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+// Structure is documented below.
+func (o AiEndpointPrivateServiceConnectConfigPtrOutput) PscAutomationConfigs() AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput {
+	return o.ApplyT(func(v *AiEndpointPrivateServiceConnectConfig) []AiEndpointPrivateServiceConnectConfigPscAutomationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PscAutomationConfigs
+	}).(AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput)
+}
+
+type AiEndpointPrivateServiceConnectConfigPscAutomationConfig struct {
+	// (Output)
+	// Error message if the PSC service automation failed.
+	ErrorMessage *string `pulumi:"errorMessage"`
+	// (Output)
+	// Forwarding rule created by the PSC service automation.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+	// (Output)
+	// IP address rule created by the PSC service automation.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+	Network string `pulumi:"network"`
+	// Project id used to create forwarding rule.
+	ProjectId string `pulumi:"projectId"`
+	// (Output)
+	// The state of the PSC service automation.
+	State *string `pulumi:"state"`
+}
+
+// AiEndpointPrivateServiceConnectConfigPscAutomationConfigInput is an input type that accepts AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs and AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput values.
+// You can construct a concrete instance of `AiEndpointPrivateServiceConnectConfigPscAutomationConfigInput` via:
+//
+//	AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs{...}
+type AiEndpointPrivateServiceConnectConfigPscAutomationConfigInput interface {
+	pulumi.Input
+
+	ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput() AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput
+	ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigOutputWithContext(context.Context) AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput
+}
+
+type AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs struct {
+	// (Output)
+	// Error message if the PSC service automation failed.
+	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
+	// (Output)
+	// Forwarding rule created by the PSC service automation.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+	// (Output)
+	// IP address rule created by the PSC service automation.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Project id used to create forwarding rule.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// (Output)
+	// The state of the PSC service automation.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointPrivateServiceConnectConfigPscAutomationConfig)(nil)).Elem()
+}
+
+func (i AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs) ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput() AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput {
+	return i.ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigOutputWithContext(context.Background())
+}
+
+func (i AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs) ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigOutputWithContext(ctx context.Context) AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput)
+}
+
+// AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayInput is an input type that accepts AiEndpointPrivateServiceConnectConfigPscAutomationConfigArray and AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput values.
+// You can construct a concrete instance of `AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayInput` via:
+//
+//	AiEndpointPrivateServiceConnectConfigPscAutomationConfigArray{ AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs{...} }
+type AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput() AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput
+	ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutputWithContext(context.Context) AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput
+}
+
+type AiEndpointPrivateServiceConnectConfigPscAutomationConfigArray []AiEndpointPrivateServiceConnectConfigPscAutomationConfigInput
+
+func (AiEndpointPrivateServiceConnectConfigPscAutomationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointPrivateServiceConnectConfigPscAutomationConfig)(nil)).Elem()
+}
+
+func (i AiEndpointPrivateServiceConnectConfigPscAutomationConfigArray) ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput() AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput {
+	return i.ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointPrivateServiceConnectConfigPscAutomationConfigArray) ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutputWithContext(ctx context.Context) AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput)
+}
+
+type AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointPrivateServiceConnectConfigPscAutomationConfig)(nil)).Elem()
+}
+
+func (o AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput() AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput {
+	return o
+}
+
+func (o AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigOutputWithContext(ctx context.Context) AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput {
+	return o
+}
+
+// (Output)
+// Error message if the PSC service automation failed.
+func (o AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfigPscAutomationConfig) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Forwarding rule created by the PSC service automation.
+func (o AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfigPscAutomationConfig) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// IP address rule created by the PSC service automation.
+func (o AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfigPscAutomationConfig) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+func (o AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfigPscAutomationConfig) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Project id used to create forwarding rule.
+func (o AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfigPscAutomationConfig) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The state of the PSC service automation.
+func (o AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfigPscAutomationConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointPrivateServiceConnectConfigPscAutomationConfig)(nil)).Elem()
+}
+
+func (o AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput) ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput() AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput {
+	return o
+}
+
+func (o AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput) ToAiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutputWithContext(ctx context.Context) AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput {
+	return o
+}
+
+func (o AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput) Index(i pulumi.IntInput) AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointPrivateServiceConnectConfigPscAutomationConfig {
+		return vs[0].([]AiEndpointPrivateServiceConnectConfigPscAutomationConfig)[vs[1].(int)]
+	}).(AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput)
 }
 
 type AiEndpointWithModelGardenDeploymentDeployConfig struct {
@@ -11836,6 +12015,8 @@ func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput) Title() pulu
 }
 
 type AiFeatureOnlineStoreFeatureviewSyncConfig struct {
+	// If true, syncs the FeatureView in a continuous manner to Online Store.
+	Continuous *bool `pulumi:"continuous"`
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
 	Cron *string `pulumi:"cron"`
@@ -11853,6 +12034,8 @@ type AiFeatureOnlineStoreFeatureviewSyncConfigInput interface {
 }
 
 type AiFeatureOnlineStoreFeatureviewSyncConfigArgs struct {
+	// If true, syncs the FeatureView in a continuous manner to Online Store.
+	Continuous pulumi.BoolPtrInput `pulumi:"continuous"`
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
 	Cron pulumi.StringPtrInput `pulumi:"cron"`
@@ -11935,6 +12118,11 @@ func (o AiFeatureOnlineStoreFeatureviewSyncConfigOutput) ToAiFeatureOnlineStoreF
 	}).(AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput)
 }
 
+// If true, syncs the FeatureView in a continuous manner to Online Store.
+func (o AiFeatureOnlineStoreFeatureviewSyncConfigOutput) Continuous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewSyncConfig) *bool { return v.Continuous }).(pulumi.BoolPtrOutput)
+}
+
 // Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 // To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
 func (o AiFeatureOnlineStoreFeatureviewSyncConfigOutput) Cron() pulumi.StringPtrOutput {
@@ -11963,6 +12151,16 @@ func (o AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput) Elem() AiFeatureOnli
 		var ret AiFeatureOnlineStoreFeatureviewSyncConfig
 		return ret
 	}).(AiFeatureOnlineStoreFeatureviewSyncConfigOutput)
+}
+
+// If true, syncs the FeatureView in a continuous manner to Online Store.
+func (o AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput) Continuous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewSyncConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Continuous
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
@@ -20504,6 +20702,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrInput)(nil)).Elem(), AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPrivateServiceConnectConfigInput)(nil)).Elem(), AiEndpointPrivateServiceConnectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPrivateServiceConnectConfigPtrInput)(nil)).Elem(), AiEndpointPrivateServiceConnectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPrivateServiceConnectConfigPscAutomationConfigInput)(nil)).Elem(), AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayInput)(nil)).Elem(), AiEndpointPrivateServiceConnectConfigPscAutomationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs{})
@@ -20741,6 +20941,8 @@ func init() {
 	pulumi.RegisterOutputType(AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointPrivateServiceConnectConfigOutput{})
 	pulumi.RegisterOutputType(AiEndpointPrivateServiceConnectConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointPrivateServiceConnectConfigPscAutomationConfigOutput{})
+	pulumi.RegisterOutputType(AiEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput{})

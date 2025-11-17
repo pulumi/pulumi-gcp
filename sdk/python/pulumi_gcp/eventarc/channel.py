@@ -21,6 +21,7 @@ class ChannelArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  crypto_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  third_party_provider: Optional[pulumi.Input[_builtins.str]] = None):
@@ -28,6 +29,9 @@ class ChannelArgs:
         The set of arguments for constructing a Channel resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the channel.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The resource name of the channel. Must be unique within the location on the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -36,6 +40,8 @@ class ChannelArgs:
         pulumi.set(__self__, "location", location)
         if crypto_key_name is not None:
             pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -66,6 +72,20 @@ class ChannelArgs:
     @crypto_key_name.setter
     def crypto_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "crypto_key_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        User-defined labels for the channel.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -111,10 +131,13 @@ class _ChannelState:
                  activation_token: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  crypto_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  third_party_provider: Optional[pulumi.Input[_builtins.str]] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -124,11 +147,17 @@ class _ChannelState:
         :param pulumi.Input[_builtins.str] activation_token: The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         :param pulumi.Input[_builtins.str] create_time: The creation time.
         :param pulumi.Input[_builtins.str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the channel.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: The resource name of the channel. Must be unique within the location on the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] pubsub_topic: The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The state of a Channel.
         :param pulumi.Input[_builtins.str] third_party_provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
         :param pulumi.Input[_builtins.str] uid: Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -140,6 +169,10 @@ class _ChannelState:
             pulumi.set(__self__, "create_time", create_time)
         if crypto_key_name is not None:
             pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -148,6 +181,8 @@ class _ChannelState:
             pulumi.set(__self__, "project", project)
         if pubsub_topic is not None:
             pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if third_party_provider is not None:
@@ -192,6 +227,32 @@ class _ChannelState:
     @crypto_key_name.setter
     def crypto_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "crypto_key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        User-defined labels for the channel.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -241,6 +302,19 @@ class _ChannelState:
     @pubsub_topic.setter
     def pubsub_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "pubsub_topic", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -298,6 +372,7 @@ class Channel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -354,6 +429,9 @@ class Channel(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the channel.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: The resource name of the channel. Must be unique within the location on the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -430,6 +508,7 @@ class Channel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -444,6 +523,7 @@ class Channel(pulumi.CustomResource):
             __props__ = ChannelArgs.__new__(ChannelArgs)
 
             __props__.__dict__["crypto_key_name"] = crypto_key_name
+            __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -452,10 +532,14 @@ class Channel(pulumi.CustomResource):
             __props__.__dict__["third_party_provider"] = third_party_provider
             __props__.__dict__["activation_token"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pubsub_topic"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Channel, __self__).__init__(
             'gcp:eventarc/channel:Channel',
             resource_name,
@@ -469,10 +553,13 @@ class Channel(pulumi.CustomResource):
             activation_token: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             crypto_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             third_party_provider: Optional[pulumi.Input[_builtins.str]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -487,11 +574,17 @@ class Channel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] activation_token: The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         :param pulumi.Input[_builtins.str] create_time: The creation time.
         :param pulumi.Input[_builtins.str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the channel.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: The resource name of the channel. Must be unique within the location on the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] pubsub_topic: The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The state of a Channel.
         :param pulumi.Input[_builtins.str] third_party_provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
         :param pulumi.Input[_builtins.str] uid: Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -504,10 +597,13 @@ class Channel(pulumi.CustomResource):
         __props__.__dict__["activation_token"] = activation_token
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["crypto_key_name"] = crypto_key_name
+        __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pubsub_topic"] = pubsub_topic
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
         __props__.__dict__["third_party_provider"] = third_party_provider
         __props__.__dict__["uid"] = uid
@@ -537,6 +633,24 @@ class Channel(pulumi.CustomResource):
         Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "crypto_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        User-defined labels for the channel.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter
@@ -570,6 +684,15 @@ class Channel(pulumi.CustomResource):
         The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         """
         return pulumi.get(self, "pubsub_topic")
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @_builtins.property
     @pulumi.getter

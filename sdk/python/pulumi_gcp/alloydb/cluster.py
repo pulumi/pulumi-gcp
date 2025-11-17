@@ -71,7 +71,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
+        :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation. This must be set for all new Clusters.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -300,7 +300,7 @@ class ClusterArgs:
     @pulumi.getter(name="initialUser")
     def initial_user(self) -> Optional[pulumi.Input['ClusterInitialUserArgs']]:
         """
-        Initial user to setup during cluster creation.
+        Initial user to setup during cluster creation. This must be set for all new Clusters.
         Structure is documented below.
         """
         return pulumi.get(self, "initial_user")
@@ -514,7 +514,7 @@ class _ClusterState:
                Output only. The encryption information for the WALs and backups required for ContinuousBackup.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
+        :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation. This must be set for all new Clusters.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -831,7 +831,7 @@ class _ClusterState:
     @pulumi.getter(name="initialUser")
     def initial_user(self) -> Optional[pulumi.Input['ClusterInitialUserArgs']]:
         """
-        Initial user to setup during cluster creation.
+        Initial user to setup during cluster creation. This must be set for all new Clusters.
         Structure is documented below.
         """
         return pulumi.get(self, "initial_user")
@@ -1120,6 +1120,9 @@ class Cluster(pulumi.CustomResource):
             network_config={
                 "network": default_network.id,
             },
+            initial_user={
+                "password": "alloydb-cluster",
+            },
             deletion_protection=False)
         project = gcp.organizations.get_project()
         ```
@@ -1296,6 +1299,9 @@ class Cluster(pulumi.CustomResource):
             location="us-central1",
             network_config={
                 "network": default.id,
+            },
+            initial_user={
+                "password": "alloydb-primary-cluster",
             },
             deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
@@ -1390,7 +1396,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']] initial_user: Initial user to setup during cluster creation.
+        :param pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']] initial_user: Initial user to setup during cluster creation. This must be set for all new Clusters.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1437,6 +1443,9 @@ class Cluster(pulumi.CustomResource):
             location="us-central1",
             network_config={
                 "network": default_network.id,
+            },
+            initial_user={
+                "password": "alloydb-cluster",
             },
             deletion_protection=False)
         project = gcp.organizations.get_project()
@@ -1614,6 +1623,9 @@ class Cluster(pulumi.CustomResource):
             location="us-central1",
             network_config={
                 "network": default.id,
+            },
+            initial_user={
+                "password": "alloydb-primary-cluster",
             },
             deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
@@ -1854,7 +1866,7 @@ class Cluster(pulumi.CustomResource):
                Output only. The encryption information for the WALs and backups required for ContinuousBackup.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']] initial_user: Initial user to setup during cluster creation.
+        :param pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']] initial_user: Initial user to setup during cluster creation. This must be set for all new Clusters.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -2077,7 +2089,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="initialUser")
     def initial_user(self) -> pulumi.Output[Optional['outputs.ClusterInitialUser']]:
         """
-        Initial user to setup during cluster creation.
+        Initial user to setup during cluster creation. This must be set for all new Clusters.
         Structure is documented below.
         """
         return pulumi.get(self, "initial_user")

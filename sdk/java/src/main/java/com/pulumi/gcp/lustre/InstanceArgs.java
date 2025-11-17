@@ -180,6 +180,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The placement policy name for the instance in the format of
+     * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+     * 
+     */
+    @Import(name="placementPolicy")
+    private @Nullable Output<String> placementPolicy;
+
+    /**
+     * @return The placement policy name for the instance in the format of
+     * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+     * 
+     */
+    public Optional<Output<String>> placementPolicy() {
+        return Optional.ofNullable(this.placementPolicy);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -208,6 +225,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.network = $.network;
         this.perUnitStorageThroughput = $.perUnitStorageThroughput;
+        this.placementPolicy = $.placementPolicy;
         this.project = $.project;
     }
 
@@ -442,6 +460,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder perUnitStorageThroughput(String perUnitStorageThroughput) {
             return perUnitStorageThroughput(Output.of(perUnitStorageThroughput));
+        }
+
+        /**
+         * @param placementPolicy The placement policy name for the instance in the format of
+         * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementPolicy(@Nullable Output<String> placementPolicy) {
+            $.placementPolicy = placementPolicy;
+            return this;
+        }
+
+        /**
+         * @param placementPolicy The placement policy name for the instance in the format of
+         * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placementPolicy(String placementPolicy) {
+            return placementPolicy(Output.of(placementPolicy));
         }
 
         /**

@@ -22,6 +22,9 @@ import * as utilities from "../utilities";
  *     networkConfig: {
  *         network: defaultNetwork.id,
  *     },
+ *     initialUser: {
+ *         password: "alloydb-cluster",
+ *     },
  *     deletionProtection: false,
  * });
  * const project = gcp.organizations.getProject({});
@@ -220,6 +223,9 @@ import * as utilities from "../utilities";
  *     networkConfig: {
  *         network: _default.id,
  *     },
+ *     initialUser: {
+ *         password: "alloydb-primary-cluster",
+ *     },
  *     deletionProtection: false,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
@@ -399,7 +405,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly etag: pulumi.Output<string | undefined>;
     /**
-     * Initial user to setup during cluster creation.
+     * Initial user to setup during cluster creation. This must be set for all new Clusters.
      * Structure is documented below.
      */
     declare public readonly initialUser: pulumi.Output<outputs.alloydb.ClusterInitialUser | undefined>;
@@ -673,7 +679,7 @@ export interface ClusterState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * Initial user to setup during cluster creation.
+     * Initial user to setup during cluster creation. This must be set for all new Clusters.
      * Structure is documented below.
      */
     initialUser?: pulumi.Input<inputs.alloydb.ClusterInitialUser>;
@@ -828,7 +834,7 @@ export interface ClusterArgs {
      */
     etag?: pulumi.Input<string>;
     /**
-     * Initial user to setup during cluster creation.
+     * Initial user to setup during cluster creation. This must be set for all new Clusters.
      * Structure is documented below.
      */
     initialUser?: pulumi.Input<inputs.alloydb.ClusterInitialUser>;

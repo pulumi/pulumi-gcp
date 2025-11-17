@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub
 {
     /// <summary>
+    /// &gt; **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `GooglePubsubReservation` instead.
+    /// 
     /// A named resource representing a shared pool of capacity.
     /// 
     /// To get more information about Reservation, see:

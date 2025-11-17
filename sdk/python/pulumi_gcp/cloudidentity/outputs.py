@@ -34,6 +34,7 @@ __all__ = [
     'GetGroupsGroupResult',
     'GetGroupsGroupAdditionalGroupKeyResult',
     'GetGroupsGroupGroupKeyResult',
+    'GetPolicyPolicyQueryResult',
 ]
 
 @pulumi.output_type
@@ -949,5 +950,56 @@ class GetGroupsGroupGroupKeyResult(dict):
         and must be in the form of `identitysources/{identity_source_id}`.
         """
         return pulumi.get(self, "namespace")
+
+
+@pulumi.output_type
+class GetPolicyPolicyQueryResult(dict):
+    def __init__(__self__, *,
+                 group: _builtins.str,
+                 org_unit: _builtins.str,
+                 query: _builtins.str,
+                 sort_order: _builtins.float):
+        """
+        :param _builtins.str group: The group that the policy applies to.
+        :param _builtins.str org_unit: The org unit that the policy applies to.
+        :param _builtins.str query: The query that defines which entities the policy applies to.
+        :param _builtins.float sort_order: The sort order of the policy.
+        """
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "org_unit", org_unit)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "sort_order", sort_order)
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> _builtins.str:
+        """
+        The group that the policy applies to.
+        """
+        return pulumi.get(self, "group")
+
+    @_builtins.property
+    @pulumi.getter(name="orgUnit")
+    def org_unit(self) -> _builtins.str:
+        """
+        The org unit that the policy applies to.
+        """
+        return pulumi.get(self, "org_unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> _builtins.str:
+        """
+        The query that defines which entities the policy applies to.
+        """
+        return pulumi.get(self, "query")
+
+    @_builtins.property
+    @pulumi.getter(name="sortOrder")
+    def sort_order(self) -> _builtins.float:
+        """
+        The sort order of the policy.
+        """
+        return pulumi.get(self, "sort_order")
 
 

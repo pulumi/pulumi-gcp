@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataDiscoverySpecArgs;
+import com.pulumi.gcp.dataplex.inputs.DatascanDataDocumentationSpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
@@ -54,6 +55,21 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<DatascanDataDiscoverySpecArgs>> dataDiscoverySpec() {
         return Optional.ofNullable(this.dataDiscoverySpec);
+    }
+
+    /**
+     * DataDocumentationScan related setting.
+     * 
+     */
+    @Import(name="dataDocumentationSpec")
+    private @Nullable Output<DatascanDataDocumentationSpecArgs> dataDocumentationSpec;
+
+    /**
+     * @return DataDocumentationScan related setting.
+     * 
+     */
+    public Optional<Output<DatascanDataDocumentationSpecArgs>> dataDocumentationSpec() {
+        return Optional.ofNullable(this.dataDocumentationSpec);
     }
 
     /**
@@ -210,6 +226,7 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
     private DatascanArgs(DatascanArgs $) {
         this.data = $.data;
         this.dataDiscoverySpec = $.dataDiscoverySpec;
+        this.dataDocumentationSpec = $.dataDocumentationSpec;
         this.dataProfileSpec = $.dataProfileSpec;
         this.dataQualitySpec = $.dataQualitySpec;
         this.dataScanId = $.dataScanId;
@@ -283,6 +300,27 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataDiscoverySpec(DatascanDataDiscoverySpecArgs dataDiscoverySpec) {
             return dataDiscoverySpec(Output.of(dataDiscoverySpec));
+        }
+
+        /**
+         * @param dataDocumentationSpec DataDocumentationScan related setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDocumentationSpec(@Nullable Output<DatascanDataDocumentationSpecArgs> dataDocumentationSpec) {
+            $.dataDocumentationSpec = dataDocumentationSpec;
+            return this;
+        }
+
+        /**
+         * @param dataDocumentationSpec DataDocumentationScan related setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDocumentationSpec(DatascanDataDocumentationSpecArgs dataDocumentationSpec) {
+            return dataDocumentationSpec(Output.of(dataDocumentationSpec));
         }
 
         /**

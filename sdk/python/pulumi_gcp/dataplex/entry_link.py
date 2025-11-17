@@ -315,29 +315,29 @@ class EntryLink(pulumi.CustomResource):
 
         entry_group_basic = gcp.dataplex.EntryGroup("entry-group-basic",
             location="us-central1",
-            entry_group_id="tf-test-entry-group_64336",
+            entry_group_id="tf-test-entry-group_74000",
             project="1111111111111")
         entry_type_basic = gcp.dataplex.EntryType("entry-type-basic",
-            entry_type_id="tf-test-entry-type_74000",
+            entry_type_id="tf-test-entry-type_88722",
             location="us-central1",
             project="1111111111111")
         source = gcp.dataplex.Entry("source",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_id="tf-test-source-entry_34962",
+            entry_id="tf-test-source-entry_75125",
             entry_type=entry_type_basic.name,
             project="1111111111111")
         target = gcp.dataplex.Entry("target",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_id="tf-test-target-entry_75125",
+            entry_id="tf-test-target-entry_39249",
             entry_type=entry_type_basic.name,
             project="1111111111111")
         basic_entry_link = gcp.dataplex.EntryLink("basic_entry_link",
             project="1111111111111",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_link_id="tf-test-entry-link_88722",
+            entry_link_id="tf-test-entry-link_74391",
             entry_link_type="projects/655216118709/locations/global/entryLinkTypes/related",
             entry_references=[
                 {
@@ -356,37 +356,56 @@ class EntryLink(pulumi.CustomResource):
 
         entry_group_full = gcp.dataplex.EntryGroup("entry-group-full",
             location="us-central1",
-            entry_group_id="tf-test-entry-group-full_39249",
+            entry_group_id="tf-test-entry-group_16511",
             project="1111111111111")
         entry_type_full = gcp.dataplex.EntryType("entry-type-full",
-            entry_type_id="tf-test-entry-type-full_16511",
+            entry_type_id="tf-test-entry-type_9106",
             location="us-central1",
             project="1111111111111")
         source = gcp.dataplex.Entry("source",
             location="us-central1",
             entry_group_id=entry_group_full.entry_group_id,
-            entry_id="tf-test-source-entry-full_74391",
+            entry_id="tf-test-source-entry_8493",
             entry_type=entry_type_full.name,
             project="1111111111111")
-        target = gcp.dataplex.Entry("target",
+        term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
+            glossary_id="tf-test-glossary_27169",
+            location="us-central1")
+        term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
+            parent=pulumi.Output.all(
+                project=term_test_id_full.project,
+                glossary_id=term_test_id_full.glossary_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us-central1/glossaries/{resolved_outputs['glossary_id']}")
+        ,
+            glossary_id=term_test_id_full.glossary_id,
             location="us-central1",
-            entry_group_id=entry_group_full.entry_group_id,
-            entry_id="tf-test-target-entry-full_8493",
-            entry_type=entry_type_full.name,
-            project="1111111111111")
+            term_id="tf-test-term-full_75223",
+            labels={
+                "tag": "test-tf",
+            },
+            display_name="terraform term",
+            description="term created by Terraform")
         full_entry_link = gcp.dataplex.EntryLink("full_entry_link",
             project="1111111111111",
             location="us-central1",
             entry_group_id=entry_group_full.entry_group_id,
-            entry_link_id="tf-test-entry-link-full_9106",
-            entry_link_type="projects/655216118709/locations/global/entryLinkTypes/related",
+            entry_link_id="tf-test-entry-link_41819",
+            entry_link_type="projects/655216118709/locations/global/entryLinkTypes/definition",
             entry_references=[
                 {
                     "name": source.name,
+                    "type": "SOURCE",
                     "path": "",
                 },
                 {
-                    "name": target.name,
+                    "name": pulumi.Output.all(
+                        entry-group-fullProject=entry_group_full.project,
+                        entry-group-fullProject1=entry_group_full.project,
+                        glossary_id=term_test_id_full.glossary_id,
+                        term_id=term_test_id_full_glossary_term.term_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['entry-group-fullProject']}/locations/us-central1/entryGroups/@dataplex/entries/projects/{resolved_outputs['entry-group-fullProject1']}/locations/us-central1/glossaries/{resolved_outputs['glossary_id']}/terms/{resolved_outputs['term_id']}")
+        ,
+                    "type": "TARGET",
                 },
             ])
         ```
@@ -452,29 +471,29 @@ class EntryLink(pulumi.CustomResource):
 
         entry_group_basic = gcp.dataplex.EntryGroup("entry-group-basic",
             location="us-central1",
-            entry_group_id="tf-test-entry-group_64336",
+            entry_group_id="tf-test-entry-group_74000",
             project="1111111111111")
         entry_type_basic = gcp.dataplex.EntryType("entry-type-basic",
-            entry_type_id="tf-test-entry-type_74000",
+            entry_type_id="tf-test-entry-type_88722",
             location="us-central1",
             project="1111111111111")
         source = gcp.dataplex.Entry("source",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_id="tf-test-source-entry_34962",
+            entry_id="tf-test-source-entry_75125",
             entry_type=entry_type_basic.name,
             project="1111111111111")
         target = gcp.dataplex.Entry("target",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_id="tf-test-target-entry_75125",
+            entry_id="tf-test-target-entry_39249",
             entry_type=entry_type_basic.name,
             project="1111111111111")
         basic_entry_link = gcp.dataplex.EntryLink("basic_entry_link",
             project="1111111111111",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_link_id="tf-test-entry-link_88722",
+            entry_link_id="tf-test-entry-link_74391",
             entry_link_type="projects/655216118709/locations/global/entryLinkTypes/related",
             entry_references=[
                 {
@@ -493,37 +512,56 @@ class EntryLink(pulumi.CustomResource):
 
         entry_group_full = gcp.dataplex.EntryGroup("entry-group-full",
             location="us-central1",
-            entry_group_id="tf-test-entry-group-full_39249",
+            entry_group_id="tf-test-entry-group_16511",
             project="1111111111111")
         entry_type_full = gcp.dataplex.EntryType("entry-type-full",
-            entry_type_id="tf-test-entry-type-full_16511",
+            entry_type_id="tf-test-entry-type_9106",
             location="us-central1",
             project="1111111111111")
         source = gcp.dataplex.Entry("source",
             location="us-central1",
             entry_group_id=entry_group_full.entry_group_id,
-            entry_id="tf-test-source-entry-full_74391",
+            entry_id="tf-test-source-entry_8493",
             entry_type=entry_type_full.name,
             project="1111111111111")
-        target = gcp.dataplex.Entry("target",
+        term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
+            glossary_id="tf-test-glossary_27169",
+            location="us-central1")
+        term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
+            parent=pulumi.Output.all(
+                project=term_test_id_full.project,
+                glossary_id=term_test_id_full.glossary_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us-central1/glossaries/{resolved_outputs['glossary_id']}")
+        ,
+            glossary_id=term_test_id_full.glossary_id,
             location="us-central1",
-            entry_group_id=entry_group_full.entry_group_id,
-            entry_id="tf-test-target-entry-full_8493",
-            entry_type=entry_type_full.name,
-            project="1111111111111")
+            term_id="tf-test-term-full_75223",
+            labels={
+                "tag": "test-tf",
+            },
+            display_name="terraform term",
+            description="term created by Terraform")
         full_entry_link = gcp.dataplex.EntryLink("full_entry_link",
             project="1111111111111",
             location="us-central1",
             entry_group_id=entry_group_full.entry_group_id,
-            entry_link_id="tf-test-entry-link-full_9106",
-            entry_link_type="projects/655216118709/locations/global/entryLinkTypes/related",
+            entry_link_id="tf-test-entry-link_41819",
+            entry_link_type="projects/655216118709/locations/global/entryLinkTypes/definition",
             entry_references=[
                 {
                     "name": source.name,
+                    "type": "SOURCE",
                     "path": "",
                 },
                 {
-                    "name": target.name,
+                    "name": pulumi.Output.all(
+                        entry-group-fullProject=entry_group_full.project,
+                        entry-group-fullProject1=entry_group_full.project,
+                        glossary_id=term_test_id_full.glossary_id,
+                        term_id=term_test_id_full_glossary_term.term_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['entry-group-fullProject']}/locations/us-central1/entryGroups/@dataplex/entries/projects/{resolved_outputs['entry-group-fullProject1']}/locations/us-central1/glossaries/{resolved_outputs['glossary_id']}/terms/{resolved_outputs['term_id']}")
+        ,
+                    "type": "TARGET",
                 },
             ])
         ```

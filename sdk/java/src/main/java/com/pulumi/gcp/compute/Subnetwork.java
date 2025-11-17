@@ -659,9 +659,9 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     }
     /**
      * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
-     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
-     * Use one of the following formats to specify a sub-PDP when creating an
-     * IPv6 NetLB forwarding rule using BYOIP:
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
+     * mode. Use one of the following formats to specify a sub-PDP when creating
+     * a dual stack or IPv6-only subnetwork using BYOIP:
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
      *   Partial URL, as in:
@@ -674,9 +674,9 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
-     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
-     * Use one of the following formats to specify a sub-PDP when creating an
-     * IPv6 NetLB forwarding rule using BYOIP:
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
+     * mode. Use one of the following formats to specify a sub-PDP when creating
+     * a dual stack or IPv6-only subnetwork using BYOIP:
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
      *   Partial URL, as in:

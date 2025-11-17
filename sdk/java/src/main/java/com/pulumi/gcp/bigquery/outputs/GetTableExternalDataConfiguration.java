@@ -51,6 +51,11 @@ public final class GetTableExternalDataConfiguration {
      */
     private List<GetTableExternalDataConfigurationCsvOption> csvOptions;
     /**
+     * @return The data types that could be used as a target type when converting decimal values.
+     * 
+     */
+    private List<String> decimalTargetTypes;
+    /**
      * @return Specifies how source URIs are interpreted for constructing the file set to load.  By default source URIs are expanded against the underlying storage.  Other options include specifying manifest files. Only applicable to object storage systems.
      * 
      */
@@ -163,6 +168,13 @@ public final class GetTableExternalDataConfiguration {
      */
     public List<GetTableExternalDataConfigurationCsvOption> csvOptions() {
         return this.csvOptions;
+    }
+    /**
+     * @return The data types that could be used as a target type when converting decimal values.
+     * 
+     */
+    public List<String> decimalTargetTypes() {
+        return this.decimalTargetTypes;
     }
     /**
      * @return Specifies how source URIs are interpreted for constructing the file set to load.  By default source URIs are expanded against the underlying storage.  Other options include specifying manifest files. Only applicable to object storage systems.
@@ -278,6 +290,7 @@ public final class GetTableExternalDataConfiguration {
         private String compression;
         private String connectionId;
         private List<GetTableExternalDataConfigurationCsvOption> csvOptions;
+        private List<String> decimalTargetTypes;
         private String fileSetSpecType;
         private List<GetTableExternalDataConfigurationGoogleSheetsOption> googleSheetsOptions;
         private List<GetTableExternalDataConfigurationHivePartitioningOption> hivePartitioningOptions;
@@ -301,6 +314,7 @@ public final class GetTableExternalDataConfiguration {
     	      this.compression = defaults.compression;
     	      this.connectionId = defaults.connectionId;
     	      this.csvOptions = defaults.csvOptions;
+    	      this.decimalTargetTypes = defaults.decimalTargetTypes;
     	      this.fileSetSpecType = defaults.fileSetSpecType;
     	      this.googleSheetsOptions = defaults.googleSheetsOptions;
     	      this.hivePartitioningOptions = defaults.hivePartitioningOptions;
@@ -373,6 +387,17 @@ public final class GetTableExternalDataConfiguration {
         }
         public Builder csvOptions(GetTableExternalDataConfigurationCsvOption... csvOptions) {
             return csvOptions(List.of(csvOptions));
+        }
+        @CustomType.Setter
+        public Builder decimalTargetTypes(List<String> decimalTargetTypes) {
+            if (decimalTargetTypes == null) {
+              throw new MissingRequiredPropertyException("GetTableExternalDataConfiguration", "decimalTargetTypes");
+            }
+            this.decimalTargetTypes = decimalTargetTypes;
+            return this;
+        }
+        public Builder decimalTargetTypes(String... decimalTargetTypes) {
+            return decimalTargetTypes(List.of(decimalTargetTypes));
         }
         @CustomType.Setter
         public Builder fileSetSpecType(String fileSetSpecType) {
@@ -509,6 +534,7 @@ public final class GetTableExternalDataConfiguration {
             _resultValue.compression = compression;
             _resultValue.connectionId = connectionId;
             _resultValue.csvOptions = csvOptions;
+            _resultValue.decimalTargetTypes = decimalTargetTypes;
             _resultValue.fileSetSpecType = fileSetSpecType;
             _resultValue.googleSheetsOptions = googleSheetsOptions;
             _resultValue.hivePartitioningOptions = hivePartitioningOptions;

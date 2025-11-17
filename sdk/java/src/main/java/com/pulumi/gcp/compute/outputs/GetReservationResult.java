@@ -7,9 +7,11 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetReservationDeleteAfterDuration;
 import com.pulumi.gcp.compute.outputs.GetReservationReservationSharingPolicy;
+import com.pulumi.gcp.compute.outputs.GetReservationResourceStatus;
 import com.pulumi.gcp.compute.outputs.GetReservationShareSetting;
 import com.pulumi.gcp.compute.outputs.GetReservationSpecificReservation;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -24,14 +26,15 @@ public final class GetReservationResult {
     private String deleteAtTime;
     private String description;
     private Boolean enableEmergentMaintenance;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
+    private String kind;
+    private List<String> linkedCommitments;
     private String name;
     private @Nullable String project;
+    private Integer reservationBlockCount;
     private List<GetReservationReservationSharingPolicy> reservationSharingPolicies;
+    private List<GetReservationResourceStatus> resourceStatuses;
+    private Boolean satisfiesPzs;
     private String selfLink;
     private List<GetReservationShareSetting> shareSettings;
     private Boolean specificReservationRequired;
@@ -58,12 +61,14 @@ public final class GetReservationResult {
     public Boolean enableEmergentMaintenance() {
         return this.enableEmergentMaintenance;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
+    }
+    public String kind() {
+        return this.kind;
+    }
+    public List<String> linkedCommitments() {
+        return this.linkedCommitments;
     }
     public String name() {
         return this.name;
@@ -71,8 +76,17 @@ public final class GetReservationResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Integer reservationBlockCount() {
+        return this.reservationBlockCount;
+    }
     public List<GetReservationReservationSharingPolicy> reservationSharingPolicies() {
         return this.reservationSharingPolicies;
+    }
+    public List<GetReservationResourceStatus> resourceStatuses() {
+        return this.resourceStatuses;
+    }
+    public Boolean satisfiesPzs() {
+        return this.satisfiesPzs;
     }
     public String selfLink() {
         return this.selfLink;
@@ -109,9 +123,14 @@ public final class GetReservationResult {
         private String description;
         private Boolean enableEmergentMaintenance;
         private String id;
+        private String kind;
+        private List<String> linkedCommitments;
         private String name;
         private @Nullable String project;
+        private Integer reservationBlockCount;
         private List<GetReservationReservationSharingPolicy> reservationSharingPolicies;
+        private List<GetReservationResourceStatus> resourceStatuses;
+        private Boolean satisfiesPzs;
         private String selfLink;
         private List<GetReservationShareSetting> shareSettings;
         private Boolean specificReservationRequired;
@@ -128,9 +147,14 @@ public final class GetReservationResult {
     	      this.description = defaults.description;
     	      this.enableEmergentMaintenance = defaults.enableEmergentMaintenance;
     	      this.id = defaults.id;
+    	      this.kind = defaults.kind;
+    	      this.linkedCommitments = defaults.linkedCommitments;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.reservationBlockCount = defaults.reservationBlockCount;
     	      this.reservationSharingPolicies = defaults.reservationSharingPolicies;
+    	      this.resourceStatuses = defaults.resourceStatuses;
+    	      this.satisfiesPzs = defaults.satisfiesPzs;
     	      this.selfLink = defaults.selfLink;
     	      this.shareSettings = defaults.shareSettings;
     	      this.specificReservationRequired = defaults.specificReservationRequired;
@@ -199,6 +223,25 @@ public final class GetReservationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder kind(String kind) {
+            if (kind == null) {
+              throw new MissingRequiredPropertyException("GetReservationResult", "kind");
+            }
+            this.kind = kind;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder linkedCommitments(List<String> linkedCommitments) {
+            if (linkedCommitments == null) {
+              throw new MissingRequiredPropertyException("GetReservationResult", "linkedCommitments");
+            }
+            this.linkedCommitments = linkedCommitments;
+            return this;
+        }
+        public Builder linkedCommitments(String... linkedCommitments) {
+            return linkedCommitments(List.of(linkedCommitments));
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetReservationResult", "name");
@@ -213,6 +256,14 @@ public final class GetReservationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder reservationBlockCount(Integer reservationBlockCount) {
+            if (reservationBlockCount == null) {
+              throw new MissingRequiredPropertyException("GetReservationResult", "reservationBlockCount");
+            }
+            this.reservationBlockCount = reservationBlockCount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder reservationSharingPolicies(List<GetReservationReservationSharingPolicy> reservationSharingPolicies) {
             if (reservationSharingPolicies == null) {
               throw new MissingRequiredPropertyException("GetReservationResult", "reservationSharingPolicies");
@@ -222,6 +273,25 @@ public final class GetReservationResult {
         }
         public Builder reservationSharingPolicies(GetReservationReservationSharingPolicy... reservationSharingPolicies) {
             return reservationSharingPolicies(List.of(reservationSharingPolicies));
+        }
+        @CustomType.Setter
+        public Builder resourceStatuses(List<GetReservationResourceStatus> resourceStatuses) {
+            if (resourceStatuses == null) {
+              throw new MissingRequiredPropertyException("GetReservationResult", "resourceStatuses");
+            }
+            this.resourceStatuses = resourceStatuses;
+            return this;
+        }
+        public Builder resourceStatuses(GetReservationResourceStatus... resourceStatuses) {
+            return resourceStatuses(List.of(resourceStatuses));
+        }
+        @CustomType.Setter
+        public Builder satisfiesPzs(Boolean satisfiesPzs) {
+            if (satisfiesPzs == null) {
+              throw new MissingRequiredPropertyException("GetReservationResult", "satisfiesPzs");
+            }
+            this.satisfiesPzs = satisfiesPzs;
+            return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
@@ -286,9 +356,14 @@ public final class GetReservationResult {
             _resultValue.description = description;
             _resultValue.enableEmergentMaintenance = enableEmergentMaintenance;
             _resultValue.id = id;
+            _resultValue.kind = kind;
+            _resultValue.linkedCommitments = linkedCommitments;
             _resultValue.name = name;
             _resultValue.project = project;
+            _resultValue.reservationBlockCount = reservationBlockCount;
             _resultValue.reservationSharingPolicies = reservationSharingPolicies;
+            _resultValue.resourceStatuses = resourceStatuses;
+            _resultValue.satisfiesPzs = satisfiesPzs;
             _resultValue.selfLink = selfLink;
             _resultValue.shareSettings = shareSettings;
             _resultValue.specificReservationRequired = specificReservationRequired;

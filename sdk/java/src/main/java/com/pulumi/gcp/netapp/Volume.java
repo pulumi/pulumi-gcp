@@ -11,6 +11,8 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.netapp.VolumeArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeState;
 import com.pulumi.gcp.netapp.outputs.VolumeBackupConfig;
+import com.pulumi.gcp.netapp.outputs.VolumeBlockDevice;
+import com.pulumi.gcp.netapp.outputs.VolumeCacheParameters;
 import com.pulumi.gcp.netapp.outputs.VolumeExportPolicy;
 import com.pulumi.gcp.netapp.outputs.VolumeHybridReplicationParameters;
 import com.pulumi.gcp.netapp.outputs.VolumeMountOption;
@@ -152,6 +154,40 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<VolumeBackupConfig>> backupConfig() {
         return Codegen.optional(this.backupConfig);
+    }
+    /**
+     * Block device represents the device(s) which are stored in the block volume.
+     * Currently, only one block device is permitted per Volume.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="blockDevices", refs={List.class,VolumeBlockDevice.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<VolumeBlockDevice>> blockDevices;
+
+    /**
+     * @return Block device represents the device(s) which are stored in the block volume.
+     * Currently, only one block device is permitted per Volume.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<VolumeBlockDevice>>> blockDevices() {
+        return Codegen.optional(this.blockDevices);
+    }
+    /**
+     * Cache parameters for the volume.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="cacheParameters", refs={VolumeCacheParameters.class}, tree="[0]")
+    private Output</* @Nullable */ VolumeCacheParameters> cacheParameters;
+
+    /**
+     * @return Cache parameters for the volume.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<VolumeCacheParameters>> cacheParameters() {
+        return Codegen.optional(this.cacheParameters);
     }
     /**
      * Capacity of the volume (in GiB).
@@ -485,7 +521,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
     }
     /**
      * The protocol of the volume. Allowed combinations are `[&#39;NFSV3&#39;]`, `[&#39;NFSV4&#39;]`, `[&#39;SMB&#39;]`, `[&#39;NFSV3&#39;, &#39;NFSV4&#39;]`, `[&#39;SMB&#39;, &#39;NFSV3&#39;]` and `[&#39;SMB&#39;, &#39;NFSV4&#39;]`.
-     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
      * 
      */
     @Export(name="protocols", refs={List.class,String.class}, tree="[0,1]")
@@ -493,7 +529,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The protocol of the volume. Allowed combinations are `[&#39;NFSV3&#39;]`, `[&#39;NFSV4&#39;]`, `[&#39;SMB&#39;]`, `[&#39;NFSV3&#39;, &#39;NFSV4&#39;]`, `[&#39;SMB&#39;, &#39;NFSV3&#39;]` and `[&#39;SMB&#39;, &#39;NFSV4&#39;]`.
-     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
      * 
      */
     public Output<List<String>> protocols() {
@@ -612,14 +648,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="shareName", refs={String.class}, tree="[0]")
-    private Output<String> shareName;
+    private Output</* @Nullable */ String> shareName;
 
     /**
      * @return Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
      * 
      */
-    public Output<String> shareName() {
-        return this.shareName;
+    public Output<Optional<String>> shareName() {
+        return Codegen.optional(this.shareName);
     }
     /**
      * Settings for volumes with SMB access.

@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Folder;
  * import com.pulumi.gcp.organizations.FolderArgs;
- * import com.pulumi.random.Id;
- * import com.pulumi.random.IdArgs;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.projects.Service;
@@ -61,14 +61,14 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .build());
  * 
- *         var projectSuffix = new Id("projectSuffix", IdArgs.builder()
+ *         var projectSuffix = new RandomId("projectSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
  *         // Create a project for enabling KMS API.
  *         var kmsProject = new Project("kmsProject", ProjectArgs.builder()
- *             .projectId(String.format("kms-api-project%s", projectSuffix.hex()))
- *             .name(String.format("kms-api-project%s", projectSuffix.hex()))
+ *             .projectId(projectSuffix.hex().applyValue(_hex -> String.format("kms-api-project%s", _hex)))
+ *             .name(projectSuffix.hex().applyValue(_hex -> String.format("kms-api-project%s", _hex)))
  *             .folderId(kajFolder.folderId())
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")

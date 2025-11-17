@@ -99,7 +99,7 @@ public final class OrganizationVpcFlowLogsConfigArgs extends com.pulumi.resource
      * Optional. The value of the field must be in (0, 1]. The sampling rate
      * of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
      * sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-     * the state field instead. Default value is 1.0.
+     * the state field instead. Default value is 1.0
      * 
      */
     @Import(name="flowSampling")
@@ -109,7 +109,7 @@ public final class OrganizationVpcFlowLogsConfigArgs extends com.pulumi.resource
      * @return Optional. The value of the field must be in (0, 1]. The sampling rate
      * of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
      * sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-     * the state field instead. Default value is 1.0.
+     * the state field instead. Default value is 1.0
      * 
      */
     public Optional<Output<Double>> flowSampling() {
@@ -380,7 +380,7 @@ public final class OrganizationVpcFlowLogsConfigArgs extends com.pulumi.resource
          * @param flowSampling Optional. The value of the field must be in (0, 1]. The sampling rate
          * of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
          * sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-         * the state field instead. Default value is 1.0.
+         * the state field instead. Default value is 1.0
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class OrganizationVpcFlowLogsConfigArgs extends com.pulumi.resource
          * @param flowSampling Optional. The value of the field must be in (0, 1]. The sampling rate
          * of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
          * sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-         * the state field instead. Default value is 1.0.
+         * the state field instead. Default value is 1.0
          * 
          * @return builder
          * 

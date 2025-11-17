@@ -51,6 +51,8 @@ __all__ = [
     'DatascanDataDiscoverySpecStorageConfigCsvOptionsArgsDict',
     'DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs',
     'DatascanDataDiscoverySpecStorageConfigJsonOptionsArgsDict',
+    'DatascanDataDocumentationSpecArgs',
+    'DatascanDataDocumentationSpecArgsDict',
     'DatascanDataProfileSpecArgs',
     'DatascanDataProfileSpecArgsDict',
     'DatascanDataProfileSpecExcludeFieldsArgs',
@@ -1571,6 +1573,18 @@ class DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs:
     @type_inference_disabled.setter
     def type_inference_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "type_inference_disabled", value)
+
+
+if not MYPY:
+    class DatascanDataDocumentationSpecArgsDict(TypedDict):
+        pass
+elif False:
+    DatascanDataDocumentationSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatascanDataDocumentationSpecArgs:
+    def __init__(__self__):
+        pass
 
 
 if not MYPY:

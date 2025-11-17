@@ -56,6 +56,23 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
     }
 
     /**
+     * (Output)
+     * An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+     * 
+     */
+    @Import(name="locationHint")
+    private @Nullable Output<String> locationHint;
+
+    /**
+     * @return (Output)
+     * An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+     * 
+     */
+    public Optional<Output<String>> locationHint() {
+        return Optional.ofNullable(this.locationHint);
+    }
+
+    /**
      * The name of the machine type to reserve.
      * 
      */
@@ -113,6 +130,7 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
     private ReservationSpecificReservationInstancePropertiesArgs(ReservationSpecificReservationInstancePropertiesArgs $) {
         this.guestAccelerators = $.guestAccelerators;
         this.localSsds = $.localSsds;
+        this.locationHint = $.locationHint;
         this.machineType = $.machineType;
         this.maintenanceInterval = $.maintenanceInterval;
         this.minCpuPlatform = $.minCpuPlatform;
@@ -205,6 +223,29 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
          */
         public Builder localSsds(ReservationSpecificReservationInstancePropertiesLocalSsdArgs... localSsds) {
             return localSsds(List.of(localSsds));
+        }
+
+        /**
+         * @param locationHint (Output)
+         * An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locationHint(@Nullable Output<String> locationHint) {
+            $.locationHint = locationHint;
+            return this;
+        }
+
+        /**
+         * @param locationHint (Output)
+         * An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locationHint(String locationHint) {
+            return locationHint(Output.of(locationHint));
         }
 
         /**

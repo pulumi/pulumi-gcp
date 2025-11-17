@@ -7692,6 +7692,10 @@ if not MYPY:
         """
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Names of the containers that must start before this container.
+        """
         envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgsDict']]]]
         """
         List of environment variables to set in the container.
@@ -7734,6 +7738,7 @@ class WorkerPoolTemplateContainerArgs:
                  image: pulumi.Input[_builtins.str],
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgs']]]] = None,
                  liveness_probe: Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -7745,6 +7750,7 @@ class WorkerPoolTemplateContainerArgs:
         :param pulumi.Input[_builtins.str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] depends_ons: Names of the containers that must start before this container.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgs']]] envs: List of environment variables to set in the container.
                Structure is documented below.
         :param pulumi.Input['WorkerPoolTemplateContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails.
@@ -7763,6 +7769,8 @@ class WorkerPoolTemplateContainerArgs:
             pulumi.set(__self__, "args", args)
         if commands is not None:
             pulumi.set(__self__, "commands", commands)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if liveness_probe is not None:
@@ -7813,6 +7821,18 @@ class WorkerPoolTemplateContainerArgs:
     @commands.setter
     def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Names of the containers that must start before this container.
+        """
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "depends_ons", value)
 
     @_builtins.property
     @pulumi.getter

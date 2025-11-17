@@ -34,14 +34,29 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
      */
     private @Nullable String ipCidrRange;
     /**
+     * @return (Output)
+     * The internet access type for IPv6 Public Delegated Prefixes. Inherited
+     * from parent prefix and can be one of following:
+     * * EXTERNAL: The prefix will be announced to the internet. All children
+     *   PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     * 
+     */
+    private @Nullable String ipv6AccessType;
+    /**
      * @return Whether the sub prefix is delegated for address creation.
      * 
      */
     private @Nullable Boolean isAddress;
     /**
-     * @return Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+     * @return Specifies the mode of this IPv6 PDP. MODE must be one of:
+     * * DELEGATION
+     * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+     * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+     * * INTERNAL_IPV6_SUBNETWORK_CREATION
+     *   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      * 
      */
     private @Nullable String mode;
@@ -97,6 +112,20 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
         return Optional.ofNullable(this.ipCidrRange);
     }
     /**
+     * @return (Output)
+     * The internet access type for IPv6 Public Delegated Prefixes. Inherited
+     * from parent prefix and can be one of following:
+     * * EXTERNAL: The prefix will be announced to the internet. All children
+     *   PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     * 
+     */
+    public Optional<String> ipv6AccessType() {
+        return Optional.ofNullable(this.ipv6AccessType);
+    }
+    /**
      * @return Whether the sub prefix is delegated for address creation.
      * 
      */
@@ -104,9 +133,12 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
         return Optional.ofNullable(this.isAddress);
     }
     /**
-     * @return Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+     * @return Specifies the mode of this IPv6 PDP. MODE must be one of:
+     * * DELEGATION
+     * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+     * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+     * * INTERNAL_IPV6_SUBNETWORK_CREATION
+     *   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      * 
      */
     public Optional<String> mode() {
@@ -153,6 +185,7 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
         private @Nullable String delegateeProject;
         private @Nullable String description;
         private @Nullable String ipCidrRange;
+        private @Nullable String ipv6AccessType;
         private @Nullable Boolean isAddress;
         private @Nullable String mode;
         private @Nullable String name;
@@ -165,6 +198,7 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
     	      this.delegateeProject = defaults.delegateeProject;
     	      this.description = defaults.description;
     	      this.ipCidrRange = defaults.ipCidrRange;
+    	      this.ipv6AccessType = defaults.ipv6AccessType;
     	      this.isAddress = defaults.isAddress;
     	      this.mode = defaults.mode;
     	      this.name = defaults.name;
@@ -194,6 +228,12 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
         public Builder ipCidrRange(@Nullable String ipCidrRange) {
 
             this.ipCidrRange = ipCidrRange;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6AccessType(@Nullable String ipv6AccessType) {
+
+            this.ipv6AccessType = ipv6AccessType;
             return this;
         }
         @CustomType.Setter
@@ -232,6 +272,7 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
             _resultValue.delegateeProject = delegateeProject;
             _resultValue.description = description;
             _resultValue.ipCidrRange = ipCidrRange;
+            _resultValue.ipv6AccessType = ipv6AccessType;
             _resultValue.isAddress = isAddress;
             _resultValue.mode = mode;
             _resultValue.name = name;

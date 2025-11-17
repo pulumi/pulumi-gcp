@@ -87,6 +87,8 @@ from .get_region_ssl_certificate import *
 from .get_region_ssl_policy import *
 from .get_regions import *
 from .get_reservation import *
+from .get_reservation_block import *
+from .get_reservation_sub_block import *
 from .get_resource_policy import *
 from .get_router import *
 from .get_router_nat import *
@@ -181,6 +183,7 @@ from .region_disk_iam_binding import *
 from .region_disk_iam_member import *
 from .region_disk_iam_policy import *
 from .region_disk_resource_policy_attachment import *
+from .region_health_aggregation_policy import *
 from .region_health_check import *
 from .region_instance_group_manager import *
 from .region_instance_template import *

@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import java.util.List;
@@ -73,6 +74,9 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultNetwork.id())
+ *                 .build())
+ *             .initialUser(ClusterInitialUserArgs.builder()
+ *                 .password("alloydb-cluster")
  *                 .build())
  *             .deletionProtection(false)
  *             .build());
@@ -423,6 +427,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
@@ -457,6 +462,9 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(default_.id())
+ *                 .build())
+ *             .initialUser(ClusterInitialUserArgs.builder()
+ *                 .password("alloydb-primary-cluster")
  *                 .build())
  *             .deletionProtection(false)
  *             .build());
@@ -790,7 +798,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.etag);
     }
     /**
-     * Initial user to setup during cluster creation.
+     * Initial user to setup during cluster creation. This must be set for all new Clusters.
      * Structure is documented below.
      * 
      */
@@ -798,7 +806,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ClusterInitialUser> initialUser;
 
     /**
-     * @return Initial user to setup during cluster creation.
+     * @return Initial user to setup during cluster creation. This must be set for all new Clusters.
      * Structure is documented below.
      * 
      */

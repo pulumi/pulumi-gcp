@@ -608,8 +608,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_9329",
-            name="tf-test_37135",
+            project_id="tf-test_12125",
+            name="tf-test_82749",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -701,7 +701,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             region="us-central1",
             feature_online_store=featureonlinestore.name,
             sync_config={
-                "cron": "0 0 * * *",
+                "continuous": True,
             },
             feature_registry_source={
                 "feature_groups": [{
@@ -1043,8 +1043,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_9329",
-            name="tf-test_37135",
+            project_id="tf-test_12125",
+            name="tf-test_82749",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -1136,7 +1136,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             region="us-central1",
             feature_online_store=featureonlinestore.name,
             sync_config={
-                "cron": "0 0 * * *",
+                "continuous": True,
             },
             feature_registry_source={
                 "feature_groups": [{

@@ -8,5 +8,6 @@ import typing
 # Export this package's modules as members:
 from .entitlement import *
 from .get_entitlement import *
+from .settings import *
 from ._inputs import *
 from . import outputs

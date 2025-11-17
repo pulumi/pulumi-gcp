@@ -318,6 +318,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.perUnitStorageThroughput;
     }
     /**
+     * The placement policy name for the instance in the format of
+     * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+     * 
+     */
+    @Export(name="placementPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> placementPolicy;
+
+    /**
+     * @return The placement policy name for the instance in the format of
+     * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+     * 
+     */
+    public Output<Optional<String>> placementPolicy() {
+        return Codegen.optional(this.placementPolicy);
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 

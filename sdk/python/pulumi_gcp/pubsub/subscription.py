@@ -1204,7 +1204,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_26317",
+                "filename_suffix": "-_32270",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1237,7 +1237,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_4866",
+                "filename_suffix": "-_44703",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1276,7 +1276,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_12618",
+                "filename_suffix": "-_9329",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1361,7 +1361,8 @@ class Subscription(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         tag_key = gcp.tags.TagKey("tag_key",
             parent=project.id,
-            short_name="tag_key")
+            short_name="tag_key",
+            opts = pulumi.ResourceOptions(depends_on=[example]))
         tag_value = gcp.tags.TagValue("tag_value",
             parent=tag_key.id,
             short_name="tag_value")
@@ -1739,7 +1740,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_26317",
+                "filename_suffix": "-_32270",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1772,7 +1773,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_4866",
+                "filename_suffix": "-_44703",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1811,7 +1812,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_12618",
+                "filename_suffix": "-_9329",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1896,7 +1897,8 @@ class Subscription(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         tag_key = gcp.tags.TagKey("tag_key",
             parent=project.id,
-            short_name="tag_key")
+            short_name="tag_key",
+            opts = pulumi.ResourceOptions(depends_on=[example]))
         tag_value = gcp.tags.TagValue("tag_value",
             parent=tag_key.id,
             short_name="tag_value")

@@ -318,6 +318,13 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the project in which the resource belongs. If it is not provided,
+        /// the provider project is used
+        /// </summary>
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
         /// Secret Manager secret resource
         /// </summary>
         [Output("secret")]
@@ -424,6 +431,13 @@ namespace Pulumi.Gcp.SecretManager
         public Input<bool>? IsSecretDataBase64 { get; set; }
 
         /// <summary>
+        /// The ID of the project in which the resource belongs. If it is not provided,
+        /// the provider project is used
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
         /// Secret Manager secret resource
         /// </summary>
         [Input("secret", required: true)]
@@ -518,6 +532,13 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If it is not provided,
+        /// the provider project is used
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Secret Manager secret resource

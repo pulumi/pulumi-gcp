@@ -946,6 +946,9 @@ class Instance(pulumi.CustomResource):
             network_config={
                 "network": default.id,
             },
+            initial_user={
+                "password": "alloydb-primary-cluster",
+            },
             deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-secondary-instance",
@@ -1119,6 +1122,9 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             network_config={
                 "network": default.id,
+            },
+            initial_user={
+                "password": "alloydb-primary-cluster",
             },
             deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",

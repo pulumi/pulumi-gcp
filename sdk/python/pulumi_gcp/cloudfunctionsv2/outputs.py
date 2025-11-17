@@ -27,6 +27,7 @@ __all__ = [
     'FunctionIamBindingCondition',
     'FunctionIamMemberCondition',
     'FunctionServiceConfig',
+    'FunctionServiceConfigDirectVpcNetworkInterface',
     'FunctionServiceConfigSecretEnvironmentVariable',
     'FunctionServiceConfigSecretVolume',
     'FunctionServiceConfigSecretVolumeVersion',
@@ -39,6 +40,7 @@ __all__ = [
     'GetFunctionEventTriggerResult',
     'GetFunctionEventTriggerEventFilterResult',
     'GetFunctionServiceConfigResult',
+    'GetFunctionServiceConfigDirectVpcNetworkInterfaceResult',
     'GetFunctionServiceConfigSecretEnvironmentVariableResult',
     'GetFunctionServiceConfigSecretVolumeResult',
     'GetFunctionServiceConfigSecretVolumeVersionResult',
@@ -744,6 +746,10 @@ class FunctionServiceConfig(dict):
             suggest = "available_memory"
         elif key == "binaryAuthorizationPolicy":
             suggest = "binary_authorization_policy"
+        elif key == "directVpcEgress":
+            suggest = "direct_vpc_egress"
+        elif key == "directVpcNetworkInterfaces":
+            suggest = "direct_vpc_network_interfaces"
         elif key == "environmentVariables":
             suggest = "environment_variables"
         elif key == "gcfUri":
@@ -785,6 +791,8 @@ class FunctionServiceConfig(dict):
                  available_cpu: Optional[_builtins.str] = None,
                  available_memory: Optional[_builtins.str] = None,
                  binary_authorization_policy: Optional[_builtins.str] = None,
+                 direct_vpc_egress: Optional[_builtins.str] = None,
+                 direct_vpc_network_interfaces: Optional[Sequence['outputs.FunctionServiceConfigDirectVpcNetworkInterface']] = None,
                  environment_variables: Optional[Mapping[str, _builtins.str]] = None,
                  gcf_uri: Optional[_builtins.str] = None,
                  ingress_settings: Optional[_builtins.str] = None,
@@ -806,6 +814,10 @@ class FunctionServiceConfig(dict):
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
                supplied the value is interpreted as bytes.
         :param _builtins.str binary_authorization_policy: The binary authorization policy to be checked when deploying the Cloud Run service.
+        :param _builtins.str direct_vpc_egress: Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+               Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+        :param Sequence['FunctionServiceConfigDirectVpcNetworkInterfaceArgs'] direct_vpc_network_interfaces: The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+               Structure is documented below.
         :param Mapping[str, _builtins.str] environment_variables: Environment variables that shall be available during function execution.
         :param _builtins.str gcf_uri: (Output)
                URIs of the Service deployed
@@ -841,6 +853,10 @@ class FunctionServiceConfig(dict):
             pulumi.set(__self__, "available_memory", available_memory)
         if binary_authorization_policy is not None:
             pulumi.set(__self__, "binary_authorization_policy", binary_authorization_policy)
+        if direct_vpc_egress is not None:
+            pulumi.set(__self__, "direct_vpc_egress", direct_vpc_egress)
+        if direct_vpc_network_interfaces is not None:
+            pulumi.set(__self__, "direct_vpc_network_interfaces", direct_vpc_network_interfaces)
         if environment_variables is not None:
             pulumi.set(__self__, "environment_variables", environment_variables)
         if gcf_uri is not None:
@@ -903,6 +919,24 @@ class FunctionServiceConfig(dict):
         The binary authorization policy to be checked when deploying the Cloud Run service.
         """
         return pulumi.get(self, "binary_authorization_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="directVpcEgress")
+    def direct_vpc_egress(self) -> Optional[_builtins.str]:
+        """
+        Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+        Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+        """
+        return pulumi.get(self, "direct_vpc_egress")
+
+    @_builtins.property
+    @pulumi.getter(name="directVpcNetworkInterfaces")
+    def direct_vpc_network_interfaces(self) -> Optional[Sequence['outputs.FunctionServiceConfigDirectVpcNetworkInterface']]:
+        """
+        The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "direct_vpc_network_interfaces")
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
@@ -1027,6 +1061,49 @@ class FunctionServiceConfig(dict):
         Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
         """
         return pulumi.get(self, "vpc_connector_egress_settings")
+
+
+@pulumi.output_type
+class FunctionServiceConfigDirectVpcNetworkInterface(dict):
+    def __init__(__self__, *,
+                 network: Optional[_builtins.str] = None,
+                 subnetwork: Optional[_builtins.str] = None,
+                 tags: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str network: The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
+        :param _builtins.str subnetwork: The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+        :param Sequence[_builtins.str] tags: Network tags applied to this Cloud Function resource.
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[_builtins.str]:
+        """
+        The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[_builtins.str]:
+        """
+        The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Network tags applied to this Cloud Function resource.
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type
@@ -1672,6 +1749,8 @@ class GetFunctionServiceConfigResult(dict):
                  available_cpu: _builtins.str,
                  available_memory: _builtins.str,
                  binary_authorization_policy: _builtins.str,
+                 direct_vpc_egress: _builtins.str,
+                 direct_vpc_network_interfaces: Sequence['outputs.GetFunctionServiceConfigDirectVpcNetworkInterfaceResult'],
                  environment_variables: Mapping[str, _builtins.str],
                  gcf_uri: _builtins.str,
                  ingress_settings: _builtins.str,
@@ -1693,6 +1772,8 @@ class GetFunctionServiceConfigResult(dict):
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
                supplied the value is interpreted as bytes.
         :param _builtins.str binary_authorization_policy: The binary authorization policy to be checked when deploying the Cloud Run service.
+        :param _builtins.str direct_vpc_egress: Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY. Possible values: ["VPC_EGRESS_ALL_TRAFFIC", "VPC_EGRESS_PRIVATE_RANGES_ONLY"]
+        :param Sequence['GetFunctionServiceConfigDirectVpcNetworkInterfaceArgs'] direct_vpc_network_interfaces: The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
         :param Mapping[str, _builtins.str] environment_variables: Environment variables that shall be available during function execution.
         :param _builtins.str gcf_uri: URIs of the Service deployed
         :param _builtins.str ingress_settings: Available ingress settings. Defaults to "ALLOW_ALL" if unspecified. Default value: "ALLOW_ALL" Possible values: ["ALLOW_ALL", "ALLOW_INTERNAL_ONLY", "ALLOW_INTERNAL_AND_GCLB"]
@@ -1716,6 +1797,8 @@ class GetFunctionServiceConfigResult(dict):
         pulumi.set(__self__, "available_cpu", available_cpu)
         pulumi.set(__self__, "available_memory", available_memory)
         pulumi.set(__self__, "binary_authorization_policy", binary_authorization_policy)
+        pulumi.set(__self__, "direct_vpc_egress", direct_vpc_egress)
+        pulumi.set(__self__, "direct_vpc_network_interfaces", direct_vpc_network_interfaces)
         pulumi.set(__self__, "environment_variables", environment_variables)
         pulumi.set(__self__, "gcf_uri", gcf_uri)
         pulumi.set(__self__, "ingress_settings", ingress_settings)
@@ -1764,6 +1847,22 @@ class GetFunctionServiceConfigResult(dict):
         The binary authorization policy to be checked when deploying the Cloud Run service.
         """
         return pulumi.get(self, "binary_authorization_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="directVpcEgress")
+    def direct_vpc_egress(self) -> _builtins.str:
+        """
+        Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY. Possible values: ["VPC_EGRESS_ALL_TRAFFIC", "VPC_EGRESS_PRIVATE_RANGES_ONLY"]
+        """
+        return pulumi.get(self, "direct_vpc_egress")
+
+    @_builtins.property
+    @pulumi.getter(name="directVpcNetworkInterfaces")
+    def direct_vpc_network_interfaces(self) -> Sequence['outputs.GetFunctionServiceConfigDirectVpcNetworkInterfaceResult']:
+        """
+        The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+        """
+        return pulumi.get(self, "direct_vpc_network_interfaces")
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
@@ -1880,6 +1979,46 @@ class GetFunctionServiceConfigResult(dict):
         Available egress settings. Possible values: ["VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED", "PRIVATE_RANGES_ONLY", "ALL_TRAFFIC"]
         """
         return pulumi.get(self, "vpc_connector_egress_settings")
+
+
+@pulumi.output_type
+class GetFunctionServiceConfigDirectVpcNetworkInterfaceResult(dict):
+    def __init__(__self__, *,
+                 network: _builtins.str,
+                 subnetwork: _builtins.str,
+                 tags: Sequence[_builtins.str]):
+        """
+        :param _builtins.str network: The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
+        :param _builtins.str subnetwork: The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+        :param Sequence[_builtins.str] tags: Network tags applied to this Cloud Function resource.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+        pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> _builtins.str:
+        """
+        The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> _builtins.str:
+        """
+        The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Sequence[_builtins.str]:
+        """
+        Network tags applied to this Cloud Function resource.
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

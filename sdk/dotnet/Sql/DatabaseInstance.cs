@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Sql
     ///             },
     ///         }));
     ///     }
-    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     ///     var postgres = new Gcp.Sql.DatabaseInstance("postgres", new()
     ///     {
-    ///         Name = $"postgres-instance-{dbNameSuffix.Hex}",
+    ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"postgres-instance-{hex}"),
     ///         DatabaseVersion = "POSTGRES_15",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
@@ -166,14 +166,14 @@ namespace Pulumi.Gcp.Sql
     ///         },
     ///     });
     /// 
-    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
     /// 
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
-    ///         Name = $"private-instance-{dbNameSuffix.Hex}",
+    ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"private-instance-{hex}"),
     ///         Region = "us-central1",
     ///         DatabaseVersion = "MYSQL_5_7",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -519,6 +519,8 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
         /// in state, a `Destroy` or `Update` command that deletes the instance will fail. Defaults to `True`.
+        /// 
+        /// &gt; **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -778,6 +780,8 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
         /// in state, a `Destroy` or `Update` command that deletes the instance will fail. Defaults to `True`.
+        /// 
+        /// &gt; **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -983,6 +987,8 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
         /// in state, a `Destroy` or `Update` command that deletes the instance will fail. Defaults to `True`.
+        /// 
+        /// &gt; **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }

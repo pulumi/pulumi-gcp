@@ -50,6 +50,57 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Worker Pool Basic Depends On
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.WorkerPool("default", new()
+    ///     {
+    ///         Name = "cloudrun-worker-pool",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         LaunchStage = "BETA",
+    ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerArgs
+    ///                 {
+    ///                     Name = "foo-1",
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/worker-pool",
+    ///                     DependsOns = new[]
+    ///                     {
+    ///                         "foo-2",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerArgs
+    ///                 {
+    ///                     Name = "foo-2",
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/worker-pool",
+    ///                     StartupProbe = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerStartupProbeArgs
+    ///                     {
+    ///                         HttpGet = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerStartupProbeHttpGetArgs
+    ///                         {
+    ///                             Path = "/healthz",
+    ///                             Port = 8080,
+    ///                         },
+    ///                         PeriodSeconds = 5,
+    ///                         TimeoutSeconds = 2,
+    ///                         FailureThreshold = 3,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Cloudrunv2 Worker Pool Limits
     /// 
     /// ```csharp

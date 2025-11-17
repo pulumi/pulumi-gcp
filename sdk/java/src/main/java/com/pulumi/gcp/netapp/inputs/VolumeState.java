@@ -6,6 +6,8 @@ package com.pulumi.gcp.netapp.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.netapp.inputs.VolumeBackupConfigArgs;
+import com.pulumi.gcp.netapp.inputs.VolumeBlockDeviceArgs;
+import com.pulumi.gcp.netapp.inputs.VolumeCacheParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeExportPolicyArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeHybridReplicationParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeMountOptionArgs;
@@ -56,6 +58,42 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<VolumeBackupConfigArgs>> backupConfig() {
         return Optional.ofNullable(this.backupConfig);
+    }
+
+    /**
+     * Block device represents the device(s) which are stored in the block volume.
+     * Currently, only one block device is permitted per Volume.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="blockDevices")
+    private @Nullable Output<List<VolumeBlockDeviceArgs>> blockDevices;
+
+    /**
+     * @return Block device represents the device(s) which are stored in the block volume.
+     * Currently, only one block device is permitted per Volume.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<VolumeBlockDeviceArgs>>> blockDevices() {
+        return Optional.ofNullable(this.blockDevices);
+    }
+
+    /**
+     * Cache parameters for the volume.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cacheParameters")
+    private @Nullable Output<VolumeCacheParametersArgs> cacheParameters;
+
+    /**
+     * @return Cache parameters for the volume.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VolumeCacheParametersArgs>> cacheParameters() {
+        return Optional.ofNullable(this.cacheParameters);
     }
 
     /**
@@ -412,7 +450,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The protocol of the volume. Allowed combinations are `[&#39;NFSV3&#39;]`, `[&#39;NFSV4&#39;]`, `[&#39;SMB&#39;]`, `[&#39;NFSV3&#39;, &#39;NFSV4&#39;]`, `[&#39;SMB&#39;, &#39;NFSV3&#39;]` and `[&#39;SMB&#39;, &#39;NFSV4&#39;]`.
-     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
      * 
      */
     @Import(name="protocols")
@@ -420,7 +458,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The protocol of the volume. Allowed combinations are `[&#39;NFSV3&#39;]`, `[&#39;NFSV4&#39;]`, `[&#39;SMB&#39;]`, `[&#39;NFSV3&#39;, &#39;NFSV4&#39;]`, `[&#39;SMB&#39;, &#39;NFSV3&#39;]` and `[&#39;SMB&#39;, &#39;NFSV4&#39;]`.
-     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
      * 
      */
     public Optional<Output<List<String>>> protocols() {
@@ -735,6 +773,8 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     private VolumeState(VolumeState $) {
         this.activeDirectory = $.activeDirectory;
         this.backupConfig = $.backupConfig;
+        this.blockDevices = $.blockDevices;
+        this.cacheParameters = $.cacheParameters;
         this.capacityGib = $.capacityGib;
         this.coldTierSizeGib = $.coldTierSizeGib;
         this.createTime = $.createTime;
@@ -839,6 +879,66 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backupConfig(VolumeBackupConfigArgs backupConfig) {
             return backupConfig(Output.of(backupConfig));
+        }
+
+        /**
+         * @param blockDevices Block device represents the device(s) which are stored in the block volume.
+         * Currently, only one block device is permitted per Volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockDevices(@Nullable Output<List<VolumeBlockDeviceArgs>> blockDevices) {
+            $.blockDevices = blockDevices;
+            return this;
+        }
+
+        /**
+         * @param blockDevices Block device represents the device(s) which are stored in the block volume.
+         * Currently, only one block device is permitted per Volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockDevices(List<VolumeBlockDeviceArgs> blockDevices) {
+            return blockDevices(Output.of(blockDevices));
+        }
+
+        /**
+         * @param blockDevices Block device represents the device(s) which are stored in the block volume.
+         * Currently, only one block device is permitted per Volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockDevices(VolumeBlockDeviceArgs... blockDevices) {
+            return blockDevices(List.of(blockDevices));
+        }
+
+        /**
+         * @param cacheParameters Cache parameters for the volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheParameters(@Nullable Output<VolumeCacheParametersArgs> cacheParameters) {
+            $.cacheParameters = cacheParameters;
+            return this;
+        }
+
+        /**
+         * @param cacheParameters Cache parameters for the volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheParameters(VolumeCacheParametersArgs cacheParameters) {
+            return cacheParameters(Output.of(cacheParameters));
         }
 
         /**
@@ -1338,7 +1438,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocols The protocol of the volume. Allowed combinations are `[&#39;NFSV3&#39;]`, `[&#39;NFSV4&#39;]`, `[&#39;SMB&#39;]`, `[&#39;NFSV3&#39;, &#39;NFSV4&#39;]`, `[&#39;SMB&#39;, &#39;NFSV3&#39;]` and `[&#39;SMB&#39;, &#39;NFSV4&#39;]`.
-         * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+         * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
          * 
          * @return builder
          * 
@@ -1350,7 +1450,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocols The protocol of the volume. Allowed combinations are `[&#39;NFSV3&#39;]`, `[&#39;NFSV4&#39;]`, `[&#39;SMB&#39;]`, `[&#39;NFSV3&#39;, &#39;NFSV4&#39;]`, `[&#39;SMB&#39;, &#39;NFSV3&#39;]` and `[&#39;SMB&#39;, &#39;NFSV4&#39;]`.
-         * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+         * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
          * 
          * @return builder
          * 
@@ -1361,7 +1461,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocols The protocol of the volume. Allowed combinations are `[&#39;NFSV3&#39;]`, `[&#39;NFSV4&#39;]`, `[&#39;SMB&#39;]`, `[&#39;NFSV3&#39;, &#39;NFSV4&#39;]`, `[&#39;SMB&#39;, &#39;NFSV3&#39;]` and `[&#39;SMB&#39;, &#39;NFSV4&#39;]`.
-         * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+         * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
          * 
          * @return builder
          * 

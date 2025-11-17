@@ -23,6 +23,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetReservationSpecificReservationInstancePropertyLocalSsdResult> LocalSsds;
         /// <summary>
+        /// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+        /// </summary>
+        public readonly string LocationHint;
+        /// <summary>
         /// The name of the machine type to reserve.
         /// </summary>
         public readonly string MachineType;
@@ -44,6 +48,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.GetReservationSpecificReservationInstancePropertyLocalSsdResult> localSsds,
 
+            string locationHint,
+
             string machineType,
 
             string maintenanceInterval,
@@ -52,6 +58,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             GuestAccelerators = guestAccelerators;
             LocalSsds = localSsds;
+            LocationHint = locationHint;
             MachineType = machineType;
             MaintenanceInterval = maintenanceInterval;
             MinCpuPlatform = minCpuPlatform;

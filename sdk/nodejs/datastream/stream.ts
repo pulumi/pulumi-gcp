@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.index.Password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -710,7 +710,7 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: false,
  * });
- * const pwd = new random.index.Password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -798,7 +798,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.index.Password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -864,8 +864,8 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cross_project_dataset = new gcp.organizations.Project("cross-project-dataset", {
- *     projectId: "tf-test_76044",
- *     name: "tf-test_69391",
+ *     projectId: "tf-test_41150",
+ *     name: "tf-test_89313",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
@@ -923,7 +923,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.index.Password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -1015,7 +1015,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.index.Password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -1103,7 +1103,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.index.Password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });

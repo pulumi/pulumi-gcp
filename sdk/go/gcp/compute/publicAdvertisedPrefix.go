@@ -79,6 +79,35 @@ import (
 //	}
 //
 // ```
+// ### Public Advertised Prefixes Ipv6 Access Type
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewPublicAdvertisedPrefix(ctx, "prefixes", &compute.PublicAdvertisedPrefixArgs{
+//				Name:           pulumi.String("my-pap"),
+//				Description:    pulumi.String("description"),
+//				IpCidrRange:    pulumi.String("2001:db8::/32"),
+//				PdpScope:       pulumi.String("REGIONAL"),
+//				Ipv6AccessType: pulumi.String("INTERNAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -109,9 +138,18 @@ type PublicAdvertisedPrefix struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The IPv4 address to be used for reverse DNS verification.
-	DnsVerificationIp pulumi.StringOutput `pulumi:"dnsVerificationIp"`
+	DnsVerificationIp pulumi.StringPtrOutput `pulumi:"dnsVerificationIp"`
 	// The address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
+	// The internet access type for IPv6 Public Advertised Prefixes. It can be
+	// set to one of following:
+	// * EXTERNAL: Default access type. The prefix will be announced to the
+	//   internet. All children PDPs will have access type as EXTERNAL.
+	// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+	//   be used privately within Google Cloud. All children PDPs will have
+	//   access type as INTERNAL.
+	//   Possible values are: `EXTERNAL`, `INTERNAL`.
+	Ipv6AccessType pulumi.StringOutput `pulumi:"ipv6AccessType"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -143,9 +181,6 @@ func NewPublicAdvertisedPrefix(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DnsVerificationIp == nil {
-		return nil, errors.New("invalid value for required argument 'DnsVerificationIp'")
-	}
 	if args.IpCidrRange == nil {
 		return nil, errors.New("invalid value for required argument 'IpCidrRange'")
 	}
@@ -178,6 +213,15 @@ type publicAdvertisedPrefixState struct {
 	DnsVerificationIp *string `pulumi:"dnsVerificationIp"`
 	// The address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// The internet access type for IPv6 Public Advertised Prefixes. It can be
+	// set to one of following:
+	// * EXTERNAL: Default access type. The prefix will be announced to the
+	//   internet. All children PDPs will have access type as EXTERNAL.
+	// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+	//   be used privately within Google Cloud. All children PDPs will have
+	//   access type as INTERNAL.
+	//   Possible values are: `EXTERNAL`, `INTERNAL`.
+	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -209,6 +253,15 @@ type PublicAdvertisedPrefixState struct {
 	DnsVerificationIp pulumi.StringPtrInput
 	// The address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange pulumi.StringPtrInput
+	// The internet access type for IPv6 Public Advertised Prefixes. It can be
+	// set to one of following:
+	// * EXTERNAL: Default access type. The prefix will be announced to the
+	//   internet. All children PDPs will have access type as EXTERNAL.
+	// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+	//   be used privately within Google Cloud. All children PDPs will have
+	//   access type as INTERNAL.
+	//   Possible values are: `EXTERNAL`, `INTERNAL`.
+	Ipv6AccessType pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -241,9 +294,18 @@ type publicAdvertisedPrefixArgs struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The IPv4 address to be used for reverse DNS verification.
-	DnsVerificationIp string `pulumi:"dnsVerificationIp"`
+	DnsVerificationIp *string `pulumi:"dnsVerificationIp"`
 	// The address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The internet access type for IPv6 Public Advertised Prefixes. It can be
+	// set to one of following:
+	// * EXTERNAL: Default access type. The prefix will be announced to the
+	//   internet. All children PDPs will have access type as EXTERNAL.
+	// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+	//   be used privately within Google Cloud. All children PDPs will have
+	//   access type as INTERNAL.
+	//   Possible values are: `EXTERNAL`, `INTERNAL`.
+	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -269,9 +331,18 @@ type PublicAdvertisedPrefixArgs struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The IPv4 address to be used for reverse DNS verification.
-	DnsVerificationIp pulumi.StringInput
+	DnsVerificationIp pulumi.StringPtrInput
 	// The address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange pulumi.StringInput
+	// The internet access type for IPv6 Public Advertised Prefixes. It can be
+	// set to one of following:
+	// * EXTERNAL: Default access type. The prefix will be announced to the
+	//   internet. All children PDPs will have access type as EXTERNAL.
+	// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+	//   be used privately within Google Cloud. All children PDPs will have
+	//   access type as INTERNAL.
+	//   Possible values are: `EXTERNAL`, `INTERNAL`.
+	Ipv6AccessType pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -385,13 +456,25 @@ func (o PublicAdvertisedPrefixOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The IPv4 address to be used for reverse DNS verification.
-func (o PublicAdvertisedPrefixOutput) DnsVerificationIp() pulumi.StringOutput {
-	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.DnsVerificationIp }).(pulumi.StringOutput)
+func (o PublicAdvertisedPrefixOutput) DnsVerificationIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringPtrOutput { return v.DnsVerificationIp }).(pulumi.StringPtrOutput)
 }
 
 // The address range, in CIDR format, represented by this public advertised prefix.
 func (o PublicAdvertisedPrefixOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The internet access type for IPv6 Public Advertised Prefixes. It can be
+// set to one of following:
+//   - EXTERNAL: Default access type. The prefix will be announced to the
+//     internet. All children PDPs will have access type as EXTERNAL.
+//   - INTERNAL: The prefix won’t be announced to the internet. Prefix will
+//     be used privately within Google Cloud. All children PDPs will have
+//     access type as INTERNAL.
+//     Possible values are: `EXTERNAL`, `INTERNAL`.
+func (o PublicAdvertisedPrefixOutput) Ipv6AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.Ipv6AccessType }).(pulumi.StringOutput)
 }
 
 // Name of the resource. The name must be 1-63 characters long, and

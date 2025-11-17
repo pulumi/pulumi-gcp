@@ -5173,6 +5173,8 @@ class TableExternalDataConfiguration(dict):
             suggest = "connection_id"
         elif key == "csvOptions":
             suggest = "csv_options"
+        elif key == "decimalTargetTypes":
+            suggest = "decimal_target_types"
         elif key == "fileSetSpecType":
             suggest = "file_set_spec_type"
         elif key == "googleSheetsOptions":
@@ -5217,6 +5219,7 @@ class TableExternalDataConfiguration(dict):
                  compression: Optional[_builtins.str] = None,
                  connection_id: Optional[_builtins.str] = None,
                  csv_options: Optional['outputs.TableExternalDataConfigurationCsvOptions'] = None,
+                 decimal_target_types: Optional[Sequence[_builtins.str]] = None,
                  file_set_spec_type: Optional[_builtins.str] = None,
                  google_sheets_options: Optional['outputs.TableExternalDataConfigurationGoogleSheetsOptions'] = None,
                  hive_partitioning_options: Optional['outputs.TableExternalDataConfigurationHivePartitioningOptions'] = None,
@@ -5251,6 +5254,19 @@ class TableExternalDataConfiguration(dict):
                documented above.
         :param 'TableExternalDataConfigurationCsvOptionsArgs' csv_options: Additional properties to set if
                `source_format` is set to "CSV". Structure is documented below.
+        :param Sequence[_builtins.str] decimal_target_types: Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
+               
+               Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is:
+               
+               (38,9) > NUMERIC;
+               (39,9) > BIGNUMERIC (NUMERIC cannot hold 30 integer digits);
+               (38,10) > BIGNUMERIC (NUMERIC cannot hold 10 fractional digits);
+               (76,38) > BIGNUMERIC;
+               (77,38) > BIGNUMERIC (error if value exceeds supported range).
+               
+               This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
+               
+               Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         :param _builtins.str file_set_spec_type: Specifies how source URIs are interpreted for constructing the file set to load.
                By default source URIs are expanded against the underlying storage.
                Other options include specifying manifest files. Only applicable to object storage systems. Docs
@@ -5309,6 +5325,8 @@ class TableExternalDataConfiguration(dict):
             pulumi.set(__self__, "connection_id", connection_id)
         if csv_options is not None:
             pulumi.set(__self__, "csv_options", csv_options)
+        if decimal_target_types is not None:
+            pulumi.set(__self__, "decimal_target_types", decimal_target_types)
         if file_set_spec_type is not None:
             pulumi.set(__self__, "file_set_spec_type", file_set_spec_type)
         if google_sheets_options is not None:
@@ -5404,6 +5422,26 @@ class TableExternalDataConfiguration(dict):
         `source_format` is set to "CSV". Structure is documented below.
         """
         return pulumi.get(self, "csv_options")
+
+    @_builtins.property
+    @pulumi.getter(name="decimalTargetTypes")
+    def decimal_target_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
+
+        Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is:
+
+        (38,9) > NUMERIC;
+        (39,9) > BIGNUMERIC (NUMERIC cannot hold 30 integer digits);
+        (38,10) > BIGNUMERIC (NUMERIC cannot hold 10 fractional digits);
+        (76,38) > BIGNUMERIC;
+        (77,38) > BIGNUMERIC (error if value exceeds supported range).
+
+        This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
+
+        Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        """
+        return pulumi.get(self, "decimal_target_types")
 
     @_builtins.property
     @pulumi.getter(name="fileSetSpecType")
@@ -7588,6 +7626,7 @@ class GetTableExternalDataConfigurationResult(dict):
                  compression: _builtins.str,
                  connection_id: _builtins.str,
                  csv_options: Sequence['outputs.GetTableExternalDataConfigurationCsvOptionResult'],
+                 decimal_target_types: Sequence[_builtins.str],
                  file_set_spec_type: _builtins.str,
                  google_sheets_options: Sequence['outputs.GetTableExternalDataConfigurationGoogleSheetsOptionResult'],
                  hive_partitioning_options: Sequence['outputs.GetTableExternalDataConfigurationHivePartitioningOptionResult'],
@@ -7609,6 +7648,7 @@ class GetTableExternalDataConfigurationResult(dict):
         :param _builtins.str compression: The compression type of the data source. Valid values are "NONE" or "GZIP".
         :param _builtins.str connection_id: The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connectionId can have the form "<project>.<location>.<connection_id>" or "projects/<project>/locations/<location>/connections/<connection_id>".
         :param Sequence['GetTableExternalDataConfigurationCsvOptionArgs'] csv_options: Additional properties to set if source_format is set to "CSV".
+        :param Sequence[_builtins.str] decimal_target_types: The data types that could be used as a target type when converting decimal values.
         :param _builtins.str file_set_spec_type: Specifies how source URIs are interpreted for constructing the file set to load.  By default source URIs are expanded against the underlying storage.  Other options include specifying manifest files. Only applicable to object storage systems.
         :param Sequence['GetTableExternalDataConfigurationGoogleSheetsOptionArgs'] google_sheets_options: Additional options if source_format is set to "GOOGLE_SHEETS".
         :param Sequence['GetTableExternalDataConfigurationHivePartitioningOptionArgs'] hive_partitioning_options: When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
@@ -7630,6 +7670,7 @@ class GetTableExternalDataConfigurationResult(dict):
         pulumi.set(__self__, "compression", compression)
         pulumi.set(__self__, "connection_id", connection_id)
         pulumi.set(__self__, "csv_options", csv_options)
+        pulumi.set(__self__, "decimal_target_types", decimal_target_types)
         pulumi.set(__self__, "file_set_spec_type", file_set_spec_type)
         pulumi.set(__self__, "google_sheets_options", google_sheets_options)
         pulumi.set(__self__, "hive_partitioning_options", hive_partitioning_options)
@@ -7692,6 +7733,14 @@ class GetTableExternalDataConfigurationResult(dict):
         Additional properties to set if source_format is set to "CSV".
         """
         return pulumi.get(self, "csv_options")
+
+    @_builtins.property
+    @pulumi.getter(name="decimalTargetTypes")
+    def decimal_target_types(self) -> Sequence[_builtins.str]:
+        """
+        The data types that could be used as a target type when converting decimal values.
+        """
+        return pulumi.get(self, "decimal_target_types")
 
     @_builtins.property
     @pulumi.getter(name="fileSetSpecType")

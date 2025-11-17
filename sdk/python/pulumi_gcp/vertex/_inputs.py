@@ -47,6 +47,8 @@ __all__ = [
     'AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgsDict',
     'AiEndpointPrivateServiceConnectConfigArgs',
     'AiEndpointPrivateServiceConnectConfigArgsDict',
+    'AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs',
+    'AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict',
     'AiEndpointWithModelGardenDeploymentDeployConfigArgs',
     'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict',
     'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs',
@@ -1446,6 +1448,11 @@ if not MYPY:
         """
         A list of Projects from which the forwarding rule will target the service attachment.
         """
+        psc_automation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict']]]]
+        """
+        List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+        Structure is documented below.
+        """
 elif False:
     AiEndpointPrivateServiceConnectConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1454,17 +1461,22 @@ class AiEndpointPrivateServiceConnectConfigArgs:
     def __init__(__self__, *,
                  enable_private_service_connect: pulumi.Input[_builtins.bool],
                  enable_secure_private_service_connect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 psc_automation_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_private_service_connect: Required. If true, expose the IndexEndpoint via private service connect.
         :param pulumi.Input[_builtins.bool] enable_secure_private_service_connect: If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]] psc_automation_configs: List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+               Structure is documented below.
         """
         pulumi.set(__self__, "enable_private_service_connect", enable_private_service_connect)
         if enable_secure_private_service_connect is not None:
             pulumi.set(__self__, "enable_secure_private_service_connect", enable_secure_private_service_connect)
         if project_allowlists is not None:
             pulumi.set(__self__, "project_allowlists", project_allowlists)
+        if psc_automation_configs is not None:
+            pulumi.set(__self__, "psc_automation_configs", psc_automation_configs)
 
     @_builtins.property
     @pulumi.getter(name="enablePrivateServiceConnect")
@@ -1501,6 +1513,161 @@ class AiEndpointPrivateServiceConnectConfigArgs:
     @project_allowlists.setter
     def project_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "project_allowlists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscAutomationConfigs")
+    def psc_automation_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]:
+        """
+        List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_automation_configs")
+
+    @psc_automation_configs.setter
+    def psc_automation_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]):
+        pulumi.set(self, "psc_automation_configs", value)
+
+
+if not MYPY:
+    class AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict(TypedDict):
+        network: pulumi.Input[_builtins.str]
+        """
+        The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+        """
+        project_id: pulumi.Input[_builtins.str]
+        """
+        Project id used to create forwarding rule.
+        """
+        error_message: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Error message if the PSC service automation failed.
+        """
+        forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Forwarding rule created by the PSC service automation.
+        """
+        ip_address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        IP address rule created by the PSC service automation.
+        """
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The state of the PSC service automation.
+        """
+elif False:
+    AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[_builtins.str],
+                 project_id: pulumi.Input[_builtins.str],
+                 error_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 forwarding_rule: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] network: The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+        :param pulumi.Input[_builtins.str] project_id: Project id used to create forwarding rule.
+        :param pulumi.Input[_builtins.str] error_message: (Output)
+               Error message if the PSC service automation failed.
+        :param pulumi.Input[_builtins.str] forwarding_rule: (Output)
+               Forwarding rule created by the PSC service automation.
+        :param pulumi.Input[_builtins.str] ip_address: (Output)
+               IP address rule created by the PSC service automation.
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the PSC service automation.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project_id", project_id)
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[_builtins.str]:
+        """
+        The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Project id used to create forwarding rule.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Error message if the PSC service automation failed.
+        """
+        return pulumi.get(self, "error_message")
+
+    @error_message.setter
+    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "error_message", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Forwarding rule created by the PSC service automation.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        IP address rule created by the PSC service automation.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The state of the PSC service automation.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 if not MYPY:
@@ -6053,6 +6220,10 @@ class AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs:
 
 if not MYPY:
     class AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict(TypedDict):
+        continuous: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, syncs the FeatureView in a continuous manner to Online Store.
+        """
         cron: NotRequired[pulumi.Input[_builtins.str]]
         """
         Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
@@ -6064,13 +6235,29 @@ elif False:
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewSyncConfigArgs:
     def __init__(__self__, *,
+                 continuous: Optional[pulumi.Input[_builtins.bool]] = None,
                  cron: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.bool] continuous: If true, syncs the FeatureView in a continuous manner to Online Store.
         :param pulumi.Input[_builtins.str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
                To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
         """
+        if continuous is not None:
+            pulumi.set(__self__, "continuous", continuous)
         if cron is not None:
             pulumi.set(__self__, "cron", cron)
+
+    @_builtins.property
+    @pulumi.getter
+    def continuous(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, syncs the FeatureView in a continuous manner to Online Store.
+        """
+        return pulumi.get(self, "continuous")
+
+    @continuous.setter
+    def continuous(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "continuous", value)
 
     @_builtins.property
     @pulumi.getter

@@ -147,13 +147,15 @@ namespace Pulumi.Gcp.Compute
         public readonly string DeleteAtTime;
         public readonly string Description;
         public readonly bool EnableEmergentMaintenance;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
+        public readonly string Kind;
+        public readonly ImmutableArray<string> LinkedCommitments;
         public readonly string Name;
         public readonly string? Project;
+        public readonly int ReservationBlockCount;
         public readonly ImmutableArray<Outputs.GetReservationReservationSharingPolicyResult> ReservationSharingPolicies;
+        public readonly ImmutableArray<Outputs.GetReservationResourceStatusResult> ResourceStatuses;
+        public readonly bool SatisfiesPzs;
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetReservationShareSettingResult> ShareSettings;
         public readonly bool SpecificReservationRequired;
@@ -177,11 +179,21 @@ namespace Pulumi.Gcp.Compute
 
             string id,
 
+            string kind,
+
+            ImmutableArray<string> linkedCommitments,
+
             string name,
 
             string? project,
 
+            int reservationBlockCount,
+
             ImmutableArray<Outputs.GetReservationReservationSharingPolicyResult> reservationSharingPolicies,
+
+            ImmutableArray<Outputs.GetReservationResourceStatusResult> resourceStatuses,
+
+            bool satisfiesPzs,
 
             string selfLink,
 
@@ -202,9 +214,14 @@ namespace Pulumi.Gcp.Compute
             Description = description;
             EnableEmergentMaintenance = enableEmergentMaintenance;
             Id = id;
+            Kind = kind;
+            LinkedCommitments = linkedCommitments;
             Name = name;
             Project = project;
+            ReservationBlockCount = reservationBlockCount;
             ReservationSharingPolicies = reservationSharingPolicies;
+            ResourceStatuses = resourceStatuses;
+            SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             ShareSettings = shareSettings;
             SpecificReservationRequired = specificReservationRequired;

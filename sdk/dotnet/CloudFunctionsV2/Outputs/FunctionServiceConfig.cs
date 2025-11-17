@@ -32,6 +32,16 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly string? BinaryAuthorizationPolicy;
         /// <summary>
+        /// Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+        /// Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+        /// </summary>
+        public readonly string? DirectVpcEgress;
+        /// <summary>
+        /// The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FunctionServiceConfigDirectVpcNetworkInterface> DirectVpcNetworkInterfaces;
+        /// <summary>
         /// Environment variables that shall be available during function execution.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? EnvironmentVariables;
@@ -110,6 +120,10 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
 
             string? binaryAuthorizationPolicy,
 
+            string? directVpcEgress,
+
+            ImmutableArray<Outputs.FunctionServiceConfigDirectVpcNetworkInterface> directVpcNetworkInterfaces,
+
             ImmutableDictionary<string, string>? environmentVariables,
 
             string? gcfUri,
@@ -142,6 +156,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
             AvailableCpu = availableCpu;
             AvailableMemory = availableMemory;
             BinaryAuthorizationPolicy = binaryAuthorizationPolicy;
+            DirectVpcEgress = directVpcEgress;
+            DirectVpcNetworkInterfaces = directVpcNetworkInterfaces;
             EnvironmentVariables = environmentVariables;
             GcfUri = gcfUri;
             IngressSettings = ingressSettings;

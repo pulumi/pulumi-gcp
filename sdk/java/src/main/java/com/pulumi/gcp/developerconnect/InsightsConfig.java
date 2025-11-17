@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("dci-tf-_8270")
+ *             .projectId("dci-tf-_60646")
  *             .name("Service Project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
@@ -180,7 +180,7 @@ import javax.annotation.Nullable;
  * 
  *         var myApphubApplication = new Application("myApphubApplication", ApplicationArgs.builder()
  *             .location("us-central1")
- *             .applicationId("tf-test-example-application_41150")
+ *             .applicationId("tf-test-example-application_9394")
  *             .scope(ApplicationScopeArgs.builder()
  *                 .type("REGIONAL")
  *                 .build())
@@ -191,7 +191,7 @@ import javax.annotation.Nullable;
  * 
  *         var insightsConfig = new InsightsConfig("insightsConfig", InsightsConfigArgs.builder()
  *             .location("us-central1")
- *             .insightsConfigId("tf-test-ic_89313")
+ *             .insightsConfigId("tf-test-ic_11380")
  *             .project(project.projectId())
  *             .annotations(Map.ofEntries(
  *             ))

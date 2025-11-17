@@ -319,6 +319,18 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> EnableEmergentMaintenance { get; private set; } = null!;
 
         /// <summary>
+        /// Type of the resource. Always compute#reservations for reservations.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+        /// </summary>
+        [Output("linkedCommitments")]
+        public Output<ImmutableArray<string>> LinkedCommitments { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -338,11 +350,31 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
+        /// The number of reservation blocks associated with this reservation.
+        /// </summary>
+        [Output("reservationBlockCount")]
+        public Output<int> ReservationBlockCount { get; private set; } = null!;
+
+        /// <summary>
         /// Sharing policy for reservations with Google Cloud managed services.
         /// Structure is documented below.
         /// </summary>
         [Output("reservationSharingPolicy")]
         public Output<Outputs.ReservationReservationSharingPolicy> ReservationSharingPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Status information for Reservation resource.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("resourceStatuses")]
+        public Output<ImmutableArray<Outputs.ReservationResourceStatus>> ResourceStatuses { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
         /// The URI of the created resource.
@@ -558,6 +590,24 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EnableEmergentMaintenance { get; set; }
 
         /// <summary>
+        /// Type of the resource. Always compute#reservations for reservations.
+        /// </summary>
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
+
+        [Input("linkedCommitments")]
+        private InputList<string>? _linkedCommitments;
+
+        /// <summary>
+        /// Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+        /// </summary>
+        public InputList<string> LinkedCommitments
+        {
+            get => _linkedCommitments ?? (_linkedCommitments = new InputList<string>());
+            set => _linkedCommitments = value;
+        }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -577,11 +627,37 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Output)
+        /// The number of reservation blocks associated with this reservation.
+        /// </summary>
+        [Input("reservationBlockCount")]
+        public Input<int>? ReservationBlockCount { get; set; }
+
+        /// <summary>
         /// Sharing policy for reservations with Google Cloud managed services.
         /// Structure is documented below.
         /// </summary>
         [Input("reservationSharingPolicy")]
         public Input<Inputs.ReservationReservationSharingPolicyGetArgs>? ReservationSharingPolicy { get; set; }
+
+        [Input("resourceStatuses")]
+        private InputList<Inputs.ReservationResourceStatusGetArgs>? _resourceStatuses;
+
+        /// <summary>
+        /// Status information for Reservation resource.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ReservationResourceStatusGetArgs> ResourceStatuses
+        {
+            get => _resourceStatuses ?? (_resourceStatuses = new InputList<Inputs.ReservationResourceStatusGetArgs>());
+            set => _resourceStatuses = value;
+        }
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Input("satisfiesPzs")]
+        public Input<bool>? SatisfiesPzs { get; set; }
 
         /// <summary>
         /// The URI of the created resource.

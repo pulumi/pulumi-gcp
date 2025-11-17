@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyAdditionalIpRangesConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyAutoIpamConfig;
+import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyNetworkTierConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfig;
 import java.lang.String;
 import java.util.List;
@@ -40,6 +41,11 @@ public final class GetClusterIpAllocationPolicy {
      * 
      */
     private String clusterSecondaryRangeName;
+    /**
+     * @return Used to determine the default network tier for external IP addresses on cluster resources, such as node pools and load balancers.
+     * 
+     */
+    private List<GetClusterIpAllocationPolicyNetworkTierConfig> networkTierConfigs;
     /**
      * @return Configuration for cluster level pod cidr overprovision. Default is disabled=false.
      * 
@@ -98,6 +104,13 @@ public final class GetClusterIpAllocationPolicy {
         return this.clusterSecondaryRangeName;
     }
     /**
+     * @return Used to determine the default network tier for external IP addresses on cluster resources, such as node pools and load balancers.
+     * 
+     */
+    public List<GetClusterIpAllocationPolicyNetworkTierConfig> networkTierConfigs() {
+        return this.networkTierConfigs;
+    }
+    /**
      * @return Configuration for cluster level pod cidr overprovision. Default is disabled=false.
      * 
      */
@@ -140,6 +153,7 @@ public final class GetClusterIpAllocationPolicy {
         private List<GetClusterIpAllocationPolicyAutoIpamConfig> autoIpamConfigs;
         private String clusterIpv4CidrBlock;
         private String clusterSecondaryRangeName;
+        private List<GetClusterIpAllocationPolicyNetworkTierConfig> networkTierConfigs;
         private List<GetClusterIpAllocationPolicyPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
         private String servicesIpv4CidrBlock;
         private String servicesSecondaryRangeName;
@@ -152,6 +166,7 @@ public final class GetClusterIpAllocationPolicy {
     	      this.autoIpamConfigs = defaults.autoIpamConfigs;
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
     	      this.clusterSecondaryRangeName = defaults.clusterSecondaryRangeName;
+    	      this.networkTierConfigs = defaults.networkTierConfigs;
     	      this.podCidrOverprovisionConfigs = defaults.podCidrOverprovisionConfigs;
     	      this.servicesIpv4CidrBlock = defaults.servicesIpv4CidrBlock;
     	      this.servicesSecondaryRangeName = defaults.servicesSecondaryRangeName;
@@ -208,6 +223,17 @@ public final class GetClusterIpAllocationPolicy {
             return this;
         }
         @CustomType.Setter
+        public Builder networkTierConfigs(List<GetClusterIpAllocationPolicyNetworkTierConfig> networkTierConfigs) {
+            if (networkTierConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicy", "networkTierConfigs");
+            }
+            this.networkTierConfigs = networkTierConfigs;
+            return this;
+        }
+        public Builder networkTierConfigs(GetClusterIpAllocationPolicyNetworkTierConfig... networkTierConfigs) {
+            return networkTierConfigs(List.of(networkTierConfigs));
+        }
+        @CustomType.Setter
         public Builder podCidrOverprovisionConfigs(List<GetClusterIpAllocationPolicyPodCidrOverprovisionConfig> podCidrOverprovisionConfigs) {
             if (podCidrOverprovisionConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicy", "podCidrOverprovisionConfigs");
@@ -249,6 +275,7 @@ public final class GetClusterIpAllocationPolicy {
             _resultValue.autoIpamConfigs = autoIpamConfigs;
             _resultValue.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             _resultValue.clusterSecondaryRangeName = clusterSecondaryRangeName;
+            _resultValue.networkTierConfigs = networkTierConfigs;
             _resultValue.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
             _resultValue.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             _resultValue.servicesSecondaryRangeName = servicesSecondaryRangeName;

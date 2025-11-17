@@ -53,7 +53,7 @@ class OrganizationVpcFlowLogsConfigArgs:
         :param pulumi.Input[_builtins.float] flow_sampling: Optional. The value of the field must be in (0, 1]. The sampling rate
                of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
                sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-               the state field instead. Default value is 1.0.
+               the state field instead. Default value is 1.0
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Resource labels to represent the user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -190,7 +190,7 @@ class OrganizationVpcFlowLogsConfigArgs:
         Optional. The value of the field must be in (0, 1]. The sampling rate
         of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
         sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-        the state field instead. Default value is 1.0.
+        the state field instead. Default value is 1.0
         """
         return pulumi.get(self, "flow_sampling")
 
@@ -294,7 +294,7 @@ class _OrganizationVpcFlowLogsConfigState:
         :param pulumi.Input[_builtins.float] flow_sampling: Optional. The value of the field must be in (0, 1]. The sampling rate
                of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
                sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-               the state field instead. Default value is 1.0.
+               the state field instead. Default value is 1.0
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Resource labels to represent the user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -439,7 +439,7 @@ class _OrganizationVpcFlowLogsConfigState:
         Optional. The value of the field must be in (0, 1]. The sampling rate
         of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
         sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-        the state field instead. Default value is 1.0.
+        the state field instead. Default value is 1.0
         """
         return pulumi.get(self, "flow_sampling")
 
@@ -650,7 +650,7 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] flow_sampling: Optional. The value of the field must be in (0, 1]. The sampling rate
                of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
                sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-               the state field instead. Default value is 1.0.
+               the state field instead. Default value is 1.0
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Resource labels to represent the user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -822,7 +822,7 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] flow_sampling: Optional. The value of the field must be in (0, 1]. The sampling rate
                of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
                sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-               the state field instead. Default value is 1.0.
+               the state field instead. Default value is 1.0
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Resource labels to represent the user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -931,7 +931,7 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
         Optional. The value of the field must be in (0, 1]. The sampling rate
         of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
         sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-        the state field instead. Default value is 1.0.
+        the state field instead. Default value is 1.0
         """
         return pulumi.get(self, "flow_sampling")
 

@@ -17,10 +17,13 @@ import com.pulumi.gcp.cloudidentity.inputs.GetGroupTransitiveMembershipsArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupTransitiveMembershipsPlainArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupsArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupsPlainArgs;
+import com.pulumi.gcp.cloudidentity.inputs.GetPolicyArgs;
+import com.pulumi.gcp.cloudidentity.inputs.GetPolicyPlainArgs;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupLookupResult;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsResult;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupTransitiveMembershipsResult;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupsResult;
+import com.pulumi.gcp.cloudidentity.outputs.GetPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudidentityFunctions {
@@ -928,5 +931,235 @@ public final class CloudidentityFunctions {
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudidentity/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve a Cloud Identity policy.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = CloudidentityFunctions.getPolicy(GetPolicyArgs.builder()
+     *             .name("policies/{policy_id}")
+     *             .build());
+     * 
+     *         ctx.export("policyCustomer", test.customer());
+     *         ctx.export("policyQueryQuery", test.policyQueries()[0].query());
+     *         ctx.export("policyQueryOrgUnit", test.policyQueries()[0].orgUnit());
+     *         ctx.export("policyQueryGroup", test.policyQueries()[0].group());
+     *         ctx.export("policyQuerySortOrder", test.policyQueries()[0].sortOrder());
+     *         ctx.export("policySetting", test.setting());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args) {
+        return getPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve a Cloud Identity policy.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = CloudidentityFunctions.getPolicy(GetPolicyArgs.builder()
+     *             .name("policies/{policy_id}")
+     *             .build());
+     * 
+     *         ctx.export("policyCustomer", test.customer());
+     *         ctx.export("policyQueryQuery", test.policyQueries()[0].query());
+     *         ctx.export("policyQueryOrgUnit", test.policyQueries()[0].orgUnit());
+     *         ctx.export("policyQueryGroup", test.policyQueries()[0].group());
+     *         ctx.export("policyQuerySortOrder", test.policyQueries()[0].sortOrder());
+     *         ctx.export("policySetting", test.setting());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPolicyResult> getPolicyPlain(GetPolicyPlainArgs args) {
+        return getPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve a Cloud Identity policy.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = CloudidentityFunctions.getPolicy(GetPolicyArgs.builder()
+     *             .name("policies/{policy_id}")
+     *             .build());
+     * 
+     *         ctx.export("policyCustomer", test.customer());
+     *         ctx.export("policyQueryQuery", test.policyQueries()[0].query());
+     *         ctx.export("policyQueryOrgUnit", test.policyQueries()[0].orgUnit());
+     *         ctx.export("policyQueryGroup", test.policyQueries()[0].group());
+     *         ctx.export("policyQuerySortOrder", test.policyQueries()[0].sortOrder());
+     *         ctx.export("policySetting", test.setting());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudidentity/getPolicy:getPolicy", TypeShape.of(GetPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve a Cloud Identity policy.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = CloudidentityFunctions.getPolicy(GetPolicyArgs.builder()
+     *             .name("policies/{policy_id}")
+     *             .build());
+     * 
+     *         ctx.export("policyCustomer", test.customer());
+     *         ctx.export("policyQueryQuery", test.policyQueries()[0].query());
+     *         ctx.export("policyQueryOrgUnit", test.policyQueries()[0].orgUnit());
+     *         ctx.export("policyQueryGroup", test.policyQueries()[0].group());
+     *         ctx.export("policyQuerySortOrder", test.policyQueries()[0].sortOrder());
+     *         ctx.export("policySetting", test.setting());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudidentity/getPolicy:getPolicy", TypeShape.of(GetPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve a Cloud Identity policy.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = CloudidentityFunctions.getPolicy(GetPolicyArgs.builder()
+     *             .name("policies/{policy_id}")
+     *             .build());
+     * 
+     *         ctx.export("policyCustomer", test.customer());
+     *         ctx.export("policyQueryQuery", test.policyQueries()[0].query());
+     *         ctx.export("policyQueryOrgUnit", test.policyQueries()[0].orgUnit());
+     *         ctx.export("policyQueryGroup", test.policyQueries()[0].group());
+     *         ctx.export("policyQuerySortOrder", test.policyQueries()[0].sortOrder());
+     *         ctx.export("policySetting", test.setting());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPolicyResult> getPolicyPlain(GetPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:cloudidentity/getPolicy:getPolicy", TypeShape.of(GetPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

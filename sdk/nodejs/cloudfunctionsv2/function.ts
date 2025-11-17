@@ -837,6 +837,53 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudfunctions2 Directvpc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = "my-project-name";
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: `${project}-gcf-source`,
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * });
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "function-v2",
+ *     location: "us-central1",
+ *     description: "a new function",
+ *     buildConfig: {
+ *         runtime: "nodejs20",
+ *         entryPoint: "helloHttp",
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 1,
+ *         availableMemory: "256M",
+ *         timeoutSeconds: 60,
+ *         directVpcNetworkInterfaces: [{
+ *             network: "default",
+ *             subnetwork: "default",
+ *             tags: [
+ *                 "tag1",
+ *                 "tag2",
+ *             ],
+ *         }],
+ *         directVpcEgress: "VPC_EGRESS_ALL_TRAFFIC",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -12,10 +12,13 @@ import com.pulumi.gcp.compute.ReservationArgs;
 import com.pulumi.gcp.compute.inputs.ReservationState;
 import com.pulumi.gcp.compute.outputs.ReservationDeleteAfterDuration;
 import com.pulumi.gcp.compute.outputs.ReservationReservationSharingPolicy;
+import com.pulumi.gcp.compute.outputs.ReservationResourceStatus;
 import com.pulumi.gcp.compute.outputs.ReservationShareSettings;
 import com.pulumi.gcp.compute.outputs.ReservationSpecificReservation;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -412,6 +415,34 @@ public class Reservation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableEmergentMaintenance);
     }
     /**
+     * Type of the resource. Always compute#reservations for reservations.
+     * 
+     */
+    @Export(name="kind", refs={String.class}, tree="[0]")
+    private Output<String> kind;
+
+    /**
+     * @return Type of the resource. Always compute#reservations for reservations.
+     * 
+     */
+    public Output<String> kind() {
+        return this.kind;
+    }
+    /**
+     * Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+     * 
+     */
+    @Export(name="linkedCommitments", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> linkedCommitments;
+
+    /**
+     * @return Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+     * 
+     */
+    public Output<List<String>> linkedCommitments() {
+        return this.linkedCommitments;
+    }
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -454,6 +485,22 @@ public class Reservation extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * (Output)
+     * The number of reservation blocks associated with this reservation.
+     * 
+     */
+    @Export(name="reservationBlockCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> reservationBlockCount;
+
+    /**
+     * @return (Output)
+     * The number of reservation blocks associated with this reservation.
+     * 
+     */
+    public Output<Integer> reservationBlockCount() {
+        return this.reservationBlockCount;
+    }
+    /**
      * Sharing policy for reservations with Google Cloud managed services.
      * Structure is documented below.
      * 
@@ -468,6 +515,36 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      */
     public Output<ReservationReservationSharingPolicy> reservationSharingPolicy() {
         return this.reservationSharingPolicy;
+    }
+    /**
+     * Status information for Reservation resource.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="resourceStatuses", refs={List.class,ReservationResourceStatus.class}, tree="[0,1]")
+    private Output<List<ReservationResourceStatus>> resourceStatuses;
+
+    /**
+     * @return Status information for Reservation resource.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ReservationResourceStatus>> resourceStatuses() {
+        return this.resourceStatuses;
+    }
+    /**
+     * Reserved for future use.
+     * 
+     */
+    @Export(name="satisfiesPzs", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> satisfiesPzs;
+
+    /**
+     * @return Reserved for future use.
+     * 
+     */
+    public Output<Boolean> satisfiesPzs() {
+        return this.satisfiesPzs;
     }
     /**
      * The URI of the created resource.

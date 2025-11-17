@@ -26,8 +26,6 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly Outputs.ClusterIpAllocationPolicyAdditionalPodRangesConfig? AdditionalPodRangesConfig;
         /// <summary>
         /// All the information related to Auto IPAM. Structure is documented below
-        /// 
-        /// &lt;a name="NestedAutoIpamConfig"&gt;&lt;/a&gt;The auto ipam config supports:
         /// </summary>
         public readonly Outputs.ClusterIpAllocationPolicyAutoIpamConfig? AutoIpamConfig;
         /// <summary>
@@ -44,6 +42,12 @@ namespace Pulumi.Gcp.Container.Outputs
         /// `ClusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
         /// </summary>
         public readonly string? ClusterSecondaryRangeName;
+        /// <summary>
+        /// Contains network tier information. Structure is documented below
+        /// 
+        /// &lt;a name="NestedAutoIpamConfig"&gt;&lt;/a&gt;The auto ipam config supports:
+        /// </summary>
+        public readonly Outputs.ClusterIpAllocationPolicyNetworkTierConfig? NetworkTierConfig;
         /// <summary>
         /// Configuration for cluster level pod cidr overprovision. Default is disabled=false.
         /// </summary>
@@ -82,6 +86,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? clusterSecondaryRangeName,
 
+            Outputs.ClusterIpAllocationPolicyNetworkTierConfig? networkTierConfig,
+
             Outputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfig? podCidrOverprovisionConfig,
 
             string? servicesIpv4CidrBlock,
@@ -95,6 +101,7 @@ namespace Pulumi.Gcp.Container.Outputs
             AutoIpamConfig = autoIpamConfig;
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
+            NetworkTierConfig = networkTierConfig;
             PodCidrOverprovisionConfig = podCidrOverprovisionConfig;
             ServicesIpv4CidrBlock = servicesIpv4CidrBlock;
             ServicesSecondaryRangeName = servicesSecondaryRangeName;

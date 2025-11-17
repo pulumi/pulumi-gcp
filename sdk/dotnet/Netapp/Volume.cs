@@ -107,6 +107,21 @@ namespace Pulumi.Gcp.Netapp
         public Output<Outputs.VolumeBackupConfig?> BackupConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Block device represents the device(s) which are stored in the block volume.
+        /// Currently, only one block device is permitted per Volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("blockDevices")]
+        public Output<ImmutableArray<Outputs.VolumeBlockDevice>> BlockDevices { get; private set; } = null!;
+
+        /// <summary>
+        /// Cache parameters for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("cacheParameters")]
+        public Output<Outputs.VolumeCacheParameters?> CacheParameters { get; private set; } = null!;
+
+        /// <summary>
         /// Capacity of the volume (in GiB).
         /// </summary>
         [Output("capacityGib")]
@@ -251,7 +266,7 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
-        /// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+        /// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
         /// </summary>
         [Output("protocols")]
         public Output<ImmutableArray<string>> Protocols { get; private set; } = null!;
@@ -307,7 +322,7 @@ namespace Pulumi.Gcp.Netapp
         /// Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
         /// </summary>
         [Output("shareName")]
-        public Output<string> ShareName { get; private set; } = null!;
+        public Output<string?> ShareName { get; private set; } = null!;
 
         /// <summary>
         /// Settings for volumes with SMB access.
@@ -437,6 +452,27 @@ namespace Pulumi.Gcp.Netapp
         [Input("backupConfig")]
         public Input<Inputs.VolumeBackupConfigArgs>? BackupConfig { get; set; }
 
+        [Input("blockDevices")]
+        private InputList<Inputs.VolumeBlockDeviceArgs>? _blockDevices;
+
+        /// <summary>
+        /// Block device represents the device(s) which are stored in the block volume.
+        /// Currently, only one block device is permitted per Volume.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.VolumeBlockDeviceArgs> BlockDevices
+        {
+            get => _blockDevices ?? (_blockDevices = new InputList<Inputs.VolumeBlockDeviceArgs>());
+            set => _blockDevices = value;
+        }
+
+        /// <summary>
+        /// Cache parameters for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cacheParameters")]
+        public Input<Inputs.VolumeCacheParametersArgs>? CacheParameters { get; set; }
+
         /// <summary>
         /// Capacity of the volume (in GiB).
         /// </summary>
@@ -530,7 +566,7 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
-        /// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+        /// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
         /// </summary>
         public InputList<string> Protocols
         {
@@ -569,8 +605,8 @@ namespace Pulumi.Gcp.Netapp
         /// <summary>
         /// Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
         /// </summary>
-        [Input("shareName", required: true)]
-        public Input<string> ShareName { get; set; } = null!;
+        [Input("shareName")]
+        public Input<string>? ShareName { get; set; }
 
         [Input("smbSettings")]
         private InputList<string>? _smbSettings;
@@ -644,6 +680,27 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("backupConfig")]
         public Input<Inputs.VolumeBackupConfigGetArgs>? BackupConfig { get; set; }
+
+        [Input("blockDevices")]
+        private InputList<Inputs.VolumeBlockDeviceGetArgs>? _blockDevices;
+
+        /// <summary>
+        /// Block device represents the device(s) which are stored in the block volume.
+        /// Currently, only one block device is permitted per Volume.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.VolumeBlockDeviceGetArgs> BlockDevices
+        {
+            get => _blockDevices ?? (_blockDevices = new InputList<Inputs.VolumeBlockDeviceGetArgs>());
+            set => _blockDevices = value;
+        }
+
+        /// <summary>
+        /// Cache parameters for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cacheParameters")]
+        public Input<Inputs.VolumeCacheParametersGetArgs>? CacheParameters { get; set; }
 
         /// <summary>
         /// Capacity of the volume (in GiB).
@@ -815,7 +872,7 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
-        /// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+        /// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
         /// </summary>
         public InputList<string> Protocols
         {

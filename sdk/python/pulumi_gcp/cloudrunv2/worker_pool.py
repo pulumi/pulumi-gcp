@@ -944,6 +944,40 @@ class WorkerPool(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Cloudrunv2 Worker Pool Basic Depends On
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.WorkerPool("default",
+            name="cloudrun-worker-pool",
+            location="us-central1",
+            deletion_protection=False,
+            launch_stage="BETA",
+            template={
+                "containers": [
+                    {
+                        "name": "foo-1",
+                        "image": "us-docker.pkg.dev/cloudrun/container/worker-pool",
+                        "depends_ons": ["foo-2"],
+                    },
+                    {
+                        "name": "foo-2",
+                        "image": "us-docker.pkg.dev/cloudrun/container/worker-pool",
+                        "startup_probe": {
+                            "http_get": {
+                                "path": "/healthz",
+                                "port": 8080,
+                            },
+                            "period_seconds": 5,
+                            "timeout_seconds": 2,
+                            "failure_threshold": 3,
+                        },
+                    },
+                ],
+            })
+        ```
         ### Cloudrunv2 Worker Pool Limits
 
         ```python
@@ -1420,6 +1454,40 @@ class WorkerPool(pulumi.CustomResource):
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/worker-pool",
                 }],
+            })
+        ```
+        ### Cloudrunv2 Worker Pool Basic Depends On
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.WorkerPool("default",
+            name="cloudrun-worker-pool",
+            location="us-central1",
+            deletion_protection=False,
+            launch_stage="BETA",
+            template={
+                "containers": [
+                    {
+                        "name": "foo-1",
+                        "image": "us-docker.pkg.dev/cloudrun/container/worker-pool",
+                        "depends_ons": ["foo-2"],
+                    },
+                    {
+                        "name": "foo-2",
+                        "image": "us-docker.pkg.dev/cloudrun/container/worker-pool",
+                        "startup_probe": {
+                            "http_get": {
+                                "path": "/healthz",
+                                "port": 8080,
+                            },
+                            "period_seconds": 5,
+                            "timeout_seconds": 2,
+                            "failure_threshold": 3,
+                        },
+                    },
+                ],
             })
         ```
         ### Cloudrunv2 Worker Pool Limits

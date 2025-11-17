@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiFeatureOnlineStoreFeatureviewSyncConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If true, syncs the FeatureView in a continuous manner to Online Store.
+        /// </summary>
+        [Input("continuous")]
+        public Input<bool>? Continuous { get; set; }
+
+        /// <summary>
         /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
         /// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
         /// </summary>

@@ -57,7 +57,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			testEntryTypeFull, err := dataplex.NewAspectType(ctx, "test_entry_type_full", &dataplex.AspectTypeArgs{
-//				AspectTypeId: pulumi.String("tf-test-aspect-type_27169"),
+//				AspectTypeId: pulumi.String("tf-test-aspect-type_75092"),
 //				Location:     pulumi.String("us-central1"),
 //				Project:      pulumi.String("my-project-name"),
 //				MetadataTemplate: pulumi.String(`{

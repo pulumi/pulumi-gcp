@@ -440,9 +440,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
-        /// in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
-        /// Use one of the following formats to specify a sub-PDP when creating an
-        /// IPv6 NetLB forwarding rule using BYOIP:
+        /// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
+        /// mode. Use one of the following formats to specify a sub-PDP when creating
+        /// a dual stack or IPv6-only subnetwork using BYOIP:
         /// Full resource URL, as in:
         /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         /// Partial URL, as in:
@@ -690,6 +690,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ExternalIpv6Prefix { get; set; }
 
         /// <summary>
+        /// The internal IPv6 address range that is assigned to this subnetwork.
+        /// </summary>
+        [Input("internalIpv6Prefix")]
+        public Input<string>? InternalIpv6Prefix { get; set; }
+
+        /// <summary>
         /// The range of internal addresses that are owned by this subnetwork.
         /// Provide this property when you create the subnetwork. For example,
         /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -701,9 +707,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
-        /// in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
-        /// Use one of the following formats to specify a sub-PDP when creating an
-        /// IPv6 NetLB forwarding rule using BYOIP:
+        /// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
+        /// mode. Use one of the following formats to specify a sub-PDP when creating
+        /// a dual stack or IPv6-only subnetwork using BYOIP:
         /// Full resource URL, as in:
         /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         /// Partial URL, as in:
@@ -918,9 +924,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
-        /// in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
-        /// Use one of the following formats to specify a sub-PDP when creating an
-        /// IPv6 NetLB forwarding rule using BYOIP:
+        /// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
+        /// mode. Use one of the following formats to specify a sub-PDP when creating
+        /// a dual stack or IPv6-only subnetwork using BYOIP:
         /// Full resource URL, as in:
         /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         /// Partial URL, as in:

@@ -36,6 +36,18 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
             set => _commands = value;
         }
 
+        [Input("dependsOns")]
+        private InputList<string>? _dependsOns;
+
+        /// <summary>
+        /// Names of the containers that must start before this container.
+        /// </summary>
+        public InputList<string> DependsOns
+        {
+            get => _dependsOns ?? (_dependsOns = new InputList<string>());
+            set => _dependsOns = value;
+        }
+
         [Input("envs")]
         private InputList<Inputs.WorkerPoolTemplateContainerEnvArgs>? _envs;
 

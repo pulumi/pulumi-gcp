@@ -79,18 +79,24 @@ public final class PublicDelegatedPrefixArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+     * Specifies the mode of this IPv6 PDP. MODE must be one of:
+     * * DELEGATION
+     * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+     * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+     * * INTERNAL_IPV6_SUBNETWORK_CREATION
+     *   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+     * @return Specifies the mode of this IPv6 PDP. MODE must be one of:
+     * * DELEGATION
+     * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+     * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+     * * INTERNAL_IPV6_SUBNETWORK_CREATION
+     *   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -286,9 +292,12 @@ public final class PublicDelegatedPrefixArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param mode Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-         * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-         * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+         * @param mode Specifies the mode of this IPv6 PDP. MODE must be one of:
+         * * DELEGATION
+         * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+         * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+         * * INTERNAL_IPV6_SUBNETWORK_CREATION
+         *   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
          * 
          * @return builder
          * 
@@ -299,9 +308,12 @@ public final class PublicDelegatedPrefixArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param mode Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-         * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-         * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+         * @param mode Specifies the mode of this IPv6 PDP. MODE must be one of:
+         * * DELEGATION
+         * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+         * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+         * * INTERNAL_IPV6_SUBNETWORK_CREATION
+         *   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
          * 
          * @return builder
          * 

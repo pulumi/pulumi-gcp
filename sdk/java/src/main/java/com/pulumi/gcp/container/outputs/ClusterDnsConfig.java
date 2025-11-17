@@ -17,7 +17,7 @@ public final class ClusterDnsConfig {
      */
     private @Nullable String additiveVpcScopeDnsDomain;
     /**
-     * @return Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+     * @return Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
      * 
      */
     private @Nullable String clusterDns;
@@ -41,7 +41,7 @@ public final class ClusterDnsConfig {
         return Optional.ofNullable(this.additiveVpcScopeDnsDomain);
     }
     /**
-     * @return Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+     * @return Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
      * 
      */
     public Optional<String> clusterDns() {

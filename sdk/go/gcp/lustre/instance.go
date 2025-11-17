@@ -137,6 +137,9 @@ type Instance struct {
 	// The throughput of the instance in MB/s/TiB.
 	// Valid values are 125, 250, 500, 1000.
 	PerUnitStorageThroughput pulumi.StringOutput `pulumi:"perUnitStorageThroughput"`
+	// The placement policy name for the instance in the format of
+	// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+	PlacementPolicy pulumi.StringPtrOutput `pulumi:"placementPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -249,6 +252,9 @@ type instanceState struct {
 	// The throughput of the instance in MB/s/TiB.
 	// Valid values are 125, 250, 500, 1000.
 	PerUnitStorageThroughput *string `pulumi:"perUnitStorageThroughput"`
+	// The placement policy name for the instance in the format of
+	// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+	PlacementPolicy *string `pulumi:"placementPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -309,6 +315,9 @@ type InstanceState struct {
 	// The throughput of the instance in MB/s/TiB.
 	// Valid values are 125, 250, 500, 1000.
 	PerUnitStorageThroughput pulumi.StringPtrInput
+	// The placement policy name for the instance in the format of
+	// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+	PlacementPolicy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -365,6 +374,9 @@ type instanceArgs struct {
 	// The throughput of the instance in MB/s/TiB.
 	// Valid values are 125, 250, 500, 1000.
 	PerUnitStorageThroughput string `pulumi:"perUnitStorageThroughput"`
+	// The placement policy name for the instance in the format of
+	// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+	PlacementPolicy *string `pulumi:"placementPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -403,6 +415,9 @@ type InstanceArgs struct {
 	// The throughput of the instance in MB/s/TiB.
 	// Valid values are 125, 250, 500, 1000.
 	PerUnitStorageThroughput pulumi.StringInput
+	// The placement policy name for the instance in the format of
+	// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+	PlacementPolicy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -571,6 +586,12 @@ func (o InstanceOutput) Network() pulumi.StringOutput {
 // Valid values are 125, 250, 500, 1000.
 func (o InstanceOutput) PerUnitStorageThroughput() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PerUnitStorageThroughput }).(pulumi.StringOutput)
+}
+
+// The placement policy name for the instance in the format of
+// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+func (o InstanceOutput) PlacementPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PlacementPolicy }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

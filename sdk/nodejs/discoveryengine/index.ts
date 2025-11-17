@@ -25,6 +25,11 @@ export type CmekConfig = import("./cmekConfig").CmekConfig;
 export const CmekConfig: typeof import("./cmekConfig").CmekConfig = null as any;
 utilities.lazyLoad(exports, ["CmekConfig"], () => require("./cmekConfig"));
 
+export { ControlArgs, ControlState } from "./control";
+export type Control = import("./control").Control;
+export const Control: typeof import("./control").Control = null as any;
+utilities.lazyLoad(exports, ["Control"], () => require("./control"));
+
 export { DataConnectorArgs, DataConnectorState } from "./dataConnector";
 export type DataConnector = import("./dataConnector").DataConnector;
 export const DataConnector: typeof import("./dataConnector").DataConnector = null as any;
@@ -65,6 +70,11 @@ export type TargetSite = import("./targetSite").TargetSite;
 export const TargetSite: typeof import("./targetSite").TargetSite = null as any;
 utilities.lazyLoad(exports, ["TargetSite"], () => require("./targetSite"));
 
+export { UserStoreArgs, UserStoreState } from "./userStore";
+export type UserStore = import("./userStore").UserStore;
+export const UserStore: typeof import("./userStore").UserStore = null as any;
+utilities.lazyLoad(exports, ["UserStore"], () => require("./userStore"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -78,6 +88,8 @@ const _module = {
                 return new ChatEngine(name, <any>undefined, { urn })
             case "gcp:discoveryengine/cmekConfig:CmekConfig":
                 return new CmekConfig(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/control:Control":
+                return new Control(name, <any>undefined, { urn })
             case "gcp:discoveryengine/dataConnector:DataConnector":
                 return new DataConnector(name, <any>undefined, { urn })
             case "gcp:discoveryengine/dataStore:DataStore":
@@ -94,6 +106,8 @@ const _module = {
                 return new Sitemap(name, <any>undefined, { urn })
             case "gcp:discoveryengine/targetSite:TargetSite":
                 return new TargetSite(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/userStore:UserStore":
+                return new UserStore(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -103,6 +117,7 @@ pulumi.runtime.registerResourceModule("gcp", "discoveryengine/aclConfig", _modul
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/assistant", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/chatEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/cmekConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/control", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/dataConnector", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/dataStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/licenseConfig", _module)
@@ -111,3 +126,4 @@ pulumi.runtime.registerResourceModule("gcp", "discoveryengine/schema", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/searchEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/sitemap", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/targetSite", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/userStore", _module)

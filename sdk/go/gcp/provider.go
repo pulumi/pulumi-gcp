@@ -47,6 +47,7 @@ type Provider struct {
 	BinaryAuthorizationCustomEndpoint      pulumi.StringPtrOutput `pulumi:"binaryAuthorizationCustomEndpoint"`
 	BlockchainNodeEngineCustomEndpoint     pulumi.StringPtrOutput `pulumi:"blockchainNodeEngineCustomEndpoint"`
 	CertificateManagerCustomEndpoint       pulumi.StringPtrOutput `pulumi:"certificateManagerCustomEndpoint"`
+	CesCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"cesCustomEndpoint"`
 	ChronicleCustomEndpoint                pulumi.StringPtrOutput `pulumi:"chronicleCustomEndpoint"`
 	CloudAssetCustomEndpoint               pulumi.StringPtrOutput `pulumi:"cloudAssetCustomEndpoint"`
 	CloudBillingCustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudBillingCustomEndpoint"`
@@ -279,6 +280,7 @@ type providerArgs struct {
 	BinaryAuthorizationCustomEndpoint      *string                      `pulumi:"binaryAuthorizationCustomEndpoint"`
 	BlockchainNodeEngineCustomEndpoint     *string                      `pulumi:"blockchainNodeEngineCustomEndpoint"`
 	CertificateManagerCustomEndpoint       *string                      `pulumi:"certificateManagerCustomEndpoint"`
+	CesCustomEndpoint                      *string                      `pulumi:"cesCustomEndpoint"`
 	ChronicleCustomEndpoint                *string                      `pulumi:"chronicleCustomEndpoint"`
 	CloudAssetCustomEndpoint               *string                      `pulumi:"cloudAssetCustomEndpoint"`
 	CloudBillingCustomEndpoint             *string                      `pulumi:"cloudBillingCustomEndpoint"`
@@ -480,6 +482,7 @@ type ProviderArgs struct {
 	BinaryAuthorizationCustomEndpoint      pulumi.StringPtrInput
 	BlockchainNodeEngineCustomEndpoint     pulumi.StringPtrInput
 	CertificateManagerCustomEndpoint       pulumi.StringPtrInput
+	CesCustomEndpoint                      pulumi.StringPtrInput
 	ChronicleCustomEndpoint                pulumi.StringPtrInput
 	CloudAssetCustomEndpoint               pulumi.StringPtrInput
 	CloudBillingCustomEndpoint             pulumi.StringPtrInput
@@ -822,6 +825,10 @@ func (o ProviderOutput) BlockchainNodeEngineCustomEndpoint() pulumi.StringPtrOut
 
 func (o ProviderOutput) CertificateManagerCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CertificateManagerCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) CesCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CesCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) ChronicleCustomEndpoint() pulumi.StringPtrOutput {

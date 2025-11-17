@@ -76,6 +76,63 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloudrunv2 Worker Pool Basic Depends On
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.WorkerPool;
+ * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new WorkerPool("default", WorkerPoolArgs.builder()
+ *             .name("cloudrun-worker-pool")
+ *             .location("us-central1")
+ *             .deletionProtection(false)
+ *             .launchStage("BETA")
+ *             .template(WorkerPoolTemplateArgs.builder()
+ *                 .containers(                
+ *                     WorkerPoolTemplateContainerArgs.builder()
+ *                         .name("foo-1")
+ *                         .image("us-docker.pkg.dev/cloudrun/container/worker-pool")
+ *                         .dependsOns("foo-2")
+ *                         .build(),
+ *                     WorkerPoolTemplateContainerArgs.builder()
+ *                         .name("foo-2")
+ *                         .image("us-docker.pkg.dev/cloudrun/container/worker-pool")
+ *                         .startupProbe(WorkerPoolTemplateContainerStartupProbeArgs.builder()
+ *                             .httpGet(WorkerPoolTemplateContainerStartupProbeHttpGetArgs.builder()
+ *                                 .path("/healthz")
+ *                                 .port(8080)
+ *                                 .build())
+ *                             .periodSeconds(5)
+ *                             .timeoutSeconds(2)
+ *                             .failureThreshold(3)
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Cloudrunv2 Worker Pool Limits
  * 
  * <pre>

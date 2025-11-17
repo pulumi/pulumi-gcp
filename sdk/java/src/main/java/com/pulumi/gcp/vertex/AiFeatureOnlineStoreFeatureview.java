@@ -325,8 +325,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("tf-test_9329")
- *             .name("tf-test_37135")
+ *             .projectId("tf-test_12125")
+ *             .name("tf-test_82749")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")
@@ -440,7 +440,7 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .featureOnlineStore(featureonlinestore.name())
  *             .syncConfig(AiFeatureOnlineStoreFeatureviewSyncConfigArgs.builder()
- *                 .cron("0 0 * * *")
+ *                 .continuous(true)
  *                 .build())
  *             .featureRegistrySource(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs.builder()
  *                 .featureGroups(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs.builder()

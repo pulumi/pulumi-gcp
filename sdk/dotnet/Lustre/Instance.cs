@@ -180,6 +180,13 @@ namespace Pulumi.Gcp.Lustre
         public Output<string> PerUnitStorageThroughput { get; private set; } = null!;
 
         /// <summary>
+        /// The placement policy name for the instance in the format of
+        /// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+        /// </summary>
+        [Output("placementPolicy")]
+        public Output<string?> PlacementPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -338,6 +345,13 @@ namespace Pulumi.Gcp.Lustre
         public Input<string> PerUnitStorageThroughput { get; set; } = null!;
 
         /// <summary>
+        /// The placement policy name for the instance in the format of
+        /// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+        /// </summary>
+        [Input("placementPolicy")]
+        public Input<string>? PlacementPolicy { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -458,6 +472,13 @@ namespace Pulumi.Gcp.Lustre
         /// </summary>
         [Input("perUnitStorageThroughput")]
         public Input<string>? PerUnitStorageThroughput { get; set; }
+
+        /// <summary>
+        /// The placement policy name for the instance in the format of
+        /// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+        /// </summary>
+        [Input("placementPolicy")]
+        public Input<string>? PlacementPolicy { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

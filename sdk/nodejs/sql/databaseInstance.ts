@@ -60,13 +60,13 @@ import * as utilities from "../utilities";
  *         },
  *     }));
  * }
- * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
  * const onprem = [
  *     "192.168.1.2",
  *     "192.168.2.3",
  * ];
  * const postgres = new gcp.sql.DatabaseInstance("postgres", {
- *     name: `postgres-instance-${dbNameSuffix.hex}`,
+ *     name: pulumi.interpolate`postgres-instance-${dbNameSuffix.hex}`,
  *     databaseVersion: "POSTGRES_15",
  *     settings: {
  *         tier: "db-f1-micro",
@@ -105,9 +105,9 @@ import * as utilities from "../utilities";
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAddress.name],
  * });
- * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
  * const instance = new gcp.sql.DatabaseInstance("instance", {
- *     name: `private-instance-${dbNameSuffix.hex}`,
+ *     name: pulumi.interpolate`private-instance-${dbNameSuffix.hex}`,
  *     region: "us-central1",
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
@@ -380,6 +380,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+     *
+     * > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
      */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
@@ -631,6 +633,8 @@ export interface DatabaseInstanceState {
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+     *
+     * > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -784,6 +788,8 @@ export interface DatabaseInstanceArgs {
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+     *
+     * > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**

@@ -1358,6 +1358,86 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloudfunctions2 Directvpc
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.Function;
+ * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = "my-project-name";
+ * 
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .name(String.format("%s-gcf-source", project))
+ *             .location("US")
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
+ *             .name("function-source.zip")
+ *             .bucket(bucket.name())
+ *             .source(new FileAsset("function-source.zip"))
+ *             .build());
+ * 
+ *         var function = new Function("function", FunctionArgs.builder()
+ *             .name("function-v2")
+ *             .location("us-central1")
+ *             .description("a new function")
+ *             .buildConfig(FunctionBuildConfigArgs.builder()
+ *                 .runtime("nodejs20")
+ *                 .entryPoint("helloHttp")
+ *                 .source(FunctionBuildConfigSourceArgs.builder()
+ *                     .storageSource(FunctionBuildConfigSourceStorageSourceArgs.builder()
+ *                         .bucket(bucket.name())
+ *                         .object(object.name())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .serviceConfig(FunctionServiceConfigArgs.builder()
+ *                 .maxInstanceCount(1)
+ *                 .availableMemory("256M")
+ *                 .timeoutSeconds(60)
+ *                 .directVpcNetworkInterfaces(FunctionServiceConfigDirectVpcNetworkInterfaceArgs.builder()
+ *                     .network("default")
+ *                     .subnetwork("default")
+ *                     .tags(                    
+ *                         "tag1",
+ *                         "tag2")
+ *                     .build())
+ *                 .directVpcEgress("VPC_EGRESS_ALL_TRAFFIC")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

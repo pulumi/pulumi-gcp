@@ -468,6 +468,116 @@ import (
 //	}
 //
 // ```
+// ### Dataplex Datascan Documentation
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
+//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__64336"),
+//				DefaultTableExpirationMs: pulumi.Int(3600000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
+//				DatasetId:          tfDataplexTestDataset.DatasetId,
+//				TableId:            pulumi.String("tf_dataplex_test_table_id__34962"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Schema: pulumi.String(`    [
+//	    {
+//	      \"name\": \"name\",
+//	      \"type\": \"STRING\",
+//	      \"mode\": \"NULLABLE\"
+//	    },
+//	    {
+//	      \"name\": \"station_id\",
+//	      \"type\": \"INTEGER\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The id of the bike station\"
+//	    },
+//	    {
+//	      \"name\": \"address\",
+//	      \"type\": \"STRING\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The address of the bike station\"
+//	    },
+//	    {
+//	      \"name\": \"power_type\",
+//	      \"type\": \"STRING\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The powert type of the bike station\"
+//	    },
+//	    {
+//	      \"name\": \"property_type\",
+//	      \"type\": \"STRING\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The type of the property\"
+//	    },
+//	    {
+//	      \"name\": \"number_of_docks\",
+//	      \"type\": \"INTEGER\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The number of docks the property have\"
+//	    },
+//	    {
+//	      \"name\": \"footprint_length\",
+//	      \"type\": \"INTEGER\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The footpring lenght of the property\"
+//	    },
+//	    {
+//	      \"name\": \"council_district\",
+//	      \"type\": \"INTEGER\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The council district the property is in\"
+//	    }
+//	    ]
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewDatascan(ctx, "documentation", &dataplex.DatascanArgs{
+//				Location:   pulumi.String("us-central1"),
+//				DataScanId: pulumi.String("datadocumentation"),
+//				Data: &dataplex.DatascanDataArgs{
+//					Resource: pulumi.All(tfDataplexTestDataset.DatasetId, tfDataplexTestTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//						datasetId := _args[0].(string)
+//						tableId := _args[1].(string)
+//						return fmt.Sprintf("//bigquery.googleapis.com/projects/my-project-name/datasets/%v/tables/%v", datasetId, tableId), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						OnDemand: &dataplex.DatascanExecutionSpecTriggerOnDemandArgs{},
+//					},
+//				},
+//				DataDocumentationSpec: &dataplex.DatascanDataDocumentationSpecArgs{},
+//				Project:               pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -509,6 +619,8 @@ type Datascan struct {
 	// DataDiscoveryScan related setting.
 	// Structure is documented below.
 	DataDiscoverySpec DatascanDataDiscoverySpecPtrOutput `pulumi:"dataDiscoverySpec"`
+	// DataDocumentationScan related setting.
+	DataDocumentationSpec DatascanDataDocumentationSpecPtrOutput `pulumi:"dataDocumentationSpec"`
 	// DataProfileScan related setting.
 	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrOutput `pulumi:"dataProfileSpec"`
@@ -609,6 +721,8 @@ type datascanState struct {
 	// DataDiscoveryScan related setting.
 	// Structure is documented below.
 	DataDiscoverySpec *DatascanDataDiscoverySpec `pulumi:"dataDiscoverySpec"`
+	// DataDocumentationScan related setting.
+	DataDocumentationSpec *DatascanDataDocumentationSpec `pulumi:"dataDocumentationSpec"`
 	// DataProfileScan related setting.
 	// Structure is documented below.
 	DataProfileSpec *DatascanDataProfileSpec `pulumi:"dataProfileSpec"`
@@ -663,6 +777,8 @@ type DatascanState struct {
 	// DataDiscoveryScan related setting.
 	// Structure is documented below.
 	DataDiscoverySpec DatascanDataDiscoverySpecPtrInput
+	// DataDocumentationScan related setting.
+	DataDocumentationSpec DatascanDataDocumentationSpecPtrInput
 	// DataProfileScan related setting.
 	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrInput
@@ -719,6 +835,8 @@ type datascanArgs struct {
 	// DataDiscoveryScan related setting.
 	// Structure is documented below.
 	DataDiscoverySpec *DatascanDataDiscoverySpec `pulumi:"dataDiscoverySpec"`
+	// DataDocumentationScan related setting.
+	DataDocumentationSpec *DatascanDataDocumentationSpec `pulumi:"dataDocumentationSpec"`
 	// DataProfileScan related setting.
 	// Structure is documented below.
 	DataProfileSpec *DatascanDataProfileSpec `pulumi:"dataProfileSpec"`
@@ -754,6 +872,8 @@ type DatascanArgs struct {
 	// DataDiscoveryScan related setting.
 	// Structure is documented below.
 	DataDiscoverySpec DatascanDataDiscoverySpecPtrInput
+	// DataDocumentationScan related setting.
+	DataDocumentationSpec DatascanDataDocumentationSpecPtrInput
 	// DataProfileScan related setting.
 	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrInput
@@ -883,6 +1003,11 @@ func (o DatascanOutput) Data() DatascanDataOutput {
 // Structure is documented below.
 func (o DatascanOutput) DataDiscoverySpec() DatascanDataDiscoverySpecPtrOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataDiscoverySpecPtrOutput { return v.DataDiscoverySpec }).(DatascanDataDiscoverySpecPtrOutput)
+}
+
+// DataDocumentationScan related setting.
+func (o DatascanOutput) DataDocumentationSpec() DatascanDataDocumentationSpecPtrOutput {
+	return o.ApplyT(func(v *Datascan) DatascanDataDocumentationSpecPtrOutput { return v.DataDocumentationSpec }).(DatascanDataDocumentationSpecPtrOutput)
 }
 
 // DataProfileScan related setting.

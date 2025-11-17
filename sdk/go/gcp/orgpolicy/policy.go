@@ -230,7 +230,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			constraint, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
-//				Name:        pulumi.String("custom.disableGkeAutoUpgrade_16178"),
+//				Name:        pulumi.String("custom.disableGkeAutoUpgrade_12618"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				DisplayName: pulumi.String("Disable GKE auto upgrade"),
 //				Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),

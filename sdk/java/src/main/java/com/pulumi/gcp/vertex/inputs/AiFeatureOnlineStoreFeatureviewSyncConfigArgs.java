@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class AiFeatureOnlineStoreFeatureviewSyncConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiFeatureOnlineStoreFeatureviewSyncConfigArgs Empty = new AiFeatureOnlineStoreFeatureviewSyncConfigArgs();
+
+    /**
+     * If true, syncs the FeatureView in a continuous manner to Online Store.
+     * 
+     */
+    @Import(name="continuous")
+    private @Nullable Output<Boolean> continuous;
+
+    /**
+     * @return If true, syncs the FeatureView in a continuous manner to Online Store.
+     * 
+     */
+    public Optional<Output<Boolean>> continuous() {
+        return Optional.ofNullable(this.continuous);
+    }
 
     /**
      * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
@@ -35,6 +51,7 @@ public final class AiFeatureOnlineStoreFeatureviewSyncConfigArgs extends com.pul
     private AiFeatureOnlineStoreFeatureviewSyncConfigArgs() {}
 
     private AiFeatureOnlineStoreFeatureviewSyncConfigArgs(AiFeatureOnlineStoreFeatureviewSyncConfigArgs $) {
+        this.continuous = $.continuous;
         this.cron = $.cron;
     }
 
@@ -54,6 +71,27 @@ public final class AiFeatureOnlineStoreFeatureviewSyncConfigArgs extends com.pul
 
         public Builder(AiFeatureOnlineStoreFeatureviewSyncConfigArgs defaults) {
             $ = new AiFeatureOnlineStoreFeatureviewSyncConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param continuous If true, syncs the FeatureView in a continuous manner to Online Store.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuous(@Nullable Output<Boolean> continuous) {
+            $.continuous = continuous;
+            return this;
+        }
+
+        /**
+         * @param continuous If true, syncs the FeatureView in a continuous manner to Online Store.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuous(Boolean continuous) {
+            return continuous(Output.of(continuous));
         }
 
         /**

@@ -78,6 +78,35 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs extends com
     }
 
     /**
+     * (Output)
+     * The internet access type for IPv6 Public Delegated Prefixes. Inherited
+     * from parent prefix and can be one of following:
+     * * EXTERNAL: The prefix will be announced to the internet. All children
+     *   PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     * 
+     */
+    @Import(name="ipv6AccessType")
+    private @Nullable Output<String> ipv6AccessType;
+
+    /**
+     * @return (Output)
+     * The internet access type for IPv6 Public Delegated Prefixes. Inherited
+     * from parent prefix and can be one of following:
+     * * EXTERNAL: The prefix will be announced to the internet. All children
+     *   PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     * 
+     */
+    public Optional<Output<String>> ipv6AccessType() {
+        return Optional.ofNullable(this.ipv6AccessType);
+    }
+
+    /**
      * Whether the sub prefix is delegated for address creation.
      * 
      */
@@ -93,18 +122,24 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs extends com
     }
 
     /**
-     * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+     * Specifies the mode of this IPv6 PDP. MODE must be one of:
+     * * DELEGATION
+     * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+     * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+     * * INTERNAL_IPV6_SUBNETWORK_CREATION
+     *   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+     * @return Specifies the mode of this IPv6 PDP. MODE must be one of:
+     * * DELEGATION
+     * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+     * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+     * * INTERNAL_IPV6_SUBNETWORK_CREATION
+     *   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -175,6 +210,7 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs extends com
         this.delegateeProject = $.delegateeProject;
         this.description = $.description;
         this.ipCidrRange = $.ipCidrRange;
+        this.ipv6AccessType = $.ipv6AccessType;
         this.isAddress = $.isAddress;
         this.mode = $.mode;
         this.name = $.name;
@@ -285,6 +321,41 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs extends com
         }
 
         /**
+         * @param ipv6AccessType (Output)
+         * The internet access type for IPv6 Public Delegated Prefixes. Inherited
+         * from parent prefix and can be one of following:
+         * * EXTERNAL: The prefix will be announced to the internet. All children
+         *   PDPs will have access type as EXTERNAL.
+         * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+         *   be used privately within Google Cloud. All children PDPs will have
+         *   access type as INTERNAL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AccessType(@Nullable Output<String> ipv6AccessType) {
+            $.ipv6AccessType = ipv6AccessType;
+            return this;
+        }
+
+        /**
+         * @param ipv6AccessType (Output)
+         * The internet access type for IPv6 Public Delegated Prefixes. Inherited
+         * from parent prefix and can be one of following:
+         * * EXTERNAL: The prefix will be announced to the internet. All children
+         *   PDPs will have access type as EXTERNAL.
+         * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+         *   be used privately within Google Cloud. All children PDPs will have
+         *   access type as INTERNAL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AccessType(String ipv6AccessType) {
+            return ipv6AccessType(Output.of(ipv6AccessType));
+        }
+
+        /**
          * @param isAddress Whether the sub prefix is delegated for address creation.
          * 
          * @return builder
@@ -306,9 +377,12 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs extends com
         }
 
         /**
-         * @param mode Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-         * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-         * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+         * @param mode Specifies the mode of this IPv6 PDP. MODE must be one of:
+         * * DELEGATION
+         * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+         * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+         * * INTERNAL_IPV6_SUBNETWORK_CREATION
+         *   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
          * 
          * @return builder
          * 
@@ -319,9 +393,12 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs extends com
         }
 
         /**
-         * @param mode Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-         * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-         * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+         * @param mode Specifies the mode of this IPv6 PDP. MODE must be one of:
+         * * DELEGATION
+         * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+         * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+         * * INTERNAL_IPV6_SUBNETWORK_CREATION
+         *   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
          * 
          * @return builder
          * 

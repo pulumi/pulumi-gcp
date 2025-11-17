@@ -258,6 +258,14 @@ export class Reservation extends pulumi.CustomResource {
      */
     declare public readonly enableEmergentMaintenance: pulumi.Output<boolean | undefined>;
     /**
+     * Type of the resource. Always compute#reservations for reservations.
+     */
+    declare public /*out*/ readonly kind: pulumi.Output<string>;
+    /**
+     * Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+     */
+    declare public /*out*/ readonly linkedCommitments: pulumi.Output<string[]>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -273,10 +281,24 @@ export class Reservation extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * (Output)
+     * The number of reservation blocks associated with this reservation.
+     */
+    declare public /*out*/ readonly reservationBlockCount: pulumi.Output<number>;
+    /**
      * Sharing policy for reservations with Google Cloud managed services.
      * Structure is documented below.
      */
     declare public readonly reservationSharingPolicy: pulumi.Output<outputs.compute.ReservationReservationSharingPolicy>;
+    /**
+     * Status information for Reservation resource.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly resourceStatuses: pulumi.Output<outputs.compute.ReservationResourceStatus[]>;
+    /**
+     * Reserved for future use.
+     */
+    declare public /*out*/ readonly satisfiesPzs: pulumi.Output<boolean>;
     /**
      * The URI of the created resource.
      */
@@ -325,9 +347,14 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["deleteAtTime"] = state?.deleteAtTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["enableEmergentMaintenance"] = state?.enableEmergentMaintenance;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["linkedCommitments"] = state?.linkedCommitments;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["reservationBlockCount"] = state?.reservationBlockCount;
             resourceInputs["reservationSharingPolicy"] = state?.reservationSharingPolicy;
+            resourceInputs["resourceStatuses"] = state?.resourceStatuses;
+            resourceInputs["satisfiesPzs"] = state?.satisfiesPzs;
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["shareSettings"] = state?.shareSettings;
             resourceInputs["specificReservation"] = state?.specificReservation;
@@ -355,6 +382,11 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["zone"] = args?.zone;
             resourceInputs["commitment"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["linkedCommitments"] = undefined /*out*/;
+            resourceInputs["reservationBlockCount"] = undefined /*out*/;
+            resourceInputs["resourceStatuses"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -395,6 +427,14 @@ export interface ReservationState {
      */
     enableEmergentMaintenance?: pulumi.Input<boolean>;
     /**
+     * Type of the resource. Always compute#reservations for reservations.
+     */
+    kind?: pulumi.Input<string>;
+    /**
+     * Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+     */
+    linkedCommitments?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -410,10 +450,24 @@ export interface ReservationState {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Output)
+     * The number of reservation blocks associated with this reservation.
+     */
+    reservationBlockCount?: pulumi.Input<number>;
+    /**
      * Sharing policy for reservations with Google Cloud managed services.
      * Structure is documented below.
      */
     reservationSharingPolicy?: pulumi.Input<inputs.compute.ReservationReservationSharingPolicy>;
+    /**
+     * Status information for Reservation resource.
+     * Structure is documented below.
+     */
+    resourceStatuses?: pulumi.Input<pulumi.Input<inputs.compute.ReservationResourceStatus>[]>;
+    /**
+     * Reserved for future use.
+     */
+    satisfiesPzs?: pulumi.Input<boolean>;
     /**
      * The URI of the created resource.
      */

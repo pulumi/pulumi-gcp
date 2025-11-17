@@ -39,7 +39,7 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
 
     /**
      * If any AllowedKeyType is specified, then the certificate request&#39;s public key must match one of the key types listed here.
-     * Otherwise, any key may be used.
+     * Otherwise, any key may be used. You can specify only one key type of those listed here.
      * Structure is documented below.
      * 
      */
@@ -48,7 +48,7 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return If any AllowedKeyType is specified, then the certificate request&#39;s public key must match one of the key types listed here.
-     * Otherwise, any key may be used.
+     * Otherwise, any key may be used. You can specify only one key type of those listed here.
      * Structure is documented below.
      * 
      */
@@ -192,7 +192,7 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param allowedKeyTypes If any AllowedKeyType is specified, then the certificate request&#39;s public key must match one of the key types listed here.
-         * Otherwise, any key may be used.
+         * Otherwise, any key may be used. You can specify only one key type of those listed here.
          * Structure is documented below.
          * 
          * @return builder
@@ -205,7 +205,7 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param allowedKeyTypes If any AllowedKeyType is specified, then the certificate request&#39;s public key must match one of the key types listed here.
-         * Otherwise, any key may be used.
+         * Otherwise, any key may be used. You can specify only one key type of those listed here.
          * Structure is documented below.
          * 
          * @return builder
@@ -217,7 +217,7 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param allowedKeyTypes If any AllowedKeyType is specified, then the certificate request&#39;s public key must match one of the key types listed here.
-         * Otherwise, any key may be used.
+         * Otherwise, any key may be used. You can specify only one key type of those listed here.
          * Structure is documented below.
          * 
          * @return builder

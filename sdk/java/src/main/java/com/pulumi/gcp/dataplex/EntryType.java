@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testEntryTypeFull = new AspectType("testEntryTypeFull", AspectTypeArgs.builder()
- *             .aspectTypeId("tf-test-aspect-type_27169")
+ *             .aspectTypeId("tf-test-aspect-type_75092")
  *             .location("us-central1")
  *             .project("my-project-name")
  *             .metadataTemplate("""

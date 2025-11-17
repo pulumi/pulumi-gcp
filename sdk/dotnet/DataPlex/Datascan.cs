@@ -477,6 +477,105 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// ### Dataplex Datascan Documentation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
+    ///     {
+    ///         DatasetId = "tf_dataplex_test_dataset_id__64336",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///     });
+    /// 
+    ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
+    ///     {
+    ///         DatasetId = tfDataplexTestDataset.DatasetId,
+    ///         TableId = "tf_dataplex_test_table_id__34962",
+    ///         DeletionProtection = false,
+    ///         Schema = @"    [
+    ///     {
+    ///       \""name\"": \""name\"",
+    ///       \""type\"": \""STRING\"",
+    ///       \""mode\"": \""NULLABLE\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""station_id\"",
+    ///       \""type\"": \""INTEGER\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The id of the bike station\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""address\"",
+    ///       \""type\"": \""STRING\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The address of the bike station\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""power_type\"",
+    ///       \""type\"": \""STRING\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The powert type of the bike station\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""property_type\"",
+    ///       \""type\"": \""STRING\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The type of the property\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""number_of_docks\"",
+    ///       \""type\"": \""INTEGER\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The number of docks the property have\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""footprint_length\"",
+    ///       \""type\"": \""INTEGER\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The footpring lenght of the property\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""council_district\"",
+    ///       \""type\"": \""INTEGER\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The council district the property is in\""
+    ///     }
+    ///     ]
+    /// ",
+    ///     });
+    /// 
+    ///     var documentation = new Gcp.DataPlex.Datascan("documentation", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DataScanId = "datadocumentation",
+    ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
+    ///         {
+    ///             Resource = Output.Tuple(tfDataplexTestDataset.DatasetId, tfDataplexTestTable.TableId).Apply(values =&gt;
+    ///             {
+    ///                 var datasetId = values.Item1;
+    ///                 var tableId = values.Item2;
+    ///                 return $"//bigquery.googleapis.com/projects/my-project-name/datasets/{datasetId}/tables/{tableId}";
+    ///             }),
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
+    ///         {
+    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
+    ///             {
+    ///                 OnDemand = null,
+    ///             },
+    ///         },
+    ///         DataDocumentationSpec = null,
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -530,6 +629,12 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Output("dataDiscoverySpec")]
         public Output<Outputs.DatascanDataDiscoverySpec?> DataDiscoverySpec { get; private set; } = null!;
+
+        /// <summary>
+        /// DataDocumentationScan related setting.
+        /// </summary>
+        [Output("dataDocumentationSpec")]
+        public Output<Outputs.DatascanDataDocumentationSpec?> DataDocumentationSpec { get; private set; } = null!;
 
         /// <summary>
         /// DataProfileScan related setting.
@@ -708,6 +813,12 @@ namespace Pulumi.Gcp.DataPlex
         public Input<Inputs.DatascanDataDiscoverySpecArgs>? DataDiscoverySpec { get; set; }
 
         /// <summary>
+        /// DataDocumentationScan related setting.
+        /// </summary>
+        [Input("dataDocumentationSpec")]
+        public Input<Inputs.DatascanDataDocumentationSpecArgs>? DataDocumentationSpec { get; set; }
+
+        /// <summary>
         /// DataProfileScan related setting.
         /// Structure is documented below.
         /// </summary>
@@ -801,6 +912,12 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Input("dataDiscoverySpec")]
         public Input<Inputs.DatascanDataDiscoverySpecGetArgs>? DataDiscoverySpec { get; set; }
+
+        /// <summary>
+        /// DataDocumentationScan related setting.
+        /// </summary>
+        [Input("dataDocumentationSpec")]
+        public Input<Inputs.DatascanDataDocumentationSpecGetArgs>? DataDocumentationSpec { get; set; }
 
         /// <summary>
         /// DataProfileScan related setting.

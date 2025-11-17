@@ -40,6 +40,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
+        /// (Output)
+        /// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+        /// </summary>
+        [Input("locationHint")]
+        public Input<string>? LocationHint { get; set; }
+
+        /// <summary>
         /// The name of the machine type to reserve.
         /// </summary>
         [Input("machineType", required: true)]

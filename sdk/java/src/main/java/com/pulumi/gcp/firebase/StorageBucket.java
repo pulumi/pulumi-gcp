@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultStorageBucket = new StorageBucket("defaultStorageBucket", StorageBucketArgs.builder()
  *             .project("my-project-name")
- *             .bucketId(default_.id())
+ *             .bucketId(default_.name())
  *             .build());
  * 
  *     }

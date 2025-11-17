@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.netapp.inputs.VolumeBackupConfigArgs;
+import com.pulumi.gcp.netapp.inputs.VolumeBlockDeviceArgs;
+import com.pulumi.gcp.netapp.inputs.VolumeCacheParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeExportPolicyArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeHybridReplicationParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeRestoreParametersArgs;
@@ -41,6 +43,42 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<VolumeBackupConfigArgs>> backupConfig() {
         return Optional.ofNullable(this.backupConfig);
+    }
+
+    /**
+     * Block device represents the device(s) which are stored in the block volume.
+     * Currently, only one block device is permitted per Volume.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="blockDevices")
+    private @Nullable Output<List<VolumeBlockDeviceArgs>> blockDevices;
+
+    /**
+     * @return Block device represents the device(s) which are stored in the block volume.
+     * Currently, only one block device is permitted per Volume.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<VolumeBlockDeviceArgs>>> blockDevices() {
+        return Optional.ofNullable(this.blockDevices);
+    }
+
+    /**
+     * Cache parameters for the volume.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cacheParameters")
+    private @Nullable Output<VolumeCacheParametersArgs> cacheParameters;
+
+    /**
+     * @return Cache parameters for the volume.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VolumeCacheParametersArgs>> cacheParameters() {
+        return Optional.ofNullable(this.cacheParameters);
     }
 
     /**
@@ -245,7 +283,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The protocol of the volume. Allowed combinations are `[&#39;NFSV3&#39;]`, `[&#39;NFSV4&#39;]`, `[&#39;SMB&#39;]`, `[&#39;NFSV3&#39;, &#39;NFSV4&#39;]`, `[&#39;SMB&#39;, &#39;NFSV3&#39;]` and `[&#39;SMB&#39;, &#39;NFSV4&#39;]`.
-     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
      * 
      */
     @Import(name="protocols", required=true)
@@ -253,7 +291,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The protocol of the volume. Allowed combinations are `[&#39;NFSV3&#39;]`, `[&#39;NFSV4&#39;]`, `[&#39;SMB&#39;]`, `[&#39;NFSV3&#39;, &#39;NFSV4&#39;]`, `[&#39;SMB&#39;, &#39;NFSV3&#39;]` and `[&#39;SMB&#39;, &#39;NFSV4&#39;]`.
-     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
      * 
      */
     public Output<List<String>> protocols() {
@@ -317,15 +355,15 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
      * Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
      * 
      */
-    @Import(name="shareName", required=true)
-    private Output<String> shareName;
+    @Import(name="shareName")
+    private @Nullable Output<String> shareName;
 
     /**
      * @return Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
      * 
      */
-    public Output<String> shareName() {
-        return this.shareName;
+    public Optional<Output<String>> shareName() {
+        return Optional.ofNullable(this.shareName);
     }
 
     /**
@@ -445,6 +483,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     private VolumeArgs(VolumeArgs $) {
         this.backupConfig = $.backupConfig;
+        this.blockDevices = $.blockDevices;
+        this.cacheParameters = $.cacheParameters;
         this.capacityGib = $.capacityGib;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
@@ -510,6 +550,66 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backupConfig(VolumeBackupConfigArgs backupConfig) {
             return backupConfig(Output.of(backupConfig));
+        }
+
+        /**
+         * @param blockDevices Block device represents the device(s) which are stored in the block volume.
+         * Currently, only one block device is permitted per Volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockDevices(@Nullable Output<List<VolumeBlockDeviceArgs>> blockDevices) {
+            $.blockDevices = blockDevices;
+            return this;
+        }
+
+        /**
+         * @param blockDevices Block device represents the device(s) which are stored in the block volume.
+         * Currently, only one block device is permitted per Volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockDevices(List<VolumeBlockDeviceArgs> blockDevices) {
+            return blockDevices(Output.of(blockDevices));
+        }
+
+        /**
+         * @param blockDevices Block device represents the device(s) which are stored in the block volume.
+         * Currently, only one block device is permitted per Volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockDevices(VolumeBlockDeviceArgs... blockDevices) {
+            return blockDevices(List.of(blockDevices));
+        }
+
+        /**
+         * @param cacheParameters Cache parameters for the volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheParameters(@Nullable Output<VolumeCacheParametersArgs> cacheParameters) {
+            $.cacheParameters = cacheParameters;
+            return this;
+        }
+
+        /**
+         * @param cacheParameters Cache parameters for the volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheParameters(VolumeCacheParametersArgs cacheParameters) {
+            return cacheParameters(Output.of(cacheParameters));
         }
 
         /**
@@ -786,7 +886,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocols The protocol of the volume. Allowed combinations are `[&#39;NFSV3&#39;]`, `[&#39;NFSV4&#39;]`, `[&#39;SMB&#39;]`, `[&#39;NFSV3&#39;, &#39;NFSV4&#39;]`, `[&#39;SMB&#39;, &#39;NFSV3&#39;]` and `[&#39;SMB&#39;, &#39;NFSV4&#39;]`.
-         * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+         * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
          * 
          * @return builder
          * 
@@ -798,7 +898,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocols The protocol of the volume. Allowed combinations are `[&#39;NFSV3&#39;]`, `[&#39;NFSV4&#39;]`, `[&#39;SMB&#39;]`, `[&#39;NFSV3&#39;, &#39;NFSV4&#39;]`, `[&#39;SMB&#39;, &#39;NFSV3&#39;]` and `[&#39;SMB&#39;, &#39;NFSV4&#39;]`.
-         * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+         * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
          * 
          * @return builder
          * 
@@ -809,7 +909,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocols The protocol of the volume. Allowed combinations are `[&#39;NFSV3&#39;]`, `[&#39;NFSV4&#39;]`, `[&#39;SMB&#39;]`, `[&#39;NFSV3&#39;, &#39;NFSV4&#39;]`, `[&#39;SMB&#39;, &#39;NFSV3&#39;]` and `[&#39;SMB&#39;, &#39;NFSV4&#39;]`.
-         * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+         * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
          * 
          * @return builder
          * 
@@ -906,7 +1006,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder shareName(Output<String> shareName) {
+        public Builder shareName(@Nullable Output<String> shareName) {
             $.shareName = shareName;
             return this;
         }
@@ -1096,9 +1196,6 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.protocols == null) {
                 throw new MissingRequiredPropertyException("VolumeArgs", "protocols");
-            }
-            if ($.shareName == null) {
-                throw new MissingRequiredPropertyException("VolumeArgs", "shareName");
             }
             if ($.storagePool == null) {
                 throw new MissingRequiredPropertyException("VolumeArgs", "storagePool");

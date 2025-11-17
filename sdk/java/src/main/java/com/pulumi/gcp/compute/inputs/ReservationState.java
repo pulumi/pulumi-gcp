@@ -7,10 +7,13 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.ReservationDeleteAfterDurationArgs;
 import com.pulumi.gcp.compute.inputs.ReservationReservationSharingPolicyArgs;
+import com.pulumi.gcp.compute.inputs.ReservationResourceStatusArgs;
 import com.pulumi.gcp.compute.inputs.ReservationShareSettingsArgs;
 import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -117,6 +120,36 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Type of the resource. Always compute#reservations for reservations.
+     * 
+     */
+    @Import(name="kind")
+    private @Nullable Output<String> kind;
+
+    /**
+     * @return Type of the resource. Always compute#reservations for reservations.
+     * 
+     */
+    public Optional<Output<String>> kind() {
+        return Optional.ofNullable(this.kind);
+    }
+
+    /**
+     * Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+     * 
+     */
+    @Import(name="linkedCommitments")
+    private @Nullable Output<List<String>> linkedCommitments;
+
+    /**
+     * @return Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+     * 
+     */
+    public Optional<Output<List<String>>> linkedCommitments() {
+        return Optional.ofNullable(this.linkedCommitments);
+    }
+
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -161,6 +194,23 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
+     * The number of reservation blocks associated with this reservation.
+     * 
+     */
+    @Import(name="reservationBlockCount")
+    private @Nullable Output<Integer> reservationBlockCount;
+
+    /**
+     * @return (Output)
+     * The number of reservation blocks associated with this reservation.
+     * 
+     */
+    public Optional<Output<Integer>> reservationBlockCount() {
+        return Optional.ofNullable(this.reservationBlockCount);
+    }
+
+    /**
      * Sharing policy for reservations with Google Cloud managed services.
      * Structure is documented below.
      * 
@@ -175,6 +225,38 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ReservationReservationSharingPolicyArgs>> reservationSharingPolicy() {
         return Optional.ofNullable(this.reservationSharingPolicy);
+    }
+
+    /**
+     * Status information for Reservation resource.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="resourceStatuses")
+    private @Nullable Output<List<ReservationResourceStatusArgs>> resourceStatuses;
+
+    /**
+     * @return Status information for Reservation resource.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ReservationResourceStatusArgs>>> resourceStatuses() {
+        return Optional.ofNullable(this.resourceStatuses);
+    }
+
+    /**
+     * Reserved for future use.
+     * 
+     */
+    @Import(name="satisfiesPzs")
+    private @Nullable Output<Boolean> satisfiesPzs;
+
+    /**
+     * @return Reserved for future use.
+     * 
+     */
+    public Optional<Output<Boolean>> satisfiesPzs() {
+        return Optional.ofNullable(this.satisfiesPzs);
     }
 
     /**
@@ -284,9 +366,14 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         this.deleteAtTime = $.deleteAtTime;
         this.description = $.description;
         this.enableEmergentMaintenance = $.enableEmergentMaintenance;
+        this.kind = $.kind;
+        this.linkedCommitments = $.linkedCommitments;
         this.name = $.name;
         this.project = $.project;
+        this.reservationBlockCount = $.reservationBlockCount;
         this.reservationSharingPolicy = $.reservationSharingPolicy;
+        this.resourceStatuses = $.resourceStatuses;
+        this.satisfiesPzs = $.satisfiesPzs;
         this.selfLink = $.selfLink;
         this.shareSettings = $.shareSettings;
         this.specificReservation = $.specificReservation;
@@ -446,6 +533,58 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param kind Type of the resource. Always compute#reservations for reservations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kind(@Nullable Output<String> kind) {
+            $.kind = kind;
+            return this;
+        }
+
+        /**
+         * @param kind Type of the resource. Always compute#reservations for reservations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kind(String kind) {
+            return kind(Output.of(kind));
+        }
+
+        /**
+         * @param linkedCommitments Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linkedCommitments(@Nullable Output<List<String>> linkedCommitments) {
+            $.linkedCommitments = linkedCommitments;
+            return this;
+        }
+
+        /**
+         * @param linkedCommitments Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linkedCommitments(List<String> linkedCommitments) {
+            return linkedCommitments(Output.of(linkedCommitments));
+        }
+
+        /**
+         * @param linkedCommitments Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linkedCommitments(String... linkedCommitments) {
+            return linkedCommitments(List.of(linkedCommitments));
+        }
+
+        /**
          * @param name Name of the resource. Provided by the client when the resource is
          * created. The name must be 1-63 characters long, and comply with
          * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -502,6 +641,29 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param reservationBlockCount (Output)
+         * The number of reservation blocks associated with this reservation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationBlockCount(@Nullable Output<Integer> reservationBlockCount) {
+            $.reservationBlockCount = reservationBlockCount;
+            return this;
+        }
+
+        /**
+         * @param reservationBlockCount (Output)
+         * The number of reservation blocks associated with this reservation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationBlockCount(Integer reservationBlockCount) {
+            return reservationBlockCount(Output.of(reservationBlockCount));
+        }
+
+        /**
          * @param reservationSharingPolicy Sharing policy for reservations with Google Cloud managed services.
          * Structure is documented below.
          * 
@@ -522,6 +684,61 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder reservationSharingPolicy(ReservationReservationSharingPolicyArgs reservationSharingPolicy) {
             return reservationSharingPolicy(Output.of(reservationSharingPolicy));
+        }
+
+        /**
+         * @param resourceStatuses Status information for Reservation resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceStatuses(@Nullable Output<List<ReservationResourceStatusArgs>> resourceStatuses) {
+            $.resourceStatuses = resourceStatuses;
+            return this;
+        }
+
+        /**
+         * @param resourceStatuses Status information for Reservation resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceStatuses(List<ReservationResourceStatusArgs> resourceStatuses) {
+            return resourceStatuses(Output.of(resourceStatuses));
+        }
+
+        /**
+         * @param resourceStatuses Status information for Reservation resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceStatuses(ReservationResourceStatusArgs... resourceStatuses) {
+            return resourceStatuses(List.of(resourceStatuses));
+        }
+
+        /**
+         * @param satisfiesPzs Reserved for future use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder satisfiesPzs(@Nullable Output<Boolean> satisfiesPzs) {
+            $.satisfiesPzs = satisfiesPzs;
+            return this;
+        }
+
+        /**
+         * @param satisfiesPzs Reserved for future use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder satisfiesPzs(Boolean satisfiesPzs) {
+            return satisfiesPzs(Output.of(satisfiesPzs));
         }
 
         /**

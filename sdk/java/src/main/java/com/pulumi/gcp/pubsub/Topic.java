@@ -557,12 +557,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.tags.TagKey;
  * import com.pulumi.gcp.tags.TagKeyArgs;
  * import com.pulumi.gcp.tags.TagValue;
  * import com.pulumi.gcp.tags.TagValueArgs;
- * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.tags.TagBinding;
+ * import com.pulumi.gcp.tags.TagBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -579,6 +581,11 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .project(project.projectId())
+ *             .build());
+ * 
  *         var tagKey = new TagKey("tagKey", TagKeyArgs.builder()
  *             .parent(project.id())
  *             .shortName("tag_key")
@@ -589,13 +596,9 @@ import javax.annotation.Nullable;
  *             .shortName("tag_value")
  *             .build());
  * 
- *         var example = new Topic("example", TopicArgs.builder()
- *             .name("example-topic")
- *             .tags(Output.tuple(tagKey.namespacedName(), tagValue.shortName()).applyValue(values -> {
- *                 var namespacedName = values.t1;
- *                 var shortName = values.t2;
- *                 return Map.of(namespacedName, shortName);
- *             }))
+ *         var binding = new TagBinding("binding", TagBindingArgs.builder()
+ *             .parent(example.name().applyValue(_name -> String.format("//pubsub.googleapis.com/projects/%s/topics/%s", project.number(),_name)))
+ *             .tagValue(tagValue.id())
  *             .build());
  * 
  *     }

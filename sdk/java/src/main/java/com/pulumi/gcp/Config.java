@@ -109,6 +109,9 @@ public final class Config {
     public Optional<String> certificateManagerCustomEndpoint() {
         return Codegen.stringProp("certificateManagerCustomEndpoint").config(config).get();
     }
+    public Optional<String> cesCustomEndpoint() {
+        return Codegen.stringProp("cesCustomEndpoint").config(config).get();
+    }
     public Optional<String> chronicleCustomEndpoint() {
         return Codegen.stringProp("chronicleCustomEndpoint").config(config).get();
     }

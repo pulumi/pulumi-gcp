@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiFeatureOnlineStoreFeatureviewSyncConfig {
     /**
+     * @return If true, syncs the FeatureView in a continuous manner to Online Store.
+     * 
+     */
+    private @Nullable Boolean continuous;
+    /**
      * @return Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
      * To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: &#34;CRON_TZ=${IANA_TIME_ZONE}&#34; or &#34;TZ=${IANA_TIME_ZONE}&#34;.
      * 
@@ -19,6 +25,13 @@ public final class AiFeatureOnlineStoreFeatureviewSyncConfig {
     private @Nullable String cron;
 
     private AiFeatureOnlineStoreFeatureviewSyncConfig() {}
+    /**
+     * @return If true, syncs the FeatureView in a continuous manner to Online Store.
+     * 
+     */
+    public Optional<Boolean> continuous() {
+        return Optional.ofNullable(this.continuous);
+    }
     /**
      * @return Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
      * To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: &#34;CRON_TZ=${IANA_TIME_ZONE}&#34; or &#34;TZ=${IANA_TIME_ZONE}&#34;.
@@ -37,13 +50,21 @@ public final class AiFeatureOnlineStoreFeatureviewSyncConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean continuous;
         private @Nullable String cron;
         public Builder() {}
         public Builder(AiFeatureOnlineStoreFeatureviewSyncConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.continuous = defaults.continuous;
     	      this.cron = defaults.cron;
         }
 
+        @CustomType.Setter
+        public Builder continuous(@Nullable Boolean continuous) {
+
+            this.continuous = continuous;
+            return this;
+        }
         @CustomType.Setter
         public Builder cron(@Nullable String cron) {
 
@@ -52,6 +73,7 @@ public final class AiFeatureOnlineStoreFeatureviewSyncConfig {
         }
         public AiFeatureOnlineStoreFeatureviewSyncConfig build() {
             final var _resultValue = new AiFeatureOnlineStoreFeatureviewSyncConfig();
+            _resultValue.continuous = continuous;
             _resultValue.cron = cron;
             return _resultValue;
         }

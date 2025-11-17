@@ -1308,6 +1308,79 @@ import (
 //	}
 //
 // ```
+// ### Cloudfunctions2 Directvpc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project := "my-project-name"
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.Sprintf("%v-gcf-source", project),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("function-source.zip"),
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("function-source.zip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
+//				Name:        pulumi.String("function-v2"),
+//				Location:    pulumi.String("us-central1"),
+//				Description: pulumi.String("a new function"),
+//				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
+//					Runtime:    pulumi.String("nodejs20"),
+//					EntryPoint: pulumi.String("helloHttp"),
+//					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
+//						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
+//							Bucket: bucket.Name,
+//							Object: object.Name,
+//						},
+//					},
+//				},
+//				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
+//					MaxInstanceCount: pulumi.Int(1),
+//					AvailableMemory:  pulumi.String("256M"),
+//					TimeoutSeconds:   pulumi.Int(60),
+//					DirectVpcNetworkInterfaces: cloudfunctionsv2.FunctionServiceConfigDirectVpcNetworkInterfaceArray{
+//						&cloudfunctionsv2.FunctionServiceConfigDirectVpcNetworkInterfaceArgs{
+//							Network:    pulumi.String("default"),
+//							Subnetwork: pulumi.String("default"),
+//							Tags: pulumi.StringArray{
+//								pulumi.String("tag1"),
+//								pulumi.String("tag2"),
+//							},
+//						},
+//					},
+//					DirectVpcEgress: pulumi.String("VPC_EGRESS_ALL_TRAFFIC"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

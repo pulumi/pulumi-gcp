@@ -55,6 +55,11 @@ export const getPythonPackage: typeof import("./getPythonPackage").getPythonPack
 export const getPythonPackageOutput: typeof import("./getPythonPackage").getPythonPackageOutput = null as any;
 utilities.lazyLoad(exports, ["getPythonPackage","getPythonPackageOutput"], () => require("./getPythonPackage"));
 
+export { GetPythonPackagesArgs, GetPythonPackagesResult, GetPythonPackagesOutputArgs } from "./getPythonPackages";
+export const getPythonPackages: typeof import("./getPythonPackages").getPythonPackages = null as any;
+export const getPythonPackagesOutput: typeof import("./getPythonPackages").getPythonPackagesOutput = null as any;
+utilities.lazyLoad(exports, ["getPythonPackages","getPythonPackagesOutput"], () => require("./getPythonPackages"));
+
 export { GetRepositoriesArgs, GetRepositoriesResult, GetRepositoriesOutputArgs } from "./getRepositories";
 export const getRepositories: typeof import("./getRepositories").getRepositories = null as any;
 export const getRepositoriesOutput: typeof import("./getRepositories").getRepositoriesOutput = null as any;

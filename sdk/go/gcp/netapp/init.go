@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupPolicy{}
 	case "gcp:netapp/backupVault:BackupVault":
 		r = &BackupVault{}
+	case "gcp:netapp/hostGroup:HostGroup":
+		r = &HostGroup{}
 	case "gcp:netapp/kmsconfig:Kmsconfig":
 		r = &Kmsconfig{}
 	case "gcp:netapp/storagePool:StoragePool":
@@ -72,6 +74,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"netapp/backupVault",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"netapp/hostGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

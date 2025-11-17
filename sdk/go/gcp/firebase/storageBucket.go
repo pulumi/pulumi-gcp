@@ -47,7 +47,7 @@ import (
 //			}
 //			_, err = firebase.NewStorageBucket(ctx, "default", &firebase.StorageBucketArgs{
 //				Project:  pulumi.String("my-project-name"),
-//				BucketId: _default.ID(),
+//				BucketId: _default.Name,
 //			})
 //			if err != nil {
 //				return err

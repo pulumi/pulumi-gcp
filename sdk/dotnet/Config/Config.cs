@@ -249,6 +249,13 @@ namespace Pulumi.Gcp
             set => _certificateManagerCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _cesCustomEndpoint = new __Value<string?>(() => __config.Get("cesCustomEndpoint"));
+        public static string? CesCustomEndpoint
+        {
+            get => _cesCustomEndpoint.Get();
+            set => _cesCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _chronicleCustomEndpoint = new __Value<string?>(() => __config.Get("chronicleCustomEndpoint"));
         public static string? ChronicleCustomEndpoint
         {

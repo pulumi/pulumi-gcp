@@ -110,6 +110,7 @@ namespace Pulumi.Gcp.Lustre
         public readonly string Name;
         public readonly string Network;
         public readonly string PerUnitStorageThroughput;
+        public readonly string PlacementPolicy;
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string State;
@@ -146,6 +147,8 @@ namespace Pulumi.Gcp.Lustre
 
             string perUnitStorageThroughput,
 
+            string placementPolicy,
+
             string? project,
 
             ImmutableDictionary<string, string> pulumiLabels,
@@ -170,6 +173,7 @@ namespace Pulumi.Gcp.Lustre
             Name = name;
             Network = network;
             PerUnitStorageThroughput = perUnitStorageThroughput;
+            PlacementPolicy = placementPolicy;
             Project = project;
             PulumiLabels = pulumiLabels;
             State = state;

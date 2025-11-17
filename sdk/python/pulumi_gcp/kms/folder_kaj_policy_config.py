@@ -134,11 +134,11 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
             display_name="my-folder",
             parent="organizations/123456789",
             deletion_protection=False)
-        project_suffix = random.index.Id("project_suffix", byte_length=4)
+        project_suffix = random.RandomId("project_suffix", byte_length=4)
         # Create a project for enabling KMS API.
         kms_project = gcp.organizations.Project("kms_project",
-            project_id=f"kms-api-project{project_suffix['hex']}",
-            name=f"kms-api-project{project_suffix['hex']}",
+            project_id=project_suffix.hex.apply(lambda hex: f"kms-api-project{hex}"),
+            name=project_suffix.hex.apply(lambda hex: f"kms-api-project{hex}"),
             folder_id=kaj_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE",
@@ -211,11 +211,11 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
             display_name="my-folder",
             parent="organizations/123456789",
             deletion_protection=False)
-        project_suffix = random.index.Id("project_suffix", byte_length=4)
+        project_suffix = random.RandomId("project_suffix", byte_length=4)
         # Create a project for enabling KMS API.
         kms_project = gcp.organizations.Project("kms_project",
-            project_id=f"kms-api-project{project_suffix['hex']}",
-            name=f"kms-api-project{project_suffix['hex']}",
+            project_id=project_suffix.hex.apply(lambda hex: f"kms-api-project{hex}"),
+            name=project_suffix.hex.apply(lambda hex: f"kms-api-project{hex}"),
             folder_id=kaj_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE",

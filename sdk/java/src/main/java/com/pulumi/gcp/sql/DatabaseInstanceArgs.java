@@ -94,6 +94,8 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      * 
+     * &gt; **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
+     * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
@@ -101,6 +103,8 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+     * 
+     * &gt; **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -519,6 +523,8 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
          * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
          * 
+         * &gt; **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
+         * 
          * @return builder
          * 
          */
@@ -530,6 +536,8 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
          * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+         * 
+         * &gt; **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
          * 
          * @return builder
          * 

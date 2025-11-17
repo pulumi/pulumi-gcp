@@ -3613,6 +3613,12 @@ if not MYPY:
         """
         Reservation Affinity for consuming zonal reservation.
         """
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        A map of resource manager tags to add to all instances.
+        Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+        (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+        """
         service_account: NotRequired[pulumi.Input[_builtins.str]]
         """
         The service account to be used by the Node VMs.
@@ -3664,6 +3670,7 @@ class ClusterClusterConfigGceClusterConfigArgs:
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  node_group_affinity: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs']] = None,
                  reservation_affinity: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArgs']] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs']] = None,
@@ -3684,6 +3691,9 @@ class ClusterClusterConfigGceClusterConfigArgs:
                If neither is specified, this defaults to the "default" network.
         :param pulumi.Input['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs'] node_group_affinity: Node Group Affinity for sole-tenant clusters.
         :param pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming zonal reservation.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: A map of resource manager tags to add to all instances.
+               Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+               (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
         :param pulumi.Input[_builtins.str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_account_scopes: The set of Google API scopes
@@ -3718,6 +3728,8 @@ class ClusterClusterConfigGceClusterConfigArgs:
             pulumi.set(__self__, "node_group_affinity", node_group_affinity)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if service_account_scopes is not None:
@@ -3809,6 +3821,20 @@ class ClusterClusterConfigGceClusterConfigArgs:
     @reservation_affinity.setter
     def reservation_affinity(self, value: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArgs']]):
         pulumi.set(self, "reservation_affinity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags to add to all instances.
+        Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+        (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")

@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var entry_group_basic = new EntryGroup("entry-group-basic", EntryGroupArgs.builder()
  *             .location("us-central1")
- *             .entryGroupId("tf-test-entry-group_64336")
+ *             .entryGroupId("tf-test-entry-group_74000")
  *             .project("1111111111111")
  *             .build());
  * 
  *         var entry_type_basic = new EntryType("entry-type-basic", EntryTypeArgs.builder()
- *             .entryTypeId("tf-test-entry-type_74000")
+ *             .entryTypeId("tf-test-entry-type_88722")
  *             .location("us-central1")
  *             .project("1111111111111")
  *             .build());
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *         var source = new Entry("source", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(entry_group_basic.entryGroupId())
- *             .entryId("tf-test-source-entry_34962")
+ *             .entryId("tf-test-source-entry_75125")
  *             .entryType(entry_type_basic.name())
  *             .project("1111111111111")
  *             .build());
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *         var target = new Entry("target", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(entry_group_basic.entryGroupId())
- *             .entryId("tf-test-target-entry_75125")
+ *             .entryId("tf-test-target-entry_39249")
  *             .entryType(entry_type_basic.name())
  *             .project("1111111111111")
  *             .build());
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .project("1111111111111")
  *             .location("us-central1")
  *             .entryGroupId(entry_group_basic.entryGroupId())
- *             .entryLinkId("tf-test-entry-link_88722")
+ *             .entryLinkId("tf-test-entry-link_74391")
  *             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/related")
  *             .entryReferences(            
  *                 EntryLinkEntryReferenceArgs.builder()
@@ -119,6 +119,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.EntryTypeArgs;
  * import com.pulumi.gcp.dataplex.Entry;
  * import com.pulumi.gcp.dataplex.EntryArgs;
+ * import com.pulumi.gcp.dataplex.Glossary;
+ * import com.pulumi.gcp.dataplex.GlossaryArgs;
+ * import com.pulumi.gcp.dataplex.GlossaryTerm;
+ * import com.pulumi.gcp.dataplex.GlossaryTermArgs;
  * import com.pulumi.gcp.dataplex.EntryLink;
  * import com.pulumi.gcp.dataplex.EntryLinkArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryLinkEntryReferenceArgs;
@@ -129,20 +133,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var entry_group_full = new EntryGroup("entry-group-full", EntryGroupArgs.builder()
  *             .location("us-central1")
- *             .entryGroupId("tf-test-entry-group-full_39249")
+ *             .entryGroupId("tf-test-entry-group_16511")
  *             .project("1111111111111")
  *             .build());
  * 
  *         var entry_type_full = new EntryType("entry-type-full", EntryTypeArgs.builder()
- *             .entryTypeId("tf-test-entry-type-full_16511")
+ *             .entryTypeId("tf-test-entry-type_9106")
  *             .location("us-central1")
  *             .project("1111111111111")
  *             .build());
@@ -150,37 +154,56 @@ import javax.annotation.Nullable;
  *         var source = new Entry("source", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(entry_group_full.entryGroupId())
- *             .entryId("tf-test-source-entry-full_74391")
+ *             .entryId("tf-test-source-entry_8493")
  *             .entryType(entry_type_full.name())
  *             .project("1111111111111")
  *             .build());
  * 
- *         var target = new Entry("target", EntryArgs.builder()
+ *         var termTestIdFull = new Glossary("termTestIdFull", GlossaryArgs.builder()
+ *             .glossaryId("tf-test-glossary_27169")
  *             .location("us-central1")
- *             .entryGroupId(entry_group_full.entryGroupId())
- *             .entryId("tf-test-target-entry-full_8493")
- *             .entryType(entry_type_full.name())
- *             .project("1111111111111")
+ *             .build());
+ * 
+ *         var termTestIdFullGlossaryTerm = new GlossaryTerm("termTestIdFullGlossaryTerm", GlossaryTermArgs.builder()
+ *             .parent(Output.tuple(termTestIdFull.project(), termTestIdFull.glossaryId()).applyValue(values -> }{{@code
+ *                 var project = values.t1;
+ *                 var glossaryId = values.t2;
+ *                 return String.format("projects/%s/locations/us-central1/glossaries/%s", project,glossaryId);
+ *             }}{@code ))
+ *             .glossaryId(termTestIdFull.glossaryId())
+ *             .location("us-central1")
+ *             .termId("tf-test-term-full_75223")
+ *             .labels(Map.of("tag", "test-tf"))
+ *             .displayName("terraform term")
+ *             .description("term created by Terraform")
  *             .build());
  * 
  *         var fullEntryLink = new EntryLink("fullEntryLink", EntryLinkArgs.builder()
  *             .project("1111111111111")
  *             .location("us-central1")
  *             .entryGroupId(entry_group_full.entryGroupId())
- *             .entryLinkId("tf-test-entry-link-full_9106")
- *             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/related")
+ *             .entryLinkId("tf-test-entry-link_41819")
+ *             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/definition")
  *             .entryReferences(            
  *                 EntryLinkEntryReferenceArgs.builder()
  *                     .name(source.name())
+ *                     .type("SOURCE")
  *                     .path("")
  *                     .build(),
  *                 EntryLinkEntryReferenceArgs.builder()
- *                     .name(target.name())
+ *                     .name(Output.tuple(entry_group_full.project(), entry_group_full.project(), termTestIdFull.glossaryId(), termTestIdFullGlossaryTerm.termId()).applyValue(values -> }{{@code
+ *                         var entry-group-fullProject = values.t1;
+ *                         var entry-group-fullProject1 = values.t2;
+ *                         var glossaryId = values.t3;
+ *                         var termId = values.t4;
+ *                         return String.format("projects/%s/locations/us-central1/entryGroups/}{@literal @}{@code dataplex/entries/projects/%s/locations/us-central1/glossaries/%s/terms/%s", entry_group_fullProject,entry_group_fullProject1,glossaryId,termId);
+ *                     }}{@code ))
+ *                     .type("TARGET")
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

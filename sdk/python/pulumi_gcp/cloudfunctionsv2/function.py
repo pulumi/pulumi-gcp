@@ -1228,6 +1228,50 @@ class Function(pulumi.CustomResource):
                 "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
+        ### Cloudfunctions2 Directvpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-v2",
+            location="us-central1",
+            description="a new function",
+            build_config={
+                "runtime": "nodejs20",
+                "entry_point": "helloHttp",
+                "source": {
+                    "storage_source": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+                "direct_vpc_network_interfaces": [{
+                    "network": "default",
+                    "subnetwork": "default",
+                    "tags": [
+                        "tag1",
+                        "tag2",
+                    ],
+                }],
+                "direct_vpc_egress": "VPC_EGRESS_ALL_TRAFFIC",
+            })
+        ```
 
         ## Import
 
@@ -2029,6 +2073,50 @@ class Function(pulumi.CustomResource):
                 "event_type": "google.cloud.pubsub.topic.v1.messagePublished",
                 "pubsub_topic": topic.id,
                 "retry_policy": "RETRY_POLICY_RETRY",
+            })
+        ```
+        ### Cloudfunctions2 Directvpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="function-v2",
+            location="us-central1",
+            description="a new function",
+            build_config={
+                "runtime": "nodejs20",
+                "entry_point": "helloHttp",
+                "source": {
+                    "storage_source": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+                "direct_vpc_network_interfaces": [{
+                    "network": "default",
+                    "subnetwork": "default",
+                    "tags": [
+                        "tag1",
+                        "tag2",
+                    ],
+                }],
+                "direct_vpc_egress": "VPC_EGRESS_ALL_TRAFFIC",
             })
         ```
 

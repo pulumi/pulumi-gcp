@@ -104,7 +104,7 @@ export class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
      * Optional. The value of the field must be in (0, 1]. The sampling rate
      * of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
      * sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-     * the state field instead. Default value is 1.0.
+     * the state field instead. Default value is 1.0
      */
     declare public readonly flowSampling: pulumi.Output<number>;
     /**
@@ -265,7 +265,7 @@ export interface OrganizationVpcFlowLogsConfigState {
      * Optional. The value of the field must be in (0, 1]. The sampling rate
      * of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
      * sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-     * the state field instead. Default value is 1.0.
+     * the state field instead. Default value is 1.0
      */
     flowSampling?: pulumi.Input<number>;
     /**
@@ -353,7 +353,7 @@ export interface OrganizationVpcFlowLogsConfigArgs {
      * Optional. The value of the field must be in (0, 1]. The sampling rate
      * of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
      * sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-     * the state field instead. Default value is 1.0.
+     * the state field instead. Default value is 1.0
      */
     flowSampling?: pulumi.Input<number>;
     /**

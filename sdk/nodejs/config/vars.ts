@@ -257,6 +257,14 @@ Object.defineProperty(exports, "certificateManagerCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const cesCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cesCustomEndpoint", {
+    get() {
+        return __config.get("cesCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const chronicleCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "chronicleCustomEndpoint", {
     get() {

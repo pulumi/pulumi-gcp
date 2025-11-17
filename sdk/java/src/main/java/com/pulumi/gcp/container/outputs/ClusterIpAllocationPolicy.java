@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyAdditionalIpRangesConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyAdditionalPodRangesConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyAutoIpamConfig;
+import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyNetworkTierConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfig;
 import java.lang.String;
 import java.util.List;
@@ -32,8 +33,6 @@ public final class ClusterIpAllocationPolicy {
     /**
      * @return All the information related to Auto IPAM. Structure is documented below
      * 
-     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
-     * 
      */
     private @Nullable ClusterIpAllocationPolicyAutoIpamConfig autoIpamConfig;
     /**
@@ -52,6 +51,13 @@ public final class ClusterIpAllocationPolicy {
      * 
      */
     private @Nullable String clusterSecondaryRangeName;
+    /**
+     * @return Contains network tier information. Structure is documented below
+     * 
+     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+     * 
+     */
+    private @Nullable ClusterIpAllocationPolicyNetworkTierConfig networkTierConfig;
     /**
      * @return Configuration for cluster level pod cidr overprovision. Default is disabled=false.
      * 
@@ -103,8 +109,6 @@ public final class ClusterIpAllocationPolicy {
     /**
      * @return All the information related to Auto IPAM. Structure is documented below
      * 
-     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
-     * 
      */
     public Optional<ClusterIpAllocationPolicyAutoIpamConfig> autoIpamConfig() {
         return Optional.ofNullable(this.autoIpamConfig);
@@ -128,6 +132,15 @@ public final class ClusterIpAllocationPolicy {
      */
     public Optional<String> clusterSecondaryRangeName() {
         return Optional.ofNullable(this.clusterSecondaryRangeName);
+    }
+    /**
+     * @return Contains network tier information. Structure is documented below
+     * 
+     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+     * 
+     */
+    public Optional<ClusterIpAllocationPolicyNetworkTierConfig> networkTierConfig() {
+        return Optional.ofNullable(this.networkTierConfig);
     }
     /**
      * @return Configuration for cluster level pod cidr overprovision. Default is disabled=false.
@@ -181,6 +194,7 @@ public final class ClusterIpAllocationPolicy {
         private @Nullable ClusterIpAllocationPolicyAutoIpamConfig autoIpamConfig;
         private @Nullable String clusterIpv4CidrBlock;
         private @Nullable String clusterSecondaryRangeName;
+        private @Nullable ClusterIpAllocationPolicyNetworkTierConfig networkTierConfig;
         private @Nullable ClusterIpAllocationPolicyPodCidrOverprovisionConfig podCidrOverprovisionConfig;
         private @Nullable String servicesIpv4CidrBlock;
         private @Nullable String servicesSecondaryRangeName;
@@ -193,6 +207,7 @@ public final class ClusterIpAllocationPolicy {
     	      this.autoIpamConfig = defaults.autoIpamConfig;
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
     	      this.clusterSecondaryRangeName = defaults.clusterSecondaryRangeName;
+    	      this.networkTierConfig = defaults.networkTierConfig;
     	      this.podCidrOverprovisionConfig = defaults.podCidrOverprovisionConfig;
     	      this.servicesIpv4CidrBlock = defaults.servicesIpv4CidrBlock;
     	      this.servicesSecondaryRangeName = defaults.servicesSecondaryRangeName;
@@ -233,6 +248,12 @@ public final class ClusterIpAllocationPolicy {
             return this;
         }
         @CustomType.Setter
+        public Builder networkTierConfig(@Nullable ClusterIpAllocationPolicyNetworkTierConfig networkTierConfig) {
+
+            this.networkTierConfig = networkTierConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder podCidrOverprovisionConfig(@Nullable ClusterIpAllocationPolicyPodCidrOverprovisionConfig podCidrOverprovisionConfig) {
 
             this.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
@@ -263,6 +284,7 @@ public final class ClusterIpAllocationPolicy {
             _resultValue.autoIpamConfig = autoIpamConfig;
             _resultValue.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             _resultValue.clusterSecondaryRangeName = clusterSecondaryRangeName;
+            _resultValue.networkTierConfig = networkTierConfig;
             _resultValue.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             _resultValue.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             _resultValue.servicesSecondaryRangeName = servicesSecondaryRangeName;

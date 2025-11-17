@@ -25,12 +25,13 @@ public final class VolumeExportPolicyRule {
      */
     private @Nullable String allowedClients;
     /**
-     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ALL_SQUASH`.
      * 
      */
     private @Nullable Integer anonUid;
     /**
      * @return If enabled, the root user (UID = 0) of the specified clients doesn&#39;t get mapped to nobody (UID = 65534). This is also known as no_root_squash.
+     * It&#39;s overwritten by the squashMode parameter. Use either squashMode or has_root_access.
      * 
      */
     private @Nullable String hasRootAccess;
@@ -76,7 +77,8 @@ public final class VolumeExportPolicyRule {
     private @Nullable Boolean nfsv4;
     /**
      * @return SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-     * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+     * It overwrites the hasRootAccess parameter. Use either squashMode or has_root_access. For ALL_SQUASH, accessType needs to be set to READ_WRITE.
+     * Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
      * 
      */
     private @Nullable String squashMode;
@@ -98,7 +100,7 @@ public final class VolumeExportPolicyRule {
         return Optional.ofNullable(this.allowedClients);
     }
     /**
-     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ALL_SQUASH`.
      * 
      */
     public Optional<Integer> anonUid() {
@@ -106,6 +108,7 @@ public final class VolumeExportPolicyRule {
     }
     /**
      * @return If enabled, the root user (UID = 0) of the specified clients doesn&#39;t get mapped to nobody (UID = 65534). This is also known as no_root_squash.
+     * It&#39;s overwritten by the squashMode parameter. Use either squashMode or has_root_access.
      * 
      */
     public Optional<String> hasRootAccess() {
@@ -169,7 +172,8 @@ public final class VolumeExportPolicyRule {
     }
     /**
      * @return SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-     * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+     * It overwrites the hasRootAccess parameter. Use either squashMode or has_root_access. For ALL_SQUASH, accessType needs to be set to READ_WRITE.
+     * Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
      * 
      */
     public Optional<String> squashMode() {

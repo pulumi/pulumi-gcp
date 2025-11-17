@@ -304,6 +304,10 @@ type Reservation struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Indicates if this group of VMs have emergent maintenance enabled.
 	EnableEmergentMaintenance pulumi.BoolPtrOutput `pulumi:"enableEmergentMaintenance"`
+	// Type of the resource. Always compute#reservations for reservations.
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+	LinkedCommitments pulumi.StringArrayOutput `pulumi:"linkedCommitments"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -315,9 +319,17 @@ type Reservation struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// (Output)
+	// The number of reservation blocks associated with this reservation.
+	ReservationBlockCount pulumi.IntOutput `pulumi:"reservationBlockCount"`
 	// Sharing policy for reservations with Google Cloud managed services.
 	// Structure is documented below.
 	ReservationSharingPolicy ReservationReservationSharingPolicyOutput `pulumi:"reservationSharingPolicy"`
+	// Status information for Reservation resource.
+	// Structure is documented below.
+	ResourceStatuses ReservationResourceStatusArrayOutput `pulumi:"resourceStatuses"`
+	// Reserved for future use.
+	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The share setting for reservations.
@@ -387,6 +399,10 @@ type reservationState struct {
 	Description *string `pulumi:"description"`
 	// Indicates if this group of VMs have emergent maintenance enabled.
 	EnableEmergentMaintenance *bool `pulumi:"enableEmergentMaintenance"`
+	// Type of the resource. Always compute#reservations for reservations.
+	Kind *string `pulumi:"kind"`
+	// Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+	LinkedCommitments []string `pulumi:"linkedCommitments"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -398,9 +414,17 @@ type reservationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Output)
+	// The number of reservation blocks associated with this reservation.
+	ReservationBlockCount *int `pulumi:"reservationBlockCount"`
 	// Sharing policy for reservations with Google Cloud managed services.
 	// Structure is documented below.
 	ReservationSharingPolicy *ReservationReservationSharingPolicy `pulumi:"reservationSharingPolicy"`
+	// Status information for Reservation resource.
+	// Structure is documented below.
+	ResourceStatuses []ReservationResourceStatus `pulumi:"resourceStatuses"`
+	// Reserved for future use.
+	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The share setting for reservations.
@@ -435,6 +459,10 @@ type ReservationState struct {
 	Description pulumi.StringPtrInput
 	// Indicates if this group of VMs have emergent maintenance enabled.
 	EnableEmergentMaintenance pulumi.BoolPtrInput
+	// Type of the resource. Always compute#reservations for reservations.
+	Kind pulumi.StringPtrInput
+	// Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+	LinkedCommitments pulumi.StringArrayInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -446,9 +474,17 @@ type ReservationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Output)
+	// The number of reservation blocks associated with this reservation.
+	ReservationBlockCount pulumi.IntPtrInput
 	// Sharing policy for reservations with Google Cloud managed services.
 	// Structure is documented below.
 	ReservationSharingPolicy ReservationReservationSharingPolicyPtrInput
+	// Status information for Reservation resource.
+	// Structure is documented below.
+	ResourceStatuses ReservationResourceStatusArrayInput
+	// Reserved for future use.
+	SatisfiesPzs pulumi.BoolPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The share setting for reservations.
@@ -670,6 +706,16 @@ func (o ReservationOutput) EnableEmergentMaintenance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.BoolPtrOutput { return v.EnableEmergentMaintenance }).(pulumi.BoolPtrOutput)
 }
 
+// Type of the resource. Always compute#reservations for reservations.
+func (o ReservationOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
+func (o ReservationOutput) LinkedCommitments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringArrayOutput { return v.LinkedCommitments }).(pulumi.StringArrayOutput)
+}
+
 // Name of the resource. Provided by the client when the resource is
 // created. The name must be 1-63 characters long, and comply with
 // RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -687,10 +733,27 @@ func (o ReservationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// (Output)
+// The number of reservation blocks associated with this reservation.
+func (o ReservationOutput) ReservationBlockCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.IntOutput { return v.ReservationBlockCount }).(pulumi.IntOutput)
+}
+
 // Sharing policy for reservations with Google Cloud managed services.
 // Structure is documented below.
 func (o ReservationOutput) ReservationSharingPolicy() ReservationReservationSharingPolicyOutput {
 	return o.ApplyT(func(v *Reservation) ReservationReservationSharingPolicyOutput { return v.ReservationSharingPolicy }).(ReservationReservationSharingPolicyOutput)
+}
+
+// Status information for Reservation resource.
+// Structure is documented below.
+func (o ReservationOutput) ResourceStatuses() ReservationResourceStatusArrayOutput {
+	return o.ApplyT(func(v *Reservation) ReservationResourceStatusArrayOutput { return v.ResourceStatuses }).(ReservationResourceStatusArrayOutput)
+}
+
+// Reserved for future use.
+func (o ReservationOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // The URI of the created resource.

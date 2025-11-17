@@ -58,6 +58,8 @@ class DatabaseInstanceArgs:
                configuration is detailed below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+               
+               > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         :param pulumi.Input[_builtins.str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -188,6 +190,8 @@ class DatabaseInstanceArgs:
         """
         Whether or not to allow the provider to destroy the instance. Unless this field is set to false
         in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+
+        > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -464,6 +468,8 @@ class _DatabaseInstanceState:
                includes an up-to-date reference of supported versions.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+               
+               > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceDnsNameArgs']]] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
         :param pulumi.Input[_builtins.str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
@@ -653,6 +659,8 @@ class _DatabaseInstanceState:
         """
         Whether or not to allow the provider to destroy the instance. Unless this field is set to false
         in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+
+        > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -1067,9 +1075,9 @@ class DatabaseInstance(pulumi.CustomResource):
             network=private_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_address.name])
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         instance = gcp.sql.DatabaseInstance("instance",
-            name=f"private-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"private-instance-{hex}"),
             region="us-central1",
             database_version="MYSQL_5_7",
             settings={
@@ -1290,6 +1298,8 @@ class DatabaseInstance(pulumi.CustomResource):
                includes an up-to-date reference of supported versions.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+               
+               > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         :param pulumi.Input[_builtins.str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -1385,9 +1395,9 @@ class DatabaseInstance(pulumi.CustomResource):
             network=private_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_address.name])
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         instance = gcp.sql.DatabaseInstance("instance",
-            name=f"private-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"private-instance-{hex}"),
             region="us-central1",
             database_version="MYSQL_5_7",
             settings={
@@ -1738,6 +1748,8 @@ class DatabaseInstance(pulumi.CustomResource):
                includes an up-to-date reference of supported versions.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+               
+               > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict']]]] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
         :param pulumi.Input[_builtins.str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
@@ -1880,6 +1892,8 @@ class DatabaseInstance(pulumi.CustomResource):
         """
         Whether or not to allow the provider to destroy the instance. Unless this field is set to false
         in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+
+        > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         """
         return pulumi.get(self, "deletion_protection")
 

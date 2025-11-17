@@ -187,6 +187,62 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Public Delegated Prefix Internal Ipv6 Subnet Mode
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.PublicAdvertisedPrefix;
+ * import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
+ * import com.pulumi.gcp.compute.PublicDelegatedPrefix;
+ * import com.pulumi.gcp.compute.PublicDelegatedPrefixArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var advertised = new PublicAdvertisedPrefix("advertised", PublicAdvertisedPrefixArgs.builder()
+ *             .name("ipv6-pap")
+ *             .description("description")
+ *             .ipCidrRange("2001:db8::/32")
+ *             .pdpScope("REGIONAL")
+ *             .ipv6AccessType("INTERNAL")
+ *             .build());
+ * 
+ *         var prefix = new PublicDelegatedPrefix("prefix", PublicDelegatedPrefixArgs.builder()
+ *             .name("ipv6-root-pdp")
+ *             .description("test-delegation-mode-pdp")
+ *             .region("us-east1")
+ *             .ipCidrRange("2001:db8::/40")
+ *             .parentPrefix(advertised.id())
+ *             .mode("DELEGATION")
+ *             .build());
+ * 
+ *         var subprefix = new PublicDelegatedPrefix("subprefix", PublicDelegatedPrefixArgs.builder()
+ *             .name("ipv6-sub-pdp")
+ *             .description("test-subnet-mode-pdp")
+ *             .region("us-east1")
+ *             .ipCidrRange("2001:db8::/48")
+ *             .parentPrefix(prefix.id())
+ *             .mode("INTERNAL_IPV6_SUBNETWORK_CREATION")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -264,6 +320,34 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
         return this.ipCidrRange;
     }
     /**
+     * (Output)
+     * The internet access type for IPv6 Public Delegated Prefixes. Inherited
+     * from parent prefix and can be one of following:
+     * * EXTERNAL: The prefix will be announced to the internet. All children
+     *   PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     * 
+     */
+    @Export(name="ipv6AccessType", refs={String.class}, tree="[0]")
+    private Output<String> ipv6AccessType;
+
+    /**
+     * @return (Output)
+     * The internet access type for IPv6 Public Delegated Prefixes. Inherited
+     * from parent prefix and can be one of following:
+     * * EXTERNAL: The prefix will be announced to the internet. All children
+     *   PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     * 
+     */
+    public Output<String> ipv6AccessType() {
+        return this.ipv6AccessType;
+    }
+    /**
      * If true, the prefix will be live migrated.
      * 
      */
@@ -278,18 +362,24 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isLiveMigration);
     }
     /**
-     * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+     * Specifies the mode of this IPv6 PDP. MODE must be one of:
+     * * DELEGATION
+     * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+     * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+     * * INTERNAL_IPV6_SUBNETWORK_CREATION
+     *   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mode;
 
     /**
-     * @return Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+     * @return Specifies the mode of this IPv6 PDP. MODE must be one of:
+     * * DELEGATION
+     * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+     * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+     * * INTERNAL_IPV6_SUBNETWORK_CREATION
+     *   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      * 
      */
     public Output<Optional<String>> mode() {

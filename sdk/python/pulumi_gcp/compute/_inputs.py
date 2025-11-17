@@ -1195,6 +1195,16 @@ __all__ = [
     'ReservationDeleteAfterDurationArgsDict',
     'ReservationReservationSharingPolicyArgs',
     'ReservationReservationSharingPolicyArgsDict',
+    'ReservationResourceStatusArgs',
+    'ReservationResourceStatusArgsDict',
+    'ReservationResourceStatusHealthInfoArgs',
+    'ReservationResourceStatusHealthInfoArgsDict',
+    'ReservationResourceStatusReservationMaintenanceArgs',
+    'ReservationResourceStatusReservationMaintenanceArgsDict',
+    'ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs',
+    'ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgsDict',
+    'ReservationResourceStatusSpecificSkuAllocationArgs',
+    'ReservationResourceStatusSpecificSkuAllocationArgsDict',
     'ReservationShareSettingsArgs',
     'ReservationShareSettingsArgsDict',
     'ReservationShareSettingsProjectMapArgs',
@@ -35403,15 +35413,29 @@ if not MYPY:
         """
         The IP address range, in CIDR format, represented by this public delegated prefix.
         """
+        ipv6_access_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The internet access type for IPv6 Public Delegated Prefixes. Inherited
+        from parent prefix and can be one of following:
+        * EXTERNAL: The prefix will be announced to the internet. All children
+        PDPs will have access type as EXTERNAL.
+        * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+        be used privately within Google Cloud. All children PDPs will have
+        access type as INTERNAL.
+        """
         is_address: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Whether the sub prefix is delegated for address creation.
         """
         mode: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        Specifies the mode of this IPv6 PDP. MODE must be one of:
+        * DELEGATION
+        * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+        * EXTERNAL_IPV6_SUBNETWORK_CREATION
+        * INTERNAL_IPV6_SUBNETWORK_CREATION
+        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -35441,6 +35465,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
                  delegatee_project: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6_access_type: Optional[pulumi.Input[_builtins.str]] = None,
                  is_address: Optional[pulumi.Input[_builtins.bool]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -35451,10 +35476,21 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
         :param pulumi.Input[_builtins.str] delegatee_project: Name of the project scoping this PublicDelegatedSubPrefix.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
+        :param pulumi.Input[_builtins.str] ipv6_access_type: (Output)
+               The internet access type for IPv6 Public Delegated Prefixes. Inherited
+               from parent prefix and can be one of following:
+               * EXTERNAL: The prefix will be announced to the internet. All children
+               PDPs will have access type as EXTERNAL.
+               * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+               be used privately within Google Cloud. All children PDPs will have
+               access type as INTERNAL.
         :param pulumi.Input[_builtins.bool] is_address: Whether the sub prefix is delegated for address creation.
-        :param pulumi.Input[_builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-               EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        :param pulumi.Input[_builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of:
+               * DELEGATION
+               * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+               * EXTERNAL_IPV6_SUBNETWORK_CREATION
+               * INTERNAL_IPV6_SUBNETWORK_CREATION
+               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -35473,6 +35509,8 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
             pulumi.set(__self__, "description", description)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if ipv6_access_type is not None:
+            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if is_address is not None:
             pulumi.set(__self__, "is_address", is_address)
         if mode is not None:
@@ -35533,6 +35571,25 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
         pulumi.set(self, "ip_cidr_range", value)
 
     @_builtins.property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The internet access type for IPv6 Public Delegated Prefixes. Inherited
+        from parent prefix and can be one of following:
+        * EXTERNAL: The prefix will be announced to the internet. All children
+        PDPs will have access type as EXTERNAL.
+        * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+        be used privately within Google Cloud. All children PDPs will have
+        access type as INTERNAL.
+        """
+        return pulumi.get(self, "ipv6_access_type")
+
+    @ipv6_access_type.setter
+    def ipv6_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ipv6_access_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="isAddress")
     def is_address(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -35548,9 +35605,12 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        Specifies the mode of this IPv6 PDP. MODE must be one of:
+        * DELEGATION
+        * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+        * EXTERNAL_IPV6_SUBNETWORK_CREATION
+        * INTERNAL_IPV6_SUBNETWORK_CREATION
+        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         """
         return pulumi.get(self, "mode")
 
@@ -60838,6 +60898,653 @@ class ReservationReservationSharingPolicyArgs:
 
 
 if not MYPY:
+    class ReservationResourceStatusArgsDict(TypedDict):
+        health_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusHealthInfoArgsDict']]]]
+        """
+        (Output)
+        Health information for the reservation.
+        Structure is documented below.
+        """
+        reservation_block_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        The number of reservation blocks associated with this reservation.
+        """
+        reservation_maintenances: NotRequired[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusReservationMaintenanceArgsDict']]]]
+        """
+        (Output)
+        Maintenance information for this reservation
+        Structure is documented below.
+        """
+        specific_sku_allocations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusSpecificSkuAllocationArgsDict']]]]
+        """
+        (Output)
+        Allocation Properties of this reservation.
+        Structure is documented below.
+        """
+elif False:
+    ReservationResourceStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReservationResourceStatusArgs:
+    def __init__(__self__, *,
+                 health_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusHealthInfoArgs']]]] = None,
+                 reservation_block_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 reservation_maintenances: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusReservationMaintenanceArgs']]]] = None,
+                 specific_sku_allocations: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusSpecificSkuAllocationArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusHealthInfoArgs']]] health_infos: (Output)
+               Health information for the reservation.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] reservation_block_count: (Output)
+               The number of reservation blocks associated with this reservation.
+        :param pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusReservationMaintenanceArgs']]] reservation_maintenances: (Output)
+               Maintenance information for this reservation
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusSpecificSkuAllocationArgs']]] specific_sku_allocations: (Output)
+               Allocation Properties of this reservation.
+               Structure is documented below.
+        """
+        if health_infos is not None:
+            pulumi.set(__self__, "health_infos", health_infos)
+        if reservation_block_count is not None:
+            pulumi.set(__self__, "reservation_block_count", reservation_block_count)
+        if reservation_maintenances is not None:
+            pulumi.set(__self__, "reservation_maintenances", reservation_maintenances)
+        if specific_sku_allocations is not None:
+            pulumi.set(__self__, "specific_sku_allocations", specific_sku_allocations)
+
+    @_builtins.property
+    @pulumi.getter(name="healthInfos")
+    def health_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusHealthInfoArgs']]]]:
+        """
+        (Output)
+        Health information for the reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "health_infos")
+
+    @health_infos.setter
+    def health_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusHealthInfoArgs']]]]):
+        pulumi.set(self, "health_infos", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reservationBlockCount")
+    def reservation_block_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        The number of reservation blocks associated with this reservation.
+        """
+        return pulumi.get(self, "reservation_block_count")
+
+    @reservation_block_count.setter
+    def reservation_block_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "reservation_block_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reservationMaintenances")
+    def reservation_maintenances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusReservationMaintenanceArgs']]]]:
+        """
+        (Output)
+        Maintenance information for this reservation
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_maintenances")
+
+    @reservation_maintenances.setter
+    def reservation_maintenances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusReservationMaintenanceArgs']]]]):
+        pulumi.set(self, "reservation_maintenances", value)
+
+    @_builtins.property
+    @pulumi.getter(name="specificSkuAllocations")
+    def specific_sku_allocations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusSpecificSkuAllocationArgs']]]]:
+        """
+        (Output)
+        Allocation Properties of this reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "specific_sku_allocations")
+
+    @specific_sku_allocations.setter
+    def specific_sku_allocations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusSpecificSkuAllocationArgs']]]]):
+        pulumi.set(self, "specific_sku_allocations", value)
+
+
+if not MYPY:
+    class ReservationResourceStatusHealthInfoArgsDict(TypedDict):
+        degraded_block_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        The number of reservation blocks that are degraded.
+        """
+        health_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The health status of the reservation.
+        """
+        healthy_block_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        The number of reservation blocks that are healthy.
+        """
+elif False:
+    ReservationResourceStatusHealthInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReservationResourceStatusHealthInfoArgs:
+    def __init__(__self__, *,
+                 degraded_block_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 health_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 healthy_block_count: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] degraded_block_count: (Output)
+               The number of reservation blocks that are degraded.
+        :param pulumi.Input[_builtins.str] health_status: (Output)
+               The health status of the reservation.
+        :param pulumi.Input[_builtins.int] healthy_block_count: (Output)
+               The number of reservation blocks that are healthy.
+        """
+        if degraded_block_count is not None:
+            pulumi.set(__self__, "degraded_block_count", degraded_block_count)
+        if health_status is not None:
+            pulumi.set(__self__, "health_status", health_status)
+        if healthy_block_count is not None:
+            pulumi.set(__self__, "healthy_block_count", healthy_block_count)
+
+    @_builtins.property
+    @pulumi.getter(name="degradedBlockCount")
+    def degraded_block_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        The number of reservation blocks that are degraded.
+        """
+        return pulumi.get(self, "degraded_block_count")
+
+    @degraded_block_count.setter
+    def degraded_block_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "degraded_block_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthStatus")
+    def health_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The health status of the reservation.
+        """
+        return pulumi.get(self, "health_status")
+
+    @health_status.setter
+    def health_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "health_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthyBlockCount")
+    def healthy_block_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        The number of reservation blocks that are healthy.
+        """
+        return pulumi.get(self, "healthy_block_count")
+
+    @healthy_block_count.setter
+    def healthy_block_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "healthy_block_count", value)
+
+
+if not MYPY:
+    class ReservationResourceStatusReservationMaintenanceArgsDict(TypedDict):
+        instance_maintenance_ongoing_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        Describes number of instances that have ongoing maintenance.
+        """
+        instance_maintenance_pending_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        Describes number of instances that have pending maintenance.
+        """
+        maintenance_ongoing_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have ongoing maintenance.
+        """
+        maintenance_pending_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have pending maintenance.
+        """
+        scheduling_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The type of maintenance for the reservation.
+        """
+        subblock_infra_maintenance_ongoing_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        Describes number of subblock Infrastructure that has ongoing maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family(e.g. NVLink Domains). Not all VM Families will support this field.
+        """
+        subblock_infra_maintenance_pending_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        Describes number of subblock Infrastructure that has pending maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family (e.g. NVLink Domains). Not all VM Families will support this field.
+        """
+        upcoming_group_maintenances: NotRequired[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgsDict']]]]
+        """
+        (Output)
+        Maintenance information on this group of VMs.
+        Structure is documented below.
+        """
+elif False:
+    ReservationResourceStatusReservationMaintenanceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReservationResourceStatusReservationMaintenanceArgs:
+    def __init__(__self__, *,
+                 instance_maintenance_ongoing_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 instance_maintenance_pending_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 maintenance_ongoing_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 maintenance_pending_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 scheduling_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 subblock_infra_maintenance_ongoing_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 subblock_infra_maintenance_pending_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 upcoming_group_maintenances: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.int] instance_maintenance_ongoing_count: (Output)
+               Describes number of instances that have ongoing maintenance.
+        :param pulumi.Input[_builtins.int] instance_maintenance_pending_count: (Output)
+               Describes number of instances that have pending maintenance.
+        :param pulumi.Input[_builtins.int] maintenance_ongoing_count: (Output)
+               Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have ongoing maintenance.
+        :param pulumi.Input[_builtins.int] maintenance_pending_count: (Output)
+               Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have pending maintenance.
+        :param pulumi.Input[_builtins.str] scheduling_type: (Output)
+               The type of maintenance for the reservation.
+        :param pulumi.Input[_builtins.int] subblock_infra_maintenance_ongoing_count: (Output)
+               Describes number of subblock Infrastructure that has ongoing maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family(e.g. NVLink Domains). Not all VM Families will support this field.
+        :param pulumi.Input[_builtins.int] subblock_infra_maintenance_pending_count: (Output)
+               Describes number of subblock Infrastructure that has pending maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family (e.g. NVLink Domains). Not all VM Families will support this field.
+        :param pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs']]] upcoming_group_maintenances: (Output)
+               Maintenance information on this group of VMs.
+               Structure is documented below.
+        """
+        if instance_maintenance_ongoing_count is not None:
+            pulumi.set(__self__, "instance_maintenance_ongoing_count", instance_maintenance_ongoing_count)
+        if instance_maintenance_pending_count is not None:
+            pulumi.set(__self__, "instance_maintenance_pending_count", instance_maintenance_pending_count)
+        if maintenance_ongoing_count is not None:
+            pulumi.set(__self__, "maintenance_ongoing_count", maintenance_ongoing_count)
+        if maintenance_pending_count is not None:
+            pulumi.set(__self__, "maintenance_pending_count", maintenance_pending_count)
+        if scheduling_type is not None:
+            pulumi.set(__self__, "scheduling_type", scheduling_type)
+        if subblock_infra_maintenance_ongoing_count is not None:
+            pulumi.set(__self__, "subblock_infra_maintenance_ongoing_count", subblock_infra_maintenance_ongoing_count)
+        if subblock_infra_maintenance_pending_count is not None:
+            pulumi.set(__self__, "subblock_infra_maintenance_pending_count", subblock_infra_maintenance_pending_count)
+        if upcoming_group_maintenances is not None:
+            pulumi.set(__self__, "upcoming_group_maintenances", upcoming_group_maintenances)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMaintenanceOngoingCount")
+    def instance_maintenance_ongoing_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        Describes number of instances that have ongoing maintenance.
+        """
+        return pulumi.get(self, "instance_maintenance_ongoing_count")
+
+    @instance_maintenance_ongoing_count.setter
+    def instance_maintenance_ongoing_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "instance_maintenance_ongoing_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMaintenancePendingCount")
+    def instance_maintenance_pending_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        Describes number of instances that have pending maintenance.
+        """
+        return pulumi.get(self, "instance_maintenance_pending_count")
+
+    @instance_maintenance_pending_count.setter
+    def instance_maintenance_pending_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "instance_maintenance_pending_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceOngoingCount")
+    def maintenance_ongoing_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have ongoing maintenance.
+        """
+        return pulumi.get(self, "maintenance_ongoing_count")
+
+    @maintenance_ongoing_count.setter
+    def maintenance_ongoing_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "maintenance_ongoing_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenancePendingCount")
+    def maintenance_pending_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have pending maintenance.
+        """
+        return pulumi.get(self, "maintenance_pending_count")
+
+    @maintenance_pending_count.setter
+    def maintenance_pending_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "maintenance_pending_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schedulingType")
+    def scheduling_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The type of maintenance for the reservation.
+        """
+        return pulumi.get(self, "scheduling_type")
+
+    @scheduling_type.setter
+    def scheduling_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scheduling_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subblockInfraMaintenanceOngoingCount")
+    def subblock_infra_maintenance_ongoing_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        Describes number of subblock Infrastructure that has ongoing maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family(e.g. NVLink Domains). Not all VM Families will support this field.
+        """
+        return pulumi.get(self, "subblock_infra_maintenance_ongoing_count")
+
+    @subblock_infra_maintenance_ongoing_count.setter
+    def subblock_infra_maintenance_ongoing_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "subblock_infra_maintenance_ongoing_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subblockInfraMaintenancePendingCount")
+    def subblock_infra_maintenance_pending_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        Describes number of subblock Infrastructure that has pending maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family (e.g. NVLink Domains). Not all VM Families will support this field.
+        """
+        return pulumi.get(self, "subblock_infra_maintenance_pending_count")
+
+    @subblock_infra_maintenance_pending_count.setter
+    def subblock_infra_maintenance_pending_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "subblock_infra_maintenance_pending_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upcomingGroupMaintenances")
+    def upcoming_group_maintenances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs']]]]:
+        """
+        (Output)
+        Maintenance information on this group of VMs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "upcoming_group_maintenances")
+
+    @upcoming_group_maintenances.setter
+    def upcoming_group_maintenances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs']]]]):
+        pulumi.set(self, "upcoming_group_maintenances", value)
+
+
+if not MYPY:
+    class ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgsDict(TypedDict):
+        can_reschedule: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        (Output)
+        Indicates if the maintenance can be customer triggered.
+        """
+        latest_window_start_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
+        """
+        maintenance_on_shutdown: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        (Output)
+        Indicates whether the UpcomingMaintenance will be triggered on VM shutdown.
+        """
+        maintenance_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        (Output)
+        The reasons for the maintenance. Only valid for vms.
+        """
+        maintenance_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Status of the maintenance.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Defines the type of maintenance.
+        """
+        window_end_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.
+        """
+        window_start_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
+        """
+elif False:
+    ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs:
+    def __init__(__self__, *,
+                 can_reschedule: Optional[pulumi.Input[_builtins.bool]] = None,
+                 latest_window_start_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 maintenance_on_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
+                 maintenance_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 window_end_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 window_start_time: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] can_reschedule: (Output)
+               Indicates if the maintenance can be customer triggered.
+        :param pulumi.Input[_builtins.str] latest_window_start_time: (Output)
+               The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
+        :param pulumi.Input[_builtins.bool] maintenance_on_shutdown: (Output)
+               Indicates whether the UpcomingMaintenance will be triggered on VM shutdown.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] maintenance_reasons: (Output)
+               The reasons for the maintenance. Only valid for vms.
+        :param pulumi.Input[_builtins.str] maintenance_status: (Output)
+               Status of the maintenance.
+        :param pulumi.Input[_builtins.str] type: (Output)
+               Defines the type of maintenance.
+        :param pulumi.Input[_builtins.str] window_end_time: (Output)
+               The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] window_start_time: (Output)
+               The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
+        """
+        if can_reschedule is not None:
+            pulumi.set(__self__, "can_reschedule", can_reschedule)
+        if latest_window_start_time is not None:
+            pulumi.set(__self__, "latest_window_start_time", latest_window_start_time)
+        if maintenance_on_shutdown is not None:
+            pulumi.set(__self__, "maintenance_on_shutdown", maintenance_on_shutdown)
+        if maintenance_reasons is not None:
+            pulumi.set(__self__, "maintenance_reasons", maintenance_reasons)
+        if maintenance_status is not None:
+            pulumi.set(__self__, "maintenance_status", maintenance_status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if window_end_time is not None:
+            pulumi.set(__self__, "window_end_time", window_end_time)
+        if window_start_time is not None:
+            pulumi.set(__self__, "window_start_time", window_start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="canReschedule")
+    def can_reschedule(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Output)
+        Indicates if the maintenance can be customer triggered.
+        """
+        return pulumi.get(self, "can_reschedule")
+
+    @can_reschedule.setter
+    def can_reschedule(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "can_reschedule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="latestWindowStartTime")
+    def latest_window_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
+        """
+        return pulumi.get(self, "latest_window_start_time")
+
+    @latest_window_start_time.setter
+    def latest_window_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "latest_window_start_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceOnShutdown")
+    def maintenance_on_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Output)
+        Indicates whether the UpcomingMaintenance will be triggered on VM shutdown.
+        """
+        return pulumi.get(self, "maintenance_on_shutdown")
+
+    @maintenance_on_shutdown.setter
+    def maintenance_on_shutdown(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "maintenance_on_shutdown", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceReasons")
+    def maintenance_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        The reasons for the maintenance. Only valid for vms.
+        """
+        return pulumi.get(self, "maintenance_reasons")
+
+    @maintenance_reasons.setter
+    def maintenance_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "maintenance_reasons", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceStatus")
+    def maintenance_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Status of the maintenance.
+        """
+        return pulumi.get(self, "maintenance_status")
+
+    @maintenance_status.setter
+    def maintenance_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "maintenance_status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Defines the type of maintenance.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowEndTime")
+    def window_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.
+        """
+        return pulumi.get(self, "window_end_time")
+
+    @window_end_time.setter
+    def window_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "window_end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowStartTime")
+    def window_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
+        """
+        return pulumi.get(self, "window_start_time")
+
+    @window_start_time.setter
+    def window_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "window_start_time", value)
+
+
+if not MYPY:
+    class ReservationResourceStatusSpecificSkuAllocationArgsDict(TypedDict):
+        source_instance_template_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        ID of the instance template used to populate reservation properties.
+        """
+        utilizations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        (Output)
+        Per service utilization breakdown. The Key is the Google Cloud managed service name.
+        """
+elif False:
+    ReservationResourceStatusSpecificSkuAllocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReservationResourceStatusSpecificSkuAllocationArgs:
+    def __init__(__self__, *,
+                 source_instance_template_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 utilizations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] source_instance_template_id: (Output)
+               ID of the instance template used to populate reservation properties.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] utilizations: (Output)
+               Per service utilization breakdown. The Key is the Google Cloud managed service name.
+        """
+        if source_instance_template_id is not None:
+            pulumi.set(__self__, "source_instance_template_id", source_instance_template_id)
+        if utilizations is not None:
+            pulumi.set(__self__, "utilizations", utilizations)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceInstanceTemplateId")
+    def source_instance_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        ID of the instance template used to populate reservation properties.
+        """
+        return pulumi.get(self, "source_instance_template_id")
+
+    @source_instance_template_id.setter
+    def source_instance_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_instance_template_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def utilizations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        Per service utilization breakdown. The Key is the Google Cloud managed service name.
+        """
+        return pulumi.get(self, "utilizations")
+
+    @utilizations.setter
+    def utilizations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "utilizations", value)
+
+
+if not MYPY:
     class ReservationShareSettingsArgsDict(TypedDict):
         project_maps: NotRequired[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgsDict']]]]
         """
@@ -60972,6 +61679,11 @@ if not MYPY:
         """
         The number of resources that are allocated.
         """
+        assured_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        Indicates how many instances are actually usable currently.
+        """
         in_use_count: NotRequired[pulumi.Input[_builtins.int]]
         """
         (Output)
@@ -60994,11 +61706,14 @@ elif False:
 class ReservationSpecificReservationArgs:
     def __init__(__self__, *,
                  count: pulumi.Input[_builtins.int],
+                 assured_count: Optional[pulumi.Input[_builtins.int]] = None,
                  in_use_count: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_properties: Optional[pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs']] = None,
                  source_instance_template: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] count: The number of resources that are allocated.
+        :param pulumi.Input[_builtins.int] assured_count: (Output)
+               Indicates how many instances are actually usable currently.
         :param pulumi.Input[_builtins.int] in_use_count: (Output)
                How many instances are in use.
         :param pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs'] instance_properties: The instance properties for the reservation.
@@ -61007,6 +61722,8 @@ class ReservationSpecificReservationArgs:
                instanceProperties field.
         """
         pulumi.set(__self__, "count", count)
+        if assured_count is not None:
+            pulumi.set(__self__, "assured_count", assured_count)
         if in_use_count is not None:
             pulumi.set(__self__, "in_use_count", in_use_count)
         if instance_properties is not None:
@@ -61025,6 +61742,19 @@ class ReservationSpecificReservationArgs:
     @count.setter
     def count(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assuredCount")
+    def assured_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        Indicates how many instances are actually usable currently.
+        """
+        return pulumi.get(self, "assured_count")
+
+    @assured_count.setter
+    def assured_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "assured_count", value)
 
     @_builtins.property
     @pulumi.getter(name="inUseCount")
@@ -61083,6 +61813,11 @@ if not MYPY:
         reserves disks of type `local-ssd`.
         Structure is documented below.
         """
+        location_hint: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+        """
         maintenance_interval: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the frequency of planned maintenance events.
@@ -61104,6 +61839,7 @@ class ReservationSpecificReservationInstancePropertiesArgs:
                  machine_type: pulumi.Input[_builtins.str],
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs']]]] = None,
                  local_ssds: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArgs']]]] = None,
+                 location_hint: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_interval: Optional[pulumi.Input[_builtins.str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -61113,6 +61849,8 @@ class ReservationSpecificReservationInstancePropertiesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArgs']]] local_ssds: The amount of local ssd to reserve with each instance. This
                reserves disks of type `local-ssd`.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] location_hint: (Output)
+               An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
         :param pulumi.Input[_builtins.str] maintenance_interval: Specifies the frequency of planned maintenance events.
                Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
         :param pulumi.Input[_builtins.str] min_cpu_platform: The minimum CPU platform for the reservation. For example,
@@ -61125,6 +61863,8 @@ class ReservationSpecificReservationInstancePropertiesArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if local_ssds is not None:
             pulumi.set(__self__, "local_ssds", local_ssds)
+        if location_hint is not None:
+            pulumi.set(__self__, "location_hint", location_hint)
         if maintenance_interval is not None:
             pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if min_cpu_platform is not None:
@@ -61168,6 +61908,19 @@ class ReservationSpecificReservationInstancePropertiesArgs:
     @local_ssds.setter
     def local_ssds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArgs']]]]):
         pulumi.set(self, "local_ssds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="locationHint")
+    def location_hint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+        """
+        return pulumi.get(self, "location_hint")
+
+    @location_hint.setter
+    def location_hint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "location_hint", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceInterval")

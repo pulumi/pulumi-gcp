@@ -87,7 +87,7 @@ type OrganizationVpcFlowLogsConfig struct {
 	// Optional. The value of the field must be in (0, 1]. The sampling rate
 	// of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
 	// sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-	// the state field instead. Default value is 1.0.
+	// the state field instead. Default value is 1.0
 	FlowSampling pulumi.Float64Output `pulumi:"flowSampling"`
 	// Optional. Resource labels to represent the user-provided metadata.
 	//
@@ -189,7 +189,7 @@ type organizationVpcFlowLogsConfigState struct {
 	// Optional. The value of the field must be in (0, 1]. The sampling rate
 	// of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
 	// sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-	// the state field instead. Default value is 1.0.
+	// the state field instead. Default value is 1.0
 	FlowSampling *float64 `pulumi:"flowSampling"`
 	// Optional. Resource labels to represent the user-provided metadata.
 	//
@@ -248,7 +248,7 @@ type OrganizationVpcFlowLogsConfigState struct {
 	// Optional. The value of the field must be in (0, 1]. The sampling rate
 	// of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
 	// sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-	// the state field instead. Default value is 1.0.
+	// the state field instead. Default value is 1.0
 	FlowSampling pulumi.Float64PtrInput
 	// Optional. Resource labels to represent the user-provided metadata.
 	//
@@ -307,7 +307,7 @@ type organizationVpcFlowLogsConfigArgs struct {
 	// Optional. The value of the field must be in (0, 1]. The sampling rate
 	// of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
 	// sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-	// the state field instead. Default value is 1.0.
+	// the state field instead. Default value is 1.0
 	FlowSampling *float64 `pulumi:"flowSampling"`
 	// Optional. Resource labels to represent the user-provided metadata.
 	//
@@ -356,7 +356,7 @@ type OrganizationVpcFlowLogsConfigArgs struct {
 	// Optional. The value of the field must be in (0, 1]. The sampling rate
 	// of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
 	// sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-	// the state field instead. Default value is 1.0.
+	// the state field instead. Default value is 1.0
 	FlowSampling pulumi.Float64PtrInput
 	// Optional. Resource labels to represent the user-provided metadata.
 	//
@@ -512,7 +512,7 @@ func (o OrganizationVpcFlowLogsConfigOutput) FilterExpr() pulumi.StringPtrOutput
 // Optional. The value of the field must be in (0, 1]. The sampling rate
 // of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
 // sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-// the state field instead. Default value is 1.0.
+// the state field instead. Default value is 1.0
 func (o OrganizationVpcFlowLogsConfigOutput) FlowSampling() pulumi.Float64Output {
 	return o.ApplyT(func(v *OrganizationVpcFlowLogsConfig) pulumi.Float64Output { return v.FlowSampling }).(pulumi.Float64Output)
 }

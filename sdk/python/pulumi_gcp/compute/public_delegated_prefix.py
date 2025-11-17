@@ -38,9 +38,12 @@ class PublicDelegatedPrefixArgs:
         :param pulumi.Input[_builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] is_live_migration: If true, the prefix will be live migrated.
-        :param pulumi.Input[_builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-               EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        :param pulumi.Input[_builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of:
+               * DELEGATION
+               * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+               * EXTERNAL_IPV6_SUBNETWORK_CREATION
+               * INTERNAL_IPV6_SUBNETWORK_CREATION
+               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -142,9 +145,12 @@ class PublicDelegatedPrefixArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        Specifies the mode of this IPv6 PDP. MODE must be one of:
+        * DELEGATION
+        * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+        * EXTERNAL_IPV6_SUBNETWORK_CREATION
+        * INTERNAL_IPV6_SUBNETWORK_CREATION
+        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         """
         return pulumi.get(self, "mode")
 
@@ -189,6 +195,7 @@ class _PublicDelegatedPrefixState:
                  allocatable_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6_access_type: Optional[pulumi.Input[_builtins.str]] = None,
                  is_live_migration: Optional[pulumi.Input[_builtins.bool]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -202,10 +209,21 @@ class _PublicDelegatedPrefixState:
         :param pulumi.Input[_builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
+        :param pulumi.Input[_builtins.str] ipv6_access_type: (Output)
+               The internet access type for IPv6 Public Delegated Prefixes. Inherited
+               from parent prefix and can be one of following:
+               * EXTERNAL: The prefix will be announced to the internet. All children
+               PDPs will have access type as EXTERNAL.
+               * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+               be used privately within Google Cloud. All children PDPs will have
+               access type as INTERNAL.
         :param pulumi.Input[_builtins.bool] is_live_migration: If true, the prefix will be live migrated.
-        :param pulumi.Input[_builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-               EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        :param pulumi.Input[_builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of:
+               * DELEGATION
+               * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+               * EXTERNAL_IPV6_SUBNETWORK_CREATION
+               * INTERNAL_IPV6_SUBNETWORK_CREATION
+               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -228,6 +246,8 @@ class _PublicDelegatedPrefixState:
             pulumi.set(__self__, "description", description)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if ipv6_access_type is not None:
+            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if is_live_migration is not None:
             pulumi.set(__self__, "is_live_migration", is_live_migration)
         if mode is not None:
@@ -282,6 +302,25 @@ class _PublicDelegatedPrefixState:
         pulumi.set(self, "ip_cidr_range", value)
 
     @_builtins.property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The internet access type for IPv6 Public Delegated Prefixes. Inherited
+        from parent prefix and can be one of following:
+        * EXTERNAL: The prefix will be announced to the internet. All children
+        PDPs will have access type as EXTERNAL.
+        * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+        be used privately within Google Cloud. All children PDPs will have
+        access type as INTERNAL.
+        """
+        return pulumi.get(self, "ipv6_access_type")
+
+    @ipv6_access_type.setter
+    def ipv6_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ipv6_access_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="isLiveMigration")
     def is_live_migration(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -297,9 +336,12 @@ class _PublicDelegatedPrefixState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        Specifies the mode of this IPv6 PDP. MODE must be one of:
+        * DELEGATION
+        * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+        * EXTERNAL_IPV6_SUBNETWORK_CREATION
+        * INTERNAL_IPV6_SUBNETWORK_CREATION
+        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         """
         return pulumi.get(self, "mode")
 
@@ -489,6 +531,33 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             parent_prefix=prefix.id,
             mode="EXTERNAL_IPV6_SUBNETWORK_CREATION")
         ```
+        ### Public Delegated Prefix Internal Ipv6 Subnet Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        advertised = gcp.compute.PublicAdvertisedPrefix("advertised",
+            name="ipv6-pap",
+            description="description",
+            ip_cidr_range="2001:db8::/32",
+            pdp_scope="REGIONAL",
+            ipv6_access_type="INTERNAL")
+        prefix = gcp.compute.PublicDelegatedPrefix("prefix",
+            name="ipv6-root-pdp",
+            description="test-delegation-mode-pdp",
+            region="us-east1",
+            ip_cidr_range="2001:db8::/40",
+            parent_prefix=advertised.id,
+            mode="DELEGATION")
+        subprefix = gcp.compute.PublicDelegatedPrefix("subprefix",
+            name="ipv6-sub-pdp",
+            description="test-subnet-mode-pdp",
+            region="us-east1",
+            ip_cidr_range="2001:db8::/48",
+            parent_prefix=prefix.id,
+            mode="INTERNAL_IPV6_SUBNETWORK_CREATION")
+        ```
 
         ## Import
 
@@ -526,9 +595,12 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
         :param pulumi.Input[_builtins.bool] is_live_migration: If true, the prefix will be live migrated.
-        :param pulumi.Input[_builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-               EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        :param pulumi.Input[_builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of:
+               * DELEGATION
+               * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+               * EXTERNAL_IPV6_SUBNETWORK_CREATION
+               * INTERNAL_IPV6_SUBNETWORK_CREATION
+               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -630,6 +702,33 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             parent_prefix=prefix.id,
             mode="EXTERNAL_IPV6_SUBNETWORK_CREATION")
         ```
+        ### Public Delegated Prefix Internal Ipv6 Subnet Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        advertised = gcp.compute.PublicAdvertisedPrefix("advertised",
+            name="ipv6-pap",
+            description="description",
+            ip_cidr_range="2001:db8::/32",
+            pdp_scope="REGIONAL",
+            ipv6_access_type="INTERNAL")
+        prefix = gcp.compute.PublicDelegatedPrefix("prefix",
+            name="ipv6-root-pdp",
+            description="test-delegation-mode-pdp",
+            region="us-east1",
+            ip_cidr_range="2001:db8::/40",
+            parent_prefix=advertised.id,
+            mode="DELEGATION")
+        subprefix = gcp.compute.PublicDelegatedPrefix("subprefix",
+            name="ipv6-sub-pdp",
+            description="test-subnet-mode-pdp",
+            region="us-east1",
+            ip_cidr_range="2001:db8::/48",
+            parent_prefix=prefix.id,
+            mode="INTERNAL_IPV6_SUBNETWORK_CREATION")
+        ```
 
         ## Import
 
@@ -709,6 +808,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["ipv6_access_type"] = None
             __props__.__dict__["public_delegated_sub_prefixs"] = None
             __props__.__dict__["self_link"] = None
         super(PublicDelegatedPrefix, __self__).__init__(
@@ -724,6 +824,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             allocatable_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
+            ipv6_access_type: Optional[pulumi.Input[_builtins.str]] = None,
             is_live_migration: Optional[pulumi.Input[_builtins.bool]] = None,
             mode: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -742,10 +843,21 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
+        :param pulumi.Input[_builtins.str] ipv6_access_type: (Output)
+               The internet access type for IPv6 Public Delegated Prefixes. Inherited
+               from parent prefix and can be one of following:
+               * EXTERNAL: The prefix will be announced to the internet. All children
+               PDPs will have access type as EXTERNAL.
+               * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+               be used privately within Google Cloud. All children PDPs will have
+               access type as INTERNAL.
         :param pulumi.Input[_builtins.bool] is_live_migration: If true, the prefix will be live migrated.
-        :param pulumi.Input[_builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-               EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        :param pulumi.Input[_builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of:
+               * DELEGATION
+               * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+               * EXTERNAL_IPV6_SUBNETWORK_CREATION
+               * INTERNAL_IPV6_SUBNETWORK_CREATION
+               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -769,6 +881,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         __props__.__dict__["allocatable_prefix_length"] = allocatable_prefix_length
         __props__.__dict__["description"] = description
         __props__.__dict__["ip_cidr_range"] = ip_cidr_range
+        __props__.__dict__["ipv6_access_type"] = ipv6_access_type
         __props__.__dict__["is_live_migration"] = is_live_migration
         __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
@@ -804,6 +917,21 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         return pulumi.get(self, "ip_cidr_range")
 
     @_builtins.property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Output)
+        The internet access type for IPv6 Public Delegated Prefixes. Inherited
+        from parent prefix and can be one of following:
+        * EXTERNAL: The prefix will be announced to the internet. All children
+        PDPs will have access type as EXTERNAL.
+        * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+        be used privately within Google Cloud. All children PDPs will have
+        access type as INTERNAL.
+        """
+        return pulumi.get(self, "ipv6_access_type")
+
+    @_builtins.property
     @pulumi.getter(name="isLiveMigration")
     def is_live_migration(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -815,9 +943,12 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
     @pulumi.getter
     def mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        Specifies the mode of this IPv6 PDP. MODE must be one of:
+        * DELEGATION
+        * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+        * EXTERNAL_IPV6_SUBNETWORK_CREATION
+        * INTERNAL_IPV6_SUBNETWORK_CREATION
+        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         """
         return pulumi.get(self, "mode")
 

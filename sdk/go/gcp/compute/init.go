@@ -237,6 +237,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionDiskIamPolicy{}
 	case "gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment":
 		r = &RegionDiskResourcePolicyAttachment{}
+	case "gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy":
+		r = &RegionHealthAggregationPolicy{}
 	case "gcp:compute/regionHealthCheck:RegionHealthCheck":
 		r = &RegionHealthCheck{}
 	case "gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager":
@@ -912,6 +914,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionDiskResourcePolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionHealthAggregationPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

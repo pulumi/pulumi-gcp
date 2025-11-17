@@ -2777,6 +2777,8 @@ class ClusterClusterConfigGceClusterConfig(dict):
             suggest = "node_group_affinity"
         elif key == "reservationAffinity":
             suggest = "reservation_affinity"
+        elif key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "serviceAccountScopes":
@@ -2802,6 +2804,7 @@ class ClusterClusterConfigGceClusterConfig(dict):
                  network: Optional[_builtins.str] = None,
                  node_group_affinity: Optional['outputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinity'] = None,
                  reservation_affinity: Optional['outputs.ClusterClusterConfigGceClusterConfigReservationAffinity'] = None,
+                 resource_manager_tags: Optional[Mapping[str, _builtins.str]] = None,
                  service_account: Optional[_builtins.str] = None,
                  service_account_scopes: Optional[Sequence[_builtins.str]] = None,
                  shielded_instance_config: Optional['outputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig'] = None,
@@ -2822,6 +2825,9 @@ class ClusterClusterConfigGceClusterConfig(dict):
                If neither is specified, this defaults to the "default" network.
         :param 'ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs' node_group_affinity: Node Group Affinity for sole-tenant clusters.
         :param 'ClusterClusterConfigGceClusterConfigReservationAffinityArgs' reservation_affinity: Reservation Affinity for consuming zonal reservation.
+        :param Mapping[str, _builtins.str] resource_manager_tags: A map of resource manager tags to add to all instances.
+               Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+               (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
         :param _builtins.str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param Sequence[_builtins.str] service_account_scopes: The set of Google API scopes
@@ -2856,6 +2862,8 @@ class ClusterClusterConfigGceClusterConfig(dict):
             pulumi.set(__self__, "node_group_affinity", node_group_affinity)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if service_account_scopes is not None:
@@ -2923,6 +2931,16 @@ class ClusterClusterConfigGceClusterConfig(dict):
         Reservation Affinity for consuming zonal reservation.
         """
         return pulumi.get(self, "reservation_affinity")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        A map of resource manager tags to add to all instances.
+        Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+        (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")

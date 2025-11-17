@@ -243,7 +243,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_26317",
+ *         filenameSuffix: "-_32270",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -280,7 +280,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_4866",
+ *         filenameSuffix: "-_44703",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -324,7 +324,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_12618",
+ *         filenameSuffix: "-_9329",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -414,6 +414,8 @@ import * as utilities from "../utilities";
  * const tagKey = new gcp.tags.TagKey("tag_key", {
  *     parent: project.then(project => project.id),
  *     shortName: "tag_key",
+ * }, {
+ *     dependsOn: [example],
  * });
  * const tagValue = new gcp.tags.TagValue("tag_value", {
  *     parent: tagKey.id,

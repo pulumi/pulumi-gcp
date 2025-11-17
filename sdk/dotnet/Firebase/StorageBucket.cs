@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Firebase
     ///     var defaultStorageBucket = new Gcp.Firebase.StorageBucket("default", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         BucketId = @default.Id,
+    ///         BucketId = @default.Name,
     ///     });
     /// 
     /// });

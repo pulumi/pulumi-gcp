@@ -35,6 +35,41 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Worker Pool Basic Depends On
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.WorkerPool("default", {
+ *     name: "cloudrun-worker-pool",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     launchStage: "BETA",
+ *     template: {
+ *         containers: [
+ *             {
+ *                 name: "foo-1",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
+ *                 dependsOns: ["foo-2"],
+ *             },
+ *             {
+ *                 name: "foo-2",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
+ *                 startupProbe: {
+ *                     httpGet: {
+ *                         path: "/healthz",
+ *                         port: 8080,
+ *                     },
+ *                     periodSeconds: 5,
+ *                     timeoutSeconds: 2,
+ *                     failureThreshold: 3,
+ *                 },
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
  * ### Cloudrunv2 Worker Pool Limits
  *
  * ```typescript

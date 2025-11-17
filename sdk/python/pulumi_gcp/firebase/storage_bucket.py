@@ -149,7 +149,7 @@ class StorageBucket(pulumi.CustomResource):
             uniform_bucket_level_access=True)
         default_storage_bucket = gcp.firebase.StorageBucket("default",
             project="my-project-name",
-            bucket_id=default.id)
+            bucket_id=default.name)
         ```
 
         ## Import
@@ -212,7 +212,7 @@ class StorageBucket(pulumi.CustomResource):
             uniform_bucket_level_access=True)
         default_storage_bucket = gcp.firebase.StorageBucket("default",
             project="my-project-name",
-            bucket_id=default.id)
+            bucket_id=default.name)
         ```
 
         ## Import

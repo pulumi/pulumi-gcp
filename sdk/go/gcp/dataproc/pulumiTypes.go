@@ -6181,6 +6181,10 @@ type ClusterClusterConfigGceClusterConfig struct {
 	NodeGroupAffinity *ClusterClusterConfigGceClusterConfigNodeGroupAffinity `pulumi:"nodeGroupAffinity"`
 	// Reservation Affinity for consuming zonal reservation.
 	ReservationAffinity *ClusterClusterConfigGceClusterConfigReservationAffinity `pulumi:"reservationAffinity"`
+	// A map of resource manager tags to add to all instances.
+	// Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+	// (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -6241,6 +6245,10 @@ type ClusterClusterConfigGceClusterConfigArgs struct {
 	NodeGroupAffinity ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrInput `pulumi:"nodeGroupAffinity"`
 	// Reservation Affinity for consuming zonal reservation.
 	ReservationAffinity ClusterClusterConfigGceClusterConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+	// A map of resource manager tags to add to all instances.
+	// Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+	// (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -6390,6 +6398,13 @@ func (o ClusterClusterConfigGceClusterConfigOutput) ReservationAffinity() Cluste
 	}).(ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput)
 }
 
+// A map of resource manager tags to add to all instances.
+// Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+// (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+func (o ClusterClusterConfigGceClusterConfigOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfig) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
 // The service account to be used by the Node VMs.
 // If not specified, the "default" service account is used.
 func (o ClusterClusterConfigGceClusterConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
@@ -6526,6 +6541,18 @@ func (o ClusterClusterConfigGceClusterConfigPtrOutput) ReservationAffinity() Clu
 		}
 		return v.ReservationAffinity
 	}).(ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput)
+}
+
+// A map of resource manager tags to add to all instances.
+// Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+// (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+func (o ClusterClusterConfigGceClusterConfigPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
 }
 
 // The service account to be used by the Node VMs.

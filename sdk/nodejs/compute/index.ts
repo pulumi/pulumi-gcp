@@ -410,6 +410,16 @@ export const getReservation: typeof import("./getReservation").getReservation = 
 export const getReservationOutput: typeof import("./getReservation").getReservationOutput = null as any;
 utilities.lazyLoad(exports, ["getReservation","getReservationOutput"], () => require("./getReservation"));
 
+export { GetReservationBlockArgs, GetReservationBlockResult, GetReservationBlockOutputArgs } from "./getReservationBlock";
+export const getReservationBlock: typeof import("./getReservationBlock").getReservationBlock = null as any;
+export const getReservationBlockOutput: typeof import("./getReservationBlock").getReservationBlockOutput = null as any;
+utilities.lazyLoad(exports, ["getReservationBlock","getReservationBlockOutput"], () => require("./getReservationBlock"));
+
+export { GetReservationSubBlockArgs, GetReservationSubBlockResult, GetReservationSubBlockOutputArgs } from "./getReservationSubBlock";
+export const getReservationSubBlock: typeof import("./getReservationSubBlock").getReservationSubBlock = null as any;
+export const getReservationSubBlockOutput: typeof import("./getReservationSubBlock").getReservationSubBlockOutput = null as any;
+utilities.lazyLoad(exports, ["getReservationSubBlock","getReservationSubBlockOutput"], () => require("./getReservationSubBlock"));
+
 export { GetResourcePolicyArgs, GetResourcePolicyResult, GetResourcePolicyOutputArgs } from "./getResourcePolicy";
 export const getResourcePolicy: typeof import("./getResourcePolicy").getResourcePolicy = null as any;
 export const getResourcePolicyOutput: typeof import("./getResourcePolicy").getResourcePolicyOutput = null as any;
@@ -879,6 +889,11 @@ export { RegionDiskResourcePolicyAttachmentArgs, RegionDiskResourcePolicyAttachm
 export type RegionDiskResourcePolicyAttachment = import("./regionDiskResourcePolicyAttachment").RegionDiskResourcePolicyAttachment;
 export const RegionDiskResourcePolicyAttachment: typeof import("./regionDiskResourcePolicyAttachment").RegionDiskResourcePolicyAttachment = null as any;
 utilities.lazyLoad(exports, ["RegionDiskResourcePolicyAttachment"], () => require("./regionDiskResourcePolicyAttachment"));
+
+export { RegionHealthAggregationPolicyArgs, RegionHealthAggregationPolicyState } from "./regionHealthAggregationPolicy";
+export type RegionHealthAggregationPolicy = import("./regionHealthAggregationPolicy").RegionHealthAggregationPolicy;
+export const RegionHealthAggregationPolicy: typeof import("./regionHealthAggregationPolicy").RegionHealthAggregationPolicy = null as any;
+utilities.lazyLoad(exports, ["RegionHealthAggregationPolicy"], () => require("./regionHealthAggregationPolicy"));
 
 export { RegionHealthCheckArgs, RegionHealthCheckState } from "./regionHealthCheck";
 export type RegionHealthCheck = import("./regionHealthCheck").RegionHealthCheck;
@@ -1416,6 +1431,8 @@ const _module = {
                 return new RegionDiskIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment":
                 return new RegionDiskResourcePolicyAttachment(name, <any>undefined, { urn })
+            case "gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy":
+                return new RegionHealthAggregationPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionHealthCheck:RegionHealthCheck":
                 return new RegionHealthCheck(name, <any>undefined, { urn })
             case "gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager":
@@ -1653,6 +1670,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskIamBinding", _mo
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskResourcePolicyAttachment", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionHealthAggregationPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionHealthCheck", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionInstanceGroupManager", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionInstanceTemplate", _module)

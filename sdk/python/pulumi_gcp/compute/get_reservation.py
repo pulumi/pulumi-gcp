@@ -27,7 +27,7 @@ class GetReservationResult:
     """
     A collection of values returned by getReservation.
     """
-    def __init__(__self__, commitment=None, creation_timestamp=None, delete_after_durations=None, delete_at_time=None, description=None, enable_emergent_maintenance=None, id=None, name=None, project=None, reservation_sharing_policies=None, self_link=None, share_settings=None, specific_reservation_required=None, specific_reservations=None, status=None, zone=None):
+    def __init__(__self__, commitment=None, creation_timestamp=None, delete_after_durations=None, delete_at_time=None, description=None, enable_emergent_maintenance=None, id=None, kind=None, linked_commitments=None, name=None, project=None, reservation_block_count=None, reservation_sharing_policies=None, resource_statuses=None, satisfies_pzs=None, self_link=None, share_settings=None, specific_reservation_required=None, specific_reservations=None, status=None, zone=None):
         if commitment and not isinstance(commitment, str):
             raise TypeError("Expected argument 'commitment' to be a str")
         pulumi.set(__self__, "commitment", commitment)
@@ -49,15 +49,30 @@ class GetReservationResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if kind and not isinstance(kind, str):
+            raise TypeError("Expected argument 'kind' to be a str")
+        pulumi.set(__self__, "kind", kind)
+        if linked_commitments and not isinstance(linked_commitments, list):
+            raise TypeError("Expected argument 'linked_commitments' to be a list")
+        pulumi.set(__self__, "linked_commitments", linked_commitments)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if reservation_block_count and not isinstance(reservation_block_count, int):
+            raise TypeError("Expected argument 'reservation_block_count' to be a int")
+        pulumi.set(__self__, "reservation_block_count", reservation_block_count)
         if reservation_sharing_policies and not isinstance(reservation_sharing_policies, list):
             raise TypeError("Expected argument 'reservation_sharing_policies' to be a list")
         pulumi.set(__self__, "reservation_sharing_policies", reservation_sharing_policies)
+        if resource_statuses and not isinstance(resource_statuses, list):
+            raise TypeError("Expected argument 'resource_statuses' to be a list")
+        pulumi.set(__self__, "resource_statuses", resource_statuses)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -110,10 +125,17 @@ class GetReservationResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> _builtins.str:
+        return pulumi.get(self, "kind")
+
+    @_builtins.property
+    @pulumi.getter(name="linkedCommitments")
+    def linked_commitments(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "linked_commitments")
 
     @_builtins.property
     @pulumi.getter
@@ -126,9 +148,24 @@ class GetReservationResult:
         return pulumi.get(self, "project")
 
     @_builtins.property
+    @pulumi.getter(name="reservationBlockCount")
+    def reservation_block_count(self) -> _builtins.int:
+        return pulumi.get(self, "reservation_block_count")
+
+    @_builtins.property
     @pulumi.getter(name="reservationSharingPolicies")
     def reservation_sharing_policies(self) -> Sequence['outputs.GetReservationReservationSharingPolicyResult']:
         return pulumi.get(self, "reservation_sharing_policies")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatuses")
+    def resource_statuses(self) -> Sequence['outputs.GetReservationResourceStatusResult']:
+        return pulumi.get(self, "resource_statuses")
+
+    @_builtins.property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> _builtins.bool:
+        return pulumi.get(self, "satisfies_pzs")
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
@@ -174,9 +211,14 @@ class AwaitableGetReservationResult(GetReservationResult):
             description=self.description,
             enable_emergent_maintenance=self.enable_emergent_maintenance,
             id=self.id,
+            kind=self.kind,
+            linked_commitments=self.linked_commitments,
             name=self.name,
             project=self.project,
+            reservation_block_count=self.reservation_block_count,
             reservation_sharing_policies=self.reservation_sharing_policies,
+            resource_statuses=self.resource_statuses,
+            satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             share_settings=self.share_settings,
             specific_reservation_required=self.specific_reservation_required,
@@ -221,9 +263,14 @@ def get_reservation(name: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         enable_emergent_maintenance=pulumi.get(__ret__, 'enable_emergent_maintenance'),
         id=pulumi.get(__ret__, 'id'),
+        kind=pulumi.get(__ret__, 'kind'),
+        linked_commitments=pulumi.get(__ret__, 'linked_commitments'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        reservation_block_count=pulumi.get(__ret__, 'reservation_block_count'),
         reservation_sharing_policies=pulumi.get(__ret__, 'reservation_sharing_policies'),
+        resource_statuses=pulumi.get(__ret__, 'resource_statuses'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         self_link=pulumi.get(__ret__, 'self_link'),
         share_settings=pulumi.get(__ret__, 'share_settings'),
         specific_reservation_required=pulumi.get(__ret__, 'specific_reservation_required'),
@@ -265,9 +312,14 @@ def get_reservation_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         description=pulumi.get(__response__, 'description'),
         enable_emergent_maintenance=pulumi.get(__response__, 'enable_emergent_maintenance'),
         id=pulumi.get(__response__, 'id'),
+        kind=pulumi.get(__response__, 'kind'),
+        linked_commitments=pulumi.get(__response__, 'linked_commitments'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
+        reservation_block_count=pulumi.get(__response__, 'reservation_block_count'),
         reservation_sharing_policies=pulumi.get(__response__, 'reservation_sharing_policies'),
+        resource_statuses=pulumi.get(__response__, 'resource_statuses'),
+        satisfies_pzs=pulumi.get(__response__, 'satisfies_pzs'),
         self_link=pulumi.get(__response__, 'self_link'),
         share_settings=pulumi.get(__response__, 'share_settings'),
         specific_reservation_required=pulumi.get(__response__, 'specific_reservation_required'),

@@ -4863,6 +4863,139 @@ func (o GetPackagesPackageArrayOutput) Index(i pulumi.IntInput) GetPackagesPacka
 	}).(GetPackagesPackageOutput)
 }
 
+type GetPythonPackagesPythonPackage struct {
+	// The time, as a RFC 3339 string, this package was created.
+	CreateTime string `pulumi:"createTime"`
+	// The fully qualified name of the fetched package.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/pythonPackages/{{pythonPackage}}`. For example, `projects/example-project/locations/us-central1/repository/example-repo/pythonPackages/my-test-package:0.0.1`
+	Name string `pulumi:"name"`
+	// Extracted short name of the package (last part of `name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
+	PackageName string `pulumi:"packageName"`
+	// The time, as a RFC 3339 string, this package was updated.
+	UpdateTime string `pulumi:"updateTime"`
+	// Version of this package.
+	Version string `pulumi:"version"`
+}
+
+// GetPythonPackagesPythonPackageInput is an input type that accepts GetPythonPackagesPythonPackageArgs and GetPythonPackagesPythonPackageOutput values.
+// You can construct a concrete instance of `GetPythonPackagesPythonPackageInput` via:
+//
+//	GetPythonPackagesPythonPackageArgs{...}
+type GetPythonPackagesPythonPackageInput interface {
+	pulumi.Input
+
+	ToGetPythonPackagesPythonPackageOutput() GetPythonPackagesPythonPackageOutput
+	ToGetPythonPackagesPythonPackageOutputWithContext(context.Context) GetPythonPackagesPythonPackageOutput
+}
+
+type GetPythonPackagesPythonPackageArgs struct {
+	// The time, as a RFC 3339 string, this package was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The fully qualified name of the fetched package.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/pythonPackages/{{pythonPackage}}`. For example, `projects/example-project/locations/us-central1/repository/example-repo/pythonPackages/my-test-package:0.0.1`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Extracted short name of the package (last part of `name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
+	PackageName pulumi.StringInput `pulumi:"packageName"`
+	// The time, as a RFC 3339 string, this package was updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// Version of this package.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetPythonPackagesPythonPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPythonPackagesPythonPackage)(nil)).Elem()
+}
+
+func (i GetPythonPackagesPythonPackageArgs) ToGetPythonPackagesPythonPackageOutput() GetPythonPackagesPythonPackageOutput {
+	return i.ToGetPythonPackagesPythonPackageOutputWithContext(context.Background())
+}
+
+func (i GetPythonPackagesPythonPackageArgs) ToGetPythonPackagesPythonPackageOutputWithContext(ctx context.Context) GetPythonPackagesPythonPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPythonPackagesPythonPackageOutput)
+}
+
+// GetPythonPackagesPythonPackageArrayInput is an input type that accepts GetPythonPackagesPythonPackageArray and GetPythonPackagesPythonPackageArrayOutput values.
+// You can construct a concrete instance of `GetPythonPackagesPythonPackageArrayInput` via:
+//
+//	GetPythonPackagesPythonPackageArray{ GetPythonPackagesPythonPackageArgs{...} }
+type GetPythonPackagesPythonPackageArrayInput interface {
+	pulumi.Input
+
+	ToGetPythonPackagesPythonPackageArrayOutput() GetPythonPackagesPythonPackageArrayOutput
+	ToGetPythonPackagesPythonPackageArrayOutputWithContext(context.Context) GetPythonPackagesPythonPackageArrayOutput
+}
+
+type GetPythonPackagesPythonPackageArray []GetPythonPackagesPythonPackageInput
+
+func (GetPythonPackagesPythonPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPythonPackagesPythonPackage)(nil)).Elem()
+}
+
+func (i GetPythonPackagesPythonPackageArray) ToGetPythonPackagesPythonPackageArrayOutput() GetPythonPackagesPythonPackageArrayOutput {
+	return i.ToGetPythonPackagesPythonPackageArrayOutputWithContext(context.Background())
+}
+
+func (i GetPythonPackagesPythonPackageArray) ToGetPythonPackagesPythonPackageArrayOutputWithContext(ctx context.Context) GetPythonPackagesPythonPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPythonPackagesPythonPackageArrayOutput)
+}
+
+type GetPythonPackagesPythonPackageOutput struct{ *pulumi.OutputState }
+
+func (GetPythonPackagesPythonPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPythonPackagesPythonPackage)(nil)).Elem()
+}
+
+func (o GetPythonPackagesPythonPackageOutput) ToGetPythonPackagesPythonPackageOutput() GetPythonPackagesPythonPackageOutput {
+	return o
+}
+
+func (o GetPythonPackagesPythonPackageOutput) ToGetPythonPackagesPythonPackageOutputWithContext(ctx context.Context) GetPythonPackagesPythonPackageOutput {
+	return o
+}
+
+// The time, as a RFC 3339 string, this package was created.
+func (o GetPythonPackagesPythonPackageOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPythonPackagesPythonPackage) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The fully qualified name of the fetched package.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/pythonPackages/{{pythonPackage}}`. For example, `projects/example-project/locations/us-central1/repository/example-repo/pythonPackages/my-test-package:0.0.1`
+func (o GetPythonPackagesPythonPackageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPythonPackagesPythonPackage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Extracted short name of the package (last part of `name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
+func (o GetPythonPackagesPythonPackageOutput) PackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPythonPackagesPythonPackage) string { return v.PackageName }).(pulumi.StringOutput)
+}
+
+// The time, as a RFC 3339 string, this package was updated.
+func (o GetPythonPackagesPythonPackageOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPythonPackagesPythonPackage) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Version of this package.
+func (o GetPythonPackagesPythonPackageOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPythonPackagesPythonPackage) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetPythonPackagesPythonPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPythonPackagesPythonPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPythonPackagesPythonPackage)(nil)).Elem()
+}
+
+func (o GetPythonPackagesPythonPackageArrayOutput) ToGetPythonPackagesPythonPackageArrayOutput() GetPythonPackagesPythonPackageArrayOutput {
+	return o
+}
+
+func (o GetPythonPackagesPythonPackageArrayOutput) ToGetPythonPackagesPythonPackageArrayOutputWithContext(ctx context.Context) GetPythonPackagesPythonPackageArrayOutput {
+	return o
+}
+
+func (o GetPythonPackagesPythonPackageArrayOutput) Index(i pulumi.IntInput) GetPythonPackagesPythonPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPythonPackagesPythonPackage {
+		return vs[0].([]GetPythonPackagesPythonPackage)[vs[1].(int)]
+	}).(GetPythonPackagesPythonPackageOutput)
+}
+
 type GetRepositoriesRepository struct {
 	// The time when the repository was created.
 	CreateTime string `pulumi:"createTime"`
@@ -7946,6 +8079,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNpmPackagesNpmPackageArrayInput)(nil)).Elem(), GetNpmPackagesNpmPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPackagesPackageInput)(nil)).Elem(), GetPackagesPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPackagesPackageArrayInput)(nil)).Elem(), GetPackagesPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPythonPackagesPythonPackageInput)(nil)).Elem(), GetPythonPackagesPythonPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPythonPackagesPythonPackageArrayInput)(nil)).Elem(), GetPythonPackagesPythonPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoriesRepositoryInput)(nil)).Elem(), GetRepositoriesRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoriesRepositoryArrayInput)(nil)).Elem(), GetRepositoriesRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyInput)(nil)).Elem(), GetRepositoryCleanupPolicyArgs{})
@@ -8060,6 +8195,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNpmPackagesNpmPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetPackagesPackageOutput{})
 	pulumi.RegisterOutputType(GetPackagesPackageArrayOutput{})
+	pulumi.RegisterOutputType(GetPythonPackagesPythonPackageOutput{})
+	pulumi.RegisterOutputType(GetPythonPackagesPythonPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoriesRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoriesRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyOutput{})

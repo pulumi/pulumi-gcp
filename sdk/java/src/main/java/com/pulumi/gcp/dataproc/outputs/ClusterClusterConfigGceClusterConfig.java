@@ -56,6 +56,13 @@ public final class ClusterClusterConfigGceClusterConfig {
      */
     private @Nullable ClusterClusterConfigGceClusterConfigReservationAffinity reservationAffinity;
     /**
+     * @return A map of resource manager tags to add to all instances.
+     * Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+     * (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+     * 
+     */
+    private @Nullable Map<String,String> resourceManagerTags;
+    /**
      * @return The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
      * 
@@ -152,6 +159,15 @@ public final class ClusterClusterConfigGceClusterConfig {
         return Optional.ofNullable(this.reservationAffinity);
     }
     /**
+     * @return A map of resource manager tags to add to all instances.
+     * Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+     * (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+     * 
+     */
+    public Map<String,String> resourceManagerTags() {
+        return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
+    }
+    /**
      * @return The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
      * 
@@ -224,6 +240,7 @@ public final class ClusterClusterConfigGceClusterConfig {
         private @Nullable String network;
         private @Nullable ClusterClusterConfigGceClusterConfigNodeGroupAffinity nodeGroupAffinity;
         private @Nullable ClusterClusterConfigGceClusterConfigReservationAffinity reservationAffinity;
+        private @Nullable Map<String,String> resourceManagerTags;
         private @Nullable String serviceAccount;
         private @Nullable List<String> serviceAccountScopes;
         private @Nullable ClusterClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig;
@@ -239,6 +256,7 @@ public final class ClusterClusterConfigGceClusterConfig {
     	      this.network = defaults.network;
     	      this.nodeGroupAffinity = defaults.nodeGroupAffinity;
     	      this.reservationAffinity = defaults.reservationAffinity;
+    	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.serviceAccountScopes = defaults.serviceAccountScopes;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
@@ -281,6 +299,12 @@ public final class ClusterClusterConfigGceClusterConfig {
         public Builder reservationAffinity(@Nullable ClusterClusterConfigGceClusterConfigReservationAffinity reservationAffinity) {
 
             this.reservationAffinity = reservationAffinity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder resourceManagerTags(@Nullable Map<String,String> resourceManagerTags) {
+
+            this.resourceManagerTags = resourceManagerTags;
             return this;
         }
         @CustomType.Setter
@@ -333,6 +357,7 @@ public final class ClusterClusterConfigGceClusterConfig {
             _resultValue.network = network;
             _resultValue.nodeGroupAffinity = nodeGroupAffinity;
             _resultValue.reservationAffinity = reservationAffinity;
+            _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.serviceAccountScopes = serviceAccountScopes;
             _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;

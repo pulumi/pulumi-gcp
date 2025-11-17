@@ -15,6 +15,11 @@ export const getEntitlement: typeof import("./getEntitlement").getEntitlement = 
 export const getEntitlementOutput: typeof import("./getEntitlement").getEntitlementOutput = null as any;
 utilities.lazyLoad(exports, ["getEntitlement","getEntitlementOutput"], () => require("./getEntitlement"));
 
+export { SettingsArgs, SettingsState } from "./settings";
+export type Settings = import("./settings").Settings;
+export const Settings: typeof import("./settings").Settings = null as any;
+utilities.lazyLoad(exports, ["Settings"], () => require("./settings"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,9 +27,12 @@ const _module = {
         switch (type) {
             case "gcp:privilegedaccessmanager/entitlement:entitlement":
                 return new Entitlement(name, <any>undefined, { urn })
+            case "gcp:privilegedaccessmanager/settings:Settings":
+                return new Settings(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "privilegedaccessmanager/entitlement", _module)
+pulumi.runtime.registerResourceModule("gcp", "privilegedaccessmanager/settings", _module)

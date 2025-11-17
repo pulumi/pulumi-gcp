@@ -105,14 +105,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			dbNameSuffix, err := random.NewId(ctx, "db_name_suffix", &random.IdArgs{
-//				ByteLength: 4,
+//			dbNameSuffix, err := random.NewRandomId(ctx, "db_name_suffix", &random.RandomIdArgs{
+//				ByteLength: pulumi.Int(4),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
-//				Name:            pulumi.Sprintf("private-instance-%v", dbNameSuffix.Hex),
+//				Name: dbNameSuffix.Hex.ApplyT(func(hex string) (string, error) {
+//					return fmt.Sprintf("private-instance-%v", hex), nil
+//				}).(pulumi.StringOutput),
 //				Region:          pulumi.String("us-central1"),
 //				DatabaseVersion: pulumi.String("MYSQL_5_7"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
@@ -449,6 +451,8 @@ type DatabaseInstance struct {
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	//
+	// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
@@ -592,6 +596,8 @@ type databaseInstanceState struct {
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	//
+	// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 	DnsName *string `pulumi:"dnsName"`
@@ -691,6 +697,8 @@ type DatabaseInstanceState struct {
 	DatabaseVersion pulumi.StringPtrInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	//
+	// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
 	DeletionProtection pulumi.BoolPtrInput
 	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 	DnsName pulumi.StringPtrInput
@@ -789,6 +797,8 @@ type databaseInstanceArgs struct {
 	DatabaseVersion string `pulumi:"databaseVersion"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	//
+	// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -865,6 +875,8 @@ type DatabaseInstanceArgs struct {
 	DatabaseVersion pulumi.StringInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+	//
+	// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
 	DeletionProtection pulumi.BoolPtrInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -1046,6 +1058,8 @@ func (o DatabaseInstanceOutput) DatabaseVersion() pulumi.StringOutput {
 
 // Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 // in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+//
+// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
 func (o DatabaseInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

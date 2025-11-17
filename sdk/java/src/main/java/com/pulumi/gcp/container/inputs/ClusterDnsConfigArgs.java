@@ -31,14 +31,14 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+     * Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
      * 
      */
     @Import(name="clusterDns")
     private @Nullable Output<String> clusterDns;
 
     /**
-     * @return Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+     * @return Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
      * 
      */
     public Optional<Output<String>> clusterDns() {
@@ -124,7 +124,7 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clusterDns Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+         * @param clusterDns Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ClusterDnsConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clusterDns Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+         * @param clusterDns Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
          * 
          * @return builder
          * 

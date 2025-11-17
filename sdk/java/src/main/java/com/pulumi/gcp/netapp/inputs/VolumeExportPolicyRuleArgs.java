@@ -50,14 +50,14 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+     * An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ALL_SQUASH`.
      * 
      */
     @Import(name="anonUid")
     private @Nullable Output<Integer> anonUid;
 
     /**
-     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ALL_SQUASH`.
      * 
      */
     public Optional<Output<Integer>> anonUid() {
@@ -66,6 +66,7 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
 
     /**
      * If enabled, the root user (UID = 0) of the specified clients doesn&#39;t get mapped to nobody (UID = 65534). This is also known as no_root_squash.
+     * It&#39;s overwritten by the squashMode parameter. Use either squashMode or has_root_access.
      * 
      */
     @Import(name="hasRootAccess")
@@ -73,6 +74,7 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
 
     /**
      * @return If enabled, the root user (UID = 0) of the specified clients doesn&#39;t get mapped to nobody (UID = 65534). This is also known as no_root_squash.
+     * It&#39;s overwritten by the squashMode parameter. Use either squashMode or has_root_access.
      * 
      */
     public Optional<Output<String>> hasRootAccess() {
@@ -201,7 +203,8 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
 
     /**
      * SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-     * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+     * It overwrites the hasRootAccess parameter. Use either squashMode or has_root_access. For ALL_SQUASH, accessType needs to be set to READ_WRITE.
+     * Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
      * 
      */
     @Import(name="squashMode")
@@ -209,7 +212,8 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
 
     /**
      * @return SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-     * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+     * It overwrites the hasRootAccess parameter. Use either squashMode or has_root_access. For ALL_SQUASH, accessType needs to be set to READ_WRITE.
+     * Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
      * 
      */
     public Optional<Output<String>> squashMode() {
@@ -297,7 +301,7 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param anonUid An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+         * @param anonUid An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ALL_SQUASH`.
          * 
          * @return builder
          * 
@@ -308,7 +312,7 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param anonUid An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+         * @param anonUid An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ALL_SQUASH`.
          * 
          * @return builder
          * 
@@ -319,6 +323,7 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
 
         /**
          * @param hasRootAccess If enabled, the root user (UID = 0) of the specified clients doesn&#39;t get mapped to nobody (UID = 65534). This is also known as no_root_squash.
+         * It&#39;s overwritten by the squashMode parameter. Use either squashMode or has_root_access.
          * 
          * @return builder
          * 
@@ -330,6 +335,7 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
 
         /**
          * @param hasRootAccess If enabled, the root user (UID = 0) of the specified clients doesn&#39;t get mapped to nobody (UID = 65534). This is also known as no_root_squash.
+         * It&#39;s overwritten by the squashMode parameter. Use either squashMode or has_root_access.
          * 
          * @return builder
          * 
@@ -508,7 +514,8 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
 
         /**
          * @param squashMode SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-         * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+         * It overwrites the hasRootAccess parameter. Use either squashMode or has_root_access. For ALL_SQUASH, accessType needs to be set to READ_WRITE.
+         * Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
          * 
          * @return builder
          * 
@@ -520,7 +527,8 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
 
         /**
          * @param squashMode SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-         * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+         * It overwrites the hasRootAccess parameter. Use either squashMode or has_root_access. For ALL_SQUASH, accessType needs to be set to READ_WRITE.
+         * Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
          * 
          * @return builder
          * 

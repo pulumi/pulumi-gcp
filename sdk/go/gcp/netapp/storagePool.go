@@ -129,7 +129,7 @@ type StoragePool struct {
 	// Total cold tier data rounded down to the nearest GiB used by the storage pool.
 	ColdTierSizeUsedGib pulumi.StringOutput `pulumi:"coldTierSizeUsedGib"`
 	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
-	CustomPerformanceEnabled pulumi.BoolPtrOutput `pulumi:"customPerformanceEnabled"`
+	CustomPerformanceEnabled pulumi.BoolOutput `pulumi:"customPerformanceEnabled"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -181,6 +181,11 @@ type StoragePool struct {
 	TotalIops pulumi.StringOutput `pulumi:"totalIops"`
 	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
 	TotalThroughputMibps pulumi.StringOutput `pulumi:"totalThroughputMibps"`
+	// Type of the storage pool.
+	// This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+	// If not specified during creation, it defaults to FILE.
+	// Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+	Type pulumi.StringOutput `pulumi:"type"`
 	// Size allocated to volumes in the storage pool (in GiB).
 	VolumeCapacityGib pulumi.StringOutput `pulumi:"volumeCapacityGib"`
 	// Number of volume in the storage pool.
@@ -303,6 +308,11 @@ type storagePoolState struct {
 	TotalIops *string `pulumi:"totalIops"`
 	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
 	TotalThroughputMibps *string `pulumi:"totalThroughputMibps"`
+	// Type of the storage pool.
+	// This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+	// If not specified during creation, it defaults to FILE.
+	// Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+	Type *string `pulumi:"type"`
 	// Size allocated to volumes in the storage pool (in GiB).
 	VolumeCapacityGib *string `pulumi:"volumeCapacityGib"`
 	// Number of volume in the storage pool.
@@ -379,6 +389,11 @@ type StoragePoolState struct {
 	TotalIops pulumi.StringPtrInput
 	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
 	TotalThroughputMibps pulumi.StringPtrInput
+	// Type of the storage pool.
+	// This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+	// If not specified during creation, it defaults to FILE.
+	// Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+	Type pulumi.StringPtrInput
 	// Size allocated to volumes in the storage pool (in GiB).
 	VolumeCapacityGib pulumi.StringPtrInput
 	// Number of volume in the storage pool.
@@ -446,6 +461,11 @@ type storagePoolArgs struct {
 	TotalIops *string `pulumi:"totalIops"`
 	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
 	TotalThroughputMibps *string `pulumi:"totalThroughputMibps"`
+	// Type of the storage pool.
+	// This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+	// If not specified during creation, it defaults to FILE.
+	// Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+	Type *string `pulumi:"type"`
 	// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
@@ -506,6 +526,11 @@ type StoragePoolArgs struct {
 	TotalIops pulumi.StringPtrInput
 	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
 	TotalThroughputMibps pulumi.StringPtrInput
+	// Type of the storage pool.
+	// This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+	// If not specified during creation, it defaults to FILE.
+	// Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+	Type pulumi.StringPtrInput
 	// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
@@ -627,8 +652,8 @@ func (o StoragePoolOutput) ColdTierSizeUsedGib() pulumi.StringOutput {
 }
 
 // Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
-func (o StoragePoolOutput) CustomPerformanceEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *StoragePool) pulumi.BoolPtrOutput { return v.CustomPerformanceEnabled }).(pulumi.BoolPtrOutput)
+func (o StoragePoolOutput) CustomPerformanceEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.BoolOutput { return v.CustomPerformanceEnabled }).(pulumi.BoolOutput)
 }
 
 // An optional description of this resource.
@@ -737,6 +762,14 @@ func (o StoragePoolOutput) TotalIops() pulumi.StringOutput {
 // Optional. Custom Performance Total Throughput of the pool (in MiB/s).
 func (o StoragePoolOutput) TotalThroughputMibps() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.TotalThroughputMibps }).(pulumi.StringOutput)
+}
+
+// Type of the storage pool.
+// This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+// If not specified during creation, it defaults to FILE.
+// Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+func (o StoragePoolOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // Size allocated to volumes in the storage pool (in GiB).
