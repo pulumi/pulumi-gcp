@@ -196,6 +196,7 @@ var moduleMapping = map[string]string{
 	"blockchain_node_engine":          gcpBlockchainNodeEngine,
 	"binary_authorization":            gcpBinaryAuthorization,
 	"certificate_manager":             gcpCertificateManager,
+	"ces":                             "Ces",
 	"chronicle":                       "Chronicle",
 	"cloud_asset":                     gcpCloudAsset,
 	"cloud_identity":                  gcpCloudIdentity,

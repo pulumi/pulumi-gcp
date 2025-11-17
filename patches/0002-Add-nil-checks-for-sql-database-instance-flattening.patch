@@ -5,7 +5,7 @@ Subject: [PATCH] Add nil checks for sql database instance flattening
 
 
 diff --git a/google-beta/services/sql/resource_sql_database_instance.go b/google-beta/services/sql/resource_sql_database_instance.go
-index e352eb866..e6f4e0b8b 100644
+index 6eeac33fd..6bbed99fd 100644
 --- a/google-beta/services/sql/resource_sql_database_instance.go
 +++ b/google-beta/services/sql/resource_sql_database_instance.go
 @@ -2727,6 +2727,10 @@ func resourceSqlDatabaseInstanceImport(d *schema.ResourceData, meta interface{})
