@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
@@ -76,6 +77,9 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultNetwork.id())
+ *                 .build())
+ *             .initialUser(ClusterInitialUserArgs.builder()
+ *                 .password("alloydb-cluster")
  *                 .build())
  *             .deletionProtection(false)
  *             .build());
@@ -128,6 +132,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
@@ -159,6 +164,9 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultNetwork.id())
+ *                 .build())
+ *             .initialUser(ClusterInitialUserArgs.builder()
+ *                 .password("alloydb-cluster")
  *                 .build())
  *             .deletionProtection(false)
  *             .build());

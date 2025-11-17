@@ -61,6 +61,20 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("reservationAffinity")]
         public Input<Inputs.ClusterClusterConfigGceClusterConfigReservationAffinityArgs>? ReservationAffinity { get; set; }
 
+        [Input("resourceManagerTags")]
+        private InputMap<string>? _resourceManagerTags;
+
+        /// <summary>
+        /// A map of resource manager tags to add to all instances.
+        /// Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+        /// (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+        /// </summary>
+        public InputMap<string> ResourceManagerTags
+        {
+            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<string>());
+            set => _resourceManagerTags = value;
+        }
+
         /// <summary>
         /// The service account to be used by the Node VMs.
         /// If not specified, the "default" service account is used.

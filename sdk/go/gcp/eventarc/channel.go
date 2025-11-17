@@ -83,6 +83,12 @@ type Channel struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// User-defined labels for the channel.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the channel. Must be unique within the location on the project.
@@ -92,6 +98,9 @@ type Channel struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 	PubsubTopic pulumi.StringOutput `pulumi:"pubsubTopic"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The state of a Channel.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
@@ -112,6 +121,11 @@ func NewChannel(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Channel
 	err := ctx.RegisterResource("gcp:eventarc/channel:Channel", name, args, &resource, opts...)
@@ -141,6 +155,12 @@ type channelState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// User-defined labels for the channel.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// The resource name of the channel. Must be unique within the location on the project.
@@ -150,6 +170,9 @@ type channelState struct {
 	Project *string `pulumi:"project"`
 	// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 	PubsubTopic *string `pulumi:"pubsubTopic"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The state of a Channel.
 	State *string `pulumi:"state"`
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
@@ -167,6 +190,12 @@ type ChannelState struct {
 	CreateTime pulumi.StringPtrInput
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
+	// User-defined labels for the channel.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// The resource name of the channel. Must be unique within the location on the project.
@@ -176,6 +205,9 @@ type ChannelState struct {
 	Project pulumi.StringPtrInput
 	// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 	PubsubTopic pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The state of a Channel.
 	State pulumi.StringPtrInput
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
@@ -193,6 +225,10 @@ func (ChannelState) ElementType() reflect.Type {
 type channelArgs struct {
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
+	// User-defined labels for the channel.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// The resource name of the channel. Must be unique within the location on the project.
@@ -208,6 +244,10 @@ type channelArgs struct {
 type ChannelArgs struct {
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName pulumi.StringPtrInput
+	// User-defined labels for the channel.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
 	// The resource name of the channel. Must be unique within the location on the project.
@@ -321,6 +361,18 @@ func (o ChannelOutput) CryptoKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringPtrOutput { return v.CryptoKeyName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o ChannelOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// User-defined labels for the channel.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+func (o ChannelOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 // The location for the resource
 func (o ChannelOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -340,6 +392,12 @@ func (o ChannelOutput) Project() pulumi.StringOutput {
 // The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 func (o ChannelOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.PubsubTopic }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ChannelOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The state of a Channel.

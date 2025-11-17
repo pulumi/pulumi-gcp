@@ -64,6 +64,9 @@ import * as utilities from "../utilities";
  *     networkConfig: {
  *         network: _default.id,
  *     },
+ *     initialUser: {
+ *         password: "alloydb-primary-cluster",
+ *     },
  *     deletionProtection: false,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {

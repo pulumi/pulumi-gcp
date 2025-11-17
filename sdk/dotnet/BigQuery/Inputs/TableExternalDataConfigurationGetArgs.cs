@@ -60,6 +60,30 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         [Input("csvOptions")]
         public Input<Inputs.TableExternalDataConfigurationCsvOptionsGetArgs>? CsvOptions { get; set; }
 
+        [Input("decimalTargetTypes")]
+        private InputList<string>? _decimalTargetTypes;
+
+        /// <summary>
+        /// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
+        /// 
+        /// Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is:
+        /// 
+        /// (38,9) &gt; NUMERIC;
+        /// (39,9) &gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits);
+        /// (38,10) &gt; BIGNUMERIC (NUMERIC cannot hold 10 fractional digits);
+        /// (76,38) &gt; BIGNUMERIC;
+        /// (77,38) &gt; BIGNUMERIC (error if value exceeds supported range).
+        /// 
+        /// This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
+        /// 
+        /// Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        /// </summary>
+        public InputList<string> DecimalTargetTypes
+        {
+            get => _decimalTargetTypes ?? (_decimalTargetTypes = new InputList<string>());
+            set => _decimalTargetTypes = value;
+        }
+
         /// <summary>
         /// Specifies how source URIs are interpreted for constructing the file set to load.
         /// By default source URIs are expanded against the underlying storage.

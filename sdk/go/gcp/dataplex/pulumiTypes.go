@@ -3025,6 +3025,124 @@ func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput) TypeInferenc
 	}).(pulumi.BoolPtrOutput)
 }
 
+type DatascanDataDocumentationSpec struct {
+}
+
+// DatascanDataDocumentationSpecInput is an input type that accepts DatascanDataDocumentationSpecArgs and DatascanDataDocumentationSpecOutput values.
+// You can construct a concrete instance of `DatascanDataDocumentationSpecInput` via:
+//
+//	DatascanDataDocumentationSpecArgs{...}
+type DatascanDataDocumentationSpecInput interface {
+	pulumi.Input
+
+	ToDatascanDataDocumentationSpecOutput() DatascanDataDocumentationSpecOutput
+	ToDatascanDataDocumentationSpecOutputWithContext(context.Context) DatascanDataDocumentationSpecOutput
+}
+
+type DatascanDataDocumentationSpecArgs struct {
+}
+
+func (DatascanDataDocumentationSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataDocumentationSpec)(nil)).Elem()
+}
+
+func (i DatascanDataDocumentationSpecArgs) ToDatascanDataDocumentationSpecOutput() DatascanDataDocumentationSpecOutput {
+	return i.ToDatascanDataDocumentationSpecOutputWithContext(context.Background())
+}
+
+func (i DatascanDataDocumentationSpecArgs) ToDatascanDataDocumentationSpecOutputWithContext(ctx context.Context) DatascanDataDocumentationSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDocumentationSpecOutput)
+}
+
+func (i DatascanDataDocumentationSpecArgs) ToDatascanDataDocumentationSpecPtrOutput() DatascanDataDocumentationSpecPtrOutput {
+	return i.ToDatascanDataDocumentationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataDocumentationSpecArgs) ToDatascanDataDocumentationSpecPtrOutputWithContext(ctx context.Context) DatascanDataDocumentationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDocumentationSpecOutput).ToDatascanDataDocumentationSpecPtrOutputWithContext(ctx)
+}
+
+// DatascanDataDocumentationSpecPtrInput is an input type that accepts DatascanDataDocumentationSpecArgs, DatascanDataDocumentationSpecPtr and DatascanDataDocumentationSpecPtrOutput values.
+// You can construct a concrete instance of `DatascanDataDocumentationSpecPtrInput` via:
+//
+//	        DatascanDataDocumentationSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataDocumentationSpecPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataDocumentationSpecPtrOutput() DatascanDataDocumentationSpecPtrOutput
+	ToDatascanDataDocumentationSpecPtrOutputWithContext(context.Context) DatascanDataDocumentationSpecPtrOutput
+}
+
+type datascanDataDocumentationSpecPtrType DatascanDataDocumentationSpecArgs
+
+func DatascanDataDocumentationSpecPtr(v *DatascanDataDocumentationSpecArgs) DatascanDataDocumentationSpecPtrInput {
+	return (*datascanDataDocumentationSpecPtrType)(v)
+}
+
+func (*datascanDataDocumentationSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataDocumentationSpec)(nil)).Elem()
+}
+
+func (i *datascanDataDocumentationSpecPtrType) ToDatascanDataDocumentationSpecPtrOutput() DatascanDataDocumentationSpecPtrOutput {
+	return i.ToDatascanDataDocumentationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataDocumentationSpecPtrType) ToDatascanDataDocumentationSpecPtrOutputWithContext(ctx context.Context) DatascanDataDocumentationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataDocumentationSpecPtrOutput)
+}
+
+type DatascanDataDocumentationSpecOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataDocumentationSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataDocumentationSpec)(nil)).Elem()
+}
+
+func (o DatascanDataDocumentationSpecOutput) ToDatascanDataDocumentationSpecOutput() DatascanDataDocumentationSpecOutput {
+	return o
+}
+
+func (o DatascanDataDocumentationSpecOutput) ToDatascanDataDocumentationSpecOutputWithContext(ctx context.Context) DatascanDataDocumentationSpecOutput {
+	return o
+}
+
+func (o DatascanDataDocumentationSpecOutput) ToDatascanDataDocumentationSpecPtrOutput() DatascanDataDocumentationSpecPtrOutput {
+	return o.ToDatascanDataDocumentationSpecPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataDocumentationSpecOutput) ToDatascanDataDocumentationSpecPtrOutputWithContext(ctx context.Context) DatascanDataDocumentationSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataDocumentationSpec) *DatascanDataDocumentationSpec {
+		return &v
+	}).(DatascanDataDocumentationSpecPtrOutput)
+}
+
+type DatascanDataDocumentationSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataDocumentationSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataDocumentationSpec)(nil)).Elem()
+}
+
+func (o DatascanDataDocumentationSpecPtrOutput) ToDatascanDataDocumentationSpecPtrOutput() DatascanDataDocumentationSpecPtrOutput {
+	return o
+}
+
+func (o DatascanDataDocumentationSpecPtrOutput) ToDatascanDataDocumentationSpecPtrOutputWithContext(ctx context.Context) DatascanDataDocumentationSpecPtrOutput {
+	return o
+}
+
+func (o DatascanDataDocumentationSpecPtrOutput) Elem() DatascanDataDocumentationSpecOutput {
+	return o.ApplyT(func(v *DatascanDataDocumentationSpec) DatascanDataDocumentationSpec {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataDocumentationSpec
+		return ret
+	}).(DatascanDataDocumentationSpecOutput)
+}
+
 type DatascanDataProfileSpec struct {
 	// The fields to exclude from data profile.
 	// If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
@@ -15660,6 +15778,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrInput)(nil)).Elem(), DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigJsonOptionsInput)(nil)).Elem(), DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrInput)(nil)).Elem(), DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDocumentationSpecInput)(nil)).Elem(), DatascanDataDocumentationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDocumentationSpecPtrInput)(nil)).Elem(), DatascanDataDocumentationSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecInput)(nil)).Elem(), DatascanDataProfileSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecPtrInput)(nil)).Elem(), DatascanDataProfileSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecExcludeFieldsInput)(nil)).Elem(), DatascanDataProfileSpecExcludeFieldsArgs{})
@@ -15855,6 +15975,8 @@ func init() {
 	pulumi.RegisterOutputType(DatascanDataDiscoverySpecStorageConfigCsvOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataDiscoverySpecStorageConfigJsonOptionsOutput{})
 	pulumi.RegisterOutputType(DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataDocumentationSpecOutput{})
+	pulumi.RegisterOutputType(DatascanDataDocumentationSpecPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataProfileSpecOutput{})
 	pulumi.RegisterOutputType(DatascanDataProfileSpecPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataProfileSpecExcludeFieldsOutput{})

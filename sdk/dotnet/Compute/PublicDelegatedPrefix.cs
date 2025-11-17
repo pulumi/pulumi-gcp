@@ -132,6 +132,47 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Public Delegated Prefix Internal Ipv6 Subnet Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var advertised = new Gcp.Compute.PublicAdvertisedPrefix("advertised", new()
+    ///     {
+    ///         Name = "ipv6-pap",
+    ///         Description = "description",
+    ///         IpCidrRange = "2001:db8::/32",
+    ///         PdpScope = "REGIONAL",
+    ///         Ipv6AccessType = "INTERNAL",
+    ///     });
+    /// 
+    ///     var prefix = new Gcp.Compute.PublicDelegatedPrefix("prefix", new()
+    ///     {
+    ///         Name = "ipv6-root-pdp",
+    ///         Description = "test-delegation-mode-pdp",
+    ///         Region = "us-east1",
+    ///         IpCidrRange = "2001:db8::/40",
+    ///         ParentPrefix = advertised.Id,
+    ///         Mode = "DELEGATION",
+    ///     });
+    /// 
+    ///     var subprefix = new Gcp.Compute.PublicDelegatedPrefix("subprefix", new()
+    ///     {
+    ///         Name = "ipv6-sub-pdp",
+    ///         Description = "test-subnet-mode-pdp",
+    ///         Region = "us-east1",
+    ///         IpCidrRange = "2001:db8::/48",
+    ///         ParentPrefix = prefix.Id,
+    ///         Mode = "INTERNAL_IPV6_SUBNETWORK_CREATION",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -185,15 +226,31 @@ namespace Pulumi.Gcp.Compute
         public Output<string> IpCidrRange { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
+        /// The internet access type for IPv6 Public Delegated Prefixes. Inherited
+        /// from parent prefix and can be one of following:
+        /// * EXTERNAL: The prefix will be announced to the internet. All children
+        /// PDPs will have access type as EXTERNAL.
+        /// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+        /// be used privately within Google Cloud. All children PDPs will have
+        /// access type as INTERNAL.
+        /// </summary>
+        [Output("ipv6AccessType")]
+        public Output<string> Ipv6AccessType { get; private set; } = null!;
+
+        /// <summary>
         /// If true, the prefix will be live migrated.
         /// </summary>
         [Output("isLiveMigration")]
         public Output<bool?> IsLiveMigration { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        /// Specifies the mode of this IPv6 PDP. MODE must be one of:
+        /// * DELEGATION
+        /// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+        /// * EXTERNAL_IPV6_SUBNETWORK_CREATION
+        /// * INTERNAL_IPV6_SUBNETWORK_CREATION
+        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         /// </summary>
         [Output("mode")]
         public Output<string?> Mode { get; private set; } = null!;
@@ -314,9 +371,12 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? IsLiveMigration { get; set; }
 
         /// <summary>
-        /// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        /// Specifies the mode of this IPv6 PDP. MODE must be one of:
+        /// * DELEGATION
+        /// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+        /// * EXTERNAL_IPV6_SUBNETWORK_CREATION
+        /// * INTERNAL_IPV6_SUBNETWORK_CREATION
+        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -378,15 +438,31 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IpCidrRange { get; set; }
 
         /// <summary>
+        /// (Output)
+        /// The internet access type for IPv6 Public Delegated Prefixes. Inherited
+        /// from parent prefix and can be one of following:
+        /// * EXTERNAL: The prefix will be announced to the internet. All children
+        /// PDPs will have access type as EXTERNAL.
+        /// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+        /// be used privately within Google Cloud. All children PDPs will have
+        /// access type as INTERNAL.
+        /// </summary>
+        [Input("ipv6AccessType")]
+        public Input<string>? Ipv6AccessType { get; set; }
+
+        /// <summary>
         /// If true, the prefix will be live migrated.
         /// </summary>
         [Input("isLiveMigration")]
         public Input<bool>? IsLiveMigration { get; set; }
 
         /// <summary>
-        /// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        /// Specifies the mode of this IPv6 PDP. MODE must be one of:
+        /// * DELEGATION
+        /// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+        /// * EXTERNAL_IPV6_SUBNETWORK_CREATION
+        /// * INTERNAL_IPV6_SUBNETWORK_CREATION
+        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

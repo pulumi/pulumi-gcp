@@ -207,14 +207,14 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="customPerformanceEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> customPerformanceEnabled;
+    private Output<Boolean> customPerformanceEnabled;
 
     /**
      * @return Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
      * 
      */
-    public Output<Optional<Boolean>> customPerformanceEnabled() {
-        return Codegen.optional(this.customPerformanceEnabled);
+    public Output<Boolean> customPerformanceEnabled() {
+        return this.customPerformanceEnabled;
     }
     /**
      * An optional description of this resource.
@@ -507,6 +507,26 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> totalThroughputMibps() {
         return this.totalThroughputMibps;
+    }
+    /**
+     * Type of the storage pool.
+     * This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+     * If not specified during creation, it defaults to FILE.
+     * Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output<String> type;
+
+    /**
+     * @return Type of the storage pool.
+     * This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+     * If not specified during creation, it defaults to FILE.
+     * Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
     }
     /**
      * Size allocated to volumes in the storage pool (in GiB).

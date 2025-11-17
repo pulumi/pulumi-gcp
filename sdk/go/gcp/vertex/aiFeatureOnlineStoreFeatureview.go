@@ -286,8 +286,8 @@ import (
 //				return err
 //			}
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_9329"),
-//				Name:           pulumi.String("tf-test_37135"),
+//				ProjectId:      pulumi.String("tf-test_12125"),
+//				Name:           pulumi.String("tf-test_82749"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -432,7 +432,7 @@ import (
 //				Region:             pulumi.String("us-central1"),
 //				FeatureOnlineStore: featureonlinestore.Name,
 //				SyncConfig: &vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs{
-//					Cron: pulumi.String("0 0 * * *"),
+//					Continuous: pulumi.Bool(true),
 //				},
 //				FeatureRegistrySource: &vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs{
 //					FeatureGroups: vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArray{

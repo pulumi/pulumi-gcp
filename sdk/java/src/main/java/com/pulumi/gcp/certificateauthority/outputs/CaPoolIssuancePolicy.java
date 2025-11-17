@@ -24,7 +24,7 @@ public final class CaPoolIssuancePolicy {
     private @Nullable CaPoolIssuancePolicyAllowedIssuanceModes allowedIssuanceModes;
     /**
      * @return If any AllowedKeyType is specified, then the certificate request&#39;s public key must match one of the key types listed here.
-     * Otherwise, any key may be used.
+     * Otherwise, any key may be used. You can specify only one key type of those listed here.
      * Structure is documented below.
      * 
      */
@@ -72,7 +72,7 @@ public final class CaPoolIssuancePolicy {
     }
     /**
      * @return If any AllowedKeyType is specified, then the certificate request&#39;s public key must match one of the key types listed here.
-     * Otherwise, any key may be used.
+     * Otherwise, any key may be used. You can specify only one key type of those listed here.
      * Structure is documented below.
      * 
      */

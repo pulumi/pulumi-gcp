@@ -28,6 +28,7 @@ class InstanceArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -53,6 +54,8 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[_builtins.str] placement_policy: The placement policy name for the instance in the format of
+               projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -68,6 +71,8 @@ class InstanceArgs:
             pulumi.set(__self__, "gke_support_enabled", gke_support_enabled)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if placement_policy is not None:
+            pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -193,6 +198,19 @@ class InstanceArgs:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The placement policy name for the instance in the format of
+        projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+        """
+        return pulumi.get(self, "placement_policy")
+
+    @placement_policy.setter
+    def placement_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "placement_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -222,6 +240,7 @@ class _InstanceState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  per_unit_storage_throughput: Optional[pulumi.Input[_builtins.str]] = None,
+                 placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -254,6 +273,8 @@ class _InstanceState:
                `projects/{project_id}/global/networks/{network_name}`.
         :param pulumi.Input[_builtins.str] per_unit_storage_throughput: The throughput of the instance in MB/s/TiB.
                Valid values are 125, 250, 500, 1000.
+        :param pulumi.Input[_builtins.str] placement_policy: The placement policy name for the instance in the format of
+               projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -295,6 +316,8 @@ class _InstanceState:
             pulumi.set(__self__, "network", network)
         if per_unit_storage_throughput is not None:
             pulumi.set(__self__, "per_unit_storage_throughput", per_unit_storage_throughput)
+        if placement_policy is not None:
+            pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -474,6 +497,19 @@ class _InstanceState:
         pulumi.set(self, "per_unit_storage_throughput", value)
 
     @_builtins.property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The placement policy name for the instance in the format of
+        projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+        """
+        return pulumi.get(self, "placement_policy")
+
+    @placement_policy.setter
+    def placement_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "placement_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -547,6 +583,7 @@ class Instance(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  per_unit_storage_throughput: Optional[pulumi.Input[_builtins.str]] = None,
+                 placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -636,6 +673,8 @@ class Instance(pulumi.CustomResource):
                `projects/{project_id}/global/networks/{network_name}`.
         :param pulumi.Input[_builtins.str] per_unit_storage_throughput: The throughput of the instance in MB/s/TiB.
                Valid values are 125, 250, 500, 1000.
+        :param pulumi.Input[_builtins.str] placement_policy: The placement policy name for the instance in the format of
+               projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -732,6 +771,7 @@ class Instance(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  per_unit_storage_throughput: Optional[pulumi.Input[_builtins.str]] = None,
+                 placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -763,6 +803,7 @@ class Instance(pulumi.CustomResource):
             if per_unit_storage_throughput is None and not opts.urn:
                 raise TypeError("Missing required property 'per_unit_storage_throughput'")
             __props__.__dict__["per_unit_storage_throughput"] = per_unit_storage_throughput
+            __props__.__dict__["placement_policy"] = placement_policy
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
@@ -796,6 +837,7 @@ class Instance(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             network: Optional[pulumi.Input[_builtins.str]] = None,
             per_unit_storage_throughput: Optional[pulumi.Input[_builtins.str]] = None,
+            placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -833,6 +875,8 @@ class Instance(pulumi.CustomResource):
                `projects/{project_id}/global/networks/{network_name}`.
         :param pulumi.Input[_builtins.str] per_unit_storage_throughput: The throughput of the instance in MB/s/TiB.
                Valid values are 125, 250, 500, 1000.
+        :param pulumi.Input[_builtins.str] placement_policy: The placement policy name for the instance in the format of
+               projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -865,6 +909,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["per_unit_storage_throughput"] = per_unit_storage_throughput
+        __props__.__dict__["placement_policy"] = placement_policy
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
@@ -987,6 +1032,15 @@ class Instance(pulumi.CustomResource):
         Valid values are 125, 250, 500, 1000.
         """
         return pulumi.get(self, "per_unit_storage_throughput")
+
+    @_builtins.property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The placement policy name for the instance in the format of
+        projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+        """
+        return pulumi.get(self, "placement_policy")
 
     @_builtins.property
     @pulumi.getter

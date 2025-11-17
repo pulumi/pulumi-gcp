@@ -10,6 +10,7 @@ from .active_directory import *
 from .backup import *
 from .backup_policy import *
 from .backup_vault import *
+from .host_group import *
 from .kmsconfig import *
 from .storage_pool import *
 from .volume import *

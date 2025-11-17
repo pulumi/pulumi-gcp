@@ -258,8 +258,8 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "tf-test_9329",
-    ///         Name = "tf-test_37135",
+    ///         ProjectId = "tf-test_12125",
+    ///         Name = "tf-test_82749",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
@@ -420,7 +420,7 @@ namespace Pulumi.Gcp.Vertex
     ///         FeatureOnlineStore = featureonlinestore.Name,
     ///         SyncConfig = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs
     ///         {
-    ///             Cron = "0 0 * * *",
+    ///             Continuous = true,
     ///         },
     ///         FeatureRegistrySource = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs
     ///         {

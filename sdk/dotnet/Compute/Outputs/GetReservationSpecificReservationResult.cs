@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetReservationSpecificReservationResult
     {
         /// <summary>
+        /// Indicates how many instances are actually usable currently.
+        /// </summary>
+        public readonly int AssuredCount;
+        /// <summary>
         /// The number of resources that are allocated.
         /// </summary>
         public readonly int Count;
@@ -33,6 +37,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private GetReservationSpecificReservationResult(
+            int assuredCount,
+
             int count,
 
             int inUseCount,
@@ -41,6 +47,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string sourceInstanceTemplate)
         {
+            AssuredCount = assuredCount;
             Count = count;
             InUseCount = inUseCount;
             InstanceProperties = instanceProperties;

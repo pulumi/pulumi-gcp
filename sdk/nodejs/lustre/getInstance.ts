@@ -57,6 +57,7 @@ export interface GetInstanceResult {
     readonly name: string;
     readonly network: string;
     readonly perUnitStorageThroughput: string;
+    readonly placementPolicy: string;
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly state: string;

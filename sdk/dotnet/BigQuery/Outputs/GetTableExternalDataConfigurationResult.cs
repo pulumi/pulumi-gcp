@@ -38,6 +38,10 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTableExternalDataConfigurationCsvOptionResult> CsvOptions;
         /// <summary>
+        /// The data types that could be used as a target type when converting decimal values.
+        /// </summary>
+        public readonly ImmutableArray<string> DecimalTargetTypes;
+        /// <summary>
         /// Specifies how source URIs are interpreted for constructing the file set to load.  By default source URIs are expanded against the underlying storage.  Other options include specifying manifest files. Only applicable to object storage systems.
         /// </summary>
         public readonly string FileSetSpecType;
@@ -108,6 +112,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             ImmutableArray<Outputs.GetTableExternalDataConfigurationCsvOptionResult> csvOptions,
 
+            ImmutableArray<string> decimalTargetTypes,
+
             string fileSetSpecType,
 
             ImmutableArray<Outputs.GetTableExternalDataConfigurationGoogleSheetsOptionResult> googleSheetsOptions,
@@ -142,6 +148,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             Compression = compression;
             ConnectionId = connectionId;
             CsvOptions = csvOptions;
+            DecimalTargetTypes = decimalTargetTypes;
             FileSetSpecType = fileSetSpecType;
             GoogleSheetsOptions = googleSheetsOptions;
             HivePartitioningOptions = hivePartitioningOptions;

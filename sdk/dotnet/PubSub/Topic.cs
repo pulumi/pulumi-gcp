@@ -393,6 +393,12 @@ namespace Pulumi.Gcp.PubSub
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///     });
+    /// 
     ///     var tagKey = new Gcp.Tags.TagKey("tag_key", new()
     ///     {
     ///         Parent = project.Apply(getProjectResult =&gt; getProjectResult.Id),
@@ -405,18 +411,15 @@ namespace Pulumi.Gcp.PubSub
     ///         ShortName = "tag_value",
     ///     });
     /// 
-    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     var binding = new Gcp.Tags.TagBinding("binding", new()
     ///     {
-    ///         Name = "example-topic",
-    ///         Tags = Output.Tuple(tagKey.NamespacedName, tagValue.ShortName).Apply(values =&gt;
+    ///         Parent = Output.Tuple(project, example.Name).Apply(values =&gt;
     ///         {
-    ///             var namespacedName = values.Item1;
-    ///             var shortName = values.Item2;
-    ///             return 
-    ///             {
-    ///                 { namespacedName, shortName },
-    ///             };
+    ///             var project = values.Item1;
+    ///             var name = values.Item2;
+    ///             return $"//pubsub.googleapis.com/projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/topics/{name}";
     ///         }),
+    ///         TagValue = tagValue.Id,
     ///     });
     /// 
     /// });

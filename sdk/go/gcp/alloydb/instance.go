@@ -122,6 +122,9 @@ import (
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: _default.ID(),
 //				},
+//				InitialUser: &alloydb.ClusterInitialUserArgs{
+//					Password: pulumi.String("alloydb-primary-cluster"),
+//				},
 //				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {

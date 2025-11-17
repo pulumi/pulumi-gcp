@@ -28,6 +28,17 @@ __all__ = [
     'ChatEngineChatEngineMetadata',
     'ChatEngineCommonConfig',
     'CmekConfigSingleRegionKey',
+    'ControlBoostAction',
+    'ControlBoostActionInterpolationBoostSpec',
+    'ControlBoostActionInterpolationBoostSpecControlPoint',
+    'ControlCondition',
+    'ControlConditionActiveTimeRange',
+    'ControlConditionQueryTerm',
+    'ControlFilterAction',
+    'ControlPromoteAction',
+    'ControlPromoteActionSearchLinkPromotion',
+    'ControlRedirectAction',
+    'ControlSynonymsAction',
     'DataConnectorEntity',
     'DataConnectorError',
     'DataStoreAdvancedSiteSearchConfig',
@@ -703,6 +714,629 @@ class CmekConfigSingleRegionKey(dict):
         `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
         """
         return pulumi.get(self, "kms_key")
+
+
+@pulumi.output_type
+class ControlBoostAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataStore":
+            suggest = "data_store"
+        elif key == "fixedBoost":
+            suggest = "fixed_boost"
+        elif key == "interpolationBoostSpec":
+            suggest = "interpolation_boost_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlBoostAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlBoostAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlBoostAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_store: _builtins.str,
+                 filter: _builtins.str,
+                 fixed_boost: Optional[_builtins.float] = None,
+                 interpolation_boost_spec: Optional['outputs.ControlBoostActionInterpolationBoostSpec'] = None):
+        """
+        :param _builtins.str data_store: The data store to boost.
+        :param _builtins.str filter: The filter to apply to the search results.
+        :param _builtins.float fixed_boost: The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
+        :param 'ControlBoostActionInterpolationBoostSpecArgs' interpolation_boost_spec: The interpolation boost specification to apply to the search results.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "data_store", data_store)
+        pulumi.set(__self__, "filter", filter)
+        if fixed_boost is not None:
+            pulumi.set(__self__, "fixed_boost", fixed_boost)
+        if interpolation_boost_spec is not None:
+            pulumi.set(__self__, "interpolation_boost_spec", interpolation_boost_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="dataStore")
+    def data_store(self) -> _builtins.str:
+        """
+        The data store to boost.
+        """
+        return pulumi.get(self, "data_store")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> _builtins.str:
+        """
+        The filter to apply to the search results.
+        """
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter(name="fixedBoost")
+    def fixed_boost(self) -> Optional[_builtins.float]:
+        """
+        The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
+        """
+        return pulumi.get(self, "fixed_boost")
+
+    @_builtins.property
+    @pulumi.getter(name="interpolationBoostSpec")
+    def interpolation_boost_spec(self) -> Optional['outputs.ControlBoostActionInterpolationBoostSpec']:
+        """
+        The interpolation boost specification to apply to the search results.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "interpolation_boost_spec")
+
+
+@pulumi.output_type
+class ControlBoostActionInterpolationBoostSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeType":
+            suggest = "attribute_type"
+        elif key == "controlPoint":
+            suggest = "control_point"
+        elif key == "fieldName":
+            suggest = "field_name"
+        elif key == "interpolationType":
+            suggest = "interpolation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlBoostActionInterpolationBoostSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlBoostActionInterpolationBoostSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlBoostActionInterpolationBoostSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_type: Optional[_builtins.str] = None,
+                 control_point: Optional['outputs.ControlBoostActionInterpolationBoostSpecControlPoint'] = None,
+                 field_name: Optional[_builtins.str] = None,
+                 interpolation_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str attribute_type: The attribute type to be used to determine the boost amount.
+               Possible values are: `NUMERICAL`, `FRESHNESS`.
+        :param 'ControlBoostActionInterpolationBoostSpecControlPointArgs' control_point: The control points used to define the curve.
+               Structure is documented below.
+        :param _builtins.str field_name: The name of the field whose value will be used to determine the boost amount.
+        :param _builtins.str interpolation_type: The interpolation type to be applied to connect the control points.
+               Possible values are: `LINEAR`.
+        """
+        if attribute_type is not None:
+            pulumi.set(__self__, "attribute_type", attribute_type)
+        if control_point is not None:
+            pulumi.set(__self__, "control_point", control_point)
+        if field_name is not None:
+            pulumi.set(__self__, "field_name", field_name)
+        if interpolation_type is not None:
+            pulumi.set(__self__, "interpolation_type", interpolation_type)
+
+    @_builtins.property
+    @pulumi.getter(name="attributeType")
+    def attribute_type(self) -> Optional[_builtins.str]:
+        """
+        The attribute type to be used to determine the boost amount.
+        Possible values are: `NUMERICAL`, `FRESHNESS`.
+        """
+        return pulumi.get(self, "attribute_type")
+
+    @_builtins.property
+    @pulumi.getter(name="controlPoint")
+    def control_point(self) -> Optional['outputs.ControlBoostActionInterpolationBoostSpecControlPoint']:
+        """
+        The control points used to define the curve.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "control_point")
+
+    @_builtins.property
+    @pulumi.getter(name="fieldName")
+    def field_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the field whose value will be used to determine the boost amount.
+        """
+        return pulumi.get(self, "field_name")
+
+    @_builtins.property
+    @pulumi.getter(name="interpolationType")
+    def interpolation_type(self) -> Optional[_builtins.str]:
+        """
+        The interpolation type to be applied to connect the control points.
+        Possible values are: `LINEAR`.
+        """
+        return pulumi.get(self, "interpolation_type")
+
+
+@pulumi.output_type
+class ControlBoostActionInterpolationBoostSpecControlPoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "boostAmount":
+            suggest = "boost_amount"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlBoostActionInterpolationBoostSpecControlPoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlBoostActionInterpolationBoostSpecControlPoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlBoostActionInterpolationBoostSpecControlPoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_value: Optional[_builtins.str] = None,
+                 boost_amount: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str attribute_value: The attribute value of the control point.
+        :param _builtins.float boost_amount: The value between -1 to 1 by which to boost the score if the attributeValue
+               evaluates to the value specified above.
+        """
+        if attribute_value is not None:
+            pulumi.set(__self__, "attribute_value", attribute_value)
+        if boost_amount is not None:
+            pulumi.set(__self__, "boost_amount", boost_amount)
+
+    @_builtins.property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> Optional[_builtins.str]:
+        """
+        The attribute value of the control point.
+        """
+        return pulumi.get(self, "attribute_value")
+
+    @_builtins.property
+    @pulumi.getter(name="boostAmount")
+    def boost_amount(self) -> Optional[_builtins.float]:
+        """
+        The value between -1 to 1 by which to boost the score if the attributeValue
+        evaluates to the value specified above.
+        """
+        return pulumi.get(self, "boost_amount")
+
+
+@pulumi.output_type
+class ControlCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activeTimeRanges":
+            suggest = "active_time_ranges"
+        elif key == "queryRegex":
+            suggest = "query_regex"
+        elif key == "queryTerms":
+            suggest = "query_terms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 active_time_ranges: Optional[Sequence['outputs.ControlConditionActiveTimeRange']] = None,
+                 query_regex: Optional[_builtins.str] = None,
+                 query_terms: Optional[Sequence['outputs.ControlConditionQueryTerm']] = None):
+        """
+        :param Sequence['ControlConditionActiveTimeRangeArgs'] active_time_ranges: The time range when the condition is active.
+               Structure is documented below.
+        :param _builtins.str query_regex: The regular expression that the query must match for this condition to be met.
+        :param Sequence['ControlConditionQueryTermArgs'] query_terms: The query terms that must be present in the search request for this condition to be met.
+               Structure is documented below.
+        """
+        if active_time_ranges is not None:
+            pulumi.set(__self__, "active_time_ranges", active_time_ranges)
+        if query_regex is not None:
+            pulumi.set(__self__, "query_regex", query_regex)
+        if query_terms is not None:
+            pulumi.set(__self__, "query_terms", query_terms)
+
+    @_builtins.property
+    @pulumi.getter(name="activeTimeRanges")
+    def active_time_ranges(self) -> Optional[Sequence['outputs.ControlConditionActiveTimeRange']]:
+        """
+        The time range when the condition is active.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "active_time_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="queryRegex")
+    def query_regex(self) -> Optional[_builtins.str]:
+        """
+        The regular expression that the query must match for this condition to be met.
+        """
+        return pulumi.get(self, "query_regex")
+
+    @_builtins.property
+    @pulumi.getter(name="queryTerms")
+    def query_terms(self) -> Optional[Sequence['outputs.ControlConditionQueryTerm']]:
+        """
+        The query terms that must be present in the search request for this condition to be met.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query_terms")
+
+
+@pulumi.output_type
+class ControlConditionActiveTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlConditionActiveTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlConditionActiveTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlConditionActiveTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: Optional[_builtins.str] = None,
+                 start_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str end_time: The end time of the active time range.
+        :param _builtins.str start_time: The start time of the active time range.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.str]:
+        """
+        The end time of the active time range.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        The start time of the active time range.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class ControlConditionQueryTerm(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fullMatch":
+            suggest = "full_match"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlConditionQueryTerm. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlConditionQueryTerm.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlConditionQueryTerm.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 full_match: Optional[_builtins.bool] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool full_match: If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
+        :param _builtins.str value: The value of the query term.
+        """
+        if full_match is not None:
+            pulumi.set(__self__, "full_match", full_match)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fullMatch")
+    def full_match(self) -> Optional[_builtins.bool]:
+        """
+        If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
+        """
+        return pulumi.get(self, "full_match")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The value of the query term.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ControlFilterAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataStore":
+            suggest = "data_store"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlFilterAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlFilterAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlFilterAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_store: _builtins.str,
+                 filter: _builtins.str):
+        """
+        :param _builtins.str data_store: The data store to filter.
+        :param _builtins.str filter: The filter to apply to the search results.
+        """
+        pulumi.set(__self__, "data_store", data_store)
+        pulumi.set(__self__, "filter", filter)
+
+    @_builtins.property
+    @pulumi.getter(name="dataStore")
+    def data_store(self) -> _builtins.str:
+        """
+        The data store to filter.
+        """
+        return pulumi.get(self, "data_store")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> _builtins.str:
+        """
+        The filter to apply to the search results.
+        """
+        return pulumi.get(self, "filter")
+
+
+@pulumi.output_type
+class ControlPromoteAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataStore":
+            suggest = "data_store"
+        elif key == "searchLinkPromotion":
+            suggest = "search_link_promotion"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlPromoteAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlPromoteAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlPromoteAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_store: _builtins.str,
+                 search_link_promotion: 'outputs.ControlPromoteActionSearchLinkPromotion'):
+        """
+        :param _builtins.str data_store: The data store to promote.
+        :param 'ControlPromoteActionSearchLinkPromotionArgs' search_link_promotion: The search link promotion to apply to the search results.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "data_store", data_store)
+        pulumi.set(__self__, "search_link_promotion", search_link_promotion)
+
+    @_builtins.property
+    @pulumi.getter(name="dataStore")
+    def data_store(self) -> _builtins.str:
+        """
+        The data store to promote.
+        """
+        return pulumi.get(self, "data_store")
+
+    @_builtins.property
+    @pulumi.getter(name="searchLinkPromotion")
+    def search_link_promotion(self) -> 'outputs.ControlPromoteActionSearchLinkPromotion':
+        """
+        The search link promotion to apply to the search results.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "search_link_promotion")
+
+
+@pulumi.output_type
+class ControlPromoteActionSearchLinkPromotion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageUri":
+            suggest = "image_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlPromoteActionSearchLinkPromotion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlPromoteActionSearchLinkPromotion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlPromoteActionSearchLinkPromotion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 document: Optional[_builtins.str] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 image_uri: Optional[_builtins.str] = None,
+                 uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str title: The title of the promoted link.
+        :param _builtins.str description: The description of the promoted link.
+        :param _builtins.str document: The document to promote.
+        :param _builtins.bool enabled: Return promotions for basic site search.
+        :param _builtins.str image_uri: The image URI of the promoted link.
+        :param _builtins.str uri: The URI to promote.
+        """
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if document is not None:
+            pulumi.set(__self__, "document", document)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        """
+        The title of the promoted link.
+        """
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        The description of the promoted link.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def document(self) -> Optional[_builtins.str]:
+        """
+        The document to promote.
+        """
+        return pulumi.get(self, "document")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Return promotions for basic site search.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[_builtins.str]:
+        """
+        The image URI of the promoted link.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> Optional[_builtins.str]:
+        """
+        The URI to promote.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class ControlRedirectAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redirectUri":
+            suggest = "redirect_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlRedirectAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlRedirectAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlRedirectAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 redirect_uri: _builtins.str):
+        """
+        :param _builtins.str redirect_uri: The URI to redirect to.
+        """
+        pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> _builtins.str:
+        """
+        The URI to redirect to.
+        """
+        return pulumi.get(self, "redirect_uri")
+
+
+@pulumi.output_type
+class ControlSynonymsAction(dict):
+    def __init__(__self__, *,
+                 synonyms: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] synonyms: The synonyms to apply to the search results.
+        """
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The synonyms to apply to the search results.
+        """
+        return pulumi.get(self, "synonyms")
 
 
 @pulumi.output_type

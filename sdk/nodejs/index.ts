@@ -35,6 +35,7 @@ import * as binaryauthorization from "./binaryauthorization";
 import * as blockchainnodeengine from "./blockchainnodeengine";
 import * as certificateauthority from "./certificateauthority";
 import * as certificatemanager from "./certificatemanager";
+import * as ces from "./ces";
 import * as chronicle from "./chronicle";
 import * as cloudasset from "./cloudasset";
 import * as cloudbuild from "./cloudbuild";
@@ -172,6 +173,7 @@ export {
     blockchainnodeengine,
     certificateauthority,
     certificatemanager,
+    ces,
     chronicle,
     cloudasset,
     cloudbuild,

@@ -78,19 +78,19 @@ namespace Pulumi.Gcp.Dataflow
     /// {
     ///     var config = new Config();
     ///     var bigDataJobSubscriptionId = config.Get("bigDataJobSubscriptionId") ?? "projects/myproject/subscriptions/messages";
-    ///     var bigDataJobNameSuffix = new Random.Index.Id("big_data_job_name_suffix", new()
+    ///     var bigDataJobNameSuffix = new Random.RandomId("big_data_job_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///         Keepers = 
     ///         {
     ///             { "region", region },
-    ///             { "subscriptionId", bigDataJobSubscriptionId },
+    ///             { "subscription_id", bigDataJobSubscriptionId },
     ///         },
     ///     });
     /// 
     ///     var bigDataJob = new Gcp.Dataflow.FlexTemplateJob("big_data_job", new()
     ///     {
-    ///         Name = $"dataflow-flextemplates-job-{bigDataJobNameSuffix.Dec}",
+    ///         Name = bigDataJobNameSuffix.Dec.Apply(dec =&gt; $"dataflow-flextemplates-job-{dec}"),
     ///         Region = region,
     ///         ContainerSpecGcsPath = "gs://my-bucket/templates/template.json",
     ///         SkipWaitOnJobTermination = true,

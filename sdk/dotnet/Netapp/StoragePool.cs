@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Netapp
         /// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         /// </summary>
         [Output("customPerformanceEnabled")]
-        public Output<bool?> CustomPerformanceEnabled { get; private set; } = null!;
+        public Output<bool> CustomPerformanceEnabled { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of this resource.
@@ -266,6 +266,15 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("totalThroughputMibps")]
         public Output<string> TotalThroughputMibps { get; private set; } = null!;
+
+        /// <summary>
+        /// Type of the storage pool.
+        /// This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+        /// If not specified during creation, it defaults to FILE.
+        /// Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
         /// Size allocated to volumes in the storage pool (in GiB).
@@ -473,6 +482,15 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? TotalThroughputMibps { get; set; }
 
         /// <summary>
+        /// Type of the storage pool.
+        /// This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+        /// If not specified during creation, it defaults to FILE.
+        /// Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
         /// Specifies the active zone for regional Flex pools. `Zone` and `ReplicaZone` values can be swapped to initiate a
         /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         /// If you want to create a zonal Flex pool, specify a zone name for `Location` and omit `Zone`.
@@ -678,6 +696,15 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("totalThroughputMibps")]
         public Input<string>? TotalThroughputMibps { get; set; }
+
+        /// <summary>
+        /// Type of the storage pool.
+        /// This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+        /// If not specified during creation, it defaults to FILE.
+        /// Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// Size allocated to volumes in the storage pool (in GiB).

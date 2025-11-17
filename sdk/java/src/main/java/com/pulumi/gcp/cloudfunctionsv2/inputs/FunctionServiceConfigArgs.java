@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudfunctionsv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigDirectVpcNetworkInterfaceArgs;
 import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigSecretEnvironmentVariableArgs;
 import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigSecretVolumeArgs;
 import java.lang.Boolean;
@@ -83,6 +84,40 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> binaryAuthorizationPolicy() {
         return Optional.ofNullable(this.binaryAuthorizationPolicy);
+    }
+
+    /**
+     * Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+     * Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+     * 
+     */
+    @Import(name="directVpcEgress")
+    private @Nullable Output<String> directVpcEgress;
+
+    /**
+     * @return Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+     * Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+     * 
+     */
+    public Optional<Output<String>> directVpcEgress() {
+        return Optional.ofNullable(this.directVpcEgress);
+    }
+
+    /**
+     * The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="directVpcNetworkInterfaces")
+    private @Nullable Output<List<FunctionServiceConfigDirectVpcNetworkInterfaceArgs>> directVpcNetworkInterfaces;
+
+    /**
+     * @return The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<FunctionServiceConfigDirectVpcNetworkInterfaceArgs>>> directVpcNetworkInterfaces() {
+        return Optional.ofNullable(this.directVpcNetworkInterfaces);
     }
 
     /**
@@ -326,6 +361,8 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         this.availableCpu = $.availableCpu;
         this.availableMemory = $.availableMemory;
         this.binaryAuthorizationPolicy = $.binaryAuthorizationPolicy;
+        this.directVpcEgress = $.directVpcEgress;
+        this.directVpcNetworkInterfaces = $.directVpcNetworkInterfaces;
         this.environmentVariables = $.environmentVariables;
         this.gcfUri = $.gcfUri;
         this.ingressSettings = $.ingressSettings;
@@ -446,6 +483,63 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder binaryAuthorizationPolicy(String binaryAuthorizationPolicy) {
             return binaryAuthorizationPolicy(Output.of(binaryAuthorizationPolicy));
+        }
+
+        /**
+         * @param directVpcEgress Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+         * Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directVpcEgress(@Nullable Output<String> directVpcEgress) {
+            $.directVpcEgress = directVpcEgress;
+            return this;
+        }
+
+        /**
+         * @param directVpcEgress Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+         * Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directVpcEgress(String directVpcEgress) {
+            return directVpcEgress(Output.of(directVpcEgress));
+        }
+
+        /**
+         * @param directVpcNetworkInterfaces The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directVpcNetworkInterfaces(@Nullable Output<List<FunctionServiceConfigDirectVpcNetworkInterfaceArgs>> directVpcNetworkInterfaces) {
+            $.directVpcNetworkInterfaces = directVpcNetworkInterfaces;
+            return this;
+        }
+
+        /**
+         * @param directVpcNetworkInterfaces The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directVpcNetworkInterfaces(List<FunctionServiceConfigDirectVpcNetworkInterfaceArgs> directVpcNetworkInterfaces) {
+            return directVpcNetworkInterfaces(Output.of(directVpcNetworkInterfaces));
+        }
+
+        /**
+         * @param directVpcNetworkInterfaces The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directVpcNetworkInterfaces(FunctionServiceConfigDirectVpcNetworkInterfaceArgs... directVpcNetworkInterfaces) {
+            return directVpcNetworkInterfaces(List.of(directVpcNetworkInterfaces));
         }
 
         /**

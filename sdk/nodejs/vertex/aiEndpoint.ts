@@ -82,9 +82,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const _default = new gcp.compute.Network("default", {name: "psc-network-_37135"});
  * const project = gcp.organizations.getProject({});
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
- *     name: "endpoint-name_32270",
+ *     name: "endpoint-name_42503",
  *     displayName: "sample-endpoint",
  *     description: "A sample vertex endpoint",
  *     location: "us-central1",
@@ -95,6 +96,10 @@ import * as utilities from "../utilities";
  *     privateServiceConnectConfig: {
  *         enablePrivateServiceConnect: true,
  *         projectAllowlists: [project.then(project => project.projectId)],
+ *         pscAutomationConfigs: [{
+ *             projectId: project.then(project => project.projectId),
+ *             network: _default.id,
+ *         }],
  *     },
  * });
  * ```
@@ -105,7 +110,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
- *     name: "endpoint-name_44703",
+ *     name: "endpoint-name_9991",
  *     displayName: "sample-endpoint",
  *     description: "A sample vertex endpoint",
  *     location: "us-central1",

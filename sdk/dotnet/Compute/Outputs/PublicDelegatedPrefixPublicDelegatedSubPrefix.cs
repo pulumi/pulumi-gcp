@@ -30,13 +30,27 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? IpCidrRange;
         /// <summary>
+        /// (Output)
+        /// The internet access type for IPv6 Public Delegated Prefixes. Inherited
+        /// from parent prefix and can be one of following:
+        /// * EXTERNAL: The prefix will be announced to the internet. All children
+        /// PDPs will have access type as EXTERNAL.
+        /// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+        /// be used privately within Google Cloud. All children PDPs will have
+        /// access type as INTERNAL.
+        /// </summary>
+        public readonly string? Ipv6AccessType;
+        /// <summary>
         /// Whether the sub prefix is delegated for address creation.
         /// </summary>
         public readonly bool? IsAddress;
         /// <summary>
-        /// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        /// Specifies the mode of this IPv6 PDP. MODE must be one of:
+        /// * DELEGATION
+        /// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+        /// * EXTERNAL_IPV6_SUBNETWORK_CREATION
+        /// * INTERNAL_IPV6_SUBNETWORK_CREATION
+        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         /// </summary>
         public readonly string? Mode;
         /// <summary>
@@ -68,6 +82,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? ipCidrRange,
 
+            string? ipv6AccessType,
+
             bool? isAddress,
 
             string? mode,
@@ -82,6 +98,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             DelegateeProject = delegateeProject;
             Description = description;
             IpCidrRange = ipCidrRange;
+            Ipv6AccessType = ipv6AccessType;
             IsAddress = isAddress;
             Mode = mode;
             Name = name;

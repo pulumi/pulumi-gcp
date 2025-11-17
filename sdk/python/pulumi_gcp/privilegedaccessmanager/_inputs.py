@@ -15,6 +15,20 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'SettingsEmailNotificationSettingsArgs',
+    'SettingsEmailNotificationSettingsArgsDict',
+    'SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs',
+    'SettingsEmailNotificationSettingsCustomNotificationBehaviorArgsDict',
+    'SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs',
+    'SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgsDict',
+    'SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs',
+    'SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgsDict',
+    'SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs',
+    'SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgsDict',
+    'SettingsEmailNotificationSettingsDisableAllNotificationsArgs',
+    'SettingsEmailNotificationSettingsDisableAllNotificationsArgsDict',
+    'SettingsServiceAccountApproverSettingsArgs',
+    'SettingsServiceAccountApproverSettingsArgsDict',
     'EntitlementAdditionalNotificationTargetsArgs',
     'EntitlementAdditionalNotificationTargetsArgsDict',
     'EntitlementApprovalWorkflowArgs',
@@ -42,6 +56,521 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class SettingsEmailNotificationSettingsArgsDict(TypedDict):
+        custom_notification_behavior: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorArgsDict']]
+        """
+        CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
+        Structure is documented below.
+        """
+        disable_all_notifications: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsDisableAllNotificationsArgsDict']]
+        """
+        This option indicates that all email notifications are disabled.
+        """
+elif False:
+    SettingsEmailNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SettingsEmailNotificationSettingsArgs:
+    def __init__(__self__, *,
+                 custom_notification_behavior: Optional[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs']] = None,
+                 disable_all_notifications: Optional[pulumi.Input['SettingsEmailNotificationSettingsDisableAllNotificationsArgs']] = None):
+        """
+        :param pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs'] custom_notification_behavior: CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
+               Structure is documented below.
+        :param pulumi.Input['SettingsEmailNotificationSettingsDisableAllNotificationsArgs'] disable_all_notifications: This option indicates that all email notifications are disabled.
+        """
+        if custom_notification_behavior is not None:
+            pulumi.set(__self__, "custom_notification_behavior", custom_notification_behavior)
+        if disable_all_notifications is not None:
+            pulumi.set(__self__, "disable_all_notifications", disable_all_notifications)
+
+    @_builtins.property
+    @pulumi.getter(name="customNotificationBehavior")
+    def custom_notification_behavior(self) -> Optional[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs']]:
+        """
+        CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_notification_behavior")
+
+    @custom_notification_behavior.setter
+    def custom_notification_behavior(self, value: Optional[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs']]):
+        pulumi.set(self, "custom_notification_behavior", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableAllNotifications")
+    def disable_all_notifications(self) -> Optional[pulumi.Input['SettingsEmailNotificationSettingsDisableAllNotificationsArgs']]:
+        """
+        This option indicates that all email notifications are disabled.
+        """
+        return pulumi.get(self, "disable_all_notifications")
+
+    @disable_all_notifications.setter
+    def disable_all_notifications(self, value: Optional[pulumi.Input['SettingsEmailNotificationSettingsDisableAllNotificationsArgs']]):
+        pulumi.set(self, "disable_all_notifications", value)
+
+
+if not MYPY:
+    class SettingsEmailNotificationSettingsCustomNotificationBehaviorArgsDict(TypedDict):
+        admin_notifications: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgsDict']]
+        """
+        Email notifications specific to Requesters.
+        Structure is documented below.
+        """
+        approver_notifications: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgsDict']]
+        """
+        Email notifications specific to Approvers.
+        Structure is documented below.
+        """
+        requester_notifications: NotRequired[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgsDict']]
+        """
+        Email notifications specific to Requesters.
+        Structure is documented below.
+        """
+elif False:
+    SettingsEmailNotificationSettingsCustomNotificationBehaviorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs:
+    def __init__(__self__, *,
+                 admin_notifications: Optional[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs']] = None,
+                 approver_notifications: Optional[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs']] = None,
+                 requester_notifications: Optional[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs']] = None):
+        """
+        :param pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs'] admin_notifications: Email notifications specific to Requesters.
+               Structure is documented below.
+        :param pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs'] approver_notifications: Email notifications specific to Approvers.
+               Structure is documented below.
+        :param pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs'] requester_notifications: Email notifications specific to Requesters.
+               Structure is documented below.
+        """
+        if admin_notifications is not None:
+            pulumi.set(__self__, "admin_notifications", admin_notifications)
+        if approver_notifications is not None:
+            pulumi.set(__self__, "approver_notifications", approver_notifications)
+        if requester_notifications is not None:
+            pulumi.set(__self__, "requester_notifications", requester_notifications)
+
+    @_builtins.property
+    @pulumi.getter(name="adminNotifications")
+    def admin_notifications(self) -> Optional[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs']]:
+        """
+        Email notifications specific to Requesters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "admin_notifications")
+
+    @admin_notifications.setter
+    def admin_notifications(self, value: Optional[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs']]):
+        pulumi.set(self, "admin_notifications", value)
+
+    @_builtins.property
+    @pulumi.getter(name="approverNotifications")
+    def approver_notifications(self) -> Optional[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs']]:
+        """
+        Email notifications specific to Approvers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "approver_notifications")
+
+    @approver_notifications.setter
+    def approver_notifications(self, value: Optional[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs']]):
+        pulumi.set(self, "approver_notifications", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requesterNotifications")
+    def requester_notifications(self) -> Optional[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs']]:
+        """
+        Email notifications specific to Requesters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "requester_notifications")
+
+    @requester_notifications.setter
+    def requester_notifications(self, value: Optional[pulumi.Input['SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs']]):
+        pulumi.set(self, "requester_notifications", value)
+
+
+if not MYPY:
+    class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgsDict(TypedDict):
+        grant_activated: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for grant activated.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        grant_activation_failed: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for grant activation failed.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        grant_ended: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for grant ended.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        grant_externally_modified: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for grant externally modified.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+elif False:
+    SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs:
+    def __init__(__self__, *,
+                 grant_activated: Optional[pulumi.Input[_builtins.str]] = None,
+                 grant_activation_failed: Optional[pulumi.Input[_builtins.str]] = None,
+                 grant_ended: Optional[pulumi.Input[_builtins.str]] = None,
+                 grant_externally_modified: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] grant_activated: Notification mode for grant activated.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.str] grant_activation_failed: Notification mode for grant activation failed.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.str] grant_ended: Notification mode for grant ended.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.str] grant_externally_modified: Notification mode for grant externally modified.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        if grant_activated is not None:
+            pulumi.set(__self__, "grant_activated", grant_activated)
+        if grant_activation_failed is not None:
+            pulumi.set(__self__, "grant_activation_failed", grant_activation_failed)
+        if grant_ended is not None:
+            pulumi.set(__self__, "grant_ended", grant_ended)
+        if grant_externally_modified is not None:
+            pulumi.set(__self__, "grant_externally_modified", grant_externally_modified)
+
+    @_builtins.property
+    @pulumi.getter(name="grantActivated")
+    def grant_activated(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for grant activated.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "grant_activated")
+
+    @grant_activated.setter
+    def grant_activated(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grant_activated", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grantActivationFailed")
+    def grant_activation_failed(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for grant activation failed.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "grant_activation_failed")
+
+    @grant_activation_failed.setter
+    def grant_activation_failed(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grant_activation_failed", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grantEnded")
+    def grant_ended(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for grant ended.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "grant_ended")
+
+    @grant_ended.setter
+    def grant_ended(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grant_ended", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grantExternallyModified")
+    def grant_externally_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for grant externally modified.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "grant_externally_modified")
+
+    @grant_externally_modified.setter
+    def grant_externally_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grant_externally_modified", value)
+
+
+if not MYPY:
+    class SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgsDict(TypedDict):
+        pending_approval: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for pending approval.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+elif False:
+    SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs:
+    def __init__(__self__, *,
+                 pending_approval: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] pending_approval: Notification mode for pending approval.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        if pending_approval is not None:
+            pulumi.set(__self__, "pending_approval", pending_approval)
+
+    @_builtins.property
+    @pulumi.getter(name="pendingApproval")
+    def pending_approval(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for pending approval.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "pending_approval")
+
+    @pending_approval.setter
+    def pending_approval(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "pending_approval", value)
+
+
+if not MYPY:
+    class SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgsDict(TypedDict):
+        entitlement_assigned: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for entitlement assigned.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        grant_activated: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for grant activated.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        grant_activation_failed: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for grant activation failed.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        grant_denied: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for grant denied.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        grant_ended: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for grant ended.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        grant_expired: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for grant expired.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        grant_externally_modified: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for grant externally modified.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        grant_revoked: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Notification mode for grant revoked.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+elif False:
+    SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs:
+    def __init__(__self__, *,
+                 entitlement_assigned: Optional[pulumi.Input[_builtins.str]] = None,
+                 grant_activated: Optional[pulumi.Input[_builtins.str]] = None,
+                 grant_activation_failed: Optional[pulumi.Input[_builtins.str]] = None,
+                 grant_denied: Optional[pulumi.Input[_builtins.str]] = None,
+                 grant_ended: Optional[pulumi.Input[_builtins.str]] = None,
+                 grant_expired: Optional[pulumi.Input[_builtins.str]] = None,
+                 grant_externally_modified: Optional[pulumi.Input[_builtins.str]] = None,
+                 grant_revoked: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] entitlement_assigned: Notification mode for entitlement assigned.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.str] grant_activated: Notification mode for grant activated.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.str] grant_activation_failed: Notification mode for grant activation failed.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.str] grant_denied: Notification mode for grant denied.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.str] grant_ended: Notification mode for grant ended.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.str] grant_expired: Notification mode for grant expired.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.str] grant_externally_modified: Notification mode for grant externally modified.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        :param pulumi.Input[_builtins.str] grant_revoked: Notification mode for grant revoked.
+               Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        if entitlement_assigned is not None:
+            pulumi.set(__self__, "entitlement_assigned", entitlement_assigned)
+        if grant_activated is not None:
+            pulumi.set(__self__, "grant_activated", grant_activated)
+        if grant_activation_failed is not None:
+            pulumi.set(__self__, "grant_activation_failed", grant_activation_failed)
+        if grant_denied is not None:
+            pulumi.set(__self__, "grant_denied", grant_denied)
+        if grant_ended is not None:
+            pulumi.set(__self__, "grant_ended", grant_ended)
+        if grant_expired is not None:
+            pulumi.set(__self__, "grant_expired", grant_expired)
+        if grant_externally_modified is not None:
+            pulumi.set(__self__, "grant_externally_modified", grant_externally_modified)
+        if grant_revoked is not None:
+            pulumi.set(__self__, "grant_revoked", grant_revoked)
+
+    @_builtins.property
+    @pulumi.getter(name="entitlementAssigned")
+    def entitlement_assigned(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for entitlement assigned.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "entitlement_assigned")
+
+    @entitlement_assigned.setter
+    def entitlement_assigned(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "entitlement_assigned", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grantActivated")
+    def grant_activated(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for grant activated.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "grant_activated")
+
+    @grant_activated.setter
+    def grant_activated(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grant_activated", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grantActivationFailed")
+    def grant_activation_failed(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for grant activation failed.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "grant_activation_failed")
+
+    @grant_activation_failed.setter
+    def grant_activation_failed(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grant_activation_failed", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grantDenied")
+    def grant_denied(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for grant denied.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "grant_denied")
+
+    @grant_denied.setter
+    def grant_denied(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grant_denied", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grantEnded")
+    def grant_ended(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for grant ended.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "grant_ended")
+
+    @grant_ended.setter
+    def grant_ended(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grant_ended", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grantExpired")
+    def grant_expired(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for grant expired.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "grant_expired")
+
+    @grant_expired.setter
+    def grant_expired(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grant_expired", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grantExternallyModified")
+    def grant_externally_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for grant externally modified.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "grant_externally_modified")
+
+    @grant_externally_modified.setter
+    def grant_externally_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grant_externally_modified", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grantRevoked")
+    def grant_revoked(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Notification mode for grant revoked.
+        Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "grant_revoked")
+
+    @grant_revoked.setter
+    def grant_revoked(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grant_revoked", value)
+
+
+if not MYPY:
+    class SettingsEmailNotificationSettingsDisableAllNotificationsArgsDict(TypedDict):
+        pass
+elif False:
+    SettingsEmailNotificationSettingsDisableAllNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SettingsEmailNotificationSettingsDisableAllNotificationsArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class SettingsServiceAccountApproverSettingsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates whether service account is allowed to grant approvals.
+        """
+elif False:
+    SettingsServiceAccountApproverSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SettingsServiceAccountApproverSettingsArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Indicates whether service account is allowed to grant approvals.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether service account is allowed to grant approvals.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
 
 if not MYPY:
     class EntitlementAdditionalNotificationTargetsArgsDict(TypedDict):

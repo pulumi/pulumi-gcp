@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
+        /// Names of the containers that must start before this container.
+        /// </summary>
+        public readonly ImmutableArray<string> DependsOns;
+        /// <summary>
         /// List of environment variables to set in the container.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkerPoolTemplateContainerEnvResult> Envs;
@@ -60,6 +64,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             ImmutableArray<string> commands,
 
+            ImmutableArray<string> dependsOns,
+
             ImmutableArray<Outputs.GetWorkerPoolTemplateContainerEnvResult> envs,
 
             string image,
@@ -78,6 +84,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         {
             Args = args;
             Commands = commands;
+            DependsOns = dependsOns;
             Envs = envs;
             Image = image;
             LivenessProbes = livenessProbes;

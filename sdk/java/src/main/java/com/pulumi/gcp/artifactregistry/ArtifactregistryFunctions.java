@@ -29,6 +29,8 @@ import com.pulumi.gcp.artifactregistry.inputs.GetPackagesArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetPackagesPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagePlainArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoriesArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoriesPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
@@ -51,6 +53,7 @@ import com.pulumi.gcp.artifactregistry.outputs.GetNpmPackagesResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetPackageResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetPackagesResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetPythonPackageResult;
+import com.pulumi.gcp.artifactregistry.outputs.GetPythonPackagesResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoriesResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryIamPolicyResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryResult;
@@ -2686,6 +2689,221 @@ public final class ArtifactregistryFunctions {
      */
     public static CompletableFuture<GetPythonPackageResult> getPythonPackagePlain(GetPythonPackagePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getPythonPackage:getPythonPackage", TypeShape.of(GetPythonPackageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about Artifact Registry Python packages.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/python)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.pythonPackages/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPackages = ArtifactregistryFunctions.getPythonPackages(GetPythonPackagesArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPythonPackagesResult> getPythonPackages(GetPythonPackagesArgs args) {
+        return getPythonPackages(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about Artifact Registry Python packages.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/python)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.pythonPackages/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPackages = ArtifactregistryFunctions.getPythonPackages(GetPythonPackagesArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPythonPackagesResult> getPythonPackagesPlain(GetPythonPackagesPlainArgs args) {
+        return getPythonPackagesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about Artifact Registry Python packages.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/python)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.pythonPackages/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPackages = ArtifactregistryFunctions.getPythonPackages(GetPythonPackagesArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPythonPackagesResult> getPythonPackages(GetPythonPackagesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getPythonPackages:getPythonPackages", TypeShape.of(GetPythonPackagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about Artifact Registry Python packages.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/python)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.pythonPackages/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPackages = ArtifactregistryFunctions.getPythonPackages(GetPythonPackagesArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPythonPackagesResult> getPythonPackages(GetPythonPackagesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getPythonPackages:getPythonPackages", TypeShape.of(GetPythonPackagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about Artifact Registry Python packages.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/python)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.pythonPackages/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPackages = ArtifactregistryFunctions.getPythonPackages(GetPythonPackagesArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPythonPackagesResult> getPythonPackagesPlain(GetPythonPackagesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getPythonPackages:getPythonPackages", TypeShape.of(GetPythonPackagesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about Artifact Registry repositories.

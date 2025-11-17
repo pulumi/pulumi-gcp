@@ -11917,6 +11917,186 @@ func (o LbTrafficExtensionExtensionChainMatchConditionOutput) CelExpression() pu
 	return o.ApplyT(func(v LbTrafficExtensionExtensionChainMatchCondition) string { return v.CelExpression }).(pulumi.StringOutput)
 }
 
+type MulticastDomainConnectionConfig struct {
+	// The VPC connection type.
+	// Possible values:
+	// NCC
+	// SAME_VPC
+	ConnectionType string `pulumi:"connectionType"`
+	// The resource name of the
+	// [NCC](https://cloud.google.com/network-connectivity-center) hub.
+	// Use the following format:
+	// `projects/{project}/locations/global/hubs/{hub}`.
+	NccHub *string `pulumi:"nccHub"`
+}
+
+// MulticastDomainConnectionConfigInput is an input type that accepts MulticastDomainConnectionConfigArgs and MulticastDomainConnectionConfigOutput values.
+// You can construct a concrete instance of `MulticastDomainConnectionConfigInput` via:
+//
+//	MulticastDomainConnectionConfigArgs{...}
+type MulticastDomainConnectionConfigInput interface {
+	pulumi.Input
+
+	ToMulticastDomainConnectionConfigOutput() MulticastDomainConnectionConfigOutput
+	ToMulticastDomainConnectionConfigOutputWithContext(context.Context) MulticastDomainConnectionConfigOutput
+}
+
+type MulticastDomainConnectionConfigArgs struct {
+	// The VPC connection type.
+	// Possible values:
+	// NCC
+	// SAME_VPC
+	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
+	// The resource name of the
+	// [NCC](https://cloud.google.com/network-connectivity-center) hub.
+	// Use the following format:
+	// `projects/{project}/locations/global/hubs/{hub}`.
+	NccHub pulumi.StringPtrInput `pulumi:"nccHub"`
+}
+
+func (MulticastDomainConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastDomainConnectionConfig)(nil)).Elem()
+}
+
+func (i MulticastDomainConnectionConfigArgs) ToMulticastDomainConnectionConfigOutput() MulticastDomainConnectionConfigOutput {
+	return i.ToMulticastDomainConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i MulticastDomainConnectionConfigArgs) ToMulticastDomainConnectionConfigOutputWithContext(ctx context.Context) MulticastDomainConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainConnectionConfigOutput)
+}
+
+func (i MulticastDomainConnectionConfigArgs) ToMulticastDomainConnectionConfigPtrOutput() MulticastDomainConnectionConfigPtrOutput {
+	return i.ToMulticastDomainConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MulticastDomainConnectionConfigArgs) ToMulticastDomainConnectionConfigPtrOutputWithContext(ctx context.Context) MulticastDomainConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainConnectionConfigOutput).ToMulticastDomainConnectionConfigPtrOutputWithContext(ctx)
+}
+
+// MulticastDomainConnectionConfigPtrInput is an input type that accepts MulticastDomainConnectionConfigArgs, MulticastDomainConnectionConfigPtr and MulticastDomainConnectionConfigPtrOutput values.
+// You can construct a concrete instance of `MulticastDomainConnectionConfigPtrInput` via:
+//
+//	        MulticastDomainConnectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MulticastDomainConnectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToMulticastDomainConnectionConfigPtrOutput() MulticastDomainConnectionConfigPtrOutput
+	ToMulticastDomainConnectionConfigPtrOutputWithContext(context.Context) MulticastDomainConnectionConfigPtrOutput
+}
+
+type multicastDomainConnectionConfigPtrType MulticastDomainConnectionConfigArgs
+
+func MulticastDomainConnectionConfigPtr(v *MulticastDomainConnectionConfigArgs) MulticastDomainConnectionConfigPtrInput {
+	return (*multicastDomainConnectionConfigPtrType)(v)
+}
+
+func (*multicastDomainConnectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MulticastDomainConnectionConfig)(nil)).Elem()
+}
+
+func (i *multicastDomainConnectionConfigPtrType) ToMulticastDomainConnectionConfigPtrOutput() MulticastDomainConnectionConfigPtrOutput {
+	return i.ToMulticastDomainConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *multicastDomainConnectionConfigPtrType) ToMulticastDomainConnectionConfigPtrOutputWithContext(ctx context.Context) MulticastDomainConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainConnectionConfigPtrOutput)
+}
+
+type MulticastDomainConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (MulticastDomainConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastDomainConnectionConfig)(nil)).Elem()
+}
+
+func (o MulticastDomainConnectionConfigOutput) ToMulticastDomainConnectionConfigOutput() MulticastDomainConnectionConfigOutput {
+	return o
+}
+
+func (o MulticastDomainConnectionConfigOutput) ToMulticastDomainConnectionConfigOutputWithContext(ctx context.Context) MulticastDomainConnectionConfigOutput {
+	return o
+}
+
+func (o MulticastDomainConnectionConfigOutput) ToMulticastDomainConnectionConfigPtrOutput() MulticastDomainConnectionConfigPtrOutput {
+	return o.ToMulticastDomainConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MulticastDomainConnectionConfigOutput) ToMulticastDomainConnectionConfigPtrOutputWithContext(ctx context.Context) MulticastDomainConnectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MulticastDomainConnectionConfig) *MulticastDomainConnectionConfig {
+		return &v
+	}).(MulticastDomainConnectionConfigPtrOutput)
+}
+
+// The VPC connection type.
+// Possible values:
+// NCC
+// SAME_VPC
+func (o MulticastDomainConnectionConfigOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v MulticastDomainConnectionConfig) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+// The resource name of the
+// [NCC](https://cloud.google.com/network-connectivity-center) hub.
+// Use the following format:
+// `projects/{project}/locations/global/hubs/{hub}`.
+func (o MulticastDomainConnectionConfigOutput) NccHub() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastDomainConnectionConfig) *string { return v.NccHub }).(pulumi.StringPtrOutput)
+}
+
+type MulticastDomainConnectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MulticastDomainConnectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MulticastDomainConnectionConfig)(nil)).Elem()
+}
+
+func (o MulticastDomainConnectionConfigPtrOutput) ToMulticastDomainConnectionConfigPtrOutput() MulticastDomainConnectionConfigPtrOutput {
+	return o
+}
+
+func (o MulticastDomainConnectionConfigPtrOutput) ToMulticastDomainConnectionConfigPtrOutputWithContext(ctx context.Context) MulticastDomainConnectionConfigPtrOutput {
+	return o
+}
+
+func (o MulticastDomainConnectionConfigPtrOutput) Elem() MulticastDomainConnectionConfigOutput {
+	return o.ApplyT(func(v *MulticastDomainConnectionConfig) MulticastDomainConnectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MulticastDomainConnectionConfig
+		return ret
+	}).(MulticastDomainConnectionConfigOutput)
+}
+
+// The VPC connection type.
+// Possible values:
+// NCC
+// SAME_VPC
+func (o MulticastDomainConnectionConfigPtrOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MulticastDomainConnectionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the
+// [NCC](https://cloud.google.com/network-connectivity-center) hub.
+// Use the following format:
+// `projects/{project}/locations/global/hubs/{hub}`.
+func (o MulticastDomainConnectionConfigPtrOutput) NccHub() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MulticastDomainConnectionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NccHub
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceLbPoliciesAutoCapacityDrain struct {
 	// Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
 	Enable *bool `pulumi:"enable"`
@@ -13805,6 +13985,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainExtensionInput)(nil)).Elem(), LbTrafficExtensionExtensionChainExtensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainExtensionArrayInput)(nil)).Elem(), LbTrafficExtensionExtensionChainExtensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainMatchConditionInput)(nil)).Elem(), LbTrafficExtensionExtensionChainMatchConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainConnectionConfigInput)(nil)).Elem(), MulticastDomainConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainConnectionConfigPtrInput)(nil)).Elem(), MulticastDomainConnectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesAutoCapacityDrainInput)(nil)).Elem(), ServiceLbPoliciesAutoCapacityDrainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesAutoCapacityDrainPtrInput)(nil)).Elem(), ServiceLbPoliciesAutoCapacityDrainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesFailoverConfigInput)(nil)).Elem(), ServiceLbPoliciesFailoverConfigArgs{})
@@ -13969,6 +14151,8 @@ func init() {
 	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainExtensionOutput{})
 	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainExtensionArrayOutput{})
 	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainMatchConditionOutput{})
+	pulumi.RegisterOutputType(MulticastDomainConnectionConfigOutput{})
+	pulumi.RegisterOutputType(MulticastDomainConnectionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceLbPoliciesAutoCapacityDrainOutput{})
 	pulumi.RegisterOutputType(ServiceLbPoliciesAutoCapacityDrainPtrOutput{})
 	pulumi.RegisterOutputType(ServiceLbPoliciesFailoverConfigOutput{})

@@ -13673,6 +13673,8 @@ type WorkerPoolTemplateContainer struct {
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
+	// Names of the containers that must start before this container.
+	DependsOns []string `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs []WorkerPoolTemplateContainerEnv `pulumi:"envs"`
@@ -13712,6 +13714,8 @@ type WorkerPoolTemplateContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Names of the containers that must start before this container.
+	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs WorkerPoolTemplateContainerEnvArrayInput `pulumi:"envs"`
@@ -13794,6 +13798,11 @@ func (o WorkerPoolTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 // Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o WorkerPoolTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkerPoolTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// Names of the containers that must start before this container.
+func (o WorkerPoolTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
 // List of environment variables to set in the container.
@@ -27391,6 +27400,8 @@ type GetWorkerPoolTemplateContainer struct {
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
+	// Names of the containers that must start before this container.
+	DependsOns []string `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	Envs []GetWorkerPoolTemplateContainerEnv `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
@@ -27425,6 +27436,8 @@ type GetWorkerPoolTemplateContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Names of the containers that must start before this container.
+	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	Envs GetWorkerPoolTemplateContainerEnvArrayInput `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
@@ -27502,6 +27515,11 @@ func (o GetWorkerPoolTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 // Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o GetWorkerPoolTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// Names of the containers that must start before this container.
+func (o GetWorkerPoolTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
 // List of environment variables to set in the container.

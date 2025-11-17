@@ -77,15 +77,15 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const bigDataJobSubscriptionId = config.get("bigDataJobSubscriptionId") || "projects/myproject/subscriptions/messages";
- * const bigDataJobNameSuffix = new random.index.Id("big_data_job_name_suffix", {
+ * const bigDataJobNameSuffix = new random.RandomId("big_data_job_name_suffix", {
  *     byteLength: 4,
  *     keepers: {
  *         region: region,
- *         subscriptionId: bigDataJobSubscriptionId,
+ *         subscription_id: bigDataJobSubscriptionId,
  *     },
  * });
  * const bigDataJob = new gcp.dataflow.FlexTemplateJob("big_data_job", {
- *     name: `dataflow-flextemplates-job-${bigDataJobNameSuffix.dec}`,
+ *     name: pulumi.interpolate`dataflow-flextemplates-job-${bigDataJobNameSuffix.dec}`,
  *     region: region,
  *     containerSpecGcsPath: "gs://my-bucket/templates/template.json",
  *     skipWaitOnJobTermination: true,

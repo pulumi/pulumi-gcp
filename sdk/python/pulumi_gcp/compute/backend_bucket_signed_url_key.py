@@ -199,7 +199,7 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        url_signature = random.index.Id("url_signature", byte_length=16)
+        url_signature = random.RandomId("url_signature", byte_length=16)
         bucket = gcp.storage.Bucket("bucket",
             name="test-storage-bucket",
             location="EU")
@@ -210,7 +210,7 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
             enable_cdn=True)
         backend_key = gcp.compute.BackendBucketSignedUrlKey("backend_key",
             name="test-key",
-            key_value=url_signature["b64Url"],
+            key_value=url_signature.b64_url,
             backend_bucket=test_backend.name)
         ```
 
@@ -252,7 +252,7 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        url_signature = random.index.Id("url_signature", byte_length=16)
+        url_signature = random.RandomId("url_signature", byte_length=16)
         bucket = gcp.storage.Bucket("bucket",
             name="test-storage-bucket",
             location="EU")
@@ -263,7 +263,7 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
             enable_cdn=True)
         backend_key = gcp.compute.BackendBucketSignedUrlKey("backend_key",
             name="test-key",
-            key_value=url_signature["b64Url"],
+            key_value=url_signature.b64_url,
             backend_bucket=test_backend.name)
         ```
 

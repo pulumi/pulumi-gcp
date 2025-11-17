@@ -155,6 +155,8 @@ __all__ = [
     'LbTrafficExtensionExtensionChainExtensionArgsDict',
     'LbTrafficExtensionExtensionChainMatchConditionArgs',
     'LbTrafficExtensionExtensionChainMatchConditionArgsDict',
+    'MulticastDomainConnectionConfigArgs',
+    'MulticastDomainConnectionConfigArgsDict',
     'ServiceLbPoliciesAutoCapacityDrainArgs',
     'ServiceLbPoliciesAutoCapacityDrainArgsDict',
     'ServiceLbPoliciesFailoverConfigArgs',
@@ -6489,6 +6491,75 @@ class LbTrafficExtensionExtensionChainMatchConditionArgs:
     @cel_expression.setter
     def cel_expression(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "cel_expression", value)
+
+
+if not MYPY:
+    class MulticastDomainConnectionConfigArgsDict(TypedDict):
+        connection_type: pulumi.Input[_builtins.str]
+        """
+        The VPC connection type.
+        Possible values:
+        NCC
+        SAME_VPC
+        """
+        ncc_hub: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The resource name of the
+        [NCC](https://cloud.google.com/network-connectivity-center) hub.
+        Use the following format:
+        `projects/{project}/locations/global/hubs/{hub}`.
+        """
+elif False:
+    MulticastDomainConnectionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastDomainConnectionConfigArgs:
+    def __init__(__self__, *,
+                 connection_type: pulumi.Input[_builtins.str],
+                 ncc_hub: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] connection_type: The VPC connection type.
+               Possible values:
+               NCC
+               SAME_VPC
+        :param pulumi.Input[_builtins.str] ncc_hub: The resource name of the
+               [NCC](https://cloud.google.com/network-connectivity-center) hub.
+               Use the following format:
+               `projects/{project}/locations/global/hubs/{hub}`.
+        """
+        pulumi.set(__self__, "connection_type", connection_type)
+        if ncc_hub is not None:
+            pulumi.set(__self__, "ncc_hub", ncc_hub)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The VPC connection type.
+        Possible values:
+        NCC
+        SAME_VPC
+        """
+        return pulumi.get(self, "connection_type")
+
+    @connection_type.setter
+    def connection_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "connection_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nccHub")
+    def ncc_hub(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource name of the
+        [NCC](https://cloud.google.com/network-connectivity-center) hub.
+        Use the following format:
+        `projects/{project}/locations/global/hubs/{hub}`.
+        """
+        return pulumi.get(self, "ncc_hub")
+
+    @ncc_hub.setter
+    def ncc_hub(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ncc_hub", value)
 
 
 if not MYPY:

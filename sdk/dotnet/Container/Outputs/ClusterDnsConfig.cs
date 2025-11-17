@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? AdditiveVpcScopeDnsDomain;
         /// <summary>
-        /// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+        /// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
         /// </summary>
         public readonly string? ClusterDns;
         /// <summary>

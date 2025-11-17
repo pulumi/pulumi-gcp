@@ -17,6 +17,7 @@ from .http_route import *
 from .lb_route_extension import *
 from .lb_traffic_extension import *
 from .mesh import *
+from .multicast_domain import *
 from .service_binding import *
 from .service_lb_policies import *
 from .tcp_route import *

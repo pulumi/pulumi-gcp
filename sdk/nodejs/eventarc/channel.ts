@@ -94,6 +94,16 @@ export class Channel extends pulumi.CustomResource {
      */
     declare public readonly cryptoKeyName: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * User-defined labels for the channel.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The location for the resource
      */
     declare public readonly location: pulumi.Output<string>;
@@ -110,6 +120,11 @@ export class Channel extends pulumi.CustomResource {
      * The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
      */
     declare public /*out*/ readonly pubsubTopic: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The state of a Channel.
      */
@@ -143,10 +158,13 @@ export class Channel extends pulumi.CustomResource {
             resourceInputs["activationToken"] = state?.activationToken;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["cryptoKeyName"] = state?.cryptoKeyName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pubsubTopic"] = state?.pubsubTopic;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["state"] = state?.state;
             resourceInputs["thirdPartyProvider"] = state?.thirdPartyProvider;
             resourceInputs["uid"] = state?.uid;
@@ -157,18 +175,23 @@ export class Channel extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["cryptoKeyName"] = args?.cryptoKeyName;
+            resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["thirdPartyProvider"] = args?.thirdPartyProvider;
             resourceInputs["activationToken"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pubsubTopic"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Channel.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -190,6 +213,16 @@ export interface ChannelState {
      */
     cryptoKeyName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * User-defined labels for the channel.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The location for the resource
      */
     location?: pulumi.Input<string>;
@@ -206,6 +239,11 @@ export interface ChannelState {
      * The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
      */
     pubsubTopic?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The state of a Channel.
      */
@@ -232,6 +270,12 @@ export interface ChannelArgs {
      * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
     cryptoKeyName?: pulumi.Input<string>;
+    /**
+     * User-defined labels for the channel.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource
      */

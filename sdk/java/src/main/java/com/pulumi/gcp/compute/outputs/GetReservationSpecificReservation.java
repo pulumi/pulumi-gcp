@@ -14,6 +14,11 @@ import java.util.Objects;
 @CustomType
 public final class GetReservationSpecificReservation {
     /**
+     * @return Indicates how many instances are actually usable currently.
+     * 
+     */
+    private Integer assuredCount;
+    /**
      * @return The number of resources that are allocated.
      * 
      */
@@ -36,6 +41,13 @@ public final class GetReservationSpecificReservation {
     private String sourceInstanceTemplate;
 
     private GetReservationSpecificReservation() {}
+    /**
+     * @return Indicates how many instances are actually usable currently.
+     * 
+     */
+    public Integer assuredCount() {
+        return this.assuredCount;
+    }
     /**
      * @return The number of resources that are allocated.
      * 
@@ -75,6 +87,7 @@ public final class GetReservationSpecificReservation {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer assuredCount;
         private Integer count;
         private Integer inUseCount;
         private List<GetReservationSpecificReservationInstanceProperty> instanceProperties;
@@ -82,12 +95,21 @@ public final class GetReservationSpecificReservation {
         public Builder() {}
         public Builder(GetReservationSpecificReservation defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.assuredCount = defaults.assuredCount;
     	      this.count = defaults.count;
     	      this.inUseCount = defaults.inUseCount;
     	      this.instanceProperties = defaults.instanceProperties;
     	      this.sourceInstanceTemplate = defaults.sourceInstanceTemplate;
         }
 
+        @CustomType.Setter
+        public Builder assuredCount(Integer assuredCount) {
+            if (assuredCount == null) {
+              throw new MissingRequiredPropertyException("GetReservationSpecificReservation", "assuredCount");
+            }
+            this.assuredCount = assuredCount;
+            return this;
+        }
         @CustomType.Setter
         public Builder count(Integer count) {
             if (count == null) {
@@ -125,6 +147,7 @@ public final class GetReservationSpecificReservation {
         }
         public GetReservationSpecificReservation build() {
             final var _resultValue = new GetReservationSpecificReservation();
+            _resultValue.assuredCount = assuredCount;
             _resultValue.count = count;
             _resultValue.inUseCount = inUseCount;
             _resultValue.instanceProperties = instanceProperties;

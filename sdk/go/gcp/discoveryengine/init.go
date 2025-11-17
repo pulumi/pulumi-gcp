@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ChatEngine{}
 	case "gcp:discoveryengine/cmekConfig:CmekConfig":
 		r = &CmekConfig{}
+	case "gcp:discoveryengine/control:Control":
+		r = &Control{}
 	case "gcp:discoveryengine/dataConnector:DataConnector":
 		r = &DataConnector{}
 	case "gcp:discoveryengine/dataStore:DataStore":
@@ -45,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Sitemap{}
 	case "gcp:discoveryengine/targetSite:TargetSite":
 		r = &TargetSite{}
+	case "gcp:discoveryengine/userStore:UserStore":
+		r = &UserStore{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -76,6 +80,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"discoveryengine/cmekConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"discoveryengine/control",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -116,6 +125,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"discoveryengine/targetSite",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"discoveryengine/userStore",
 		&module{version},
 	)
 }

@@ -107,7 +107,7 @@ version = "2.2.0"
 backend = "vfox-pulumi:pulumi/pulumi-std"
 
 [[tools."vfox-pulumi:pulumi/pulumi-tls"]]
-version = "5.2.2"
+version = "5.2.3"
 backend = "vfox-pulumi:pulumi/pulumi-tls"
 
 [[tools."vfox-pulumi:pulumiverse/pulumi-time"]]

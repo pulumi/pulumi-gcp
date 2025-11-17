@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class ReservationSpecificReservationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
+        /// Indicates how many instances are actually usable currently.
+        /// </summary>
+        [Input("assuredCount")]
+        public Input<int>? AssuredCount { get; set; }
+
+        /// <summary>
         /// The number of resources that are allocated.
         /// </summary>
         [Input("count", required: true)]

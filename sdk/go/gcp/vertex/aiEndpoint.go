@@ -142,6 +142,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -150,12 +151,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("psc-network-_37135"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-//				Name:        pulumi.String("endpoint-name_32270"),
+//				Name:        pulumi.String("endpoint-name_42503"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),
@@ -167,6 +174,12 @@ import (
 //					EnablePrivateServiceConnect: pulumi.Bool(true),
 //					ProjectAllowlists: pulumi.StringArray{
 //						pulumi.String(project.ProjectId),
+//					},
+//					PscAutomationConfigs: vertex.AiEndpointPrivateServiceConnectConfigPscAutomationConfigArray{
+//						&vertex.AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs{
+//							ProjectId: pulumi.String(project.ProjectId),
+//							Network:   _default.ID(),
+//						},
 //					},
 //				},
 //			})
@@ -194,7 +207,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-//				Name:        pulumi.String("endpoint-name_44703"),
+//				Name:        pulumi.String("endpoint-name_9991"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),

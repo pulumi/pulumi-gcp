@@ -25,6 +25,11 @@ public final class GetReservationSpecificReservationInstanceProperty {
      */
     private List<GetReservationSpecificReservationInstancePropertyLocalSsd> localSsds;
     /**
+     * @return An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+     * 
+     */
+    private String locationHint;
+    /**
      * @return The name of the machine type to reserve.
      * 
      */
@@ -58,6 +63,13 @@ public final class GetReservationSpecificReservationInstanceProperty {
      */
     public List<GetReservationSpecificReservationInstancePropertyLocalSsd> localSsds() {
         return this.localSsds;
+    }
+    /**
+     * @return An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+     * 
+     */
+    public String locationHint() {
+        return this.locationHint;
     }
     /**
      * @return The name of the machine type to reserve.
@@ -95,6 +107,7 @@ public final class GetReservationSpecificReservationInstanceProperty {
     public static final class Builder {
         private List<GetReservationSpecificReservationInstancePropertyGuestAccelerator> guestAccelerators;
         private List<GetReservationSpecificReservationInstancePropertyLocalSsd> localSsds;
+        private String locationHint;
         private String machineType;
         private String maintenanceInterval;
         private String minCpuPlatform;
@@ -103,6 +116,7 @@ public final class GetReservationSpecificReservationInstanceProperty {
     	      Objects.requireNonNull(defaults);
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.localSsds = defaults.localSsds;
+    	      this.locationHint = defaults.locationHint;
     	      this.machineType = defaults.machineType;
     	      this.maintenanceInterval = defaults.maintenanceInterval;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
@@ -129,6 +143,14 @@ public final class GetReservationSpecificReservationInstanceProperty {
         }
         public Builder localSsds(GetReservationSpecificReservationInstancePropertyLocalSsd... localSsds) {
             return localSsds(List.of(localSsds));
+        }
+        @CustomType.Setter
+        public Builder locationHint(String locationHint) {
+            if (locationHint == null) {
+              throw new MissingRequiredPropertyException("GetReservationSpecificReservationInstanceProperty", "locationHint");
+            }
+            this.locationHint = locationHint;
+            return this;
         }
         @CustomType.Setter
         public Builder machineType(String machineType) {
@@ -158,6 +180,7 @@ public final class GetReservationSpecificReservationInstanceProperty {
             final var _resultValue = new GetReservationSpecificReservationInstanceProperty();
             _resultValue.guestAccelerators = guestAccelerators;
             _resultValue.localSsds = localSsds;
+            _resultValue.locationHint = locationHint;
             _resultValue.machineType = machineType;
             _resultValue.maintenanceInterval = maintenanceInterval;
             _resultValue.minCpuPlatform = minCpuPlatform;

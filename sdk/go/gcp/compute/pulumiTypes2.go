@@ -13,6 +13,540 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicy struct {
+	// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
+	DefaultActionOnFailure string `pulumi:"defaultActionOnFailure"`
+	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+	ForceUpdateOnRepair string `pulumi:"forceUpdateOnRepair"`
+	// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "defaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+	OnFailedHealthCheck string `pulumi:"onFailedHealthCheck"`
+	// Configuration for VM repairs in the MIG.
+	OnRepairs []GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair `pulumi:"onRepairs"`
+}
+
+// GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput is an input type that accepts GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs and GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs{...}
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput
+	ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs struct {
+	// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
+	DefaultActionOnFailure pulumi.StringInput `pulumi:"defaultActionOnFailure"`
+	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+	ForceUpdateOnRepair pulumi.StringInput `pulumi:"forceUpdateOnRepair"`
+	// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "defaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+	OnFailedHealthCheck pulumi.StringInput `pulumi:"onFailedHealthCheck"`
+	// Configuration for VM repairs in the MIG.
+	OnRepairs GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayInput `pulumi:"onRepairs"`
+}
+
+func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput)
+}
+
+// GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayInput is an input type that accepts GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray and GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray{ GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs{...} }
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput
+	ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray []GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput
+
+func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceLifecyclePolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return o
+}
+
+// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) DefaultActionOnFailure() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceLifecyclePolicy) string { return v.DefaultActionOnFailure }).(pulumi.StringOutput)
+}
+
+// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) ForceUpdateOnRepair() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceLifecyclePolicy) string { return v.ForceUpdateOnRepair }).(pulumi.StringOutput)
+}
+
+// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "defaultActionOnFailure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) OnFailedHealthCheck() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceLifecyclePolicy) string { return v.OnFailedHealthCheck }).(pulumi.StringOutput)
+}
+
+// Configuration for VM repairs in the MIG.
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) OnRepairs() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceLifecyclePolicy) []GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair {
+		return v.OnRepairs
+	}).(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceLifecyclePolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerInstanceLifecyclePolicy {
+		return vs[0].([]GetRegionInstanceGroupManagerInstanceLifecyclePolicy)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair struct {
+	// Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allowChangingZone is "NO".
+	AllowChangingZone string `pulumi:"allowChangingZone"`
+}
+
+// GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput is an input type that accepts GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs and GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs{...}
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput
+	ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs struct {
+	// Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allowChangingZone is "NO".
+	AllowChangingZone pulumi.StringInput `pulumi:"allowChangingZone"`
+}
+
+func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput)
+}
+
+// GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayInput is an input type that accepts GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray and GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray{ GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs{...} }
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput
+	ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray []GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput
+
+func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput {
+	return o
+}
+
+// Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allowChangingZone is "NO".
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput) AllowChangingZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair) string {
+		return v.AllowChangingZone
+	}).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair {
+		return vs[0].([]GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput)
+}
+
+type GetRegionInstanceGroupManagerNamedPort struct {
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name string `pulumi:"name"`
+	// The port number.
+	Port int `pulumi:"port"`
+}
+
+// GetRegionInstanceGroupManagerNamedPortInput is an input type that accepts GetRegionInstanceGroupManagerNamedPortArgs and GetRegionInstanceGroupManagerNamedPortOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerNamedPortInput` via:
+//
+//	GetRegionInstanceGroupManagerNamedPortArgs{...}
+type GetRegionInstanceGroupManagerNamedPortInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerNamedPortOutput() GetRegionInstanceGroupManagerNamedPortOutput
+	ToGetRegionInstanceGroupManagerNamedPortOutputWithContext(context.Context) GetRegionInstanceGroupManagerNamedPortOutput
+}
+
+type GetRegionInstanceGroupManagerNamedPortArgs struct {
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The port number.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetRegionInstanceGroupManagerNamedPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerNamedPort)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerNamedPortArgs) ToGetRegionInstanceGroupManagerNamedPortOutput() GetRegionInstanceGroupManagerNamedPortOutput {
+	return i.ToGetRegionInstanceGroupManagerNamedPortOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerNamedPortArgs) ToGetRegionInstanceGroupManagerNamedPortOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerNamedPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerNamedPortOutput)
+}
+
+// GetRegionInstanceGroupManagerNamedPortArrayInput is an input type that accepts GetRegionInstanceGroupManagerNamedPortArray and GetRegionInstanceGroupManagerNamedPortArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerNamedPortArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerNamedPortArray{ GetRegionInstanceGroupManagerNamedPortArgs{...} }
+type GetRegionInstanceGroupManagerNamedPortArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerNamedPortArrayOutput() GetRegionInstanceGroupManagerNamedPortArrayOutput
+	ToGetRegionInstanceGroupManagerNamedPortArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerNamedPortArrayOutput
+}
+
+type GetRegionInstanceGroupManagerNamedPortArray []GetRegionInstanceGroupManagerNamedPortInput
+
+func (GetRegionInstanceGroupManagerNamedPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerNamedPort)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerNamedPortArray) ToGetRegionInstanceGroupManagerNamedPortArrayOutput() GetRegionInstanceGroupManagerNamedPortArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerNamedPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerNamedPortArray) ToGetRegionInstanceGroupManagerNamedPortArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerNamedPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerNamedPortArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerNamedPortOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerNamedPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerNamedPort)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerNamedPortOutput) ToGetRegionInstanceGroupManagerNamedPortOutput() GetRegionInstanceGroupManagerNamedPortOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerNamedPortOutput) ToGetRegionInstanceGroupManagerNamedPortOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerNamedPortOutput {
+	return o
+}
+
+// The name of the instance group. Either `name` or `selfLink` must be provided.
+func (o GetRegionInstanceGroupManagerNamedPortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerNamedPort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port number.
+func (o GetRegionInstanceGroupManagerNamedPortOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerNamedPort) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetRegionInstanceGroupManagerNamedPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerNamedPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerNamedPort)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerNamedPortArrayOutput) ToGetRegionInstanceGroupManagerNamedPortArrayOutput() GetRegionInstanceGroupManagerNamedPortArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerNamedPortArrayOutput) ToGetRegionInstanceGroupManagerNamedPortArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerNamedPortArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerNamedPortArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerNamedPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerNamedPort {
+		return vs[0].([]GetRegionInstanceGroupManagerNamedPort)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerNamedPortOutput)
+}
+
+type GetRegionInstanceGroupManagerParam struct {
+	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetRegionInstanceGroupManagerParamInput is an input type that accepts GetRegionInstanceGroupManagerParamArgs and GetRegionInstanceGroupManagerParamOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerParamInput` via:
+//
+//	GetRegionInstanceGroupManagerParamArgs{...}
+type GetRegionInstanceGroupManagerParamInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerParamOutput() GetRegionInstanceGroupManagerParamOutput
+	ToGetRegionInstanceGroupManagerParamOutputWithContext(context.Context) GetRegionInstanceGroupManagerParamOutput
+}
+
+type GetRegionInstanceGroupManagerParamArgs struct {
+	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetRegionInstanceGroupManagerParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerParamArgs) ToGetRegionInstanceGroupManagerParamOutput() GetRegionInstanceGroupManagerParamOutput {
+	return i.ToGetRegionInstanceGroupManagerParamOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerParamArgs) ToGetRegionInstanceGroupManagerParamOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerParamOutput)
+}
+
+// GetRegionInstanceGroupManagerParamArrayInput is an input type that accepts GetRegionInstanceGroupManagerParamArray and GetRegionInstanceGroupManagerParamArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerParamArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerParamArray{ GetRegionInstanceGroupManagerParamArgs{...} }
+type GetRegionInstanceGroupManagerParamArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerParamArrayOutput() GetRegionInstanceGroupManagerParamArrayOutput
+	ToGetRegionInstanceGroupManagerParamArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerParamArrayOutput
+}
+
+type GetRegionInstanceGroupManagerParamArray []GetRegionInstanceGroupManagerParamInput
+
+func (GetRegionInstanceGroupManagerParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerParamArray) ToGetRegionInstanceGroupManagerParamArrayOutput() GetRegionInstanceGroupManagerParamArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerParamArray) ToGetRegionInstanceGroupManagerParamArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerParamArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerParamOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerParamOutput) ToGetRegionInstanceGroupManagerParamOutput() GetRegionInstanceGroupManagerParamOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerParamOutput) ToGetRegionInstanceGroupManagerParamOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerParamOutput {
+	return o
+}
+
+// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+func (o GetRegionInstanceGroupManagerParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetRegionInstanceGroupManagerParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerParamArrayOutput) ToGetRegionInstanceGroupManagerParamArrayOutput() GetRegionInstanceGroupManagerParamArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerParamArrayOutput) ToGetRegionInstanceGroupManagerParamArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerParamArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerParamArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerParam {
+		return vs[0].([]GetRegionInstanceGroupManagerParam)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerParamOutput)
+}
+
+type GetRegionInstanceGroupManagerStandbyPolicy struct {
+	// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+	InitialDelaySec int `pulumi:"initialDelaySec"`
+	// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+	Mode string `pulumi:"mode"`
+}
+
+// GetRegionInstanceGroupManagerStandbyPolicyInput is an input type that accepts GetRegionInstanceGroupManagerStandbyPolicyArgs and GetRegionInstanceGroupManagerStandbyPolicyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStandbyPolicyInput` via:
+//
+//	GetRegionInstanceGroupManagerStandbyPolicyArgs{...}
+type GetRegionInstanceGroupManagerStandbyPolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStandbyPolicyOutput() GetRegionInstanceGroupManagerStandbyPolicyOutput
+	ToGetRegionInstanceGroupManagerStandbyPolicyOutputWithContext(context.Context) GetRegionInstanceGroupManagerStandbyPolicyOutput
+}
+
+type GetRegionInstanceGroupManagerStandbyPolicyArgs struct {
+	// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+	InitialDelaySec pulumi.IntInput `pulumi:"initialDelaySec"`
+	// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetRegionInstanceGroupManagerStandbyPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStandbyPolicyArgs) ToGetRegionInstanceGroupManagerStandbyPolicyOutput() GetRegionInstanceGroupManagerStandbyPolicyOutput {
+	return i.ToGetRegionInstanceGroupManagerStandbyPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStandbyPolicyArgs) ToGetRegionInstanceGroupManagerStandbyPolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStandbyPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStandbyPolicyOutput)
+}
+
+// GetRegionInstanceGroupManagerStandbyPolicyArrayInput is an input type that accepts GetRegionInstanceGroupManagerStandbyPolicyArray and GetRegionInstanceGroupManagerStandbyPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStandbyPolicyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStandbyPolicyArray{ GetRegionInstanceGroupManagerStandbyPolicyArgs{...} }
+type GetRegionInstanceGroupManagerStandbyPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutput() GetRegionInstanceGroupManagerStandbyPolicyArrayOutput
+	ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStandbyPolicyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStandbyPolicyArray []GetRegionInstanceGroupManagerStandbyPolicyInput
+
+func (GetRegionInstanceGroupManagerStandbyPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStandbyPolicyArray) ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutput() GetRegionInstanceGroupManagerStandbyPolicyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStandbyPolicyArray) ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStandbyPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStandbyPolicyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStandbyPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStandbyPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStandbyPolicyOutput) ToGetRegionInstanceGroupManagerStandbyPolicyOutput() GetRegionInstanceGroupManagerStandbyPolicyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStandbyPolicyOutput) ToGetRegionInstanceGroupManagerStandbyPolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStandbyPolicyOutput {
+	return o
+}
+
+// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+func (o GetRegionInstanceGroupManagerStandbyPolicyOutput) InitialDelaySec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStandbyPolicy) int { return v.InitialDelaySec }).(pulumi.IntOutput)
+}
+
+// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+func (o GetRegionInstanceGroupManagerStandbyPolicyOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStandbyPolicy) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerStandbyPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStandbyPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStandbyPolicyArrayOutput) ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutput() GetRegionInstanceGroupManagerStandbyPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStandbyPolicyArrayOutput) ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStandbyPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStandbyPolicyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStandbyPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStandbyPolicy {
+		return vs[0].([]GetRegionInstanceGroupManagerStandbyPolicy)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStandbyPolicyOutput)
+}
+
 type GetRegionInstanceGroupManagerStatefulDisk struct {
 	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
 	DeleteRule string `pulumi:"deleteRule"`
@@ -5213,6 +5747,378 @@ func (o GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput) Index(i pu
 	}).(GetRegionNetworkEndpointGroupServerlessDeploymentOutput)
 }
 
+type GetReservationBlockHealthInfo struct {
+	// The number of sub-blocks that are degraded.
+	DegradedSubBlockCount int `pulumi:"degradedSubBlockCount"`
+	// The health status of the reservation block.
+	HealthStatus string `pulumi:"healthStatus"`
+	// The number of sub-blocks that are healthy.
+	HealthySubBlockCount int `pulumi:"healthySubBlockCount"`
+}
+
+// GetReservationBlockHealthInfoInput is an input type that accepts GetReservationBlockHealthInfoArgs and GetReservationBlockHealthInfoOutput values.
+// You can construct a concrete instance of `GetReservationBlockHealthInfoInput` via:
+//
+//	GetReservationBlockHealthInfoArgs{...}
+type GetReservationBlockHealthInfoInput interface {
+	pulumi.Input
+
+	ToGetReservationBlockHealthInfoOutput() GetReservationBlockHealthInfoOutput
+	ToGetReservationBlockHealthInfoOutputWithContext(context.Context) GetReservationBlockHealthInfoOutput
+}
+
+type GetReservationBlockHealthInfoArgs struct {
+	// The number of sub-blocks that are degraded.
+	DegradedSubBlockCount pulumi.IntInput `pulumi:"degradedSubBlockCount"`
+	// The health status of the reservation block.
+	HealthStatus pulumi.StringInput `pulumi:"healthStatus"`
+	// The number of sub-blocks that are healthy.
+	HealthySubBlockCount pulumi.IntInput `pulumi:"healthySubBlockCount"`
+}
+
+func (GetReservationBlockHealthInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationBlockHealthInfo)(nil)).Elem()
+}
+
+func (i GetReservationBlockHealthInfoArgs) ToGetReservationBlockHealthInfoOutput() GetReservationBlockHealthInfoOutput {
+	return i.ToGetReservationBlockHealthInfoOutputWithContext(context.Background())
+}
+
+func (i GetReservationBlockHealthInfoArgs) ToGetReservationBlockHealthInfoOutputWithContext(ctx context.Context) GetReservationBlockHealthInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationBlockHealthInfoOutput)
+}
+
+// GetReservationBlockHealthInfoArrayInput is an input type that accepts GetReservationBlockHealthInfoArray and GetReservationBlockHealthInfoArrayOutput values.
+// You can construct a concrete instance of `GetReservationBlockHealthInfoArrayInput` via:
+//
+//	GetReservationBlockHealthInfoArray{ GetReservationBlockHealthInfoArgs{...} }
+type GetReservationBlockHealthInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationBlockHealthInfoArrayOutput() GetReservationBlockHealthInfoArrayOutput
+	ToGetReservationBlockHealthInfoArrayOutputWithContext(context.Context) GetReservationBlockHealthInfoArrayOutput
+}
+
+type GetReservationBlockHealthInfoArray []GetReservationBlockHealthInfoInput
+
+func (GetReservationBlockHealthInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationBlockHealthInfo)(nil)).Elem()
+}
+
+func (i GetReservationBlockHealthInfoArray) ToGetReservationBlockHealthInfoArrayOutput() GetReservationBlockHealthInfoArrayOutput {
+	return i.ToGetReservationBlockHealthInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationBlockHealthInfoArray) ToGetReservationBlockHealthInfoArrayOutputWithContext(ctx context.Context) GetReservationBlockHealthInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationBlockHealthInfoArrayOutput)
+}
+
+type GetReservationBlockHealthInfoOutput struct{ *pulumi.OutputState }
+
+func (GetReservationBlockHealthInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationBlockHealthInfo)(nil)).Elem()
+}
+
+func (o GetReservationBlockHealthInfoOutput) ToGetReservationBlockHealthInfoOutput() GetReservationBlockHealthInfoOutput {
+	return o
+}
+
+func (o GetReservationBlockHealthInfoOutput) ToGetReservationBlockHealthInfoOutputWithContext(ctx context.Context) GetReservationBlockHealthInfoOutput {
+	return o
+}
+
+// The number of sub-blocks that are degraded.
+func (o GetReservationBlockHealthInfoOutput) DegradedSubBlockCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationBlockHealthInfo) int { return v.DegradedSubBlockCount }).(pulumi.IntOutput)
+}
+
+// The health status of the reservation block.
+func (o GetReservationBlockHealthInfoOutput) HealthStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationBlockHealthInfo) string { return v.HealthStatus }).(pulumi.StringOutput)
+}
+
+// The number of sub-blocks that are healthy.
+func (o GetReservationBlockHealthInfoOutput) HealthySubBlockCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationBlockHealthInfo) int { return v.HealthySubBlockCount }).(pulumi.IntOutput)
+}
+
+type GetReservationBlockHealthInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationBlockHealthInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationBlockHealthInfo)(nil)).Elem()
+}
+
+func (o GetReservationBlockHealthInfoArrayOutput) ToGetReservationBlockHealthInfoArrayOutput() GetReservationBlockHealthInfoArrayOutput {
+	return o
+}
+
+func (o GetReservationBlockHealthInfoArrayOutput) ToGetReservationBlockHealthInfoArrayOutputWithContext(ctx context.Context) GetReservationBlockHealthInfoArrayOutput {
+	return o
+}
+
+func (o GetReservationBlockHealthInfoArrayOutput) Index(i pulumi.IntInput) GetReservationBlockHealthInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationBlockHealthInfo {
+		return vs[0].([]GetReservationBlockHealthInfo)[vs[1].(int)]
+	}).(GetReservationBlockHealthInfoOutput)
+}
+
+type GetReservationBlockPhysicalTopology struct {
+	// The hash of the capacity block within the cluster.
+	Block string `pulumi:"block"`
+	// The cluster name of the reservation block.
+	Cluster string `pulumi:"cluster"`
+}
+
+// GetReservationBlockPhysicalTopologyInput is an input type that accepts GetReservationBlockPhysicalTopologyArgs and GetReservationBlockPhysicalTopologyOutput values.
+// You can construct a concrete instance of `GetReservationBlockPhysicalTopologyInput` via:
+//
+//	GetReservationBlockPhysicalTopologyArgs{...}
+type GetReservationBlockPhysicalTopologyInput interface {
+	pulumi.Input
+
+	ToGetReservationBlockPhysicalTopologyOutput() GetReservationBlockPhysicalTopologyOutput
+	ToGetReservationBlockPhysicalTopologyOutputWithContext(context.Context) GetReservationBlockPhysicalTopologyOutput
+}
+
+type GetReservationBlockPhysicalTopologyArgs struct {
+	// The hash of the capacity block within the cluster.
+	Block pulumi.StringInput `pulumi:"block"`
+	// The cluster name of the reservation block.
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+}
+
+func (GetReservationBlockPhysicalTopologyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationBlockPhysicalTopology)(nil)).Elem()
+}
+
+func (i GetReservationBlockPhysicalTopologyArgs) ToGetReservationBlockPhysicalTopologyOutput() GetReservationBlockPhysicalTopologyOutput {
+	return i.ToGetReservationBlockPhysicalTopologyOutputWithContext(context.Background())
+}
+
+func (i GetReservationBlockPhysicalTopologyArgs) ToGetReservationBlockPhysicalTopologyOutputWithContext(ctx context.Context) GetReservationBlockPhysicalTopologyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationBlockPhysicalTopologyOutput)
+}
+
+// GetReservationBlockPhysicalTopologyArrayInput is an input type that accepts GetReservationBlockPhysicalTopologyArray and GetReservationBlockPhysicalTopologyArrayOutput values.
+// You can construct a concrete instance of `GetReservationBlockPhysicalTopologyArrayInput` via:
+//
+//	GetReservationBlockPhysicalTopologyArray{ GetReservationBlockPhysicalTopologyArgs{...} }
+type GetReservationBlockPhysicalTopologyArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationBlockPhysicalTopologyArrayOutput() GetReservationBlockPhysicalTopologyArrayOutput
+	ToGetReservationBlockPhysicalTopologyArrayOutputWithContext(context.Context) GetReservationBlockPhysicalTopologyArrayOutput
+}
+
+type GetReservationBlockPhysicalTopologyArray []GetReservationBlockPhysicalTopologyInput
+
+func (GetReservationBlockPhysicalTopologyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationBlockPhysicalTopology)(nil)).Elem()
+}
+
+func (i GetReservationBlockPhysicalTopologyArray) ToGetReservationBlockPhysicalTopologyArrayOutput() GetReservationBlockPhysicalTopologyArrayOutput {
+	return i.ToGetReservationBlockPhysicalTopologyArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationBlockPhysicalTopologyArray) ToGetReservationBlockPhysicalTopologyArrayOutputWithContext(ctx context.Context) GetReservationBlockPhysicalTopologyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationBlockPhysicalTopologyArrayOutput)
+}
+
+type GetReservationBlockPhysicalTopologyOutput struct{ *pulumi.OutputState }
+
+func (GetReservationBlockPhysicalTopologyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationBlockPhysicalTopology)(nil)).Elem()
+}
+
+func (o GetReservationBlockPhysicalTopologyOutput) ToGetReservationBlockPhysicalTopologyOutput() GetReservationBlockPhysicalTopologyOutput {
+	return o
+}
+
+func (o GetReservationBlockPhysicalTopologyOutput) ToGetReservationBlockPhysicalTopologyOutputWithContext(ctx context.Context) GetReservationBlockPhysicalTopologyOutput {
+	return o
+}
+
+// The hash of the capacity block within the cluster.
+func (o GetReservationBlockPhysicalTopologyOutput) Block() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationBlockPhysicalTopology) string { return v.Block }).(pulumi.StringOutput)
+}
+
+// The cluster name of the reservation block.
+func (o GetReservationBlockPhysicalTopologyOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationBlockPhysicalTopology) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+type GetReservationBlockPhysicalTopologyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationBlockPhysicalTopologyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationBlockPhysicalTopology)(nil)).Elem()
+}
+
+func (o GetReservationBlockPhysicalTopologyArrayOutput) ToGetReservationBlockPhysicalTopologyArrayOutput() GetReservationBlockPhysicalTopologyArrayOutput {
+	return o
+}
+
+func (o GetReservationBlockPhysicalTopologyArrayOutput) ToGetReservationBlockPhysicalTopologyArrayOutputWithContext(ctx context.Context) GetReservationBlockPhysicalTopologyArrayOutput {
+	return o
+}
+
+func (o GetReservationBlockPhysicalTopologyArrayOutput) Index(i pulumi.IntInput) GetReservationBlockPhysicalTopologyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationBlockPhysicalTopology {
+		return vs[0].([]GetReservationBlockPhysicalTopology)[vs[1].(int)]
+	}).(GetReservationBlockPhysicalTopologyOutput)
+}
+
+type GetReservationBlockReservationMaintenance struct {
+	// Number of instances that have ongoing maintenance.
+	InstanceMaintenanceOngoingCount int `pulumi:"instanceMaintenanceOngoingCount"`
+	// Number of instances that have pending maintenance.
+	InstanceMaintenancePendingCount int `pulumi:"instanceMaintenancePendingCount"`
+	// Number of hosts in the block that have ongoing maintenance.
+	MaintenanceOngoingCount int `pulumi:"maintenanceOngoingCount"`
+	// Number of hosts in the block that have pending maintenance.
+	MaintenancePendingCount int `pulumi:"maintenancePendingCount"`
+	// The type of maintenance for the reservation.
+	SchedulingType string `pulumi:"schedulingType"`
+	// Number of sub-block infrastructure that has ongoing maintenance.
+	SubblockInfraMaintenanceOngoingCount int `pulumi:"subblockInfraMaintenanceOngoingCount"`
+	// Number of sub-block infrastructure that has pending maintenance.
+	SubblockInfraMaintenancePendingCount int `pulumi:"subblockInfraMaintenancePendingCount"`
+}
+
+// GetReservationBlockReservationMaintenanceInput is an input type that accepts GetReservationBlockReservationMaintenanceArgs and GetReservationBlockReservationMaintenanceOutput values.
+// You can construct a concrete instance of `GetReservationBlockReservationMaintenanceInput` via:
+//
+//	GetReservationBlockReservationMaintenanceArgs{...}
+type GetReservationBlockReservationMaintenanceInput interface {
+	pulumi.Input
+
+	ToGetReservationBlockReservationMaintenanceOutput() GetReservationBlockReservationMaintenanceOutput
+	ToGetReservationBlockReservationMaintenanceOutputWithContext(context.Context) GetReservationBlockReservationMaintenanceOutput
+}
+
+type GetReservationBlockReservationMaintenanceArgs struct {
+	// Number of instances that have ongoing maintenance.
+	InstanceMaintenanceOngoingCount pulumi.IntInput `pulumi:"instanceMaintenanceOngoingCount"`
+	// Number of instances that have pending maintenance.
+	InstanceMaintenancePendingCount pulumi.IntInput `pulumi:"instanceMaintenancePendingCount"`
+	// Number of hosts in the block that have ongoing maintenance.
+	MaintenanceOngoingCount pulumi.IntInput `pulumi:"maintenanceOngoingCount"`
+	// Number of hosts in the block that have pending maintenance.
+	MaintenancePendingCount pulumi.IntInput `pulumi:"maintenancePendingCount"`
+	// The type of maintenance for the reservation.
+	SchedulingType pulumi.StringInput `pulumi:"schedulingType"`
+	// Number of sub-block infrastructure that has ongoing maintenance.
+	SubblockInfraMaintenanceOngoingCount pulumi.IntInput `pulumi:"subblockInfraMaintenanceOngoingCount"`
+	// Number of sub-block infrastructure that has pending maintenance.
+	SubblockInfraMaintenancePendingCount pulumi.IntInput `pulumi:"subblockInfraMaintenancePendingCount"`
+}
+
+func (GetReservationBlockReservationMaintenanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationBlockReservationMaintenance)(nil)).Elem()
+}
+
+func (i GetReservationBlockReservationMaintenanceArgs) ToGetReservationBlockReservationMaintenanceOutput() GetReservationBlockReservationMaintenanceOutput {
+	return i.ToGetReservationBlockReservationMaintenanceOutputWithContext(context.Background())
+}
+
+func (i GetReservationBlockReservationMaintenanceArgs) ToGetReservationBlockReservationMaintenanceOutputWithContext(ctx context.Context) GetReservationBlockReservationMaintenanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationBlockReservationMaintenanceOutput)
+}
+
+// GetReservationBlockReservationMaintenanceArrayInput is an input type that accepts GetReservationBlockReservationMaintenanceArray and GetReservationBlockReservationMaintenanceArrayOutput values.
+// You can construct a concrete instance of `GetReservationBlockReservationMaintenanceArrayInput` via:
+//
+//	GetReservationBlockReservationMaintenanceArray{ GetReservationBlockReservationMaintenanceArgs{...} }
+type GetReservationBlockReservationMaintenanceArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationBlockReservationMaintenanceArrayOutput() GetReservationBlockReservationMaintenanceArrayOutput
+	ToGetReservationBlockReservationMaintenanceArrayOutputWithContext(context.Context) GetReservationBlockReservationMaintenanceArrayOutput
+}
+
+type GetReservationBlockReservationMaintenanceArray []GetReservationBlockReservationMaintenanceInput
+
+func (GetReservationBlockReservationMaintenanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationBlockReservationMaintenance)(nil)).Elem()
+}
+
+func (i GetReservationBlockReservationMaintenanceArray) ToGetReservationBlockReservationMaintenanceArrayOutput() GetReservationBlockReservationMaintenanceArrayOutput {
+	return i.ToGetReservationBlockReservationMaintenanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationBlockReservationMaintenanceArray) ToGetReservationBlockReservationMaintenanceArrayOutputWithContext(ctx context.Context) GetReservationBlockReservationMaintenanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationBlockReservationMaintenanceArrayOutput)
+}
+
+type GetReservationBlockReservationMaintenanceOutput struct{ *pulumi.OutputState }
+
+func (GetReservationBlockReservationMaintenanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationBlockReservationMaintenance)(nil)).Elem()
+}
+
+func (o GetReservationBlockReservationMaintenanceOutput) ToGetReservationBlockReservationMaintenanceOutput() GetReservationBlockReservationMaintenanceOutput {
+	return o
+}
+
+func (o GetReservationBlockReservationMaintenanceOutput) ToGetReservationBlockReservationMaintenanceOutputWithContext(ctx context.Context) GetReservationBlockReservationMaintenanceOutput {
+	return o
+}
+
+// Number of instances that have ongoing maintenance.
+func (o GetReservationBlockReservationMaintenanceOutput) InstanceMaintenanceOngoingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationBlockReservationMaintenance) int { return v.InstanceMaintenanceOngoingCount }).(pulumi.IntOutput)
+}
+
+// Number of instances that have pending maintenance.
+func (o GetReservationBlockReservationMaintenanceOutput) InstanceMaintenancePendingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationBlockReservationMaintenance) int { return v.InstanceMaintenancePendingCount }).(pulumi.IntOutput)
+}
+
+// Number of hosts in the block that have ongoing maintenance.
+func (o GetReservationBlockReservationMaintenanceOutput) MaintenanceOngoingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationBlockReservationMaintenance) int { return v.MaintenanceOngoingCount }).(pulumi.IntOutput)
+}
+
+// Number of hosts in the block that have pending maintenance.
+func (o GetReservationBlockReservationMaintenanceOutput) MaintenancePendingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationBlockReservationMaintenance) int { return v.MaintenancePendingCount }).(pulumi.IntOutput)
+}
+
+// The type of maintenance for the reservation.
+func (o GetReservationBlockReservationMaintenanceOutput) SchedulingType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationBlockReservationMaintenance) string { return v.SchedulingType }).(pulumi.StringOutput)
+}
+
+// Number of sub-block infrastructure that has ongoing maintenance.
+func (o GetReservationBlockReservationMaintenanceOutput) SubblockInfraMaintenanceOngoingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationBlockReservationMaintenance) int { return v.SubblockInfraMaintenanceOngoingCount }).(pulumi.IntOutput)
+}
+
+// Number of sub-block infrastructure that has pending maintenance.
+func (o GetReservationBlockReservationMaintenanceOutput) SubblockInfraMaintenancePendingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationBlockReservationMaintenance) int { return v.SubblockInfraMaintenancePendingCount }).(pulumi.IntOutput)
+}
+
+type GetReservationBlockReservationMaintenanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationBlockReservationMaintenanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationBlockReservationMaintenance)(nil)).Elem()
+}
+
+func (o GetReservationBlockReservationMaintenanceArrayOutput) ToGetReservationBlockReservationMaintenanceArrayOutput() GetReservationBlockReservationMaintenanceArrayOutput {
+	return o
+}
+
+func (o GetReservationBlockReservationMaintenanceArrayOutput) ToGetReservationBlockReservationMaintenanceArrayOutputWithContext(ctx context.Context) GetReservationBlockReservationMaintenanceArrayOutput {
+	return o
+}
+
+func (o GetReservationBlockReservationMaintenanceArrayOutput) Index(i pulumi.IntInput) GetReservationBlockReservationMaintenanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationBlockReservationMaintenance {
+		return vs[0].([]GetReservationBlockReservationMaintenance)[vs[1].(int)]
+	}).(GetReservationBlockReservationMaintenanceOutput)
+}
+
 type GetReservationDeleteAfterDuration struct {
 	// Number of nanoseconds for the auto-delete duration.
 	Nanos int `pulumi:"nanos"`
@@ -5414,6 +6320,701 @@ func (o GetReservationReservationSharingPolicyArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationReservationSharingPolicy {
 		return vs[0].([]GetReservationReservationSharingPolicy)[vs[1].(int)]
 	}).(GetReservationReservationSharingPolicyOutput)
+}
+
+type GetReservationResourceStatus struct {
+	// Health information for the reservation.
+	HealthInfos []GetReservationResourceStatusHealthInfo `pulumi:"healthInfos"`
+	// The number of reservation blocks associated with this reservation.
+	ReservationBlockCount int `pulumi:"reservationBlockCount"`
+	// Maintenance information for this reservation
+	ReservationMaintenances []GetReservationResourceStatusReservationMaintenance `pulumi:"reservationMaintenances"`
+	// Allocation Properties of this reservation.
+	SpecificSkuAllocations []GetReservationResourceStatusSpecificSkuAllocation `pulumi:"specificSkuAllocations"`
+}
+
+// GetReservationResourceStatusInput is an input type that accepts GetReservationResourceStatusArgs and GetReservationResourceStatusOutput values.
+// You can construct a concrete instance of `GetReservationResourceStatusInput` via:
+//
+//	GetReservationResourceStatusArgs{...}
+type GetReservationResourceStatusInput interface {
+	pulumi.Input
+
+	ToGetReservationResourceStatusOutput() GetReservationResourceStatusOutput
+	ToGetReservationResourceStatusOutputWithContext(context.Context) GetReservationResourceStatusOutput
+}
+
+type GetReservationResourceStatusArgs struct {
+	// Health information for the reservation.
+	HealthInfos GetReservationResourceStatusHealthInfoArrayInput `pulumi:"healthInfos"`
+	// The number of reservation blocks associated with this reservation.
+	ReservationBlockCount pulumi.IntInput `pulumi:"reservationBlockCount"`
+	// Maintenance information for this reservation
+	ReservationMaintenances GetReservationResourceStatusReservationMaintenanceArrayInput `pulumi:"reservationMaintenances"`
+	// Allocation Properties of this reservation.
+	SpecificSkuAllocations GetReservationResourceStatusSpecificSkuAllocationArrayInput `pulumi:"specificSkuAllocations"`
+}
+
+func (GetReservationResourceStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationResourceStatus)(nil)).Elem()
+}
+
+func (i GetReservationResourceStatusArgs) ToGetReservationResourceStatusOutput() GetReservationResourceStatusOutput {
+	return i.ToGetReservationResourceStatusOutputWithContext(context.Background())
+}
+
+func (i GetReservationResourceStatusArgs) ToGetReservationResourceStatusOutputWithContext(ctx context.Context) GetReservationResourceStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationResourceStatusOutput)
+}
+
+// GetReservationResourceStatusArrayInput is an input type that accepts GetReservationResourceStatusArray and GetReservationResourceStatusArrayOutput values.
+// You can construct a concrete instance of `GetReservationResourceStatusArrayInput` via:
+//
+//	GetReservationResourceStatusArray{ GetReservationResourceStatusArgs{...} }
+type GetReservationResourceStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationResourceStatusArrayOutput() GetReservationResourceStatusArrayOutput
+	ToGetReservationResourceStatusArrayOutputWithContext(context.Context) GetReservationResourceStatusArrayOutput
+}
+
+type GetReservationResourceStatusArray []GetReservationResourceStatusInput
+
+func (GetReservationResourceStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationResourceStatus)(nil)).Elem()
+}
+
+func (i GetReservationResourceStatusArray) ToGetReservationResourceStatusArrayOutput() GetReservationResourceStatusArrayOutput {
+	return i.ToGetReservationResourceStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationResourceStatusArray) ToGetReservationResourceStatusArrayOutputWithContext(ctx context.Context) GetReservationResourceStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationResourceStatusArrayOutput)
+}
+
+type GetReservationResourceStatusOutput struct{ *pulumi.OutputState }
+
+func (GetReservationResourceStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationResourceStatus)(nil)).Elem()
+}
+
+func (o GetReservationResourceStatusOutput) ToGetReservationResourceStatusOutput() GetReservationResourceStatusOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusOutput) ToGetReservationResourceStatusOutputWithContext(ctx context.Context) GetReservationResourceStatusOutput {
+	return o
+}
+
+// Health information for the reservation.
+func (o GetReservationResourceStatusOutput) HealthInfos() GetReservationResourceStatusHealthInfoArrayOutput {
+	return o.ApplyT(func(v GetReservationResourceStatus) []GetReservationResourceStatusHealthInfo { return v.HealthInfos }).(GetReservationResourceStatusHealthInfoArrayOutput)
+}
+
+// The number of reservation blocks associated with this reservation.
+func (o GetReservationResourceStatusOutput) ReservationBlockCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationResourceStatus) int { return v.ReservationBlockCount }).(pulumi.IntOutput)
+}
+
+// Maintenance information for this reservation
+func (o GetReservationResourceStatusOutput) ReservationMaintenances() GetReservationResourceStatusReservationMaintenanceArrayOutput {
+	return o.ApplyT(func(v GetReservationResourceStatus) []GetReservationResourceStatusReservationMaintenance {
+		return v.ReservationMaintenances
+	}).(GetReservationResourceStatusReservationMaintenanceArrayOutput)
+}
+
+// Allocation Properties of this reservation.
+func (o GetReservationResourceStatusOutput) SpecificSkuAllocations() GetReservationResourceStatusSpecificSkuAllocationArrayOutput {
+	return o.ApplyT(func(v GetReservationResourceStatus) []GetReservationResourceStatusSpecificSkuAllocation {
+		return v.SpecificSkuAllocations
+	}).(GetReservationResourceStatusSpecificSkuAllocationArrayOutput)
+}
+
+type GetReservationResourceStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationResourceStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationResourceStatus)(nil)).Elem()
+}
+
+func (o GetReservationResourceStatusArrayOutput) ToGetReservationResourceStatusArrayOutput() GetReservationResourceStatusArrayOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusArrayOutput) ToGetReservationResourceStatusArrayOutputWithContext(ctx context.Context) GetReservationResourceStatusArrayOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusArrayOutput) Index(i pulumi.IntInput) GetReservationResourceStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationResourceStatus {
+		return vs[0].([]GetReservationResourceStatus)[vs[1].(int)]
+	}).(GetReservationResourceStatusOutput)
+}
+
+type GetReservationResourceStatusHealthInfo struct {
+	// The number of reservation blocks that are degraded.
+	DegradedBlockCount int `pulumi:"degradedBlockCount"`
+	// The health status of the reservation.
+	HealthStatus string `pulumi:"healthStatus"`
+	// The number of reservation blocks that are healthy.
+	HealthyBlockCount int `pulumi:"healthyBlockCount"`
+}
+
+// GetReservationResourceStatusHealthInfoInput is an input type that accepts GetReservationResourceStatusHealthInfoArgs and GetReservationResourceStatusHealthInfoOutput values.
+// You can construct a concrete instance of `GetReservationResourceStatusHealthInfoInput` via:
+//
+//	GetReservationResourceStatusHealthInfoArgs{...}
+type GetReservationResourceStatusHealthInfoInput interface {
+	pulumi.Input
+
+	ToGetReservationResourceStatusHealthInfoOutput() GetReservationResourceStatusHealthInfoOutput
+	ToGetReservationResourceStatusHealthInfoOutputWithContext(context.Context) GetReservationResourceStatusHealthInfoOutput
+}
+
+type GetReservationResourceStatusHealthInfoArgs struct {
+	// The number of reservation blocks that are degraded.
+	DegradedBlockCount pulumi.IntInput `pulumi:"degradedBlockCount"`
+	// The health status of the reservation.
+	HealthStatus pulumi.StringInput `pulumi:"healthStatus"`
+	// The number of reservation blocks that are healthy.
+	HealthyBlockCount pulumi.IntInput `pulumi:"healthyBlockCount"`
+}
+
+func (GetReservationResourceStatusHealthInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationResourceStatusHealthInfo)(nil)).Elem()
+}
+
+func (i GetReservationResourceStatusHealthInfoArgs) ToGetReservationResourceStatusHealthInfoOutput() GetReservationResourceStatusHealthInfoOutput {
+	return i.ToGetReservationResourceStatusHealthInfoOutputWithContext(context.Background())
+}
+
+func (i GetReservationResourceStatusHealthInfoArgs) ToGetReservationResourceStatusHealthInfoOutputWithContext(ctx context.Context) GetReservationResourceStatusHealthInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationResourceStatusHealthInfoOutput)
+}
+
+// GetReservationResourceStatusHealthInfoArrayInput is an input type that accepts GetReservationResourceStatusHealthInfoArray and GetReservationResourceStatusHealthInfoArrayOutput values.
+// You can construct a concrete instance of `GetReservationResourceStatusHealthInfoArrayInput` via:
+//
+//	GetReservationResourceStatusHealthInfoArray{ GetReservationResourceStatusHealthInfoArgs{...} }
+type GetReservationResourceStatusHealthInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationResourceStatusHealthInfoArrayOutput() GetReservationResourceStatusHealthInfoArrayOutput
+	ToGetReservationResourceStatusHealthInfoArrayOutputWithContext(context.Context) GetReservationResourceStatusHealthInfoArrayOutput
+}
+
+type GetReservationResourceStatusHealthInfoArray []GetReservationResourceStatusHealthInfoInput
+
+func (GetReservationResourceStatusHealthInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationResourceStatusHealthInfo)(nil)).Elem()
+}
+
+func (i GetReservationResourceStatusHealthInfoArray) ToGetReservationResourceStatusHealthInfoArrayOutput() GetReservationResourceStatusHealthInfoArrayOutput {
+	return i.ToGetReservationResourceStatusHealthInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationResourceStatusHealthInfoArray) ToGetReservationResourceStatusHealthInfoArrayOutputWithContext(ctx context.Context) GetReservationResourceStatusHealthInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationResourceStatusHealthInfoArrayOutput)
+}
+
+type GetReservationResourceStatusHealthInfoOutput struct{ *pulumi.OutputState }
+
+func (GetReservationResourceStatusHealthInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationResourceStatusHealthInfo)(nil)).Elem()
+}
+
+func (o GetReservationResourceStatusHealthInfoOutput) ToGetReservationResourceStatusHealthInfoOutput() GetReservationResourceStatusHealthInfoOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusHealthInfoOutput) ToGetReservationResourceStatusHealthInfoOutputWithContext(ctx context.Context) GetReservationResourceStatusHealthInfoOutput {
+	return o
+}
+
+// The number of reservation blocks that are degraded.
+func (o GetReservationResourceStatusHealthInfoOutput) DegradedBlockCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusHealthInfo) int { return v.DegradedBlockCount }).(pulumi.IntOutput)
+}
+
+// The health status of the reservation.
+func (o GetReservationResourceStatusHealthInfoOutput) HealthStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusHealthInfo) string { return v.HealthStatus }).(pulumi.StringOutput)
+}
+
+// The number of reservation blocks that are healthy.
+func (o GetReservationResourceStatusHealthInfoOutput) HealthyBlockCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusHealthInfo) int { return v.HealthyBlockCount }).(pulumi.IntOutput)
+}
+
+type GetReservationResourceStatusHealthInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationResourceStatusHealthInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationResourceStatusHealthInfo)(nil)).Elem()
+}
+
+func (o GetReservationResourceStatusHealthInfoArrayOutput) ToGetReservationResourceStatusHealthInfoArrayOutput() GetReservationResourceStatusHealthInfoArrayOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusHealthInfoArrayOutput) ToGetReservationResourceStatusHealthInfoArrayOutputWithContext(ctx context.Context) GetReservationResourceStatusHealthInfoArrayOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusHealthInfoArrayOutput) Index(i pulumi.IntInput) GetReservationResourceStatusHealthInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationResourceStatusHealthInfo {
+		return vs[0].([]GetReservationResourceStatusHealthInfo)[vs[1].(int)]
+	}).(GetReservationResourceStatusHealthInfoOutput)
+}
+
+type GetReservationResourceStatusReservationMaintenance struct {
+	// Describes number of instances that have ongoing maintenance.
+	InstanceMaintenanceOngoingCount int `pulumi:"instanceMaintenanceOngoingCount"`
+	// Describes number of instances that have pending maintenance.
+	InstanceMaintenancePendingCount int `pulumi:"instanceMaintenancePendingCount"`
+	// Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have ongoing maintenance.
+	MaintenanceOngoingCount int `pulumi:"maintenanceOngoingCount"`
+	// Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have pending maintenance.
+	MaintenancePendingCount int `pulumi:"maintenancePendingCount"`
+	// The type of maintenance for the reservation.
+	SchedulingType string `pulumi:"schedulingType"`
+	// Describes number of subblock Infrastructure that has ongoing maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family(e.g. NVLink Domains). Not all VM Families will support this field.
+	SubblockInfraMaintenanceOngoingCount int `pulumi:"subblockInfraMaintenanceOngoingCount"`
+	// Describes number of subblock Infrastructure that has pending maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family (e.g. NVLink Domains). Not all VM Families will support this field.
+	SubblockInfraMaintenancePendingCount int `pulumi:"subblockInfraMaintenancePendingCount"`
+	// Maintenance information on this group of VMs.
+	UpcomingGroupMaintenances []GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance `pulumi:"upcomingGroupMaintenances"`
+}
+
+// GetReservationResourceStatusReservationMaintenanceInput is an input type that accepts GetReservationResourceStatusReservationMaintenanceArgs and GetReservationResourceStatusReservationMaintenanceOutput values.
+// You can construct a concrete instance of `GetReservationResourceStatusReservationMaintenanceInput` via:
+//
+//	GetReservationResourceStatusReservationMaintenanceArgs{...}
+type GetReservationResourceStatusReservationMaintenanceInput interface {
+	pulumi.Input
+
+	ToGetReservationResourceStatusReservationMaintenanceOutput() GetReservationResourceStatusReservationMaintenanceOutput
+	ToGetReservationResourceStatusReservationMaintenanceOutputWithContext(context.Context) GetReservationResourceStatusReservationMaintenanceOutput
+}
+
+type GetReservationResourceStatusReservationMaintenanceArgs struct {
+	// Describes number of instances that have ongoing maintenance.
+	InstanceMaintenanceOngoingCount pulumi.IntInput `pulumi:"instanceMaintenanceOngoingCount"`
+	// Describes number of instances that have pending maintenance.
+	InstanceMaintenancePendingCount pulumi.IntInput `pulumi:"instanceMaintenancePendingCount"`
+	// Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have ongoing maintenance.
+	MaintenanceOngoingCount pulumi.IntInput `pulumi:"maintenanceOngoingCount"`
+	// Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have pending maintenance.
+	MaintenancePendingCount pulumi.IntInput `pulumi:"maintenancePendingCount"`
+	// The type of maintenance for the reservation.
+	SchedulingType pulumi.StringInput `pulumi:"schedulingType"`
+	// Describes number of subblock Infrastructure that has ongoing maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family(e.g. NVLink Domains). Not all VM Families will support this field.
+	SubblockInfraMaintenanceOngoingCount pulumi.IntInput `pulumi:"subblockInfraMaintenanceOngoingCount"`
+	// Describes number of subblock Infrastructure that has pending maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family (e.g. NVLink Domains). Not all VM Families will support this field.
+	SubblockInfraMaintenancePendingCount pulumi.IntInput `pulumi:"subblockInfraMaintenancePendingCount"`
+	// Maintenance information on this group of VMs.
+	UpcomingGroupMaintenances GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayInput `pulumi:"upcomingGroupMaintenances"`
+}
+
+func (GetReservationResourceStatusReservationMaintenanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationResourceStatusReservationMaintenance)(nil)).Elem()
+}
+
+func (i GetReservationResourceStatusReservationMaintenanceArgs) ToGetReservationResourceStatusReservationMaintenanceOutput() GetReservationResourceStatusReservationMaintenanceOutput {
+	return i.ToGetReservationResourceStatusReservationMaintenanceOutputWithContext(context.Background())
+}
+
+func (i GetReservationResourceStatusReservationMaintenanceArgs) ToGetReservationResourceStatusReservationMaintenanceOutputWithContext(ctx context.Context) GetReservationResourceStatusReservationMaintenanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationResourceStatusReservationMaintenanceOutput)
+}
+
+// GetReservationResourceStatusReservationMaintenanceArrayInput is an input type that accepts GetReservationResourceStatusReservationMaintenanceArray and GetReservationResourceStatusReservationMaintenanceArrayOutput values.
+// You can construct a concrete instance of `GetReservationResourceStatusReservationMaintenanceArrayInput` via:
+//
+//	GetReservationResourceStatusReservationMaintenanceArray{ GetReservationResourceStatusReservationMaintenanceArgs{...} }
+type GetReservationResourceStatusReservationMaintenanceArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationResourceStatusReservationMaintenanceArrayOutput() GetReservationResourceStatusReservationMaintenanceArrayOutput
+	ToGetReservationResourceStatusReservationMaintenanceArrayOutputWithContext(context.Context) GetReservationResourceStatusReservationMaintenanceArrayOutput
+}
+
+type GetReservationResourceStatusReservationMaintenanceArray []GetReservationResourceStatusReservationMaintenanceInput
+
+func (GetReservationResourceStatusReservationMaintenanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationResourceStatusReservationMaintenance)(nil)).Elem()
+}
+
+func (i GetReservationResourceStatusReservationMaintenanceArray) ToGetReservationResourceStatusReservationMaintenanceArrayOutput() GetReservationResourceStatusReservationMaintenanceArrayOutput {
+	return i.ToGetReservationResourceStatusReservationMaintenanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationResourceStatusReservationMaintenanceArray) ToGetReservationResourceStatusReservationMaintenanceArrayOutputWithContext(ctx context.Context) GetReservationResourceStatusReservationMaintenanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationResourceStatusReservationMaintenanceArrayOutput)
+}
+
+type GetReservationResourceStatusReservationMaintenanceOutput struct{ *pulumi.OutputState }
+
+func (GetReservationResourceStatusReservationMaintenanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationResourceStatusReservationMaintenance)(nil)).Elem()
+}
+
+func (o GetReservationResourceStatusReservationMaintenanceOutput) ToGetReservationResourceStatusReservationMaintenanceOutput() GetReservationResourceStatusReservationMaintenanceOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusReservationMaintenanceOutput) ToGetReservationResourceStatusReservationMaintenanceOutputWithContext(ctx context.Context) GetReservationResourceStatusReservationMaintenanceOutput {
+	return o
+}
+
+// Describes number of instances that have ongoing maintenance.
+func (o GetReservationResourceStatusReservationMaintenanceOutput) InstanceMaintenanceOngoingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenance) int {
+		return v.InstanceMaintenanceOngoingCount
+	}).(pulumi.IntOutput)
+}
+
+// Describes number of instances that have pending maintenance.
+func (o GetReservationResourceStatusReservationMaintenanceOutput) InstanceMaintenancePendingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenance) int {
+		return v.InstanceMaintenancePendingCount
+	}).(pulumi.IntOutput)
+}
+
+// Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have ongoing maintenance.
+func (o GetReservationResourceStatusReservationMaintenanceOutput) MaintenanceOngoingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenance) int { return v.MaintenanceOngoingCount }).(pulumi.IntOutput)
+}
+
+// Progress for ongoing maintenance for this group of VMs/hosts. Describes number of hosts in the block that have pending maintenance.
+func (o GetReservationResourceStatusReservationMaintenanceOutput) MaintenancePendingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenance) int { return v.MaintenancePendingCount }).(pulumi.IntOutput)
+}
+
+// The type of maintenance for the reservation.
+func (o GetReservationResourceStatusReservationMaintenanceOutput) SchedulingType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenance) string { return v.SchedulingType }).(pulumi.StringOutput)
+}
+
+// Describes number of subblock Infrastructure that has ongoing maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family(e.g. NVLink Domains). Not all VM Families will support this field.
+func (o GetReservationResourceStatusReservationMaintenanceOutput) SubblockInfraMaintenanceOngoingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenance) int {
+		return v.SubblockInfraMaintenanceOngoingCount
+	}).(pulumi.IntOutput)
+}
+
+// Describes number of subblock Infrastructure that has pending maintenance. Here, Subblock Infrastructure Maintenance pertains to upstream hardware contained in the Subblock that is necessary for a VM Family (e.g. NVLink Domains). Not all VM Families will support this field.
+func (o GetReservationResourceStatusReservationMaintenanceOutput) SubblockInfraMaintenancePendingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenance) int {
+		return v.SubblockInfraMaintenancePendingCount
+	}).(pulumi.IntOutput)
+}
+
+// Maintenance information on this group of VMs.
+func (o GetReservationResourceStatusReservationMaintenanceOutput) UpcomingGroupMaintenances() GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenance) []GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance {
+		return v.UpcomingGroupMaintenances
+	}).(GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput)
+}
+
+type GetReservationResourceStatusReservationMaintenanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationResourceStatusReservationMaintenanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationResourceStatusReservationMaintenance)(nil)).Elem()
+}
+
+func (o GetReservationResourceStatusReservationMaintenanceArrayOutput) ToGetReservationResourceStatusReservationMaintenanceArrayOutput() GetReservationResourceStatusReservationMaintenanceArrayOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusReservationMaintenanceArrayOutput) ToGetReservationResourceStatusReservationMaintenanceArrayOutputWithContext(ctx context.Context) GetReservationResourceStatusReservationMaintenanceArrayOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusReservationMaintenanceArrayOutput) Index(i pulumi.IntInput) GetReservationResourceStatusReservationMaintenanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationResourceStatusReservationMaintenance {
+		return vs[0].([]GetReservationResourceStatusReservationMaintenance)[vs[1].(int)]
+	}).(GetReservationResourceStatusReservationMaintenanceOutput)
+}
+
+type GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance struct {
+	// Indicates if the maintenance can be customer triggered.
+	CanReschedule bool `pulumi:"canReschedule"`
+	// The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
+	LatestWindowStartTime string `pulumi:"latestWindowStartTime"`
+	// Indicates whether the UpcomingMaintenance will be triggered on VM shutdown.
+	MaintenanceOnShutdown bool `pulumi:"maintenanceOnShutdown"`
+	// The reasons for the maintenance. Only valid for vms.
+	MaintenanceReasons []string `pulumi:"maintenanceReasons"`
+	// Status of the maintenance.
+	MaintenanceStatus string `pulumi:"maintenanceStatus"`
+	// Defines the type of maintenance.
+	Type string `pulumi:"type"`
+	// The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.
+	WindowEndTime string `pulumi:"windowEndTime"`
+	// The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
+	WindowStartTime string `pulumi:"windowStartTime"`
+}
+
+// GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceInput is an input type that accepts GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs and GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput values.
+// You can construct a concrete instance of `GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceInput` via:
+//
+//	GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs{...}
+type GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceInput interface {
+	pulumi.Input
+
+	ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput() GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput
+	ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutputWithContext(context.Context) GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput
+}
+
+type GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs struct {
+	// Indicates if the maintenance can be customer triggered.
+	CanReschedule pulumi.BoolInput `pulumi:"canReschedule"`
+	// The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
+	LatestWindowStartTime pulumi.StringInput `pulumi:"latestWindowStartTime"`
+	// Indicates whether the UpcomingMaintenance will be triggered on VM shutdown.
+	MaintenanceOnShutdown pulumi.BoolInput `pulumi:"maintenanceOnShutdown"`
+	// The reasons for the maintenance. Only valid for vms.
+	MaintenanceReasons pulumi.StringArrayInput `pulumi:"maintenanceReasons"`
+	// Status of the maintenance.
+	MaintenanceStatus pulumi.StringInput `pulumi:"maintenanceStatus"`
+	// Defines the type of maintenance.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.
+	WindowEndTime pulumi.StringInput `pulumi:"windowEndTime"`
+	// The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
+	WindowStartTime pulumi.StringInput `pulumi:"windowStartTime"`
+}
+
+func (GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance)(nil)).Elem()
+}
+
+func (i GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs) ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput() GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput {
+	return i.ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutputWithContext(context.Background())
+}
+
+func (i GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs) ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutputWithContext(ctx context.Context) GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput)
+}
+
+// GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayInput is an input type that accepts GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArray and GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput values.
+// You can construct a concrete instance of `GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayInput` via:
+//
+//	GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArray{ GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs{...} }
+type GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput() GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput
+	ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutputWithContext(context.Context) GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput
+}
+
+type GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArray []GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceInput
+
+func (GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance)(nil)).Elem()
+}
+
+func (i GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArray) ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput() GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput {
+	return i.ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArray) ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutputWithContext(ctx context.Context) GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput)
+}
+
+type GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput struct{ *pulumi.OutputState }
+
+func (GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance)(nil)).Elem()
+}
+
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput) ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput() GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput) ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutputWithContext(ctx context.Context) GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput {
+	return o
+}
+
+// Indicates if the maintenance can be customer triggered.
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput) CanReschedule() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance) bool {
+		return v.CanReschedule
+	}).(pulumi.BoolOutput)
+}
+
+// The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput) LatestWindowStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance) string {
+		return v.LatestWindowStartTime
+	}).(pulumi.StringOutput)
+}
+
+// Indicates whether the UpcomingMaintenance will be triggered on VM shutdown.
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput) MaintenanceOnShutdown() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance) bool {
+		return v.MaintenanceOnShutdown
+	}).(pulumi.BoolOutput)
+}
+
+// The reasons for the maintenance. Only valid for vms.
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput) MaintenanceReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance) []string {
+		return v.MaintenanceReasons
+	}).(pulumi.StringArrayOutput)
+}
+
+// Status of the maintenance.
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput) MaintenanceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance) string {
+		return v.MaintenanceStatus
+	}).(pulumi.StringOutput)
+}
+
+// Defines the type of maintenance.
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput) WindowEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance) string {
+		return v.WindowEndTime
+	}).(pulumi.StringOutput)
+}
+
+// The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput) WindowStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance) string {
+		return v.WindowStartTime
+	}).(pulumi.StringOutput)
+}
+
+type GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance)(nil)).Elem()
+}
+
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput) ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput() GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput) ToGetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutputWithContext(ctx context.Context) GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput) Index(i pulumi.IntInput) GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance {
+		return vs[0].([]GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance)[vs[1].(int)]
+	}).(GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput)
+}
+
+type GetReservationResourceStatusSpecificSkuAllocation struct {
+	// ID of the instance template used to populate reservation properties.
+	SourceInstanceTemplateId string `pulumi:"sourceInstanceTemplateId"`
+	// Per service utilization breakdown. The Key is the Google Cloud managed service name.
+	Utilizations map[string]string `pulumi:"utilizations"`
+}
+
+// GetReservationResourceStatusSpecificSkuAllocationInput is an input type that accepts GetReservationResourceStatusSpecificSkuAllocationArgs and GetReservationResourceStatusSpecificSkuAllocationOutput values.
+// You can construct a concrete instance of `GetReservationResourceStatusSpecificSkuAllocationInput` via:
+//
+//	GetReservationResourceStatusSpecificSkuAllocationArgs{...}
+type GetReservationResourceStatusSpecificSkuAllocationInput interface {
+	pulumi.Input
+
+	ToGetReservationResourceStatusSpecificSkuAllocationOutput() GetReservationResourceStatusSpecificSkuAllocationOutput
+	ToGetReservationResourceStatusSpecificSkuAllocationOutputWithContext(context.Context) GetReservationResourceStatusSpecificSkuAllocationOutput
+}
+
+type GetReservationResourceStatusSpecificSkuAllocationArgs struct {
+	// ID of the instance template used to populate reservation properties.
+	SourceInstanceTemplateId pulumi.StringInput `pulumi:"sourceInstanceTemplateId"`
+	// Per service utilization breakdown. The Key is the Google Cloud managed service name.
+	Utilizations pulumi.StringMapInput `pulumi:"utilizations"`
+}
+
+func (GetReservationResourceStatusSpecificSkuAllocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationResourceStatusSpecificSkuAllocation)(nil)).Elem()
+}
+
+func (i GetReservationResourceStatusSpecificSkuAllocationArgs) ToGetReservationResourceStatusSpecificSkuAllocationOutput() GetReservationResourceStatusSpecificSkuAllocationOutput {
+	return i.ToGetReservationResourceStatusSpecificSkuAllocationOutputWithContext(context.Background())
+}
+
+func (i GetReservationResourceStatusSpecificSkuAllocationArgs) ToGetReservationResourceStatusSpecificSkuAllocationOutputWithContext(ctx context.Context) GetReservationResourceStatusSpecificSkuAllocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationResourceStatusSpecificSkuAllocationOutput)
+}
+
+// GetReservationResourceStatusSpecificSkuAllocationArrayInput is an input type that accepts GetReservationResourceStatusSpecificSkuAllocationArray and GetReservationResourceStatusSpecificSkuAllocationArrayOutput values.
+// You can construct a concrete instance of `GetReservationResourceStatusSpecificSkuAllocationArrayInput` via:
+//
+//	GetReservationResourceStatusSpecificSkuAllocationArray{ GetReservationResourceStatusSpecificSkuAllocationArgs{...} }
+type GetReservationResourceStatusSpecificSkuAllocationArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationResourceStatusSpecificSkuAllocationArrayOutput() GetReservationResourceStatusSpecificSkuAllocationArrayOutput
+	ToGetReservationResourceStatusSpecificSkuAllocationArrayOutputWithContext(context.Context) GetReservationResourceStatusSpecificSkuAllocationArrayOutput
+}
+
+type GetReservationResourceStatusSpecificSkuAllocationArray []GetReservationResourceStatusSpecificSkuAllocationInput
+
+func (GetReservationResourceStatusSpecificSkuAllocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationResourceStatusSpecificSkuAllocation)(nil)).Elem()
+}
+
+func (i GetReservationResourceStatusSpecificSkuAllocationArray) ToGetReservationResourceStatusSpecificSkuAllocationArrayOutput() GetReservationResourceStatusSpecificSkuAllocationArrayOutput {
+	return i.ToGetReservationResourceStatusSpecificSkuAllocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationResourceStatusSpecificSkuAllocationArray) ToGetReservationResourceStatusSpecificSkuAllocationArrayOutputWithContext(ctx context.Context) GetReservationResourceStatusSpecificSkuAllocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationResourceStatusSpecificSkuAllocationArrayOutput)
+}
+
+type GetReservationResourceStatusSpecificSkuAllocationOutput struct{ *pulumi.OutputState }
+
+func (GetReservationResourceStatusSpecificSkuAllocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationResourceStatusSpecificSkuAllocation)(nil)).Elem()
+}
+
+func (o GetReservationResourceStatusSpecificSkuAllocationOutput) ToGetReservationResourceStatusSpecificSkuAllocationOutput() GetReservationResourceStatusSpecificSkuAllocationOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusSpecificSkuAllocationOutput) ToGetReservationResourceStatusSpecificSkuAllocationOutputWithContext(ctx context.Context) GetReservationResourceStatusSpecificSkuAllocationOutput {
+	return o
+}
+
+// ID of the instance template used to populate reservation properties.
+func (o GetReservationResourceStatusSpecificSkuAllocationOutput) SourceInstanceTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusSpecificSkuAllocation) string { return v.SourceInstanceTemplateId }).(pulumi.StringOutput)
+}
+
+// Per service utilization breakdown. The Key is the Google Cloud managed service name.
+func (o GetReservationResourceStatusSpecificSkuAllocationOutput) Utilizations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetReservationResourceStatusSpecificSkuAllocation) map[string]string { return v.Utilizations }).(pulumi.StringMapOutput)
+}
+
+type GetReservationResourceStatusSpecificSkuAllocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationResourceStatusSpecificSkuAllocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationResourceStatusSpecificSkuAllocation)(nil)).Elem()
+}
+
+func (o GetReservationResourceStatusSpecificSkuAllocationArrayOutput) ToGetReservationResourceStatusSpecificSkuAllocationArrayOutput() GetReservationResourceStatusSpecificSkuAllocationArrayOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusSpecificSkuAllocationArrayOutput) ToGetReservationResourceStatusSpecificSkuAllocationArrayOutputWithContext(ctx context.Context) GetReservationResourceStatusSpecificSkuAllocationArrayOutput {
+	return o
+}
+
+func (o GetReservationResourceStatusSpecificSkuAllocationArrayOutput) Index(i pulumi.IntInput) GetReservationResourceStatusSpecificSkuAllocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationResourceStatusSpecificSkuAllocation {
+		return vs[0].([]GetReservationResourceStatusSpecificSkuAllocation)[vs[1].(int)]
+	}).(GetReservationResourceStatusSpecificSkuAllocationOutput)
 }
 
 type GetReservationShareSetting struct {
@@ -5635,6 +7236,8 @@ func (o GetReservationShareSettingProjectMapArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetReservationSpecificReservation struct {
+	// Indicates how many instances are actually usable currently.
+	AssuredCount int `pulumi:"assuredCount"`
 	// The number of resources that are allocated.
 	Count int `pulumi:"count"`
 	// How many instances are in use.
@@ -5658,6 +7261,8 @@ type GetReservationSpecificReservationInput interface {
 }
 
 type GetReservationSpecificReservationArgs struct {
+	// Indicates how many instances are actually usable currently.
+	AssuredCount pulumi.IntInput `pulumi:"assuredCount"`
 	// The number of resources that are allocated.
 	Count pulumi.IntInput `pulumi:"count"`
 	// How many instances are in use.
@@ -5720,6 +7325,11 @@ func (o GetReservationSpecificReservationOutput) ToGetReservationSpecificReserva
 	return o
 }
 
+// Indicates how many instances are actually usable currently.
+func (o GetReservationSpecificReservationOutput) AssuredCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservation) int { return v.AssuredCount }).(pulumi.IntOutput)
+}
+
 // The number of resources that are allocated.
 func (o GetReservationSpecificReservationOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v GetReservationSpecificReservation) int { return v.Count }).(pulumi.IntOutput)
@@ -5769,6 +7379,8 @@ type GetReservationSpecificReservationInstanceProperty struct {
 	// The amount of local ssd to reserve with each instance. This
 	// reserves disks of type 'local-ssd'.
 	LocalSsds []GetReservationSpecificReservationInstancePropertyLocalSsd `pulumi:"localSsds"`
+	// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+	LocationHint string `pulumi:"locationHint"`
 	// The name of the machine type to reserve.
 	MachineType string `pulumi:"machineType"`
 	// Specifies the frequency of planned maintenance events. Possible values: ["AS_NEEDED", "PERIODIC", "RECURRENT"]
@@ -5797,6 +7409,8 @@ type GetReservationSpecificReservationInstancePropertyArgs struct {
 	// The amount of local ssd to reserve with each instance. This
 	// reserves disks of type 'local-ssd'.
 	LocalSsds GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput `pulumi:"localSsds"`
+	// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+	LocationHint pulumi.StringInput `pulumi:"locationHint"`
 	// The name of the machine type to reserve.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 	// Specifies the frequency of planned maintenance events. Possible values: ["AS_NEEDED", "PERIODIC", "RECURRENT"]
@@ -5872,6 +7486,11 @@ func (o GetReservationSpecificReservationInstancePropertyOutput) LocalSsds() Get
 	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) []GetReservationSpecificReservationInstancePropertyLocalSsd {
 		return v.LocalSsds
 	}).(GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput)
+}
+
+// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+func (o GetReservationSpecificReservationInstancePropertyOutput) LocationHint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) string { return v.LocationHint }).(pulumi.StringOutput)
 }
 
 // The name of the machine type to reserve.
@@ -6141,6 +7760,413 @@ func (o GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput) In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationSpecificReservationInstancePropertyLocalSsd {
 		return vs[0].([]GetReservationSpecificReservationInstancePropertyLocalSsd)[vs[1].(int)]
 	}).(GetReservationSpecificReservationInstancePropertyLocalSsdOutput)
+}
+
+type GetReservationSubBlockHealthInfo struct {
+	// The number of degraded hosts in the reservation sub-block.
+	DegradedHostCount int `pulumi:"degradedHostCount"`
+	// The number of degraded infrastructure (e.g. NVLink domain) in the reservation sub-block.
+	DegradedInfraCount int `pulumi:"degradedInfraCount"`
+	// The health status of the reservation sub-block.
+	HealthStatus string `pulumi:"healthStatus"`
+	// The number of healthy hosts in the reservation sub-block.
+	HealthyHostCount int `pulumi:"healthyHostCount"`
+	// The number of healthy infrastructure (e.g. NVLink domain) in the reservation sub-block.
+	HealthyInfraCount int `pulumi:"healthyInfraCount"`
+}
+
+// GetReservationSubBlockHealthInfoInput is an input type that accepts GetReservationSubBlockHealthInfoArgs and GetReservationSubBlockHealthInfoOutput values.
+// You can construct a concrete instance of `GetReservationSubBlockHealthInfoInput` via:
+//
+//	GetReservationSubBlockHealthInfoArgs{...}
+type GetReservationSubBlockHealthInfoInput interface {
+	pulumi.Input
+
+	ToGetReservationSubBlockHealthInfoOutput() GetReservationSubBlockHealthInfoOutput
+	ToGetReservationSubBlockHealthInfoOutputWithContext(context.Context) GetReservationSubBlockHealthInfoOutput
+}
+
+type GetReservationSubBlockHealthInfoArgs struct {
+	// The number of degraded hosts in the reservation sub-block.
+	DegradedHostCount pulumi.IntInput `pulumi:"degradedHostCount"`
+	// The number of degraded infrastructure (e.g. NVLink domain) in the reservation sub-block.
+	DegradedInfraCount pulumi.IntInput `pulumi:"degradedInfraCount"`
+	// The health status of the reservation sub-block.
+	HealthStatus pulumi.StringInput `pulumi:"healthStatus"`
+	// The number of healthy hosts in the reservation sub-block.
+	HealthyHostCount pulumi.IntInput `pulumi:"healthyHostCount"`
+	// The number of healthy infrastructure (e.g. NVLink domain) in the reservation sub-block.
+	HealthyInfraCount pulumi.IntInput `pulumi:"healthyInfraCount"`
+}
+
+func (GetReservationSubBlockHealthInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSubBlockHealthInfo)(nil)).Elem()
+}
+
+func (i GetReservationSubBlockHealthInfoArgs) ToGetReservationSubBlockHealthInfoOutput() GetReservationSubBlockHealthInfoOutput {
+	return i.ToGetReservationSubBlockHealthInfoOutputWithContext(context.Background())
+}
+
+func (i GetReservationSubBlockHealthInfoArgs) ToGetReservationSubBlockHealthInfoOutputWithContext(ctx context.Context) GetReservationSubBlockHealthInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSubBlockHealthInfoOutput)
+}
+
+// GetReservationSubBlockHealthInfoArrayInput is an input type that accepts GetReservationSubBlockHealthInfoArray and GetReservationSubBlockHealthInfoArrayOutput values.
+// You can construct a concrete instance of `GetReservationSubBlockHealthInfoArrayInput` via:
+//
+//	GetReservationSubBlockHealthInfoArray{ GetReservationSubBlockHealthInfoArgs{...} }
+type GetReservationSubBlockHealthInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationSubBlockHealthInfoArrayOutput() GetReservationSubBlockHealthInfoArrayOutput
+	ToGetReservationSubBlockHealthInfoArrayOutputWithContext(context.Context) GetReservationSubBlockHealthInfoArrayOutput
+}
+
+type GetReservationSubBlockHealthInfoArray []GetReservationSubBlockHealthInfoInput
+
+func (GetReservationSubBlockHealthInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSubBlockHealthInfo)(nil)).Elem()
+}
+
+func (i GetReservationSubBlockHealthInfoArray) ToGetReservationSubBlockHealthInfoArrayOutput() GetReservationSubBlockHealthInfoArrayOutput {
+	return i.ToGetReservationSubBlockHealthInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationSubBlockHealthInfoArray) ToGetReservationSubBlockHealthInfoArrayOutputWithContext(ctx context.Context) GetReservationSubBlockHealthInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSubBlockHealthInfoArrayOutput)
+}
+
+type GetReservationSubBlockHealthInfoOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSubBlockHealthInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSubBlockHealthInfo)(nil)).Elem()
+}
+
+func (o GetReservationSubBlockHealthInfoOutput) ToGetReservationSubBlockHealthInfoOutput() GetReservationSubBlockHealthInfoOutput {
+	return o
+}
+
+func (o GetReservationSubBlockHealthInfoOutput) ToGetReservationSubBlockHealthInfoOutputWithContext(ctx context.Context) GetReservationSubBlockHealthInfoOutput {
+	return o
+}
+
+// The number of degraded hosts in the reservation sub-block.
+func (o GetReservationSubBlockHealthInfoOutput) DegradedHostCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSubBlockHealthInfo) int { return v.DegradedHostCount }).(pulumi.IntOutput)
+}
+
+// The number of degraded infrastructure (e.g. NVLink domain) in the reservation sub-block.
+func (o GetReservationSubBlockHealthInfoOutput) DegradedInfraCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSubBlockHealthInfo) int { return v.DegradedInfraCount }).(pulumi.IntOutput)
+}
+
+// The health status of the reservation sub-block.
+func (o GetReservationSubBlockHealthInfoOutput) HealthStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSubBlockHealthInfo) string { return v.HealthStatus }).(pulumi.StringOutput)
+}
+
+// The number of healthy hosts in the reservation sub-block.
+func (o GetReservationSubBlockHealthInfoOutput) HealthyHostCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSubBlockHealthInfo) int { return v.HealthyHostCount }).(pulumi.IntOutput)
+}
+
+// The number of healthy infrastructure (e.g. NVLink domain) in the reservation sub-block.
+func (o GetReservationSubBlockHealthInfoOutput) HealthyInfraCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSubBlockHealthInfo) int { return v.HealthyInfraCount }).(pulumi.IntOutput)
+}
+
+type GetReservationSubBlockHealthInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSubBlockHealthInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSubBlockHealthInfo)(nil)).Elem()
+}
+
+func (o GetReservationSubBlockHealthInfoArrayOutput) ToGetReservationSubBlockHealthInfoArrayOutput() GetReservationSubBlockHealthInfoArrayOutput {
+	return o
+}
+
+func (o GetReservationSubBlockHealthInfoArrayOutput) ToGetReservationSubBlockHealthInfoArrayOutputWithContext(ctx context.Context) GetReservationSubBlockHealthInfoArrayOutput {
+	return o
+}
+
+func (o GetReservationSubBlockHealthInfoArrayOutput) Index(i pulumi.IntInput) GetReservationSubBlockHealthInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationSubBlockHealthInfo {
+		return vs[0].([]GetReservationSubBlockHealthInfo)[vs[1].(int)]
+	}).(GetReservationSubBlockHealthInfoOutput)
+}
+
+type GetReservationSubBlockPhysicalTopology struct {
+	// The hash of the capacity block within the cluster.
+	Block string `pulumi:"block"`
+	// The cluster name of the reservation sub-block.
+	Cluster string `pulumi:"cluster"`
+	// The hash of the capacity sub-block within the capacity block.
+	SubBlock string `pulumi:"subBlock"`
+}
+
+// GetReservationSubBlockPhysicalTopologyInput is an input type that accepts GetReservationSubBlockPhysicalTopologyArgs and GetReservationSubBlockPhysicalTopologyOutput values.
+// You can construct a concrete instance of `GetReservationSubBlockPhysicalTopologyInput` via:
+//
+//	GetReservationSubBlockPhysicalTopologyArgs{...}
+type GetReservationSubBlockPhysicalTopologyInput interface {
+	pulumi.Input
+
+	ToGetReservationSubBlockPhysicalTopologyOutput() GetReservationSubBlockPhysicalTopologyOutput
+	ToGetReservationSubBlockPhysicalTopologyOutputWithContext(context.Context) GetReservationSubBlockPhysicalTopologyOutput
+}
+
+type GetReservationSubBlockPhysicalTopologyArgs struct {
+	// The hash of the capacity block within the cluster.
+	Block pulumi.StringInput `pulumi:"block"`
+	// The cluster name of the reservation sub-block.
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// The hash of the capacity sub-block within the capacity block.
+	SubBlock pulumi.StringInput `pulumi:"subBlock"`
+}
+
+func (GetReservationSubBlockPhysicalTopologyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSubBlockPhysicalTopology)(nil)).Elem()
+}
+
+func (i GetReservationSubBlockPhysicalTopologyArgs) ToGetReservationSubBlockPhysicalTopologyOutput() GetReservationSubBlockPhysicalTopologyOutput {
+	return i.ToGetReservationSubBlockPhysicalTopologyOutputWithContext(context.Background())
+}
+
+func (i GetReservationSubBlockPhysicalTopologyArgs) ToGetReservationSubBlockPhysicalTopologyOutputWithContext(ctx context.Context) GetReservationSubBlockPhysicalTopologyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSubBlockPhysicalTopologyOutput)
+}
+
+// GetReservationSubBlockPhysicalTopologyArrayInput is an input type that accepts GetReservationSubBlockPhysicalTopologyArray and GetReservationSubBlockPhysicalTopologyArrayOutput values.
+// You can construct a concrete instance of `GetReservationSubBlockPhysicalTopologyArrayInput` via:
+//
+//	GetReservationSubBlockPhysicalTopologyArray{ GetReservationSubBlockPhysicalTopologyArgs{...} }
+type GetReservationSubBlockPhysicalTopologyArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationSubBlockPhysicalTopologyArrayOutput() GetReservationSubBlockPhysicalTopologyArrayOutput
+	ToGetReservationSubBlockPhysicalTopologyArrayOutputWithContext(context.Context) GetReservationSubBlockPhysicalTopologyArrayOutput
+}
+
+type GetReservationSubBlockPhysicalTopologyArray []GetReservationSubBlockPhysicalTopologyInput
+
+func (GetReservationSubBlockPhysicalTopologyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSubBlockPhysicalTopology)(nil)).Elem()
+}
+
+func (i GetReservationSubBlockPhysicalTopologyArray) ToGetReservationSubBlockPhysicalTopologyArrayOutput() GetReservationSubBlockPhysicalTopologyArrayOutput {
+	return i.ToGetReservationSubBlockPhysicalTopologyArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationSubBlockPhysicalTopologyArray) ToGetReservationSubBlockPhysicalTopologyArrayOutputWithContext(ctx context.Context) GetReservationSubBlockPhysicalTopologyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSubBlockPhysicalTopologyArrayOutput)
+}
+
+type GetReservationSubBlockPhysicalTopologyOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSubBlockPhysicalTopologyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSubBlockPhysicalTopology)(nil)).Elem()
+}
+
+func (o GetReservationSubBlockPhysicalTopologyOutput) ToGetReservationSubBlockPhysicalTopologyOutput() GetReservationSubBlockPhysicalTopologyOutput {
+	return o
+}
+
+func (o GetReservationSubBlockPhysicalTopologyOutput) ToGetReservationSubBlockPhysicalTopologyOutputWithContext(ctx context.Context) GetReservationSubBlockPhysicalTopologyOutput {
+	return o
+}
+
+// The hash of the capacity block within the cluster.
+func (o GetReservationSubBlockPhysicalTopologyOutput) Block() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSubBlockPhysicalTopology) string { return v.Block }).(pulumi.StringOutput)
+}
+
+// The cluster name of the reservation sub-block.
+func (o GetReservationSubBlockPhysicalTopologyOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSubBlockPhysicalTopology) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// The hash of the capacity sub-block within the capacity block.
+func (o GetReservationSubBlockPhysicalTopologyOutput) SubBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSubBlockPhysicalTopology) string { return v.SubBlock }).(pulumi.StringOutput)
+}
+
+type GetReservationSubBlockPhysicalTopologyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSubBlockPhysicalTopologyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSubBlockPhysicalTopology)(nil)).Elem()
+}
+
+func (o GetReservationSubBlockPhysicalTopologyArrayOutput) ToGetReservationSubBlockPhysicalTopologyArrayOutput() GetReservationSubBlockPhysicalTopologyArrayOutput {
+	return o
+}
+
+func (o GetReservationSubBlockPhysicalTopologyArrayOutput) ToGetReservationSubBlockPhysicalTopologyArrayOutputWithContext(ctx context.Context) GetReservationSubBlockPhysicalTopologyArrayOutput {
+	return o
+}
+
+func (o GetReservationSubBlockPhysicalTopologyArrayOutput) Index(i pulumi.IntInput) GetReservationSubBlockPhysicalTopologyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationSubBlockPhysicalTopology {
+		return vs[0].([]GetReservationSubBlockPhysicalTopology)[vs[1].(int)]
+	}).(GetReservationSubBlockPhysicalTopologyOutput)
+}
+
+type GetReservationSubBlockReservationSubBlockMaintenance struct {
+	// Number of instances that have ongoing maintenance.
+	InstanceMaintenanceOngoingCount int `pulumi:"instanceMaintenanceOngoingCount"`
+	// Number of instances that have pending maintenance.
+	InstanceMaintenancePendingCount int `pulumi:"instanceMaintenancePendingCount"`
+	// Number of hosts in the sub-block that have ongoing maintenance.
+	MaintenanceOngoingCount int `pulumi:"maintenanceOngoingCount"`
+	// Number of hosts in the sub-block that have pending maintenance.
+	MaintenancePendingCount int `pulumi:"maintenancePendingCount"`
+	// The type of maintenance for the reservation.
+	SchedulingType string `pulumi:"schedulingType"`
+	// Number of sub-block infrastructure that has ongoing maintenance.
+	SubblockInfraMaintenanceOngoingCount int `pulumi:"subblockInfraMaintenanceOngoingCount"`
+	// Number of sub-block infrastructure that has pending maintenance.
+	SubblockInfraMaintenancePendingCount int `pulumi:"subblockInfraMaintenancePendingCount"`
+}
+
+// GetReservationSubBlockReservationSubBlockMaintenanceInput is an input type that accepts GetReservationSubBlockReservationSubBlockMaintenanceArgs and GetReservationSubBlockReservationSubBlockMaintenanceOutput values.
+// You can construct a concrete instance of `GetReservationSubBlockReservationSubBlockMaintenanceInput` via:
+//
+//	GetReservationSubBlockReservationSubBlockMaintenanceArgs{...}
+type GetReservationSubBlockReservationSubBlockMaintenanceInput interface {
+	pulumi.Input
+
+	ToGetReservationSubBlockReservationSubBlockMaintenanceOutput() GetReservationSubBlockReservationSubBlockMaintenanceOutput
+	ToGetReservationSubBlockReservationSubBlockMaintenanceOutputWithContext(context.Context) GetReservationSubBlockReservationSubBlockMaintenanceOutput
+}
+
+type GetReservationSubBlockReservationSubBlockMaintenanceArgs struct {
+	// Number of instances that have ongoing maintenance.
+	InstanceMaintenanceOngoingCount pulumi.IntInput `pulumi:"instanceMaintenanceOngoingCount"`
+	// Number of instances that have pending maintenance.
+	InstanceMaintenancePendingCount pulumi.IntInput `pulumi:"instanceMaintenancePendingCount"`
+	// Number of hosts in the sub-block that have ongoing maintenance.
+	MaintenanceOngoingCount pulumi.IntInput `pulumi:"maintenanceOngoingCount"`
+	// Number of hosts in the sub-block that have pending maintenance.
+	MaintenancePendingCount pulumi.IntInput `pulumi:"maintenancePendingCount"`
+	// The type of maintenance for the reservation.
+	SchedulingType pulumi.StringInput `pulumi:"schedulingType"`
+	// Number of sub-block infrastructure that has ongoing maintenance.
+	SubblockInfraMaintenanceOngoingCount pulumi.IntInput `pulumi:"subblockInfraMaintenanceOngoingCount"`
+	// Number of sub-block infrastructure that has pending maintenance.
+	SubblockInfraMaintenancePendingCount pulumi.IntInput `pulumi:"subblockInfraMaintenancePendingCount"`
+}
+
+func (GetReservationSubBlockReservationSubBlockMaintenanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSubBlockReservationSubBlockMaintenance)(nil)).Elem()
+}
+
+func (i GetReservationSubBlockReservationSubBlockMaintenanceArgs) ToGetReservationSubBlockReservationSubBlockMaintenanceOutput() GetReservationSubBlockReservationSubBlockMaintenanceOutput {
+	return i.ToGetReservationSubBlockReservationSubBlockMaintenanceOutputWithContext(context.Background())
+}
+
+func (i GetReservationSubBlockReservationSubBlockMaintenanceArgs) ToGetReservationSubBlockReservationSubBlockMaintenanceOutputWithContext(ctx context.Context) GetReservationSubBlockReservationSubBlockMaintenanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSubBlockReservationSubBlockMaintenanceOutput)
+}
+
+// GetReservationSubBlockReservationSubBlockMaintenanceArrayInput is an input type that accepts GetReservationSubBlockReservationSubBlockMaintenanceArray and GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput values.
+// You can construct a concrete instance of `GetReservationSubBlockReservationSubBlockMaintenanceArrayInput` via:
+//
+//	GetReservationSubBlockReservationSubBlockMaintenanceArray{ GetReservationSubBlockReservationSubBlockMaintenanceArgs{...} }
+type GetReservationSubBlockReservationSubBlockMaintenanceArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationSubBlockReservationSubBlockMaintenanceArrayOutput() GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput
+	ToGetReservationSubBlockReservationSubBlockMaintenanceArrayOutputWithContext(context.Context) GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput
+}
+
+type GetReservationSubBlockReservationSubBlockMaintenanceArray []GetReservationSubBlockReservationSubBlockMaintenanceInput
+
+func (GetReservationSubBlockReservationSubBlockMaintenanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSubBlockReservationSubBlockMaintenance)(nil)).Elem()
+}
+
+func (i GetReservationSubBlockReservationSubBlockMaintenanceArray) ToGetReservationSubBlockReservationSubBlockMaintenanceArrayOutput() GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput {
+	return i.ToGetReservationSubBlockReservationSubBlockMaintenanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationSubBlockReservationSubBlockMaintenanceArray) ToGetReservationSubBlockReservationSubBlockMaintenanceArrayOutputWithContext(ctx context.Context) GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput)
+}
+
+type GetReservationSubBlockReservationSubBlockMaintenanceOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSubBlockReservationSubBlockMaintenanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSubBlockReservationSubBlockMaintenance)(nil)).Elem()
+}
+
+func (o GetReservationSubBlockReservationSubBlockMaintenanceOutput) ToGetReservationSubBlockReservationSubBlockMaintenanceOutput() GetReservationSubBlockReservationSubBlockMaintenanceOutput {
+	return o
+}
+
+func (o GetReservationSubBlockReservationSubBlockMaintenanceOutput) ToGetReservationSubBlockReservationSubBlockMaintenanceOutputWithContext(ctx context.Context) GetReservationSubBlockReservationSubBlockMaintenanceOutput {
+	return o
+}
+
+// Number of instances that have ongoing maintenance.
+func (o GetReservationSubBlockReservationSubBlockMaintenanceOutput) InstanceMaintenanceOngoingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSubBlockReservationSubBlockMaintenance) int {
+		return v.InstanceMaintenanceOngoingCount
+	}).(pulumi.IntOutput)
+}
+
+// Number of instances that have pending maintenance.
+func (o GetReservationSubBlockReservationSubBlockMaintenanceOutput) InstanceMaintenancePendingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSubBlockReservationSubBlockMaintenance) int {
+		return v.InstanceMaintenancePendingCount
+	}).(pulumi.IntOutput)
+}
+
+// Number of hosts in the sub-block that have ongoing maintenance.
+func (o GetReservationSubBlockReservationSubBlockMaintenanceOutput) MaintenanceOngoingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSubBlockReservationSubBlockMaintenance) int { return v.MaintenanceOngoingCount }).(pulumi.IntOutput)
+}
+
+// Number of hosts in the sub-block that have pending maintenance.
+func (o GetReservationSubBlockReservationSubBlockMaintenanceOutput) MaintenancePendingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSubBlockReservationSubBlockMaintenance) int { return v.MaintenancePendingCount }).(pulumi.IntOutput)
+}
+
+// The type of maintenance for the reservation.
+func (o GetReservationSubBlockReservationSubBlockMaintenanceOutput) SchedulingType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSubBlockReservationSubBlockMaintenance) string { return v.SchedulingType }).(pulumi.StringOutput)
+}
+
+// Number of sub-block infrastructure that has ongoing maintenance.
+func (o GetReservationSubBlockReservationSubBlockMaintenanceOutput) SubblockInfraMaintenanceOngoingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSubBlockReservationSubBlockMaintenance) int {
+		return v.SubblockInfraMaintenanceOngoingCount
+	}).(pulumi.IntOutput)
+}
+
+// Number of sub-block infrastructure that has pending maintenance.
+func (o GetReservationSubBlockReservationSubBlockMaintenanceOutput) SubblockInfraMaintenancePendingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSubBlockReservationSubBlockMaintenance) int {
+		return v.SubblockInfraMaintenancePendingCount
+	}).(pulumi.IntOutput)
+}
+
+type GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSubBlockReservationSubBlockMaintenance)(nil)).Elem()
+}
+
+func (o GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput) ToGetReservationSubBlockReservationSubBlockMaintenanceArrayOutput() GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput {
+	return o
+}
+
+func (o GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput) ToGetReservationSubBlockReservationSubBlockMaintenanceArrayOutputWithContext(ctx context.Context) GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput {
+	return o
+}
+
+func (o GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput) Index(i pulumi.IntInput) GetReservationSubBlockReservationSubBlockMaintenanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationSubBlockReservationSubBlockMaintenance {
+		return vs[0].([]GetReservationSubBlockReservationSubBlockMaintenance)[vs[1].(int)]
+	}).(GetReservationSubBlockReservationSubBlockMaintenanceOutput)
 }
 
 type GetResourcePolicyDiskConsistencyGroupPolicy struct {
@@ -14733,6 +16759,16 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerNamedPortInput)(nil)).Elem(), GetRegionInstanceGroupManagerNamedPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerNamedPortArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerNamedPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerParamInput)(nil)).Elem(), GetRegionInstanceGroupManagerParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerParamArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStandbyPolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerStandbyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStandbyPolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStandbyPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulDiskInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulDiskArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulExternalIpInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulExternalIpArgs{})
@@ -14811,10 +16847,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupPscDataArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupPscDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeploymentInput)(nil)).Elem(), GetRegionNetworkEndpointGroupServerlessDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeploymentArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupServerlessDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationBlockHealthInfoInput)(nil)).Elem(), GetReservationBlockHealthInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationBlockHealthInfoArrayInput)(nil)).Elem(), GetReservationBlockHealthInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationBlockPhysicalTopologyInput)(nil)).Elem(), GetReservationBlockPhysicalTopologyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationBlockPhysicalTopologyArrayInput)(nil)).Elem(), GetReservationBlockPhysicalTopologyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationBlockReservationMaintenanceInput)(nil)).Elem(), GetReservationBlockReservationMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationBlockReservationMaintenanceArrayInput)(nil)).Elem(), GetReservationBlockReservationMaintenanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationDeleteAfterDurationInput)(nil)).Elem(), GetReservationDeleteAfterDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationDeleteAfterDurationArrayInput)(nil)).Elem(), GetReservationDeleteAfterDurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationReservationSharingPolicyInput)(nil)).Elem(), GetReservationReservationSharingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationReservationSharingPolicyArrayInput)(nil)).Elem(), GetReservationReservationSharingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationResourceStatusInput)(nil)).Elem(), GetReservationResourceStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationResourceStatusArrayInput)(nil)).Elem(), GetReservationResourceStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationResourceStatusHealthInfoInput)(nil)).Elem(), GetReservationResourceStatusHealthInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationResourceStatusHealthInfoArrayInput)(nil)).Elem(), GetReservationResourceStatusHealthInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationResourceStatusReservationMaintenanceInput)(nil)).Elem(), GetReservationResourceStatusReservationMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationResourceStatusReservationMaintenanceArrayInput)(nil)).Elem(), GetReservationResourceStatusReservationMaintenanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceInput)(nil)).Elem(), GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayInput)(nil)).Elem(), GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationResourceStatusSpecificSkuAllocationInput)(nil)).Elem(), GetReservationResourceStatusSpecificSkuAllocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationResourceStatusSpecificSkuAllocationArrayInput)(nil)).Elem(), GetReservationResourceStatusSpecificSkuAllocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationShareSettingInput)(nil)).Elem(), GetReservationShareSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationShareSettingArrayInput)(nil)).Elem(), GetReservationShareSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationShareSettingProjectMapInput)(nil)).Elem(), GetReservationShareSettingProjectMapArgs{})
@@ -14827,6 +16879,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyLocalSsdInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyLocalSsdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyLocalSsdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSubBlockHealthInfoInput)(nil)).Elem(), GetReservationSubBlockHealthInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSubBlockHealthInfoArrayInput)(nil)).Elem(), GetReservationSubBlockHealthInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSubBlockPhysicalTopologyInput)(nil)).Elem(), GetReservationSubBlockPhysicalTopologyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSubBlockPhysicalTopologyArrayInput)(nil)).Elem(), GetReservationSubBlockPhysicalTopologyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSubBlockReservationSubBlockMaintenanceInput)(nil)).Elem(), GetReservationSubBlockReservationSubBlockMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSubBlockReservationSubBlockMaintenanceArrayInput)(nil)).Elem(), GetReservationSubBlockReservationSubBlockMaintenanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyDiskConsistencyGroupPolicyInput)(nil)).Elem(), GetResourcePolicyDiskConsistencyGroupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyDiskConsistencyGroupPolicyArrayInput)(nil)).Elem(), GetResourcePolicyDiskConsistencyGroupPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyGroupPlacementPolicyInput)(nil)).Elem(), GetResourcePolicyGroupPlacementPolicyArgs{})
@@ -14959,6 +17017,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerNamedPortOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerNamedPortArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerParamOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerParamArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStandbyPolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStandbyPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulDiskOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulExternalIpOutput{})
@@ -15037,10 +17105,26 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupPscDataArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupServerlessDeploymentOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationBlockHealthInfoOutput{})
+	pulumi.RegisterOutputType(GetReservationBlockHealthInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationBlockPhysicalTopologyOutput{})
+	pulumi.RegisterOutputType(GetReservationBlockPhysicalTopologyArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationBlockReservationMaintenanceOutput{})
+	pulumi.RegisterOutputType(GetReservationBlockReservationMaintenanceArrayOutput{})
 	pulumi.RegisterOutputType(GetReservationDeleteAfterDurationOutput{})
 	pulumi.RegisterOutputType(GetReservationDeleteAfterDurationArrayOutput{})
 	pulumi.RegisterOutputType(GetReservationReservationSharingPolicyOutput{})
 	pulumi.RegisterOutputType(GetReservationReservationSharingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationResourceStatusOutput{})
+	pulumi.RegisterOutputType(GetReservationResourceStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationResourceStatusHealthInfoOutput{})
+	pulumi.RegisterOutputType(GetReservationResourceStatusHealthInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationResourceStatusReservationMaintenanceOutput{})
+	pulumi.RegisterOutputType(GetReservationResourceStatusReservationMaintenanceArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceOutput{})
+	pulumi.RegisterOutputType(GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenanceArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationResourceStatusSpecificSkuAllocationOutput{})
+	pulumi.RegisterOutputType(GetReservationResourceStatusSpecificSkuAllocationArrayOutput{})
 	pulumi.RegisterOutputType(GetReservationShareSettingOutput{})
 	pulumi.RegisterOutputType(GetReservationShareSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetReservationShareSettingProjectMapOutput{})
@@ -15053,6 +17137,12 @@ func init() {
 	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyLocalSsdOutput{})
 	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationSubBlockHealthInfoOutput{})
+	pulumi.RegisterOutputType(GetReservationSubBlockHealthInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationSubBlockPhysicalTopologyOutput{})
+	pulumi.RegisterOutputType(GetReservationSubBlockPhysicalTopologyArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationSubBlockReservationSubBlockMaintenanceOutput{})
+	pulumi.RegisterOutputType(GetReservationSubBlockReservationSubBlockMaintenanceArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyDiskConsistencyGroupPolicyOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyGroupPlacementPolicyOutput{})

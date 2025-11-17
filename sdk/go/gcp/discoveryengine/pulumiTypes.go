@@ -1864,6 +1864,1727 @@ func (o CmekConfigSingleRegionKeyArrayOutput) Index(i pulumi.IntInput) CmekConfi
 	}).(CmekConfigSingleRegionKeyOutput)
 }
 
+type ControlBoostAction struct {
+	// The data store to boost.
+	DataStore string `pulumi:"dataStore"`
+	// The filter to apply to the search results.
+	Filter string `pulumi:"filter"`
+	// The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
+	FixedBoost *float64 `pulumi:"fixedBoost"`
+	// The interpolation boost specification to apply to the search results.
+	// Structure is documented below.
+	InterpolationBoostSpec *ControlBoostActionInterpolationBoostSpec `pulumi:"interpolationBoostSpec"`
+}
+
+// ControlBoostActionInput is an input type that accepts ControlBoostActionArgs and ControlBoostActionOutput values.
+// You can construct a concrete instance of `ControlBoostActionInput` via:
+//
+//	ControlBoostActionArgs{...}
+type ControlBoostActionInput interface {
+	pulumi.Input
+
+	ToControlBoostActionOutput() ControlBoostActionOutput
+	ToControlBoostActionOutputWithContext(context.Context) ControlBoostActionOutput
+}
+
+type ControlBoostActionArgs struct {
+	// The data store to boost.
+	DataStore pulumi.StringInput `pulumi:"dataStore"`
+	// The filter to apply to the search results.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
+	FixedBoost pulumi.Float64PtrInput `pulumi:"fixedBoost"`
+	// The interpolation boost specification to apply to the search results.
+	// Structure is documented below.
+	InterpolationBoostSpec ControlBoostActionInterpolationBoostSpecPtrInput `pulumi:"interpolationBoostSpec"`
+}
+
+func (ControlBoostActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlBoostAction)(nil)).Elem()
+}
+
+func (i ControlBoostActionArgs) ToControlBoostActionOutput() ControlBoostActionOutput {
+	return i.ToControlBoostActionOutputWithContext(context.Background())
+}
+
+func (i ControlBoostActionArgs) ToControlBoostActionOutputWithContext(ctx context.Context) ControlBoostActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlBoostActionOutput)
+}
+
+func (i ControlBoostActionArgs) ToControlBoostActionPtrOutput() ControlBoostActionPtrOutput {
+	return i.ToControlBoostActionPtrOutputWithContext(context.Background())
+}
+
+func (i ControlBoostActionArgs) ToControlBoostActionPtrOutputWithContext(ctx context.Context) ControlBoostActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlBoostActionOutput).ToControlBoostActionPtrOutputWithContext(ctx)
+}
+
+// ControlBoostActionPtrInput is an input type that accepts ControlBoostActionArgs, ControlBoostActionPtr and ControlBoostActionPtrOutput values.
+// You can construct a concrete instance of `ControlBoostActionPtrInput` via:
+//
+//	        ControlBoostActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlBoostActionPtrInput interface {
+	pulumi.Input
+
+	ToControlBoostActionPtrOutput() ControlBoostActionPtrOutput
+	ToControlBoostActionPtrOutputWithContext(context.Context) ControlBoostActionPtrOutput
+}
+
+type controlBoostActionPtrType ControlBoostActionArgs
+
+func ControlBoostActionPtr(v *ControlBoostActionArgs) ControlBoostActionPtrInput {
+	return (*controlBoostActionPtrType)(v)
+}
+
+func (*controlBoostActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlBoostAction)(nil)).Elem()
+}
+
+func (i *controlBoostActionPtrType) ToControlBoostActionPtrOutput() ControlBoostActionPtrOutput {
+	return i.ToControlBoostActionPtrOutputWithContext(context.Background())
+}
+
+func (i *controlBoostActionPtrType) ToControlBoostActionPtrOutputWithContext(ctx context.Context) ControlBoostActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlBoostActionPtrOutput)
+}
+
+type ControlBoostActionOutput struct{ *pulumi.OutputState }
+
+func (ControlBoostActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlBoostAction)(nil)).Elem()
+}
+
+func (o ControlBoostActionOutput) ToControlBoostActionOutput() ControlBoostActionOutput {
+	return o
+}
+
+func (o ControlBoostActionOutput) ToControlBoostActionOutputWithContext(ctx context.Context) ControlBoostActionOutput {
+	return o
+}
+
+func (o ControlBoostActionOutput) ToControlBoostActionPtrOutput() ControlBoostActionPtrOutput {
+	return o.ToControlBoostActionPtrOutputWithContext(context.Background())
+}
+
+func (o ControlBoostActionOutput) ToControlBoostActionPtrOutputWithContext(ctx context.Context) ControlBoostActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlBoostAction) *ControlBoostAction {
+		return &v
+	}).(ControlBoostActionPtrOutput)
+}
+
+// The data store to boost.
+func (o ControlBoostActionOutput) DataStore() pulumi.StringOutput {
+	return o.ApplyT(func(v ControlBoostAction) string { return v.DataStore }).(pulumi.StringOutput)
+}
+
+// The filter to apply to the search results.
+func (o ControlBoostActionOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v ControlBoostAction) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
+func (o ControlBoostActionOutput) FixedBoost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ControlBoostAction) *float64 { return v.FixedBoost }).(pulumi.Float64PtrOutput)
+}
+
+// The interpolation boost specification to apply to the search results.
+// Structure is documented below.
+func (o ControlBoostActionOutput) InterpolationBoostSpec() ControlBoostActionInterpolationBoostSpecPtrOutput {
+	return o.ApplyT(func(v ControlBoostAction) *ControlBoostActionInterpolationBoostSpec { return v.InterpolationBoostSpec }).(ControlBoostActionInterpolationBoostSpecPtrOutput)
+}
+
+type ControlBoostActionPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlBoostActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlBoostAction)(nil)).Elem()
+}
+
+func (o ControlBoostActionPtrOutput) ToControlBoostActionPtrOutput() ControlBoostActionPtrOutput {
+	return o
+}
+
+func (o ControlBoostActionPtrOutput) ToControlBoostActionPtrOutputWithContext(ctx context.Context) ControlBoostActionPtrOutput {
+	return o
+}
+
+func (o ControlBoostActionPtrOutput) Elem() ControlBoostActionOutput {
+	return o.ApplyT(func(v *ControlBoostAction) ControlBoostAction {
+		if v != nil {
+			return *v
+		}
+		var ret ControlBoostAction
+		return ret
+	}).(ControlBoostActionOutput)
+}
+
+// The data store to boost.
+func (o ControlBoostActionPtrOutput) DataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlBoostAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataStore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The filter to apply to the search results.
+func (o ControlBoostActionPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlBoostAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
+func (o ControlBoostActionPtrOutput) FixedBoost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ControlBoostAction) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.FixedBoost
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The interpolation boost specification to apply to the search results.
+// Structure is documented below.
+func (o ControlBoostActionPtrOutput) InterpolationBoostSpec() ControlBoostActionInterpolationBoostSpecPtrOutput {
+	return o.ApplyT(func(v *ControlBoostAction) *ControlBoostActionInterpolationBoostSpec {
+		if v == nil {
+			return nil
+		}
+		return v.InterpolationBoostSpec
+	}).(ControlBoostActionInterpolationBoostSpecPtrOutput)
+}
+
+type ControlBoostActionInterpolationBoostSpec struct {
+	// The attribute type to be used to determine the boost amount.
+	// Possible values are: `NUMERICAL`, `FRESHNESS`.
+	AttributeType *string `pulumi:"attributeType"`
+	// The control points used to define the curve.
+	// Structure is documented below.
+	ControlPoint *ControlBoostActionInterpolationBoostSpecControlPoint `pulumi:"controlPoint"`
+	// The name of the field whose value will be used to determine the boost amount.
+	FieldName *string `pulumi:"fieldName"`
+	// The interpolation type to be applied to connect the control points.
+	// Possible values are: `LINEAR`.
+	InterpolationType *string `pulumi:"interpolationType"`
+}
+
+// ControlBoostActionInterpolationBoostSpecInput is an input type that accepts ControlBoostActionInterpolationBoostSpecArgs and ControlBoostActionInterpolationBoostSpecOutput values.
+// You can construct a concrete instance of `ControlBoostActionInterpolationBoostSpecInput` via:
+//
+//	ControlBoostActionInterpolationBoostSpecArgs{...}
+type ControlBoostActionInterpolationBoostSpecInput interface {
+	pulumi.Input
+
+	ToControlBoostActionInterpolationBoostSpecOutput() ControlBoostActionInterpolationBoostSpecOutput
+	ToControlBoostActionInterpolationBoostSpecOutputWithContext(context.Context) ControlBoostActionInterpolationBoostSpecOutput
+}
+
+type ControlBoostActionInterpolationBoostSpecArgs struct {
+	// The attribute type to be used to determine the boost amount.
+	// Possible values are: `NUMERICAL`, `FRESHNESS`.
+	AttributeType pulumi.StringPtrInput `pulumi:"attributeType"`
+	// The control points used to define the curve.
+	// Structure is documented below.
+	ControlPoint ControlBoostActionInterpolationBoostSpecControlPointPtrInput `pulumi:"controlPoint"`
+	// The name of the field whose value will be used to determine the boost amount.
+	FieldName pulumi.StringPtrInput `pulumi:"fieldName"`
+	// The interpolation type to be applied to connect the control points.
+	// Possible values are: `LINEAR`.
+	InterpolationType pulumi.StringPtrInput `pulumi:"interpolationType"`
+}
+
+func (ControlBoostActionInterpolationBoostSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlBoostActionInterpolationBoostSpec)(nil)).Elem()
+}
+
+func (i ControlBoostActionInterpolationBoostSpecArgs) ToControlBoostActionInterpolationBoostSpecOutput() ControlBoostActionInterpolationBoostSpecOutput {
+	return i.ToControlBoostActionInterpolationBoostSpecOutputWithContext(context.Background())
+}
+
+func (i ControlBoostActionInterpolationBoostSpecArgs) ToControlBoostActionInterpolationBoostSpecOutputWithContext(ctx context.Context) ControlBoostActionInterpolationBoostSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlBoostActionInterpolationBoostSpecOutput)
+}
+
+func (i ControlBoostActionInterpolationBoostSpecArgs) ToControlBoostActionInterpolationBoostSpecPtrOutput() ControlBoostActionInterpolationBoostSpecPtrOutput {
+	return i.ToControlBoostActionInterpolationBoostSpecPtrOutputWithContext(context.Background())
+}
+
+func (i ControlBoostActionInterpolationBoostSpecArgs) ToControlBoostActionInterpolationBoostSpecPtrOutputWithContext(ctx context.Context) ControlBoostActionInterpolationBoostSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlBoostActionInterpolationBoostSpecOutput).ToControlBoostActionInterpolationBoostSpecPtrOutputWithContext(ctx)
+}
+
+// ControlBoostActionInterpolationBoostSpecPtrInput is an input type that accepts ControlBoostActionInterpolationBoostSpecArgs, ControlBoostActionInterpolationBoostSpecPtr and ControlBoostActionInterpolationBoostSpecPtrOutput values.
+// You can construct a concrete instance of `ControlBoostActionInterpolationBoostSpecPtrInput` via:
+//
+//	        ControlBoostActionInterpolationBoostSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlBoostActionInterpolationBoostSpecPtrInput interface {
+	pulumi.Input
+
+	ToControlBoostActionInterpolationBoostSpecPtrOutput() ControlBoostActionInterpolationBoostSpecPtrOutput
+	ToControlBoostActionInterpolationBoostSpecPtrOutputWithContext(context.Context) ControlBoostActionInterpolationBoostSpecPtrOutput
+}
+
+type controlBoostActionInterpolationBoostSpecPtrType ControlBoostActionInterpolationBoostSpecArgs
+
+func ControlBoostActionInterpolationBoostSpecPtr(v *ControlBoostActionInterpolationBoostSpecArgs) ControlBoostActionInterpolationBoostSpecPtrInput {
+	return (*controlBoostActionInterpolationBoostSpecPtrType)(v)
+}
+
+func (*controlBoostActionInterpolationBoostSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlBoostActionInterpolationBoostSpec)(nil)).Elem()
+}
+
+func (i *controlBoostActionInterpolationBoostSpecPtrType) ToControlBoostActionInterpolationBoostSpecPtrOutput() ControlBoostActionInterpolationBoostSpecPtrOutput {
+	return i.ToControlBoostActionInterpolationBoostSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *controlBoostActionInterpolationBoostSpecPtrType) ToControlBoostActionInterpolationBoostSpecPtrOutputWithContext(ctx context.Context) ControlBoostActionInterpolationBoostSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlBoostActionInterpolationBoostSpecPtrOutput)
+}
+
+type ControlBoostActionInterpolationBoostSpecOutput struct{ *pulumi.OutputState }
+
+func (ControlBoostActionInterpolationBoostSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlBoostActionInterpolationBoostSpec)(nil)).Elem()
+}
+
+func (o ControlBoostActionInterpolationBoostSpecOutput) ToControlBoostActionInterpolationBoostSpecOutput() ControlBoostActionInterpolationBoostSpecOutput {
+	return o
+}
+
+func (o ControlBoostActionInterpolationBoostSpecOutput) ToControlBoostActionInterpolationBoostSpecOutputWithContext(ctx context.Context) ControlBoostActionInterpolationBoostSpecOutput {
+	return o
+}
+
+func (o ControlBoostActionInterpolationBoostSpecOutput) ToControlBoostActionInterpolationBoostSpecPtrOutput() ControlBoostActionInterpolationBoostSpecPtrOutput {
+	return o.ToControlBoostActionInterpolationBoostSpecPtrOutputWithContext(context.Background())
+}
+
+func (o ControlBoostActionInterpolationBoostSpecOutput) ToControlBoostActionInterpolationBoostSpecPtrOutputWithContext(ctx context.Context) ControlBoostActionInterpolationBoostSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlBoostActionInterpolationBoostSpec) *ControlBoostActionInterpolationBoostSpec {
+		return &v
+	}).(ControlBoostActionInterpolationBoostSpecPtrOutput)
+}
+
+// The attribute type to be used to determine the boost amount.
+// Possible values are: `NUMERICAL`, `FRESHNESS`.
+func (o ControlBoostActionInterpolationBoostSpecOutput) AttributeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlBoostActionInterpolationBoostSpec) *string { return v.AttributeType }).(pulumi.StringPtrOutput)
+}
+
+// The control points used to define the curve.
+// Structure is documented below.
+func (o ControlBoostActionInterpolationBoostSpecOutput) ControlPoint() ControlBoostActionInterpolationBoostSpecControlPointPtrOutput {
+	return o.ApplyT(func(v ControlBoostActionInterpolationBoostSpec) *ControlBoostActionInterpolationBoostSpecControlPoint {
+		return v.ControlPoint
+	}).(ControlBoostActionInterpolationBoostSpecControlPointPtrOutput)
+}
+
+// The name of the field whose value will be used to determine the boost amount.
+func (o ControlBoostActionInterpolationBoostSpecOutput) FieldName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlBoostActionInterpolationBoostSpec) *string { return v.FieldName }).(pulumi.StringPtrOutput)
+}
+
+// The interpolation type to be applied to connect the control points.
+// Possible values are: `LINEAR`.
+func (o ControlBoostActionInterpolationBoostSpecOutput) InterpolationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlBoostActionInterpolationBoostSpec) *string { return v.InterpolationType }).(pulumi.StringPtrOutput)
+}
+
+type ControlBoostActionInterpolationBoostSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlBoostActionInterpolationBoostSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlBoostActionInterpolationBoostSpec)(nil)).Elem()
+}
+
+func (o ControlBoostActionInterpolationBoostSpecPtrOutput) ToControlBoostActionInterpolationBoostSpecPtrOutput() ControlBoostActionInterpolationBoostSpecPtrOutput {
+	return o
+}
+
+func (o ControlBoostActionInterpolationBoostSpecPtrOutput) ToControlBoostActionInterpolationBoostSpecPtrOutputWithContext(ctx context.Context) ControlBoostActionInterpolationBoostSpecPtrOutput {
+	return o
+}
+
+func (o ControlBoostActionInterpolationBoostSpecPtrOutput) Elem() ControlBoostActionInterpolationBoostSpecOutput {
+	return o.ApplyT(func(v *ControlBoostActionInterpolationBoostSpec) ControlBoostActionInterpolationBoostSpec {
+		if v != nil {
+			return *v
+		}
+		var ret ControlBoostActionInterpolationBoostSpec
+		return ret
+	}).(ControlBoostActionInterpolationBoostSpecOutput)
+}
+
+// The attribute type to be used to determine the boost amount.
+// Possible values are: `NUMERICAL`, `FRESHNESS`.
+func (o ControlBoostActionInterpolationBoostSpecPtrOutput) AttributeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlBoostActionInterpolationBoostSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AttributeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The control points used to define the curve.
+// Structure is documented below.
+func (o ControlBoostActionInterpolationBoostSpecPtrOutput) ControlPoint() ControlBoostActionInterpolationBoostSpecControlPointPtrOutput {
+	return o.ApplyT(func(v *ControlBoostActionInterpolationBoostSpec) *ControlBoostActionInterpolationBoostSpecControlPoint {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPoint
+	}).(ControlBoostActionInterpolationBoostSpecControlPointPtrOutput)
+}
+
+// The name of the field whose value will be used to determine the boost amount.
+func (o ControlBoostActionInterpolationBoostSpecPtrOutput) FieldName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlBoostActionInterpolationBoostSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The interpolation type to be applied to connect the control points.
+// Possible values are: `LINEAR`.
+func (o ControlBoostActionInterpolationBoostSpecPtrOutput) InterpolationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlBoostActionInterpolationBoostSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InterpolationType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ControlBoostActionInterpolationBoostSpecControlPoint struct {
+	// The attribute value of the control point.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The value between -1 to 1 by which to boost the score if the attributeValue
+	// evaluates to the value specified above.
+	BoostAmount *float64 `pulumi:"boostAmount"`
+}
+
+// ControlBoostActionInterpolationBoostSpecControlPointInput is an input type that accepts ControlBoostActionInterpolationBoostSpecControlPointArgs and ControlBoostActionInterpolationBoostSpecControlPointOutput values.
+// You can construct a concrete instance of `ControlBoostActionInterpolationBoostSpecControlPointInput` via:
+//
+//	ControlBoostActionInterpolationBoostSpecControlPointArgs{...}
+type ControlBoostActionInterpolationBoostSpecControlPointInput interface {
+	pulumi.Input
+
+	ToControlBoostActionInterpolationBoostSpecControlPointOutput() ControlBoostActionInterpolationBoostSpecControlPointOutput
+	ToControlBoostActionInterpolationBoostSpecControlPointOutputWithContext(context.Context) ControlBoostActionInterpolationBoostSpecControlPointOutput
+}
+
+type ControlBoostActionInterpolationBoostSpecControlPointArgs struct {
+	// The attribute value of the control point.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The value between -1 to 1 by which to boost the score if the attributeValue
+	// evaluates to the value specified above.
+	BoostAmount pulumi.Float64PtrInput `pulumi:"boostAmount"`
+}
+
+func (ControlBoostActionInterpolationBoostSpecControlPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlBoostActionInterpolationBoostSpecControlPoint)(nil)).Elem()
+}
+
+func (i ControlBoostActionInterpolationBoostSpecControlPointArgs) ToControlBoostActionInterpolationBoostSpecControlPointOutput() ControlBoostActionInterpolationBoostSpecControlPointOutput {
+	return i.ToControlBoostActionInterpolationBoostSpecControlPointOutputWithContext(context.Background())
+}
+
+func (i ControlBoostActionInterpolationBoostSpecControlPointArgs) ToControlBoostActionInterpolationBoostSpecControlPointOutputWithContext(ctx context.Context) ControlBoostActionInterpolationBoostSpecControlPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlBoostActionInterpolationBoostSpecControlPointOutput)
+}
+
+func (i ControlBoostActionInterpolationBoostSpecControlPointArgs) ToControlBoostActionInterpolationBoostSpecControlPointPtrOutput() ControlBoostActionInterpolationBoostSpecControlPointPtrOutput {
+	return i.ToControlBoostActionInterpolationBoostSpecControlPointPtrOutputWithContext(context.Background())
+}
+
+func (i ControlBoostActionInterpolationBoostSpecControlPointArgs) ToControlBoostActionInterpolationBoostSpecControlPointPtrOutputWithContext(ctx context.Context) ControlBoostActionInterpolationBoostSpecControlPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlBoostActionInterpolationBoostSpecControlPointOutput).ToControlBoostActionInterpolationBoostSpecControlPointPtrOutputWithContext(ctx)
+}
+
+// ControlBoostActionInterpolationBoostSpecControlPointPtrInput is an input type that accepts ControlBoostActionInterpolationBoostSpecControlPointArgs, ControlBoostActionInterpolationBoostSpecControlPointPtr and ControlBoostActionInterpolationBoostSpecControlPointPtrOutput values.
+// You can construct a concrete instance of `ControlBoostActionInterpolationBoostSpecControlPointPtrInput` via:
+//
+//	        ControlBoostActionInterpolationBoostSpecControlPointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlBoostActionInterpolationBoostSpecControlPointPtrInput interface {
+	pulumi.Input
+
+	ToControlBoostActionInterpolationBoostSpecControlPointPtrOutput() ControlBoostActionInterpolationBoostSpecControlPointPtrOutput
+	ToControlBoostActionInterpolationBoostSpecControlPointPtrOutputWithContext(context.Context) ControlBoostActionInterpolationBoostSpecControlPointPtrOutput
+}
+
+type controlBoostActionInterpolationBoostSpecControlPointPtrType ControlBoostActionInterpolationBoostSpecControlPointArgs
+
+func ControlBoostActionInterpolationBoostSpecControlPointPtr(v *ControlBoostActionInterpolationBoostSpecControlPointArgs) ControlBoostActionInterpolationBoostSpecControlPointPtrInput {
+	return (*controlBoostActionInterpolationBoostSpecControlPointPtrType)(v)
+}
+
+func (*controlBoostActionInterpolationBoostSpecControlPointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlBoostActionInterpolationBoostSpecControlPoint)(nil)).Elem()
+}
+
+func (i *controlBoostActionInterpolationBoostSpecControlPointPtrType) ToControlBoostActionInterpolationBoostSpecControlPointPtrOutput() ControlBoostActionInterpolationBoostSpecControlPointPtrOutput {
+	return i.ToControlBoostActionInterpolationBoostSpecControlPointPtrOutputWithContext(context.Background())
+}
+
+func (i *controlBoostActionInterpolationBoostSpecControlPointPtrType) ToControlBoostActionInterpolationBoostSpecControlPointPtrOutputWithContext(ctx context.Context) ControlBoostActionInterpolationBoostSpecControlPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlBoostActionInterpolationBoostSpecControlPointPtrOutput)
+}
+
+type ControlBoostActionInterpolationBoostSpecControlPointOutput struct{ *pulumi.OutputState }
+
+func (ControlBoostActionInterpolationBoostSpecControlPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlBoostActionInterpolationBoostSpecControlPoint)(nil)).Elem()
+}
+
+func (o ControlBoostActionInterpolationBoostSpecControlPointOutput) ToControlBoostActionInterpolationBoostSpecControlPointOutput() ControlBoostActionInterpolationBoostSpecControlPointOutput {
+	return o
+}
+
+func (o ControlBoostActionInterpolationBoostSpecControlPointOutput) ToControlBoostActionInterpolationBoostSpecControlPointOutputWithContext(ctx context.Context) ControlBoostActionInterpolationBoostSpecControlPointOutput {
+	return o
+}
+
+func (o ControlBoostActionInterpolationBoostSpecControlPointOutput) ToControlBoostActionInterpolationBoostSpecControlPointPtrOutput() ControlBoostActionInterpolationBoostSpecControlPointPtrOutput {
+	return o.ToControlBoostActionInterpolationBoostSpecControlPointPtrOutputWithContext(context.Background())
+}
+
+func (o ControlBoostActionInterpolationBoostSpecControlPointOutput) ToControlBoostActionInterpolationBoostSpecControlPointPtrOutputWithContext(ctx context.Context) ControlBoostActionInterpolationBoostSpecControlPointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlBoostActionInterpolationBoostSpecControlPoint) *ControlBoostActionInterpolationBoostSpecControlPoint {
+		return &v
+	}).(ControlBoostActionInterpolationBoostSpecControlPointPtrOutput)
+}
+
+// The attribute value of the control point.
+func (o ControlBoostActionInterpolationBoostSpecControlPointOutput) AttributeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlBoostActionInterpolationBoostSpecControlPoint) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
+}
+
+// The value between -1 to 1 by which to boost the score if the attributeValue
+// evaluates to the value specified above.
+func (o ControlBoostActionInterpolationBoostSpecControlPointOutput) BoostAmount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ControlBoostActionInterpolationBoostSpecControlPoint) *float64 { return v.BoostAmount }).(pulumi.Float64PtrOutput)
+}
+
+type ControlBoostActionInterpolationBoostSpecControlPointPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlBoostActionInterpolationBoostSpecControlPointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlBoostActionInterpolationBoostSpecControlPoint)(nil)).Elem()
+}
+
+func (o ControlBoostActionInterpolationBoostSpecControlPointPtrOutput) ToControlBoostActionInterpolationBoostSpecControlPointPtrOutput() ControlBoostActionInterpolationBoostSpecControlPointPtrOutput {
+	return o
+}
+
+func (o ControlBoostActionInterpolationBoostSpecControlPointPtrOutput) ToControlBoostActionInterpolationBoostSpecControlPointPtrOutputWithContext(ctx context.Context) ControlBoostActionInterpolationBoostSpecControlPointPtrOutput {
+	return o
+}
+
+func (o ControlBoostActionInterpolationBoostSpecControlPointPtrOutput) Elem() ControlBoostActionInterpolationBoostSpecControlPointOutput {
+	return o.ApplyT(func(v *ControlBoostActionInterpolationBoostSpecControlPoint) ControlBoostActionInterpolationBoostSpecControlPoint {
+		if v != nil {
+			return *v
+		}
+		var ret ControlBoostActionInterpolationBoostSpecControlPoint
+		return ret
+	}).(ControlBoostActionInterpolationBoostSpecControlPointOutput)
+}
+
+// The attribute value of the control point.
+func (o ControlBoostActionInterpolationBoostSpecControlPointPtrOutput) AttributeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlBoostActionInterpolationBoostSpecControlPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AttributeValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value between -1 to 1 by which to boost the score if the attributeValue
+// evaluates to the value specified above.
+func (o ControlBoostActionInterpolationBoostSpecControlPointPtrOutput) BoostAmount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ControlBoostActionInterpolationBoostSpecControlPoint) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.BoostAmount
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ControlCondition struct {
+	// The time range when the condition is active.
+	// Structure is documented below.
+	ActiveTimeRanges []ControlConditionActiveTimeRange `pulumi:"activeTimeRanges"`
+	// The regular expression that the query must match for this condition to be met.
+	QueryRegex *string `pulumi:"queryRegex"`
+	// The query terms that must be present in the search request for this condition to be met.
+	// Structure is documented below.
+	QueryTerms []ControlConditionQueryTerm `pulumi:"queryTerms"`
+}
+
+// ControlConditionInput is an input type that accepts ControlConditionArgs and ControlConditionOutput values.
+// You can construct a concrete instance of `ControlConditionInput` via:
+//
+//	ControlConditionArgs{...}
+type ControlConditionInput interface {
+	pulumi.Input
+
+	ToControlConditionOutput() ControlConditionOutput
+	ToControlConditionOutputWithContext(context.Context) ControlConditionOutput
+}
+
+type ControlConditionArgs struct {
+	// The time range when the condition is active.
+	// Structure is documented below.
+	ActiveTimeRanges ControlConditionActiveTimeRangeArrayInput `pulumi:"activeTimeRanges"`
+	// The regular expression that the query must match for this condition to be met.
+	QueryRegex pulumi.StringPtrInput `pulumi:"queryRegex"`
+	// The query terms that must be present in the search request for this condition to be met.
+	// Structure is documented below.
+	QueryTerms ControlConditionQueryTermArrayInput `pulumi:"queryTerms"`
+}
+
+func (ControlConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlCondition)(nil)).Elem()
+}
+
+func (i ControlConditionArgs) ToControlConditionOutput() ControlConditionOutput {
+	return i.ToControlConditionOutputWithContext(context.Background())
+}
+
+func (i ControlConditionArgs) ToControlConditionOutputWithContext(ctx context.Context) ControlConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlConditionOutput)
+}
+
+// ControlConditionArrayInput is an input type that accepts ControlConditionArray and ControlConditionArrayOutput values.
+// You can construct a concrete instance of `ControlConditionArrayInput` via:
+//
+//	ControlConditionArray{ ControlConditionArgs{...} }
+type ControlConditionArrayInput interface {
+	pulumi.Input
+
+	ToControlConditionArrayOutput() ControlConditionArrayOutput
+	ToControlConditionArrayOutputWithContext(context.Context) ControlConditionArrayOutput
+}
+
+type ControlConditionArray []ControlConditionInput
+
+func (ControlConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlCondition)(nil)).Elem()
+}
+
+func (i ControlConditionArray) ToControlConditionArrayOutput() ControlConditionArrayOutput {
+	return i.ToControlConditionArrayOutputWithContext(context.Background())
+}
+
+func (i ControlConditionArray) ToControlConditionArrayOutputWithContext(ctx context.Context) ControlConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlConditionArrayOutput)
+}
+
+type ControlConditionOutput struct{ *pulumi.OutputState }
+
+func (ControlConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlCondition)(nil)).Elem()
+}
+
+func (o ControlConditionOutput) ToControlConditionOutput() ControlConditionOutput {
+	return o
+}
+
+func (o ControlConditionOutput) ToControlConditionOutputWithContext(ctx context.Context) ControlConditionOutput {
+	return o
+}
+
+// The time range when the condition is active.
+// Structure is documented below.
+func (o ControlConditionOutput) ActiveTimeRanges() ControlConditionActiveTimeRangeArrayOutput {
+	return o.ApplyT(func(v ControlCondition) []ControlConditionActiveTimeRange { return v.ActiveTimeRanges }).(ControlConditionActiveTimeRangeArrayOutput)
+}
+
+// The regular expression that the query must match for this condition to be met.
+func (o ControlConditionOutput) QueryRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlCondition) *string { return v.QueryRegex }).(pulumi.StringPtrOutput)
+}
+
+// The query terms that must be present in the search request for this condition to be met.
+// Structure is documented below.
+func (o ControlConditionOutput) QueryTerms() ControlConditionQueryTermArrayOutput {
+	return o.ApplyT(func(v ControlCondition) []ControlConditionQueryTerm { return v.QueryTerms }).(ControlConditionQueryTermArrayOutput)
+}
+
+type ControlConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (ControlConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlCondition)(nil)).Elem()
+}
+
+func (o ControlConditionArrayOutput) ToControlConditionArrayOutput() ControlConditionArrayOutput {
+	return o
+}
+
+func (o ControlConditionArrayOutput) ToControlConditionArrayOutputWithContext(ctx context.Context) ControlConditionArrayOutput {
+	return o
+}
+
+func (o ControlConditionArrayOutput) Index(i pulumi.IntInput) ControlConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ControlCondition {
+		return vs[0].([]ControlCondition)[vs[1].(int)]
+	}).(ControlConditionOutput)
+}
+
+type ControlConditionActiveTimeRange struct {
+	// The end time of the active time range.
+	EndTime *string `pulumi:"endTime"`
+	// The start time of the active time range.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// ControlConditionActiveTimeRangeInput is an input type that accepts ControlConditionActiveTimeRangeArgs and ControlConditionActiveTimeRangeOutput values.
+// You can construct a concrete instance of `ControlConditionActiveTimeRangeInput` via:
+//
+//	ControlConditionActiveTimeRangeArgs{...}
+type ControlConditionActiveTimeRangeInput interface {
+	pulumi.Input
+
+	ToControlConditionActiveTimeRangeOutput() ControlConditionActiveTimeRangeOutput
+	ToControlConditionActiveTimeRangeOutputWithContext(context.Context) ControlConditionActiveTimeRangeOutput
+}
+
+type ControlConditionActiveTimeRangeArgs struct {
+	// The end time of the active time range.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// The start time of the active time range.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (ControlConditionActiveTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlConditionActiveTimeRange)(nil)).Elem()
+}
+
+func (i ControlConditionActiveTimeRangeArgs) ToControlConditionActiveTimeRangeOutput() ControlConditionActiveTimeRangeOutput {
+	return i.ToControlConditionActiveTimeRangeOutputWithContext(context.Background())
+}
+
+func (i ControlConditionActiveTimeRangeArgs) ToControlConditionActiveTimeRangeOutputWithContext(ctx context.Context) ControlConditionActiveTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlConditionActiveTimeRangeOutput)
+}
+
+// ControlConditionActiveTimeRangeArrayInput is an input type that accepts ControlConditionActiveTimeRangeArray and ControlConditionActiveTimeRangeArrayOutput values.
+// You can construct a concrete instance of `ControlConditionActiveTimeRangeArrayInput` via:
+//
+//	ControlConditionActiveTimeRangeArray{ ControlConditionActiveTimeRangeArgs{...} }
+type ControlConditionActiveTimeRangeArrayInput interface {
+	pulumi.Input
+
+	ToControlConditionActiveTimeRangeArrayOutput() ControlConditionActiveTimeRangeArrayOutput
+	ToControlConditionActiveTimeRangeArrayOutputWithContext(context.Context) ControlConditionActiveTimeRangeArrayOutput
+}
+
+type ControlConditionActiveTimeRangeArray []ControlConditionActiveTimeRangeInput
+
+func (ControlConditionActiveTimeRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlConditionActiveTimeRange)(nil)).Elem()
+}
+
+func (i ControlConditionActiveTimeRangeArray) ToControlConditionActiveTimeRangeArrayOutput() ControlConditionActiveTimeRangeArrayOutput {
+	return i.ToControlConditionActiveTimeRangeArrayOutputWithContext(context.Background())
+}
+
+func (i ControlConditionActiveTimeRangeArray) ToControlConditionActiveTimeRangeArrayOutputWithContext(ctx context.Context) ControlConditionActiveTimeRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlConditionActiveTimeRangeArrayOutput)
+}
+
+type ControlConditionActiveTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (ControlConditionActiveTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlConditionActiveTimeRange)(nil)).Elem()
+}
+
+func (o ControlConditionActiveTimeRangeOutput) ToControlConditionActiveTimeRangeOutput() ControlConditionActiveTimeRangeOutput {
+	return o
+}
+
+func (o ControlConditionActiveTimeRangeOutput) ToControlConditionActiveTimeRangeOutputWithContext(ctx context.Context) ControlConditionActiveTimeRangeOutput {
+	return o
+}
+
+// The end time of the active time range.
+func (o ControlConditionActiveTimeRangeOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlConditionActiveTimeRange) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// The start time of the active time range.
+func (o ControlConditionActiveTimeRangeOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlConditionActiveTimeRange) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type ControlConditionActiveTimeRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (ControlConditionActiveTimeRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlConditionActiveTimeRange)(nil)).Elem()
+}
+
+func (o ControlConditionActiveTimeRangeArrayOutput) ToControlConditionActiveTimeRangeArrayOutput() ControlConditionActiveTimeRangeArrayOutput {
+	return o
+}
+
+func (o ControlConditionActiveTimeRangeArrayOutput) ToControlConditionActiveTimeRangeArrayOutputWithContext(ctx context.Context) ControlConditionActiveTimeRangeArrayOutput {
+	return o
+}
+
+func (o ControlConditionActiveTimeRangeArrayOutput) Index(i pulumi.IntInput) ControlConditionActiveTimeRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ControlConditionActiveTimeRange {
+		return vs[0].([]ControlConditionActiveTimeRange)[vs[1].(int)]
+	}).(ControlConditionActiveTimeRangeOutput)
+}
+
+type ControlConditionQueryTerm struct {
+	// If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
+	FullMatch *bool `pulumi:"fullMatch"`
+	// The value of the query term.
+	Value *string `pulumi:"value"`
+}
+
+// ControlConditionQueryTermInput is an input type that accepts ControlConditionQueryTermArgs and ControlConditionQueryTermOutput values.
+// You can construct a concrete instance of `ControlConditionQueryTermInput` via:
+//
+//	ControlConditionQueryTermArgs{...}
+type ControlConditionQueryTermInput interface {
+	pulumi.Input
+
+	ToControlConditionQueryTermOutput() ControlConditionQueryTermOutput
+	ToControlConditionQueryTermOutputWithContext(context.Context) ControlConditionQueryTermOutput
+}
+
+type ControlConditionQueryTermArgs struct {
+	// If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
+	FullMatch pulumi.BoolPtrInput `pulumi:"fullMatch"`
+	// The value of the query term.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ControlConditionQueryTermArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlConditionQueryTerm)(nil)).Elem()
+}
+
+func (i ControlConditionQueryTermArgs) ToControlConditionQueryTermOutput() ControlConditionQueryTermOutput {
+	return i.ToControlConditionQueryTermOutputWithContext(context.Background())
+}
+
+func (i ControlConditionQueryTermArgs) ToControlConditionQueryTermOutputWithContext(ctx context.Context) ControlConditionQueryTermOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlConditionQueryTermOutput)
+}
+
+// ControlConditionQueryTermArrayInput is an input type that accepts ControlConditionQueryTermArray and ControlConditionQueryTermArrayOutput values.
+// You can construct a concrete instance of `ControlConditionQueryTermArrayInput` via:
+//
+//	ControlConditionQueryTermArray{ ControlConditionQueryTermArgs{...} }
+type ControlConditionQueryTermArrayInput interface {
+	pulumi.Input
+
+	ToControlConditionQueryTermArrayOutput() ControlConditionQueryTermArrayOutput
+	ToControlConditionQueryTermArrayOutputWithContext(context.Context) ControlConditionQueryTermArrayOutput
+}
+
+type ControlConditionQueryTermArray []ControlConditionQueryTermInput
+
+func (ControlConditionQueryTermArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlConditionQueryTerm)(nil)).Elem()
+}
+
+func (i ControlConditionQueryTermArray) ToControlConditionQueryTermArrayOutput() ControlConditionQueryTermArrayOutput {
+	return i.ToControlConditionQueryTermArrayOutputWithContext(context.Background())
+}
+
+func (i ControlConditionQueryTermArray) ToControlConditionQueryTermArrayOutputWithContext(ctx context.Context) ControlConditionQueryTermArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlConditionQueryTermArrayOutput)
+}
+
+type ControlConditionQueryTermOutput struct{ *pulumi.OutputState }
+
+func (ControlConditionQueryTermOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlConditionQueryTerm)(nil)).Elem()
+}
+
+func (o ControlConditionQueryTermOutput) ToControlConditionQueryTermOutput() ControlConditionQueryTermOutput {
+	return o
+}
+
+func (o ControlConditionQueryTermOutput) ToControlConditionQueryTermOutputWithContext(ctx context.Context) ControlConditionQueryTermOutput {
+	return o
+}
+
+// If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
+func (o ControlConditionQueryTermOutput) FullMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ControlConditionQueryTerm) *bool { return v.FullMatch }).(pulumi.BoolPtrOutput)
+}
+
+// The value of the query term.
+func (o ControlConditionQueryTermOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlConditionQueryTerm) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ControlConditionQueryTermArrayOutput struct{ *pulumi.OutputState }
+
+func (ControlConditionQueryTermArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlConditionQueryTerm)(nil)).Elem()
+}
+
+func (o ControlConditionQueryTermArrayOutput) ToControlConditionQueryTermArrayOutput() ControlConditionQueryTermArrayOutput {
+	return o
+}
+
+func (o ControlConditionQueryTermArrayOutput) ToControlConditionQueryTermArrayOutputWithContext(ctx context.Context) ControlConditionQueryTermArrayOutput {
+	return o
+}
+
+func (o ControlConditionQueryTermArrayOutput) Index(i pulumi.IntInput) ControlConditionQueryTermOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ControlConditionQueryTerm {
+		return vs[0].([]ControlConditionQueryTerm)[vs[1].(int)]
+	}).(ControlConditionQueryTermOutput)
+}
+
+type ControlFilterAction struct {
+	// The data store to filter.
+	DataStore string `pulumi:"dataStore"`
+	// The filter to apply to the search results.
+	Filter string `pulumi:"filter"`
+}
+
+// ControlFilterActionInput is an input type that accepts ControlFilterActionArgs and ControlFilterActionOutput values.
+// You can construct a concrete instance of `ControlFilterActionInput` via:
+//
+//	ControlFilterActionArgs{...}
+type ControlFilterActionInput interface {
+	pulumi.Input
+
+	ToControlFilterActionOutput() ControlFilterActionOutput
+	ToControlFilterActionOutputWithContext(context.Context) ControlFilterActionOutput
+}
+
+type ControlFilterActionArgs struct {
+	// The data store to filter.
+	DataStore pulumi.StringInput `pulumi:"dataStore"`
+	// The filter to apply to the search results.
+	Filter pulumi.StringInput `pulumi:"filter"`
+}
+
+func (ControlFilterActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFilterAction)(nil)).Elem()
+}
+
+func (i ControlFilterActionArgs) ToControlFilterActionOutput() ControlFilterActionOutput {
+	return i.ToControlFilterActionOutputWithContext(context.Background())
+}
+
+func (i ControlFilterActionArgs) ToControlFilterActionOutputWithContext(ctx context.Context) ControlFilterActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFilterActionOutput)
+}
+
+func (i ControlFilterActionArgs) ToControlFilterActionPtrOutput() ControlFilterActionPtrOutput {
+	return i.ToControlFilterActionPtrOutputWithContext(context.Background())
+}
+
+func (i ControlFilterActionArgs) ToControlFilterActionPtrOutputWithContext(ctx context.Context) ControlFilterActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFilterActionOutput).ToControlFilterActionPtrOutputWithContext(ctx)
+}
+
+// ControlFilterActionPtrInput is an input type that accepts ControlFilterActionArgs, ControlFilterActionPtr and ControlFilterActionPtrOutput values.
+// You can construct a concrete instance of `ControlFilterActionPtrInput` via:
+//
+//	        ControlFilterActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlFilterActionPtrInput interface {
+	pulumi.Input
+
+	ToControlFilterActionPtrOutput() ControlFilterActionPtrOutput
+	ToControlFilterActionPtrOutputWithContext(context.Context) ControlFilterActionPtrOutput
+}
+
+type controlFilterActionPtrType ControlFilterActionArgs
+
+func ControlFilterActionPtr(v *ControlFilterActionArgs) ControlFilterActionPtrInput {
+	return (*controlFilterActionPtrType)(v)
+}
+
+func (*controlFilterActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlFilterAction)(nil)).Elem()
+}
+
+func (i *controlFilterActionPtrType) ToControlFilterActionPtrOutput() ControlFilterActionPtrOutput {
+	return i.ToControlFilterActionPtrOutputWithContext(context.Background())
+}
+
+func (i *controlFilterActionPtrType) ToControlFilterActionPtrOutputWithContext(ctx context.Context) ControlFilterActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFilterActionPtrOutput)
+}
+
+type ControlFilterActionOutput struct{ *pulumi.OutputState }
+
+func (ControlFilterActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFilterAction)(nil)).Elem()
+}
+
+func (o ControlFilterActionOutput) ToControlFilterActionOutput() ControlFilterActionOutput {
+	return o
+}
+
+func (o ControlFilterActionOutput) ToControlFilterActionOutputWithContext(ctx context.Context) ControlFilterActionOutput {
+	return o
+}
+
+func (o ControlFilterActionOutput) ToControlFilterActionPtrOutput() ControlFilterActionPtrOutput {
+	return o.ToControlFilterActionPtrOutputWithContext(context.Background())
+}
+
+func (o ControlFilterActionOutput) ToControlFilterActionPtrOutputWithContext(ctx context.Context) ControlFilterActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlFilterAction) *ControlFilterAction {
+		return &v
+	}).(ControlFilterActionPtrOutput)
+}
+
+// The data store to filter.
+func (o ControlFilterActionOutput) DataStore() pulumi.StringOutput {
+	return o.ApplyT(func(v ControlFilterAction) string { return v.DataStore }).(pulumi.StringOutput)
+}
+
+// The filter to apply to the search results.
+func (o ControlFilterActionOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v ControlFilterAction) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+type ControlFilterActionPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlFilterActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlFilterAction)(nil)).Elem()
+}
+
+func (o ControlFilterActionPtrOutput) ToControlFilterActionPtrOutput() ControlFilterActionPtrOutput {
+	return o
+}
+
+func (o ControlFilterActionPtrOutput) ToControlFilterActionPtrOutputWithContext(ctx context.Context) ControlFilterActionPtrOutput {
+	return o
+}
+
+func (o ControlFilterActionPtrOutput) Elem() ControlFilterActionOutput {
+	return o.ApplyT(func(v *ControlFilterAction) ControlFilterAction {
+		if v != nil {
+			return *v
+		}
+		var ret ControlFilterAction
+		return ret
+	}).(ControlFilterActionOutput)
+}
+
+// The data store to filter.
+func (o ControlFilterActionPtrOutput) DataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlFilterAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataStore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The filter to apply to the search results.
+func (o ControlFilterActionPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlFilterAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+type ControlPromoteAction struct {
+	// The data store to promote.
+	DataStore string `pulumi:"dataStore"`
+	// The search link promotion to apply to the search results.
+	// Structure is documented below.
+	SearchLinkPromotion ControlPromoteActionSearchLinkPromotion `pulumi:"searchLinkPromotion"`
+}
+
+// ControlPromoteActionInput is an input type that accepts ControlPromoteActionArgs and ControlPromoteActionOutput values.
+// You can construct a concrete instance of `ControlPromoteActionInput` via:
+//
+//	ControlPromoteActionArgs{...}
+type ControlPromoteActionInput interface {
+	pulumi.Input
+
+	ToControlPromoteActionOutput() ControlPromoteActionOutput
+	ToControlPromoteActionOutputWithContext(context.Context) ControlPromoteActionOutput
+}
+
+type ControlPromoteActionArgs struct {
+	// The data store to promote.
+	DataStore pulumi.StringInput `pulumi:"dataStore"`
+	// The search link promotion to apply to the search results.
+	// Structure is documented below.
+	SearchLinkPromotion ControlPromoteActionSearchLinkPromotionInput `pulumi:"searchLinkPromotion"`
+}
+
+func (ControlPromoteActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlPromoteAction)(nil)).Elem()
+}
+
+func (i ControlPromoteActionArgs) ToControlPromoteActionOutput() ControlPromoteActionOutput {
+	return i.ToControlPromoteActionOutputWithContext(context.Background())
+}
+
+func (i ControlPromoteActionArgs) ToControlPromoteActionOutputWithContext(ctx context.Context) ControlPromoteActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlPromoteActionOutput)
+}
+
+func (i ControlPromoteActionArgs) ToControlPromoteActionPtrOutput() ControlPromoteActionPtrOutput {
+	return i.ToControlPromoteActionPtrOutputWithContext(context.Background())
+}
+
+func (i ControlPromoteActionArgs) ToControlPromoteActionPtrOutputWithContext(ctx context.Context) ControlPromoteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlPromoteActionOutput).ToControlPromoteActionPtrOutputWithContext(ctx)
+}
+
+// ControlPromoteActionPtrInput is an input type that accepts ControlPromoteActionArgs, ControlPromoteActionPtr and ControlPromoteActionPtrOutput values.
+// You can construct a concrete instance of `ControlPromoteActionPtrInput` via:
+//
+//	        ControlPromoteActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlPromoteActionPtrInput interface {
+	pulumi.Input
+
+	ToControlPromoteActionPtrOutput() ControlPromoteActionPtrOutput
+	ToControlPromoteActionPtrOutputWithContext(context.Context) ControlPromoteActionPtrOutput
+}
+
+type controlPromoteActionPtrType ControlPromoteActionArgs
+
+func ControlPromoteActionPtr(v *ControlPromoteActionArgs) ControlPromoteActionPtrInput {
+	return (*controlPromoteActionPtrType)(v)
+}
+
+func (*controlPromoteActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlPromoteAction)(nil)).Elem()
+}
+
+func (i *controlPromoteActionPtrType) ToControlPromoteActionPtrOutput() ControlPromoteActionPtrOutput {
+	return i.ToControlPromoteActionPtrOutputWithContext(context.Background())
+}
+
+func (i *controlPromoteActionPtrType) ToControlPromoteActionPtrOutputWithContext(ctx context.Context) ControlPromoteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlPromoteActionPtrOutput)
+}
+
+type ControlPromoteActionOutput struct{ *pulumi.OutputState }
+
+func (ControlPromoteActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlPromoteAction)(nil)).Elem()
+}
+
+func (o ControlPromoteActionOutput) ToControlPromoteActionOutput() ControlPromoteActionOutput {
+	return o
+}
+
+func (o ControlPromoteActionOutput) ToControlPromoteActionOutputWithContext(ctx context.Context) ControlPromoteActionOutput {
+	return o
+}
+
+func (o ControlPromoteActionOutput) ToControlPromoteActionPtrOutput() ControlPromoteActionPtrOutput {
+	return o.ToControlPromoteActionPtrOutputWithContext(context.Background())
+}
+
+func (o ControlPromoteActionOutput) ToControlPromoteActionPtrOutputWithContext(ctx context.Context) ControlPromoteActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlPromoteAction) *ControlPromoteAction {
+		return &v
+	}).(ControlPromoteActionPtrOutput)
+}
+
+// The data store to promote.
+func (o ControlPromoteActionOutput) DataStore() pulumi.StringOutput {
+	return o.ApplyT(func(v ControlPromoteAction) string { return v.DataStore }).(pulumi.StringOutput)
+}
+
+// The search link promotion to apply to the search results.
+// Structure is documented below.
+func (o ControlPromoteActionOutput) SearchLinkPromotion() ControlPromoteActionSearchLinkPromotionOutput {
+	return o.ApplyT(func(v ControlPromoteAction) ControlPromoteActionSearchLinkPromotion { return v.SearchLinkPromotion }).(ControlPromoteActionSearchLinkPromotionOutput)
+}
+
+type ControlPromoteActionPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlPromoteActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlPromoteAction)(nil)).Elem()
+}
+
+func (o ControlPromoteActionPtrOutput) ToControlPromoteActionPtrOutput() ControlPromoteActionPtrOutput {
+	return o
+}
+
+func (o ControlPromoteActionPtrOutput) ToControlPromoteActionPtrOutputWithContext(ctx context.Context) ControlPromoteActionPtrOutput {
+	return o
+}
+
+func (o ControlPromoteActionPtrOutput) Elem() ControlPromoteActionOutput {
+	return o.ApplyT(func(v *ControlPromoteAction) ControlPromoteAction {
+		if v != nil {
+			return *v
+		}
+		var ret ControlPromoteAction
+		return ret
+	}).(ControlPromoteActionOutput)
+}
+
+// The data store to promote.
+func (o ControlPromoteActionPtrOutput) DataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlPromoteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataStore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The search link promotion to apply to the search results.
+// Structure is documented below.
+func (o ControlPromoteActionPtrOutput) SearchLinkPromotion() ControlPromoteActionSearchLinkPromotionPtrOutput {
+	return o.ApplyT(func(v *ControlPromoteAction) *ControlPromoteActionSearchLinkPromotion {
+		if v == nil {
+			return nil
+		}
+		return &v.SearchLinkPromotion
+	}).(ControlPromoteActionSearchLinkPromotionPtrOutput)
+}
+
+type ControlPromoteActionSearchLinkPromotion struct {
+	// The description of the promoted link.
+	Description *string `pulumi:"description"`
+	// The document to promote.
+	Document *string `pulumi:"document"`
+	// Return promotions for basic site search.
+	Enabled *bool `pulumi:"enabled"`
+	// The image URI of the promoted link.
+	ImageUri *string `pulumi:"imageUri"`
+	// The title of the promoted link.
+	Title string `pulumi:"title"`
+	// The URI to promote.
+	Uri *string `pulumi:"uri"`
+}
+
+// ControlPromoteActionSearchLinkPromotionInput is an input type that accepts ControlPromoteActionSearchLinkPromotionArgs and ControlPromoteActionSearchLinkPromotionOutput values.
+// You can construct a concrete instance of `ControlPromoteActionSearchLinkPromotionInput` via:
+//
+//	ControlPromoteActionSearchLinkPromotionArgs{...}
+type ControlPromoteActionSearchLinkPromotionInput interface {
+	pulumi.Input
+
+	ToControlPromoteActionSearchLinkPromotionOutput() ControlPromoteActionSearchLinkPromotionOutput
+	ToControlPromoteActionSearchLinkPromotionOutputWithContext(context.Context) ControlPromoteActionSearchLinkPromotionOutput
+}
+
+type ControlPromoteActionSearchLinkPromotionArgs struct {
+	// The description of the promoted link.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The document to promote.
+	Document pulumi.StringPtrInput `pulumi:"document"`
+	// Return promotions for basic site search.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The image URI of the promoted link.
+	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+	// The title of the promoted link.
+	Title pulumi.StringInput `pulumi:"title"`
+	// The URI to promote.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (ControlPromoteActionSearchLinkPromotionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlPromoteActionSearchLinkPromotion)(nil)).Elem()
+}
+
+func (i ControlPromoteActionSearchLinkPromotionArgs) ToControlPromoteActionSearchLinkPromotionOutput() ControlPromoteActionSearchLinkPromotionOutput {
+	return i.ToControlPromoteActionSearchLinkPromotionOutputWithContext(context.Background())
+}
+
+func (i ControlPromoteActionSearchLinkPromotionArgs) ToControlPromoteActionSearchLinkPromotionOutputWithContext(ctx context.Context) ControlPromoteActionSearchLinkPromotionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlPromoteActionSearchLinkPromotionOutput)
+}
+
+func (i ControlPromoteActionSearchLinkPromotionArgs) ToControlPromoteActionSearchLinkPromotionPtrOutput() ControlPromoteActionSearchLinkPromotionPtrOutput {
+	return i.ToControlPromoteActionSearchLinkPromotionPtrOutputWithContext(context.Background())
+}
+
+func (i ControlPromoteActionSearchLinkPromotionArgs) ToControlPromoteActionSearchLinkPromotionPtrOutputWithContext(ctx context.Context) ControlPromoteActionSearchLinkPromotionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlPromoteActionSearchLinkPromotionOutput).ToControlPromoteActionSearchLinkPromotionPtrOutputWithContext(ctx)
+}
+
+// ControlPromoteActionSearchLinkPromotionPtrInput is an input type that accepts ControlPromoteActionSearchLinkPromotionArgs, ControlPromoteActionSearchLinkPromotionPtr and ControlPromoteActionSearchLinkPromotionPtrOutput values.
+// You can construct a concrete instance of `ControlPromoteActionSearchLinkPromotionPtrInput` via:
+//
+//	        ControlPromoteActionSearchLinkPromotionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlPromoteActionSearchLinkPromotionPtrInput interface {
+	pulumi.Input
+
+	ToControlPromoteActionSearchLinkPromotionPtrOutput() ControlPromoteActionSearchLinkPromotionPtrOutput
+	ToControlPromoteActionSearchLinkPromotionPtrOutputWithContext(context.Context) ControlPromoteActionSearchLinkPromotionPtrOutput
+}
+
+type controlPromoteActionSearchLinkPromotionPtrType ControlPromoteActionSearchLinkPromotionArgs
+
+func ControlPromoteActionSearchLinkPromotionPtr(v *ControlPromoteActionSearchLinkPromotionArgs) ControlPromoteActionSearchLinkPromotionPtrInput {
+	return (*controlPromoteActionSearchLinkPromotionPtrType)(v)
+}
+
+func (*controlPromoteActionSearchLinkPromotionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlPromoteActionSearchLinkPromotion)(nil)).Elem()
+}
+
+func (i *controlPromoteActionSearchLinkPromotionPtrType) ToControlPromoteActionSearchLinkPromotionPtrOutput() ControlPromoteActionSearchLinkPromotionPtrOutput {
+	return i.ToControlPromoteActionSearchLinkPromotionPtrOutputWithContext(context.Background())
+}
+
+func (i *controlPromoteActionSearchLinkPromotionPtrType) ToControlPromoteActionSearchLinkPromotionPtrOutputWithContext(ctx context.Context) ControlPromoteActionSearchLinkPromotionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlPromoteActionSearchLinkPromotionPtrOutput)
+}
+
+type ControlPromoteActionSearchLinkPromotionOutput struct{ *pulumi.OutputState }
+
+func (ControlPromoteActionSearchLinkPromotionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlPromoteActionSearchLinkPromotion)(nil)).Elem()
+}
+
+func (o ControlPromoteActionSearchLinkPromotionOutput) ToControlPromoteActionSearchLinkPromotionOutput() ControlPromoteActionSearchLinkPromotionOutput {
+	return o
+}
+
+func (o ControlPromoteActionSearchLinkPromotionOutput) ToControlPromoteActionSearchLinkPromotionOutputWithContext(ctx context.Context) ControlPromoteActionSearchLinkPromotionOutput {
+	return o
+}
+
+func (o ControlPromoteActionSearchLinkPromotionOutput) ToControlPromoteActionSearchLinkPromotionPtrOutput() ControlPromoteActionSearchLinkPromotionPtrOutput {
+	return o.ToControlPromoteActionSearchLinkPromotionPtrOutputWithContext(context.Background())
+}
+
+func (o ControlPromoteActionSearchLinkPromotionOutput) ToControlPromoteActionSearchLinkPromotionPtrOutputWithContext(ctx context.Context) ControlPromoteActionSearchLinkPromotionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlPromoteActionSearchLinkPromotion) *ControlPromoteActionSearchLinkPromotion {
+		return &v
+	}).(ControlPromoteActionSearchLinkPromotionPtrOutput)
+}
+
+// The description of the promoted link.
+func (o ControlPromoteActionSearchLinkPromotionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlPromoteActionSearchLinkPromotion) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The document to promote.
+func (o ControlPromoteActionSearchLinkPromotionOutput) Document() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlPromoteActionSearchLinkPromotion) *string { return v.Document }).(pulumi.StringPtrOutput)
+}
+
+// Return promotions for basic site search.
+func (o ControlPromoteActionSearchLinkPromotionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ControlPromoteActionSearchLinkPromotion) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The image URI of the promoted link.
+func (o ControlPromoteActionSearchLinkPromotionOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlPromoteActionSearchLinkPromotion) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
+}
+
+// The title of the promoted link.
+func (o ControlPromoteActionSearchLinkPromotionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ControlPromoteActionSearchLinkPromotion) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// The URI to promote.
+func (o ControlPromoteActionSearchLinkPromotionOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlPromoteActionSearchLinkPromotion) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type ControlPromoteActionSearchLinkPromotionPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlPromoteActionSearchLinkPromotionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlPromoteActionSearchLinkPromotion)(nil)).Elem()
+}
+
+func (o ControlPromoteActionSearchLinkPromotionPtrOutput) ToControlPromoteActionSearchLinkPromotionPtrOutput() ControlPromoteActionSearchLinkPromotionPtrOutput {
+	return o
+}
+
+func (o ControlPromoteActionSearchLinkPromotionPtrOutput) ToControlPromoteActionSearchLinkPromotionPtrOutputWithContext(ctx context.Context) ControlPromoteActionSearchLinkPromotionPtrOutput {
+	return o
+}
+
+func (o ControlPromoteActionSearchLinkPromotionPtrOutput) Elem() ControlPromoteActionSearchLinkPromotionOutput {
+	return o.ApplyT(func(v *ControlPromoteActionSearchLinkPromotion) ControlPromoteActionSearchLinkPromotion {
+		if v != nil {
+			return *v
+		}
+		var ret ControlPromoteActionSearchLinkPromotion
+		return ret
+	}).(ControlPromoteActionSearchLinkPromotionOutput)
+}
+
+// The description of the promoted link.
+func (o ControlPromoteActionSearchLinkPromotionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlPromoteActionSearchLinkPromotion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The document to promote.
+func (o ControlPromoteActionSearchLinkPromotionPtrOutput) Document() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlPromoteActionSearchLinkPromotion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Document
+	}).(pulumi.StringPtrOutput)
+}
+
+// Return promotions for basic site search.
+func (o ControlPromoteActionSearchLinkPromotionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ControlPromoteActionSearchLinkPromotion) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The image URI of the promoted link.
+func (o ControlPromoteActionSearchLinkPromotionPtrOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlPromoteActionSearchLinkPromotion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The title of the promoted link.
+func (o ControlPromoteActionSearchLinkPromotionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlPromoteActionSearchLinkPromotion) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI to promote.
+func (o ControlPromoteActionSearchLinkPromotionPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlPromoteActionSearchLinkPromotion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type ControlRedirectAction struct {
+	// The URI to redirect to.
+	RedirectUri string `pulumi:"redirectUri"`
+}
+
+// ControlRedirectActionInput is an input type that accepts ControlRedirectActionArgs and ControlRedirectActionOutput values.
+// You can construct a concrete instance of `ControlRedirectActionInput` via:
+//
+//	ControlRedirectActionArgs{...}
+type ControlRedirectActionInput interface {
+	pulumi.Input
+
+	ToControlRedirectActionOutput() ControlRedirectActionOutput
+	ToControlRedirectActionOutputWithContext(context.Context) ControlRedirectActionOutput
+}
+
+type ControlRedirectActionArgs struct {
+	// The URI to redirect to.
+	RedirectUri pulumi.StringInput `pulumi:"redirectUri"`
+}
+
+func (ControlRedirectActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlRedirectAction)(nil)).Elem()
+}
+
+func (i ControlRedirectActionArgs) ToControlRedirectActionOutput() ControlRedirectActionOutput {
+	return i.ToControlRedirectActionOutputWithContext(context.Background())
+}
+
+func (i ControlRedirectActionArgs) ToControlRedirectActionOutputWithContext(ctx context.Context) ControlRedirectActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlRedirectActionOutput)
+}
+
+func (i ControlRedirectActionArgs) ToControlRedirectActionPtrOutput() ControlRedirectActionPtrOutput {
+	return i.ToControlRedirectActionPtrOutputWithContext(context.Background())
+}
+
+func (i ControlRedirectActionArgs) ToControlRedirectActionPtrOutputWithContext(ctx context.Context) ControlRedirectActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlRedirectActionOutput).ToControlRedirectActionPtrOutputWithContext(ctx)
+}
+
+// ControlRedirectActionPtrInput is an input type that accepts ControlRedirectActionArgs, ControlRedirectActionPtr and ControlRedirectActionPtrOutput values.
+// You can construct a concrete instance of `ControlRedirectActionPtrInput` via:
+//
+//	        ControlRedirectActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlRedirectActionPtrInput interface {
+	pulumi.Input
+
+	ToControlRedirectActionPtrOutput() ControlRedirectActionPtrOutput
+	ToControlRedirectActionPtrOutputWithContext(context.Context) ControlRedirectActionPtrOutput
+}
+
+type controlRedirectActionPtrType ControlRedirectActionArgs
+
+func ControlRedirectActionPtr(v *ControlRedirectActionArgs) ControlRedirectActionPtrInput {
+	return (*controlRedirectActionPtrType)(v)
+}
+
+func (*controlRedirectActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlRedirectAction)(nil)).Elem()
+}
+
+func (i *controlRedirectActionPtrType) ToControlRedirectActionPtrOutput() ControlRedirectActionPtrOutput {
+	return i.ToControlRedirectActionPtrOutputWithContext(context.Background())
+}
+
+func (i *controlRedirectActionPtrType) ToControlRedirectActionPtrOutputWithContext(ctx context.Context) ControlRedirectActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlRedirectActionPtrOutput)
+}
+
+type ControlRedirectActionOutput struct{ *pulumi.OutputState }
+
+func (ControlRedirectActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlRedirectAction)(nil)).Elem()
+}
+
+func (o ControlRedirectActionOutput) ToControlRedirectActionOutput() ControlRedirectActionOutput {
+	return o
+}
+
+func (o ControlRedirectActionOutput) ToControlRedirectActionOutputWithContext(ctx context.Context) ControlRedirectActionOutput {
+	return o
+}
+
+func (o ControlRedirectActionOutput) ToControlRedirectActionPtrOutput() ControlRedirectActionPtrOutput {
+	return o.ToControlRedirectActionPtrOutputWithContext(context.Background())
+}
+
+func (o ControlRedirectActionOutput) ToControlRedirectActionPtrOutputWithContext(ctx context.Context) ControlRedirectActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlRedirectAction) *ControlRedirectAction {
+		return &v
+	}).(ControlRedirectActionPtrOutput)
+}
+
+// The URI to redirect to.
+func (o ControlRedirectActionOutput) RedirectUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ControlRedirectAction) string { return v.RedirectUri }).(pulumi.StringOutput)
+}
+
+type ControlRedirectActionPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlRedirectActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlRedirectAction)(nil)).Elem()
+}
+
+func (o ControlRedirectActionPtrOutput) ToControlRedirectActionPtrOutput() ControlRedirectActionPtrOutput {
+	return o
+}
+
+func (o ControlRedirectActionPtrOutput) ToControlRedirectActionPtrOutputWithContext(ctx context.Context) ControlRedirectActionPtrOutput {
+	return o
+}
+
+func (o ControlRedirectActionPtrOutput) Elem() ControlRedirectActionOutput {
+	return o.ApplyT(func(v *ControlRedirectAction) ControlRedirectAction {
+		if v != nil {
+			return *v
+		}
+		var ret ControlRedirectAction
+		return ret
+	}).(ControlRedirectActionOutput)
+}
+
+// The URI to redirect to.
+func (o ControlRedirectActionPtrOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlRedirectAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RedirectUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type ControlSynonymsAction struct {
+	// The synonyms to apply to the search results.
+	Synonyms []string `pulumi:"synonyms"`
+}
+
+// ControlSynonymsActionInput is an input type that accepts ControlSynonymsActionArgs and ControlSynonymsActionOutput values.
+// You can construct a concrete instance of `ControlSynonymsActionInput` via:
+//
+//	ControlSynonymsActionArgs{...}
+type ControlSynonymsActionInput interface {
+	pulumi.Input
+
+	ToControlSynonymsActionOutput() ControlSynonymsActionOutput
+	ToControlSynonymsActionOutputWithContext(context.Context) ControlSynonymsActionOutput
+}
+
+type ControlSynonymsActionArgs struct {
+	// The synonyms to apply to the search results.
+	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
+}
+
+func (ControlSynonymsActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlSynonymsAction)(nil)).Elem()
+}
+
+func (i ControlSynonymsActionArgs) ToControlSynonymsActionOutput() ControlSynonymsActionOutput {
+	return i.ToControlSynonymsActionOutputWithContext(context.Background())
+}
+
+func (i ControlSynonymsActionArgs) ToControlSynonymsActionOutputWithContext(ctx context.Context) ControlSynonymsActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlSynonymsActionOutput)
+}
+
+func (i ControlSynonymsActionArgs) ToControlSynonymsActionPtrOutput() ControlSynonymsActionPtrOutput {
+	return i.ToControlSynonymsActionPtrOutputWithContext(context.Background())
+}
+
+func (i ControlSynonymsActionArgs) ToControlSynonymsActionPtrOutputWithContext(ctx context.Context) ControlSynonymsActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlSynonymsActionOutput).ToControlSynonymsActionPtrOutputWithContext(ctx)
+}
+
+// ControlSynonymsActionPtrInput is an input type that accepts ControlSynonymsActionArgs, ControlSynonymsActionPtr and ControlSynonymsActionPtrOutput values.
+// You can construct a concrete instance of `ControlSynonymsActionPtrInput` via:
+//
+//	        ControlSynonymsActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlSynonymsActionPtrInput interface {
+	pulumi.Input
+
+	ToControlSynonymsActionPtrOutput() ControlSynonymsActionPtrOutput
+	ToControlSynonymsActionPtrOutputWithContext(context.Context) ControlSynonymsActionPtrOutput
+}
+
+type controlSynonymsActionPtrType ControlSynonymsActionArgs
+
+func ControlSynonymsActionPtr(v *ControlSynonymsActionArgs) ControlSynonymsActionPtrInput {
+	return (*controlSynonymsActionPtrType)(v)
+}
+
+func (*controlSynonymsActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlSynonymsAction)(nil)).Elem()
+}
+
+func (i *controlSynonymsActionPtrType) ToControlSynonymsActionPtrOutput() ControlSynonymsActionPtrOutput {
+	return i.ToControlSynonymsActionPtrOutputWithContext(context.Background())
+}
+
+func (i *controlSynonymsActionPtrType) ToControlSynonymsActionPtrOutputWithContext(ctx context.Context) ControlSynonymsActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlSynonymsActionPtrOutput)
+}
+
+type ControlSynonymsActionOutput struct{ *pulumi.OutputState }
+
+func (ControlSynonymsActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlSynonymsAction)(nil)).Elem()
+}
+
+func (o ControlSynonymsActionOutput) ToControlSynonymsActionOutput() ControlSynonymsActionOutput {
+	return o
+}
+
+func (o ControlSynonymsActionOutput) ToControlSynonymsActionOutputWithContext(ctx context.Context) ControlSynonymsActionOutput {
+	return o
+}
+
+func (o ControlSynonymsActionOutput) ToControlSynonymsActionPtrOutput() ControlSynonymsActionPtrOutput {
+	return o.ToControlSynonymsActionPtrOutputWithContext(context.Background())
+}
+
+func (o ControlSynonymsActionOutput) ToControlSynonymsActionPtrOutputWithContext(ctx context.Context) ControlSynonymsActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlSynonymsAction) *ControlSynonymsAction {
+		return &v
+	}).(ControlSynonymsActionPtrOutput)
+}
+
+// The synonyms to apply to the search results.
+func (o ControlSynonymsActionOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControlSynonymsAction) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
+}
+
+type ControlSynonymsActionPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlSynonymsActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlSynonymsAction)(nil)).Elem()
+}
+
+func (o ControlSynonymsActionPtrOutput) ToControlSynonymsActionPtrOutput() ControlSynonymsActionPtrOutput {
+	return o
+}
+
+func (o ControlSynonymsActionPtrOutput) ToControlSynonymsActionPtrOutputWithContext(ctx context.Context) ControlSynonymsActionPtrOutput {
+	return o
+}
+
+func (o ControlSynonymsActionPtrOutput) Elem() ControlSynonymsActionOutput {
+	return o.ApplyT(func(v *ControlSynonymsAction) ControlSynonymsAction {
+		if v != nil {
+			return *v
+		}
+		var ret ControlSynonymsAction
+		return ret
+	}).(ControlSynonymsActionOutput)
+}
+
+// The synonyms to apply to the search results.
+func (o ControlSynonymsActionPtrOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ControlSynonymsAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Synonyms
+	}).(pulumi.StringArrayOutput)
+}
+
 type DataConnectorEntity struct {
 	// (Output)
 	// The full resource name of the associated data store for the source
@@ -6269,6 +7990,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineCommonConfigPtrInput)(nil)).Elem(), ChatEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CmekConfigSingleRegionKeyInput)(nil)).Elem(), CmekConfigSingleRegionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CmekConfigSingleRegionKeyArrayInput)(nil)).Elem(), CmekConfigSingleRegionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlBoostActionInput)(nil)).Elem(), ControlBoostActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlBoostActionPtrInput)(nil)).Elem(), ControlBoostActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlBoostActionInterpolationBoostSpecInput)(nil)).Elem(), ControlBoostActionInterpolationBoostSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlBoostActionInterpolationBoostSpecPtrInput)(nil)).Elem(), ControlBoostActionInterpolationBoostSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlBoostActionInterpolationBoostSpecControlPointInput)(nil)).Elem(), ControlBoostActionInterpolationBoostSpecControlPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlBoostActionInterpolationBoostSpecControlPointPtrInput)(nil)).Elem(), ControlBoostActionInterpolationBoostSpecControlPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlConditionInput)(nil)).Elem(), ControlConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlConditionArrayInput)(nil)).Elem(), ControlConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlConditionActiveTimeRangeInput)(nil)).Elem(), ControlConditionActiveTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlConditionActiveTimeRangeArrayInput)(nil)).Elem(), ControlConditionActiveTimeRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlConditionQueryTermInput)(nil)).Elem(), ControlConditionQueryTermArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlConditionQueryTermArrayInput)(nil)).Elem(), ControlConditionQueryTermArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFilterActionInput)(nil)).Elem(), ControlFilterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFilterActionPtrInput)(nil)).Elem(), ControlFilterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlPromoteActionInput)(nil)).Elem(), ControlPromoteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlPromoteActionPtrInput)(nil)).Elem(), ControlPromoteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlPromoteActionSearchLinkPromotionInput)(nil)).Elem(), ControlPromoteActionSearchLinkPromotionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlPromoteActionSearchLinkPromotionPtrInput)(nil)).Elem(), ControlPromoteActionSearchLinkPromotionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlRedirectActionInput)(nil)).Elem(), ControlRedirectActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlRedirectActionPtrInput)(nil)).Elem(), ControlRedirectActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlSynonymsActionInput)(nil)).Elem(), ControlSynonymsActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlSynonymsActionPtrInput)(nil)).Elem(), ControlSynonymsActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorEntityInput)(nil)).Elem(), DataConnectorEntityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorEntityArrayInput)(nil)).Elem(), DataConnectorEntityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorErrorInput)(nil)).Elem(), DataConnectorErrorArgs{})
@@ -6347,6 +8090,28 @@ func init() {
 	pulumi.RegisterOutputType(ChatEngineCommonConfigPtrOutput{})
 	pulumi.RegisterOutputType(CmekConfigSingleRegionKeyOutput{})
 	pulumi.RegisterOutputType(CmekConfigSingleRegionKeyArrayOutput{})
+	pulumi.RegisterOutputType(ControlBoostActionOutput{})
+	pulumi.RegisterOutputType(ControlBoostActionPtrOutput{})
+	pulumi.RegisterOutputType(ControlBoostActionInterpolationBoostSpecOutput{})
+	pulumi.RegisterOutputType(ControlBoostActionInterpolationBoostSpecPtrOutput{})
+	pulumi.RegisterOutputType(ControlBoostActionInterpolationBoostSpecControlPointOutput{})
+	pulumi.RegisterOutputType(ControlBoostActionInterpolationBoostSpecControlPointPtrOutput{})
+	pulumi.RegisterOutputType(ControlConditionOutput{})
+	pulumi.RegisterOutputType(ControlConditionArrayOutput{})
+	pulumi.RegisterOutputType(ControlConditionActiveTimeRangeOutput{})
+	pulumi.RegisterOutputType(ControlConditionActiveTimeRangeArrayOutput{})
+	pulumi.RegisterOutputType(ControlConditionQueryTermOutput{})
+	pulumi.RegisterOutputType(ControlConditionQueryTermArrayOutput{})
+	pulumi.RegisterOutputType(ControlFilterActionOutput{})
+	pulumi.RegisterOutputType(ControlFilterActionPtrOutput{})
+	pulumi.RegisterOutputType(ControlPromoteActionOutput{})
+	pulumi.RegisterOutputType(ControlPromoteActionPtrOutput{})
+	pulumi.RegisterOutputType(ControlPromoteActionSearchLinkPromotionOutput{})
+	pulumi.RegisterOutputType(ControlPromoteActionSearchLinkPromotionPtrOutput{})
+	pulumi.RegisterOutputType(ControlRedirectActionOutput{})
+	pulumi.RegisterOutputType(ControlRedirectActionPtrOutput{})
+	pulumi.RegisterOutputType(ControlSynonymsActionOutput{})
+	pulumi.RegisterOutputType(ControlSynonymsActionPtrOutput{})
 	pulumi.RegisterOutputType(DataConnectorEntityOutput{})
 	pulumi.RegisterOutputType(DataConnectorEntityArrayOutput{})
 	pulumi.RegisterOutputType(DataConnectorErrorOutput{})

@@ -53,6 +53,21 @@ public final class WorkerPoolTemplateContainerArgs extends com.pulumi.resources.
     }
 
     /**
+     * Names of the containers that must start before this container.
+     * 
+     */
+    @Import(name="dependsOns")
+    private @Nullable Output<List<String>> dependsOns;
+
+    /**
+     * @return Names of the containers that must start before this container.
+     * 
+     */
+    public Optional<Output<List<String>>> dependsOns() {
+        return Optional.ofNullable(this.dependsOns);
+    }
+
+    /**
      * List of environment variables to set in the container.
      * Structure is documented below.
      * 
@@ -187,6 +202,7 @@ public final class WorkerPoolTemplateContainerArgs extends com.pulumi.resources.
     private WorkerPoolTemplateContainerArgs(WorkerPoolTemplateContainerArgs $) {
         this.args = $.args;
         this.commands = $.commands;
+        this.dependsOns = $.dependsOns;
         this.envs = $.envs;
         this.image = $.image;
         this.livenessProbe = $.livenessProbe;
@@ -275,6 +291,37 @@ public final class WorkerPoolTemplateContainerArgs extends com.pulumi.resources.
          */
         public Builder commands(String... commands) {
             return commands(List.of(commands));
+        }
+
+        /**
+         * @param dependsOns Names of the containers that must start before this container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dependsOns(@Nullable Output<List<String>> dependsOns) {
+            $.dependsOns = dependsOns;
+            return this;
+        }
+
+        /**
+         * @param dependsOns Names of the containers that must start before this container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dependsOns(List<String> dependsOns) {
+            return dependsOns(Output.of(dependsOns));
+        }
+
+        /**
+         * @param dependsOns Names of the containers that must start before this container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dependsOns(String... dependsOns) {
+            return dependsOns(List.of(dependsOns));
         }
 
         /**

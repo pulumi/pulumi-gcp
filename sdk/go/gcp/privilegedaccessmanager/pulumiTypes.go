@@ -13,6 +13,1297 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type SettingsEmailNotificationSettings struct {
+	// CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
+	// Structure is documented below.
+	CustomNotificationBehavior *SettingsEmailNotificationSettingsCustomNotificationBehavior `pulumi:"customNotificationBehavior"`
+	// This option indicates that all email notifications are disabled.
+	DisableAllNotifications *SettingsEmailNotificationSettingsDisableAllNotifications `pulumi:"disableAllNotifications"`
+}
+
+// SettingsEmailNotificationSettingsInput is an input type that accepts SettingsEmailNotificationSettingsArgs and SettingsEmailNotificationSettingsOutput values.
+// You can construct a concrete instance of `SettingsEmailNotificationSettingsInput` via:
+//
+//	SettingsEmailNotificationSettingsArgs{...}
+type SettingsEmailNotificationSettingsInput interface {
+	pulumi.Input
+
+	ToSettingsEmailNotificationSettingsOutput() SettingsEmailNotificationSettingsOutput
+	ToSettingsEmailNotificationSettingsOutputWithContext(context.Context) SettingsEmailNotificationSettingsOutput
+}
+
+type SettingsEmailNotificationSettingsArgs struct {
+	// CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
+	// Structure is documented below.
+	CustomNotificationBehavior SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrInput `pulumi:"customNotificationBehavior"`
+	// This option indicates that all email notifications are disabled.
+	DisableAllNotifications SettingsEmailNotificationSettingsDisableAllNotificationsPtrInput `pulumi:"disableAllNotifications"`
+}
+
+func (SettingsEmailNotificationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEmailNotificationSettings)(nil)).Elem()
+}
+
+func (i SettingsEmailNotificationSettingsArgs) ToSettingsEmailNotificationSettingsOutput() SettingsEmailNotificationSettingsOutput {
+	return i.ToSettingsEmailNotificationSettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsEmailNotificationSettingsArgs) ToSettingsEmailNotificationSettingsOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsOutput)
+}
+
+func (i SettingsEmailNotificationSettingsArgs) ToSettingsEmailNotificationSettingsPtrOutput() SettingsEmailNotificationSettingsPtrOutput {
+	return i.ToSettingsEmailNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsEmailNotificationSettingsArgs) ToSettingsEmailNotificationSettingsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsOutput).ToSettingsEmailNotificationSettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsEmailNotificationSettingsPtrInput is an input type that accepts SettingsEmailNotificationSettingsArgs, SettingsEmailNotificationSettingsPtr and SettingsEmailNotificationSettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsEmailNotificationSettingsPtrInput` via:
+//
+//	        SettingsEmailNotificationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsEmailNotificationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsEmailNotificationSettingsPtrOutput() SettingsEmailNotificationSettingsPtrOutput
+	ToSettingsEmailNotificationSettingsPtrOutputWithContext(context.Context) SettingsEmailNotificationSettingsPtrOutput
+}
+
+type settingsEmailNotificationSettingsPtrType SettingsEmailNotificationSettingsArgs
+
+func SettingsEmailNotificationSettingsPtr(v *SettingsEmailNotificationSettingsArgs) SettingsEmailNotificationSettingsPtrInput {
+	return (*settingsEmailNotificationSettingsPtrType)(v)
+}
+
+func (*settingsEmailNotificationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEmailNotificationSettings)(nil)).Elem()
+}
+
+func (i *settingsEmailNotificationSettingsPtrType) ToSettingsEmailNotificationSettingsPtrOutput() SettingsEmailNotificationSettingsPtrOutput {
+	return i.ToSettingsEmailNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsEmailNotificationSettingsPtrType) ToSettingsEmailNotificationSettingsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsEmailNotificationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEmailNotificationSettings)(nil)).Elem()
+}
+
+func (o SettingsEmailNotificationSettingsOutput) ToSettingsEmailNotificationSettingsOutput() SettingsEmailNotificationSettingsOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsOutput) ToSettingsEmailNotificationSettingsOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsOutput) ToSettingsEmailNotificationSettingsPtrOutput() SettingsEmailNotificationSettingsPtrOutput {
+	return o.ToSettingsEmailNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsEmailNotificationSettingsOutput) ToSettingsEmailNotificationSettingsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsEmailNotificationSettings) *SettingsEmailNotificationSettings {
+		return &v
+	}).(SettingsEmailNotificationSettingsPtrOutput)
+}
+
+// CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
+// Structure is documented below.
+func (o SettingsEmailNotificationSettingsOutput) CustomNotificationBehavior() SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettings) *SettingsEmailNotificationSettingsCustomNotificationBehavior {
+		return v.CustomNotificationBehavior
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput)
+}
+
+// This option indicates that all email notifications are disabled.
+func (o SettingsEmailNotificationSettingsOutput) DisableAllNotifications() SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettings) *SettingsEmailNotificationSettingsDisableAllNotifications {
+		return v.DisableAllNotifications
+	}).(SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsEmailNotificationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEmailNotificationSettings)(nil)).Elem()
+}
+
+func (o SettingsEmailNotificationSettingsPtrOutput) ToSettingsEmailNotificationSettingsPtrOutput() SettingsEmailNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsPtrOutput) ToSettingsEmailNotificationSettingsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsPtrOutput) Elem() SettingsEmailNotificationSettingsOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettings) SettingsEmailNotificationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsEmailNotificationSettings
+		return ret
+	}).(SettingsEmailNotificationSettingsOutput)
+}
+
+// CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
+// Structure is documented below.
+func (o SettingsEmailNotificationSettingsPtrOutput) CustomNotificationBehavior() SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettings) *SettingsEmailNotificationSettingsCustomNotificationBehavior {
+		if v == nil {
+			return nil
+		}
+		return v.CustomNotificationBehavior
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput)
+}
+
+// This option indicates that all email notifications are disabled.
+func (o SettingsEmailNotificationSettingsPtrOutput) DisableAllNotifications() SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettings) *SettingsEmailNotificationSettingsDisableAllNotifications {
+		if v == nil {
+			return nil
+		}
+		return v.DisableAllNotifications
+	}).(SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehavior struct {
+	// Email notifications specific to Requesters.
+	// Structure is documented below.
+	AdminNotifications *SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications `pulumi:"adminNotifications"`
+	// Email notifications specific to Approvers.
+	// Structure is documented below.
+	ApproverNotifications *SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications `pulumi:"approverNotifications"`
+	// Email notifications specific to Requesters.
+	// Structure is documented below.
+	RequesterNotifications *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications `pulumi:"requesterNotifications"`
+}
+
+// SettingsEmailNotificationSettingsCustomNotificationBehaviorInput is an input type that accepts SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs and SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput values.
+// You can construct a concrete instance of `SettingsEmailNotificationSettingsCustomNotificationBehaviorInput` via:
+//
+//	SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs{...}
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorInput interface {
+	pulumi.Input
+
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorOutputWithContext(context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs struct {
+	// Email notifications specific to Requesters.
+	// Structure is documented below.
+	AdminNotifications SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrInput `pulumi:"adminNotifications"`
+	// Email notifications specific to Approvers.
+	// Structure is documented below.
+	ApproverNotifications SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrInput `pulumi:"approverNotifications"`
+	// Email notifications specific to Requesters.
+	// Structure is documented below.
+	RequesterNotifications SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrInput `pulumi:"requesterNotifications"`
+}
+
+func (SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehavior)(nil)).Elem()
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput {
+	return i.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorOutputWithContext(context.Background())
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput)
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput {
+	return i.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput).ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutputWithContext(ctx)
+}
+
+// SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrInput is an input type that accepts SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs, SettingsEmailNotificationSettingsCustomNotificationBehaviorPtr and SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput values.
+// You can construct a concrete instance of `SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrInput` via:
+//
+//	        SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrInput interface {
+	pulumi.Input
+
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutputWithContext(context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput
+}
+
+type settingsEmailNotificationSettingsCustomNotificationBehaviorPtrType SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs
+
+func SettingsEmailNotificationSettingsCustomNotificationBehaviorPtr(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs) SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrInput {
+	return (*settingsEmailNotificationSettingsCustomNotificationBehaviorPtrType)(v)
+}
+
+func (*settingsEmailNotificationSettingsCustomNotificationBehaviorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEmailNotificationSettingsCustomNotificationBehavior)(nil)).Elem()
+}
+
+func (i *settingsEmailNotificationSettingsCustomNotificationBehaviorPtrType) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput {
+	return i.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsEmailNotificationSettingsCustomNotificationBehaviorPtrType) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput struct{ *pulumi.OutputState }
+
+func (SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehavior)(nil)).Elem()
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput {
+	return o.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsEmailNotificationSettingsCustomNotificationBehavior) *SettingsEmailNotificationSettingsCustomNotificationBehavior {
+		return &v
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput)
+}
+
+// Email notifications specific to Requesters.
+// Structure is documented below.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput) AdminNotifications() SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehavior) *SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications {
+		return v.AdminNotifications
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput)
+}
+
+// Email notifications specific to Approvers.
+// Structure is documented below.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput) ApproverNotifications() SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehavior) *SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications {
+		return v.ApproverNotifications
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput)
+}
+
+// Email notifications specific to Requesters.
+// Structure is documented below.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput) RequesterNotifications() SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehavior) *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications {
+		return v.RequesterNotifications
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEmailNotificationSettingsCustomNotificationBehavior)(nil)).Elem()
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput) Elem() SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehavior) SettingsEmailNotificationSettingsCustomNotificationBehavior {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsEmailNotificationSettingsCustomNotificationBehavior
+		return ret
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput)
+}
+
+// Email notifications specific to Requesters.
+// Structure is documented below.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput) AdminNotifications() SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehavior) *SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications {
+		if v == nil {
+			return nil
+		}
+		return v.AdminNotifications
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput)
+}
+
+// Email notifications specific to Approvers.
+// Structure is documented below.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput) ApproverNotifications() SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehavior) *SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications {
+		if v == nil {
+			return nil
+		}
+		return v.ApproverNotifications
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput)
+}
+
+// Email notifications specific to Requesters.
+// Structure is documented below.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput) RequesterNotifications() SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehavior) *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications {
+		if v == nil {
+			return nil
+		}
+		return v.RequesterNotifications
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications struct {
+	// Notification mode for grant activated.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantActivated *string `pulumi:"grantActivated"`
+	// Notification mode for grant activation failed.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantActivationFailed *string `pulumi:"grantActivationFailed"`
+	// Notification mode for grant ended.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantEnded *string `pulumi:"grantEnded"`
+	// Notification mode for grant externally modified.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantExternallyModified *string `pulumi:"grantExternallyModified"`
+}
+
+// SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsInput is an input type that accepts SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs and SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput values.
+// You can construct a concrete instance of `SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsInput` via:
+//
+//	SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs{...}
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsInput interface {
+	pulumi.Input
+
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutputWithContext(context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs struct {
+	// Notification mode for grant activated.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantActivated pulumi.StringPtrInput `pulumi:"grantActivated"`
+	// Notification mode for grant activation failed.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantActivationFailed pulumi.StringPtrInput `pulumi:"grantActivationFailed"`
+	// Notification mode for grant ended.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantEnded pulumi.StringPtrInput `pulumi:"grantEnded"`
+	// Notification mode for grant externally modified.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantExternallyModified pulumi.StringPtrInput `pulumi:"grantExternallyModified"`
+}
+
+func (SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications)(nil)).Elem()
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput {
+	return i.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutputWithContext(context.Background())
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput)
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput {
+	return i.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput).ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutputWithContext(ctx)
+}
+
+// SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrInput is an input type that accepts SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs, SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtr and SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput values.
+// You can construct a concrete instance of `SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrInput` via:
+//
+//	        SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutputWithContext(context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput
+}
+
+type settingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrType SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs
+
+func SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtr(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs) SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrInput {
+	return (*settingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrType)(v)
+}
+
+func (*settingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications)(nil)).Elem()
+}
+
+func (i *settingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrType) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput {
+	return i.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrType) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput struct{ *pulumi.OutputState }
+
+func (SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications)(nil)).Elem()
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput {
+	return o.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications) *SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications {
+		return &v
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput)
+}
+
+// Notification mode for grant activated.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput) GrantActivated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications) *string {
+		return v.GrantActivated
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant activation failed.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput) GrantActivationFailed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications) *string {
+		return v.GrantActivationFailed
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant ended.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput) GrantEnded() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications) *string {
+		return v.GrantEnded
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant externally modified.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput) GrantExternallyModified() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications) *string {
+		return v.GrantExternallyModified
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications)(nil)).Elem()
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput) Elem() SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications) SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications
+		return ret
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput)
+}
+
+// Notification mode for grant activated.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput) GrantActivated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantActivated
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant activation failed.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput) GrantActivationFailed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantActivationFailed
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant ended.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput) GrantEnded() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantEnded
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant externally modified.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput) GrantExternallyModified() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantExternallyModified
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications struct {
+	// Notification mode for pending approval.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	PendingApproval *string `pulumi:"pendingApproval"`
+}
+
+// SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsInput is an input type that accepts SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs and SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput values.
+// You can construct a concrete instance of `SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsInput` via:
+//
+//	SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs{...}
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsInput interface {
+	pulumi.Input
+
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutputWithContext(context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs struct {
+	// Notification mode for pending approval.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	PendingApproval pulumi.StringPtrInput `pulumi:"pendingApproval"`
+}
+
+func (SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications)(nil)).Elem()
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput {
+	return i.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutputWithContext(context.Background())
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput)
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput {
+	return i.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput).ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutputWithContext(ctx)
+}
+
+// SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrInput is an input type that accepts SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs, SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtr and SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput values.
+// You can construct a concrete instance of `SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrInput` via:
+//
+//	        SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutputWithContext(context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput
+}
+
+type settingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrType SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs
+
+func SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtr(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs) SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrInput {
+	return (*settingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrType)(v)
+}
+
+func (*settingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications)(nil)).Elem()
+}
+
+func (i *settingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrType) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput {
+	return i.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrType) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput struct{ *pulumi.OutputState }
+
+func (SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications)(nil)).Elem()
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput {
+	return o.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications) *SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications {
+		return &v
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput)
+}
+
+// Notification mode for pending approval.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput) PendingApproval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications) *string {
+		return v.PendingApproval
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications)(nil)).Elem()
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput) Elem() SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications) SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications
+		return ret
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput)
+}
+
+// Notification mode for pending approval.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput) PendingApproval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PendingApproval
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications struct {
+	// Notification mode for entitlement assigned.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	EntitlementAssigned *string `pulumi:"entitlementAssigned"`
+	// Notification mode for grant activated.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantActivated *string `pulumi:"grantActivated"`
+	// Notification mode for grant activation failed.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantActivationFailed *string `pulumi:"grantActivationFailed"`
+	// Notification mode for grant denied.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantDenied *string `pulumi:"grantDenied"`
+	// Notification mode for grant ended.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantEnded *string `pulumi:"grantEnded"`
+	// Notification mode for grant expired.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantExpired *string `pulumi:"grantExpired"`
+	// Notification mode for grant externally modified.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantExternallyModified *string `pulumi:"grantExternallyModified"`
+	// Notification mode for grant revoked.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantRevoked *string `pulumi:"grantRevoked"`
+}
+
+// SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsInput is an input type that accepts SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs and SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput values.
+// You can construct a concrete instance of `SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsInput` via:
+//
+//	SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs{...}
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsInput interface {
+	pulumi.Input
+
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutputWithContext(context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs struct {
+	// Notification mode for entitlement assigned.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	EntitlementAssigned pulumi.StringPtrInput `pulumi:"entitlementAssigned"`
+	// Notification mode for grant activated.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantActivated pulumi.StringPtrInput `pulumi:"grantActivated"`
+	// Notification mode for grant activation failed.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantActivationFailed pulumi.StringPtrInput `pulumi:"grantActivationFailed"`
+	// Notification mode for grant denied.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantDenied pulumi.StringPtrInput `pulumi:"grantDenied"`
+	// Notification mode for grant ended.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantEnded pulumi.StringPtrInput `pulumi:"grantEnded"`
+	// Notification mode for grant expired.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantExpired pulumi.StringPtrInput `pulumi:"grantExpired"`
+	// Notification mode for grant externally modified.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantExternallyModified pulumi.StringPtrInput `pulumi:"grantExternallyModified"`
+	// Notification mode for grant revoked.
+	// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+	GrantRevoked pulumi.StringPtrInput `pulumi:"grantRevoked"`
+}
+
+func (SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications)(nil)).Elem()
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput {
+	return i.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutputWithContext(context.Background())
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput)
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput {
+	return i.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput).ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutputWithContext(ctx)
+}
+
+// SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrInput is an input type that accepts SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs, SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtr and SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput values.
+// You can construct a concrete instance of `SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrInput` via:
+//
+//	        SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput
+	ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutputWithContext(context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput
+}
+
+type settingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrType SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs
+
+func SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtr(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs) SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrInput {
+	return (*settingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrType)(v)
+}
+
+func (*settingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications)(nil)).Elem()
+}
+
+func (i *settingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrType) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput {
+	return i.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrType) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput struct{ *pulumi.OutputState }
+
+func (SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications)(nil)).Elem()
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput {
+	return o.ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications {
+		return &v
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput)
+}
+
+// Notification mode for entitlement assigned.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) EntitlementAssigned() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		return v.EntitlementAssigned
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant activated.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) GrantActivated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		return v.GrantActivated
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant activation failed.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) GrantActivationFailed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		return v.GrantActivationFailed
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant denied.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) GrantDenied() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		return v.GrantDenied
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant ended.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) GrantEnded() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		return v.GrantEnded
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant expired.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) GrantExpired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		return v.GrantExpired
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant externally modified.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) GrantExternallyModified() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		return v.GrantExternallyModified
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant revoked.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput) GrantRevoked() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		return v.GrantRevoked
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications)(nil)).Elem()
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput() SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput) ToSettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput) Elem() SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications
+		return ret
+	}).(SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput)
+}
+
+// Notification mode for entitlement assigned.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput) EntitlementAssigned() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntitlementAssigned
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant activated.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput) GrantActivated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantActivated
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant activation failed.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput) GrantActivationFailed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantActivationFailed
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant denied.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput) GrantDenied() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantDenied
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant ended.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput) GrantEnded() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantEnded
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant expired.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput) GrantExpired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantExpired
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant externally modified.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput) GrantExternallyModified() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantExternallyModified
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification mode for grant revoked.
+// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+func (o SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput) GrantRevoked() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantRevoked
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsDisableAllNotifications struct {
+}
+
+// SettingsEmailNotificationSettingsDisableAllNotificationsInput is an input type that accepts SettingsEmailNotificationSettingsDisableAllNotificationsArgs and SettingsEmailNotificationSettingsDisableAllNotificationsOutput values.
+// You can construct a concrete instance of `SettingsEmailNotificationSettingsDisableAllNotificationsInput` via:
+//
+//	SettingsEmailNotificationSettingsDisableAllNotificationsArgs{...}
+type SettingsEmailNotificationSettingsDisableAllNotificationsInput interface {
+	pulumi.Input
+
+	ToSettingsEmailNotificationSettingsDisableAllNotificationsOutput() SettingsEmailNotificationSettingsDisableAllNotificationsOutput
+	ToSettingsEmailNotificationSettingsDisableAllNotificationsOutputWithContext(context.Context) SettingsEmailNotificationSettingsDisableAllNotificationsOutput
+}
+
+type SettingsEmailNotificationSettingsDisableAllNotificationsArgs struct {
+}
+
+func (SettingsEmailNotificationSettingsDisableAllNotificationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEmailNotificationSettingsDisableAllNotifications)(nil)).Elem()
+}
+
+func (i SettingsEmailNotificationSettingsDisableAllNotificationsArgs) ToSettingsEmailNotificationSettingsDisableAllNotificationsOutput() SettingsEmailNotificationSettingsDisableAllNotificationsOutput {
+	return i.ToSettingsEmailNotificationSettingsDisableAllNotificationsOutputWithContext(context.Background())
+}
+
+func (i SettingsEmailNotificationSettingsDisableAllNotificationsArgs) ToSettingsEmailNotificationSettingsDisableAllNotificationsOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsDisableAllNotificationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsDisableAllNotificationsOutput)
+}
+
+func (i SettingsEmailNotificationSettingsDisableAllNotificationsArgs) ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput() SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput {
+	return i.ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsEmailNotificationSettingsDisableAllNotificationsArgs) ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsDisableAllNotificationsOutput).ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutputWithContext(ctx)
+}
+
+// SettingsEmailNotificationSettingsDisableAllNotificationsPtrInput is an input type that accepts SettingsEmailNotificationSettingsDisableAllNotificationsArgs, SettingsEmailNotificationSettingsDisableAllNotificationsPtr and SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput values.
+// You can construct a concrete instance of `SettingsEmailNotificationSettingsDisableAllNotificationsPtrInput` via:
+//
+//	        SettingsEmailNotificationSettingsDisableAllNotificationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsEmailNotificationSettingsDisableAllNotificationsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput() SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput
+	ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutputWithContext(context.Context) SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput
+}
+
+type settingsEmailNotificationSettingsDisableAllNotificationsPtrType SettingsEmailNotificationSettingsDisableAllNotificationsArgs
+
+func SettingsEmailNotificationSettingsDisableAllNotificationsPtr(v *SettingsEmailNotificationSettingsDisableAllNotificationsArgs) SettingsEmailNotificationSettingsDisableAllNotificationsPtrInput {
+	return (*settingsEmailNotificationSettingsDisableAllNotificationsPtrType)(v)
+}
+
+func (*settingsEmailNotificationSettingsDisableAllNotificationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEmailNotificationSettingsDisableAllNotifications)(nil)).Elem()
+}
+
+func (i *settingsEmailNotificationSettingsDisableAllNotificationsPtrType) ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput() SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput {
+	return i.ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsEmailNotificationSettingsDisableAllNotificationsPtrType) ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsDisableAllNotificationsOutput struct{ *pulumi.OutputState }
+
+func (SettingsEmailNotificationSettingsDisableAllNotificationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEmailNotificationSettingsDisableAllNotifications)(nil)).Elem()
+}
+
+func (o SettingsEmailNotificationSettingsDisableAllNotificationsOutput) ToSettingsEmailNotificationSettingsDisableAllNotificationsOutput() SettingsEmailNotificationSettingsDisableAllNotificationsOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsDisableAllNotificationsOutput) ToSettingsEmailNotificationSettingsDisableAllNotificationsOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsDisableAllNotificationsOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsDisableAllNotificationsOutput) ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput() SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput {
+	return o.ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsEmailNotificationSettingsDisableAllNotificationsOutput) ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsEmailNotificationSettingsDisableAllNotifications) *SettingsEmailNotificationSettingsDisableAllNotifications {
+		return &v
+	}).(SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput)
+}
+
+type SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEmailNotificationSettingsDisableAllNotifications)(nil)).Elem()
+}
+
+func (o SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput) ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput() SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput) ToSettingsEmailNotificationSettingsDisableAllNotificationsPtrOutputWithContext(ctx context.Context) SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput {
+	return o
+}
+
+func (o SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput) Elem() SettingsEmailNotificationSettingsDisableAllNotificationsOutput {
+	return o.ApplyT(func(v *SettingsEmailNotificationSettingsDisableAllNotifications) SettingsEmailNotificationSettingsDisableAllNotifications {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsEmailNotificationSettingsDisableAllNotifications
+		return ret
+	}).(SettingsEmailNotificationSettingsDisableAllNotificationsOutput)
+}
+
+type SettingsServiceAccountApproverSettings struct {
+	// Indicates whether service account is allowed to grant approvals.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// SettingsServiceAccountApproverSettingsInput is an input type that accepts SettingsServiceAccountApproverSettingsArgs and SettingsServiceAccountApproverSettingsOutput values.
+// You can construct a concrete instance of `SettingsServiceAccountApproverSettingsInput` via:
+//
+//	SettingsServiceAccountApproverSettingsArgs{...}
+type SettingsServiceAccountApproverSettingsInput interface {
+	pulumi.Input
+
+	ToSettingsServiceAccountApproverSettingsOutput() SettingsServiceAccountApproverSettingsOutput
+	ToSettingsServiceAccountApproverSettingsOutputWithContext(context.Context) SettingsServiceAccountApproverSettingsOutput
+}
+
+type SettingsServiceAccountApproverSettingsArgs struct {
+	// Indicates whether service account is allowed to grant approvals.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (SettingsServiceAccountApproverSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsServiceAccountApproverSettings)(nil)).Elem()
+}
+
+func (i SettingsServiceAccountApproverSettingsArgs) ToSettingsServiceAccountApproverSettingsOutput() SettingsServiceAccountApproverSettingsOutput {
+	return i.ToSettingsServiceAccountApproverSettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsServiceAccountApproverSettingsArgs) ToSettingsServiceAccountApproverSettingsOutputWithContext(ctx context.Context) SettingsServiceAccountApproverSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsServiceAccountApproverSettingsOutput)
+}
+
+func (i SettingsServiceAccountApproverSettingsArgs) ToSettingsServiceAccountApproverSettingsPtrOutput() SettingsServiceAccountApproverSettingsPtrOutput {
+	return i.ToSettingsServiceAccountApproverSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsServiceAccountApproverSettingsArgs) ToSettingsServiceAccountApproverSettingsPtrOutputWithContext(ctx context.Context) SettingsServiceAccountApproverSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsServiceAccountApproverSettingsOutput).ToSettingsServiceAccountApproverSettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsServiceAccountApproverSettingsPtrInput is an input type that accepts SettingsServiceAccountApproverSettingsArgs, SettingsServiceAccountApproverSettingsPtr and SettingsServiceAccountApproverSettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsServiceAccountApproverSettingsPtrInput` via:
+//
+//	        SettingsServiceAccountApproverSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsServiceAccountApproverSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsServiceAccountApproverSettingsPtrOutput() SettingsServiceAccountApproverSettingsPtrOutput
+	ToSettingsServiceAccountApproverSettingsPtrOutputWithContext(context.Context) SettingsServiceAccountApproverSettingsPtrOutput
+}
+
+type settingsServiceAccountApproverSettingsPtrType SettingsServiceAccountApproverSettingsArgs
+
+func SettingsServiceAccountApproverSettingsPtr(v *SettingsServiceAccountApproverSettingsArgs) SettingsServiceAccountApproverSettingsPtrInput {
+	return (*settingsServiceAccountApproverSettingsPtrType)(v)
+}
+
+func (*settingsServiceAccountApproverSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsServiceAccountApproverSettings)(nil)).Elem()
+}
+
+func (i *settingsServiceAccountApproverSettingsPtrType) ToSettingsServiceAccountApproverSettingsPtrOutput() SettingsServiceAccountApproverSettingsPtrOutput {
+	return i.ToSettingsServiceAccountApproverSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsServiceAccountApproverSettingsPtrType) ToSettingsServiceAccountApproverSettingsPtrOutputWithContext(ctx context.Context) SettingsServiceAccountApproverSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsServiceAccountApproverSettingsPtrOutput)
+}
+
+type SettingsServiceAccountApproverSettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsServiceAccountApproverSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsServiceAccountApproverSettings)(nil)).Elem()
+}
+
+func (o SettingsServiceAccountApproverSettingsOutput) ToSettingsServiceAccountApproverSettingsOutput() SettingsServiceAccountApproverSettingsOutput {
+	return o
+}
+
+func (o SettingsServiceAccountApproverSettingsOutput) ToSettingsServiceAccountApproverSettingsOutputWithContext(ctx context.Context) SettingsServiceAccountApproverSettingsOutput {
+	return o
+}
+
+func (o SettingsServiceAccountApproverSettingsOutput) ToSettingsServiceAccountApproverSettingsPtrOutput() SettingsServiceAccountApproverSettingsPtrOutput {
+	return o.ToSettingsServiceAccountApproverSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsServiceAccountApproverSettingsOutput) ToSettingsServiceAccountApproverSettingsPtrOutputWithContext(ctx context.Context) SettingsServiceAccountApproverSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsServiceAccountApproverSettings) *SettingsServiceAccountApproverSettings {
+		return &v
+	}).(SettingsServiceAccountApproverSettingsPtrOutput)
+}
+
+// Indicates whether service account is allowed to grant approvals.
+func (o SettingsServiceAccountApproverSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingsServiceAccountApproverSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type SettingsServiceAccountApproverSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsServiceAccountApproverSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsServiceAccountApproverSettings)(nil)).Elem()
+}
+
+func (o SettingsServiceAccountApproverSettingsPtrOutput) ToSettingsServiceAccountApproverSettingsPtrOutput() SettingsServiceAccountApproverSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsServiceAccountApproverSettingsPtrOutput) ToSettingsServiceAccountApproverSettingsPtrOutputWithContext(ctx context.Context) SettingsServiceAccountApproverSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsServiceAccountApproverSettingsPtrOutput) Elem() SettingsServiceAccountApproverSettingsOutput {
+	return o.ApplyT(func(v *SettingsServiceAccountApproverSettings) SettingsServiceAccountApproverSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsServiceAccountApproverSettings
+		return ret
+	}).(SettingsServiceAccountApproverSettingsOutput)
+}
+
+// Indicates whether service account is allowed to grant approvals.
+func (o SettingsServiceAccountApproverSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingsServiceAccountApproverSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type EntitlementAdditionalNotificationTargets struct {
 	// Optional. Additional email addresses to be notified when a principal(requester) is granted access.
 	AdminEmailRecipients []string `pulumi:"adminEmailRecipients"`
@@ -2908,6 +4199,20 @@ func (o GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput) Index
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEmailNotificationSettingsInput)(nil)).Elem(), SettingsEmailNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEmailNotificationSettingsPtrInput)(nil)).Elem(), SettingsEmailNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorInput)(nil)).Elem(), SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrInput)(nil)).Elem(), SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsInput)(nil)).Elem(), SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrInput)(nil)).Elem(), SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsInput)(nil)).Elem(), SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrInput)(nil)).Elem(), SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsInput)(nil)).Elem(), SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrInput)(nil)).Elem(), SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEmailNotificationSettingsDisableAllNotificationsInput)(nil)).Elem(), SettingsEmailNotificationSettingsDisableAllNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEmailNotificationSettingsDisableAllNotificationsPtrInput)(nil)).Elem(), SettingsEmailNotificationSettingsDisableAllNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsServiceAccountApproverSettingsInput)(nil)).Elem(), SettingsServiceAccountApproverSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsServiceAccountApproverSettingsPtrInput)(nil)).Elem(), SettingsServiceAccountApproverSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntitlementAdditionalNotificationTargetsInput)(nil)).Elem(), EntitlementAdditionalNotificationTargetsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntitlementAdditionalNotificationTargetsPtrInput)(nil)).Elem(), EntitlementAdditionalNotificationTargetsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntitlementApprovalWorkflowInput)(nil)).Elem(), EntitlementApprovalWorkflowArgs{})
@@ -2955,6 +4260,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementRequesterJustificationConfigNotMandatoryArrayInput)(nil)).Elem(), GetEntitlementRequesterJustificationConfigNotMandatoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementRequesterJustificationConfigUnstructuredInput)(nil)).Elem(), GetEntitlementRequesterJustificationConfigUnstructuredArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementRequesterJustificationConfigUnstructuredArrayInput)(nil)).Elem(), GetEntitlementRequesterJustificationConfigUnstructuredArray{})
+	pulumi.RegisterOutputType(SettingsEmailNotificationSettingsOutput{})
+	pulumi.RegisterOutputType(SettingsEmailNotificationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsEmailNotificationSettingsCustomNotificationBehaviorOutput{})
+	pulumi.RegisterOutputType(SettingsEmailNotificationSettingsCustomNotificationBehaviorPtrOutput{})
+	pulumi.RegisterOutputType(SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsOutput{})
+	pulumi.RegisterOutputType(SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsOutput{})
+	pulumi.RegisterOutputType(SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsOutput{})
+	pulumi.RegisterOutputType(SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsEmailNotificationSettingsDisableAllNotificationsOutput{})
+	pulumi.RegisterOutputType(SettingsEmailNotificationSettingsDisableAllNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsServiceAccountApproverSettingsOutput{})
+	pulumi.RegisterOutputType(SettingsServiceAccountApproverSettingsPtrOutput{})
 	pulumi.RegisterOutputType(EntitlementAdditionalNotificationTargetsOutput{})
 	pulumi.RegisterOutputType(EntitlementAdditionalNotificationTargetsPtrOutput{})
 	pulumi.RegisterOutputType(EntitlementApprovalWorkflowOutput{})

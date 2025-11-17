@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.Id;
- * import com.pulumi.random.IdArgs;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.compute.BackendBucket;
@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var urlSignature = new Id("urlSignature", IdArgs.builder()
+ *         var urlSignature = new RandomId("urlSignature", RandomIdArgs.builder()
  *             .byteLength(16)
  *             .build());
  * 

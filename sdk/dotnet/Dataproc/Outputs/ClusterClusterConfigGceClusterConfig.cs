@@ -45,6 +45,12 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterConfigGceClusterConfigReservationAffinity? ReservationAffinity;
         /// <summary>
+        /// A map of resource manager tags to add to all instances.
+        /// Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+        /// (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
+        /// <summary>
         /// The service account to be used by the Node VMs.
         /// If not specified, the "default" service account is used.
         /// </summary>
@@ -98,6 +104,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             Outputs.ClusterClusterConfigGceClusterConfigReservationAffinity? reservationAffinity,
 
+            ImmutableDictionary<string, string>? resourceManagerTags,
+
             string? serviceAccount,
 
             ImmutableArray<string> serviceAccountScopes,
@@ -116,6 +124,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             Network = network;
             NodeGroupAffinity = nodeGroupAffinity;
             ReservationAffinity = reservationAffinity;
+            ResourceManagerTags = resourceManagerTags;
             ServiceAccount = serviceAccount;
             ServiceAccountScopes = serviceAccountScopes;
             ShieldedInstanceConfig = shieldedInstanceConfig;

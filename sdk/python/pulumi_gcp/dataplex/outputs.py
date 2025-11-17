@@ -34,6 +34,7 @@ __all__ = [
     'DatascanDataDiscoverySpecStorageConfig',
     'DatascanDataDiscoverySpecStorageConfigCsvOptions',
     'DatascanDataDiscoverySpecStorageConfigJsonOptions',
+    'DatascanDataDocumentationSpec',
     'DatascanDataProfileSpec',
     'DatascanDataProfileSpecExcludeFields',
     'DatascanDataProfileSpecIncludeFields',
@@ -1179,6 +1180,12 @@ class DatascanDataDiscoverySpecStorageConfigJsonOptions(dict):
         Whether to disable the inference of data types for JSON data. If true, all columns are registered as their primitive types (strings, number, or boolean).
         """
         return pulumi.get(self, "type_inference_disabled")
+
+
+@pulumi.output_type
+class DatascanDataDocumentationSpec(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

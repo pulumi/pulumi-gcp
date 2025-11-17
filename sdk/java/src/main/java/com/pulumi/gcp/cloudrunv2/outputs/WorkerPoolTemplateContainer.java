@@ -29,6 +29,11 @@ public final class WorkerPoolTemplateContainer {
      */
     private @Nullable List<String> commands;
     /**
+     * @return Names of the containers that must start before this container.
+     * 
+     */
+    private @Nullable List<String> dependsOns;
+    /**
      * @return List of environment variables to set in the container.
      * Structure is documented below.
      * 
@@ -88,6 +93,13 @@ public final class WorkerPoolTemplateContainer {
      */
     public List<String> commands() {
         return this.commands == null ? List.of() : this.commands;
+    }
+    /**
+     * @return Names of the containers that must start before this container.
+     * 
+     */
+    public List<String> dependsOns() {
+        return this.dependsOns == null ? List.of() : this.dependsOns;
     }
     /**
      * @return List of environment variables to set in the container.
@@ -162,6 +174,7 @@ public final class WorkerPoolTemplateContainer {
     public static final class Builder {
         private @Nullable List<String> args;
         private @Nullable List<String> commands;
+        private @Nullable List<String> dependsOns;
         private @Nullable List<WorkerPoolTemplateContainerEnv> envs;
         private String image;
         private @Nullable WorkerPoolTemplateContainerLivenessProbe livenessProbe;
@@ -175,6 +188,7 @@ public final class WorkerPoolTemplateContainer {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
     	      this.commands = defaults.commands;
+    	      this.dependsOns = defaults.dependsOns;
     	      this.envs = defaults.envs;
     	      this.image = defaults.image;
     	      this.livenessProbe = defaults.livenessProbe;
@@ -202,6 +216,15 @@ public final class WorkerPoolTemplateContainer {
         }
         public Builder commands(String... commands) {
             return commands(List.of(commands));
+        }
+        @CustomType.Setter
+        public Builder dependsOns(@Nullable List<String> dependsOns) {
+
+            this.dependsOns = dependsOns;
+            return this;
+        }
+        public Builder dependsOns(String... dependsOns) {
+            return dependsOns(List.of(dependsOns));
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<WorkerPoolTemplateContainerEnv> envs) {
@@ -263,6 +286,7 @@ public final class WorkerPoolTemplateContainer {
             final var _resultValue = new WorkerPoolTemplateContainer();
             _resultValue.args = args;
             _resultValue.commands = commands;
+            _resultValue.dependsOns = dependsOns;
             _resultValue.envs = envs;
             _resultValue.image = image;
             _resultValue.livenessProbe = livenessProbe;

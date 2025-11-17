@@ -109,6 +109,13 @@ type Volume struct {
 	// Backup configuration for the volume.
 	// Structure is documented below.
 	BackupConfig VolumeBackupConfigPtrOutput `pulumi:"backupConfig"`
+	// Block device represents the device(s) which are stored in the block volume.
+	// Currently, only one block device is permitted per Volume.
+	// Structure is documented below.
+	BlockDevices VolumeBlockDeviceArrayOutput `pulumi:"blockDevices"`
+	// Cache parameters for the volume.
+	// Structure is documented below.
+	CacheParameters VolumeCacheParametersPtrOutput `pulumi:"cacheParameters"`
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
 	// Output only. Size of the volume cold tier data in GiB.
@@ -165,7 +172,7 @@ type Volume struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
-	// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+	// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
 	Protocols pulumi.StringArrayOutput `pulumi:"protocols"`
 	// Name of the Private Service Access allocated range. Inherited from storage pool.
 	PsaRange pulumi.StringOutput `pulumi:"psaRange"`
@@ -187,7 +194,7 @@ type Volume struct {
 	// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
 	ServiceLevel pulumi.StringOutput `pulumi:"serviceLevel"`
 	// Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
-	ShareName pulumi.StringOutput `pulumi:"shareName"`
+	ShareName pulumi.StringPtrOutput `pulumi:"shareName"`
 	// Settings for volumes with SMB access.
 	// Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
 	SmbSettings pulumi.StringArrayOutput `pulumi:"smbSettings"`
@@ -232,9 +239,6 @@ func NewVolume(ctx *pulumi.Context,
 	if args.Protocols == nil {
 		return nil, errors.New("invalid value for required argument 'Protocols'")
 	}
-	if args.ShareName == nil {
-		return nil, errors.New("invalid value for required argument 'ShareName'")
-	}
 	if args.StoragePool == nil {
 		return nil, errors.New("invalid value for required argument 'StoragePool'")
 	}
@@ -271,6 +275,13 @@ type volumeState struct {
 	// Backup configuration for the volume.
 	// Structure is documented below.
 	BackupConfig *VolumeBackupConfig `pulumi:"backupConfig"`
+	// Block device represents the device(s) which are stored in the block volume.
+	// Currently, only one block device is permitted per Volume.
+	// Structure is documented below.
+	BlockDevices []VolumeBlockDevice `pulumi:"blockDevices"`
+	// Cache parameters for the volume.
+	// Structure is documented below.
+	CacheParameters *VolumeCacheParameters `pulumi:"cacheParameters"`
 	// Capacity of the volume (in GiB).
 	CapacityGib *string `pulumi:"capacityGib"`
 	// Output only. Size of the volume cold tier data in GiB.
@@ -327,7 +338,7 @@ type volumeState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
-	// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+	// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
 	Protocols []string `pulumi:"protocols"`
 	// Name of the Private Service Access allocated range. Inherited from storage pool.
 	PsaRange *string `pulumi:"psaRange"`
@@ -384,6 +395,13 @@ type VolumeState struct {
 	// Backup configuration for the volume.
 	// Structure is documented below.
 	BackupConfig VolumeBackupConfigPtrInput
+	// Block device represents the device(s) which are stored in the block volume.
+	// Currently, only one block device is permitted per Volume.
+	// Structure is documented below.
+	BlockDevices VolumeBlockDeviceArrayInput
+	// Cache parameters for the volume.
+	// Structure is documented below.
+	CacheParameters VolumeCacheParametersPtrInput
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringPtrInput
 	// Output only. Size of the volume cold tier data in GiB.
@@ -440,7 +458,7 @@ type VolumeState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
-	// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+	// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
 	Protocols pulumi.StringArrayInput
 	// Name of the Private Service Access allocated range. Inherited from storage pool.
 	PsaRange pulumi.StringPtrInput
@@ -499,6 +517,13 @@ type volumeArgs struct {
 	// Backup configuration for the volume.
 	// Structure is documented below.
 	BackupConfig *VolumeBackupConfig `pulumi:"backupConfig"`
+	// Block device represents the device(s) which are stored in the block volume.
+	// Currently, only one block device is permitted per Volume.
+	// Structure is documented below.
+	BlockDevices []VolumeBlockDevice `pulumi:"blockDevices"`
+	// Cache parameters for the volume.
+	// Structure is documented below.
+	CacheParameters *VolumeCacheParameters `pulumi:"cacheParameters"`
 	// Capacity of the volume (in GiB).
 	CapacityGib string `pulumi:"capacityGib"`
 	// Policy to determine if the volume should be deleted forcefully.
@@ -534,7 +559,7 @@ type volumeArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
-	// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+	// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
 	Protocols []string `pulumi:"protocols"`
 	// Used to create this volume from a snapshot (= cloning) or an backup.
 	// Structure is documented below.
@@ -547,7 +572,7 @@ type volumeArgs struct {
 	// Possible values are: `NTFS`, `UNIX`.
 	SecurityStyle *string `pulumi:"securityStyle"`
 	// Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
-	ShareName string `pulumi:"shareName"`
+	ShareName *string `pulumi:"shareName"`
 	// Settings for volumes with SMB access.
 	// Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
 	SmbSettings []string `pulumi:"smbSettings"`
@@ -573,6 +598,13 @@ type VolumeArgs struct {
 	// Backup configuration for the volume.
 	// Structure is documented below.
 	BackupConfig VolumeBackupConfigPtrInput
+	// Block device represents the device(s) which are stored in the block volume.
+	// Currently, only one block device is permitted per Volume.
+	// Structure is documented below.
+	BlockDevices VolumeBlockDeviceArrayInput
+	// Cache parameters for the volume.
+	// Structure is documented below.
+	CacheParameters VolumeCacheParametersPtrInput
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringInput
 	// Policy to determine if the volume should be deleted forcefully.
@@ -608,7 +640,7 @@ type VolumeArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
-	// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+	// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
 	Protocols pulumi.StringArrayInput
 	// Used to create this volume from a snapshot (= cloning) or an backup.
 	// Structure is documented below.
@@ -621,7 +653,7 @@ type VolumeArgs struct {
 	// Possible values are: `NTFS`, `UNIX`.
 	SecurityStyle pulumi.StringPtrInput
 	// Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
-	ShareName pulumi.StringInput
+	ShareName pulumi.StringPtrInput
 	// Settings for volumes with SMB access.
 	// Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
 	SmbSettings pulumi.StringArrayInput
@@ -738,6 +770,19 @@ func (o VolumeOutput) ActiveDirectory() pulumi.StringOutput {
 // Structure is documented below.
 func (o VolumeOutput) BackupConfig() VolumeBackupConfigPtrOutput {
 	return o.ApplyT(func(v *Volume) VolumeBackupConfigPtrOutput { return v.BackupConfig }).(VolumeBackupConfigPtrOutput)
+}
+
+// Block device represents the device(s) which are stored in the block volume.
+// Currently, only one block device is permitted per Volume.
+// Structure is documented below.
+func (o VolumeOutput) BlockDevices() VolumeBlockDeviceArrayOutput {
+	return o.ApplyT(func(v *Volume) VolumeBlockDeviceArrayOutput { return v.BlockDevices }).(VolumeBlockDeviceArrayOutput)
+}
+
+// Cache parameters for the volume.
+// Structure is documented below.
+func (o VolumeOutput) CacheParameters() VolumeCacheParametersPtrOutput {
+	return o.ApplyT(func(v *Volume) VolumeCacheParametersPtrOutput { return v.CacheParameters }).(VolumeCacheParametersPtrOutput)
 }
 
 // Capacity of the volume (in GiB).
@@ -862,7 +907,7 @@ func (o VolumeOutput) Project() pulumi.StringOutput {
 }
 
 // The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
-// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
 func (o VolumeOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringArrayOutput { return v.Protocols }).(pulumi.StringArrayOutput)
 }
@@ -908,8 +953,8 @@ func (o VolumeOutput) ServiceLevel() pulumi.StringOutput {
 }
 
 // Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
-func (o VolumeOutput) ShareName() pulumi.StringOutput {
-	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.ShareName }).(pulumi.StringOutput)
+func (o VolumeOutput) ShareName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.ShareName }).(pulumi.StringPtrOutput)
 }
 
 // Settings for volumes with SMB access.

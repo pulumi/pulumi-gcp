@@ -127,7 +127,7 @@ export class StoragePool extends pulumi.CustomResource {
     /**
      * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
      */
-    declare public readonly customPerformanceEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly customPerformanceEnabled: pulumi.Output<boolean>;
     /**
      * An optional description of this resource.
      */
@@ -218,6 +218,13 @@ export class StoragePool extends pulumi.CustomResource {
      */
     declare public readonly totalThroughputMibps: pulumi.Output<string>;
     /**
+     * Type of the storage pool.
+     * This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+     * If not specified during creation, it defaults to FILE.
+     * Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+     */
+    declare public readonly type: pulumi.Output<string>;
+    /**
      * Size allocated to volumes in the storage pool (in GiB).
      */
     declare public /*out*/ readonly volumeCapacityGib: pulumi.Output<string>;
@@ -270,6 +277,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["serviceLevel"] = state?.serviceLevel;
             resourceInputs["totalIops"] = state?.totalIops;
             resourceInputs["totalThroughputMibps"] = state?.totalThroughputMibps;
+            resourceInputs["type"] = state?.type;
             resourceInputs["volumeCapacityGib"] = state?.volumeCapacityGib;
             resourceInputs["volumeCount"] = state?.volumeCount;
             resourceInputs["zone"] = state?.zone;
@@ -306,6 +314,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["serviceLevel"] = args?.serviceLevel;
             resourceInputs["totalIops"] = args?.totalIops;
             resourceInputs["totalThroughputMibps"] = args?.totalThroughputMibps;
+            resourceInputs["type"] = args?.type;
             resourceInputs["zone"] = args?.zone;
             resourceInputs["availableThroughputMibps"] = undefined /*out*/;
             resourceInputs["coldTierSizeUsedGib"] = undefined /*out*/;
@@ -443,6 +452,13 @@ export interface StoragePoolState {
      */
     totalThroughputMibps?: pulumi.Input<string>;
     /**
+     * Type of the storage pool.
+     * This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+     * If not specified during creation, it defaults to FILE.
+     * Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+     */
+    type?: pulumi.Input<string>;
+    /**
      * Size allocated to volumes in the storage pool (in GiB).
      */
     volumeCapacityGib?: pulumi.Input<string>;
@@ -552,6 +568,13 @@ export interface StoragePoolArgs {
      * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
      */
     totalThroughputMibps?: pulumi.Input<string>;
+    /**
+     * Type of the storage pool.
+     * This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+     * If not specified during creation, it defaults to FILE.
+     * Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+     */
+    type?: pulumi.Input<string>;
     /**
      * Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).

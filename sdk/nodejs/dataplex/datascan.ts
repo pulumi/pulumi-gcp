@@ -330,6 +330,86 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ * ### Dataplex Datascan Documentation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tfDataplexTestDataset = new gcp.bigquery.Dataset("tf_dataplex_test_dataset", {
+ *     datasetId: "tf_dataplex_test_dataset_id__64336",
+ *     defaultTableExpirationMs: 3600000,
+ * });
+ * const tfDataplexTestTable = new gcp.bigquery.Table("tf_dataplex_test_table", {
+ *     datasetId: tfDataplexTestDataset.datasetId,
+ *     tableId: "tf_dataplex_test_table_id__34962",
+ *     deletionProtection: false,
+ *     schema: `    [
+ *     {
+ *       \\"name\\": \\"name\\",
+ *       \\"type\\": \\"STRING\\",
+ *       \\"mode\\": \\"NULLABLE\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"station_id\\",
+ *       \\"type\\": \\"INTEGER\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The id of the bike station\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"address\\",
+ *       \\"type\\": \\"STRING\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The address of the bike station\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"power_type\\",
+ *       \\"type\\": \\"STRING\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The powert type of the bike station\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"property_type\\",
+ *       \\"type\\": \\"STRING\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The type of the property\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"number_of_docks\\",
+ *       \\"type\\": \\"INTEGER\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The number of docks the property have\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"footprint_length\\",
+ *       \\"type\\": \\"INTEGER\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The footpring lenght of the property\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"council_district\\",
+ *       \\"type\\": \\"INTEGER\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The council district the property is in\\"
+ *     }
+ *     ]
+ * `,
+ * });
+ * const documentation = new gcp.dataplex.Datascan("documentation", {
+ *     location: "us-central1",
+ *     dataScanId: "datadocumentation",
+ *     data: {
+ *         resource: pulumi.interpolate`//bigquery.googleapis.com/projects/my-project-name/datasets/${tfDataplexTestDataset.datasetId}/tables/${tfDataplexTestTable.tableId}`,
+ *     },
+ *     executionSpec: {
+ *         trigger: {
+ *             onDemand: {},
+ *         },
+ *     },
+ *     dataDocumentationSpec: {},
+ *     project: "my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -403,6 +483,10 @@ export class Datascan extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly dataDiscoverySpec: pulumi.Output<outputs.dataplex.DatascanDataDiscoverySpec | undefined>;
+    /**
+     * DataDocumentationScan related setting.
+     */
+    declare public readonly dataDocumentationSpec: pulumi.Output<outputs.dataplex.DatascanDataDocumentationSpec | undefined>;
     /**
      * DataProfileScan related setting.
      * Structure is documented below.
@@ -497,6 +581,7 @@ export class Datascan extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["data"] = state?.data;
             resourceInputs["dataDiscoverySpec"] = state?.dataDiscoverySpec;
+            resourceInputs["dataDocumentationSpec"] = state?.dataDocumentationSpec;
             resourceInputs["dataProfileSpec"] = state?.dataProfileSpec;
             resourceInputs["dataQualitySpec"] = state?.dataQualitySpec;
             resourceInputs["dataScanId"] = state?.dataScanId;
@@ -530,6 +615,7 @@ export class Datascan extends pulumi.CustomResource {
             }
             resourceInputs["data"] = args?.data;
             resourceInputs["dataDiscoverySpec"] = args?.dataDiscoverySpec;
+            resourceInputs["dataDocumentationSpec"] = args?.dataDocumentationSpec;
             resourceInputs["dataProfileSpec"] = args?.dataProfileSpec;
             resourceInputs["dataQualitySpec"] = args?.dataQualitySpec;
             resourceInputs["dataScanId"] = args?.dataScanId;
@@ -574,6 +660,10 @@ export interface DatascanState {
      * Structure is documented below.
      */
     dataDiscoverySpec?: pulumi.Input<inputs.dataplex.DatascanDataDiscoverySpec>;
+    /**
+     * DataDocumentationScan related setting.
+     */
+    dataDocumentationSpec?: pulumi.Input<inputs.dataplex.DatascanDataDocumentationSpec>;
     /**
      * DataProfileScan related setting.
      * Structure is documented below.
@@ -667,6 +757,10 @@ export interface DatascanArgs {
      * Structure is documented below.
      */
     dataDiscoverySpec?: pulumi.Input<inputs.dataplex.DatascanDataDiscoverySpec>;
+    /**
+     * DataDocumentationScan related setting.
+     */
+    dataDocumentationSpec?: pulumi.Input<inputs.dataplex.DatascanDataDocumentationSpec>;
     /**
      * DataProfileScan related setting.
      * Structure is documented below.

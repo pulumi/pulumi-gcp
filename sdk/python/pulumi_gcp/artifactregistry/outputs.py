@@ -46,6 +46,7 @@ __all__ = [
     'GetMavenArtifactsMavenArtifactResult',
     'GetNpmPackagesNpmPackageResult',
     'GetPackagesPackageResult',
+    'GetPythonPackagesPythonPackageResult',
     'GetRepositoriesRepositoryResult',
     'GetRepositoryCleanupPolicyResult',
     'GetRepositoryCleanupPolicyConditionResult',
@@ -1704,6 +1705,68 @@ class GetPackagesPackageResult(dict):
         The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetPythonPackagesPythonPackageResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 name: _builtins.str,
+                 package_name: _builtins.str,
+                 update_time: _builtins.str,
+                 version: _builtins.str):
+        """
+        :param _builtins.str create_time: The time, as a RFC 3339 string, this package was created.
+        :param _builtins.str name: The fully qualified name of the fetched package.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/pythonPackages/{{pythonPackage}}`. For example, `projects/example-project/locations/us-central1/repository/example-repo/pythonPackages/my-test-package:0.0.1`
+        :param _builtins.str package_name: Extracted short name of the package (last part of `name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
+        :param _builtins.str update_time: The time, as a RFC 3339 string, this package was updated.
+        :param _builtins.str version: Version of this package.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "package_name", package_name)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time, as a RFC 3339 string, this package was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The fully qualified name of the fetched package.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/pythonPackages/{{pythonPackage}}`. For example, `projects/example-project/locations/us-central1/repository/example-repo/pythonPackages/my-test-package:0.0.1`
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="packageName")
+    def package_name(self) -> _builtins.str:
+        """
+        Extracted short name of the package (last part of `name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
+        """
+        return pulumi.get(self, "package_name")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The time, as a RFC 3339 string, this package was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        Version of this package.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

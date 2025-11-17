@@ -57,13 +57,15 @@ export interface GetReservationResult {
     readonly deleteAtTime: string;
     readonly description: string;
     readonly enableEmergentMaintenance: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
+    readonly kind: string;
+    readonly linkedCommitments: string[];
     readonly name: string;
     readonly project?: string;
+    readonly reservationBlockCount: number;
     readonly reservationSharingPolicies: outputs.compute.GetReservationReservationSharingPolicy[];
+    readonly resourceStatuses: outputs.compute.GetReservationResourceStatus[];
+    readonly satisfiesPzs: boolean;
     readonly selfLink: string;
     readonly shareSettings: outputs.compute.GetReservationShareSetting[];
     readonly specificReservationRequired: boolean;

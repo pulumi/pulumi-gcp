@@ -332,7 +332,7 @@ export class Subnetwork extends pulumi.CustomResource {
     /**
      * The internal IPv6 address range that is assigned to this subnetwork.
      */
-    declare public /*out*/ readonly internalIpv6Prefix: pulumi.Output<string>;
+    declare public readonly internalIpv6Prefix: pulumi.Output<string>;
     /**
      * The range of internal addresses that are owned by this subnetwork.
      * Provide this property when you create the subnetwork. For example,
@@ -343,9 +343,9 @@ export class Subnetwork extends pulumi.CustomResource {
     declare public readonly ipCidrRange: pulumi.Output<string>;
     /**
      * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
-     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
-     * Use one of the following formats to specify a sub-PDP when creating an
-     * IPv6 NetLB forwarding rule using BYOIP:
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
+     * mode. Use one of the following formats to specify a sub-PDP when creating
+     * a dual stack or IPv6-only subnetwork using BYOIP:
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
      * Partial URL, as in:
@@ -532,6 +532,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["allowSubnetCidrRoutesOverlap"] = args?.allowSubnetCidrRoutesOverlap;
             resourceInputs["description"] = args?.description;
             resourceInputs["externalIpv6Prefix"] = args?.externalIpv6Prefix;
+            resourceInputs["internalIpv6Prefix"] = args?.internalIpv6Prefix;
             resourceInputs["ipCidrRange"] = args?.ipCidrRange;
             resourceInputs["ipCollection"] = args?.ipCollection;
             resourceInputs["ipv6AccessType"] = args?.ipv6AccessType;
@@ -552,7 +553,6 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["gatewayAddress"] = undefined /*out*/;
-            resourceInputs["internalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["ipv6CidrRange"] = undefined /*out*/;
             resourceInputs["ipv6GceEndpoint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -614,9 +614,9 @@ export interface SubnetworkState {
     ipCidrRange?: pulumi.Input<string>;
     /**
      * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
-     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
-     * Use one of the following formats to specify a sub-PDP when creating an
-     * IPv6 NetLB forwarding rule using BYOIP:
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
+     * mode. Use one of the following formats to specify a sub-PDP when creating
+     * a dual stack or IPv6-only subnetwork using BYOIP:
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
      * Partial URL, as in:
@@ -776,6 +776,10 @@ export interface SubnetworkArgs {
      */
     externalIpv6Prefix?: pulumi.Input<string>;
     /**
+     * The internal IPv6 address range that is assigned to this subnetwork.
+     */
+    internalIpv6Prefix?: pulumi.Input<string>;
+    /**
      * The range of internal addresses that are owned by this subnetwork.
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -785,9 +789,9 @@ export interface SubnetworkArgs {
     ipCidrRange?: pulumi.Input<string>;
     /**
      * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
-     * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
-     * Use one of the following formats to specify a sub-PDP when creating an
-     * IPv6 NetLB forwarding rule using BYOIP:
+     * in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
+     * mode. Use one of the following formats to specify a sub-PDP when creating
+     * a dual stack or IPv6-only subnetwork using BYOIP:
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
      * Partial URL, as in:

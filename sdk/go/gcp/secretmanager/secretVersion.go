@@ -334,6 +334,9 @@ type SecretVersion struct {
 	// The resource name of the SecretVersion. Format:
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs. If it is not provided,
+	// the provider project is used
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Secret Manager secret resource
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
@@ -410,6 +413,9 @@ type secretVersionState struct {
 	// The resource name of the SecretVersion. Format:
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs. If it is not provided,
+	// the provider project is used
+	Project *string `pulumi:"project"`
 	// Secret Manager secret resource
 	Secret *string `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
@@ -443,6 +449,9 @@ type SecretVersionState struct {
 	// The resource name of the SecretVersion. Format:
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs. If it is not provided,
+	// the provider project is used
+	Project pulumi.StringPtrInput
 	// Secret Manager secret resource
 	Secret pulumi.StringPtrInput
 	// The secret data. Must be no larger than 64KiB.
@@ -473,6 +482,9 @@ type secretVersionArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
 	IsSecretDataBase64 *bool `pulumi:"isSecretDataBase64"`
+	// The ID of the project in which the resource belongs. If it is not provided,
+	// the provider project is used
+	Project *string `pulumi:"project"`
 	// Secret Manager secret resource
 	Secret string `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
@@ -498,6 +510,9 @@ type SecretVersionArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
 	IsSecretDataBase64 pulumi.BoolPtrInput
+	// The ID of the project in which the resource belongs. If it is not provided,
+	// the provider project is used
+	Project pulumi.StringPtrInput
 	// Secret Manager secret resource
 	Secret pulumi.StringInput
 	// The secret data. Must be no larger than 64KiB.
@@ -631,6 +646,12 @@ func (o SecretVersionOutput) IsSecretDataBase64() pulumi.BoolPtrOutput {
 // `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 func (o SecretVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the resource belongs. If it is not provided,
+// the provider project is used
+func (o SecretVersionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretVersion) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Secret Manager secret resource

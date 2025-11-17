@@ -1986,6 +1986,12 @@ type FunctionServiceConfig struct {
 	AvailableMemory *string `pulumi:"availableMemory"`
 	// The binary authorization policy to be checked when deploying the Cloud Run service.
 	BinaryAuthorizationPolicy *string `pulumi:"binaryAuthorizationPolicy"`
+	// Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+	// Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+	DirectVpcEgress *string `pulumi:"directVpcEgress"`
+	// The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+	// Structure is documented below.
+	DirectVpcNetworkInterfaces []FunctionServiceConfigDirectVpcNetworkInterface `pulumi:"directVpcNetworkInterfaces"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// (Output)
@@ -2050,6 +2056,12 @@ type FunctionServiceConfigArgs struct {
 	AvailableMemory pulumi.StringPtrInput `pulumi:"availableMemory"`
 	// The binary authorization policy to be checked when deploying the Cloud Run service.
 	BinaryAuthorizationPolicy pulumi.StringPtrInput `pulumi:"binaryAuthorizationPolicy"`
+	// Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+	// Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+	DirectVpcEgress pulumi.StringPtrInput `pulumi:"directVpcEgress"`
+	// The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+	// Structure is documented below.
+	DirectVpcNetworkInterfaces FunctionServiceConfigDirectVpcNetworkInterfaceArrayInput `pulumi:"directVpcNetworkInterfaces"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
 	// (Output)
@@ -2189,6 +2201,20 @@ func (o FunctionServiceConfigOutput) AvailableMemory() pulumi.StringPtrOutput {
 // The binary authorization policy to be checked when deploying the Cloud Run service.
 func (o FunctionServiceConfigOutput) BinaryAuthorizationPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.BinaryAuthorizationPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+// Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+func (o FunctionServiceConfigOutput) DirectVpcEgress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.DirectVpcEgress }).(pulumi.StringPtrOutput)
+}
+
+// The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+// Structure is documented below.
+func (o FunctionServiceConfigOutput) DirectVpcNetworkInterfaces() FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v FunctionServiceConfig) []FunctionServiceConfigDirectVpcNetworkInterface {
+		return v.DirectVpcNetworkInterfaces
+	}).(FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput)
 }
 
 // Environment variables that shall be available during function execution.
@@ -2341,6 +2367,28 @@ func (o FunctionServiceConfigPtrOutput) BinaryAuthorizationPolicy() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+// Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+func (o FunctionServiceConfigPtrOutput) DirectVpcEgress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DirectVpcEgress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+// Structure is documented below.
+func (o FunctionServiceConfigPtrOutput) DirectVpcNetworkInterfaces() FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *FunctionServiceConfig) []FunctionServiceConfigDirectVpcNetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.DirectVpcNetworkInterfaces
+	}).(FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput)
+}
+
 // Environment variables that shall be available during function execution.
 func (o FunctionServiceConfigPtrOutput) EnvironmentVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FunctionServiceConfig) map[string]string {
@@ -2491,6 +2539,121 @@ func (o FunctionServiceConfigPtrOutput) VpcConnectorEgressSettings() pulumi.Stri
 		}
 		return v.VpcConnectorEgressSettings
 	}).(pulumi.StringPtrOutput)
+}
+
+type FunctionServiceConfigDirectVpcNetworkInterface struct {
+	// The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
+	Network *string `pulumi:"network"`
+	// The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+	Subnetwork *string `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Function resource.
+	Tags []string `pulumi:"tags"`
+}
+
+// FunctionServiceConfigDirectVpcNetworkInterfaceInput is an input type that accepts FunctionServiceConfigDirectVpcNetworkInterfaceArgs and FunctionServiceConfigDirectVpcNetworkInterfaceOutput values.
+// You can construct a concrete instance of `FunctionServiceConfigDirectVpcNetworkInterfaceInput` via:
+//
+//	FunctionServiceConfigDirectVpcNetworkInterfaceArgs{...}
+type FunctionServiceConfigDirectVpcNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToFunctionServiceConfigDirectVpcNetworkInterfaceOutput() FunctionServiceConfigDirectVpcNetworkInterfaceOutput
+	ToFunctionServiceConfigDirectVpcNetworkInterfaceOutputWithContext(context.Context) FunctionServiceConfigDirectVpcNetworkInterfaceOutput
+}
+
+type FunctionServiceConfigDirectVpcNetworkInterfaceArgs struct {
+	// The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Function resource.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (FunctionServiceConfigDirectVpcNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionServiceConfigDirectVpcNetworkInterface)(nil)).Elem()
+}
+
+func (i FunctionServiceConfigDirectVpcNetworkInterfaceArgs) ToFunctionServiceConfigDirectVpcNetworkInterfaceOutput() FunctionServiceConfigDirectVpcNetworkInterfaceOutput {
+	return i.ToFunctionServiceConfigDirectVpcNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i FunctionServiceConfigDirectVpcNetworkInterfaceArgs) ToFunctionServiceConfigDirectVpcNetworkInterfaceOutputWithContext(ctx context.Context) FunctionServiceConfigDirectVpcNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionServiceConfigDirectVpcNetworkInterfaceOutput)
+}
+
+// FunctionServiceConfigDirectVpcNetworkInterfaceArrayInput is an input type that accepts FunctionServiceConfigDirectVpcNetworkInterfaceArray and FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `FunctionServiceConfigDirectVpcNetworkInterfaceArrayInput` via:
+//
+//	FunctionServiceConfigDirectVpcNetworkInterfaceArray{ FunctionServiceConfigDirectVpcNetworkInterfaceArgs{...} }
+type FunctionServiceConfigDirectVpcNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput() FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput
+	ToFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutputWithContext(context.Context) FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput
+}
+
+type FunctionServiceConfigDirectVpcNetworkInterfaceArray []FunctionServiceConfigDirectVpcNetworkInterfaceInput
+
+func (FunctionServiceConfigDirectVpcNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionServiceConfigDirectVpcNetworkInterface)(nil)).Elem()
+}
+
+func (i FunctionServiceConfigDirectVpcNetworkInterfaceArray) ToFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput() FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {
+	return i.ToFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i FunctionServiceConfigDirectVpcNetworkInterfaceArray) ToFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutputWithContext(ctx context.Context) FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput)
+}
+
+type FunctionServiceConfigDirectVpcNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (FunctionServiceConfigDirectVpcNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionServiceConfigDirectVpcNetworkInterface)(nil)).Elem()
+}
+
+func (o FunctionServiceConfigDirectVpcNetworkInterfaceOutput) ToFunctionServiceConfigDirectVpcNetworkInterfaceOutput() FunctionServiceConfigDirectVpcNetworkInterfaceOutput {
+	return o
+}
+
+func (o FunctionServiceConfigDirectVpcNetworkInterfaceOutput) ToFunctionServiceConfigDirectVpcNetworkInterfaceOutputWithContext(ctx context.Context) FunctionServiceConfigDirectVpcNetworkInterfaceOutput {
+	return o
+}
+
+// The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
+func (o FunctionServiceConfigDirectVpcNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionServiceConfigDirectVpcNetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+func (o FunctionServiceConfigDirectVpcNetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionServiceConfigDirectVpcNetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+// Network tags applied to this Cloud Function resource.
+func (o FunctionServiceConfigDirectVpcNetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FunctionServiceConfigDirectVpcNetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionServiceConfigDirectVpcNetworkInterface)(nil)).Elem()
+}
+
+func (o FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput) ToFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput() FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput) ToFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutputWithContext(ctx context.Context) FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) FunctionServiceConfigDirectVpcNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionServiceConfigDirectVpcNetworkInterface {
+		return vs[0].([]FunctionServiceConfigDirectVpcNetworkInterface)[vs[1].(int)]
+	}).(FunctionServiceConfigDirectVpcNetworkInterfaceOutput)
 }
 
 type FunctionServiceConfigSecretEnvironmentVariable struct {
@@ -3942,6 +4105,10 @@ type GetFunctionServiceConfig struct {
 	AvailableMemory string `pulumi:"availableMemory"`
 	// The binary authorization policy to be checked when deploying the Cloud Run service.
 	BinaryAuthorizationPolicy string `pulumi:"binaryAuthorizationPolicy"`
+	// Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY. Possible values: ["VPC_EGRESS_ALL_TRAFFIC", "VPC_EGRESS_PRIVATE_RANGES_ONLY"]
+	DirectVpcEgress string `pulumi:"directVpcEgress"`
+	// The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+	DirectVpcNetworkInterfaces []GetFunctionServiceConfigDirectVpcNetworkInterface `pulumi:"directVpcNetworkInterfaces"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// URIs of the Service deployed
@@ -3998,6 +4165,10 @@ type GetFunctionServiceConfigArgs struct {
 	AvailableMemory pulumi.StringInput `pulumi:"availableMemory"`
 	// The binary authorization policy to be checked when deploying the Cloud Run service.
 	BinaryAuthorizationPolicy pulumi.StringInput `pulumi:"binaryAuthorizationPolicy"`
+	// Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY. Possible values: ["VPC_EGRESS_ALL_TRAFFIC", "VPC_EGRESS_PRIVATE_RANGES_ONLY"]
+	DirectVpcEgress pulumi.StringInput `pulumi:"directVpcEgress"`
+	// The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+	DirectVpcNetworkInterfaces GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayInput `pulumi:"directVpcNetworkInterfaces"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
 	// URIs of the Service deployed
@@ -4105,6 +4276,18 @@ func (o GetFunctionServiceConfigOutput) BinaryAuthorizationPolicy() pulumi.Strin
 	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.BinaryAuthorizationPolicy }).(pulumi.StringOutput)
 }
 
+// Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY. Possible values: ["VPC_EGRESS_ALL_TRAFFIC", "VPC_EGRESS_PRIVATE_RANGES_ONLY"]
+func (o GetFunctionServiceConfigOutput) DirectVpcEgress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.DirectVpcEgress }).(pulumi.StringOutput)
+}
+
+// The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+func (o GetFunctionServiceConfigOutput) DirectVpcNetworkInterfaces() GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) []GetFunctionServiceConfigDirectVpcNetworkInterface {
+		return v.DirectVpcNetworkInterfaces
+	}).(GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput)
+}
+
 // Environment variables that shall be available during function execution.
 func (o GetFunctionServiceConfigOutput) EnvironmentVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetFunctionServiceConfig) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
@@ -4199,6 +4382,121 @@ func (o GetFunctionServiceConfigArrayOutput) Index(i pulumi.IntInput) GetFunctio
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionServiceConfig {
 		return vs[0].([]GetFunctionServiceConfig)[vs[1].(int)]
 	}).(GetFunctionServiceConfigOutput)
+}
+
+type GetFunctionServiceConfigDirectVpcNetworkInterface struct {
+	// The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
+	Network string `pulumi:"network"`
+	// The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+	Subnetwork string `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Function resource.
+	Tags []string `pulumi:"tags"`
+}
+
+// GetFunctionServiceConfigDirectVpcNetworkInterfaceInput is an input type that accepts GetFunctionServiceConfigDirectVpcNetworkInterfaceArgs and GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput values.
+// You can construct a concrete instance of `GetFunctionServiceConfigDirectVpcNetworkInterfaceInput` via:
+//
+//	GetFunctionServiceConfigDirectVpcNetworkInterfaceArgs{...}
+type GetFunctionServiceConfigDirectVpcNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToGetFunctionServiceConfigDirectVpcNetworkInterfaceOutput() GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput
+	ToGetFunctionServiceConfigDirectVpcNetworkInterfaceOutputWithContext(context.Context) GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput
+}
+
+type GetFunctionServiceConfigDirectVpcNetworkInterfaceArgs struct {
+	// The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Function resource.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (GetFunctionServiceConfigDirectVpcNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionServiceConfigDirectVpcNetworkInterface)(nil)).Elem()
+}
+
+func (i GetFunctionServiceConfigDirectVpcNetworkInterfaceArgs) ToGetFunctionServiceConfigDirectVpcNetworkInterfaceOutput() GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput {
+	return i.ToGetFunctionServiceConfigDirectVpcNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetFunctionServiceConfigDirectVpcNetworkInterfaceArgs) ToGetFunctionServiceConfigDirectVpcNetworkInterfaceOutputWithContext(ctx context.Context) GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput)
+}
+
+// GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayInput is an input type that accepts GetFunctionServiceConfigDirectVpcNetworkInterfaceArray and GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayInput` via:
+//
+//	GetFunctionServiceConfigDirectVpcNetworkInterfaceArray{ GetFunctionServiceConfigDirectVpcNetworkInterfaceArgs{...} }
+type GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput() GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput
+	ToGetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutputWithContext(context.Context) GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput
+}
+
+type GetFunctionServiceConfigDirectVpcNetworkInterfaceArray []GetFunctionServiceConfigDirectVpcNetworkInterfaceInput
+
+func (GetFunctionServiceConfigDirectVpcNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionServiceConfigDirectVpcNetworkInterface)(nil)).Elem()
+}
+
+func (i GetFunctionServiceConfigDirectVpcNetworkInterfaceArray) ToGetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput() GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {
+	return i.ToGetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionServiceConfigDirectVpcNetworkInterfaceArray) ToGetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput)
+}
+
+type GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionServiceConfigDirectVpcNetworkInterface)(nil)).Elem()
+}
+
+func (o GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput) ToGetFunctionServiceConfigDirectVpcNetworkInterfaceOutput() GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput) ToGetFunctionServiceConfigDirectVpcNetworkInterfaceOutputWithContext(ctx context.Context) GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput {
+	return o
+}
+
+// The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
+func (o GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigDirectVpcNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+func (o GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigDirectVpcNetworkInterface) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// Network tags applied to this Cloud Function resource.
+func (o GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigDirectVpcNetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionServiceConfigDirectVpcNetworkInterface)(nil)).Elem()
+}
+
+func (o GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput) ToGetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput() GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput) ToGetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionServiceConfigDirectVpcNetworkInterface {
+		return vs[0].([]GetFunctionServiceConfigDirectVpcNetworkInterface)[vs[1].(int)]
+	}).(GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput)
 }
 
 type GetFunctionServiceConfigSecretEnvironmentVariable struct {
@@ -4580,6 +4878,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIamMemberConditionPtrInput)(nil)).Elem(), FunctionIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigInput)(nil)).Elem(), FunctionServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigPtrInput)(nil)).Elem(), FunctionServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigDirectVpcNetworkInterfaceInput)(nil)).Elem(), FunctionServiceConfigDirectVpcNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigDirectVpcNetworkInterfaceArrayInput)(nil)).Elem(), FunctionServiceConfigDirectVpcNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretEnvironmentVariableInput)(nil)).Elem(), FunctionServiceConfigSecretEnvironmentVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretEnvironmentVariableArrayInput)(nil)).Elem(), FunctionServiceConfigSecretEnvironmentVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretVolumeInput)(nil)).Elem(), FunctionServiceConfigSecretVolumeArgs{})
@@ -4604,6 +4904,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerEventFilterArrayInput)(nil)).Elem(), GetFunctionEventTriggerEventFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigInput)(nil)).Elem(), GetFunctionServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigArrayInput)(nil)).Elem(), GetFunctionServiceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigDirectVpcNetworkInterfaceInput)(nil)).Elem(), GetFunctionServiceConfigDirectVpcNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayInput)(nil)).Elem(), GetFunctionServiceConfigDirectVpcNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigSecretEnvironmentVariableInput)(nil)).Elem(), GetFunctionServiceConfigSecretEnvironmentVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigSecretEnvironmentVariableArrayInput)(nil)).Elem(), GetFunctionServiceConfigSecretEnvironmentVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigSecretVolumeInput)(nil)).Elem(), GetFunctionServiceConfigSecretVolumeArgs{})
@@ -4632,6 +4934,8 @@ func init() {
 	pulumi.RegisterOutputType(FunctionIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(FunctionServiceConfigOutput{})
 	pulumi.RegisterOutputType(FunctionServiceConfigPtrOutput{})
+	pulumi.RegisterOutputType(FunctionServiceConfigDirectVpcNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(FunctionServiceConfigSecretEnvironmentVariableOutput{})
 	pulumi.RegisterOutputType(FunctionServiceConfigSecretEnvironmentVariableArrayOutput{})
 	pulumi.RegisterOutputType(FunctionServiceConfigSecretVolumeOutput{})
@@ -4656,6 +4960,8 @@ func init() {
 	pulumi.RegisterOutputType(GetFunctionEventTriggerEventFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetFunctionServiceConfigOutput{})
 	pulumi.RegisterOutputType(GetFunctionServiceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionServiceConfigDirectVpcNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(GetFunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetFunctionServiceConfigSecretEnvironmentVariableOutput{})
 	pulumi.RegisterOutputType(GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetFunctionServiceConfigSecretVolumeOutput{})

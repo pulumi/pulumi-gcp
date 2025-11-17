@@ -253,6 +253,8 @@ __all__ = [
     'ClusterIpAllocationPolicyAdditionalPodRangesConfigArgsDict',
     'ClusterIpAllocationPolicyAutoIpamConfigArgs',
     'ClusterIpAllocationPolicyAutoIpamConfigArgsDict',
+    'ClusterIpAllocationPolicyNetworkTierConfigArgs',
+    'ClusterIpAllocationPolicyNetworkTierConfigArgsDict',
     'ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs',
     'ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgsDict',
     'ClusterLoggingConfigArgs',
@@ -7079,7 +7081,7 @@ if not MYPY:
         """
         cluster_dns: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+        Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
         """
         cluster_dns_domain: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -7101,7 +7103,7 @@ class ClusterDnsConfigArgs:
                  cluster_dns_scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] additive_vpc_scope_dns_domain: This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = "CLOUD_DNS"` and `cluster_dns_scope = "CLUSTER_SCOPE"` must both be set as well.
-        :param pulumi.Input[_builtins.str] cluster_dns: Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+        :param pulumi.Input[_builtins.str] cluster_dns: Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
         :param pulumi.Input[_builtins.str] cluster_dns_domain: The suffix used for all cluster service records.
         :param pulumi.Input[_builtins.str] cluster_dns_scope: The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
         """
@@ -7130,7 +7132,7 @@ class ClusterDnsConfigArgs:
     @pulumi.getter(name="clusterDns")
     def cluster_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
+        Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
         """
         return pulumi.get(self, "cluster_dns")
 
@@ -7502,8 +7504,6 @@ if not MYPY:
         auto_ipam_config: NotRequired[pulumi.Input['ClusterIpAllocationPolicyAutoIpamConfigArgsDict']]
         """
         All the information related to Auto IPAM. Structure is documented below
-
-        <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
         """
         cluster_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -7518,6 +7518,12 @@ if not MYPY:
         The name of the existing secondary
         range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
         `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
+        """
+        network_tier_config: NotRequired[pulumi.Input['ClusterIpAllocationPolicyNetworkTierConfigArgsDict']]
+        """
+        Contains network tier information. Structure is documented below
+
+        <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
         """
         pod_cidr_overprovision_config: NotRequired[pulumi.Input['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgsDict']]
         """
@@ -7555,6 +7561,7 @@ class ClusterIpAllocationPolicyArgs:
                  auto_ipam_config: Optional[pulumi.Input['ClusterIpAllocationPolicyAutoIpamConfigArgs']] = None,
                  cluster_ipv4_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
                  cluster_secondary_range_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_tier_config: Optional[pulumi.Input['ClusterIpAllocationPolicyNetworkTierConfigArgs']] = None,
                  pod_cidr_overprovision_config: Optional[pulumi.Input['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs']] = None,
                  services_ipv4_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
                  services_secondary_range_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -7566,8 +7573,6 @@ class ClusterIpAllocationPolicyArgs:
                the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
                secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
         :param pulumi.Input['ClusterIpAllocationPolicyAutoIpamConfigArgs'] auto_ipam_config: All the information related to Auto IPAM. Structure is documented below
-               
-               <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
         :param pulumi.Input[_builtins.str] cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs.
                Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
                to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -7576,6 +7581,9 @@ class ClusterIpAllocationPolicyArgs:
         :param pulumi.Input[_builtins.str] cluster_secondary_range_name: The name of the existing secondary
                range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
                `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
+        :param pulumi.Input['ClusterIpAllocationPolicyNetworkTierConfigArgs'] network_tier_config: Contains network tier information. Structure is documented below
+               
+               <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
         :param pulumi.Input['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs'] pod_cidr_overprovision_config: Configuration for cluster level pod cidr overprovision. Default is disabled=false.
         :param pulumi.Input[_builtins.str] services_ipv4_cidr_block: The IP address range of the services IPs in this cluster.
                Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -7600,6 +7608,8 @@ class ClusterIpAllocationPolicyArgs:
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
             pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
+        if network_tier_config is not None:
+            pulumi.set(__self__, "network_tier_config", network_tier_config)
         if pod_cidr_overprovision_config is not None:
             pulumi.set(__self__, "pod_cidr_overprovision_config", pod_cidr_overprovision_config)
         if services_ipv4_cidr_block is not None:
@@ -7641,8 +7651,6 @@ class ClusterIpAllocationPolicyArgs:
     def auto_ipam_config(self) -> Optional[pulumi.Input['ClusterIpAllocationPolicyAutoIpamConfigArgs']]:
         """
         All the information related to Auto IPAM. Structure is documented below
-
-        <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
         """
         return pulumi.get(self, "auto_ipam_config")
 
@@ -7679,6 +7687,20 @@ class ClusterIpAllocationPolicyArgs:
     @cluster_secondary_range_name.setter
     def cluster_secondary_range_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cluster_secondary_range_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkTierConfig")
+    def network_tier_config(self) -> Optional[pulumi.Input['ClusterIpAllocationPolicyNetworkTierConfigArgs']]:
+        """
+        Contains network tier information. Structure is documented below
+
+        <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
+        """
+        return pulumi.get(self, "network_tier_config")
+
+    @network_tier_config.setter
+    def network_tier_config(self, value: Optional[pulumi.Input['ClusterIpAllocationPolicyNetworkTierConfigArgs']]):
+        pulumi.set(self, "network_tier_config", value)
 
     @_builtins.property
     @pulumi.getter(name="podCidrOverprovisionConfig")
@@ -7849,6 +7871,49 @@ class ClusterIpAllocationPolicyAutoIpamConfigArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[_builtins.bool]):
         pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class ClusterIpAllocationPolicyNetworkTierConfigArgsDict(TypedDict):
+        network_tier: pulumi.Input[_builtins.str]
+        """
+        Network tier configuration.
+        Accepted values are:
+        * `NETWORK_TIER_DEFAULT`: (Default) Use project-level configuration.
+        * `NETWORK_TIER_PREMIUM`: Premium network tier.
+        * `NETWORK_TIER_STANDARD`: Standard network tier.
+        """
+elif False:
+    ClusterIpAllocationPolicyNetworkTierConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterIpAllocationPolicyNetworkTierConfigArgs:
+    def __init__(__self__, *,
+                 network_tier: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] network_tier: Network tier configuration.
+               Accepted values are:
+               * `NETWORK_TIER_DEFAULT`: (Default) Use project-level configuration.
+               * `NETWORK_TIER_PREMIUM`: Premium network tier.
+               * `NETWORK_TIER_STANDARD`: Standard network tier.
+        """
+        pulumi.set(__self__, "network_tier", network_tier)
+
+    @_builtins.property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> pulumi.Input[_builtins.str]:
+        """
+        Network tier configuration.
+        Accepted values are:
+        * `NETWORK_TIER_DEFAULT`: (Default) Use project-level configuration.
+        * `NETWORK_TIER_PREMIUM`: Premium network tier.
+        * `NETWORK_TIER_STANDARD`: Standard network tier.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @network_tier.setter
+    def network_tier(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "network_tier", value)
 
 
 if not MYPY:

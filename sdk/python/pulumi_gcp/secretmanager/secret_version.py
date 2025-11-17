@@ -23,6 +23,7 @@ class SecretVersionArgs:
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  is_secret_data_base64: Optional[pulumi.Input[_builtins.bool]] = None,
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_data: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_data_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_data_wo_version: Optional[pulumi.Input[_builtins.int]] = None):
@@ -37,6 +38,8 @@ class SecretVersionArgs:
                * ABANDON
         :param pulumi.Input[_builtins.bool] enabled: The current state of the SecretVersion.
         :param pulumi.Input[_builtins.bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+        :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided,
+               the provider project is used
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] secret_data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -50,6 +53,8 @@ class SecretVersionArgs:
             pulumi.set(__self__, "enabled", enabled)
         if is_secret_data_base64 is not None:
             pulumi.set(__self__, "is_secret_data_base64", is_secret_data_base64)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if secret_data is not None:
             pulumi.set(__self__, "secret_data", secret_data)
         if secret_data_wo is not None:
@@ -111,6 +116,19 @@ class SecretVersionArgs:
         pulumi.set(self, "is_secret_data_base64", value)
 
     @_builtins.property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the project in which the resource belongs. If it is not provided,
+        the provider project is used
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "project", value)
+
+    @_builtins.property
     @pulumi.getter(name="secretData")
     def secret_data(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -158,6 +176,7 @@ class _SecretVersionState:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  is_secret_data_base64: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
                  secret: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_data: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_data_wo: Optional[pulumi.Input[_builtins.str]] = None,
@@ -177,6 +196,8 @@ class _SecretVersionState:
         :param pulumi.Input[_builtins.bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         :param pulumi.Input[_builtins.str] name: The resource name of the SecretVersion. Format:
                `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
+        :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided,
+               the provider project is used
         :param pulumi.Input[_builtins.str] secret: Secret Manager secret resource
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -197,6 +218,8 @@ class _SecretVersionState:
             pulumi.set(__self__, "is_secret_data_base64", is_secret_data_base64)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
         if secret_data is not None:
@@ -288,6 +311,19 @@ class _SecretVersionState:
 
     @_builtins.property
     @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the project in which the resource belongs. If it is not provided,
+        the provider project is used
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Secret Manager secret resource
@@ -358,6 +394,7 @@ class SecretVersion(pulumi.CustomResource):
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  is_secret_data_base64: Optional[pulumi.Input[_builtins.bool]] = None,
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
                  secret: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_data: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_data_wo: Optional[pulumi.Input[_builtins.str]] = None,
@@ -536,6 +573,8 @@ class SecretVersion(pulumi.CustomResource):
                * ABANDON
         :param pulumi.Input[_builtins.bool] enabled: The current state of the SecretVersion.
         :param pulumi.Input[_builtins.bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+        :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided,
+               the provider project is used
         :param pulumi.Input[_builtins.str] secret: Secret Manager secret resource
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -730,6 +769,7 @@ class SecretVersion(pulumi.CustomResource):
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  is_secret_data_base64: Optional[pulumi.Input[_builtins.bool]] = None,
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
                  secret: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_data: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_data_wo: Optional[pulumi.Input[_builtins.str]] = None,
@@ -746,6 +786,7 @@ class SecretVersion(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["is_secret_data_base64"] = is_secret_data_base64
+            __props__.__dict__["project"] = project
             if secret is None and not opts.urn:
                 raise TypeError("Missing required property 'secret'")
             __props__.__dict__["secret"] = secret
@@ -774,6 +815,7 @@ class SecretVersion(pulumi.CustomResource):
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             is_secret_data_base64: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            project: Optional[pulumi.Input[_builtins.str]] = None,
             secret: Optional[pulumi.Input[_builtins.str]] = None,
             secret_data: Optional[pulumi.Input[_builtins.str]] = None,
             secret_data_wo: Optional[pulumi.Input[_builtins.str]] = None,
@@ -798,6 +840,8 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         :param pulumi.Input[_builtins.str] name: The resource name of the SecretVersion. Format:
                `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
+        :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided,
+               the provider project is used
         :param pulumi.Input[_builtins.str] secret: Secret Manager secret resource
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -816,6 +860,7 @@ class SecretVersion(pulumi.CustomResource):
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["is_secret_data_base64"] = is_secret_data_base64
         __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
         __props__.__dict__["secret"] = secret
         __props__.__dict__["secret_data"] = secret_data
         __props__.__dict__["secret_data_wo"] = secret_data_wo
@@ -876,6 +921,15 @@ class SecretVersion(pulumi.CustomResource):
         `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the project in which the resource belongs. If it is not provided,
+        the provider project is used
+        """
+        return pulumi.get(self, "project")
 
     @_builtins.property
     @pulumi.getter

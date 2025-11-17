@@ -111,6 +111,17 @@ export class Volume extends pulumi.CustomResource {
      */
     declare public readonly backupConfig: pulumi.Output<outputs.netapp.VolumeBackupConfig | undefined>;
     /**
+     * Block device represents the device(s) which are stored in the block volume.
+     * Currently, only one block device is permitted per Volume.
+     * Structure is documented below.
+     */
+    declare public readonly blockDevices: pulumi.Output<outputs.netapp.VolumeBlockDevice[] | undefined>;
+    /**
+     * Cache parameters for the volume.
+     * Structure is documented below.
+     */
+    declare public readonly cacheParameters: pulumi.Output<outputs.netapp.VolumeCacheParameters | undefined>;
+    /**
      * Capacity of the volume (in GiB).
      */
     declare public readonly capacityGib: pulumi.Output<string>;
@@ -211,7 +222,7 @@ export class Volume extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
-     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
      */
     declare public readonly protocols: pulumi.Output<string[]>;
     /**
@@ -250,7 +261,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
      */
-    declare public readonly shareName: pulumi.Output<string>;
+    declare public readonly shareName: pulumi.Output<string | undefined>;
     /**
      * Settings for volumes with SMB access.
      * Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
@@ -315,6 +326,8 @@ export class Volume extends pulumi.CustomResource {
             const state = argsOrState as VolumeState | undefined;
             resourceInputs["activeDirectory"] = state?.activeDirectory;
             resourceInputs["backupConfig"] = state?.backupConfig;
+            resourceInputs["blockDevices"] = state?.blockDevices;
+            resourceInputs["cacheParameters"] = state?.cacheParameters;
             resourceInputs["capacityGib"] = state?.capacityGib;
             resourceInputs["coldTierSizeGib"] = state?.coldTierSizeGib;
             resourceInputs["createTime"] = state?.createTime;
@@ -368,13 +381,12 @@ export class Volume extends pulumi.CustomResource {
             if (args?.protocols === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocols'");
             }
-            if (args?.shareName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'shareName'");
-            }
             if (args?.storagePool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storagePool'");
             }
             resourceInputs["backupConfig"] = args?.backupConfig;
+            resourceInputs["blockDevices"] = args?.blockDevices;
+            resourceInputs["cacheParameters"] = args?.cacheParameters;
             resourceInputs["capacityGib"] = args?.capacityGib;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
@@ -439,6 +451,17 @@ export interface VolumeState {
      * Structure is documented below.
      */
     backupConfig?: pulumi.Input<inputs.netapp.VolumeBackupConfig>;
+    /**
+     * Block device represents the device(s) which are stored in the block volume.
+     * Currently, only one block device is permitted per Volume.
+     * Structure is documented below.
+     */
+    blockDevices?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeBlockDevice>[]>;
+    /**
+     * Cache parameters for the volume.
+     * Structure is documented below.
+     */
+    cacheParameters?: pulumi.Input<inputs.netapp.VolumeCacheParameters>;
     /**
      * Capacity of the volume (in GiB).
      */
@@ -540,7 +563,7 @@ export interface VolumeState {
     project?: pulumi.Input<string>;
     /**
      * The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
-     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
      */
     protocols?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -640,6 +663,17 @@ export interface VolumeArgs {
      */
     backupConfig?: pulumi.Input<inputs.netapp.VolumeBackupConfig>;
     /**
+     * Block device represents the device(s) which are stored in the block volume.
+     * Currently, only one block device is permitted per Volume.
+     * Structure is documented below.
+     */
+    blockDevices?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeBlockDevice>[]>;
+    /**
+     * Cache parameters for the volume.
+     * Structure is documented below.
+     */
+    cacheParameters?: pulumi.Input<inputs.netapp.VolumeCacheParameters>;
+    /**
      * Capacity of the volume (in GiB).
      */
     capacityGib: pulumi.Input<string>;
@@ -699,7 +733,7 @@ export interface VolumeArgs {
     project?: pulumi.Input<string>;
     /**
      * The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
-     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
+     * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
      */
     protocols: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -721,7 +755,7 @@ export interface VolumeArgs {
     /**
      * Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
      */
-    shareName: pulumi.Input<string>;
+    shareName?: pulumi.Input<string>;
     /**
      * Settings for volumes with SMB access.
      * Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.

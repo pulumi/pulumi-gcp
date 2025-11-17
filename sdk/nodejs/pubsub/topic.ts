@@ -268,6 +268,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
+ * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     project: project.then(project => project.projectId),
+ * });
  * const tagKey = new gcp.tags.TagKey("tag_key", {
  *     parent: project.then(project => project.id),
  *     shortName: "tag_key",
@@ -276,11 +280,9 @@ import * as utilities from "../utilities";
  *     parent: tagKey.id,
  *     shortName: "tag_value",
  * });
- * const example = new gcp.pubsub.Topic("example", {
- *     name: "example-topic",
- *     tags: pulumi.all([tagKey.namespacedName, tagValue.shortName]).apply(([namespacedName, shortName]) => {
- *         [namespacedName]: shortName,
- *     }),
+ * const binding = new gcp.tags.TagBinding("binding", {
+ *     parent: pulumi.all([project, example.name]).apply(([project, name]) => `//pubsub.googleapis.com/projects/${project.number}/topics/${name}`),
+ *     tagValue: tagValue.id,
  * });
  * ```
  *

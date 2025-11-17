@@ -86,6 +86,7 @@ __all__ = [
     'LbTrafficExtensionExtensionChain',
     'LbTrafficExtensionExtensionChainExtension',
     'LbTrafficExtensionExtensionChainMatchCondition',
+    'MulticastDomainConnectionConfig',
     'ServiceLbPoliciesAutoCapacityDrain',
     'ServiceLbPoliciesFailoverConfig',
     'ServiceLbPoliciesIsolationConfig',
@@ -5104,6 +5105,67 @@ class LbTrafficExtensionExtensionChainMatchCondition(dict):
         A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
         """
         return pulumi.get(self, "cel_expression")
+
+
+@pulumi.output_type
+class MulticastDomainConnectionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionType":
+            suggest = "connection_type"
+        elif key == "nccHub":
+            suggest = "ncc_hub"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MulticastDomainConnectionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MulticastDomainConnectionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MulticastDomainConnectionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_type: _builtins.str,
+                 ncc_hub: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str connection_type: The VPC connection type.
+               Possible values:
+               NCC
+               SAME_VPC
+        :param _builtins.str ncc_hub: The resource name of the
+               [NCC](https://cloud.google.com/network-connectivity-center) hub.
+               Use the following format:
+               `projects/{project}/locations/global/hubs/{hub}`.
+        """
+        pulumi.set(__self__, "connection_type", connection_type)
+        if ncc_hub is not None:
+            pulumi.set(__self__, "ncc_hub", ncc_hub)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> _builtins.str:
+        """
+        The VPC connection type.
+        Possible values:
+        NCC
+        SAME_VPC
+        """
+        return pulumi.get(self, "connection_type")
+
+    @_builtins.property
+    @pulumi.getter(name="nccHub")
+    def ncc_hub(self) -> Optional[_builtins.str]:
+        """
+        The resource name of the
+        [NCC](https://cloud.google.com/network-connectivity-center) hub.
+        Use the following format:
+        `projects/{project}/locations/global/hubs/{hub}`.
+        """
+        return pulumi.get(self, "ncc_hub")
 
 
 @pulumi.output_type

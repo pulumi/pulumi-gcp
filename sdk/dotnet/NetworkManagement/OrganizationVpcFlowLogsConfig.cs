@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.NetworkManagement
         /// Optional. The value of the field must be in (0, 1]. The sampling rate
         /// of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
         /// sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-        /// the state field instead. Default value is 1.0.
+        /// the state field instead. Default value is 1.0
         /// </summary>
         [Output("flowSampling")]
         public Output<double> FlowSampling { get; private set; } = null!;
@@ -266,7 +266,7 @@ namespace Pulumi.Gcp.NetworkManagement
         /// Optional. The value of the field must be in (0, 1]. The sampling rate
         /// of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
         /// sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-        /// the state field instead. Default value is 1.0.
+        /// the state field instead. Default value is 1.0
         /// </summary>
         [Input("flowSampling")]
         public Input<double>? FlowSampling { get; set; }
@@ -401,7 +401,7 @@ namespace Pulumi.Gcp.NetworkManagement
         /// Optional. The value of the field must be in (0, 1]. The sampling rate
         /// of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
         /// sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
-        /// the state field instead. Default value is 1.0.
+        /// the state field instead. Default value is 1.0
         /// </summary>
         [Input("flowSampling")]
         public Input<double>? FlowSampling { get; set; }

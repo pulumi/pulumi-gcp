@@ -61,6 +61,27 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Public Advertised Prefixes Ipv6 Access Type
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var prefixes = new Gcp.Compute.PublicAdvertisedPrefix("prefixes", new()
+    ///     {
+    ///         Name = "my-pap",
+    ///         Description = "description",
+    ///         IpCidrRange = "2001:db8::/32",
+    ///         PdpScope = "REGIONAL",
+    ///         Ipv6AccessType = "INTERNAL",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -99,13 +120,26 @@ namespace Pulumi.Gcp.Compute
         /// The IPv4 address to be used for reverse DNS verification.
         /// </summary>
         [Output("dnsVerificationIp")]
-        public Output<string> DnsVerificationIp { get; private set; } = null!;
+        public Output<string?> DnsVerificationIp { get; private set; } = null!;
 
         /// <summary>
         /// The address range, in CIDR format, represented by this public advertised prefix.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
+
+        /// <summary>
+        /// The internet access type for IPv6 Public Advertised Prefixes. It can be
+        /// set to one of following:
+        /// * EXTERNAL: Default access type. The prefix will be announced to the
+        /// internet. All children PDPs will have access type as EXTERNAL.
+        /// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+        /// be used privately within Google Cloud. All children PDPs will have
+        /// access type as INTERNAL.
+        /// Possible values are: `EXTERNAL`, `INTERNAL`.
+        /// </summary>
+        [Output("ipv6AccessType")]
+        public Output<string> Ipv6AccessType { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and
@@ -204,14 +238,27 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The IPv4 address to be used for reverse DNS verification.
         /// </summary>
-        [Input("dnsVerificationIp", required: true)]
-        public Input<string> DnsVerificationIp { get; set; } = null!;
+        [Input("dnsVerificationIp")]
+        public Input<string>? DnsVerificationIp { get; set; }
 
         /// <summary>
         /// The address range, in CIDR format, represented by this public advertised prefix.
         /// </summary>
         [Input("ipCidrRange", required: true)]
         public Input<string> IpCidrRange { get; set; } = null!;
+
+        /// <summary>
+        /// The internet access type for IPv6 Public Advertised Prefixes. It can be
+        /// set to one of following:
+        /// * EXTERNAL: Default access type. The prefix will be announced to the
+        /// internet. All children PDPs will have access type as EXTERNAL.
+        /// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+        /// be used privately within Google Cloud. All children PDPs will have
+        /// access type as INTERNAL.
+        /// Possible values are: `EXTERNAL`, `INTERNAL`.
+        /// </summary>
+        [Input("ipv6AccessType")]
+        public Input<string>? Ipv6AccessType { get; set; }
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and
@@ -268,6 +315,19 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
+
+        /// <summary>
+        /// The internet access type for IPv6 Public Advertised Prefixes. It can be
+        /// set to one of following:
+        /// * EXTERNAL: Default access type. The prefix will be announced to the
+        /// internet. All children PDPs will have access type as EXTERNAL.
+        /// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+        /// be used privately within Google Cloud. All children PDPs will have
+        /// access type as INTERNAL.
+        /// Possible values are: `EXTERNAL`, `INTERNAL`.
+        /// </summary>
+        [Input("ipv6AccessType")]
+        public Input<string>? Ipv6AccessType { get; set; }
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and

@@ -104,6 +104,9 @@ func GetBlockchainNodeEngineCustomEndpoint(ctx *pulumi.Context) string {
 func GetCertificateManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:certificateManagerCustomEndpoint")
 }
+func GetCesCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:cesCustomEndpoint")
+}
 func GetChronicleCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:chronicleCustomEndpoint")
 }

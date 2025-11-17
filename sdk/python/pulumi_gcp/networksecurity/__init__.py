@@ -26,6 +26,7 @@ from .intercept_endpoint_group import *
 from .intercept_endpoint_group_association import *
 from .mirroring_deployment import *
 from .mirroring_deployment_group import *
+from .mirroring_endpoint import *
 from .mirroring_endpoint_group import *
 from .mirroring_endpoint_group_association import *
 from .security_profile import *

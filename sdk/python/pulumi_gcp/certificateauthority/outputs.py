@@ -1778,7 +1778,7 @@ class CaPoolIssuancePolicy(dict):
         :param 'CaPoolIssuancePolicyAllowedIssuanceModesArgs' allowed_issuance_modes: IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
                Structure is documented below.
         :param Sequence['CaPoolIssuancePolicyAllowedKeyTypeArgs'] allowed_key_types: If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
-               Otherwise, any key may be used.
+               Otherwise, any key may be used. You can specify only one key type of those listed here.
                Structure is documented below.
         :param _builtins.str backdate_duration: The duration to backdate all certificates issued from this CaPool. If not set, the
                certificates will be issued with a not_before_time of the issuance time (i.e. the current
@@ -1823,7 +1823,7 @@ class CaPoolIssuancePolicy(dict):
     def allowed_key_types(self) -> Optional[Sequence['outputs.CaPoolIssuancePolicyAllowedKeyType']]:
         """
         If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
-        Otherwise, any key may be used.
+        Otherwise, any key may be used. You can specify only one key type of those listed here.
         Structure is documented below.
         """
         return pulumi.get(self, "allowed_key_types")

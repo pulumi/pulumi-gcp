@@ -39,6 +39,28 @@ __all__ = [
     'ChatEngineCommonConfigArgsDict',
     'CmekConfigSingleRegionKeyArgs',
     'CmekConfigSingleRegionKeyArgsDict',
+    'ControlBoostActionArgs',
+    'ControlBoostActionArgsDict',
+    'ControlBoostActionInterpolationBoostSpecArgs',
+    'ControlBoostActionInterpolationBoostSpecArgsDict',
+    'ControlBoostActionInterpolationBoostSpecControlPointArgs',
+    'ControlBoostActionInterpolationBoostSpecControlPointArgsDict',
+    'ControlConditionArgs',
+    'ControlConditionArgsDict',
+    'ControlConditionActiveTimeRangeArgs',
+    'ControlConditionActiveTimeRangeArgsDict',
+    'ControlConditionQueryTermArgs',
+    'ControlConditionQueryTermArgsDict',
+    'ControlFilterActionArgs',
+    'ControlFilterActionArgsDict',
+    'ControlPromoteActionArgs',
+    'ControlPromoteActionArgsDict',
+    'ControlPromoteActionSearchLinkPromotionArgs',
+    'ControlPromoteActionSearchLinkPromotionArgsDict',
+    'ControlRedirectActionArgs',
+    'ControlRedirectActionArgsDict',
+    'ControlSynonymsActionArgs',
+    'ControlSynonymsActionArgsDict',
     'DataConnectorEntityArgs',
     'DataConnectorEntityArgsDict',
     'DataConnectorErrorArgs',
@@ -803,6 +825,734 @@ class CmekConfigSingleRegionKeyArgs:
     @kms_key.setter
     def kms_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "kms_key", value)
+
+
+if not MYPY:
+    class ControlBoostActionArgsDict(TypedDict):
+        data_store: pulumi.Input[_builtins.str]
+        """
+        The data store to boost.
+        """
+        filter: pulumi.Input[_builtins.str]
+        """
+        The filter to apply to the search results.
+        """
+        fixed_boost: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
+        """
+        interpolation_boost_spec: NotRequired[pulumi.Input['ControlBoostActionInterpolationBoostSpecArgsDict']]
+        """
+        The interpolation boost specification to apply to the search results.
+        Structure is documented below.
+        """
+elif False:
+    ControlBoostActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlBoostActionArgs:
+    def __init__(__self__, *,
+                 data_store: pulumi.Input[_builtins.str],
+                 filter: pulumi.Input[_builtins.str],
+                 fixed_boost: Optional[pulumi.Input[_builtins.float]] = None,
+                 interpolation_boost_spec: Optional[pulumi.Input['ControlBoostActionInterpolationBoostSpecArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] data_store: The data store to boost.
+        :param pulumi.Input[_builtins.str] filter: The filter to apply to the search results.
+        :param pulumi.Input[_builtins.float] fixed_boost: The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
+        :param pulumi.Input['ControlBoostActionInterpolationBoostSpecArgs'] interpolation_boost_spec: The interpolation boost specification to apply to the search results.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "data_store", data_store)
+        pulumi.set(__self__, "filter", filter)
+        if fixed_boost is not None:
+            pulumi.set(__self__, "fixed_boost", fixed_boost)
+        if interpolation_boost_spec is not None:
+            pulumi.set(__self__, "interpolation_boost_spec", interpolation_boost_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="dataStore")
+    def data_store(self) -> pulumi.Input[_builtins.str]:
+        """
+        The data store to boost.
+        """
+        return pulumi.get(self, "data_store")
+
+    @data_store.setter
+    def data_store(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "data_store", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[_builtins.str]:
+        """
+        The filter to apply to the search results.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "filter", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fixedBoost")
+    def fixed_boost(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
+        """
+        return pulumi.get(self, "fixed_boost")
+
+    @fixed_boost.setter
+    def fixed_boost(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "fixed_boost", value)
+
+    @_builtins.property
+    @pulumi.getter(name="interpolationBoostSpec")
+    def interpolation_boost_spec(self) -> Optional[pulumi.Input['ControlBoostActionInterpolationBoostSpecArgs']]:
+        """
+        The interpolation boost specification to apply to the search results.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "interpolation_boost_spec")
+
+    @interpolation_boost_spec.setter
+    def interpolation_boost_spec(self, value: Optional[pulumi.Input['ControlBoostActionInterpolationBoostSpecArgs']]):
+        pulumi.set(self, "interpolation_boost_spec", value)
+
+
+if not MYPY:
+    class ControlBoostActionInterpolationBoostSpecArgsDict(TypedDict):
+        attribute_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The attribute type to be used to determine the boost amount.
+        Possible values are: `NUMERICAL`, `FRESHNESS`.
+        """
+        control_point: NotRequired[pulumi.Input['ControlBoostActionInterpolationBoostSpecControlPointArgsDict']]
+        """
+        The control points used to define the curve.
+        Structure is documented below.
+        """
+        field_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the field whose value will be used to determine the boost amount.
+        """
+        interpolation_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The interpolation type to be applied to connect the control points.
+        Possible values are: `LINEAR`.
+        """
+elif False:
+    ControlBoostActionInterpolationBoostSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlBoostActionInterpolationBoostSpecArgs:
+    def __init__(__self__, *,
+                 attribute_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 control_point: Optional[pulumi.Input['ControlBoostActionInterpolationBoostSpecControlPointArgs']] = None,
+                 field_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 interpolation_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] attribute_type: The attribute type to be used to determine the boost amount.
+               Possible values are: `NUMERICAL`, `FRESHNESS`.
+        :param pulumi.Input['ControlBoostActionInterpolationBoostSpecControlPointArgs'] control_point: The control points used to define the curve.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] field_name: The name of the field whose value will be used to determine the boost amount.
+        :param pulumi.Input[_builtins.str] interpolation_type: The interpolation type to be applied to connect the control points.
+               Possible values are: `LINEAR`.
+        """
+        if attribute_type is not None:
+            pulumi.set(__self__, "attribute_type", attribute_type)
+        if control_point is not None:
+            pulumi.set(__self__, "control_point", control_point)
+        if field_name is not None:
+            pulumi.set(__self__, "field_name", field_name)
+        if interpolation_type is not None:
+            pulumi.set(__self__, "interpolation_type", interpolation_type)
+
+    @_builtins.property
+    @pulumi.getter(name="attributeType")
+    def attribute_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The attribute type to be used to determine the boost amount.
+        Possible values are: `NUMERICAL`, `FRESHNESS`.
+        """
+        return pulumi.get(self, "attribute_type")
+
+    @attribute_type.setter
+    def attribute_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "attribute_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPoint")
+    def control_point(self) -> Optional[pulumi.Input['ControlBoostActionInterpolationBoostSpecControlPointArgs']]:
+        """
+        The control points used to define the curve.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "control_point")
+
+    @control_point.setter
+    def control_point(self, value: Optional[pulumi.Input['ControlBoostActionInterpolationBoostSpecControlPointArgs']]):
+        pulumi.set(self, "control_point", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldName")
+    def field_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the field whose value will be used to determine the boost amount.
+        """
+        return pulumi.get(self, "field_name")
+
+    @field_name.setter
+    def field_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "field_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="interpolationType")
+    def interpolation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The interpolation type to be applied to connect the control points.
+        Possible values are: `LINEAR`.
+        """
+        return pulumi.get(self, "interpolation_type")
+
+    @interpolation_type.setter
+    def interpolation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "interpolation_type", value)
+
+
+if not MYPY:
+    class ControlBoostActionInterpolationBoostSpecControlPointArgsDict(TypedDict):
+        attribute_value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The attribute value of the control point.
+        """
+        boost_amount: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        The value between -1 to 1 by which to boost the score if the attributeValue
+        evaluates to the value specified above.
+        """
+elif False:
+    ControlBoostActionInterpolationBoostSpecControlPointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlBoostActionInterpolationBoostSpecControlPointArgs:
+    def __init__(__self__, *,
+                 attribute_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 boost_amount: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] attribute_value: The attribute value of the control point.
+        :param pulumi.Input[_builtins.float] boost_amount: The value between -1 to 1 by which to boost the score if the attributeValue
+               evaluates to the value specified above.
+        """
+        if attribute_value is not None:
+            pulumi.set(__self__, "attribute_value", attribute_value)
+        if boost_amount is not None:
+            pulumi.set(__self__, "boost_amount", boost_amount)
+
+    @_builtins.property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The attribute value of the control point.
+        """
+        return pulumi.get(self, "attribute_value")
+
+    @attribute_value.setter
+    def attribute_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "attribute_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="boostAmount")
+    def boost_amount(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        The value between -1 to 1 by which to boost the score if the attributeValue
+        evaluates to the value specified above.
+        """
+        return pulumi.get(self, "boost_amount")
+
+    @boost_amount.setter
+    def boost_amount(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "boost_amount", value)
+
+
+if not MYPY:
+    class ControlConditionArgsDict(TypedDict):
+        active_time_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['ControlConditionActiveTimeRangeArgsDict']]]]
+        """
+        The time range when the condition is active.
+        Structure is documented below.
+        """
+        query_regex: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The regular expression that the query must match for this condition to be met.
+        """
+        query_terms: NotRequired[pulumi.Input[Sequence[pulumi.Input['ControlConditionQueryTermArgsDict']]]]
+        """
+        The query terms that must be present in the search request for this condition to be met.
+        Structure is documented below.
+        """
+elif False:
+    ControlConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlConditionArgs:
+    def __init__(__self__, *,
+                 active_time_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ControlConditionActiveTimeRangeArgs']]]] = None,
+                 query_regex: Optional[pulumi.Input[_builtins.str]] = None,
+                 query_terms: Optional[pulumi.Input[Sequence[pulumi.Input['ControlConditionQueryTermArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ControlConditionActiveTimeRangeArgs']]] active_time_ranges: The time range when the condition is active.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] query_regex: The regular expression that the query must match for this condition to be met.
+        :param pulumi.Input[Sequence[pulumi.Input['ControlConditionQueryTermArgs']]] query_terms: The query terms that must be present in the search request for this condition to be met.
+               Structure is documented below.
+        """
+        if active_time_ranges is not None:
+            pulumi.set(__self__, "active_time_ranges", active_time_ranges)
+        if query_regex is not None:
+            pulumi.set(__self__, "query_regex", query_regex)
+        if query_terms is not None:
+            pulumi.set(__self__, "query_terms", query_terms)
+
+    @_builtins.property
+    @pulumi.getter(name="activeTimeRanges")
+    def active_time_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ControlConditionActiveTimeRangeArgs']]]]:
+        """
+        The time range when the condition is active.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "active_time_ranges")
+
+    @active_time_ranges.setter
+    def active_time_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ControlConditionActiveTimeRangeArgs']]]]):
+        pulumi.set(self, "active_time_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryRegex")
+    def query_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The regular expression that the query must match for this condition to be met.
+        """
+        return pulumi.get(self, "query_regex")
+
+    @query_regex.setter
+    def query_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "query_regex", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryTerms")
+    def query_terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ControlConditionQueryTermArgs']]]]:
+        """
+        The query terms that must be present in the search request for this condition to be met.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query_terms")
+
+    @query_terms.setter
+    def query_terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ControlConditionQueryTermArgs']]]]):
+        pulumi.set(self, "query_terms", value)
+
+
+if not MYPY:
+    class ControlConditionActiveTimeRangeArgsDict(TypedDict):
+        end_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The end time of the active time range.
+        """
+        start_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The start time of the active time range.
+        """
+elif False:
+    ControlConditionActiveTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlConditionActiveTimeRangeArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] end_time: The end time of the active time range.
+        :param pulumi.Input[_builtins.str] start_time: The start time of the active time range.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The end time of the active time range.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The start time of the active time range.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "start_time", value)
+
+
+if not MYPY:
+    class ControlConditionQueryTermArgsDict(TypedDict):
+        full_match: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value of the query term.
+        """
+elif False:
+    ControlConditionQueryTermArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlConditionQueryTermArgs:
+    def __init__(__self__, *,
+                 full_match: Optional[pulumi.Input[_builtins.bool]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] full_match: If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
+        :param pulumi.Input[_builtins.str] value: The value of the query term.
+        """
+        if full_match is not None:
+            pulumi.set(__self__, "full_match", full_match)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fullMatch")
+    def full_match(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
+        """
+        return pulumi.get(self, "full_match")
+
+    @full_match.setter
+    def full_match(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "full_match", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the query term.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ControlFilterActionArgsDict(TypedDict):
+        data_store: pulumi.Input[_builtins.str]
+        """
+        The data store to filter.
+        """
+        filter: pulumi.Input[_builtins.str]
+        """
+        The filter to apply to the search results.
+        """
+elif False:
+    ControlFilterActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlFilterActionArgs:
+    def __init__(__self__, *,
+                 data_store: pulumi.Input[_builtins.str],
+                 filter: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] data_store: The data store to filter.
+        :param pulumi.Input[_builtins.str] filter: The filter to apply to the search results.
+        """
+        pulumi.set(__self__, "data_store", data_store)
+        pulumi.set(__self__, "filter", filter)
+
+    @_builtins.property
+    @pulumi.getter(name="dataStore")
+    def data_store(self) -> pulumi.Input[_builtins.str]:
+        """
+        The data store to filter.
+        """
+        return pulumi.get(self, "data_store")
+
+    @data_store.setter
+    def data_store(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "data_store", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[_builtins.str]:
+        """
+        The filter to apply to the search results.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "filter", value)
+
+
+if not MYPY:
+    class ControlPromoteActionArgsDict(TypedDict):
+        data_store: pulumi.Input[_builtins.str]
+        """
+        The data store to promote.
+        """
+        search_link_promotion: pulumi.Input['ControlPromoteActionSearchLinkPromotionArgsDict']
+        """
+        The search link promotion to apply to the search results.
+        Structure is documented below.
+        """
+elif False:
+    ControlPromoteActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlPromoteActionArgs:
+    def __init__(__self__, *,
+                 data_store: pulumi.Input[_builtins.str],
+                 search_link_promotion: pulumi.Input['ControlPromoteActionSearchLinkPromotionArgs']):
+        """
+        :param pulumi.Input[_builtins.str] data_store: The data store to promote.
+        :param pulumi.Input['ControlPromoteActionSearchLinkPromotionArgs'] search_link_promotion: The search link promotion to apply to the search results.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "data_store", data_store)
+        pulumi.set(__self__, "search_link_promotion", search_link_promotion)
+
+    @_builtins.property
+    @pulumi.getter(name="dataStore")
+    def data_store(self) -> pulumi.Input[_builtins.str]:
+        """
+        The data store to promote.
+        """
+        return pulumi.get(self, "data_store")
+
+    @data_store.setter
+    def data_store(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "data_store", value)
+
+    @_builtins.property
+    @pulumi.getter(name="searchLinkPromotion")
+    def search_link_promotion(self) -> pulumi.Input['ControlPromoteActionSearchLinkPromotionArgs']:
+        """
+        The search link promotion to apply to the search results.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "search_link_promotion")
+
+    @search_link_promotion.setter
+    def search_link_promotion(self, value: pulumi.Input['ControlPromoteActionSearchLinkPromotionArgs']):
+        pulumi.set(self, "search_link_promotion", value)
+
+
+if not MYPY:
+    class ControlPromoteActionSearchLinkPromotionArgsDict(TypedDict):
+        title: pulumi.Input[_builtins.str]
+        """
+        The title of the promoted link.
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The description of the promoted link.
+        """
+        document: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The document to promote.
+        """
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Return promotions for basic site search.
+        """
+        image_uri: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The image URI of the promoted link.
+        """
+        uri: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The URI to promote.
+        """
+elif False:
+    ControlPromoteActionSearchLinkPromotionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlPromoteActionSearchLinkPromotionArgs:
+    def __init__(__self__, *,
+                 title: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 document: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 image_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] title: The title of the promoted link.
+        :param pulumi.Input[_builtins.str] description: The description of the promoted link.
+        :param pulumi.Input[_builtins.str] document: The document to promote.
+        :param pulumi.Input[_builtins.bool] enabled: Return promotions for basic site search.
+        :param pulumi.Input[_builtins.str] image_uri: The image URI of the promoted link.
+        :param pulumi.Input[_builtins.str] uri: The URI to promote.
+        """
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if document is not None:
+            pulumi.set(__self__, "document", document)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        The title of the promoted link.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The description of the promoted link.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def document(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The document to promote.
+        """
+        return pulumi.get(self, "document")
+
+    @document.setter
+    def document(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "document", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Return promotions for basic site search.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The image URI of the promoted link.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @image_uri.setter
+    def image_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "image_uri", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The URI to promote.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uri", value)
+
+
+if not MYPY:
+    class ControlRedirectActionArgsDict(TypedDict):
+        redirect_uri: pulumi.Input[_builtins.str]
+        """
+        The URI to redirect to.
+        """
+elif False:
+    ControlRedirectActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlRedirectActionArgs:
+    def __init__(__self__, *,
+                 redirect_uri: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] redirect_uri: The URI to redirect to.
+        """
+        pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URI to redirect to.
+        """
+        return pulumi.get(self, "redirect_uri")
+
+    @redirect_uri.setter
+    def redirect_uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "redirect_uri", value)
+
+
+if not MYPY:
+    class ControlSynonymsActionArgsDict(TypedDict):
+        synonyms: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The synonyms to apply to the search results.
+        """
+elif False:
+    ControlSynonymsActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlSynonymsActionArgs:
+    def __init__(__self__, *,
+                 synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] synonyms: The synonyms to apply to the search results.
+        """
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @_builtins.property
+    @pulumi.getter
+    def synonyms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The synonyms to apply to the search results.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @synonyms.setter
+    def synonyms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "synonyms", value)
 
 
 if not MYPY:

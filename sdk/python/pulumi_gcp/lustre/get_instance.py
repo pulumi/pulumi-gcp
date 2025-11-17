@@ -26,7 +26,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, capacity_gib=None, create_time=None, description=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, labels=None, location=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, project=None, pulumi_labels=None, state=None, update_time=None, zone=None):
+    def __init__(__self__, capacity_gib=None, create_time=None, description=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, labels=None, location=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, update_time=None, zone=None):
         if capacity_gib and not isinstance(capacity_gib, str):
             raise TypeError("Expected argument 'capacity_gib' to be a str")
         pulumi.set(__self__, "capacity_gib", capacity_gib)
@@ -69,6 +69,9 @@ class GetInstanceResult:
         if per_unit_storage_throughput and not isinstance(per_unit_storage_throughput, str):
             raise TypeError("Expected argument 'per_unit_storage_throughput' to be a str")
         pulumi.set(__self__, "per_unit_storage_throughput", per_unit_storage_throughput)
+        if placement_policy and not isinstance(placement_policy, str):
+            raise TypeError("Expected argument 'placement_policy' to be a str")
+        pulumi.set(__self__, "placement_policy", placement_policy)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -159,6 +162,11 @@ class GetInstanceResult:
         return pulumi.get(self, "per_unit_storage_throughput")
 
     @_builtins.property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> _builtins.str:
+        return pulumi.get(self, "placement_policy")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
@@ -204,6 +212,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             name=self.name,
             network=self.network,
             per_unit_storage_throughput=self.per_unit_storage_throughput,
+            placement_policy=self.placement_policy,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
             state=self.state,
@@ -247,6 +256,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
         per_unit_storage_throughput=pulumi.get(__ret__, 'per_unit_storage_throughput'),
+        placement_policy=pulumi.get(__ret__, 'placement_policy'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         state=pulumi.get(__ret__, 'state'),
@@ -287,6 +297,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = Non
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),
         per_unit_storage_throughput=pulumi.get(__response__, 'per_unit_storage_throughput'),
+        placement_policy=pulumi.get(__response__, 'placement_policy'),
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         state=pulumi.get(__response__, 'state'),

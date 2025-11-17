@@ -51,6 +51,7 @@ type LookupInstanceResult struct {
 	Name                     string            `pulumi:"name"`
 	Network                  string            `pulumi:"network"`
 	PerUnitStorageThroughput string            `pulumi:"perUnitStorageThroughput"`
+	PlacementPolicy          string            `pulumi:"placementPolicy"`
 	Project                  *string           `pulumi:"project"`
 	PulumiLabels             map[string]string `pulumi:"pulumiLabels"`
 	State                    string            `pulumi:"state"`
@@ -151,6 +152,10 @@ func (o LookupInstanceResultOutput) Network() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) PerUnitStorageThroughput() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.PerUnitStorageThroughput }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) PlacementPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.PlacementPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {

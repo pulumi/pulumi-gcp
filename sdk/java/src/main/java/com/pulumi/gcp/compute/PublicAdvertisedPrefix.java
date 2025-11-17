@@ -96,6 +96,42 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Public Advertised Prefixes Ipv6 Access Type
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.PublicAdvertisedPrefix;
+ * import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var prefixes = new PublicAdvertisedPrefix("prefixes", PublicAdvertisedPrefixArgs.builder()
+ *             .name("my-pap")
+ *             .description("description")
+ *             .ipCidrRange("2001:db8::/32")
+ *             .pdpScope("REGIONAL")
+ *             .ipv6AccessType("INTERNAL")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -143,14 +179,14 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="dnsVerificationIp", refs={String.class}, tree="[0]")
-    private Output<String> dnsVerificationIp;
+    private Output</* @Nullable */ String> dnsVerificationIp;
 
     /**
      * @return The IPv4 address to be used for reverse DNS verification.
      * 
      */
-    public Output<String> dnsVerificationIp() {
-        return this.dnsVerificationIp;
+    public Output<Optional<String>> dnsVerificationIp() {
+        return Codegen.optional(this.dnsVerificationIp);
     }
     /**
      * The address range, in CIDR format, represented by this public advertised prefix.
@@ -165,6 +201,34 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      */
     public Output<String> ipCidrRange() {
         return this.ipCidrRange;
+    }
+    /**
+     * The internet access type for IPv6 Public Advertised Prefixes. It can be
+     * set to one of following:
+     * * EXTERNAL: Default access type. The prefix will be announced to the
+     *   internet. All children PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
+     * 
+     */
+    @Export(name="ipv6AccessType", refs={String.class}, tree="[0]")
+    private Output<String> ipv6AccessType;
+
+    /**
+     * @return The internet access type for IPv6 Public Advertised Prefixes. It can be
+     * set to one of following:
+     * * EXTERNAL: Default access type. The prefix will be announced to the
+     *   internet. All children PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
+     * 
+     */
+    public Output<String> ipv6AccessType() {
+        return this.ipv6AccessType;
     }
     /**
      * Name of the resource. The name must be 1-63 characters long, and

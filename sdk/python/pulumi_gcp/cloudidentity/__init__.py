@@ -10,6 +10,7 @@ from .get_group_lookup import *
 from .get_group_memberships import *
 from .get_group_transitive_memberships import *
 from .get_groups import *
+from .get_policy import *
 from .group import *
 from .group_membership import *
 from ._inputs import *

@@ -163,6 +163,57 @@ import (
 //	}
 //
 // ```
+// ### Public Delegated Prefix Internal Ipv6 Subnet Mode
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			advertised, err := compute.NewPublicAdvertisedPrefix(ctx, "advertised", &compute.PublicAdvertisedPrefixArgs{
+//				Name:           pulumi.String("ipv6-pap"),
+//				Description:    pulumi.String("description"),
+//				IpCidrRange:    pulumi.String("2001:db8::/32"),
+//				PdpScope:       pulumi.String("REGIONAL"),
+//				Ipv6AccessType: pulumi.String("INTERNAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			prefix, err := compute.NewPublicDelegatedPrefix(ctx, "prefix", &compute.PublicDelegatedPrefixArgs{
+//				Name:         pulumi.String("ipv6-root-pdp"),
+//				Description:  pulumi.String("test-delegation-mode-pdp"),
+//				Region:       pulumi.String("us-east1"),
+//				IpCidrRange:  pulumi.String("2001:db8::/40"),
+//				ParentPrefix: advertised.ID(),
+//				Mode:         pulumi.String("DELEGATION"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewPublicDelegatedPrefix(ctx, "subprefix", &compute.PublicDelegatedPrefixArgs{
+//				Name:         pulumi.String("ipv6-sub-pdp"),
+//				Description:  pulumi.String("test-subnet-mode-pdp"),
+//				Region:       pulumi.String("us-east1"),
+//				IpCidrRange:  pulumi.String("2001:db8::/48"),
+//				ParentPrefix: prefix.ID(),
+//				Mode:         pulumi.String("INTERNAL_IPV6_SUBNETWORK_CREATION"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -202,11 +253,23 @@ type PublicDelegatedPrefix struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
+	// (Output)
+	// The internet access type for IPv6 Public Delegated Prefixes. Inherited
+	// from parent prefix and can be one of following:
+	// * EXTERNAL: The prefix will be announced to the internet. All children
+	//   PDPs will have access type as EXTERNAL.
+	// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+	//   be used privately within Google Cloud. All children PDPs will have
+	//   access type as INTERNAL.
+	Ipv6AccessType pulumi.StringOutput `pulumi:"ipv6AccessType"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrOutput `pulumi:"isLiveMigration"`
-	// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-	// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-	// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+	// Specifies the mode of this IPv6 PDP. MODE must be one of:
+	// * DELEGATION
+	// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+	// * EXTERNAL_IPV6_SUBNETWORK_CREATION
+	// * INTERNAL_IPV6_SUBNETWORK_CREATION
+	//   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
 	Mode pulumi.StringPtrOutput `pulumi:"mode"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -276,11 +339,23 @@ type publicDelegatedPrefixState struct {
 	Description *string `pulumi:"description"`
 	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// (Output)
+	// The internet access type for IPv6 Public Delegated Prefixes. Inherited
+	// from parent prefix and can be one of following:
+	// * EXTERNAL: The prefix will be announced to the internet. All children
+	//   PDPs will have access type as EXTERNAL.
+	// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+	//   be used privately within Google Cloud. All children PDPs will have
+	//   access type as INTERNAL.
+	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration *bool `pulumi:"isLiveMigration"`
-	// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-	// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-	// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+	// Specifies the mode of this IPv6 PDP. MODE must be one of:
+	// * DELEGATION
+	// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+	// * EXTERNAL_IPV6_SUBNETWORK_CREATION
+	// * INTERNAL_IPV6_SUBNETWORK_CREATION
+	//   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
 	Mode *string `pulumi:"mode"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -312,11 +387,23 @@ type PublicDelegatedPrefixState struct {
 	Description pulumi.StringPtrInput
 	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange pulumi.StringPtrInput
+	// (Output)
+	// The internet access type for IPv6 Public Delegated Prefixes. Inherited
+	// from parent prefix and can be one of following:
+	// * EXTERNAL: The prefix will be announced to the internet. All children
+	//   PDPs will have access type as EXTERNAL.
+	// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+	//   be used privately within Google Cloud. All children PDPs will have
+	//   access type as INTERNAL.
+	Ipv6AccessType pulumi.StringPtrInput
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrInput
-	// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-	// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-	// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+	// Specifies the mode of this IPv6 PDP. MODE must be one of:
+	// * DELEGATION
+	// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+	// * EXTERNAL_IPV6_SUBNETWORK_CREATION
+	// * INTERNAL_IPV6_SUBNETWORK_CREATION
+	//   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
 	Mode pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -354,9 +441,12 @@ type publicDelegatedPrefixArgs struct {
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration *bool `pulumi:"isLiveMigration"`
-	// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-	// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-	// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+	// Specifies the mode of this IPv6 PDP. MODE must be one of:
+	// * DELEGATION
+	// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+	// * EXTERNAL_IPV6_SUBNETWORK_CREATION
+	// * INTERNAL_IPV6_SUBNETWORK_CREATION
+	//   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
 	Mode *string `pulumi:"mode"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -384,9 +474,12 @@ type PublicDelegatedPrefixArgs struct {
 	IpCidrRange pulumi.StringInput
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrInput
-	// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-	// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-	// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+	// Specifies the mode of this IPv6 PDP. MODE must be one of:
+	// * DELEGATION
+	// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+	// * EXTERNAL_IPV6_SUBNETWORK_CREATION
+	// * INTERNAL_IPV6_SUBNETWORK_CREATION
+	//   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
 	Mode pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -506,14 +599,29 @@ func (o PublicDelegatedPrefixOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
 }
 
+// (Output)
+// The internet access type for IPv6 Public Delegated Prefixes. Inherited
+// from parent prefix and can be one of following:
+//   - EXTERNAL: The prefix will be announced to the internet. All children
+//     PDPs will have access type as EXTERNAL.
+//   - INTERNAL: The prefix won’t be announced to the internet. Prefix will
+//     be used privately within Google Cloud. All children PDPs will have
+//     access type as INTERNAL.
+func (o PublicDelegatedPrefixOutput) Ipv6AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.Ipv6AccessType }).(pulumi.StringOutput)
+}
+
 // If true, the prefix will be live migrated.
 func (o PublicDelegatedPrefixOutput) IsLiveMigration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.BoolPtrOutput { return v.IsLiveMigration }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+// Specifies the mode of this IPv6 PDP. MODE must be one of:
+//   - DELEGATION
+//   - EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+//   - EXTERNAL_IPV6_SUBNETWORK_CREATION
+//   - INTERNAL_IPV6_SUBNETWORK_CREATION
+//     Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
 func (o PublicDelegatedPrefixOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
 }

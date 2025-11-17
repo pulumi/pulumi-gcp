@@ -5680,7 +5680,9 @@ class WorkerPoolTemplateContainer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "livenessProbe":
+        if key == "dependsOns":
+            suggest = "depends_ons"
+        elif key == "livenessProbe":
             suggest = "liveness_probe"
         elif key == "startupProbe":
             suggest = "startup_probe"
@@ -5704,6 +5706,7 @@ class WorkerPoolTemplateContainer(dict):
                  image: _builtins.str,
                  args: Optional[Sequence[_builtins.str]] = None,
                  commands: Optional[Sequence[_builtins.str]] = None,
+                 depends_ons: Optional[Sequence[_builtins.str]] = None,
                  envs: Optional[Sequence['outputs.WorkerPoolTemplateContainerEnv']] = None,
                  liveness_probe: Optional['outputs.WorkerPoolTemplateContainerLivenessProbe'] = None,
                  name: Optional[_builtins.str] = None,
@@ -5715,6 +5718,7 @@ class WorkerPoolTemplateContainer(dict):
         :param _builtins.str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param Sequence[_builtins.str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         :param Sequence[_builtins.str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence[_builtins.str] depends_ons: Names of the containers that must start before this container.
         :param Sequence['WorkerPoolTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
                Structure is documented below.
         :param 'WorkerPoolTemplateContainerLivenessProbeArgs' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails.
@@ -5733,6 +5737,8 @@ class WorkerPoolTemplateContainer(dict):
             pulumi.set(__self__, "args", args)
         if commands is not None:
             pulumi.set(__self__, "commands", commands)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if liveness_probe is not None:
@@ -5771,6 +5777,14 @@ class WorkerPoolTemplateContainer(dict):
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
         return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Names of the containers that must start before this container.
+        """
+        return pulumi.get(self, "depends_ons")
 
     @_builtins.property
     @pulumi.getter
@@ -11098,6 +11112,7 @@ class GetWorkerPoolTemplateContainerResult(dict):
     def __init__(__self__, *,
                  args: Sequence[_builtins.str],
                  commands: Sequence[_builtins.str],
+                 depends_ons: Sequence[_builtins.str],
                  envs: Sequence['outputs.GetWorkerPoolTemplateContainerEnvResult'],
                  image: _builtins.str,
                  liveness_probes: Sequence['outputs.GetWorkerPoolTemplateContainerLivenessProbeResult'],
@@ -11109,6 +11124,7 @@ class GetWorkerPoolTemplateContainerResult(dict):
         """
         :param Sequence[_builtins.str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         :param Sequence[_builtins.str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence[_builtins.str] depends_ons: Names of the containers that must start before this container.
         :param Sequence['GetWorkerPoolTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
         :param _builtins.str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param Sequence['GetWorkerPoolTemplateContainerLivenessProbeArgs'] liveness_probes: Periodic probe of container liveness. Container will be restarted if the probe fails.
@@ -11120,6 +11136,7 @@ class GetWorkerPoolTemplateContainerResult(dict):
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "commands", commands)
+        pulumi.set(__self__, "depends_ons", depends_ons)
         pulumi.set(__self__, "envs", envs)
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "liveness_probes", liveness_probes)
@@ -11144,6 +11161,14 @@ class GetWorkerPoolTemplateContainerResult(dict):
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
         return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Sequence[_builtins.str]:
+        """
+        Names of the containers that must start before this container.
+        """
+        return pulumi.get(self, "depends_ons")
 
     @_builtins.property
     @pulumi.getter

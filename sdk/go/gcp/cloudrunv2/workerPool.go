@@ -57,6 +57,58 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Worker Pool Basic Depends On
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewWorkerPool(ctx, "default", &cloudrunv2.WorkerPoolArgs{
+//				Name:               pulumi.String("cloudrun-worker-pool"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				LaunchStage:        pulumi.String("BETA"),
+//				Template: &cloudrunv2.WorkerPoolTemplateArgs{
+//					Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
+//						&cloudrunv2.WorkerPoolTemplateContainerArgs{
+//							Name:  pulumi.String("foo-1"),
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/worker-pool"),
+//							DependsOns: pulumi.StringArray{
+//								pulumi.String("foo-2"),
+//							},
+//						},
+//						&cloudrunv2.WorkerPoolTemplateContainerArgs{
+//							Name:  pulumi.String("foo-2"),
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/worker-pool"),
+//							StartupProbe: &cloudrunv2.WorkerPoolTemplateContainerStartupProbeArgs{
+//								HttpGet: &cloudrunv2.WorkerPoolTemplateContainerStartupProbeHttpGetArgs{
+//									Path: pulumi.String("/healthz"),
+//									Port: pulumi.Int(8080),
+//								},
+//								PeriodSeconds:    pulumi.Int(5),
+//								TimeoutSeconds:   pulumi.Int(2),
+//								FailureThreshold: pulumi.Int(3),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Cloudrunv2 Worker Pool Limits
 //
 // ```go

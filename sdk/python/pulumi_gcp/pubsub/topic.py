@@ -768,21 +768,18 @@ class Topic(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            project=project.project_id)
         tag_key = gcp.tags.TagKey("tag_key",
             parent=project.id,
             short_name="tag_key")
         tag_value = gcp.tags.TagValue("tag_value",
             parent=tag_key.id,
             short_name="tag_value")
-        example = gcp.pubsub.Topic("example",
-            name="example-topic",
-            tags=pulumi.Output.all(
-                namespaced_name=tag_key.namespaced_name,
-                short_name=tag_value.short_name
-        ).apply(lambda resolved_outputs: {
-                resolved_outputs['namespaced_name']: resolved_outputs['short_name'],
-            })
-        )
+        binding = gcp.tags.TagBinding("binding",
+            parent=example.name.apply(lambda name: f"//pubsub.googleapis.com/projects/{project.number}/topics/{name}"),
+            tag_value=tag_value.id)
         ```
 
         ## Import
@@ -1104,21 +1101,18 @@ class Topic(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            project=project.project_id)
         tag_key = gcp.tags.TagKey("tag_key",
             parent=project.id,
             short_name="tag_key")
         tag_value = gcp.tags.TagValue("tag_value",
             parent=tag_key.id,
             short_name="tag_value")
-        example = gcp.pubsub.Topic("example",
-            name="example-topic",
-            tags=pulumi.Output.all(
-                namespaced_name=tag_key.namespaced_name,
-                short_name=tag_value.short_name
-        ).apply(lambda resolved_outputs: {
-                resolved_outputs['namespaced_name']: resolved_outputs['short_name'],
-            })
-        )
+        binding = gcp.tags.TagBinding("binding",
+            parent=example.name.apply(lambda name: f"//pubsub.googleapis.com/projects/{project.number}/topics/{name}"),
+            tag_value=tag_value.id)
         ```
 
         ## Import

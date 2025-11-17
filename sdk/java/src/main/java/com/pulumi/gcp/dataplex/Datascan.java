@@ -12,6 +12,7 @@ import com.pulumi.gcp.dataplex.DatascanArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanState;
 import com.pulumi.gcp.dataplex.outputs.DatascanData;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataDiscoverySpec;
+import com.pulumi.gcp.dataplex.outputs.DatascanDataDocumentationSpec;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataProfileSpec;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpec;
 import com.pulumi.gcp.dataplex.outputs.DatascanExecutionSpec;
@@ -545,6 +546,126 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Dataplex Datascan Documentation
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.dataplex.Datascan;
+ * import com.pulumi.gcp.dataplex.DatascanArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOnDemandArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataDocumentationSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
+ *             .datasetId("tf_dataplex_test_dataset_id__64336")
+ *             .defaultTableExpirationMs(3600000)
+ *             .build());
+ * 
+ *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
+ *             .datasetId(tfDataplexTestDataset.datasetId())
+ *             .tableId("tf_dataplex_test_table_id__34962")
+ *             .deletionProtection(false)
+ *             .schema("""
+ *     [
+ *     {
+ *       \"name\": \"name\",
+ *       \"type\": \"STRING\",
+ *       \"mode\": \"NULLABLE\"
+ *     },
+ *     {
+ *       \"name\": \"station_id\",
+ *       \"type\": \"INTEGER\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The id of the bike station\"
+ *     },
+ *     {
+ *       \"name\": \"address\",
+ *       \"type\": \"STRING\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The address of the bike station\"
+ *     },
+ *     {
+ *       \"name\": \"power_type\",
+ *       \"type\": \"STRING\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The powert type of the bike station\"
+ *     },
+ *     {
+ *       \"name\": \"property_type\",
+ *       \"type\": \"STRING\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The type of the property\"
+ *     },
+ *     {
+ *       \"name\": \"number_of_docks\",
+ *       \"type\": \"INTEGER\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The number of docks the property have\"
+ *     },
+ *     {
+ *       \"name\": \"footprint_length\",
+ *       \"type\": \"INTEGER\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The footpring lenght of the property\"
+ *     },
+ *     {
+ *       \"name\": \"council_district\",
+ *       \"type\": \"INTEGER\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The council district the property is in\"
+ *     }
+ *     ]
+ *             """)
+ *             .build());
+ * 
+ *         var documentation = new Datascan("documentation", DatascanArgs.builder()
+ *             .location("us-central1")
+ *             .dataScanId("datadocumentation")
+ *             .data(DatascanDataArgs.builder()
+ *                 .resource(Output.tuple(tfDataplexTestDataset.datasetId(), tfDataplexTestTable.tableId()).applyValue(values -> {
+ *                     var datasetId = values.t1;
+ *                     var tableId = values.t2;
+ *                     return String.format("//bigquery.googleapis.com/projects/my-project-name/datasets/%s/tables/%s", datasetId,tableId);
+ *                 }))
+ *                 .build())
+ *             .executionSpec(DatascanExecutionSpecArgs.builder()
+ *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
+ *                     .onDemand(DatascanExecutionSpecTriggerOnDemandArgs.builder()
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .dataDocumentationSpec(DatascanDataDocumentationSpecArgs.builder()
+ *                 .build())
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -624,6 +745,20 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<DatascanDataDiscoverySpec>> dataDiscoverySpec() {
         return Codegen.optional(this.dataDiscoverySpec);
+    }
+    /**
+     * DataDocumentationScan related setting.
+     * 
+     */
+    @Export(name="dataDocumentationSpec", refs={DatascanDataDocumentationSpec.class}, tree="[0]")
+    private Output</* @Nullable */ DatascanDataDocumentationSpec> dataDocumentationSpec;
+
+    /**
+     * @return DataDocumentationScan related setting.
+     * 
+     */
+    public Output<Optional<DatascanDataDocumentationSpec>> dataDocumentationSpec() {
+        return Codegen.optional(this.dataDocumentationSpec);
     }
     /**
      * DataProfileScan related setting.

@@ -164,6 +164,11 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly perUnitStorageThroughput: pulumi.Output<string>;
     /**
+     * The placement policy name for the instance in the format of
+     * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+     */
+    declare public readonly placementPolicy: pulumi.Output<string | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -216,6 +221,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["network"] = state?.network;
             resourceInputs["perUnitStorageThroughput"] = state?.perUnitStorageThroughput;
+            resourceInputs["placementPolicy"] = state?.placementPolicy;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["state"] = state?.state;
@@ -249,6 +255,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["network"] = args?.network;
             resourceInputs["perUnitStorageThroughput"] = args?.perUnitStorageThroughput;
+            resourceInputs["placementPolicy"] = args?.placementPolicy;
             resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -335,6 +342,11 @@ export interface InstanceState {
      */
     perUnitStorageThroughput?: pulumi.Input<string>;
     /**
+     * The placement policy name for the instance in the format of
+     * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+     */
+    placementPolicy?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -415,6 +427,11 @@ export interface InstanceArgs {
      * Valid values are 125, 250, 500, 1000.
      */
     perUnitStorageThroughput: pulumi.Input<string>;
+    /**
+     * The placement policy name for the instance in the format of
+     * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
+     */
+    placementPolicy?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -98,6 +98,36 @@ import * as utilities from "../utilities";
  *     mode: "EXTERNAL_IPV6_SUBNETWORK_CREATION",
  * });
  * ```
+ * ### Public Delegated Prefix Internal Ipv6 Subnet Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const advertised = new gcp.compute.PublicAdvertisedPrefix("advertised", {
+ *     name: "ipv6-pap",
+ *     description: "description",
+ *     ipCidrRange: "2001:db8::/32",
+ *     pdpScope: "REGIONAL",
+ *     ipv6AccessType: "INTERNAL",
+ * });
+ * const prefix = new gcp.compute.PublicDelegatedPrefix("prefix", {
+ *     name: "ipv6-root-pdp",
+ *     description: "test-delegation-mode-pdp",
+ *     region: "us-east1",
+ *     ipCidrRange: "2001:db8::/40",
+ *     parentPrefix: advertised.id,
+ *     mode: "DELEGATION",
+ * });
+ * const subprefix = new gcp.compute.PublicDelegatedPrefix("subprefix", {
+ *     name: "ipv6-sub-pdp",
+ *     description: "test-subnet-mode-pdp",
+ *     region: "us-east1",
+ *     ipCidrRange: "2001:db8::/48",
+ *     parentPrefix: prefix.id,
+ *     mode: "INTERNAL_IPV6_SUBNETWORK_CREATION",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -170,13 +200,27 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
      */
     declare public readonly ipCidrRange: pulumi.Output<string>;
     /**
+     * (Output)
+     * The internet access type for IPv6 Public Delegated Prefixes. Inherited
+     * from parent prefix and can be one of following:
+     * * EXTERNAL: The prefix will be announced to the internet. All children
+     * PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     * be used privately within Google Cloud. All children PDPs will have
+     * access type as INTERNAL.
+     */
+    declare public /*out*/ readonly ipv6AccessType: pulumi.Output<string>;
+    /**
      * If true, the prefix will be live migrated.
      */
     declare public readonly isLiveMigration: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+     * Specifies the mode of this IPv6 PDP. MODE must be one of:
+     * * DELEGATION
+     * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+     * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+     * * INTERNAL_IPV6_SUBNETWORK_CREATION
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      */
     declare public readonly mode: pulumi.Output<string | undefined>;
     /**
@@ -229,6 +273,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             resourceInputs["allocatablePrefixLength"] = state?.allocatablePrefixLength;
             resourceInputs["description"] = state?.description;
             resourceInputs["ipCidrRange"] = state?.ipCidrRange;
+            resourceInputs["ipv6AccessType"] = state?.ipv6AccessType;
             resourceInputs["isLiveMigration"] = state?.isLiveMigration;
             resourceInputs["mode"] = state?.mode;
             resourceInputs["name"] = state?.name;
@@ -257,6 +302,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             resourceInputs["parentPrefix"] = args?.parentPrefix;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
+            resourceInputs["ipv6AccessType"] = undefined /*out*/;
             resourceInputs["publicDelegatedSubPrefixs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
@@ -282,13 +328,27 @@ export interface PublicDelegatedPrefixState {
      */
     ipCidrRange?: pulumi.Input<string>;
     /**
+     * (Output)
+     * The internet access type for IPv6 Public Delegated Prefixes. Inherited
+     * from parent prefix and can be one of following:
+     * * EXTERNAL: The prefix will be announced to the internet. All children
+     * PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     * be used privately within Google Cloud. All children PDPs will have
+     * access type as INTERNAL.
+     */
+    ipv6AccessType?: pulumi.Input<string>;
+    /**
      * If true, the prefix will be live migrated.
      */
     isLiveMigration?: pulumi.Input<boolean>;
     /**
-     * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+     * Specifies the mode of this IPv6 PDP. MODE must be one of:
+     * * DELEGATION
+     * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+     * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+     * * INTERNAL_IPV6_SUBNETWORK_CREATION
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      */
     mode?: pulumi.Input<string>;
     /**
@@ -347,9 +407,12 @@ export interface PublicDelegatedPrefixArgs {
      */
     isLiveMigration?: pulumi.Input<boolean>;
     /**
-     * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+     * Specifies the mode of this IPv6 PDP. MODE must be one of:
+     * * DELEGATION
+     * * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+     * * EXTERNAL_IPV6_SUBNETWORK_CREATION
+     * * INTERNAL_IPV6_SUBNETWORK_CREATION
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      */
     mode?: pulumi.Input<string>;
     /**

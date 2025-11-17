@@ -332,6 +332,27 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Type of the storage pool.
+     * This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+     * If not specified during creation, it defaults to FILE.
+     * Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Type of the storage pool.
+     * This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+     * If not specified during creation, it defaults to FILE.
+     * Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
      * Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
@@ -372,6 +393,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.serviceLevel = $.serviceLevel;
         this.totalIops = $.totalIops;
         this.totalThroughputMibps = $.totalThroughputMibps;
+        this.type = $.type;
         this.zone = $.zone;
     }
 
@@ -818,6 +840,33 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder totalThroughputMibps(String totalThroughputMibps) {
             return totalThroughputMibps(Output.of(totalThroughputMibps));
+        }
+
+        /**
+         * @param type Type of the storage pool.
+         * This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+         * If not specified during creation, it defaults to FILE.
+         * Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Type of the storage pool.
+         * This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+         * If not specified during creation, it defaults to FILE.
+         * Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         /**

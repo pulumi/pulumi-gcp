@@ -183,6 +183,8 @@ class LiteReservation(pulumi.CustomResource):
                  throughput_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        > **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `google_pubsub_reservation` instead.
+
         A named resource representing a shared pool of capacity.
 
         To get more information about Reservation, see:
@@ -253,6 +255,8 @@ class LiteReservation(pulumi.CustomResource):
                  args: LiteReservationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `google_pubsub_reservation` instead.
+
         A named resource representing a shared pool of capacity.
 
         To get more information about Reservation, see:

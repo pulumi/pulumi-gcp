@@ -448,49 +448,55 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-// Parent: pulumi.String(project.Id),
-// ShortName: pulumi.String("tag_key"),
-// })
-// if err != nil {
-// return err
-// }
-// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-// Parent: tagKey.ID(),
-// ShortName: pulumi.String("tag_value"),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
-// Name: pulumi.String("example-topic"),
-// Tags: pulumi.All(tagKey.NamespacedName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
-// namespacedName := _args[0].(string)
-// shortName := _args[1].(string)
-// return map[string]string{
-// namespacedName: shortName,
-// }, nil
-// }).(pulumi.Map[string]stringOutput),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name:    pulumi.String("example-topic"),
+//				Project: pulumi.String(project.ProjectId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
+//				Parent:    pulumi.String(project.Id),
+//				ShortName: pulumi.String("tag_key"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
+//				Parent:    tagKey.ID(),
+//				ShortName: pulumi.String("tag_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = tags.NewTagBinding(ctx, "binding", &tags.TagBindingArgs{
+//				Parent: example.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("//pubsub.googleapis.com/projects/%v/topics/%v", project.Number, name), nil
+//				}).(pulumi.StringOutput),
+//				TagValue: tagValue.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import

@@ -19,6 +19,23 @@ public final class ReservationSpecificReservationArgs extends com.pulumi.resourc
     public static final ReservationSpecificReservationArgs Empty = new ReservationSpecificReservationArgs();
 
     /**
+     * (Output)
+     * Indicates how many instances are actually usable currently.
+     * 
+     */
+    @Import(name="assuredCount")
+    private @Nullable Output<Integer> assuredCount;
+
+    /**
+     * @return (Output)
+     * Indicates how many instances are actually usable currently.
+     * 
+     */
+    public Optional<Output<Integer>> assuredCount() {
+        return Optional.ofNullable(this.assuredCount);
+    }
+
+    /**
      * The number of resources that are allocated.
      * 
      */
@@ -87,6 +104,7 @@ public final class ReservationSpecificReservationArgs extends com.pulumi.resourc
     private ReservationSpecificReservationArgs() {}
 
     private ReservationSpecificReservationArgs(ReservationSpecificReservationArgs $) {
+        this.assuredCount = $.assuredCount;
         this.count = $.count;
         this.inUseCount = $.inUseCount;
         this.instanceProperties = $.instanceProperties;
@@ -109,6 +127,29 @@ public final class ReservationSpecificReservationArgs extends com.pulumi.resourc
 
         public Builder(ReservationSpecificReservationArgs defaults) {
             $ = new ReservationSpecificReservationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param assuredCount (Output)
+         * Indicates how many instances are actually usable currently.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assuredCount(@Nullable Output<Integer> assuredCount) {
+            $.assuredCount = assuredCount;
+            return this;
+        }
+
+        /**
+         * @param assuredCount (Output)
+         * Indicates how many instances are actually usable currently.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assuredCount(Integer assuredCount) {
+            return assuredCount(Output.of(assuredCount));
         }
 
         /**

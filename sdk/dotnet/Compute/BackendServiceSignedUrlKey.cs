@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var urlSignature = new Random.Index.Id("url_signature", new()
+    ///     var urlSignature = new Random.RandomId("url_signature", new()
     ///     {
     ///         ByteLength = 16,
     ///     });

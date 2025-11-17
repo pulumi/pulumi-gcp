@@ -42,6 +42,9 @@ import (
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: defaultNetwork.ID(),
 //				},
+//				InitialUser: &alloydb.ClusterInitialUserArgs{
+//					Password: pulumi.String("alloydb-cluster"),
+//				},
 //				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -383,6 +386,9 @@ import (
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: _default.ID(),
 //				},
+//				InitialUser: &alloydb.ClusterInitialUserArgs{
+//					Password: pulumi.String("alloydb-primary-cluster"),
+//				},
 //				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -531,7 +537,7 @@ type Cluster struct {
 	EncryptionInfos ClusterEncryptionInfoArrayOutput `pulumi:"encryptionInfos"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
-	// Initial user to setup during cluster creation.
+	// Initial user to setup during cluster creation. This must be set for all new Clusters.
 	// Structure is documented below.
 	InitialUser ClusterInitialUserPtrOutput `pulumi:"initialUser"`
 	// User-defined labels for the alloydb cluster.
@@ -678,7 +684,7 @@ type clusterState struct {
 	EncryptionInfos []ClusterEncryptionInfo `pulumi:"encryptionInfos"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag *string `pulumi:"etag"`
-	// Initial user to setup during cluster creation.
+	// Initial user to setup during cluster creation. This must be set for all new Clusters.
 	// Structure is documented below.
 	InitialUser *ClusterInitialUser `pulumi:"initialUser"`
 	// User-defined labels for the alloydb cluster.
@@ -785,7 +791,7 @@ type ClusterState struct {
 	EncryptionInfos ClusterEncryptionInfoArrayInput
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringPtrInput
-	// Initial user to setup during cluster creation.
+	// Initial user to setup during cluster creation. This must be set for all new Clusters.
 	// Structure is documented below.
 	InitialUser ClusterInitialUserPtrInput
 	// User-defined labels for the alloydb cluster.
@@ -883,7 +889,7 @@ type clusterArgs struct {
 	EncryptionConfig *ClusterEncryptionConfig `pulumi:"encryptionConfig"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag *string `pulumi:"etag"`
-	// Initial user to setup during cluster creation.
+	// Initial user to setup during cluster creation. This must be set for all new Clusters.
 	// Structure is documented below.
 	InitialUser *ClusterInitialUser `pulumi:"initialUser"`
 	// User-defined labels for the alloydb cluster.
@@ -959,7 +965,7 @@ type ClusterArgs struct {
 	EncryptionConfig ClusterEncryptionConfigPtrInput
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringPtrInput
-	// Initial user to setup during cluster creation.
+	// Initial user to setup during cluster creation. This must be set for all new Clusters.
 	// Structure is documented below.
 	InitialUser ClusterInitialUserPtrInput
 	// User-defined labels for the alloydb cluster.
@@ -1181,7 +1187,7 @@ func (o ClusterOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Initial user to setup during cluster creation.
+// Initial user to setup during cluster creation. This must be set for all new Clusters.
 // Structure is documented below.
 func (o ClusterOutput) InitialUser() ClusterInitialUserPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterInitialUserPtrOutput { return v.InitialUser }).(ClusterInitialUserPtrOutput)

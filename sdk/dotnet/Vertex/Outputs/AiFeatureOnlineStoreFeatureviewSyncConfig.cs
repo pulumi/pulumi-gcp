@@ -14,14 +14,22 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiFeatureOnlineStoreFeatureviewSyncConfig
     {
         /// <summary>
+        /// If true, syncs the FeatureView in a continuous manner to Online Store.
+        /// </summary>
+        public readonly bool? Continuous;
+        /// <summary>
         /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
         /// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
         /// </summary>
         public readonly string? Cron;
 
         [OutputConstructor]
-        private AiFeatureOnlineStoreFeatureviewSyncConfig(string? cron)
+        private AiFeatureOnlineStoreFeatureviewSyncConfig(
+            bool? continuous,
+
+            string? cron)
         {
+            Continuous = continuous;
             Cron = cron;
         }
     }

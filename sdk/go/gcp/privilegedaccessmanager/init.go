@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:privilegedaccessmanager/entitlement:entitlement":
 		r = &Entitlement{}
+	case "gcp:privilegedaccessmanager/settings:Settings":
+		r = &Settings{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"privilegedaccessmanager/entitlement",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"privilegedaccessmanager/settings",
 		&module{version},
 	)
 }

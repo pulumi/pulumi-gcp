@@ -550,7 +550,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_26317")
+ *                 .filenameSuffix("-_32270")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -626,7 +626,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_4866")
+ *                 .filenameSuffix("-_44703")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -709,7 +709,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_12618")
+ *                 .filenameSuffix("-_9329")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -872,6 +872,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.tags.TagValueArgs;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -895,7 +896,9 @@ import javax.annotation.Nullable;
  *         var tagKey = new TagKey("tagKey", TagKeyArgs.builder()
  *             .parent(project.id())
  *             .shortName("tag_key")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(example)
+ *                 .build());
  * 
  *         var tagValue = new TagValue("tagValue", TagValueArgs.builder()
  *             .parent(tagKey.id())

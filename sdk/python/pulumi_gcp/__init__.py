@@ -59,6 +59,8 @@ if typing.TYPE_CHECKING:
     certificateauthority = __certificateauthority
     import pulumi_gcp.certificatemanager as __certificatemanager
     certificatemanager = __certificatemanager
+    import pulumi_gcp.ces as __ces
+    ces = __ces
     import pulumi_gcp.chronicle as __chronicle
     chronicle = __chronicle
     import pulumi_gcp.cloudasset as __cloudasset
@@ -304,6 +306,7 @@ else:
     blockchainnodeengine = _utilities.lazy_import('pulumi_gcp.blockchainnodeengine')
     certificateauthority = _utilities.lazy_import('pulumi_gcp.certificateauthority')
     certificatemanager = _utilities.lazy_import('pulumi_gcp.certificatemanager')
+    ces = _utilities.lazy_import('pulumi_gcp.ces')
     chronicle = _utilities.lazy_import('pulumi_gcp.chronicle')
     cloudasset = _utilities.lazy_import('pulumi_gcp.cloudasset')
     cloudbuild = _utilities.lazy_import('pulumi_gcp.cloudbuild')
@@ -2028,6 +2031,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "ces/app",
+  "fqn": "pulumi_gcp.ces",
+  "classes": {
+   "gcp:ces/app:App": "App"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "ces/deployment",
+  "fqn": "pulumi_gcp.ces",
+  "classes": {
+   "gcp:ces/deployment:Deployment": "Deployment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "ces/example",
+  "fqn": "pulumi_gcp.ces",
+  "classes": {
+   "gcp:ces/example:Example": "Example"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "ces/toolset",
+  "fqn": "pulumi_gcp.ces",
+  "classes": {
+   "gcp:ces/toolset:Toolset": "Toolset"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "chronicle/dataAccessLabel",
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
@@ -3512,6 +3547,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment": "RegionDiskResourcePolicyAttachment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionHealthAggregationPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy": "RegionHealthAggregationPolicy"
   }
  },
  {
@@ -5260,6 +5303,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "discoveryengine/control",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/control:Control": "Control"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "discoveryengine/dataConnector",
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
@@ -5320,6 +5371,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
    "gcp:discoveryengine/targetSite:TargetSite": "TargetSite"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "discoveryengine/userStore",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/userStore:UserStore": "UserStore"
   }
  },
  {
@@ -7668,6 +7727,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "netapp/hostGroup",
+  "fqn": "pulumi_gcp.netapp",
+  "classes": {
+   "gcp:netapp/hostGroup:HostGroup": "HostGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "netapp/kmsconfig",
   "fqn": "pulumi_gcp.netapp",
   "classes": {
@@ -7948,6 +8015,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networksecurity/mirroringEndpoint",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/mirroringEndpoint:MirroringEndpoint": "MirroringEndpoint"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networksecurity/mirroringEndpointGroup",
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
@@ -8088,6 +8163,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
    "gcp:networkservices/mesh:Mesh": "Mesh"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/multicastDomain",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/multicastDomain:MulticastDomain": "MulticastDomain"
   }
  },
  {
@@ -8448,6 +8531,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.privilegedaccessmanager",
   "classes": {
    "gcp:privilegedaccessmanager/entitlement:entitlement": "Entitlement"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "privilegedaccessmanager/settings",
+  "fqn": "pulumi_gcp.privilegedaccessmanager",
+  "classes": {
+   "gcp:privilegedaccessmanager/settings:Settings": "Settings"
   }
  },
  {

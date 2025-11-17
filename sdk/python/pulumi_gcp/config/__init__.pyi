@@ -77,6 +77,8 @@ blockchainNodeEngineCustomEndpoint: Optional[str]
 
 certificateManagerCustomEndpoint: Optional[str]
 
+cesCustomEndpoint: Optional[str]
+
 chronicleCustomEndpoint: Optional[str]
 
 cloudAssetCustomEndpoint: Optional[str]

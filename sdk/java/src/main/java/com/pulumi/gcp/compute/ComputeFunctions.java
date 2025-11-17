@@ -110,7 +110,11 @@ import com.pulumi.gcp.compute.inputs.GetRegionSslCertificatePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionsArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionsPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetReservationArgs;
+import com.pulumi.gcp.compute.inputs.GetReservationBlockArgs;
+import com.pulumi.gcp.compute.inputs.GetReservationBlockPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetReservationPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetReservationSubBlockArgs;
+import com.pulumi.gcp.compute.inputs.GetReservationSubBlockPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetResourcePolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRouterArgs;
@@ -194,7 +198,9 @@ import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSSLPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSslCertificateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionsResult;
+import com.pulumi.gcp.compute.outputs.GetReservationBlockResult;
 import com.pulumi.gcp.compute.outputs.GetReservationResult;
+import com.pulumi.gcp.compute.outputs.GetReservationSubBlockResult;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRouterNatResult;
 import com.pulumi.gcp.compute.outputs.GetRouterResult;
@@ -14515,6 +14521,481 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetReservationResult> getReservationPlain(GetReservationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getReservation:getReservation", TypeShape.of(GetReservationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Compute Engine Reservation Block. Reservation blocks are automatically created by Google Cloud within reservations and represent a physical grouping of resources.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+     * and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/reservationBlocks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationBlockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var block = ComputeFunctions.getReservationBlock(GetReservationBlockArgs.builder()
+     *             .name("my-reservation-block")
+     *             .reservation("my-reservation")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("blockStatus", block.status());
+     *         ctx.export("blockInUseCount", block.inUseCount());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetReservationBlockResult> getReservationBlock(GetReservationBlockArgs args) {
+        return getReservationBlock(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Compute Engine Reservation Block. Reservation blocks are automatically created by Google Cloud within reservations and represent a physical grouping of resources.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+     * and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/reservationBlocks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationBlockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var block = ComputeFunctions.getReservationBlock(GetReservationBlockArgs.builder()
+     *             .name("my-reservation-block")
+     *             .reservation("my-reservation")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("blockStatus", block.status());
+     *         ctx.export("blockInUseCount", block.inUseCount());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetReservationBlockResult> getReservationBlockPlain(GetReservationBlockPlainArgs args) {
+        return getReservationBlockPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Compute Engine Reservation Block. Reservation blocks are automatically created by Google Cloud within reservations and represent a physical grouping of resources.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+     * and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/reservationBlocks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationBlockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var block = ComputeFunctions.getReservationBlock(GetReservationBlockArgs.builder()
+     *             .name("my-reservation-block")
+     *             .reservation("my-reservation")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("blockStatus", block.status());
+     *         ctx.export("blockInUseCount", block.inUseCount());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetReservationBlockResult> getReservationBlock(GetReservationBlockArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getReservationBlock:getReservationBlock", TypeShape.of(GetReservationBlockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Compute Engine Reservation Block. Reservation blocks are automatically created by Google Cloud within reservations and represent a physical grouping of resources.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+     * and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/reservationBlocks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationBlockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var block = ComputeFunctions.getReservationBlock(GetReservationBlockArgs.builder()
+     *             .name("my-reservation-block")
+     *             .reservation("my-reservation")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("blockStatus", block.status());
+     *         ctx.export("blockInUseCount", block.inUseCount());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetReservationBlockResult> getReservationBlock(GetReservationBlockArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getReservationBlock:getReservationBlock", TypeShape.of(GetReservationBlockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Compute Engine Reservation Block. Reservation blocks are automatically created by Google Cloud within reservations and represent a physical grouping of resources.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+     * and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/reservationBlocks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationBlockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var block = ComputeFunctions.getReservationBlock(GetReservationBlockArgs.builder()
+     *             .name("my-reservation-block")
+     *             .reservation("my-reservation")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("blockStatus", block.status());
+     *         ctx.export("blockInUseCount", block.inUseCount());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetReservationBlockResult> getReservationBlockPlain(GetReservationBlockPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getReservationBlock:getReservationBlock", TypeShape.of(GetReservationBlockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Compute Engine Reservation Sub-Block. Reservation sub-blocks are automatically created by Google Cloud within reservation blocks and represent a finer-grained physical grouping of resources.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+     * and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/reservationSubBlocks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationSubBlockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subBlock = ComputeFunctions.getReservationSubBlock(GetReservationSubBlockArgs.builder()
+     *             .name("my-reservation-sub-block")
+     *             .reservationBlock("my-reservation-block")
+     *             .reservation("my-reservation")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("subBlockStatus", subBlock.status());
+     *         ctx.export("subBlockHealth", subBlock.healthInfos());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetReservationSubBlockResult> getReservationSubBlock(GetReservationSubBlockArgs args) {
+        return getReservationSubBlock(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Compute Engine Reservation Sub-Block. Reservation sub-blocks are automatically created by Google Cloud within reservation blocks and represent a finer-grained physical grouping of resources.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+     * and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/reservationSubBlocks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationSubBlockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subBlock = ComputeFunctions.getReservationSubBlock(GetReservationSubBlockArgs.builder()
+     *             .name("my-reservation-sub-block")
+     *             .reservationBlock("my-reservation-block")
+     *             .reservation("my-reservation")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("subBlockStatus", subBlock.status());
+     *         ctx.export("subBlockHealth", subBlock.healthInfos());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetReservationSubBlockResult> getReservationSubBlockPlain(GetReservationSubBlockPlainArgs args) {
+        return getReservationSubBlockPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Compute Engine Reservation Sub-Block. Reservation sub-blocks are automatically created by Google Cloud within reservation blocks and represent a finer-grained physical grouping of resources.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+     * and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/reservationSubBlocks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationSubBlockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subBlock = ComputeFunctions.getReservationSubBlock(GetReservationSubBlockArgs.builder()
+     *             .name("my-reservation-sub-block")
+     *             .reservationBlock("my-reservation-block")
+     *             .reservation("my-reservation")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("subBlockStatus", subBlock.status());
+     *         ctx.export("subBlockHealth", subBlock.healthInfos());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetReservationSubBlockResult> getReservationSubBlock(GetReservationSubBlockArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getReservationSubBlock:getReservationSubBlock", TypeShape.of(GetReservationSubBlockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Compute Engine Reservation Sub-Block. Reservation sub-blocks are automatically created by Google Cloud within reservation blocks and represent a finer-grained physical grouping of resources.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+     * and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/reservationSubBlocks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationSubBlockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subBlock = ComputeFunctions.getReservationSubBlock(GetReservationSubBlockArgs.builder()
+     *             .name("my-reservation-sub-block")
+     *             .reservationBlock("my-reservation-block")
+     *             .reservation("my-reservation")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("subBlockStatus", subBlock.status());
+     *         ctx.export("subBlockHealth", subBlock.healthInfos());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetReservationSubBlockResult> getReservationSubBlock(GetReservationSubBlockArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getReservationSubBlock:getReservationSubBlock", TypeShape.of(GetReservationSubBlockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Compute Engine Reservation Sub-Block. Reservation sub-blocks are automatically created by Google Cloud within reservation blocks and represent a finer-grained physical grouping of resources.
+     * 
+     * For more information see the [official documentation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+     * and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/reservationSubBlocks).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationSubBlockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subBlock = ComputeFunctions.getReservationSubBlock(GetReservationSubBlockArgs.builder()
+     *             .name("my-reservation-sub-block")
+     *             .reservationBlock("my-reservation-block")
+     *             .reservation("my-reservation")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("subBlockStatus", subBlock.status());
+     *         ctx.export("subBlockHealth", subBlock.healthInfos());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetReservationSubBlockResult> getReservationSubBlockPlain(GetReservationSubBlockPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getReservationSubBlock:getReservationSubBlock", TypeShape.of(GetReservationSubBlockResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetResourcePolicyResult> getResourcePolicy(GetResourcePolicyArgs args) {
         return getResourcePolicy(args, InvokeOptions.Empty);

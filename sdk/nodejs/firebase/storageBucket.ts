@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultStorageBucket = new gcp.firebase.StorageBucket("default", {
  *     project: "my-project-name",
- *     bucketId: _default.id,
+ *     bucketId: _default.name,
  * });
  * ```
  *

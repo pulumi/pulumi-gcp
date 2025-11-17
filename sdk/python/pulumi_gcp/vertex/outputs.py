@@ -32,6 +32,7 @@ __all__ = [
     'AiEndpointPredictRequestResponseLoggingConfig',
     'AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination',
     'AiEndpointPrivateServiceConnectConfig',
+    'AiEndpointPrivateServiceConnectConfigPscAutomationConfig',
     'AiEndpointWithModelGardenDeploymentDeployConfig',
     'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources',
     'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec',
@@ -1132,6 +1133,8 @@ class AiEndpointPrivateServiceConnectConfig(dict):
             suggest = "enable_secure_private_service_connect"
         elif key == "projectAllowlists":
             suggest = "project_allowlists"
+        elif key == "pscAutomationConfigs":
+            suggest = "psc_automation_configs"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AiEndpointPrivateServiceConnectConfig. Access the value via the '{suggest}' property getter instead.")
@@ -1147,17 +1150,22 @@ class AiEndpointPrivateServiceConnectConfig(dict):
     def __init__(__self__, *,
                  enable_private_service_connect: _builtins.bool,
                  enable_secure_private_service_connect: Optional[_builtins.bool] = None,
-                 project_allowlists: Optional[Sequence[_builtins.str]] = None):
+                 project_allowlists: Optional[Sequence[_builtins.str]] = None,
+                 psc_automation_configs: Optional[Sequence['outputs.AiEndpointPrivateServiceConnectConfigPscAutomationConfig']] = None):
         """
         :param _builtins.bool enable_private_service_connect: Required. If true, expose the IndexEndpoint via private service connect.
         :param _builtins.bool enable_secure_private_service_connect: If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
         :param Sequence[_builtins.str] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
+        :param Sequence['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs'] psc_automation_configs: List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+               Structure is documented below.
         """
         pulumi.set(__self__, "enable_private_service_connect", enable_private_service_connect)
         if enable_secure_private_service_connect is not None:
             pulumi.set(__self__, "enable_secure_private_service_connect", enable_secure_private_service_connect)
         if project_allowlists is not None:
             pulumi.set(__self__, "project_allowlists", project_allowlists)
+        if psc_automation_configs is not None:
+            pulumi.set(__self__, "psc_automation_configs", psc_automation_configs)
 
     @_builtins.property
     @pulumi.getter(name="enablePrivateServiceConnect")
@@ -1182,6 +1190,123 @@ class AiEndpointPrivateServiceConnectConfig(dict):
         A list of Projects from which the forwarding rule will target the service attachment.
         """
         return pulumi.get(self, "project_allowlists")
+
+    @_builtins.property
+    @pulumi.getter(name="pscAutomationConfigs")
+    def psc_automation_configs(self) -> Optional[Sequence['outputs.AiEndpointPrivateServiceConnectConfigPscAutomationConfig']]:
+        """
+        List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_automation_configs")
+
+
+@pulumi.output_type
+class AiEndpointPrivateServiceConnectConfigPscAutomationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "errorMessage":
+            suggest = "error_message"
+        elif key == "forwardingRule":
+            suggest = "forwarding_rule"
+        elif key == "ipAddress":
+            suggest = "ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEndpointPrivateServiceConnectConfigPscAutomationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEndpointPrivateServiceConnectConfigPscAutomationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEndpointPrivateServiceConnectConfigPscAutomationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network: _builtins.str,
+                 project_id: _builtins.str,
+                 error_message: Optional[_builtins.str] = None,
+                 forwarding_rule: Optional[_builtins.str] = None,
+                 ip_address: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str network: The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+        :param _builtins.str project_id: Project id used to create forwarding rule.
+        :param _builtins.str error_message: (Output)
+               Error message if the PSC service automation failed.
+        :param _builtins.str forwarding_rule: (Output)
+               Forwarding rule created by the PSC service automation.
+        :param _builtins.str ip_address: (Output)
+               IP address rule created by the PSC service automation.
+        :param _builtins.str state: (Output)
+               The state of the PSC service automation.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project_id", project_id)
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> _builtins.str:
+        """
+        The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Project id used to create forwarding rule.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Error message if the PSC service automation failed.
+        """
+        return pulumi.get(self, "error_message")
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Forwarding rule created by the PSC service automation.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        IP address rule created by the PSC service automation.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the PSC service automation.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -4550,13 +4675,25 @@ class AiFeatureOnlineStoreFeatureviewIamMemberCondition(dict):
 @pulumi.output_type
 class AiFeatureOnlineStoreFeatureviewSyncConfig(dict):
     def __init__(__self__, *,
+                 continuous: Optional[_builtins.bool] = None,
                  cron: Optional[_builtins.str] = None):
         """
+        :param _builtins.bool continuous: If true, syncs the FeatureView in a continuous manner to Online Store.
         :param _builtins.str cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
                To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
         """
+        if continuous is not None:
+            pulumi.set(__self__, "continuous", continuous)
         if cron is not None:
             pulumi.set(__self__, "cron", cron)
+
+    @_builtins.property
+    @pulumi.getter
+    def continuous(self) -> Optional[_builtins.bool]:
+        """
+        If true, syncs the FeatureView in a continuous manner to Online Store.
+        """
+        return pulumi.get(self, "continuous")
 
     @_builtins.property
     @pulumi.getter

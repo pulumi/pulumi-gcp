@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.Index.Password("pwd", new()
+    ///     var pwd = new Random.RandomPassword("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1073,7 +1073,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DeletionProtection = false,
     ///     });
     /// 
-    ///     var pwd = new Random.Index.Password("pwd", new()
+    ///     var pwd = new Random.RandomPassword("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1195,7 +1195,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.Index.Password("pwd", new()
+    ///     var pwd = new Random.RandomPassword("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1291,8 +1291,8 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var cross_project_dataset = new Gcp.Organizations.Project("cross-project-dataset", new()
     ///     {
-    ///         ProjectId = "tf-test_76044",
-    ///         Name = "tf-test_69391",
+    ///         ProjectId = "tf-test_41150",
+    ///         Name = "tf-test_89313",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
@@ -1384,7 +1384,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.Index.Password("pwd", new()
+    ///     var pwd = new Random.RandomPassword("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1511,7 +1511,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.Index.Password("pwd", new()
+    ///     var pwd = new Random.RandomPassword("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1633,7 +1633,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.Index.Password("pwd", new()
+    ///     var pwd = new Random.RandomPassword("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,

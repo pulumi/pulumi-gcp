@@ -61,6 +61,35 @@ public final class PublicAdvertisedPrefixState extends com.pulumi.resources.Reso
     }
 
     /**
+     * The internet access type for IPv6 Public Advertised Prefixes. It can be
+     * set to one of following:
+     * * EXTERNAL: Default access type. The prefix will be announced to the
+     *   internet. All children PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
+     * 
+     */
+    @Import(name="ipv6AccessType")
+    private @Nullable Output<String> ipv6AccessType;
+
+    /**
+     * @return The internet access type for IPv6 Public Advertised Prefixes. It can be
+     * set to one of following:
+     * * EXTERNAL: Default access type. The prefix will be announced to the
+     *   internet. All children PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
+     * 
+     */
+    public Optional<Output<String>> ipv6AccessType() {
+        return Optional.ofNullable(this.ipv6AccessType);
+    }
+
+    /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
      * long and match the regular expression `a-z?`
@@ -165,6 +194,7 @@ public final class PublicAdvertisedPrefixState extends com.pulumi.resources.Reso
         this.description = $.description;
         this.dnsVerificationIp = $.dnsVerificationIp;
         this.ipCidrRange = $.ipCidrRange;
+        this.ipv6AccessType = $.ipv6AccessType;
         this.name = $.name;
         this.pdpScope = $.pdpScope;
         this.project = $.project;
@@ -251,6 +281,41 @@ public final class PublicAdvertisedPrefixState extends com.pulumi.resources.Reso
          */
         public Builder ipCidrRange(String ipCidrRange) {
             return ipCidrRange(Output.of(ipCidrRange));
+        }
+
+        /**
+         * @param ipv6AccessType The internet access type for IPv6 Public Advertised Prefixes. It can be
+         * set to one of following:
+         * * EXTERNAL: Default access type. The prefix will be announced to the
+         *   internet. All children PDPs will have access type as EXTERNAL.
+         * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+         *   be used privately within Google Cloud. All children PDPs will have
+         *   access type as INTERNAL.
+         *   Possible values are: `EXTERNAL`, `INTERNAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AccessType(@Nullable Output<String> ipv6AccessType) {
+            $.ipv6AccessType = ipv6AccessType;
+            return this;
+        }
+
+        /**
+         * @param ipv6AccessType The internet access type for IPv6 Public Advertised Prefixes. It can be
+         * set to one of following:
+         * * EXTERNAL: Default access type. The prefix will be announced to the
+         *   internet. All children PDPs will have access type as EXTERNAL.
+         * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+         *   be used privately within Google Cloud. All children PDPs will have
+         *   access type as INTERNAL.
+         *   Possible values are: `EXTERNAL`, `INTERNAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AccessType(String ipv6AccessType) {
+            return ipv6AccessType(Output.of(ipv6AccessType));
         }
 
         /**

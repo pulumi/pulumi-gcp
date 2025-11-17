@@ -238,6 +238,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.certificateManagerCustomEndpoint);
     }
 
+    @Import(name="cesCustomEndpoint")
+    private @Nullable Output<String> cesCustomEndpoint;
+
+    public Optional<Output<String>> cesCustomEndpoint() {
+        return Optional.ofNullable(this.cesCustomEndpoint);
+    }
+
     @Import(name="chronicleCustomEndpoint")
     private @Nullable Output<String> chronicleCustomEndpoint;
 
@@ -1434,6 +1441,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.binaryAuthorizationCustomEndpoint = $.binaryAuthorizationCustomEndpoint;
         this.blockchainNodeEngineCustomEndpoint = $.blockchainNodeEngineCustomEndpoint;
         this.certificateManagerCustomEndpoint = $.certificateManagerCustomEndpoint;
+        this.cesCustomEndpoint = $.cesCustomEndpoint;
         this.chronicleCustomEndpoint = $.chronicleCustomEndpoint;
         this.cloudAssetCustomEndpoint = $.cloudAssetCustomEndpoint;
         this.cloudBillingCustomEndpoint = $.cloudBillingCustomEndpoint;
@@ -1897,6 +1905,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder certificateManagerCustomEndpoint(String certificateManagerCustomEndpoint) {
             return certificateManagerCustomEndpoint(Output.of(certificateManagerCustomEndpoint));
+        }
+
+        public Builder cesCustomEndpoint(@Nullable Output<String> cesCustomEndpoint) {
+            $.cesCustomEndpoint = cesCustomEndpoint;
+            return this;
+        }
+
+        public Builder cesCustomEndpoint(String cesCustomEndpoint) {
+            return cesCustomEndpoint(Output.of(cesCustomEndpoint));
         }
 
         public Builder chronicleCustomEndpoint(@Nullable Output<String> chronicleCustomEndpoint) {

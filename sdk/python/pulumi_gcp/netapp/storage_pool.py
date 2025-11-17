@@ -38,6 +38,7 @@ class StoragePoolArgs:
                  replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  total_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StoragePool resource.
@@ -74,6 +75,10 @@ class StoragePoolArgs:
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
         :param pulumi.Input[_builtins.str] total_throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        :param pulumi.Input[_builtins.str] type: Type of the storage pool.
+               This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+               If not specified during creation, it defaults to FILE.
+               Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
         :param pulumi.Input[_builtins.str] zone: Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
                If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
@@ -112,6 +117,8 @@ class StoragePoolArgs:
             pulumi.set(__self__, "total_iops", total_iops)
         if total_throughput_mibps is not None:
             pulumi.set(__self__, "total_throughput_mibps", total_throughput_mibps)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -359,6 +366,21 @@ class StoragePoolArgs:
 
     @_builtins.property
     @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the storage pool.
+        This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+        If not specified during creation, it defaults to FILE.
+        Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
@@ -400,6 +422,7 @@ class _StoragePoolState:
                  service_level: Optional[pulumi.Input[_builtins.str]] = None,
                  total_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_count: Optional[pulumi.Input[_builtins.int]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
@@ -445,6 +468,10 @@ class _StoragePoolState:
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
         :param pulumi.Input[_builtins.str] total_throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        :param pulumi.Input[_builtins.str] type: Type of the storage pool.
+               This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+               If not specified during creation, it defaults to FILE.
+               Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
         :param pulumi.Input[_builtins.str] volume_capacity_gib: Size allocated to volumes in the storage pool (in GiB).
         :param pulumi.Input[_builtins.int] volume_count: Number of volume in the storage pool.
         :param pulumi.Input[_builtins.str] zone: Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
@@ -501,6 +528,8 @@ class _StoragePoolState:
             pulumi.set(__self__, "total_iops", total_iops)
         if total_throughput_mibps is not None:
             pulumi.set(__self__, "total_throughput_mibps", total_throughput_mibps)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if volume_capacity_gib is not None:
             pulumi.set(__self__, "volume_capacity_gib", volume_capacity_gib)
         if volume_count is not None:
@@ -824,6 +853,21 @@ class _StoragePoolState:
         pulumi.set(self, "total_throughput_mibps", value)
 
     @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the storage pool.
+        This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+        If not specified during creation, it defaults to FILE.
+        Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
     @pulumi.getter(name="volumeCapacityGib")
     def volume_capacity_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -887,6 +931,7 @@ class StoragePool(pulumi.CustomResource):
                  service_level: Optional[pulumi.Input[_builtins.str]] = None,
                  total_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -990,6 +1035,10 @@ class StoragePool(pulumi.CustomResource):
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
         :param pulumi.Input[_builtins.str] total_throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        :param pulumi.Input[_builtins.str] type: Type of the storage pool.
+               This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+               If not specified during creation, it defaults to FILE.
+               Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
         :param pulumi.Input[_builtins.str] zone: Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
                If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
@@ -1100,6 +1149,7 @@ class StoragePool(pulumi.CustomResource):
                  service_level: Optional[pulumi.Input[_builtins.str]] = None,
                  total_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1137,6 +1187,7 @@ class StoragePool(pulumi.CustomResource):
             __props__.__dict__["service_level"] = service_level
             __props__.__dict__["total_iops"] = total_iops
             __props__.__dict__["total_throughput_mibps"] = total_throughput_mibps
+            __props__.__dict__["type"] = type
             __props__.__dict__["zone"] = zone
             __props__.__dict__["available_throughput_mibps"] = None
             __props__.__dict__["cold_tier_size_used_gib"] = None
@@ -1183,6 +1234,7 @@ class StoragePool(pulumi.CustomResource):
             service_level: Optional[pulumi.Input[_builtins.str]] = None,
             total_iops: Optional[pulumi.Input[_builtins.str]] = None,
             total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
+            type: Optional[pulumi.Input[_builtins.str]] = None,
             volume_capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
             volume_count: Optional[pulumi.Input[_builtins.int]] = None,
             zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'StoragePool':
@@ -1233,6 +1285,10 @@ class StoragePool(pulumi.CustomResource):
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
         :param pulumi.Input[_builtins.str] total_throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        :param pulumi.Input[_builtins.str] type: Type of the storage pool.
+               This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+               If not specified during creation, it defaults to FILE.
+               Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
         :param pulumi.Input[_builtins.str] volume_capacity_gib: Size allocated to volumes in the storage pool (in GiB).
         :param pulumi.Input[_builtins.int] volume_count: Number of volume in the storage pool.
         :param pulumi.Input[_builtins.str] zone: Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
@@ -1268,6 +1324,7 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["service_level"] = service_level
         __props__.__dict__["total_iops"] = total_iops
         __props__.__dict__["total_throughput_mibps"] = total_throughput_mibps
+        __props__.__dict__["type"] = type
         __props__.__dict__["volume_capacity_gib"] = volume_capacity_gib
         __props__.__dict__["volume_count"] = volume_count
         __props__.__dict__["zone"] = zone
@@ -1317,7 +1374,7 @@ class StoragePool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="customPerformanceEnabled")
-    def custom_performance_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def custom_performance_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         """
@@ -1487,6 +1544,17 @@ class StoragePool(pulumi.CustomResource):
         Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         """
         return pulumi.get(self, "total_throughput_mibps")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Type of the storage pool.
+        This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
+        If not specified during creation, it defaults to FILE.
+        Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
+        """
+        return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="volumeCapacityGib")

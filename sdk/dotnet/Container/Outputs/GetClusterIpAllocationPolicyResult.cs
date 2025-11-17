@@ -34,6 +34,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string ClusterSecondaryRangeName;
         /// <summary>
+        /// Used to determine the default network tier for external IP addresses on cluster resources, such as node pools and load balancers.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterIpAllocationPolicyNetworkTierConfigResult> NetworkTierConfigs;
+        /// <summary>
         /// Configuration for cluster level pod cidr overprovision. Default is disabled=false.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult> PodCidrOverprovisionConfigs;
@@ -62,6 +66,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string clusterSecondaryRangeName,
 
+            ImmutableArray<Outputs.GetClusterIpAllocationPolicyNetworkTierConfigResult> networkTierConfigs,
+
             ImmutableArray<Outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult> podCidrOverprovisionConfigs,
 
             string servicesIpv4CidrBlock,
@@ -75,6 +81,7 @@ namespace Pulumi.Gcp.Container.Outputs
             AutoIpamConfigs = autoIpamConfigs;
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
+            NetworkTierConfigs = networkTierConfigs;
             PodCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
             ServicesIpv4CidrBlock = servicesIpv4CidrBlock;
             ServicesSecondaryRangeName = servicesSecondaryRangeName;

@@ -32,6 +32,7 @@ public final class GetInstanceResult {
     private String name;
     private String network;
     private String perUnitStorageThroughput;
+    private String placementPolicy;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private String state;
@@ -85,6 +86,9 @@ public final class GetInstanceResult {
     public String perUnitStorageThroughput() {
         return this.perUnitStorageThroughput;
     }
+    public String placementPolicy() {
+        return this.placementPolicy;
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -124,6 +128,7 @@ public final class GetInstanceResult {
         private String name;
         private String network;
         private String perUnitStorageThroughput;
+        private String placementPolicy;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private String state;
@@ -146,6 +151,7 @@ public final class GetInstanceResult {
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.perUnitStorageThroughput = defaults.perUnitStorageThroughput;
+    	      this.placementPolicy = defaults.placementPolicy;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.state = defaults.state;
@@ -266,6 +272,14 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder placementPolicy(String placementPolicy) {
+            if (placementPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "placementPolicy");
+            }
+            this.placementPolicy = placementPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -317,6 +331,7 @@ public final class GetInstanceResult {
             _resultValue.name = name;
             _resultValue.network = network;
             _resultValue.perUnitStorageThroughput = perUnitStorageThroughput;
+            _resultValue.placementPolicy = placementPolicy;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.state = state;

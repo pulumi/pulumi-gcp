@@ -147,6 +147,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.vertex.AiEndpoint;
@@ -165,11 +167,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("psc-network-_37135")
+ *             .build());
+ * 
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
  *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
- *             .name("endpoint-name_32270")
+ *             .name("endpoint-name_42503")
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .location("us-central1")
@@ -178,6 +184,10 @@ import javax.annotation.Nullable;
  *             .privateServiceConnectConfig(AiEndpointPrivateServiceConnectConfigArgs.builder()
  *                 .enablePrivateServiceConnect(true)
  *                 .projectAllowlists(project.projectId())
+ *                 .pscAutomationConfigs(AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs.builder()
+ *                     .projectId(project.projectId())
+ *                     .network(default_.id())
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -212,7 +222,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
- *             .name("endpoint-name_44703")
+ *             .name("endpoint-name_9991")
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .location("us-central1")

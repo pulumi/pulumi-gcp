@@ -65,6 +65,23 @@ public final class TableExternalDataConfiguration {
      */
     private @Nullable TableExternalDataConfigurationCsvOptions csvOptions;
     /**
+     * @return Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
+     * 
+     * Example: Suppose the value of this field is [&#34;NUMERIC&#34;, &#34;BIGNUMERIC&#34;]. If (precision,scale) is:
+     * 
+     * (38,9) &gt; NUMERIC;
+     * (39,9) &gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits);
+     * (38,10) &gt; BIGNUMERIC (NUMERIC cannot hold 10 fractional digits);
+     * (76,38) &gt; BIGNUMERIC;
+     * (77,38) &gt; BIGNUMERIC (error if value exceeds supported range).
+     * 
+     * This field cannot contain duplicate types. The order of the types in this field is ignored. For example, [&#34;BIGNUMERIC&#34;, &#34;NUMERIC&#34;] is the same as [&#34;NUMERIC&#34;, &#34;BIGNUMERIC&#34;] and NUMERIC always takes precedence over BIGNUMERIC.
+     * 
+     * Defaults to [&#34;NUMERIC&#34;, &#34;STRING&#34;] for ORC and [&#34;NUMERIC&#34;] for the other file formats.
+     * 
+     */
+    private @Nullable List<String> decimalTargetTypes;
+    /**
      * @return Specifies how source URIs are interpreted for constructing the file set to load.
      * By default source URIs are expanded against the underlying storage.
      * Other options include specifying manifest files. Only applicable to object storage systems. Docs
@@ -224,6 +241,25 @@ public final class TableExternalDataConfiguration {
         return Optional.ofNullable(this.csvOptions);
     }
     /**
+     * @return Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
+     * 
+     * Example: Suppose the value of this field is [&#34;NUMERIC&#34;, &#34;BIGNUMERIC&#34;]. If (precision,scale) is:
+     * 
+     * (38,9) &gt; NUMERIC;
+     * (39,9) &gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits);
+     * (38,10) &gt; BIGNUMERIC (NUMERIC cannot hold 10 fractional digits);
+     * (76,38) &gt; BIGNUMERIC;
+     * (77,38) &gt; BIGNUMERIC (error if value exceeds supported range).
+     * 
+     * This field cannot contain duplicate types. The order of the types in this field is ignored. For example, [&#34;BIGNUMERIC&#34;, &#34;NUMERIC&#34;] is the same as [&#34;NUMERIC&#34;, &#34;BIGNUMERIC&#34;] and NUMERIC always takes precedence over BIGNUMERIC.
+     * 
+     * Defaults to [&#34;NUMERIC&#34;, &#34;STRING&#34;] for ORC and [&#34;NUMERIC&#34;] for the other file formats.
+     * 
+     */
+    public List<String> decimalTargetTypes() {
+        return this.decimalTargetTypes == null ? List.of() : this.decimalTargetTypes;
+    }
+    /**
      * @return Specifies how source URIs are interpreted for constructing the file set to load.
      * By default source URIs are expanded against the underlying storage.
      * Other options include specifying manifest files. Only applicable to object storage systems. Docs
@@ -370,6 +406,7 @@ public final class TableExternalDataConfiguration {
         private @Nullable String compression;
         private @Nullable String connectionId;
         private @Nullable TableExternalDataConfigurationCsvOptions csvOptions;
+        private @Nullable List<String> decimalTargetTypes;
         private @Nullable String fileSetSpecType;
         private @Nullable TableExternalDataConfigurationGoogleSheetsOptions googleSheetsOptions;
         private @Nullable TableExternalDataConfigurationHivePartitioningOptions hivePartitioningOptions;
@@ -393,6 +430,7 @@ public final class TableExternalDataConfiguration {
     	      this.compression = defaults.compression;
     	      this.connectionId = defaults.connectionId;
     	      this.csvOptions = defaults.csvOptions;
+    	      this.decimalTargetTypes = defaults.decimalTargetTypes;
     	      this.fileSetSpecType = defaults.fileSetSpecType;
     	      this.googleSheetsOptions = defaults.googleSheetsOptions;
     	      this.hivePartitioningOptions = defaults.hivePartitioningOptions;
@@ -446,6 +484,15 @@ public final class TableExternalDataConfiguration {
 
             this.csvOptions = csvOptions;
             return this;
+        }
+        @CustomType.Setter
+        public Builder decimalTargetTypes(@Nullable List<String> decimalTargetTypes) {
+
+            this.decimalTargetTypes = decimalTargetTypes;
+            return this;
+        }
+        public Builder decimalTargetTypes(String... decimalTargetTypes) {
+            return decimalTargetTypes(List.of(decimalTargetTypes));
         }
         @CustomType.Setter
         public Builder fileSetSpecType(@Nullable String fileSetSpecType) {
@@ -544,6 +591,7 @@ public final class TableExternalDataConfiguration {
             _resultValue.compression = compression;
             _resultValue.connectionId = connectionId;
             _resultValue.csvOptions = csvOptions;
+            _resultValue.decimalTargetTypes = decimalTargetTypes;
             _resultValue.fileSetSpecType = fileSetSpecType;
             _resultValue.googleSheetsOptions = googleSheetsOptions;
             _resultValue.hivePartitioningOptions = hivePartitioningOptions;

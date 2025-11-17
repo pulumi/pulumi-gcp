@@ -289,6 +289,8 @@ class LiteTopic(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `pubsub.Topic` instead.
+
         A named resource to which messages are sent by publishers.
 
         To get more information about Topic, see:
@@ -379,6 +381,8 @@ class LiteTopic(pulumi.CustomResource):
                  args: Optional[LiteTopicArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `pubsub.Topic` instead.
+
         A named resource to which messages are sent by publishers.
 
         To get more information about Topic, see:

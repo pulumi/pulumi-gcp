@@ -6630,6 +6630,22 @@ if not MYPY:
         Additional properties to set if
         `source_format` is set to "CSV". Structure is documented below.
         """
+        decimal_target_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
+
+        Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is:
+
+        (38,9) > NUMERIC;
+        (39,9) > BIGNUMERIC (NUMERIC cannot hold 30 integer digits);
+        (38,10) > BIGNUMERIC (NUMERIC cannot hold 10 fractional digits);
+        (76,38) > BIGNUMERIC;
+        (77,38) > BIGNUMERIC (error if value exceeds supported range).
+
+        This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
+
+        Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        """
         file_set_spec_type: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies how source URIs are interpreted for constructing the file set to load.
@@ -6727,6 +6743,7 @@ class TableExternalDataConfigurationArgs:
                  compression: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  csv_options: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']] = None,
+                 decimal_target_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  file_set_spec_type: Optional[pulumi.Input[_builtins.str]] = None,
                  google_sheets_options: Optional[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgs']] = None,
                  hive_partitioning_options: Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgs']] = None,
@@ -6761,6 +6778,19 @@ class TableExternalDataConfigurationArgs:
                documented above.
         :param pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs'] csv_options: Additional properties to set if
                `source_format` is set to "CSV". Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] decimal_target_types: Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
+               
+               Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is:
+               
+               (38,9) > NUMERIC;
+               (39,9) > BIGNUMERIC (NUMERIC cannot hold 30 integer digits);
+               (38,10) > BIGNUMERIC (NUMERIC cannot hold 10 fractional digits);
+               (76,38) > BIGNUMERIC;
+               (77,38) > BIGNUMERIC (error if value exceeds supported range).
+               
+               This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
+               
+               Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         :param pulumi.Input[_builtins.str] file_set_spec_type: Specifies how source URIs are interpreted for constructing the file set to load.
                By default source URIs are expanded against the underlying storage.
                Other options include specifying manifest files. Only applicable to object storage systems. Docs
@@ -6819,6 +6849,8 @@ class TableExternalDataConfigurationArgs:
             pulumi.set(__self__, "connection_id", connection_id)
         if csv_options is not None:
             pulumi.set(__self__, "csv_options", csv_options)
+        if decimal_target_types is not None:
+            pulumi.set(__self__, "decimal_target_types", decimal_target_types)
         if file_set_spec_type is not None:
             pulumi.set(__self__, "file_set_spec_type", file_set_spec_type)
         if google_sheets_options is not None:
@@ -6942,6 +6974,30 @@ class TableExternalDataConfigurationArgs:
     @csv_options.setter
     def csv_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']]):
         pulumi.set(self, "csv_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="decimalTargetTypes")
+    def decimal_target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
+
+        Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is:
+
+        (38,9) > NUMERIC;
+        (39,9) > BIGNUMERIC (NUMERIC cannot hold 30 integer digits);
+        (38,10) > BIGNUMERIC (NUMERIC cannot hold 10 fractional digits);
+        (76,38) > BIGNUMERIC;
+        (77,38) > BIGNUMERIC (error if value exceeds supported range).
+
+        This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
+
+        Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        """
+        return pulumi.get(self, "decimal_target_types")
+
+    @decimal_target_types.setter
+    def decimal_target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "decimal_target_types", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSetSpecType")

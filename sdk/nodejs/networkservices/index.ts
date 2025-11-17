@@ -60,6 +60,11 @@ export type Mesh = import("./mesh").Mesh;
 export const Mesh: typeof import("./mesh").Mesh = null as any;
 utilities.lazyLoad(exports, ["Mesh"], () => require("./mesh"));
 
+export { MulticastDomainArgs, MulticastDomainState } from "./multicastDomain";
+export type MulticastDomain = import("./multicastDomain").MulticastDomain;
+export const MulticastDomain: typeof import("./multicastDomain").MulticastDomain = null as any;
+utilities.lazyLoad(exports, ["MulticastDomain"], () => require("./multicastDomain"));
+
 export { ServiceBindingArgs, ServiceBindingState } from "./serviceBinding";
 export type ServiceBinding = import("./serviceBinding").ServiceBinding;
 export const ServiceBinding: typeof import("./serviceBinding").ServiceBinding = null as any;
@@ -112,6 +117,8 @@ const _module = {
                 return new LbTrafficExtension(name, <any>undefined, { urn })
             case "gcp:networkservices/mesh:Mesh":
                 return new Mesh(name, <any>undefined, { urn })
+            case "gcp:networkservices/multicastDomain:MulticastDomain":
+                return new MulticastDomain(name, <any>undefined, { urn })
             case "gcp:networkservices/serviceBinding:ServiceBinding":
                 return new ServiceBinding(name, <any>undefined, { urn })
             case "gcp:networkservices/serviceLbPolicies:ServiceLbPolicies":
@@ -138,6 +145,7 @@ pulumi.runtime.registerResourceModule("gcp", "networkservices/httpRoute", _modul
 pulumi.runtime.registerResourceModule("gcp", "networkservices/lbRouteExtension", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/lbTrafficExtension", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/mesh", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/multicastDomain", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/serviceBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/serviceLbPolicies", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/tcpRoute", _module)

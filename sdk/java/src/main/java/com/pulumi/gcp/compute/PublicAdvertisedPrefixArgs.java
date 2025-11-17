@@ -35,15 +35,15 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
      * The IPv4 address to be used for reverse DNS verification.
      * 
      */
-    @Import(name="dnsVerificationIp", required=true)
-    private Output<String> dnsVerificationIp;
+    @Import(name="dnsVerificationIp")
+    private @Nullable Output<String> dnsVerificationIp;
 
     /**
      * @return The IPv4 address to be used for reverse DNS verification.
      * 
      */
-    public Output<String> dnsVerificationIp() {
-        return this.dnsVerificationIp;
+    public Optional<Output<String>> dnsVerificationIp() {
+        return Optional.ofNullable(this.dnsVerificationIp);
     }
 
     /**
@@ -59,6 +59,35 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
      */
     public Output<String> ipCidrRange() {
         return this.ipCidrRange;
+    }
+
+    /**
+     * The internet access type for IPv6 Public Advertised Prefixes. It can be
+     * set to one of following:
+     * * EXTERNAL: Default access type. The prefix will be announced to the
+     *   internet. All children PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
+     * 
+     */
+    @Import(name="ipv6AccessType")
+    private @Nullable Output<String> ipv6AccessType;
+
+    /**
+     * @return The internet access type for IPv6 Public Advertised Prefixes. It can be
+     * set to one of following:
+     * * EXTERNAL: Default access type. The prefix will be announced to the
+     *   internet. All children PDPs will have access type as EXTERNAL.
+     * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+     *   be used privately within Google Cloud. All children PDPs will have
+     *   access type as INTERNAL.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
+     * 
+     */
+    public Optional<Output<String>> ipv6AccessType() {
+        return Optional.ofNullable(this.ipv6AccessType);
     }
 
     /**
@@ -136,6 +165,7 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
         this.description = $.description;
         this.dnsVerificationIp = $.dnsVerificationIp;
         this.ipCidrRange = $.ipCidrRange;
+        this.ipv6AccessType = $.ipv6AccessType;
         this.name = $.name;
         this.pdpScope = $.pdpScope;
         this.project = $.project;
@@ -186,7 +216,7 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder dnsVerificationIp(Output<String> dnsVerificationIp) {
+        public Builder dnsVerificationIp(@Nullable Output<String> dnsVerificationIp) {
             $.dnsVerificationIp = dnsVerificationIp;
             return this;
         }
@@ -220,6 +250,41 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
          */
         public Builder ipCidrRange(String ipCidrRange) {
             return ipCidrRange(Output.of(ipCidrRange));
+        }
+
+        /**
+         * @param ipv6AccessType The internet access type for IPv6 Public Advertised Prefixes. It can be
+         * set to one of following:
+         * * EXTERNAL: Default access type. The prefix will be announced to the
+         *   internet. All children PDPs will have access type as EXTERNAL.
+         * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+         *   be used privately within Google Cloud. All children PDPs will have
+         *   access type as INTERNAL.
+         *   Possible values are: `EXTERNAL`, `INTERNAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AccessType(@Nullable Output<String> ipv6AccessType) {
+            $.ipv6AccessType = ipv6AccessType;
+            return this;
+        }
+
+        /**
+         * @param ipv6AccessType The internet access type for IPv6 Public Advertised Prefixes. It can be
+         * set to one of following:
+         * * EXTERNAL: Default access type. The prefix will be announced to the
+         *   internet. All children PDPs will have access type as EXTERNAL.
+         * * INTERNAL: The prefix won’t be announced to the internet. Prefix will
+         *   be used privately within Google Cloud. All children PDPs will have
+         *   access type as INTERNAL.
+         *   Possible values are: `EXTERNAL`, `INTERNAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AccessType(String ipv6AccessType) {
+            return ipv6AccessType(Output.of(ipv6AccessType));
         }
 
         /**
@@ -310,9 +375,6 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
         }
 
         public PublicAdvertisedPrefixArgs build() {
-            if ($.dnsVerificationIp == null) {
-                throw new MissingRequiredPropertyException("PublicAdvertisedPrefixArgs", "dnsVerificationIp");
-            }
             if ($.ipCidrRange == null) {
                 throw new MissingRequiredPropertyException("PublicAdvertisedPrefixArgs", "ipCidrRange");
             }

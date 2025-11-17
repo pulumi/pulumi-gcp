@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "dci-tf-_8270",
+ *     projectId: "dci-tf-_60646",
  *     name: "Service Project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
@@ -119,7 +119,7 @@ import * as utilities from "../utilities";
  * });
  * const myApphubApplication = new gcp.apphub.Application("my_apphub_application", {
  *     location: "us-central1",
- *     applicationId: "tf-test-example-application_41150",
+ *     applicationId: "tf-test-example-application_9394",
  *     scope: {
  *         type: "REGIONAL",
  *     },
@@ -129,7 +129,7 @@ import * as utilities from "../utilities";
  * });
  * const insightsConfig = new gcp.developerconnect.InsightsConfig("insights_config", {
  *     location: "us-central1",
- *     insightsConfigId: "tf-test-ic_89313",
+ *     insightsConfigId: "tf-test-ic_11380",
  *     project: project.projectId,
  *     annotations: {},
  *     labels: {},

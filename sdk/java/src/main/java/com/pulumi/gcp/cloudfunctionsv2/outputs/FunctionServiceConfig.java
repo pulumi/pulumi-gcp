@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionServiceConfigDirectVpcNetworkInterface;
 import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionServiceConfigSecretEnvironmentVariable;
 import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionServiceConfigSecretVolume;
 import java.lang.Boolean;
@@ -39,6 +40,18 @@ public final class FunctionServiceConfig {
      * 
      */
     private @Nullable String binaryAuthorizationPolicy;
+    /**
+     * @return Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+     * Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+     * 
+     */
+    private @Nullable String directVpcEgress;
+    /**
+     * @return The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<FunctionServiceConfigDirectVpcNetworkInterface> directVpcNetworkInterfaces;
     /**
      * @return Environment variables that shall be available during function execution.
      * 
@@ -152,6 +165,22 @@ public final class FunctionServiceConfig {
      */
     public Optional<String> binaryAuthorizationPolicy() {
         return Optional.ofNullable(this.binaryAuthorizationPolicy);
+    }
+    /**
+     * @return Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+     * Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
+     * 
+     */
+    public Optional<String> directVpcEgress() {
+        return Optional.ofNullable(this.directVpcEgress);
+    }
+    /**
+     * @return The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+     * Structure is documented below.
+     * 
+     */
+    public List<FunctionServiceConfigDirectVpcNetworkInterface> directVpcNetworkInterfaces() {
+        return this.directVpcNetworkInterfaces == null ? List.of() : this.directVpcNetworkInterfaces;
     }
     /**
      * @return Environment variables that shall be available during function execution.
@@ -277,6 +306,8 @@ public final class FunctionServiceConfig {
         private @Nullable String availableCpu;
         private @Nullable String availableMemory;
         private @Nullable String binaryAuthorizationPolicy;
+        private @Nullable String directVpcEgress;
+        private @Nullable List<FunctionServiceConfigDirectVpcNetworkInterface> directVpcNetworkInterfaces;
         private @Nullable Map<String,String> environmentVariables;
         private @Nullable String gcfUri;
         private @Nullable String ingressSettings;
@@ -298,6 +329,8 @@ public final class FunctionServiceConfig {
     	      this.availableCpu = defaults.availableCpu;
     	      this.availableMemory = defaults.availableMemory;
     	      this.binaryAuthorizationPolicy = defaults.binaryAuthorizationPolicy;
+    	      this.directVpcEgress = defaults.directVpcEgress;
+    	      this.directVpcNetworkInterfaces = defaults.directVpcNetworkInterfaces;
     	      this.environmentVariables = defaults.environmentVariables;
     	      this.gcfUri = defaults.gcfUri;
     	      this.ingressSettings = defaults.ingressSettings;
@@ -337,6 +370,21 @@ public final class FunctionServiceConfig {
 
             this.binaryAuthorizationPolicy = binaryAuthorizationPolicy;
             return this;
+        }
+        @CustomType.Setter
+        public Builder directVpcEgress(@Nullable String directVpcEgress) {
+
+            this.directVpcEgress = directVpcEgress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder directVpcNetworkInterfaces(@Nullable List<FunctionServiceConfigDirectVpcNetworkInterface> directVpcNetworkInterfaces) {
+
+            this.directVpcNetworkInterfaces = directVpcNetworkInterfaces;
+            return this;
+        }
+        public Builder directVpcNetworkInterfaces(FunctionServiceConfigDirectVpcNetworkInterface... directVpcNetworkInterfaces) {
+            return directVpcNetworkInterfaces(List.of(directVpcNetworkInterfaces));
         }
         @CustomType.Setter
         public Builder environmentVariables(@Nullable Map<String,String> environmentVariables) {
@@ -434,6 +482,8 @@ public final class FunctionServiceConfig {
             _resultValue.availableCpu = availableCpu;
             _resultValue.availableMemory = availableMemory;
             _resultValue.binaryAuthorizationPolicy = binaryAuthorizationPolicy;
+            _resultValue.directVpcEgress = directVpcEgress;
+            _resultValue.directVpcNetworkInterfaces = directVpcNetworkInterfaces;
             _resultValue.environmentVariables = environmentVariables;
             _resultValue.gcfUri = gcfUri;
             _resultValue.ingressSettings = ingressSettings;

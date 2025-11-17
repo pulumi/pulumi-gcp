@@ -35,8 +35,6 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// All the information related to Auto IPAM. Structure is documented below
-        /// 
-        /// &lt;a name="NestedAutoIpamConfig"&gt;&lt;/a&gt;The auto ipam config supports:
         /// </summary>
         [Input("autoIpamConfig")]
         public Input<Inputs.ClusterIpAllocationPolicyAutoIpamConfigArgs>? AutoIpamConfig { get; set; }
@@ -58,6 +56,14 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("clusterSecondaryRangeName")]
         public Input<string>? ClusterSecondaryRangeName { get; set; }
+
+        /// <summary>
+        /// Contains network tier information. Structure is documented below
+        /// 
+        /// &lt;a name="NestedAutoIpamConfig"&gt;&lt;/a&gt;The auto ipam config supports:
+        /// </summary>
+        [Input("networkTierConfig")]
+        public Input<Inputs.ClusterIpAllocationPolicyNetworkTierConfigArgs>? NetworkTierConfig { get; set; }
 
         /// <summary>
         /// Configuration for cluster level pod cidr overprovision. Default is disabled=false.
