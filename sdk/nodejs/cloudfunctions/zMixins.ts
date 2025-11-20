@@ -167,9 +167,13 @@ export class CallbackFunction extends pulumi.ComponentResource {
         // Function names : can only contain letters, numbers, underscores and hyphens
         const functionName = name.replace(/[^-_a-z0-9]/gi, "-");
 
+        // Extract major version from process.version (e.g., "v20.19.5" -> "20")
+        const majorVersion = process.version.slice(1).split('.')[0];
+        const defaultRuntime = `nodejs${majorVersion}`;
+
         this.function = new cloudfunctions.Function(functionName, {
             ...argsCopy,
-            runtime: utils.ifUndefined(args.runtime, "nodejs22"),
+            runtime: utils.ifUndefined(args.runtime, defaultRuntime),
             entryPoint: handlerName,
             sourceArchiveBucket: this.bucket.name,
             sourceArchiveObject: this.bucketObject.name,
