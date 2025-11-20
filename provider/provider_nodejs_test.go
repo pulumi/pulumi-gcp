@@ -137,3 +137,34 @@ func TestCloudfunctionWithCallbackPackageJson(t *testing.T) {
 		"response body should contain 'Hello from Cloud Function! Array: a, b, c'")
 
 }
+
+func TestCloudfunctionAutoRuntime(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+
+	testProgramDir := filepath.Join("test-programs", "cloudfunction-auto-runtime")
+	test := pulumitest.NewPulumiTest(t, testProgramDir,
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+	)
+
+	// Test that the runtime is automatically detected from process.version
+	up := test.Up(t)
+	require.NotNil(t, up)
+
+	// Check that we have the expected outputs
+	require.NotNil(t, up.Outputs["functionRuntime"], "functionRuntime output should exist")
+	require.NotNil(t, up.Outputs["expectedRuntime"], "expectedRuntime output should exist")
+	require.NotNil(t, up.Outputs["currentNodeVersion"], "currentNodeVersion output should exist")
+
+	// Verify that the function runtime matches the expected runtime
+	actualRuntime := up.Outputs["functionRuntime"].Value.(string)
+	expectedRuntime := up.Outputs["expectedRuntime"].Value.(string)
+	currentNodeVersion := up.Outputs["currentNodeVersion"].Value.(string)
+
+	require.Equal(t, expectedRuntime, actualRuntime,
+		"Function runtime should match expected runtime derived from Node.js version %s", currentNodeVersion)
+}
