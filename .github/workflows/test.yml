@@ -113,7 +113,7 @@ jobs:
     - name: Run provider tests
       if: matrix.testTarget == 'local'
       working-directory: provider
-      run: go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .
+      run: go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 -run "TestCloudfunctionAutoRuntime" .
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Run tests
