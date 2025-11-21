@@ -17,6 +17,8 @@ import (
 
 	"github.com/pulumi/providertest/pulumitest"
 	"github.com/pulumi/providertest/pulumitest/opttest"
+	"github.com/pulumi/pulumi/sdk/v3/go/auto/debug"
+	"github.com/pulumi/pulumi/sdk/v3/go/auto/optup"
 )
 
 func TestExplicitProviderTokenNotPlainText(t *testing.T) {
@@ -151,8 +153,14 @@ func TestCloudfunctionAutoRuntime(t *testing.T) {
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 	)
 
+	logLevel := uint(9)
 	// Test that the runtime is automatically detected from process.version
-	up := test.Up(t)
+	up := test.Up(t, optup.DebugLogging(
+		debug.LoggingOptions{
+			LogLevel:    &logLevel,
+			LogToStdErr: true,
+		},
+	))
 	require.NotNil(t, up)
 
 	// Check that we have the expected outputs

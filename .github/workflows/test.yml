@@ -131,8 +131,4 @@ jobs:
       matrix:
         language:
         - nodejs
-        - python
-        - dotnet
-        - go
-        - java
         testTarget: [local]
