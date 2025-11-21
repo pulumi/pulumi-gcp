@@ -171,6 +171,11 @@ export class CallbackFunction extends pulumi.ComponentResource {
         const majorVersion = process.version.slice(1).split('.')[0];
         const defaultRuntime = `nodejs${majorVersion}`;
 
+        pulumi.log.error(`Default runtime: ${defaultRuntime}`);
+        pulumi.log.error(`Current Node.js version: ${process.version}`);
+
+        throw new Error(`Default runtime: ${defaultRuntime} / Current Node.js version: ${process.version}`);
+
         this.function = new cloudfunctions.Function(functionName, {
             ...argsCopy,
             runtime: utils.ifUndefined(args.runtime, defaultRuntime),
