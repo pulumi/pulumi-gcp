@@ -5,9 +5,6 @@ import * as gcp from "@pulumi/gcp";
 const majorVersion = process.version.slice(1).split('.')[0];
 const expectedRuntimeValue = `nodejs${majorVersion}`;
 
-pulumi.log.error(`(TEST) Expected runtime: ${expectedRuntimeValue}`);
-pulumi.log.error(`(TEST) Current Node.js version: ${process.version}`);
-
 // Create a CallbackFunction WITHOUT specifying runtime
 // It should automatically use the current Node.js version
 const fn = new gcp.cloudfunctions.CallbackFunction("auto-runtime-test", {
