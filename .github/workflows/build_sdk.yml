@@ -35,10 +35,6 @@ jobs:
       matrix:
         language:
         - nodejs
-        - python
-        - dotnet
-        - go
-        - java
     permissions:
       contents: write # For Renovate SDKs.
       id-token: write # For ESC secrets.
