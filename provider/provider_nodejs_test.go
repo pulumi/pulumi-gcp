@@ -151,6 +151,7 @@ func TestCloudfunctionAutoRuntime(t *testing.T) {
 	testProgramDir := filepath.Join("test-programs", "cloudfunction-auto-runtime")
 	test := pulumitest.NewPulumiTest(t, testProgramDir,
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
 	)
 
 	logLevel := uint(9)
