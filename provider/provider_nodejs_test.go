@@ -29,6 +29,7 @@ func TestExplicitProviderTokenNotPlainText(t *testing.T) {
 	require.NoError(t, err)
 	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "explicit-provider-with-config"),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
 	)
 
 	res := test.Up(t)
@@ -45,6 +46,7 @@ func TestCloudrunServicePanicRegress2155(t *testing.T) {
 	require.NoError(t, err)
 	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "cloudrun-service"),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
 	)
 
 	test.Up(t)
@@ -64,6 +66,7 @@ func TestCloudrunServicePanicRegress2622(t *testing.T) {
 
 	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "cloudrun-service"),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
 	)
 
 	proj := getProject()
@@ -99,6 +102,7 @@ func TestCloudfunctionWrongType(t *testing.T) {
 	require.NoError(t, err)
 	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "cloudfunction-wrong-type"),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
 	)
 
 	_, err = test.CurrentStack().Up(test.Context())
@@ -118,6 +122,7 @@ func TestCloudfunctionWithCallbackPackageJson(t *testing.T) {
 	testProgramDir := filepath.Join("test-programs", "cloudfunction-callback-packagejson")
 	test := pulumitest.NewPulumiTest(t, testProgramDir,
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
 	)
 
 	// Test that the functionUrl returns the expected response, so we know the package.json processing worked
@@ -149,6 +154,7 @@ func TestCloudfunctionAutoRuntime(t *testing.T) {
 	testProgramDir := filepath.Join("test-programs", "cloudfunction-auto-runtime")
 	test := pulumitest.NewPulumiTest(t, testProgramDir,
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
 	)
 
 	// Test that the runtime is automatically detected from process.version

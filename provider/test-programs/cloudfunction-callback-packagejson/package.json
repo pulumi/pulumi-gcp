@@ -6,7 +6,7 @@
         "typescript": "^5.0.0"
     },
     "dependencies": {
-        "@pulumi/gcp": "^8.0.0",
+        "@pulumi/gcp": "latest",
         "@pulumi/pulumi": "^3.113.0",
         "lodash": "^4.17.21"
     }
