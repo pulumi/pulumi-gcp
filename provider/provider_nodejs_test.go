@@ -29,6 +29,7 @@ func TestExplicitProviderTokenNotPlainText(t *testing.T) {
 	require.NoError(t, err)
 	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "explicit-provider-with-config"),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
 	)
 
 	res := test.Up(t)
@@ -45,6 +46,7 @@ func TestCloudrunServicePanicRegress2155(t *testing.T) {
 	require.NoError(t, err)
 	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "cloudrun-service"),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
 	)
 
 	test.Up(t)
@@ -64,6 +66,7 @@ func TestCloudrunServicePanicRegress2622(t *testing.T) {
 
 	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "cloudrun-service"),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
 	)
 
 	proj := getProject()
@@ -99,6 +102,7 @@ func TestCloudfunctionWrongType(t *testing.T) {
 	require.NoError(t, err)
 	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "cloudfunction-wrong-type"),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
 	)
 
 	_, err = test.CurrentStack().Up(test.Context())
@@ -118,6 +122,7 @@ func TestCloudfunctionWithCallbackPackageJson(t *testing.T) {
 	testProgramDir := filepath.Join("test-programs", "cloudfunction-callback-packagejson")
 	test := pulumitest.NewPulumiTest(t, testProgramDir,
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
 	)
 
 	// Test that the functionUrl returns the expected response, so we know the package.json processing worked
@@ -136,4 +141,36 @@ func TestCloudfunctionWithCallbackPackageJson(t *testing.T) {
 	require.Contains(t, string(body), "Hello from Cloud Function! Array: a, b, c",
 		"response body should contain 'Hello from Cloud Function! Array: a, b, c'")
 
+}
+
+func TestCloudfunctionAutoRuntime(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+
+	testProgramDir := filepath.Join("test-programs", "cloudfunction-auto-runtime")
+	test := pulumitest.NewPulumiTest(t, testProgramDir,
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.YarnLink("@pulumi/gcp"),
+	)
+
+	// Test that the runtime is automatically detected from process.version
+	up := test.Up(t)
+	require.NotNil(t, up)
+
+	// Check that we have the expected outputs
+	require.NotNil(t, up.Outputs["functionRuntime"], "functionRuntime output should exist")
+	require.NotNil(t, up.Outputs["expectedRuntime"], "expectedRuntime output should exist")
+	require.NotNil(t, up.Outputs["currentNodeVersion"], "currentNodeVersion output should exist")
+
+	// Verify that the function runtime matches the expected runtime
+	actualRuntime := up.Outputs["functionRuntime"].Value.(string)
+	expectedRuntime := up.Outputs["expectedRuntime"].Value.(string)
+	currentNodeVersion := up.Outputs["currentNodeVersion"].Value.(string)
+
+	require.Equal(t, expectedRuntime, actualRuntime,
+		"Function runtime should match expected runtime derived from Node.js version %s", currentNodeVersion)
 }

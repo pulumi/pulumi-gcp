@@ -1,5 +1,5 @@
 {
-    "name": "cloudfunction-wrong-type",
+    "name": "cloudfunction-auto-runtime",
     "main": "index.ts",
     "devDependencies": {
         "@types/node": "^18",

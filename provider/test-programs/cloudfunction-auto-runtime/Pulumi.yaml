@@ -1,0 +1,3 @@
+name: cloudfunction-auto-runtime
+runtime: nodejs
+description: Test CloudFunction automatic runtime detection from process.version
