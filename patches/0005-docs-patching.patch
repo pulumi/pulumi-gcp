@@ -307,7 +307,7 @@ index f4794cf4d..982b4019c 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index 758b5d417..a78d640cf 100644
+index eeeeda70d..c033cbc68 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -33,8 +33,63 @@ To get more information about Service, see:
@@ -384,7 +384,7 @@ index 758b5d417..a78d640cf 100644
        }
      }
    }
-@@ -438,7 +493,7 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -486,7 +541,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -393,7 +393,7 @@ index 758b5d417..a78d640cf 100644
    or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
    Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
    keys to configure features on a Revision template:
-@@ -599,7 +654,8 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -652,7 +707,8 @@ this field is set to false, the revision name will still autogenerate.)
  
  * `liveness_probe` -
    (Optional)
@@ -403,7 +403,7 @@ index 758b5d417..a78d640cf 100644
    Structure is [documented below](#nested_spec_template_spec_containers_containers_liveness_probe).
  
  
-@@ -1073,7 +1129,7 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -1183,7 +1239,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -1391,10 +1391,10 @@ index f78621541..4052832f2 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index 89e4e26d0..353484f22 100644
+index 3a060eee5..50c936acf 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
-@@ -391,9 +391,6 @@ The following arguments are supported:
+@@ -418,9 +418,6 @@ The following arguments are supported:
    contained in this subnetwork. The primary IP of such VM must belong
    to the primary ipCidrRange of the subnetwork. The alias IPs may belong
    to either primary or secondary ranges.
@@ -1449,7 +1449,7 @@ index b994642a9..f06472978 100644
  ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `shared_secret_wo`.
  [Read more about Write-only Attributes](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 4a363395e..8ea4a6422 100644
+index dc7ff1a72..db705c7b7 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,15 +27,12 @@ To get more information about GKE clusters, see:
@@ -1531,7 +1531,7 @@ index 4a363395e..8ea4a6422 100644
      To update nodes in other node pools, use the `version` attribute on the node pool.
  
  * `notification_config` - (Optional) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is [documented below](#nested_notification_config).
-@@ -340,7 +358,7 @@ When updating this field, GKE imposes specific version requirements. See
+@@ -344,7 +362,7 @@ When updating this field, GKE imposes specific version requirements. See
  [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
  for more details; the `google_container_engine_versions` datasource can provide
  the default version for a channel. Note that removing the `release_channel`
@@ -1540,7 +1540,7 @@ index 4a363395e..8ea4a6422 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -983,10 +1001,6 @@ gvnic {
+@@ -988,10 +1006,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1551,7 +1551,7 @@ index 4a363395e..8ea4a6422 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -1013,7 +1027,7 @@ gvnic {
+@@ -1018,7 +1032,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1560,7 +1560,7 @@ index 4a363395e..8ea4a6422 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -1038,10 +1052,7 @@ gvnic {
+@@ -1043,10 +1057,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1572,7 +1572,7 @@ index 4a363395e..8ea4a6422 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -1055,13 +1066,14 @@ gvnic {
+@@ -1060,13 +1071,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1594,7 +1594,7 @@ index 4a363395e..8ea4a6422 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1375,7 +1387,7 @@ for more details. This field only applies to private clusters, when
+@@ -1390,7 +1402,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1603,7 +1603,7 @@ index 4a363395e..8ea4a6422 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1483,9 +1495,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1498,9 +1510,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -1932,7 +1932,7 @@ index 22865a95e..759cacafd 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/dns_managed_zone.html.markdown b/website/docs/r/dns_managed_zone.html.markdown
-index b5b1f432a..2dac39d50 100644
+index 7f67144c8..2ecf47f94 100644
 --- a/website/docs/r/dns_managed_zone.html.markdown
 +++ b/website/docs/r/dns_managed_zone.html.markdown
 @@ -44,16 +44,12 @@ To get more information about ManagedZone, see:
@@ -1953,7 +1953,7 @@ index b5b1f432a..2dac39d50 100644
  ```
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=dns_managed_zone_private&open_in_editor=main.tf" target="_blank">
-@@ -330,10 +326,9 @@ The following arguments are supported:
+@@ -363,10 +359,9 @@ The following arguments are supported:
    User assigned name for this resource.
    Must be unique within the project.
  
@@ -3401,10 +3401,10 @@ index d3e4a7bb3..48878d436 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index 1a27453d1..67b9a4612 100644
+index 183f5f072..2dccc72f4 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
-@@ -149,7 +149,7 @@ The following arguments are supported:
+@@ -183,7 +183,7 @@ The following arguments are supported:
  
  * `force_destroy` - (Optional, Default: false) When deleting a bucket, this
      boolean option will delete all contained objects. If you try to delete a
@@ -3413,7 +3413,7 @@ index 1a27453d1..67b9a4612 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
      is not provided, the provider project is used.
-@@ -297,9 +297,9 @@ The following arguments are supported:
+@@ -331,9 +331,9 @@ The following arguments are supported:
    until a relevant action has occurred which triggers its creation.
    You should use the [`google_storage_project_service_account`](/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
    address for the service account when configuring IAM policy on the Cloud KMS key.
