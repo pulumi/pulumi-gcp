@@ -219,6 +219,9 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+	// Structure is documented below.
+	BrokerCapacityConfig ClusterBrokerCapacityConfigPtrOutput `pulumi:"brokerCapacityConfig"`
 	// A capacity configuration of a Kafka cluster.
 	// Structure is documented below.
 	CapacityConfig ClusterCapacityConfigOutput `pulumi:"capacityConfig"`
@@ -304,6 +307,9 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
+	// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+	// Structure is documented below.
+	BrokerCapacityConfig *ClusterBrokerCapacityConfig `pulumi:"brokerCapacityConfig"`
 	// A capacity configuration of a Kafka cluster.
 	// Structure is documented below.
 	CapacityConfig *ClusterCapacityConfig `pulumi:"capacityConfig"`
@@ -343,6 +349,9 @@ type clusterState struct {
 }
 
 type ClusterState struct {
+	// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+	// Structure is documented below.
+	BrokerCapacityConfig ClusterBrokerCapacityConfigPtrInput
 	// A capacity configuration of a Kafka cluster.
 	// Structure is documented below.
 	CapacityConfig ClusterCapacityConfigPtrInput
@@ -386,6 +395,9 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+	// Structure is documented below.
+	BrokerCapacityConfig *ClusterBrokerCapacityConfig `pulumi:"brokerCapacityConfig"`
 	// A capacity configuration of a Kafka cluster.
 	// Structure is documented below.
 	CapacityConfig ClusterCapacityConfig `pulumi:"capacityConfig"`
@@ -413,6 +425,9 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+	// Structure is documented below.
+	BrokerCapacityConfig ClusterBrokerCapacityConfigPtrInput
 	// A capacity configuration of a Kafka cluster.
 	// Structure is documented below.
 	CapacityConfig ClusterCapacityConfigInput
@@ -523,6 +538,12 @@ func (o ClusterOutput) ToClusterOutput() ClusterOutput {
 
 func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return o
+}
+
+// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+// Structure is documented below.
+func (o ClusterOutput) BrokerCapacityConfig() ClusterBrokerCapacityConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterBrokerCapacityConfigPtrOutput { return v.BrokerCapacityConfig }).(ClusterBrokerCapacityConfigPtrOutput)
 }
 
 // A capacity configuration of a Kafka cluster.

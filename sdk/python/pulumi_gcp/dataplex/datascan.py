@@ -692,6 +692,7 @@ class Datascan(pulumi.CustomResource):
                         "results_table": "//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
                     },
                 },
+                "catalog_publishing_enabled": True,
             },
             project="my-project-name",
             opts = pulumi.ResourceOptions(depends_on=[source]))
@@ -1160,6 +1161,7 @@ class Datascan(pulumi.CustomResource):
                         "results_table": "//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
                     },
                 },
+                "catalog_publishing_enabled": True,
             },
             project="my-project-name",
             opts = pulumi.ResourceOptions(depends_on=[source]))

@@ -31,9 +31,11 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
     }
 
     /**
-     * Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-     * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-     * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+     * Forwarding path for this TargetNameServer. If unset or `default`
+     * Cloud DNS will make forwarding decision based on address ranges,
+     * i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+     * to the Internet. When set to `private`, Cloud DNS will always
+     * send queries through VPC for this target.
      * Possible values are: `default`, `private`.
      * 
      */
@@ -41,9 +43,11 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
     private @Nullable Output<String> forwardingPath;
 
     /**
-     * @return Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-     * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-     * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+     * @return Forwarding path for this TargetNameServer. If unset or `default`
+     * Cloud DNS will make forwarding decision based on address ranges,
+     * i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+     * to the Internet. When set to `private`, Cloud DNS will always
+     * send queries through VPC for this target.
      * Possible values are: `default`, `private`.
      * 
      */
@@ -53,6 +57,7 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
 
     /**
      * IPv4 address of a target name server.
+     * Does not accept both fields (ipv4 &amp; ipv6) being populated.
      * 
      */
     @Import(name="ipv4Address")
@@ -60,10 +65,28 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
 
     /**
      * @return IPv4 address of a target name server.
+     * Does not accept both fields (ipv4 &amp; ipv6) being populated.
      * 
      */
     public Optional<Output<String>> ipv4Address() {
         return Optional.ofNullable(this.ipv4Address);
+    }
+
+    /**
+     * IPv6 address of a target name server.
+     * Does not accept both fields (ipv4 &amp; ipv6) being populated.
+     * 
+     */
+    @Import(name="ipv6Address")
+    private @Nullable Output<String> ipv6Address;
+
+    /**
+     * @return IPv6 address of a target name server.
+     * Does not accept both fields (ipv4 &amp; ipv6) being populated.
+     * 
+     */
+    public Optional<Output<String>> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
     }
 
     private ManagedZoneForwardingConfigTargetNameServerArgs() {}
@@ -72,6 +95,7 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
         this.domainName = $.domainName;
         this.forwardingPath = $.forwardingPath;
         this.ipv4Address = $.ipv4Address;
+        this.ipv6Address = $.ipv6Address;
     }
 
     public static Builder builder() {
@@ -114,9 +138,11 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
         }
 
         /**
-         * @param forwardingPath Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-         * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-         * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+         * @param forwardingPath Forwarding path for this TargetNameServer. If unset or `default`
+         * Cloud DNS will make forwarding decision based on address ranges,
+         * i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+         * to the Internet. When set to `private`, Cloud DNS will always
+         * send queries through VPC for this target.
          * Possible values are: `default`, `private`.
          * 
          * @return builder
@@ -128,9 +154,11 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
         }
 
         /**
-         * @param forwardingPath Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-         * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-         * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+         * @param forwardingPath Forwarding path for this TargetNameServer. If unset or `default`
+         * Cloud DNS will make forwarding decision based on address ranges,
+         * i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+         * to the Internet. When set to `private`, Cloud DNS will always
+         * send queries through VPC for this target.
          * Possible values are: `default`, `private`.
          * 
          * @return builder
@@ -142,6 +170,7 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
 
         /**
          * @param ipv4Address IPv4 address of a target name server.
+         * Does not accept both fields (ipv4 &amp; ipv6) being populated.
          * 
          * @return builder
          * 
@@ -153,12 +182,36 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
 
         /**
          * @param ipv4Address IPv4 address of a target name server.
+         * Does not accept both fields (ipv4 &amp; ipv6) being populated.
          * 
          * @return builder
          * 
          */
         public Builder ipv4Address(String ipv4Address) {
             return ipv4Address(Output.of(ipv4Address));
+        }
+
+        /**
+         * @param ipv6Address IPv6 address of a target name server.
+         * Does not accept both fields (ipv4 &amp; ipv6) being populated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(@Nullable Output<String> ipv6Address) {
+            $.ipv6Address = ipv6Address;
+            return this;
+        }
+
+        /**
+         * @param ipv6Address IPv6 address of a target name server.
+         * Does not accept both fields (ipv4 &amp; ipv6) being populated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(String ipv6Address) {
+            return ipv6Address(Output.of(ipv6Address));
         }
 
         public ManagedZoneForwardingConfigTargetNameServerArgs build() {

@@ -60,13 +60,13 @@ import * as utilities from "../utilities";
  *         },
  *     }));
  * }
- * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
  * const onprem = [
  *     "192.168.1.2",
  *     "192.168.2.3",
  * ];
  * const postgres = new gcp.sql.DatabaseInstance("postgres", {
- *     name: pulumi.interpolate`postgres-instance-${dbNameSuffix.hex}`,
+ *     name: `postgres-instance-${dbNameSuffix.hex}`,
  *     databaseVersion: "POSTGRES_15",
  *     settings: {
  *         tier: "db-f1-micro",
@@ -105,9 +105,9 @@ import * as utilities from "../utilities";
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAddress.name],
  * });
- * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
  * const instance = new gcp.sql.DatabaseInstance("instance", {
- *     name: pulumi.interpolate`private-instance-${dbNameSuffix.hex}`,
+ *     name: `private-instance-${dbNameSuffix.hex}`,
  *     region: "us-central1",
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {

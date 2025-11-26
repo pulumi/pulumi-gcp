@@ -3144,6 +3144,8 @@ func (o DatascanDataDocumentationSpecPtrOutput) Elem() DatascanDataDocumentation
 }
 
 type DatascanDataProfileSpec struct {
+	// If set, the latest DataScan job result will be published to Dataplex Catalog.
+	CatalogPublishingEnabled *bool `pulumi:"catalogPublishingEnabled"`
 	// The fields to exclude from data profile.
 	// If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
 	// Structure is documented below.
@@ -3175,6 +3177,8 @@ type DatascanDataProfileSpecInput interface {
 }
 
 type DatascanDataProfileSpecArgs struct {
+	// If set, the latest DataScan job result will be published to Dataplex Catalog.
+	CatalogPublishingEnabled pulumi.BoolPtrInput `pulumi:"catalogPublishingEnabled"`
 	// The fields to exclude from data profile.
 	// If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
 	// Structure is documented below.
@@ -3271,6 +3275,11 @@ func (o DatascanDataProfileSpecOutput) ToDatascanDataProfileSpecPtrOutputWithCon
 	}).(DatascanDataProfileSpecPtrOutput)
 }
 
+// If set, the latest DataScan job result will be published to Dataplex Catalog.
+func (o DatascanDataProfileSpecOutput) CatalogPublishingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileSpec) *bool { return v.CatalogPublishingEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // The fields to exclude from data profile.
 // If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
 // Structure is documented below.
@@ -3325,6 +3334,16 @@ func (o DatascanDataProfileSpecPtrOutput) Elem() DatascanDataProfileSpecOutput {
 		var ret DatascanDataProfileSpec
 		return ret
 	}).(DatascanDataProfileSpecOutput)
+}
+
+// If set, the latest DataScan job result will be published to Dataplex Catalog.
+func (o DatascanDataProfileSpecPtrOutput) CatalogPublishingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogPublishingEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The fields to exclude from data profile.

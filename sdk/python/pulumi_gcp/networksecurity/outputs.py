@@ -61,6 +61,7 @@ __all__ = [
     'ClientTlsPolicyServerValidationCa',
     'ClientTlsPolicyServerValidationCaCertificateProviderInstance',
     'ClientTlsPolicyServerValidationCaGrpcEndpoint',
+    'FirewallEndpointEndpointSettings',
     'InterceptDeploymentGroupConnectedEndpointGroup',
     'InterceptDeploymentGroupLocation',
     'InterceptEndpointGroupAssociation',
@@ -2875,6 +2876,42 @@ class ClientTlsPolicyServerValidationCaGrpcEndpoint(dict):
         The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         """
         return pulumi.get(self, "target_uri")
+
+
+@pulumi.output_type
+class FirewallEndpointEndpointSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jumboFramesEnabled":
+            suggest = "jumbo_frames_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallEndpointEndpointSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallEndpointEndpointSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallEndpointEndpointSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 jumbo_frames_enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool jumbo_frames_enabled: Indicates whether Jumbo Frames are enabled for the firewall endpoint.
+        """
+        if jumbo_frames_enabled is not None:
+            pulumi.set(__self__, "jumbo_frames_enabled", jumbo_frames_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="jumboFramesEnabled")
+    def jumbo_frames_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether Jumbo Frames are enabled for the firewall endpoint.
+        """
+        return pulumi.get(self, "jumbo_frames_enabled")
 
 
 @pulumi.output_type

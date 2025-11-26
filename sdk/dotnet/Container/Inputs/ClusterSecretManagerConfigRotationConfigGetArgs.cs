@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterSecretManagerConfigRotationConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the roation in Secret Manager add-on for this cluster.
+        /// Enable the roation in Sync as K8s secret feature for this cluster.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

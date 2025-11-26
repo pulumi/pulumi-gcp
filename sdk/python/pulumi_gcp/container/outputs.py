@@ -162,6 +162,7 @@ __all__ = [
     'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig',
     'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig',
     'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig',
+    'ClusterNodeConfigContainerdConfigWritableCgroups',
     'ClusterNodeConfigEffectiveTaint',
     'ClusterNodeConfigEphemeralStorageConfig',
     'ClusterNodeConfigEphemeralStorageLocalSsdConfig',
@@ -202,6 +203,7 @@ __all__ = [
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig',
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig',
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups',
     'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig',
     'ClusterNodePoolManagement',
     'ClusterNodePoolNetworkConfig',
@@ -217,6 +219,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig',
     'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig',
     'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig',
+    'ClusterNodePoolNodeConfigContainerdConfigWritableCgroups',
     'ClusterNodePoolNodeConfigEffectiveTaint',
     'ClusterNodePoolNodeConfigEphemeralStorageConfig',
     'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig',
@@ -265,6 +268,8 @@ __all__ = [
     'ClusterResourceUsageExportConfigBigqueryDestination',
     'ClusterSecretManagerConfig',
     'ClusterSecretManagerConfigRotationConfig',
+    'ClusterSecretSyncConfig',
+    'ClusterSecretSyncConfigRotationConfig',
     'ClusterSecurityPostureConfig',
     'ClusterServiceExternalIpsConfig',
     'ClusterTpuConfig',
@@ -287,6 +292,7 @@ __all__ = [
     'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig',
     'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig',
     'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig',
+    'NodePoolNodeConfigContainerdConfigWritableCgroups',
     'NodePoolNodeConfigEffectiveTaint',
     'NodePoolNodeConfigEphemeralStorageConfig',
     'NodePoolNodeConfigEphemeralStorageLocalSsdConfig',
@@ -397,6 +403,7 @@ __all__ = [
     'GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigResult',
     'GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult',
     'GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult',
+    'GetClusterNodeConfigContainerdConfigWritableCgroupResult',
     'GetClusterNodeConfigEffectiveTaintResult',
     'GetClusterNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult',
@@ -437,6 +444,7 @@ __all__ = [
     'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult',
     'GetClusterNodePoolManagementResult',
     'GetClusterNodePoolNetworkConfigResult',
@@ -452,6 +460,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigResult',
     'GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult',
     'GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult',
+    'GetClusterNodePoolNodeConfigContainerdConfigWritableCgroupResult',
     'GetClusterNodePoolNodeConfigEffectiveTaintResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult',
@@ -500,6 +509,8 @@ __all__ = [
     'GetClusterResourceUsageExportConfigBigqueryDestinationResult',
     'GetClusterSecretManagerConfigResult',
     'GetClusterSecretManagerConfigRotationConfigResult',
+    'GetClusterSecretSyncConfigResult',
+    'GetClusterSecretSyncConfigRotationConfigResult',
     'GetClusterSecurityPostureConfigResult',
     'GetClusterServiceExternalIpsConfigResult',
     'GetClusterTpuConfigResult',
@@ -6725,12 +6736,12 @@ class ClusterMaintenancePolicyMaintenanceExclusion(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "endTime":
-            suggest = "end_time"
-        elif key == "exclusionName":
+        if key == "exclusionName":
             suggest = "exclusion_name"
         elif key == "startTime":
             suggest = "start_time"
+        elif key == "endTime":
+            suggest = "end_time"
         elif key == "exclusionOptions":
             suggest = "exclusion_options"
 
@@ -6746,23 +6757,19 @@ class ClusterMaintenancePolicyMaintenanceExclusion(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 end_time: _builtins.str,
                  exclusion_name: _builtins.str,
                  start_time: _builtins.str,
+                 end_time: Optional[_builtins.str] = None,
                  exclusion_options: Optional['outputs.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions'] = None):
         """
         :param 'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs' exclusion_options: MaintenanceExclusionOptions provides maintenance exclusion related options.
         """
-        pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "exclusion_name", exclusion_name)
         pulumi.set(__self__, "start_time", start_time)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
         if exclusion_options is not None:
             pulumi.set(__self__, "exclusion_options", exclusion_options)
-
-    @_builtins.property
-    @pulumi.getter(name="endTime")
-    def end_time(self) -> _builtins.str:
-        return pulumi.get(self, "end_time")
 
     @_builtins.property
     @pulumi.getter(name="exclusionName")
@@ -6775,6 +6782,11 @@ class ClusterMaintenancePolicyMaintenanceExclusion(dict):
         return pulumi.get(self, "start_time")
 
     @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
     @pulumi.getter(name="exclusionOptions")
     def exclusion_options(self) -> Optional['outputs.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions']:
         """
@@ -6785,10 +6797,29 @@ class ClusterMaintenancePolicyMaintenanceExclusion(dict):
 
 @pulumi.output_type
 class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTimeBehavior":
+            suggest = "end_time_behavior"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 scope: _builtins.str):
+                 scope: _builtins.str,
+                 end_time_behavior: Optional[_builtins.str] = None):
         """
         :param _builtins.str scope: The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+        :param _builtins.str end_time_behavior: The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `end_time_behavior` and `end_time` should be specified.
                
                Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
                the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
@@ -6815,21 +6846,31 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions(dict):
                maintenance_exclusion{
                exclusion_name = "holiday data load"
                start_time = "2019-05-01T00:00:00Z"
-               end_time = "2019-05-02T00:00:00Z"
                exclusion_options {
                scope = "NO_MINOR_UPGRADES"
+               end_time_behavior = "UNTIL_END_OF_SUPPORT"
                }
                }
                }
                ```
         """
         pulumi.set(__self__, "scope", scope)
+        if end_time_behavior is not None:
+            pulumi.set(__self__, "end_time_behavior", end_time_behavior)
 
     @_builtins.property
     @pulumi.getter
     def scope(self) -> _builtins.str:
         """
         The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+        """
+        return pulumi.get(self, "scope")
+
+    @_builtins.property
+    @pulumi.getter(name="endTimeBehavior")
+    def end_time_behavior(self) -> Optional[_builtins.str]:
+        """
+        The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `end_time_behavior` and `end_time` should be specified.
 
         Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
         the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
@@ -6856,15 +6897,15 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions(dict):
         maintenance_exclusion{
         exclusion_name = "holiday data load"
         start_time = "2019-05-01T00:00:00Z"
-        end_time = "2019-05-02T00:00:00Z"
         exclusion_options {
         scope = "NO_MINOR_UPGRADES"
+        end_time_behavior = "UNTIL_END_OF_SUPPORT"
         }
         }
         }
         ```
         """
-        return pulumi.get(self, "scope")
+        return pulumi.get(self, "end_time_behavior")
 
 
 @pulumi.output_type
@@ -8405,6 +8446,8 @@ class ClusterNodeConfigContainerdConfig(dict):
         suggest = None
         if key == "privateRegistryAccessConfig":
             suggest = "private_registry_access_config"
+        elif key == "writableCgroups":
+            suggest = "writable_cgroups"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigContainerdConfig. Access the value via the '{suggest}' property getter instead.")
@@ -8418,12 +8461,16 @@ class ClusterNodeConfigContainerdConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 private_registry_access_config: Optional['outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig'] = None):
+                 private_registry_access_config: Optional['outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig'] = None,
+                 writable_cgroups: Optional['outputs.ClusterNodeConfigContainerdConfigWritableCgroups'] = None):
         """
         :param 'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Configuration for private container registries. There are two fields in this config:
+        :param 'ClusterNodeConfigContainerdConfigWritableCgroupsArgs' writable_cgroups: Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
         """
         if private_registry_access_config is not None:
             pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+        if writable_cgroups is not None:
+            pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
     @pulumi.getter(name="privateRegistryAccessConfig")
@@ -8432,6 +8479,14 @@ class ClusterNodeConfigContainerdConfig(dict):
         Configuration for private container registries. There are two fields in this config:
         """
         return pulumi.get(self, "private_registry_access_config")
+
+    @_builtins.property
+    @pulumi.getter(name="writableCgroups")
+    def writable_cgroups(self) -> Optional['outputs.ClusterNodeConfigContainerdConfigWritableCgroups']:
+        """
+        Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
+        """
+        return pulumi.get(self, "writable_cgroups")
 
 
 @pulumi.output_type
@@ -8560,6 +8615,24 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAut
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodeConfigContainerdConfigWritableCgroups(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether writable cgroups are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether writable cgroups are enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -10923,6 +10996,8 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig(dict):
         suggest = None
         if key == "privateRegistryAccessConfig":
             suggest = "private_registry_access_config"
+        elif key == "writableCgroups":
+            suggest = "writable_cgroups"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig. Access the value via the '{suggest}' property getter instead.")
@@ -10936,12 +11011,16 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 private_registry_access_config: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig'] = None):
+                 private_registry_access_config: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig'] = None,
+                 writable_cgroups: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups'] = None):
         """
         :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Configuration for private container registries. There are two fields in this config:
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgs' writable_cgroups: Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
         """
         if private_registry_access_config is not None:
             pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+        if writable_cgroups is not None:
+            pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
     @pulumi.getter(name="privateRegistryAccessConfig")
@@ -10950,6 +11029,14 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig(dict):
         Configuration for private container registries. There are two fields in this config:
         """
         return pulumi.get(self, "private_registry_access_config")
+
+    @_builtins.property
+    @pulumi.getter(name="writableCgroups")
+    def writable_cgroups(self) -> Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups']:
+        """
+        Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
+        """
+        return pulumi.get(self, "writable_cgroups")
 
 
 @pulumi.output_type
@@ -11078,6 +11165,24 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether writable cgroups are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether writable cgroups are enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -12437,6 +12542,8 @@ class ClusterNodePoolNodeConfigContainerdConfig(dict):
         suggest = None
         if key == "privateRegistryAccessConfig":
             suggest = "private_registry_access_config"
+        elif key == "writableCgroups":
+            suggest = "writable_cgroups"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigContainerdConfig. Access the value via the '{suggest}' property getter instead.")
@@ -12450,12 +12557,16 @@ class ClusterNodePoolNodeConfigContainerdConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 private_registry_access_config: Optional['outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig'] = None):
+                 private_registry_access_config: Optional['outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig'] = None,
+                 writable_cgroups: Optional['outputs.ClusterNodePoolNodeConfigContainerdConfigWritableCgroups'] = None):
         """
         :param 'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Configuration for private container registries. There are two fields in this config:
+        :param 'ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgs' writable_cgroups: Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
         """
         if private_registry_access_config is not None:
             pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+        if writable_cgroups is not None:
+            pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
     @pulumi.getter(name="privateRegistryAccessConfig")
@@ -12464,6 +12575,14 @@ class ClusterNodePoolNodeConfigContainerdConfig(dict):
         Configuration for private container registries. There are two fields in this config:
         """
         return pulumi.get(self, "private_registry_access_config")
+
+    @_builtins.property
+    @pulumi.getter(name="writableCgroups")
+    def writable_cgroups(self) -> Optional['outputs.ClusterNodePoolNodeConfigContainerdConfigWritableCgroups']:
+        """
+        Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
+        """
+        return pulumi.get(self, "writable_cgroups")
 
 
 @pulumi.output_type
@@ -12592,6 +12711,24 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertif
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigContainerdConfigWritableCgroups(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether writable cgroups are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether writable cgroups are enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -15248,7 +15385,7 @@ class ClusterSecretManagerConfigRotationConfig(dict):
                  enabled: _builtins.bool,
                  rotation_interval: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool enabled: Enable the roation in Secret Manager add-on for this cluster.
+        :param _builtins.bool enabled: Enable the roation in Sync as K8s secret feature for this cluster.
         :param _builtins.str rotation_interval: The interval between two consecutive rotations. Default rotation interval is 2 minutes.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -15259,7 +15396,101 @@ class ClusterSecretManagerConfigRotationConfig(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Enable the roation in Secret Manager add-on for this cluster.
+        Enable the roation in Sync as K8s secret feature for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> Optional[_builtins.str]:
+        """
+        The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        """
+        return pulumi.get(self, "rotation_interval")
+
+
+@pulumi.output_type
+class ClusterSecretSyncConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rotationConfig":
+            suggest = "rotation_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterSecretSyncConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterSecretSyncConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterSecretSyncConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 rotation_config: Optional['outputs.ClusterSecretSyncConfigRotationConfig'] = None):
+        """
+        :param _builtins.bool enabled: Enable the Sync as K8s secret feature for this cluster.
+        :param 'ClusterSecretSyncConfigRotationConfigArgs' rotation_config: config for secret sync auto rotation. Structure is docuemented below
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if rotation_config is not None:
+            pulumi.set(__self__, "rotation_config", rotation_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Enable the Sync as K8s secret feature for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="rotationConfig")
+    def rotation_config(self) -> Optional['outputs.ClusterSecretSyncConfigRotationConfig']:
+        """
+        config for secret sync auto rotation. Structure is docuemented below
+        """
+        return pulumi.get(self, "rotation_config")
+
+
+@pulumi.output_type
+class ClusterSecretSyncConfigRotationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rotationInterval":
+            suggest = "rotation_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterSecretSyncConfigRotationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterSecretSyncConfigRotationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterSecretSyncConfigRotationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 rotation_interval: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Enable the roation in Sync as K8s secret feature for this cluster.
+        :param _builtins.str rotation_interval: The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if rotation_interval is not None:
+            pulumi.set(__self__, "rotation_interval", rotation_interval)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Enable the roation in Sync as K8s secret feature for this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -16927,6 +17158,8 @@ class NodePoolNodeConfigContainerdConfig(dict):
         suggest = None
         if key == "privateRegistryAccessConfig":
             suggest = "private_registry_access_config"
+        elif key == "writableCgroups":
+            suggest = "writable_cgroups"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigContainerdConfig. Access the value via the '{suggest}' property getter instead.")
@@ -16940,12 +17173,16 @@ class NodePoolNodeConfigContainerdConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 private_registry_access_config: Optional['outputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig'] = None):
+                 private_registry_access_config: Optional['outputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig'] = None,
+                 writable_cgroups: Optional['outputs.NodePoolNodeConfigContainerdConfigWritableCgroups'] = None):
         """
         :param 'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Parameters for private container registries configuration.
+        :param 'NodePoolNodeConfigContainerdConfigWritableCgroupsArgs' writable_cgroups: Parameters for writable cgroups configuration.
         """
         if private_registry_access_config is not None:
             pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+        if writable_cgroups is not None:
+            pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
     @pulumi.getter(name="privateRegistryAccessConfig")
@@ -16954,6 +17191,14 @@ class NodePoolNodeConfigContainerdConfig(dict):
         Parameters for private container registries configuration.
         """
         return pulumi.get(self, "private_registry_access_config")
+
+    @_builtins.property
+    @pulumi.getter(name="writableCgroups")
+    def writable_cgroups(self) -> Optional['outputs.NodePoolNodeConfigContainerdConfigWritableCgroups']:
+        """
+        Parameters for writable cgroups configuration.
+        """
+        return pulumi.get(self, "writable_cgroups")
 
 
 @pulumi.output_type
@@ -17082,6 +17327,24 @@ class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAu
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigContainerdConfigWritableCgroups(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether writable cgroups are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether writable cgroups are enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -20738,11 +21001,22 @@ class GetClusterMaintenancePolicyMaintenanceExclusionResult(dict):
 @pulumi.output_type
 class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult(dict):
     def __init__(__self__, *,
+                 end_time_behavior: _builtins.str,
                  scope: _builtins.str):
         """
+        :param _builtins.str end_time_behavior: The behavior of the exclusion end time.
         :param _builtins.str scope: The scope of automatic upgrades to restrict in the exclusion window.
         """
+        pulumi.set(__self__, "end_time_behavior", end_time_behavior)
         pulumi.set(__self__, "scope", scope)
+
+    @_builtins.property
+    @pulumi.getter(name="endTimeBehavior")
+    def end_time_behavior(self) -> _builtins.str:
+        """
+        The behavior of the exclusion end time.
+        """
+        return pulumi.get(self, "end_time_behavior")
 
     @_builtins.property
     @pulumi.getter
@@ -21734,11 +22008,14 @@ class GetClusterNodeConfigConfidentialNodeResult(dict):
 @pulumi.output_type
 class GetClusterNodeConfigContainerdConfigResult(dict):
     def __init__(__self__, *,
-                 private_registry_access_configs: Sequence['outputs.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigResult']):
+                 private_registry_access_configs: Sequence['outputs.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigResult'],
+                 writable_cgroups: Sequence['outputs.GetClusterNodeConfigContainerdConfigWritableCgroupResult']):
         """
         :param Sequence['GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_configs: Parameters for private container registries configuration.
+        :param Sequence['GetClusterNodeConfigContainerdConfigWritableCgroupArgs'] writable_cgroups: Parameters for writable cgroups configuration.
         """
         pulumi.set(__self__, "private_registry_access_configs", private_registry_access_configs)
+        pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
     @pulumi.getter(name="privateRegistryAccessConfigs")
@@ -21747,6 +22024,14 @@ class GetClusterNodeConfigContainerdConfigResult(dict):
         Parameters for private container registries configuration.
         """
         return pulumi.get(self, "private_registry_access_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="writableCgroups")
+    def writable_cgroups(self) -> Sequence['outputs.GetClusterNodeConfigContainerdConfigWritableCgroupResult']:
+        """
+        Parameters for writable cgroups configuration.
+        """
+        return pulumi.get(self, "writable_cgroups")
 
 
 @pulumi.output_type
@@ -21823,6 +22108,24 @@ class GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificate
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigContainerdConfigWritableCgroupResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether writable cgroups are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether writable cgroups are enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -23374,11 +23677,14 @@ class GetClusterNodePoolDefaultNodeConfigDefaultResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult(dict):
     def __init__(__self__, *,
-                 private_registry_access_configs: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult']):
+                 private_registry_access_configs: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult'],
+                 writable_cgroups: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupResult']):
         """
         :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_configs: Parameters for private container registries configuration.
+        :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArgs'] writable_cgroups: Parameters for writable cgroups configuration.
         """
         pulumi.set(__self__, "private_registry_access_configs", private_registry_access_configs)
+        pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
     @pulumi.getter(name="privateRegistryAccessConfigs")
@@ -23387,6 +23693,14 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult(dict):
         Parameters for private container registries configuration.
         """
         return pulumi.get(self, "private_registry_access_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="writableCgroups")
+    def writable_cgroups(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupResult']:
+        """
+        Parameters for writable cgroups configuration.
+        """
+        return pulumi.get(self, "writable_cgroups")
 
 
 @pulumi.output_type
@@ -23463,6 +23777,24 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryA
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether writable cgroups are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether writable cgroups are enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -24353,11 +24685,14 @@ class GetClusterNodePoolNodeConfigConfidentialNodeResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolNodeConfigContainerdConfigResult(dict):
     def __init__(__self__, *,
-                 private_registry_access_configs: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigResult']):
+                 private_registry_access_configs: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigResult'],
+                 writable_cgroups: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigWritableCgroupResult']):
         """
         :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_configs: Parameters for private container registries configuration.
+        :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigWritableCgroupArgs'] writable_cgroups: Parameters for writable cgroups configuration.
         """
         pulumi.set(__self__, "private_registry_access_configs", private_registry_access_configs)
+        pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
     @pulumi.getter(name="privateRegistryAccessConfigs")
@@ -24366,6 +24701,14 @@ class GetClusterNodePoolNodeConfigContainerdConfigResult(dict):
         Parameters for private container registries configuration.
         """
         return pulumi.get(self, "private_registry_access_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="writableCgroups")
+    def writable_cgroups(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigWritableCgroupResult']:
+        """
+        Parameters for writable cgroups configuration.
+        """
+        return pulumi.get(self, "writable_cgroups")
 
 
 @pulumi.output_type
@@ -24442,6 +24785,24 @@ class GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCer
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigContainerdConfigWritableCgroupResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether writable cgroups are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether writable cgroups are enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -26192,6 +26553,64 @@ class GetClusterSecretManagerConfigRotationConfigResult(dict):
     def enabled(self) -> _builtins.bool:
         """
         Enable the Secret manager auto rotation.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> _builtins.str:
+        """
+        The interval between two consecutive rotations. Default rotation interval is 2 minutes
+        """
+        return pulumi.get(self, "rotation_interval")
+
+
+@pulumi.output_type
+class GetClusterSecretSyncConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 rotation_configs: Sequence['outputs.GetClusterSecretSyncConfigRotationConfigResult']):
+        """
+        :param _builtins.bool enabled: Enable the Sync as k8s secret add-on.
+        :param Sequence['GetClusterSecretSyncConfigRotationConfigArgs'] rotation_configs: Configuration for Secret Sync auto rotation.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "rotation_configs", rotation_configs)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Enable the Sync as k8s secret add-on.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="rotationConfigs")
+    def rotation_configs(self) -> Sequence['outputs.GetClusterSecretSyncConfigRotationConfigResult']:
+        """
+        Configuration for Secret Sync auto rotation.
+        """
+        return pulumi.get(self, "rotation_configs")
+
+
+@pulumi.output_type
+class GetClusterSecretSyncConfigRotationConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 rotation_interval: _builtins.str):
+        """
+        :param _builtins.bool enabled: Enable the Secret sync auto rotation.
+        :param _builtins.str rotation_interval: The interval between two consecutive rotations. Default rotation interval is 2 minutes
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "rotation_interval", rotation_interval)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Enable the Secret sync auto rotation.
         """
         return pulumi.get(self, "enabled")
 

@@ -146,6 +146,143 @@ func (o AclAclEntryArrayOutput) Index(i pulumi.IntInput) AclAclEntryOutput {
 	}).(AclAclEntryOutput)
 }
 
+type ClusterBrokerCapacityConfig struct {
+	// The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+	DiskSizeGb *string `pulumi:"diskSizeGb"`
+}
+
+// ClusterBrokerCapacityConfigInput is an input type that accepts ClusterBrokerCapacityConfigArgs and ClusterBrokerCapacityConfigOutput values.
+// You can construct a concrete instance of `ClusterBrokerCapacityConfigInput` via:
+//
+//	ClusterBrokerCapacityConfigArgs{...}
+type ClusterBrokerCapacityConfigInput interface {
+	pulumi.Input
+
+	ToClusterBrokerCapacityConfigOutput() ClusterBrokerCapacityConfigOutput
+	ToClusterBrokerCapacityConfigOutputWithContext(context.Context) ClusterBrokerCapacityConfigOutput
+}
+
+type ClusterBrokerCapacityConfigArgs struct {
+	// The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
+}
+
+func (ClusterBrokerCapacityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterBrokerCapacityConfig)(nil)).Elem()
+}
+
+func (i ClusterBrokerCapacityConfigArgs) ToClusterBrokerCapacityConfigOutput() ClusterBrokerCapacityConfigOutput {
+	return i.ToClusterBrokerCapacityConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterBrokerCapacityConfigArgs) ToClusterBrokerCapacityConfigOutputWithContext(ctx context.Context) ClusterBrokerCapacityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBrokerCapacityConfigOutput)
+}
+
+func (i ClusterBrokerCapacityConfigArgs) ToClusterBrokerCapacityConfigPtrOutput() ClusterBrokerCapacityConfigPtrOutput {
+	return i.ToClusterBrokerCapacityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterBrokerCapacityConfigArgs) ToClusterBrokerCapacityConfigPtrOutputWithContext(ctx context.Context) ClusterBrokerCapacityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBrokerCapacityConfigOutput).ToClusterBrokerCapacityConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterBrokerCapacityConfigPtrInput is an input type that accepts ClusterBrokerCapacityConfigArgs, ClusterBrokerCapacityConfigPtr and ClusterBrokerCapacityConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterBrokerCapacityConfigPtrInput` via:
+//
+//	        ClusterBrokerCapacityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterBrokerCapacityConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterBrokerCapacityConfigPtrOutput() ClusterBrokerCapacityConfigPtrOutput
+	ToClusterBrokerCapacityConfigPtrOutputWithContext(context.Context) ClusterBrokerCapacityConfigPtrOutput
+}
+
+type clusterBrokerCapacityConfigPtrType ClusterBrokerCapacityConfigArgs
+
+func ClusterBrokerCapacityConfigPtr(v *ClusterBrokerCapacityConfigArgs) ClusterBrokerCapacityConfigPtrInput {
+	return (*clusterBrokerCapacityConfigPtrType)(v)
+}
+
+func (*clusterBrokerCapacityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterBrokerCapacityConfig)(nil)).Elem()
+}
+
+func (i *clusterBrokerCapacityConfigPtrType) ToClusterBrokerCapacityConfigPtrOutput() ClusterBrokerCapacityConfigPtrOutput {
+	return i.ToClusterBrokerCapacityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterBrokerCapacityConfigPtrType) ToClusterBrokerCapacityConfigPtrOutputWithContext(ctx context.Context) ClusterBrokerCapacityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBrokerCapacityConfigPtrOutput)
+}
+
+type ClusterBrokerCapacityConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterBrokerCapacityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterBrokerCapacityConfig)(nil)).Elem()
+}
+
+func (o ClusterBrokerCapacityConfigOutput) ToClusterBrokerCapacityConfigOutput() ClusterBrokerCapacityConfigOutput {
+	return o
+}
+
+func (o ClusterBrokerCapacityConfigOutput) ToClusterBrokerCapacityConfigOutputWithContext(ctx context.Context) ClusterBrokerCapacityConfigOutput {
+	return o
+}
+
+func (o ClusterBrokerCapacityConfigOutput) ToClusterBrokerCapacityConfigPtrOutput() ClusterBrokerCapacityConfigPtrOutput {
+	return o.ToClusterBrokerCapacityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterBrokerCapacityConfigOutput) ToClusterBrokerCapacityConfigPtrOutputWithContext(ctx context.Context) ClusterBrokerCapacityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterBrokerCapacityConfig) *ClusterBrokerCapacityConfig {
+		return &v
+	}).(ClusterBrokerCapacityConfigPtrOutput)
+}
+
+// The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+func (o ClusterBrokerCapacityConfigOutput) DiskSizeGb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterBrokerCapacityConfig) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
+}
+
+type ClusterBrokerCapacityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterBrokerCapacityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterBrokerCapacityConfig)(nil)).Elem()
+}
+
+func (o ClusterBrokerCapacityConfigPtrOutput) ToClusterBrokerCapacityConfigPtrOutput() ClusterBrokerCapacityConfigPtrOutput {
+	return o
+}
+
+func (o ClusterBrokerCapacityConfigPtrOutput) ToClusterBrokerCapacityConfigPtrOutputWithContext(ctx context.Context) ClusterBrokerCapacityConfigPtrOutput {
+	return o
+}
+
+func (o ClusterBrokerCapacityConfigPtrOutput) Elem() ClusterBrokerCapacityConfigOutput {
+	return o.ApplyT(func(v *ClusterBrokerCapacityConfig) ClusterBrokerCapacityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterBrokerCapacityConfig
+		return ret
+	}).(ClusterBrokerCapacityConfigOutput)
+}
+
+// The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+func (o ClusterBrokerCapacityConfigPtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterBrokerCapacityConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSizeGb
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterCapacityConfig struct {
 	// The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
 	MemoryBytes string `pulumi:"memoryBytes"`
@@ -1959,6 +2096,8 @@ func (o ConnectorTaskRestartPolicyPtrOutput) MinimumBackoff() pulumi.StringPtrOu
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAclEntryInput)(nil)).Elem(), AclAclEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAclEntryArrayInput)(nil)).Elem(), AclAclEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBrokerCapacityConfigInput)(nil)).Elem(), ClusterBrokerCapacityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBrokerCapacityConfigPtrInput)(nil)).Elem(), ClusterBrokerCapacityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCapacityConfigInput)(nil)).Elem(), ClusterCapacityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCapacityConfigPtrInput)(nil)).Elem(), ClusterCapacityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGcpConfigInput)(nil)).Elem(), ClusterGcpConfigArgs{})
@@ -1987,6 +2126,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorTaskRestartPolicyPtrInput)(nil)).Elem(), ConnectorTaskRestartPolicyArgs{})
 	pulumi.RegisterOutputType(AclAclEntryOutput{})
 	pulumi.RegisterOutputType(AclAclEntryArrayOutput{})
+	pulumi.RegisterOutputType(ClusterBrokerCapacityConfigOutput{})
+	pulumi.RegisterOutputType(ClusterBrokerCapacityConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterCapacityConfigOutput{})
 	pulumi.RegisterOutputType(ClusterCapacityConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterGcpConfigOutput{})

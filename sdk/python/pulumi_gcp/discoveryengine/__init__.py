@@ -17,6 +17,7 @@ from .license_config import *
 from .recommendation_engine import *
 from .schema import *
 from .search_engine import *
+from .serving_config import *
 from .sitemap import *
 from .target_site import *
 from .user_store import *

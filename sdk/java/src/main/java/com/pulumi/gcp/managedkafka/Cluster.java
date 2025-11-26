@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.managedkafka.ClusterArgs;
 import com.pulumi.gcp.managedkafka.inputs.ClusterState;
+import com.pulumi.gcp.managedkafka.outputs.ClusterBrokerCapacityConfig;
 import com.pulumi.gcp.managedkafka.outputs.ClusterCapacityConfig;
 import com.pulumi.gcp.managedkafka.outputs.ClusterGcpConfig;
 import com.pulumi.gcp.managedkafka.outputs.ClusterRebalanceConfig;
@@ -245,6 +246,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:managedkafka/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
+    /**
+     * Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="brokerCapacityConfig", refs={ClusterBrokerCapacityConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterBrokerCapacityConfig> brokerCapacityConfig;
+
+    /**
+     * @return Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterBrokerCapacityConfig>> brokerCapacityConfig() {
+        return Codegen.optional(this.brokerCapacityConfig);
+    }
     /**
      * A capacity configuration of a Kafka cluster.
      * Structure is documented below.

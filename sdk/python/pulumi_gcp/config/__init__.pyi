@@ -103,6 +103,8 @@ cloudRunV2CustomEndpoint: Optional[str]
 
 cloudSchedulerCustomEndpoint: Optional[str]
 
+cloudSecurityComplianceCustomEndpoint: Optional[str]
+
 cloudTasksCustomEndpoint: Optional[str]
 
 cloudbuildv2CustomEndpoint: Optional[str]

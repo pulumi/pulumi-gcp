@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetReservationResult {
+    private List<String> blockNames;
     private String commitment;
     private String creationTimestamp;
     private List<GetReservationDeleteAfterDuration> deleteAfterDurations;
@@ -43,6 +44,9 @@ public final class GetReservationResult {
     private String zone;
 
     private GetReservationResult() {}
+    public List<String> blockNames() {
+        return this.blockNames;
+    }
     public String commitment() {
         return this.commitment;
     }
@@ -116,6 +120,7 @@ public final class GetReservationResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> blockNames;
         private String commitment;
         private String creationTimestamp;
         private List<GetReservationDeleteAfterDuration> deleteAfterDurations;
@@ -140,6 +145,7 @@ public final class GetReservationResult {
         public Builder() {}
         public Builder(GetReservationResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.blockNames = defaults.blockNames;
     	      this.commitment = defaults.commitment;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.deleteAfterDurations = defaults.deleteAfterDurations;
@@ -163,6 +169,17 @@ public final class GetReservationResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
+        public Builder blockNames(List<String> blockNames) {
+            if (blockNames == null) {
+              throw new MissingRequiredPropertyException("GetReservationResult", "blockNames");
+            }
+            this.blockNames = blockNames;
+            return this;
+        }
+        public Builder blockNames(String... blockNames) {
+            return blockNames(List.of(blockNames));
+        }
         @CustomType.Setter
         public Builder commitment(String commitment) {
             if (commitment == null) {
@@ -349,6 +366,7 @@ public final class GetReservationResult {
         }
         public GetReservationResult build() {
             final var _resultValue = new GetReservationResult();
+            _resultValue.blockNames = blockNames;
             _resultValue.commitment = commitment;
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.deleteAfterDurations = deleteAfterDurations;

@@ -158,6 +158,7 @@ import javax.annotation.Nullable;
  *                         .resultsTable("//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export")
  *                         .build())
  *                     .build())
+ *                 .catalogPublishingEnabled(true)
  *                 .build())
  *             .project("my-project-name")
  *             .build(), CustomResourceOptions.builder()

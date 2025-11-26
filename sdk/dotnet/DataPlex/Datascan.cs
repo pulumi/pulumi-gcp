@@ -119,6 +119,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                     ResultsTable = "//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
     ///                 },
     ///             },
+    ///             CatalogPublishingEnabled = true,
     ///         },
     ///         Project = "my-project-name",
     ///     }, new CustomResourceOptions

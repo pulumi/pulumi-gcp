@@ -1097,6 +1097,48 @@ class Bucket(pulumi.CustomResource):
             })
         ```
 
+        ### IP Filter Mode Enabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hns_enabled = gcp.storage.Bucket("hns-enabled",
+            name="hns-enabled-bucket",
+            location="US",
+            force_destroy=True,
+            ip_filter={
+                "mode": "Enabled",
+                "public_network_source": {
+                    "allowed_ip_cidr_ranges": [
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                },
+            })
+        ```
+
+        ### IP Filter Mode Disabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hns_enabled = gcp.storage.Bucket("hns-enabled",
+            name="hns-enabled-bucket",
+            location="US",
+            force_destroy=True,
+            ip_filter={
+                "mode": "Disabled",
+                "public_network_source": {
+                    "allowed_ip_cidr_ranges": [
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                },
+            })
+        ```
+
         ## Import
 
         Storage buckets can be imported using the `name` or  `project/name`. If the project is not
@@ -1299,6 +1341,48 @@ class Bucket(pulumi.CustomResource):
             force_destroy=True,
             hierarchical_namespace={
                 "enabled": True,
+            })
+        ```
+
+        ### IP Filter Mode Enabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hns_enabled = gcp.storage.Bucket("hns-enabled",
+            name="hns-enabled-bucket",
+            location="US",
+            force_destroy=True,
+            ip_filter={
+                "mode": "Enabled",
+                "public_network_source": {
+                    "allowed_ip_cidr_ranges": [
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                },
+            })
+        ```
+
+        ### IP Filter Mode Disabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hns_enabled = gcp.storage.Bucket("hns-enabled",
+            name="hns-enabled-bucket",
+            location="US",
+            force_destroy=True,
+            ip_filter={
+                "mode": "Disabled",
+                "public_network_source": {
+                    "allowed_ip_cidr_ranges": [
+                        "0.0.0.0/0",
+                        "::/0",
+                    ],
+                },
             })
         ```
 

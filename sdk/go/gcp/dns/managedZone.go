@@ -176,6 +176,56 @@ import (
 //	}
 //
 // ```
+// ### Dns Managed Zone Private Forwarding Ipv6
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := compute.NewNetwork(ctx, "network_1", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network-1"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewManagedZone(ctx, "private-zone", &dns.ManagedZoneArgs{
+//				Name:        pulumi.String("private-zone"),
+//				DnsName:     pulumi.String("private.example.com."),
+//				Description: pulumi.String("Example private DNS zone"),
+//				Visibility:  pulumi.String("private"),
+//				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
+//					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
+//						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
+//							NetworkUrl: network1.ID(),
+//						},
+//					},
+//				},
+//				ForwardingConfig: &dns.ManagedZoneForwardingConfigArgs{
+//					TargetNameServers: dns.ManagedZoneForwardingConfigTargetNameServerArray{
+//						&dns.ManagedZoneForwardingConfigTargetNameServerArgs{
+//							Ipv6Address: pulumi.String("fd20:3e9:7a70:680d:0:8::"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Dns Managed Zone Private Gke
 //
 // ```go

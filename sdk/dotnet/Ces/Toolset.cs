@@ -334,6 +334,84 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// ### Ces Toolset Bearer Token Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cesAppForToolset = new Gcp.Ces.App("ces_app_for_toolset", new()
+    ///     {
+    ///         AppId = "app-id",
+    ///         Location = "us",
+    ///         Description = "App used as parent for CES Toolset example",
+    ///         DisplayName = "my-app",
+    ///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+    ///         {
+    ///             DefaultLanguageCode = "en-US",
+    ///             SupportedLanguageCodes = new[]
+    ///             {
+    ///                 "es-ES",
+    ///                 "fr-FR",
+    ///             },
+    ///             EnableMultilingualSupport = true,
+    ///             FallbackAction = "escalate",
+    ///         },
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesToolsetBearerTokenConfig = new Gcp.Ces.Toolset("ces_toolset_bearer_token_config", new()
+    ///     {
+    ///         ToolsetId = "toolset1",
+    ///         Location = "us",
+    ///         App = cesAppForToolset.AppId,
+    ///         DisplayName = "Basic toolset display name",
+    ///         OpenApiToolset = new Gcp.Ces.Inputs.ToolsetOpenApiToolsetArgs
+    ///         {
+    ///             OpenApiSchema = @"openapi: 3.0.0
+    /// info:
+    ///   title: My Sample API
+    ///   version: 1.0.0
+    ///   description: A simple API example
+    /// servers:
+    ///   - url: https://api.example.com/v1
+    /// paths: {}
+    /// ",
+    ///             IgnoreUnknownFields = false,
+    ///             TlsConfig = new Gcp.Ces.Inputs.ToolsetOpenApiToolsetTlsConfigArgs
+    ///             {
+    ///                 CaCerts = new[]
+    ///                 {
+    ///                     new Gcp.Ces.Inputs.ToolsetOpenApiToolsetTlsConfigCaCertArgs
+    ///                     {
+    ///                         DisplayName = "example",
+    ///                         Cert = "ZXhhbXBsZQ==",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ServiceDirectoryConfig = new Gcp.Ces.Inputs.ToolsetOpenApiToolsetServiceDirectoryConfigArgs
+    ///             {
+    ///                 Service = "projects/example/locations/us/namespaces/namespace/services/service",
+    ///             },
+    ///             ApiAuthentication = new Gcp.Ces.Inputs.ToolsetOpenApiToolsetApiAuthenticationArgs
+    ///             {
+    ///                 BearerTokenConfig = new Gcp.Ces.Inputs.ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs
+    ///                 {
+    ///                     Token = "$context.variables.my_ces_toolset_auth_token",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

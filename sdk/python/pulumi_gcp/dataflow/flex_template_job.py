@@ -1041,14 +1041,14 @@ class FlexTemplateJob(pulumi.CustomResource):
         big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
         if big_data_job_subscription_id is None:
             big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.RandomId("big_data_job_name_suffix",
+        big_data_job_name_suffix = random.index.Id("big_data_job_name_suffix",
             byte_length=4,
             keepers={
-                "region": region,
-                "subscription_id": big_data_job_subscription_id,
+                region: region,
+                subscriptionId: big_data_job_subscription_id,
             })
         big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
-            name=big_data_job_name_suffix.dec.apply(lambda dec: f"dataflow-flextemplates-job-{dec}"),
+            name=f"dataflow-flextemplates-job-{big_data_job_name_suffix['dec']}",
             region=region,
             container_spec_gcs_path="gs://my-bucket/templates/template.json",
             skip_wait_on_job_termination=True,
@@ -1165,14 +1165,14 @@ class FlexTemplateJob(pulumi.CustomResource):
         big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
         if big_data_job_subscription_id is None:
             big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.RandomId("big_data_job_name_suffix",
+        big_data_job_name_suffix = random.index.Id("big_data_job_name_suffix",
             byte_length=4,
             keepers={
-                "region": region,
-                "subscription_id": big_data_job_subscription_id,
+                region: region,
+                subscriptionId: big_data_job_subscription_id,
             })
         big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
-            name=big_data_job_name_suffix.dec.apply(lambda dec: f"dataflow-flextemplates-job-{dec}"),
+            name=f"dataflow-flextemplates-job-{big_data_job_name_suffix['dec']}",
             region=region,
             container_spec_gcs_path="gs://my-bucket/templates/template.json",
             skip_wait_on_job_termination=True,

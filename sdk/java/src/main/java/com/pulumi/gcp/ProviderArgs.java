@@ -329,6 +329,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.cloudSchedulerCustomEndpoint);
     }
 
+    @Import(name="cloudSecurityComplianceCustomEndpoint")
+    private @Nullable Output<String> cloudSecurityComplianceCustomEndpoint;
+
+    public Optional<Output<String>> cloudSecurityComplianceCustomEndpoint() {
+        return Optional.ofNullable(this.cloudSecurityComplianceCustomEndpoint);
+    }
+
     @Import(name="cloudTasksCustomEndpoint")
     private @Nullable Output<String> cloudTasksCustomEndpoint;
 
@@ -1454,6 +1461,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudRunCustomEndpoint = $.cloudRunCustomEndpoint;
         this.cloudRunV2CustomEndpoint = $.cloudRunV2CustomEndpoint;
         this.cloudSchedulerCustomEndpoint = $.cloudSchedulerCustomEndpoint;
+        this.cloudSecurityComplianceCustomEndpoint = $.cloudSecurityComplianceCustomEndpoint;
         this.cloudTasksCustomEndpoint = $.cloudTasksCustomEndpoint;
         this.cloudbuildv2CustomEndpoint = $.cloudbuildv2CustomEndpoint;
         this.clouddeployCustomEndpoint = $.clouddeployCustomEndpoint;
@@ -2022,6 +2030,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder cloudSchedulerCustomEndpoint(String cloudSchedulerCustomEndpoint) {
             return cloudSchedulerCustomEndpoint(Output.of(cloudSchedulerCustomEndpoint));
+        }
+
+        public Builder cloudSecurityComplianceCustomEndpoint(@Nullable Output<String> cloudSecurityComplianceCustomEndpoint) {
+            $.cloudSecurityComplianceCustomEndpoint = cloudSecurityComplianceCustomEndpoint;
+            return this;
+        }
+
+        public Builder cloudSecurityComplianceCustomEndpoint(String cloudSecurityComplianceCustomEndpoint) {
+            return cloudSecurityComplianceCustomEndpoint(Output.of(cloudSecurityComplianceCustomEndpoint));
         }
 
         public Builder cloudTasksCustomEndpoint(@Nullable Output<String> cloudTasksCustomEndpoint) {

@@ -17,11 +17,11 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionArgs extends com.
 
     public static final ClusterMaintenancePolicyMaintenanceExclusionArgs Empty = new ClusterMaintenancePolicyMaintenanceExclusionArgs();
 
-    @Import(name="endTime", required=true)
-    private Output<String> endTime;
+    @Import(name="endTime")
+    private @Nullable Output<String> endTime;
 
-    public Output<String> endTime() {
-        return this.endTime;
+    public Optional<Output<String>> endTime() {
+        return Optional.ofNullable(this.endTime);
     }
 
     @Import(name="exclusionName", required=true)
@@ -80,7 +80,7 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionArgs extends com.
             $ = new ClusterMaintenancePolicyMaintenanceExclusionArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder endTime(Output<String> endTime) {
+        public Builder endTime(@Nullable Output<String> endTime) {
             $.endTime = endTime;
             return this;
         }
@@ -129,9 +129,6 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionArgs extends com.
         }
 
         public ClusterMaintenancePolicyMaintenanceExclusionArgs build() {
-            if ($.endTime == null) {
-                throw new MissingRequiredPropertyException("ClusterMaintenancePolicyMaintenanceExclusionArgs", "endTime");
-            }
             if ($.exclusionName == null) {
                 throw new MissingRequiredPropertyException("ClusterMaintenancePolicyMaintenanceExclusionArgs", "exclusionName");
             }

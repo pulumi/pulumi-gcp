@@ -137,6 +137,10 @@ import (
 //							pulumi.String("10.240.0.0/13"),
 //						},
 //					},
+//					AdvancedNetworking: pulumi.Bool(true),
+//					MultipleNetworkInterfacesConfig: &gkeonprem.BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
 //				},
 //				NodeConfig: &gkeonprem.BareMetalAdminClusterNodeConfigArgs{
 //					MaxPodsPerNode: pulumi.Int(250),
@@ -183,8 +187,59 @@ import (
 //					VipConfig: &gkeonprem.BareMetalAdminClusterLoadBalancerVipConfigArgs{
 //						ControlPlaneVip: pulumi.String("10.200.0.5"),
 //					},
-//					ManualLbConfig: &gkeonprem.BareMetalAdminClusterLoadBalancerManualLbConfigArgs{
-//						Enabled: pulumi.Bool(true),
+//					BgpLbConfig: &gkeonprem.BareMetalAdminClusterLoadBalancerBgpLbConfigArgs{
+//						Asn: pulumi.Int(123456),
+//						BgpPeerConfigs: gkeonprem.BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArray{
+//							&gkeonprem.BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs{
+//								Asn:       pulumi.Int(123457),
+//								IpAddress: pulumi.String("10.0.0.1"),
+//								ControlPlaneNodes: pulumi.StringArray{
+//									pulumi.String("test-node"),
+//								},
+//							},
+//						},
+//						AddressPools: gkeonprem.BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArray{
+//							&gkeonprem.BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs{
+//								Pool: pulumi.String("loadBalancerAddressPool-1"),
+//								Addresses: pulumi.StringArray{
+//									pulumi.String("10.200.0.14/32"),
+//									pulumi.String("10.200.0.15/32"),
+//									pulumi.String("10.200.0.16/32"),
+//									pulumi.String("10.200.0.17/32"),
+//									pulumi.String("10.200.0.18/32"),
+//									pulumi.String("fd00:1::f/128"),
+//									pulumi.String("fd00:1::10/128"),
+//									pulumi.String("fd00:1::11/128"),
+//									pulumi.String("fd00:1::12/128"),
+//								},
+//								ManualAssign:  pulumi.Bool(true),
+//								AvoidBuggyIps: pulumi.Bool(true),
+//							},
+//						},
+//						LoadBalancerNodePoolConfig: &gkeonprem.BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs{
+//							NodePoolConfig: &gkeonprem.BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs{
+//								Labels:          pulumi.StringMap{},
+//								OperatingSystem: pulumi.String("LINUX"),
+//								NodeConfigs: gkeonprem.BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray{
+//									&gkeonprem.BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs{
+//										Labels: pulumi.StringMap{},
+//										NodeIp: pulumi.String("10.200.0.9"),
+//									},
+//								},
+//								KubeletConfig: &gkeonprem.BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs{
+//									RegistryBurst:               pulumi.Int(12),
+//									RegistryPullQps:             pulumi.Int(10),
+//									SerializeImagePullsDisabled: pulumi.Bool(true),
+//								},
+//								Taints: gkeonprem.BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray{
+//									&gkeonprem.BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs{
+//										Key:    pulumi.String("test-key"),
+//										Value:  pulumi.String("test-value"),
+//										Effect: pulumi.String("NO_EXECUTE"),
+//									},
+//								},
+//							},
+//						},
 //					},
 //				},
 //				Storage: &gkeonprem.BareMetalAdminClusterStorageArgs{

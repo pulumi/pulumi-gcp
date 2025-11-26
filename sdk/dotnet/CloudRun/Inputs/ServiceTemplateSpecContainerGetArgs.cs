@@ -107,6 +107,13 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         }
 
         /// <summary>
+        /// Periodic probe of container readiness.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("readinessProbe")]
+        public Input<Inputs.ServiceTemplateSpecContainerReadinessProbeGetArgs>? ReadinessProbe { get; set; }
+
+        /// <summary>
         /// Compute Resources required by this container. Used to set values such as max memory
         /// Structure is documented below.
         /// </summary>

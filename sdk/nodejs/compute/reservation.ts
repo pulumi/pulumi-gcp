@@ -231,6 +231,10 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /**
+     * List of all reservation block names in the parent reservation.
+     */
+    declare public /*out*/ readonly blockNames: pulumi.Output<string[]>;
+    /**
      * Full or partial URL to a parent commitment. This field displays for
      * reservations that are tied to a commitment.
      */
@@ -278,6 +282,8 @@ export class Reservation extends pulumi.CustomResource {
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
+     *
+     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
@@ -341,6 +347,7 @@ export class Reservation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservationState | undefined;
+            resourceInputs["blockNames"] = state?.blockNames;
             resourceInputs["commitment"] = state?.commitment;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
             resourceInputs["deleteAfterDuration"] = state?.deleteAfterDuration;
@@ -380,6 +387,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["specificReservation"] = args?.specificReservation;
             resourceInputs["specificReservationRequired"] = args?.specificReservationRequired;
             resourceInputs["zone"] = args?.zone;
+            resourceInputs["blockNames"] = undefined /*out*/;
             resourceInputs["commitment"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -399,6 +407,10 @@ export class Reservation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Reservation resources.
  */
 export interface ReservationState {
+    /**
+     * List of all reservation block names in the parent reservation.
+     */
+    blockNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Full or partial URL to a parent commitment. This field displays for
      * reservations that are tied to a commitment.
@@ -447,6 +459,8 @@ export interface ReservationState {
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
+     *
+     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
      */
     project?: pulumi.Input<string>;
     /**
@@ -533,6 +547,8 @@ export interface ReservationArgs {
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
+     *
+     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
      */
     project?: pulumi.Input<string>;
     /**

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -101,6 +103,11 @@ export class FirewallEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * Settings for the endpoint.
+     * Structure is documented below.
+     */
+    declare public readonly endpointSettings: pulumi.Output<outputs.networksecurity.FirewallEndpointEndpointSettings | undefined>;
+    /**
      * A map of key/value label pairs to assign to the resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -159,6 +166,7 @@ export class FirewallEndpoint extends pulumi.CustomResource {
             resourceInputs["billingProjectId"] = state?.billingProjectId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["endpointSettings"] = state?.endpointSettings;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -180,6 +188,7 @@ export class FirewallEndpoint extends pulumi.CustomResource {
                 throw new Error("Missing required property 'parent'");
             }
             resourceInputs["billingProjectId"] = args?.billingProjectId;
+            resourceInputs["endpointSettings"] = args?.endpointSettings;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
@@ -223,6 +232,11 @@ export interface FirewallEndpointState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Settings for the endpoint.
+     * Structure is documented below.
+     */
+    endpointSettings?: pulumi.Input<inputs.networksecurity.FirewallEndpointEndpointSettings>;
     /**
      * A map of key/value label pairs to assign to the resource.
      *
@@ -274,6 +288,11 @@ export interface FirewallEndpointArgs {
      * Project to bill on endpoint uptime usage.
      */
     billingProjectId: pulumi.Input<string>;
+    /**
+     * Settings for the endpoint.
+     * Structure is documented below.
+     */
+    endpointSettings?: pulumi.Input<inputs.networksecurity.FirewallEndpointEndpointSettings>;
     /**
      * A map of key/value label pairs to assign to the resource.
      *

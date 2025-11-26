@@ -16,10 +16,21 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AgentAfterAgentCallback',
+    'AgentAfterModelCallback',
+    'AgentAfterToolCallback',
+    'AgentBeforeAgentCallback',
+    'AgentBeforeModelCallback',
+    'AgentBeforeToolCallback',
+    'AgentLlmAgent',
+    'AgentModelSettings',
+    'AgentRemoteDialogflowAgent',
+    'AgentToolset',
     'AppAudioProcessingConfig',
     'AppAudioProcessingConfigAmbientSoundConfig',
     'AppAudioProcessingConfigBargeInConfig',
     'AppAudioProcessingConfigSynthesizeSpeechConfig',
+    'AppClientCertificateSettings',
     'AppDataStoreSettings',
     'AppDataStoreSettingsEngine',
     'AppDefaultChannelProfile',
@@ -46,9 +57,60 @@ __all__ = [
     'ExampleMessage',
     'ExampleMessageChunk',
     'ExampleMessageChunkImage',
+    'GuardrailAction',
+    'GuardrailActionGenerativeAnswer',
+    'GuardrailActionRespondImmediately',
+    'GuardrailActionRespondImmediatelyResponse',
+    'GuardrailActionTransferAgent',
+    'GuardrailCodeCallback',
+    'GuardrailCodeCallbackAfterAgentCallback',
+    'GuardrailCodeCallbackAfterModelCallback',
+    'GuardrailCodeCallbackBeforeAgentCallback',
+    'GuardrailCodeCallbackBeforeModelCallback',
+    'GuardrailContentFilter',
+    'GuardrailLlmPolicy',
+    'GuardrailLlmPolicyModelSettings',
+    'GuardrailLlmPromptSecurity',
+    'GuardrailLlmPromptSecurityCustomPolicy',
+    'GuardrailLlmPromptSecurityCustomPolicyModelSettings',
+    'GuardrailLlmPromptSecurityDefaultSettings',
+    'GuardrailModelSafety',
+    'GuardrailModelSafetySafetySetting',
+    'ToolClientFunction',
+    'ToolClientFunctionParameters',
+    'ToolClientFunctionResponse',
+    'ToolDataStoreTool',
+    'ToolDataStoreToolBoostSpec',
+    'ToolDataStoreToolBoostSpecSpec',
+    'ToolDataStoreToolBoostSpecSpecConditionBoostSpec',
+    'ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec',
+    'ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint',
+    'ToolDataStoreToolEngineSource',
+    'ToolDataStoreToolEngineSourceDataStoreSource',
+    'ToolDataStoreToolEngineSourceDataStoreSourceDataStore',
+    'ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig',
+    'ToolDataStoreToolModalityConfig',
+    'ToolDataStoreToolModalityConfigGroundingConfig',
+    'ToolDataStoreToolModalityConfigRewriterConfig',
+    'ToolDataStoreToolModalityConfigRewriterConfigModelSettings',
+    'ToolDataStoreToolModalityConfigSummarizationConfig',
+    'ToolDataStoreToolModalityConfigSummarizationConfigModelSettings',
+    'ToolGoogleSearchTool',
+    'ToolOpenApiTool',
+    'ToolOpenApiToolApiAuthentication',
+    'ToolOpenApiToolApiAuthenticationApiKeyConfig',
+    'ToolOpenApiToolApiAuthenticationOauthConfig',
+    'ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig',
+    'ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig',
+    'ToolOpenApiToolServiceDirectoryConfig',
+    'ToolOpenApiToolTlsConfig',
+    'ToolOpenApiToolTlsConfigCaCert',
+    'ToolPythonFunction',
+    'ToolSystemTool',
     'ToolsetOpenApiToolset',
     'ToolsetOpenApiToolsetApiAuthentication',
     'ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig',
+    'ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig',
     'ToolsetOpenApiToolsetApiAuthenticationOauthConfig',
     'ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig',
     'ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfig',
@@ -56,6 +118,570 @@ __all__ = [
     'ToolsetOpenApiToolsetTlsConfig',
     'ToolsetOpenApiToolsetTlsConfigCaCert',
 ]
+
+@pulumi.output_type
+class AgentAfterAgentCallback(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentAfterAgentCallback. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentAfterAgentCallback.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentAfterAgentCallback.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 python_code: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 disabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str python_code: The python code to execute for the callback.
+        :param _builtins.str description: Human-readable description of the callback.
+        :param _builtins.bool disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
+               agent.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> _builtins.str:
+        """
+        The python code to execute for the callback.
+        """
+        return pulumi.get(self, "python_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Human-readable description of the callback.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the callback is disabled. Disabled callbacks are ignored by the
+        agent.
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class AgentAfterModelCallback(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentAfterModelCallback. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentAfterModelCallback.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentAfterModelCallback.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 python_code: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 disabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str python_code: The python code to execute for the callback.
+        :param _builtins.str description: Human-readable description of the callback.
+        :param _builtins.bool disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
+               agent.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> _builtins.str:
+        """
+        The python code to execute for the callback.
+        """
+        return pulumi.get(self, "python_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Human-readable description of the callback.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the callback is disabled. Disabled callbacks are ignored by the
+        agent.
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class AgentAfterToolCallback(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentAfterToolCallback. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentAfterToolCallback.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentAfterToolCallback.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 python_code: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 disabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str python_code: The python code to execute for the callback.
+        :param _builtins.str description: Human-readable description of the callback.
+        :param _builtins.bool disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
+               agent.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> _builtins.str:
+        """
+        The python code to execute for the callback.
+        """
+        return pulumi.get(self, "python_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Human-readable description of the callback.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the callback is disabled. Disabled callbacks are ignored by the
+        agent.
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class AgentBeforeAgentCallback(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentBeforeAgentCallback. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentBeforeAgentCallback.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentBeforeAgentCallback.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 python_code: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 disabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str python_code: The python code to execute for the callback.
+        :param _builtins.str description: Human-readable description of the callback.
+        :param _builtins.bool disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
+               agent.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> _builtins.str:
+        """
+        The python code to execute for the callback.
+        """
+        return pulumi.get(self, "python_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Human-readable description of the callback.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the callback is disabled. Disabled callbacks are ignored by the
+        agent.
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class AgentBeforeModelCallback(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentBeforeModelCallback. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentBeforeModelCallback.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentBeforeModelCallback.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 python_code: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 disabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str python_code: The python code to execute for the callback.
+        :param _builtins.str description: Human-readable description of the callback.
+        :param _builtins.bool disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
+               agent.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> _builtins.str:
+        """
+        The python code to execute for the callback.
+        """
+        return pulumi.get(self, "python_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Human-readable description of the callback.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the callback is disabled. Disabled callbacks are ignored by the
+        agent.
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class AgentBeforeToolCallback(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentBeforeToolCallback. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentBeforeToolCallback.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentBeforeToolCallback.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 python_code: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 disabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str python_code: The python code to execute for the callback.
+        :param _builtins.str description: Human-readable description of the callback.
+        :param _builtins.bool disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
+               agent.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> _builtins.str:
+        """
+        The python code to execute for the callback.
+        """
+        return pulumi.get(self, "python_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Human-readable description of the callback.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the callback is disabled. Disabled callbacks are ignored by the
+        agent.
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class AgentLlmAgent(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class AgentModelSettings(dict):
+    def __init__(__self__, *,
+                 model: Optional[_builtins.str] = None,
+                 temperature: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str model: The LLM model that the agent should use.
+               If not set, the agent will inherit the model from its parent agent.
+        :param _builtins.float temperature: If set, this temperature will be used for the LLM model. Temperature
+               controls the randomness of the model's responses. Lower temperatures
+               produce responses that are more predictable. Higher temperatures produce
+               responses that are more creative.
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if temperature is not None:
+            pulumi.set(__self__, "temperature", temperature)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[_builtins.str]:
+        """
+        The LLM model that the agent should use.
+        If not set, the agent will inherit the model from its parent agent.
+        """
+        return pulumi.get(self, "model")
+
+    @_builtins.property
+    @pulumi.getter
+    def temperature(self) -> Optional[_builtins.float]:
+        """
+        If set, this temperature will be used for the LLM model. Temperature
+        controls the randomness of the model's responses. Lower temperatures
+        produce responses that are more predictable. Higher temperatures produce
+        responses that are more creative.
+        """
+        return pulumi.get(self, "temperature")
+
+
+@pulumi.output_type
+class AgentRemoteDialogflowAgent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "flowId":
+            suggest = "flow_id"
+        elif key == "environmentId":
+            suggest = "environment_id"
+        elif key == "inputVariableMapping":
+            suggest = "input_variable_mapping"
+        elif key == "outputVariableMapping":
+            suggest = "output_variable_mapping"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentRemoteDialogflowAgent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentRemoteDialogflowAgent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentRemoteDialogflowAgent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 agent: _builtins.str,
+                 flow_id: _builtins.str,
+                 environment_id: Optional[_builtins.str] = None,
+                 input_variable_mapping: Optional[Mapping[str, _builtins.str]] = None,
+                 output_variable_mapping: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str agent: The
+               [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents
+               agent resource name.
+               Format: `projects/{project}/locations/{location}/agents/{agent}`
+        :param _builtins.str flow_id: The flow ID of the flow in the Dialogflow agent.
+        :param _builtins.str environment_id: The environment ID of the Dialogflow agent be used for the agent
+               execution. If not specified, the draft environment will be used.
+        :param Mapping[str, _builtins.str] input_variable_mapping: The mapping of the app variables names to the Dialogflow session
+               parameters names to be sent to the Dialogflow agent as input.
+        :param Mapping[str, _builtins.str] output_variable_mapping: The mapping of the Dialogflow session parameters names to the app
+               variables names to be sent back to the CES agent after the Dialogflow
+               agent execution ends.
+        """
+        pulumi.set(__self__, "agent", agent)
+        pulumi.set(__self__, "flow_id", flow_id)
+        if environment_id is not None:
+            pulumi.set(__self__, "environment_id", environment_id)
+        if input_variable_mapping is not None:
+            pulumi.set(__self__, "input_variable_mapping", input_variable_mapping)
+        if output_variable_mapping is not None:
+            pulumi.set(__self__, "output_variable_mapping", output_variable_mapping)
+
+    @_builtins.property
+    @pulumi.getter
+    def agent(self) -> _builtins.str:
+        """
+        The
+        [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents
+        agent resource name.
+        Format: `projects/{project}/locations/{location}/agents/{agent}`
+        """
+        return pulumi.get(self, "agent")
+
+    @_builtins.property
+    @pulumi.getter(name="flowId")
+    def flow_id(self) -> _builtins.str:
+        """
+        The flow ID of the flow in the Dialogflow agent.
+        """
+        return pulumi.get(self, "flow_id")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> Optional[_builtins.str]:
+        """
+        The environment ID of the Dialogflow agent be used for the agent
+        execution. If not specified, the draft environment will be used.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="inputVariableMapping")
+    def input_variable_mapping(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The mapping of the app variables names to the Dialogflow session
+        parameters names to be sent to the Dialogflow agent as input.
+        """
+        return pulumi.get(self, "input_variable_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="outputVariableMapping")
+    def output_variable_mapping(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The mapping of the Dialogflow session parameters names to the app
+        variables names to be sent back to the CES agent after the Dialogflow
+        agent execution ends.
+        """
+        return pulumi.get(self, "output_variable_mapping")
+
+
+@pulumi.output_type
+class AgentToolset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "toolIds":
+            suggest = "tool_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentToolset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentToolset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentToolset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 toolset: _builtins.str,
+                 tool_ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str toolset: The resource name of the toolset.
+               Format:
+               `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+        :param Sequence[_builtins.str] tool_ids: The tools IDs to filter the toolset.
+        """
+        pulumi.set(__self__, "toolset", toolset)
+        if tool_ids is not None:
+            pulumi.set(__self__, "tool_ids", tool_ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def toolset(self) -> _builtins.str:
+        """
+        The resource name of the toolset.
+        Format:
+        `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+        """
+        return pulumi.get(self, "toolset")
+
+    @_builtins.property
+    @pulumi.getter(name="toolIds")
+    def tool_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The tools IDs to filter the toolset.
+        """
+        return pulumi.get(self, "tool_ids")
+
 
 @pulumi.output_type
 class AppAudioProcessingConfig(dict):
@@ -364,6 +990,74 @@ class AppAudioProcessingConfigSynthesizeSpeechConfig(dict):
         languages from Cloud Text-to-Speech.
         """
         return pulumi.get(self, "voice")
+
+
+@pulumi.output_type
+class AppClientCertificateSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+        elif key == "tlsCertificate":
+            suggest = "tls_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppClientCertificateSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppClientCertificateSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppClientCertificateSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_key: _builtins.str,
+                 tls_certificate: _builtins.str,
+                 passphrase: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str private_key: The name of the SecretManager secret version resource
+               storing the private key encoded in PEM format.
+               Format: projects/{project}/secrets/{secret}/versions/{version}
+        :param _builtins.str tls_certificate: The TLS certificate encoded in PEM format.
+               This string must include the begin header and end footer lines.
+        :param _builtins.str passphrase: The passphrase to decrypt the private key.
+               Should be left unset if the private key is not encrypted.
+        """
+        pulumi.set(__self__, "private_key", private_key)
+        pulumi.set(__self__, "tls_certificate", tls_certificate)
+        if passphrase is not None:
+            pulumi.set(__self__, "passphrase", passphrase)
+
+    @_builtins.property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> _builtins.str:
+        """
+        The name of the SecretManager secret version resource
+        storing the private key encoded in PEM format.
+        Format: projects/{project}/secrets/{secret}/versions/{version}
+        """
+        return pulumi.get(self, "private_key")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCertificate")
+    def tls_certificate(self) -> _builtins.str:
+        """
+        The TLS certificate encoded in PEM format.
+        This string must include the begin header and end footer lines.
+        """
+        return pulumi.get(self, "tls_certificate")
+
+    @_builtins.property
+    @pulumi.getter
+    def passphrase(self) -> Optional[_builtins.str]:
+        """
+        The passphrase to decrypt the private key.
+        Should be left unset if the private key is not encrypted.
+        """
+        return pulumi.get(self, "passphrase")
 
 
 @pulumi.output_type
@@ -2095,6 +2789,3684 @@ class ExampleMessageChunkImage(dict):
 
 
 @pulumi.output_type
+class GuardrailAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "generativeAnswer":
+            suggest = "generative_answer"
+        elif key == "respondImmediately":
+            suggest = "respond_immediately"
+        elif key == "transferAgent":
+            suggest = "transfer_agent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 generative_answer: Optional['outputs.GuardrailActionGenerativeAnswer'] = None,
+                 respond_immediately: Optional['outputs.GuardrailActionRespondImmediately'] = None,
+                 transfer_agent: Optional['outputs.GuardrailActionTransferAgent'] = None):
+        """
+        :param 'GuardrailActionGenerativeAnswerArgs' generative_answer: The agent will immediately respond with a generative answer.
+               Structure is documented below.
+        :param 'GuardrailActionRespondImmediatelyArgs' respond_immediately: The agent will immediately respond with a preconfigured response.
+               Structure is documented below.
+        :param 'GuardrailActionTransferAgentArgs' transfer_agent: The agent will transfer the conversation to a different agent.
+               Structure is documented below.
+        """
+        if generative_answer is not None:
+            pulumi.set(__self__, "generative_answer", generative_answer)
+        if respond_immediately is not None:
+            pulumi.set(__self__, "respond_immediately", respond_immediately)
+        if transfer_agent is not None:
+            pulumi.set(__self__, "transfer_agent", transfer_agent)
+
+    @_builtins.property
+    @pulumi.getter(name="generativeAnswer")
+    def generative_answer(self) -> Optional['outputs.GuardrailActionGenerativeAnswer']:
+        """
+        The agent will immediately respond with a generative answer.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generative_answer")
+
+    @_builtins.property
+    @pulumi.getter(name="respondImmediately")
+    def respond_immediately(self) -> Optional['outputs.GuardrailActionRespondImmediately']:
+        """
+        The agent will immediately respond with a preconfigured response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "respond_immediately")
+
+    @_builtins.property
+    @pulumi.getter(name="transferAgent")
+    def transfer_agent(self) -> Optional['outputs.GuardrailActionTransferAgent']:
+        """
+        The agent will transfer the conversation to a different agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transfer_agent")
+
+
+@pulumi.output_type
+class GuardrailActionGenerativeAnswer(dict):
+    def __init__(__self__, *,
+                 prompt: _builtins.str):
+        """
+        :param _builtins.str prompt: The prompt to use for the generative answer.
+        """
+        pulumi.set(__self__, "prompt", prompt)
+
+    @_builtins.property
+    @pulumi.getter
+    def prompt(self) -> _builtins.str:
+        """
+        The prompt to use for the generative answer.
+        """
+        return pulumi.get(self, "prompt")
+
+
+@pulumi.output_type
+class GuardrailActionRespondImmediately(dict):
+    def __init__(__self__, *,
+                 responses: Sequence['outputs.GuardrailActionRespondImmediatelyResponse']):
+        """
+        :param Sequence['GuardrailActionRespondImmediatelyResponseArgs'] responses: The canned responses for the agent to choose from. The response is chosen
+               randomly.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "responses", responses)
+
+    @_builtins.property
+    @pulumi.getter
+    def responses(self) -> Sequence['outputs.GuardrailActionRespondImmediatelyResponse']:
+        """
+        The canned responses for the agent to choose from. The response is chosen
+        randomly.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "responses")
+
+
+@pulumi.output_type
+class GuardrailActionRespondImmediatelyResponse(dict):
+    def __init__(__self__, *,
+                 text: _builtins.str,
+                 disabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str text: Text for the agent to respond with.
+        :param _builtins.bool disabled: Whether the response is disabled. Disabled responses are not used by the
+               agent.
+        """
+        pulumi.set(__self__, "text", text)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> _builtins.str:
+        """
+        Text for the agent to respond with.
+        """
+        return pulumi.get(self, "text")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the response is disabled. Disabled responses are not used by the
+        agent.
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class GuardrailActionTransferAgent(dict):
+    def __init__(__self__, *,
+                 agent: _builtins.str):
+        """
+        :param _builtins.str agent: The name of the agent to transfer the conversation to. The agent must be
+               in the same app as the current agent.
+               Format:
+               `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        """
+        pulumi.set(__self__, "agent", agent)
+
+    @_builtins.property
+    @pulumi.getter
+    def agent(self) -> _builtins.str:
+        """
+        The name of the agent to transfer the conversation to. The agent must be
+        in the same app as the current agent.
+        Format:
+        `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        """
+        return pulumi.get(self, "agent")
+
+
+@pulumi.output_type
+class GuardrailCodeCallback(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "afterAgentCallback":
+            suggest = "after_agent_callback"
+        elif key == "afterModelCallback":
+            suggest = "after_model_callback"
+        elif key == "beforeAgentCallback":
+            suggest = "before_agent_callback"
+        elif key == "beforeModelCallback":
+            suggest = "before_model_callback"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailCodeCallback. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailCodeCallback.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailCodeCallback.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 after_agent_callback: Optional['outputs.GuardrailCodeCallbackAfterAgentCallback'] = None,
+                 after_model_callback: Optional['outputs.GuardrailCodeCallbackAfterModelCallback'] = None,
+                 before_agent_callback: Optional['outputs.GuardrailCodeCallbackBeforeAgentCallback'] = None,
+                 before_model_callback: Optional['outputs.GuardrailCodeCallbackBeforeModelCallback'] = None):
+        """
+        :param 'GuardrailCodeCallbackAfterAgentCallbackArgs' after_agent_callback: A callback defines the custom logic to be executed at various stages of
+               agent interaction.
+               Structure is documented below.
+        :param 'GuardrailCodeCallbackAfterModelCallbackArgs' after_model_callback: A callback defines the custom logic to be executed at various stages of
+               agent interaction.
+               Structure is documented below.
+        :param 'GuardrailCodeCallbackBeforeAgentCallbackArgs' before_agent_callback: A callback defines the custom logic to be executed at various stages of
+               agent interaction.
+               Structure is documented below.
+        :param 'GuardrailCodeCallbackBeforeModelCallbackArgs' before_model_callback: A callback defines the custom logic to be executed at various stages of
+               agent interaction.
+               Structure is documented below.
+        """
+        if after_agent_callback is not None:
+            pulumi.set(__self__, "after_agent_callback", after_agent_callback)
+        if after_model_callback is not None:
+            pulumi.set(__self__, "after_model_callback", after_model_callback)
+        if before_agent_callback is not None:
+            pulumi.set(__self__, "before_agent_callback", before_agent_callback)
+        if before_model_callback is not None:
+            pulumi.set(__self__, "before_model_callback", before_model_callback)
+
+    @_builtins.property
+    @pulumi.getter(name="afterAgentCallback")
+    def after_agent_callback(self) -> Optional['outputs.GuardrailCodeCallbackAfterAgentCallback']:
+        """
+        A callback defines the custom logic to be executed at various stages of
+        agent interaction.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "after_agent_callback")
+
+    @_builtins.property
+    @pulumi.getter(name="afterModelCallback")
+    def after_model_callback(self) -> Optional['outputs.GuardrailCodeCallbackAfterModelCallback']:
+        """
+        A callback defines the custom logic to be executed at various stages of
+        agent interaction.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "after_model_callback")
+
+    @_builtins.property
+    @pulumi.getter(name="beforeAgentCallback")
+    def before_agent_callback(self) -> Optional['outputs.GuardrailCodeCallbackBeforeAgentCallback']:
+        """
+        A callback defines the custom logic to be executed at various stages of
+        agent interaction.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "before_agent_callback")
+
+    @_builtins.property
+    @pulumi.getter(name="beforeModelCallback")
+    def before_model_callback(self) -> Optional['outputs.GuardrailCodeCallbackBeforeModelCallback']:
+        """
+        A callback defines the custom logic to be executed at various stages of
+        agent interaction.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "before_model_callback")
+
+
+@pulumi.output_type
+class GuardrailCodeCallbackAfterAgentCallback(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailCodeCallbackAfterAgentCallback. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailCodeCallbackAfterAgentCallback.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailCodeCallbackAfterAgentCallback.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 python_code: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 disabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str python_code: The python code to execute for the callback.
+        :param _builtins.str description: Human-readable description of the callback.
+        :param _builtins.bool disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
+               agent.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> _builtins.str:
+        """
+        The python code to execute for the callback.
+        """
+        return pulumi.get(self, "python_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Human-readable description of the callback.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the callback is disabled. Disabled callbacks are ignored by the
+        agent.
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class GuardrailCodeCallbackAfterModelCallback(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailCodeCallbackAfterModelCallback. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailCodeCallbackAfterModelCallback.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailCodeCallbackAfterModelCallback.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 python_code: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 disabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str python_code: The python code to execute for the callback.
+        :param _builtins.str description: Human-readable description of the callback.
+        :param _builtins.bool disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
+               agent.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> _builtins.str:
+        """
+        The python code to execute for the callback.
+        """
+        return pulumi.get(self, "python_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Human-readable description of the callback.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the callback is disabled. Disabled callbacks are ignored by the
+        agent.
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class GuardrailCodeCallbackBeforeAgentCallback(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailCodeCallbackBeforeAgentCallback. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailCodeCallbackBeforeAgentCallback.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailCodeCallbackBeforeAgentCallback.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 python_code: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 disabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str python_code: The python code to execute for the callback.
+        :param _builtins.str description: Human-readable description of the callback.
+        :param _builtins.bool disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
+               agent.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> _builtins.str:
+        """
+        The python code to execute for the callback.
+        """
+        return pulumi.get(self, "python_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Human-readable description of the callback.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the callback is disabled. Disabled callbacks are ignored by the
+        agent.
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class GuardrailCodeCallbackBeforeModelCallback(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailCodeCallbackBeforeModelCallback. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailCodeCallbackBeforeModelCallback.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailCodeCallbackBeforeModelCallback.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 python_code: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 disabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str python_code: The python code to execute for the callback.
+        :param _builtins.str description: Human-readable description of the callback.
+        :param _builtins.bool disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
+               agent.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> _builtins.str:
+        """
+        The python code to execute for the callback.
+        """
+        return pulumi.get(self, "python_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Human-readable description of the callback.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the callback is disabled. Disabled callbacks are ignored by the
+        agent.
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class GuardrailContentFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchType":
+            suggest = "match_type"
+        elif key == "bannedContents":
+            suggest = "banned_contents"
+        elif key == "bannedContentsInAgentResponses":
+            suggest = "banned_contents_in_agent_responses"
+        elif key == "bannedContentsInUserInputs":
+            suggest = "banned_contents_in_user_inputs"
+        elif key == "disregardDiacritics":
+            suggest = "disregard_diacritics"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailContentFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailContentFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailContentFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_type: _builtins.str,
+                 banned_contents: Optional[Sequence[_builtins.str]] = None,
+                 banned_contents_in_agent_responses: Optional[Sequence[_builtins.str]] = None,
+                 banned_contents_in_user_inputs: Optional[Sequence[_builtins.str]] = None,
+                 disregard_diacritics: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str match_type: Match type for the content filter.
+               Possible values:
+               SIMPLE_STRING_MATCH
+               WORD_BOUNDARY_STRING_MATCH
+               REGEXP_MATCH
+        :param Sequence[_builtins.str] banned_contents: List of banned phrases. Applies to both user inputs and agent responses.
+        :param Sequence[_builtins.str] banned_contents_in_agent_responses: List of banned phrases. Applies only to agent responses.
+        :param Sequence[_builtins.str] banned_contents_in_user_inputs: List of banned phrases. Applies only to user inputs.
+        :param _builtins.bool disregard_diacritics: If true, diacritics are ignored during matching.
+        """
+        pulumi.set(__self__, "match_type", match_type)
+        if banned_contents is not None:
+            pulumi.set(__self__, "banned_contents", banned_contents)
+        if banned_contents_in_agent_responses is not None:
+            pulumi.set(__self__, "banned_contents_in_agent_responses", banned_contents_in_agent_responses)
+        if banned_contents_in_user_inputs is not None:
+            pulumi.set(__self__, "banned_contents_in_user_inputs", banned_contents_in_user_inputs)
+        if disregard_diacritics is not None:
+            pulumi.set(__self__, "disregard_diacritics", disregard_diacritics)
+
+    @_builtins.property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> _builtins.str:
+        """
+        Match type for the content filter.
+        Possible values:
+        SIMPLE_STRING_MATCH
+        WORD_BOUNDARY_STRING_MATCH
+        REGEXP_MATCH
+        """
+        return pulumi.get(self, "match_type")
+
+    @_builtins.property
+    @pulumi.getter(name="bannedContents")
+    def banned_contents(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of banned phrases. Applies to both user inputs and agent responses.
+        """
+        return pulumi.get(self, "banned_contents")
+
+    @_builtins.property
+    @pulumi.getter(name="bannedContentsInAgentResponses")
+    def banned_contents_in_agent_responses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of banned phrases. Applies only to agent responses.
+        """
+        return pulumi.get(self, "banned_contents_in_agent_responses")
+
+    @_builtins.property
+    @pulumi.getter(name="bannedContentsInUserInputs")
+    def banned_contents_in_user_inputs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of banned phrases. Applies only to user inputs.
+        """
+        return pulumi.get(self, "banned_contents_in_user_inputs")
+
+    @_builtins.property
+    @pulumi.getter(name="disregardDiacritics")
+    def disregard_diacritics(self) -> Optional[_builtins.bool]:
+        """
+        If true, diacritics are ignored during matching.
+        """
+        return pulumi.get(self, "disregard_diacritics")
+
+
+@pulumi.output_type
+class GuardrailLlmPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "policyScope":
+            suggest = "policy_scope"
+        elif key == "allowShortUtterance":
+            suggest = "allow_short_utterance"
+        elif key == "failOpen":
+            suggest = "fail_open"
+        elif key == "maxConversationMessages":
+            suggest = "max_conversation_messages"
+        elif key == "modelSettings":
+            suggest = "model_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailLlmPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailLlmPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailLlmPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 policy_scope: _builtins.str,
+                 prompt: _builtins.str,
+                 allow_short_utterance: Optional[_builtins.bool] = None,
+                 fail_open: Optional[_builtins.bool] = None,
+                 max_conversation_messages: Optional[_builtins.int] = None,
+                 model_settings: Optional['outputs.GuardrailLlmPolicyModelSettings'] = None):
+        """
+        :param _builtins.str policy_scope: Defines when to apply the policy check during the conversation. If set to
+               `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+               When applying the policy to the agent response, additional latency will
+               be introduced before the agent can respond.
+               Possible values:
+               USER_QUERY
+               AGENT_RESPONSE
+               USER_QUERY_AND_AGENT_RESPONSE
+               Possible values are: `USER_QUERY`, `AGENT_RESPONSE`, `USER_QUERY_AND_AGENT_RESPONSE`.
+        :param _builtins.str prompt: Policy prompt.
+        :param _builtins.bool allow_short_utterance: By default, the LLM policy check is bypassed for short utterances.
+               Enabling this setting applies the policy check to all utterances,
+               including those that would normally be skipped.
+        :param _builtins.bool fail_open: If an error occurs during the policy check, fail open and do not trigger
+               the guardrail.
+        :param _builtins.int max_conversation_messages: When checking this policy, consider the last 'n' messages in the
+               conversation.
+               When not set a default value of 10 will be used.
+        :param 'GuardrailLlmPolicyModelSettingsArgs' model_settings: Model settings contains various configurations for the LLM model.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "policy_scope", policy_scope)
+        pulumi.set(__self__, "prompt", prompt)
+        if allow_short_utterance is not None:
+            pulumi.set(__self__, "allow_short_utterance", allow_short_utterance)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
+        if max_conversation_messages is not None:
+            pulumi.set(__self__, "max_conversation_messages", max_conversation_messages)
+        if model_settings is not None:
+            pulumi.set(__self__, "model_settings", model_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="policyScope")
+    def policy_scope(self) -> _builtins.str:
+        """
+        Defines when to apply the policy check during the conversation. If set to
+        `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+        When applying the policy to the agent response, additional latency will
+        be introduced before the agent can respond.
+        Possible values:
+        USER_QUERY
+        AGENT_RESPONSE
+        USER_QUERY_AND_AGENT_RESPONSE
+        Possible values are: `USER_QUERY`, `AGENT_RESPONSE`, `USER_QUERY_AND_AGENT_RESPONSE`.
+        """
+        return pulumi.get(self, "policy_scope")
+
+    @_builtins.property
+    @pulumi.getter
+    def prompt(self) -> _builtins.str:
+        """
+        Policy prompt.
+        """
+        return pulumi.get(self, "prompt")
+
+    @_builtins.property
+    @pulumi.getter(name="allowShortUtterance")
+    def allow_short_utterance(self) -> Optional[_builtins.bool]:
+        """
+        By default, the LLM policy check is bypassed for short utterances.
+        Enabling this setting applies the policy check to all utterances,
+        including those that would normally be skipped.
+        """
+        return pulumi.get(self, "allow_short_utterance")
+
+    @_builtins.property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[_builtins.bool]:
+        """
+        If an error occurs during the policy check, fail open and do not trigger
+        the guardrail.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @_builtins.property
+    @pulumi.getter(name="maxConversationMessages")
+    def max_conversation_messages(self) -> Optional[_builtins.int]:
+        """
+        When checking this policy, consider the last 'n' messages in the
+        conversation.
+        When not set a default value of 10 will be used.
+        """
+        return pulumi.get(self, "max_conversation_messages")
+
+    @_builtins.property
+    @pulumi.getter(name="modelSettings")
+    def model_settings(self) -> Optional['outputs.GuardrailLlmPolicyModelSettings']:
+        """
+        Model settings contains various configurations for the LLM model.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "model_settings")
+
+
+@pulumi.output_type
+class GuardrailLlmPolicyModelSettings(dict):
+    def __init__(__self__, *,
+                 model: Optional[_builtins.str] = None,
+                 temperature: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str model: The LLM model that the agent should use.
+               If not set, the agent will inherit the model from its parent agent.
+        :param _builtins.float temperature: If set, this temperature will be used for the LLM model. Temperature
+               controls the randomness of the model's responses. Lower temperatures
+               produce responses that are more predictable. Higher temperatures produce
+               responses that are more creative.
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if temperature is not None:
+            pulumi.set(__self__, "temperature", temperature)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[_builtins.str]:
+        """
+        The LLM model that the agent should use.
+        If not set, the agent will inherit the model from its parent agent.
+        """
+        return pulumi.get(self, "model")
+
+    @_builtins.property
+    @pulumi.getter
+    def temperature(self) -> Optional[_builtins.float]:
+        """
+        If set, this temperature will be used for the LLM model. Temperature
+        controls the randomness of the model's responses. Lower temperatures
+        produce responses that are more predictable. Higher temperatures produce
+        responses that are more creative.
+        """
+        return pulumi.get(self, "temperature")
+
+
+@pulumi.output_type
+class GuardrailLlmPromptSecurity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customPolicy":
+            suggest = "custom_policy"
+        elif key == "defaultSettings":
+            suggest = "default_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailLlmPromptSecurity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailLlmPromptSecurity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailLlmPromptSecurity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_policy: Optional['outputs.GuardrailLlmPromptSecurityCustomPolicy'] = None,
+                 default_settings: Optional['outputs.GuardrailLlmPromptSecurityDefaultSettings'] = None):
+        """
+        :param 'GuardrailLlmPromptSecurityCustomPolicyArgs' custom_policy: Guardrail that blocks the conversation if the LLM response is considered
+               violating the policy based on the LLM classification.
+               Structure is documented below.
+        :param 'GuardrailLlmPromptSecurityDefaultSettingsArgs' default_settings: Configuration for default system security settings.
+               Structure is documented below.
+        """
+        if custom_policy is not None:
+            pulumi.set(__self__, "custom_policy", custom_policy)
+        if default_settings is not None:
+            pulumi.set(__self__, "default_settings", default_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="customPolicy")
+    def custom_policy(self) -> Optional['outputs.GuardrailLlmPromptSecurityCustomPolicy']:
+        """
+        Guardrail that blocks the conversation if the LLM response is considered
+        violating the policy based on the LLM classification.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultSettings")
+    def default_settings(self) -> Optional['outputs.GuardrailLlmPromptSecurityDefaultSettings']:
+        """
+        Configuration for default system security settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_settings")
+
+
+@pulumi.output_type
+class GuardrailLlmPromptSecurityCustomPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "policyScope":
+            suggest = "policy_scope"
+        elif key == "allowShortUtterance":
+            suggest = "allow_short_utterance"
+        elif key == "failOpen":
+            suggest = "fail_open"
+        elif key == "maxConversationMessages":
+            suggest = "max_conversation_messages"
+        elif key == "modelSettings":
+            suggest = "model_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailLlmPromptSecurityCustomPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailLlmPromptSecurityCustomPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailLlmPromptSecurityCustomPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 policy_scope: _builtins.str,
+                 prompt: _builtins.str,
+                 allow_short_utterance: Optional[_builtins.bool] = None,
+                 fail_open: Optional[_builtins.bool] = None,
+                 max_conversation_messages: Optional[_builtins.int] = None,
+                 model_settings: Optional['outputs.GuardrailLlmPromptSecurityCustomPolicyModelSettings'] = None):
+        """
+        :param _builtins.str policy_scope: Defines when to apply the policy check during the conversation. If set to
+               `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+               When applying the policy to the agent response, additional latency will
+               be introduced before the agent can respond.
+               Possible values:
+               USER_QUERY
+               AGENT_RESPONSE
+               USER_QUERY_AND_AGENT_RESPONSE
+        :param _builtins.str prompt: Policy prompt.
+        :param _builtins.bool allow_short_utterance: By default, the LLM policy check is bypassed for short utterances.
+               Enabling this setting applies the policy check to all utterances,
+               including those that would normally be skipped.
+        :param _builtins.bool fail_open: If an error occurs during the policy check, fail open and do not trigger
+               the guardrail.
+        :param _builtins.int max_conversation_messages: When checking this policy, consider the last 'n' messages in the
+               conversation.
+               When not set a default value of 10 will be used.
+        :param 'GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs' model_settings: Model settings contains various configurations for the LLM model.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "policy_scope", policy_scope)
+        pulumi.set(__self__, "prompt", prompt)
+        if allow_short_utterance is not None:
+            pulumi.set(__self__, "allow_short_utterance", allow_short_utterance)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
+        if max_conversation_messages is not None:
+            pulumi.set(__self__, "max_conversation_messages", max_conversation_messages)
+        if model_settings is not None:
+            pulumi.set(__self__, "model_settings", model_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="policyScope")
+    def policy_scope(self) -> _builtins.str:
+        """
+        Defines when to apply the policy check during the conversation. If set to
+        `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+        When applying the policy to the agent response, additional latency will
+        be introduced before the agent can respond.
+        Possible values:
+        USER_QUERY
+        AGENT_RESPONSE
+        USER_QUERY_AND_AGENT_RESPONSE
+        """
+        return pulumi.get(self, "policy_scope")
+
+    @_builtins.property
+    @pulumi.getter
+    def prompt(self) -> _builtins.str:
+        """
+        Policy prompt.
+        """
+        return pulumi.get(self, "prompt")
+
+    @_builtins.property
+    @pulumi.getter(name="allowShortUtterance")
+    def allow_short_utterance(self) -> Optional[_builtins.bool]:
+        """
+        By default, the LLM policy check is bypassed for short utterances.
+        Enabling this setting applies the policy check to all utterances,
+        including those that would normally be skipped.
+        """
+        return pulumi.get(self, "allow_short_utterance")
+
+    @_builtins.property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[_builtins.bool]:
+        """
+        If an error occurs during the policy check, fail open and do not trigger
+        the guardrail.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @_builtins.property
+    @pulumi.getter(name="maxConversationMessages")
+    def max_conversation_messages(self) -> Optional[_builtins.int]:
+        """
+        When checking this policy, consider the last 'n' messages in the
+        conversation.
+        When not set a default value of 10 will be used.
+        """
+        return pulumi.get(self, "max_conversation_messages")
+
+    @_builtins.property
+    @pulumi.getter(name="modelSettings")
+    def model_settings(self) -> Optional['outputs.GuardrailLlmPromptSecurityCustomPolicyModelSettings']:
+        """
+        Model settings contains various configurations for the LLM model.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "model_settings")
+
+
+@pulumi.output_type
+class GuardrailLlmPromptSecurityCustomPolicyModelSettings(dict):
+    def __init__(__self__, *,
+                 model: Optional[_builtins.str] = None,
+                 temperature: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str model: The LLM model that the agent should use.
+               If not set, the agent will inherit the model from its parent agent.
+        :param _builtins.float temperature: If set, this temperature will be used for the LLM model. Temperature
+               controls the randomness of the model's responses. Lower temperatures
+               produce responses that are more predictable. Higher temperatures produce
+               responses that are more creative.
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if temperature is not None:
+            pulumi.set(__self__, "temperature", temperature)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[_builtins.str]:
+        """
+        The LLM model that the agent should use.
+        If not set, the agent will inherit the model from its parent agent.
+        """
+        return pulumi.get(self, "model")
+
+    @_builtins.property
+    @pulumi.getter
+    def temperature(self) -> Optional[_builtins.float]:
+        """
+        If set, this temperature will be used for the LLM model. Temperature
+        controls the randomness of the model's responses. Lower temperatures
+        produce responses that are more predictable. Higher temperatures produce
+        responses that are more creative.
+        """
+        return pulumi.get(self, "temperature")
+
+
+@pulumi.output_type
+class GuardrailLlmPromptSecurityDefaultSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultPromptTemplate":
+            suggest = "default_prompt_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailLlmPromptSecurityDefaultSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailLlmPromptSecurityDefaultSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailLlmPromptSecurityDefaultSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_prompt_template: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str default_prompt_template: (Output)
+               The default prompt template used by the system.
+               This field is for display purposes to show the user what prompt
+               the system uses by default. It is OUTPUT_ONLY.
+        """
+        if default_prompt_template is not None:
+            pulumi.set(__self__, "default_prompt_template", default_prompt_template)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPromptTemplate")
+    def default_prompt_template(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The default prompt template used by the system.
+        This field is for display purposes to show the user what prompt
+        the system uses by default. It is OUTPUT_ONLY.
+        """
+        return pulumi.get(self, "default_prompt_template")
+
+
+@pulumi.output_type
+class GuardrailModelSafety(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "safetySettings":
+            suggest = "safety_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardrailModelSafety. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardrailModelSafety.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardrailModelSafety.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 safety_settings: Sequence['outputs.GuardrailModelSafetySafetySetting']):
+        """
+        :param Sequence['GuardrailModelSafetySafetySettingArgs'] safety_settings: List of safety settings.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "safety_settings", safety_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="safetySettings")
+    def safety_settings(self) -> Sequence['outputs.GuardrailModelSafetySafetySetting']:
+        """
+        List of safety settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "safety_settings")
+
+
+@pulumi.output_type
+class GuardrailModelSafetySafetySetting(dict):
+    def __init__(__self__, *,
+                 category: _builtins.str,
+                 threshold: _builtins.str):
+        """
+        :param _builtins.str category: The harm category.
+               Possible values:
+               HARM_CATEGORY_HATE_SPEECH
+               HARM_CATEGORY_DANGEROUS_CONTENT
+               HARM_CATEGORY_HARASSMENT
+               HARM_CATEGORY_SEXUALLY_EXPLICIT
+               Possible values are: `HARM_CATEGORY_HATE_SPEECH`, `HARM_CATEGORY_DANGEROUS_CONTENT`, `HARM_CATEGORY_HARASSMENT`, `HARM_CATEGORY_SEXUALLY_EXPLICIT`.
+        :param _builtins.str threshold: The harm block threshold.
+               Possible values:
+               BLOCK_LOW_AND_ABOVE
+               BLOCK_MEDIUM_AND_ABOVE
+               BLOCK_ONLY_HIGH
+               BLOCK_NONE
+               OFF
+               Possible values are: `BLOCK_LOW_AND_ABOVE`, `BLOCK_MEDIUM_AND_ABOVE`, `BLOCK_ONLY_HIGH`, `BLOCK_NONE`, `OFF`.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "threshold", threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> _builtins.str:
+        """
+        The harm category.
+        Possible values:
+        HARM_CATEGORY_HATE_SPEECH
+        HARM_CATEGORY_DANGEROUS_CONTENT
+        HARM_CATEGORY_HARASSMENT
+        HARM_CATEGORY_SEXUALLY_EXPLICIT
+        Possible values are: `HARM_CATEGORY_HATE_SPEECH`, `HARM_CATEGORY_DANGEROUS_CONTENT`, `HARM_CATEGORY_HARASSMENT`, `HARM_CATEGORY_SEXUALLY_EXPLICIT`.
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> _builtins.str:
+        """
+        The harm block threshold.
+        Possible values:
+        BLOCK_LOW_AND_ABOVE
+        BLOCK_MEDIUM_AND_ABOVE
+        BLOCK_ONLY_HIGH
+        BLOCK_NONE
+        OFF
+        Possible values are: `BLOCK_LOW_AND_ABOVE`, `BLOCK_MEDIUM_AND_ABOVE`, `BLOCK_ONLY_HIGH`, `BLOCK_NONE`, `OFF`.
+        """
+        return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class ToolClientFunction(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 parameters: Optional['outputs.ToolClientFunctionParameters'] = None,
+                 response: Optional['outputs.ToolClientFunctionResponse'] = None):
+        """
+        :param _builtins.str name: The function name.
+        :param _builtins.str description: The function description.
+        :param 'ToolClientFunctionParametersArgs' parameters: Represents a select subset of an OpenAPI 3.0 schema object.
+               Structure is documented below.
+        :param 'ToolClientFunctionResponseArgs' response: Represents a select subset of an OpenAPI 3.0 schema object.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if response is not None:
+            pulumi.set(__self__, "response", response)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The function name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        The function description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional['outputs.ToolClientFunctionParameters']:
+        """
+        Represents a select subset of an OpenAPI 3.0 schema object.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "parameters")
+
+    @_builtins.property
+    @pulumi.getter
+    def response(self) -> Optional['outputs.ToolClientFunctionResponse']:
+        """
+        Represents a select subset of an OpenAPI 3.0 schema object.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "response")
+
+
+@pulumi.output_type
+class ToolClientFunctionParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalProperties":
+            suggest = "additional_properties"
+        elif key == "anyOf":
+            suggest = "any_of"
+        elif key == "prefixItems":
+            suggest = "prefix_items"
+        elif key == "uniqueItems":
+            suggest = "unique_items"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolClientFunctionParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolClientFunctionParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolClientFunctionParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 additional_properties: Optional[_builtins.str] = None,
+                 any_of: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 defs: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 enums: Optional[Sequence[_builtins.str]] = None,
+                 items: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 prefix_items: Optional[_builtins.str] = None,
+                 properties: Optional[_builtins.str] = None,
+                 ref: Optional[_builtins.str] = None,
+                 requireds: Optional[Sequence[_builtins.str]] = None,
+                 unique_items: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str type: The type of the data.
+               Possible values:
+               STRING
+               INTEGER
+               NUMBER
+               BOOLEAN
+               OBJECT
+               ARRAY
+        :param _builtins.str additional_properties: Optional. Defines the schema for additional properties allowed in an object.
+               The value must be a valid JSON string representing the Schema object.
+               (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+        :param _builtins.str any_of: Optional. The instance value should be valid against at least one of the schemas in this list.
+        :param _builtins.str default: Optional. Default value of the data. Represents a dynamically typed value
+               which can be either null, a number, a string, a boolean, a struct,
+               or a list of values. The provided default value must be compatible
+               with the defined 'type' and other schema constraints.
+        :param _builtins.str defs: A map of definitions for use by ref. Only allowed at the root of the schema.
+        :param _builtins.str description: The description of the data.
+        :param Sequence[_builtins.str] enums: Possible values of the element of primitive type with enum format.
+               Examples:
+               1. We can define direction as :
+               {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+               2. We can define apartment number as :
+               {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+        :param _builtins.str items: Schema of the elements of Type.ARRAY.
+        :param _builtins.bool nullable: Indicates if the value may be null.
+        :param _builtins.str prefix_items: Optional. Schemas of initial elements of Type.ARRAY.
+        :param _builtins.str properties: Properties of Type.OBJECT.
+        :param _builtins.str ref: Allows indirect references between schema nodes. The value should be a
+               valid reference to a child of the root `defs`.
+               For example, the following schema defines a reference to a schema node
+               named "Pet":
+               type: object
+               properties:
+               pet:
+               ref: #/defs/Pet
+               defs:
+               Pet:
+               type: object
+               properties:
+               name:
+               type: string
+               The value of the "pet" property is a reference to the schema node
+               named "Pet".
+               See details in
+               https://json-schema.org/understanding-json-schema/structuring.
+        :param Sequence[_builtins.str] requireds: Required properties of Type.OBJECT.
+        :param _builtins.bool unique_items: Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+        """
+        pulumi.set(__self__, "type", type)
+        if additional_properties is not None:
+            pulumi.set(__self__, "additional_properties", additional_properties)
+        if any_of is not None:
+            pulumi.set(__self__, "any_of", any_of)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if defs is not None:
+            pulumi.set(__self__, "defs", defs)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if prefix_items is not None:
+            pulumi.set(__self__, "prefix_items", prefix_items)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if requireds is not None:
+            pulumi.set(__self__, "requireds", requireds)
+        if unique_items is not None:
+            pulumi.set(__self__, "unique_items", unique_items)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the data.
+        Possible values:
+        STRING
+        INTEGER
+        NUMBER
+        BOOLEAN
+        OBJECT
+        ARRAY
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="additionalProperties")
+    def additional_properties(self) -> Optional[_builtins.str]:
+        """
+        Optional. Defines the schema for additional properties allowed in an object.
+        The value must be a valid JSON string representing the Schema object.
+        (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+        """
+        return pulumi.get(self, "additional_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="anyOf")
+    def any_of(self) -> Optional[_builtins.str]:
+        """
+        Optional. The instance value should be valid against at least one of the schemas in this list.
+        """
+        return pulumi.get(self, "any_of")
+
+    @_builtins.property
+    @pulumi.getter
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Optional. Default value of the data. Represents a dynamically typed value
+        which can be either null, a number, a string, a boolean, a struct,
+        or a list of values. The provided default value must be compatible
+        with the defined 'type' and other schema constraints.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def defs(self) -> Optional[_builtins.str]:
+        """
+        A map of definitions for use by ref. Only allowed at the root of the schema.
+        """
+        return pulumi.get(self, "defs")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        The description of the data.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def enums(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Possible values of the element of primitive type with enum format.
+        Examples:
+        1. We can define direction as :
+        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+        2. We can define apartment number as :
+        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+        """
+        return pulumi.get(self, "enums")
+
+    @_builtins.property
+    @pulumi.getter
+    def items(self) -> Optional[_builtins.str]:
+        """
+        Schema of the elements of Type.ARRAY.
+        """
+        return pulumi.get(self, "items")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if the value may be null.
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="prefixItems")
+    def prefix_items(self) -> Optional[_builtins.str]:
+        """
+        Optional. Schemas of initial elements of Type.ARRAY.
+        """
+        return pulumi.get(self, "prefix_items")
+
+    @_builtins.property
+    @pulumi.getter
+    def properties(self) -> Optional[_builtins.str]:
+        """
+        Properties of Type.OBJECT.
+        """
+        return pulumi.get(self, "properties")
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> Optional[_builtins.str]:
+        """
+        Allows indirect references between schema nodes. The value should be a
+        valid reference to a child of the root `defs`.
+        For example, the following schema defines a reference to a schema node
+        named "Pet":
+        type: object
+        properties:
+        pet:
+        ref: #/defs/Pet
+        defs:
+        Pet:
+        type: object
+        properties:
+        name:
+        type: string
+        The value of the "pet" property is a reference to the schema node
+        named "Pet".
+        See details in
+        https://json-schema.org/understanding-json-schema/structuring.
+        """
+        return pulumi.get(self, "ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def requireds(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Required properties of Type.OBJECT.
+        """
+        return pulumi.get(self, "requireds")
+
+    @_builtins.property
+    @pulumi.getter(name="uniqueItems")
+    def unique_items(self) -> Optional[_builtins.bool]:
+        """
+        Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+        """
+        return pulumi.get(self, "unique_items")
+
+
+@pulumi.output_type
+class ToolClientFunctionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalProperties":
+            suggest = "additional_properties"
+        elif key == "anyOf":
+            suggest = "any_of"
+        elif key == "prefixItems":
+            suggest = "prefix_items"
+        elif key == "uniqueItems":
+            suggest = "unique_items"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolClientFunctionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolClientFunctionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolClientFunctionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 additional_properties: Optional[_builtins.str] = None,
+                 any_of: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 defs: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 enums: Optional[Sequence[_builtins.str]] = None,
+                 items: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 prefix_items: Optional[_builtins.str] = None,
+                 properties: Optional[_builtins.str] = None,
+                 ref: Optional[_builtins.str] = None,
+                 requireds: Optional[Sequence[_builtins.str]] = None,
+                 unique_items: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str type: The type of the data.
+               Possible values:
+               STRING
+               INTEGER
+               NUMBER
+               BOOLEAN
+               OBJECT
+               ARRAY
+        :param _builtins.str additional_properties: Optional. Defines the schema for additional properties allowed in an object.
+               The value must be a valid JSON string representing the Schema object.
+               (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+        :param _builtins.str any_of: Optional. The instance value should be valid against at least one of the schemas in this list.
+        :param _builtins.str default: Optional. Default value of the data. Represents a dynamically typed value
+               which can be either null, a number, a string, a boolean, a struct,
+               or a list of values. The provided default value must be compatible
+               with the defined 'type' and other schema constraints.
+        :param _builtins.str defs: A map of definitions for use by ref. Only allowed at the root of the schema.
+        :param _builtins.str description: The description of the data.
+        :param Sequence[_builtins.str] enums: Possible values of the element of primitive type with enum format.
+               Examples:
+               1. We can define direction as :
+               {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+               2. We can define apartment number as :
+               {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+        :param _builtins.str items: Schema of the elements of Type.ARRAY.
+        :param _builtins.bool nullable: Indicates if the value may be null.
+        :param _builtins.str prefix_items: Optional. Schemas of initial elements of Type.ARRAY.
+        :param _builtins.str properties: Properties of Type.OBJECT.
+        :param _builtins.str ref: Allows indirect references between schema nodes. The value should be a
+               valid reference to a child of the root `defs`.
+               For example, the following schema defines a reference to a schema node
+               named "Pet":
+               type: object
+               properties:
+               pet:
+               ref: #/defs/Pet
+               defs:
+               Pet:
+               type: object
+               properties:
+               name:
+               type: string
+               The value of the "pet" property is a reference to the schema node
+               named "Pet".
+               See details in
+               https://json-schema.org/understanding-json-schema/structuring.
+        :param Sequence[_builtins.str] requireds: Required properties of Type.OBJECT.
+        :param _builtins.bool unique_items: Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+        """
+        pulumi.set(__self__, "type", type)
+        if additional_properties is not None:
+            pulumi.set(__self__, "additional_properties", additional_properties)
+        if any_of is not None:
+            pulumi.set(__self__, "any_of", any_of)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if defs is not None:
+            pulumi.set(__self__, "defs", defs)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if prefix_items is not None:
+            pulumi.set(__self__, "prefix_items", prefix_items)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if requireds is not None:
+            pulumi.set(__self__, "requireds", requireds)
+        if unique_items is not None:
+            pulumi.set(__self__, "unique_items", unique_items)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the data.
+        Possible values:
+        STRING
+        INTEGER
+        NUMBER
+        BOOLEAN
+        OBJECT
+        ARRAY
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="additionalProperties")
+    def additional_properties(self) -> Optional[_builtins.str]:
+        """
+        Optional. Defines the schema for additional properties allowed in an object.
+        The value must be a valid JSON string representing the Schema object.
+        (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+        """
+        return pulumi.get(self, "additional_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="anyOf")
+    def any_of(self) -> Optional[_builtins.str]:
+        """
+        Optional. The instance value should be valid against at least one of the schemas in this list.
+        """
+        return pulumi.get(self, "any_of")
+
+    @_builtins.property
+    @pulumi.getter
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Optional. Default value of the data. Represents a dynamically typed value
+        which can be either null, a number, a string, a boolean, a struct,
+        or a list of values. The provided default value must be compatible
+        with the defined 'type' and other schema constraints.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def defs(self) -> Optional[_builtins.str]:
+        """
+        A map of definitions for use by ref. Only allowed at the root of the schema.
+        """
+        return pulumi.get(self, "defs")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        The description of the data.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def enums(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Possible values of the element of primitive type with enum format.
+        Examples:
+        1. We can define direction as :
+        {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+        2. We can define apartment number as :
+        {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+        """
+        return pulumi.get(self, "enums")
+
+    @_builtins.property
+    @pulumi.getter
+    def items(self) -> Optional[_builtins.str]:
+        """
+        Schema of the elements of Type.ARRAY.
+        """
+        return pulumi.get(self, "items")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if the value may be null.
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="prefixItems")
+    def prefix_items(self) -> Optional[_builtins.str]:
+        """
+        Optional. Schemas of initial elements of Type.ARRAY.
+        """
+        return pulumi.get(self, "prefix_items")
+
+    @_builtins.property
+    @pulumi.getter
+    def properties(self) -> Optional[_builtins.str]:
+        """
+        Properties of Type.OBJECT.
+        """
+        return pulumi.get(self, "properties")
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> Optional[_builtins.str]:
+        """
+        Allows indirect references between schema nodes. The value should be a
+        valid reference to a child of the root `defs`.
+        For example, the following schema defines a reference to a schema node
+        named "Pet":
+        type: object
+        properties:
+        pet:
+        ref: #/defs/Pet
+        defs:
+        Pet:
+        type: object
+        properties:
+        name:
+        type: string
+        The value of the "pet" property is a reference to the schema node
+        named "Pet".
+        See details in
+        https://json-schema.org/understanding-json-schema/structuring.
+        """
+        return pulumi.get(self, "ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def requireds(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Required properties of Type.OBJECT.
+        """
+        return pulumi.get(self, "requireds")
+
+    @_builtins.property
+    @pulumi.getter(name="uniqueItems")
+    def unique_items(self) -> Optional[_builtins.bool]:
+        """
+        Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+        """
+        return pulumi.get(self, "unique_items")
+
+
+@pulumi.output_type
+class ToolDataStoreTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boostSpecs":
+            suggest = "boost_specs"
+        elif key == "engineSource":
+            suggest = "engine_source"
+        elif key == "maxResults":
+            suggest = "max_results"
+        elif key == "modalityConfigs":
+            suggest = "modality_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 boost_specs: Optional[Sequence['outputs.ToolDataStoreToolBoostSpec']] = None,
+                 description: Optional[_builtins.str] = None,
+                 engine_source: Optional['outputs.ToolDataStoreToolEngineSource'] = None,
+                 max_results: Optional[_builtins.int] = None,
+                 modality_configs: Optional[Sequence['outputs.ToolDataStoreToolModalityConfig']] = None):
+        """
+        :param _builtins.str name: The data store tool name.
+        :param Sequence['ToolDataStoreToolBoostSpecArgs'] boost_specs: Boost specification to boost certain documents.
+               Structure is documented below.
+        :param _builtins.str description: The tool description.
+        :param 'ToolDataStoreToolEngineSourceArgs' engine_source: Configuration for searching within an Engine, potentially targeting
+               specific DataStores.
+               Structure is documented below.
+        :param _builtins.int max_results: Number of search results to return per query.
+               The default value is 10. The maximum allowed value is 10.
+        :param Sequence['ToolDataStoreToolModalityConfigArgs'] modality_configs: The modality configs for the data store.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if boost_specs is not None:
+            pulumi.set(__self__, "boost_specs", boost_specs)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if engine_source is not None:
+            pulumi.set(__self__, "engine_source", engine_source)
+        if max_results is not None:
+            pulumi.set(__self__, "max_results", max_results)
+        if modality_configs is not None:
+            pulumi.set(__self__, "modality_configs", modality_configs)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The data store tool name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="boostSpecs")
+    def boost_specs(self) -> Optional[Sequence['outputs.ToolDataStoreToolBoostSpec']]:
+        """
+        Boost specification to boost certain documents.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "boost_specs")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        The tool description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="engineSource")
+    def engine_source(self) -> Optional['outputs.ToolDataStoreToolEngineSource']:
+        """
+        Configuration for searching within an Engine, potentially targeting
+        specific DataStores.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "engine_source")
+
+    @_builtins.property
+    @pulumi.getter(name="maxResults")
+    def max_results(self) -> Optional[_builtins.int]:
+        """
+        Number of search results to return per query.
+        The default value is 10. The maximum allowed value is 10.
+        """
+        return pulumi.get(self, "max_results")
+
+    @_builtins.property
+    @pulumi.getter(name="modalityConfigs")
+    def modality_configs(self) -> Optional[Sequence['outputs.ToolDataStoreToolModalityConfig']]:
+        """
+        The modality configs for the data store.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "modality_configs")
+
+
+@pulumi.output_type
+class ToolDataStoreToolBoostSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataStores":
+            suggest = "data_stores"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolBoostSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolBoostSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolBoostSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_stores: Sequence[_builtins.str],
+                 specs: Sequence['outputs.ToolDataStoreToolBoostSpecSpec']):
+        """
+        :param Sequence[_builtins.str] data_stores: The Data Store where the boosting configuration is applied. Full resource
+               name of DataStore, such as
+               projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
+        :param Sequence['ToolDataStoreToolBoostSpecSpecArgs'] specs: A list of boosting specifications.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "data_stores", data_stores)
+        pulumi.set(__self__, "specs", specs)
+
+    @_builtins.property
+    @pulumi.getter(name="dataStores")
+    def data_stores(self) -> Sequence[_builtins.str]:
+        """
+        The Data Store where the boosting configuration is applied. Full resource
+        name of DataStore, such as
+        projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
+        """
+        return pulumi.get(self, "data_stores")
+
+    @_builtins.property
+    @pulumi.getter
+    def specs(self) -> Sequence['outputs.ToolDataStoreToolBoostSpecSpec']:
+        """
+        A list of boosting specifications.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "specs")
+
+
+@pulumi.output_type
+class ToolDataStoreToolBoostSpecSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conditionBoostSpecs":
+            suggest = "condition_boost_specs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolBoostSpecSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolBoostSpecSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolBoostSpecSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition_boost_specs: Sequence['outputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpec']):
+        """
+        :param Sequence['ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs'] condition_boost_specs: A list of boosting specifications.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "condition_boost_specs", condition_boost_specs)
+
+    @_builtins.property
+    @pulumi.getter(name="conditionBoostSpecs")
+    def condition_boost_specs(self) -> Sequence['outputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpec']:
+        """
+        A list of boosting specifications.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition_boost_specs")
+
+
+@pulumi.output_type
+class ToolDataStoreToolBoostSpecSpecConditionBoostSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boostControlSpec":
+            suggest = "boost_control_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolBoostSpecSpecConditionBoostSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolBoostSpecSpecConditionBoostSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolBoostSpecSpecConditionBoostSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition: _builtins.str,
+                 boost: Optional[_builtins.float] = None,
+                 boost_control_spec: Optional['outputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec'] = None):
+        """
+        :param _builtins.str condition: An expression which specifies a boost condition. The syntax is the same
+               as filter expression syntax. Currently, the only supported condition is
+               a list of BCP-47 lang codes.
+               Example: To boost suggestions in languages en or fr:
+               (lang_code: ANY("en", "fr"))
+        :param _builtins.float boost: Strength of the boost, which should be in [-1, 1]. Negative boost means
+               demotion. Default is 0.0.
+               Setting to 1.0 gives the suggestions a big promotion. However, it does
+               not necessarily mean that the top result will be a boosted suggestion.
+               Setting to -1.0 gives the suggestions a big demotion. However, other
+               suggestions that are relevant might still be shown.
+               Setting to 0.0 means no boost applied. The boosting condition is
+               ignored.
+        :param 'ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs' boost_control_spec: Specification for custom ranking based on customer specified attribute
+               value. It provides more controls for customized ranking than the simple
+               (condition, boost) combination above.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "condition", condition)
+        if boost is not None:
+            pulumi.set(__self__, "boost", boost)
+        if boost_control_spec is not None:
+            pulumi.set(__self__, "boost_control_spec", boost_control_spec)
+
+    @_builtins.property
+    @pulumi.getter
+    def condition(self) -> _builtins.str:
+        """
+        An expression which specifies a boost condition. The syntax is the same
+        as filter expression syntax. Currently, the only supported condition is
+        a list of BCP-47 lang codes.
+        Example: To boost suggestions in languages en or fr:
+        (lang_code: ANY("en", "fr"))
+        """
+        return pulumi.get(self, "condition")
+
+    @_builtins.property
+    @pulumi.getter
+    def boost(self) -> Optional[_builtins.float]:
+        """
+        Strength of the boost, which should be in [-1, 1]. Negative boost means
+        demotion. Default is 0.0.
+        Setting to 1.0 gives the suggestions a big promotion. However, it does
+        not necessarily mean that the top result will be a boosted suggestion.
+        Setting to -1.0 gives the suggestions a big demotion. However, other
+        suggestions that are relevant might still be shown.
+        Setting to 0.0 means no boost applied. The boosting condition is
+        ignored.
+        """
+        return pulumi.get(self, "boost")
+
+    @_builtins.property
+    @pulumi.getter(name="boostControlSpec")
+    def boost_control_spec(self) -> Optional['outputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec']:
+        """
+        Specification for custom ranking based on customer specified attribute
+        value. It provides more controls for customized ranking than the simple
+        (condition, boost) combination above.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "boost_control_spec")
+
+
+@pulumi.output_type
+class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeType":
+            suggest = "attribute_type"
+        elif key == "controlPoints":
+            suggest = "control_points"
+        elif key == "fieldName":
+            suggest = "field_name"
+        elif key == "interpolationType":
+            suggest = "interpolation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_type: Optional[_builtins.str] = None,
+                 control_points: Optional[Sequence['outputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint']] = None,
+                 field_name: Optional[_builtins.str] = None,
+                 interpolation_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str attribute_type: The attribute type to be used to determine the boost amount. The
+               attribute value can be derived from the field value of the specified
+               field_name. In the case of numerical it is straightforward i.e.
+               attribute_value = numerical_field_value. In the case of freshness
+               however, attribute_value = (time.now() - datetime_field_value).
+               Possible values:
+               NUMERICAL
+               FRESHNESS
+        :param Sequence['ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs'] control_points: The control points used to define the curve. The monotonic function
+               (defined through the interpolation_type above) passes through the
+               control points listed here.
+               Structure is documented below.
+        :param _builtins.str field_name: The name of the field whose value will be used to determine the
+               boost amount.
+        :param _builtins.str interpolation_type: The interpolation type to be applied to connect the control points
+               listed below.
+               Possible values:
+               LINEAR
+        """
+        if attribute_type is not None:
+            pulumi.set(__self__, "attribute_type", attribute_type)
+        if control_points is not None:
+            pulumi.set(__self__, "control_points", control_points)
+        if field_name is not None:
+            pulumi.set(__self__, "field_name", field_name)
+        if interpolation_type is not None:
+            pulumi.set(__self__, "interpolation_type", interpolation_type)
+
+    @_builtins.property
+    @pulumi.getter(name="attributeType")
+    def attribute_type(self) -> Optional[_builtins.str]:
+        """
+        The attribute type to be used to determine the boost amount. The
+        attribute value can be derived from the field value of the specified
+        field_name. In the case of numerical it is straightforward i.e.
+        attribute_value = numerical_field_value. In the case of freshness
+        however, attribute_value = (time.now() - datetime_field_value).
+        Possible values:
+        NUMERICAL
+        FRESHNESS
+        """
+        return pulumi.get(self, "attribute_type")
+
+    @_builtins.property
+    @pulumi.getter(name="controlPoints")
+    def control_points(self) -> Optional[Sequence['outputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint']]:
+        """
+        The control points used to define the curve. The monotonic function
+        (defined through the interpolation_type above) passes through the
+        control points listed here.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "control_points")
+
+    @_builtins.property
+    @pulumi.getter(name="fieldName")
+    def field_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the field whose value will be used to determine the
+        boost amount.
+        """
+        return pulumi.get(self, "field_name")
+
+    @_builtins.property
+    @pulumi.getter(name="interpolationType")
+    def interpolation_type(self) -> Optional[_builtins.str]:
+        """
+        The interpolation type to be applied to connect the control points
+        listed below.
+        Possible values:
+        LINEAR
+        """
+        return pulumi.get(self, "interpolation_type")
+
+
+@pulumi.output_type
+class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "boostAmount":
+            suggest = "boost_amount"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_value: Optional[_builtins.str] = None,
+                 boost_amount: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str attribute_value: Can be one of:
+               1. The numerical field value.
+               2. The duration spec for freshness:
+               The value must be formatted as an XSD `dayTimeDuration` value (a
+               restricted subset of an ISO 8601 duration value). The pattern for
+               this is: `nDnM]`.
+        :param _builtins.float boost_amount: The value between -1 to 1 by which to boost the score if the
+               attribute_value evaluates to the value specified above.
+        """
+        if attribute_value is not None:
+            pulumi.set(__self__, "attribute_value", attribute_value)
+        if boost_amount is not None:
+            pulumi.set(__self__, "boost_amount", boost_amount)
+
+    @_builtins.property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> Optional[_builtins.str]:
+        """
+        Can be one of:
+        1. The numerical field value.
+        2. The duration spec for freshness:
+        The value must be formatted as an XSD `dayTimeDuration` value (a
+        restricted subset of an ISO 8601 duration value). The pattern for
+        this is: `nDnM]`.
+        """
+        return pulumi.get(self, "attribute_value")
+
+    @_builtins.property
+    @pulumi.getter(name="boostAmount")
+    def boost_amount(self) -> Optional[_builtins.float]:
+        """
+        The value between -1 to 1 by which to boost the score if the
+        attribute_value evaluates to the value specified above.
+        """
+        return pulumi.get(self, "boost_amount")
+
+
+@pulumi.output_type
+class ToolDataStoreToolEngineSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataStoreSources":
+            suggest = "data_store_sources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolEngineSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolEngineSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolEngineSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 engine: _builtins.str,
+                 data_store_sources: Optional[Sequence['outputs.ToolDataStoreToolEngineSourceDataStoreSource']] = None,
+                 filter: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str engine: Full resource name of the Engine.
+               Format:
+               `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+        :param Sequence['ToolDataStoreToolEngineSourceDataStoreSourceArgs'] data_store_sources: Use to target specific DataStores within the Engine.
+               If empty, the search applies to all DataStores associated with the
+               Engine.
+               Structure is documented below.
+        :param _builtins.str filter: A filter applied to the search across the Engine. Not relevant and not
+               used if 'data_store_sources' is provided.
+               See:
+               https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+        """
+        pulumi.set(__self__, "engine", engine)
+        if data_store_sources is not None:
+            pulumi.set(__self__, "data_store_sources", data_store_sources)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+
+    @_builtins.property
+    @pulumi.getter
+    def engine(self) -> _builtins.str:
+        """
+        Full resource name of the Engine.
+        Format:
+        `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+        """
+        return pulumi.get(self, "engine")
+
+    @_builtins.property
+    @pulumi.getter(name="dataStoreSources")
+    def data_store_sources(self) -> Optional[Sequence['outputs.ToolDataStoreToolEngineSourceDataStoreSource']]:
+        """
+        Use to target specific DataStores within the Engine.
+        If empty, the search applies to all DataStores associated with the
+        Engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_store_sources")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional[_builtins.str]:
+        """
+        A filter applied to the search across the Engine. Not relevant and not
+        used if 'data_store_sources' is provided.
+        See:
+        https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+        """
+        return pulumi.get(self, "filter")
+
+
+@pulumi.output_type
+class ToolDataStoreToolEngineSourceDataStoreSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataStore":
+            suggest = "data_store"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolEngineSourceDataStoreSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolEngineSourceDataStoreSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolEngineSourceDataStoreSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_store: Optional['outputs.ToolDataStoreToolEngineSourceDataStoreSourceDataStore'] = None,
+                 filter: Optional[_builtins.str] = None):
+        """
+        :param 'ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs' data_store: A DataStore resource in Vertex AI Search.
+               Structure is documented below.
+        :param _builtins.str filter: Filter specification for the DataStore.
+               See:
+               https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+        """
+        if data_store is not None:
+            pulumi.set(__self__, "data_store", data_store)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+
+    @_builtins.property
+    @pulumi.getter(name="dataStore")
+    def data_store(self) -> Optional['outputs.ToolDataStoreToolEngineSourceDataStoreSourceDataStore']:
+        """
+        A DataStore resource in Vertex AI Search.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_store")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional[_builtins.str]:
+        """
+        Filter specification for the DataStore.
+        See:
+        https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+        """
+        return pulumi.get(self, "filter")
+
+
+@pulumi.output_type
+class ToolDataStoreToolEngineSourceDataStoreSourceDataStore(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorConfigs":
+            suggest = "connector_configs"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "documentProcessingMode":
+            suggest = "document_processing_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolEngineSourceDataStoreSourceDataStore. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolEngineSourceDataStoreSourceDataStore.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolEngineSourceDataStoreSourceDataStore.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 connector_configs: Optional[Sequence['outputs.ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig']] = None,
+                 create_time: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 document_processing_mode: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Full resource name of the DataStore.
+               Format:
+               `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+        :param Sequence['ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs'] connector_configs: (Output)
+               The connector config for the data store connection.
+               Structure is documented below.
+        :param _builtins.str create_time: (Output)
+               Timestamp when the data store was created.
+        :param _builtins.str display_name: (Output)
+               The display name of the data store.
+        :param _builtins.str document_processing_mode: (Output)
+               The document processing mode for the data store connection.
+               Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+               Possible values:
+               DOCUMENTS
+               CHUNKS
+        :param _builtins.str type: (Output)
+               The type of the data store. This field is readonly and populated by the
+               server.
+               Possible values:
+               PUBLIC_WEB
+               UNSTRUCTURED
+               FAQ
+               CONNECTOR
+               
+               
+               <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
+        """
+        pulumi.set(__self__, "name", name)
+        if connector_configs is not None:
+            pulumi.set(__self__, "connector_configs", connector_configs)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if document_processing_mode is not None:
+            pulumi.set(__self__, "document_processing_mode", document_processing_mode)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Full resource name of the DataStore.
+        Format:
+        `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="connectorConfigs")
+    def connector_configs(self) -> Optional[Sequence['outputs.ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig']]:
+        """
+        (Output)
+        The connector config for the data store connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connector_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Timestamp when the data store was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The display name of the data store.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="documentProcessingMode")
+    def document_processing_mode(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The document processing mode for the data store connection.
+        Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+        Possible values:
+        DOCUMENTS
+        CHUNKS
+        """
+        return pulumi.get(self, "document_processing_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The type of the data store. This field is readonly and populated by the
+        server.
+        Possible values:
+        PUBLIC_WEB
+        UNSTRUCTURED
+        FAQ
+        CONNECTOR
+
+
+        <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "collectionDisplayName":
+            suggest = "collection_display_name"
+        elif key == "dataSource":
+            suggest = "data_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collection: Optional[_builtins.str] = None,
+                 collection_display_name: Optional[_builtins.str] = None,
+                 data_source: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str collection: Resource name of the collection the data store belongs to.
+        :param _builtins.str collection_display_name: Display name of the collection the data store belongs to.
+        :param _builtins.str data_source: The name of the data source.
+               Example: 'salesforce', 'jira', 'confluence', 'bigquery'.
+        """
+        if collection is not None:
+            pulumi.set(__self__, "collection", collection)
+        if collection_display_name is not None:
+            pulumi.set(__self__, "collection_display_name", collection_display_name)
+        if data_source is not None:
+            pulumi.set(__self__, "data_source", data_source)
+
+    @_builtins.property
+    @pulumi.getter
+    def collection(self) -> Optional[_builtins.str]:
+        """
+        Resource name of the collection the data store belongs to.
+        """
+        return pulumi.get(self, "collection")
+
+    @_builtins.property
+    @pulumi.getter(name="collectionDisplayName")
+    def collection_display_name(self) -> Optional[_builtins.str]:
+        """
+        Display name of the collection the data store belongs to.
+        """
+        return pulumi.get(self, "collection_display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSource")
+    def data_source(self) -> Optional[_builtins.str]:
+        """
+        The name of the data source.
+        Example: 'salesforce', 'jira', 'confluence', 'bigquery'.
+        """
+        return pulumi.get(self, "data_source")
+
+
+@pulumi.output_type
+class ToolDataStoreToolModalityConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "modalityType":
+            suggest = "modality_type"
+        elif key == "groundingConfig":
+            suggest = "grounding_config"
+        elif key == "rewriterConfig":
+            suggest = "rewriter_config"
+        elif key == "summarizationConfig":
+            suggest = "summarization_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolModalityConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolModalityConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolModalityConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 modality_type: _builtins.str,
+                 grounding_config: Optional['outputs.ToolDataStoreToolModalityConfigGroundingConfig'] = None,
+                 rewriter_config: Optional['outputs.ToolDataStoreToolModalityConfigRewriterConfig'] = None,
+                 summarization_config: Optional['outputs.ToolDataStoreToolModalityConfigSummarizationConfig'] = None):
+        """
+        :param _builtins.str modality_type: The modality type.
+               Possible values:
+               TEXT
+               AUDIO
+        :param 'ToolDataStoreToolModalityConfigGroundingConfigArgs' grounding_config: Grounding configuration.
+               Structure is documented below.
+        :param 'ToolDataStoreToolModalityConfigRewriterConfigArgs' rewriter_config: Rewriter configuration.
+               Structure is documented below.
+        :param 'ToolDataStoreToolModalityConfigSummarizationConfigArgs' summarization_config: Summarization configuration.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "modality_type", modality_type)
+        if grounding_config is not None:
+            pulumi.set(__self__, "grounding_config", grounding_config)
+        if rewriter_config is not None:
+            pulumi.set(__self__, "rewriter_config", rewriter_config)
+        if summarization_config is not None:
+            pulumi.set(__self__, "summarization_config", summarization_config)
+
+    @_builtins.property
+    @pulumi.getter(name="modalityType")
+    def modality_type(self) -> _builtins.str:
+        """
+        The modality type.
+        Possible values:
+        TEXT
+        AUDIO
+        """
+        return pulumi.get(self, "modality_type")
+
+    @_builtins.property
+    @pulumi.getter(name="groundingConfig")
+    def grounding_config(self) -> Optional['outputs.ToolDataStoreToolModalityConfigGroundingConfig']:
+        """
+        Grounding configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grounding_config")
+
+    @_builtins.property
+    @pulumi.getter(name="rewriterConfig")
+    def rewriter_config(self) -> Optional['outputs.ToolDataStoreToolModalityConfigRewriterConfig']:
+        """
+        Rewriter configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rewriter_config")
+
+    @_builtins.property
+    @pulumi.getter(name="summarizationConfig")
+    def summarization_config(self) -> Optional['outputs.ToolDataStoreToolModalityConfigSummarizationConfig']:
+        """
+        Summarization configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summarization_config")
+
+
+@pulumi.output_type
+class ToolDataStoreToolModalityConfigGroundingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groundingLevel":
+            suggest = "grounding_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolModalityConfigGroundingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolModalityConfigGroundingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolModalityConfigGroundingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disabled: Optional[_builtins.bool] = None,
+                 grounding_level: Optional[_builtins.float] = None):
+        """
+        :param _builtins.bool disabled: Whether grounding is disabled.
+        :param _builtins.float grounding_level: The groundedness threshold of the answer based on the retrieved sources.
+               The value has a configurable range of [1, 5]. The level is used to
+               threshold the groundedness of the answer, meaning that all responses with
+               a groundedness score below the threshold will fall back to returning
+               relevant snippets only.
+               For example, a level of 3 means that the groundedness score must be
+               3 or higher for the response to be returned.
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if grounding_level is not None:
+            pulumi.set(__self__, "grounding_level", grounding_level)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether grounding is disabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="groundingLevel")
+    def grounding_level(self) -> Optional[_builtins.float]:
+        """
+        The groundedness threshold of the answer based on the retrieved sources.
+        The value has a configurable range of [1, 5]. The level is used to
+        threshold the groundedness of the answer, meaning that all responses with
+        a groundedness score below the threshold will fall back to returning
+        relevant snippets only.
+        For example, a level of 3 means that the groundedness score must be
+        3 or higher for the response to be returned.
+        """
+        return pulumi.get(self, "grounding_level")
+
+
+@pulumi.output_type
+class ToolDataStoreToolModalityConfigRewriterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "modelSettings":
+            suggest = "model_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolModalityConfigRewriterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolModalityConfigRewriterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolModalityConfigRewriterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 model_settings: 'outputs.ToolDataStoreToolModalityConfigRewriterConfigModelSettings',
+                 disabled: Optional[_builtins.bool] = None,
+                 prompt: Optional[_builtins.str] = None):
+        """
+        :param 'ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs' model_settings: Model settings contains various configurations for the LLM model.
+               Structure is documented below.
+        :param _builtins.bool disabled: Whether the rewriter is disabled.
+        :param _builtins.str prompt: The prompt definition. If not set, default prompt will be used.
+        """
+        pulumi.set(__self__, "model_settings", model_settings)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if prompt is not None:
+            pulumi.set(__self__, "prompt", prompt)
+
+    @_builtins.property
+    @pulumi.getter(name="modelSettings")
+    def model_settings(self) -> 'outputs.ToolDataStoreToolModalityConfigRewriterConfigModelSettings':
+        """
+        Model settings contains various configurations for the LLM model.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "model_settings")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the rewriter is disabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def prompt(self) -> Optional[_builtins.str]:
+        """
+        The prompt definition. If not set, default prompt will be used.
+        """
+        return pulumi.get(self, "prompt")
+
+
+@pulumi.output_type
+class ToolDataStoreToolModalityConfigRewriterConfigModelSettings(dict):
+    def __init__(__self__, *,
+                 model: Optional[_builtins.str] = None,
+                 temperature: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str model: The LLM model that the agent should use.
+               If not set, the agent will inherit the model from its parent agent.
+        :param _builtins.float temperature: If set, this temperature will be used for the LLM model. Temperature
+               controls the randomness of the model's responses. Lower temperatures
+               produce responses that are more predictable. Higher temperatures produce
+               responses that are more creative.
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if temperature is not None:
+            pulumi.set(__self__, "temperature", temperature)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[_builtins.str]:
+        """
+        The LLM model that the agent should use.
+        If not set, the agent will inherit the model from its parent agent.
+        """
+        return pulumi.get(self, "model")
+
+    @_builtins.property
+    @pulumi.getter
+    def temperature(self) -> Optional[_builtins.float]:
+        """
+        If set, this temperature will be used for the LLM model. Temperature
+        controls the randomness of the model's responses. Lower temperatures
+        produce responses that are more predictable. Higher temperatures produce
+        responses that are more creative.
+        """
+        return pulumi.get(self, "temperature")
+
+
+@pulumi.output_type
+class ToolDataStoreToolModalityConfigSummarizationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "modelSettings":
+            suggest = "model_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolDataStoreToolModalityConfigSummarizationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolDataStoreToolModalityConfigSummarizationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolDataStoreToolModalityConfigSummarizationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disabled: Optional[_builtins.bool] = None,
+                 model_settings: Optional['outputs.ToolDataStoreToolModalityConfigSummarizationConfigModelSettings'] = None,
+                 prompt: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool disabled: Whether summarization is disabled.
+        :param 'ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs' model_settings: Model settings contains various configurations for the LLM model.
+               Structure is documented below.
+        :param _builtins.str prompt: The prompt definition. If not set, default prompt will be used.
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if model_settings is not None:
+            pulumi.set(__self__, "model_settings", model_settings)
+        if prompt is not None:
+            pulumi.set(__self__, "prompt", prompt)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether summarization is disabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="modelSettings")
+    def model_settings(self) -> Optional['outputs.ToolDataStoreToolModalityConfigSummarizationConfigModelSettings']:
+        """
+        Model settings contains various configurations for the LLM model.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "model_settings")
+
+    @_builtins.property
+    @pulumi.getter
+    def prompt(self) -> Optional[_builtins.str]:
+        """
+        The prompt definition. If not set, default prompt will be used.
+        """
+        return pulumi.get(self, "prompt")
+
+
+@pulumi.output_type
+class ToolDataStoreToolModalityConfigSummarizationConfigModelSettings(dict):
+    def __init__(__self__, *,
+                 model: Optional[_builtins.str] = None,
+                 temperature: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str model: The LLM model that the agent should use.
+               If not set, the agent will inherit the model from its parent agent.
+        :param _builtins.float temperature: If set, this temperature will be used for the LLM model. Temperature
+               controls the randomness of the model's responses. Lower temperatures
+               produce responses that are more predictable. Higher temperatures produce
+               responses that are more creative.
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if temperature is not None:
+            pulumi.set(__self__, "temperature", temperature)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[_builtins.str]:
+        """
+        The LLM model that the agent should use.
+        If not set, the agent will inherit the model from its parent agent.
+        """
+        return pulumi.get(self, "model")
+
+    @_builtins.property
+    @pulumi.getter
+    def temperature(self) -> Optional[_builtins.float]:
+        """
+        If set, this temperature will be used for the LLM model. Temperature
+        controls the randomness of the model's responses. Lower temperatures
+        produce responses that are more predictable. Higher temperatures produce
+        responses that are more creative.
+        """
+        return pulumi.get(self, "temperature")
+
+
+@pulumi.output_type
+class ToolGoogleSearchTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeDomains":
+            suggest = "exclude_domains"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolGoogleSearchTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolGoogleSearchTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolGoogleSearchTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 exclude_domains: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str name: The name of the tool.
+        :param _builtins.str description: Description of the tool's purpose.
+        :param Sequence[_builtins.str] exclude_domains: List of domains to be excluded from the search results.
+               Example: "example.com".
+               A maximum of 2000 domains can be excluded.
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if exclude_domains is not None:
+            pulumi.set(__self__, "exclude_domains", exclude_domains)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the tool.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the tool's purpose.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeDomains")
+    def exclude_domains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of domains to be excluded from the search results.
+        Example: "example.com".
+        A maximum of 2000 domains can be excluded.
+        """
+        return pulumi.get(self, "exclude_domains")
+
+
+@pulumi.output_type
+class ToolOpenApiTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiAuthentications":
+            suggest = "api_authentications"
+        elif key == "ignoreUnknownFields":
+            suggest = "ignore_unknown_fields"
+        elif key == "openApiSchema":
+            suggest = "open_api_schema"
+        elif key == "serviceDirectoryConfigs":
+            suggest = "service_directory_configs"
+        elif key == "tlsConfigs":
+            suggest = "tls_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolOpenApiTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolOpenApiTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolOpenApiTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_authentications: Optional[Sequence['outputs.ToolOpenApiToolApiAuthentication']] = None,
+                 description: Optional[_builtins.str] = None,
+                 ignore_unknown_fields: Optional[_builtins.bool] = None,
+                 name: Optional[_builtins.str] = None,
+                 open_api_schema: Optional[_builtins.str] = None,
+                 service_directory_configs: Optional[Sequence['outputs.ToolOpenApiToolServiceDirectoryConfig']] = None,
+                 tls_configs: Optional[Sequence['outputs.ToolOpenApiToolTlsConfig']] = None,
+                 url: Optional[_builtins.str] = None):
+        """
+        :param Sequence['ToolOpenApiToolApiAuthenticationArgs'] api_authentications: (Output)
+               Authentication information required for API calls.
+               Structure is documented below.
+        :param _builtins.str description: (Output)
+               The description of the system tool.
+        :param _builtins.bool ignore_unknown_fields: (Output)
+               If true, the agent will ignore unknown fields in the API response.
+        :param _builtins.str name: (Output)
+               The name of the system tool.
+        :param _builtins.str open_api_schema: (Output)
+               The OpenAPI schema in JSON or YAML format.
+        :param Sequence['ToolOpenApiToolServiceDirectoryConfigArgs'] service_directory_configs: (Output)
+               Configuration for tools using Service Directory.
+               Structure is documented below.
+        :param Sequence['ToolOpenApiToolTlsConfigArgs'] tls_configs: (Output)
+               The TLS configuration.
+               Structure is documented below.
+        :param _builtins.str url: (Output)
+               The server URL of the Open API schema. This field is only set in tools in the
+               environment dependencies during the export process if the schema contains a
+               server url. During the import process, if this url is present in the environment
+               dependencies and the schema has the $env_var placeholder, it will replace the
+               placeholder in the schema.
+        """
+        if api_authentications is not None:
+            pulumi.set(__self__, "api_authentications", api_authentications)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ignore_unknown_fields is not None:
+            pulumi.set(__self__, "ignore_unknown_fields", ignore_unknown_fields)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if open_api_schema is not None:
+            pulumi.set(__self__, "open_api_schema", open_api_schema)
+        if service_directory_configs is not None:
+            pulumi.set(__self__, "service_directory_configs", service_directory_configs)
+        if tls_configs is not None:
+            pulumi.set(__self__, "tls_configs", tls_configs)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter(name="apiAuthentications")
+    def api_authentications(self) -> Optional[Sequence['outputs.ToolOpenApiToolApiAuthentication']]:
+        """
+        (Output)
+        Authentication information required for API calls.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_authentications")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The description of the system tool.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreUnknownFields")
+    def ignore_unknown_fields(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        If true, the agent will ignore unknown fields in the API response.
+        """
+        return pulumi.get(self, "ignore_unknown_fields")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of the system tool.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="openApiSchema")
+    def open_api_schema(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The OpenAPI schema in JSON or YAML format.
+        """
+        return pulumi.get(self, "open_api_schema")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDirectoryConfigs")
+    def service_directory_configs(self) -> Optional[Sequence['outputs.ToolOpenApiToolServiceDirectoryConfig']]:
+        """
+        (Output)
+        Configuration for tools using Service Directory.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsConfigs")
+    def tls_configs(self) -> Optional[Sequence['outputs.ToolOpenApiToolTlsConfig']]:
+        """
+        (Output)
+        The TLS configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tls_configs")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The server URL of the Open API schema. This field is only set in tools in the
+        environment dependencies during the export process if the schema contains a
+        server url. During the import process, if this url is present in the environment
+        dependencies and the schema has the $env_var placeholder, it will replace the
+        placeholder in the schema.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class ToolOpenApiToolApiAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKeyConfigs":
+            suggest = "api_key_configs"
+        elif key == "oauthConfigs":
+            suggest = "oauth_configs"
+        elif key == "serviceAccountAuthConfigs":
+            suggest = "service_account_auth_configs"
+        elif key == "serviceAgentIdTokenAuthConfigs":
+            suggest = "service_agent_id_token_auth_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolOpenApiToolApiAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolOpenApiToolApiAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolOpenApiToolApiAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key_configs: Optional[Sequence['outputs.ToolOpenApiToolApiAuthenticationApiKeyConfig']] = None,
+                 oauth_configs: Optional[Sequence['outputs.ToolOpenApiToolApiAuthenticationOauthConfig']] = None,
+                 service_account_auth_configs: Optional[Sequence['outputs.ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig']] = None,
+                 service_agent_id_token_auth_configs: Optional[Sequence['outputs.ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig']] = None):
+        """
+        :param Sequence['ToolOpenApiToolApiAuthenticationApiKeyConfigArgs'] api_key_configs: (Output)
+               Configurations for authentication with API key.
+               Structure is documented below.
+        :param Sequence['ToolOpenApiToolApiAuthenticationOauthConfigArgs'] oauth_configs: (Output)
+               Configurations for authentication with OAuth.
+               Structure is documented below.
+        :param Sequence['ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs'] service_account_auth_configs: (Output)
+               Configurations for authentication using a custom service account.
+               Structure is documented below.
+        :param Sequence['ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs'] service_agent_id_token_auth_configs: (Output)
+               Configurations for authentication with [ID
+               token](https://cloud.google.com/docs/authentication/token-types#id) generated
+               from service agent.
+        """
+        if api_key_configs is not None:
+            pulumi.set(__self__, "api_key_configs", api_key_configs)
+        if oauth_configs is not None:
+            pulumi.set(__self__, "oauth_configs", oauth_configs)
+        if service_account_auth_configs is not None:
+            pulumi.set(__self__, "service_account_auth_configs", service_account_auth_configs)
+        if service_agent_id_token_auth_configs is not None:
+            pulumi.set(__self__, "service_agent_id_token_auth_configs", service_agent_id_token_auth_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyConfigs")
+    def api_key_configs(self) -> Optional[Sequence['outputs.ToolOpenApiToolApiAuthenticationApiKeyConfig']]:
+        """
+        (Output)
+        Configurations for authentication with API key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_key_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfigs")
+    def oauth_configs(self) -> Optional[Sequence['outputs.ToolOpenApiToolApiAuthenticationOauthConfig']]:
+        """
+        (Output)
+        Configurations for authentication with OAuth.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountAuthConfigs")
+    def service_account_auth_configs(self) -> Optional[Sequence['outputs.ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig']]:
+        """
+        (Output)
+        Configurations for authentication using a custom service account.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_account_auth_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentIdTokenAuthConfigs")
+    def service_agent_id_token_auth_configs(self) -> Optional[Sequence['outputs.ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig']]:
+        """
+        (Output)
+        Configurations for authentication with [ID
+        token](https://cloud.google.com/docs/authentication/token-types#id) generated
+        from service agent.
+        """
+        return pulumi.get(self, "service_agent_id_token_auth_configs")
+
+
+@pulumi.output_type
+class ToolOpenApiToolApiAuthenticationApiKeyConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKeySecretVersion":
+            suggest = "api_key_secret_version"
+        elif key == "keyName":
+            suggest = "key_name"
+        elif key == "requestLocation":
+            suggest = "request_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolOpenApiToolApiAuthenticationApiKeyConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolOpenApiToolApiAuthenticationApiKeyConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolOpenApiToolApiAuthenticationApiKeyConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key_secret_version: Optional[_builtins.str] = None,
+                 key_name: Optional[_builtins.str] = None,
+                 request_location: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str api_key_secret_version: (Output)
+               The name of the SecretManager secret version resource storing the API key.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+               Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+               service agent
+               `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param _builtins.str key_name: (Output)
+               The parameter name or the header name of the API key.
+               E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        :param _builtins.str request_location: (Output)
+               Key location in the request.
+               Possible values:
+               HEADER
+               QUERY_STRING
+        """
+        if api_key_secret_version is not None:
+            pulumi.set(__self__, "api_key_secret_version", api_key_secret_version)
+        if key_name is not None:
+            pulumi.set(__self__, "key_name", key_name)
+        if request_location is not None:
+            pulumi.set(__self__, "request_location", request_location)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeySecretVersion")
+    def api_key_secret_version(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of the SecretManager secret version resource storing the API key.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+        service agent
+        `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "api_key_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The parameter name or the header name of the API key.
+        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        """
+        return pulumi.get(self, "key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="requestLocation")
+    def request_location(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Key location in the request.
+        Possible values:
+        HEADER
+        QUERY_STRING
+        """
+        return pulumi.get(self, "request_location")
+
+
+@pulumi.output_type
+class ToolOpenApiToolApiAuthenticationOauthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecretVersion":
+            suggest = "client_secret_version"
+        elif key == "oauthGrantType":
+            suggest = "oauth_grant_type"
+        elif key == "tokenEndpoint":
+            suggest = "token_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolOpenApiToolApiAuthenticationOauthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolOpenApiToolApiAuthenticationOauthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolOpenApiToolApiAuthenticationOauthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: Optional[_builtins.str] = None,
+                 client_secret_version: Optional[_builtins.str] = None,
+                 oauth_grant_type: Optional[_builtins.str] = None,
+                 scopes: Optional[Sequence[_builtins.str]] = None,
+                 token_endpoint: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str client_id: (Output)
+               The client ID from the OAuth provider.
+        :param _builtins.str client_secret_version: (Output)
+               The name of the SecretManager secret version resource storing the
+               client secret.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+               Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+               service agent
+               `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param _builtins.str oauth_grant_type: (Output)
+               OAuth grant types.
+               Possible values:
+               CLIENT_CREDENTIAL
+        :param Sequence[_builtins.str] scopes: (Output)
+               The OAuth scopes to grant.
+        :param _builtins.str token_endpoint: (Output)
+               The token endpoint in the OAuth provider to exchange for an access token.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret_version is not None:
+            pulumi.set(__self__, "client_secret_version", client_secret_version)
+        if oauth_grant_type is not None:
+            pulumi.set(__self__, "oauth_grant_type", oauth_grant_type)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if token_endpoint is not None:
+            pulumi.set(__self__, "token_endpoint", token_endpoint)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The client ID from the OAuth provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecretVersion")
+    def client_secret_version(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of the SecretManager secret version resource storing the
+        client secret.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+        service agent
+        `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "client_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthGrantType")
+    def oauth_grant_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        OAuth grant types.
+        Possible values:
+        CLIENT_CREDENTIAL
+        """
+        return pulumi.get(self, "oauth_grant_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        The OAuth scopes to grant.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The token endpoint in the OAuth provider to exchange for an access token.
+        """
+        return pulumi.get(self, "token_endpoint")
+
+
+@pulumi.output_type
+class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str service_account: (Output)
+               The email address of the service account used for authenticatation. CES
+               uses this service account to exchange an access token and the access token
+               is then sent in the `Authorization` header of the request.
+               The service account must have the
+               `roles/iam.serviceAccountTokenCreator` role granted to the
+               CES service agent
+               `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The email address of the service account used for authenticatation. CES
+        uses this service account to exchange an access token and the access token
+        is then sent in the `Authorization` header of the request.
+        The service account must have the
+        `roles/iam.serviceAccountTokenCreator` role granted to the
+        CES service agent
+        `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "service_account")
+
+
+@pulumi.output_type
+class ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class ToolOpenApiToolServiceDirectoryConfig(dict):
+    def __init__(__self__, *,
+                 service: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str service: (Output)
+               The name of [Service
+               Directory](https://cloud.google.com/service-directory) service.
+               Format:
+               `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+               Location of the service directory must be the same as the location of the
+               app.
+        """
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of [Service
+        Directory](https://cloud.google.com/service-directory) service.
+        Format:
+        `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+        Location of the service directory must be the same as the location of the
+        app.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class ToolOpenApiToolTlsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCerts":
+            suggest = "ca_certs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolOpenApiToolTlsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolOpenApiToolTlsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolOpenApiToolTlsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certs: Sequence['outputs.ToolOpenApiToolTlsConfigCaCert']):
+        """
+        :param Sequence['ToolOpenApiToolTlsConfigCaCertArgs'] ca_certs: Specifies a list of allowed custom CA certificates for HTTPS
+               verification.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "ca_certs", ca_certs)
+
+    @_builtins.property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> Sequence['outputs.ToolOpenApiToolTlsConfigCaCert']:
+        """
+        Specifies a list of allowed custom CA certificates for HTTPS
+        verification.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ca_certs")
+
+
+@pulumi.output_type
+class ToolOpenApiToolTlsConfigCaCert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolOpenApiToolTlsConfigCaCert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolOpenApiToolTlsConfigCaCert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolOpenApiToolTlsConfigCaCert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cert: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str cert: (Output)
+               The allowed custom CA certificates (in DER format) for
+               HTTPS verification. This overrides the default SSL trust store. If this
+               is empty or unspecified, CES will use Google's default trust
+               store to verify certificates. N.B. Make sure the HTTPS server
+               certificates are signed with "subject alt name". For instance a
+               certificate can be self-signed using the following command,
+               openssl x509 -req -days 200 -in example.com.csr \\
+               -signkey example.com.key \\
+               -out example.com.crt \\
+               -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+               A base64-encoded string.
+        :param _builtins.str display_name: (Output)
+               The name of the allowed custom CA certificates. This
+               can be used to disambiguate the custom CA certificates.
+        """
+        if cert is not None:
+            pulumi.set(__self__, "cert", cert)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def cert(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The allowed custom CA certificates (in DER format) for
+        HTTPS verification. This overrides the default SSL trust store. If this
+        is empty or unspecified, CES will use Google's default trust
+        store to verify certificates. N.B. Make sure the HTTPS server
+        certificates are signed with "subject alt name". For instance a
+        certificate can be self-signed using the following command,
+        openssl x509 -req -days 200 -in example.com.csr \\
+        -signkey example.com.key \\
+        -out example.com.crt \\
+        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "cert")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of the allowed custom CA certificates. This
+        can be used to disambiguate the custom CA certificates.
+        """
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class ToolPythonFunction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pythonCode":
+            suggest = "python_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolPythonFunction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolPythonFunction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolPythonFunction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 python_code: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: (Output)
+               The description of the Python function, parsed from the python code's
+               docstring.
+        :param _builtins.str name: The name of the Python function to execute. Must match a Python function
+               name defined in the python code. Case sensitive. If the name is not
+               provided, the first function defined in the python code will be used.
+        :param _builtins.str python_code: The Python code to execute for the tool.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if python_code is not None:
+            pulumi.set(__self__, "python_code", python_code)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The description of the Python function, parsed from the python code's
+        docstring.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the Python function to execute. Must match a Python function
+        name defined in the python code. Case sensitive. If the name is not
+        provided, the first function defined in the python code will be used.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> Optional[_builtins.str]:
+        """
+        The Python code to execute for the tool.
+        """
+        return pulumi.get(self, "python_code")
+
+
+@pulumi.output_type
+class ToolSystemTool(dict):
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: (Output)
+               The description of the system tool.
+        :param _builtins.str name: (Output)
+               The name of the system tool.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The description of the system tool.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The name of the system tool.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class ToolsetOpenApiToolset(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2224,6 +6596,8 @@ class ToolsetOpenApiToolsetApiAuthentication(dict):
         suggest = None
         if key == "apiKeyConfig":
             suggest = "api_key_config"
+        elif key == "bearerTokenConfig":
+            suggest = "bearer_token_config"
         elif key == "oauthConfig":
             suggest = "oauth_config"
         elif key == "serviceAccountAuthConfig":
@@ -2244,11 +6618,14 @@ class ToolsetOpenApiToolsetApiAuthentication(dict):
 
     def __init__(__self__, *,
                  api_key_config: Optional['outputs.ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig'] = None,
+                 bearer_token_config: Optional['outputs.ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig'] = None,
                  oauth_config: Optional['outputs.ToolsetOpenApiToolsetApiAuthenticationOauthConfig'] = None,
                  service_account_auth_config: Optional['outputs.ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig'] = None,
                  service_agent_id_token_auth_config: Optional['outputs.ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfig'] = None):
         """
         :param 'ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs' api_key_config: Configurations for authentication with API key.
+               Structure is documented below.
+        :param 'ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs' bearer_token_config: Configurations for authentication with a bearer token.
                Structure is documented below.
         :param 'ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgs' oauth_config: Configurations for authentication with OAuth.
                Structure is documented below.
@@ -2260,6 +6637,8 @@ class ToolsetOpenApiToolsetApiAuthentication(dict):
         """
         if api_key_config is not None:
             pulumi.set(__self__, "api_key_config", api_key_config)
+        if bearer_token_config is not None:
+            pulumi.set(__self__, "bearer_token_config", bearer_token_config)
         if oauth_config is not None:
             pulumi.set(__self__, "oauth_config", oauth_config)
         if service_account_auth_config is not None:
@@ -2275,6 +6654,15 @@ class ToolsetOpenApiToolsetApiAuthentication(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "api_key_config")
+
+    @_builtins.property
+    @pulumi.getter(name="bearerTokenConfig")
+    def bearer_token_config(self) -> Optional['outputs.ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig']:
+        """
+        Configurations for authentication with a bearer token.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bearer_token_config")
 
     @_builtins.property
     @pulumi.getter(name="oauthConfig")
@@ -2380,6 +6768,25 @@ class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig(dict):
         QUERY_STRING
         """
         return pulumi.get(self, "request_location")
+
+
+@pulumi.output_type
+class ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig(dict):
+    def __init__(__self__, *,
+                 token: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str token: (Optional)
+        """
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> Optional[_builtins.str]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "token")
 
 
 @pulumi.output_type

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigArgs;
+import com.pulumi.gcp.ces.inputs.AppClientCertificateSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppDataStoreSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileArgs;
 import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsArgs;
@@ -63,6 +64,23 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<AppAudioProcessingConfigArgs>> audioProcessingConfig() {
         return Optional.ofNullable(this.audioProcessingConfig);
+    }
+
+    /**
+     * The default client certificate settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="clientCertificateSettings")
+    private @Nullable Output<AppClientCertificateSettingsArgs> clientCertificateSettings;
+
+    /**
+     * @return The default client certificate settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AppClientCertificateSettingsArgs>> clientCertificateSettings() {
+        return Optional.ofNullable(this.clientCertificateSettings);
     }
 
     /**
@@ -342,6 +360,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     private AppArgs(AppArgs $) {
         this.appId = $.appId;
         this.audioProcessingConfig = $.audioProcessingConfig;
+        this.clientCertificateSettings = $.clientCertificateSettings;
         this.dataStoreSettings = $.dataStoreSettings;
         this.defaultChannelProfile = $.defaultChannelProfile;
         this.description = $.description;
@@ -426,6 +445,29 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder audioProcessingConfig(AppAudioProcessingConfigArgs audioProcessingConfig) {
             return audioProcessingConfig(Output.of(audioProcessingConfig));
+        }
+
+        /**
+         * @param clientCertificateSettings The default client certificate settings for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCertificateSettings(@Nullable Output<AppClientCertificateSettingsArgs> clientCertificateSettings) {
+            $.clientCertificateSettings = clientCertificateSettings;
+            return this;
+        }
+
+        /**
+         * @param clientCertificateSettings The default client certificate settings for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCertificateSettings(AppClientCertificateSettingsArgs clientCertificateSettings) {
+            return clientCertificateSettings(Output.of(clientCertificateSettings));
         }
 
         /**

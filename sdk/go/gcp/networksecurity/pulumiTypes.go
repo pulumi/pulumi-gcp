@@ -7150,6 +7150,143 @@ func (o ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput) TargetUri() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+type FirewallEndpointEndpointSettings struct {
+	// Indicates whether Jumbo Frames are enabled for the firewall endpoint.
+	JumboFramesEnabled *bool `pulumi:"jumboFramesEnabled"`
+}
+
+// FirewallEndpointEndpointSettingsInput is an input type that accepts FirewallEndpointEndpointSettingsArgs and FirewallEndpointEndpointSettingsOutput values.
+// You can construct a concrete instance of `FirewallEndpointEndpointSettingsInput` via:
+//
+//	FirewallEndpointEndpointSettingsArgs{...}
+type FirewallEndpointEndpointSettingsInput interface {
+	pulumi.Input
+
+	ToFirewallEndpointEndpointSettingsOutput() FirewallEndpointEndpointSettingsOutput
+	ToFirewallEndpointEndpointSettingsOutputWithContext(context.Context) FirewallEndpointEndpointSettingsOutput
+}
+
+type FirewallEndpointEndpointSettingsArgs struct {
+	// Indicates whether Jumbo Frames are enabled for the firewall endpoint.
+	JumboFramesEnabled pulumi.BoolPtrInput `pulumi:"jumboFramesEnabled"`
+}
+
+func (FirewallEndpointEndpointSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallEndpointEndpointSettings)(nil)).Elem()
+}
+
+func (i FirewallEndpointEndpointSettingsArgs) ToFirewallEndpointEndpointSettingsOutput() FirewallEndpointEndpointSettingsOutput {
+	return i.ToFirewallEndpointEndpointSettingsOutputWithContext(context.Background())
+}
+
+func (i FirewallEndpointEndpointSettingsArgs) ToFirewallEndpointEndpointSettingsOutputWithContext(ctx context.Context) FirewallEndpointEndpointSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallEndpointEndpointSettingsOutput)
+}
+
+func (i FirewallEndpointEndpointSettingsArgs) ToFirewallEndpointEndpointSettingsPtrOutput() FirewallEndpointEndpointSettingsPtrOutput {
+	return i.ToFirewallEndpointEndpointSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallEndpointEndpointSettingsArgs) ToFirewallEndpointEndpointSettingsPtrOutputWithContext(ctx context.Context) FirewallEndpointEndpointSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallEndpointEndpointSettingsOutput).ToFirewallEndpointEndpointSettingsPtrOutputWithContext(ctx)
+}
+
+// FirewallEndpointEndpointSettingsPtrInput is an input type that accepts FirewallEndpointEndpointSettingsArgs, FirewallEndpointEndpointSettingsPtr and FirewallEndpointEndpointSettingsPtrOutput values.
+// You can construct a concrete instance of `FirewallEndpointEndpointSettingsPtrInput` via:
+//
+//	        FirewallEndpointEndpointSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FirewallEndpointEndpointSettingsPtrInput interface {
+	pulumi.Input
+
+	ToFirewallEndpointEndpointSettingsPtrOutput() FirewallEndpointEndpointSettingsPtrOutput
+	ToFirewallEndpointEndpointSettingsPtrOutputWithContext(context.Context) FirewallEndpointEndpointSettingsPtrOutput
+}
+
+type firewallEndpointEndpointSettingsPtrType FirewallEndpointEndpointSettingsArgs
+
+func FirewallEndpointEndpointSettingsPtr(v *FirewallEndpointEndpointSettingsArgs) FirewallEndpointEndpointSettingsPtrInput {
+	return (*firewallEndpointEndpointSettingsPtrType)(v)
+}
+
+func (*firewallEndpointEndpointSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallEndpointEndpointSettings)(nil)).Elem()
+}
+
+func (i *firewallEndpointEndpointSettingsPtrType) ToFirewallEndpointEndpointSettingsPtrOutput() FirewallEndpointEndpointSettingsPtrOutput {
+	return i.ToFirewallEndpointEndpointSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallEndpointEndpointSettingsPtrType) ToFirewallEndpointEndpointSettingsPtrOutputWithContext(ctx context.Context) FirewallEndpointEndpointSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallEndpointEndpointSettingsPtrOutput)
+}
+
+type FirewallEndpointEndpointSettingsOutput struct{ *pulumi.OutputState }
+
+func (FirewallEndpointEndpointSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallEndpointEndpointSettings)(nil)).Elem()
+}
+
+func (o FirewallEndpointEndpointSettingsOutput) ToFirewallEndpointEndpointSettingsOutput() FirewallEndpointEndpointSettingsOutput {
+	return o
+}
+
+func (o FirewallEndpointEndpointSettingsOutput) ToFirewallEndpointEndpointSettingsOutputWithContext(ctx context.Context) FirewallEndpointEndpointSettingsOutput {
+	return o
+}
+
+func (o FirewallEndpointEndpointSettingsOutput) ToFirewallEndpointEndpointSettingsPtrOutput() FirewallEndpointEndpointSettingsPtrOutput {
+	return o.ToFirewallEndpointEndpointSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallEndpointEndpointSettingsOutput) ToFirewallEndpointEndpointSettingsPtrOutputWithContext(ctx context.Context) FirewallEndpointEndpointSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallEndpointEndpointSettings) *FirewallEndpointEndpointSettings {
+		return &v
+	}).(FirewallEndpointEndpointSettingsPtrOutput)
+}
+
+// Indicates whether Jumbo Frames are enabled for the firewall endpoint.
+func (o FirewallEndpointEndpointSettingsOutput) JumboFramesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FirewallEndpointEndpointSettings) *bool { return v.JumboFramesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type FirewallEndpointEndpointSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallEndpointEndpointSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallEndpointEndpointSettings)(nil)).Elem()
+}
+
+func (o FirewallEndpointEndpointSettingsPtrOutput) ToFirewallEndpointEndpointSettingsPtrOutput() FirewallEndpointEndpointSettingsPtrOutput {
+	return o
+}
+
+func (o FirewallEndpointEndpointSettingsPtrOutput) ToFirewallEndpointEndpointSettingsPtrOutputWithContext(ctx context.Context) FirewallEndpointEndpointSettingsPtrOutput {
+	return o
+}
+
+func (o FirewallEndpointEndpointSettingsPtrOutput) Elem() FirewallEndpointEndpointSettingsOutput {
+	return o.ApplyT(func(v *FirewallEndpointEndpointSettings) FirewallEndpointEndpointSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallEndpointEndpointSettings
+		return ret
+	}).(FirewallEndpointEndpointSettingsOutput)
+}
+
+// Indicates whether Jumbo Frames are enabled for the firewall endpoint.
+func (o FirewallEndpointEndpointSettingsPtrOutput) JumboFramesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpointEndpointSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.JumboFramesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type InterceptDeploymentGroupConnectedEndpointGroup struct {
 	// (Output)
 	// The connected endpoint group's resource name, for example:
@@ -11111,6 +11248,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaGrpcEndpointInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaGrpcEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaGrpcEndpointPtrInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaGrpcEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallEndpointEndpointSettingsInput)(nil)).Elem(), FirewallEndpointEndpointSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallEndpointEndpointSettingsPtrInput)(nil)).Elem(), FirewallEndpointEndpointSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterceptDeploymentGroupConnectedEndpointGroupInput)(nil)).Elem(), InterceptDeploymentGroupConnectedEndpointGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterceptDeploymentGroupConnectedEndpointGroupArrayInput)(nil)).Elem(), InterceptDeploymentGroupConnectedEndpointGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterceptDeploymentGroupLocationInput)(nil)).Elem(), InterceptDeploymentGroupLocationArgs{})
@@ -11259,6 +11398,8 @@ func init() {
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput{})
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaGrpcEndpointOutput{})
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput{})
+	pulumi.RegisterOutputType(FirewallEndpointEndpointSettingsOutput{})
+	pulumi.RegisterOutputType(FirewallEndpointEndpointSettingsPtrOutput{})
 	pulumi.RegisterOutputType(InterceptDeploymentGroupConnectedEndpointGroupOutput{})
 	pulumi.RegisterOutputType(InterceptDeploymentGroupConnectedEndpointGroupArrayOutput{})
 	pulumi.RegisterOutputType(InterceptDeploymentGroupLocationOutput{})

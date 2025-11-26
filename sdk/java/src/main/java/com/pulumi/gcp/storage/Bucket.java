@@ -287,6 +287,96 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### IP Filter Mode Enabled
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketIpFilterArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketIpFilterPublicNetworkSourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var hns_enabled = new Bucket("hns-enabled", BucketArgs.builder()
+ *             .name("hns-enabled-bucket")
+ *             .location("US")
+ *             .forceDestroy(true)
+ *             .ipFilter(BucketIpFilterArgs.builder()
+ *                 .mode("Enabled")
+ *                 .publicNetworkSource(BucketIpFilterPublicNetworkSourceArgs.builder()
+ *                     .allowedIpCidrRanges(                    
+ *                         "0.0.0.0/0",
+ *                         "::/0")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### IP Filter Mode Disabled
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketIpFilterArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketIpFilterPublicNetworkSourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var hns_enabled = new Bucket("hns-enabled", BucketArgs.builder()
+ *             .name("hns-enabled-bucket")
+ *             .location("US")
+ *             .forceDestroy(true)
+ *             .ipFilter(BucketIpFilterArgs.builder()
+ *                 .mode("Disabled")
+ *                 .publicNetworkSource(BucketIpFilterPublicNetworkSourceArgs.builder()
+ *                     .allowedIpCidrRanges(                    
+ *                         "0.0.0.0/0",
+ *                         "::/0")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Storage buckets can be imported using the `name` or  `project/name`. If the project is not

@@ -4,13 +4,31 @@
 package com.pulumi.gcp.apphub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.apphub.outputs.ServiceServicePropertyExtendedMetadata;
+import com.pulumi.gcp.apphub.outputs.ServiceServicePropertyFunctionalType;
+import com.pulumi.gcp.apphub.outputs.ServiceServicePropertyRegistrationType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceServiceProperty {
+    /**
+     * @return (Output)
+     * Output only. Additional metadata specific to the resource type.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ServiceServicePropertyExtendedMetadata> extendedMetadatas;
+    /**
+     * @return (Output)
+     * Output only. The type of the service.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ServiceServicePropertyFunctionalType> functionalTypes;
     /**
      * @return (Output)
      * Output only. The service project identifier that the underlying cloud resource resides in.
@@ -24,12 +42,37 @@ public final class ServiceServiceProperty {
     private @Nullable String location;
     /**
      * @return (Output)
+     * Output only. The registration type of the service.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ServiceServicePropertyRegistrationType> registrationTypes;
+    /**
+     * @return (Output)
      * Output only. The location that the underlying resource resides in if it is zonal, for example, us-west1-a).
      * 
      */
     private @Nullable String zone;
 
     private ServiceServiceProperty() {}
+    /**
+     * @return (Output)
+     * Output only. Additional metadata specific to the resource type.
+     * Structure is documented below.
+     * 
+     */
+    public List<ServiceServicePropertyExtendedMetadata> extendedMetadatas() {
+        return this.extendedMetadatas == null ? List.of() : this.extendedMetadatas;
+    }
+    /**
+     * @return (Output)
+     * Output only. The type of the service.
+     * Structure is documented below.
+     * 
+     */
+    public List<ServiceServicePropertyFunctionalType> functionalTypes() {
+        return this.functionalTypes == null ? List.of() : this.functionalTypes;
+    }
     /**
      * @return (Output)
      * Output only. The service project identifier that the underlying cloud resource resides in.
@@ -44,6 +87,15 @@ public final class ServiceServiceProperty {
      */
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
+    }
+    /**
+     * @return (Output)
+     * Output only. The registration type of the service.
+     * Structure is documented below.
+     * 
+     */
+    public List<ServiceServicePropertyRegistrationType> registrationTypes() {
+        return this.registrationTypes == null ? List.of() : this.registrationTypes;
     }
     /**
      * @return (Output)
@@ -63,17 +115,41 @@ public final class ServiceServiceProperty {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<ServiceServicePropertyExtendedMetadata> extendedMetadatas;
+        private @Nullable List<ServiceServicePropertyFunctionalType> functionalTypes;
         private @Nullable String gcpProject;
         private @Nullable String location;
+        private @Nullable List<ServiceServicePropertyRegistrationType> registrationTypes;
         private @Nullable String zone;
         public Builder() {}
         public Builder(ServiceServiceProperty defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.extendedMetadatas = defaults.extendedMetadatas;
+    	      this.functionalTypes = defaults.functionalTypes;
     	      this.gcpProject = defaults.gcpProject;
     	      this.location = defaults.location;
+    	      this.registrationTypes = defaults.registrationTypes;
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
+        public Builder extendedMetadatas(@Nullable List<ServiceServicePropertyExtendedMetadata> extendedMetadatas) {
+
+            this.extendedMetadatas = extendedMetadatas;
+            return this;
+        }
+        public Builder extendedMetadatas(ServiceServicePropertyExtendedMetadata... extendedMetadatas) {
+            return extendedMetadatas(List.of(extendedMetadatas));
+        }
+        @CustomType.Setter
+        public Builder functionalTypes(@Nullable List<ServiceServicePropertyFunctionalType> functionalTypes) {
+
+            this.functionalTypes = functionalTypes;
+            return this;
+        }
+        public Builder functionalTypes(ServiceServicePropertyFunctionalType... functionalTypes) {
+            return functionalTypes(List.of(functionalTypes));
+        }
         @CustomType.Setter
         public Builder gcpProject(@Nullable String gcpProject) {
 
@@ -87,6 +163,15 @@ public final class ServiceServiceProperty {
             return this;
         }
         @CustomType.Setter
+        public Builder registrationTypes(@Nullable List<ServiceServicePropertyRegistrationType> registrationTypes) {
+
+            this.registrationTypes = registrationTypes;
+            return this;
+        }
+        public Builder registrationTypes(ServiceServicePropertyRegistrationType... registrationTypes) {
+            return registrationTypes(List.of(registrationTypes));
+        }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
 
             this.zone = zone;
@@ -94,8 +179,11 @@ public final class ServiceServiceProperty {
         }
         public ServiceServiceProperty build() {
             final var _resultValue = new ServiceServiceProperty();
+            _resultValue.extendedMetadatas = extendedMetadatas;
+            _resultValue.functionalTypes = functionalTypes;
             _resultValue.gcpProject = gcpProject;
             _resultValue.location = location;
+            _resultValue.registrationTypes = registrationTypes;
             _resultValue.zone = zone;
             return _resultValue;
         }

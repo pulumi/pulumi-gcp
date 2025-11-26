@@ -60,6 +60,7 @@ type LookupReservationArgs struct {
 
 // A collection of values returned by getReservation.
 type LookupReservationResult struct {
+	BlockNames                  []string                                 `pulumi:"blockNames"`
 	Commitment                  string                                   `pulumi:"commitment"`
 	CreationTimestamp           string                                   `pulumi:"creationTimestamp"`
 	DeleteAfterDurations        []GetReservationDeleteAfterDuration      `pulumi:"deleteAfterDurations"`
@@ -119,6 +120,10 @@ func (o LookupReservationResultOutput) ToLookupReservationResultOutput() LookupR
 
 func (o LookupReservationResultOutput) ToLookupReservationResultOutputWithContext(ctx context.Context) LookupReservationResultOutput {
 	return o
+}
+
+func (o LookupReservationResultOutput) BlockNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupReservationResult) []string { return v.BlockNames }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupReservationResultOutput) Commitment() pulumi.StringOutput {

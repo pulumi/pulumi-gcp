@@ -21,12 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:ces/agent:Agent":
+		r = &Agent{}
 	case "gcp:ces/app:App":
 		r = &App{}
 	case "gcp:ces/deployment:Deployment":
 		r = &Deployment{}
 	case "gcp:ces/example:Example":
 		r = &Example{}
+	case "gcp:ces/guardrail:Guardrail":
+		r = &Guardrail{}
+	case "gcp:ces/tool:Tool":
+		r = &Tool{}
 	case "gcp:ces/toolset:Toolset":
 		r = &Toolset{}
 	default:
@@ -44,6 +50,11 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"ces/agent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"ces/app",
 		&module{version},
 	)
@@ -55,6 +66,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"ces/example",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"ces/guardrail",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"ces/tool",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

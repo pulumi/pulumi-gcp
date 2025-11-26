@@ -324,6 +324,50 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Subnetwork Resolve Subnet Mask
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()
+ *             .name("subnet-resolve-subnet-mask-test-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnetwork_resolve_subnet_mask = new Subnetwork("subnetwork-resolve-subnet-mask", SubnetworkArgs.builder()
+ *             .name("subnet-resolve-subnet-mask-test-subnetwork")
+ *             .region("us-west2")
+ *             .ipCidrRange("10.10.0.0/24")
+ *             .purpose("PRIVATE")
+ *             .resolveSubnetMask("ARP_PRIMARY_RANGE")
+ *             .network(custom_test.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Subnetwork Cidr Overlap
  * 
  * <pre>
@@ -926,6 +970,22 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> reservedInternalRange() {
         return Codegen.optional(this.reservedInternalRange);
+    }
+    /**
+     * &#39;Configures subnet mask resolution for this subnetwork.&#39;
+     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+     * 
+     */
+    @Export(name="resolveSubnetMask", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> resolveSubnetMask;
+
+    /**
+     * @return &#39;Configures subnet mask resolution for this subnetwork.&#39;
+     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+     * 
+     */
+    public Output<Optional<String>> resolveSubnetMask() {
+        return Codegen.optional(this.resolveSubnetMask);
     }
     /**
      * The role of subnetwork.

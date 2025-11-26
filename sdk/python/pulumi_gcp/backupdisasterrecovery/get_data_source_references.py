@@ -69,7 +69,8 @@ class GetDataSourceReferencesResult:
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> _builtins.str:
+    @_utilities.deprecated("""`resource_type` is deprecated and will be removed in a future major release.""")
+    def resource_type(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "resource_type")
 
 
@@ -95,7 +96,7 @@ def get_data_source_references(location: Optional[_builtins.str] = None,
 
 
     :param _builtins.str project: - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-    :param _builtins.str resource_type: - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
+    :param _builtins.str resource_type: The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
     """
     __args__ = dict()
     __args__['location'] = location
@@ -112,14 +113,14 @@ def get_data_source_references(location: Optional[_builtins.str] = None,
         resource_type=pulumi.get(__ret__, 'resource_type'))
 def get_data_source_references_output(location: Optional[pulumi.Input[_builtins.str]] = None,
                                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                                      resource_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataSourceReferencesResult]:
     """
     A list of Backup and DR data source references.
 
 
     :param _builtins.str project: - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-    :param _builtins.str resource_type: - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
+    :param _builtins.str resource_type: The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
     """
     __args__ = dict()
     __args__['location'] = location

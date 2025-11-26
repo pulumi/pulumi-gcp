@@ -253,6 +253,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableDictionary<string, string> ResourceLabels;
         public readonly ImmutableArray<Outputs.GetClusterResourceUsageExportConfigResult> ResourceUsageExportConfigs;
         public readonly ImmutableArray<Outputs.GetClusterSecretManagerConfigResult> SecretManagerConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterSecretSyncConfigResult> SecretSyncConfigs;
         public readonly ImmutableArray<Outputs.GetClusterSecurityPostureConfigResult> SecurityPostureConfigs;
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetClusterServiceExternalIpsConfigResult> ServiceExternalIpsConfigs;
@@ -425,6 +426,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableArray<Outputs.GetClusterSecretManagerConfigResult> secretManagerConfigs,
 
+            ImmutableArray<Outputs.GetClusterSecretSyncConfigResult> secretSyncConfigs,
+
             ImmutableArray<Outputs.GetClusterSecurityPostureConfigResult> securityPostureConfigs,
 
             string selfLink,
@@ -526,6 +529,7 @@ namespace Pulumi.Gcp.Container
             ResourceLabels = resourceLabels;
             ResourceUsageExportConfigs = resourceUsageExportConfigs;
             SecretManagerConfigs = secretManagerConfigs;
+            SecretSyncConfigs = secretSyncConfigs;
             SecurityPostureConfigs = securityPostureConfigs;
             SelfLink = selfLink;
             ServiceExternalIpsConfigs = serviceExternalIpsConfigs;

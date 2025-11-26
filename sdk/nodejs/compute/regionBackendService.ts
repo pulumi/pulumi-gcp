@@ -492,6 +492,44 @@ import * as utilities from "../utilities";
  *     connectionDrainingTimeoutSec: 0,
  * });
  * ```
+ * ### Region Backend Service Tls Settings
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "health-check",
+ *     region: "europe-north1",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultBackendAuthenticationConfig = new gcp.networksecurity.BackendAuthenticationConfig("default", {
+ *     name: "authentication",
+ *     location: "europe-north1",
+ *     wellKnownRoots: "PUBLIC_ROOTS",
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     region: "europe-north1",
+ *     name: "region-service",
+ *     healthChecks: defaultRegionHealthCheck.id,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     protocol: "HTTPS",
+ *     tlsSettings: {
+ *         sni: "example.com",
+ *         subjectAltNames: [
+ *             {
+ *                 dnsName: "example.com",
+ *             },
+ *             {
+ *                 uniformResourceIdentifier: "https://example.com",
+ *             },
+ *         ],
+ *         authenticationConfig: pulumi.interpolate`//networksecurity.googleapis.com/${defaultBackendAuthenticationConfig.id}`,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -824,6 +862,11 @@ export class RegionBackendService extends pulumi.CustomResource {
      * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
     declare public readonly timeoutSec: pulumi.Output<number>;
+    /**
+     * Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+     * Structure is documented below.
+     */
+    declare public readonly tlsSettings: pulumi.Output<outputs.compute.RegionBackendServiceTlsSettings | undefined>;
 
     /**
      * Create a RegionBackendService resource with the given unique name, arguments, and options.
@@ -874,6 +917,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["strongSessionAffinityCookie"] = state?.strongSessionAffinityCookie;
             resourceInputs["subsetting"] = state?.subsetting;
             resourceInputs["timeoutSec"] = state?.timeoutSec;
+            resourceInputs["tlsSettings"] = state?.tlsSettings;
         } else {
             const args = argsOrState as RegionBackendServiceArgs | undefined;
             resourceInputs["affinityCookieTtlSec"] = args?.affinityCookieTtlSec;
@@ -908,6 +952,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["strongSessionAffinityCookie"] = args?.strongSessionAffinityCookie;
             resourceInputs["subsetting"] = args?.subsetting;
             resourceInputs["timeoutSec"] = args?.timeoutSec;
+            resourceInputs["tlsSettings"] = args?.tlsSettings;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["generatedId"] = undefined /*out*/;
@@ -1195,6 +1240,11 @@ export interface RegionBackendServiceState {
      * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
     timeoutSec?: pulumi.Input<number>;
+    /**
+     * Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+     * Structure is documented below.
+     */
+    tlsSettings?: pulumi.Input<inputs.compute.RegionBackendServiceTlsSettings>;
 }
 
 /**
@@ -1457,4 +1507,9 @@ export interface RegionBackendServiceArgs {
      * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
     timeoutSec?: pulumi.Input<number>;
+    /**
+     * Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+     * Structure is documented below.
+     */
+    tlsSettings?: pulumi.Input<inputs.compute.RegionBackendServiceTlsSettings>;
 }

@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'AclAclEntryArgs',
     'AclAclEntryArgsDict',
+    'ClusterBrokerCapacityConfigArgs',
+    'ClusterBrokerCapacityConfigArgsDict',
     'ClusterCapacityConfigArgs',
     'ClusterCapacityConfigArgsDict',
     'ClusterGcpConfigArgs',
@@ -144,6 +146,38 @@ class AclAclEntryArgs:
     @permission_type.setter
     def permission_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "permission_type", value)
+
+
+if not MYPY:
+    class ClusterBrokerCapacityConfigArgsDict(TypedDict):
+        disk_size_gb: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+        """
+elif False:
+    ClusterBrokerCapacityConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterBrokerCapacityConfigArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] disk_size_gb: The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "disk_size_gb", value)
 
 
 if not MYPY:

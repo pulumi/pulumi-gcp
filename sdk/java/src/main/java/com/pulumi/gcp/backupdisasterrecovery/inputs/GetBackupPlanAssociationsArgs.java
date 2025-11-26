@@ -49,22 +49,28 @@ public final class GetBackupPlanAssociationsArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
-     * 
+     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
      * ***
      * 
+     * @deprecated
+     * `resourceType` is deprecated and will be removed in a future major release.
+     * 
      */
-    @Import(name="resourceType", required=true)
-    private Output<String> resourceType;
+    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
+    @Import(name="resourceType")
+    private @Nullable Output<String> resourceType;
 
     /**
-     * @return The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
-     * 
+     * @return The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
      * ***
      * 
+     * @deprecated
+     * `resourceType` is deprecated and will be removed in a future major release.
+     * 
      */
-    public Output<String> resourceType() {
-        return this.resourceType;
+    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
+    public Optional<Output<String>> resourceType() {
+        return Optional.ofNullable(this.resourceType);
     }
 
     private GetBackupPlanAssociationsArgs() {}
@@ -138,26 +144,32 @@ public final class GetBackupPlanAssociationsArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param resourceType The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
-         * 
+         * @param resourceType The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
          * ***
          * 
          * @return builder
          * 
+         * @deprecated
+         * `resourceType` is deprecated and will be removed in a future major release.
+         * 
          */
-        public Builder resourceType(Output<String> resourceType) {
+        @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
+        public Builder resourceType(@Nullable Output<String> resourceType) {
             $.resourceType = resourceType;
             return this;
         }
 
         /**
-         * @param resourceType The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
-         * 
+         * @param resourceType The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
          * ***
          * 
          * @return builder
          * 
+         * @deprecated
+         * `resourceType` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
         public Builder resourceType(String resourceType) {
             return resourceType(Output.of(resourceType));
         }
@@ -165,9 +177,6 @@ public final class GetBackupPlanAssociationsArgs extends com.pulumi.resources.In
         public GetBackupPlanAssociationsArgs build() {
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("GetBackupPlanAssociationsArgs", "location");
-            }
-            if ($.resourceType == null) {
-                throw new MissingRequiredPropertyException("GetBackupPlanAssociationsArgs", "resourceType");
             }
             return $;
         }

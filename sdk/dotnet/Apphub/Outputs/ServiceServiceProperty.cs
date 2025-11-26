@@ -15,6 +15,18 @@ namespace Pulumi.Gcp.Apphub.Outputs
     {
         /// <summary>
         /// (Output)
+        /// Output only. Additional metadata specific to the resource type.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ServiceServicePropertyExtendedMetadata> ExtendedMetadatas;
+        /// <summary>
+        /// (Output)
+        /// Output only. The type of the service.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ServiceServicePropertyFunctionalType> FunctionalTypes;
+        /// <summary>
+        /// (Output)
         /// Output only. The service project identifier that the underlying cloud resource resides in.
         /// </summary>
         public readonly string? GcpProject;
@@ -24,20 +36,35 @@ namespace Pulumi.Gcp.Apphub.Outputs
         public readonly string? Location;
         /// <summary>
         /// (Output)
+        /// Output only. The registration type of the service.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ServiceServicePropertyRegistrationType> RegistrationTypes;
+        /// <summary>
+        /// (Output)
         /// Output only. The location that the underlying resource resides in if it is zonal, for example, us-west1-a).
         /// </summary>
         public readonly string? Zone;
 
         [OutputConstructor]
         private ServiceServiceProperty(
+            ImmutableArray<Outputs.ServiceServicePropertyExtendedMetadata> extendedMetadatas,
+
+            ImmutableArray<Outputs.ServiceServicePropertyFunctionalType> functionalTypes,
+
             string? gcpProject,
 
             string? location,
 
+            ImmutableArray<Outputs.ServiceServicePropertyRegistrationType> registrationTypes,
+
             string? zone)
         {
+            ExtendedMetadatas = extendedMetadatas;
+            FunctionalTypes = functionalTypes;
             GcpProject = gcpProject;
             Location = location;
+            RegistrationTypes = registrationTypes;
             Zone = zone;
         }
     }

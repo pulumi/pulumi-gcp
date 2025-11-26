@@ -15,6 +15,18 @@ namespace Pulumi.Gcp.Apphub.Outputs
     {
         /// <summary>
         /// (Output)
+        /// Output only. Additional metadata specific to the resource type.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.WorkloadWorkloadPropertyExtendedMetadata> ExtendedMetadatas;
+        /// <summary>
+        /// (Output)
+        /// Output only. The functional type of a service or workload.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.WorkloadWorkloadPropertyFunctionalType> FunctionalTypes;
+        /// <summary>
+        /// (Output)
         /// Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
         /// </summary>
         public readonly string? GcpProject;
@@ -30,12 +42,18 @@ namespace Pulumi.Gcp.Apphub.Outputs
 
         [OutputConstructor]
         private WorkloadWorkloadProperty(
+            ImmutableArray<Outputs.WorkloadWorkloadPropertyExtendedMetadata> extendedMetadatas,
+
+            ImmutableArray<Outputs.WorkloadWorkloadPropertyFunctionalType> functionalTypes,
+
             string? gcpProject,
 
             string? location,
 
             string? zone)
         {
+            ExtendedMetadatas = extendedMetadatas;
+            FunctionalTypes = functionalTypes;
             GcpProject = gcpProject;
             Location = location;
             Zone = zone;

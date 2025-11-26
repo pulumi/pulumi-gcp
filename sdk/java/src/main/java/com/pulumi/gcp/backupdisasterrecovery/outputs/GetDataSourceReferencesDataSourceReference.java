@@ -43,7 +43,7 @@ public final class GetDataSourceReferencesDataSourceReference {
     private String lastSuccessfulBackupTime;
     private String name;
     /**
-     * @return - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
+     * @return The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34;. `resourceType` is deprecated and will be removed in a future major release.
      * 
      */
     private String resourceType;
@@ -95,7 +95,7 @@ public final class GetDataSourceReferencesDataSourceReference {
         return this.name;
     }
     /**
-     * @return - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
+     * @return The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34;. `resourceType` is deprecated and will be removed in a future major release.
      * 
      */
     public String resourceType() {

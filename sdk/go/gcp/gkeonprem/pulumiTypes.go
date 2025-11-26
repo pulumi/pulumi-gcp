@@ -580,23 +580,15 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) No
 }
 
 type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig struct {
-	// The map of Kubernetes labels (key/value pairs) to be applied to
-	// each node. These will added in addition to any default label(s)
-	// that Kubernetes may apply to the node. In case of conflict in
-	// label keys, the applied set may differ depending on the Kubernetes
-	// version -- it's best to assume the behavior is undefined and
-	// conflicts should be avoided. For more information, including usage
-	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	//   An object containing a list of "key": value pairs.
-	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// The labels assigned to nodes of this node pool.
+	// An object containing a list of key/value pairs.
+	// Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
-	// The list of machine addresses in the Bare Metal Node Pool.
 	// Structure is documented below.
 	NodeConfigs []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig `pulumi:"nodeConfigs"`
-	// Specifies the nodes operating system (default: LINUX).
+	// The available Operating Systems to be run in a Node.
 	OperatingSystem *string `pulumi:"operatingSystem"`
-	// The initial taints assigned to nodes of this node pool.
 	// Structure is documented below.
 	Taints []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint `pulumi:"taints"`
 }
@@ -613,23 +605,15 @@ type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigIn
 }
 
 type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs struct {
-	// The map of Kubernetes labels (key/value pairs) to be applied to
-	// each node. These will added in addition to any default label(s)
-	// that Kubernetes may apply to the node. In case of conflict in
-	// label keys, the applied set may differ depending on the Kubernetes
-	// version -- it's best to assume the behavior is undefined and
-	// conflicts should be avoided. For more information, including usage
-	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	//   An object containing a list of "key": value pairs.
-	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// The labels assigned to nodes of this node pool.
+	// An object containing a list of key/value pairs.
+	// Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The list of machine addresses in the Bare Metal Node Pool.
 	// Structure is documented below.
 	NodeConfigs BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayInput `pulumi:"nodeConfigs"`
-	// Specifies the nodes operating system (default: LINUX).
+	// The available Operating Systems to be run in a Node.
 	OperatingSystem pulumi.StringPtrInput `pulumi:"operatingSystem"`
-	// The initial taints assigned to nodes of this node pool.
 	// Structure is documented below.
 	Taints BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayInput `pulumi:"taints"`
 }
@@ -711,23 +695,16 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput)
 }
 
-// The map of Kubernetes labels (key/value pairs) to be applied to
-// each node. These will added in addition to any default label(s)
-// that Kubernetes may apply to the node. In case of conflict in
-// label keys, the applied set may differ depending on the Kubernetes
-// version -- it's best to assume the behavior is undefined and
-// conflicts should be avoided. For more information, including usage
-// and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-//     An object containing a list of "key": value pairs.
-//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+// The labels assigned to nodes of this node pool.
+// An object containing a list of key/value pairs.
+// Example:
+// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) map[string]string {
 		return v.Labels
 	}).(pulumi.StringMapOutput)
 }
 
-// The list of machine addresses in the Bare Metal Node Pool.
 // Structure is documented below.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) NodeConfigs() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig {
@@ -735,14 +712,13 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput)
 }
 
-// Specifies the nodes operating system (default: LINUX).
+// The available Operating Systems to be run in a Node.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) OperatingSystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) *string {
 		return v.OperatingSystem
 	}).(pulumi.StringPtrOutput)
 }
 
-// The initial taints assigned to nodes of this node pool.
 // Structure is documented below.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) Taints() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint {
@@ -774,16 +750,10 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput)
 }
 
-// The map of Kubernetes labels (key/value pairs) to be applied to
-// each node. These will added in addition to any default label(s)
-// that Kubernetes may apply to the node. In case of conflict in
-// label keys, the applied set may differ depending on the Kubernetes
-// version -- it's best to assume the behavior is undefined and
-// conflicts should be avoided. For more information, including usage
-// and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-//     An object containing a list of "key": value pairs.
-//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+// The labels assigned to nodes of this node pool.
+// An object containing a list of key/value pairs.
+// Example:
+// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) map[string]string {
 		if v == nil {
@@ -793,7 +763,6 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	}).(pulumi.StringMapOutput)
 }
 
-// The list of machine addresses in the Bare Metal Node Pool.
 // Structure is documented below.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) NodeConfigs() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
 	return o.ApplyT(func(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig {
@@ -804,7 +773,7 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput)
 }
 
-// Specifies the nodes operating system (default: LINUX).
+// The available Operating Systems to be run in a Node.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) OperatingSystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) *string {
 		if v == nil {
@@ -814,7 +783,6 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	}).(pulumi.StringPtrOutput)
 }
 
-// The initial taints assigned to nodes of this node pool.
 // Structure is documented below.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) Taints() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput {
 	return o.ApplyT(func(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint {
@@ -826,19 +794,12 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 }
 
 type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig struct {
-	// The map of Kubernetes labels (key/value pairs) to be applied to
-	// each node. These will added in addition to any default label(s)
-	// that Kubernetes may apply to the node. In case of conflict in
-	// label keys, the applied set may differ depending on the Kubernetes
-	// version -- it's best to assume the behavior is undefined and
-	// conflicts should be avoided. For more information, including usage
-	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	//   An object containing a list of "key": value pairs.
-	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// The labels assigned to nodes of this node pool.
+	// An object containing a list of key/value pairs.
+	// Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
-	// The default IPv4 address for SSH access and Kubernetes node.
-	// Example: 192.168.0.1
+	// (Optional)
 	NodeIp *string `pulumi:"nodeIp"`
 }
 
@@ -854,19 +815,12 @@ type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNo
 }
 
 type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs struct {
-	// The map of Kubernetes labels (key/value pairs) to be applied to
-	// each node. These will added in addition to any default label(s)
-	// that Kubernetes may apply to the node. In case of conflict in
-	// label keys, the applied set may differ depending on the Kubernetes
-	// version -- it's best to assume the behavior is undefined and
-	// conflicts should be avoided. For more information, including usage
-	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-	//   An object containing a list of "key": value pairs.
-	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// The labels assigned to nodes of this node pool.
+	// An object containing a list of key/value pairs.
+	// Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The default IPv4 address for SSH access and Kubernetes node.
-	// Example: 192.168.0.1
+	// (Optional)
 	NodeIp pulumi.StringPtrInput `pulumi:"nodeIp"`
 }
 
@@ -921,24 +875,17 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	return o
 }
 
-// The map of Kubernetes labels (key/value pairs) to be applied to
-// each node. These will added in addition to any default label(s)
-// that Kubernetes may apply to the node. In case of conflict in
-// label keys, the applied set may differ depending on the Kubernetes
-// version -- it's best to assume the behavior is undefined and
-// conflicts should be avoided. For more information, including usage
-// and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-//     An object containing a list of "key": value pairs.
-//     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+// The labels assigned to nodes of this node pool.
+// An object containing a list of key/value pairs.
+// Example:
+// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig) map[string]string {
 		return v.Labels
 	}).(pulumi.StringMapOutput)
 }
 
-// The default IPv4 address for SSH access and Kubernetes node.
-// Example: 192.168.0.1
+// (Optional)
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) NodeIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig) *string {
 		return v.NodeIp
@@ -966,12 +913,11 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 }
 
 type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint struct {
-	// Specifies the nodes operating system (default: LINUX).
-	// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+	// Available taint effects.
 	Effect *string `pulumi:"effect"`
-	// Key associated with the effect.
+	// (Optional)
 	Key *string `pulumi:"key"`
-	// Value associated with the effect.
+	// (Optional)
 	Value *string `pulumi:"value"`
 }
 
@@ -987,12 +933,11 @@ type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTa
 }
 
 type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs struct {
-	// Specifies the nodes operating system (default: LINUX).
-	// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+	// Available taint effects.
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
-	// Key associated with the effect.
+	// (Optional)
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Value associated with the effect.
+	// (Optional)
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1047,22 +992,21 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 	return o
 }
 
-// Specifies the nodes operating system (default: LINUX).
-// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+// Available taint effects.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint) *string {
 		return v.Effect
 	}).(pulumi.StringPtrOutput)
 }
 
-// Key associated with the effect.
+// (Optional)
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint) *string {
 		return v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value associated with the effect.
+// (Optional)
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint) *string {
 		return v.Value
@@ -1198,6 +1142,9 @@ func (o BareMetalAdminClusterFleetArrayOutput) Index(i pulumi.IntInput) BareMeta
 type BareMetalAdminClusterLoadBalancer struct {
 	// A nested object resource.
 	// Structure is documented below.
+	BgpLbConfig *BareMetalAdminClusterLoadBalancerBgpLbConfig `pulumi:"bgpLbConfig"`
+	// A nested object resource.
+	// Structure is documented below.
 	ManualLbConfig *BareMetalAdminClusterLoadBalancerManualLbConfig `pulumi:"manualLbConfig"`
 	// Specifies the load balancer ports.
 	// Structure is documented below.
@@ -1219,6 +1166,9 @@ type BareMetalAdminClusterLoadBalancerInput interface {
 }
 
 type BareMetalAdminClusterLoadBalancerArgs struct {
+	// A nested object resource.
+	// Structure is documented below.
+	BgpLbConfig BareMetalAdminClusterLoadBalancerBgpLbConfigPtrInput `pulumi:"bgpLbConfig"`
 	// A nested object resource.
 	// Structure is documented below.
 	ManualLbConfig BareMetalAdminClusterLoadBalancerManualLbConfigPtrInput `pulumi:"manualLbConfig"`
@@ -1309,6 +1259,14 @@ func (o BareMetalAdminClusterLoadBalancerOutput) ToBareMetalAdminClusterLoadBala
 
 // A nested object resource.
 // Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerOutput) BgpLbConfig() BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancer) *BareMetalAdminClusterLoadBalancerBgpLbConfig {
+		return v.BgpLbConfig
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
 func (o BareMetalAdminClusterLoadBalancerOutput) ManualLbConfig() BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancer) *BareMetalAdminClusterLoadBalancerManualLbConfig {
 		return v.ManualLbConfig
@@ -1357,6 +1315,17 @@ func (o BareMetalAdminClusterLoadBalancerPtrOutput) Elem() BareMetalAdminCluster
 
 // A nested object resource.
 // Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerPtrOutput) BgpLbConfig() BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancer) *BareMetalAdminClusterLoadBalancerBgpLbConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BgpLbConfig
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
 func (o BareMetalAdminClusterLoadBalancerPtrOutput) ManualLbConfig() BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
 	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancer) *BareMetalAdminClusterLoadBalancerManualLbConfig {
 		if v == nil {
@@ -1386,6 +1355,1270 @@ func (o BareMetalAdminClusterLoadBalancerPtrOutput) VipConfig() BareMetalAdminCl
 		}
 		return &v.VipConfig
 	}).(BareMetalAdminClusterLoadBalancerVipConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfig struct {
+	// a list of non-overlapping IP pools used
+	// by load balancer typed services.
+	// Structure is documented below.
+	AddressPools []BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool `pulumi:"addressPools"`
+	// BGP autonomous system number (ASN) of the cluster.
+	Asn *int `pulumi:"asn"`
+	// BGP autonomous system number (ASN) of the cluster.
+	// Structure is documented below.
+	BgpPeerConfigs []BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig `pulumi:"bgpPeerConfigs"`
+	// A nested object resource.
+	// Structure is documented below.
+	LoadBalancerNodePoolConfig *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig `pulumi:"loadBalancerNodePoolConfig"`
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigArgs and BareMetalAdminClusterLoadBalancerBgpLbConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerBgpLbConfigArgs{...}
+type BareMetalAdminClusterLoadBalancerBgpLbConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigOutput
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigArgs struct {
+	// a list of non-overlapping IP pools used
+	// by load balancer typed services.
+	// Structure is documented below.
+	AddressPools BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayInput `pulumi:"addressPools"`
+	// BGP autonomous system number (ASN) of the cluster.
+	Asn pulumi.IntPtrInput `pulumi:"asn"`
+	// BGP autonomous system number (ASN) of the cluster.
+	// Structure is documented below.
+	BgpPeerConfigs BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayInput `pulumi:"bgpPeerConfigs"`
+	// A nested object resource.
+	// Structure is documented below.
+	LoadBalancerNodePoolConfig BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrInput `pulumi:"loadBalancerNodePoolConfig"`
+}
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigOutput)
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigOutput).ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigPtrInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigArgs, BareMetalAdminClusterLoadBalancerBgpLbConfigPtr and BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterLoadBalancerBgpLbConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterLoadBalancerBgpLbConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput
+}
+
+type bareMetalAdminClusterLoadBalancerBgpLbConfigPtrType BareMetalAdminClusterLoadBalancerBgpLbConfigArgs
+
+func BareMetalAdminClusterLoadBalancerBgpLbConfigPtr(v *BareMetalAdminClusterLoadBalancerBgpLbConfigArgs) BareMetalAdminClusterLoadBalancerBgpLbConfigPtrInput {
+	return (*bareMetalAdminClusterLoadBalancerBgpLbConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterLoadBalancerBgpLbConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerBgpLbConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterLoadBalancerBgpLbConfigPtrType) ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterLoadBalancerBgpLbConfigPtrType) ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput {
+	return o.ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterLoadBalancerBgpLbConfig) *BareMetalAdminClusterLoadBalancerBgpLbConfig {
+		return &v
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput)
+}
+
+// a list of non-overlapping IP pools used
+// by load balancer typed services.
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigOutput) AddressPools() BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfig) []BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool {
+		return v.AddressPools
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput)
+}
+
+// BGP autonomous system number (ASN) of the cluster.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigOutput) Asn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfig) *int { return v.Asn }).(pulumi.IntPtrOutput)
+}
+
+// BGP autonomous system number (ASN) of the cluster.
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigOutput) BgpPeerConfigs() BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfig) []BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig {
+		return v.BgpPeerConfigs
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigOutput) LoadBalancerNodePoolConfig() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfig) *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
+		return v.LoadBalancerNodePoolConfig
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerBgpLbConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput) Elem() BareMetalAdminClusterLoadBalancerBgpLbConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfig) BareMetalAdminClusterLoadBalancerBgpLbConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterLoadBalancerBgpLbConfig
+		return ret
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigOutput)
+}
+
+// a list of non-overlapping IP pools used
+// by load balancer typed services.
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput) AddressPools() BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfig) []BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool {
+		if v == nil {
+			return nil
+		}
+		return v.AddressPools
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput)
+}
+
+// BGP autonomous system number (ASN) of the cluster.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput) Asn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Asn
+	}).(pulumi.IntPtrOutput)
+}
+
+// BGP autonomous system number (ASN) of the cluster.
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput) BgpPeerConfigs() BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfig) []BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BgpPeerConfigs
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput) LoadBalancerNodePoolConfig() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfig) *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerNodePoolConfig
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool struct {
+	// The addresses that are part of this pool.
+	Addresses []string `pulumi:"addresses"`
+	// This avoids buggy consumer devices mistakenly
+	// dropping IPv4 traffic for those special IP addresses.
+	AvoidBuggyIps *bool `pulumi:"avoidBuggyIps"`
+	// If true, prevent IP addresses from being automatically assigned.
+	ManualAssign *bool `pulumi:"manualAssign"`
+	// (Optional)
+	Pool *string `pulumi:"pool"`
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs and BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs{...}
+type BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs struct {
+	// The addresses that are part of this pool.
+	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
+	// This avoids buggy consumer devices mistakenly
+	// dropping IPv4 traffic for those special IP addresses.
+	AvoidBuggyIps pulumi.BoolPtrInput `pulumi:"avoidBuggyIps"`
+	// If true, prevent IP addresses from being automatically assigned.
+	ManualAssign pulumi.BoolPtrInput `pulumi:"manualAssign"`
+	// (Optional)
+	Pool pulumi.StringPtrInput `pulumi:"pool"`
+}
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput)
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArray and BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArray{ BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs{...} }
+type BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArray []BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolInput
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArray) ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArray) ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput {
+	return o
+}
+
+// The addresses that are part of this pool.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput) Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool) []string { return v.Addresses }).(pulumi.StringArrayOutput)
+}
+
+// This avoids buggy consumer devices mistakenly
+// dropping IPv4 traffic for those special IP addresses.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput) AvoidBuggyIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool) *bool { return v.AvoidBuggyIps }).(pulumi.BoolPtrOutput)
+}
+
+// If true, prevent IP addresses from being automatically assigned.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput) ManualAssign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool) *bool { return v.ManualAssign }).(pulumi.BoolPtrOutput)
+}
+
+// (Optional)
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput) Pool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool) *string { return v.Pool }).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool {
+		return vs[0].([]BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool)[vs[1].(int)]
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig struct {
+	// (Optional)
+	Asn *int `pulumi:"asn"`
+	// The IP address of the control plane node that
+	// connects to the external peer.
+	ControlPlaneNodes []string `pulumi:"controlPlaneNodes"`
+	// (Optional)
+	IpAddress *string `pulumi:"ipAddress"`
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs and BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs{...}
+type BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs struct {
+	// (Optional)
+	Asn pulumi.IntPtrInput `pulumi:"asn"`
+	// The IP address of the control plane node that
+	// connects to the external peer.
+	ControlPlaneNodes pulumi.StringArrayInput `pulumi:"controlPlaneNodes"`
+	// (Optional)
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+}
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput)
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArray and BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArray{ BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs{...} }
+type BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArray []BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigInput
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArray) ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArray) ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput {
+	return o
+}
+
+// (Optional)
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput) Asn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig) *int { return v.Asn }).(pulumi.IntPtrOutput)
+}
+
+// The IP address of the control plane node that
+// connects to the external peer.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput) ControlPlaneNodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig) []string { return v.ControlPlaneNodes }).(pulumi.StringArrayOutput)
+}
+
+// (Optional)
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig {
+		return vs[0].([]BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig)[vs[1].(int)]
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig struct {
+	// A nested object resource.
+	// Structure is documented below.
+	NodePoolConfig *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig `pulumi:"nodePoolConfig"`
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs and BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs{...}
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs struct {
+	// A nested object resource.
+	// Structure is documented below.
+	NodePoolConfig BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrInput `pulumi:"nodePoolConfig"`
+}
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput)
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput).ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs, BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtr and BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput
+}
+
+type bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrType BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs
+
+func BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtr(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrInput {
+	return (*bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrType) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrType) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput {
+	return o.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig) *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
+		return &v
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput) NodePoolConfig() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig) *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig {
+		return v.NodePoolConfig
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput) Elem() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig
+		return ret
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput) NodePoolConfig() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig) *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NodePoolConfig
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig struct {
+	// A nested object resource.
+	// Structure is documented below.
+	KubeletConfig *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig `pulumi:"kubeletConfig"`
+	// The labels assigned to nodes of this node pool.
+	// An object containing a list of key/value pairs.
+	// Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels map[string]string `pulumi:"labels"`
+	// Structure is documented below.
+	NodeConfigs []BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig `pulumi:"nodeConfigs"`
+	// The available Operating Systems to be run in a Node.
+	OperatingSystem *string `pulumi:"operatingSystem"`
+	// Structure is documented below.
+	Taints []BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint `pulumi:"taints"`
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs and BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs{...}
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs struct {
+	// A nested object resource.
+	// Structure is documented below.
+	KubeletConfig BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrInput `pulumi:"kubeletConfig"`
+	// The labels assigned to nodes of this node pool.
+	// An object containing a list of key/value pairs.
+	// Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Structure is documented below.
+	NodeConfigs BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayInput `pulumi:"nodeConfigs"`
+	// The available Operating Systems to be run in a Node.
+	OperatingSystem pulumi.StringPtrInput `pulumi:"operatingSystem"`
+	// Structure is documented below.
+	Taints BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayInput `pulumi:"taints"`
+}
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput)
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput).ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs, BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtr and BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput
+}
+
+type bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrType BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs
+
+func BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtr(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrInput {
+	return (*bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrType) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrType) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
+	return o.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig {
+		return &v
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) KubeletConfig() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig {
+		return v.KubeletConfig
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput)
+}
+
+// The labels assigned to nodes of this node pool.
+// An object containing a list of key/value pairs.
+// Example:
+// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) NodeConfigs() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) []BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig {
+		return v.NodeConfigs
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput)
+}
+
+// The available Operating Systems to be run in a Node.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) OperatingSystem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) *string {
+		return v.OperatingSystem
+	}).(pulumi.StringPtrOutput)
+}
+
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) Taints() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) []BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint {
+		return v.Taints
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) Elem() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig
+		return ret
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) KubeletConfig() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KubeletConfig
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput)
+}
+
+// The labels assigned to nodes of this node pool.
+// An object containing a list of key/value pairs.
+// Example:
+// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) NodeConfigs() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) []BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NodeConfigs
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput)
+}
+
+// The available Operating Systems to be run in a Node.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) OperatingSystem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperatingSystem
+	}).(pulumi.StringPtrOutput)
+}
+
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) Taints() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig) []BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint {
+		if v == nil {
+			return nil
+		}
+		return v.Taints
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig struct {
+	// (Optional)
+	RegistryBurst *int `pulumi:"registryBurst"`
+	// (Optional)
+	RegistryPullQps *int `pulumi:"registryPullQps"`
+	// (Optional)
+	SerializeImagePullsDisabled *bool `pulumi:"serializeImagePullsDisabled"`
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs and BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs{...}
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs struct {
+	// (Optional)
+	RegistryBurst pulumi.IntPtrInput `pulumi:"registryBurst"`
+	// (Optional)
+	RegistryPullQps pulumi.IntPtrInput `pulumi:"registryPullQps"`
+	// (Optional)
+	SerializeImagePullsDisabled pulumi.BoolPtrInput `pulumi:"serializeImagePullsDisabled"`
+}
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput)
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput).ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs, BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtr and BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput
+}
+
+type bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrType BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs
+
+func BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtr(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrInput {
+	return (*bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrType) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrType) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput {
+	return o.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig) *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig {
+		return &v
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput)
+}
+
+// (Optional)
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput) RegistryBurst() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig) *int {
+		return v.RegistryBurst
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional)
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput) RegistryPullQps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig) *int {
+		return v.RegistryPullQps
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional)
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput) SerializeImagePullsDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig) *bool {
+		return v.SerializeImagePullsDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput) Elem() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig
+		return ret
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput)
+}
+
+// (Optional)
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput) RegistryBurst() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryBurst
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional)
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput) RegistryPullQps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryPullQps
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional)
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput) SerializeImagePullsDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SerializeImagePullsDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig struct {
+	// The labels assigned to nodes of this node pool.
+	// An object containing a list of key/value pairs.
+	// Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels map[string]string `pulumi:"labels"`
+	// (Optional)
+	NodeIp *string `pulumi:"nodeIp"`
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs and BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs{...}
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs struct {
+	// The labels assigned to nodes of this node pool.
+	// An object containing a list of key/value pairs.
+	// Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// (Optional)
+	NodeIp pulumi.StringPtrInput `pulumi:"nodeIp"`
+}
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput)
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray and BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray{ BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs{...} }
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray []BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigInput
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput {
+	return o
+}
+
+// The labels assigned to nodes of this node pool.
+// An object containing a list of key/value pairs.
+// Example:
+// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// (Optional)
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) NodeIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig) *string {
+		return v.NodeIp
+	}).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig {
+		return vs[0].([]BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig)[vs[1].(int)]
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint struct {
+	// Available taint effects.
+	Effect *string `pulumi:"effect"`
+	// (Optional)
+	Key *string `pulumi:"key"`
+	// (Optional)
+	Value *string `pulumi:"value"`
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs and BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs{...}
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs struct {
+	// Available taint effects.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// (Optional)
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// (Optional)
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput)
+}
+
+// BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayInput is an input type that accepts BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray and BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray{ BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs{...} }
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput
+	ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray []BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintInput
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput {
+	return o
+}
+
+// Available taint effects.
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint) *string {
+		return v.Effect
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint) *string {
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput() BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput) ToBareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint {
+		return vs[0].([]BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint)[vs[1].(int)]
+	}).(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput)
 }
 
 type BareMetalAdminClusterLoadBalancerManualLbConfig struct {
@@ -1949,9 +3182,14 @@ func (o BareMetalAdminClusterMaintenanceConfigPtrOutput) MaintenanceAddressCidrB
 }
 
 type BareMetalAdminClusterNetworkConfig struct {
+	// Enables the use of advanced Anthos networking features.
+	AdvancedNetworking *bool `pulumi:"advancedNetworking"`
 	// A nested object resource.
 	// Structure is documented below.
 	IslandModeCidr *BareMetalAdminClusterNetworkConfigIslandModeCidr `pulumi:"islandModeCidr"`
+	// Configuration for multiple network interfaces.
+	// Structure is documented below.
+	MultipleNetworkInterfacesConfig *BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig `pulumi:"multipleNetworkInterfacesConfig"`
 }
 
 // BareMetalAdminClusterNetworkConfigInput is an input type that accepts BareMetalAdminClusterNetworkConfigArgs and BareMetalAdminClusterNetworkConfigOutput values.
@@ -1966,9 +3204,14 @@ type BareMetalAdminClusterNetworkConfigInput interface {
 }
 
 type BareMetalAdminClusterNetworkConfigArgs struct {
+	// Enables the use of advanced Anthos networking features.
+	AdvancedNetworking pulumi.BoolPtrInput `pulumi:"advancedNetworking"`
 	// A nested object resource.
 	// Structure is documented below.
 	IslandModeCidr BareMetalAdminClusterNetworkConfigIslandModeCidrPtrInput `pulumi:"islandModeCidr"`
+	// Configuration for multiple network interfaces.
+	// Structure is documented below.
+	MultipleNetworkInterfacesConfig BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrInput `pulumi:"multipleNetworkInterfacesConfig"`
 }
 
 func (BareMetalAdminClusterNetworkConfigArgs) ElementType() reflect.Type {
@@ -2048,12 +3291,25 @@ func (o BareMetalAdminClusterNetworkConfigOutput) ToBareMetalAdminClusterNetwork
 	}).(BareMetalAdminClusterNetworkConfigPtrOutput)
 }
 
+// Enables the use of advanced Anthos networking features.
+func (o BareMetalAdminClusterNetworkConfigOutput) AdvancedNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterNetworkConfig) *bool { return v.AdvancedNetworking }).(pulumi.BoolPtrOutput)
+}
+
 // A nested object resource.
 // Structure is documented below.
 func (o BareMetalAdminClusterNetworkConfigOutput) IslandModeCidr() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterNetworkConfig) *BareMetalAdminClusterNetworkConfigIslandModeCidr {
 		return v.IslandModeCidr
 	}).(BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput)
+}
+
+// Configuration for multiple network interfaces.
+// Structure is documented below.
+func (o BareMetalAdminClusterNetworkConfigOutput) MultipleNetworkInterfacesConfig() BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterNetworkConfig) *BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig {
+		return v.MultipleNetworkInterfacesConfig
+	}).(BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput)
 }
 
 type BareMetalAdminClusterNetworkConfigPtrOutput struct{ *pulumi.OutputState }
@@ -2080,6 +3336,16 @@ func (o BareMetalAdminClusterNetworkConfigPtrOutput) Elem() BareMetalAdminCluste
 	}).(BareMetalAdminClusterNetworkConfigOutput)
 }
 
+// Enables the use of advanced Anthos networking features.
+func (o BareMetalAdminClusterNetworkConfigPtrOutput) AdvancedNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
 // A nested object resource.
 // Structure is documented below.
 func (o BareMetalAdminClusterNetworkConfigPtrOutput) IslandModeCidr() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
@@ -2089,6 +3355,17 @@ func (o BareMetalAdminClusterNetworkConfigPtrOutput) IslandModeCidr() BareMetalA
 		}
 		return v.IslandModeCidr
 	}).(BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput)
+}
+
+// Configuration for multiple network interfaces.
+// Structure is documented below.
+func (o BareMetalAdminClusterNetworkConfigPtrOutput) MultipleNetworkInterfacesConfig() BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNetworkConfig) *BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MultipleNetworkInterfacesConfig
+	}).(BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput)
 }
 
 type BareMetalAdminClusterNetworkConfigIslandModeCidr struct {
@@ -2245,6 +3522,147 @@ func (o BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput) ServiceAddres
 		}
 		return v.ServiceAddressCidrBlocks
 	}).(pulumi.StringArrayOutput)
+}
+
+type BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig struct {
+	// When set network_config.advanced_networking is automatically
+	// set to true.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigInput is an input type that accepts BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs and BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigInput` via:
+//
+//	BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs{...}
+type BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput() BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput
+	ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutputWithContext(context.Context) BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput
+}
+
+type BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs struct {
+	// When set network_config.advanced_networking is automatically
+	// set to true.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs) ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput() BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput {
+	return i.ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs) ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput)
+}
+
+func (i BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs) ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput() BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput {
+	return i.ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs) ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput).ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrInput is an input type that accepts BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs, BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtr and BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput() BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput
+	ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput
+}
+
+type bareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrType BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs
+
+func BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtr(v *BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs) BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrInput {
+	return (*bareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrType) ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput() BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput {
+	return i.ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrType) ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput)
+}
+
+type BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput) ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput() BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput) ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput) ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput() BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput {
+	return o.ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput) ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig) *BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig {
+		return &v
+	}).(BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput)
+}
+
+// When set network_config.advanced_networking is automatically
+// set to true.
+func (o BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput) ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput() BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput) ToBareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput) Elem() BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig) BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig
+		return ret
+	}).(BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput)
+}
+
+// When set network_config.advanced_networking is automatically
+// set to true.
+func (o BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type BareMetalAdminClusterNodeAccessConfig struct {
@@ -24160,6 +25578,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterFleetArrayInput)(nil)).Elem(), BareMetalAdminClusterFleetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerPtrInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerManualLbConfigInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerManualLbConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerManualLbConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerManualLbConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerPortConfigInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerPortConfigArgs{})
@@ -24172,6 +25606,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNetworkConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNetworkConfigIslandModeCidrInput)(nil)).Elem(), BareMetalAdminClusterNetworkConfigIslandModeCidrArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNetworkConfigIslandModeCidrPtrInput)(nil)).Elem(), BareMetalAdminClusterNetworkConfigIslandModeCidrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigInput)(nil)).Elem(), BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNodeAccessConfigInput)(nil)).Elem(), BareMetalAdminClusterNodeAccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNodeAccessConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterNodeAccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNodeConfigInput)(nil)).Elem(), BareMetalAdminClusterNodeConfigArgs{})
@@ -24472,6 +25908,22 @@ func init() {
 	pulumi.RegisterOutputType(BareMetalAdminClusterFleetArrayOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArrayOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerManualLbConfigOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerPortConfigOutput{})
@@ -24484,6 +25936,8 @@ func init() {
 	pulumi.RegisterOutputType(BareMetalAdminClusterNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterNetworkConfigIslandModeCidrOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterNodeAccessConfigOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterNodeAccessConfigPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterNodeConfigOutput{})

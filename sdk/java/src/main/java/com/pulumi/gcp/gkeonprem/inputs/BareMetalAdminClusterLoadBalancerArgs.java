@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterLoadBalancerBgpLbConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterLoadBalancerManualLbConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterLoadBalancerPortConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterLoadBalancerVipConfigArgs;
@@ -17,6 +18,23 @@ import javax.annotation.Nullable;
 public final class BareMetalAdminClusterLoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BareMetalAdminClusterLoadBalancerArgs Empty = new BareMetalAdminClusterLoadBalancerArgs();
+
+    /**
+     * A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="bgpLbConfig")
+    private @Nullable Output<BareMetalAdminClusterLoadBalancerBgpLbConfigArgs> bgpLbConfig;
+
+    /**
+     * @return A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BareMetalAdminClusterLoadBalancerBgpLbConfigArgs>> bgpLbConfig() {
+        return Optional.ofNullable(this.bgpLbConfig);
+    }
 
     /**
      * A nested object resource.
@@ -72,6 +90,7 @@ public final class BareMetalAdminClusterLoadBalancerArgs extends com.pulumi.reso
     private BareMetalAdminClusterLoadBalancerArgs() {}
 
     private BareMetalAdminClusterLoadBalancerArgs(BareMetalAdminClusterLoadBalancerArgs $) {
+        this.bgpLbConfig = $.bgpLbConfig;
         this.manualLbConfig = $.manualLbConfig;
         this.portConfig = $.portConfig;
         this.vipConfig = $.vipConfig;
@@ -93,6 +112,29 @@ public final class BareMetalAdminClusterLoadBalancerArgs extends com.pulumi.reso
 
         public Builder(BareMetalAdminClusterLoadBalancerArgs defaults) {
             $ = new BareMetalAdminClusterLoadBalancerArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bgpLbConfig A nested object resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpLbConfig(@Nullable Output<BareMetalAdminClusterLoadBalancerBgpLbConfigArgs> bgpLbConfig) {
+            $.bgpLbConfig = bgpLbConfig;
+            return this;
+        }
+
+        /**
+         * @param bgpLbConfig A nested object resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpLbConfig(BareMetalAdminClusterLoadBalancerBgpLbConfigArgs bgpLbConfig) {
+            return bgpLbConfig(Output.of(bgpLbConfig));
         }
 
         /**

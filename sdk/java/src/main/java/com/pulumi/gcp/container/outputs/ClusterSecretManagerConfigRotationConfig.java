@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterSecretManagerConfigRotationConfig {
     /**
-     * @return Enable the roation in Secret Manager add-on for this cluster.
+     * @return Enable the roation in Sync as K8s secret feature for this cluster.
      * 
      */
     private Boolean enabled;
@@ -26,7 +26,7 @@ public final class ClusterSecretManagerConfigRotationConfig {
 
     private ClusterSecretManagerConfigRotationConfig() {}
     /**
-     * @return Enable the roation in Secret Manager add-on for this cluster.
+     * @return Enable the roation in Sync as K8s secret feature for this cluster.
      * 
      */
     public Boolean enabled() {

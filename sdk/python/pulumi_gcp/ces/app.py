@@ -25,6 +25,7 @@ class AppArgs:
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  audio_processing_config: Optional[pulumi.Input['AppAudioProcessingConfigArgs']] = None,
+                 client_certificate_settings: Optional[pulumi.Input['AppClientCertificateSettingsArgs']] = None,
                  data_store_settings: Optional[pulumi.Input['AppDataStoreSettingsArgs']] = None,
                  default_channel_profile: Optional[pulumi.Input['AppDefaultChannelProfileArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -48,6 +49,8 @@ class AppArgs:
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input['AppAudioProcessingConfigArgs'] audio_processing_config: Configuration for how the input and output audio should be processed and
                delivered.
+               Structure is documented below.
+        :param pulumi.Input['AppClientCertificateSettingsArgs'] client_certificate_settings: The default client certificate settings for the app.
                Structure is documented below.
         :param pulumi.Input['AppDataStoreSettingsArgs'] data_store_settings: Data store related settings for the app.
                Structure is documented below.
@@ -85,6 +88,8 @@ class AppArgs:
         pulumi.set(__self__, "location", location)
         if audio_processing_config is not None:
             pulumi.set(__self__, "audio_processing_config", audio_processing_config)
+        if client_certificate_settings is not None:
+            pulumi.set(__self__, "client_certificate_settings", client_certificate_settings)
         if data_store_settings is not None:
             pulumi.set(__self__, "data_store_settings", data_store_settings)
         if default_channel_profile is not None:
@@ -165,6 +170,19 @@ class AppArgs:
     @audio_processing_config.setter
     def audio_processing_config(self, value: Optional[pulumi.Input['AppAudioProcessingConfigArgs']]):
         pulumi.set(self, "audio_processing_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificateSettings")
+    def client_certificate_settings(self) -> Optional[pulumi.Input['AppClientCertificateSettingsArgs']]:
+        """
+        The default client certificate settings for the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_certificate_settings")
+
+    @client_certificate_settings.setter
+    def client_certificate_settings(self, value: Optional[pulumi.Input['AppClientCertificateSettingsArgs']]):
+        pulumi.set(self, "client_certificate_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="dataStoreSettings")
@@ -356,6 +374,7 @@ class _AppState:
     def __init__(__self__, *,
                  app_id: Optional[pulumi.Input[_builtins.str]] = None,
                  audio_processing_config: Optional[pulumi.Input['AppAudioProcessingConfigArgs']] = None,
+                 client_certificate_settings: Optional[pulumi.Input['AppClientCertificateSettingsArgs']] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  data_store_settings: Optional[pulumi.Input['AppDataStoreSettingsArgs']] = None,
                  default_channel_profile: Optional[pulumi.Input['AppDefaultChannelProfileArgs']] = None,
@@ -384,6 +403,8 @@ class _AppState:
                automatically assigned for the app.
         :param pulumi.Input['AppAudioProcessingConfigArgs'] audio_processing_config: Configuration for how the input and output audio should be processed and
                delivered.
+               Structure is documented below.
+        :param pulumi.Input['AppClientCertificateSettingsArgs'] client_certificate_settings: The default client certificate settings for the app.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the app was created.
         :param pulumi.Input['AppDataStoreSettingsArgs'] data_store_settings: Data store related settings for the app.
@@ -430,6 +451,8 @@ class _AppState:
             pulumi.set(__self__, "app_id", app_id)
         if audio_processing_config is not None:
             pulumi.set(__self__, "audio_processing_config", audio_processing_config)
+        if client_certificate_settings is not None:
+            pulumi.set(__self__, "client_certificate_settings", client_certificate_settings)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if data_store_settings is not None:
@@ -500,6 +523,19 @@ class _AppState:
     @audio_processing_config.setter
     def audio_processing_config(self, value: Optional[pulumi.Input['AppAudioProcessingConfigArgs']]):
         pulumi.set(self, "audio_processing_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificateSettings")
+    def client_certificate_settings(self) -> Optional[pulumi.Input['AppClientCertificateSettingsArgs']]:
+        """
+        The default client certificate settings for the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_certificate_settings")
+
+    @client_certificate_settings.setter
+    def client_certificate_settings(self, value: Optional[pulumi.Input['AppClientCertificateSettingsArgs']]):
+        pulumi.set(self, "client_certificate_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -781,6 +817,7 @@ class App(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[_builtins.str]] = None,
                  audio_processing_config: Optional[pulumi.Input[Union['AppAudioProcessingConfigArgs', 'AppAudioProcessingConfigArgsDict']]] = None,
+                 client_certificate_settings: Optional[pulumi.Input[Union['AppClientCertificateSettingsArgs', 'AppClientCertificateSettingsArgsDict']]] = None,
                  data_store_settings: Optional[pulumi.Input[Union['AppDataStoreSettingsArgs', 'AppDataStoreSettingsArgsDict']]] = None,
                  default_channel_profile: Optional[pulumi.Input[Union['AppDefaultChannelProfileArgs', 'AppDefaultChannelProfileArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -809,7 +846,22 @@ class App(pulumi.CustomResource):
         import pulumi
         import json
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
+        project = gcp.organizations.get_project()
+        fake_private_key_secret = gcp.secretmanager.Secret("fake_private_key_secret",
+            secret_id="fake-pk-secret-app-tf1",
+            replication={
+                "auto": {},
+            })
+        fake_secret_version = gcp.secretmanager.SecretVersion("fake_secret_version",
+            secret=fake_private_key_secret.id,
+            secret_data=std.file(input="test-fixtures/test.key").result)
+        private_key_accessor = gcp.secretmanager.SecretIamMember("private_key_accessor",
+            project=fake_private_key_secret.project,
+            secret_id=fake_private_key_secret.secret_id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-ces.iam.gserviceaccount.com")
         ces_app_basic = gcp.ces.App("ces_app_basic",
             app_id="app-id",
             location="us",
@@ -948,6 +1000,11 @@ class App(pulumi.CustomResource):
             },
             time_zone_settings={
                 "time_zone": "America/Los_Angeles",
+            },
+            client_certificate_settings={
+                "tls_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "private_key": fake_secret_version.name,
+                "passphrase": "fakepassphrase",
             })
         ```
         ### Ces App Ambient Sound Gcs Uri
@@ -1130,6 +1187,8 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[Union['AppAudioProcessingConfigArgs', 'AppAudioProcessingConfigArgsDict']] audio_processing_config: Configuration for how the input and output audio should be processed and
                delivered.
                Structure is documented below.
+        :param pulumi.Input[Union['AppClientCertificateSettingsArgs', 'AppClientCertificateSettingsArgsDict']] client_certificate_settings: The default client certificate settings for the app.
+               Structure is documented below.
         :param pulumi.Input[Union['AppDataStoreSettingsArgs', 'AppDataStoreSettingsArgsDict']] data_store_settings: Data store related settings for the app.
                Structure is documented below.
         :param pulumi.Input[Union['AppDefaultChannelProfileArgs', 'AppDefaultChannelProfileArgsDict']] default_channel_profile: A ChannelProfile configures the agent's behavior for a specific communication
@@ -1180,7 +1239,22 @@ class App(pulumi.CustomResource):
         import pulumi
         import json
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
+        project = gcp.organizations.get_project()
+        fake_private_key_secret = gcp.secretmanager.Secret("fake_private_key_secret",
+            secret_id="fake-pk-secret-app-tf1",
+            replication={
+                "auto": {},
+            })
+        fake_secret_version = gcp.secretmanager.SecretVersion("fake_secret_version",
+            secret=fake_private_key_secret.id,
+            secret_data=std.file(input="test-fixtures/test.key").result)
+        private_key_accessor = gcp.secretmanager.SecretIamMember("private_key_accessor",
+            project=fake_private_key_secret.project,
+            secret_id=fake_private_key_secret.secret_id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-ces.iam.gserviceaccount.com")
         ces_app_basic = gcp.ces.App("ces_app_basic",
             app_id="app-id",
             location="us",
@@ -1319,6 +1393,11 @@ class App(pulumi.CustomResource):
             },
             time_zone_settings={
                 "time_zone": "America/Los_Angeles",
+            },
+            client_certificate_settings={
+                "tls_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "private_key": fake_secret_version.name,
+                "passphrase": "fakepassphrase",
             })
         ```
         ### Ces App Ambient Sound Gcs Uri
@@ -1510,6 +1589,7 @@ class App(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[_builtins.str]] = None,
                  audio_processing_config: Optional[pulumi.Input[Union['AppAudioProcessingConfigArgs', 'AppAudioProcessingConfigArgsDict']]] = None,
+                 client_certificate_settings: Optional[pulumi.Input[Union['AppClientCertificateSettingsArgs', 'AppClientCertificateSettingsArgsDict']]] = None,
                  data_store_settings: Optional[pulumi.Input[Union['AppDataStoreSettingsArgs', 'AppDataStoreSettingsArgsDict']]] = None,
                  default_channel_profile: Optional[pulumi.Input[Union['AppDefaultChannelProfileArgs', 'AppDefaultChannelProfileArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1539,6 +1619,7 @@ class App(pulumi.CustomResource):
                 raise TypeError("Missing required property 'app_id'")
             __props__.__dict__["app_id"] = app_id
             __props__.__dict__["audio_processing_config"] = audio_processing_config
+            __props__.__dict__["client_certificate_settings"] = client_certificate_settings
             __props__.__dict__["data_store_settings"] = data_store_settings
             __props__.__dict__["default_channel_profile"] = default_channel_profile
             __props__.__dict__["description"] = description
@@ -1576,6 +1657,7 @@ class App(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: Optional[pulumi.Input[_builtins.str]] = None,
             audio_processing_config: Optional[pulumi.Input[Union['AppAudioProcessingConfigArgs', 'AppAudioProcessingConfigArgsDict']]] = None,
+            client_certificate_settings: Optional[pulumi.Input[Union['AppClientCertificateSettingsArgs', 'AppClientCertificateSettingsArgsDict']]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             data_store_settings: Optional[pulumi.Input[Union['AppDataStoreSettingsArgs', 'AppDataStoreSettingsArgsDict']]] = None,
             default_channel_profile: Optional[pulumi.Input[Union['AppDefaultChannelProfileArgs', 'AppDefaultChannelProfileArgsDict']]] = None,
@@ -1609,6 +1691,8 @@ class App(pulumi.CustomResource):
                automatically assigned for the app.
         :param pulumi.Input[Union['AppAudioProcessingConfigArgs', 'AppAudioProcessingConfigArgsDict']] audio_processing_config: Configuration for how the input and output audio should be processed and
                delivered.
+               Structure is documented below.
+        :param pulumi.Input[Union['AppClientCertificateSettingsArgs', 'AppClientCertificateSettingsArgsDict']] client_certificate_settings: The default client certificate settings for the app.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the app was created.
         :param pulumi.Input[Union['AppDataStoreSettingsArgs', 'AppDataStoreSettingsArgsDict']] data_store_settings: Data store related settings for the app.
@@ -1657,6 +1741,7 @@ class App(pulumi.CustomResource):
 
         __props__.__dict__["app_id"] = app_id
         __props__.__dict__["audio_processing_config"] = audio_processing_config
+        __props__.__dict__["client_certificate_settings"] = client_certificate_settings
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_store_settings"] = data_store_settings
         __props__.__dict__["default_channel_profile"] = default_channel_profile
@@ -1699,6 +1784,15 @@ class App(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "audio_processing_config")
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificateSettings")
+    def client_certificate_settings(self) -> pulumi.Output[Optional['outputs.AppClientCertificateSettings']]:
+        """
+        The default client certificate settings for the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_certificate_settings")
 
     @_builtins.property
     @pulumi.getter(name="createTime")

@@ -43,6 +43,9 @@ __all__ = [
     'DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail',
     'DbSystemPropertiesDbSystemOptions',
     'DbSystemPropertiesTimeZone',
+    'ExascaleDbStorageVaultProperties',
+    'ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails',
+    'ExascaleDbStorageVaultPropertiesTimeZone',
     'GetAutonomousDatabasePropertyResult',
     'GetAutonomousDatabasePropertyApexDetailResult',
     'GetAutonomousDatabasePropertyConnectionStringResult',
@@ -4614,6 +4617,289 @@ class DbSystemPropertiesTimeZone(dict):
         IANA Time Zone Database time zone. For example "America/New_York".
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class ExascaleDbStorageVaultProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exascaleDbStorageDetails":
+            suggest = "exascale_db_storage_details"
+        elif key == "additionalFlashCachePercent":
+            suggest = "additional_flash_cache_percent"
+        elif key == "attachedShapeAttributes":
+            suggest = "attached_shape_attributes"
+        elif key == "availableShapeAttributes":
+            suggest = "available_shape_attributes"
+        elif key == "ociUri":
+            suggest = "oci_uri"
+        elif key == "timeZone":
+            suggest = "time_zone"
+        elif key == "vmClusterCount":
+            suggest = "vm_cluster_count"
+        elif key == "vmClusterIds":
+            suggest = "vm_cluster_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExascaleDbStorageVaultProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExascaleDbStorageVaultProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExascaleDbStorageVaultProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exascale_db_storage_details: 'outputs.ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails',
+                 additional_flash_cache_percent: Optional[_builtins.int] = None,
+                 attached_shape_attributes: Optional[Sequence[_builtins.str]] = None,
+                 available_shape_attributes: Optional[Sequence[_builtins.str]] = None,
+                 oci_uri: Optional[_builtins.str] = None,
+                 ocid: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None,
+                 time_zone: Optional['outputs.ExascaleDbStorageVaultPropertiesTimeZone'] = None,
+                 vm_cluster_count: Optional[_builtins.int] = None,
+                 vm_cluster_ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsArgs' exascale_db_storage_details: The storage details of the ExascaleDbStorageVault.
+               Structure is documented below.
+        :param _builtins.int additional_flash_cache_percent: The size of additional flash cache in percentage of high capacity
+               database storage.
+        :param Sequence[_builtins.str] attached_shape_attributes: (Output)
+               The shape attributes of the VM clusters attached to the
+               ExascaleDbStorageVault.
+        :param Sequence[_builtins.str] available_shape_attributes: (Output)
+               The shape attributes available for the VM clusters to be attached to the
+               ExascaleDbStorageVault.
+        :param _builtins.str oci_uri: (Output)
+               Deep link to the OCI console to view this resource.
+        :param _builtins.str ocid: (Output)
+               The OCID for the ExascaleDbStorageVault.
+        :param _builtins.str state: (Output)
+               The state of the ExascaleDbStorageVault.
+               Possible values:
+               PROVISIONING
+               AVAILABLE
+               UPDATING
+               TERMINATING
+               TERMINATED
+               FAILED
+        :param 'ExascaleDbStorageVaultPropertiesTimeZoneArgs' time_zone: Represents a time zone from the
+               [IANA Time Zone Database](https://www.iana.org/time-zones).
+               Structure is documented below.
+        :param _builtins.int vm_cluster_count: (Output)
+               The number of VM clusters associated with the ExascaleDbStorageVault.
+        :param Sequence[_builtins.str] vm_cluster_ids: (Output)
+               The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.
+        """
+        pulumi.set(__self__, "exascale_db_storage_details", exascale_db_storage_details)
+        if additional_flash_cache_percent is not None:
+            pulumi.set(__self__, "additional_flash_cache_percent", additional_flash_cache_percent)
+        if attached_shape_attributes is not None:
+            pulumi.set(__self__, "attached_shape_attributes", attached_shape_attributes)
+        if available_shape_attributes is not None:
+            pulumi.set(__self__, "available_shape_attributes", available_shape_attributes)
+        if oci_uri is not None:
+            pulumi.set(__self__, "oci_uri", oci_uri)
+        if ocid is not None:
+            pulumi.set(__self__, "ocid", ocid)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+        if vm_cluster_count is not None:
+            pulumi.set(__self__, "vm_cluster_count", vm_cluster_count)
+        if vm_cluster_ids is not None:
+            pulumi.set(__self__, "vm_cluster_ids", vm_cluster_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="exascaleDbStorageDetails")
+    def exascale_db_storage_details(self) -> 'outputs.ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails':
+        """
+        The storage details of the ExascaleDbStorageVault.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exascale_db_storage_details")
+
+    @_builtins.property
+    @pulumi.getter(name="additionalFlashCachePercent")
+    def additional_flash_cache_percent(self) -> Optional[_builtins.int]:
+        """
+        The size of additional flash cache in percentage of high capacity
+        database storage.
+        """
+        return pulumi.get(self, "additional_flash_cache_percent")
+
+    @_builtins.property
+    @pulumi.getter(name="attachedShapeAttributes")
+    def attached_shape_attributes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        The shape attributes of the VM clusters attached to the
+        ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "attached_shape_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="availableShapeAttributes")
+    def available_shape_attributes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        The shape attributes available for the VM clusters to be attached to the
+        ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "available_shape_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="ociUri")
+    def oci_uri(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Deep link to the OCI console to view this resource.
+        """
+        return pulumi.get(self, "oci_uri")
+
+    @_builtins.property
+    @pulumi.getter
+    def ocid(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The OCID for the ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "ocid")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the ExascaleDbStorageVault.
+        Possible values:
+        PROVISIONING
+        AVAILABLE
+        UPDATING
+        TERMINATING
+        TERMINATED
+        FAILED
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional['outputs.ExascaleDbStorageVaultPropertiesTimeZone']:
+        """
+        Represents a time zone from the
+        [IANA Time Zone Database](https://www.iana.org/time-zones).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="vmClusterCount")
+    def vm_cluster_count(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The number of VM clusters associated with the ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "vm_cluster_count")
+
+    @_builtins.property
+    @pulumi.getter(name="vmClusterIds")
+    def vm_cluster_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "vm_cluster_ids")
+
+
+@pulumi.output_type
+class ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalSizeGbs":
+            suggest = "total_size_gbs"
+        elif key == "availableSizeGbs":
+            suggest = "available_size_gbs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_size_gbs: _builtins.int,
+                 available_size_gbs: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int total_size_gbs: The total storage allocation for the ExascaleDbStorageVault, in gigabytes
+               (GB).
+        :param _builtins.int available_size_gbs: (Output)
+               The available storage capacity for the ExascaleDbStorageVault, in gigabytes
+               (GB).
+        """
+        pulumi.set(__self__, "total_size_gbs", total_size_gbs)
+        if available_size_gbs is not None:
+            pulumi.set(__self__, "available_size_gbs", available_size_gbs)
+
+    @_builtins.property
+    @pulumi.getter(name="totalSizeGbs")
+    def total_size_gbs(self) -> _builtins.int:
+        """
+        The total storage allocation for the ExascaleDbStorageVault, in gigabytes
+        (GB).
+        """
+        return pulumi.get(self, "total_size_gbs")
+
+    @_builtins.property
+    @pulumi.getter(name="availableSizeGbs")
+    def available_size_gbs(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The available storage capacity for the ExascaleDbStorageVault, in gigabytes
+        (GB).
+        """
+        return pulumi.get(self, "available_size_gbs")
+
+
+@pulumi.output_type
+class ExascaleDbStorageVaultPropertiesTimeZone(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: IANA Time Zone Database time zone. For example "America/New_York".
+        :param _builtins.str version: IANA Time Zone Database version number. For example "2019a".
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        IANA Time Zone Database time zone. For example "America/New_York".
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        IANA Time Zone Database version number. For example "2019a".
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

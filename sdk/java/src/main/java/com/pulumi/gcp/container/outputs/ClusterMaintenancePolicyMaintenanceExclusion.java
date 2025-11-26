@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMaintenancePolicyMaintenanceExclusion {
-    private String endTime;
+    private @Nullable String endTime;
     private String exclusionName;
     /**
      * @return MaintenanceExclusionOptions provides maintenance exclusion related options.
@@ -23,8 +23,8 @@ public final class ClusterMaintenancePolicyMaintenanceExclusion {
     private String startTime;
 
     private ClusterMaintenancePolicyMaintenanceExclusion() {}
-    public String endTime() {
-        return this.endTime;
+    public Optional<String> endTime() {
+        return Optional.ofNullable(this.endTime);
     }
     public String exclusionName() {
         return this.exclusionName;
@@ -49,7 +49,7 @@ public final class ClusterMaintenancePolicyMaintenanceExclusion {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String endTime;
+        private @Nullable String endTime;
         private String exclusionName;
         private @Nullable ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions exclusionOptions;
         private String startTime;
@@ -63,10 +63,8 @@ public final class ClusterMaintenancePolicyMaintenanceExclusion {
         }
 
         @CustomType.Setter
-        public Builder endTime(String endTime) {
-            if (endTime == null) {
-              throw new MissingRequiredPropertyException("ClusterMaintenancePolicyMaintenanceExclusion", "endTime");
-            }
+        public Builder endTime(@Nullable String endTime) {
+
             this.endTime = endTime;
             return this;
         }

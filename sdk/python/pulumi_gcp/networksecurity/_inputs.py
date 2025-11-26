@@ -105,6 +105,8 @@ __all__ = [
     'ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict',
     'ClientTlsPolicyServerValidationCaGrpcEndpointArgs',
     'ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict',
+    'FirewallEndpointEndpointSettingsArgs',
+    'FirewallEndpointEndpointSettingsArgsDict',
     'InterceptDeploymentGroupConnectedEndpointGroupArgs',
     'InterceptDeploymentGroupConnectedEndpointGroupArgsDict',
     'InterceptDeploymentGroupLocationArgs',
@@ -3863,6 +3865,38 @@ class ClientTlsPolicyServerValidationCaGrpcEndpointArgs:
     @target_uri.setter
     def target_uri(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "target_uri", value)
+
+
+if not MYPY:
+    class FirewallEndpointEndpointSettingsArgsDict(TypedDict):
+        jumbo_frames_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates whether Jumbo Frames are enabled for the firewall endpoint.
+        """
+elif False:
+    FirewallEndpointEndpointSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FirewallEndpointEndpointSettingsArgs:
+    def __init__(__self__, *,
+                 jumbo_frames_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] jumbo_frames_enabled: Indicates whether Jumbo Frames are enabled for the firewall endpoint.
+        """
+        if jumbo_frames_enabled is not None:
+            pulumi.set(__self__, "jumbo_frames_enabled", jumbo_frames_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="jumboFramesEnabled")
+    def jumbo_frames_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether Jumbo Frames are enabled for the firewall endpoint.
+        """
+        return pulumi.get(self, "jumbo_frames_enabled")
+
+    @jumbo_frames_enabled.setter
+    def jumbo_frames_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "jumbo_frames_enabled", value)
 
 
 if not MYPY:

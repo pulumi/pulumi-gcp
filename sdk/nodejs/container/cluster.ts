@@ -610,6 +610,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly secretManagerConfig: pulumi.Output<outputs.container.ClusterSecretManagerConfig | undefined>;
     /**
+     * Configuration for the
+     * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+     * Structure is documented below.
+     */
+    declare public readonly secretSyncConfig: pulumi.Output<outputs.container.ClusterSecretSyncConfig | undefined>;
+    /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
      */
     declare public readonly securityPostureConfig: pulumi.Output<outputs.container.ClusterSecurityPostureConfig>;
@@ -754,6 +760,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["resourceLabels"] = state?.resourceLabels;
             resourceInputs["resourceUsageExportConfig"] = state?.resourceUsageExportConfig;
             resourceInputs["secretManagerConfig"] = state?.secretManagerConfig;
+            resourceInputs["secretSyncConfig"] = state?.secretSyncConfig;
             resourceInputs["securityPostureConfig"] = state?.securityPostureConfig;
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["serviceExternalIpsConfig"] = state?.serviceExternalIpsConfig;
@@ -839,6 +846,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["resourceLabels"] = args?.resourceLabels;
             resourceInputs["resourceUsageExportConfig"] = args?.resourceUsageExportConfig;
             resourceInputs["secretManagerConfig"] = args?.secretManagerConfig;
+            resourceInputs["secretSyncConfig"] = args?.secretSyncConfig;
             resourceInputs["securityPostureConfig"] = args?.securityPostureConfig;
             resourceInputs["serviceExternalIpsConfig"] = args?.serviceExternalIpsConfig;
             resourceInputs["subnetwork"] = args?.subnetwork;
@@ -1315,6 +1323,12 @@ export interface ClusterState {
      * Structure is documented below.
      */
     secretManagerConfig?: pulumi.Input<inputs.container.ClusterSecretManagerConfig>;
+    /**
+     * Configuration for the
+     * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+     * Structure is documented below.
+     */
+    secretSyncConfig?: pulumi.Input<inputs.container.ClusterSecretSyncConfig>;
     /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
      */
@@ -1798,6 +1812,12 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     secretManagerConfig?: pulumi.Input<inputs.container.ClusterSecretManagerConfig>;
+    /**
+     * Configuration for the
+     * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+     * Structure is documented below.
+     */
+    secretSyncConfig?: pulumi.Input<inputs.container.ClusterSecretSyncConfig>;
     /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
      */

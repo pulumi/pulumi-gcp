@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     public static class GetBackupPlanAssociations
     {
         /// <summary>
-        /// Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+        /// Provides a list of Backup and DR BackupPlanAssociations.
         /// 
         /// ## Example Usage
         /// 
@@ -24,10 +24,9 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var computeInstanceAssociations = Gcp.BackupDisasterRecovery.GetBackupPlanAssociations.Invoke(new()
+        ///     var allAssociations = Gcp.BackupDisasterRecovery.GetBackupPlanAssociations.Invoke(new()
         ///     {
         ///         Location = "us-central1",
-        ///         ResourceType = "compute.googleapis.com/Instance",
         ///     });
         /// 
         /// });
@@ -37,7 +36,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupPlanAssociationsResult>("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", args ?? new GetBackupPlanAssociationsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+        /// Provides a list of Backup and DR BackupPlanAssociations.
         /// 
         /// ## Example Usage
         /// 
@@ -49,10 +48,9 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var computeInstanceAssociations = Gcp.BackupDisasterRecovery.GetBackupPlanAssociations.Invoke(new()
+        ///     var allAssociations = Gcp.BackupDisasterRecovery.GetBackupPlanAssociations.Invoke(new()
         ///     {
         ///         Location = "us-central1",
-        ///         ResourceType = "compute.googleapis.com/Instance",
         ///     });
         /// 
         /// });
@@ -62,7 +60,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlanAssociationsResult>("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", args ?? new GetBackupPlanAssociationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+        /// Provides a list of Backup and DR BackupPlanAssociations.
         /// 
         /// ## Example Usage
         /// 
@@ -74,10 +72,9 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var computeInstanceAssociations = Gcp.BackupDisasterRecovery.GetBackupPlanAssociations.Invoke(new()
+        ///     var allAssociations = Gcp.BackupDisasterRecovery.GetBackupPlanAssociations.Invoke(new()
         ///     {
         ///         Location = "us-central1",
-        ///         ResourceType = "compute.googleapis.com/Instance",
         ///     });
         /// 
         /// });
@@ -104,12 +101,11 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public string? Project { get; set; }
 
         /// <summary>
-        /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
-        /// 
+        /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `ResourceType` is deprecated and will be removed in a future major release.
         /// - - -
         /// </summary>
-        [Input("resourceType", required: true)]
-        public string ResourceType { get; set; } = null!;
+        [Input("resourceType")]
+        public string? ResourceType { get; set; }
 
         public GetBackupPlanAssociationsArgs()
         {
@@ -133,12 +129,11 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
-        /// 
+        /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `ResourceType` is deprecated and will be removed in a future major release.
         /// - - -
         /// </summary>
-        [Input("resourceType", required: true)]
-        public Input<string> ResourceType { get; set; } = null!;
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
 
         public GetBackupPlanAssociationsInvokeArgs()
         {
@@ -163,7 +158,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// The ID of the project in which the resource belongs.
         /// </summary>
         public readonly string Project;
-        public readonly string ResourceType;
+        public readonly string? ResourceType;
 
         [OutputConstructor]
         private GetBackupPlanAssociationsResult(
@@ -175,7 +170,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string project,
 
-            string resourceType)
+            string? resourceType)
         {
             Associations = associations;
             Id = id;

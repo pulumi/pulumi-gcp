@@ -61,6 +61,11 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerPort> Ports;
         /// <summary>
+        /// Periodic probe of container readiness.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServiceTemplateSpecContainerReadinessProbe? ReadinessProbe;
+        /// <summary>
         /// Compute Resources required by this container. Used to set values such as max memory
         /// Structure is documented below.
         /// </summary>
@@ -106,6 +111,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             ImmutableArray<Outputs.ServiceTemplateSpecContainerPort> ports,
 
+            Outputs.ServiceTemplateSpecContainerReadinessProbe? readinessProbe,
+
             Outputs.ServiceTemplateSpecContainerResources? resources,
 
             Outputs.ServiceTemplateSpecContainerStartupProbe? startupProbe,
@@ -122,6 +129,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             LivenessProbe = livenessProbe;
             Name = name;
             Ports = ports;
+            ReadinessProbe = readinessProbe;
             Resources = resources;
             StartupProbe = startupProbe;
             VolumeMounts = volumeMounts;

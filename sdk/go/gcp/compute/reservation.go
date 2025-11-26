@@ -289,6 +289,8 @@ import (
 type Reservation struct {
 	pulumi.CustomResourceState
 
+	// List of all reservation block names in the parent reservation.
+	BlockNames pulumi.StringArrayOutput `pulumi:"blockNames"`
 	// Full or partial URL to a parent commitment. This field displays for
 	// reservations that are tied to a commitment.
 	Commitment pulumi.StringOutput `pulumi:"commitment"`
@@ -318,6 +320,8 @@ type Reservation struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
+	//
+	// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// (Output)
 	// The number of reservation blocks associated with this reservation.
@@ -384,6 +388,8 @@ func GetReservation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Reservation resources.
 type reservationState struct {
+	// List of all reservation block names in the parent reservation.
+	BlockNames []string `pulumi:"blockNames"`
 	// Full or partial URL to a parent commitment. This field displays for
 	// reservations that are tied to a commitment.
 	Commitment *string `pulumi:"commitment"`
@@ -413,6 +419,8 @@ type reservationState struct {
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
+	//
+	// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
 	Project *string `pulumi:"project"`
 	// (Output)
 	// The number of reservation blocks associated with this reservation.
@@ -444,6 +452,8 @@ type reservationState struct {
 }
 
 type ReservationState struct {
+	// List of all reservation block names in the parent reservation.
+	BlockNames pulumi.StringArrayInput
 	// Full or partial URL to a parent commitment. This field displays for
 	// reservations that are tied to a commitment.
 	Commitment pulumi.StringPtrInput
@@ -473,6 +483,8 @@ type ReservationState struct {
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
+	//
+	// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
 	Project pulumi.StringPtrInput
 	// (Output)
 	// The number of reservation blocks associated with this reservation.
@@ -528,6 +540,8 @@ type reservationArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
+	//
+	// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
 	Project *string `pulumi:"project"`
 	// Sharing policy for reservations with Google Cloud managed services.
 	// Structure is documented below.
@@ -568,6 +582,8 @@ type ReservationArgs struct {
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
+	//
+	// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
 	Project pulumi.StringPtrInput
 	// Sharing policy for reservations with Google Cloud managed services.
 	// Structure is documented below.
@@ -673,6 +689,11 @@ func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) R
 	return o
 }
 
+// List of all reservation block names in the parent reservation.
+func (o ReservationOutput) BlockNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringArrayOutput { return v.BlockNames }).(pulumi.StringArrayOutput)
+}
+
 // Full or partial URL to a parent commitment. This field displays for
 // reservations that are tied to a commitment.
 func (o ReservationOutput) Commitment() pulumi.StringOutput {
@@ -729,6 +750,8 @@ func (o ReservationOutput) Name() pulumi.StringOutput {
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
+//
+// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
 func (o ReservationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

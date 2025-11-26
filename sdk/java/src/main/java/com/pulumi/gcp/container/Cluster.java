@@ -50,6 +50,7 @@ import com.pulumi.gcp.container.outputs.ClusterRbacBindingConfig;
 import com.pulumi.gcp.container.outputs.ClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.ClusterResourceUsageExportConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecretManagerConfig;
+import com.pulumi.gcp.container.outputs.ClusterSecretSyncConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecurityPostureConfig;
 import com.pulumi.gcp.container.outputs.ClusterServiceExternalIpsConfig;
 import com.pulumi.gcp.container.outputs.ClusterTpuConfig;
@@ -1630,6 +1631,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterSecretManagerConfig>> secretManagerConfig() {
         return Codegen.optional(this.secretManagerConfig);
+    }
+    /**
+     * Configuration for the
+     * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="secretSyncConfig", refs={ClusterSecretSyncConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterSecretSyncConfig> secretSyncConfig;
+
+    /**
+     * @return Configuration for the
+     * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterSecretSyncConfig>> secretSyncConfig() {
+        return Codegen.optional(this.secretSyncConfig);
     }
     /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.

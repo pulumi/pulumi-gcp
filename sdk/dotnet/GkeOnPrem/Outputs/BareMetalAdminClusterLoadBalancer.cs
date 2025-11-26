@@ -17,6 +17,11 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
+        public readonly Outputs.BareMetalAdminClusterLoadBalancerBgpLbConfig? BgpLbConfig;
+        /// <summary>
+        /// A nested object resource.
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.BareMetalAdminClusterLoadBalancerManualLbConfig? ManualLbConfig;
         /// <summary>
         /// Specifies the load balancer ports.
@@ -31,12 +36,15 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
 
         [OutputConstructor]
         private BareMetalAdminClusterLoadBalancer(
+            Outputs.BareMetalAdminClusterLoadBalancerBgpLbConfig? bgpLbConfig,
+
             Outputs.BareMetalAdminClusterLoadBalancerManualLbConfig? manualLbConfig,
 
             Outputs.BareMetalAdminClusterLoadBalancerPortConfig portConfig,
 
             Outputs.BareMetalAdminClusterLoadBalancerVipConfig vipConfig)
         {
+            BgpLbConfig = bgpLbConfig;
             ManualLbConfig = manualLbConfig;
             PortConfig = portConfig;
             VipConfig = vipConfig;

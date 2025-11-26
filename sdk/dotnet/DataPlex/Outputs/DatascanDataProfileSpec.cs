@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     public sealed class DatascanDataProfileSpec
     {
         /// <summary>
+        /// If set, the latest DataScan job result will be published to Dataplex Catalog.
+        /// </summary>
+        public readonly bool? CatalogPublishingEnabled;
+        /// <summary>
         /// The fields to exclude from data profile.
         /// If specified, the fields will be excluded from data profile, regardless of `IncludeFields` value.
         /// Structure is documented below.
@@ -43,6 +47,8 @@ namespace Pulumi.Gcp.DataPlex.Outputs
 
         [OutputConstructor]
         private DatascanDataProfileSpec(
+            bool? catalogPublishingEnabled,
+
             Outputs.DatascanDataProfileSpecExcludeFields? excludeFields,
 
             Outputs.DatascanDataProfileSpecIncludeFields? includeFields,
@@ -53,6 +59,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
 
             double? samplingPercent)
         {
+            CatalogPublishingEnabled = catalogPublishingEnabled;
             ExcludeFields = excludeFields;
             IncludeFields = includeFields;
             PostScanActions = postScanActions;

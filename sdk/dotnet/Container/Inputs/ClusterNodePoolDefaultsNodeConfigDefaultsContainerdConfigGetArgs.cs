@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("privateRegistryAccessConfig")]
         public Input<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigGetArgs>? PrivateRegistryAccessConfig { get; set; }
 
+        /// <summary>
+        /// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `WritableCgroups` block supports:
+        /// </summary>
+        [Input("writableCgroups")]
+        public Input<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsGetArgs>? WritableCgroups { get; set; }
+
         public ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigGetArgs()
         {
         }

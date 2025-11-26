@@ -13,6 +13,434 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRegionInstanceGroupManagerAllInstancesConfig struct {
+	// The label key-value pairs that you want to patch onto the instance,
+	Labels map[string]string `pulumi:"labels"`
+	// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+	Metadata map[string]string `pulumi:"metadata"`
+}
+
+// GetRegionInstanceGroupManagerAllInstancesConfigInput is an input type that accepts GetRegionInstanceGroupManagerAllInstancesConfigArgs and GetRegionInstanceGroupManagerAllInstancesConfigOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerAllInstancesConfigInput` via:
+//
+//	GetRegionInstanceGroupManagerAllInstancesConfigArgs{...}
+type GetRegionInstanceGroupManagerAllInstancesConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerAllInstancesConfigOutput() GetRegionInstanceGroupManagerAllInstancesConfigOutput
+	ToGetRegionInstanceGroupManagerAllInstancesConfigOutputWithContext(context.Context) GetRegionInstanceGroupManagerAllInstancesConfigOutput
+}
+
+type GetRegionInstanceGroupManagerAllInstancesConfigArgs struct {
+	// The label key-value pairs that you want to patch onto the instance,
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+}
+
+func (GetRegionInstanceGroupManagerAllInstancesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerAllInstancesConfigArgs) ToGetRegionInstanceGroupManagerAllInstancesConfigOutput() GetRegionInstanceGroupManagerAllInstancesConfigOutput {
+	return i.ToGetRegionInstanceGroupManagerAllInstancesConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerAllInstancesConfigArgs) ToGetRegionInstanceGroupManagerAllInstancesConfigOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAllInstancesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerAllInstancesConfigOutput)
+}
+
+// GetRegionInstanceGroupManagerAllInstancesConfigArrayInput is an input type that accepts GetRegionInstanceGroupManagerAllInstancesConfigArray and GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerAllInstancesConfigArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerAllInstancesConfigArray{ GetRegionInstanceGroupManagerAllInstancesConfigArgs{...} }
+type GetRegionInstanceGroupManagerAllInstancesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutput() GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput
+	ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput
+}
+
+type GetRegionInstanceGroupManagerAllInstancesConfigArray []GetRegionInstanceGroupManagerAllInstancesConfigInput
+
+func (GetRegionInstanceGroupManagerAllInstancesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerAllInstancesConfigArray) ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutput() GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerAllInstancesConfigArray) ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerAllInstancesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerAllInstancesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerAllInstancesConfigOutput) ToGetRegionInstanceGroupManagerAllInstancesConfigOutput() GetRegionInstanceGroupManagerAllInstancesConfigOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerAllInstancesConfigOutput) ToGetRegionInstanceGroupManagerAllInstancesConfigOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAllInstancesConfigOutput {
+	return o
+}
+
+// The label key-value pairs that you want to patch onto the instance,
+func (o GetRegionInstanceGroupManagerAllInstancesConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerAllInstancesConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+func (o GetRegionInstanceGroupManagerAllInstancesConfigOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerAllInstancesConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+type GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput) ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutput() GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput) ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerAllInstancesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerAllInstancesConfig {
+		return vs[0].([]GetRegionInstanceGroupManagerAllInstancesConfig)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerAllInstancesConfigOutput)
+}
+
+type GetRegionInstanceGroupManagerAutoHealingPolicy struct {
+	// The health check resource that signals autohealing.
+	HealthCheck string `pulumi:"healthCheck"`
+	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+	InitialDelaySec int `pulumi:"initialDelaySec"`
+}
+
+// GetRegionInstanceGroupManagerAutoHealingPolicyInput is an input type that accepts GetRegionInstanceGroupManagerAutoHealingPolicyArgs and GetRegionInstanceGroupManagerAutoHealingPolicyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerAutoHealingPolicyInput` via:
+//
+//	GetRegionInstanceGroupManagerAutoHealingPolicyArgs{...}
+type GetRegionInstanceGroupManagerAutoHealingPolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerAutoHealingPolicyOutput() GetRegionInstanceGroupManagerAutoHealingPolicyOutput
+	ToGetRegionInstanceGroupManagerAutoHealingPolicyOutputWithContext(context.Context) GetRegionInstanceGroupManagerAutoHealingPolicyOutput
+}
+
+type GetRegionInstanceGroupManagerAutoHealingPolicyArgs struct {
+	// The health check resource that signals autohealing.
+	HealthCheck pulumi.StringInput `pulumi:"healthCheck"`
+	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+	InitialDelaySec pulumi.IntInput `pulumi:"initialDelaySec"`
+}
+
+func (GetRegionInstanceGroupManagerAutoHealingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerAutoHealingPolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerAutoHealingPolicyArgs) ToGetRegionInstanceGroupManagerAutoHealingPolicyOutput() GetRegionInstanceGroupManagerAutoHealingPolicyOutput {
+	return i.ToGetRegionInstanceGroupManagerAutoHealingPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerAutoHealingPolicyArgs) ToGetRegionInstanceGroupManagerAutoHealingPolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAutoHealingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerAutoHealingPolicyOutput)
+}
+
+// GetRegionInstanceGroupManagerAutoHealingPolicyArrayInput is an input type that accepts GetRegionInstanceGroupManagerAutoHealingPolicyArray and GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerAutoHealingPolicyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerAutoHealingPolicyArray{ GetRegionInstanceGroupManagerAutoHealingPolicyArgs{...} }
+type GetRegionInstanceGroupManagerAutoHealingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput() GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput
+	ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerAutoHealingPolicyArray []GetRegionInstanceGroupManagerAutoHealingPolicyInput
+
+func (GetRegionInstanceGroupManagerAutoHealingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerAutoHealingPolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerAutoHealingPolicyArray) ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput() GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerAutoHealingPolicyArray) ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerAutoHealingPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerAutoHealingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerAutoHealingPolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyOutput) ToGetRegionInstanceGroupManagerAutoHealingPolicyOutput() GetRegionInstanceGroupManagerAutoHealingPolicyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyOutput) ToGetRegionInstanceGroupManagerAutoHealingPolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAutoHealingPolicyOutput {
+	return o
+}
+
+// The health check resource that signals autohealing.
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyOutput) HealthCheck() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerAutoHealingPolicy) string { return v.HealthCheck }).(pulumi.StringOutput)
+}
+
+// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyOutput) InitialDelaySec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerAutoHealingPolicy) int { return v.InitialDelaySec }).(pulumi.IntOutput)
+}
+
+type GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerAutoHealingPolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput) ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput() GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput) ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerAutoHealingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerAutoHealingPolicy {
+		return vs[0].([]GetRegionInstanceGroupManagerAutoHealingPolicy)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerAutoHealingPolicyOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicy struct {
+	// Named instance selections configuring properties that the group will use when creating new VMs.
+	InstanceSelections []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection `pulumi:"instanceSelections"`
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArgs and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArgs{...}
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArgs struct {
+	// Named instance selections configuring properties that the group will use when creating new VMs.
+	InstanceSelections GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayInput `pulumi:"instanceSelections"`
+}
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput)
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArray and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArray{ GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArgs{...} }
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArray []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInput
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+// Named instance selections configuring properties that the group will use when creating new VMs.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelections() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicy) []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
+		return v.InstanceSelections
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerInstanceFlexibilityPolicy {
+		return vs[0].([]GetRegionInstanceGroupManagerInstanceFlexibilityPolicy)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection struct {
+	// Full machine-type names, e.g. "n1-standard-16"
+	MachineTypes []string `pulumi:"machineTypes"`
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name string `pulumi:"name"`
+	// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+	Rank int `pulumi:"rank"`
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs{...}
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs struct {
+	// Full machine-type names, e.g. "n1-standard-16"
+	MachineTypes pulumi.StringArrayInput `pulumi:"machineTypes"`
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+	Rank pulumi.IntInput `pulumi:"rank"`
+}
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput)
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArray and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArray{ GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs{...} }
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArray []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput {
+	return o
+}
+
+// Full machine-type names, e.g. "n1-standard-16"
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) MachineTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) []string {
+		return v.MachineTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of the instance group. Either `name` or `selfLink` must be provided.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) Rank() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) int { return v.Rank }).(pulumi.IntOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
+		return vs[0].([]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput)
+}
+
 type GetRegionInstanceGroupManagerInstanceLifecyclePolicy struct {
 	// Specifies the action that a MIG performs on a failed VM. If the value of the "onFailedHealthCheck" field is DEFAULT_ACTION, then the same action also applies to the VMs on which your application fails a health check. Valid values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
 	DefaultActionOnFailure string `pulumi:"defaultActionOnFailure"`
@@ -16759,6 +17187,14 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerAllInstancesConfigInput)(nil)).Elem(), GetRegionInstanceGroupManagerAllInstancesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerAllInstancesConfigArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerAllInstancesConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerAutoHealingPolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerAutoHealingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerAutoHealingPolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerAutoHealingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs{})
@@ -17017,6 +17453,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerAllInstancesConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerAutoHealingPolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput{})

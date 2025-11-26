@@ -158,6 +158,25 @@ import * as utilities from "../utilities";
  *     network: custom_test.id,
  * });
  * ```
+ * ### Subnetwork Resolve Subnet Mask
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const custom_test = new gcp.compute.Network("custom-test", {
+ *     name: "subnet-resolve-subnet-mask-test-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const subnetwork_resolve_subnet_mask = new gcp.compute.Subnetwork("subnetwork-resolve-subnet-mask", {
+ *     name: "subnet-resolve-subnet-mask-test-subnetwork",
+ *     region: "us-west2",
+ *     ipCidrRange: "10.10.0.0/24",
+ *     purpose: "PRIVATE",
+ *     resolveSubnetMask: "ARP_PRIMARY_RANGE",
+ *     network: custom_test.id,
+ * });
+ * ```
  * ### Subnetwork Cidr Overlap
  *
  * ```typescript
@@ -435,6 +454,11 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     declare public readonly reservedInternalRange: pulumi.Output<string | undefined>;
     /**
+     * 'Configures subnet mask resolution for this subnetwork.'
+     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+     */
+    declare public readonly resolveSubnetMask: pulumi.Output<string | undefined>;
+    /**
      * The role of subnetwork.
      * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
      * The value can be set to `ACTIVE` or `BACKUP`.
@@ -517,6 +541,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["purpose"] = state?.purpose;
             resourceInputs["region"] = state?.region;
             resourceInputs["reservedInternalRange"] = state?.reservedInternalRange;
+            resourceInputs["resolveSubnetMask"] = state?.resolveSubnetMask;
             resourceInputs["role"] = state?.role;
             resourceInputs["secondaryIpRanges"] = state?.secondaryIpRanges;
             resourceInputs["selfLink"] = state?.selfLink;
@@ -546,6 +571,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["purpose"] = args?.purpose;
             resourceInputs["region"] = args?.region;
             resourceInputs["reservedInternalRange"] = args?.reservedInternalRange;
+            resourceInputs["resolveSubnetMask"] = args?.resolveSubnetMask;
             resourceInputs["role"] = args?.role;
             resourceInputs["secondaryIpRanges"] = args?.secondaryIpRanges;
             resourceInputs["sendSecondaryIpRangeIfEmpty"] = args?.sendSecondaryIpRangeIfEmpty;
@@ -705,6 +731,11 @@ export interface SubnetworkState {
      * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
      */
     reservedInternalRange?: pulumi.Input<string>;
+    /**
+     * 'Configures subnet mask resolution for this subnetwork.'
+     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+     */
+    resolveSubnetMask?: pulumi.Input<string>;
     /**
      * The role of subnetwork.
      * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -868,6 +899,11 @@ export interface SubnetworkArgs {
      * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
      */
     reservedInternalRange?: pulumi.Input<string>;
+    /**
+     * 'Configures subnet mask resolution for this subnetwork.'
+     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+     */
+    resolveSubnetMask?: pulumi.Input<string>;
     /**
      * The role of subnetwork.
      * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.

@@ -6,6 +6,8 @@ package com.pulumi.gcp.gkeonprem.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterNetworkConfigIslandModeCidrArgs;
+import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,21 @@ import javax.annotation.Nullable;
 public final class BareMetalAdminClusterNetworkConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BareMetalAdminClusterNetworkConfigArgs Empty = new BareMetalAdminClusterNetworkConfigArgs();
+
+    /**
+     * Enables the use of advanced Anthos networking features.
+     * 
+     */
+    @Import(name="advancedNetworking")
+    private @Nullable Output<Boolean> advancedNetworking;
+
+    /**
+     * @return Enables the use of advanced Anthos networking features.
+     * 
+     */
+    public Optional<Output<Boolean>> advancedNetworking() {
+        return Optional.ofNullable(this.advancedNetworking);
+    }
 
     /**
      * A nested object resource.
@@ -32,10 +49,29 @@ public final class BareMetalAdminClusterNetworkConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.islandModeCidr);
     }
 
+    /**
+     * Configuration for multiple network interfaces.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="multipleNetworkInterfacesConfig")
+    private @Nullable Output<BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs> multipleNetworkInterfacesConfig;
+
+    /**
+     * @return Configuration for multiple network interfaces.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs>> multipleNetworkInterfacesConfig() {
+        return Optional.ofNullable(this.multipleNetworkInterfacesConfig);
+    }
+
     private BareMetalAdminClusterNetworkConfigArgs() {}
 
     private BareMetalAdminClusterNetworkConfigArgs(BareMetalAdminClusterNetworkConfigArgs $) {
+        this.advancedNetworking = $.advancedNetworking;
         this.islandModeCidr = $.islandModeCidr;
+        this.multipleNetworkInterfacesConfig = $.multipleNetworkInterfacesConfig;
     }
 
     public static Builder builder() {
@@ -54,6 +90,27 @@ public final class BareMetalAdminClusterNetworkConfigArgs extends com.pulumi.res
 
         public Builder(BareMetalAdminClusterNetworkConfigArgs defaults) {
             $ = new BareMetalAdminClusterNetworkConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedNetworking Enables the use of advanced Anthos networking features.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedNetworking(@Nullable Output<Boolean> advancedNetworking) {
+            $.advancedNetworking = advancedNetworking;
+            return this;
+        }
+
+        /**
+         * @param advancedNetworking Enables the use of advanced Anthos networking features.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedNetworking(Boolean advancedNetworking) {
+            return advancedNetworking(Output.of(advancedNetworking));
         }
 
         /**
@@ -77,6 +134,29 @@ public final class BareMetalAdminClusterNetworkConfigArgs extends com.pulumi.res
          */
         public Builder islandModeCidr(BareMetalAdminClusterNetworkConfigIslandModeCidrArgs islandModeCidr) {
             return islandModeCidr(Output.of(islandModeCidr));
+        }
+
+        /**
+         * @param multipleNetworkInterfacesConfig Configuration for multiple network interfaces.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multipleNetworkInterfacesConfig(@Nullable Output<BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs> multipleNetworkInterfacesConfig) {
+            $.multipleNetworkInterfacesConfig = multipleNetworkInterfacesConfig;
+            return this;
+        }
+
+        /**
+         * @param multipleNetworkInterfacesConfig Configuration for multiple network interfaces.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multipleNetworkInterfacesConfig(BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs multipleNetworkInterfacesConfig) {
+            return multipleNetworkInterfacesConfig(Output.of(multipleNetworkInterfacesConfig));
         }
 
         public BareMetalAdminClusterNetworkConfigArgs build() {

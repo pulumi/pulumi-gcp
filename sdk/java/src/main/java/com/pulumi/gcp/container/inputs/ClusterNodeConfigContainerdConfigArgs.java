@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigContainerdConfigWritableCgroupsArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,26 @@ public final class ClusterNodeConfigContainerdConfigArgs extends com.pulumi.reso
         return Optional.ofNullable(this.privateRegistryAccessConfig);
     }
 
+    /**
+     * Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
+     * 
+     */
+    @Import(name="writableCgroups")
+    private @Nullable Output<ClusterNodeConfigContainerdConfigWritableCgroupsArgs> writableCgroups;
+
+    /**
+     * @return Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigContainerdConfigWritableCgroupsArgs>> writableCgroups() {
+        return Optional.ofNullable(this.writableCgroups);
+    }
+
     private ClusterNodeConfigContainerdConfigArgs() {}
 
     private ClusterNodeConfigContainerdConfigArgs(ClusterNodeConfigContainerdConfigArgs $) {
         this.privateRegistryAccessConfig = $.privateRegistryAccessConfig;
+        this.writableCgroups = $.writableCgroups;
     }
 
     public static Builder builder() {
@@ -73,6 +90,27 @@ public final class ClusterNodeConfigContainerdConfigArgs extends com.pulumi.reso
          */
         public Builder privateRegistryAccessConfig(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs privateRegistryAccessConfig) {
             return privateRegistryAccessConfig(Output.of(privateRegistryAccessConfig));
+        }
+
+        /**
+         * @param writableCgroups Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writableCgroups(@Nullable Output<ClusterNodeConfigContainerdConfigWritableCgroupsArgs> writableCgroups) {
+            $.writableCgroups = writableCgroups;
+            return this;
+        }
+
+        /**
+         * @param writableCgroups Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writableCgroups(ClusterNodeConfigContainerdConfigWritableCgroupsArgs writableCgroups) {
+            return writableCgroups(Output.of(writableCgroups));
         }
 
         public ClusterNodeConfigContainerdConfigArgs build() {

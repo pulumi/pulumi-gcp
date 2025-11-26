@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Configuration for private container registries. There are two fields in this config:
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig? PrivateRegistryAccessConfig;
+        /// <summary>
+        /// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `WritableCgroups` block supports:
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigContainerdConfigWritableCgroups? WritableCgroups;
 
         [OutputConstructor]
-        private ClusterNodePoolNodeConfigContainerdConfig(Outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig? privateRegistryAccessConfig)
+        private ClusterNodePoolNodeConfigContainerdConfig(
+            Outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig? privateRegistryAccessConfig,
+
+            Outputs.ClusterNodePoolNodeConfigContainerdConfigWritableCgroups? writableCgroups)
         {
             PrivateRegistryAccessConfig = privateRegistryAccessConfig;
+            WritableCgroups = writableCgroups;
         }
     }
 }

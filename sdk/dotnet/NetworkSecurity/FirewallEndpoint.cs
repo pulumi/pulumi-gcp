@@ -97,6 +97,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Settings for the endpoint.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("endpointSettings")]
+        public Output<Outputs.FirewallEndpointEndpointSettings?> EndpointSettings { get; private set; } = null!;
+
+        /// <summary>
         /// A map of key/value label pairs to assign to the resource.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -212,6 +219,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("billingProjectId", required: true)]
         public Input<string> BillingProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// Settings for the endpoint.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("endpointSettings")]
+        public Input<Inputs.FirewallEndpointEndpointSettingsArgs>? EndpointSettings { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -296,6 +310,13 @@ namespace Pulumi.Gcp.NetworkSecurity
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Settings for the endpoint.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("endpointSettings")]
+        public Input<Inputs.FirewallEndpointEndpointSettingsGetArgs>? EndpointSettings { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

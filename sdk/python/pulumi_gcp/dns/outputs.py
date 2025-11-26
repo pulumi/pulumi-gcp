@@ -376,6 +376,8 @@ class ManagedZoneForwardingConfigTargetNameServer(dict):
             suggest = "forwarding_path"
         elif key == "ipv4Address":
             suggest = "ipv4_address"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ManagedZoneForwardingConfigTargetNameServer. Access the value via the '{suggest}' property getter instead.")
@@ -391,14 +393,20 @@ class ManagedZoneForwardingConfigTargetNameServer(dict):
     def __init__(__self__, *,
                  domain_name: Optional[_builtins.str] = None,
                  forwarding_path: Optional[_builtins.str] = None,
-                 ipv4_address: Optional[_builtins.str] = None):
+                 ipv4_address: Optional[_builtins.str] = None,
+                 ipv6_address: Optional[_builtins.str] = None):
         """
         :param _builtins.str domain_name: Fully qualified domain name for the forwarding target.
-        :param _builtins.str forwarding_path: Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-               decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-               to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+        :param _builtins.str forwarding_path: Forwarding path for this TargetNameServer. If unset or `default`
+               Cloud DNS will make forwarding decision based on address ranges,
+               i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+               to the Internet. When set to `private`, Cloud DNS will always
+               send queries through VPC for this target.
                Possible values are: `default`, `private`.
         :param _builtins.str ipv4_address: IPv4 address of a target name server.
+               Does not accept both fields (ipv4 & ipv6) being populated.
+        :param _builtins.str ipv6_address: IPv6 address of a target name server.
+               Does not accept both fields (ipv4 & ipv6) being populated.
         """
         if domain_name is not None:
             pulumi.set(__self__, "domain_name", domain_name)
@@ -406,6 +414,8 @@ class ManagedZoneForwardingConfigTargetNameServer(dict):
             pulumi.set(__self__, "forwarding_path", forwarding_path)
         if ipv4_address is not None:
             pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
@@ -419,9 +429,11 @@ class ManagedZoneForwardingConfigTargetNameServer(dict):
     @pulumi.getter(name="forwardingPath")
     def forwarding_path(self) -> Optional[_builtins.str]:
         """
-        Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-        decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-        to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+        Forwarding path for this TargetNameServer. If unset or `default`
+        Cloud DNS will make forwarding decision based on address ranges,
+        i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+        to the Internet. When set to `private`, Cloud DNS will always
+        send queries through VPC for this target.
         Possible values are: `default`, `private`.
         """
         return pulumi.get(self, "forwarding_path")
@@ -431,8 +443,18 @@ class ManagedZoneForwardingConfigTargetNameServer(dict):
     def ipv4_address(self) -> Optional[_builtins.str]:
         """
         IPv4 address of a target name server.
+        Does not accept both fields (ipv4 & ipv6) being populated.
         """
         return pulumi.get(self, "ipv4_address")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[_builtins.str]:
+        """
+        IPv6 address of a target name server.
+        Does not accept both fields (ipv4 & ipv6) being populated.
+        """
+        return pulumi.get(self, "ipv6_address")
 
 
 @pulumi.output_type

@@ -2426,7 +2426,11 @@ type BucketIpFilter struct {
 	AllowAllServiceAgentAccess *bool `pulumi:"allowAllServiceAgentAccess"`
 	// While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
 	AllowCrossOrgVpcs *bool `pulumi:"allowCrossOrgVpcs"`
-	// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allowAllServiceAgentAccess` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
+	// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+	//
+	// **Note**: Once ipFilter is setup, it can either be `Enabled` or `Disabled` and cannot be removed from config.
+	//
+	// **Note**: `allowAllServiceAgentAccess` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
 	Mode string `pulumi:"mode"`
 	// The public network IP address ranges that can access the bucket and its data. Structure is documented below.
 	PublicNetworkSource *BucketIpFilterPublicNetworkSource `pulumi:"publicNetworkSource"`
@@ -2450,7 +2454,11 @@ type BucketIpFilterArgs struct {
 	AllowAllServiceAgentAccess pulumi.BoolPtrInput `pulumi:"allowAllServiceAgentAccess"`
 	// While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
 	AllowCrossOrgVpcs pulumi.BoolPtrInput `pulumi:"allowCrossOrgVpcs"`
-	// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allowAllServiceAgentAccess` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
+	// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+	//
+	// **Note**: Once ipFilter is setup, it can either be `Enabled` or `Disabled` and cannot be removed from config.
+	//
+	// **Note**: `allowAllServiceAgentAccess` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// The public network IP address ranges that can access the bucket and its data. Structure is documented below.
 	PublicNetworkSource BucketIpFilterPublicNetworkSourcePtrInput `pulumi:"publicNetworkSource"`
@@ -2545,7 +2553,11 @@ func (o BucketIpFilterOutput) AllowCrossOrgVpcs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketIpFilter) *bool { return v.AllowCrossOrgVpcs }).(pulumi.BoolPtrOutput)
 }
 
-// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allowAllServiceAgentAccess` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
+// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+//
+// **Note**: Once ipFilter is setup, it can either be `Enabled` or `Disabled` and cannot be removed from config.
+//
+// **Note**: `allowAllServiceAgentAccess` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
 func (o BucketIpFilterOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketIpFilter) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -2604,7 +2616,11 @@ func (o BucketIpFilterPtrOutput) AllowCrossOrgVpcs() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `allowAllServiceAgentAccess` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
+// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+//
+// **Note**: Once ipFilter is setup, it can either be `Enabled` or `Disabled` and cannot be removed from config.
+//
+// **Note**: `allowAllServiceAgentAccess` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
 func (o BucketIpFilterPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketIpFilter) *string {
 		if v == nil {

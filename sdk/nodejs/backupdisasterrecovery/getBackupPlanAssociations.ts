@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+ * Provides a list of Backup and DR BackupPlanAssociations.
  *
  * ## Example Usage
  *
@@ -15,9 +15,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const computeInstanceAssociations = gcp.backupdisasterrecovery.getBackupPlanAssociations({
+ * const allAssociations = gcp.backupdisasterrecovery.getBackupPlanAssociations({
  *     location: "us-central1",
- *     resourceType: "compute.googleapis.com/Instance",
  * });
  * ```
  */
@@ -44,11 +43,12 @@ export interface GetBackupPlanAssociationsArgs {
      */
     project?: string;
     /**
-     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
-     *
+     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
      * - - -
+     *
+     * @deprecated `resourceType` is deprecated and will be removed in a future major release.
      */
-    resourceType: string;
+    resourceType?: string;
 }
 
 /**
@@ -68,10 +68,13 @@ export interface GetBackupPlanAssociationsResult {
      * The ID of the project in which the resource belongs.
      */
     readonly project: string;
-    readonly resourceType: string;
+    /**
+     * @deprecated `resourceType` is deprecated and will be removed in a future major release.
+     */
+    readonly resourceType?: string;
 }
 /**
- * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+ * Provides a list of Backup and DR BackupPlanAssociations.
  *
  * ## Example Usage
  *
@@ -79,9 +82,8 @@ export interface GetBackupPlanAssociationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const computeInstanceAssociations = gcp.backupdisasterrecovery.getBackupPlanAssociations({
+ * const allAssociations = gcp.backupdisasterrecovery.getBackupPlanAssociations({
  *     location: "us-central1",
- *     resourceType: "compute.googleapis.com/Instance",
  * });
  * ```
  */
@@ -108,9 +110,10 @@ export interface GetBackupPlanAssociationsOutputArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
-     *
+     * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
      * - - -
+     *
+     * @deprecated `resourceType` is deprecated and will be removed in a future major release.
      */
-    resourceType: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string>;
 }

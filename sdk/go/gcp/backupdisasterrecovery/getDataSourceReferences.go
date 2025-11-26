@@ -27,18 +27,21 @@ type GetDataSourceReferencesArgs struct {
 	Location string `pulumi:"location"`
 	// - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
-	ResourceType string `pulumi:"resourceType"`
+	// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `resourceType` is deprecated and will be removed in a future major release.
+	ResourceType *string `pulumi:"resourceType"`
 }
 
 // A collection of values returned by getDataSourceReferences.
 type GetDataSourceReferencesResult struct {
 	DataSourceReferences []GetDataSourceReferencesDataSourceReference `pulumi:"dataSourceReferences"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string `pulumi:"id"`
-	Location     string `pulumi:"location"`
-	Project      string `pulumi:"project"`
-	ResourceType string `pulumi:"resourceType"`
+	Id       string `pulumi:"id"`
+	Location string `pulumi:"location"`
+	Project  string `pulumi:"project"`
+	// Deprecated: `resourceType` is deprecated and will be removed in a future major release.
+	ResourceType *string `pulumi:"resourceType"`
 }
 
 func GetDataSourceReferencesOutput(ctx *pulumi.Context, args GetDataSourceReferencesOutputArgs, opts ...pulumi.InvokeOption) GetDataSourceReferencesResultOutput {
@@ -55,8 +58,10 @@ type GetDataSourceReferencesOutputArgs struct {
 	Location pulumi.StringInput `pulumi:"location"`
 	// - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
-	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `resourceType` is deprecated and will be removed in a future major release.
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 }
 
 func (GetDataSourceReferencesOutputArgs) ElementType() reflect.Type {
@@ -97,8 +102,9 @@ func (o GetDataSourceReferencesResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourceReferencesResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-func (o GetDataSourceReferencesResultOutput) ResourceType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDataSourceReferencesResult) string { return v.ResourceType }).(pulumi.StringOutput)
+// Deprecated: `resourceType` is deprecated and will be removed in a future major release.
+func (o GetDataSourceReferencesResultOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDataSourceReferencesResult) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
 
 func init() {

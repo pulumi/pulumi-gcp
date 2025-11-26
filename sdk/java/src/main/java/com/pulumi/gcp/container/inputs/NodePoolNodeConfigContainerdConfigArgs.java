@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigContainerdConfigWritableCgroupsArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,26 @@ public final class NodePoolNodeConfigContainerdConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.privateRegistryAccessConfig);
     }
 
+    /**
+     * Parameters for writable cgroups configuration.
+     * 
+     */
+    @Import(name="writableCgroups")
+    private @Nullable Output<NodePoolNodeConfigContainerdConfigWritableCgroupsArgs> writableCgroups;
+
+    /**
+     * @return Parameters for writable cgroups configuration.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigContainerdConfigWritableCgroupsArgs>> writableCgroups() {
+        return Optional.ofNullable(this.writableCgroups);
+    }
+
     private NodePoolNodeConfigContainerdConfigArgs() {}
 
     private NodePoolNodeConfigContainerdConfigArgs(NodePoolNodeConfigContainerdConfigArgs $) {
         this.privateRegistryAccessConfig = $.privateRegistryAccessConfig;
+        this.writableCgroups = $.writableCgroups;
     }
 
     public static Builder builder() {
@@ -73,6 +90,27 @@ public final class NodePoolNodeConfigContainerdConfigArgs extends com.pulumi.res
          */
         public Builder privateRegistryAccessConfig(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs privateRegistryAccessConfig) {
             return privateRegistryAccessConfig(Output.of(privateRegistryAccessConfig));
+        }
+
+        /**
+         * @param writableCgroups Parameters for writable cgroups configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writableCgroups(@Nullable Output<NodePoolNodeConfigContainerdConfigWritableCgroupsArgs> writableCgroups) {
+            $.writableCgroups = writableCgroups;
+            return this;
+        }
+
+        /**
+         * @param writableCgroups Parameters for writable cgroups configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writableCgroups(NodePoolNodeConfigContainerdConfigWritableCgroupsArgs writableCgroups) {
+            return writableCgroups(Output.of(writableCgroups));
         }
 
         public NodePoolNodeConfigContainerdConfigArgs build() {

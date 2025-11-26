@@ -198,6 +198,13 @@ namespace Pulumi.Gcp.ManagedKafka
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("brokerCapacityConfig")]
+        public Output<Outputs.ClusterBrokerCapacityConfig?> BrokerCapacityConfig { get; private set; } = null!;
+
+        /// <summary>
         /// A capacity configuration of a Kafka cluster.
         /// Structure is documented below.
         /// </summary>
@@ -341,6 +348,13 @@ namespace Pulumi.Gcp.ManagedKafka
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("brokerCapacityConfig")]
+        public Input<Inputs.ClusterBrokerCapacityConfigArgs>? BrokerCapacityConfig { get; set; }
+
+        /// <summary>
         /// A capacity configuration of a Kafka cluster.
         /// Structure is documented below.
         /// </summary>
@@ -409,6 +423,13 @@ namespace Pulumi.Gcp.ManagedKafka
 
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("brokerCapacityConfig")]
+        public Input<Inputs.ClusterBrokerCapacityConfigGetArgs>? BrokerCapacityConfig { get; set; }
+
         /// <summary>
         /// A capacity configuration of a Kafka cluster.
         /// Structure is documented below.

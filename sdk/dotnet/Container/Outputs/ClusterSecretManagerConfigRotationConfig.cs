@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterSecretManagerConfigRotationConfig
     {
         /// <summary>
-        /// Enable the roation in Secret Manager add-on for this cluster.
+        /// Enable the roation in Sync as K8s secret feature for this cluster.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

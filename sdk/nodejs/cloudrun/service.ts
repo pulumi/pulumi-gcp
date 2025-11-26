@@ -233,6 +233,42 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Cloud Run Service Readiness Probe
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrun.Service("default", {
+ *     name: "cloudrun-srv-rp",
+ *     location: "us-central1",
+ *     metadata: {
+ *         annotations: {
+ *             "run.googleapis.com/launch-stage": "BETA",
+ *         },
+ *     },
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 readinessProbe: {
+ *                     timeoutSeconds: 20,
+ *                     periodSeconds: 30,
+ *                     successThreshold: 3,
+ *                     failureThreshold: 2,
+ *                     grpc: {
+ *                         port: 8080,
+ *                     },
+ *                 },
+ *             }],
+ *         },
+ *     },
+ *     traffics: [{
+ *         percent: 100,
+ *         latestRevision: true,
+ *     }],
+ * });
+ * ```
  * ### Cloud Run Service Multicontainer
  *
  * ```typescript

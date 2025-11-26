@@ -12,40 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint {
     /**
-     * @return Specifies the nodes operating system (default: LINUX).
-     * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+     * @return Available taint effects.
      * 
      */
     private @Nullable String effect;
     /**
-     * @return Key associated with the effect.
+     * @return (Optional)
      * 
      */
     private @Nullable String key;
     /**
-     * @return Value associated with the effect.
+     * @return (Optional)
      * 
      */
     private @Nullable String value;
 
     private BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint() {}
     /**
-     * @return Specifies the nodes operating system (default: LINUX).
-     * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+     * @return Available taint effects.
      * 
      */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
     /**
-     * @return Key associated with the effect.
+     * @return (Optional)
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return Value associated with the effect.
+     * @return (Optional)
      * 
      */
     public Optional<String> value() {

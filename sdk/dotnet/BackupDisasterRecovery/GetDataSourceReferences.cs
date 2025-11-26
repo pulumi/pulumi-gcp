@@ -43,10 +43,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public string? Project { get; set; }
 
         /// <summary>
-        /// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
+        /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `ResourceType` is deprecated and will be removed in a future major release.
         /// </summary>
-        [Input("resourceType", required: true)]
-        public string ResourceType { get; set; } = null!;
+        [Input("resourceType")]
+        public string? ResourceType { get; set; }
 
         public GetDataSourceReferencesArgs()
         {
@@ -66,10 +66,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (**right now this service not available for compute Instances and disk , it will be added soon**)
+        /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `ResourceType` is deprecated and will be removed in a future major release.
         /// </summary>
-        [Input("resourceType", required: true)]
-        public Input<string> ResourceType { get; set; } = null!;
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
 
         public GetDataSourceReferencesInvokeArgs()
         {
@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public readonly string Id;
         public readonly string Location;
         public readonly string Project;
-        public readonly string ResourceType;
+        public readonly string? ResourceType;
 
         [OutputConstructor]
         private GetDataSourceReferencesResult(
@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string project,
 
-            string resourceType)
+            string? resourceType)
         {
             DataSourceReferences = dataSourceReferences;
             Id = id;

@@ -781,6 +781,14 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterSecretManagerConfig?> SecretManagerConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for the
+        /// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("secretSyncConfig")]
+        public Output<Outputs.ClusterSecretSyncConfig?> SecretSyncConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         /// </summary>
         [Output("securityPostureConfig")]
@@ -1491,6 +1499,14 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterSecretManagerConfigArgs>? SecretManagerConfig { get; set; }
 
         /// <summary>
+        /// Configuration for the
+        /// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("secretSyncConfig")]
+        public Input<Inputs.ClusterSecretSyncConfigArgs>? SecretSyncConfig { get; set; }
+
+        /// <summary>
         /// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         /// </summary>
         [Input("securityPostureConfig")]
@@ -2188,6 +2204,14 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("secretManagerConfig")]
         public Input<Inputs.ClusterSecretManagerConfigGetArgs>? SecretManagerConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for the
+        /// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("secretSyncConfig")]
+        public Input<Inputs.ClusterSecretSyncConfigGetArgs>? SecretSyncConfig { get; set; }
 
         /// <summary>
         /// Enable/Disable Security Posture API features for the cluster. Structure is documented below.

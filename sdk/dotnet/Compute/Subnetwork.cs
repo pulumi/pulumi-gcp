@@ -220,6 +220,34 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Subnetwork Resolve Subnet Mask
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
+    ///     {
+    ///         Name = "subnet-resolve-subnet-mask-test-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnetwork_resolve_subnet_mask = new Gcp.Compute.Subnetwork("subnetwork-resolve-subnet-mask", new()
+    ///     {
+    ///         Name = "subnet-resolve-subnet-mask-test-subnetwork",
+    ///         Region = "us-west2",
+    ///         IpCidrRange = "10.10.0.0/24",
+    ///         Purpose = "PRIVATE",
+    ///         ResolveSubnetMask = "ARP_PRIMARY_RANGE",
+    ///         Network = custom_test.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Subnetwork Cidr Overlap
     /// 
     /// ```csharp
@@ -560,6 +588,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> ReservedInternalRange { get; private set; } = null!;
 
         /// <summary>
+        /// 'Configures subnet mask resolution for this subnetwork.'
+        /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+        /// </summary>
+        [Output("resolveSubnetMask")]
+        public Output<string?> ResolveSubnetMask { get; private set; } = null!;
+
+        /// <summary>
         /// The role of subnetwork.
         /// Currently, this field is only used when `Purpose` is `REGIONAL_MANAGED_PROXY`.
         /// The value can be set to `ACTIVE` or `BACKUP`.
@@ -811,6 +846,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ReservedInternalRange { get; set; }
 
         /// <summary>
+        /// 'Configures subnet mask resolution for this subnetwork.'
+        /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+        /// </summary>
+        [Input("resolveSubnetMask")]
+        public Input<string>? ResolveSubnetMask { get; set; }
+
+        /// <summary>
         /// The role of subnetwork.
         /// Currently, this field is only used when `Purpose` is `REGIONAL_MANAGED_PROXY`.
         /// The value can be set to `ACTIVE` or `BACKUP`.
@@ -1042,6 +1084,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("reservedInternalRange")]
         public Input<string>? ReservedInternalRange { get; set; }
+
+        /// <summary>
+        /// 'Configures subnet mask resolution for this subnetwork.'
+        /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+        /// </summary>
+        [Input("resolveSubnetMask")]
+        public Input<string>? ResolveSubnetMask { get; set; }
 
         /// <summary>
         /// The role of subnetwork.

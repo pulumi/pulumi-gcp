@@ -12,8 +12,8 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterMaintenancePolicyMaintenanceExclusionGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("endTime", required: true)]
-        public Input<string> EndTime { get; set; } = null!;
+        [Input("endTime")]
+        public Input<string>? EndTime { get; set; }
 
         [Input("exclusionName", required: true)]
         public Input<string> ExclusionName { get; set; } = null!;

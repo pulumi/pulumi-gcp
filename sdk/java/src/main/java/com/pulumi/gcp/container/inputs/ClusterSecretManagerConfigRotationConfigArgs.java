@@ -18,14 +18,14 @@ public final class ClusterSecretManagerConfigRotationConfigArgs extends com.pulu
     public static final ClusterSecretManagerConfigRotationConfigArgs Empty = new ClusterSecretManagerConfigRotationConfigArgs();
 
     /**
-     * Enable the roation in Secret Manager add-on for this cluster.
+     * Enable the roation in Sync as K8s secret feature for this cluster.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable the roation in Secret Manager add-on for this cluster.
+     * @return Enable the roation in Sync as K8s secret feature for this cluster.
      * 
      */
     public Output<Boolean> enabled() {
@@ -73,7 +73,7 @@ public final class ClusterSecretManagerConfigRotationConfigArgs extends com.pulu
         }
 
         /**
-         * @param enabled Enable the roation in Secret Manager add-on for this cluster.
+         * @param enabled Enable the roation in Sync as K8s secret feature for this cluster.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ClusterSecretManagerConfigRotationConfigArgs extends com.pulu
         }
 
         /**
-         * @param enabled Enable the roation in Secret Manager add-on for this cluster.
+         * @param enabled Enable the roation in Sync as K8s secret feature for this cluster.
          * 
          * @return builder
          * 

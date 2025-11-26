@@ -102,8 +102,10 @@ type GetReservationBlockResult struct {
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
 	// Status of the reservation block.
-	Status string  `pulumi:"status"`
-	Zone   *string `pulumi:"zone"`
+	Status string `pulumi:"status"`
+	// A List of all block sub-block names in the parent block.
+	SubBlockNames []string `pulumi:"subBlockNames"`
+	Zone          *string  `pulumi:"zone"`
 }
 
 func GetReservationBlockOutput(ctx *pulumi.Context, args GetReservationBlockOutputArgs, opts ...pulumi.InvokeOption) GetReservationBlockResultOutput {
@@ -231,6 +233,11 @@ func (o GetReservationBlockResultOutput) SelfLinkWithId() pulumi.StringOutput {
 // Status of the reservation block.
 func (o GetReservationBlockResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReservationBlockResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A List of all block sub-block names in the parent block.
+func (o GetReservationBlockResultOutput) SubBlockNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetReservationBlockResult) []string { return v.SubBlockNames }).(pulumi.StringArrayOutput)
 }
 
 func (o GetReservationBlockResultOutput) Zone() pulumi.StringPtrOutput {

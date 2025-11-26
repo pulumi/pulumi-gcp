@@ -27,7 +27,7 @@ class GetReservationBlockResult:
     """
     A collection of values returned by getReservationBlock.
     """
-    def __init__(__self__, block_count=None, creation_timestamp=None, health_infos=None, id=None, in_use_count=None, kind=None, name=None, physical_topologies=None, project=None, reservation=None, reservation_maintenances=None, reservation_sub_block_count=None, reservation_sub_block_in_use_count=None, resource_id=None, self_link=None, self_link_with_id=None, status=None, zone=None):
+    def __init__(__self__, block_count=None, creation_timestamp=None, health_infos=None, id=None, in_use_count=None, kind=None, name=None, physical_topologies=None, project=None, reservation=None, reservation_maintenances=None, reservation_sub_block_count=None, reservation_sub_block_in_use_count=None, resource_id=None, self_link=None, self_link_with_id=None, status=None, sub_block_names=None, zone=None):
         if block_count and not isinstance(block_count, int):
             raise TypeError("Expected argument 'block_count' to be a int")
         pulumi.set(__self__, "block_count", block_count)
@@ -79,6 +79,9 @@ class GetReservationBlockResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if sub_block_names and not isinstance(sub_block_names, list):
+            raise TypeError("Expected argument 'sub_block_names' to be a list")
+        pulumi.set(__self__, "sub_block_names", sub_block_names)
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
@@ -211,6 +214,14 @@ class GetReservationBlockResult:
         return pulumi.get(self, "status")
 
     @_builtins.property
+    @pulumi.getter(name="subBlockNames")
+    def sub_block_names(self) -> Sequence[_builtins.str]:
+        """
+        A List of all block sub-block names in the parent block.
+        """
+        return pulumi.get(self, "sub_block_names")
+
+    @_builtins.property
     @pulumi.getter
     def zone(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "zone")
@@ -239,6 +250,7 @@ class AwaitableGetReservationBlockResult(GetReservationBlockResult):
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
             status=self.status,
+            sub_block_names=self.sub_block_names,
             zone=self.zone)
 
 
@@ -301,6 +313,7 @@ def get_reservation_block(name: Optional[_builtins.str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
         status=pulumi.get(__ret__, 'status'),
+        sub_block_names=pulumi.get(__ret__, 'sub_block_names'),
         zone=pulumi.get(__ret__, 'zone'))
 def get_reservation_block_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                                  project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -360,4 +373,5 @@ def get_reservation_block_output(name: Optional[pulumi.Input[_builtins.str]] = N
         self_link=pulumi.get(__response__, 'self_link'),
         self_link_with_id=pulumi.get(__response__, 'self_link_with_id'),
         status=pulumi.get(__response__, 'status'),
+        sub_block_names=pulumi.get(__response__, 'sub_block_names'),
         zone=pulumi.get(__response__, 'zone')))

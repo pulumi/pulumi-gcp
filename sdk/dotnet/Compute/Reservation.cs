@@ -280,6 +280,12 @@ namespace Pulumi.Gcp.Compute
     public partial class Reservation : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// List of all reservation block names in the parent reservation.
+        /// </summary>
+        [Output("blockNames")]
+        public Output<ImmutableArray<string>> BlockNames { get; private set; } = null!;
+
+        /// <summary>
         /// Full or partial URL to a parent commitment. This field displays for
         /// reservations that are tied to a commitment.
         /// </summary>
@@ -345,6 +351,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
+        /// 
+        /// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -503,6 +511,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
+        /// 
+        /// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -550,6 +560,18 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class ReservationState : global::Pulumi.ResourceArgs
     {
+        [Input("blockNames")]
+        private InputList<string>? _blockNames;
+
+        /// <summary>
+        /// List of all reservation block names in the parent reservation.
+        /// </summary>
+        public InputList<string> BlockNames
+        {
+            get => _blockNames ?? (_blockNames = new InputList<string>());
+            set => _blockNames = value;
+        }
+
         /// <summary>
         /// Full or partial URL to a parent commitment. This field displays for
         /// reservations that are tied to a commitment.
@@ -622,6 +644,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
+        /// 
+        /// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

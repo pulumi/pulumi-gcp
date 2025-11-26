@@ -39,18 +39,26 @@ public final class GetDataSourceReferencesArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
+     * The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34;. `resourceType` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `resourceType` is deprecated and will be removed in a future major release.
      * 
      */
-    @Import(name="resourceType", required=true)
-    private Output<String> resourceType;
+    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
+    @Import(name="resourceType")
+    private @Nullable Output<String> resourceType;
 
     /**
-     * @return - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
+     * @return The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34;. `resourceType` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `resourceType` is deprecated and will be removed in a future major release.
      * 
      */
-    public Output<String> resourceType() {
-        return this.resourceType;
+    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
+    public Optional<Output<String>> resourceType() {
+        return Optional.ofNullable(this.resourceType);
     }
 
     private GetDataSourceReferencesArgs() {}
@@ -110,22 +118,30 @@ public final class GetDataSourceReferencesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param resourceType - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
+         * @param resourceType The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34;. `resourceType` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `resourceType` is deprecated and will be removed in a future major release.
+         * 
          */
-        public Builder resourceType(Output<String> resourceType) {
+        @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
+        public Builder resourceType(@Nullable Output<String> resourceType) {
             $.resourceType = resourceType;
             return this;
         }
 
         /**
-         * @param resourceType - (Required) The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34; (**right now this service not available for compute Instances and disk , it will be added soon**)
+         * @param resourceType The resource type to get the data source references for. Examples include, &#34;sqladmin.googleapis.com/Instance&#34; , &#34;compute.googleapis.com/Instance&#34;. `resourceType` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `resourceType` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
         public Builder resourceType(String resourceType) {
             return resourceType(Output.of(resourceType));
         }
@@ -133,9 +149,6 @@ public final class GetDataSourceReferencesArgs extends com.pulumi.resources.Invo
         public GetDataSourceReferencesArgs build() {
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("GetDataSourceReferencesArgs", "location");
-            }
-            if ($.resourceType == null) {
-                throw new MissingRequiredPropertyException("GetDataSourceReferencesArgs", "resourceType");
             }
             return $;
         }

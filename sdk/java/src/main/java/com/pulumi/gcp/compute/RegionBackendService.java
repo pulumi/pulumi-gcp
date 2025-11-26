@@ -25,6 +25,7 @@ import com.pulumi.gcp.compute.outputs.RegionBackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceParams;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceStrongSessionAffinityCookie;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceSubsetting;
+import com.pulumi.gcp.compute.outputs.RegionBackendServiceTlsSettings;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -963,6 +964,73 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Region Backend Service Tls Settings
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.networksecurity.BackendAuthenticationConfig;
+ * import com.pulumi.gcp.networksecurity.BackendAuthenticationConfigArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceTlsSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .region("europe-north1")
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultBackendAuthenticationConfig = new BackendAuthenticationConfig("defaultBackendAuthenticationConfig", BackendAuthenticationConfigArgs.builder()
+ *             .name("authentication")
+ *             .location("europe-north1")
+ *             .wellKnownRoots("PUBLIC_ROOTS")
+ *             .build());
+ * 
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+ *             .region("europe-north1")
+ *             .name("region-service")
+ *             .healthChecks(defaultRegionHealthCheck.id())
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .protocol("HTTPS")
+ *             .tlsSettings(RegionBackendServiceTlsSettingsArgs.builder()
+ *                 .sni("example.com")
+ *                 .subjectAltNames(                
+ *                     RegionBackendServiceTlsSettingsSubjectAltNameArgs.builder()
+ *                         .dnsName("example.com")
+ *                         .build(),
+ *                     RegionBackendServiceTlsSettingsSubjectAltNameArgs.builder()
+ *                         .uniformResourceIdentifier("https://example.com")
+ *                         .build())
+ *                 .authenticationConfig(defaultBackendAuthenticationConfig.id().applyValue(_id -> String.format("//networksecurity.googleapis.com/%s", _id)))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -1758,6 +1826,22 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> timeoutSec() {
         return this.timeoutSec;
+    }
+    /**
+     * Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="tlsSettings", refs={RegionBackendServiceTlsSettings.class}, tree="[0]")
+    private Output</* @Nullable */ RegionBackendServiceTlsSettings> tlsSettings;
+
+    /**
+     * @return Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionBackendServiceTlsSettings>> tlsSettings() {
+        return Codegen.optional(this.tlsSettings);
     }
 
     /**

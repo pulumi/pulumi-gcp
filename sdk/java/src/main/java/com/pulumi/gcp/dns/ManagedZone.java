@@ -197,6 +197,60 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Dns Managed Zone Private Forwarding Ipv6
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZoneForwardingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network1 = new Network("network1", NetworkArgs.builder()
+ *             .name("network-1")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var private_zone = new ManagedZone("private-zone", ManagedZoneArgs.builder()
+ *             .name("private-zone")
+ *             .dnsName("private.example.com.")
+ *             .description("Example private DNS zone")
+ *             .visibility("private")
+ *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
+ *                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
+ *                     .networkUrl(network1.id())
+ *                     .build())
+ *                 .build())
+ *             .forwardingConfig(ManagedZoneForwardingConfigArgs.builder()
+ *                 .targetNameServers(ManagedZoneForwardingConfigTargetNameServerArgs.builder()
+ *                     .ipv6Address("fd20:3e9:7a70:680d:0:8::")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Dns Managed Zone Private Gke
  * 
  * <pre>

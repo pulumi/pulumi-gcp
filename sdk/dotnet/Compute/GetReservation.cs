@@ -141,6 +141,7 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetReservationResult
     {
+        public readonly ImmutableArray<string> BlockNames;
         public readonly string Commitment;
         public readonly string CreationTimestamp;
         public readonly ImmutableArray<Outputs.GetReservationDeleteAfterDurationResult> DeleteAfterDurations;
@@ -165,6 +166,8 @@ namespace Pulumi.Gcp.Compute
 
         [OutputConstructor]
         private GetReservationResult(
+            ImmutableArray<string> blockNames,
+
             string commitment,
 
             string creationTimestamp,
@@ -207,6 +210,7 @@ namespace Pulumi.Gcp.Compute
 
             string zone)
         {
+            BlockNames = blockNames;
             Commitment = commitment;
             CreationTimestamp = creationTimestamp;
             DeleteAfterDurations = deleteAfterDurations;

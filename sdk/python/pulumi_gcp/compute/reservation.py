@@ -52,6 +52,8 @@ class ReservationArgs:
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+               
+               * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         :param pulumi.Input['ReservationReservationSharingPolicyArgs'] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
                Structure is documented below.
         :param pulumi.Input['ReservationShareSettingsArgs'] share_settings: The share setting for reservations.
@@ -180,6 +182,8 @@ class ReservationArgs:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
+
+        * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         """
         return pulumi.get(self, "project")
 
@@ -231,6 +235,7 @@ class ReservationArgs:
 @pulumi.input_type
 class _ReservationState:
     def __init__(__self__, *,
+                 block_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  commitment: Optional[pulumi.Input[_builtins.str]] = None,
                  creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_after_duration: Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']] = None,
@@ -253,6 +258,7 @@ class _ReservationState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Reservation resources.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] block_names: List of all reservation block names in the parent reservation.
         :param pulumi.Input[_builtins.str] commitment: Full or partial URL to a parent commitment. This field displays for
                reservations that are tied to a commitment.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -273,6 +279,8 @@ class _ReservationState:
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+               
+               * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         :param pulumi.Input[_builtins.int] reservation_block_count: (Output)
                The number of reservation blocks associated with this reservation.
         :param pulumi.Input['ReservationReservationSharingPolicyArgs'] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
@@ -291,6 +299,8 @@ class _ReservationState:
         :param pulumi.Input[_builtins.str] status: The status of the reservation.
         :param pulumi.Input[_builtins.str] zone: The zone where the reservation is made.
         """
+        if block_names is not None:
+            pulumi.set(__self__, "block_names", block_names)
         if commitment is not None:
             pulumi.set(__self__, "commitment", commitment)
         if creation_timestamp is not None:
@@ -331,6 +341,18 @@ class _ReservationState:
             pulumi.set(__self__, "status", status)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter(name="blockNames")
+    def block_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of all reservation block names in the parent reservation.
+        """
+        return pulumi.get(self, "block_names")
+
+    @block_names.setter
+    def block_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "block_names", value)
 
     @_builtins.property
     @pulumi.getter
@@ -455,6 +477,8 @@ class _ReservationState:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
+
+        * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         """
         return pulumi.get(self, "project")
 
@@ -811,6 +835,8 @@ class Reservation(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+               
+               * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         :param pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
                Structure is documented below.
         :param pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']] share_settings: The share setting for reservations.
@@ -1064,6 +1090,7 @@ class Reservation(pulumi.CustomResource):
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["block_names"] = None
             __props__.__dict__["commitment"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
@@ -1083,6 +1110,7 @@ class Reservation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            block_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             commitment: Optional[pulumi.Input[_builtins.str]] = None,
             creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
             delete_after_duration: Optional[pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
@@ -1110,6 +1138,7 @@ class Reservation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] block_names: List of all reservation block names in the parent reservation.
         :param pulumi.Input[_builtins.str] commitment: Full or partial URL to a parent commitment. This field displays for
                reservations that are tied to a commitment.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -1130,6 +1159,8 @@ class Reservation(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+               
+               * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         :param pulumi.Input[_builtins.int] reservation_block_count: (Output)
                The number of reservation blocks associated with this reservation.
         :param pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
@@ -1152,6 +1183,7 @@ class Reservation(pulumi.CustomResource):
 
         __props__ = _ReservationState.__new__(_ReservationState)
 
+        __props__.__dict__["block_names"] = block_names
         __props__.__dict__["commitment"] = commitment
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["delete_after_duration"] = delete_after_duration
@@ -1173,6 +1205,14 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["zone"] = zone
         return Reservation(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="blockNames")
+    def block_names(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        List of all reservation block names in the parent reservation.
+        """
+        return pulumi.get(self, "block_names")
 
     @_builtins.property
     @pulumi.getter
@@ -1261,6 +1301,8 @@ class Reservation(pulumi.CustomResource):
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
+
+        * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         """
         return pulumi.get(self, "project")
 

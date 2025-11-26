@@ -38,6 +38,7 @@ class SubnetworkArgs:
                  purpose: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  reserved_internal_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 resolve_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
                  send_secondary_ip_range_if_empty: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -103,6 +104,8 @@ class SubnetworkArgs:
         :param pulumi.Input[_builtins.str] region: The GCP region for this subnetwork.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
+               Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -157,6 +160,8 @@ class SubnetworkArgs:
             pulumi.set(__self__, "region", region)
         if reserved_internal_range is not None:
             pulumi.set(__self__, "reserved_internal_range", reserved_internal_range)
+        if resolve_subnet_mask is not None:
+            pulumi.set(__self__, "resolve_subnet_mask", resolve_subnet_mask)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if secondary_ip_ranges is not None:
@@ -413,6 +418,19 @@ class SubnetworkArgs:
         pulumi.set(self, "reserved_internal_range", value)
 
     @_builtins.property
+    @pulumi.getter(name="resolveSubnetMask")
+    def resolve_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        'Configures subnet mask resolution for this subnetwork.'
+        Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+        """
+        return pulumi.get(self, "resolve_subnet_mask")
+
+    @resolve_subnet_mask.setter
+    def resolve_subnet_mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resolve_subnet_mask", value)
+
+    @_builtins.property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -502,6 +520,7 @@ class _SubnetworkState:
                  purpose: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  reserved_internal_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 resolve_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
                  self_link: Optional[pulumi.Input[_builtins.str]] = None,
@@ -580,6 +599,8 @@ class _SubnetworkState:
         :param pulumi.Input[_builtins.str] region: The GCP region for this subnetwork.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
+               Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -654,6 +675,8 @@ class _SubnetworkState:
             pulumi.set(__self__, "region", region)
         if reserved_internal_range is not None:
             pulumi.set(__self__, "reserved_internal_range", reserved_internal_range)
+        if resolve_subnet_mask is not None:
+            pulumi.set(__self__, "resolve_subnet_mask", resolve_subnet_mask)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if secondary_ip_ranges is not None:
@@ -982,6 +1005,19 @@ class _SubnetworkState:
         pulumi.set(self, "reserved_internal_range", value)
 
     @_builtins.property
+    @pulumi.getter(name="resolveSubnetMask")
+    def resolve_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        'Configures subnet mask resolution for this subnetwork.'
+        Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+        """
+        return pulumi.get(self, "resolve_subnet_mask")
+
+    @resolve_subnet_mask.setter
+    def resolve_subnet_mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resolve_subnet_mask", value)
+
+    @_builtins.property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1108,6 +1144,7 @@ class Subnetwork(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  reserved_internal_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 resolve_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
                  send_secondary_ip_range_if_empty: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1251,6 +1288,23 @@ class Subnetwork(pulumi.CustomResource):
             region="us-west2",
             ip_cidr_range="192.168.1.0/24",
             purpose="PRIVATE_NAT",
+            network=custom_test.id)
+        ```
+        ### Subnetwork Resolve Subnet Mask
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test",
+            name="subnet-resolve-subnet-mask-test-network",
+            auto_create_subnetworks=False)
+        subnetwork_resolve_subnet_mask = gcp.compute.Subnetwork("subnetwork-resolve-subnet-mask",
+            name="subnet-resolve-subnet-mask-test-subnetwork",
+            region="us-west2",
+            ip_cidr_range="10.10.0.0/24",
+            purpose="PRIVATE",
+            resolve_subnet_mask="ARP_PRIMARY_RANGE",
             network=custom_test.id)
         ```
         ### Subnetwork Cidr Overlap
@@ -1416,6 +1470,8 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The GCP region for this subnetwork.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
+               Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -1583,6 +1639,23 @@ class Subnetwork(pulumi.CustomResource):
             purpose="PRIVATE_NAT",
             network=custom_test.id)
         ```
+        ### Subnetwork Resolve Subnet Mask
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test",
+            name="subnet-resolve-subnet-mask-test-network",
+            auto_create_subnetworks=False)
+        subnetwork_resolve_subnet_mask = gcp.compute.Subnetwork("subnetwork-resolve-subnet-mask",
+            name="subnet-resolve-subnet-mask-test-subnetwork",
+            region="us-west2",
+            ip_cidr_range="10.10.0.0/24",
+            purpose="PRIVATE",
+            resolve_subnet_mask="ARP_PRIMARY_RANGE",
+            network=custom_test.id)
+        ```
         ### Subnetwork Cidr Overlap
 
         ```python
@@ -1717,6 +1790,7 @@ class Subnetwork(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  reserved_internal_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 resolve_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
                  send_secondary_ip_range_if_empty: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1749,6 +1823,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["purpose"] = purpose
             __props__.__dict__["region"] = region
             __props__.__dict__["reserved_internal_range"] = reserved_internal_range
+            __props__.__dict__["resolve_subnet_mask"] = resolve_subnet_mask
             __props__.__dict__["role"] = role
             __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
             __props__.__dict__["send_secondary_ip_range_if_empty"] = send_secondary_ip_range_if_empty
@@ -1793,6 +1868,7 @@ class Subnetwork(pulumi.CustomResource):
             purpose: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             reserved_internal_range: Optional[pulumi.Input[_builtins.str]] = None,
+            resolve_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
             role: Optional[pulumi.Input[_builtins.str]] = None,
             secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1876,6 +1952,8 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The GCP region for this subnetwork.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+        :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
+               Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -1929,6 +2007,7 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["purpose"] = purpose
         __props__.__dict__["region"] = region
         __props__.__dict__["reserved_internal_range"] = reserved_internal_range
+        __props__.__dict__["resolve_subnet_mask"] = resolve_subnet_mask
         __props__.__dict__["role"] = role
         __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
         __props__.__dict__["self_link"] = self_link
@@ -2161,6 +2240,15 @@ class Subnetwork(pulumi.CustomResource):
         E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
         """
         return pulumi.get(self, "reserved_internal_range")
+
+    @_builtins.property
+    @pulumi.getter(name="resolveSubnetMask")
+    def resolve_subnet_mask(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        'Configures subnet mask resolution for this subnetwork.'
+        Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+        """
+        return pulumi.get(self, "resolve_subnet_mask")
 
     @_builtins.property
     @pulumi.getter

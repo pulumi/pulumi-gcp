@@ -1834,10 +1834,22 @@ func (o ServiceAttributesOperatorOwnerArrayOutput) Index(i pulumi.IntInput) Serv
 
 type ServiceServiceProperty struct {
 	// (Output)
+	// Output only. Additional metadata specific to the resource type.
+	// Structure is documented below.
+	ExtendedMetadatas []ServiceServicePropertyExtendedMetadata `pulumi:"extendedMetadatas"`
+	// (Output)
+	// Output only. The type of the service.
+	// Structure is documented below.
+	FunctionalTypes []ServiceServicePropertyFunctionalType `pulumi:"functionalTypes"`
+	// (Output)
 	// Output only. The service project identifier that the underlying cloud resource resides in.
 	GcpProject *string `pulumi:"gcpProject"`
 	// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
 	Location *string `pulumi:"location"`
+	// (Output)
+	// Output only. The registration type of the service.
+	// Structure is documented below.
+	RegistrationTypes []ServiceServicePropertyRegistrationType `pulumi:"registrationTypes"`
 	// (Output)
 	// Output only. The location that the underlying resource resides in if it is zonal, for example, us-west1-a).
 	Zone *string `pulumi:"zone"`
@@ -1856,10 +1868,22 @@ type ServiceServicePropertyInput interface {
 
 type ServiceServicePropertyArgs struct {
 	// (Output)
+	// Output only. Additional metadata specific to the resource type.
+	// Structure is documented below.
+	ExtendedMetadatas ServiceServicePropertyExtendedMetadataArrayInput `pulumi:"extendedMetadatas"`
+	// (Output)
+	// Output only. The type of the service.
+	// Structure is documented below.
+	FunctionalTypes ServiceServicePropertyFunctionalTypeArrayInput `pulumi:"functionalTypes"`
+	// (Output)
 	// Output only. The service project identifier that the underlying cloud resource resides in.
 	GcpProject pulumi.StringPtrInput `pulumi:"gcpProject"`
 	// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
 	Location pulumi.StringPtrInput `pulumi:"location"`
+	// (Output)
+	// Output only. The registration type of the service.
+	// Structure is documented below.
+	RegistrationTypes ServiceServicePropertyRegistrationTypeArrayInput `pulumi:"registrationTypes"`
 	// (Output)
 	// Output only. The location that the underlying resource resides in if it is zonal, for example, us-west1-a).
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
@@ -1917,6 +1941,20 @@ func (o ServiceServicePropertyOutput) ToServiceServicePropertyOutputWithContext(
 }
 
 // (Output)
+// Output only. Additional metadata specific to the resource type.
+// Structure is documented below.
+func (o ServiceServicePropertyOutput) ExtendedMetadatas() ServiceServicePropertyExtendedMetadataArrayOutput {
+	return o.ApplyT(func(v ServiceServiceProperty) []ServiceServicePropertyExtendedMetadata { return v.ExtendedMetadatas }).(ServiceServicePropertyExtendedMetadataArrayOutput)
+}
+
+// (Output)
+// Output only. The type of the service.
+// Structure is documented below.
+func (o ServiceServicePropertyOutput) FunctionalTypes() ServiceServicePropertyFunctionalTypeArrayOutput {
+	return o.ApplyT(func(v ServiceServiceProperty) []ServiceServicePropertyFunctionalType { return v.FunctionalTypes }).(ServiceServicePropertyFunctionalTypeArrayOutput)
+}
+
+// (Output)
 // Output only. The service project identifier that the underlying cloud resource resides in.
 func (o ServiceServicePropertyOutput) GcpProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceServiceProperty) *string { return v.GcpProject }).(pulumi.StringPtrOutput)
@@ -1925,6 +1963,13 @@ func (o ServiceServicePropertyOutput) GcpProject() pulumi.StringPtrOutput {
 // Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
 func (o ServiceServicePropertyOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceServiceProperty) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The registration type of the service.
+// Structure is documented below.
+func (o ServiceServicePropertyOutput) RegistrationTypes() ServiceServicePropertyRegistrationTypeArrayOutput {
+	return o.ApplyT(func(v ServiceServiceProperty) []ServiceServicePropertyRegistrationType { return v.RegistrationTypes }).(ServiceServicePropertyRegistrationTypeArrayOutput)
 }
 
 // (Output)
@@ -1951,6 +1996,435 @@ func (o ServiceServicePropertyArrayOutput) Index(i pulumi.IntInput) ServiceServi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceServiceProperty {
 		return vs[0].([]ServiceServiceProperty)[vs[1].(int)]
 	}).(ServiceServicePropertyOutput)
+}
+
+type ServiceServicePropertyExtendedMetadata struct {
+	// (Output)
+	// The key of the extended metadata.
+	Key *string `pulumi:"key"`
+	// (Output)
+	// The value of the extended metadata.
+	// Structure is documented below.
+	Values []ServiceServicePropertyExtendedMetadataValue `pulumi:"values"`
+}
+
+// ServiceServicePropertyExtendedMetadataInput is an input type that accepts ServiceServicePropertyExtendedMetadataArgs and ServiceServicePropertyExtendedMetadataOutput values.
+// You can construct a concrete instance of `ServiceServicePropertyExtendedMetadataInput` via:
+//
+//	ServiceServicePropertyExtendedMetadataArgs{...}
+type ServiceServicePropertyExtendedMetadataInput interface {
+	pulumi.Input
+
+	ToServiceServicePropertyExtendedMetadataOutput() ServiceServicePropertyExtendedMetadataOutput
+	ToServiceServicePropertyExtendedMetadataOutputWithContext(context.Context) ServiceServicePropertyExtendedMetadataOutput
+}
+
+type ServiceServicePropertyExtendedMetadataArgs struct {
+	// (Output)
+	// The key of the extended metadata.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// (Output)
+	// The value of the extended metadata.
+	// Structure is documented below.
+	Values ServiceServicePropertyExtendedMetadataValueArrayInput `pulumi:"values"`
+}
+
+func (ServiceServicePropertyExtendedMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServicePropertyExtendedMetadata)(nil)).Elem()
+}
+
+func (i ServiceServicePropertyExtendedMetadataArgs) ToServiceServicePropertyExtendedMetadataOutput() ServiceServicePropertyExtendedMetadataOutput {
+	return i.ToServiceServicePropertyExtendedMetadataOutputWithContext(context.Background())
+}
+
+func (i ServiceServicePropertyExtendedMetadataArgs) ToServiceServicePropertyExtendedMetadataOutputWithContext(ctx context.Context) ServiceServicePropertyExtendedMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServicePropertyExtendedMetadataOutput)
+}
+
+// ServiceServicePropertyExtendedMetadataArrayInput is an input type that accepts ServiceServicePropertyExtendedMetadataArray and ServiceServicePropertyExtendedMetadataArrayOutput values.
+// You can construct a concrete instance of `ServiceServicePropertyExtendedMetadataArrayInput` via:
+//
+//	ServiceServicePropertyExtendedMetadataArray{ ServiceServicePropertyExtendedMetadataArgs{...} }
+type ServiceServicePropertyExtendedMetadataArrayInput interface {
+	pulumi.Input
+
+	ToServiceServicePropertyExtendedMetadataArrayOutput() ServiceServicePropertyExtendedMetadataArrayOutput
+	ToServiceServicePropertyExtendedMetadataArrayOutputWithContext(context.Context) ServiceServicePropertyExtendedMetadataArrayOutput
+}
+
+type ServiceServicePropertyExtendedMetadataArray []ServiceServicePropertyExtendedMetadataInput
+
+func (ServiceServicePropertyExtendedMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceServicePropertyExtendedMetadata)(nil)).Elem()
+}
+
+func (i ServiceServicePropertyExtendedMetadataArray) ToServiceServicePropertyExtendedMetadataArrayOutput() ServiceServicePropertyExtendedMetadataArrayOutput {
+	return i.ToServiceServicePropertyExtendedMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceServicePropertyExtendedMetadataArray) ToServiceServicePropertyExtendedMetadataArrayOutputWithContext(ctx context.Context) ServiceServicePropertyExtendedMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServicePropertyExtendedMetadataArrayOutput)
+}
+
+type ServiceServicePropertyExtendedMetadataOutput struct{ *pulumi.OutputState }
+
+func (ServiceServicePropertyExtendedMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServicePropertyExtendedMetadata)(nil)).Elem()
+}
+
+func (o ServiceServicePropertyExtendedMetadataOutput) ToServiceServicePropertyExtendedMetadataOutput() ServiceServicePropertyExtendedMetadataOutput {
+	return o
+}
+
+func (o ServiceServicePropertyExtendedMetadataOutput) ToServiceServicePropertyExtendedMetadataOutputWithContext(ctx context.Context) ServiceServicePropertyExtendedMetadataOutput {
+	return o
+}
+
+// (Output)
+// The key of the extended metadata.
+func (o ServiceServicePropertyExtendedMetadataOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceServicePropertyExtendedMetadata) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The value of the extended metadata.
+// Structure is documented below.
+func (o ServiceServicePropertyExtendedMetadataOutput) Values() ServiceServicePropertyExtendedMetadataValueArrayOutput {
+	return o.ApplyT(func(v ServiceServicePropertyExtendedMetadata) []ServiceServicePropertyExtendedMetadataValue {
+		return v.Values
+	}).(ServiceServicePropertyExtendedMetadataValueArrayOutput)
+}
+
+type ServiceServicePropertyExtendedMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceServicePropertyExtendedMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceServicePropertyExtendedMetadata)(nil)).Elem()
+}
+
+func (o ServiceServicePropertyExtendedMetadataArrayOutput) ToServiceServicePropertyExtendedMetadataArrayOutput() ServiceServicePropertyExtendedMetadataArrayOutput {
+	return o
+}
+
+func (o ServiceServicePropertyExtendedMetadataArrayOutput) ToServiceServicePropertyExtendedMetadataArrayOutputWithContext(ctx context.Context) ServiceServicePropertyExtendedMetadataArrayOutput {
+	return o
+}
+
+func (o ServiceServicePropertyExtendedMetadataArrayOutput) Index(i pulumi.IntInput) ServiceServicePropertyExtendedMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceServicePropertyExtendedMetadata {
+		return vs[0].([]ServiceServicePropertyExtendedMetadata)[vs[1].(int)]
+	}).(ServiceServicePropertyExtendedMetadataOutput)
+}
+
+type ServiceServicePropertyExtendedMetadataValue struct {
+	// (Output)
+	// The resource name for the Extended Metadata Schema.
+	ExtendedMetadataSchema *string `pulumi:"extendedMetadataSchema"`
+	// (Output)
+	// The metadata contents as a JSON string.
+	MetadataStruct *string `pulumi:"metadataStruct"`
+}
+
+// ServiceServicePropertyExtendedMetadataValueInput is an input type that accepts ServiceServicePropertyExtendedMetadataValueArgs and ServiceServicePropertyExtendedMetadataValueOutput values.
+// You can construct a concrete instance of `ServiceServicePropertyExtendedMetadataValueInput` via:
+//
+//	ServiceServicePropertyExtendedMetadataValueArgs{...}
+type ServiceServicePropertyExtendedMetadataValueInput interface {
+	pulumi.Input
+
+	ToServiceServicePropertyExtendedMetadataValueOutput() ServiceServicePropertyExtendedMetadataValueOutput
+	ToServiceServicePropertyExtendedMetadataValueOutputWithContext(context.Context) ServiceServicePropertyExtendedMetadataValueOutput
+}
+
+type ServiceServicePropertyExtendedMetadataValueArgs struct {
+	// (Output)
+	// The resource name for the Extended Metadata Schema.
+	ExtendedMetadataSchema pulumi.StringPtrInput `pulumi:"extendedMetadataSchema"`
+	// (Output)
+	// The metadata contents as a JSON string.
+	MetadataStruct pulumi.StringPtrInput `pulumi:"metadataStruct"`
+}
+
+func (ServiceServicePropertyExtendedMetadataValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServicePropertyExtendedMetadataValue)(nil)).Elem()
+}
+
+func (i ServiceServicePropertyExtendedMetadataValueArgs) ToServiceServicePropertyExtendedMetadataValueOutput() ServiceServicePropertyExtendedMetadataValueOutput {
+	return i.ToServiceServicePropertyExtendedMetadataValueOutputWithContext(context.Background())
+}
+
+func (i ServiceServicePropertyExtendedMetadataValueArgs) ToServiceServicePropertyExtendedMetadataValueOutputWithContext(ctx context.Context) ServiceServicePropertyExtendedMetadataValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServicePropertyExtendedMetadataValueOutput)
+}
+
+// ServiceServicePropertyExtendedMetadataValueArrayInput is an input type that accepts ServiceServicePropertyExtendedMetadataValueArray and ServiceServicePropertyExtendedMetadataValueArrayOutput values.
+// You can construct a concrete instance of `ServiceServicePropertyExtendedMetadataValueArrayInput` via:
+//
+//	ServiceServicePropertyExtendedMetadataValueArray{ ServiceServicePropertyExtendedMetadataValueArgs{...} }
+type ServiceServicePropertyExtendedMetadataValueArrayInput interface {
+	pulumi.Input
+
+	ToServiceServicePropertyExtendedMetadataValueArrayOutput() ServiceServicePropertyExtendedMetadataValueArrayOutput
+	ToServiceServicePropertyExtendedMetadataValueArrayOutputWithContext(context.Context) ServiceServicePropertyExtendedMetadataValueArrayOutput
+}
+
+type ServiceServicePropertyExtendedMetadataValueArray []ServiceServicePropertyExtendedMetadataValueInput
+
+func (ServiceServicePropertyExtendedMetadataValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceServicePropertyExtendedMetadataValue)(nil)).Elem()
+}
+
+func (i ServiceServicePropertyExtendedMetadataValueArray) ToServiceServicePropertyExtendedMetadataValueArrayOutput() ServiceServicePropertyExtendedMetadataValueArrayOutput {
+	return i.ToServiceServicePropertyExtendedMetadataValueArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceServicePropertyExtendedMetadataValueArray) ToServiceServicePropertyExtendedMetadataValueArrayOutputWithContext(ctx context.Context) ServiceServicePropertyExtendedMetadataValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServicePropertyExtendedMetadataValueArrayOutput)
+}
+
+type ServiceServicePropertyExtendedMetadataValueOutput struct{ *pulumi.OutputState }
+
+func (ServiceServicePropertyExtendedMetadataValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServicePropertyExtendedMetadataValue)(nil)).Elem()
+}
+
+func (o ServiceServicePropertyExtendedMetadataValueOutput) ToServiceServicePropertyExtendedMetadataValueOutput() ServiceServicePropertyExtendedMetadataValueOutput {
+	return o
+}
+
+func (o ServiceServicePropertyExtendedMetadataValueOutput) ToServiceServicePropertyExtendedMetadataValueOutputWithContext(ctx context.Context) ServiceServicePropertyExtendedMetadataValueOutput {
+	return o
+}
+
+// (Output)
+// The resource name for the Extended Metadata Schema.
+func (o ServiceServicePropertyExtendedMetadataValueOutput) ExtendedMetadataSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceServicePropertyExtendedMetadataValue) *string { return v.ExtendedMetadataSchema }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The metadata contents as a JSON string.
+func (o ServiceServicePropertyExtendedMetadataValueOutput) MetadataStruct() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceServicePropertyExtendedMetadataValue) *string { return v.MetadataStruct }).(pulumi.StringPtrOutput)
+}
+
+type ServiceServicePropertyExtendedMetadataValueArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceServicePropertyExtendedMetadataValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceServicePropertyExtendedMetadataValue)(nil)).Elem()
+}
+
+func (o ServiceServicePropertyExtendedMetadataValueArrayOutput) ToServiceServicePropertyExtendedMetadataValueArrayOutput() ServiceServicePropertyExtendedMetadataValueArrayOutput {
+	return o
+}
+
+func (o ServiceServicePropertyExtendedMetadataValueArrayOutput) ToServiceServicePropertyExtendedMetadataValueArrayOutputWithContext(ctx context.Context) ServiceServicePropertyExtendedMetadataValueArrayOutput {
+	return o
+}
+
+func (o ServiceServicePropertyExtendedMetadataValueArrayOutput) Index(i pulumi.IntInput) ServiceServicePropertyExtendedMetadataValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceServicePropertyExtendedMetadataValue {
+		return vs[0].([]ServiceServicePropertyExtendedMetadataValue)[vs[1].(int)]
+	}).(ServiceServicePropertyExtendedMetadataValueOutput)
+}
+
+type ServiceServicePropertyFunctionalType struct {
+	// (Output)
+	// Output only. The registration type of a service.
+	Type *string `pulumi:"type"`
+}
+
+// ServiceServicePropertyFunctionalTypeInput is an input type that accepts ServiceServicePropertyFunctionalTypeArgs and ServiceServicePropertyFunctionalTypeOutput values.
+// You can construct a concrete instance of `ServiceServicePropertyFunctionalTypeInput` via:
+//
+//	ServiceServicePropertyFunctionalTypeArgs{...}
+type ServiceServicePropertyFunctionalTypeInput interface {
+	pulumi.Input
+
+	ToServiceServicePropertyFunctionalTypeOutput() ServiceServicePropertyFunctionalTypeOutput
+	ToServiceServicePropertyFunctionalTypeOutputWithContext(context.Context) ServiceServicePropertyFunctionalTypeOutput
+}
+
+type ServiceServicePropertyFunctionalTypeArgs struct {
+	// (Output)
+	// Output only. The registration type of a service.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ServiceServicePropertyFunctionalTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServicePropertyFunctionalType)(nil)).Elem()
+}
+
+func (i ServiceServicePropertyFunctionalTypeArgs) ToServiceServicePropertyFunctionalTypeOutput() ServiceServicePropertyFunctionalTypeOutput {
+	return i.ToServiceServicePropertyFunctionalTypeOutputWithContext(context.Background())
+}
+
+func (i ServiceServicePropertyFunctionalTypeArgs) ToServiceServicePropertyFunctionalTypeOutputWithContext(ctx context.Context) ServiceServicePropertyFunctionalTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServicePropertyFunctionalTypeOutput)
+}
+
+// ServiceServicePropertyFunctionalTypeArrayInput is an input type that accepts ServiceServicePropertyFunctionalTypeArray and ServiceServicePropertyFunctionalTypeArrayOutput values.
+// You can construct a concrete instance of `ServiceServicePropertyFunctionalTypeArrayInput` via:
+//
+//	ServiceServicePropertyFunctionalTypeArray{ ServiceServicePropertyFunctionalTypeArgs{...} }
+type ServiceServicePropertyFunctionalTypeArrayInput interface {
+	pulumi.Input
+
+	ToServiceServicePropertyFunctionalTypeArrayOutput() ServiceServicePropertyFunctionalTypeArrayOutput
+	ToServiceServicePropertyFunctionalTypeArrayOutputWithContext(context.Context) ServiceServicePropertyFunctionalTypeArrayOutput
+}
+
+type ServiceServicePropertyFunctionalTypeArray []ServiceServicePropertyFunctionalTypeInput
+
+func (ServiceServicePropertyFunctionalTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceServicePropertyFunctionalType)(nil)).Elem()
+}
+
+func (i ServiceServicePropertyFunctionalTypeArray) ToServiceServicePropertyFunctionalTypeArrayOutput() ServiceServicePropertyFunctionalTypeArrayOutput {
+	return i.ToServiceServicePropertyFunctionalTypeArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceServicePropertyFunctionalTypeArray) ToServiceServicePropertyFunctionalTypeArrayOutputWithContext(ctx context.Context) ServiceServicePropertyFunctionalTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServicePropertyFunctionalTypeArrayOutput)
+}
+
+type ServiceServicePropertyFunctionalTypeOutput struct{ *pulumi.OutputState }
+
+func (ServiceServicePropertyFunctionalTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServicePropertyFunctionalType)(nil)).Elem()
+}
+
+func (o ServiceServicePropertyFunctionalTypeOutput) ToServiceServicePropertyFunctionalTypeOutput() ServiceServicePropertyFunctionalTypeOutput {
+	return o
+}
+
+func (o ServiceServicePropertyFunctionalTypeOutput) ToServiceServicePropertyFunctionalTypeOutputWithContext(ctx context.Context) ServiceServicePropertyFunctionalTypeOutput {
+	return o
+}
+
+// (Output)
+// Output only. The registration type of a service.
+func (o ServiceServicePropertyFunctionalTypeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceServicePropertyFunctionalType) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ServiceServicePropertyFunctionalTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceServicePropertyFunctionalTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceServicePropertyFunctionalType)(nil)).Elem()
+}
+
+func (o ServiceServicePropertyFunctionalTypeArrayOutput) ToServiceServicePropertyFunctionalTypeArrayOutput() ServiceServicePropertyFunctionalTypeArrayOutput {
+	return o
+}
+
+func (o ServiceServicePropertyFunctionalTypeArrayOutput) ToServiceServicePropertyFunctionalTypeArrayOutputWithContext(ctx context.Context) ServiceServicePropertyFunctionalTypeArrayOutput {
+	return o
+}
+
+func (o ServiceServicePropertyFunctionalTypeArrayOutput) Index(i pulumi.IntInput) ServiceServicePropertyFunctionalTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceServicePropertyFunctionalType {
+		return vs[0].([]ServiceServicePropertyFunctionalType)[vs[1].(int)]
+	}).(ServiceServicePropertyFunctionalTypeOutput)
+}
+
+type ServiceServicePropertyRegistrationType struct {
+	// (Output)
+	// Output only. The registration type of a service.
+	Type *string `pulumi:"type"`
+}
+
+// ServiceServicePropertyRegistrationTypeInput is an input type that accepts ServiceServicePropertyRegistrationTypeArgs and ServiceServicePropertyRegistrationTypeOutput values.
+// You can construct a concrete instance of `ServiceServicePropertyRegistrationTypeInput` via:
+//
+//	ServiceServicePropertyRegistrationTypeArgs{...}
+type ServiceServicePropertyRegistrationTypeInput interface {
+	pulumi.Input
+
+	ToServiceServicePropertyRegistrationTypeOutput() ServiceServicePropertyRegistrationTypeOutput
+	ToServiceServicePropertyRegistrationTypeOutputWithContext(context.Context) ServiceServicePropertyRegistrationTypeOutput
+}
+
+type ServiceServicePropertyRegistrationTypeArgs struct {
+	// (Output)
+	// Output only. The registration type of a service.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ServiceServicePropertyRegistrationTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServicePropertyRegistrationType)(nil)).Elem()
+}
+
+func (i ServiceServicePropertyRegistrationTypeArgs) ToServiceServicePropertyRegistrationTypeOutput() ServiceServicePropertyRegistrationTypeOutput {
+	return i.ToServiceServicePropertyRegistrationTypeOutputWithContext(context.Background())
+}
+
+func (i ServiceServicePropertyRegistrationTypeArgs) ToServiceServicePropertyRegistrationTypeOutputWithContext(ctx context.Context) ServiceServicePropertyRegistrationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServicePropertyRegistrationTypeOutput)
+}
+
+// ServiceServicePropertyRegistrationTypeArrayInput is an input type that accepts ServiceServicePropertyRegistrationTypeArray and ServiceServicePropertyRegistrationTypeArrayOutput values.
+// You can construct a concrete instance of `ServiceServicePropertyRegistrationTypeArrayInput` via:
+//
+//	ServiceServicePropertyRegistrationTypeArray{ ServiceServicePropertyRegistrationTypeArgs{...} }
+type ServiceServicePropertyRegistrationTypeArrayInput interface {
+	pulumi.Input
+
+	ToServiceServicePropertyRegistrationTypeArrayOutput() ServiceServicePropertyRegistrationTypeArrayOutput
+	ToServiceServicePropertyRegistrationTypeArrayOutputWithContext(context.Context) ServiceServicePropertyRegistrationTypeArrayOutput
+}
+
+type ServiceServicePropertyRegistrationTypeArray []ServiceServicePropertyRegistrationTypeInput
+
+func (ServiceServicePropertyRegistrationTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceServicePropertyRegistrationType)(nil)).Elem()
+}
+
+func (i ServiceServicePropertyRegistrationTypeArray) ToServiceServicePropertyRegistrationTypeArrayOutput() ServiceServicePropertyRegistrationTypeArrayOutput {
+	return i.ToServiceServicePropertyRegistrationTypeArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceServicePropertyRegistrationTypeArray) ToServiceServicePropertyRegistrationTypeArrayOutputWithContext(ctx context.Context) ServiceServicePropertyRegistrationTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServicePropertyRegistrationTypeArrayOutput)
+}
+
+type ServiceServicePropertyRegistrationTypeOutput struct{ *pulumi.OutputState }
+
+func (ServiceServicePropertyRegistrationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServicePropertyRegistrationType)(nil)).Elem()
+}
+
+func (o ServiceServicePropertyRegistrationTypeOutput) ToServiceServicePropertyRegistrationTypeOutput() ServiceServicePropertyRegistrationTypeOutput {
+	return o
+}
+
+func (o ServiceServicePropertyRegistrationTypeOutput) ToServiceServicePropertyRegistrationTypeOutputWithContext(ctx context.Context) ServiceServicePropertyRegistrationTypeOutput {
+	return o
+}
+
+// (Output)
+// Output only. The registration type of a service.
+func (o ServiceServicePropertyRegistrationTypeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceServicePropertyRegistrationType) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ServiceServicePropertyRegistrationTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceServicePropertyRegistrationTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceServicePropertyRegistrationType)(nil)).Elem()
+}
+
+func (o ServiceServicePropertyRegistrationTypeArrayOutput) ToServiceServicePropertyRegistrationTypeArrayOutput() ServiceServicePropertyRegistrationTypeArrayOutput {
+	return o
+}
+
+func (o ServiceServicePropertyRegistrationTypeArrayOutput) ToServiceServicePropertyRegistrationTypeArrayOutputWithContext(ctx context.Context) ServiceServicePropertyRegistrationTypeArrayOutput {
+	return o
+}
+
+func (o ServiceServicePropertyRegistrationTypeArrayOutput) Index(i pulumi.IntInput) ServiceServicePropertyRegistrationTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceServicePropertyRegistrationType {
+		return vs[0].([]ServiceServicePropertyRegistrationType)[vs[1].(int)]
+	}).(ServiceServicePropertyRegistrationTypeOutput)
 }
 
 type ServiceServiceReference struct {
@@ -2891,6 +3365,14 @@ func (o WorkloadAttributesOperatorOwnerArrayOutput) Index(i pulumi.IntInput) Wor
 
 type WorkloadWorkloadProperty struct {
 	// (Output)
+	// Output only. Additional metadata specific to the resource type.
+	// Structure is documented below.
+	ExtendedMetadatas []WorkloadWorkloadPropertyExtendedMetadata `pulumi:"extendedMetadatas"`
+	// (Output)
+	// Output only. The functional type of a service or workload.
+	// Structure is documented below.
+	FunctionalTypes []WorkloadWorkloadPropertyFunctionalType `pulumi:"functionalTypes"`
+	// (Output)
 	// Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
 	GcpProject *string `pulumi:"gcpProject"`
 	// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
@@ -2912,6 +3394,14 @@ type WorkloadWorkloadPropertyInput interface {
 }
 
 type WorkloadWorkloadPropertyArgs struct {
+	// (Output)
+	// Output only. Additional metadata specific to the resource type.
+	// Structure is documented below.
+	ExtendedMetadatas WorkloadWorkloadPropertyExtendedMetadataArrayInput `pulumi:"extendedMetadatas"`
+	// (Output)
+	// Output only. The functional type of a service or workload.
+	// Structure is documented below.
+	FunctionalTypes WorkloadWorkloadPropertyFunctionalTypeArrayInput `pulumi:"functionalTypes"`
 	// (Output)
 	// Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
 	GcpProject pulumi.StringPtrInput `pulumi:"gcpProject"`
@@ -2974,6 +3464,22 @@ func (o WorkloadWorkloadPropertyOutput) ToWorkloadWorkloadPropertyOutputWithCont
 }
 
 // (Output)
+// Output only. Additional metadata specific to the resource type.
+// Structure is documented below.
+func (o WorkloadWorkloadPropertyOutput) ExtendedMetadatas() WorkloadWorkloadPropertyExtendedMetadataArrayOutput {
+	return o.ApplyT(func(v WorkloadWorkloadProperty) []WorkloadWorkloadPropertyExtendedMetadata {
+		return v.ExtendedMetadatas
+	}).(WorkloadWorkloadPropertyExtendedMetadataArrayOutput)
+}
+
+// (Output)
+// Output only. The functional type of a service or workload.
+// Structure is documented below.
+func (o WorkloadWorkloadPropertyOutput) FunctionalTypes() WorkloadWorkloadPropertyFunctionalTypeArrayOutput {
+	return o.ApplyT(func(v WorkloadWorkloadProperty) []WorkloadWorkloadPropertyFunctionalType { return v.FunctionalTypes }).(WorkloadWorkloadPropertyFunctionalTypeArrayOutput)
+}
+
+// (Output)
 // Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
 func (o WorkloadWorkloadPropertyOutput) GcpProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkloadWorkloadProperty) *string { return v.GcpProject }).(pulumi.StringPtrOutput)
@@ -3008,6 +3514,335 @@ func (o WorkloadWorkloadPropertyArrayOutput) Index(i pulumi.IntInput) WorkloadWo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadWorkloadProperty {
 		return vs[0].([]WorkloadWorkloadProperty)[vs[1].(int)]
 	}).(WorkloadWorkloadPropertyOutput)
+}
+
+type WorkloadWorkloadPropertyExtendedMetadata struct {
+	// (Output)
+	// The key of the extended metadata.
+	Key *string `pulumi:"key"`
+	// (Output)
+	// The value of the extended metadata.
+	// Structure is documented below.
+	Values []WorkloadWorkloadPropertyExtendedMetadataValue `pulumi:"values"`
+}
+
+// WorkloadWorkloadPropertyExtendedMetadataInput is an input type that accepts WorkloadWorkloadPropertyExtendedMetadataArgs and WorkloadWorkloadPropertyExtendedMetadataOutput values.
+// You can construct a concrete instance of `WorkloadWorkloadPropertyExtendedMetadataInput` via:
+//
+//	WorkloadWorkloadPropertyExtendedMetadataArgs{...}
+type WorkloadWorkloadPropertyExtendedMetadataInput interface {
+	pulumi.Input
+
+	ToWorkloadWorkloadPropertyExtendedMetadataOutput() WorkloadWorkloadPropertyExtendedMetadataOutput
+	ToWorkloadWorkloadPropertyExtendedMetadataOutputWithContext(context.Context) WorkloadWorkloadPropertyExtendedMetadataOutput
+}
+
+type WorkloadWorkloadPropertyExtendedMetadataArgs struct {
+	// (Output)
+	// The key of the extended metadata.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// (Output)
+	// The value of the extended metadata.
+	// Structure is documented below.
+	Values WorkloadWorkloadPropertyExtendedMetadataValueArrayInput `pulumi:"values"`
+}
+
+func (WorkloadWorkloadPropertyExtendedMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadWorkloadPropertyExtendedMetadata)(nil)).Elem()
+}
+
+func (i WorkloadWorkloadPropertyExtendedMetadataArgs) ToWorkloadWorkloadPropertyExtendedMetadataOutput() WorkloadWorkloadPropertyExtendedMetadataOutput {
+	return i.ToWorkloadWorkloadPropertyExtendedMetadataOutputWithContext(context.Background())
+}
+
+func (i WorkloadWorkloadPropertyExtendedMetadataArgs) ToWorkloadWorkloadPropertyExtendedMetadataOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyExtendedMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadWorkloadPropertyExtendedMetadataOutput)
+}
+
+// WorkloadWorkloadPropertyExtendedMetadataArrayInput is an input type that accepts WorkloadWorkloadPropertyExtendedMetadataArray and WorkloadWorkloadPropertyExtendedMetadataArrayOutput values.
+// You can construct a concrete instance of `WorkloadWorkloadPropertyExtendedMetadataArrayInput` via:
+//
+//	WorkloadWorkloadPropertyExtendedMetadataArray{ WorkloadWorkloadPropertyExtendedMetadataArgs{...} }
+type WorkloadWorkloadPropertyExtendedMetadataArrayInput interface {
+	pulumi.Input
+
+	ToWorkloadWorkloadPropertyExtendedMetadataArrayOutput() WorkloadWorkloadPropertyExtendedMetadataArrayOutput
+	ToWorkloadWorkloadPropertyExtendedMetadataArrayOutputWithContext(context.Context) WorkloadWorkloadPropertyExtendedMetadataArrayOutput
+}
+
+type WorkloadWorkloadPropertyExtendedMetadataArray []WorkloadWorkloadPropertyExtendedMetadataInput
+
+func (WorkloadWorkloadPropertyExtendedMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadWorkloadPropertyExtendedMetadata)(nil)).Elem()
+}
+
+func (i WorkloadWorkloadPropertyExtendedMetadataArray) ToWorkloadWorkloadPropertyExtendedMetadataArrayOutput() WorkloadWorkloadPropertyExtendedMetadataArrayOutput {
+	return i.ToWorkloadWorkloadPropertyExtendedMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i WorkloadWorkloadPropertyExtendedMetadataArray) ToWorkloadWorkloadPropertyExtendedMetadataArrayOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyExtendedMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadWorkloadPropertyExtendedMetadataArrayOutput)
+}
+
+type WorkloadWorkloadPropertyExtendedMetadataOutput struct{ *pulumi.OutputState }
+
+func (WorkloadWorkloadPropertyExtendedMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadWorkloadPropertyExtendedMetadata)(nil)).Elem()
+}
+
+func (o WorkloadWorkloadPropertyExtendedMetadataOutput) ToWorkloadWorkloadPropertyExtendedMetadataOutput() WorkloadWorkloadPropertyExtendedMetadataOutput {
+	return o
+}
+
+func (o WorkloadWorkloadPropertyExtendedMetadataOutput) ToWorkloadWorkloadPropertyExtendedMetadataOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyExtendedMetadataOutput {
+	return o
+}
+
+// (Output)
+// The key of the extended metadata.
+func (o WorkloadWorkloadPropertyExtendedMetadataOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadWorkloadPropertyExtendedMetadata) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The value of the extended metadata.
+// Structure is documented below.
+func (o WorkloadWorkloadPropertyExtendedMetadataOutput) Values() WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput {
+	return o.ApplyT(func(v WorkloadWorkloadPropertyExtendedMetadata) []WorkloadWorkloadPropertyExtendedMetadataValue {
+		return v.Values
+	}).(WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput)
+}
+
+type WorkloadWorkloadPropertyExtendedMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkloadWorkloadPropertyExtendedMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadWorkloadPropertyExtendedMetadata)(nil)).Elem()
+}
+
+func (o WorkloadWorkloadPropertyExtendedMetadataArrayOutput) ToWorkloadWorkloadPropertyExtendedMetadataArrayOutput() WorkloadWorkloadPropertyExtendedMetadataArrayOutput {
+	return o
+}
+
+func (o WorkloadWorkloadPropertyExtendedMetadataArrayOutput) ToWorkloadWorkloadPropertyExtendedMetadataArrayOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyExtendedMetadataArrayOutput {
+	return o
+}
+
+func (o WorkloadWorkloadPropertyExtendedMetadataArrayOutput) Index(i pulumi.IntInput) WorkloadWorkloadPropertyExtendedMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadWorkloadPropertyExtendedMetadata {
+		return vs[0].([]WorkloadWorkloadPropertyExtendedMetadata)[vs[1].(int)]
+	}).(WorkloadWorkloadPropertyExtendedMetadataOutput)
+}
+
+type WorkloadWorkloadPropertyExtendedMetadataValue struct {
+	// (Output)
+	// The resource name for the Extended Metadata Schema.
+	ExtendedMetadataSchema *string `pulumi:"extendedMetadataSchema"`
+	// (Output)
+	// The metadata contents as a JSON string.
+	MetadataStruct *string `pulumi:"metadataStruct"`
+}
+
+// WorkloadWorkloadPropertyExtendedMetadataValueInput is an input type that accepts WorkloadWorkloadPropertyExtendedMetadataValueArgs and WorkloadWorkloadPropertyExtendedMetadataValueOutput values.
+// You can construct a concrete instance of `WorkloadWorkloadPropertyExtendedMetadataValueInput` via:
+//
+//	WorkloadWorkloadPropertyExtendedMetadataValueArgs{...}
+type WorkloadWorkloadPropertyExtendedMetadataValueInput interface {
+	pulumi.Input
+
+	ToWorkloadWorkloadPropertyExtendedMetadataValueOutput() WorkloadWorkloadPropertyExtendedMetadataValueOutput
+	ToWorkloadWorkloadPropertyExtendedMetadataValueOutputWithContext(context.Context) WorkloadWorkloadPropertyExtendedMetadataValueOutput
+}
+
+type WorkloadWorkloadPropertyExtendedMetadataValueArgs struct {
+	// (Output)
+	// The resource name for the Extended Metadata Schema.
+	ExtendedMetadataSchema pulumi.StringPtrInput `pulumi:"extendedMetadataSchema"`
+	// (Output)
+	// The metadata contents as a JSON string.
+	MetadataStruct pulumi.StringPtrInput `pulumi:"metadataStruct"`
+}
+
+func (WorkloadWorkloadPropertyExtendedMetadataValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadWorkloadPropertyExtendedMetadataValue)(nil)).Elem()
+}
+
+func (i WorkloadWorkloadPropertyExtendedMetadataValueArgs) ToWorkloadWorkloadPropertyExtendedMetadataValueOutput() WorkloadWorkloadPropertyExtendedMetadataValueOutput {
+	return i.ToWorkloadWorkloadPropertyExtendedMetadataValueOutputWithContext(context.Background())
+}
+
+func (i WorkloadWorkloadPropertyExtendedMetadataValueArgs) ToWorkloadWorkloadPropertyExtendedMetadataValueOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyExtendedMetadataValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadWorkloadPropertyExtendedMetadataValueOutput)
+}
+
+// WorkloadWorkloadPropertyExtendedMetadataValueArrayInput is an input type that accepts WorkloadWorkloadPropertyExtendedMetadataValueArray and WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput values.
+// You can construct a concrete instance of `WorkloadWorkloadPropertyExtendedMetadataValueArrayInput` via:
+//
+//	WorkloadWorkloadPropertyExtendedMetadataValueArray{ WorkloadWorkloadPropertyExtendedMetadataValueArgs{...} }
+type WorkloadWorkloadPropertyExtendedMetadataValueArrayInput interface {
+	pulumi.Input
+
+	ToWorkloadWorkloadPropertyExtendedMetadataValueArrayOutput() WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput
+	ToWorkloadWorkloadPropertyExtendedMetadataValueArrayOutputWithContext(context.Context) WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput
+}
+
+type WorkloadWorkloadPropertyExtendedMetadataValueArray []WorkloadWorkloadPropertyExtendedMetadataValueInput
+
+func (WorkloadWorkloadPropertyExtendedMetadataValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadWorkloadPropertyExtendedMetadataValue)(nil)).Elem()
+}
+
+func (i WorkloadWorkloadPropertyExtendedMetadataValueArray) ToWorkloadWorkloadPropertyExtendedMetadataValueArrayOutput() WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput {
+	return i.ToWorkloadWorkloadPropertyExtendedMetadataValueArrayOutputWithContext(context.Background())
+}
+
+func (i WorkloadWorkloadPropertyExtendedMetadataValueArray) ToWorkloadWorkloadPropertyExtendedMetadataValueArrayOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput)
+}
+
+type WorkloadWorkloadPropertyExtendedMetadataValueOutput struct{ *pulumi.OutputState }
+
+func (WorkloadWorkloadPropertyExtendedMetadataValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadWorkloadPropertyExtendedMetadataValue)(nil)).Elem()
+}
+
+func (o WorkloadWorkloadPropertyExtendedMetadataValueOutput) ToWorkloadWorkloadPropertyExtendedMetadataValueOutput() WorkloadWorkloadPropertyExtendedMetadataValueOutput {
+	return o
+}
+
+func (o WorkloadWorkloadPropertyExtendedMetadataValueOutput) ToWorkloadWorkloadPropertyExtendedMetadataValueOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyExtendedMetadataValueOutput {
+	return o
+}
+
+// (Output)
+// The resource name for the Extended Metadata Schema.
+func (o WorkloadWorkloadPropertyExtendedMetadataValueOutput) ExtendedMetadataSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadWorkloadPropertyExtendedMetadataValue) *string { return v.ExtendedMetadataSchema }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The metadata contents as a JSON string.
+func (o WorkloadWorkloadPropertyExtendedMetadataValueOutput) MetadataStruct() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadWorkloadPropertyExtendedMetadataValue) *string { return v.MetadataStruct }).(pulumi.StringPtrOutput)
+}
+
+type WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadWorkloadPropertyExtendedMetadataValue)(nil)).Elem()
+}
+
+func (o WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput) ToWorkloadWorkloadPropertyExtendedMetadataValueArrayOutput() WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput {
+	return o
+}
+
+func (o WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput) ToWorkloadWorkloadPropertyExtendedMetadataValueArrayOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput {
+	return o
+}
+
+func (o WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput) Index(i pulumi.IntInput) WorkloadWorkloadPropertyExtendedMetadataValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadWorkloadPropertyExtendedMetadataValue {
+		return vs[0].([]WorkloadWorkloadPropertyExtendedMetadataValue)[vs[1].(int)]
+	}).(WorkloadWorkloadPropertyExtendedMetadataValueOutput)
+}
+
+type WorkloadWorkloadPropertyFunctionalType struct {
+	// (Output)
+	// Output only. The functional type of a service or workload.
+	Type *string `pulumi:"type"`
+}
+
+// WorkloadWorkloadPropertyFunctionalTypeInput is an input type that accepts WorkloadWorkloadPropertyFunctionalTypeArgs and WorkloadWorkloadPropertyFunctionalTypeOutput values.
+// You can construct a concrete instance of `WorkloadWorkloadPropertyFunctionalTypeInput` via:
+//
+//	WorkloadWorkloadPropertyFunctionalTypeArgs{...}
+type WorkloadWorkloadPropertyFunctionalTypeInput interface {
+	pulumi.Input
+
+	ToWorkloadWorkloadPropertyFunctionalTypeOutput() WorkloadWorkloadPropertyFunctionalTypeOutput
+	ToWorkloadWorkloadPropertyFunctionalTypeOutputWithContext(context.Context) WorkloadWorkloadPropertyFunctionalTypeOutput
+}
+
+type WorkloadWorkloadPropertyFunctionalTypeArgs struct {
+	// (Output)
+	// Output only. The functional type of a service or workload.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (WorkloadWorkloadPropertyFunctionalTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadWorkloadPropertyFunctionalType)(nil)).Elem()
+}
+
+func (i WorkloadWorkloadPropertyFunctionalTypeArgs) ToWorkloadWorkloadPropertyFunctionalTypeOutput() WorkloadWorkloadPropertyFunctionalTypeOutput {
+	return i.ToWorkloadWorkloadPropertyFunctionalTypeOutputWithContext(context.Background())
+}
+
+func (i WorkloadWorkloadPropertyFunctionalTypeArgs) ToWorkloadWorkloadPropertyFunctionalTypeOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyFunctionalTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadWorkloadPropertyFunctionalTypeOutput)
+}
+
+// WorkloadWorkloadPropertyFunctionalTypeArrayInput is an input type that accepts WorkloadWorkloadPropertyFunctionalTypeArray and WorkloadWorkloadPropertyFunctionalTypeArrayOutput values.
+// You can construct a concrete instance of `WorkloadWorkloadPropertyFunctionalTypeArrayInput` via:
+//
+//	WorkloadWorkloadPropertyFunctionalTypeArray{ WorkloadWorkloadPropertyFunctionalTypeArgs{...} }
+type WorkloadWorkloadPropertyFunctionalTypeArrayInput interface {
+	pulumi.Input
+
+	ToWorkloadWorkloadPropertyFunctionalTypeArrayOutput() WorkloadWorkloadPropertyFunctionalTypeArrayOutput
+	ToWorkloadWorkloadPropertyFunctionalTypeArrayOutputWithContext(context.Context) WorkloadWorkloadPropertyFunctionalTypeArrayOutput
+}
+
+type WorkloadWorkloadPropertyFunctionalTypeArray []WorkloadWorkloadPropertyFunctionalTypeInput
+
+func (WorkloadWorkloadPropertyFunctionalTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadWorkloadPropertyFunctionalType)(nil)).Elem()
+}
+
+func (i WorkloadWorkloadPropertyFunctionalTypeArray) ToWorkloadWorkloadPropertyFunctionalTypeArrayOutput() WorkloadWorkloadPropertyFunctionalTypeArrayOutput {
+	return i.ToWorkloadWorkloadPropertyFunctionalTypeArrayOutputWithContext(context.Background())
+}
+
+func (i WorkloadWorkloadPropertyFunctionalTypeArray) ToWorkloadWorkloadPropertyFunctionalTypeArrayOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyFunctionalTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadWorkloadPropertyFunctionalTypeArrayOutput)
+}
+
+type WorkloadWorkloadPropertyFunctionalTypeOutput struct{ *pulumi.OutputState }
+
+func (WorkloadWorkloadPropertyFunctionalTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadWorkloadPropertyFunctionalType)(nil)).Elem()
+}
+
+func (o WorkloadWorkloadPropertyFunctionalTypeOutput) ToWorkloadWorkloadPropertyFunctionalTypeOutput() WorkloadWorkloadPropertyFunctionalTypeOutput {
+	return o
+}
+
+func (o WorkloadWorkloadPropertyFunctionalTypeOutput) ToWorkloadWorkloadPropertyFunctionalTypeOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyFunctionalTypeOutput {
+	return o
+}
+
+// (Output)
+// Output only. The functional type of a service or workload.
+func (o WorkloadWorkloadPropertyFunctionalTypeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadWorkloadPropertyFunctionalType) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type WorkloadWorkloadPropertyFunctionalTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkloadWorkloadPropertyFunctionalTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadWorkloadPropertyFunctionalType)(nil)).Elem()
+}
+
+func (o WorkloadWorkloadPropertyFunctionalTypeArrayOutput) ToWorkloadWorkloadPropertyFunctionalTypeArrayOutput() WorkloadWorkloadPropertyFunctionalTypeArrayOutput {
+	return o
+}
+
+func (o WorkloadWorkloadPropertyFunctionalTypeArrayOutput) ToWorkloadWorkloadPropertyFunctionalTypeArrayOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyFunctionalTypeArrayOutput {
+	return o
+}
+
+func (o WorkloadWorkloadPropertyFunctionalTypeArrayOutput) Index(i pulumi.IntInput) WorkloadWorkloadPropertyFunctionalTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadWorkloadPropertyFunctionalType {
+		return vs[0].([]WorkloadWorkloadPropertyFunctionalType)[vs[1].(int)]
+	}).(WorkloadWorkloadPropertyFunctionalTypeOutput)
 }
 
 type WorkloadWorkloadReference struct {
@@ -4325,6 +5160,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttributesOperatorOwnerArrayInput)(nil)).Elem(), ServiceAttributesOperatorOwnerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyInput)(nil)).Elem(), ServiceServicePropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyArrayInput)(nil)).Elem(), ServiceServicePropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyExtendedMetadataInput)(nil)).Elem(), ServiceServicePropertyExtendedMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyExtendedMetadataArrayInput)(nil)).Elem(), ServiceServicePropertyExtendedMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyExtendedMetadataValueInput)(nil)).Elem(), ServiceServicePropertyExtendedMetadataValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyExtendedMetadataValueArrayInput)(nil)).Elem(), ServiceServicePropertyExtendedMetadataValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyFunctionalTypeInput)(nil)).Elem(), ServiceServicePropertyFunctionalTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyFunctionalTypeArrayInput)(nil)).Elem(), ServiceServicePropertyFunctionalTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyRegistrationTypeInput)(nil)).Elem(), ServiceServicePropertyRegistrationTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyRegistrationTypeArrayInput)(nil)).Elem(), ServiceServicePropertyRegistrationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServiceReferenceInput)(nil)).Elem(), ServiceServiceReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServiceReferenceArrayInput)(nil)).Elem(), ServiceServiceReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadAttributesInput)(nil)).Elem(), WorkloadAttributesArgs{})
@@ -4341,6 +5184,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadAttributesOperatorOwnerArrayInput)(nil)).Elem(), WorkloadAttributesOperatorOwnerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyInput)(nil)).Elem(), WorkloadWorkloadPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyArrayInput)(nil)).Elem(), WorkloadWorkloadPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyExtendedMetadataInput)(nil)).Elem(), WorkloadWorkloadPropertyExtendedMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyExtendedMetadataArrayInput)(nil)).Elem(), WorkloadWorkloadPropertyExtendedMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyExtendedMetadataValueInput)(nil)).Elem(), WorkloadWorkloadPropertyExtendedMetadataValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyExtendedMetadataValueArrayInput)(nil)).Elem(), WorkloadWorkloadPropertyExtendedMetadataValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyFunctionalTypeInput)(nil)).Elem(), WorkloadWorkloadPropertyFunctionalTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyFunctionalTypeArrayInput)(nil)).Elem(), WorkloadWorkloadPropertyFunctionalTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadReferenceInput)(nil)).Elem(), WorkloadWorkloadReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadReferenceArrayInput)(nil)).Elem(), WorkloadWorkloadReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeInput)(nil)).Elem(), GetApplicationAttributeArgs{})
@@ -4393,6 +5242,14 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAttributesOperatorOwnerArrayOutput{})
 	pulumi.RegisterOutputType(ServiceServicePropertyOutput{})
 	pulumi.RegisterOutputType(ServiceServicePropertyArrayOutput{})
+	pulumi.RegisterOutputType(ServiceServicePropertyExtendedMetadataOutput{})
+	pulumi.RegisterOutputType(ServiceServicePropertyExtendedMetadataArrayOutput{})
+	pulumi.RegisterOutputType(ServiceServicePropertyExtendedMetadataValueOutput{})
+	pulumi.RegisterOutputType(ServiceServicePropertyExtendedMetadataValueArrayOutput{})
+	pulumi.RegisterOutputType(ServiceServicePropertyFunctionalTypeOutput{})
+	pulumi.RegisterOutputType(ServiceServicePropertyFunctionalTypeArrayOutput{})
+	pulumi.RegisterOutputType(ServiceServicePropertyRegistrationTypeOutput{})
+	pulumi.RegisterOutputType(ServiceServicePropertyRegistrationTypeArrayOutput{})
 	pulumi.RegisterOutputType(ServiceServiceReferenceOutput{})
 	pulumi.RegisterOutputType(ServiceServiceReferenceArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadAttributesOutput{})
@@ -4409,6 +5266,12 @@ func init() {
 	pulumi.RegisterOutputType(WorkloadAttributesOperatorOwnerArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadWorkloadPropertyOutput{})
 	pulumi.RegisterOutputType(WorkloadWorkloadPropertyArrayOutput{})
+	pulumi.RegisterOutputType(WorkloadWorkloadPropertyExtendedMetadataOutput{})
+	pulumi.RegisterOutputType(WorkloadWorkloadPropertyExtendedMetadataArrayOutput{})
+	pulumi.RegisterOutputType(WorkloadWorkloadPropertyExtendedMetadataValueOutput{})
+	pulumi.RegisterOutputType(WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput{})
+	pulumi.RegisterOutputType(WorkloadWorkloadPropertyFunctionalTypeOutput{})
+	pulumi.RegisterOutputType(WorkloadWorkloadPropertyFunctionalTypeArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadWorkloadReferenceOutput{})
 	pulumi.RegisterOutputType(WorkloadWorkloadReferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationAttributeOutput{})

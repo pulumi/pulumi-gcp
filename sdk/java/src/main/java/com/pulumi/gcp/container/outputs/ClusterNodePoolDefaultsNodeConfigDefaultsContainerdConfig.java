@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,11 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
      * 
      */
     private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig privateRegistryAccessConfig;
+    /**
+     * @return Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
+     * 
+     */
+    private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups writableCgroups;
 
     private ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig() {}
     /**
@@ -24,6 +30,13 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
      */
     public Optional<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfig() {
         return Optional.ofNullable(this.privateRegistryAccessConfig);
+    }
+    /**
+     * @return Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
+     * 
+     */
+    public Optional<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups> writableCgroups() {
+        return Optional.ofNullable(this.writableCgroups);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig privateRegistryAccessConfig;
+        private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups writableCgroups;
         public Builder() {}
         public Builder(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.privateRegistryAccessConfig = defaults.privateRegistryAccessConfig;
+    	      this.writableCgroups = defaults.writableCgroups;
         }
 
         @CustomType.Setter
@@ -48,9 +63,16 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
             this.privateRegistryAccessConfig = privateRegistryAccessConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder writableCgroups(@Nullable ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups writableCgroups) {
+
+            this.writableCgroups = writableCgroups;
+            return this;
+        }
         public ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig build() {
             final var _resultValue = new ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig();
             _resultValue.privateRegistryAccessConfig = privateRegistryAccessConfig;
+            _resultValue.writableCgroups = writableCgroups;
             return _resultValue;
         }
     }

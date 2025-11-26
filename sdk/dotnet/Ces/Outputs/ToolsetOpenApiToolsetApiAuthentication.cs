@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly Outputs.ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig? ApiKeyConfig;
         /// <summary>
+        /// Configurations for authentication with a bearer token.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig? BearerTokenConfig;
+        /// <summary>
         /// Configurations for authentication with OAuth.
         /// Structure is documented below.
         /// </summary>
@@ -39,6 +44,8 @@ namespace Pulumi.Gcp.Ces.Outputs
         private ToolsetOpenApiToolsetApiAuthentication(
             Outputs.ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig? apiKeyConfig,
 
+            Outputs.ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig? bearerTokenConfig,
+
             Outputs.ToolsetOpenApiToolsetApiAuthenticationOauthConfig? oauthConfig,
 
             Outputs.ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig? serviceAccountAuthConfig,
@@ -46,6 +53,7 @@ namespace Pulumi.Gcp.Ces.Outputs
             Outputs.ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfig? serviceAgentIdTokenAuthConfig)
         {
             ApiKeyConfig = apiKeyConfig;
+            BearerTokenConfig = bearerTokenConfig;
             OauthConfig = oauthConfig;
             ServiceAccountAuthConfig = serviceAccountAuthConfig;
             ServiceAgentIdTokenAuthConfig = serviceAgentIdTokenAuthConfig;

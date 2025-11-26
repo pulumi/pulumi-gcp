@@ -383,6 +383,95 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Ces Toolset Bearer Token Config
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Toolset;
+ * import com.pulumi.gcp.ces.ToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetServiceDirectoryConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cesAppForToolset = new App("cesAppForToolset", AppArgs.builder()
+ *             .appId("app-id")
+ *             .location("us")
+ *             .description("App used as parent for CES Toolset example")
+ *             .displayName("my-app")
+ *             .languageSettings(AppLanguageSettingsArgs.builder()
+ *                 .defaultLanguageCode("en-US")
+ *                 .supportedLanguageCodes(                
+ *                     "es-ES",
+ *                     "fr-FR")
+ *                 .enableMultilingualSupport(true)
+ *                 .fallbackAction("escalate")
+ *                 .build())
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesToolsetBearerTokenConfig = new Toolset("cesToolsetBearerTokenConfig", ToolsetArgs.builder()
+ *             .toolsetId("toolset1")
+ *             .location("us")
+ *             .app(cesAppForToolset.appId())
+ *             .displayName("Basic toolset display name")
+ *             .openApiToolset(ToolsetOpenApiToolsetArgs.builder()
+ *                 .openApiSchema("""
+ * openapi: 3.0.0
+ * info:
+ *   title: My Sample API
+ *   version: 1.0.0
+ *   description: A simple API example
+ * servers:
+ *   - url: https://api.example.com/v1
+ * paths: {}
+ *                 """)
+ *                 .ignoreUnknownFields(false)
+ *                 .tlsConfig(ToolsetOpenApiToolsetTlsConfigArgs.builder()
+ *                     .caCerts(ToolsetOpenApiToolsetTlsConfigCaCertArgs.builder()
+ *                         .displayName("example")
+ *                         .cert("ZXhhbXBsZQ==")
+ *                         .build())
+ *                     .build())
+ *                 .serviceDirectoryConfig(ToolsetOpenApiToolsetServiceDirectoryConfigArgs.builder()
+ *                     .service("projects/example/locations/us/namespaces/namespace/services/service")
+ *                     .build())
+ *                 .apiAuthentication(ToolsetOpenApiToolsetApiAuthenticationArgs.builder()
+ *                     .bearerTokenConfig(ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs.builder()
+ *                         .token("$context.variables.my_ces_toolset_auth_token")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

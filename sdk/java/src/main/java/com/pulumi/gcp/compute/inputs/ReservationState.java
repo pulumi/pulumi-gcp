@@ -24,6 +24,21 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     public static final ReservationState Empty = new ReservationState();
 
     /**
+     * List of all reservation block names in the parent reservation.
+     * 
+     */
+    @Import(name="blockNames")
+    private @Nullable Output<List<String>> blockNames;
+
+    /**
+     * @return List of all reservation block names in the parent reservation.
+     * 
+     */
+    public Optional<Output<List<String>>> blockNames() {
+        return Optional.ofNullable(this.blockNames);
+    }
+
+    /**
      * Full or partial URL to a parent commitment. This field displays for
      * reservations that are tied to a commitment.
      * 
@@ -180,6 +195,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
+     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
+     * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
@@ -187,6 +204,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
+     * 
+     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
      * 
      */
     public Optional<Output<String>> project() {
@@ -360,6 +379,7 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     private ReservationState() {}
 
     private ReservationState(ReservationState $) {
+        this.blockNames = $.blockNames;
         this.commitment = $.commitment;
         this.creationTimestamp = $.creationTimestamp;
         this.deleteAfterDuration = $.deleteAfterDuration;
@@ -398,6 +418,37 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ReservationState defaults) {
             $ = new ReservationState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param blockNames List of all reservation block names in the parent reservation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockNames(@Nullable Output<List<String>> blockNames) {
+            $.blockNames = blockNames;
+            return this;
+        }
+
+        /**
+         * @param blockNames List of all reservation block names in the parent reservation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockNames(List<String> blockNames) {
+            return blockNames(Output.of(blockNames));
+        }
+
+        /**
+         * @param blockNames List of all reservation block names in the parent reservation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockNames(String... blockNames) {
+            return blockNames(List.of(blockNames));
         }
 
         /**
@@ -621,6 +672,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
+         * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
+         * 
          * @return builder
          * 
          */
@@ -632,6 +685,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
+         * 
+         * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
          * 
          * @return builder
          * 

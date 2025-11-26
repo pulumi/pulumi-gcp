@@ -17,18 +17,27 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
      */
     private @Nullable String domainName;
     /**
-     * @return Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-     * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-     * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+     * @return Forwarding path for this TargetNameServer. If unset or `default`
+     * Cloud DNS will make forwarding decision based on address ranges,
+     * i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+     * to the Internet. When set to `private`, Cloud DNS will always
+     * send queries through VPC for this target.
      * Possible values are: `default`, `private`.
      * 
      */
     private @Nullable String forwardingPath;
     /**
      * @return IPv4 address of a target name server.
+     * Does not accept both fields (ipv4 &amp; ipv6) being populated.
      * 
      */
     private @Nullable String ipv4Address;
+    /**
+     * @return IPv6 address of a target name server.
+     * Does not accept both fields (ipv4 &amp; ipv6) being populated.
+     * 
+     */
+    private @Nullable String ipv6Address;
 
     private ManagedZoneForwardingConfigTargetNameServer() {}
     /**
@@ -39,9 +48,11 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
         return Optional.ofNullable(this.domainName);
     }
     /**
-     * @return Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-     * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-     * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+     * @return Forwarding path for this TargetNameServer. If unset or `default`
+     * Cloud DNS will make forwarding decision based on address ranges,
+     * i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+     * to the Internet. When set to `private`, Cloud DNS will always
+     * send queries through VPC for this target.
      * Possible values are: `default`, `private`.
      * 
      */
@@ -50,10 +61,19 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
     }
     /**
      * @return IPv4 address of a target name server.
+     * Does not accept both fields (ipv4 &amp; ipv6) being populated.
      * 
      */
     public Optional<String> ipv4Address() {
         return Optional.ofNullable(this.ipv4Address);
+    }
+    /**
+     * @return IPv6 address of a target name server.
+     * Does not accept both fields (ipv4 &amp; ipv6) being populated.
+     * 
+     */
+    public Optional<String> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
     }
 
     public static Builder builder() {
@@ -68,12 +88,14 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
         private @Nullable String domainName;
         private @Nullable String forwardingPath;
         private @Nullable String ipv4Address;
+        private @Nullable String ipv6Address;
         public Builder() {}
         public Builder(ManagedZoneForwardingConfigTargetNameServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainName = defaults.domainName;
     	      this.forwardingPath = defaults.forwardingPath;
     	      this.ipv4Address = defaults.ipv4Address;
+    	      this.ipv6Address = defaults.ipv6Address;
         }
 
         @CustomType.Setter
@@ -94,11 +116,18 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
             this.ipv4Address = ipv4Address;
             return this;
         }
+        @CustomType.Setter
+        public Builder ipv6Address(@Nullable String ipv6Address) {
+
+            this.ipv6Address = ipv6Address;
+            return this;
+        }
         public ManagedZoneForwardingConfigTargetNameServer build() {
             final var _resultValue = new ManagedZoneForwardingConfigTargetNameServer();
             _resultValue.domainName = domainName;
             _resultValue.forwardingPath = forwardingPath;
             _resultValue.ipv4Address = ipv4Address;
+            _resultValue.ipv6Address = ipv6Address;
             return _resultValue;
         }
     }

@@ -25,7 +25,11 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<bool>? AllowCrossOrgVpcs { get; set; }
 
         /// <summary>
-        /// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket. **Note**: `AllowAllServiceAgentAccess` must be supplied when `Mode` is set to `Enabled`, it can be ommited for other values.
+        /// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
+        /// 
+        /// **Note**: Once IpFilter is setup, it can either be `Enabled` or `Disabled` and cannot be removed from config.
+        /// 
+        /// **Note**: `AllowAllServiceAgentAccess` must be supplied when `Mode` is set to `Enabled`, it can be ommited for other values.
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;

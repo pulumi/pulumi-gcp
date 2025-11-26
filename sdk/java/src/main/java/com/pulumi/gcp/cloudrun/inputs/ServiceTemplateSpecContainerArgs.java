@@ -10,6 +10,7 @@ import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerEnvArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerEnvFromArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerLivenessProbeArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerPortArgs;
+import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerReadinessProbeArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerResourcesArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerStartupProbeArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerVolumeMountArgs;
@@ -183,6 +184,23 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     }
 
     /**
+     * Periodic probe of container readiness.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="readinessProbe")
+    private @Nullable Output<ServiceTemplateSpecContainerReadinessProbeArgs> readinessProbe;
+
+    /**
+     * @return Periodic probe of container readiness.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateSpecContainerReadinessProbeArgs>> readinessProbe() {
+        return Optional.ofNullable(this.readinessProbe);
+    }
+
+    /**
      * Compute Resources required by this container. Used to set values such as max memory
      * Structure is documented below.
      * 
@@ -283,6 +301,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         this.livenessProbe = $.livenessProbe;
         this.name = $.name;
         this.ports = $.ports;
+        this.readinessProbe = $.readinessProbe;
         this.resources = $.resources;
         this.startupProbe = $.startupProbe;
         this.volumeMounts = $.volumeMounts;
@@ -577,6 +596,29 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          */
         public Builder ports(ServiceTemplateSpecContainerPortArgs... ports) {
             return ports(List.of(ports));
+        }
+
+        /**
+         * @param readinessProbe Periodic probe of container readiness.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbe(@Nullable Output<ServiceTemplateSpecContainerReadinessProbeArgs> readinessProbe) {
+            $.readinessProbe = readinessProbe;
+            return this;
+        }
+
+        /**
+         * @param readinessProbe Periodic probe of container readiness.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbe(ServiceTemplateSpecContainerReadinessProbeArgs readinessProbe) {
+            return readinessProbe(Output.of(readinessProbe));
         }
 
         /**

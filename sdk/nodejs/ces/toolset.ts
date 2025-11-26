@@ -245,6 +245,63 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Ces Toolset Bearer Token Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cesAppForToolset = new gcp.ces.App("ces_app_for_toolset", {
+ *     appId: "app-id",
+ *     location: "us",
+ *     description: "App used as parent for CES Toolset example",
+ *     displayName: "my-app",
+ *     languageSettings: {
+ *         defaultLanguageCode: "en-US",
+ *         supportedLanguageCodes: [
+ *             "es-ES",
+ *             "fr-FR",
+ *         ],
+ *         enableMultilingualSupport: true,
+ *         fallbackAction: "escalate",
+ *     },
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const cesToolsetBearerTokenConfig = new gcp.ces.Toolset("ces_toolset_bearer_token_config", {
+ *     toolsetId: "toolset1",
+ *     location: "us",
+ *     app: cesAppForToolset.appId,
+ *     displayName: "Basic toolset display name",
+ *     openApiToolset: {
+ *         openApiSchema: `openapi: 3.0.0
+ * info:
+ *   title: My Sample API
+ *   version: 1.0.0
+ *   description: A simple API example
+ * servers:
+ *   - url: https://api.example.com/v1
+ * paths: {}
+ * `,
+ *         ignoreUnknownFields: false,
+ *         tlsConfig: {
+ *             caCerts: [{
+ *                 displayName: "example",
+ *                 cert: "ZXhhbXBsZQ==",
+ *             }],
+ *         },
+ *         serviceDirectoryConfig: {
+ *             service: "projects/example/locations/us/namespaces/namespace/services/service",
+ *         },
+ *         apiAuthentication: {
+ *             bearerTokenConfig: {
+ *                 token: "$context.variables.my_ces_toolset_auth_token",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

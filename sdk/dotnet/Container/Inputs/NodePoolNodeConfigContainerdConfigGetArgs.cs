@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("privateRegistryAccessConfig")]
         public Input<Inputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigGetArgs>? PrivateRegistryAccessConfig { get; set; }
 
+        /// <summary>
+        /// Parameters for writable cgroups configuration.
+        /// </summary>
+        [Input("writableCgroups")]
+        public Input<Inputs.NodePoolNodeConfigContainerdConfigWritableCgroupsGetArgs>? WritableCgroups { get; set; }
+
         public NodePoolNodeConfigContainerdConfigGetArgs()
         {
         }

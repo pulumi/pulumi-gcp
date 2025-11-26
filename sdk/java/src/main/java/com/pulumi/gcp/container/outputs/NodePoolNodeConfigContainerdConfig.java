@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigContainerdConfigWritableCgroups;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,11 @@ public final class NodePoolNodeConfigContainerdConfig {
      * 
      */
     private @Nullable NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig privateRegistryAccessConfig;
+    /**
+     * @return Parameters for writable cgroups configuration.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigContainerdConfigWritableCgroups writableCgroups;
 
     private NodePoolNodeConfigContainerdConfig() {}
     /**
@@ -24,6 +30,13 @@ public final class NodePoolNodeConfigContainerdConfig {
      */
     public Optional<NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfig() {
         return Optional.ofNullable(this.privateRegistryAccessConfig);
+    }
+    /**
+     * @return Parameters for writable cgroups configuration.
+     * 
+     */
+    public Optional<NodePoolNodeConfigContainerdConfigWritableCgroups> writableCgroups() {
+        return Optional.ofNullable(this.writableCgroups);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class NodePoolNodeConfigContainerdConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig privateRegistryAccessConfig;
+        private @Nullable NodePoolNodeConfigContainerdConfigWritableCgroups writableCgroups;
         public Builder() {}
         public Builder(NodePoolNodeConfigContainerdConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.privateRegistryAccessConfig = defaults.privateRegistryAccessConfig;
+    	      this.writableCgroups = defaults.writableCgroups;
         }
 
         @CustomType.Setter
@@ -48,9 +63,16 @@ public final class NodePoolNodeConfigContainerdConfig {
             this.privateRegistryAccessConfig = privateRegistryAccessConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder writableCgroups(@Nullable NodePoolNodeConfigContainerdConfigWritableCgroups writableCgroups) {
+
+            this.writableCgroups = writableCgroups;
+            return this;
+        }
         public NodePoolNodeConfigContainerdConfig build() {
             final var _resultValue = new NodePoolNodeConfigContainerdConfig();
             _resultValue.privateRegistryAccessConfig = privateRegistryAccessConfig;
+            _resultValue.writableCgroups = writableCgroups;
             return _resultValue;
         }
     }

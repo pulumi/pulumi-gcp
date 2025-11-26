@@ -148,6 +148,50 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### IP Filter Mode Enabled
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hns_enabled = new gcp.storage.Bucket("hns-enabled", {
+ *     name: "hns-enabled-bucket",
+ *     location: "US",
+ *     forceDestroy: true,
+ *     ipFilter: {
+ *         mode: "Enabled",
+ *         publicNetworkSource: {
+ *             allowedIpCidrRanges: [
+ *                 "0.0.0.0/0",
+ *                 "::/0",
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### IP Filter Mode Disabled
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hns_enabled = new gcp.storage.Bucket("hns-enabled", {
+ *     name: "hns-enabled-bucket",
+ *     location: "US",
+ *     forceDestroy: true,
+ *     ipFilter: {
+ *         mode: "Disabled",
+ *         publicNetworkSource: {
+ *             allowedIpCidrRanges: [
+ *                 "0.0.0.0/0",
+ *                 "::/0",
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Storage buckets can be imported using the `name` or  `project/name`. If the project is not

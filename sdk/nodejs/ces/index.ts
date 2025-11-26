@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AgentArgs, AgentState } from "./agent";
+export type Agent = import("./agent").Agent;
+export const Agent: typeof import("./agent").Agent = null as any;
+utilities.lazyLoad(exports, ["Agent"], () => require("./agent"));
+
 export { AppArgs, AppState } from "./app";
 export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
@@ -20,6 +25,16 @@ export type Example = import("./example").Example;
 export const Example: typeof import("./example").Example = null as any;
 utilities.lazyLoad(exports, ["Example"], () => require("./example"));
 
+export { GuardrailArgs, GuardrailState } from "./guardrail";
+export type Guardrail = import("./guardrail").Guardrail;
+export const Guardrail: typeof import("./guardrail").Guardrail = null as any;
+utilities.lazyLoad(exports, ["Guardrail"], () => require("./guardrail"));
+
+export { ToolArgs, ToolState } from "./tool";
+export type Tool = import("./tool").Tool;
+export const Tool: typeof import("./tool").Tool = null as any;
+utilities.lazyLoad(exports, ["Tool"], () => require("./tool"));
+
 export { ToolsetArgs, ToolsetState } from "./toolset";
 export type Toolset = import("./toolset").Toolset;
 export const Toolset: typeof import("./toolset").Toolset = null as any;
@@ -30,12 +45,18 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:ces/agent:Agent":
+                return new Agent(name, <any>undefined, { urn })
             case "gcp:ces/app:App":
                 return new App(name, <any>undefined, { urn })
             case "gcp:ces/deployment:Deployment":
                 return new Deployment(name, <any>undefined, { urn })
             case "gcp:ces/example:Example":
                 return new Example(name, <any>undefined, { urn })
+            case "gcp:ces/guardrail:Guardrail":
+                return new Guardrail(name, <any>undefined, { urn })
+            case "gcp:ces/tool:Tool":
+                return new Tool(name, <any>undefined, { urn })
             case "gcp:ces/toolset:Toolset":
                 return new Toolset(name, <any>undefined, { urn })
             default:
@@ -43,7 +64,10 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "ces/agent", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/app", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/deployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/example", _module)
+pulumi.runtime.registerResourceModule("gcp", "ces/guardrail", _module)
+pulumi.runtime.registerResourceModule("gcp", "ces/tool", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/toolset", _module)

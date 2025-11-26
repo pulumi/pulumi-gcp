@@ -16,7 +16,27 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
+ * const project = gcp.organizations.getProject({});
+ * const fakePrivateKeySecret = new gcp.secretmanager.Secret("fake_private_key_secret", {
+ *     secretId: "fake-pk-secret-app-tf1",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const fakeSecretVersion = new gcp.secretmanager.SecretVersion("fake_secret_version", {
+ *     secret: fakePrivateKeySecret.id,
+ *     secretData: std.file({
+ *         input: "test-fixtures/test.key",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const privateKeyAccessor = new gcp.secretmanager.SecretIamMember("private_key_accessor", {
+ *     project: fakePrivateKeySecret.project,
+ *     secretId: fakePrivateKeySecret.secretId,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-ces.iam.gserviceaccount.com`),
+ * });
  * const cesAppBasic = new gcp.ces.App("ces_app_basic", {
  *     appId: "app-id",
  *     location: "us",
@@ -155,6 +175,13 @@ import * as utilities from "../utilities";
  *     },
  *     timeZoneSettings: {
  *         timeZone: "America/Los_Angeles",
+ *     },
+ *     clientCertificateSettings: {
+ *         tlsCertificate: std.file({
+ *             input: "test-fixtures/cert.pem",
+ *         }).then(invoke => invoke.result),
+ *         privateKey: fakeSecretVersion.name,
+ *         passphrase: "fakepassphrase",
  *     },
  * });
  * ```
@@ -371,6 +398,11 @@ export class App extends pulumi.CustomResource {
      */
     declare public readonly audioProcessingConfig: pulumi.Output<outputs.ces.AppAudioProcessingConfig | undefined>;
     /**
+     * The default client certificate settings for the app.
+     * Structure is documented below.
+     */
+    declare public readonly clientCertificateSettings: pulumi.Output<outputs.ces.AppClientCertificateSettings | undefined>;
+    /**
      * Timestamp when the app was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
@@ -489,6 +521,7 @@ export class App extends pulumi.CustomResource {
             const state = argsOrState as AppState | undefined;
             resourceInputs["appId"] = state?.appId;
             resourceInputs["audioProcessingConfig"] = state?.audioProcessingConfig;
+            resourceInputs["clientCertificateSettings"] = state?.clientCertificateSettings;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataStoreSettings"] = state?.dataStoreSettings;
             resourceInputs["defaultChannelProfile"] = state?.defaultChannelProfile;
@@ -523,6 +556,7 @@ export class App extends pulumi.CustomResource {
             }
             resourceInputs["appId"] = args?.appId;
             resourceInputs["audioProcessingConfig"] = args?.audioProcessingConfig;
+            resourceInputs["clientCertificateSettings"] = args?.clientCertificateSettings;
             resourceInputs["dataStoreSettings"] = args?.dataStoreSettings;
             resourceInputs["defaultChannelProfile"] = args?.defaultChannelProfile;
             resourceInputs["description"] = args?.description;
@@ -566,6 +600,11 @@ export interface AppState {
      * Structure is documented below.
      */
     audioProcessingConfig?: pulumi.Input<inputs.ces.AppAudioProcessingConfig>;
+    /**
+     * The default client certificate settings for the app.
+     * Structure is documented below.
+     */
+    clientCertificateSettings?: pulumi.Input<inputs.ces.AppClientCertificateSettings>;
     /**
      * Timestamp when the app was created.
      */
@@ -687,6 +726,11 @@ export interface AppArgs {
      * Structure is documented below.
      */
     audioProcessingConfig?: pulumi.Input<inputs.ces.AppAudioProcessingConfig>;
+    /**
+     * The default client certificate settings for the app.
+     * Structure is documented below.
+     */
+    clientCertificateSettings?: pulumi.Input<inputs.ces.AppClientCertificateSettings>;
     /**
      * Data store related settings for the app.
      * Structure is documented below.
