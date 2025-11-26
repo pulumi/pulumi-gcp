@@ -9,6 +9,8 @@ import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourceReferencesData
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDataSourceReferencesResult {
@@ -20,7 +22,13 @@ public final class GetDataSourceReferencesResult {
     private String id;
     private String location;
     private String project;
-    private String resourceType;
+    /**
+     * @deprecated
+     * `resourceType` is deprecated and will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
+    private @Nullable String resourceType;
 
     private GetDataSourceReferencesResult() {}
     public List<GetDataSourceReferencesDataSourceReference> dataSourceReferences() {
@@ -39,8 +47,14 @@ public final class GetDataSourceReferencesResult {
     public String project() {
         return this.project;
     }
-    public String resourceType() {
-        return this.resourceType;
+    /**
+     * @deprecated
+     * `resourceType` is deprecated and will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
+    public Optional<String> resourceType() {
+        return Optional.ofNullable(this.resourceType);
     }
 
     public static Builder builder() {
@@ -56,7 +70,7 @@ public final class GetDataSourceReferencesResult {
         private String id;
         private String location;
         private String project;
-        private String resourceType;
+        private @Nullable String resourceType;
         public Builder() {}
         public Builder(GetDataSourceReferencesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -103,10 +117,8 @@ public final class GetDataSourceReferencesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder resourceType(String resourceType) {
-            if (resourceType == null) {
-              throw new MissingRequiredPropertyException("GetDataSourceReferencesResult", "resourceType");
-            }
+        public Builder resourceType(@Nullable String resourceType) {
+
             this.resourceType = resourceType;
             return this;
         }

@@ -162,6 +162,11 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
+     * Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+     * Structure is documented below.
+     */
+    declare public readonly brokerCapacityConfig: pulumi.Output<outputs.managedkafka.ClusterBrokerCapacityConfig | undefined>;
+    /**
      * A capacity configuration of a Kafka cluster.
      * Structure is documented below.
      */
@@ -239,6 +244,7 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
+            resourceInputs["brokerCapacityConfig"] = state?.brokerCapacityConfig;
             resourceInputs["capacityConfig"] = state?.capacityConfig;
             resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["createTime"] = state?.createTime;
@@ -267,6 +273,7 @@ export class Cluster extends pulumi.CustomResource {
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["brokerCapacityConfig"] = args?.brokerCapacityConfig;
             resourceInputs["capacityConfig"] = args?.capacityConfig;
             resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["gcpConfig"] = args?.gcpConfig;
@@ -293,6 +300,11 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
+    /**
+     * Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+     * Structure is documented below.
+     */
+    brokerCapacityConfig?: pulumi.Input<inputs.managedkafka.ClusterBrokerCapacityConfig>;
     /**
      * A capacity configuration of a Kafka cluster.
      * Structure is documented below.
@@ -363,6 +375,11 @@ export interface ClusterState {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    /**
+     * Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+     * Structure is documented below.
+     */
+    brokerCapacityConfig?: pulumi.Input<inputs.managedkafka.ClusterBrokerCapacityConfig>;
     /**
      * A capacity configuration of a Kafka cluster.
      * Structure is documented below.

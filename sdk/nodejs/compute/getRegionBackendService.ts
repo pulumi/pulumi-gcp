@@ -95,6 +95,7 @@ export interface GetRegionBackendServiceResult {
     readonly strongSessionAffinityCookies: outputs.compute.GetRegionBackendServiceStrongSessionAffinityCooky[];
     readonly subsettings: outputs.compute.GetRegionBackendServiceSubsetting[];
     readonly timeoutSec: number;
+    readonly tlsSettings: outputs.compute.GetRegionBackendServiceTlsSetting[];
 }
 /**
  * Get information about a Regional Backend Service. For more information see

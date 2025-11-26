@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecExcludeFieldsArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecIncludeFieldsArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecPostScanActionsArgs;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DatascanDataProfileSpecArgs Empty = new DatascanDataProfileSpecArgs();
+
+    /**
+     * If set, the latest DataScan job result will be published to Dataplex Catalog.
+     * 
+     */
+    @Import(name="catalogPublishingEnabled")
+    private @Nullable Output<Boolean> catalogPublishingEnabled;
+
+    /**
+     * @return If set, the latest DataScan job result will be published to Dataplex Catalog.
+     * 
+     */
+    public Optional<Output<Boolean>> catalogPublishingEnabled() {
+        return Optional.ofNullable(this.catalogPublishingEnabled);
+    }
 
     /**
      * The fields to exclude from data profile.
@@ -111,6 +127,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
     private DatascanDataProfileSpecArgs() {}
 
     private DatascanDataProfileSpecArgs(DatascanDataProfileSpecArgs $) {
+        this.catalogPublishingEnabled = $.catalogPublishingEnabled;
         this.excludeFields = $.excludeFields;
         this.includeFields = $.includeFields;
         this.postScanActions = $.postScanActions;
@@ -134,6 +151,27 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
 
         public Builder(DatascanDataProfileSpecArgs defaults) {
             $ = new DatascanDataProfileSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param catalogPublishingEnabled If set, the latest DataScan job result will be published to Dataplex Catalog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogPublishingEnabled(@Nullable Output<Boolean> catalogPublishingEnabled) {
+            $.catalogPublishingEnabled = catalogPublishingEnabled;
+            return this;
+        }
+
+        /**
+         * @param catalogPublishingEnabled If set, the latest DataScan job result will be published to Dataplex Catalog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogPublishingEnabled(Boolean catalogPublishingEnabled) {
+            return catalogPublishingEnabled(Output.of(catalogPublishingEnabled));
         }
 
         /**

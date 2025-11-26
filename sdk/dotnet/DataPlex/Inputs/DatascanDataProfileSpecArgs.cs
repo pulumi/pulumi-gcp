@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.DataPlex.Inputs
     public sealed class DatascanDataProfileSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If set, the latest DataScan job result will be published to Dataplex Catalog.
+        /// </summary>
+        [Input("catalogPublishingEnabled")]
+        public Input<bool>? CatalogPublishingEnabled { get; set; }
+
+        /// <summary>
         /// The fields to exclude from data profile.
         /// If specified, the fields will be excluded from data profile, regardless of `IncludeFields` value.
         /// Structure is documented below.

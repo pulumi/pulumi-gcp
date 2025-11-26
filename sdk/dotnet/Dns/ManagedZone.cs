@@ -159,6 +159,52 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// ### Dns Managed Zone Private Forwarding Ipv6
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new Gcp.Compute.Network("network_1", new()
+    ///     {
+    ///         Name = "network-1",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var private_zone = new Gcp.Dns.ManagedZone("private-zone", new()
+    ///     {
+    ///         Name = "private-zone",
+    ///         DnsName = "private.example.com.",
+    ///         Description = "Example private DNS zone",
+    ///         Visibility = "private",
+    ///         PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
+    ///         {
+    ///             Networks = new[]
+    ///             {
+    ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
+    ///                 {
+    ///                     NetworkUrl = network1.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ForwardingConfig = new Gcp.Dns.Inputs.ManagedZoneForwardingConfigArgs
+    ///         {
+    ///             TargetNameServers = new[]
+    ///             {
+    ///                 new Gcp.Dns.Inputs.ManagedZoneForwardingConfigTargetNameServerArgs
+    ///                 {
+    ///                     Ipv6Address = "fd20:3e9:7a70:680d:0:8::",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Dns Managed Zone Private Gke
     /// 
     /// ```csharp

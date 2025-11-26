@@ -238,6 +238,80 @@ import (
 //
 // ```
 //
+// ### IP Filter Mode Enabled
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "hns-enabled", &storage.BucketArgs{
+//				Name:         pulumi.String("hns-enabled-bucket"),
+//				Location:     pulumi.String("US"),
+//				ForceDestroy: pulumi.Bool(true),
+//				IpFilter: &storage.BucketIpFilterArgs{
+//					Mode: pulumi.String("Enabled"),
+//					PublicNetworkSource: &storage.BucketIpFilterPublicNetworkSourceArgs{
+//						AllowedIpCidrRanges: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//							pulumi.String("::/0"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### IP Filter Mode Disabled
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "hns-enabled", &storage.BucketArgs{
+//				Name:         pulumi.String("hns-enabled-bucket"),
+//				Location:     pulumi.String("US"),
+//				ForceDestroy: pulumi.Bool(true),
+//				IpFilter: &storage.BucketIpFilterArgs{
+//					Mode: pulumi.String("Disabled"),
+//					PublicNetworkSource: &storage.BucketIpFilterPublicNetworkSourceArgs{
+//						AllowedIpCidrRanges: pulumi.StringArray{
+//							pulumi.String("0.0.0.0/0"),
+//							pulumi.String("::/0"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Storage buckets can be imported using the `name` or  `project/name`. If the project is not

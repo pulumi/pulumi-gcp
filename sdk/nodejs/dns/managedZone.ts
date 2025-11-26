@@ -112,6 +112,33 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dns Managed Zone Private Forwarding Ipv6
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network1 = new gcp.compute.Network("network_1", {
+ *     name: "network-1",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const private_zone = new gcp.dns.ManagedZone("private-zone", {
+ *     name: "private-zone",
+ *     dnsName: "private.example.com.",
+ *     description: "Example private DNS zone",
+ *     visibility: "private",
+ *     privateVisibilityConfig: {
+ *         networks: [{
+ *             networkUrl: network1.id,
+ *         }],
+ *     },
+ *     forwardingConfig: {
+ *         targetNameServers: [{
+ *             ipv6Address: "fd20:3e9:7a70:680d:0:8::",
+ *         }],
+ *     },
+ * });
+ * ```
  * ### Dns Managed Zone Private Gke
  *
  * ```typescript

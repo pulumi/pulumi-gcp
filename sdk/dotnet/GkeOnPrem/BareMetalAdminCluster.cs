@@ -149,6 +149,11 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                     "10.240.0.0/13",
     ///                 },
     ///             },
+    ///             AdvancedNetworking = true,
+    ///             MultipleNetworkInterfacesConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
     ///         },
     ///         NodeConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNodeConfigArgs
     ///         {
@@ -210,9 +215,73 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///             {
     ///                 ControlPlaneVip = "10.200.0.5",
     ///             },
-    ///             ManualLbConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerManualLbConfigArgs
+    ///             BgpLbConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerBgpLbConfigArgs
     ///             {
-    ///                 Enabled = true,
+    ///                 Asn = 123456,
+    ///                 BgpPeerConfigs = new[]
+    ///                 {
+    ///                     new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs
+    ///                     {
+    ///                         Asn = 123457,
+    ///                         IpAddress = "10.0.0.1",
+    ///                         ControlPlaneNodes = new[]
+    ///                         {
+    ///                             "test-node",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 AddressPools = new[]
+    ///                 {
+    ///                     new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs
+    ///                     {
+    ///                         Pool = "loadBalancerAddressPool-1",
+    ///                         Addresses = new[]
+    ///                         {
+    ///                             "10.200.0.14/32",
+    ///                             "10.200.0.15/32",
+    ///                             "10.200.0.16/32",
+    ///                             "10.200.0.17/32",
+    ///                             "10.200.0.18/32",
+    ///                             "fd00:1::f/128",
+    ///                             "fd00:1::10/128",
+    ///                             "fd00:1::11/128",
+    ///                             "fd00:1::12/128",
+    ///                         },
+    ///                         ManualAssign = true,
+    ///                         AvoidBuggyIps = true,
+    ///                     },
+    ///                 },
+    ///                 LoadBalancerNodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs
+    ///                 {
+    ///                     NodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs
+    ///                     {
+    ///                         Labels = null,
+    ///                         OperatingSystem = "LINUX",
+    ///                         NodeConfigs = new[]
+    ///                         {
+    ///                             new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs
+    ///                             {
+    ///                                 Labels = null,
+    ///                                 NodeIp = "10.200.0.9",
+    ///                             },
+    ///                         },
+    ///                         KubeletConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs
+    ///                         {
+    ///                             RegistryBurst = 12,
+    ///                             RegistryPullQps = 10,
+    ///                             SerializeImagePullsDisabled = true,
+    ///                         },
+    ///                         Taints = new[]
+    ///                         {
+    ///                             new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs
+    ///                             {
+    ///                                 Key = "test-key",
+    ///                                 Value = "test-value",
+    ///                                 Effect = "NO_EXECUTE",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
     ///             },
     ///         },
     ///         Storage = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageArgs

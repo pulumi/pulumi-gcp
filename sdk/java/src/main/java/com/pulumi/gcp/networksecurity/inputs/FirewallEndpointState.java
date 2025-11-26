@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networksecurity.inputs.FirewallEndpointEndpointSettingsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -82,6 +83,23 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * Settings for the endpoint.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="endpointSettings")
+    private @Nullable Output<FirewallEndpointEndpointSettingsArgs> endpointSettings;
+
+    /**
+     * @return Settings for the endpoint.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FirewallEndpointEndpointSettingsArgs>> endpointSettings() {
+        return Optional.ofNullable(this.endpointSettings);
     }
 
     /**
@@ -236,6 +254,7 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
         this.billingProjectId = $.billingProjectId;
         this.createTime = $.createTime;
         this.effectiveLabels = $.effectiveLabels;
+        this.endpointSettings = $.endpointSettings;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
@@ -366,6 +385,29 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param endpointSettings Settings for the endpoint.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointSettings(@Nullable Output<FirewallEndpointEndpointSettingsArgs> endpointSettings) {
+            $.endpointSettings = endpointSettings;
+            return this;
+        }
+
+        /**
+         * @param endpointSettings Settings for the endpoint.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointSettings(FirewallEndpointEndpointSettingsArgs endpointSettings) {
+            return endpointSettings(Output.of(endpointSettings));
         }
 
         /**

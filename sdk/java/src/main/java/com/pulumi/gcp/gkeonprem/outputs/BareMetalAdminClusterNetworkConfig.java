@@ -5,6 +5,8 @@ package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterNetworkConfigIslandModeCidr;
+import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,13 +14,31 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BareMetalAdminClusterNetworkConfig {
     /**
+     * @return Enables the use of advanced Anthos networking features.
+     * 
+     */
+    private @Nullable Boolean advancedNetworking;
+    /**
      * @return A nested object resource.
      * Structure is documented below.
      * 
      */
     private @Nullable BareMetalAdminClusterNetworkConfigIslandModeCidr islandModeCidr;
+    /**
+     * @return Configuration for multiple network interfaces.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig multipleNetworkInterfacesConfig;
 
     private BareMetalAdminClusterNetworkConfig() {}
+    /**
+     * @return Enables the use of advanced Anthos networking features.
+     * 
+     */
+    public Optional<Boolean> advancedNetworking() {
+        return Optional.ofNullable(this.advancedNetworking);
+    }
     /**
      * @return A nested object resource.
      * Structure is documented below.
@@ -26,6 +46,14 @@ public final class BareMetalAdminClusterNetworkConfig {
      */
     public Optional<BareMetalAdminClusterNetworkConfigIslandModeCidr> islandModeCidr() {
         return Optional.ofNullable(this.islandModeCidr);
+    }
+    /**
+     * @return Configuration for multiple network interfaces.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig> multipleNetworkInterfacesConfig() {
+        return Optional.ofNullable(this.multipleNetworkInterfacesConfig);
     }
 
     public static Builder builder() {
@@ -37,22 +65,40 @@ public final class BareMetalAdminClusterNetworkConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean advancedNetworking;
         private @Nullable BareMetalAdminClusterNetworkConfigIslandModeCidr islandModeCidr;
+        private @Nullable BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig multipleNetworkInterfacesConfig;
         public Builder() {}
         public Builder(BareMetalAdminClusterNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.advancedNetworking = defaults.advancedNetworking;
     	      this.islandModeCidr = defaults.islandModeCidr;
+    	      this.multipleNetworkInterfacesConfig = defaults.multipleNetworkInterfacesConfig;
         }
 
+        @CustomType.Setter
+        public Builder advancedNetworking(@Nullable Boolean advancedNetworking) {
+
+            this.advancedNetworking = advancedNetworking;
+            return this;
+        }
         @CustomType.Setter
         public Builder islandModeCidr(@Nullable BareMetalAdminClusterNetworkConfigIslandModeCidr islandModeCidr) {
 
             this.islandModeCidr = islandModeCidr;
             return this;
         }
+        @CustomType.Setter
+        public Builder multipleNetworkInterfacesConfig(@Nullable BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig multipleNetworkInterfacesConfig) {
+
+            this.multipleNetworkInterfacesConfig = multipleNetworkInterfacesConfig;
+            return this;
+        }
         public BareMetalAdminClusterNetworkConfig build() {
             final var _resultValue = new BareMetalAdminClusterNetworkConfig();
+            _resultValue.advancedNetworking = advancedNetworking;
             _resultValue.islandModeCidr = islandModeCidr;
+            _resultValue.multipleNetworkInterfacesConfig = multipleNetworkInterfacesConfig;
             return _resultValue;
         }
     }

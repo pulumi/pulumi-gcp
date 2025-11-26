@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataProfileSpecExcludeFields;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataProfileSpecIncludeFields;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataProfileSpecPostScanActions;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DatascanDataProfileSpec {
+    /**
+     * @return If set, the latest DataScan job result will be published to Dataplex Catalog.
+     * 
+     */
+    private @Nullable Boolean catalogPublishingEnabled;
     /**
      * @return The fields to exclude from data profile.
      * If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
@@ -49,6 +55,13 @@ public final class DatascanDataProfileSpec {
     private @Nullable Double samplingPercent;
 
     private DatascanDataProfileSpec() {}
+    /**
+     * @return If set, the latest DataScan job result will be published to Dataplex Catalog.
+     * 
+     */
+    public Optional<Boolean> catalogPublishingEnabled() {
+        return Optional.ofNullable(this.catalogPublishingEnabled);
+    }
     /**
      * @return The fields to exclude from data profile.
      * If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
@@ -101,6 +114,7 @@ public final class DatascanDataProfileSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean catalogPublishingEnabled;
         private @Nullable DatascanDataProfileSpecExcludeFields excludeFields;
         private @Nullable DatascanDataProfileSpecIncludeFields includeFields;
         private @Nullable DatascanDataProfileSpecPostScanActions postScanActions;
@@ -109,6 +123,7 @@ public final class DatascanDataProfileSpec {
         public Builder() {}
         public Builder(DatascanDataProfileSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.catalogPublishingEnabled = defaults.catalogPublishingEnabled;
     	      this.excludeFields = defaults.excludeFields;
     	      this.includeFields = defaults.includeFields;
     	      this.postScanActions = defaults.postScanActions;
@@ -116,6 +131,12 @@ public final class DatascanDataProfileSpec {
     	      this.samplingPercent = defaults.samplingPercent;
         }
 
+        @CustomType.Setter
+        public Builder catalogPublishingEnabled(@Nullable Boolean catalogPublishingEnabled) {
+
+            this.catalogPublishingEnabled = catalogPublishingEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder excludeFields(@Nullable DatascanDataProfileSpecExcludeFields excludeFields) {
 
@@ -148,6 +169,7 @@ public final class DatascanDataProfileSpec {
         }
         public DatascanDataProfileSpec build() {
             final var _resultValue = new DatascanDataProfileSpec();
+            _resultValue.catalogPublishingEnabled = catalogPublishingEnabled;
             _resultValue.excludeFields = excludeFields;
             _resultValue.includeFields = includeFields;
             _resultValue.postScanActions = postScanActions;

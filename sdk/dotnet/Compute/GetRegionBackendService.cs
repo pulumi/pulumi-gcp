@@ -192,6 +192,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceStrongSessionAffinityCookyResult> StrongSessionAffinityCookies;
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceSubsettingResult> Subsettings;
         public readonly int TimeoutSec;
+        public readonly ImmutableArray<Outputs.GetRegionBackendServiceTlsSettingResult> TlsSettings;
 
         [OutputConstructor]
         private GetRegionBackendServiceResult(
@@ -267,7 +268,9 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetRegionBackendServiceSubsettingResult> subsettings,
 
-            int timeoutSec)
+            int timeoutSec,
+
+            ImmutableArray<Outputs.GetRegionBackendServiceTlsSettingResult> tlsSettings)
         {
             AffinityCookieTtlSec = affinityCookieTtlSec;
             Backends = backends;
@@ -306,6 +309,7 @@ namespace Pulumi.Gcp.Compute
             StrongSessionAffinityCookies = strongSessionAffinityCookies;
             Subsettings = subsettings;
             TimeoutSec = timeoutSec;
+            TlsSettings = tlsSettings;
         }
     }
 }

@@ -13,11 +13,24 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
     public sealed class BareMetalAdminClusterNetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enables the use of advanced Anthos networking features.
+        /// </summary>
+        [Input("advancedNetworking")]
+        public Input<bool>? AdvancedNetworking { get; set; }
+
+        /// <summary>
         /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("islandModeCidr")]
         public Input<Inputs.BareMetalAdminClusterNetworkConfigIslandModeCidrArgs>? IslandModeCidr { get; set; }
+
+        /// <summary>
+        /// Configuration for multiple network interfaces.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("multipleNetworkInterfacesConfig")]
+        public Input<Inputs.BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs>? MultipleNetworkInterfacesConfig { get; set; }
 
         public BareMetalAdminClusterNetworkConfigArgs()
         {

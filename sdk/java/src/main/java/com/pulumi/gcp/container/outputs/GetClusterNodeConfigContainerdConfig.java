@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigContainerdConfigWritableCgroup;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,6 +17,11 @@ public final class GetClusterNodeConfigContainerdConfig {
      * 
      */
     private List<GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs;
+    /**
+     * @return Parameters for writable cgroups configuration.
+     * 
+     */
+    private List<GetClusterNodeConfigContainerdConfigWritableCgroup> writableCgroups;
 
     private GetClusterNodeConfigContainerdConfig() {}
     /**
@@ -24,6 +30,13 @@ public final class GetClusterNodeConfigContainerdConfig {
      */
     public List<GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs() {
         return this.privateRegistryAccessConfigs;
+    }
+    /**
+     * @return Parameters for writable cgroups configuration.
+     * 
+     */
+    public List<GetClusterNodeConfigContainerdConfigWritableCgroup> writableCgroups() {
+        return this.writableCgroups;
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class GetClusterNodeConfigContainerdConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs;
+        private List<GetClusterNodeConfigContainerdConfigWritableCgroup> writableCgroups;
         public Builder() {}
         public Builder(GetClusterNodeConfigContainerdConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.privateRegistryAccessConfigs = defaults.privateRegistryAccessConfigs;
+    	      this.writableCgroups = defaults.writableCgroups;
         }
 
         @CustomType.Setter
@@ -53,9 +68,21 @@ public final class GetClusterNodeConfigContainerdConfig {
         public Builder privateRegistryAccessConfigs(GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig... privateRegistryAccessConfigs) {
             return privateRegistryAccessConfigs(List.of(privateRegistryAccessConfigs));
         }
+        @CustomType.Setter
+        public Builder writableCgroups(List<GetClusterNodeConfigContainerdConfigWritableCgroup> writableCgroups) {
+            if (writableCgroups == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigContainerdConfig", "writableCgroups");
+            }
+            this.writableCgroups = writableCgroups;
+            return this;
+        }
+        public Builder writableCgroups(GetClusterNodeConfigContainerdConfigWritableCgroup... writableCgroups) {
+            return writableCgroups(List.of(writableCgroups));
+        }
         public GetClusterNodeConfigContainerdConfig build() {
             final var _resultValue = new GetClusterNodeConfigContainerdConfig();
             _resultValue.privateRegistryAccessConfigs = privateRegistryAccessConfigs;
+            _resultValue.writableCgroups = writableCgroups;
             return _resultValue;
         }
     }

@@ -586,6 +586,41 @@ class Service(pulumi.CustomResource):
                 "latest_revision": True,
             }])
         ```
+        ### Cloud Run Service Readiness Probe
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv-rp",
+            location="us-central1",
+            metadata={
+                "annotations": {
+                    "run.googleapis.com/launch-stage": "BETA",
+                },
+            },
+            template={
+                "spec": {
+                    "containers": [{
+                        "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                        "readiness_probe": {
+                            "timeout_seconds": 20,
+                            "period_seconds": 30,
+                            "success_threshold": 3,
+                            "failure_threshold": 2,
+                            "grpc": {
+                                "port": 8080,
+                            },
+                        },
+                    }],
+                },
+            },
+            traffics=[{
+                "percent": 100,
+                "latest_revision": True,
+            }])
+        ```
         ### Cloud Run Service Multicontainer
 
         ```python
@@ -933,6 +968,41 @@ class Service(pulumi.CustomResource):
                         "liveness_probe": {
                             "http_get": {
                                 "path": "/",
+                            },
+                        },
+                    }],
+                },
+            },
+            traffics=[{
+                "percent": 100,
+                "latest_revision": True,
+            }])
+        ```
+        ### Cloud Run Service Readiness Probe
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv-rp",
+            location="us-central1",
+            metadata={
+                "annotations": {
+                    "run.googleapis.com/launch-stage": "BETA",
+                },
+            },
+            template={
+                "spec": {
+                    "containers": [{
+                        "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                        "readiness_probe": {
+                            "timeout_seconds": 20,
+                            "period_seconds": 30,
+                            "success_threshold": 3,
+                            "failure_threshold": 2,
+                            "grpc": {
+                                "port": 8080,
                             },
                         },
                     }],

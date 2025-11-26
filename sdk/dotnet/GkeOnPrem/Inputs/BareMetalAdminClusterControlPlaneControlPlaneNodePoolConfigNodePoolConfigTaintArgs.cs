@@ -13,20 +13,19 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
     public sealed class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the nodes operating system (default: LINUX).
-        /// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        /// Available taint effects.
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
         /// <summary>
-        /// Key associated with the effect.
+        /// (Optional)
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// Value associated with the effect.
+        /// (Optional)
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

@@ -22,9 +22,38 @@ namespace Pulumi.Gcp.Ces
     /// using System.Text.Json;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var fakePrivateKeySecret = new Gcp.SecretManager.Secret("fake_private_key_secret", new()
+    ///     {
+    ///         SecretId = "fake-pk-secret-app-tf1",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var fakeSecretVersion = new Gcp.SecretManager.SecretVersion("fake_secret_version", new()
+    ///     {
+    ///         Secret = fakePrivateKeySecret.Id,
+    ///         SecretData = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "test-fixtures/test.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var privateKeyAccessor = new Gcp.SecretManager.SecretIamMember("private_key_accessor", new()
+    ///     {
+    ///         Project = fakePrivateKeySecret.Project,
+    ///         SecretId = fakePrivateKeySecret.SecretId,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-ces.iam.gserviceaccount.com",
+    ///     });
+    /// 
     ///     var cesAppBasic = new Gcp.Ces.App("ces_app_basic", new()
     ///     {
     ///         AppId = "app-id",
@@ -211,6 +240,15 @@ namespace Pulumi.Gcp.Ces
     ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
     ///         {
     ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///         ClientCertificateSettings = new Gcp.Ces.Inputs.AppClientCertificateSettingsArgs
+    ///         {
+    ///             TlsCertificate = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/cert.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             PrivateKey = fakeSecretVersion.Name,
+    ///             Passphrase = "fakepassphrase",
     ///         },
     ///     });
     /// 
@@ -463,6 +501,13 @@ namespace Pulumi.Gcp.Ces
         public Output<Outputs.AppAudioProcessingConfig?> AudioProcessingConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The default client certificate settings for the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("clientCertificateSettings")]
+        public Output<Outputs.AppClientCertificateSettings?> ClientCertificateSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Timestamp when the app was created.
         /// </summary>
         [Output("createTime")]
@@ -670,6 +715,13 @@ namespace Pulumi.Gcp.Ces
         public Input<Inputs.AppAudioProcessingConfigArgs>? AudioProcessingConfig { get; set; }
 
         /// <summary>
+        /// The default client certificate settings for the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("clientCertificateSettings")]
+        public Input<Inputs.AppClientCertificateSettingsArgs>? ClientCertificateSettings { get; set; }
+
+        /// <summary>
         /// Data store related settings for the app.
         /// Structure is documented below.
         /// </summary>
@@ -822,6 +874,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("audioProcessingConfig")]
         public Input<Inputs.AppAudioProcessingConfigGetArgs>? AudioProcessingConfig { get; set; }
+
+        /// <summary>
+        /// The default client certificate settings for the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("clientCertificateSettings")]
+        public Input<Inputs.AppClientCertificateSettingsGetArgs>? ClientCertificateSettings { get; set; }
 
         /// <summary>
         /// Timestamp when the app was created.

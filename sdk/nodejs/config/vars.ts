@@ -361,6 +361,14 @@ Object.defineProperty(exports, "cloudSchedulerCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const cloudSecurityComplianceCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudSecurityComplianceCustomEndpoint", {
+    get() {
+        return __config.get("cloudSecurityComplianceCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const cloudTasksCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "cloudTasksCustomEndpoint", {
     get() {

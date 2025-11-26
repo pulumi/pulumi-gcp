@@ -33,6 +33,22 @@ __all__ = [
     'BareMetalAdminClusterFleetArgsDict',
     'BareMetalAdminClusterLoadBalancerArgs',
     'BareMetalAdminClusterLoadBalancerArgsDict',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigArgs',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigArgsDict',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgsDict',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs',
+    'BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict',
     'BareMetalAdminClusterLoadBalancerManualLbConfigArgs',
     'BareMetalAdminClusterLoadBalancerManualLbConfigArgsDict',
     'BareMetalAdminClusterLoadBalancerPortConfigArgs',
@@ -45,6 +61,8 @@ __all__ = [
     'BareMetalAdminClusterNetworkConfigArgsDict',
     'BareMetalAdminClusterNetworkConfigIslandModeCidrArgs',
     'BareMetalAdminClusterNetworkConfigIslandModeCidrArgsDict',
+    'BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs',
+    'BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict',
     'BareMetalAdminClusterNodeAccessConfigArgs',
     'BareMetalAdminClusterNodeAccessConfigArgsDict',
     'BareMetalAdminClusterNodeConfigArgs',
@@ -517,29 +535,21 @@ if not MYPY:
     class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDict(TypedDict):
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
-        The map of Kubernetes labels (key/value pairs) to be applied to
-        each node. These will added in addition to any default label(s)
-        that Kubernetes may apply to the node. In case of conflict in
-        label keys, the applied set may differ depending on the Kubernetes
-        version -- it's best to assume the behavior is undefined and
-        conflicts should be avoided. For more information, including usage
-        and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-        An object containing a list of "key": value pairs.
-        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        The labels assigned to nodes of this node pool.
+        An object containing a list of key/value pairs.
+        Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
         """
-        The list of machine addresses in the Bare Metal Node Pool.
         Structure is documented below.
         """
         operating_system: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the nodes operating system (default: LINUX).
+        The available Operating Systems to be run in a Node.
         """
         taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict']]]]
         """
-        The initial taints assigned to nodes of this node pool.
         Structure is documented below.
         """
 elif False:
@@ -553,21 +563,13 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
                  operating_system: Optional[pulumi.Input[_builtins.str]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
-               each node. These will added in addition to any default label(s)
-               that Kubernetes may apply to the node. In case of conflict in
-               label keys, the applied set may differ depending on the Kubernetes
-               version -- it's best to assume the behavior is undefined and
-               conflicts should be avoided. For more information, including usage
-               and the valid values, see:
-               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-               An object containing a list of "key": value pairs.
-               For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
-               Structure is documented below.
-        :param pulumi.Input[_builtins.str] operating_system: Specifies the nodes operating system (default: LINUX).
-        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]] taints: The initial taints assigned to nodes of this node pool.
-               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels assigned to nodes of this node pool.
+               An object containing a list of key/value pairs.
+               Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: Structure is documented below.
+        :param pulumi.Input[_builtins.str] operating_system: The available Operating Systems to be run in a Node.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]] taints: Structure is documented below.
         """
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -582,16 +584,10 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The map of Kubernetes labels (key/value pairs) to be applied to
-        each node. These will added in addition to any default label(s)
-        that Kubernetes may apply to the node. In case of conflict in
-        label keys, the applied set may differ depending on the Kubernetes
-        version -- it's best to assume the behavior is undefined and
-        conflicts should be avoided. For more information, including usage
-        and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-        An object containing a list of "key": value pairs.
-        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        The labels assigned to nodes of this node pool.
+        An object containing a list of key/value pairs.
+        Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 
@@ -603,7 +599,6 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
     @pulumi.getter(name="nodeConfigs")
     def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
         """
-        The list of machine addresses in the Bare Metal Node Pool.
         Structure is documented below.
         """
         return pulumi.get(self, "node_configs")
@@ -616,7 +611,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the nodes operating system (default: LINUX).
+        The available Operating Systems to be run in a Node.
         """
         return pulumi.get(self, "operating_system")
 
@@ -628,7 +623,6 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]:
         """
-        The initial taints assigned to nodes of this node pool.
         Structure is documented below.
         """
         return pulumi.get(self, "taints")
@@ -642,21 +636,14 @@ if not MYPY:
     class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict(TypedDict):
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
-        The map of Kubernetes labels (key/value pairs) to be applied to
-        each node. These will added in addition to any default label(s)
-        that Kubernetes may apply to the node. In case of conflict in
-        label keys, the applied set may differ depending on the Kubernetes
-        version -- it's best to assume the behavior is undefined and
-        conflicts should be avoided. For more information, including usage
-        and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-        An object containing a list of "key": value pairs.
-        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        The labels assigned to nodes of this node pool.
+        An object containing a list of key/value pairs.
+        Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         node_ip: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The default IPv4 address for SSH access and Kubernetes node.
-        Example: 192.168.0.1
+        (Optional)
         """
 elif False:
     BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -667,18 +654,11 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  node_ip: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
-               each node. These will added in addition to any default label(s)
-               that Kubernetes may apply to the node. In case of conflict in
-               label keys, the applied set may differ depending on the Kubernetes
-               version -- it's best to assume the behavior is undefined and
-               conflicts should be avoided. For more information, including usage
-               and the valid values, see:
-               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-               An object containing a list of "key": value pairs.
-               For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[_builtins.str] node_ip: The default IPv4 address for SSH access and Kubernetes node.
-               Example: 192.168.0.1
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels assigned to nodes of this node pool.
+               An object containing a list of key/value pairs.
+               Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[_builtins.str] node_ip: (Optional)
         """
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -689,16 +669,10 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The map of Kubernetes labels (key/value pairs) to be applied to
-        each node. These will added in addition to any default label(s)
-        that Kubernetes may apply to the node. In case of conflict in
-        label keys, the applied set may differ depending on the Kubernetes
-        version -- it's best to assume the behavior is undefined and
-        conflicts should be avoided. For more information, including usage
-        and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-        An object containing a list of "key": value pairs.
-        For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        The labels assigned to nodes of this node pool.
+        An object containing a list of key/value pairs.
+        Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 
@@ -710,8 +684,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
     @pulumi.getter(name="nodeIp")
     def node_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The default IPv4 address for SSH access and Kubernetes node.
-        Example: 192.168.0.1
+        (Optional)
         """
         return pulumi.get(self, "node_ip")
 
@@ -724,16 +697,15 @@ if not MYPY:
     class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict(TypedDict):
         effect: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the nodes operating system (default: LINUX).
-        Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        Available taint effects.
         """
         key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Key associated with the effect.
+        (Optional)
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Value associated with the effect.
+        (Optional)
         """
 elif False:
     BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict: TypeAlias = Mapping[str, Any]
@@ -745,10 +717,9 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] effect: Specifies the nodes operating system (default: LINUX).
-               Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-        :param pulumi.Input[_builtins.str] key: Key associated with the effect.
-        :param pulumi.Input[_builtins.str] value: Value associated with the effect.
+        :param pulumi.Input[_builtins.str] effect: Available taint effects.
+        :param pulumi.Input[_builtins.str] key: (Optional)
+        :param pulumi.Input[_builtins.str] value: (Optional)
         """
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
@@ -761,8 +732,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the nodes operating system (default: LINUX).
-        Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        Available taint effects.
         """
         return pulumi.get(self, "effect")
 
@@ -774,7 +744,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Key associated with the effect.
+        (Optional)
         """
         return pulumi.get(self, "key")
 
@@ -786,7 +756,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Value associated with the effect.
+        (Optional)
         """
         return pulumi.get(self, "value")
 
@@ -848,6 +818,11 @@ if not MYPY:
         Specified the Bare Metal Load Balancer Config
         Structure is documented below.
         """
+        bgp_lb_config: NotRequired[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigArgsDict']]
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
         manual_lb_config: NotRequired[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgsDict']]
         """
         A nested object resource.
@@ -861,17 +836,22 @@ class BareMetalAdminClusterLoadBalancerArgs:
     def __init__(__self__, *,
                  port_config: pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArgs'],
                  vip_config: pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArgs'],
+                 bgp_lb_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigArgs']] = None,
                  manual_lb_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']] = None):
         """
         :param pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArgs'] port_config: Specifies the load balancer ports.
                Structure is documented below.
         :param pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArgs'] vip_config: Specified the Bare Metal Load Balancer Config
                Structure is documented below.
+        :param pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigArgs'] bgp_lb_config: A nested object resource.
+               Structure is documented below.
         :param pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgs'] manual_lb_config: A nested object resource.
                Structure is documented below.
         """
         pulumi.set(__self__, "port_config", port_config)
         pulumi.set(__self__, "vip_config", vip_config)
+        if bgp_lb_config is not None:
+            pulumi.set(__self__, "bgp_lb_config", bgp_lb_config)
         if manual_lb_config is not None:
             pulumi.set(__self__, "manual_lb_config", manual_lb_config)
 
@@ -902,6 +882,19 @@ class BareMetalAdminClusterLoadBalancerArgs:
         pulumi.set(self, "vip_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="bgpLbConfig")
+    def bgp_lb_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigArgs']]:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bgp_lb_config")
+
+    @bgp_lb_config.setter
+    def bgp_lb_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigArgs']]):
+        pulumi.set(self, "bgp_lb_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="manualLbConfig")
     def manual_lb_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']]:
         """
@@ -913,6 +906,644 @@ class BareMetalAdminClusterLoadBalancerArgs:
     @manual_lb_config.setter
     def manual_lb_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']]):
         pulumi.set(self, "manual_lb_config", value)
+
+
+if not MYPY:
+    class BareMetalAdminClusterLoadBalancerBgpLbConfigArgsDict(TypedDict):
+        address_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgsDict']]]]
+        """
+        a list of non-overlapping IP pools used
+        by load balancer typed services.
+        Structure is documented below.
+        """
+        asn: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        BGP autonomous system number (ASN) of the cluster.
+        """
+        bgp_peer_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict']]]]
+        """
+        BGP autonomous system number (ASN) of the cluster.
+        Structure is documented below.
+        """
+        load_balancer_node_pool_config: NotRequired[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict']]
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterLoadBalancerBgpLbConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BareMetalAdminClusterLoadBalancerBgpLbConfigArgs:
+    def __init__(__self__, *,
+                 address_pools: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]] = None,
+                 asn: Optional[pulumi.Input[_builtins.int]] = None,
+                 bgp_peer_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]] = None,
+                 load_balancer_node_pool_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]] address_pools: a list of non-overlapping IP pools used
+               by load balancer typed services.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] asn: BGP autonomous system number (ASN) of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]] bgp_peer_configs: BGP autonomous system number (ASN) of the cluster.
+               Structure is documented below.
+        :param pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs'] load_balancer_node_pool_config: A nested object resource.
+               Structure is documented below.
+        """
+        if address_pools is not None:
+            pulumi.set(__self__, "address_pools", address_pools)
+        if asn is not None:
+            pulumi.set(__self__, "asn", asn)
+        if bgp_peer_configs is not None:
+            pulumi.set(__self__, "bgp_peer_configs", bgp_peer_configs)
+        if load_balancer_node_pool_config is not None:
+            pulumi.set(__self__, "load_balancer_node_pool_config", load_balancer_node_pool_config)
+
+    @_builtins.property
+    @pulumi.getter(name="addressPools")
+    def address_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]]:
+        """
+        a list of non-overlapping IP pools used
+        by load balancer typed services.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "address_pools")
+
+    @address_pools.setter
+    def address_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]]):
+        pulumi.set(self, "address_pools", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        BGP autonomous system number (ASN) of the cluster.
+        """
+        return pulumi.get(self, "asn")
+
+    @asn.setter
+    def asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "asn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bgpPeerConfigs")
+    def bgp_peer_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]]:
+        """
+        BGP autonomous system number (ASN) of the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bgp_peer_configs")
+
+    @bgp_peer_configs.setter
+    def bgp_peer_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]]):
+        pulumi.set(self, "bgp_peer_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerNodePoolConfig")
+    def load_balancer_node_pool_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "load_balancer_node_pool_config")
+
+    @load_balancer_node_pool_config.setter
+    def load_balancer_node_pool_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]):
+        pulumi.set(self, "load_balancer_node_pool_config", value)
+
+
+if not MYPY:
+    class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgsDict(TypedDict):
+        addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The addresses that are part of this pool.
+        """
+        avoid_buggy_ips: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        This avoids buggy consumer devices mistakenly
+        dropping IPv4 traffic for those special IP addresses.
+        """
+        manual_assign: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, prevent IP addresses from being automatically assigned.
+        """
+        pool: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional)
+        """
+elif False:
+    BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs:
+    def __init__(__self__, *,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 avoid_buggy_ips: Optional[pulumi.Input[_builtins.bool]] = None,
+                 manual_assign: Optional[pulumi.Input[_builtins.bool]] = None,
+                 pool: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: The addresses that are part of this pool.
+        :param pulumi.Input[_builtins.bool] avoid_buggy_ips: This avoids buggy consumer devices mistakenly
+               dropping IPv4 traffic for those special IP addresses.
+        :param pulumi.Input[_builtins.bool] manual_assign: If true, prevent IP addresses from being automatically assigned.
+        :param pulumi.Input[_builtins.str] pool: (Optional)
+        """
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+        if avoid_buggy_ips is not None:
+            pulumi.set(__self__, "avoid_buggy_ips", avoid_buggy_ips)
+        if manual_assign is not None:
+            pulumi.set(__self__, "manual_assign", manual_assign)
+        if pool is not None:
+            pulumi.set(__self__, "pool", pool)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The addresses that are part of this pool.
+        """
+        return pulumi.get(self, "addresses")
+
+    @addresses.setter
+    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "addresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="avoidBuggyIps")
+    def avoid_buggy_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        This avoids buggy consumer devices mistakenly
+        dropping IPv4 traffic for those special IP addresses.
+        """
+        return pulumi.get(self, "avoid_buggy_ips")
+
+    @avoid_buggy_ips.setter
+    def avoid_buggy_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "avoid_buggy_ips", value)
+
+    @_builtins.property
+    @pulumi.getter(name="manualAssign")
+    def manual_assign(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, prevent IP addresses from being automatically assigned.
+        """
+        return pulumi.get(self, "manual_assign")
+
+    @manual_assign.setter
+    def manual_assign(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "manual_assign", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "pool")
+
+    @pool.setter
+    def pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "pool", value)
+
+
+if not MYPY:
+    class BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict(TypedDict):
+        asn: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Optional)
+        """
+        control_plane_nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The IP address of the control plane node that
+        connects to the external peer.
+        """
+        ip_address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional)
+        """
+elif False:
+    BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
+    def __init__(__self__, *,
+                 asn: Optional[pulumi.Input[_builtins.int]] = None,
+                 control_plane_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_address: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] asn: (Optional)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] control_plane_nodes: The IP address of the control plane node that
+               connects to the external peer.
+        :param pulumi.Input[_builtins.str] ip_address: (Optional)
+        """
+        if asn is not None:
+            pulumi.set(__self__, "asn", asn)
+        if control_plane_nodes is not None:
+            pulumi.set(__self__, "control_plane_nodes", control_plane_nodes)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+
+    @_builtins.property
+    @pulumi.getter
+    def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "asn")
+
+    @asn.setter
+    def asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "asn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneNodes")
+    def control_plane_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The IP address of the control plane node that
+        connects to the external peer.
+        """
+        return pulumi.get(self, "control_plane_nodes")
+
+    @control_plane_nodes.setter
+    def control_plane_nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "control_plane_nodes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip_address", value)
+
+
+if not MYPY:
+    class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict(TypedDict):
+        node_pool_config: NotRequired[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict']]
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs:
+    def __init__(__self__, *,
+                 node_pool_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']] = None):
+        """
+        :param pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs'] node_pool_config: A nested object resource.
+               Structure is documented below.
+        """
+        if node_pool_config is not None:
+            pulumi.set(__self__, "node_pool_config", node_pool_config)
+
+    @_builtins.property
+    @pulumi.getter(name="nodePoolConfig")
+    def node_pool_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_pool_config")
+
+    @node_pool_config.setter
+    def node_pool_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]):
+        pulumi.set(self, "node_pool_config", value)
+
+
+if not MYPY:
+    class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict(TypedDict):
+        kubelet_config: NotRequired[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict']]
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        The labels assigned to nodes of this node pool.
+        An object containing a list of key/value pairs.
+        Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
+        """
+        Structure is documented below.
+        """
+        operating_system: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The available Operating Systems to be run in a Node.
+        """
+        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict']]]]
+        """
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs:
+    def __init__(__self__, *,
+                 kubelet_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
+                 operating_system: Optional[pulumi.Input[_builtins.str]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
+        """
+        :param pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs'] kubelet_config: A nested object resource.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels assigned to nodes of this node pool.
+               An object containing a list of key/value pairs.
+               Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: Structure is documented below.
+        :param pulumi.Input[_builtins.str] operating_system: The available Operating Systems to be run in a Node.
+        :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]] taints: Structure is documented below.
+        """
+        if kubelet_config is not None:
+            pulumi.set(__self__, "kubelet_config", kubelet_config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if node_configs is not None:
+            pulumi.set(__self__, "node_configs", node_configs)
+        if operating_system is not None:
+            pulumi.set(__self__, "operating_system", operating_system)
+        if taints is not None:
+            pulumi.set(__self__, "taints", taints)
+
+    @_builtins.property
+    @pulumi.getter(name="kubeletConfig")
+    def kubelet_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kubelet_config")
+
+    @kubelet_config.setter
+    def kubelet_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]):
+        pulumi.set(self, "kubelet_config", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The labels assigned to nodes of this node pool.
+        An object containing a list of key/value pairs.
+        Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeConfigs")
+    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_configs")
+
+    @node_configs.setter
+    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
+        pulumi.set(self, "node_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operatingSystem")
+    def operating_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The available Operating Systems to be run in a Node.
+        """
+        return pulumi.get(self, "operating_system")
+
+    @operating_system.setter
+    def operating_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operating_system", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "taints")
+
+    @taints.setter
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]):
+        pulumi.set(self, "taints", value)
+
+
+if not MYPY:
+    class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict(TypedDict):
+        registry_burst: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Optional)
+        """
+        registry_pull_qps: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Optional)
+        """
+        serialize_image_pulls_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        (Optional)
+        """
+elif False:
+    BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs:
+    def __init__(__self__, *,
+                 registry_burst: Optional[pulumi.Input[_builtins.int]] = None,
+                 registry_pull_qps: Optional[pulumi.Input[_builtins.int]] = None,
+                 serialize_image_pulls_disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.int] registry_burst: (Optional)
+        :param pulumi.Input[_builtins.int] registry_pull_qps: (Optional)
+        :param pulumi.Input[_builtins.bool] serialize_image_pulls_disabled: (Optional)
+        """
+        if registry_burst is not None:
+            pulumi.set(__self__, "registry_burst", registry_burst)
+        if registry_pull_qps is not None:
+            pulumi.set(__self__, "registry_pull_qps", registry_pull_qps)
+        if serialize_image_pulls_disabled is not None:
+            pulumi.set(__self__, "serialize_image_pulls_disabled", serialize_image_pulls_disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="registryBurst")
+    def registry_burst(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "registry_burst")
+
+    @registry_burst.setter
+    def registry_burst(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "registry_burst", value)
+
+    @_builtins.property
+    @pulumi.getter(name="registryPullQps")
+    def registry_pull_qps(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "registry_pull_qps")
+
+    @registry_pull_qps.setter
+    def registry_pull_qps(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "registry_pull_qps", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serializeImagePullsDisabled")
+    def serialize_image_pulls_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "serialize_image_pulls_disabled")
+
+    @serialize_image_pulls_disabled.setter
+    def serialize_image_pulls_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "serialize_image_pulls_disabled", value)
+
+
+if not MYPY:
+    class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        The labels assigned to nodes of this node pool.
+        An object containing a list of key/value pairs.
+        Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        node_ip: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional)
+        """
+elif False:
+    BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs:
+    def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_ip: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels assigned to nodes of this node pool.
+               An object containing a list of key/value pairs.
+               Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[_builtins.str] node_ip: (Optional)
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if node_ip is not None:
+            pulumi.set(__self__, "node_ip", node_ip)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The labels assigned to nodes of this node pool.
+        An object containing a list of key/value pairs.
+        Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeIp")
+    def node_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "node_ip")
+
+    @node_ip.setter
+    def node_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "node_ip", value)
+
+
+if not MYPY:
+    class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict(TypedDict):
+        effect: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Available taint effects.
+        """
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional)
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Optional)
+        """
+elif False:
+    BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs:
+    def __init__(__self__, *,
+                 effect: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] effect: Available taint effects.
+        :param pulumi.Input[_builtins.str] key: (Optional)
+        :param pulumi.Input[_builtins.str] value: (Optional)
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Available taint effects.
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "effect", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -1050,9 +1681,18 @@ class BareMetalAdminClusterMaintenanceConfigArgs:
 
 if not MYPY:
     class BareMetalAdminClusterNetworkConfigArgsDict(TypedDict):
+        advanced_networking: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enables the use of advanced Anthos networking features.
+        """
         island_mode_cidr: NotRequired[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgsDict']]
         """
         A nested object resource.
+        Structure is documented below.
+        """
+        multiple_network_interfaces_config: NotRequired[pulumi.Input['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict']]
+        """
+        Configuration for multiple network interfaces.
         Structure is documented below.
         """
 elif False:
@@ -1061,13 +1701,34 @@ elif False:
 @pulumi.input_type
 class BareMetalAdminClusterNetworkConfigArgs:
     def __init__(__self__, *,
-                 island_mode_cidr: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']] = None):
+                 advanced_networking: Optional[pulumi.Input[_builtins.bool]] = None,
+                 island_mode_cidr: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']] = None,
+                 multiple_network_interfaces_config: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']] = None):
         """
+        :param pulumi.Input[_builtins.bool] advanced_networking: Enables the use of advanced Anthos networking features.
         :param pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs'] island_mode_cidr: A nested object resource.
                Structure is documented below.
+        :param pulumi.Input['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs'] multiple_network_interfaces_config: Configuration for multiple network interfaces.
+               Structure is documented below.
         """
+        if advanced_networking is not None:
+            pulumi.set(__self__, "advanced_networking", advanced_networking)
         if island_mode_cidr is not None:
             pulumi.set(__self__, "island_mode_cidr", island_mode_cidr)
+        if multiple_network_interfaces_config is not None:
+            pulumi.set(__self__, "multiple_network_interfaces_config", multiple_network_interfaces_config)
+
+    @_builtins.property
+    @pulumi.getter(name="advancedNetworking")
+    def advanced_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables the use of advanced Anthos networking features.
+        """
+        return pulumi.get(self, "advanced_networking")
+
+    @advanced_networking.setter
+    def advanced_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "advanced_networking", value)
 
     @_builtins.property
     @pulumi.getter(name="islandModeCidr")
@@ -1081,6 +1742,19 @@ class BareMetalAdminClusterNetworkConfigArgs:
     @island_mode_cidr.setter
     def island_mode_cidr(self, value: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']]):
         pulumi.set(self, "island_mode_cidr", value)
+
+    @_builtins.property
+    @pulumi.getter(name="multipleNetworkInterfacesConfig")
+    def multiple_network_interfaces_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]:
+        """
+        Configuration for multiple network interfaces.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "multiple_network_interfaces_config")
+
+    @multiple_network_interfaces_config.setter
+    def multiple_network_interfaces_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]):
+        pulumi.set(self, "multiple_network_interfaces_config", value)
 
 
 if not MYPY:
@@ -1131,6 +1805,41 @@ class BareMetalAdminClusterNetworkConfigIslandModeCidrArgs:
     @service_address_cidr_blocks.setter
     def service_address_cidr_blocks(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "service_address_cidr_blocks", value)
+
+
+if not MYPY:
+    class BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        When set network_config.advanced_networking is automatically
+        set to true.
+        """
+elif False:
+    BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: When set network_config.advanced_networking is automatically
+               set to true.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When set network_config.advanced_networking is automatically
+        set to true.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:

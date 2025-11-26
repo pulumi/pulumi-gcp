@@ -307,6 +307,8 @@ __all__ = [
     'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgsDict',
     'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs',
     'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgsDict',
+    'ClusterNodeConfigContainerdConfigWritableCgroupsArgs',
+    'ClusterNodeConfigContainerdConfigWritableCgroupsArgsDict',
     'ClusterNodeConfigEffectiveTaintArgs',
     'ClusterNodeConfigEffectiveTaintArgsDict',
     'ClusterNodeConfigEphemeralStorageConfigArgs',
@@ -387,6 +389,8 @@ __all__ = [
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgsDict',
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs',
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgsDict',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgs',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgsDict',
     'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs',
     'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgsDict',
     'ClusterNodePoolManagementArgs',
@@ -417,6 +421,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgsDict',
     'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs',
     'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgsDict',
+    'ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgs',
+    'ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgsDict',
     'ClusterNodePoolNodeConfigEffectiveTaintArgs',
     'ClusterNodePoolNodeConfigEffectiveTaintArgsDict',
     'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs',
@@ -513,6 +519,10 @@ __all__ = [
     'ClusterSecretManagerConfigArgsDict',
     'ClusterSecretManagerConfigRotationConfigArgs',
     'ClusterSecretManagerConfigRotationConfigArgsDict',
+    'ClusterSecretSyncConfigArgs',
+    'ClusterSecretSyncConfigArgsDict',
+    'ClusterSecretSyncConfigRotationConfigArgs',
+    'ClusterSecretSyncConfigRotationConfigArgsDict',
     'ClusterSecurityPostureConfigArgs',
     'ClusterSecurityPostureConfigArgsDict',
     'ClusterServiceExternalIpsConfigArgs',
@@ -557,6 +567,8 @@ __all__ = [
     'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgsDict',
     'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs',
     'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgsDict',
+    'NodePoolNodeConfigContainerdConfigWritableCgroupsArgs',
+    'NodePoolNodeConfigContainerdConfigWritableCgroupsArgsDict',
     'NodePoolNodeConfigEffectiveTaintArgs',
     'NodePoolNodeConfigEffectiveTaintArgsDict',
     'NodePoolNodeConfigEphemeralStorageConfigArgs',
@@ -8201,9 +8213,9 @@ class ClusterMaintenancePolicyDailyMaintenanceWindowArgs:
 
 if not MYPY:
     class ClusterMaintenancePolicyMaintenanceExclusionArgsDict(TypedDict):
-        end_time: pulumi.Input[_builtins.str]
         exclusion_name: pulumi.Input[_builtins.str]
         start_time: pulumi.Input[_builtins.str]
+        end_time: NotRequired[pulumi.Input[_builtins.str]]
         exclusion_options: NotRequired[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgsDict']]
         """
         MaintenanceExclusionOptions provides maintenance exclusion related options.
@@ -8214,27 +8226,19 @@ elif False:
 @pulumi.input_type
 class ClusterMaintenancePolicyMaintenanceExclusionArgs:
     def __init__(__self__, *,
-                 end_time: pulumi.Input[_builtins.str],
                  exclusion_name: pulumi.Input[_builtins.str],
                  start_time: pulumi.Input[_builtins.str],
+                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
                  exclusion_options: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs']] = None):
         """
         :param pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs'] exclusion_options: MaintenanceExclusionOptions provides maintenance exclusion related options.
         """
-        pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "exclusion_name", exclusion_name)
         pulumi.set(__self__, "start_time", start_time)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
         if exclusion_options is not None:
             pulumi.set(__self__, "exclusion_options", exclusion_options)
-
-    @_builtins.property
-    @pulumi.getter(name="endTime")
-    def end_time(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "end_time")
-
-    @end_time.setter
-    def end_time(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusionName")
@@ -8255,6 +8259,15 @@ class ClusterMaintenancePolicyMaintenanceExclusionArgs:
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="exclusionOptions")
     def exclusion_options(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs']]:
         """
@@ -8272,6 +8285,10 @@ if not MYPY:
         scope: pulumi.Input[_builtins.str]
         """
         The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+        """
+        end_time_behavior: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `end_time_behavior` and `end_time` should be specified.
 
         Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
         the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
@@ -8298,9 +8315,9 @@ if not MYPY:
         maintenance_exclusion{
         exclusion_name = "holiday data load"
         start_time = "2019-05-01T00:00:00Z"
-        end_time = "2019-05-02T00:00:00Z"
         exclusion_options {
         scope = "NO_MINOR_UPGRADES"
+        end_time_behavior = "UNTIL_END_OF_SUPPORT"
         }
         }
         }
@@ -8312,9 +8329,11 @@ elif False:
 @pulumi.input_type
 class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs:
     def __init__(__self__, *,
-                 scope: pulumi.Input[_builtins.str]):
+                 scope: pulumi.Input[_builtins.str],
+                 end_time_behavior: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] scope: The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+        :param pulumi.Input[_builtins.str] end_time_behavior: The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `end_time_behavior` and `end_time` should be specified.
                
                Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
                the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
@@ -8341,21 +8360,35 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs:
                maintenance_exclusion{
                exclusion_name = "holiday data load"
                start_time = "2019-05-01T00:00:00Z"
-               end_time = "2019-05-02T00:00:00Z"
                exclusion_options {
                scope = "NO_MINOR_UPGRADES"
+               end_time_behavior = "UNTIL_END_OF_SUPPORT"
                }
                }
                }
                ```
         """
         pulumi.set(__self__, "scope", scope)
+        if end_time_behavior is not None:
+            pulumi.set(__self__, "end_time_behavior", end_time_behavior)
 
     @_builtins.property
     @pulumi.getter
     def scope(self) -> pulumi.Input[_builtins.str]:
         """
         The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "scope", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endTimeBehavior")
+    def end_time_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `end_time_behavior` and `end_time` should be specified.
 
         Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
         the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
@@ -8382,19 +8415,19 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs:
         maintenance_exclusion{
         exclusion_name = "holiday data load"
         start_time = "2019-05-01T00:00:00Z"
-        end_time = "2019-05-02T00:00:00Z"
         exclusion_options {
         scope = "NO_MINOR_UPGRADES"
+        end_time_behavior = "UNTIL_END_OF_SUPPORT"
         }
         }
         }
         ```
         """
-        return pulumi.get(self, "scope")
+        return pulumi.get(self, "end_time_behavior")
 
-    @scope.setter
-    def scope(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "scope", value)
+    @end_time_behavior.setter
+    def end_time_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "end_time_behavior", value)
 
 
 if not MYPY:
@@ -10373,18 +10406,26 @@ if not MYPY:
         """
         Configuration for private container registries. There are two fields in this config:
         """
+        writable_cgroups: NotRequired[pulumi.Input['ClusterNodeConfigContainerdConfigWritableCgroupsArgsDict']]
+        """
+        Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
+        """
 elif False:
     ClusterNodeConfigContainerdConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterNodeConfigContainerdConfigArgs:
     def __init__(__self__, *,
-                 private_registry_access_config: Optional[pulumi.Input['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs']] = None):
+                 private_registry_access_config: Optional[pulumi.Input['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs']] = None,
+                 writable_cgroups: Optional[pulumi.Input['ClusterNodeConfigContainerdConfigWritableCgroupsArgs']] = None):
         """
         :param pulumi.Input['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_config: Configuration for private container registries. There are two fields in this config:
+        :param pulumi.Input['ClusterNodeConfigContainerdConfigWritableCgroupsArgs'] writable_cgroups: Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
         """
         if private_registry_access_config is not None:
             pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+        if writable_cgroups is not None:
+            pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
     @pulumi.getter(name="privateRegistryAccessConfig")
@@ -10397,6 +10438,18 @@ class ClusterNodeConfigContainerdConfigArgs:
     @private_registry_access_config.setter
     def private_registry_access_config(self, value: Optional[pulumi.Input['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs']]):
         pulumi.set(self, "private_registry_access_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="writableCgroups")
+    def writable_cgroups(self) -> Optional[pulumi.Input['ClusterNodeConfigContainerdConfigWritableCgroupsArgs']]:
+        """
+        Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
+        """
+        return pulumi.get(self, "writable_cgroups")
+
+    @writable_cgroups.setter
+    def writable_cgroups(self, value: Optional[pulumi.Input['ClusterNodeConfigContainerdConfigWritableCgroupsArgs']]):
+        pulumi.set(self, "writable_cgroups", value)
 
 
 if not MYPY:
@@ -10529,6 +10582,37 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAut
     @secret_uri.setter
     def secret_uri(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "secret_uri", value)
+
+
+if not MYPY:
+    class ClusterNodeConfigContainerdConfigWritableCgroupsArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Whether writable cgroups are enabled.
+        """
+elif False:
+    ClusterNodeConfigContainerdConfigWritableCgroupsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodeConfigContainerdConfigWritableCgroupsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether writable cgroups are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether writable cgroups are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -13536,18 +13620,26 @@ if not MYPY:
         """
         Configuration for private container registries. There are two fields in this config:
         """
+        writable_cgroups: NotRequired[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgsDict']]
+        """
+        Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
+        """
 elif False:
     ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs:
     def __init__(__self__, *,
-                 private_registry_access_config: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs']] = None):
+                 private_registry_access_config: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs']] = None,
+                 writable_cgroups: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgs']] = None):
         """
         :param pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_config: Configuration for private container registries. There are two fields in this config:
+        :param pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgs'] writable_cgroups: Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
         """
         if private_registry_access_config is not None:
             pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+        if writable_cgroups is not None:
+            pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
     @pulumi.getter(name="privateRegistryAccessConfig")
@@ -13560,6 +13652,18 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs:
     @private_registry_access_config.setter
     def private_registry_access_config(self, value: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs']]):
         pulumi.set(self, "private_registry_access_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="writableCgroups")
+    def writable_cgroups(self) -> Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgs']]:
+        """
+        Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
+        """
+        return pulumi.get(self, "writable_cgroups")
+
+    @writable_cgroups.setter
+    def writable_cgroups(self, value: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgs']]):
+        pulumi.set(self, "writable_cgroups", value)
 
 
 if not MYPY:
@@ -13692,6 +13796,37 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
     @secret_uri.setter
     def secret_uri(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "secret_uri", value)
+
+
+if not MYPY:
+    class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Whether writable cgroups are enabled.
+        """
+elif False:
+    ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether writable cgroups are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether writable cgroups are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -15532,18 +15667,26 @@ if not MYPY:
         """
         Configuration for private container registries. There are two fields in this config:
         """
+        writable_cgroups: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgsDict']]
+        """
+        Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
+        """
 elif False:
     ClusterNodePoolNodeConfigContainerdConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterNodePoolNodeConfigContainerdConfigArgs:
     def __init__(__self__, *,
-                 private_registry_access_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs']] = None):
+                 private_registry_access_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs']] = None,
+                 writable_cgroups: Optional[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgs']] = None):
         """
         :param pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_config: Configuration for private container registries. There are two fields in this config:
+        :param pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgs'] writable_cgroups: Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
         """
         if private_registry_access_config is not None:
             pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+        if writable_cgroups is not None:
+            pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
     @pulumi.getter(name="privateRegistryAccessConfig")
@@ -15556,6 +15699,18 @@ class ClusterNodePoolNodeConfigContainerdConfigArgs:
     @private_registry_access_config.setter
     def private_registry_access_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs']]):
         pulumi.set(self, "private_registry_access_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="writableCgroups")
+    def writable_cgroups(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgs']]:
+        """
+        Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
+        """
+        return pulumi.get(self, "writable_cgroups")
+
+    @writable_cgroups.setter
+    def writable_cgroups(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgs']]):
+        pulumi.set(self, "writable_cgroups", value)
 
 
 if not MYPY:
@@ -15688,6 +15843,37 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertif
     @secret_uri.setter
     def secret_uri(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "secret_uri", value)
+
+
+if not MYPY:
+    class ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Whether writable cgroups are enabled.
+        """
+elif False:
+    ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether writable cgroups are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether writable cgroups are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -19008,7 +19194,7 @@ if not MYPY:
     class ClusterSecretManagerConfigRotationConfigArgsDict(TypedDict):
         enabled: pulumi.Input[_builtins.bool]
         """
-        Enable the roation in Secret Manager add-on for this cluster.
+        Enable the roation in Sync as K8s secret feature for this cluster.
         """
         rotation_interval: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -19023,7 +19209,7 @@ class ClusterSecretManagerConfigRotationConfigArgs:
                  enabled: pulumi.Input[_builtins.bool],
                  rotation_interval: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.bool] enabled: Enable the roation in Secret Manager add-on for this cluster.
+        :param pulumi.Input[_builtins.bool] enabled: Enable the roation in Sync as K8s secret feature for this cluster.
         :param pulumi.Input[_builtins.str] rotation_interval: The interval between two consecutive rotations. Default rotation interval is 2 minutes.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -19034,7 +19220,109 @@ class ClusterSecretManagerConfigRotationConfigArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[_builtins.bool]:
         """
-        Enable the roation in Secret Manager add-on for this cluster.
+        Enable the roation in Sync as K8s secret feature for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        """
+        return pulumi.get(self, "rotation_interval")
+
+    @rotation_interval.setter
+    def rotation_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "rotation_interval", value)
+
+
+if not MYPY:
+    class ClusterSecretSyncConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Enable the Sync as K8s secret feature for this cluster.
+        """
+        rotation_config: NotRequired[pulumi.Input['ClusterSecretSyncConfigRotationConfigArgsDict']]
+        """
+        config for secret sync auto rotation. Structure is docuemented below
+        """
+elif False:
+    ClusterSecretSyncConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterSecretSyncConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 rotation_config: Optional[pulumi.Input['ClusterSecretSyncConfigRotationConfigArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enable the Sync as K8s secret feature for this cluster.
+        :param pulumi.Input['ClusterSecretSyncConfigRotationConfigArgs'] rotation_config: config for secret sync auto rotation. Structure is docuemented below
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if rotation_config is not None:
+            pulumi.set(__self__, "rotation_config", rotation_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Enable the Sync as K8s secret feature for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rotationConfig")
+    def rotation_config(self) -> Optional[pulumi.Input['ClusterSecretSyncConfigRotationConfigArgs']]:
+        """
+        config for secret sync auto rotation. Structure is docuemented below
+        """
+        return pulumi.get(self, "rotation_config")
+
+    @rotation_config.setter
+    def rotation_config(self, value: Optional[pulumi.Input['ClusterSecretSyncConfigRotationConfigArgs']]):
+        pulumi.set(self, "rotation_config", value)
+
+
+if not MYPY:
+    class ClusterSecretSyncConfigRotationConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Enable the roation in Sync as K8s secret feature for this cluster.
+        """
+        rotation_interval: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        """
+elif False:
+    ClusterSecretSyncConfigRotationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterSecretSyncConfigRotationConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 rotation_interval: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enable the roation in Sync as K8s secret feature for this cluster.
+        :param pulumi.Input[_builtins.str] rotation_interval: The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if rotation_interval is not None:
+            pulumi.set(__self__, "rotation_interval", rotation_interval)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Enable the roation in Sync as K8s secret feature for this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -21205,18 +21493,26 @@ if not MYPY:
         """
         Parameters for private container registries configuration.
         """
+        writable_cgroups: NotRequired[pulumi.Input['NodePoolNodeConfigContainerdConfigWritableCgroupsArgsDict']]
+        """
+        Parameters for writable cgroups configuration.
+        """
 elif False:
     NodePoolNodeConfigContainerdConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodePoolNodeConfigContainerdConfigArgs:
     def __init__(__self__, *,
-                 private_registry_access_config: Optional[pulumi.Input['NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs']] = None):
+                 private_registry_access_config: Optional[pulumi.Input['NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs']] = None,
+                 writable_cgroups: Optional[pulumi.Input['NodePoolNodeConfigContainerdConfigWritableCgroupsArgs']] = None):
         """
         :param pulumi.Input['NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_config: Parameters for private container registries configuration.
+        :param pulumi.Input['NodePoolNodeConfigContainerdConfigWritableCgroupsArgs'] writable_cgroups: Parameters for writable cgroups configuration.
         """
         if private_registry_access_config is not None:
             pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+        if writable_cgroups is not None:
+            pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
     @pulumi.getter(name="privateRegistryAccessConfig")
@@ -21229,6 +21525,18 @@ class NodePoolNodeConfigContainerdConfigArgs:
     @private_registry_access_config.setter
     def private_registry_access_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs']]):
         pulumi.set(self, "private_registry_access_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="writableCgroups")
+    def writable_cgroups(self) -> Optional[pulumi.Input['NodePoolNodeConfigContainerdConfigWritableCgroupsArgs']]:
+        """
+        Parameters for writable cgroups configuration.
+        """
+        return pulumi.get(self, "writable_cgroups")
+
+    @writable_cgroups.setter
+    def writable_cgroups(self, value: Optional[pulumi.Input['NodePoolNodeConfigContainerdConfigWritableCgroupsArgs']]):
+        pulumi.set(self, "writable_cgroups", value)
 
 
 if not MYPY:
@@ -21361,6 +21669,37 @@ class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAu
     @secret_uri.setter
     def secret_uri(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "secret_uri", value)
+
+
+if not MYPY:
+    class NodePoolNodeConfigContainerdConfigWritableCgroupsArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Whether writable cgroups are enabled.
+        """
+elif False:
+    NodePoolNodeConfigContainerdConfigWritableCgroupsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolNodeConfigContainerdConfigWritableCgroupsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether writable cgroups are enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether writable cgroups are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:

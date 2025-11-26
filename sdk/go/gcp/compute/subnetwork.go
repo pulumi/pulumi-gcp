@@ -273,6 +273,43 @@ import (
 //	}
 //
 // ```
+// ### Subnetwork Resolve Subnet Mask
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			custom_test, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("subnet-resolve-subnet-mask-test-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "subnetwork-resolve-subnet-mask", &compute.SubnetworkArgs{
+//				Name:              pulumi.String("subnet-resolve-subnet-mask-test-subnetwork"),
+//				Region:            pulumi.String("us-west2"),
+//				IpCidrRange:       pulumi.String("10.10.0.0/24"),
+//				Purpose:           pulumi.String("PRIVATE"),
+//				ResolveSubnetMask: pulumi.String("ARP_PRIMARY_RANGE"),
+//				Network:           custom_test.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Subnetwork Cidr Overlap
 //
 // ```go
@@ -562,6 +599,9 @@ type Subnetwork struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange pulumi.StringPtrOutput `pulumi:"reservedInternalRange"`
+	// 'Configures subnet mask resolution for this subnetwork.'
+	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+	ResolveSubnetMask pulumi.StringPtrOutput `pulumi:"resolveSubnetMask"`
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
@@ -723,6 +763,9 @@ type subnetworkState struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
+	// 'Configures subnet mask resolution for this subnetwork.'
+	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+	ResolveSubnetMask *string `pulumi:"resolveSubnetMask"`
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
@@ -852,6 +895,9 @@ type SubnetworkState struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange pulumi.StringPtrInput
+	// 'Configures subnet mask resolution for this subnetwork.'
+	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+	ResolveSubnetMask pulumi.StringPtrInput
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
@@ -968,6 +1014,9 @@ type subnetworkArgs struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
+	// 'Configures subnet mask resolution for this subnetwork.'
+	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+	ResolveSubnetMask *string `pulumi:"resolveSubnetMask"`
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
@@ -1072,6 +1121,9 @@ type SubnetworkArgs struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange pulumi.StringPtrInput
+	// 'Configures subnet mask resolution for this subnetwork.'
+	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+	ResolveSubnetMask pulumi.StringPtrInput
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
 	// The value can be set to `ACTIVE` or `BACKUP`.
@@ -1342,6 +1394,12 @@ func (o SubnetworkOutput) Region() pulumi.StringOutput {
 // E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 func (o SubnetworkOutput) ReservedInternalRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.ReservedInternalRange }).(pulumi.StringPtrOutput)
+}
+
+// 'Configures subnet mask resolution for this subnetwork.'
+// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+func (o SubnetworkOutput) ResolveSubnetMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.ResolveSubnetMask }).(pulumi.StringPtrOutput)
 }
 
 // The role of subnetwork.

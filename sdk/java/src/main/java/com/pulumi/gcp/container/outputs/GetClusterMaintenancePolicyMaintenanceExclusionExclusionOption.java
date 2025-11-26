@@ -11,12 +11,24 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption {
     /**
+     * @return The behavior of the exclusion end time.
+     * 
+     */
+    private String endTimeBehavior;
+    /**
      * @return The scope of automatic upgrades to restrict in the exclusion window.
      * 
      */
     private String scope;
 
     private GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption() {}
+    /**
+     * @return The behavior of the exclusion end time.
+     * 
+     */
+    public String endTimeBehavior() {
+        return this.endTimeBehavior;
+    }
     /**
      * @return The scope of automatic upgrades to restrict in the exclusion window.
      * 
@@ -34,13 +46,23 @@ public final class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptio
     }
     @CustomType.Builder
     public static final class Builder {
+        private String endTimeBehavior;
         private String scope;
         public Builder() {}
         public Builder(GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.endTimeBehavior = defaults.endTimeBehavior;
     	      this.scope = defaults.scope;
         }
 
+        @CustomType.Setter
+        public Builder endTimeBehavior(String endTimeBehavior) {
+            if (endTimeBehavior == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption", "endTimeBehavior");
+            }
+            this.endTimeBehavior = endTimeBehavior;
+            return this;
+        }
         @CustomType.Setter
         public Builder scope(String scope) {
             if (scope == null) {
@@ -51,6 +73,7 @@ public final class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptio
         }
         public GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption build() {
             final var _resultValue = new GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption();
+            _resultValue.endTimeBehavior = endTimeBehavior;
             _resultValue.scope = scope;
             return _resultValue;
         }

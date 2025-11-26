@@ -88,6 +88,9 @@ type FirewallEndpoint struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Settings for the endpoint.
+	// Structure is documented below.
+	EndpointSettings FirewallEndpointEndpointSettingsPtrOutput `pulumi:"endpointSettings"`
 	// A map of key/value label pairs to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -168,6 +171,9 @@ type firewallEndpointState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Settings for the endpoint.
+	// Structure is documented below.
+	EndpointSettings *FirewallEndpointEndpointSettings `pulumi:"endpointSettings"`
 	// A map of key/value label pairs to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -205,6 +211,9 @@ type FirewallEndpointState struct {
 	CreateTime pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Settings for the endpoint.
+	// Structure is documented below.
+	EndpointSettings FirewallEndpointEndpointSettingsPtrInput
 	// A map of key/value label pairs to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -237,6 +246,9 @@ func (FirewallEndpointState) ElementType() reflect.Type {
 type firewallEndpointArgs struct {
 	// Project to bill on endpoint uptime usage.
 	BillingProjectId string `pulumi:"billingProjectId"`
+	// Settings for the endpoint.
+	// Structure is documented below.
+	EndpointSettings *FirewallEndpointEndpointSettings `pulumi:"endpointSettings"`
 	// A map of key/value label pairs to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -255,6 +267,9 @@ type firewallEndpointArgs struct {
 type FirewallEndpointArgs struct {
 	// Project to bill on endpoint uptime usage.
 	BillingProjectId pulumi.StringInput
+	// Settings for the endpoint.
+	// Structure is documented below.
+	EndpointSettings FirewallEndpointEndpointSettingsPtrInput
 	// A map of key/value label pairs to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -377,6 +392,12 @@ func (o FirewallEndpointOutput) CreateTime() pulumi.StringOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o FirewallEndpointOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Settings for the endpoint.
+// Structure is documented below.
+func (o FirewallEndpointOutput) EndpointSettings() FirewallEndpointEndpointSettingsPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpoint) FirewallEndpointEndpointSettingsPtrOutput { return v.EndpointSettings }).(FirewallEndpointEndpointSettingsPtrOutput)
 }
 
 // A map of key/value label pairs to assign to the resource.

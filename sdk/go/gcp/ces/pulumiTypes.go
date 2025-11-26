@@ -13,6 +13,1357 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AgentAfterAgentCallback struct {
+	// Human-readable description of the callback.
+	Description *string `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled *bool `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// AgentAfterAgentCallbackInput is an input type that accepts AgentAfterAgentCallbackArgs and AgentAfterAgentCallbackOutput values.
+// You can construct a concrete instance of `AgentAfterAgentCallbackInput` via:
+//
+//	AgentAfterAgentCallbackArgs{...}
+type AgentAfterAgentCallbackInput interface {
+	pulumi.Input
+
+	ToAgentAfterAgentCallbackOutput() AgentAfterAgentCallbackOutput
+	ToAgentAfterAgentCallbackOutputWithContext(context.Context) AgentAfterAgentCallbackOutput
+}
+
+type AgentAfterAgentCallbackArgs struct {
+	// Human-readable description of the callback.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (AgentAfterAgentCallbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentAfterAgentCallback)(nil)).Elem()
+}
+
+func (i AgentAfterAgentCallbackArgs) ToAgentAfterAgentCallbackOutput() AgentAfterAgentCallbackOutput {
+	return i.ToAgentAfterAgentCallbackOutputWithContext(context.Background())
+}
+
+func (i AgentAfterAgentCallbackArgs) ToAgentAfterAgentCallbackOutputWithContext(ctx context.Context) AgentAfterAgentCallbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentAfterAgentCallbackOutput)
+}
+
+// AgentAfterAgentCallbackArrayInput is an input type that accepts AgentAfterAgentCallbackArray and AgentAfterAgentCallbackArrayOutput values.
+// You can construct a concrete instance of `AgentAfterAgentCallbackArrayInput` via:
+//
+//	AgentAfterAgentCallbackArray{ AgentAfterAgentCallbackArgs{...} }
+type AgentAfterAgentCallbackArrayInput interface {
+	pulumi.Input
+
+	ToAgentAfterAgentCallbackArrayOutput() AgentAfterAgentCallbackArrayOutput
+	ToAgentAfterAgentCallbackArrayOutputWithContext(context.Context) AgentAfterAgentCallbackArrayOutput
+}
+
+type AgentAfterAgentCallbackArray []AgentAfterAgentCallbackInput
+
+func (AgentAfterAgentCallbackArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentAfterAgentCallback)(nil)).Elem()
+}
+
+func (i AgentAfterAgentCallbackArray) ToAgentAfterAgentCallbackArrayOutput() AgentAfterAgentCallbackArrayOutput {
+	return i.ToAgentAfterAgentCallbackArrayOutputWithContext(context.Background())
+}
+
+func (i AgentAfterAgentCallbackArray) ToAgentAfterAgentCallbackArrayOutputWithContext(ctx context.Context) AgentAfterAgentCallbackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentAfterAgentCallbackArrayOutput)
+}
+
+type AgentAfterAgentCallbackOutput struct{ *pulumi.OutputState }
+
+func (AgentAfterAgentCallbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentAfterAgentCallback)(nil)).Elem()
+}
+
+func (o AgentAfterAgentCallbackOutput) ToAgentAfterAgentCallbackOutput() AgentAfterAgentCallbackOutput {
+	return o
+}
+
+func (o AgentAfterAgentCallbackOutput) ToAgentAfterAgentCallbackOutputWithContext(ctx context.Context) AgentAfterAgentCallbackOutput {
+	return o
+}
+
+// Human-readable description of the callback.
+func (o AgentAfterAgentCallbackOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentAfterAgentCallback) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o AgentAfterAgentCallbackOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AgentAfterAgentCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o AgentAfterAgentCallbackOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentAfterAgentCallback) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type AgentAfterAgentCallbackArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentAfterAgentCallbackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentAfterAgentCallback)(nil)).Elem()
+}
+
+func (o AgentAfterAgentCallbackArrayOutput) ToAgentAfterAgentCallbackArrayOutput() AgentAfterAgentCallbackArrayOutput {
+	return o
+}
+
+func (o AgentAfterAgentCallbackArrayOutput) ToAgentAfterAgentCallbackArrayOutputWithContext(ctx context.Context) AgentAfterAgentCallbackArrayOutput {
+	return o
+}
+
+func (o AgentAfterAgentCallbackArrayOutput) Index(i pulumi.IntInput) AgentAfterAgentCallbackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentAfterAgentCallback {
+		return vs[0].([]AgentAfterAgentCallback)[vs[1].(int)]
+	}).(AgentAfterAgentCallbackOutput)
+}
+
+type AgentAfterModelCallback struct {
+	// Human-readable description of the callback.
+	Description *string `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled *bool `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// AgentAfterModelCallbackInput is an input type that accepts AgentAfterModelCallbackArgs and AgentAfterModelCallbackOutput values.
+// You can construct a concrete instance of `AgentAfterModelCallbackInput` via:
+//
+//	AgentAfterModelCallbackArgs{...}
+type AgentAfterModelCallbackInput interface {
+	pulumi.Input
+
+	ToAgentAfterModelCallbackOutput() AgentAfterModelCallbackOutput
+	ToAgentAfterModelCallbackOutputWithContext(context.Context) AgentAfterModelCallbackOutput
+}
+
+type AgentAfterModelCallbackArgs struct {
+	// Human-readable description of the callback.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (AgentAfterModelCallbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentAfterModelCallback)(nil)).Elem()
+}
+
+func (i AgentAfterModelCallbackArgs) ToAgentAfterModelCallbackOutput() AgentAfterModelCallbackOutput {
+	return i.ToAgentAfterModelCallbackOutputWithContext(context.Background())
+}
+
+func (i AgentAfterModelCallbackArgs) ToAgentAfterModelCallbackOutputWithContext(ctx context.Context) AgentAfterModelCallbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentAfterModelCallbackOutput)
+}
+
+// AgentAfterModelCallbackArrayInput is an input type that accepts AgentAfterModelCallbackArray and AgentAfterModelCallbackArrayOutput values.
+// You can construct a concrete instance of `AgentAfterModelCallbackArrayInput` via:
+//
+//	AgentAfterModelCallbackArray{ AgentAfterModelCallbackArgs{...} }
+type AgentAfterModelCallbackArrayInput interface {
+	pulumi.Input
+
+	ToAgentAfterModelCallbackArrayOutput() AgentAfterModelCallbackArrayOutput
+	ToAgentAfterModelCallbackArrayOutputWithContext(context.Context) AgentAfterModelCallbackArrayOutput
+}
+
+type AgentAfterModelCallbackArray []AgentAfterModelCallbackInput
+
+func (AgentAfterModelCallbackArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentAfterModelCallback)(nil)).Elem()
+}
+
+func (i AgentAfterModelCallbackArray) ToAgentAfterModelCallbackArrayOutput() AgentAfterModelCallbackArrayOutput {
+	return i.ToAgentAfterModelCallbackArrayOutputWithContext(context.Background())
+}
+
+func (i AgentAfterModelCallbackArray) ToAgentAfterModelCallbackArrayOutputWithContext(ctx context.Context) AgentAfterModelCallbackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentAfterModelCallbackArrayOutput)
+}
+
+type AgentAfterModelCallbackOutput struct{ *pulumi.OutputState }
+
+func (AgentAfterModelCallbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentAfterModelCallback)(nil)).Elem()
+}
+
+func (o AgentAfterModelCallbackOutput) ToAgentAfterModelCallbackOutput() AgentAfterModelCallbackOutput {
+	return o
+}
+
+func (o AgentAfterModelCallbackOutput) ToAgentAfterModelCallbackOutputWithContext(ctx context.Context) AgentAfterModelCallbackOutput {
+	return o
+}
+
+// Human-readable description of the callback.
+func (o AgentAfterModelCallbackOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentAfterModelCallback) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o AgentAfterModelCallbackOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AgentAfterModelCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o AgentAfterModelCallbackOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentAfterModelCallback) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type AgentAfterModelCallbackArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentAfterModelCallbackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentAfterModelCallback)(nil)).Elem()
+}
+
+func (o AgentAfterModelCallbackArrayOutput) ToAgentAfterModelCallbackArrayOutput() AgentAfterModelCallbackArrayOutput {
+	return o
+}
+
+func (o AgentAfterModelCallbackArrayOutput) ToAgentAfterModelCallbackArrayOutputWithContext(ctx context.Context) AgentAfterModelCallbackArrayOutput {
+	return o
+}
+
+func (o AgentAfterModelCallbackArrayOutput) Index(i pulumi.IntInput) AgentAfterModelCallbackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentAfterModelCallback {
+		return vs[0].([]AgentAfterModelCallback)[vs[1].(int)]
+	}).(AgentAfterModelCallbackOutput)
+}
+
+type AgentAfterToolCallback struct {
+	// Human-readable description of the callback.
+	Description *string `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled *bool `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// AgentAfterToolCallbackInput is an input type that accepts AgentAfterToolCallbackArgs and AgentAfterToolCallbackOutput values.
+// You can construct a concrete instance of `AgentAfterToolCallbackInput` via:
+//
+//	AgentAfterToolCallbackArgs{...}
+type AgentAfterToolCallbackInput interface {
+	pulumi.Input
+
+	ToAgentAfterToolCallbackOutput() AgentAfterToolCallbackOutput
+	ToAgentAfterToolCallbackOutputWithContext(context.Context) AgentAfterToolCallbackOutput
+}
+
+type AgentAfterToolCallbackArgs struct {
+	// Human-readable description of the callback.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (AgentAfterToolCallbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentAfterToolCallback)(nil)).Elem()
+}
+
+func (i AgentAfterToolCallbackArgs) ToAgentAfterToolCallbackOutput() AgentAfterToolCallbackOutput {
+	return i.ToAgentAfterToolCallbackOutputWithContext(context.Background())
+}
+
+func (i AgentAfterToolCallbackArgs) ToAgentAfterToolCallbackOutputWithContext(ctx context.Context) AgentAfterToolCallbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentAfterToolCallbackOutput)
+}
+
+// AgentAfterToolCallbackArrayInput is an input type that accepts AgentAfterToolCallbackArray and AgentAfterToolCallbackArrayOutput values.
+// You can construct a concrete instance of `AgentAfterToolCallbackArrayInput` via:
+//
+//	AgentAfterToolCallbackArray{ AgentAfterToolCallbackArgs{...} }
+type AgentAfterToolCallbackArrayInput interface {
+	pulumi.Input
+
+	ToAgentAfterToolCallbackArrayOutput() AgentAfterToolCallbackArrayOutput
+	ToAgentAfterToolCallbackArrayOutputWithContext(context.Context) AgentAfterToolCallbackArrayOutput
+}
+
+type AgentAfterToolCallbackArray []AgentAfterToolCallbackInput
+
+func (AgentAfterToolCallbackArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentAfterToolCallback)(nil)).Elem()
+}
+
+func (i AgentAfterToolCallbackArray) ToAgentAfterToolCallbackArrayOutput() AgentAfterToolCallbackArrayOutput {
+	return i.ToAgentAfterToolCallbackArrayOutputWithContext(context.Background())
+}
+
+func (i AgentAfterToolCallbackArray) ToAgentAfterToolCallbackArrayOutputWithContext(ctx context.Context) AgentAfterToolCallbackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentAfterToolCallbackArrayOutput)
+}
+
+type AgentAfterToolCallbackOutput struct{ *pulumi.OutputState }
+
+func (AgentAfterToolCallbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentAfterToolCallback)(nil)).Elem()
+}
+
+func (o AgentAfterToolCallbackOutput) ToAgentAfterToolCallbackOutput() AgentAfterToolCallbackOutput {
+	return o
+}
+
+func (o AgentAfterToolCallbackOutput) ToAgentAfterToolCallbackOutputWithContext(ctx context.Context) AgentAfterToolCallbackOutput {
+	return o
+}
+
+// Human-readable description of the callback.
+func (o AgentAfterToolCallbackOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentAfterToolCallback) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o AgentAfterToolCallbackOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AgentAfterToolCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o AgentAfterToolCallbackOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentAfterToolCallback) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type AgentAfterToolCallbackArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentAfterToolCallbackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentAfterToolCallback)(nil)).Elem()
+}
+
+func (o AgentAfterToolCallbackArrayOutput) ToAgentAfterToolCallbackArrayOutput() AgentAfterToolCallbackArrayOutput {
+	return o
+}
+
+func (o AgentAfterToolCallbackArrayOutput) ToAgentAfterToolCallbackArrayOutputWithContext(ctx context.Context) AgentAfterToolCallbackArrayOutput {
+	return o
+}
+
+func (o AgentAfterToolCallbackArrayOutput) Index(i pulumi.IntInput) AgentAfterToolCallbackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentAfterToolCallback {
+		return vs[0].([]AgentAfterToolCallback)[vs[1].(int)]
+	}).(AgentAfterToolCallbackOutput)
+}
+
+type AgentBeforeAgentCallback struct {
+	// Human-readable description of the callback.
+	Description *string `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled *bool `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// AgentBeforeAgentCallbackInput is an input type that accepts AgentBeforeAgentCallbackArgs and AgentBeforeAgentCallbackOutput values.
+// You can construct a concrete instance of `AgentBeforeAgentCallbackInput` via:
+//
+//	AgentBeforeAgentCallbackArgs{...}
+type AgentBeforeAgentCallbackInput interface {
+	pulumi.Input
+
+	ToAgentBeforeAgentCallbackOutput() AgentBeforeAgentCallbackOutput
+	ToAgentBeforeAgentCallbackOutputWithContext(context.Context) AgentBeforeAgentCallbackOutput
+}
+
+type AgentBeforeAgentCallbackArgs struct {
+	// Human-readable description of the callback.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (AgentBeforeAgentCallbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentBeforeAgentCallback)(nil)).Elem()
+}
+
+func (i AgentBeforeAgentCallbackArgs) ToAgentBeforeAgentCallbackOutput() AgentBeforeAgentCallbackOutput {
+	return i.ToAgentBeforeAgentCallbackOutputWithContext(context.Background())
+}
+
+func (i AgentBeforeAgentCallbackArgs) ToAgentBeforeAgentCallbackOutputWithContext(ctx context.Context) AgentBeforeAgentCallbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentBeforeAgentCallbackOutput)
+}
+
+// AgentBeforeAgentCallbackArrayInput is an input type that accepts AgentBeforeAgentCallbackArray and AgentBeforeAgentCallbackArrayOutput values.
+// You can construct a concrete instance of `AgentBeforeAgentCallbackArrayInput` via:
+//
+//	AgentBeforeAgentCallbackArray{ AgentBeforeAgentCallbackArgs{...} }
+type AgentBeforeAgentCallbackArrayInput interface {
+	pulumi.Input
+
+	ToAgentBeforeAgentCallbackArrayOutput() AgentBeforeAgentCallbackArrayOutput
+	ToAgentBeforeAgentCallbackArrayOutputWithContext(context.Context) AgentBeforeAgentCallbackArrayOutput
+}
+
+type AgentBeforeAgentCallbackArray []AgentBeforeAgentCallbackInput
+
+func (AgentBeforeAgentCallbackArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentBeforeAgentCallback)(nil)).Elem()
+}
+
+func (i AgentBeforeAgentCallbackArray) ToAgentBeforeAgentCallbackArrayOutput() AgentBeforeAgentCallbackArrayOutput {
+	return i.ToAgentBeforeAgentCallbackArrayOutputWithContext(context.Background())
+}
+
+func (i AgentBeforeAgentCallbackArray) ToAgentBeforeAgentCallbackArrayOutputWithContext(ctx context.Context) AgentBeforeAgentCallbackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentBeforeAgentCallbackArrayOutput)
+}
+
+type AgentBeforeAgentCallbackOutput struct{ *pulumi.OutputState }
+
+func (AgentBeforeAgentCallbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentBeforeAgentCallback)(nil)).Elem()
+}
+
+func (o AgentBeforeAgentCallbackOutput) ToAgentBeforeAgentCallbackOutput() AgentBeforeAgentCallbackOutput {
+	return o
+}
+
+func (o AgentBeforeAgentCallbackOutput) ToAgentBeforeAgentCallbackOutputWithContext(ctx context.Context) AgentBeforeAgentCallbackOutput {
+	return o
+}
+
+// Human-readable description of the callback.
+func (o AgentBeforeAgentCallbackOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentBeforeAgentCallback) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o AgentBeforeAgentCallbackOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AgentBeforeAgentCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o AgentBeforeAgentCallbackOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentBeforeAgentCallback) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type AgentBeforeAgentCallbackArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentBeforeAgentCallbackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentBeforeAgentCallback)(nil)).Elem()
+}
+
+func (o AgentBeforeAgentCallbackArrayOutput) ToAgentBeforeAgentCallbackArrayOutput() AgentBeforeAgentCallbackArrayOutput {
+	return o
+}
+
+func (o AgentBeforeAgentCallbackArrayOutput) ToAgentBeforeAgentCallbackArrayOutputWithContext(ctx context.Context) AgentBeforeAgentCallbackArrayOutput {
+	return o
+}
+
+func (o AgentBeforeAgentCallbackArrayOutput) Index(i pulumi.IntInput) AgentBeforeAgentCallbackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentBeforeAgentCallback {
+		return vs[0].([]AgentBeforeAgentCallback)[vs[1].(int)]
+	}).(AgentBeforeAgentCallbackOutput)
+}
+
+type AgentBeforeModelCallback struct {
+	// Human-readable description of the callback.
+	Description *string `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled *bool `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// AgentBeforeModelCallbackInput is an input type that accepts AgentBeforeModelCallbackArgs and AgentBeforeModelCallbackOutput values.
+// You can construct a concrete instance of `AgentBeforeModelCallbackInput` via:
+//
+//	AgentBeforeModelCallbackArgs{...}
+type AgentBeforeModelCallbackInput interface {
+	pulumi.Input
+
+	ToAgentBeforeModelCallbackOutput() AgentBeforeModelCallbackOutput
+	ToAgentBeforeModelCallbackOutputWithContext(context.Context) AgentBeforeModelCallbackOutput
+}
+
+type AgentBeforeModelCallbackArgs struct {
+	// Human-readable description of the callback.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (AgentBeforeModelCallbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentBeforeModelCallback)(nil)).Elem()
+}
+
+func (i AgentBeforeModelCallbackArgs) ToAgentBeforeModelCallbackOutput() AgentBeforeModelCallbackOutput {
+	return i.ToAgentBeforeModelCallbackOutputWithContext(context.Background())
+}
+
+func (i AgentBeforeModelCallbackArgs) ToAgentBeforeModelCallbackOutputWithContext(ctx context.Context) AgentBeforeModelCallbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentBeforeModelCallbackOutput)
+}
+
+// AgentBeforeModelCallbackArrayInput is an input type that accepts AgentBeforeModelCallbackArray and AgentBeforeModelCallbackArrayOutput values.
+// You can construct a concrete instance of `AgentBeforeModelCallbackArrayInput` via:
+//
+//	AgentBeforeModelCallbackArray{ AgentBeforeModelCallbackArgs{...} }
+type AgentBeforeModelCallbackArrayInput interface {
+	pulumi.Input
+
+	ToAgentBeforeModelCallbackArrayOutput() AgentBeforeModelCallbackArrayOutput
+	ToAgentBeforeModelCallbackArrayOutputWithContext(context.Context) AgentBeforeModelCallbackArrayOutput
+}
+
+type AgentBeforeModelCallbackArray []AgentBeforeModelCallbackInput
+
+func (AgentBeforeModelCallbackArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentBeforeModelCallback)(nil)).Elem()
+}
+
+func (i AgentBeforeModelCallbackArray) ToAgentBeforeModelCallbackArrayOutput() AgentBeforeModelCallbackArrayOutput {
+	return i.ToAgentBeforeModelCallbackArrayOutputWithContext(context.Background())
+}
+
+func (i AgentBeforeModelCallbackArray) ToAgentBeforeModelCallbackArrayOutputWithContext(ctx context.Context) AgentBeforeModelCallbackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentBeforeModelCallbackArrayOutput)
+}
+
+type AgentBeforeModelCallbackOutput struct{ *pulumi.OutputState }
+
+func (AgentBeforeModelCallbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentBeforeModelCallback)(nil)).Elem()
+}
+
+func (o AgentBeforeModelCallbackOutput) ToAgentBeforeModelCallbackOutput() AgentBeforeModelCallbackOutput {
+	return o
+}
+
+func (o AgentBeforeModelCallbackOutput) ToAgentBeforeModelCallbackOutputWithContext(ctx context.Context) AgentBeforeModelCallbackOutput {
+	return o
+}
+
+// Human-readable description of the callback.
+func (o AgentBeforeModelCallbackOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentBeforeModelCallback) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o AgentBeforeModelCallbackOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AgentBeforeModelCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o AgentBeforeModelCallbackOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentBeforeModelCallback) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type AgentBeforeModelCallbackArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentBeforeModelCallbackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentBeforeModelCallback)(nil)).Elem()
+}
+
+func (o AgentBeforeModelCallbackArrayOutput) ToAgentBeforeModelCallbackArrayOutput() AgentBeforeModelCallbackArrayOutput {
+	return o
+}
+
+func (o AgentBeforeModelCallbackArrayOutput) ToAgentBeforeModelCallbackArrayOutputWithContext(ctx context.Context) AgentBeforeModelCallbackArrayOutput {
+	return o
+}
+
+func (o AgentBeforeModelCallbackArrayOutput) Index(i pulumi.IntInput) AgentBeforeModelCallbackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentBeforeModelCallback {
+		return vs[0].([]AgentBeforeModelCallback)[vs[1].(int)]
+	}).(AgentBeforeModelCallbackOutput)
+}
+
+type AgentBeforeToolCallback struct {
+	// Human-readable description of the callback.
+	Description *string `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled *bool `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// AgentBeforeToolCallbackInput is an input type that accepts AgentBeforeToolCallbackArgs and AgentBeforeToolCallbackOutput values.
+// You can construct a concrete instance of `AgentBeforeToolCallbackInput` via:
+//
+//	AgentBeforeToolCallbackArgs{...}
+type AgentBeforeToolCallbackInput interface {
+	pulumi.Input
+
+	ToAgentBeforeToolCallbackOutput() AgentBeforeToolCallbackOutput
+	ToAgentBeforeToolCallbackOutputWithContext(context.Context) AgentBeforeToolCallbackOutput
+}
+
+type AgentBeforeToolCallbackArgs struct {
+	// Human-readable description of the callback.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (AgentBeforeToolCallbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentBeforeToolCallback)(nil)).Elem()
+}
+
+func (i AgentBeforeToolCallbackArgs) ToAgentBeforeToolCallbackOutput() AgentBeforeToolCallbackOutput {
+	return i.ToAgentBeforeToolCallbackOutputWithContext(context.Background())
+}
+
+func (i AgentBeforeToolCallbackArgs) ToAgentBeforeToolCallbackOutputWithContext(ctx context.Context) AgentBeforeToolCallbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentBeforeToolCallbackOutput)
+}
+
+// AgentBeforeToolCallbackArrayInput is an input type that accepts AgentBeforeToolCallbackArray and AgentBeforeToolCallbackArrayOutput values.
+// You can construct a concrete instance of `AgentBeforeToolCallbackArrayInput` via:
+//
+//	AgentBeforeToolCallbackArray{ AgentBeforeToolCallbackArgs{...} }
+type AgentBeforeToolCallbackArrayInput interface {
+	pulumi.Input
+
+	ToAgentBeforeToolCallbackArrayOutput() AgentBeforeToolCallbackArrayOutput
+	ToAgentBeforeToolCallbackArrayOutputWithContext(context.Context) AgentBeforeToolCallbackArrayOutput
+}
+
+type AgentBeforeToolCallbackArray []AgentBeforeToolCallbackInput
+
+func (AgentBeforeToolCallbackArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentBeforeToolCallback)(nil)).Elem()
+}
+
+func (i AgentBeforeToolCallbackArray) ToAgentBeforeToolCallbackArrayOutput() AgentBeforeToolCallbackArrayOutput {
+	return i.ToAgentBeforeToolCallbackArrayOutputWithContext(context.Background())
+}
+
+func (i AgentBeforeToolCallbackArray) ToAgentBeforeToolCallbackArrayOutputWithContext(ctx context.Context) AgentBeforeToolCallbackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentBeforeToolCallbackArrayOutput)
+}
+
+type AgentBeforeToolCallbackOutput struct{ *pulumi.OutputState }
+
+func (AgentBeforeToolCallbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentBeforeToolCallback)(nil)).Elem()
+}
+
+func (o AgentBeforeToolCallbackOutput) ToAgentBeforeToolCallbackOutput() AgentBeforeToolCallbackOutput {
+	return o
+}
+
+func (o AgentBeforeToolCallbackOutput) ToAgentBeforeToolCallbackOutputWithContext(ctx context.Context) AgentBeforeToolCallbackOutput {
+	return o
+}
+
+// Human-readable description of the callback.
+func (o AgentBeforeToolCallbackOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentBeforeToolCallback) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o AgentBeforeToolCallbackOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AgentBeforeToolCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o AgentBeforeToolCallbackOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentBeforeToolCallback) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type AgentBeforeToolCallbackArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentBeforeToolCallbackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentBeforeToolCallback)(nil)).Elem()
+}
+
+func (o AgentBeforeToolCallbackArrayOutput) ToAgentBeforeToolCallbackArrayOutput() AgentBeforeToolCallbackArrayOutput {
+	return o
+}
+
+func (o AgentBeforeToolCallbackArrayOutput) ToAgentBeforeToolCallbackArrayOutputWithContext(ctx context.Context) AgentBeforeToolCallbackArrayOutput {
+	return o
+}
+
+func (o AgentBeforeToolCallbackArrayOutput) Index(i pulumi.IntInput) AgentBeforeToolCallbackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentBeforeToolCallback {
+		return vs[0].([]AgentBeforeToolCallback)[vs[1].(int)]
+	}).(AgentBeforeToolCallbackOutput)
+}
+
+type AgentLlmAgent struct {
+}
+
+// AgentLlmAgentInput is an input type that accepts AgentLlmAgentArgs and AgentLlmAgentOutput values.
+// You can construct a concrete instance of `AgentLlmAgentInput` via:
+//
+//	AgentLlmAgentArgs{...}
+type AgentLlmAgentInput interface {
+	pulumi.Input
+
+	ToAgentLlmAgentOutput() AgentLlmAgentOutput
+	ToAgentLlmAgentOutputWithContext(context.Context) AgentLlmAgentOutput
+}
+
+type AgentLlmAgentArgs struct {
+}
+
+func (AgentLlmAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentLlmAgent)(nil)).Elem()
+}
+
+func (i AgentLlmAgentArgs) ToAgentLlmAgentOutput() AgentLlmAgentOutput {
+	return i.ToAgentLlmAgentOutputWithContext(context.Background())
+}
+
+func (i AgentLlmAgentArgs) ToAgentLlmAgentOutputWithContext(ctx context.Context) AgentLlmAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentLlmAgentOutput)
+}
+
+func (i AgentLlmAgentArgs) ToAgentLlmAgentPtrOutput() AgentLlmAgentPtrOutput {
+	return i.ToAgentLlmAgentPtrOutputWithContext(context.Background())
+}
+
+func (i AgentLlmAgentArgs) ToAgentLlmAgentPtrOutputWithContext(ctx context.Context) AgentLlmAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentLlmAgentOutput).ToAgentLlmAgentPtrOutputWithContext(ctx)
+}
+
+// AgentLlmAgentPtrInput is an input type that accepts AgentLlmAgentArgs, AgentLlmAgentPtr and AgentLlmAgentPtrOutput values.
+// You can construct a concrete instance of `AgentLlmAgentPtrInput` via:
+//
+//	        AgentLlmAgentArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentLlmAgentPtrInput interface {
+	pulumi.Input
+
+	ToAgentLlmAgentPtrOutput() AgentLlmAgentPtrOutput
+	ToAgentLlmAgentPtrOutputWithContext(context.Context) AgentLlmAgentPtrOutput
+}
+
+type agentLlmAgentPtrType AgentLlmAgentArgs
+
+func AgentLlmAgentPtr(v *AgentLlmAgentArgs) AgentLlmAgentPtrInput {
+	return (*agentLlmAgentPtrType)(v)
+}
+
+func (*agentLlmAgentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentLlmAgent)(nil)).Elem()
+}
+
+func (i *agentLlmAgentPtrType) ToAgentLlmAgentPtrOutput() AgentLlmAgentPtrOutput {
+	return i.ToAgentLlmAgentPtrOutputWithContext(context.Background())
+}
+
+func (i *agentLlmAgentPtrType) ToAgentLlmAgentPtrOutputWithContext(ctx context.Context) AgentLlmAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentLlmAgentPtrOutput)
+}
+
+type AgentLlmAgentOutput struct{ *pulumi.OutputState }
+
+func (AgentLlmAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentLlmAgent)(nil)).Elem()
+}
+
+func (o AgentLlmAgentOutput) ToAgentLlmAgentOutput() AgentLlmAgentOutput {
+	return o
+}
+
+func (o AgentLlmAgentOutput) ToAgentLlmAgentOutputWithContext(ctx context.Context) AgentLlmAgentOutput {
+	return o
+}
+
+func (o AgentLlmAgentOutput) ToAgentLlmAgentPtrOutput() AgentLlmAgentPtrOutput {
+	return o.ToAgentLlmAgentPtrOutputWithContext(context.Background())
+}
+
+func (o AgentLlmAgentOutput) ToAgentLlmAgentPtrOutputWithContext(ctx context.Context) AgentLlmAgentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentLlmAgent) *AgentLlmAgent {
+		return &v
+	}).(AgentLlmAgentPtrOutput)
+}
+
+type AgentLlmAgentPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentLlmAgentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentLlmAgent)(nil)).Elem()
+}
+
+func (o AgentLlmAgentPtrOutput) ToAgentLlmAgentPtrOutput() AgentLlmAgentPtrOutput {
+	return o
+}
+
+func (o AgentLlmAgentPtrOutput) ToAgentLlmAgentPtrOutputWithContext(ctx context.Context) AgentLlmAgentPtrOutput {
+	return o
+}
+
+func (o AgentLlmAgentPtrOutput) Elem() AgentLlmAgentOutput {
+	return o.ApplyT(func(v *AgentLlmAgent) AgentLlmAgent {
+		if v != nil {
+			return *v
+		}
+		var ret AgentLlmAgent
+		return ret
+	}).(AgentLlmAgentOutput)
+}
+
+type AgentModelSettings struct {
+	// The LLM model that the agent should use.
+	// If not set, the agent will inherit the model from its parent agent.
+	Model *string `pulumi:"model"`
+	// If set, this temperature will be used for the LLM model. Temperature
+	// controls the randomness of the model's responses. Lower temperatures
+	// produce responses that are more predictable. Higher temperatures produce
+	// responses that are more creative.
+	Temperature *float64 `pulumi:"temperature"`
+}
+
+// AgentModelSettingsInput is an input type that accepts AgentModelSettingsArgs and AgentModelSettingsOutput values.
+// You can construct a concrete instance of `AgentModelSettingsInput` via:
+//
+//	AgentModelSettingsArgs{...}
+type AgentModelSettingsInput interface {
+	pulumi.Input
+
+	ToAgentModelSettingsOutput() AgentModelSettingsOutput
+	ToAgentModelSettingsOutputWithContext(context.Context) AgentModelSettingsOutput
+}
+
+type AgentModelSettingsArgs struct {
+	// The LLM model that the agent should use.
+	// If not set, the agent will inherit the model from its parent agent.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// If set, this temperature will be used for the LLM model. Temperature
+	// controls the randomness of the model's responses. Lower temperatures
+	// produce responses that are more predictable. Higher temperatures produce
+	// responses that are more creative.
+	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+}
+
+func (AgentModelSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentModelSettings)(nil)).Elem()
+}
+
+func (i AgentModelSettingsArgs) ToAgentModelSettingsOutput() AgentModelSettingsOutput {
+	return i.ToAgentModelSettingsOutputWithContext(context.Background())
+}
+
+func (i AgentModelSettingsArgs) ToAgentModelSettingsOutputWithContext(ctx context.Context) AgentModelSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentModelSettingsOutput)
+}
+
+func (i AgentModelSettingsArgs) ToAgentModelSettingsPtrOutput() AgentModelSettingsPtrOutput {
+	return i.ToAgentModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AgentModelSettingsArgs) ToAgentModelSettingsPtrOutputWithContext(ctx context.Context) AgentModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentModelSettingsOutput).ToAgentModelSettingsPtrOutputWithContext(ctx)
+}
+
+// AgentModelSettingsPtrInput is an input type that accepts AgentModelSettingsArgs, AgentModelSettingsPtr and AgentModelSettingsPtrOutput values.
+// You can construct a concrete instance of `AgentModelSettingsPtrInput` via:
+//
+//	        AgentModelSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentModelSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAgentModelSettingsPtrOutput() AgentModelSettingsPtrOutput
+	ToAgentModelSettingsPtrOutputWithContext(context.Context) AgentModelSettingsPtrOutput
+}
+
+type agentModelSettingsPtrType AgentModelSettingsArgs
+
+func AgentModelSettingsPtr(v *AgentModelSettingsArgs) AgentModelSettingsPtrInput {
+	return (*agentModelSettingsPtrType)(v)
+}
+
+func (*agentModelSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentModelSettings)(nil)).Elem()
+}
+
+func (i *agentModelSettingsPtrType) ToAgentModelSettingsPtrOutput() AgentModelSettingsPtrOutput {
+	return i.ToAgentModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *agentModelSettingsPtrType) ToAgentModelSettingsPtrOutputWithContext(ctx context.Context) AgentModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentModelSettingsPtrOutput)
+}
+
+type AgentModelSettingsOutput struct{ *pulumi.OutputState }
+
+func (AgentModelSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentModelSettings)(nil)).Elem()
+}
+
+func (o AgentModelSettingsOutput) ToAgentModelSettingsOutput() AgentModelSettingsOutput {
+	return o
+}
+
+func (o AgentModelSettingsOutput) ToAgentModelSettingsOutputWithContext(ctx context.Context) AgentModelSettingsOutput {
+	return o
+}
+
+func (o AgentModelSettingsOutput) ToAgentModelSettingsPtrOutput() AgentModelSettingsPtrOutput {
+	return o.ToAgentModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AgentModelSettingsOutput) ToAgentModelSettingsPtrOutputWithContext(ctx context.Context) AgentModelSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentModelSettings) *AgentModelSettings {
+		return &v
+	}).(AgentModelSettingsPtrOutput)
+}
+
+// The LLM model that the agent should use.
+// If not set, the agent will inherit the model from its parent agent.
+func (o AgentModelSettingsOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentModelSettings) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// If set, this temperature will be used for the LLM model. Temperature
+// controls the randomness of the model's responses. Lower temperatures
+// produce responses that are more predictable. Higher temperatures produce
+// responses that are more creative.
+func (o AgentModelSettingsOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AgentModelSettings) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
+}
+
+type AgentModelSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentModelSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentModelSettings)(nil)).Elem()
+}
+
+func (o AgentModelSettingsPtrOutput) ToAgentModelSettingsPtrOutput() AgentModelSettingsPtrOutput {
+	return o
+}
+
+func (o AgentModelSettingsPtrOutput) ToAgentModelSettingsPtrOutputWithContext(ctx context.Context) AgentModelSettingsPtrOutput {
+	return o
+}
+
+func (o AgentModelSettingsPtrOutput) Elem() AgentModelSettingsOutput {
+	return o.ApplyT(func(v *AgentModelSettings) AgentModelSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AgentModelSettings
+		return ret
+	}).(AgentModelSettingsOutput)
+}
+
+// The LLM model that the agent should use.
+// If not set, the agent will inherit the model from its parent agent.
+func (o AgentModelSettingsPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, this temperature will be used for the LLM model. Temperature
+// controls the randomness of the model's responses. Lower temperatures
+// produce responses that are more predictable. Higher temperatures produce
+// responses that are more creative.
+func (o AgentModelSettingsPtrOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AgentModelSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Temperature
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AgentRemoteDialogflowAgent struct {
+	// The
+	// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents
+	// agent resource name.
+	// Format: `projects/{project}/locations/{location}/agents/{agent}`
+	Agent string `pulumi:"agent"`
+	// The environment ID of the Dialogflow agent be used for the agent
+	// execution. If not specified, the draft environment will be used.
+	EnvironmentId *string `pulumi:"environmentId"`
+	// The flow ID of the flow in the Dialogflow agent.
+	FlowId string `pulumi:"flowId"`
+	// The mapping of the app variables names to the Dialogflow session
+	// parameters names to be sent to the Dialogflow agent as input.
+	InputVariableMapping map[string]string `pulumi:"inputVariableMapping"`
+	// The mapping of the Dialogflow session parameters names to the app
+	// variables names to be sent back to the CES agent after the Dialogflow
+	// agent execution ends.
+	OutputVariableMapping map[string]string `pulumi:"outputVariableMapping"`
+}
+
+// AgentRemoteDialogflowAgentInput is an input type that accepts AgentRemoteDialogflowAgentArgs and AgentRemoteDialogflowAgentOutput values.
+// You can construct a concrete instance of `AgentRemoteDialogflowAgentInput` via:
+//
+//	AgentRemoteDialogflowAgentArgs{...}
+type AgentRemoteDialogflowAgentInput interface {
+	pulumi.Input
+
+	ToAgentRemoteDialogflowAgentOutput() AgentRemoteDialogflowAgentOutput
+	ToAgentRemoteDialogflowAgentOutputWithContext(context.Context) AgentRemoteDialogflowAgentOutput
+}
+
+type AgentRemoteDialogflowAgentArgs struct {
+	// The
+	// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents
+	// agent resource name.
+	// Format: `projects/{project}/locations/{location}/agents/{agent}`
+	Agent pulumi.StringInput `pulumi:"agent"`
+	// The environment ID of the Dialogflow agent be used for the agent
+	// execution. If not specified, the draft environment will be used.
+	EnvironmentId pulumi.StringPtrInput `pulumi:"environmentId"`
+	// The flow ID of the flow in the Dialogflow agent.
+	FlowId pulumi.StringInput `pulumi:"flowId"`
+	// The mapping of the app variables names to the Dialogflow session
+	// parameters names to be sent to the Dialogflow agent as input.
+	InputVariableMapping pulumi.StringMapInput `pulumi:"inputVariableMapping"`
+	// The mapping of the Dialogflow session parameters names to the app
+	// variables names to be sent back to the CES agent after the Dialogflow
+	// agent execution ends.
+	OutputVariableMapping pulumi.StringMapInput `pulumi:"outputVariableMapping"`
+}
+
+func (AgentRemoteDialogflowAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentRemoteDialogflowAgent)(nil)).Elem()
+}
+
+func (i AgentRemoteDialogflowAgentArgs) ToAgentRemoteDialogflowAgentOutput() AgentRemoteDialogflowAgentOutput {
+	return i.ToAgentRemoteDialogflowAgentOutputWithContext(context.Background())
+}
+
+func (i AgentRemoteDialogflowAgentArgs) ToAgentRemoteDialogflowAgentOutputWithContext(ctx context.Context) AgentRemoteDialogflowAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentRemoteDialogflowAgentOutput)
+}
+
+func (i AgentRemoteDialogflowAgentArgs) ToAgentRemoteDialogflowAgentPtrOutput() AgentRemoteDialogflowAgentPtrOutput {
+	return i.ToAgentRemoteDialogflowAgentPtrOutputWithContext(context.Background())
+}
+
+func (i AgentRemoteDialogflowAgentArgs) ToAgentRemoteDialogflowAgentPtrOutputWithContext(ctx context.Context) AgentRemoteDialogflowAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentRemoteDialogflowAgentOutput).ToAgentRemoteDialogflowAgentPtrOutputWithContext(ctx)
+}
+
+// AgentRemoteDialogflowAgentPtrInput is an input type that accepts AgentRemoteDialogflowAgentArgs, AgentRemoteDialogflowAgentPtr and AgentRemoteDialogflowAgentPtrOutput values.
+// You can construct a concrete instance of `AgentRemoteDialogflowAgentPtrInput` via:
+//
+//	        AgentRemoteDialogflowAgentArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentRemoteDialogflowAgentPtrInput interface {
+	pulumi.Input
+
+	ToAgentRemoteDialogflowAgentPtrOutput() AgentRemoteDialogflowAgentPtrOutput
+	ToAgentRemoteDialogflowAgentPtrOutputWithContext(context.Context) AgentRemoteDialogflowAgentPtrOutput
+}
+
+type agentRemoteDialogflowAgentPtrType AgentRemoteDialogflowAgentArgs
+
+func AgentRemoteDialogflowAgentPtr(v *AgentRemoteDialogflowAgentArgs) AgentRemoteDialogflowAgentPtrInput {
+	return (*agentRemoteDialogflowAgentPtrType)(v)
+}
+
+func (*agentRemoteDialogflowAgentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentRemoteDialogflowAgent)(nil)).Elem()
+}
+
+func (i *agentRemoteDialogflowAgentPtrType) ToAgentRemoteDialogflowAgentPtrOutput() AgentRemoteDialogflowAgentPtrOutput {
+	return i.ToAgentRemoteDialogflowAgentPtrOutputWithContext(context.Background())
+}
+
+func (i *agentRemoteDialogflowAgentPtrType) ToAgentRemoteDialogflowAgentPtrOutputWithContext(ctx context.Context) AgentRemoteDialogflowAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentRemoteDialogflowAgentPtrOutput)
+}
+
+type AgentRemoteDialogflowAgentOutput struct{ *pulumi.OutputState }
+
+func (AgentRemoteDialogflowAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentRemoteDialogflowAgent)(nil)).Elem()
+}
+
+func (o AgentRemoteDialogflowAgentOutput) ToAgentRemoteDialogflowAgentOutput() AgentRemoteDialogflowAgentOutput {
+	return o
+}
+
+func (o AgentRemoteDialogflowAgentOutput) ToAgentRemoteDialogflowAgentOutputWithContext(ctx context.Context) AgentRemoteDialogflowAgentOutput {
+	return o
+}
+
+func (o AgentRemoteDialogflowAgentOutput) ToAgentRemoteDialogflowAgentPtrOutput() AgentRemoteDialogflowAgentPtrOutput {
+	return o.ToAgentRemoteDialogflowAgentPtrOutputWithContext(context.Background())
+}
+
+func (o AgentRemoteDialogflowAgentOutput) ToAgentRemoteDialogflowAgentPtrOutputWithContext(ctx context.Context) AgentRemoteDialogflowAgentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentRemoteDialogflowAgent) *AgentRemoteDialogflowAgent {
+		return &v
+	}).(AgentRemoteDialogflowAgentPtrOutput)
+}
+
+// The
+// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents
+// agent resource name.
+// Format: `projects/{project}/locations/{location}/agents/{agent}`
+func (o AgentRemoteDialogflowAgentOutput) Agent() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentRemoteDialogflowAgent) string { return v.Agent }).(pulumi.StringOutput)
+}
+
+// The environment ID of the Dialogflow agent be used for the agent
+// execution. If not specified, the draft environment will be used.
+func (o AgentRemoteDialogflowAgentOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentRemoteDialogflowAgent) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+}
+
+// The flow ID of the flow in the Dialogflow agent.
+func (o AgentRemoteDialogflowAgentOutput) FlowId() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentRemoteDialogflowAgent) string { return v.FlowId }).(pulumi.StringOutput)
+}
+
+// The mapping of the app variables names to the Dialogflow session
+// parameters names to be sent to the Dialogflow agent as input.
+func (o AgentRemoteDialogflowAgentOutput) InputVariableMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AgentRemoteDialogflowAgent) map[string]string { return v.InputVariableMapping }).(pulumi.StringMapOutput)
+}
+
+// The mapping of the Dialogflow session parameters names to the app
+// variables names to be sent back to the CES agent after the Dialogflow
+// agent execution ends.
+func (o AgentRemoteDialogflowAgentOutput) OutputVariableMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AgentRemoteDialogflowAgent) map[string]string { return v.OutputVariableMapping }).(pulumi.StringMapOutput)
+}
+
+type AgentRemoteDialogflowAgentPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentRemoteDialogflowAgentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentRemoteDialogflowAgent)(nil)).Elem()
+}
+
+func (o AgentRemoteDialogflowAgentPtrOutput) ToAgentRemoteDialogflowAgentPtrOutput() AgentRemoteDialogflowAgentPtrOutput {
+	return o
+}
+
+func (o AgentRemoteDialogflowAgentPtrOutput) ToAgentRemoteDialogflowAgentPtrOutputWithContext(ctx context.Context) AgentRemoteDialogflowAgentPtrOutput {
+	return o
+}
+
+func (o AgentRemoteDialogflowAgentPtrOutput) Elem() AgentRemoteDialogflowAgentOutput {
+	return o.ApplyT(func(v *AgentRemoteDialogflowAgent) AgentRemoteDialogflowAgent {
+		if v != nil {
+			return *v
+		}
+		var ret AgentRemoteDialogflowAgent
+		return ret
+	}).(AgentRemoteDialogflowAgentOutput)
+}
+
+// The
+// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents
+// agent resource name.
+// Format: `projects/{project}/locations/{location}/agents/{agent}`
+func (o AgentRemoteDialogflowAgentPtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentRemoteDialogflowAgent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The environment ID of the Dialogflow agent be used for the agent
+// execution. If not specified, the draft environment will be used.
+func (o AgentRemoteDialogflowAgentPtrOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentRemoteDialogflowAgent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The flow ID of the flow in the Dialogflow agent.
+func (o AgentRemoteDialogflowAgentPtrOutput) FlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentRemoteDialogflowAgent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FlowId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mapping of the app variables names to the Dialogflow session
+// parameters names to be sent to the Dialogflow agent as input.
+func (o AgentRemoteDialogflowAgentPtrOutput) InputVariableMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AgentRemoteDialogflowAgent) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InputVariableMapping
+	}).(pulumi.StringMapOutput)
+}
+
+// The mapping of the Dialogflow session parameters names to the app
+// variables names to be sent back to the CES agent after the Dialogflow
+// agent execution ends.
+func (o AgentRemoteDialogflowAgentPtrOutput) OutputVariableMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AgentRemoteDialogflowAgent) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputVariableMapping
+	}).(pulumi.StringMapOutput)
+}
+
+type AgentToolset struct {
+	// The tools IDs to filter the toolset.
+	ToolIds []string `pulumi:"toolIds"`
+	// The resource name of the toolset.
+	// Format:
+	// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+	Toolset string `pulumi:"toolset"`
+}
+
+// AgentToolsetInput is an input type that accepts AgentToolsetArgs and AgentToolsetOutput values.
+// You can construct a concrete instance of `AgentToolsetInput` via:
+//
+//	AgentToolsetArgs{...}
+type AgentToolsetInput interface {
+	pulumi.Input
+
+	ToAgentToolsetOutput() AgentToolsetOutput
+	ToAgentToolsetOutputWithContext(context.Context) AgentToolsetOutput
+}
+
+type AgentToolsetArgs struct {
+	// The tools IDs to filter the toolset.
+	ToolIds pulumi.StringArrayInput `pulumi:"toolIds"`
+	// The resource name of the toolset.
+	// Format:
+	// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+	Toolset pulumi.StringInput `pulumi:"toolset"`
+}
+
+func (AgentToolsetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentToolset)(nil)).Elem()
+}
+
+func (i AgentToolsetArgs) ToAgentToolsetOutput() AgentToolsetOutput {
+	return i.ToAgentToolsetOutputWithContext(context.Background())
+}
+
+func (i AgentToolsetArgs) ToAgentToolsetOutputWithContext(ctx context.Context) AgentToolsetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentToolsetOutput)
+}
+
+// AgentToolsetArrayInput is an input type that accepts AgentToolsetArray and AgentToolsetArrayOutput values.
+// You can construct a concrete instance of `AgentToolsetArrayInput` via:
+//
+//	AgentToolsetArray{ AgentToolsetArgs{...} }
+type AgentToolsetArrayInput interface {
+	pulumi.Input
+
+	ToAgentToolsetArrayOutput() AgentToolsetArrayOutput
+	ToAgentToolsetArrayOutputWithContext(context.Context) AgentToolsetArrayOutput
+}
+
+type AgentToolsetArray []AgentToolsetInput
+
+func (AgentToolsetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentToolset)(nil)).Elem()
+}
+
+func (i AgentToolsetArray) ToAgentToolsetArrayOutput() AgentToolsetArrayOutput {
+	return i.ToAgentToolsetArrayOutputWithContext(context.Background())
+}
+
+func (i AgentToolsetArray) ToAgentToolsetArrayOutputWithContext(ctx context.Context) AgentToolsetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentToolsetArrayOutput)
+}
+
+type AgentToolsetOutput struct{ *pulumi.OutputState }
+
+func (AgentToolsetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentToolset)(nil)).Elem()
+}
+
+func (o AgentToolsetOutput) ToAgentToolsetOutput() AgentToolsetOutput {
+	return o
+}
+
+func (o AgentToolsetOutput) ToAgentToolsetOutputWithContext(ctx context.Context) AgentToolsetOutput {
+	return o
+}
+
+// The tools IDs to filter the toolset.
+func (o AgentToolsetOutput) ToolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AgentToolset) []string { return v.ToolIds }).(pulumi.StringArrayOutput)
+}
+
+// The resource name of the toolset.
+// Format:
+// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+func (o AgentToolsetOutput) Toolset() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentToolset) string { return v.Toolset }).(pulumi.StringOutput)
+}
+
+type AgentToolsetArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentToolsetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentToolset)(nil)).Elem()
+}
+
+func (o AgentToolsetArrayOutput) ToAgentToolsetArrayOutput() AgentToolsetArrayOutput {
+	return o
+}
+
+func (o AgentToolsetArrayOutput) ToAgentToolsetArrayOutputWithContext(ctx context.Context) AgentToolsetArrayOutput {
+	return o
+}
+
+func (o AgentToolsetArrayOutput) Index(i pulumi.IntInput) AgentToolsetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentToolset {
+		return vs[0].([]AgentToolset)[vs[1].(int)]
+	}).(AgentToolsetOutput)
+}
+
 type AppAudioProcessingConfig struct {
 	// Configuration for the ambient sound to be played with the synthesized agent
 	// response, to enhance the naturalness of the conversation.
@@ -771,6 +2122,197 @@ func (o AppAudioProcessingConfigSynthesizeSpeechConfigArrayOutput) Index(i pulum
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppAudioProcessingConfigSynthesizeSpeechConfig {
 		return vs[0].([]AppAudioProcessingConfigSynthesizeSpeechConfig)[vs[1].(int)]
 	}).(AppAudioProcessingConfigSynthesizeSpeechConfigOutput)
+}
+
+type AppClientCertificateSettings struct {
+	// The passphrase to decrypt the private key.
+	// Should be left unset if the private key is not encrypted.
+	Passphrase *string `pulumi:"passphrase"`
+	// The name of the SecretManager secret version resource
+	// storing the private key encoded in PEM format.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}
+	PrivateKey string `pulumi:"privateKey"`
+	// The TLS certificate encoded in PEM format.
+	// This string must include the begin header and end footer lines.
+	TlsCertificate string `pulumi:"tlsCertificate"`
+}
+
+// AppClientCertificateSettingsInput is an input type that accepts AppClientCertificateSettingsArgs and AppClientCertificateSettingsOutput values.
+// You can construct a concrete instance of `AppClientCertificateSettingsInput` via:
+//
+//	AppClientCertificateSettingsArgs{...}
+type AppClientCertificateSettingsInput interface {
+	pulumi.Input
+
+	ToAppClientCertificateSettingsOutput() AppClientCertificateSettingsOutput
+	ToAppClientCertificateSettingsOutputWithContext(context.Context) AppClientCertificateSettingsOutput
+}
+
+type AppClientCertificateSettingsArgs struct {
+	// The passphrase to decrypt the private key.
+	// Should be left unset if the private key is not encrypted.
+	Passphrase pulumi.StringPtrInput `pulumi:"passphrase"`
+	// The name of the SecretManager secret version resource
+	// storing the private key encoded in PEM format.
+	// Format: projects/{project}/secrets/{secret}/versions/{version}
+	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
+	// The TLS certificate encoded in PEM format.
+	// This string must include the begin header and end footer lines.
+	TlsCertificate pulumi.StringInput `pulumi:"tlsCertificate"`
+}
+
+func (AppClientCertificateSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppClientCertificateSettings)(nil)).Elem()
+}
+
+func (i AppClientCertificateSettingsArgs) ToAppClientCertificateSettingsOutput() AppClientCertificateSettingsOutput {
+	return i.ToAppClientCertificateSettingsOutputWithContext(context.Background())
+}
+
+func (i AppClientCertificateSettingsArgs) ToAppClientCertificateSettingsOutputWithContext(ctx context.Context) AppClientCertificateSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppClientCertificateSettingsOutput)
+}
+
+func (i AppClientCertificateSettingsArgs) ToAppClientCertificateSettingsPtrOutput() AppClientCertificateSettingsPtrOutput {
+	return i.ToAppClientCertificateSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AppClientCertificateSettingsArgs) ToAppClientCertificateSettingsPtrOutputWithContext(ctx context.Context) AppClientCertificateSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppClientCertificateSettingsOutput).ToAppClientCertificateSettingsPtrOutputWithContext(ctx)
+}
+
+// AppClientCertificateSettingsPtrInput is an input type that accepts AppClientCertificateSettingsArgs, AppClientCertificateSettingsPtr and AppClientCertificateSettingsPtrOutput values.
+// You can construct a concrete instance of `AppClientCertificateSettingsPtrInput` via:
+//
+//	        AppClientCertificateSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppClientCertificateSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAppClientCertificateSettingsPtrOutput() AppClientCertificateSettingsPtrOutput
+	ToAppClientCertificateSettingsPtrOutputWithContext(context.Context) AppClientCertificateSettingsPtrOutput
+}
+
+type appClientCertificateSettingsPtrType AppClientCertificateSettingsArgs
+
+func AppClientCertificateSettingsPtr(v *AppClientCertificateSettingsArgs) AppClientCertificateSettingsPtrInput {
+	return (*appClientCertificateSettingsPtrType)(v)
+}
+
+func (*appClientCertificateSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppClientCertificateSettings)(nil)).Elem()
+}
+
+func (i *appClientCertificateSettingsPtrType) ToAppClientCertificateSettingsPtrOutput() AppClientCertificateSettingsPtrOutput {
+	return i.ToAppClientCertificateSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *appClientCertificateSettingsPtrType) ToAppClientCertificateSettingsPtrOutputWithContext(ctx context.Context) AppClientCertificateSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppClientCertificateSettingsPtrOutput)
+}
+
+type AppClientCertificateSettingsOutput struct{ *pulumi.OutputState }
+
+func (AppClientCertificateSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppClientCertificateSettings)(nil)).Elem()
+}
+
+func (o AppClientCertificateSettingsOutput) ToAppClientCertificateSettingsOutput() AppClientCertificateSettingsOutput {
+	return o
+}
+
+func (o AppClientCertificateSettingsOutput) ToAppClientCertificateSettingsOutputWithContext(ctx context.Context) AppClientCertificateSettingsOutput {
+	return o
+}
+
+func (o AppClientCertificateSettingsOutput) ToAppClientCertificateSettingsPtrOutput() AppClientCertificateSettingsPtrOutput {
+	return o.ToAppClientCertificateSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AppClientCertificateSettingsOutput) ToAppClientCertificateSettingsPtrOutputWithContext(ctx context.Context) AppClientCertificateSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppClientCertificateSettings) *AppClientCertificateSettings {
+		return &v
+	}).(AppClientCertificateSettingsPtrOutput)
+}
+
+// The passphrase to decrypt the private key.
+// Should be left unset if the private key is not encrypted.
+func (o AppClientCertificateSettingsOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppClientCertificateSettings) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SecretManager secret version resource
+// storing the private key encoded in PEM format.
+// Format: projects/{project}/secrets/{secret}/versions/{version}
+func (o AppClientCertificateSettingsOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AppClientCertificateSettings) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+// The TLS certificate encoded in PEM format.
+// This string must include the begin header and end footer lines.
+func (o AppClientCertificateSettingsOutput) TlsCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v AppClientCertificateSettings) string { return v.TlsCertificate }).(pulumi.StringOutput)
+}
+
+type AppClientCertificateSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppClientCertificateSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppClientCertificateSettings)(nil)).Elem()
+}
+
+func (o AppClientCertificateSettingsPtrOutput) ToAppClientCertificateSettingsPtrOutput() AppClientCertificateSettingsPtrOutput {
+	return o
+}
+
+func (o AppClientCertificateSettingsPtrOutput) ToAppClientCertificateSettingsPtrOutputWithContext(ctx context.Context) AppClientCertificateSettingsPtrOutput {
+	return o
+}
+
+func (o AppClientCertificateSettingsPtrOutput) Elem() AppClientCertificateSettingsOutput {
+	return o.ApplyT(func(v *AppClientCertificateSettings) AppClientCertificateSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AppClientCertificateSettings
+		return ret
+	}).(AppClientCertificateSettingsOutput)
+}
+
+// The passphrase to decrypt the private key.
+// Should be left unset if the private key is not encrypted.
+func (o AppClientCertificateSettingsPtrOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppClientCertificateSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Passphrase
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SecretManager secret version resource
+// storing the private key encoded in PEM format.
+// Format: projects/{project}/secrets/{secret}/versions/{version}
+func (o AppClientCertificateSettingsPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppClientCertificateSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TLS certificate encoded in PEM format.
+// This string must include the begin header and end footer lines.
+func (o AppClientCertificateSettingsPtrOutput) TlsCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppClientCertificateSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TlsCertificate
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppDataStoreSettings struct {
@@ -5390,6 +6932,9217 @@ func (o ExampleMessageChunkImagePtrOutput) MimeType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GuardrailAction struct {
+	// The agent will immediately respond with a generative answer.
+	// Structure is documented below.
+	GenerativeAnswer *GuardrailActionGenerativeAnswer `pulumi:"generativeAnswer"`
+	// The agent will immediately respond with a preconfigured response.
+	// Structure is documented below.
+	RespondImmediately *GuardrailActionRespondImmediately `pulumi:"respondImmediately"`
+	// The agent will transfer the conversation to a different agent.
+	// Structure is documented below.
+	TransferAgent *GuardrailActionTransferAgent `pulumi:"transferAgent"`
+}
+
+// GuardrailActionInput is an input type that accepts GuardrailActionArgs and GuardrailActionOutput values.
+// You can construct a concrete instance of `GuardrailActionInput` via:
+//
+//	GuardrailActionArgs{...}
+type GuardrailActionInput interface {
+	pulumi.Input
+
+	ToGuardrailActionOutput() GuardrailActionOutput
+	ToGuardrailActionOutputWithContext(context.Context) GuardrailActionOutput
+}
+
+type GuardrailActionArgs struct {
+	// The agent will immediately respond with a generative answer.
+	// Structure is documented below.
+	GenerativeAnswer GuardrailActionGenerativeAnswerPtrInput `pulumi:"generativeAnswer"`
+	// The agent will immediately respond with a preconfigured response.
+	// Structure is documented below.
+	RespondImmediately GuardrailActionRespondImmediatelyPtrInput `pulumi:"respondImmediately"`
+	// The agent will transfer the conversation to a different agent.
+	// Structure is documented below.
+	TransferAgent GuardrailActionTransferAgentPtrInput `pulumi:"transferAgent"`
+}
+
+func (GuardrailActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailAction)(nil)).Elem()
+}
+
+func (i GuardrailActionArgs) ToGuardrailActionOutput() GuardrailActionOutput {
+	return i.ToGuardrailActionOutputWithContext(context.Background())
+}
+
+func (i GuardrailActionArgs) ToGuardrailActionOutputWithContext(ctx context.Context) GuardrailActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionOutput)
+}
+
+func (i GuardrailActionArgs) ToGuardrailActionPtrOutput() GuardrailActionPtrOutput {
+	return i.ToGuardrailActionPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailActionArgs) ToGuardrailActionPtrOutputWithContext(ctx context.Context) GuardrailActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionOutput).ToGuardrailActionPtrOutputWithContext(ctx)
+}
+
+// GuardrailActionPtrInput is an input type that accepts GuardrailActionArgs, GuardrailActionPtr and GuardrailActionPtrOutput values.
+// You can construct a concrete instance of `GuardrailActionPtrInput` via:
+//
+//	        GuardrailActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailActionPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailActionPtrOutput() GuardrailActionPtrOutput
+	ToGuardrailActionPtrOutputWithContext(context.Context) GuardrailActionPtrOutput
+}
+
+type guardrailActionPtrType GuardrailActionArgs
+
+func GuardrailActionPtr(v *GuardrailActionArgs) GuardrailActionPtrInput {
+	return (*guardrailActionPtrType)(v)
+}
+
+func (*guardrailActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailAction)(nil)).Elem()
+}
+
+func (i *guardrailActionPtrType) ToGuardrailActionPtrOutput() GuardrailActionPtrOutput {
+	return i.ToGuardrailActionPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailActionPtrType) ToGuardrailActionPtrOutputWithContext(ctx context.Context) GuardrailActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionPtrOutput)
+}
+
+type GuardrailActionOutput struct{ *pulumi.OutputState }
+
+func (GuardrailActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailAction)(nil)).Elem()
+}
+
+func (o GuardrailActionOutput) ToGuardrailActionOutput() GuardrailActionOutput {
+	return o
+}
+
+func (o GuardrailActionOutput) ToGuardrailActionOutputWithContext(ctx context.Context) GuardrailActionOutput {
+	return o
+}
+
+func (o GuardrailActionOutput) ToGuardrailActionPtrOutput() GuardrailActionPtrOutput {
+	return o.ToGuardrailActionPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailActionOutput) ToGuardrailActionPtrOutputWithContext(ctx context.Context) GuardrailActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailAction) *GuardrailAction {
+		return &v
+	}).(GuardrailActionPtrOutput)
+}
+
+// The agent will immediately respond with a generative answer.
+// Structure is documented below.
+func (o GuardrailActionOutput) GenerativeAnswer() GuardrailActionGenerativeAnswerPtrOutput {
+	return o.ApplyT(func(v GuardrailAction) *GuardrailActionGenerativeAnswer { return v.GenerativeAnswer }).(GuardrailActionGenerativeAnswerPtrOutput)
+}
+
+// The agent will immediately respond with a preconfigured response.
+// Structure is documented below.
+func (o GuardrailActionOutput) RespondImmediately() GuardrailActionRespondImmediatelyPtrOutput {
+	return o.ApplyT(func(v GuardrailAction) *GuardrailActionRespondImmediately { return v.RespondImmediately }).(GuardrailActionRespondImmediatelyPtrOutput)
+}
+
+// The agent will transfer the conversation to a different agent.
+// Structure is documented below.
+func (o GuardrailActionOutput) TransferAgent() GuardrailActionTransferAgentPtrOutput {
+	return o.ApplyT(func(v GuardrailAction) *GuardrailActionTransferAgent { return v.TransferAgent }).(GuardrailActionTransferAgentPtrOutput)
+}
+
+type GuardrailActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailAction)(nil)).Elem()
+}
+
+func (o GuardrailActionPtrOutput) ToGuardrailActionPtrOutput() GuardrailActionPtrOutput {
+	return o
+}
+
+func (o GuardrailActionPtrOutput) ToGuardrailActionPtrOutputWithContext(ctx context.Context) GuardrailActionPtrOutput {
+	return o
+}
+
+func (o GuardrailActionPtrOutput) Elem() GuardrailActionOutput {
+	return o.ApplyT(func(v *GuardrailAction) GuardrailAction {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailAction
+		return ret
+	}).(GuardrailActionOutput)
+}
+
+// The agent will immediately respond with a generative answer.
+// Structure is documented below.
+func (o GuardrailActionPtrOutput) GenerativeAnswer() GuardrailActionGenerativeAnswerPtrOutput {
+	return o.ApplyT(func(v *GuardrailAction) *GuardrailActionGenerativeAnswer {
+		if v == nil {
+			return nil
+		}
+		return v.GenerativeAnswer
+	}).(GuardrailActionGenerativeAnswerPtrOutput)
+}
+
+// The agent will immediately respond with a preconfigured response.
+// Structure is documented below.
+func (o GuardrailActionPtrOutput) RespondImmediately() GuardrailActionRespondImmediatelyPtrOutput {
+	return o.ApplyT(func(v *GuardrailAction) *GuardrailActionRespondImmediately {
+		if v == nil {
+			return nil
+		}
+		return v.RespondImmediately
+	}).(GuardrailActionRespondImmediatelyPtrOutput)
+}
+
+// The agent will transfer the conversation to a different agent.
+// Structure is documented below.
+func (o GuardrailActionPtrOutput) TransferAgent() GuardrailActionTransferAgentPtrOutput {
+	return o.ApplyT(func(v *GuardrailAction) *GuardrailActionTransferAgent {
+		if v == nil {
+			return nil
+		}
+		return v.TransferAgent
+	}).(GuardrailActionTransferAgentPtrOutput)
+}
+
+type GuardrailActionGenerativeAnswer struct {
+	// The prompt to use for the generative answer.
+	Prompt string `pulumi:"prompt"`
+}
+
+// GuardrailActionGenerativeAnswerInput is an input type that accepts GuardrailActionGenerativeAnswerArgs and GuardrailActionGenerativeAnswerOutput values.
+// You can construct a concrete instance of `GuardrailActionGenerativeAnswerInput` via:
+//
+//	GuardrailActionGenerativeAnswerArgs{...}
+type GuardrailActionGenerativeAnswerInput interface {
+	pulumi.Input
+
+	ToGuardrailActionGenerativeAnswerOutput() GuardrailActionGenerativeAnswerOutput
+	ToGuardrailActionGenerativeAnswerOutputWithContext(context.Context) GuardrailActionGenerativeAnswerOutput
+}
+
+type GuardrailActionGenerativeAnswerArgs struct {
+	// The prompt to use for the generative answer.
+	Prompt pulumi.StringInput `pulumi:"prompt"`
+}
+
+func (GuardrailActionGenerativeAnswerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailActionGenerativeAnswer)(nil)).Elem()
+}
+
+func (i GuardrailActionGenerativeAnswerArgs) ToGuardrailActionGenerativeAnswerOutput() GuardrailActionGenerativeAnswerOutput {
+	return i.ToGuardrailActionGenerativeAnswerOutputWithContext(context.Background())
+}
+
+func (i GuardrailActionGenerativeAnswerArgs) ToGuardrailActionGenerativeAnswerOutputWithContext(ctx context.Context) GuardrailActionGenerativeAnswerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionGenerativeAnswerOutput)
+}
+
+func (i GuardrailActionGenerativeAnswerArgs) ToGuardrailActionGenerativeAnswerPtrOutput() GuardrailActionGenerativeAnswerPtrOutput {
+	return i.ToGuardrailActionGenerativeAnswerPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailActionGenerativeAnswerArgs) ToGuardrailActionGenerativeAnswerPtrOutputWithContext(ctx context.Context) GuardrailActionGenerativeAnswerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionGenerativeAnswerOutput).ToGuardrailActionGenerativeAnswerPtrOutputWithContext(ctx)
+}
+
+// GuardrailActionGenerativeAnswerPtrInput is an input type that accepts GuardrailActionGenerativeAnswerArgs, GuardrailActionGenerativeAnswerPtr and GuardrailActionGenerativeAnswerPtrOutput values.
+// You can construct a concrete instance of `GuardrailActionGenerativeAnswerPtrInput` via:
+//
+//	        GuardrailActionGenerativeAnswerArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailActionGenerativeAnswerPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailActionGenerativeAnswerPtrOutput() GuardrailActionGenerativeAnswerPtrOutput
+	ToGuardrailActionGenerativeAnswerPtrOutputWithContext(context.Context) GuardrailActionGenerativeAnswerPtrOutput
+}
+
+type guardrailActionGenerativeAnswerPtrType GuardrailActionGenerativeAnswerArgs
+
+func GuardrailActionGenerativeAnswerPtr(v *GuardrailActionGenerativeAnswerArgs) GuardrailActionGenerativeAnswerPtrInput {
+	return (*guardrailActionGenerativeAnswerPtrType)(v)
+}
+
+func (*guardrailActionGenerativeAnswerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailActionGenerativeAnswer)(nil)).Elem()
+}
+
+func (i *guardrailActionGenerativeAnswerPtrType) ToGuardrailActionGenerativeAnswerPtrOutput() GuardrailActionGenerativeAnswerPtrOutput {
+	return i.ToGuardrailActionGenerativeAnswerPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailActionGenerativeAnswerPtrType) ToGuardrailActionGenerativeAnswerPtrOutputWithContext(ctx context.Context) GuardrailActionGenerativeAnswerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionGenerativeAnswerPtrOutput)
+}
+
+type GuardrailActionGenerativeAnswerOutput struct{ *pulumi.OutputState }
+
+func (GuardrailActionGenerativeAnswerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailActionGenerativeAnswer)(nil)).Elem()
+}
+
+func (o GuardrailActionGenerativeAnswerOutput) ToGuardrailActionGenerativeAnswerOutput() GuardrailActionGenerativeAnswerOutput {
+	return o
+}
+
+func (o GuardrailActionGenerativeAnswerOutput) ToGuardrailActionGenerativeAnswerOutputWithContext(ctx context.Context) GuardrailActionGenerativeAnswerOutput {
+	return o
+}
+
+func (o GuardrailActionGenerativeAnswerOutput) ToGuardrailActionGenerativeAnswerPtrOutput() GuardrailActionGenerativeAnswerPtrOutput {
+	return o.ToGuardrailActionGenerativeAnswerPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailActionGenerativeAnswerOutput) ToGuardrailActionGenerativeAnswerPtrOutputWithContext(ctx context.Context) GuardrailActionGenerativeAnswerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailActionGenerativeAnswer) *GuardrailActionGenerativeAnswer {
+		return &v
+	}).(GuardrailActionGenerativeAnswerPtrOutput)
+}
+
+// The prompt to use for the generative answer.
+func (o GuardrailActionGenerativeAnswerOutput) Prompt() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailActionGenerativeAnswer) string { return v.Prompt }).(pulumi.StringOutput)
+}
+
+type GuardrailActionGenerativeAnswerPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailActionGenerativeAnswerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailActionGenerativeAnswer)(nil)).Elem()
+}
+
+func (o GuardrailActionGenerativeAnswerPtrOutput) ToGuardrailActionGenerativeAnswerPtrOutput() GuardrailActionGenerativeAnswerPtrOutput {
+	return o
+}
+
+func (o GuardrailActionGenerativeAnswerPtrOutput) ToGuardrailActionGenerativeAnswerPtrOutputWithContext(ctx context.Context) GuardrailActionGenerativeAnswerPtrOutput {
+	return o
+}
+
+func (o GuardrailActionGenerativeAnswerPtrOutput) Elem() GuardrailActionGenerativeAnswerOutput {
+	return o.ApplyT(func(v *GuardrailActionGenerativeAnswer) GuardrailActionGenerativeAnswer {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailActionGenerativeAnswer
+		return ret
+	}).(GuardrailActionGenerativeAnswerOutput)
+}
+
+// The prompt to use for the generative answer.
+func (o GuardrailActionGenerativeAnswerPtrOutput) Prompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailActionGenerativeAnswer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prompt
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardrailActionRespondImmediately struct {
+	// The canned responses for the agent to choose from. The response is chosen
+	// randomly.
+	// Structure is documented below.
+	Responses []GuardrailActionRespondImmediatelyResponse `pulumi:"responses"`
+}
+
+// GuardrailActionRespondImmediatelyInput is an input type that accepts GuardrailActionRespondImmediatelyArgs and GuardrailActionRespondImmediatelyOutput values.
+// You can construct a concrete instance of `GuardrailActionRespondImmediatelyInput` via:
+//
+//	GuardrailActionRespondImmediatelyArgs{...}
+type GuardrailActionRespondImmediatelyInput interface {
+	pulumi.Input
+
+	ToGuardrailActionRespondImmediatelyOutput() GuardrailActionRespondImmediatelyOutput
+	ToGuardrailActionRespondImmediatelyOutputWithContext(context.Context) GuardrailActionRespondImmediatelyOutput
+}
+
+type GuardrailActionRespondImmediatelyArgs struct {
+	// The canned responses for the agent to choose from. The response is chosen
+	// randomly.
+	// Structure is documented below.
+	Responses GuardrailActionRespondImmediatelyResponseArrayInput `pulumi:"responses"`
+}
+
+func (GuardrailActionRespondImmediatelyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailActionRespondImmediately)(nil)).Elem()
+}
+
+func (i GuardrailActionRespondImmediatelyArgs) ToGuardrailActionRespondImmediatelyOutput() GuardrailActionRespondImmediatelyOutput {
+	return i.ToGuardrailActionRespondImmediatelyOutputWithContext(context.Background())
+}
+
+func (i GuardrailActionRespondImmediatelyArgs) ToGuardrailActionRespondImmediatelyOutputWithContext(ctx context.Context) GuardrailActionRespondImmediatelyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionRespondImmediatelyOutput)
+}
+
+func (i GuardrailActionRespondImmediatelyArgs) ToGuardrailActionRespondImmediatelyPtrOutput() GuardrailActionRespondImmediatelyPtrOutput {
+	return i.ToGuardrailActionRespondImmediatelyPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailActionRespondImmediatelyArgs) ToGuardrailActionRespondImmediatelyPtrOutputWithContext(ctx context.Context) GuardrailActionRespondImmediatelyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionRespondImmediatelyOutput).ToGuardrailActionRespondImmediatelyPtrOutputWithContext(ctx)
+}
+
+// GuardrailActionRespondImmediatelyPtrInput is an input type that accepts GuardrailActionRespondImmediatelyArgs, GuardrailActionRespondImmediatelyPtr and GuardrailActionRespondImmediatelyPtrOutput values.
+// You can construct a concrete instance of `GuardrailActionRespondImmediatelyPtrInput` via:
+//
+//	        GuardrailActionRespondImmediatelyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailActionRespondImmediatelyPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailActionRespondImmediatelyPtrOutput() GuardrailActionRespondImmediatelyPtrOutput
+	ToGuardrailActionRespondImmediatelyPtrOutputWithContext(context.Context) GuardrailActionRespondImmediatelyPtrOutput
+}
+
+type guardrailActionRespondImmediatelyPtrType GuardrailActionRespondImmediatelyArgs
+
+func GuardrailActionRespondImmediatelyPtr(v *GuardrailActionRespondImmediatelyArgs) GuardrailActionRespondImmediatelyPtrInput {
+	return (*guardrailActionRespondImmediatelyPtrType)(v)
+}
+
+func (*guardrailActionRespondImmediatelyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailActionRespondImmediately)(nil)).Elem()
+}
+
+func (i *guardrailActionRespondImmediatelyPtrType) ToGuardrailActionRespondImmediatelyPtrOutput() GuardrailActionRespondImmediatelyPtrOutput {
+	return i.ToGuardrailActionRespondImmediatelyPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailActionRespondImmediatelyPtrType) ToGuardrailActionRespondImmediatelyPtrOutputWithContext(ctx context.Context) GuardrailActionRespondImmediatelyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionRespondImmediatelyPtrOutput)
+}
+
+type GuardrailActionRespondImmediatelyOutput struct{ *pulumi.OutputState }
+
+func (GuardrailActionRespondImmediatelyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailActionRespondImmediately)(nil)).Elem()
+}
+
+func (o GuardrailActionRespondImmediatelyOutput) ToGuardrailActionRespondImmediatelyOutput() GuardrailActionRespondImmediatelyOutput {
+	return o
+}
+
+func (o GuardrailActionRespondImmediatelyOutput) ToGuardrailActionRespondImmediatelyOutputWithContext(ctx context.Context) GuardrailActionRespondImmediatelyOutput {
+	return o
+}
+
+func (o GuardrailActionRespondImmediatelyOutput) ToGuardrailActionRespondImmediatelyPtrOutput() GuardrailActionRespondImmediatelyPtrOutput {
+	return o.ToGuardrailActionRespondImmediatelyPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailActionRespondImmediatelyOutput) ToGuardrailActionRespondImmediatelyPtrOutputWithContext(ctx context.Context) GuardrailActionRespondImmediatelyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailActionRespondImmediately) *GuardrailActionRespondImmediately {
+		return &v
+	}).(GuardrailActionRespondImmediatelyPtrOutput)
+}
+
+// The canned responses for the agent to choose from. The response is chosen
+// randomly.
+// Structure is documented below.
+func (o GuardrailActionRespondImmediatelyOutput) Responses() GuardrailActionRespondImmediatelyResponseArrayOutput {
+	return o.ApplyT(func(v GuardrailActionRespondImmediately) []GuardrailActionRespondImmediatelyResponse {
+		return v.Responses
+	}).(GuardrailActionRespondImmediatelyResponseArrayOutput)
+}
+
+type GuardrailActionRespondImmediatelyPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailActionRespondImmediatelyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailActionRespondImmediately)(nil)).Elem()
+}
+
+func (o GuardrailActionRespondImmediatelyPtrOutput) ToGuardrailActionRespondImmediatelyPtrOutput() GuardrailActionRespondImmediatelyPtrOutput {
+	return o
+}
+
+func (o GuardrailActionRespondImmediatelyPtrOutput) ToGuardrailActionRespondImmediatelyPtrOutputWithContext(ctx context.Context) GuardrailActionRespondImmediatelyPtrOutput {
+	return o
+}
+
+func (o GuardrailActionRespondImmediatelyPtrOutput) Elem() GuardrailActionRespondImmediatelyOutput {
+	return o.ApplyT(func(v *GuardrailActionRespondImmediately) GuardrailActionRespondImmediately {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailActionRespondImmediately
+		return ret
+	}).(GuardrailActionRespondImmediatelyOutput)
+}
+
+// The canned responses for the agent to choose from. The response is chosen
+// randomly.
+// Structure is documented below.
+func (o GuardrailActionRespondImmediatelyPtrOutput) Responses() GuardrailActionRespondImmediatelyResponseArrayOutput {
+	return o.ApplyT(func(v *GuardrailActionRespondImmediately) []GuardrailActionRespondImmediatelyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Responses
+	}).(GuardrailActionRespondImmediatelyResponseArrayOutput)
+}
+
+type GuardrailActionRespondImmediatelyResponse struct {
+	// Whether the response is disabled. Disabled responses are not used by the
+	// agent.
+	Disabled *bool `pulumi:"disabled"`
+	// Text for the agent to respond with.
+	Text string `pulumi:"text"`
+}
+
+// GuardrailActionRespondImmediatelyResponseInput is an input type that accepts GuardrailActionRespondImmediatelyResponseArgs and GuardrailActionRespondImmediatelyResponseOutput values.
+// You can construct a concrete instance of `GuardrailActionRespondImmediatelyResponseInput` via:
+//
+//	GuardrailActionRespondImmediatelyResponseArgs{...}
+type GuardrailActionRespondImmediatelyResponseInput interface {
+	pulumi.Input
+
+	ToGuardrailActionRespondImmediatelyResponseOutput() GuardrailActionRespondImmediatelyResponseOutput
+	ToGuardrailActionRespondImmediatelyResponseOutputWithContext(context.Context) GuardrailActionRespondImmediatelyResponseOutput
+}
+
+type GuardrailActionRespondImmediatelyResponseArgs struct {
+	// Whether the response is disabled. Disabled responses are not used by the
+	// agent.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Text for the agent to respond with.
+	Text pulumi.StringInput `pulumi:"text"`
+}
+
+func (GuardrailActionRespondImmediatelyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailActionRespondImmediatelyResponse)(nil)).Elem()
+}
+
+func (i GuardrailActionRespondImmediatelyResponseArgs) ToGuardrailActionRespondImmediatelyResponseOutput() GuardrailActionRespondImmediatelyResponseOutput {
+	return i.ToGuardrailActionRespondImmediatelyResponseOutputWithContext(context.Background())
+}
+
+func (i GuardrailActionRespondImmediatelyResponseArgs) ToGuardrailActionRespondImmediatelyResponseOutputWithContext(ctx context.Context) GuardrailActionRespondImmediatelyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionRespondImmediatelyResponseOutput)
+}
+
+// GuardrailActionRespondImmediatelyResponseArrayInput is an input type that accepts GuardrailActionRespondImmediatelyResponseArray and GuardrailActionRespondImmediatelyResponseArrayOutput values.
+// You can construct a concrete instance of `GuardrailActionRespondImmediatelyResponseArrayInput` via:
+//
+//	GuardrailActionRespondImmediatelyResponseArray{ GuardrailActionRespondImmediatelyResponseArgs{...} }
+type GuardrailActionRespondImmediatelyResponseArrayInput interface {
+	pulumi.Input
+
+	ToGuardrailActionRespondImmediatelyResponseArrayOutput() GuardrailActionRespondImmediatelyResponseArrayOutput
+	ToGuardrailActionRespondImmediatelyResponseArrayOutputWithContext(context.Context) GuardrailActionRespondImmediatelyResponseArrayOutput
+}
+
+type GuardrailActionRespondImmediatelyResponseArray []GuardrailActionRespondImmediatelyResponseInput
+
+func (GuardrailActionRespondImmediatelyResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuardrailActionRespondImmediatelyResponse)(nil)).Elem()
+}
+
+func (i GuardrailActionRespondImmediatelyResponseArray) ToGuardrailActionRespondImmediatelyResponseArrayOutput() GuardrailActionRespondImmediatelyResponseArrayOutput {
+	return i.ToGuardrailActionRespondImmediatelyResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GuardrailActionRespondImmediatelyResponseArray) ToGuardrailActionRespondImmediatelyResponseArrayOutputWithContext(ctx context.Context) GuardrailActionRespondImmediatelyResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionRespondImmediatelyResponseArrayOutput)
+}
+
+type GuardrailActionRespondImmediatelyResponseOutput struct{ *pulumi.OutputState }
+
+func (GuardrailActionRespondImmediatelyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailActionRespondImmediatelyResponse)(nil)).Elem()
+}
+
+func (o GuardrailActionRespondImmediatelyResponseOutput) ToGuardrailActionRespondImmediatelyResponseOutput() GuardrailActionRespondImmediatelyResponseOutput {
+	return o
+}
+
+func (o GuardrailActionRespondImmediatelyResponseOutput) ToGuardrailActionRespondImmediatelyResponseOutputWithContext(ctx context.Context) GuardrailActionRespondImmediatelyResponseOutput {
+	return o
+}
+
+// Whether the response is disabled. Disabled responses are not used by the
+// agent.
+func (o GuardrailActionRespondImmediatelyResponseOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailActionRespondImmediatelyResponse) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Text for the agent to respond with.
+func (o GuardrailActionRespondImmediatelyResponseOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailActionRespondImmediatelyResponse) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type GuardrailActionRespondImmediatelyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GuardrailActionRespondImmediatelyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuardrailActionRespondImmediatelyResponse)(nil)).Elem()
+}
+
+func (o GuardrailActionRespondImmediatelyResponseArrayOutput) ToGuardrailActionRespondImmediatelyResponseArrayOutput() GuardrailActionRespondImmediatelyResponseArrayOutput {
+	return o
+}
+
+func (o GuardrailActionRespondImmediatelyResponseArrayOutput) ToGuardrailActionRespondImmediatelyResponseArrayOutputWithContext(ctx context.Context) GuardrailActionRespondImmediatelyResponseArrayOutput {
+	return o
+}
+
+func (o GuardrailActionRespondImmediatelyResponseArrayOutput) Index(i pulumi.IntInput) GuardrailActionRespondImmediatelyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuardrailActionRespondImmediatelyResponse {
+		return vs[0].([]GuardrailActionRespondImmediatelyResponse)[vs[1].(int)]
+	}).(GuardrailActionRespondImmediatelyResponseOutput)
+}
+
+type GuardrailActionTransferAgent struct {
+	// The name of the agent to transfer the conversation to. The agent must be
+	// in the same app as the current agent.
+	// Format:
+	// `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+	Agent string `pulumi:"agent"`
+}
+
+// GuardrailActionTransferAgentInput is an input type that accepts GuardrailActionTransferAgentArgs and GuardrailActionTransferAgentOutput values.
+// You can construct a concrete instance of `GuardrailActionTransferAgentInput` via:
+//
+//	GuardrailActionTransferAgentArgs{...}
+type GuardrailActionTransferAgentInput interface {
+	pulumi.Input
+
+	ToGuardrailActionTransferAgentOutput() GuardrailActionTransferAgentOutput
+	ToGuardrailActionTransferAgentOutputWithContext(context.Context) GuardrailActionTransferAgentOutput
+}
+
+type GuardrailActionTransferAgentArgs struct {
+	// The name of the agent to transfer the conversation to. The agent must be
+	// in the same app as the current agent.
+	// Format:
+	// `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+	Agent pulumi.StringInput `pulumi:"agent"`
+}
+
+func (GuardrailActionTransferAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailActionTransferAgent)(nil)).Elem()
+}
+
+func (i GuardrailActionTransferAgentArgs) ToGuardrailActionTransferAgentOutput() GuardrailActionTransferAgentOutput {
+	return i.ToGuardrailActionTransferAgentOutputWithContext(context.Background())
+}
+
+func (i GuardrailActionTransferAgentArgs) ToGuardrailActionTransferAgentOutputWithContext(ctx context.Context) GuardrailActionTransferAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionTransferAgentOutput)
+}
+
+func (i GuardrailActionTransferAgentArgs) ToGuardrailActionTransferAgentPtrOutput() GuardrailActionTransferAgentPtrOutput {
+	return i.ToGuardrailActionTransferAgentPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailActionTransferAgentArgs) ToGuardrailActionTransferAgentPtrOutputWithContext(ctx context.Context) GuardrailActionTransferAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionTransferAgentOutput).ToGuardrailActionTransferAgentPtrOutputWithContext(ctx)
+}
+
+// GuardrailActionTransferAgentPtrInput is an input type that accepts GuardrailActionTransferAgentArgs, GuardrailActionTransferAgentPtr and GuardrailActionTransferAgentPtrOutput values.
+// You can construct a concrete instance of `GuardrailActionTransferAgentPtrInput` via:
+//
+//	        GuardrailActionTransferAgentArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailActionTransferAgentPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailActionTransferAgentPtrOutput() GuardrailActionTransferAgentPtrOutput
+	ToGuardrailActionTransferAgentPtrOutputWithContext(context.Context) GuardrailActionTransferAgentPtrOutput
+}
+
+type guardrailActionTransferAgentPtrType GuardrailActionTransferAgentArgs
+
+func GuardrailActionTransferAgentPtr(v *GuardrailActionTransferAgentArgs) GuardrailActionTransferAgentPtrInput {
+	return (*guardrailActionTransferAgentPtrType)(v)
+}
+
+func (*guardrailActionTransferAgentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailActionTransferAgent)(nil)).Elem()
+}
+
+func (i *guardrailActionTransferAgentPtrType) ToGuardrailActionTransferAgentPtrOutput() GuardrailActionTransferAgentPtrOutput {
+	return i.ToGuardrailActionTransferAgentPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailActionTransferAgentPtrType) ToGuardrailActionTransferAgentPtrOutputWithContext(ctx context.Context) GuardrailActionTransferAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailActionTransferAgentPtrOutput)
+}
+
+type GuardrailActionTransferAgentOutput struct{ *pulumi.OutputState }
+
+func (GuardrailActionTransferAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailActionTransferAgent)(nil)).Elem()
+}
+
+func (o GuardrailActionTransferAgentOutput) ToGuardrailActionTransferAgentOutput() GuardrailActionTransferAgentOutput {
+	return o
+}
+
+func (o GuardrailActionTransferAgentOutput) ToGuardrailActionTransferAgentOutputWithContext(ctx context.Context) GuardrailActionTransferAgentOutput {
+	return o
+}
+
+func (o GuardrailActionTransferAgentOutput) ToGuardrailActionTransferAgentPtrOutput() GuardrailActionTransferAgentPtrOutput {
+	return o.ToGuardrailActionTransferAgentPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailActionTransferAgentOutput) ToGuardrailActionTransferAgentPtrOutputWithContext(ctx context.Context) GuardrailActionTransferAgentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailActionTransferAgent) *GuardrailActionTransferAgent {
+		return &v
+	}).(GuardrailActionTransferAgentPtrOutput)
+}
+
+// The name of the agent to transfer the conversation to. The agent must be
+// in the same app as the current agent.
+// Format:
+// `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+func (o GuardrailActionTransferAgentOutput) Agent() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailActionTransferAgent) string { return v.Agent }).(pulumi.StringOutput)
+}
+
+type GuardrailActionTransferAgentPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailActionTransferAgentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailActionTransferAgent)(nil)).Elem()
+}
+
+func (o GuardrailActionTransferAgentPtrOutput) ToGuardrailActionTransferAgentPtrOutput() GuardrailActionTransferAgentPtrOutput {
+	return o
+}
+
+func (o GuardrailActionTransferAgentPtrOutput) ToGuardrailActionTransferAgentPtrOutputWithContext(ctx context.Context) GuardrailActionTransferAgentPtrOutput {
+	return o
+}
+
+func (o GuardrailActionTransferAgentPtrOutput) Elem() GuardrailActionTransferAgentOutput {
+	return o.ApplyT(func(v *GuardrailActionTransferAgent) GuardrailActionTransferAgent {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailActionTransferAgent
+		return ret
+	}).(GuardrailActionTransferAgentOutput)
+}
+
+// The name of the agent to transfer the conversation to. The agent must be
+// in the same app as the current agent.
+// Format:
+// `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+func (o GuardrailActionTransferAgentPtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailActionTransferAgent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardrailCodeCallback struct {
+	// A callback defines the custom logic to be executed at various stages of
+	// agent interaction.
+	// Structure is documented below.
+	AfterAgentCallback *GuardrailCodeCallbackAfterAgentCallback `pulumi:"afterAgentCallback"`
+	// A callback defines the custom logic to be executed at various stages of
+	// agent interaction.
+	// Structure is documented below.
+	AfterModelCallback *GuardrailCodeCallbackAfterModelCallback `pulumi:"afterModelCallback"`
+	// A callback defines the custom logic to be executed at various stages of
+	// agent interaction.
+	// Structure is documented below.
+	BeforeAgentCallback *GuardrailCodeCallbackBeforeAgentCallback `pulumi:"beforeAgentCallback"`
+	// A callback defines the custom logic to be executed at various stages of
+	// agent interaction.
+	// Structure is documented below.
+	BeforeModelCallback *GuardrailCodeCallbackBeforeModelCallback `pulumi:"beforeModelCallback"`
+}
+
+// GuardrailCodeCallbackInput is an input type that accepts GuardrailCodeCallbackArgs and GuardrailCodeCallbackOutput values.
+// You can construct a concrete instance of `GuardrailCodeCallbackInput` via:
+//
+//	GuardrailCodeCallbackArgs{...}
+type GuardrailCodeCallbackInput interface {
+	pulumi.Input
+
+	ToGuardrailCodeCallbackOutput() GuardrailCodeCallbackOutput
+	ToGuardrailCodeCallbackOutputWithContext(context.Context) GuardrailCodeCallbackOutput
+}
+
+type GuardrailCodeCallbackArgs struct {
+	// A callback defines the custom logic to be executed at various stages of
+	// agent interaction.
+	// Structure is documented below.
+	AfterAgentCallback GuardrailCodeCallbackAfterAgentCallbackPtrInput `pulumi:"afterAgentCallback"`
+	// A callback defines the custom logic to be executed at various stages of
+	// agent interaction.
+	// Structure is documented below.
+	AfterModelCallback GuardrailCodeCallbackAfterModelCallbackPtrInput `pulumi:"afterModelCallback"`
+	// A callback defines the custom logic to be executed at various stages of
+	// agent interaction.
+	// Structure is documented below.
+	BeforeAgentCallback GuardrailCodeCallbackBeforeAgentCallbackPtrInput `pulumi:"beforeAgentCallback"`
+	// A callback defines the custom logic to be executed at various stages of
+	// agent interaction.
+	// Structure is documented below.
+	BeforeModelCallback GuardrailCodeCallbackBeforeModelCallbackPtrInput `pulumi:"beforeModelCallback"`
+}
+
+func (GuardrailCodeCallbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailCodeCallback)(nil)).Elem()
+}
+
+func (i GuardrailCodeCallbackArgs) ToGuardrailCodeCallbackOutput() GuardrailCodeCallbackOutput {
+	return i.ToGuardrailCodeCallbackOutputWithContext(context.Background())
+}
+
+func (i GuardrailCodeCallbackArgs) ToGuardrailCodeCallbackOutputWithContext(ctx context.Context) GuardrailCodeCallbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackOutput)
+}
+
+func (i GuardrailCodeCallbackArgs) ToGuardrailCodeCallbackPtrOutput() GuardrailCodeCallbackPtrOutput {
+	return i.ToGuardrailCodeCallbackPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailCodeCallbackArgs) ToGuardrailCodeCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackOutput).ToGuardrailCodeCallbackPtrOutputWithContext(ctx)
+}
+
+// GuardrailCodeCallbackPtrInput is an input type that accepts GuardrailCodeCallbackArgs, GuardrailCodeCallbackPtr and GuardrailCodeCallbackPtrOutput values.
+// You can construct a concrete instance of `GuardrailCodeCallbackPtrInput` via:
+//
+//	        GuardrailCodeCallbackArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailCodeCallbackPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailCodeCallbackPtrOutput() GuardrailCodeCallbackPtrOutput
+	ToGuardrailCodeCallbackPtrOutputWithContext(context.Context) GuardrailCodeCallbackPtrOutput
+}
+
+type guardrailCodeCallbackPtrType GuardrailCodeCallbackArgs
+
+func GuardrailCodeCallbackPtr(v *GuardrailCodeCallbackArgs) GuardrailCodeCallbackPtrInput {
+	return (*guardrailCodeCallbackPtrType)(v)
+}
+
+func (*guardrailCodeCallbackPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailCodeCallback)(nil)).Elem()
+}
+
+func (i *guardrailCodeCallbackPtrType) ToGuardrailCodeCallbackPtrOutput() GuardrailCodeCallbackPtrOutput {
+	return i.ToGuardrailCodeCallbackPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailCodeCallbackPtrType) ToGuardrailCodeCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackPtrOutput)
+}
+
+type GuardrailCodeCallbackOutput struct{ *pulumi.OutputState }
+
+func (GuardrailCodeCallbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailCodeCallback)(nil)).Elem()
+}
+
+func (o GuardrailCodeCallbackOutput) ToGuardrailCodeCallbackOutput() GuardrailCodeCallbackOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackOutput) ToGuardrailCodeCallbackOutputWithContext(ctx context.Context) GuardrailCodeCallbackOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackOutput) ToGuardrailCodeCallbackPtrOutput() GuardrailCodeCallbackPtrOutput {
+	return o.ToGuardrailCodeCallbackPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailCodeCallbackOutput) ToGuardrailCodeCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailCodeCallback) *GuardrailCodeCallback {
+		return &v
+	}).(GuardrailCodeCallbackPtrOutput)
+}
+
+// A callback defines the custom logic to be executed at various stages of
+// agent interaction.
+// Structure is documented below.
+func (o GuardrailCodeCallbackOutput) AfterAgentCallback() GuardrailCodeCallbackAfterAgentCallbackPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallback) *GuardrailCodeCallbackAfterAgentCallback { return v.AfterAgentCallback }).(GuardrailCodeCallbackAfterAgentCallbackPtrOutput)
+}
+
+// A callback defines the custom logic to be executed at various stages of
+// agent interaction.
+// Structure is documented below.
+func (o GuardrailCodeCallbackOutput) AfterModelCallback() GuardrailCodeCallbackAfterModelCallbackPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallback) *GuardrailCodeCallbackAfterModelCallback { return v.AfterModelCallback }).(GuardrailCodeCallbackAfterModelCallbackPtrOutput)
+}
+
+// A callback defines the custom logic to be executed at various stages of
+// agent interaction.
+// Structure is documented below.
+func (o GuardrailCodeCallbackOutput) BeforeAgentCallback() GuardrailCodeCallbackBeforeAgentCallbackPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallback) *GuardrailCodeCallbackBeforeAgentCallback { return v.BeforeAgentCallback }).(GuardrailCodeCallbackBeforeAgentCallbackPtrOutput)
+}
+
+// A callback defines the custom logic to be executed at various stages of
+// agent interaction.
+// Structure is documented below.
+func (o GuardrailCodeCallbackOutput) BeforeModelCallback() GuardrailCodeCallbackBeforeModelCallbackPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallback) *GuardrailCodeCallbackBeforeModelCallback { return v.BeforeModelCallback }).(GuardrailCodeCallbackBeforeModelCallbackPtrOutput)
+}
+
+type GuardrailCodeCallbackPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailCodeCallbackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailCodeCallback)(nil)).Elem()
+}
+
+func (o GuardrailCodeCallbackPtrOutput) ToGuardrailCodeCallbackPtrOutput() GuardrailCodeCallbackPtrOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackPtrOutput) ToGuardrailCodeCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackPtrOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackPtrOutput) Elem() GuardrailCodeCallbackOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallback) GuardrailCodeCallback {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailCodeCallback
+		return ret
+	}).(GuardrailCodeCallbackOutput)
+}
+
+// A callback defines the custom logic to be executed at various stages of
+// agent interaction.
+// Structure is documented below.
+func (o GuardrailCodeCallbackPtrOutput) AfterAgentCallback() GuardrailCodeCallbackAfterAgentCallbackPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallback) *GuardrailCodeCallbackAfterAgentCallback {
+		if v == nil {
+			return nil
+		}
+		return v.AfterAgentCallback
+	}).(GuardrailCodeCallbackAfterAgentCallbackPtrOutput)
+}
+
+// A callback defines the custom logic to be executed at various stages of
+// agent interaction.
+// Structure is documented below.
+func (o GuardrailCodeCallbackPtrOutput) AfterModelCallback() GuardrailCodeCallbackAfterModelCallbackPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallback) *GuardrailCodeCallbackAfterModelCallback {
+		if v == nil {
+			return nil
+		}
+		return v.AfterModelCallback
+	}).(GuardrailCodeCallbackAfterModelCallbackPtrOutput)
+}
+
+// A callback defines the custom logic to be executed at various stages of
+// agent interaction.
+// Structure is documented below.
+func (o GuardrailCodeCallbackPtrOutput) BeforeAgentCallback() GuardrailCodeCallbackBeforeAgentCallbackPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallback) *GuardrailCodeCallbackBeforeAgentCallback {
+		if v == nil {
+			return nil
+		}
+		return v.BeforeAgentCallback
+	}).(GuardrailCodeCallbackBeforeAgentCallbackPtrOutput)
+}
+
+// A callback defines the custom logic to be executed at various stages of
+// agent interaction.
+// Structure is documented below.
+func (o GuardrailCodeCallbackPtrOutput) BeforeModelCallback() GuardrailCodeCallbackBeforeModelCallbackPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallback) *GuardrailCodeCallbackBeforeModelCallback {
+		if v == nil {
+			return nil
+		}
+		return v.BeforeModelCallback
+	}).(GuardrailCodeCallbackBeforeModelCallbackPtrOutput)
+}
+
+type GuardrailCodeCallbackAfterAgentCallback struct {
+	// Human-readable description of the callback.
+	Description *string `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled *bool `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// GuardrailCodeCallbackAfterAgentCallbackInput is an input type that accepts GuardrailCodeCallbackAfterAgentCallbackArgs and GuardrailCodeCallbackAfterAgentCallbackOutput values.
+// You can construct a concrete instance of `GuardrailCodeCallbackAfterAgentCallbackInput` via:
+//
+//	GuardrailCodeCallbackAfterAgentCallbackArgs{...}
+type GuardrailCodeCallbackAfterAgentCallbackInput interface {
+	pulumi.Input
+
+	ToGuardrailCodeCallbackAfterAgentCallbackOutput() GuardrailCodeCallbackAfterAgentCallbackOutput
+	ToGuardrailCodeCallbackAfterAgentCallbackOutputWithContext(context.Context) GuardrailCodeCallbackAfterAgentCallbackOutput
+}
+
+type GuardrailCodeCallbackAfterAgentCallbackArgs struct {
+	// Human-readable description of the callback.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (GuardrailCodeCallbackAfterAgentCallbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailCodeCallbackAfterAgentCallback)(nil)).Elem()
+}
+
+func (i GuardrailCodeCallbackAfterAgentCallbackArgs) ToGuardrailCodeCallbackAfterAgentCallbackOutput() GuardrailCodeCallbackAfterAgentCallbackOutput {
+	return i.ToGuardrailCodeCallbackAfterAgentCallbackOutputWithContext(context.Background())
+}
+
+func (i GuardrailCodeCallbackAfterAgentCallbackArgs) ToGuardrailCodeCallbackAfterAgentCallbackOutputWithContext(ctx context.Context) GuardrailCodeCallbackAfterAgentCallbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackAfterAgentCallbackOutput)
+}
+
+func (i GuardrailCodeCallbackAfterAgentCallbackArgs) ToGuardrailCodeCallbackAfterAgentCallbackPtrOutput() GuardrailCodeCallbackAfterAgentCallbackPtrOutput {
+	return i.ToGuardrailCodeCallbackAfterAgentCallbackPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailCodeCallbackAfterAgentCallbackArgs) ToGuardrailCodeCallbackAfterAgentCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackAfterAgentCallbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackAfterAgentCallbackOutput).ToGuardrailCodeCallbackAfterAgentCallbackPtrOutputWithContext(ctx)
+}
+
+// GuardrailCodeCallbackAfterAgentCallbackPtrInput is an input type that accepts GuardrailCodeCallbackAfterAgentCallbackArgs, GuardrailCodeCallbackAfterAgentCallbackPtr and GuardrailCodeCallbackAfterAgentCallbackPtrOutput values.
+// You can construct a concrete instance of `GuardrailCodeCallbackAfterAgentCallbackPtrInput` via:
+//
+//	        GuardrailCodeCallbackAfterAgentCallbackArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailCodeCallbackAfterAgentCallbackPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailCodeCallbackAfterAgentCallbackPtrOutput() GuardrailCodeCallbackAfterAgentCallbackPtrOutput
+	ToGuardrailCodeCallbackAfterAgentCallbackPtrOutputWithContext(context.Context) GuardrailCodeCallbackAfterAgentCallbackPtrOutput
+}
+
+type guardrailCodeCallbackAfterAgentCallbackPtrType GuardrailCodeCallbackAfterAgentCallbackArgs
+
+func GuardrailCodeCallbackAfterAgentCallbackPtr(v *GuardrailCodeCallbackAfterAgentCallbackArgs) GuardrailCodeCallbackAfterAgentCallbackPtrInput {
+	return (*guardrailCodeCallbackAfterAgentCallbackPtrType)(v)
+}
+
+func (*guardrailCodeCallbackAfterAgentCallbackPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailCodeCallbackAfterAgentCallback)(nil)).Elem()
+}
+
+func (i *guardrailCodeCallbackAfterAgentCallbackPtrType) ToGuardrailCodeCallbackAfterAgentCallbackPtrOutput() GuardrailCodeCallbackAfterAgentCallbackPtrOutput {
+	return i.ToGuardrailCodeCallbackAfterAgentCallbackPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailCodeCallbackAfterAgentCallbackPtrType) ToGuardrailCodeCallbackAfterAgentCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackAfterAgentCallbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackAfterAgentCallbackPtrOutput)
+}
+
+type GuardrailCodeCallbackAfterAgentCallbackOutput struct{ *pulumi.OutputState }
+
+func (GuardrailCodeCallbackAfterAgentCallbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailCodeCallbackAfterAgentCallback)(nil)).Elem()
+}
+
+func (o GuardrailCodeCallbackAfterAgentCallbackOutput) ToGuardrailCodeCallbackAfterAgentCallbackOutput() GuardrailCodeCallbackAfterAgentCallbackOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackAfterAgentCallbackOutput) ToGuardrailCodeCallbackAfterAgentCallbackOutputWithContext(ctx context.Context) GuardrailCodeCallbackAfterAgentCallbackOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackAfterAgentCallbackOutput) ToGuardrailCodeCallbackAfterAgentCallbackPtrOutput() GuardrailCodeCallbackAfterAgentCallbackPtrOutput {
+	return o.ToGuardrailCodeCallbackAfterAgentCallbackPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailCodeCallbackAfterAgentCallbackOutput) ToGuardrailCodeCallbackAfterAgentCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackAfterAgentCallbackPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailCodeCallbackAfterAgentCallback) *GuardrailCodeCallbackAfterAgentCallback {
+		return &v
+	}).(GuardrailCodeCallbackAfterAgentCallbackPtrOutput)
+}
+
+// Human-readable description of the callback.
+func (o GuardrailCodeCallbackAfterAgentCallbackOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackAfterAgentCallback) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o GuardrailCodeCallbackAfterAgentCallbackOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackAfterAgentCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o GuardrailCodeCallbackAfterAgentCallbackOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackAfterAgentCallback) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type GuardrailCodeCallbackAfterAgentCallbackPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailCodeCallbackAfterAgentCallbackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailCodeCallbackAfterAgentCallback)(nil)).Elem()
+}
+
+func (o GuardrailCodeCallbackAfterAgentCallbackPtrOutput) ToGuardrailCodeCallbackAfterAgentCallbackPtrOutput() GuardrailCodeCallbackAfterAgentCallbackPtrOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackAfterAgentCallbackPtrOutput) ToGuardrailCodeCallbackAfterAgentCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackAfterAgentCallbackPtrOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackAfterAgentCallbackPtrOutput) Elem() GuardrailCodeCallbackAfterAgentCallbackOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackAfterAgentCallback) GuardrailCodeCallbackAfterAgentCallback {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailCodeCallbackAfterAgentCallback
+		return ret
+	}).(GuardrailCodeCallbackAfterAgentCallbackOutput)
+}
+
+// Human-readable description of the callback.
+func (o GuardrailCodeCallbackAfterAgentCallbackPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackAfterAgentCallback) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o GuardrailCodeCallbackAfterAgentCallbackPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackAfterAgentCallback) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o GuardrailCodeCallbackAfterAgentCallbackPtrOutput) PythonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackAfterAgentCallback) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PythonCode
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardrailCodeCallbackAfterModelCallback struct {
+	// Human-readable description of the callback.
+	Description *string `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled *bool `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// GuardrailCodeCallbackAfterModelCallbackInput is an input type that accepts GuardrailCodeCallbackAfterModelCallbackArgs and GuardrailCodeCallbackAfterModelCallbackOutput values.
+// You can construct a concrete instance of `GuardrailCodeCallbackAfterModelCallbackInput` via:
+//
+//	GuardrailCodeCallbackAfterModelCallbackArgs{...}
+type GuardrailCodeCallbackAfterModelCallbackInput interface {
+	pulumi.Input
+
+	ToGuardrailCodeCallbackAfterModelCallbackOutput() GuardrailCodeCallbackAfterModelCallbackOutput
+	ToGuardrailCodeCallbackAfterModelCallbackOutputWithContext(context.Context) GuardrailCodeCallbackAfterModelCallbackOutput
+}
+
+type GuardrailCodeCallbackAfterModelCallbackArgs struct {
+	// Human-readable description of the callback.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (GuardrailCodeCallbackAfterModelCallbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailCodeCallbackAfterModelCallback)(nil)).Elem()
+}
+
+func (i GuardrailCodeCallbackAfterModelCallbackArgs) ToGuardrailCodeCallbackAfterModelCallbackOutput() GuardrailCodeCallbackAfterModelCallbackOutput {
+	return i.ToGuardrailCodeCallbackAfterModelCallbackOutputWithContext(context.Background())
+}
+
+func (i GuardrailCodeCallbackAfterModelCallbackArgs) ToGuardrailCodeCallbackAfterModelCallbackOutputWithContext(ctx context.Context) GuardrailCodeCallbackAfterModelCallbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackAfterModelCallbackOutput)
+}
+
+func (i GuardrailCodeCallbackAfterModelCallbackArgs) ToGuardrailCodeCallbackAfterModelCallbackPtrOutput() GuardrailCodeCallbackAfterModelCallbackPtrOutput {
+	return i.ToGuardrailCodeCallbackAfterModelCallbackPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailCodeCallbackAfterModelCallbackArgs) ToGuardrailCodeCallbackAfterModelCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackAfterModelCallbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackAfterModelCallbackOutput).ToGuardrailCodeCallbackAfterModelCallbackPtrOutputWithContext(ctx)
+}
+
+// GuardrailCodeCallbackAfterModelCallbackPtrInput is an input type that accepts GuardrailCodeCallbackAfterModelCallbackArgs, GuardrailCodeCallbackAfterModelCallbackPtr and GuardrailCodeCallbackAfterModelCallbackPtrOutput values.
+// You can construct a concrete instance of `GuardrailCodeCallbackAfterModelCallbackPtrInput` via:
+//
+//	        GuardrailCodeCallbackAfterModelCallbackArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailCodeCallbackAfterModelCallbackPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailCodeCallbackAfterModelCallbackPtrOutput() GuardrailCodeCallbackAfterModelCallbackPtrOutput
+	ToGuardrailCodeCallbackAfterModelCallbackPtrOutputWithContext(context.Context) GuardrailCodeCallbackAfterModelCallbackPtrOutput
+}
+
+type guardrailCodeCallbackAfterModelCallbackPtrType GuardrailCodeCallbackAfterModelCallbackArgs
+
+func GuardrailCodeCallbackAfterModelCallbackPtr(v *GuardrailCodeCallbackAfterModelCallbackArgs) GuardrailCodeCallbackAfterModelCallbackPtrInput {
+	return (*guardrailCodeCallbackAfterModelCallbackPtrType)(v)
+}
+
+func (*guardrailCodeCallbackAfterModelCallbackPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailCodeCallbackAfterModelCallback)(nil)).Elem()
+}
+
+func (i *guardrailCodeCallbackAfterModelCallbackPtrType) ToGuardrailCodeCallbackAfterModelCallbackPtrOutput() GuardrailCodeCallbackAfterModelCallbackPtrOutput {
+	return i.ToGuardrailCodeCallbackAfterModelCallbackPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailCodeCallbackAfterModelCallbackPtrType) ToGuardrailCodeCallbackAfterModelCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackAfterModelCallbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackAfterModelCallbackPtrOutput)
+}
+
+type GuardrailCodeCallbackAfterModelCallbackOutput struct{ *pulumi.OutputState }
+
+func (GuardrailCodeCallbackAfterModelCallbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailCodeCallbackAfterModelCallback)(nil)).Elem()
+}
+
+func (o GuardrailCodeCallbackAfterModelCallbackOutput) ToGuardrailCodeCallbackAfterModelCallbackOutput() GuardrailCodeCallbackAfterModelCallbackOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackAfterModelCallbackOutput) ToGuardrailCodeCallbackAfterModelCallbackOutputWithContext(ctx context.Context) GuardrailCodeCallbackAfterModelCallbackOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackAfterModelCallbackOutput) ToGuardrailCodeCallbackAfterModelCallbackPtrOutput() GuardrailCodeCallbackAfterModelCallbackPtrOutput {
+	return o.ToGuardrailCodeCallbackAfterModelCallbackPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailCodeCallbackAfterModelCallbackOutput) ToGuardrailCodeCallbackAfterModelCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackAfterModelCallbackPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailCodeCallbackAfterModelCallback) *GuardrailCodeCallbackAfterModelCallback {
+		return &v
+	}).(GuardrailCodeCallbackAfterModelCallbackPtrOutput)
+}
+
+// Human-readable description of the callback.
+func (o GuardrailCodeCallbackAfterModelCallbackOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackAfterModelCallback) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o GuardrailCodeCallbackAfterModelCallbackOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackAfterModelCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o GuardrailCodeCallbackAfterModelCallbackOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackAfterModelCallback) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type GuardrailCodeCallbackAfterModelCallbackPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailCodeCallbackAfterModelCallbackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailCodeCallbackAfterModelCallback)(nil)).Elem()
+}
+
+func (o GuardrailCodeCallbackAfterModelCallbackPtrOutput) ToGuardrailCodeCallbackAfterModelCallbackPtrOutput() GuardrailCodeCallbackAfterModelCallbackPtrOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackAfterModelCallbackPtrOutput) ToGuardrailCodeCallbackAfterModelCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackAfterModelCallbackPtrOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackAfterModelCallbackPtrOutput) Elem() GuardrailCodeCallbackAfterModelCallbackOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackAfterModelCallback) GuardrailCodeCallbackAfterModelCallback {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailCodeCallbackAfterModelCallback
+		return ret
+	}).(GuardrailCodeCallbackAfterModelCallbackOutput)
+}
+
+// Human-readable description of the callback.
+func (o GuardrailCodeCallbackAfterModelCallbackPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackAfterModelCallback) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o GuardrailCodeCallbackAfterModelCallbackPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackAfterModelCallback) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o GuardrailCodeCallbackAfterModelCallbackPtrOutput) PythonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackAfterModelCallback) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PythonCode
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardrailCodeCallbackBeforeAgentCallback struct {
+	// Human-readable description of the callback.
+	Description *string `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled *bool `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// GuardrailCodeCallbackBeforeAgentCallbackInput is an input type that accepts GuardrailCodeCallbackBeforeAgentCallbackArgs and GuardrailCodeCallbackBeforeAgentCallbackOutput values.
+// You can construct a concrete instance of `GuardrailCodeCallbackBeforeAgentCallbackInput` via:
+//
+//	GuardrailCodeCallbackBeforeAgentCallbackArgs{...}
+type GuardrailCodeCallbackBeforeAgentCallbackInput interface {
+	pulumi.Input
+
+	ToGuardrailCodeCallbackBeforeAgentCallbackOutput() GuardrailCodeCallbackBeforeAgentCallbackOutput
+	ToGuardrailCodeCallbackBeforeAgentCallbackOutputWithContext(context.Context) GuardrailCodeCallbackBeforeAgentCallbackOutput
+}
+
+type GuardrailCodeCallbackBeforeAgentCallbackArgs struct {
+	// Human-readable description of the callback.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (GuardrailCodeCallbackBeforeAgentCallbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailCodeCallbackBeforeAgentCallback)(nil)).Elem()
+}
+
+func (i GuardrailCodeCallbackBeforeAgentCallbackArgs) ToGuardrailCodeCallbackBeforeAgentCallbackOutput() GuardrailCodeCallbackBeforeAgentCallbackOutput {
+	return i.ToGuardrailCodeCallbackBeforeAgentCallbackOutputWithContext(context.Background())
+}
+
+func (i GuardrailCodeCallbackBeforeAgentCallbackArgs) ToGuardrailCodeCallbackBeforeAgentCallbackOutputWithContext(ctx context.Context) GuardrailCodeCallbackBeforeAgentCallbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackBeforeAgentCallbackOutput)
+}
+
+func (i GuardrailCodeCallbackBeforeAgentCallbackArgs) ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutput() GuardrailCodeCallbackBeforeAgentCallbackPtrOutput {
+	return i.ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailCodeCallbackBeforeAgentCallbackArgs) ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackBeforeAgentCallbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackBeforeAgentCallbackOutput).ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutputWithContext(ctx)
+}
+
+// GuardrailCodeCallbackBeforeAgentCallbackPtrInput is an input type that accepts GuardrailCodeCallbackBeforeAgentCallbackArgs, GuardrailCodeCallbackBeforeAgentCallbackPtr and GuardrailCodeCallbackBeforeAgentCallbackPtrOutput values.
+// You can construct a concrete instance of `GuardrailCodeCallbackBeforeAgentCallbackPtrInput` via:
+//
+//	        GuardrailCodeCallbackBeforeAgentCallbackArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailCodeCallbackBeforeAgentCallbackPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutput() GuardrailCodeCallbackBeforeAgentCallbackPtrOutput
+	ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutputWithContext(context.Context) GuardrailCodeCallbackBeforeAgentCallbackPtrOutput
+}
+
+type guardrailCodeCallbackBeforeAgentCallbackPtrType GuardrailCodeCallbackBeforeAgentCallbackArgs
+
+func GuardrailCodeCallbackBeforeAgentCallbackPtr(v *GuardrailCodeCallbackBeforeAgentCallbackArgs) GuardrailCodeCallbackBeforeAgentCallbackPtrInput {
+	return (*guardrailCodeCallbackBeforeAgentCallbackPtrType)(v)
+}
+
+func (*guardrailCodeCallbackBeforeAgentCallbackPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailCodeCallbackBeforeAgentCallback)(nil)).Elem()
+}
+
+func (i *guardrailCodeCallbackBeforeAgentCallbackPtrType) ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutput() GuardrailCodeCallbackBeforeAgentCallbackPtrOutput {
+	return i.ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailCodeCallbackBeforeAgentCallbackPtrType) ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackBeforeAgentCallbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackBeforeAgentCallbackPtrOutput)
+}
+
+type GuardrailCodeCallbackBeforeAgentCallbackOutput struct{ *pulumi.OutputState }
+
+func (GuardrailCodeCallbackBeforeAgentCallbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailCodeCallbackBeforeAgentCallback)(nil)).Elem()
+}
+
+func (o GuardrailCodeCallbackBeforeAgentCallbackOutput) ToGuardrailCodeCallbackBeforeAgentCallbackOutput() GuardrailCodeCallbackBeforeAgentCallbackOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackBeforeAgentCallbackOutput) ToGuardrailCodeCallbackBeforeAgentCallbackOutputWithContext(ctx context.Context) GuardrailCodeCallbackBeforeAgentCallbackOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackBeforeAgentCallbackOutput) ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutput() GuardrailCodeCallbackBeforeAgentCallbackPtrOutput {
+	return o.ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailCodeCallbackBeforeAgentCallbackOutput) ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackBeforeAgentCallbackPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailCodeCallbackBeforeAgentCallback) *GuardrailCodeCallbackBeforeAgentCallback {
+		return &v
+	}).(GuardrailCodeCallbackBeforeAgentCallbackPtrOutput)
+}
+
+// Human-readable description of the callback.
+func (o GuardrailCodeCallbackBeforeAgentCallbackOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackBeforeAgentCallback) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o GuardrailCodeCallbackBeforeAgentCallbackOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackBeforeAgentCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o GuardrailCodeCallbackBeforeAgentCallbackOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackBeforeAgentCallback) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type GuardrailCodeCallbackBeforeAgentCallbackPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailCodeCallbackBeforeAgentCallbackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailCodeCallbackBeforeAgentCallback)(nil)).Elem()
+}
+
+func (o GuardrailCodeCallbackBeforeAgentCallbackPtrOutput) ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutput() GuardrailCodeCallbackBeforeAgentCallbackPtrOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackBeforeAgentCallbackPtrOutput) ToGuardrailCodeCallbackBeforeAgentCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackBeforeAgentCallbackPtrOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackBeforeAgentCallbackPtrOutput) Elem() GuardrailCodeCallbackBeforeAgentCallbackOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackBeforeAgentCallback) GuardrailCodeCallbackBeforeAgentCallback {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailCodeCallbackBeforeAgentCallback
+		return ret
+	}).(GuardrailCodeCallbackBeforeAgentCallbackOutput)
+}
+
+// Human-readable description of the callback.
+func (o GuardrailCodeCallbackBeforeAgentCallbackPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackBeforeAgentCallback) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o GuardrailCodeCallbackBeforeAgentCallbackPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackBeforeAgentCallback) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o GuardrailCodeCallbackBeforeAgentCallbackPtrOutput) PythonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackBeforeAgentCallback) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PythonCode
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardrailCodeCallbackBeforeModelCallback struct {
+	// Human-readable description of the callback.
+	Description *string `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled *bool `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode string `pulumi:"pythonCode"`
+}
+
+// GuardrailCodeCallbackBeforeModelCallbackInput is an input type that accepts GuardrailCodeCallbackBeforeModelCallbackArgs and GuardrailCodeCallbackBeforeModelCallbackOutput values.
+// You can construct a concrete instance of `GuardrailCodeCallbackBeforeModelCallbackInput` via:
+//
+//	GuardrailCodeCallbackBeforeModelCallbackArgs{...}
+type GuardrailCodeCallbackBeforeModelCallbackInput interface {
+	pulumi.Input
+
+	ToGuardrailCodeCallbackBeforeModelCallbackOutput() GuardrailCodeCallbackBeforeModelCallbackOutput
+	ToGuardrailCodeCallbackBeforeModelCallbackOutputWithContext(context.Context) GuardrailCodeCallbackBeforeModelCallbackOutput
+}
+
+type GuardrailCodeCallbackBeforeModelCallbackArgs struct {
+	// Human-readable description of the callback.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the callback is disabled. Disabled callbacks are ignored by the
+	// agent.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The python code to execute for the callback.
+	PythonCode pulumi.StringInput `pulumi:"pythonCode"`
+}
+
+func (GuardrailCodeCallbackBeforeModelCallbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailCodeCallbackBeforeModelCallback)(nil)).Elem()
+}
+
+func (i GuardrailCodeCallbackBeforeModelCallbackArgs) ToGuardrailCodeCallbackBeforeModelCallbackOutput() GuardrailCodeCallbackBeforeModelCallbackOutput {
+	return i.ToGuardrailCodeCallbackBeforeModelCallbackOutputWithContext(context.Background())
+}
+
+func (i GuardrailCodeCallbackBeforeModelCallbackArgs) ToGuardrailCodeCallbackBeforeModelCallbackOutputWithContext(ctx context.Context) GuardrailCodeCallbackBeforeModelCallbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackBeforeModelCallbackOutput)
+}
+
+func (i GuardrailCodeCallbackBeforeModelCallbackArgs) ToGuardrailCodeCallbackBeforeModelCallbackPtrOutput() GuardrailCodeCallbackBeforeModelCallbackPtrOutput {
+	return i.ToGuardrailCodeCallbackBeforeModelCallbackPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailCodeCallbackBeforeModelCallbackArgs) ToGuardrailCodeCallbackBeforeModelCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackBeforeModelCallbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackBeforeModelCallbackOutput).ToGuardrailCodeCallbackBeforeModelCallbackPtrOutputWithContext(ctx)
+}
+
+// GuardrailCodeCallbackBeforeModelCallbackPtrInput is an input type that accepts GuardrailCodeCallbackBeforeModelCallbackArgs, GuardrailCodeCallbackBeforeModelCallbackPtr and GuardrailCodeCallbackBeforeModelCallbackPtrOutput values.
+// You can construct a concrete instance of `GuardrailCodeCallbackBeforeModelCallbackPtrInput` via:
+//
+//	        GuardrailCodeCallbackBeforeModelCallbackArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailCodeCallbackBeforeModelCallbackPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailCodeCallbackBeforeModelCallbackPtrOutput() GuardrailCodeCallbackBeforeModelCallbackPtrOutput
+	ToGuardrailCodeCallbackBeforeModelCallbackPtrOutputWithContext(context.Context) GuardrailCodeCallbackBeforeModelCallbackPtrOutput
+}
+
+type guardrailCodeCallbackBeforeModelCallbackPtrType GuardrailCodeCallbackBeforeModelCallbackArgs
+
+func GuardrailCodeCallbackBeforeModelCallbackPtr(v *GuardrailCodeCallbackBeforeModelCallbackArgs) GuardrailCodeCallbackBeforeModelCallbackPtrInput {
+	return (*guardrailCodeCallbackBeforeModelCallbackPtrType)(v)
+}
+
+func (*guardrailCodeCallbackBeforeModelCallbackPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailCodeCallbackBeforeModelCallback)(nil)).Elem()
+}
+
+func (i *guardrailCodeCallbackBeforeModelCallbackPtrType) ToGuardrailCodeCallbackBeforeModelCallbackPtrOutput() GuardrailCodeCallbackBeforeModelCallbackPtrOutput {
+	return i.ToGuardrailCodeCallbackBeforeModelCallbackPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailCodeCallbackBeforeModelCallbackPtrType) ToGuardrailCodeCallbackBeforeModelCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackBeforeModelCallbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailCodeCallbackBeforeModelCallbackPtrOutput)
+}
+
+type GuardrailCodeCallbackBeforeModelCallbackOutput struct{ *pulumi.OutputState }
+
+func (GuardrailCodeCallbackBeforeModelCallbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailCodeCallbackBeforeModelCallback)(nil)).Elem()
+}
+
+func (o GuardrailCodeCallbackBeforeModelCallbackOutput) ToGuardrailCodeCallbackBeforeModelCallbackOutput() GuardrailCodeCallbackBeforeModelCallbackOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackBeforeModelCallbackOutput) ToGuardrailCodeCallbackBeforeModelCallbackOutputWithContext(ctx context.Context) GuardrailCodeCallbackBeforeModelCallbackOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackBeforeModelCallbackOutput) ToGuardrailCodeCallbackBeforeModelCallbackPtrOutput() GuardrailCodeCallbackBeforeModelCallbackPtrOutput {
+	return o.ToGuardrailCodeCallbackBeforeModelCallbackPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailCodeCallbackBeforeModelCallbackOutput) ToGuardrailCodeCallbackBeforeModelCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackBeforeModelCallbackPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailCodeCallbackBeforeModelCallback) *GuardrailCodeCallbackBeforeModelCallback {
+		return &v
+	}).(GuardrailCodeCallbackBeforeModelCallbackPtrOutput)
+}
+
+// Human-readable description of the callback.
+func (o GuardrailCodeCallbackBeforeModelCallbackOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackBeforeModelCallback) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o GuardrailCodeCallbackBeforeModelCallbackOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackBeforeModelCallback) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o GuardrailCodeCallbackBeforeModelCallbackOutput) PythonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailCodeCallbackBeforeModelCallback) string { return v.PythonCode }).(pulumi.StringOutput)
+}
+
+type GuardrailCodeCallbackBeforeModelCallbackPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailCodeCallbackBeforeModelCallbackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailCodeCallbackBeforeModelCallback)(nil)).Elem()
+}
+
+func (o GuardrailCodeCallbackBeforeModelCallbackPtrOutput) ToGuardrailCodeCallbackBeforeModelCallbackPtrOutput() GuardrailCodeCallbackBeforeModelCallbackPtrOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackBeforeModelCallbackPtrOutput) ToGuardrailCodeCallbackBeforeModelCallbackPtrOutputWithContext(ctx context.Context) GuardrailCodeCallbackBeforeModelCallbackPtrOutput {
+	return o
+}
+
+func (o GuardrailCodeCallbackBeforeModelCallbackPtrOutput) Elem() GuardrailCodeCallbackBeforeModelCallbackOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackBeforeModelCallback) GuardrailCodeCallbackBeforeModelCallback {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailCodeCallbackBeforeModelCallback
+		return ret
+	}).(GuardrailCodeCallbackBeforeModelCallbackOutput)
+}
+
+// Human-readable description of the callback.
+func (o GuardrailCodeCallbackBeforeModelCallbackPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackBeforeModelCallback) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the callback is disabled. Disabled callbacks are ignored by the
+// agent.
+func (o GuardrailCodeCallbackBeforeModelCallbackPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackBeforeModelCallback) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The python code to execute for the callback.
+func (o GuardrailCodeCallbackBeforeModelCallbackPtrOutput) PythonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailCodeCallbackBeforeModelCallback) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PythonCode
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardrailContentFilter struct {
+	// List of banned phrases. Applies to both user inputs and agent responses.
+	BannedContents []string `pulumi:"bannedContents"`
+	// List of banned phrases. Applies only to agent responses.
+	BannedContentsInAgentResponses []string `pulumi:"bannedContentsInAgentResponses"`
+	// List of banned phrases. Applies only to user inputs.
+	BannedContentsInUserInputs []string `pulumi:"bannedContentsInUserInputs"`
+	// If true, diacritics are ignored during matching.
+	DisregardDiacritics *bool `pulumi:"disregardDiacritics"`
+	// Match type for the content filter.
+	// Possible values:
+	// SIMPLE_STRING_MATCH
+	// WORD_BOUNDARY_STRING_MATCH
+	// REGEXP_MATCH
+	MatchType string `pulumi:"matchType"`
+}
+
+// GuardrailContentFilterInput is an input type that accepts GuardrailContentFilterArgs and GuardrailContentFilterOutput values.
+// You can construct a concrete instance of `GuardrailContentFilterInput` via:
+//
+//	GuardrailContentFilterArgs{...}
+type GuardrailContentFilterInput interface {
+	pulumi.Input
+
+	ToGuardrailContentFilterOutput() GuardrailContentFilterOutput
+	ToGuardrailContentFilterOutputWithContext(context.Context) GuardrailContentFilterOutput
+}
+
+type GuardrailContentFilterArgs struct {
+	// List of banned phrases. Applies to both user inputs and agent responses.
+	BannedContents pulumi.StringArrayInput `pulumi:"bannedContents"`
+	// List of banned phrases. Applies only to agent responses.
+	BannedContentsInAgentResponses pulumi.StringArrayInput `pulumi:"bannedContentsInAgentResponses"`
+	// List of banned phrases. Applies only to user inputs.
+	BannedContentsInUserInputs pulumi.StringArrayInput `pulumi:"bannedContentsInUserInputs"`
+	// If true, diacritics are ignored during matching.
+	DisregardDiacritics pulumi.BoolPtrInput `pulumi:"disregardDiacritics"`
+	// Match type for the content filter.
+	// Possible values:
+	// SIMPLE_STRING_MATCH
+	// WORD_BOUNDARY_STRING_MATCH
+	// REGEXP_MATCH
+	MatchType pulumi.StringInput `pulumi:"matchType"`
+}
+
+func (GuardrailContentFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailContentFilter)(nil)).Elem()
+}
+
+func (i GuardrailContentFilterArgs) ToGuardrailContentFilterOutput() GuardrailContentFilterOutput {
+	return i.ToGuardrailContentFilterOutputWithContext(context.Background())
+}
+
+func (i GuardrailContentFilterArgs) ToGuardrailContentFilterOutputWithContext(ctx context.Context) GuardrailContentFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailContentFilterOutput)
+}
+
+func (i GuardrailContentFilterArgs) ToGuardrailContentFilterPtrOutput() GuardrailContentFilterPtrOutput {
+	return i.ToGuardrailContentFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailContentFilterArgs) ToGuardrailContentFilterPtrOutputWithContext(ctx context.Context) GuardrailContentFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailContentFilterOutput).ToGuardrailContentFilterPtrOutputWithContext(ctx)
+}
+
+// GuardrailContentFilterPtrInput is an input type that accepts GuardrailContentFilterArgs, GuardrailContentFilterPtr and GuardrailContentFilterPtrOutput values.
+// You can construct a concrete instance of `GuardrailContentFilterPtrInput` via:
+//
+//	        GuardrailContentFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailContentFilterPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailContentFilterPtrOutput() GuardrailContentFilterPtrOutput
+	ToGuardrailContentFilterPtrOutputWithContext(context.Context) GuardrailContentFilterPtrOutput
+}
+
+type guardrailContentFilterPtrType GuardrailContentFilterArgs
+
+func GuardrailContentFilterPtr(v *GuardrailContentFilterArgs) GuardrailContentFilterPtrInput {
+	return (*guardrailContentFilterPtrType)(v)
+}
+
+func (*guardrailContentFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailContentFilter)(nil)).Elem()
+}
+
+func (i *guardrailContentFilterPtrType) ToGuardrailContentFilterPtrOutput() GuardrailContentFilterPtrOutput {
+	return i.ToGuardrailContentFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailContentFilterPtrType) ToGuardrailContentFilterPtrOutputWithContext(ctx context.Context) GuardrailContentFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailContentFilterPtrOutput)
+}
+
+type GuardrailContentFilterOutput struct{ *pulumi.OutputState }
+
+func (GuardrailContentFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailContentFilter)(nil)).Elem()
+}
+
+func (o GuardrailContentFilterOutput) ToGuardrailContentFilterOutput() GuardrailContentFilterOutput {
+	return o
+}
+
+func (o GuardrailContentFilterOutput) ToGuardrailContentFilterOutputWithContext(ctx context.Context) GuardrailContentFilterOutput {
+	return o
+}
+
+func (o GuardrailContentFilterOutput) ToGuardrailContentFilterPtrOutput() GuardrailContentFilterPtrOutput {
+	return o.ToGuardrailContentFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailContentFilterOutput) ToGuardrailContentFilterPtrOutputWithContext(ctx context.Context) GuardrailContentFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailContentFilter) *GuardrailContentFilter {
+		return &v
+	}).(GuardrailContentFilterPtrOutput)
+}
+
+// List of banned phrases. Applies to both user inputs and agent responses.
+func (o GuardrailContentFilterOutput) BannedContents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuardrailContentFilter) []string { return v.BannedContents }).(pulumi.StringArrayOutput)
+}
+
+// List of banned phrases. Applies only to agent responses.
+func (o GuardrailContentFilterOutput) BannedContentsInAgentResponses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuardrailContentFilter) []string { return v.BannedContentsInAgentResponses }).(pulumi.StringArrayOutput)
+}
+
+// List of banned phrases. Applies only to user inputs.
+func (o GuardrailContentFilterOutput) BannedContentsInUserInputs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuardrailContentFilter) []string { return v.BannedContentsInUserInputs }).(pulumi.StringArrayOutput)
+}
+
+// If true, diacritics are ignored during matching.
+func (o GuardrailContentFilterOutput) DisregardDiacritics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailContentFilter) *bool { return v.DisregardDiacritics }).(pulumi.BoolPtrOutput)
+}
+
+// Match type for the content filter.
+// Possible values:
+// SIMPLE_STRING_MATCH
+// WORD_BOUNDARY_STRING_MATCH
+// REGEXP_MATCH
+func (o GuardrailContentFilterOutput) MatchType() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailContentFilter) string { return v.MatchType }).(pulumi.StringOutput)
+}
+
+type GuardrailContentFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailContentFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailContentFilter)(nil)).Elem()
+}
+
+func (o GuardrailContentFilterPtrOutput) ToGuardrailContentFilterPtrOutput() GuardrailContentFilterPtrOutput {
+	return o
+}
+
+func (o GuardrailContentFilterPtrOutput) ToGuardrailContentFilterPtrOutputWithContext(ctx context.Context) GuardrailContentFilterPtrOutput {
+	return o
+}
+
+func (o GuardrailContentFilterPtrOutput) Elem() GuardrailContentFilterOutput {
+	return o.ApplyT(func(v *GuardrailContentFilter) GuardrailContentFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailContentFilter
+		return ret
+	}).(GuardrailContentFilterOutput)
+}
+
+// List of banned phrases. Applies to both user inputs and agent responses.
+func (o GuardrailContentFilterPtrOutput) BannedContents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuardrailContentFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BannedContents
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of banned phrases. Applies only to agent responses.
+func (o GuardrailContentFilterPtrOutput) BannedContentsInAgentResponses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuardrailContentFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BannedContentsInAgentResponses
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of banned phrases. Applies only to user inputs.
+func (o GuardrailContentFilterPtrOutput) BannedContentsInUserInputs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuardrailContentFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BannedContentsInUserInputs
+	}).(pulumi.StringArrayOutput)
+}
+
+// If true, diacritics are ignored during matching.
+func (o GuardrailContentFilterPtrOutput) DisregardDiacritics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailContentFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisregardDiacritics
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Match type for the content filter.
+// Possible values:
+// SIMPLE_STRING_MATCH
+// WORD_BOUNDARY_STRING_MATCH
+// REGEXP_MATCH
+func (o GuardrailContentFilterPtrOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailContentFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MatchType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardrailLlmPolicy struct {
+	// By default, the LLM policy check is bypassed for short utterances.
+	// Enabling this setting applies the policy check to all utterances,
+	// including those that would normally be skipped.
+	AllowShortUtterance *bool `pulumi:"allowShortUtterance"`
+	// If an error occurs during the policy check, fail open and do not trigger
+	// the guardrail.
+	FailOpen *bool `pulumi:"failOpen"`
+	// When checking this policy, consider the last 'n' messages in the
+	// conversation.
+	// When not set a default value of 10 will be used.
+	MaxConversationMessages *int `pulumi:"maxConversationMessages"`
+	// Model settings contains various configurations for the LLM model.
+	// Structure is documented below.
+	ModelSettings *GuardrailLlmPolicyModelSettings `pulumi:"modelSettings"`
+	// Defines when to apply the policy check during the conversation. If set to
+	// `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+	// When applying the policy to the agent response, additional latency will
+	// be introduced before the agent can respond.
+	// Possible values:
+	// USER_QUERY
+	// AGENT_RESPONSE
+	// USER_QUERY_AND_AGENT_RESPONSE
+	// Possible values are: `USER_QUERY`, `AGENT_RESPONSE`, `USER_QUERY_AND_AGENT_RESPONSE`.
+	PolicyScope string `pulumi:"policyScope"`
+	// Policy prompt.
+	Prompt string `pulumi:"prompt"`
+}
+
+// GuardrailLlmPolicyInput is an input type that accepts GuardrailLlmPolicyArgs and GuardrailLlmPolicyOutput values.
+// You can construct a concrete instance of `GuardrailLlmPolicyInput` via:
+//
+//	GuardrailLlmPolicyArgs{...}
+type GuardrailLlmPolicyInput interface {
+	pulumi.Input
+
+	ToGuardrailLlmPolicyOutput() GuardrailLlmPolicyOutput
+	ToGuardrailLlmPolicyOutputWithContext(context.Context) GuardrailLlmPolicyOutput
+}
+
+type GuardrailLlmPolicyArgs struct {
+	// By default, the LLM policy check is bypassed for short utterances.
+	// Enabling this setting applies the policy check to all utterances,
+	// including those that would normally be skipped.
+	AllowShortUtterance pulumi.BoolPtrInput `pulumi:"allowShortUtterance"`
+	// If an error occurs during the policy check, fail open and do not trigger
+	// the guardrail.
+	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
+	// When checking this policy, consider the last 'n' messages in the
+	// conversation.
+	// When not set a default value of 10 will be used.
+	MaxConversationMessages pulumi.IntPtrInput `pulumi:"maxConversationMessages"`
+	// Model settings contains various configurations for the LLM model.
+	// Structure is documented below.
+	ModelSettings GuardrailLlmPolicyModelSettingsPtrInput `pulumi:"modelSettings"`
+	// Defines when to apply the policy check during the conversation. If set to
+	// `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+	// When applying the policy to the agent response, additional latency will
+	// be introduced before the agent can respond.
+	// Possible values:
+	// USER_QUERY
+	// AGENT_RESPONSE
+	// USER_QUERY_AND_AGENT_RESPONSE
+	// Possible values are: `USER_QUERY`, `AGENT_RESPONSE`, `USER_QUERY_AND_AGENT_RESPONSE`.
+	PolicyScope pulumi.StringInput `pulumi:"policyScope"`
+	// Policy prompt.
+	Prompt pulumi.StringInput `pulumi:"prompt"`
+}
+
+func (GuardrailLlmPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailLlmPolicy)(nil)).Elem()
+}
+
+func (i GuardrailLlmPolicyArgs) ToGuardrailLlmPolicyOutput() GuardrailLlmPolicyOutput {
+	return i.ToGuardrailLlmPolicyOutputWithContext(context.Background())
+}
+
+func (i GuardrailLlmPolicyArgs) ToGuardrailLlmPolicyOutputWithContext(ctx context.Context) GuardrailLlmPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPolicyOutput)
+}
+
+func (i GuardrailLlmPolicyArgs) ToGuardrailLlmPolicyPtrOutput() GuardrailLlmPolicyPtrOutput {
+	return i.ToGuardrailLlmPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailLlmPolicyArgs) ToGuardrailLlmPolicyPtrOutputWithContext(ctx context.Context) GuardrailLlmPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPolicyOutput).ToGuardrailLlmPolicyPtrOutputWithContext(ctx)
+}
+
+// GuardrailLlmPolicyPtrInput is an input type that accepts GuardrailLlmPolicyArgs, GuardrailLlmPolicyPtr and GuardrailLlmPolicyPtrOutput values.
+// You can construct a concrete instance of `GuardrailLlmPolicyPtrInput` via:
+//
+//	        GuardrailLlmPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailLlmPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailLlmPolicyPtrOutput() GuardrailLlmPolicyPtrOutput
+	ToGuardrailLlmPolicyPtrOutputWithContext(context.Context) GuardrailLlmPolicyPtrOutput
+}
+
+type guardrailLlmPolicyPtrType GuardrailLlmPolicyArgs
+
+func GuardrailLlmPolicyPtr(v *GuardrailLlmPolicyArgs) GuardrailLlmPolicyPtrInput {
+	return (*guardrailLlmPolicyPtrType)(v)
+}
+
+func (*guardrailLlmPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailLlmPolicy)(nil)).Elem()
+}
+
+func (i *guardrailLlmPolicyPtrType) ToGuardrailLlmPolicyPtrOutput() GuardrailLlmPolicyPtrOutput {
+	return i.ToGuardrailLlmPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailLlmPolicyPtrType) ToGuardrailLlmPolicyPtrOutputWithContext(ctx context.Context) GuardrailLlmPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPolicyPtrOutput)
+}
+
+type GuardrailLlmPolicyOutput struct{ *pulumi.OutputState }
+
+func (GuardrailLlmPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailLlmPolicy)(nil)).Elem()
+}
+
+func (o GuardrailLlmPolicyOutput) ToGuardrailLlmPolicyOutput() GuardrailLlmPolicyOutput {
+	return o
+}
+
+func (o GuardrailLlmPolicyOutput) ToGuardrailLlmPolicyOutputWithContext(ctx context.Context) GuardrailLlmPolicyOutput {
+	return o
+}
+
+func (o GuardrailLlmPolicyOutput) ToGuardrailLlmPolicyPtrOutput() GuardrailLlmPolicyPtrOutput {
+	return o.ToGuardrailLlmPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailLlmPolicyOutput) ToGuardrailLlmPolicyPtrOutputWithContext(ctx context.Context) GuardrailLlmPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailLlmPolicy) *GuardrailLlmPolicy {
+		return &v
+	}).(GuardrailLlmPolicyPtrOutput)
+}
+
+// By default, the LLM policy check is bypassed for short utterances.
+// Enabling this setting applies the policy check to all utterances,
+// including those that would normally be skipped.
+func (o GuardrailLlmPolicyOutput) AllowShortUtterance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPolicy) *bool { return v.AllowShortUtterance }).(pulumi.BoolPtrOutput)
+}
+
+// If an error occurs during the policy check, fail open and do not trigger
+// the guardrail.
+func (o GuardrailLlmPolicyOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPolicy) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
+}
+
+// When checking this policy, consider the last 'n' messages in the
+// conversation.
+// When not set a default value of 10 will be used.
+func (o GuardrailLlmPolicyOutput) MaxConversationMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPolicy) *int { return v.MaxConversationMessages }).(pulumi.IntPtrOutput)
+}
+
+// Model settings contains various configurations for the LLM model.
+// Structure is documented below.
+func (o GuardrailLlmPolicyOutput) ModelSettings() GuardrailLlmPolicyModelSettingsPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPolicy) *GuardrailLlmPolicyModelSettings { return v.ModelSettings }).(GuardrailLlmPolicyModelSettingsPtrOutput)
+}
+
+// Defines when to apply the policy check during the conversation. If set to
+// `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+// When applying the policy to the agent response, additional latency will
+// be introduced before the agent can respond.
+// Possible values:
+// USER_QUERY
+// AGENT_RESPONSE
+// USER_QUERY_AND_AGENT_RESPONSE
+// Possible values are: `USER_QUERY`, `AGENT_RESPONSE`, `USER_QUERY_AND_AGENT_RESPONSE`.
+func (o GuardrailLlmPolicyOutput) PolicyScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailLlmPolicy) string { return v.PolicyScope }).(pulumi.StringOutput)
+}
+
+// Policy prompt.
+func (o GuardrailLlmPolicyOutput) Prompt() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailLlmPolicy) string { return v.Prompt }).(pulumi.StringOutput)
+}
+
+type GuardrailLlmPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailLlmPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailLlmPolicy)(nil)).Elem()
+}
+
+func (o GuardrailLlmPolicyPtrOutput) ToGuardrailLlmPolicyPtrOutput() GuardrailLlmPolicyPtrOutput {
+	return o
+}
+
+func (o GuardrailLlmPolicyPtrOutput) ToGuardrailLlmPolicyPtrOutputWithContext(ctx context.Context) GuardrailLlmPolicyPtrOutput {
+	return o
+}
+
+func (o GuardrailLlmPolicyPtrOutput) Elem() GuardrailLlmPolicyOutput {
+	return o.ApplyT(func(v *GuardrailLlmPolicy) GuardrailLlmPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailLlmPolicy
+		return ret
+	}).(GuardrailLlmPolicyOutput)
+}
+
+// By default, the LLM policy check is bypassed for short utterances.
+// Enabling this setting applies the policy check to all utterances,
+// including those that would normally be skipped.
+func (o GuardrailLlmPolicyPtrOutput) AllowShortUtterance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowShortUtterance
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If an error occurs during the policy check, fail open and do not trigger
+// the guardrail.
+func (o GuardrailLlmPolicyPtrOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FailOpen
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When checking this policy, consider the last 'n' messages in the
+// conversation.
+// When not set a default value of 10 will be used.
+func (o GuardrailLlmPolicyPtrOutput) MaxConversationMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConversationMessages
+	}).(pulumi.IntPtrOutput)
+}
+
+// Model settings contains various configurations for the LLM model.
+// Structure is documented below.
+func (o GuardrailLlmPolicyPtrOutput) ModelSettings() GuardrailLlmPolicyModelSettingsPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPolicy) *GuardrailLlmPolicyModelSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ModelSettings
+	}).(GuardrailLlmPolicyModelSettingsPtrOutput)
+}
+
+// Defines when to apply the policy check during the conversation. If set to
+// `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+// When applying the policy to the agent response, additional latency will
+// be introduced before the agent can respond.
+// Possible values:
+// USER_QUERY
+// AGENT_RESPONSE
+// USER_QUERY_AND_AGENT_RESPONSE
+// Possible values are: `USER_QUERY`, `AGENT_RESPONSE`, `USER_QUERY_AND_AGENT_RESPONSE`.
+func (o GuardrailLlmPolicyPtrOutput) PolicyScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PolicyScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Policy prompt.
+func (o GuardrailLlmPolicyPtrOutput) Prompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prompt
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardrailLlmPolicyModelSettings struct {
+	// The LLM model that the agent should use.
+	// If not set, the agent will inherit the model from its parent agent.
+	Model *string `pulumi:"model"`
+	// If set, this temperature will be used for the LLM model. Temperature
+	// controls the randomness of the model's responses. Lower temperatures
+	// produce responses that are more predictable. Higher temperatures produce
+	// responses that are more creative.
+	Temperature *float64 `pulumi:"temperature"`
+}
+
+// GuardrailLlmPolicyModelSettingsInput is an input type that accepts GuardrailLlmPolicyModelSettingsArgs and GuardrailLlmPolicyModelSettingsOutput values.
+// You can construct a concrete instance of `GuardrailLlmPolicyModelSettingsInput` via:
+//
+//	GuardrailLlmPolicyModelSettingsArgs{...}
+type GuardrailLlmPolicyModelSettingsInput interface {
+	pulumi.Input
+
+	ToGuardrailLlmPolicyModelSettingsOutput() GuardrailLlmPolicyModelSettingsOutput
+	ToGuardrailLlmPolicyModelSettingsOutputWithContext(context.Context) GuardrailLlmPolicyModelSettingsOutput
+}
+
+type GuardrailLlmPolicyModelSettingsArgs struct {
+	// The LLM model that the agent should use.
+	// If not set, the agent will inherit the model from its parent agent.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// If set, this temperature will be used for the LLM model. Temperature
+	// controls the randomness of the model's responses. Lower temperatures
+	// produce responses that are more predictable. Higher temperatures produce
+	// responses that are more creative.
+	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+}
+
+func (GuardrailLlmPolicyModelSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailLlmPolicyModelSettings)(nil)).Elem()
+}
+
+func (i GuardrailLlmPolicyModelSettingsArgs) ToGuardrailLlmPolicyModelSettingsOutput() GuardrailLlmPolicyModelSettingsOutput {
+	return i.ToGuardrailLlmPolicyModelSettingsOutputWithContext(context.Background())
+}
+
+func (i GuardrailLlmPolicyModelSettingsArgs) ToGuardrailLlmPolicyModelSettingsOutputWithContext(ctx context.Context) GuardrailLlmPolicyModelSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPolicyModelSettingsOutput)
+}
+
+func (i GuardrailLlmPolicyModelSettingsArgs) ToGuardrailLlmPolicyModelSettingsPtrOutput() GuardrailLlmPolicyModelSettingsPtrOutput {
+	return i.ToGuardrailLlmPolicyModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailLlmPolicyModelSettingsArgs) ToGuardrailLlmPolicyModelSettingsPtrOutputWithContext(ctx context.Context) GuardrailLlmPolicyModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPolicyModelSettingsOutput).ToGuardrailLlmPolicyModelSettingsPtrOutputWithContext(ctx)
+}
+
+// GuardrailLlmPolicyModelSettingsPtrInput is an input type that accepts GuardrailLlmPolicyModelSettingsArgs, GuardrailLlmPolicyModelSettingsPtr and GuardrailLlmPolicyModelSettingsPtrOutput values.
+// You can construct a concrete instance of `GuardrailLlmPolicyModelSettingsPtrInput` via:
+//
+//	        GuardrailLlmPolicyModelSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailLlmPolicyModelSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailLlmPolicyModelSettingsPtrOutput() GuardrailLlmPolicyModelSettingsPtrOutput
+	ToGuardrailLlmPolicyModelSettingsPtrOutputWithContext(context.Context) GuardrailLlmPolicyModelSettingsPtrOutput
+}
+
+type guardrailLlmPolicyModelSettingsPtrType GuardrailLlmPolicyModelSettingsArgs
+
+func GuardrailLlmPolicyModelSettingsPtr(v *GuardrailLlmPolicyModelSettingsArgs) GuardrailLlmPolicyModelSettingsPtrInput {
+	return (*guardrailLlmPolicyModelSettingsPtrType)(v)
+}
+
+func (*guardrailLlmPolicyModelSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailLlmPolicyModelSettings)(nil)).Elem()
+}
+
+func (i *guardrailLlmPolicyModelSettingsPtrType) ToGuardrailLlmPolicyModelSettingsPtrOutput() GuardrailLlmPolicyModelSettingsPtrOutput {
+	return i.ToGuardrailLlmPolicyModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailLlmPolicyModelSettingsPtrType) ToGuardrailLlmPolicyModelSettingsPtrOutputWithContext(ctx context.Context) GuardrailLlmPolicyModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPolicyModelSettingsPtrOutput)
+}
+
+type GuardrailLlmPolicyModelSettingsOutput struct{ *pulumi.OutputState }
+
+func (GuardrailLlmPolicyModelSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailLlmPolicyModelSettings)(nil)).Elem()
+}
+
+func (o GuardrailLlmPolicyModelSettingsOutput) ToGuardrailLlmPolicyModelSettingsOutput() GuardrailLlmPolicyModelSettingsOutput {
+	return o
+}
+
+func (o GuardrailLlmPolicyModelSettingsOutput) ToGuardrailLlmPolicyModelSettingsOutputWithContext(ctx context.Context) GuardrailLlmPolicyModelSettingsOutput {
+	return o
+}
+
+func (o GuardrailLlmPolicyModelSettingsOutput) ToGuardrailLlmPolicyModelSettingsPtrOutput() GuardrailLlmPolicyModelSettingsPtrOutput {
+	return o.ToGuardrailLlmPolicyModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailLlmPolicyModelSettingsOutput) ToGuardrailLlmPolicyModelSettingsPtrOutputWithContext(ctx context.Context) GuardrailLlmPolicyModelSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailLlmPolicyModelSettings) *GuardrailLlmPolicyModelSettings {
+		return &v
+	}).(GuardrailLlmPolicyModelSettingsPtrOutput)
+}
+
+// The LLM model that the agent should use.
+// If not set, the agent will inherit the model from its parent agent.
+func (o GuardrailLlmPolicyModelSettingsOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPolicyModelSettings) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// If set, this temperature will be used for the LLM model. Temperature
+// controls the randomness of the model's responses. Lower temperatures
+// produce responses that are more predictable. Higher temperatures produce
+// responses that are more creative.
+func (o GuardrailLlmPolicyModelSettingsOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPolicyModelSettings) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
+}
+
+type GuardrailLlmPolicyModelSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailLlmPolicyModelSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailLlmPolicyModelSettings)(nil)).Elem()
+}
+
+func (o GuardrailLlmPolicyModelSettingsPtrOutput) ToGuardrailLlmPolicyModelSettingsPtrOutput() GuardrailLlmPolicyModelSettingsPtrOutput {
+	return o
+}
+
+func (o GuardrailLlmPolicyModelSettingsPtrOutput) ToGuardrailLlmPolicyModelSettingsPtrOutputWithContext(ctx context.Context) GuardrailLlmPolicyModelSettingsPtrOutput {
+	return o
+}
+
+func (o GuardrailLlmPolicyModelSettingsPtrOutput) Elem() GuardrailLlmPolicyModelSettingsOutput {
+	return o.ApplyT(func(v *GuardrailLlmPolicyModelSettings) GuardrailLlmPolicyModelSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailLlmPolicyModelSettings
+		return ret
+	}).(GuardrailLlmPolicyModelSettingsOutput)
+}
+
+// The LLM model that the agent should use.
+// If not set, the agent will inherit the model from its parent agent.
+func (o GuardrailLlmPolicyModelSettingsPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPolicyModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, this temperature will be used for the LLM model. Temperature
+// controls the randomness of the model's responses. Lower temperatures
+// produce responses that are more predictable. Higher temperatures produce
+// responses that are more creative.
+func (o GuardrailLlmPolicyModelSettingsPtrOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPolicyModelSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Temperature
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GuardrailLlmPromptSecurity struct {
+	// Guardrail that blocks the conversation if the LLM response is considered
+	// violating the policy based on the LLM classification.
+	// Structure is documented below.
+	CustomPolicy *GuardrailLlmPromptSecurityCustomPolicy `pulumi:"customPolicy"`
+	// Configuration for default system security settings.
+	// Structure is documented below.
+	DefaultSettings *GuardrailLlmPromptSecurityDefaultSettings `pulumi:"defaultSettings"`
+}
+
+// GuardrailLlmPromptSecurityInput is an input type that accepts GuardrailLlmPromptSecurityArgs and GuardrailLlmPromptSecurityOutput values.
+// You can construct a concrete instance of `GuardrailLlmPromptSecurityInput` via:
+//
+//	GuardrailLlmPromptSecurityArgs{...}
+type GuardrailLlmPromptSecurityInput interface {
+	pulumi.Input
+
+	ToGuardrailLlmPromptSecurityOutput() GuardrailLlmPromptSecurityOutput
+	ToGuardrailLlmPromptSecurityOutputWithContext(context.Context) GuardrailLlmPromptSecurityOutput
+}
+
+type GuardrailLlmPromptSecurityArgs struct {
+	// Guardrail that blocks the conversation if the LLM response is considered
+	// violating the policy based on the LLM classification.
+	// Structure is documented below.
+	CustomPolicy GuardrailLlmPromptSecurityCustomPolicyPtrInput `pulumi:"customPolicy"`
+	// Configuration for default system security settings.
+	// Structure is documented below.
+	DefaultSettings GuardrailLlmPromptSecurityDefaultSettingsPtrInput `pulumi:"defaultSettings"`
+}
+
+func (GuardrailLlmPromptSecurityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailLlmPromptSecurity)(nil)).Elem()
+}
+
+func (i GuardrailLlmPromptSecurityArgs) ToGuardrailLlmPromptSecurityOutput() GuardrailLlmPromptSecurityOutput {
+	return i.ToGuardrailLlmPromptSecurityOutputWithContext(context.Background())
+}
+
+func (i GuardrailLlmPromptSecurityArgs) ToGuardrailLlmPromptSecurityOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPromptSecurityOutput)
+}
+
+func (i GuardrailLlmPromptSecurityArgs) ToGuardrailLlmPromptSecurityPtrOutput() GuardrailLlmPromptSecurityPtrOutput {
+	return i.ToGuardrailLlmPromptSecurityPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailLlmPromptSecurityArgs) ToGuardrailLlmPromptSecurityPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPromptSecurityOutput).ToGuardrailLlmPromptSecurityPtrOutputWithContext(ctx)
+}
+
+// GuardrailLlmPromptSecurityPtrInput is an input type that accepts GuardrailLlmPromptSecurityArgs, GuardrailLlmPromptSecurityPtr and GuardrailLlmPromptSecurityPtrOutput values.
+// You can construct a concrete instance of `GuardrailLlmPromptSecurityPtrInput` via:
+//
+//	        GuardrailLlmPromptSecurityArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailLlmPromptSecurityPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailLlmPromptSecurityPtrOutput() GuardrailLlmPromptSecurityPtrOutput
+	ToGuardrailLlmPromptSecurityPtrOutputWithContext(context.Context) GuardrailLlmPromptSecurityPtrOutput
+}
+
+type guardrailLlmPromptSecurityPtrType GuardrailLlmPromptSecurityArgs
+
+func GuardrailLlmPromptSecurityPtr(v *GuardrailLlmPromptSecurityArgs) GuardrailLlmPromptSecurityPtrInput {
+	return (*guardrailLlmPromptSecurityPtrType)(v)
+}
+
+func (*guardrailLlmPromptSecurityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailLlmPromptSecurity)(nil)).Elem()
+}
+
+func (i *guardrailLlmPromptSecurityPtrType) ToGuardrailLlmPromptSecurityPtrOutput() GuardrailLlmPromptSecurityPtrOutput {
+	return i.ToGuardrailLlmPromptSecurityPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailLlmPromptSecurityPtrType) ToGuardrailLlmPromptSecurityPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPromptSecurityPtrOutput)
+}
+
+type GuardrailLlmPromptSecurityOutput struct{ *pulumi.OutputState }
+
+func (GuardrailLlmPromptSecurityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailLlmPromptSecurity)(nil)).Elem()
+}
+
+func (o GuardrailLlmPromptSecurityOutput) ToGuardrailLlmPromptSecurityOutput() GuardrailLlmPromptSecurityOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityOutput) ToGuardrailLlmPromptSecurityOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityOutput) ToGuardrailLlmPromptSecurityPtrOutput() GuardrailLlmPromptSecurityPtrOutput {
+	return o.ToGuardrailLlmPromptSecurityPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailLlmPromptSecurityOutput) ToGuardrailLlmPromptSecurityPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailLlmPromptSecurity) *GuardrailLlmPromptSecurity {
+		return &v
+	}).(GuardrailLlmPromptSecurityPtrOutput)
+}
+
+// Guardrail that blocks the conversation if the LLM response is considered
+// violating the policy based on the LLM classification.
+// Structure is documented below.
+func (o GuardrailLlmPromptSecurityOutput) CustomPolicy() GuardrailLlmPromptSecurityCustomPolicyPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurity) *GuardrailLlmPromptSecurityCustomPolicy { return v.CustomPolicy }).(GuardrailLlmPromptSecurityCustomPolicyPtrOutput)
+}
+
+// Configuration for default system security settings.
+// Structure is documented below.
+func (o GuardrailLlmPromptSecurityOutput) DefaultSettings() GuardrailLlmPromptSecurityDefaultSettingsPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurity) *GuardrailLlmPromptSecurityDefaultSettings {
+		return v.DefaultSettings
+	}).(GuardrailLlmPromptSecurityDefaultSettingsPtrOutput)
+}
+
+type GuardrailLlmPromptSecurityPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailLlmPromptSecurityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailLlmPromptSecurity)(nil)).Elem()
+}
+
+func (o GuardrailLlmPromptSecurityPtrOutput) ToGuardrailLlmPromptSecurityPtrOutput() GuardrailLlmPromptSecurityPtrOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityPtrOutput) ToGuardrailLlmPromptSecurityPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityPtrOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityPtrOutput) Elem() GuardrailLlmPromptSecurityOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurity) GuardrailLlmPromptSecurity {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailLlmPromptSecurity
+		return ret
+	}).(GuardrailLlmPromptSecurityOutput)
+}
+
+// Guardrail that blocks the conversation if the LLM response is considered
+// violating the policy based on the LLM classification.
+// Structure is documented below.
+func (o GuardrailLlmPromptSecurityPtrOutput) CustomPolicy() GuardrailLlmPromptSecurityCustomPolicyPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurity) *GuardrailLlmPromptSecurityCustomPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.CustomPolicy
+	}).(GuardrailLlmPromptSecurityCustomPolicyPtrOutput)
+}
+
+// Configuration for default system security settings.
+// Structure is documented below.
+func (o GuardrailLlmPromptSecurityPtrOutput) DefaultSettings() GuardrailLlmPromptSecurityDefaultSettingsPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurity) *GuardrailLlmPromptSecurityDefaultSettings {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultSettings
+	}).(GuardrailLlmPromptSecurityDefaultSettingsPtrOutput)
+}
+
+type GuardrailLlmPromptSecurityCustomPolicy struct {
+	// By default, the LLM policy check is bypassed for short utterances.
+	// Enabling this setting applies the policy check to all utterances,
+	// including those that would normally be skipped.
+	AllowShortUtterance *bool `pulumi:"allowShortUtterance"`
+	// If an error occurs during the policy check, fail open and do not trigger
+	// the guardrail.
+	FailOpen *bool `pulumi:"failOpen"`
+	// When checking this policy, consider the last 'n' messages in the
+	// conversation.
+	// When not set a default value of 10 will be used.
+	MaxConversationMessages *int `pulumi:"maxConversationMessages"`
+	// Model settings contains various configurations for the LLM model.
+	// Structure is documented below.
+	ModelSettings *GuardrailLlmPromptSecurityCustomPolicyModelSettings `pulumi:"modelSettings"`
+	// Defines when to apply the policy check during the conversation. If set to
+	// `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+	// When applying the policy to the agent response, additional latency will
+	// be introduced before the agent can respond.
+	// Possible values:
+	// USER_QUERY
+	// AGENT_RESPONSE
+	// USER_QUERY_AND_AGENT_RESPONSE
+	PolicyScope string `pulumi:"policyScope"`
+	// Policy prompt.
+	Prompt string `pulumi:"prompt"`
+}
+
+// GuardrailLlmPromptSecurityCustomPolicyInput is an input type that accepts GuardrailLlmPromptSecurityCustomPolicyArgs and GuardrailLlmPromptSecurityCustomPolicyOutput values.
+// You can construct a concrete instance of `GuardrailLlmPromptSecurityCustomPolicyInput` via:
+//
+//	GuardrailLlmPromptSecurityCustomPolicyArgs{...}
+type GuardrailLlmPromptSecurityCustomPolicyInput interface {
+	pulumi.Input
+
+	ToGuardrailLlmPromptSecurityCustomPolicyOutput() GuardrailLlmPromptSecurityCustomPolicyOutput
+	ToGuardrailLlmPromptSecurityCustomPolicyOutputWithContext(context.Context) GuardrailLlmPromptSecurityCustomPolicyOutput
+}
+
+type GuardrailLlmPromptSecurityCustomPolicyArgs struct {
+	// By default, the LLM policy check is bypassed for short utterances.
+	// Enabling this setting applies the policy check to all utterances,
+	// including those that would normally be skipped.
+	AllowShortUtterance pulumi.BoolPtrInput `pulumi:"allowShortUtterance"`
+	// If an error occurs during the policy check, fail open and do not trigger
+	// the guardrail.
+	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
+	// When checking this policy, consider the last 'n' messages in the
+	// conversation.
+	// When not set a default value of 10 will be used.
+	MaxConversationMessages pulumi.IntPtrInput `pulumi:"maxConversationMessages"`
+	// Model settings contains various configurations for the LLM model.
+	// Structure is documented below.
+	ModelSettings GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrInput `pulumi:"modelSettings"`
+	// Defines when to apply the policy check during the conversation. If set to
+	// `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+	// When applying the policy to the agent response, additional latency will
+	// be introduced before the agent can respond.
+	// Possible values:
+	// USER_QUERY
+	// AGENT_RESPONSE
+	// USER_QUERY_AND_AGENT_RESPONSE
+	PolicyScope pulumi.StringInput `pulumi:"policyScope"`
+	// Policy prompt.
+	Prompt pulumi.StringInput `pulumi:"prompt"`
+}
+
+func (GuardrailLlmPromptSecurityCustomPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailLlmPromptSecurityCustomPolicy)(nil)).Elem()
+}
+
+func (i GuardrailLlmPromptSecurityCustomPolicyArgs) ToGuardrailLlmPromptSecurityCustomPolicyOutput() GuardrailLlmPromptSecurityCustomPolicyOutput {
+	return i.ToGuardrailLlmPromptSecurityCustomPolicyOutputWithContext(context.Background())
+}
+
+func (i GuardrailLlmPromptSecurityCustomPolicyArgs) ToGuardrailLlmPromptSecurityCustomPolicyOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityCustomPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPromptSecurityCustomPolicyOutput)
+}
+
+func (i GuardrailLlmPromptSecurityCustomPolicyArgs) ToGuardrailLlmPromptSecurityCustomPolicyPtrOutput() GuardrailLlmPromptSecurityCustomPolicyPtrOutput {
+	return i.ToGuardrailLlmPromptSecurityCustomPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailLlmPromptSecurityCustomPolicyArgs) ToGuardrailLlmPromptSecurityCustomPolicyPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityCustomPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPromptSecurityCustomPolicyOutput).ToGuardrailLlmPromptSecurityCustomPolicyPtrOutputWithContext(ctx)
+}
+
+// GuardrailLlmPromptSecurityCustomPolicyPtrInput is an input type that accepts GuardrailLlmPromptSecurityCustomPolicyArgs, GuardrailLlmPromptSecurityCustomPolicyPtr and GuardrailLlmPromptSecurityCustomPolicyPtrOutput values.
+// You can construct a concrete instance of `GuardrailLlmPromptSecurityCustomPolicyPtrInput` via:
+//
+//	        GuardrailLlmPromptSecurityCustomPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailLlmPromptSecurityCustomPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailLlmPromptSecurityCustomPolicyPtrOutput() GuardrailLlmPromptSecurityCustomPolicyPtrOutput
+	ToGuardrailLlmPromptSecurityCustomPolicyPtrOutputWithContext(context.Context) GuardrailLlmPromptSecurityCustomPolicyPtrOutput
+}
+
+type guardrailLlmPromptSecurityCustomPolicyPtrType GuardrailLlmPromptSecurityCustomPolicyArgs
+
+func GuardrailLlmPromptSecurityCustomPolicyPtr(v *GuardrailLlmPromptSecurityCustomPolicyArgs) GuardrailLlmPromptSecurityCustomPolicyPtrInput {
+	return (*guardrailLlmPromptSecurityCustomPolicyPtrType)(v)
+}
+
+func (*guardrailLlmPromptSecurityCustomPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailLlmPromptSecurityCustomPolicy)(nil)).Elem()
+}
+
+func (i *guardrailLlmPromptSecurityCustomPolicyPtrType) ToGuardrailLlmPromptSecurityCustomPolicyPtrOutput() GuardrailLlmPromptSecurityCustomPolicyPtrOutput {
+	return i.ToGuardrailLlmPromptSecurityCustomPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailLlmPromptSecurityCustomPolicyPtrType) ToGuardrailLlmPromptSecurityCustomPolicyPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityCustomPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPromptSecurityCustomPolicyPtrOutput)
+}
+
+type GuardrailLlmPromptSecurityCustomPolicyOutput struct{ *pulumi.OutputState }
+
+func (GuardrailLlmPromptSecurityCustomPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailLlmPromptSecurityCustomPolicy)(nil)).Elem()
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyOutput) ToGuardrailLlmPromptSecurityCustomPolicyOutput() GuardrailLlmPromptSecurityCustomPolicyOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyOutput) ToGuardrailLlmPromptSecurityCustomPolicyOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityCustomPolicyOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyOutput) ToGuardrailLlmPromptSecurityCustomPolicyPtrOutput() GuardrailLlmPromptSecurityCustomPolicyPtrOutput {
+	return o.ToGuardrailLlmPromptSecurityCustomPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyOutput) ToGuardrailLlmPromptSecurityCustomPolicyPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityCustomPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailLlmPromptSecurityCustomPolicy) *GuardrailLlmPromptSecurityCustomPolicy {
+		return &v
+	}).(GuardrailLlmPromptSecurityCustomPolicyPtrOutput)
+}
+
+// By default, the LLM policy check is bypassed for short utterances.
+// Enabling this setting applies the policy check to all utterances,
+// including those that would normally be skipped.
+func (o GuardrailLlmPromptSecurityCustomPolicyOutput) AllowShortUtterance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurityCustomPolicy) *bool { return v.AllowShortUtterance }).(pulumi.BoolPtrOutput)
+}
+
+// If an error occurs during the policy check, fail open and do not trigger
+// the guardrail.
+func (o GuardrailLlmPromptSecurityCustomPolicyOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurityCustomPolicy) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
+}
+
+// When checking this policy, consider the last 'n' messages in the
+// conversation.
+// When not set a default value of 10 will be used.
+func (o GuardrailLlmPromptSecurityCustomPolicyOutput) MaxConversationMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurityCustomPolicy) *int { return v.MaxConversationMessages }).(pulumi.IntPtrOutput)
+}
+
+// Model settings contains various configurations for the LLM model.
+// Structure is documented below.
+func (o GuardrailLlmPromptSecurityCustomPolicyOutput) ModelSettings() GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurityCustomPolicy) *GuardrailLlmPromptSecurityCustomPolicyModelSettings {
+		return v.ModelSettings
+	}).(GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput)
+}
+
+// Defines when to apply the policy check during the conversation. If set to
+// `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+// When applying the policy to the agent response, additional latency will
+// be introduced before the agent can respond.
+// Possible values:
+// USER_QUERY
+// AGENT_RESPONSE
+// USER_QUERY_AND_AGENT_RESPONSE
+func (o GuardrailLlmPromptSecurityCustomPolicyOutput) PolicyScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurityCustomPolicy) string { return v.PolicyScope }).(pulumi.StringOutput)
+}
+
+// Policy prompt.
+func (o GuardrailLlmPromptSecurityCustomPolicyOutput) Prompt() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurityCustomPolicy) string { return v.Prompt }).(pulumi.StringOutput)
+}
+
+type GuardrailLlmPromptSecurityCustomPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailLlmPromptSecurityCustomPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailLlmPromptSecurityCustomPolicy)(nil)).Elem()
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyPtrOutput) ToGuardrailLlmPromptSecurityCustomPolicyPtrOutput() GuardrailLlmPromptSecurityCustomPolicyPtrOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyPtrOutput) ToGuardrailLlmPromptSecurityCustomPolicyPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityCustomPolicyPtrOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyPtrOutput) Elem() GuardrailLlmPromptSecurityCustomPolicyOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityCustomPolicy) GuardrailLlmPromptSecurityCustomPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailLlmPromptSecurityCustomPolicy
+		return ret
+	}).(GuardrailLlmPromptSecurityCustomPolicyOutput)
+}
+
+// By default, the LLM policy check is bypassed for short utterances.
+// Enabling this setting applies the policy check to all utterances,
+// including those that would normally be skipped.
+func (o GuardrailLlmPromptSecurityCustomPolicyPtrOutput) AllowShortUtterance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityCustomPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowShortUtterance
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If an error occurs during the policy check, fail open and do not trigger
+// the guardrail.
+func (o GuardrailLlmPromptSecurityCustomPolicyPtrOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityCustomPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FailOpen
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When checking this policy, consider the last 'n' messages in the
+// conversation.
+// When not set a default value of 10 will be used.
+func (o GuardrailLlmPromptSecurityCustomPolicyPtrOutput) MaxConversationMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityCustomPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConversationMessages
+	}).(pulumi.IntPtrOutput)
+}
+
+// Model settings contains various configurations for the LLM model.
+// Structure is documented below.
+func (o GuardrailLlmPromptSecurityCustomPolicyPtrOutput) ModelSettings() GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityCustomPolicy) *GuardrailLlmPromptSecurityCustomPolicyModelSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ModelSettings
+	}).(GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput)
+}
+
+// Defines when to apply the policy check during the conversation. If set to
+// `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
+// When applying the policy to the agent response, additional latency will
+// be introduced before the agent can respond.
+// Possible values:
+// USER_QUERY
+// AGENT_RESPONSE
+// USER_QUERY_AND_AGENT_RESPONSE
+func (o GuardrailLlmPromptSecurityCustomPolicyPtrOutput) PolicyScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityCustomPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PolicyScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Policy prompt.
+func (o GuardrailLlmPromptSecurityCustomPolicyPtrOutput) Prompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityCustomPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prompt
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardrailLlmPromptSecurityCustomPolicyModelSettings struct {
+	// The LLM model that the agent should use.
+	// If not set, the agent will inherit the model from its parent agent.
+	Model *string `pulumi:"model"`
+	// If set, this temperature will be used for the LLM model. Temperature
+	// controls the randomness of the model's responses. Lower temperatures
+	// produce responses that are more predictable. Higher temperatures produce
+	// responses that are more creative.
+	Temperature *float64 `pulumi:"temperature"`
+}
+
+// GuardrailLlmPromptSecurityCustomPolicyModelSettingsInput is an input type that accepts GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs and GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput values.
+// You can construct a concrete instance of `GuardrailLlmPromptSecurityCustomPolicyModelSettingsInput` via:
+//
+//	GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs{...}
+type GuardrailLlmPromptSecurityCustomPolicyModelSettingsInput interface {
+	pulumi.Input
+
+	ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput() GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput
+	ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsOutputWithContext(context.Context) GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput
+}
+
+type GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs struct {
+	// The LLM model that the agent should use.
+	// If not set, the agent will inherit the model from its parent agent.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// If set, this temperature will be used for the LLM model. Temperature
+	// controls the randomness of the model's responses. Lower temperatures
+	// produce responses that are more predictable. Higher temperatures produce
+	// responses that are more creative.
+	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+}
+
+func (GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailLlmPromptSecurityCustomPolicyModelSettings)(nil)).Elem()
+}
+
+func (i GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs) ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput() GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput {
+	return i.ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsOutputWithContext(context.Background())
+}
+
+func (i GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs) ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput)
+}
+
+func (i GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs) ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput() GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput {
+	return i.ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs) ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput).ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutputWithContext(ctx)
+}
+
+// GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrInput is an input type that accepts GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs, GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtr and GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput values.
+// You can construct a concrete instance of `GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrInput` via:
+//
+//	        GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput() GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput
+	ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutputWithContext(context.Context) GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput
+}
+
+type guardrailLlmPromptSecurityCustomPolicyModelSettingsPtrType GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs
+
+func GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtr(v *GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs) GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrInput {
+	return (*guardrailLlmPromptSecurityCustomPolicyModelSettingsPtrType)(v)
+}
+
+func (*guardrailLlmPromptSecurityCustomPolicyModelSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailLlmPromptSecurityCustomPolicyModelSettings)(nil)).Elem()
+}
+
+func (i *guardrailLlmPromptSecurityCustomPolicyModelSettingsPtrType) ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput() GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput {
+	return i.ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailLlmPromptSecurityCustomPolicyModelSettingsPtrType) ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput)
+}
+
+type GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput struct{ *pulumi.OutputState }
+
+func (GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailLlmPromptSecurityCustomPolicyModelSettings)(nil)).Elem()
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput) ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput() GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput) ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput) ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput() GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput {
+	return o.ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput) ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailLlmPromptSecurityCustomPolicyModelSettings) *GuardrailLlmPromptSecurityCustomPolicyModelSettings {
+		return &v
+	}).(GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput)
+}
+
+// The LLM model that the agent should use.
+// If not set, the agent will inherit the model from its parent agent.
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurityCustomPolicyModelSettings) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// If set, this temperature will be used for the LLM model. Temperature
+// controls the randomness of the model's responses. Lower temperatures
+// produce responses that are more predictable. Higher temperatures produce
+// responses that are more creative.
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurityCustomPolicyModelSettings) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
+}
+
+type GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailLlmPromptSecurityCustomPolicyModelSettings)(nil)).Elem()
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput) ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput() GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput) ToGuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput) Elem() GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityCustomPolicyModelSettings) GuardrailLlmPromptSecurityCustomPolicyModelSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailLlmPromptSecurityCustomPolicyModelSettings
+		return ret
+	}).(GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput)
+}
+
+// The LLM model that the agent should use.
+// If not set, the agent will inherit the model from its parent agent.
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityCustomPolicyModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, this temperature will be used for the LLM model. Temperature
+// controls the randomness of the model's responses. Lower temperatures
+// produce responses that are more predictable. Higher temperatures produce
+// responses that are more creative.
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityCustomPolicyModelSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Temperature
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GuardrailLlmPromptSecurityDefaultSettings struct {
+	// (Output)
+	// The default prompt template used by the system.
+	// This field is for display purposes to show the user what prompt
+	// the system uses by default. It is OUTPUT_ONLY.
+	DefaultPromptTemplate *string `pulumi:"defaultPromptTemplate"`
+}
+
+// GuardrailLlmPromptSecurityDefaultSettingsInput is an input type that accepts GuardrailLlmPromptSecurityDefaultSettingsArgs and GuardrailLlmPromptSecurityDefaultSettingsOutput values.
+// You can construct a concrete instance of `GuardrailLlmPromptSecurityDefaultSettingsInput` via:
+//
+//	GuardrailLlmPromptSecurityDefaultSettingsArgs{...}
+type GuardrailLlmPromptSecurityDefaultSettingsInput interface {
+	pulumi.Input
+
+	ToGuardrailLlmPromptSecurityDefaultSettingsOutput() GuardrailLlmPromptSecurityDefaultSettingsOutput
+	ToGuardrailLlmPromptSecurityDefaultSettingsOutputWithContext(context.Context) GuardrailLlmPromptSecurityDefaultSettingsOutput
+}
+
+type GuardrailLlmPromptSecurityDefaultSettingsArgs struct {
+	// (Output)
+	// The default prompt template used by the system.
+	// This field is for display purposes to show the user what prompt
+	// the system uses by default. It is OUTPUT_ONLY.
+	DefaultPromptTemplate pulumi.StringPtrInput `pulumi:"defaultPromptTemplate"`
+}
+
+func (GuardrailLlmPromptSecurityDefaultSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailLlmPromptSecurityDefaultSettings)(nil)).Elem()
+}
+
+func (i GuardrailLlmPromptSecurityDefaultSettingsArgs) ToGuardrailLlmPromptSecurityDefaultSettingsOutput() GuardrailLlmPromptSecurityDefaultSettingsOutput {
+	return i.ToGuardrailLlmPromptSecurityDefaultSettingsOutputWithContext(context.Background())
+}
+
+func (i GuardrailLlmPromptSecurityDefaultSettingsArgs) ToGuardrailLlmPromptSecurityDefaultSettingsOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityDefaultSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPromptSecurityDefaultSettingsOutput)
+}
+
+func (i GuardrailLlmPromptSecurityDefaultSettingsArgs) ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutput() GuardrailLlmPromptSecurityDefaultSettingsPtrOutput {
+	return i.ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailLlmPromptSecurityDefaultSettingsArgs) ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityDefaultSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPromptSecurityDefaultSettingsOutput).ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutputWithContext(ctx)
+}
+
+// GuardrailLlmPromptSecurityDefaultSettingsPtrInput is an input type that accepts GuardrailLlmPromptSecurityDefaultSettingsArgs, GuardrailLlmPromptSecurityDefaultSettingsPtr and GuardrailLlmPromptSecurityDefaultSettingsPtrOutput values.
+// You can construct a concrete instance of `GuardrailLlmPromptSecurityDefaultSettingsPtrInput` via:
+//
+//	        GuardrailLlmPromptSecurityDefaultSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailLlmPromptSecurityDefaultSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutput() GuardrailLlmPromptSecurityDefaultSettingsPtrOutput
+	ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutputWithContext(context.Context) GuardrailLlmPromptSecurityDefaultSettingsPtrOutput
+}
+
+type guardrailLlmPromptSecurityDefaultSettingsPtrType GuardrailLlmPromptSecurityDefaultSettingsArgs
+
+func GuardrailLlmPromptSecurityDefaultSettingsPtr(v *GuardrailLlmPromptSecurityDefaultSettingsArgs) GuardrailLlmPromptSecurityDefaultSettingsPtrInput {
+	return (*guardrailLlmPromptSecurityDefaultSettingsPtrType)(v)
+}
+
+func (*guardrailLlmPromptSecurityDefaultSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailLlmPromptSecurityDefaultSettings)(nil)).Elem()
+}
+
+func (i *guardrailLlmPromptSecurityDefaultSettingsPtrType) ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutput() GuardrailLlmPromptSecurityDefaultSettingsPtrOutput {
+	return i.ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailLlmPromptSecurityDefaultSettingsPtrType) ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityDefaultSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailLlmPromptSecurityDefaultSettingsPtrOutput)
+}
+
+type GuardrailLlmPromptSecurityDefaultSettingsOutput struct{ *pulumi.OutputState }
+
+func (GuardrailLlmPromptSecurityDefaultSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailLlmPromptSecurityDefaultSettings)(nil)).Elem()
+}
+
+func (o GuardrailLlmPromptSecurityDefaultSettingsOutput) ToGuardrailLlmPromptSecurityDefaultSettingsOutput() GuardrailLlmPromptSecurityDefaultSettingsOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityDefaultSettingsOutput) ToGuardrailLlmPromptSecurityDefaultSettingsOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityDefaultSettingsOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityDefaultSettingsOutput) ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutput() GuardrailLlmPromptSecurityDefaultSettingsPtrOutput {
+	return o.ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailLlmPromptSecurityDefaultSettingsOutput) ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityDefaultSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailLlmPromptSecurityDefaultSettings) *GuardrailLlmPromptSecurityDefaultSettings {
+		return &v
+	}).(GuardrailLlmPromptSecurityDefaultSettingsPtrOutput)
+}
+
+// (Output)
+// The default prompt template used by the system.
+// This field is for display purposes to show the user what prompt
+// the system uses by default. It is OUTPUT_ONLY.
+func (o GuardrailLlmPromptSecurityDefaultSettingsOutput) DefaultPromptTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurityDefaultSettings) *string { return v.DefaultPromptTemplate }).(pulumi.StringPtrOutput)
+}
+
+type GuardrailLlmPromptSecurityDefaultSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailLlmPromptSecurityDefaultSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailLlmPromptSecurityDefaultSettings)(nil)).Elem()
+}
+
+func (o GuardrailLlmPromptSecurityDefaultSettingsPtrOutput) ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutput() GuardrailLlmPromptSecurityDefaultSettingsPtrOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityDefaultSettingsPtrOutput) ToGuardrailLlmPromptSecurityDefaultSettingsPtrOutputWithContext(ctx context.Context) GuardrailLlmPromptSecurityDefaultSettingsPtrOutput {
+	return o
+}
+
+func (o GuardrailLlmPromptSecurityDefaultSettingsPtrOutput) Elem() GuardrailLlmPromptSecurityDefaultSettingsOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityDefaultSettings) GuardrailLlmPromptSecurityDefaultSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailLlmPromptSecurityDefaultSettings
+		return ret
+	}).(GuardrailLlmPromptSecurityDefaultSettingsOutput)
+}
+
+// (Output)
+// The default prompt template used by the system.
+// This field is for display purposes to show the user what prompt
+// the system uses by default. It is OUTPUT_ONLY.
+func (o GuardrailLlmPromptSecurityDefaultSettingsPtrOutput) DefaultPromptTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityDefaultSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultPromptTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardrailModelSafety struct {
+	// List of safety settings.
+	// Structure is documented below.
+	SafetySettings []GuardrailModelSafetySafetySetting `pulumi:"safetySettings"`
+}
+
+// GuardrailModelSafetyInput is an input type that accepts GuardrailModelSafetyArgs and GuardrailModelSafetyOutput values.
+// You can construct a concrete instance of `GuardrailModelSafetyInput` via:
+//
+//	GuardrailModelSafetyArgs{...}
+type GuardrailModelSafetyInput interface {
+	pulumi.Input
+
+	ToGuardrailModelSafetyOutput() GuardrailModelSafetyOutput
+	ToGuardrailModelSafetyOutputWithContext(context.Context) GuardrailModelSafetyOutput
+}
+
+type GuardrailModelSafetyArgs struct {
+	// List of safety settings.
+	// Structure is documented below.
+	SafetySettings GuardrailModelSafetySafetySettingArrayInput `pulumi:"safetySettings"`
+}
+
+func (GuardrailModelSafetyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailModelSafety)(nil)).Elem()
+}
+
+func (i GuardrailModelSafetyArgs) ToGuardrailModelSafetyOutput() GuardrailModelSafetyOutput {
+	return i.ToGuardrailModelSafetyOutputWithContext(context.Background())
+}
+
+func (i GuardrailModelSafetyArgs) ToGuardrailModelSafetyOutputWithContext(ctx context.Context) GuardrailModelSafetyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailModelSafetyOutput)
+}
+
+func (i GuardrailModelSafetyArgs) ToGuardrailModelSafetyPtrOutput() GuardrailModelSafetyPtrOutput {
+	return i.ToGuardrailModelSafetyPtrOutputWithContext(context.Background())
+}
+
+func (i GuardrailModelSafetyArgs) ToGuardrailModelSafetyPtrOutputWithContext(ctx context.Context) GuardrailModelSafetyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailModelSafetyOutput).ToGuardrailModelSafetyPtrOutputWithContext(ctx)
+}
+
+// GuardrailModelSafetyPtrInput is an input type that accepts GuardrailModelSafetyArgs, GuardrailModelSafetyPtr and GuardrailModelSafetyPtrOutput values.
+// You can construct a concrete instance of `GuardrailModelSafetyPtrInput` via:
+//
+//	        GuardrailModelSafetyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardrailModelSafetyPtrInput interface {
+	pulumi.Input
+
+	ToGuardrailModelSafetyPtrOutput() GuardrailModelSafetyPtrOutput
+	ToGuardrailModelSafetyPtrOutputWithContext(context.Context) GuardrailModelSafetyPtrOutput
+}
+
+type guardrailModelSafetyPtrType GuardrailModelSafetyArgs
+
+func GuardrailModelSafetyPtr(v *GuardrailModelSafetyArgs) GuardrailModelSafetyPtrInput {
+	return (*guardrailModelSafetyPtrType)(v)
+}
+
+func (*guardrailModelSafetyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailModelSafety)(nil)).Elem()
+}
+
+func (i *guardrailModelSafetyPtrType) ToGuardrailModelSafetyPtrOutput() GuardrailModelSafetyPtrOutput {
+	return i.ToGuardrailModelSafetyPtrOutputWithContext(context.Background())
+}
+
+func (i *guardrailModelSafetyPtrType) ToGuardrailModelSafetyPtrOutputWithContext(ctx context.Context) GuardrailModelSafetyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailModelSafetyPtrOutput)
+}
+
+type GuardrailModelSafetyOutput struct{ *pulumi.OutputState }
+
+func (GuardrailModelSafetyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailModelSafety)(nil)).Elem()
+}
+
+func (o GuardrailModelSafetyOutput) ToGuardrailModelSafetyOutput() GuardrailModelSafetyOutput {
+	return o
+}
+
+func (o GuardrailModelSafetyOutput) ToGuardrailModelSafetyOutputWithContext(ctx context.Context) GuardrailModelSafetyOutput {
+	return o
+}
+
+func (o GuardrailModelSafetyOutput) ToGuardrailModelSafetyPtrOutput() GuardrailModelSafetyPtrOutput {
+	return o.ToGuardrailModelSafetyPtrOutputWithContext(context.Background())
+}
+
+func (o GuardrailModelSafetyOutput) ToGuardrailModelSafetyPtrOutputWithContext(ctx context.Context) GuardrailModelSafetyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailModelSafety) *GuardrailModelSafety {
+		return &v
+	}).(GuardrailModelSafetyPtrOutput)
+}
+
+// List of safety settings.
+// Structure is documented below.
+func (o GuardrailModelSafetyOutput) SafetySettings() GuardrailModelSafetySafetySettingArrayOutput {
+	return o.ApplyT(func(v GuardrailModelSafety) []GuardrailModelSafetySafetySetting { return v.SafetySettings }).(GuardrailModelSafetySafetySettingArrayOutput)
+}
+
+type GuardrailModelSafetyPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardrailModelSafetyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardrailModelSafety)(nil)).Elem()
+}
+
+func (o GuardrailModelSafetyPtrOutput) ToGuardrailModelSafetyPtrOutput() GuardrailModelSafetyPtrOutput {
+	return o
+}
+
+func (o GuardrailModelSafetyPtrOutput) ToGuardrailModelSafetyPtrOutputWithContext(ctx context.Context) GuardrailModelSafetyPtrOutput {
+	return o
+}
+
+func (o GuardrailModelSafetyPtrOutput) Elem() GuardrailModelSafetyOutput {
+	return o.ApplyT(func(v *GuardrailModelSafety) GuardrailModelSafety {
+		if v != nil {
+			return *v
+		}
+		var ret GuardrailModelSafety
+		return ret
+	}).(GuardrailModelSafetyOutput)
+}
+
+// List of safety settings.
+// Structure is documented below.
+func (o GuardrailModelSafetyPtrOutput) SafetySettings() GuardrailModelSafetySafetySettingArrayOutput {
+	return o.ApplyT(func(v *GuardrailModelSafety) []GuardrailModelSafetySafetySetting {
+		if v == nil {
+			return nil
+		}
+		return v.SafetySettings
+	}).(GuardrailModelSafetySafetySettingArrayOutput)
+}
+
+type GuardrailModelSafetySafetySetting struct {
+	// The harm category.
+	// Possible values:
+	// HARM_CATEGORY_HATE_SPEECH
+	// HARM_CATEGORY_DANGEROUS_CONTENT
+	// HARM_CATEGORY_HARASSMENT
+	// HARM_CATEGORY_SEXUALLY_EXPLICIT
+	// Possible values are: `HARM_CATEGORY_HATE_SPEECH`, `HARM_CATEGORY_DANGEROUS_CONTENT`, `HARM_CATEGORY_HARASSMENT`, `HARM_CATEGORY_SEXUALLY_EXPLICIT`.
+	Category string `pulumi:"category"`
+	// The harm block threshold.
+	// Possible values:
+	// BLOCK_LOW_AND_ABOVE
+	// BLOCK_MEDIUM_AND_ABOVE
+	// BLOCK_ONLY_HIGH
+	// BLOCK_NONE
+	// OFF
+	// Possible values are: `BLOCK_LOW_AND_ABOVE`, `BLOCK_MEDIUM_AND_ABOVE`, `BLOCK_ONLY_HIGH`, `BLOCK_NONE`, `OFF`.
+	Threshold string `pulumi:"threshold"`
+}
+
+// GuardrailModelSafetySafetySettingInput is an input type that accepts GuardrailModelSafetySafetySettingArgs and GuardrailModelSafetySafetySettingOutput values.
+// You can construct a concrete instance of `GuardrailModelSafetySafetySettingInput` via:
+//
+//	GuardrailModelSafetySafetySettingArgs{...}
+type GuardrailModelSafetySafetySettingInput interface {
+	pulumi.Input
+
+	ToGuardrailModelSafetySafetySettingOutput() GuardrailModelSafetySafetySettingOutput
+	ToGuardrailModelSafetySafetySettingOutputWithContext(context.Context) GuardrailModelSafetySafetySettingOutput
+}
+
+type GuardrailModelSafetySafetySettingArgs struct {
+	// The harm category.
+	// Possible values:
+	// HARM_CATEGORY_HATE_SPEECH
+	// HARM_CATEGORY_DANGEROUS_CONTENT
+	// HARM_CATEGORY_HARASSMENT
+	// HARM_CATEGORY_SEXUALLY_EXPLICIT
+	// Possible values are: `HARM_CATEGORY_HATE_SPEECH`, `HARM_CATEGORY_DANGEROUS_CONTENT`, `HARM_CATEGORY_HARASSMENT`, `HARM_CATEGORY_SEXUALLY_EXPLICIT`.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The harm block threshold.
+	// Possible values:
+	// BLOCK_LOW_AND_ABOVE
+	// BLOCK_MEDIUM_AND_ABOVE
+	// BLOCK_ONLY_HIGH
+	// BLOCK_NONE
+	// OFF
+	// Possible values are: `BLOCK_LOW_AND_ABOVE`, `BLOCK_MEDIUM_AND_ABOVE`, `BLOCK_ONLY_HIGH`, `BLOCK_NONE`, `OFF`.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+}
+
+func (GuardrailModelSafetySafetySettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailModelSafetySafetySetting)(nil)).Elem()
+}
+
+func (i GuardrailModelSafetySafetySettingArgs) ToGuardrailModelSafetySafetySettingOutput() GuardrailModelSafetySafetySettingOutput {
+	return i.ToGuardrailModelSafetySafetySettingOutputWithContext(context.Background())
+}
+
+func (i GuardrailModelSafetySafetySettingArgs) ToGuardrailModelSafetySafetySettingOutputWithContext(ctx context.Context) GuardrailModelSafetySafetySettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailModelSafetySafetySettingOutput)
+}
+
+// GuardrailModelSafetySafetySettingArrayInput is an input type that accepts GuardrailModelSafetySafetySettingArray and GuardrailModelSafetySafetySettingArrayOutput values.
+// You can construct a concrete instance of `GuardrailModelSafetySafetySettingArrayInput` via:
+//
+//	GuardrailModelSafetySafetySettingArray{ GuardrailModelSafetySafetySettingArgs{...} }
+type GuardrailModelSafetySafetySettingArrayInput interface {
+	pulumi.Input
+
+	ToGuardrailModelSafetySafetySettingArrayOutput() GuardrailModelSafetySafetySettingArrayOutput
+	ToGuardrailModelSafetySafetySettingArrayOutputWithContext(context.Context) GuardrailModelSafetySafetySettingArrayOutput
+}
+
+type GuardrailModelSafetySafetySettingArray []GuardrailModelSafetySafetySettingInput
+
+func (GuardrailModelSafetySafetySettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuardrailModelSafetySafetySetting)(nil)).Elem()
+}
+
+func (i GuardrailModelSafetySafetySettingArray) ToGuardrailModelSafetySafetySettingArrayOutput() GuardrailModelSafetySafetySettingArrayOutput {
+	return i.ToGuardrailModelSafetySafetySettingArrayOutputWithContext(context.Background())
+}
+
+func (i GuardrailModelSafetySafetySettingArray) ToGuardrailModelSafetySafetySettingArrayOutputWithContext(ctx context.Context) GuardrailModelSafetySafetySettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardrailModelSafetySafetySettingArrayOutput)
+}
+
+type GuardrailModelSafetySafetySettingOutput struct{ *pulumi.OutputState }
+
+func (GuardrailModelSafetySafetySettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardrailModelSafetySafetySetting)(nil)).Elem()
+}
+
+func (o GuardrailModelSafetySafetySettingOutput) ToGuardrailModelSafetySafetySettingOutput() GuardrailModelSafetySafetySettingOutput {
+	return o
+}
+
+func (o GuardrailModelSafetySafetySettingOutput) ToGuardrailModelSafetySafetySettingOutputWithContext(ctx context.Context) GuardrailModelSafetySafetySettingOutput {
+	return o
+}
+
+// The harm category.
+// Possible values:
+// HARM_CATEGORY_HATE_SPEECH
+// HARM_CATEGORY_DANGEROUS_CONTENT
+// HARM_CATEGORY_HARASSMENT
+// HARM_CATEGORY_SEXUALLY_EXPLICIT
+// Possible values are: `HARM_CATEGORY_HATE_SPEECH`, `HARM_CATEGORY_DANGEROUS_CONTENT`, `HARM_CATEGORY_HARASSMENT`, `HARM_CATEGORY_SEXUALLY_EXPLICIT`.
+func (o GuardrailModelSafetySafetySettingOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailModelSafetySafetySetting) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The harm block threshold.
+// Possible values:
+// BLOCK_LOW_AND_ABOVE
+// BLOCK_MEDIUM_AND_ABOVE
+// BLOCK_ONLY_HIGH
+// BLOCK_NONE
+// OFF
+// Possible values are: `BLOCK_LOW_AND_ABOVE`, `BLOCK_MEDIUM_AND_ABOVE`, `BLOCK_ONLY_HIGH`, `BLOCK_NONE`, `OFF`.
+func (o GuardrailModelSafetySafetySettingOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardrailModelSafetySafetySetting) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+type GuardrailModelSafetySafetySettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GuardrailModelSafetySafetySettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuardrailModelSafetySafetySetting)(nil)).Elem()
+}
+
+func (o GuardrailModelSafetySafetySettingArrayOutput) ToGuardrailModelSafetySafetySettingArrayOutput() GuardrailModelSafetySafetySettingArrayOutput {
+	return o
+}
+
+func (o GuardrailModelSafetySafetySettingArrayOutput) ToGuardrailModelSafetySafetySettingArrayOutputWithContext(ctx context.Context) GuardrailModelSafetySafetySettingArrayOutput {
+	return o
+}
+
+func (o GuardrailModelSafetySafetySettingArrayOutput) Index(i pulumi.IntInput) GuardrailModelSafetySafetySettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuardrailModelSafetySafetySetting {
+		return vs[0].([]GuardrailModelSafetySafetySetting)[vs[1].(int)]
+	}).(GuardrailModelSafetySafetySettingOutput)
+}
+
+type ToolClientFunction struct {
+	// The function description.
+	Description *string `pulumi:"description"`
+	// The function name.
+	Name string `pulumi:"name"`
+	// Represents a select subset of an OpenAPI 3.0 schema object.
+	// Structure is documented below.
+	Parameters *ToolClientFunctionParameters `pulumi:"parameters"`
+	// Represents a select subset of an OpenAPI 3.0 schema object.
+	// Structure is documented below.
+	Response *ToolClientFunctionResponse `pulumi:"response"`
+}
+
+// ToolClientFunctionInput is an input type that accepts ToolClientFunctionArgs and ToolClientFunctionOutput values.
+// You can construct a concrete instance of `ToolClientFunctionInput` via:
+//
+//	ToolClientFunctionArgs{...}
+type ToolClientFunctionInput interface {
+	pulumi.Input
+
+	ToToolClientFunctionOutput() ToolClientFunctionOutput
+	ToToolClientFunctionOutputWithContext(context.Context) ToolClientFunctionOutput
+}
+
+type ToolClientFunctionArgs struct {
+	// The function description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The function name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Represents a select subset of an OpenAPI 3.0 schema object.
+	// Structure is documented below.
+	Parameters ToolClientFunctionParametersPtrInput `pulumi:"parameters"`
+	// Represents a select subset of an OpenAPI 3.0 schema object.
+	// Structure is documented below.
+	Response ToolClientFunctionResponsePtrInput `pulumi:"response"`
+}
+
+func (ToolClientFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolClientFunction)(nil)).Elem()
+}
+
+func (i ToolClientFunctionArgs) ToToolClientFunctionOutput() ToolClientFunctionOutput {
+	return i.ToToolClientFunctionOutputWithContext(context.Background())
+}
+
+func (i ToolClientFunctionArgs) ToToolClientFunctionOutputWithContext(ctx context.Context) ToolClientFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolClientFunctionOutput)
+}
+
+func (i ToolClientFunctionArgs) ToToolClientFunctionPtrOutput() ToolClientFunctionPtrOutput {
+	return i.ToToolClientFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i ToolClientFunctionArgs) ToToolClientFunctionPtrOutputWithContext(ctx context.Context) ToolClientFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolClientFunctionOutput).ToToolClientFunctionPtrOutputWithContext(ctx)
+}
+
+// ToolClientFunctionPtrInput is an input type that accepts ToolClientFunctionArgs, ToolClientFunctionPtr and ToolClientFunctionPtrOutput values.
+// You can construct a concrete instance of `ToolClientFunctionPtrInput` via:
+//
+//	        ToolClientFunctionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolClientFunctionPtrInput interface {
+	pulumi.Input
+
+	ToToolClientFunctionPtrOutput() ToolClientFunctionPtrOutput
+	ToToolClientFunctionPtrOutputWithContext(context.Context) ToolClientFunctionPtrOutput
+}
+
+type toolClientFunctionPtrType ToolClientFunctionArgs
+
+func ToolClientFunctionPtr(v *ToolClientFunctionArgs) ToolClientFunctionPtrInput {
+	return (*toolClientFunctionPtrType)(v)
+}
+
+func (*toolClientFunctionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolClientFunction)(nil)).Elem()
+}
+
+func (i *toolClientFunctionPtrType) ToToolClientFunctionPtrOutput() ToolClientFunctionPtrOutput {
+	return i.ToToolClientFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i *toolClientFunctionPtrType) ToToolClientFunctionPtrOutputWithContext(ctx context.Context) ToolClientFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolClientFunctionPtrOutput)
+}
+
+type ToolClientFunctionOutput struct{ *pulumi.OutputState }
+
+func (ToolClientFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolClientFunction)(nil)).Elem()
+}
+
+func (o ToolClientFunctionOutput) ToToolClientFunctionOutput() ToolClientFunctionOutput {
+	return o
+}
+
+func (o ToolClientFunctionOutput) ToToolClientFunctionOutputWithContext(ctx context.Context) ToolClientFunctionOutput {
+	return o
+}
+
+func (o ToolClientFunctionOutput) ToToolClientFunctionPtrOutput() ToolClientFunctionPtrOutput {
+	return o.ToToolClientFunctionPtrOutputWithContext(context.Background())
+}
+
+func (o ToolClientFunctionOutput) ToToolClientFunctionPtrOutputWithContext(ctx context.Context) ToolClientFunctionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolClientFunction) *ToolClientFunction {
+		return &v
+	}).(ToolClientFunctionPtrOutput)
+}
+
+// The function description.
+func (o ToolClientFunctionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunction) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The function name.
+func (o ToolClientFunctionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolClientFunction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Represents a select subset of an OpenAPI 3.0 schema object.
+// Structure is documented below.
+func (o ToolClientFunctionOutput) Parameters() ToolClientFunctionParametersPtrOutput {
+	return o.ApplyT(func(v ToolClientFunction) *ToolClientFunctionParameters { return v.Parameters }).(ToolClientFunctionParametersPtrOutput)
+}
+
+// Represents a select subset of an OpenAPI 3.0 schema object.
+// Structure is documented below.
+func (o ToolClientFunctionOutput) Response() ToolClientFunctionResponsePtrOutput {
+	return o.ApplyT(func(v ToolClientFunction) *ToolClientFunctionResponse { return v.Response }).(ToolClientFunctionResponsePtrOutput)
+}
+
+type ToolClientFunctionPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolClientFunctionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolClientFunction)(nil)).Elem()
+}
+
+func (o ToolClientFunctionPtrOutput) ToToolClientFunctionPtrOutput() ToolClientFunctionPtrOutput {
+	return o
+}
+
+func (o ToolClientFunctionPtrOutput) ToToolClientFunctionPtrOutputWithContext(ctx context.Context) ToolClientFunctionPtrOutput {
+	return o
+}
+
+func (o ToolClientFunctionPtrOutput) Elem() ToolClientFunctionOutput {
+	return o.ApplyT(func(v *ToolClientFunction) ToolClientFunction {
+		if v != nil {
+			return *v
+		}
+		var ret ToolClientFunction
+		return ret
+	}).(ToolClientFunctionOutput)
+}
+
+// The function description.
+func (o ToolClientFunctionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The function name.
+func (o ToolClientFunctionPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a select subset of an OpenAPI 3.0 schema object.
+// Structure is documented below.
+func (o ToolClientFunctionPtrOutput) Parameters() ToolClientFunctionParametersPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunction) *ToolClientFunctionParameters {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(ToolClientFunctionParametersPtrOutput)
+}
+
+// Represents a select subset of an OpenAPI 3.0 schema object.
+// Structure is documented below.
+func (o ToolClientFunctionPtrOutput) Response() ToolClientFunctionResponsePtrOutput {
+	return o.ApplyT(func(v *ToolClientFunction) *ToolClientFunctionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(ToolClientFunctionResponsePtrOutput)
+}
+
+type ToolClientFunctionParameters struct {
+	// Optional. Defines the schema for additional properties allowed in an object.
+	// The value must be a valid JSON string representing the Schema object.
+	// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+	AdditionalProperties *string `pulumi:"additionalProperties"`
+	// Optional. The instance value should be valid against at least one of the schemas in this list.
+	AnyOf *string `pulumi:"anyOf"`
+	// Optional. Default value of the data. Represents a dynamically typed value
+	// which can be either null, a number, a string, a boolean, a struct,
+	// or a list of values. The provided default value must be compatible
+	// with the defined 'type' and other schema constraints.
+	Default *string `pulumi:"default"`
+	// A map of definitions for use by ref. Only allowed at the root of the schema.
+	Defs *string `pulumi:"defs"`
+	// The description of the data.
+	Description *string `pulumi:"description"`
+	// Possible values of the element of primitive type with enum format.
+	// Examples:
+	// 1. We can define direction as :
+	//    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+	// 2. We can define apartment number as :
+	//    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+	Enums []string `pulumi:"enums"`
+	// Schema of the elements of Type.ARRAY.
+	Items *string `pulumi:"items"`
+	// Indicates if the value may be null.
+	Nullable *bool `pulumi:"nullable"`
+	// Optional. Schemas of initial elements of Type.ARRAY.
+	PrefixItems *string `pulumi:"prefixItems"`
+	// Properties of Type.OBJECT.
+	Properties *string `pulumi:"properties"`
+	// Allows indirect references between schema nodes. The value should be a
+	// valid reference to a child of the root `defs`.
+	// For example, the following schema defines a reference to a schema node
+	// named "Pet":
+	// type: object
+	// properties:
+	// pet:
+	// ref: #/defs/Pet
+	// defs:
+	// Pet:
+	// type: object
+	// properties:
+	// name:
+	// type: string
+	// The value of the "pet" property is a reference to the schema node
+	// named "Pet".
+	// See details in
+	// https://json-schema.org/understanding-json-schema/structuring.
+	Ref *string `pulumi:"ref"`
+	// Required properties of Type.OBJECT.
+	Requireds []string `pulumi:"requireds"`
+	// The type of the data.
+	// Possible values:
+	// STRING
+	// INTEGER
+	// NUMBER
+	// BOOLEAN
+	// OBJECT
+	// ARRAY
+	Type string `pulumi:"type"`
+	// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+	UniqueItems *bool `pulumi:"uniqueItems"`
+}
+
+// ToolClientFunctionParametersInput is an input type that accepts ToolClientFunctionParametersArgs and ToolClientFunctionParametersOutput values.
+// You can construct a concrete instance of `ToolClientFunctionParametersInput` via:
+//
+//	ToolClientFunctionParametersArgs{...}
+type ToolClientFunctionParametersInput interface {
+	pulumi.Input
+
+	ToToolClientFunctionParametersOutput() ToolClientFunctionParametersOutput
+	ToToolClientFunctionParametersOutputWithContext(context.Context) ToolClientFunctionParametersOutput
+}
+
+type ToolClientFunctionParametersArgs struct {
+	// Optional. Defines the schema for additional properties allowed in an object.
+	// The value must be a valid JSON string representing the Schema object.
+	// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+	AdditionalProperties pulumi.StringPtrInput `pulumi:"additionalProperties"`
+	// Optional. The instance value should be valid against at least one of the schemas in this list.
+	AnyOf pulumi.StringPtrInput `pulumi:"anyOf"`
+	// Optional. Default value of the data. Represents a dynamically typed value
+	// which can be either null, a number, a string, a boolean, a struct,
+	// or a list of values. The provided default value must be compatible
+	// with the defined 'type' and other schema constraints.
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// A map of definitions for use by ref. Only allowed at the root of the schema.
+	Defs pulumi.StringPtrInput `pulumi:"defs"`
+	// The description of the data.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Possible values of the element of primitive type with enum format.
+	// Examples:
+	// 1. We can define direction as :
+	//    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+	// 2. We can define apartment number as :
+	//    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+	Enums pulumi.StringArrayInput `pulumi:"enums"`
+	// Schema of the elements of Type.ARRAY.
+	Items pulumi.StringPtrInput `pulumi:"items"`
+	// Indicates if the value may be null.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// Optional. Schemas of initial elements of Type.ARRAY.
+	PrefixItems pulumi.StringPtrInput `pulumi:"prefixItems"`
+	// Properties of Type.OBJECT.
+	Properties pulumi.StringPtrInput `pulumi:"properties"`
+	// Allows indirect references between schema nodes. The value should be a
+	// valid reference to a child of the root `defs`.
+	// For example, the following schema defines a reference to a schema node
+	// named "Pet":
+	// type: object
+	// properties:
+	// pet:
+	// ref: #/defs/Pet
+	// defs:
+	// Pet:
+	// type: object
+	// properties:
+	// name:
+	// type: string
+	// The value of the "pet" property is a reference to the schema node
+	// named "Pet".
+	// See details in
+	// https://json-schema.org/understanding-json-schema/structuring.
+	Ref pulumi.StringPtrInput `pulumi:"ref"`
+	// Required properties of Type.OBJECT.
+	Requireds pulumi.StringArrayInput `pulumi:"requireds"`
+	// The type of the data.
+	// Possible values:
+	// STRING
+	// INTEGER
+	// NUMBER
+	// BOOLEAN
+	// OBJECT
+	// ARRAY
+	Type pulumi.StringInput `pulumi:"type"`
+	// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+	UniqueItems pulumi.BoolPtrInput `pulumi:"uniqueItems"`
+}
+
+func (ToolClientFunctionParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolClientFunctionParameters)(nil)).Elem()
+}
+
+func (i ToolClientFunctionParametersArgs) ToToolClientFunctionParametersOutput() ToolClientFunctionParametersOutput {
+	return i.ToToolClientFunctionParametersOutputWithContext(context.Background())
+}
+
+func (i ToolClientFunctionParametersArgs) ToToolClientFunctionParametersOutputWithContext(ctx context.Context) ToolClientFunctionParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolClientFunctionParametersOutput)
+}
+
+func (i ToolClientFunctionParametersArgs) ToToolClientFunctionParametersPtrOutput() ToolClientFunctionParametersPtrOutput {
+	return i.ToToolClientFunctionParametersPtrOutputWithContext(context.Background())
+}
+
+func (i ToolClientFunctionParametersArgs) ToToolClientFunctionParametersPtrOutputWithContext(ctx context.Context) ToolClientFunctionParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolClientFunctionParametersOutput).ToToolClientFunctionParametersPtrOutputWithContext(ctx)
+}
+
+// ToolClientFunctionParametersPtrInput is an input type that accepts ToolClientFunctionParametersArgs, ToolClientFunctionParametersPtr and ToolClientFunctionParametersPtrOutput values.
+// You can construct a concrete instance of `ToolClientFunctionParametersPtrInput` via:
+//
+//	        ToolClientFunctionParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolClientFunctionParametersPtrInput interface {
+	pulumi.Input
+
+	ToToolClientFunctionParametersPtrOutput() ToolClientFunctionParametersPtrOutput
+	ToToolClientFunctionParametersPtrOutputWithContext(context.Context) ToolClientFunctionParametersPtrOutput
+}
+
+type toolClientFunctionParametersPtrType ToolClientFunctionParametersArgs
+
+func ToolClientFunctionParametersPtr(v *ToolClientFunctionParametersArgs) ToolClientFunctionParametersPtrInput {
+	return (*toolClientFunctionParametersPtrType)(v)
+}
+
+func (*toolClientFunctionParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolClientFunctionParameters)(nil)).Elem()
+}
+
+func (i *toolClientFunctionParametersPtrType) ToToolClientFunctionParametersPtrOutput() ToolClientFunctionParametersPtrOutput {
+	return i.ToToolClientFunctionParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *toolClientFunctionParametersPtrType) ToToolClientFunctionParametersPtrOutputWithContext(ctx context.Context) ToolClientFunctionParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolClientFunctionParametersPtrOutput)
+}
+
+type ToolClientFunctionParametersOutput struct{ *pulumi.OutputState }
+
+func (ToolClientFunctionParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolClientFunctionParameters)(nil)).Elem()
+}
+
+func (o ToolClientFunctionParametersOutput) ToToolClientFunctionParametersOutput() ToolClientFunctionParametersOutput {
+	return o
+}
+
+func (o ToolClientFunctionParametersOutput) ToToolClientFunctionParametersOutputWithContext(ctx context.Context) ToolClientFunctionParametersOutput {
+	return o
+}
+
+func (o ToolClientFunctionParametersOutput) ToToolClientFunctionParametersPtrOutput() ToolClientFunctionParametersPtrOutput {
+	return o.ToToolClientFunctionParametersPtrOutputWithContext(context.Background())
+}
+
+func (o ToolClientFunctionParametersOutput) ToToolClientFunctionParametersPtrOutputWithContext(ctx context.Context) ToolClientFunctionParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolClientFunctionParameters) *ToolClientFunctionParameters {
+		return &v
+	}).(ToolClientFunctionParametersPtrOutput)
+}
+
+// Optional. Defines the schema for additional properties allowed in an object.
+// The value must be a valid JSON string representing the Schema object.
+// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+func (o ToolClientFunctionParametersOutput) AdditionalProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) *string { return v.AdditionalProperties }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The instance value should be valid against at least one of the schemas in this list.
+func (o ToolClientFunctionParametersOutput) AnyOf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) *string { return v.AnyOf }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Default value of the data. Represents a dynamically typed value
+// which can be either null, a number, a string, a boolean, a struct,
+// or a list of values. The provided default value must be compatible
+// with the defined 'type' and other schema constraints.
+func (o ToolClientFunctionParametersOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// A map of definitions for use by ref. Only allowed at the root of the schema.
+func (o ToolClientFunctionParametersOutput) Defs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) *string { return v.Defs }).(pulumi.StringPtrOutput)
+}
+
+// The description of the data.
+func (o ToolClientFunctionParametersOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Possible values of the element of primitive type with enum format.
+// Examples:
+//  1. We can define direction as :
+//     {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+//  2. We can define apartment number as :
+//     {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+func (o ToolClientFunctionParametersOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
+// Schema of the elements of Type.ARRAY.
+func (o ToolClientFunctionParametersOutput) Items() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) *string { return v.Items }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the value may be null.
+func (o ToolClientFunctionParametersOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) *bool { return v.Nullable }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Schemas of initial elements of Type.ARRAY.
+func (o ToolClientFunctionParametersOutput) PrefixItems() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) *string { return v.PrefixItems }).(pulumi.StringPtrOutput)
+}
+
+// Properties of Type.OBJECT.
+func (o ToolClientFunctionParametersOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) *string { return v.Properties }).(pulumi.StringPtrOutput)
+}
+
+// Allows indirect references between schema nodes. The value should be a
+// valid reference to a child of the root `defs`.
+// For example, the following schema defines a reference to a schema node
+// named "Pet":
+// type: object
+// properties:
+// pet:
+// ref: #/defs/Pet
+// defs:
+// Pet:
+// type: object
+// properties:
+// name:
+// type: string
+// The value of the "pet" property is a reference to the schema node
+// named "Pet".
+// See details in
+// https://json-schema.org/understanding-json-schema/structuring.
+func (o ToolClientFunctionParametersOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) *string { return v.Ref }).(pulumi.StringPtrOutput)
+}
+
+// Required properties of Type.OBJECT.
+func (o ToolClientFunctionParametersOutput) Requireds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) []string { return v.Requireds }).(pulumi.StringArrayOutput)
+}
+
+// The type of the data.
+// Possible values:
+// STRING
+// INTEGER
+// NUMBER
+// BOOLEAN
+// OBJECT
+// ARRAY
+func (o ToolClientFunctionParametersOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+func (o ToolClientFunctionParametersOutput) UniqueItems() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionParameters) *bool { return v.UniqueItems }).(pulumi.BoolPtrOutput)
+}
+
+type ToolClientFunctionParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolClientFunctionParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolClientFunctionParameters)(nil)).Elem()
+}
+
+func (o ToolClientFunctionParametersPtrOutput) ToToolClientFunctionParametersPtrOutput() ToolClientFunctionParametersPtrOutput {
+	return o
+}
+
+func (o ToolClientFunctionParametersPtrOutput) ToToolClientFunctionParametersPtrOutputWithContext(ctx context.Context) ToolClientFunctionParametersPtrOutput {
+	return o
+}
+
+func (o ToolClientFunctionParametersPtrOutput) Elem() ToolClientFunctionParametersOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) ToolClientFunctionParameters {
+		if v != nil {
+			return *v
+		}
+		var ret ToolClientFunctionParameters
+		return ret
+	}).(ToolClientFunctionParametersOutput)
+}
+
+// Optional. Defines the schema for additional properties allowed in an object.
+// The value must be a valid JSON string representing the Schema object.
+// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+func (o ToolClientFunctionParametersPtrOutput) AdditionalProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalProperties
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The instance value should be valid against at least one of the schemas in this list.
+func (o ToolClientFunctionParametersPtrOutput) AnyOf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AnyOf
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Default value of the data. Represents a dynamically typed value
+// which can be either null, a number, a string, a boolean, a struct,
+// or a list of values. The provided default value must be compatible
+// with the defined 'type' and other schema constraints.
+func (o ToolClientFunctionParametersPtrOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map of definitions for use by ref. Only allowed at the root of the schema.
+func (o ToolClientFunctionParametersPtrOutput) Defs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Defs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The description of the data.
+func (o ToolClientFunctionParametersPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Possible values of the element of primitive type with enum format.
+// Examples:
+//  1. We can define direction as :
+//     {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+//  2. We can define apartment number as :
+//     {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+func (o ToolClientFunctionParametersPtrOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Enums
+	}).(pulumi.StringArrayOutput)
+}
+
+// Schema of the elements of Type.ARRAY.
+func (o ToolClientFunctionParametersPtrOutput) Items() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Items
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the value may be null.
+func (o ToolClientFunctionParametersPtrOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Schemas of initial elements of Type.ARRAY.
+func (o ToolClientFunctionParametersPtrOutput) PrefixItems() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixItems
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of Type.OBJECT.
+func (o ToolClientFunctionParametersPtrOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allows indirect references between schema nodes. The value should be a
+// valid reference to a child of the root `defs`.
+// For example, the following schema defines a reference to a schema node
+// named "Pet":
+// type: object
+// properties:
+// pet:
+// ref: #/defs/Pet
+// defs:
+// Pet:
+// type: object
+// properties:
+// name:
+// type: string
+// The value of the "pet" property is a reference to the schema node
+// named "Pet".
+// See details in
+// https://json-schema.org/understanding-json-schema/structuring.
+func (o ToolClientFunctionParametersPtrOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ref
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required properties of Type.OBJECT.
+func (o ToolClientFunctionParametersPtrOutput) Requireds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Requireds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The type of the data.
+// Possible values:
+// STRING
+// INTEGER
+// NUMBER
+// BOOLEAN
+// OBJECT
+// ARRAY
+func (o ToolClientFunctionParametersPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+func (o ToolClientFunctionParametersPtrOutput) UniqueItems() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UniqueItems
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ToolClientFunctionResponse struct {
+	// Optional. Defines the schema for additional properties allowed in an object.
+	// The value must be a valid JSON string representing the Schema object.
+	// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+	AdditionalProperties *string `pulumi:"additionalProperties"`
+	// Optional. The instance value should be valid against at least one of the schemas in this list.
+	AnyOf *string `pulumi:"anyOf"`
+	// Optional. Default value of the data. Represents a dynamically typed value
+	// which can be either null, a number, a string, a boolean, a struct,
+	// or a list of values. The provided default value must be compatible
+	// with the defined 'type' and other schema constraints.
+	Default *string `pulumi:"default"`
+	// A map of definitions for use by ref. Only allowed at the root of the schema.
+	Defs *string `pulumi:"defs"`
+	// The description of the data.
+	Description *string `pulumi:"description"`
+	// Possible values of the element of primitive type with enum format.
+	// Examples:
+	// 1. We can define direction as :
+	//    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+	// 2. We can define apartment number as :
+	//    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+	Enums []string `pulumi:"enums"`
+	// Schema of the elements of Type.ARRAY.
+	Items *string `pulumi:"items"`
+	// Indicates if the value may be null.
+	Nullable *bool `pulumi:"nullable"`
+	// Optional. Schemas of initial elements of Type.ARRAY.
+	PrefixItems *string `pulumi:"prefixItems"`
+	// Properties of Type.OBJECT.
+	Properties *string `pulumi:"properties"`
+	// Allows indirect references between schema nodes. The value should be a
+	// valid reference to a child of the root `defs`.
+	// For example, the following schema defines a reference to a schema node
+	// named "Pet":
+	// type: object
+	// properties:
+	// pet:
+	// ref: #/defs/Pet
+	// defs:
+	// Pet:
+	// type: object
+	// properties:
+	// name:
+	// type: string
+	// The value of the "pet" property is a reference to the schema node
+	// named "Pet".
+	// See details in
+	// https://json-schema.org/understanding-json-schema/structuring.
+	Ref *string `pulumi:"ref"`
+	// Required properties of Type.OBJECT.
+	Requireds []string `pulumi:"requireds"`
+	// The type of the data.
+	// Possible values:
+	// STRING
+	// INTEGER
+	// NUMBER
+	// BOOLEAN
+	// OBJECT
+	// ARRAY
+	Type string `pulumi:"type"`
+	// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+	UniqueItems *bool `pulumi:"uniqueItems"`
+}
+
+// ToolClientFunctionResponseInput is an input type that accepts ToolClientFunctionResponseArgs and ToolClientFunctionResponseOutput values.
+// You can construct a concrete instance of `ToolClientFunctionResponseInput` via:
+//
+//	ToolClientFunctionResponseArgs{...}
+type ToolClientFunctionResponseInput interface {
+	pulumi.Input
+
+	ToToolClientFunctionResponseOutput() ToolClientFunctionResponseOutput
+	ToToolClientFunctionResponseOutputWithContext(context.Context) ToolClientFunctionResponseOutput
+}
+
+type ToolClientFunctionResponseArgs struct {
+	// Optional. Defines the schema for additional properties allowed in an object.
+	// The value must be a valid JSON string representing the Schema object.
+	// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+	AdditionalProperties pulumi.StringPtrInput `pulumi:"additionalProperties"`
+	// Optional. The instance value should be valid against at least one of the schemas in this list.
+	AnyOf pulumi.StringPtrInput `pulumi:"anyOf"`
+	// Optional. Default value of the data. Represents a dynamically typed value
+	// which can be either null, a number, a string, a boolean, a struct,
+	// or a list of values. The provided default value must be compatible
+	// with the defined 'type' and other schema constraints.
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// A map of definitions for use by ref. Only allowed at the root of the schema.
+	Defs pulumi.StringPtrInput `pulumi:"defs"`
+	// The description of the data.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Possible values of the element of primitive type with enum format.
+	// Examples:
+	// 1. We can define direction as :
+	//    {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+	// 2. We can define apartment number as :
+	//    {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+	Enums pulumi.StringArrayInput `pulumi:"enums"`
+	// Schema of the elements of Type.ARRAY.
+	Items pulumi.StringPtrInput `pulumi:"items"`
+	// Indicates if the value may be null.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// Optional. Schemas of initial elements of Type.ARRAY.
+	PrefixItems pulumi.StringPtrInput `pulumi:"prefixItems"`
+	// Properties of Type.OBJECT.
+	Properties pulumi.StringPtrInput `pulumi:"properties"`
+	// Allows indirect references between schema nodes. The value should be a
+	// valid reference to a child of the root `defs`.
+	// For example, the following schema defines a reference to a schema node
+	// named "Pet":
+	// type: object
+	// properties:
+	// pet:
+	// ref: #/defs/Pet
+	// defs:
+	// Pet:
+	// type: object
+	// properties:
+	// name:
+	// type: string
+	// The value of the "pet" property is a reference to the schema node
+	// named "Pet".
+	// See details in
+	// https://json-schema.org/understanding-json-schema/structuring.
+	Ref pulumi.StringPtrInput `pulumi:"ref"`
+	// Required properties of Type.OBJECT.
+	Requireds pulumi.StringArrayInput `pulumi:"requireds"`
+	// The type of the data.
+	// Possible values:
+	// STRING
+	// INTEGER
+	// NUMBER
+	// BOOLEAN
+	// OBJECT
+	// ARRAY
+	Type pulumi.StringInput `pulumi:"type"`
+	// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+	UniqueItems pulumi.BoolPtrInput `pulumi:"uniqueItems"`
+}
+
+func (ToolClientFunctionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolClientFunctionResponse)(nil)).Elem()
+}
+
+func (i ToolClientFunctionResponseArgs) ToToolClientFunctionResponseOutput() ToolClientFunctionResponseOutput {
+	return i.ToToolClientFunctionResponseOutputWithContext(context.Background())
+}
+
+func (i ToolClientFunctionResponseArgs) ToToolClientFunctionResponseOutputWithContext(ctx context.Context) ToolClientFunctionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolClientFunctionResponseOutput)
+}
+
+func (i ToolClientFunctionResponseArgs) ToToolClientFunctionResponsePtrOutput() ToolClientFunctionResponsePtrOutput {
+	return i.ToToolClientFunctionResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ToolClientFunctionResponseArgs) ToToolClientFunctionResponsePtrOutputWithContext(ctx context.Context) ToolClientFunctionResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolClientFunctionResponseOutput).ToToolClientFunctionResponsePtrOutputWithContext(ctx)
+}
+
+// ToolClientFunctionResponsePtrInput is an input type that accepts ToolClientFunctionResponseArgs, ToolClientFunctionResponsePtr and ToolClientFunctionResponsePtrOutput values.
+// You can construct a concrete instance of `ToolClientFunctionResponsePtrInput` via:
+//
+//	        ToolClientFunctionResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolClientFunctionResponsePtrInput interface {
+	pulumi.Input
+
+	ToToolClientFunctionResponsePtrOutput() ToolClientFunctionResponsePtrOutput
+	ToToolClientFunctionResponsePtrOutputWithContext(context.Context) ToolClientFunctionResponsePtrOutput
+}
+
+type toolClientFunctionResponsePtrType ToolClientFunctionResponseArgs
+
+func ToolClientFunctionResponsePtr(v *ToolClientFunctionResponseArgs) ToolClientFunctionResponsePtrInput {
+	return (*toolClientFunctionResponsePtrType)(v)
+}
+
+func (*toolClientFunctionResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolClientFunctionResponse)(nil)).Elem()
+}
+
+func (i *toolClientFunctionResponsePtrType) ToToolClientFunctionResponsePtrOutput() ToolClientFunctionResponsePtrOutput {
+	return i.ToToolClientFunctionResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *toolClientFunctionResponsePtrType) ToToolClientFunctionResponsePtrOutputWithContext(ctx context.Context) ToolClientFunctionResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolClientFunctionResponsePtrOutput)
+}
+
+type ToolClientFunctionResponseOutput struct{ *pulumi.OutputState }
+
+func (ToolClientFunctionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolClientFunctionResponse)(nil)).Elem()
+}
+
+func (o ToolClientFunctionResponseOutput) ToToolClientFunctionResponseOutput() ToolClientFunctionResponseOutput {
+	return o
+}
+
+func (o ToolClientFunctionResponseOutput) ToToolClientFunctionResponseOutputWithContext(ctx context.Context) ToolClientFunctionResponseOutput {
+	return o
+}
+
+func (o ToolClientFunctionResponseOutput) ToToolClientFunctionResponsePtrOutput() ToolClientFunctionResponsePtrOutput {
+	return o.ToToolClientFunctionResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ToolClientFunctionResponseOutput) ToToolClientFunctionResponsePtrOutputWithContext(ctx context.Context) ToolClientFunctionResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolClientFunctionResponse) *ToolClientFunctionResponse {
+		return &v
+	}).(ToolClientFunctionResponsePtrOutput)
+}
+
+// Optional. Defines the schema for additional properties allowed in an object.
+// The value must be a valid JSON string representing the Schema object.
+// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+func (o ToolClientFunctionResponseOutput) AdditionalProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) *string { return v.AdditionalProperties }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The instance value should be valid against at least one of the schemas in this list.
+func (o ToolClientFunctionResponseOutput) AnyOf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) *string { return v.AnyOf }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Default value of the data. Represents a dynamically typed value
+// which can be either null, a number, a string, a boolean, a struct,
+// or a list of values. The provided default value must be compatible
+// with the defined 'type' and other schema constraints.
+func (o ToolClientFunctionResponseOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// A map of definitions for use by ref. Only allowed at the root of the schema.
+func (o ToolClientFunctionResponseOutput) Defs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) *string { return v.Defs }).(pulumi.StringPtrOutput)
+}
+
+// The description of the data.
+func (o ToolClientFunctionResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Possible values of the element of primitive type with enum format.
+// Examples:
+//  1. We can define direction as :
+//     {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+//  2. We can define apartment number as :
+//     {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+func (o ToolClientFunctionResponseOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
+// Schema of the elements of Type.ARRAY.
+func (o ToolClientFunctionResponseOutput) Items() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) *string { return v.Items }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the value may be null.
+func (o ToolClientFunctionResponseOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) *bool { return v.Nullable }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Schemas of initial elements of Type.ARRAY.
+func (o ToolClientFunctionResponseOutput) PrefixItems() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) *string { return v.PrefixItems }).(pulumi.StringPtrOutput)
+}
+
+// Properties of Type.OBJECT.
+func (o ToolClientFunctionResponseOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) *string { return v.Properties }).(pulumi.StringPtrOutput)
+}
+
+// Allows indirect references between schema nodes. The value should be a
+// valid reference to a child of the root `defs`.
+// For example, the following schema defines a reference to a schema node
+// named "Pet":
+// type: object
+// properties:
+// pet:
+// ref: #/defs/Pet
+// defs:
+// Pet:
+// type: object
+// properties:
+// name:
+// type: string
+// The value of the "pet" property is a reference to the schema node
+// named "Pet".
+// See details in
+// https://json-schema.org/understanding-json-schema/structuring.
+func (o ToolClientFunctionResponseOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) *string { return v.Ref }).(pulumi.StringPtrOutput)
+}
+
+// Required properties of Type.OBJECT.
+func (o ToolClientFunctionResponseOutput) Requireds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) []string { return v.Requireds }).(pulumi.StringArrayOutput)
+}
+
+// The type of the data.
+// Possible values:
+// STRING
+// INTEGER
+// NUMBER
+// BOOLEAN
+// OBJECT
+// ARRAY
+func (o ToolClientFunctionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+func (o ToolClientFunctionResponseOutput) UniqueItems() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolClientFunctionResponse) *bool { return v.UniqueItems }).(pulumi.BoolPtrOutput)
+}
+
+type ToolClientFunctionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ToolClientFunctionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolClientFunctionResponse)(nil)).Elem()
+}
+
+func (o ToolClientFunctionResponsePtrOutput) ToToolClientFunctionResponsePtrOutput() ToolClientFunctionResponsePtrOutput {
+	return o
+}
+
+func (o ToolClientFunctionResponsePtrOutput) ToToolClientFunctionResponsePtrOutputWithContext(ctx context.Context) ToolClientFunctionResponsePtrOutput {
+	return o
+}
+
+func (o ToolClientFunctionResponsePtrOutput) Elem() ToolClientFunctionResponseOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) ToolClientFunctionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ToolClientFunctionResponse
+		return ret
+	}).(ToolClientFunctionResponseOutput)
+}
+
+// Optional. Defines the schema for additional properties allowed in an object.
+// The value must be a valid JSON string representing the Schema object.
+// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
+func (o ToolClientFunctionResponsePtrOutput) AdditionalProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalProperties
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The instance value should be valid against at least one of the schemas in this list.
+func (o ToolClientFunctionResponsePtrOutput) AnyOf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AnyOf
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Default value of the data. Represents a dynamically typed value
+// which can be either null, a number, a string, a boolean, a struct,
+// or a list of values. The provided default value must be compatible
+// with the defined 'type' and other schema constraints.
+func (o ToolClientFunctionResponsePtrOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map of definitions for use by ref. Only allowed at the root of the schema.
+func (o ToolClientFunctionResponsePtrOutput) Defs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Defs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The description of the data.
+func (o ToolClientFunctionResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Possible values of the element of primitive type with enum format.
+// Examples:
+//  1. We can define direction as :
+//     {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+//  2. We can define apartment number as :
+//     {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+func (o ToolClientFunctionResponsePtrOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Enums
+	}).(pulumi.StringArrayOutput)
+}
+
+// Schema of the elements of Type.ARRAY.
+func (o ToolClientFunctionResponsePtrOutput) Items() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Items
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the value may be null.
+func (o ToolClientFunctionResponsePtrOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Schemas of initial elements of Type.ARRAY.
+func (o ToolClientFunctionResponsePtrOutput) PrefixItems() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixItems
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of Type.OBJECT.
+func (o ToolClientFunctionResponsePtrOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allows indirect references between schema nodes. The value should be a
+// valid reference to a child of the root `defs`.
+// For example, the following schema defines a reference to a schema node
+// named "Pet":
+// type: object
+// properties:
+// pet:
+// ref: #/defs/Pet
+// defs:
+// Pet:
+// type: object
+// properties:
+// name:
+// type: string
+// The value of the "pet" property is a reference to the schema node
+// named "Pet".
+// See details in
+// https://json-schema.org/understanding-json-schema/structuring.
+func (o ToolClientFunctionResponsePtrOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ref
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required properties of Type.OBJECT.
+func (o ToolClientFunctionResponsePtrOutput) Requireds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Requireds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The type of the data.
+// Possible values:
+// STRING
+// INTEGER
+// NUMBER
+// BOOLEAN
+// OBJECT
+// ARRAY
+func (o ToolClientFunctionResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
+func (o ToolClientFunctionResponsePtrOutput) UniqueItems() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ToolClientFunctionResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UniqueItems
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ToolDataStoreTool struct {
+	// Boost specification to boost certain documents.
+	// Structure is documented below.
+	BoostSpecs []ToolDataStoreToolBoostSpec `pulumi:"boostSpecs"`
+	// The tool description.
+	Description *string `pulumi:"description"`
+	// Configuration for searching within an Engine, potentially targeting
+	// specific DataStores.
+	// Structure is documented below.
+	EngineSource *ToolDataStoreToolEngineSource `pulumi:"engineSource"`
+	// Number of search results to return per query.
+	// The default value is 10. The maximum allowed value is 10.
+	MaxResults *int `pulumi:"maxResults"`
+	// The modality configs for the data store.
+	// Structure is documented below.
+	ModalityConfigs []ToolDataStoreToolModalityConfig `pulumi:"modalityConfigs"`
+	// The data store tool name.
+	Name string `pulumi:"name"`
+}
+
+// ToolDataStoreToolInput is an input type that accepts ToolDataStoreToolArgs and ToolDataStoreToolOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolInput` via:
+//
+//	ToolDataStoreToolArgs{...}
+type ToolDataStoreToolInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolOutput() ToolDataStoreToolOutput
+	ToToolDataStoreToolOutputWithContext(context.Context) ToolDataStoreToolOutput
+}
+
+type ToolDataStoreToolArgs struct {
+	// Boost specification to boost certain documents.
+	// Structure is documented below.
+	BoostSpecs ToolDataStoreToolBoostSpecArrayInput `pulumi:"boostSpecs"`
+	// The tool description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Configuration for searching within an Engine, potentially targeting
+	// specific DataStores.
+	// Structure is documented below.
+	EngineSource ToolDataStoreToolEngineSourcePtrInput `pulumi:"engineSource"`
+	// Number of search results to return per query.
+	// The default value is 10. The maximum allowed value is 10.
+	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
+	// The modality configs for the data store.
+	// Structure is documented below.
+	ModalityConfigs ToolDataStoreToolModalityConfigArrayInput `pulumi:"modalityConfigs"`
+	// The data store tool name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ToolDataStoreToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreTool)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolArgs) ToToolDataStoreToolOutput() ToolDataStoreToolOutput {
+	return i.ToToolDataStoreToolOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolArgs) ToToolDataStoreToolOutputWithContext(ctx context.Context) ToolDataStoreToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolOutput)
+}
+
+func (i ToolDataStoreToolArgs) ToToolDataStoreToolPtrOutput() ToolDataStoreToolPtrOutput {
+	return i.ToToolDataStoreToolPtrOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolArgs) ToToolDataStoreToolPtrOutputWithContext(ctx context.Context) ToolDataStoreToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolOutput).ToToolDataStoreToolPtrOutputWithContext(ctx)
+}
+
+// ToolDataStoreToolPtrInput is an input type that accepts ToolDataStoreToolArgs, ToolDataStoreToolPtr and ToolDataStoreToolPtrOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolPtrInput` via:
+//
+//	        ToolDataStoreToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolDataStoreToolPtrInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolPtrOutput() ToolDataStoreToolPtrOutput
+	ToToolDataStoreToolPtrOutputWithContext(context.Context) ToolDataStoreToolPtrOutput
+}
+
+type toolDataStoreToolPtrType ToolDataStoreToolArgs
+
+func ToolDataStoreToolPtr(v *ToolDataStoreToolArgs) ToolDataStoreToolPtrInput {
+	return (*toolDataStoreToolPtrType)(v)
+}
+
+func (*toolDataStoreToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreTool)(nil)).Elem()
+}
+
+func (i *toolDataStoreToolPtrType) ToToolDataStoreToolPtrOutput() ToolDataStoreToolPtrOutput {
+	return i.ToToolDataStoreToolPtrOutputWithContext(context.Background())
+}
+
+func (i *toolDataStoreToolPtrType) ToToolDataStoreToolPtrOutputWithContext(ctx context.Context) ToolDataStoreToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolPtrOutput)
+}
+
+type ToolDataStoreToolOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreTool)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolOutput) ToToolDataStoreToolOutput() ToolDataStoreToolOutput {
+	return o
+}
+
+func (o ToolDataStoreToolOutput) ToToolDataStoreToolOutputWithContext(ctx context.Context) ToolDataStoreToolOutput {
+	return o
+}
+
+func (o ToolDataStoreToolOutput) ToToolDataStoreToolPtrOutput() ToolDataStoreToolPtrOutput {
+	return o.ToToolDataStoreToolPtrOutputWithContext(context.Background())
+}
+
+func (o ToolDataStoreToolOutput) ToToolDataStoreToolPtrOutputWithContext(ctx context.Context) ToolDataStoreToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolDataStoreTool) *ToolDataStoreTool {
+		return &v
+	}).(ToolDataStoreToolPtrOutput)
+}
+
+// Boost specification to boost certain documents.
+// Structure is documented below.
+func (o ToolDataStoreToolOutput) BoostSpecs() ToolDataStoreToolBoostSpecArrayOutput {
+	return o.ApplyT(func(v ToolDataStoreTool) []ToolDataStoreToolBoostSpec { return v.BoostSpecs }).(ToolDataStoreToolBoostSpecArrayOutput)
+}
+
+// The tool description.
+func (o ToolDataStoreToolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreTool) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for searching within an Engine, potentially targeting
+// specific DataStores.
+// Structure is documented below.
+func (o ToolDataStoreToolOutput) EngineSource() ToolDataStoreToolEngineSourcePtrOutput {
+	return o.ApplyT(func(v ToolDataStoreTool) *ToolDataStoreToolEngineSource { return v.EngineSource }).(ToolDataStoreToolEngineSourcePtrOutput)
+}
+
+// Number of search results to return per query.
+// The default value is 10. The maximum allowed value is 10.
+func (o ToolDataStoreToolOutput) MaxResults() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreTool) *int { return v.MaxResults }).(pulumi.IntPtrOutput)
+}
+
+// The modality configs for the data store.
+// Structure is documented below.
+func (o ToolDataStoreToolOutput) ModalityConfigs() ToolDataStoreToolModalityConfigArrayOutput {
+	return o.ApplyT(func(v ToolDataStoreTool) []ToolDataStoreToolModalityConfig { return v.ModalityConfigs }).(ToolDataStoreToolModalityConfigArrayOutput)
+}
+
+// The data store tool name.
+func (o ToolDataStoreToolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolDataStoreTool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ToolDataStoreToolPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreTool)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolPtrOutput) ToToolDataStoreToolPtrOutput() ToolDataStoreToolPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolPtrOutput) ToToolDataStoreToolPtrOutputWithContext(ctx context.Context) ToolDataStoreToolPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolPtrOutput) Elem() ToolDataStoreToolOutput {
+	return o.ApplyT(func(v *ToolDataStoreTool) ToolDataStoreTool {
+		if v != nil {
+			return *v
+		}
+		var ret ToolDataStoreTool
+		return ret
+	}).(ToolDataStoreToolOutput)
+}
+
+// Boost specification to boost certain documents.
+// Structure is documented below.
+func (o ToolDataStoreToolPtrOutput) BoostSpecs() ToolDataStoreToolBoostSpecArrayOutput {
+	return o.ApplyT(func(v *ToolDataStoreTool) []ToolDataStoreToolBoostSpec {
+		if v == nil {
+			return nil
+		}
+		return v.BoostSpecs
+	}).(ToolDataStoreToolBoostSpecArrayOutput)
+}
+
+// The tool description.
+func (o ToolDataStoreToolPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for searching within an Engine, potentially targeting
+// specific DataStores.
+// Structure is documented below.
+func (o ToolDataStoreToolPtrOutput) EngineSource() ToolDataStoreToolEngineSourcePtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreTool) *ToolDataStoreToolEngineSource {
+		if v == nil {
+			return nil
+		}
+		return v.EngineSource
+	}).(ToolDataStoreToolEngineSourcePtrOutput)
+}
+
+// Number of search results to return per query.
+// The default value is 10. The maximum allowed value is 10.
+func (o ToolDataStoreToolPtrOutput) MaxResults() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreTool) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxResults
+	}).(pulumi.IntPtrOutput)
+}
+
+// The modality configs for the data store.
+// Structure is documented below.
+func (o ToolDataStoreToolPtrOutput) ModalityConfigs() ToolDataStoreToolModalityConfigArrayOutput {
+	return o.ApplyT(func(v *ToolDataStoreTool) []ToolDataStoreToolModalityConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ModalityConfigs
+	}).(ToolDataStoreToolModalityConfigArrayOutput)
+}
+
+// The data store tool name.
+func (o ToolDataStoreToolPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolBoostSpec struct {
+	// The Data Store where the boosting configuration is applied. Full resource
+	// name of DataStore, such as
+	// projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
+	DataStores []string `pulumi:"dataStores"`
+	// A list of boosting specifications.
+	// Structure is documented below.
+	Specs []ToolDataStoreToolBoostSpecSpec `pulumi:"specs"`
+}
+
+// ToolDataStoreToolBoostSpecInput is an input type that accepts ToolDataStoreToolBoostSpecArgs and ToolDataStoreToolBoostSpecOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolBoostSpecInput` via:
+//
+//	ToolDataStoreToolBoostSpecArgs{...}
+type ToolDataStoreToolBoostSpecInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolBoostSpecOutput() ToolDataStoreToolBoostSpecOutput
+	ToToolDataStoreToolBoostSpecOutputWithContext(context.Context) ToolDataStoreToolBoostSpecOutput
+}
+
+type ToolDataStoreToolBoostSpecArgs struct {
+	// The Data Store where the boosting configuration is applied. Full resource
+	// name of DataStore, such as
+	// projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
+	DataStores pulumi.StringArrayInput `pulumi:"dataStores"`
+	// A list of boosting specifications.
+	// Structure is documented below.
+	Specs ToolDataStoreToolBoostSpecSpecArrayInput `pulumi:"specs"`
+}
+
+func (ToolDataStoreToolBoostSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolBoostSpec)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolBoostSpecArgs) ToToolDataStoreToolBoostSpecOutput() ToolDataStoreToolBoostSpecOutput {
+	return i.ToToolDataStoreToolBoostSpecOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolBoostSpecArgs) ToToolDataStoreToolBoostSpecOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolBoostSpecOutput)
+}
+
+// ToolDataStoreToolBoostSpecArrayInput is an input type that accepts ToolDataStoreToolBoostSpecArray and ToolDataStoreToolBoostSpecArrayOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolBoostSpecArrayInput` via:
+//
+//	ToolDataStoreToolBoostSpecArray{ ToolDataStoreToolBoostSpecArgs{...} }
+type ToolDataStoreToolBoostSpecArrayInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolBoostSpecArrayOutput() ToolDataStoreToolBoostSpecArrayOutput
+	ToToolDataStoreToolBoostSpecArrayOutputWithContext(context.Context) ToolDataStoreToolBoostSpecArrayOutput
+}
+
+type ToolDataStoreToolBoostSpecArray []ToolDataStoreToolBoostSpecInput
+
+func (ToolDataStoreToolBoostSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolBoostSpec)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolBoostSpecArray) ToToolDataStoreToolBoostSpecArrayOutput() ToolDataStoreToolBoostSpecArrayOutput {
+	return i.ToToolDataStoreToolBoostSpecArrayOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolBoostSpecArray) ToToolDataStoreToolBoostSpecArrayOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolBoostSpecArrayOutput)
+}
+
+type ToolDataStoreToolBoostSpecOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolBoostSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolBoostSpec)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolBoostSpecOutput) ToToolDataStoreToolBoostSpecOutput() ToolDataStoreToolBoostSpecOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecOutput) ToToolDataStoreToolBoostSpecOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecOutput {
+	return o
+}
+
+// The Data Store where the boosting configuration is applied. Full resource
+// name of DataStore, such as
+// projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
+func (o ToolDataStoreToolBoostSpecOutput) DataStores() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolDataStoreToolBoostSpec) []string { return v.DataStores }).(pulumi.StringArrayOutput)
+}
+
+// A list of boosting specifications.
+// Structure is documented below.
+func (o ToolDataStoreToolBoostSpecOutput) Specs() ToolDataStoreToolBoostSpecSpecArrayOutput {
+	return o.ApplyT(func(v ToolDataStoreToolBoostSpec) []ToolDataStoreToolBoostSpecSpec { return v.Specs }).(ToolDataStoreToolBoostSpecSpecArrayOutput)
+}
+
+type ToolDataStoreToolBoostSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolBoostSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolBoostSpec)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolBoostSpecArrayOutput) ToToolDataStoreToolBoostSpecArrayOutput() ToolDataStoreToolBoostSpecArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecArrayOutput) ToToolDataStoreToolBoostSpecArrayOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecArrayOutput) Index(i pulumi.IntInput) ToolDataStoreToolBoostSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolDataStoreToolBoostSpec {
+		return vs[0].([]ToolDataStoreToolBoostSpec)[vs[1].(int)]
+	}).(ToolDataStoreToolBoostSpecOutput)
+}
+
+type ToolDataStoreToolBoostSpecSpec struct {
+	// A list of boosting specifications.
+	// Structure is documented below.
+	ConditionBoostSpecs []ToolDataStoreToolBoostSpecSpecConditionBoostSpec `pulumi:"conditionBoostSpecs"`
+}
+
+// ToolDataStoreToolBoostSpecSpecInput is an input type that accepts ToolDataStoreToolBoostSpecSpecArgs and ToolDataStoreToolBoostSpecSpecOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolBoostSpecSpecInput` via:
+//
+//	ToolDataStoreToolBoostSpecSpecArgs{...}
+type ToolDataStoreToolBoostSpecSpecInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolBoostSpecSpecOutput() ToolDataStoreToolBoostSpecSpecOutput
+	ToToolDataStoreToolBoostSpecSpecOutputWithContext(context.Context) ToolDataStoreToolBoostSpecSpecOutput
+}
+
+type ToolDataStoreToolBoostSpecSpecArgs struct {
+	// A list of boosting specifications.
+	// Structure is documented below.
+	ConditionBoostSpecs ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayInput `pulumi:"conditionBoostSpecs"`
+}
+
+func (ToolDataStoreToolBoostSpecSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolBoostSpecSpec)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolBoostSpecSpecArgs) ToToolDataStoreToolBoostSpecSpecOutput() ToolDataStoreToolBoostSpecSpecOutput {
+	return i.ToToolDataStoreToolBoostSpecSpecOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolBoostSpecSpecArgs) ToToolDataStoreToolBoostSpecSpecOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolBoostSpecSpecOutput)
+}
+
+// ToolDataStoreToolBoostSpecSpecArrayInput is an input type that accepts ToolDataStoreToolBoostSpecSpecArray and ToolDataStoreToolBoostSpecSpecArrayOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolBoostSpecSpecArrayInput` via:
+//
+//	ToolDataStoreToolBoostSpecSpecArray{ ToolDataStoreToolBoostSpecSpecArgs{...} }
+type ToolDataStoreToolBoostSpecSpecArrayInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolBoostSpecSpecArrayOutput() ToolDataStoreToolBoostSpecSpecArrayOutput
+	ToToolDataStoreToolBoostSpecSpecArrayOutputWithContext(context.Context) ToolDataStoreToolBoostSpecSpecArrayOutput
+}
+
+type ToolDataStoreToolBoostSpecSpecArray []ToolDataStoreToolBoostSpecSpecInput
+
+func (ToolDataStoreToolBoostSpecSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolBoostSpecSpec)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolBoostSpecSpecArray) ToToolDataStoreToolBoostSpecSpecArrayOutput() ToolDataStoreToolBoostSpecSpecArrayOutput {
+	return i.ToToolDataStoreToolBoostSpecSpecArrayOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolBoostSpecSpecArray) ToToolDataStoreToolBoostSpecSpecArrayOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolBoostSpecSpecArrayOutput)
+}
+
+type ToolDataStoreToolBoostSpecSpecOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolBoostSpecSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolBoostSpecSpec)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolBoostSpecSpecOutput) ToToolDataStoreToolBoostSpecSpecOutput() ToolDataStoreToolBoostSpecSpecOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecOutput) ToToolDataStoreToolBoostSpecSpecOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecOutput {
+	return o
+}
+
+// A list of boosting specifications.
+// Structure is documented below.
+func (o ToolDataStoreToolBoostSpecSpecOutput) ConditionBoostSpecs() ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput {
+	return o.ApplyT(func(v ToolDataStoreToolBoostSpecSpec) []ToolDataStoreToolBoostSpecSpecConditionBoostSpec {
+		return v.ConditionBoostSpecs
+	}).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput)
+}
+
+type ToolDataStoreToolBoostSpecSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolBoostSpecSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolBoostSpecSpec)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolBoostSpecSpecArrayOutput) ToToolDataStoreToolBoostSpecSpecArrayOutput() ToolDataStoreToolBoostSpecSpecArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecArrayOutput) ToToolDataStoreToolBoostSpecSpecArrayOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecArrayOutput) Index(i pulumi.IntInput) ToolDataStoreToolBoostSpecSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolDataStoreToolBoostSpecSpec {
+		return vs[0].([]ToolDataStoreToolBoostSpecSpec)[vs[1].(int)]
+	}).(ToolDataStoreToolBoostSpecSpecOutput)
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpec struct {
+	// Strength of the boost, which should be in [-1, 1]. Negative boost means
+	// demotion. Default is 0.0.
+	// Setting to 1.0 gives the suggestions a big promotion. However, it does
+	// not necessarily mean that the top result will be a boosted suggestion.
+	// Setting to -1.0 gives the suggestions a big demotion. However, other
+	// suggestions that are relevant might still be shown.
+	// Setting to 0.0 means no boost applied. The boosting condition is
+	// ignored.
+	Boost *float64 `pulumi:"boost"`
+	// Specification for custom ranking based on customer specified attribute
+	// value. It provides more controls for customized ranking than the simple
+	// (condition, boost) combination above.
+	// Structure is documented below.
+	BoostControlSpec *ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec `pulumi:"boostControlSpec"`
+	// An expression which specifies a boost condition. The syntax is the same
+	// as filter expression syntax. Currently, the only supported condition is
+	// a list of BCP-47 lang codes.
+	// Example: To boost suggestions in languages en or fr:
+	// (lang_code: ANY("en", "fr"))
+	Condition string `pulumi:"condition"`
+}
+
+// ToolDataStoreToolBoostSpecSpecConditionBoostSpecInput is an input type that accepts ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs and ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolBoostSpecSpecConditionBoostSpecInput` via:
+//
+//	ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs{...}
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput
+	ToToolDataStoreToolBoostSpecSpecConditionBoostSpecOutputWithContext(context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs struct {
+	// Strength of the boost, which should be in [-1, 1]. Negative boost means
+	// demotion. Default is 0.0.
+	// Setting to 1.0 gives the suggestions a big promotion. However, it does
+	// not necessarily mean that the top result will be a boosted suggestion.
+	// Setting to -1.0 gives the suggestions a big demotion. However, other
+	// suggestions that are relevant might still be shown.
+	// Setting to 0.0 means no boost applied. The boosting condition is
+	// ignored.
+	Boost pulumi.Float64PtrInput `pulumi:"boost"`
+	// Specification for custom ranking based on customer specified attribute
+	// value. It provides more controls for customized ranking than the simple
+	// (condition, boost) combination above.
+	// Structure is documented below.
+	BoostControlSpec ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrInput `pulumi:"boostControlSpec"`
+	// An expression which specifies a boost condition. The syntax is the same
+	// as filter expression syntax. Currently, the only supported condition is
+	// a list of BCP-47 lang codes.
+	// Example: To boost suggestions in languages en or fr:
+	// (lang_code: ANY("en", "fr"))
+	Condition pulumi.StringInput `pulumi:"condition"`
+}
+
+func (ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpec)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput {
+	return i.ToToolDataStoreToolBoostSpecSpecConditionBoostSpecOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput)
+}
+
+// ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayInput is an input type that accepts ToolDataStoreToolBoostSpecSpecConditionBoostSpecArray and ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayInput` via:
+//
+//	ToolDataStoreToolBoostSpecSpecConditionBoostSpecArray{ ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs{...} }
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput
+	ToToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutputWithContext(context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecArray []ToolDataStoreToolBoostSpecSpecConditionBoostSpecInput
+
+func (ToolDataStoreToolBoostSpecSpecConditionBoostSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolBoostSpecSpecConditionBoostSpec)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolBoostSpecSpecConditionBoostSpecArray) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput {
+	return i.ToToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolBoostSpecSpecConditionBoostSpecArray) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput)
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpec)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput {
+	return o
+}
+
+// Strength of the boost, which should be in [-1, 1]. Negative boost means
+// demotion. Default is 0.0.
+// Setting to 1.0 gives the suggestions a big promotion. However, it does
+// not necessarily mean that the top result will be a boosted suggestion.
+// Setting to -1.0 gives the suggestions a big demotion. However, other
+// suggestions that are relevant might still be shown.
+// Setting to 0.0 means no boost applied. The boosting condition is
+// ignored.
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput) Boost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolBoostSpecSpecConditionBoostSpec) *float64 { return v.Boost }).(pulumi.Float64PtrOutput)
+}
+
+// Specification for custom ranking based on customer specified attribute
+// value. It provides more controls for customized ranking than the simple
+// (condition, boost) combination above.
+// Structure is documented below.
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput) BoostControlSpec() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolBoostSpecSpecConditionBoostSpec) *ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec {
+		return v.BoostControlSpec
+	}).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput)
+}
+
+// An expression which specifies a boost condition. The syntax is the same
+// as filter expression syntax. Currently, the only supported condition is
+// a list of BCP-47 lang codes.
+// Example: To boost suggestions in languages en or fr:
+// (lang_code: ANY("en", "fr"))
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput) Condition() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolDataStoreToolBoostSpecSpecConditionBoostSpec) string { return v.Condition }).(pulumi.StringOutput)
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolBoostSpecSpecConditionBoostSpec)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput) Index(i pulumi.IntInput) ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolDataStoreToolBoostSpecSpecConditionBoostSpec {
+		return vs[0].([]ToolDataStoreToolBoostSpecSpecConditionBoostSpec)[vs[1].(int)]
+	}).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput)
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec struct {
+	// The attribute type to be used to determine the boost amount. The
+	// attribute value can be derived from the field value of the specified
+	// field_name. In the case of numerical it is straightforward i.e.
+	// attributeValue = numerical_field_value. In the case of freshness
+	// however, attributeValue = (time.now() - datetime_field_value).
+	// Possible values:
+	// NUMERICAL
+	// FRESHNESS
+	AttributeType *string `pulumi:"attributeType"`
+	// The control points used to define the curve. The monotonic function
+	// (defined through the interpolationType above) passes through the
+	// control points listed here.
+	// Structure is documented below.
+	ControlPoints []ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint `pulumi:"controlPoints"`
+	// The name of the field whose value will be used to determine the
+	// boost amount.
+	FieldName *string `pulumi:"fieldName"`
+	// The interpolation type to be applied to connect the control points
+	// listed below.
+	// Possible values:
+	// LINEAR
+	InterpolationType *string `pulumi:"interpolationType"`
+}
+
+// ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecInput is an input type that accepts ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs and ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecInput` via:
+//
+//	ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs{...}
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput
+	ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutputWithContext(context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs struct {
+	// The attribute type to be used to determine the boost amount. The
+	// attribute value can be derived from the field value of the specified
+	// field_name. In the case of numerical it is straightforward i.e.
+	// attributeValue = numerical_field_value. In the case of freshness
+	// however, attributeValue = (time.now() - datetime_field_value).
+	// Possible values:
+	// NUMERICAL
+	// FRESHNESS
+	AttributeType pulumi.StringPtrInput `pulumi:"attributeType"`
+	// The control points used to define the curve. The monotonic function
+	// (defined through the interpolationType above) passes through the
+	// control points listed here.
+	// Structure is documented below.
+	ControlPoints ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayInput `pulumi:"controlPoints"`
+	// The name of the field whose value will be used to determine the
+	// boost amount.
+	FieldName pulumi.StringPtrInput `pulumi:"fieldName"`
+	// The interpolation type to be applied to connect the control points
+	// listed below.
+	// Possible values:
+	// LINEAR
+	InterpolationType pulumi.StringPtrInput `pulumi:"interpolationType"`
+}
+
+func (ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput {
+	return i.ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput)
+}
+
+func (i ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput {
+	return i.ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput).ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutputWithContext(ctx)
+}
+
+// ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrInput is an input type that accepts ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs, ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtr and ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrInput` via:
+//
+//	        ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput
+	ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutputWithContext(context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput
+}
+
+type toolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrType ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs
+
+func ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtr(v *ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrInput {
+	return (*toolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrType)(v)
+}
+
+func (*toolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec)(nil)).Elem()
+}
+
+func (i *toolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrType) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput {
+	return i.ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *toolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrType) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput)
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput {
+	return o.ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutputWithContext(context.Background())
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec) *ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec {
+		return &v
+	}).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput)
+}
+
+// The attribute type to be used to determine the boost amount. The
+// attribute value can be derived from the field value of the specified
+// field_name. In the case of numerical it is straightforward i.e.
+// attributeValue = numerical_field_value. In the case of freshness
+// however, attributeValue = (time.now() - datetime_field_value).
+// Possible values:
+// NUMERICAL
+// FRESHNESS
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput) AttributeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec) *string {
+		return v.AttributeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The control points used to define the curve. The monotonic function
+// (defined through the interpolationType above) passes through the
+// control points listed here.
+// Structure is documented below.
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput) ControlPoints() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput {
+	return o.ApplyT(func(v ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec) []ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint {
+		return v.ControlPoints
+	}).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput)
+}
+
+// The name of the field whose value will be used to determine the
+// boost amount.
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput) FieldName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec) *string { return v.FieldName }).(pulumi.StringPtrOutput)
+}
+
+// The interpolation type to be applied to connect the control points
+// listed below.
+// Possible values:
+// LINEAR
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput) InterpolationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec) *string {
+		return v.InterpolationType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput) Elem() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec {
+		if v != nil {
+			return *v
+		}
+		var ret ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec
+		return ret
+	}).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput)
+}
+
+// The attribute type to be used to determine the boost amount. The
+// attribute value can be derived from the field value of the specified
+// field_name. In the case of numerical it is straightforward i.e.
+// attributeValue = numerical_field_value. In the case of freshness
+// however, attributeValue = (time.now() - datetime_field_value).
+// Possible values:
+// NUMERICAL
+// FRESHNESS
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput) AttributeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AttributeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The control points used to define the curve. The monotonic function
+// (defined through the interpolationType above) passes through the
+// control points listed here.
+// Structure is documented below.
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput) ControlPoints() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec) []ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPoints
+	}).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput)
+}
+
+// The name of the field whose value will be used to determine the
+// boost amount.
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput) FieldName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The interpolation type to be applied to connect the control points
+// listed below.
+// Possible values:
+// LINEAR
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput) InterpolationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InterpolationType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint struct {
+	// Can be one of:
+	// 1. The numerical field value.
+	// 2. The duration spec for freshness:
+	//    The value must be formatted as an XSD `dayTimeDuration` value (a
+	//    restricted subset of an ISO 8601 duration value). The pattern for
+	//    this is: `nDnM]`.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The value between -1 to 1 by which to boost the score if the
+	// attributeValue evaluates to the value specified above.
+	BoostAmount *float64 `pulumi:"boostAmount"`
+}
+
+// ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointInput is an input type that accepts ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs and ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointInput` via:
+//
+//	ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs{...}
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput
+	ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutputWithContext(context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs struct {
+	// Can be one of:
+	// 1. The numerical field value.
+	// 2. The duration spec for freshness:
+	//    The value must be formatted as an XSD `dayTimeDuration` value (a
+	//    restricted subset of an ISO 8601 duration value). The pattern for
+	//    this is: `nDnM]`.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The value between -1 to 1 by which to boost the score if the
+	// attributeValue evaluates to the value specified above.
+	BoostAmount pulumi.Float64PtrInput `pulumi:"boostAmount"`
+}
+
+func (ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput {
+	return i.ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput)
+}
+
+// ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayInput is an input type that accepts ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArray and ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayInput` via:
+//
+//	ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArray{ ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs{...} }
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput
+	ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutputWithContext(context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArray []ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointInput
+
+func (ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArray) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput {
+	return i.ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArray) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput)
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput {
+	return o
+}
+
+// Can be one of:
+//  1. The numerical field value.
+//  2. The duration spec for freshness:
+//     The value must be formatted as an XSD `dayTimeDuration` value (a
+//     restricted subset of an ISO 8601 duration value). The pattern for
+//     this is: `nDnM]`.
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput) AttributeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint) *string {
+		return v.AttributeValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value between -1 to 1 by which to boost the score if the
+// attributeValue evaluates to the value specified above.
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput) BoostAmount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint) *float64 {
+		return v.BoostAmount
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput() ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput) ToToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutputWithContext(ctx context.Context) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput) Index(i pulumi.IntInput) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint {
+		return vs[0].([]ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint)[vs[1].(int)]
+	}).(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput)
+}
+
+type ToolDataStoreToolEngineSource struct {
+	// Use to target specific DataStores within the Engine.
+	// If empty, the search applies to all DataStores associated with the
+	// Engine.
+	// Structure is documented below.
+	DataStoreSources []ToolDataStoreToolEngineSourceDataStoreSource `pulumi:"dataStoreSources"`
+	// Full resource name of the Engine.
+	// Format:
+	// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+	Engine string `pulumi:"engine"`
+	// A filter applied to the search across the Engine. Not relevant and not
+	// used if 'data_store_sources' is provided.
+	// See:
+	// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+	Filter *string `pulumi:"filter"`
+}
+
+// ToolDataStoreToolEngineSourceInput is an input type that accepts ToolDataStoreToolEngineSourceArgs and ToolDataStoreToolEngineSourceOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolEngineSourceInput` via:
+//
+//	ToolDataStoreToolEngineSourceArgs{...}
+type ToolDataStoreToolEngineSourceInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolEngineSourceOutput() ToolDataStoreToolEngineSourceOutput
+	ToToolDataStoreToolEngineSourceOutputWithContext(context.Context) ToolDataStoreToolEngineSourceOutput
+}
+
+type ToolDataStoreToolEngineSourceArgs struct {
+	// Use to target specific DataStores within the Engine.
+	// If empty, the search applies to all DataStores associated with the
+	// Engine.
+	// Structure is documented below.
+	DataStoreSources ToolDataStoreToolEngineSourceDataStoreSourceArrayInput `pulumi:"dataStoreSources"`
+	// Full resource name of the Engine.
+	// Format:
+	// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// A filter applied to the search across the Engine. Not relevant and not
+	// used if 'data_store_sources' is provided.
+	// See:
+	// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+}
+
+func (ToolDataStoreToolEngineSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolEngineSource)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolEngineSourceArgs) ToToolDataStoreToolEngineSourceOutput() ToolDataStoreToolEngineSourceOutput {
+	return i.ToToolDataStoreToolEngineSourceOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolEngineSourceArgs) ToToolDataStoreToolEngineSourceOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolEngineSourceOutput)
+}
+
+func (i ToolDataStoreToolEngineSourceArgs) ToToolDataStoreToolEngineSourcePtrOutput() ToolDataStoreToolEngineSourcePtrOutput {
+	return i.ToToolDataStoreToolEngineSourcePtrOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolEngineSourceArgs) ToToolDataStoreToolEngineSourcePtrOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolEngineSourceOutput).ToToolDataStoreToolEngineSourcePtrOutputWithContext(ctx)
+}
+
+// ToolDataStoreToolEngineSourcePtrInput is an input type that accepts ToolDataStoreToolEngineSourceArgs, ToolDataStoreToolEngineSourcePtr and ToolDataStoreToolEngineSourcePtrOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolEngineSourcePtrInput` via:
+//
+//	        ToolDataStoreToolEngineSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolDataStoreToolEngineSourcePtrInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolEngineSourcePtrOutput() ToolDataStoreToolEngineSourcePtrOutput
+	ToToolDataStoreToolEngineSourcePtrOutputWithContext(context.Context) ToolDataStoreToolEngineSourcePtrOutput
+}
+
+type toolDataStoreToolEngineSourcePtrType ToolDataStoreToolEngineSourceArgs
+
+func ToolDataStoreToolEngineSourcePtr(v *ToolDataStoreToolEngineSourceArgs) ToolDataStoreToolEngineSourcePtrInput {
+	return (*toolDataStoreToolEngineSourcePtrType)(v)
+}
+
+func (*toolDataStoreToolEngineSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolEngineSource)(nil)).Elem()
+}
+
+func (i *toolDataStoreToolEngineSourcePtrType) ToToolDataStoreToolEngineSourcePtrOutput() ToolDataStoreToolEngineSourcePtrOutput {
+	return i.ToToolDataStoreToolEngineSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *toolDataStoreToolEngineSourcePtrType) ToToolDataStoreToolEngineSourcePtrOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolEngineSourcePtrOutput)
+}
+
+type ToolDataStoreToolEngineSourceOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolEngineSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolEngineSource)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolEngineSourceOutput) ToToolDataStoreToolEngineSourceOutput() ToolDataStoreToolEngineSourceOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourceOutput) ToToolDataStoreToolEngineSourceOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourceOutput) ToToolDataStoreToolEngineSourcePtrOutput() ToolDataStoreToolEngineSourcePtrOutput {
+	return o.ToToolDataStoreToolEngineSourcePtrOutputWithContext(context.Background())
+}
+
+func (o ToolDataStoreToolEngineSourceOutput) ToToolDataStoreToolEngineSourcePtrOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolDataStoreToolEngineSource) *ToolDataStoreToolEngineSource {
+		return &v
+	}).(ToolDataStoreToolEngineSourcePtrOutput)
+}
+
+// Use to target specific DataStores within the Engine.
+// If empty, the search applies to all DataStores associated with the
+// Engine.
+// Structure is documented below.
+func (o ToolDataStoreToolEngineSourceOutput) DataStoreSources() ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSource) []ToolDataStoreToolEngineSourceDataStoreSource {
+		return v.DataStoreSources
+	}).(ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput)
+}
+
+// Full resource name of the Engine.
+// Format:
+// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+func (o ToolDataStoreToolEngineSourceOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSource) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// A filter applied to the search across the Engine. Not relevant and not
+// used if 'data_store_sources' is provided.
+// See:
+// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+func (o ToolDataStoreToolEngineSourceOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSource) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolEngineSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolEngineSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolEngineSource)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolEngineSourcePtrOutput) ToToolDataStoreToolEngineSourcePtrOutput() ToolDataStoreToolEngineSourcePtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourcePtrOutput) ToToolDataStoreToolEngineSourcePtrOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourcePtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourcePtrOutput) Elem() ToolDataStoreToolEngineSourceOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolEngineSource) ToolDataStoreToolEngineSource {
+		if v != nil {
+			return *v
+		}
+		var ret ToolDataStoreToolEngineSource
+		return ret
+	}).(ToolDataStoreToolEngineSourceOutput)
+}
+
+// Use to target specific DataStores within the Engine.
+// If empty, the search applies to all DataStores associated with the
+// Engine.
+// Structure is documented below.
+func (o ToolDataStoreToolEngineSourcePtrOutput) DataStoreSources() ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolEngineSource) []ToolDataStoreToolEngineSourceDataStoreSource {
+		if v == nil {
+			return nil
+		}
+		return v.DataStoreSources
+	}).(ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput)
+}
+
+// Full resource name of the Engine.
+// Format:
+// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+func (o ToolDataStoreToolEngineSourcePtrOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolEngineSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Engine
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the search across the Engine. Not relevant and not
+// used if 'data_store_sources' is provided.
+// See:
+// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+func (o ToolDataStoreToolEngineSourcePtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolEngineSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSource struct {
+	// A DataStore resource in Vertex AI Search.
+	// Structure is documented below.
+	DataStore *ToolDataStoreToolEngineSourceDataStoreSourceDataStore `pulumi:"dataStore"`
+	// Filter specification for the DataStore.
+	// See:
+	// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+	Filter *string `pulumi:"filter"`
+}
+
+// ToolDataStoreToolEngineSourceDataStoreSourceInput is an input type that accepts ToolDataStoreToolEngineSourceDataStoreSourceArgs and ToolDataStoreToolEngineSourceDataStoreSourceOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolEngineSourceDataStoreSourceInput` via:
+//
+//	ToolDataStoreToolEngineSourceDataStoreSourceArgs{...}
+type ToolDataStoreToolEngineSourceDataStoreSourceInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolEngineSourceDataStoreSourceOutput() ToolDataStoreToolEngineSourceDataStoreSourceOutput
+	ToToolDataStoreToolEngineSourceDataStoreSourceOutputWithContext(context.Context) ToolDataStoreToolEngineSourceDataStoreSourceOutput
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceArgs struct {
+	// A DataStore resource in Vertex AI Search.
+	// Structure is documented below.
+	DataStore ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrInput `pulumi:"dataStore"`
+	// Filter specification for the DataStore.
+	// See:
+	// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+}
+
+func (ToolDataStoreToolEngineSourceDataStoreSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSource)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolEngineSourceDataStoreSourceArgs) ToToolDataStoreToolEngineSourceDataStoreSourceOutput() ToolDataStoreToolEngineSourceDataStoreSourceOutput {
+	return i.ToToolDataStoreToolEngineSourceDataStoreSourceOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolEngineSourceDataStoreSourceArgs) ToToolDataStoreToolEngineSourceDataStoreSourceOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolEngineSourceDataStoreSourceOutput)
+}
+
+// ToolDataStoreToolEngineSourceDataStoreSourceArrayInput is an input type that accepts ToolDataStoreToolEngineSourceDataStoreSourceArray and ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolEngineSourceDataStoreSourceArrayInput` via:
+//
+//	ToolDataStoreToolEngineSourceDataStoreSourceArray{ ToolDataStoreToolEngineSourceDataStoreSourceArgs{...} }
+type ToolDataStoreToolEngineSourceDataStoreSourceArrayInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolEngineSourceDataStoreSourceArrayOutput() ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput
+	ToToolDataStoreToolEngineSourceDataStoreSourceArrayOutputWithContext(context.Context) ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceArray []ToolDataStoreToolEngineSourceDataStoreSourceInput
+
+func (ToolDataStoreToolEngineSourceDataStoreSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolEngineSourceDataStoreSource)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolEngineSourceDataStoreSourceArray) ToToolDataStoreToolEngineSourceDataStoreSourceArrayOutput() ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput {
+	return i.ToToolDataStoreToolEngineSourceDataStoreSourceArrayOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolEngineSourceDataStoreSourceArray) ToToolDataStoreToolEngineSourceDataStoreSourceArrayOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput)
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolEngineSourceDataStoreSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSource)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceOutput) ToToolDataStoreToolEngineSourceDataStoreSourceOutput() ToolDataStoreToolEngineSourceDataStoreSourceOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceOutput) ToToolDataStoreToolEngineSourceDataStoreSourceOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceOutput {
+	return o
+}
+
+// A DataStore resource in Vertex AI Search.
+// Structure is documented below.
+func (o ToolDataStoreToolEngineSourceDataStoreSourceOutput) DataStore() ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSourceDataStoreSource) *ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
+		return v.DataStore
+	}).(ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput)
+}
+
+// Filter specification for the DataStore.
+// See:
+// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+func (o ToolDataStoreToolEngineSourceDataStoreSourceOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSourceDataStoreSource) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolEngineSourceDataStoreSource)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput) ToToolDataStoreToolEngineSourceDataStoreSourceArrayOutput() ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput) ToToolDataStoreToolEngineSourceDataStoreSourceArrayOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput) Index(i pulumi.IntInput) ToolDataStoreToolEngineSourceDataStoreSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolDataStoreToolEngineSourceDataStoreSource {
+		return vs[0].([]ToolDataStoreToolEngineSourceDataStoreSource)[vs[1].(int)]
+	}).(ToolDataStoreToolEngineSourceDataStoreSourceOutput)
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStore struct {
+	// (Output)
+	// The connector config for the data store connection.
+	// Structure is documented below.
+	ConnectorConfigs []ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig `pulumi:"connectorConfigs"`
+	// (Output)
+	// Timestamp when the data store was created.
+	CreateTime *string `pulumi:"createTime"`
+	// (Output)
+	// The display name of the data store.
+	DisplayName *string `pulumi:"displayName"`
+	// (Output)
+	// The document processing mode for the data store connection.
+	// Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+	// Possible values:
+	// DOCUMENTS
+	// CHUNKS
+	DocumentProcessingMode *string `pulumi:"documentProcessingMode"`
+	// Full resource name of the DataStore.
+	// Format:
+	// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+	Name string `pulumi:"name"`
+	// (Output)
+	// The type of the data store. This field is readonly and populated by the
+	// server.
+	// Possible values:
+	// PUBLIC_WEB
+	// UNSTRUCTURED
+	// FAQ
+	// CONNECTOR
+	//
+	// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
+	Type *string `pulumi:"type"`
+}
+
+// ToolDataStoreToolEngineSourceDataStoreSourceDataStoreInput is an input type that accepts ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs and ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolEngineSourceDataStoreSourceDataStoreInput` via:
+//
+//	ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs{...}
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStoreInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput
+	ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutputWithContext(context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs struct {
+	// (Output)
+	// The connector config for the data store connection.
+	// Structure is documented below.
+	ConnectorConfigs ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayInput `pulumi:"connectorConfigs"`
+	// (Output)
+	// Timestamp when the data store was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
+	// The display name of the data store.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// (Output)
+	// The document processing mode for the data store connection.
+	// Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+	// Possible values:
+	// DOCUMENTS
+	// CHUNKS
+	DocumentProcessingMode pulumi.StringPtrInput `pulumi:"documentProcessingMode"`
+	// Full resource name of the DataStore.
+	// Format:
+	// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Output)
+	// The type of the data store. This field is readonly and populated by the
+	// server.
+	// Possible values:
+	// PUBLIC_WEB
+	// UNSTRUCTURED
+	// FAQ
+	// CONNECTOR
+	//
+	// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSourceDataStore)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs) ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput {
+	return i.ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs) ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput)
+}
+
+func (i ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs) ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput {
+	return i.ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs) ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput).ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutputWithContext(ctx)
+}
+
+// ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrInput is an input type that accepts ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs, ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtr and ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrInput` via:
+//
+//	        ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput
+	ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutputWithContext(context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput
+}
+
+type toolDataStoreToolEngineSourceDataStoreSourceDataStorePtrType ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs
+
+func ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtr(v *ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs) ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrInput {
+	return (*toolDataStoreToolEngineSourceDataStoreSourceDataStorePtrType)(v)
+}
+
+func (*toolDataStoreToolEngineSourceDataStoreSourceDataStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolEngineSourceDataStoreSourceDataStore)(nil)).Elem()
+}
+
+func (i *toolDataStoreToolEngineSourceDataStoreSourceDataStorePtrType) ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput {
+	return i.ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutputWithContext(context.Background())
+}
+
+func (i *toolDataStoreToolEngineSourceDataStoreSourceDataStorePtrType) ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput)
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSourceDataStore)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput {
+	return o.ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutputWithContext(context.Background())
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolDataStoreToolEngineSourceDataStoreSourceDataStore) *ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
+		return &v
+	}).(ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput)
+}
+
+// (Output)
+// The connector config for the data store connection.
+// Structure is documented below.
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) ConnectorConfigs() ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSourceDataStoreSourceDataStore) []ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig {
+		return v.ConnectorConfigs
+	}).(ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput)
+}
+
+// (Output)
+// Timestamp when the data store was created.
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSourceDataStoreSourceDataStore) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The display name of the data store.
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSourceDataStoreSourceDataStore) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The document processing mode for the data store connection.
+// Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+// Possible values:
+// DOCUMENTS
+// CHUNKS
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) DocumentProcessingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSourceDataStoreSourceDataStore) *string { return v.DocumentProcessingMode }).(pulumi.StringPtrOutput)
+}
+
+// Full resource name of the DataStore.
+// Format:
+// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSourceDataStoreSourceDataStore) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The type of the data store. This field is readonly and populated by the
+// server.
+// Possible values:
+// PUBLIC_WEB
+// UNSTRUCTURED
+// FAQ
+// CONNECTOR
+//
+// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSourceDataStoreSourceDataStore) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolEngineSourceDataStoreSourceDataStore)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput) ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput) ToToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput) Elem() ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolEngineSourceDataStoreSourceDataStore) ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
+		if v != nil {
+			return *v
+		}
+		var ret ToolDataStoreToolEngineSourceDataStoreSourceDataStore
+		return ret
+	}).(ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput)
+}
+
+// (Output)
+// The connector config for the data store connection.
+// Structure is documented below.
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput) ConnectorConfigs() ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolEngineSourceDataStoreSourceDataStore) []ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorConfigs
+	}).(ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput)
+}
+
+// (Output)
+// Timestamp when the data store was created.
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolEngineSourceDataStoreSourceDataStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The display name of the data store.
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolEngineSourceDataStoreSourceDataStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The document processing mode for the data store connection.
+// Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+// Possible values:
+// DOCUMENTS
+// CHUNKS
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput) DocumentProcessingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolEngineSourceDataStoreSourceDataStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DocumentProcessingMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Full resource name of the DataStore.
+// Format:
+// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolEngineSourceDataStoreSourceDataStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The type of the data store. This field is readonly and populated by the
+// server.
+// Possible values:
+// PUBLIC_WEB
+// UNSTRUCTURED
+// FAQ
+// CONNECTOR
+//
+// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolEngineSourceDataStoreSourceDataStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig struct {
+	// Resource name of the collection the data store belongs to.
+	Collection *string `pulumi:"collection"`
+	// Display name of the collection the data store belongs to.
+	CollectionDisplayName *string `pulumi:"collectionDisplayName"`
+	// The name of the data source.
+	// Example: 'salesforce', 'jira', 'confluence', 'bigquery'.
+	DataSource *string `pulumi:"dataSource"`
+}
+
+// ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigInput is an input type that accepts ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs and ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigInput` via:
+//
+//	ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs{...}
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput
+	ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutputWithContext(context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs struct {
+	// Resource name of the collection the data store belongs to.
+	Collection pulumi.StringPtrInput `pulumi:"collection"`
+	// Display name of the collection the data store belongs to.
+	CollectionDisplayName pulumi.StringPtrInput `pulumi:"collectionDisplayName"`
+	// The name of the data source.
+	// Example: 'salesforce', 'jira', 'confluence', 'bigquery'.
+	DataSource pulumi.StringPtrInput `pulumi:"dataSource"`
+}
+
+func (ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs) ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput {
+	return i.ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs) ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput)
+}
+
+// ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayInput is an input type that accepts ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArray and ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayInput` via:
+//
+//	ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArray{ ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs{...} }
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput
+	ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutputWithContext(context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArray []ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigInput
+
+func (ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArray) ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput {
+	return i.ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArray) ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput)
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput) ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput) ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput {
+	return o
+}
+
+// Resource name of the collection the data store belongs to.
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput) Collection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig) *string {
+		return v.Collection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display name of the collection the data store belongs to.
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput) CollectionDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig) *string {
+		return v.CollectionDisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the data source.
+// Example: 'salesforce', 'jira', 'confluence', 'bigquery'.
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig) *string {
+		return v.DataSource
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput) ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput() ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput) ToToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutputWithContext(ctx context.Context) ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput) Index(i pulumi.IntInput) ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig {
+		return vs[0].([]ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig)[vs[1].(int)]
+	}).(ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput)
+}
+
+type ToolDataStoreToolModalityConfig struct {
+	// Grounding configuration.
+	// Structure is documented below.
+	GroundingConfig *ToolDataStoreToolModalityConfigGroundingConfig `pulumi:"groundingConfig"`
+	// The modality type.
+	// Possible values:
+	// TEXT
+	// AUDIO
+	ModalityType string `pulumi:"modalityType"`
+	// Rewriter configuration.
+	// Structure is documented below.
+	RewriterConfig *ToolDataStoreToolModalityConfigRewriterConfig `pulumi:"rewriterConfig"`
+	// Summarization configuration.
+	// Structure is documented below.
+	SummarizationConfig *ToolDataStoreToolModalityConfigSummarizationConfig `pulumi:"summarizationConfig"`
+}
+
+// ToolDataStoreToolModalityConfigInput is an input type that accepts ToolDataStoreToolModalityConfigArgs and ToolDataStoreToolModalityConfigOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigInput` via:
+//
+//	ToolDataStoreToolModalityConfigArgs{...}
+type ToolDataStoreToolModalityConfigInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigOutput() ToolDataStoreToolModalityConfigOutput
+	ToToolDataStoreToolModalityConfigOutputWithContext(context.Context) ToolDataStoreToolModalityConfigOutput
+}
+
+type ToolDataStoreToolModalityConfigArgs struct {
+	// Grounding configuration.
+	// Structure is documented below.
+	GroundingConfig ToolDataStoreToolModalityConfigGroundingConfigPtrInput `pulumi:"groundingConfig"`
+	// The modality type.
+	// Possible values:
+	// TEXT
+	// AUDIO
+	ModalityType pulumi.StringInput `pulumi:"modalityType"`
+	// Rewriter configuration.
+	// Structure is documented below.
+	RewriterConfig ToolDataStoreToolModalityConfigRewriterConfigPtrInput `pulumi:"rewriterConfig"`
+	// Summarization configuration.
+	// Structure is documented below.
+	SummarizationConfig ToolDataStoreToolModalityConfigSummarizationConfigPtrInput `pulumi:"summarizationConfig"`
+}
+
+func (ToolDataStoreToolModalityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfig)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolModalityConfigArgs) ToToolDataStoreToolModalityConfigOutput() ToolDataStoreToolModalityConfigOutput {
+	return i.ToToolDataStoreToolModalityConfigOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigArgs) ToToolDataStoreToolModalityConfigOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigOutput)
+}
+
+// ToolDataStoreToolModalityConfigArrayInput is an input type that accepts ToolDataStoreToolModalityConfigArray and ToolDataStoreToolModalityConfigArrayOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigArrayInput` via:
+//
+//	ToolDataStoreToolModalityConfigArray{ ToolDataStoreToolModalityConfigArgs{...} }
+type ToolDataStoreToolModalityConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigArrayOutput() ToolDataStoreToolModalityConfigArrayOutput
+	ToToolDataStoreToolModalityConfigArrayOutputWithContext(context.Context) ToolDataStoreToolModalityConfigArrayOutput
+}
+
+type ToolDataStoreToolModalityConfigArray []ToolDataStoreToolModalityConfigInput
+
+func (ToolDataStoreToolModalityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolModalityConfig)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolModalityConfigArray) ToToolDataStoreToolModalityConfigArrayOutput() ToolDataStoreToolModalityConfigArrayOutput {
+	return i.ToToolDataStoreToolModalityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigArray) ToToolDataStoreToolModalityConfigArrayOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigArrayOutput)
+}
+
+type ToolDataStoreToolModalityConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigOutput) ToToolDataStoreToolModalityConfigOutput() ToolDataStoreToolModalityConfigOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigOutput) ToToolDataStoreToolModalityConfigOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigOutput {
+	return o
+}
+
+// Grounding configuration.
+// Structure is documented below.
+func (o ToolDataStoreToolModalityConfigOutput) GroundingConfig() ToolDataStoreToolModalityConfigGroundingConfigPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfig) *ToolDataStoreToolModalityConfigGroundingConfig {
+		return v.GroundingConfig
+	}).(ToolDataStoreToolModalityConfigGroundingConfigPtrOutput)
+}
+
+// The modality type.
+// Possible values:
+// TEXT
+// AUDIO
+func (o ToolDataStoreToolModalityConfigOutput) ModalityType() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfig) string { return v.ModalityType }).(pulumi.StringOutput)
+}
+
+// Rewriter configuration.
+// Structure is documented below.
+func (o ToolDataStoreToolModalityConfigOutput) RewriterConfig() ToolDataStoreToolModalityConfigRewriterConfigPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfig) *ToolDataStoreToolModalityConfigRewriterConfig {
+		return v.RewriterConfig
+	}).(ToolDataStoreToolModalityConfigRewriterConfigPtrOutput)
+}
+
+// Summarization configuration.
+// Structure is documented below.
+func (o ToolDataStoreToolModalityConfigOutput) SummarizationConfig() ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfig) *ToolDataStoreToolModalityConfigSummarizationConfig {
+		return v.SummarizationConfig
+	}).(ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolDataStoreToolModalityConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigArrayOutput) ToToolDataStoreToolModalityConfigArrayOutput() ToolDataStoreToolModalityConfigArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigArrayOutput) ToToolDataStoreToolModalityConfigArrayOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigArrayOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigArrayOutput) Index(i pulumi.IntInput) ToolDataStoreToolModalityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolDataStoreToolModalityConfig {
+		return vs[0].([]ToolDataStoreToolModalityConfig)[vs[1].(int)]
+	}).(ToolDataStoreToolModalityConfigOutput)
+}
+
+type ToolDataStoreToolModalityConfigGroundingConfig struct {
+	// Whether grounding is disabled.
+	Disabled *bool `pulumi:"disabled"`
+	// The groundedness threshold of the answer based on the retrieved sources.
+	// The value has a configurable range of [1, 5]. The level is used to
+	// threshold the groundedness of the answer, meaning that all responses with
+	// a groundedness score below the threshold will fall back to returning
+	// relevant snippets only.
+	// For example, a level of 3 means that the groundedness score must be
+	// 3 or higher for the response to be returned.
+	GroundingLevel *float64 `pulumi:"groundingLevel"`
+}
+
+// ToolDataStoreToolModalityConfigGroundingConfigInput is an input type that accepts ToolDataStoreToolModalityConfigGroundingConfigArgs and ToolDataStoreToolModalityConfigGroundingConfigOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigGroundingConfigInput` via:
+//
+//	ToolDataStoreToolModalityConfigGroundingConfigArgs{...}
+type ToolDataStoreToolModalityConfigGroundingConfigInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigGroundingConfigOutput() ToolDataStoreToolModalityConfigGroundingConfigOutput
+	ToToolDataStoreToolModalityConfigGroundingConfigOutputWithContext(context.Context) ToolDataStoreToolModalityConfigGroundingConfigOutput
+}
+
+type ToolDataStoreToolModalityConfigGroundingConfigArgs struct {
+	// Whether grounding is disabled.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The groundedness threshold of the answer based on the retrieved sources.
+	// The value has a configurable range of [1, 5]. The level is used to
+	// threshold the groundedness of the answer, meaning that all responses with
+	// a groundedness score below the threshold will fall back to returning
+	// relevant snippets only.
+	// For example, a level of 3 means that the groundedness score must be
+	// 3 or higher for the response to be returned.
+	GroundingLevel pulumi.Float64PtrInput `pulumi:"groundingLevel"`
+}
+
+func (ToolDataStoreToolModalityConfigGroundingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfigGroundingConfig)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolModalityConfigGroundingConfigArgs) ToToolDataStoreToolModalityConfigGroundingConfigOutput() ToolDataStoreToolModalityConfigGroundingConfigOutput {
+	return i.ToToolDataStoreToolModalityConfigGroundingConfigOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigGroundingConfigArgs) ToToolDataStoreToolModalityConfigGroundingConfigOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigGroundingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigGroundingConfigOutput)
+}
+
+func (i ToolDataStoreToolModalityConfigGroundingConfigArgs) ToToolDataStoreToolModalityConfigGroundingConfigPtrOutput() ToolDataStoreToolModalityConfigGroundingConfigPtrOutput {
+	return i.ToToolDataStoreToolModalityConfigGroundingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigGroundingConfigArgs) ToToolDataStoreToolModalityConfigGroundingConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigGroundingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigGroundingConfigOutput).ToToolDataStoreToolModalityConfigGroundingConfigPtrOutputWithContext(ctx)
+}
+
+// ToolDataStoreToolModalityConfigGroundingConfigPtrInput is an input type that accepts ToolDataStoreToolModalityConfigGroundingConfigArgs, ToolDataStoreToolModalityConfigGroundingConfigPtr and ToolDataStoreToolModalityConfigGroundingConfigPtrOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigGroundingConfigPtrInput` via:
+//
+//	        ToolDataStoreToolModalityConfigGroundingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolDataStoreToolModalityConfigGroundingConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigGroundingConfigPtrOutput() ToolDataStoreToolModalityConfigGroundingConfigPtrOutput
+	ToToolDataStoreToolModalityConfigGroundingConfigPtrOutputWithContext(context.Context) ToolDataStoreToolModalityConfigGroundingConfigPtrOutput
+}
+
+type toolDataStoreToolModalityConfigGroundingConfigPtrType ToolDataStoreToolModalityConfigGroundingConfigArgs
+
+func ToolDataStoreToolModalityConfigGroundingConfigPtr(v *ToolDataStoreToolModalityConfigGroundingConfigArgs) ToolDataStoreToolModalityConfigGroundingConfigPtrInput {
+	return (*toolDataStoreToolModalityConfigGroundingConfigPtrType)(v)
+}
+
+func (*toolDataStoreToolModalityConfigGroundingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolModalityConfigGroundingConfig)(nil)).Elem()
+}
+
+func (i *toolDataStoreToolModalityConfigGroundingConfigPtrType) ToToolDataStoreToolModalityConfigGroundingConfigPtrOutput() ToolDataStoreToolModalityConfigGroundingConfigPtrOutput {
+	return i.ToToolDataStoreToolModalityConfigGroundingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolDataStoreToolModalityConfigGroundingConfigPtrType) ToToolDataStoreToolModalityConfigGroundingConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigGroundingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigGroundingConfigPtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigGroundingConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigGroundingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfigGroundingConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigGroundingConfigOutput) ToToolDataStoreToolModalityConfigGroundingConfigOutput() ToolDataStoreToolModalityConfigGroundingConfigOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigGroundingConfigOutput) ToToolDataStoreToolModalityConfigGroundingConfigOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigGroundingConfigOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigGroundingConfigOutput) ToToolDataStoreToolModalityConfigGroundingConfigPtrOutput() ToolDataStoreToolModalityConfigGroundingConfigPtrOutput {
+	return o.ToToolDataStoreToolModalityConfigGroundingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolDataStoreToolModalityConfigGroundingConfigOutput) ToToolDataStoreToolModalityConfigGroundingConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigGroundingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolDataStoreToolModalityConfigGroundingConfig) *ToolDataStoreToolModalityConfigGroundingConfig {
+		return &v
+	}).(ToolDataStoreToolModalityConfigGroundingConfigPtrOutput)
+}
+
+// Whether grounding is disabled.
+func (o ToolDataStoreToolModalityConfigGroundingConfigOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigGroundingConfig) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The groundedness threshold of the answer based on the retrieved sources.
+// The value has a configurable range of [1, 5]. The level is used to
+// threshold the groundedness of the answer, meaning that all responses with
+// a groundedness score below the threshold will fall back to returning
+// relevant snippets only.
+// For example, a level of 3 means that the groundedness score must be
+// 3 or higher for the response to be returned.
+func (o ToolDataStoreToolModalityConfigGroundingConfigOutput) GroundingLevel() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigGroundingConfig) *float64 { return v.GroundingLevel }).(pulumi.Float64PtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigGroundingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigGroundingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolModalityConfigGroundingConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigGroundingConfigPtrOutput) ToToolDataStoreToolModalityConfigGroundingConfigPtrOutput() ToolDataStoreToolModalityConfigGroundingConfigPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigGroundingConfigPtrOutput) ToToolDataStoreToolModalityConfigGroundingConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigGroundingConfigPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigGroundingConfigPtrOutput) Elem() ToolDataStoreToolModalityConfigGroundingConfigOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigGroundingConfig) ToolDataStoreToolModalityConfigGroundingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolDataStoreToolModalityConfigGroundingConfig
+		return ret
+	}).(ToolDataStoreToolModalityConfigGroundingConfigOutput)
+}
+
+// Whether grounding is disabled.
+func (o ToolDataStoreToolModalityConfigGroundingConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigGroundingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The groundedness threshold of the answer based on the retrieved sources.
+// The value has a configurable range of [1, 5]. The level is used to
+// threshold the groundedness of the answer, meaning that all responses with
+// a groundedness score below the threshold will fall back to returning
+// relevant snippets only.
+// For example, a level of 3 means that the groundedness score must be
+// 3 or higher for the response to be returned.
+func (o ToolDataStoreToolModalityConfigGroundingConfigPtrOutput) GroundingLevel() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigGroundingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.GroundingLevel
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigRewriterConfig struct {
+	// Whether the rewriter is disabled.
+	Disabled *bool `pulumi:"disabled"`
+	// Model settings contains various configurations for the LLM model.
+	// Structure is documented below.
+	ModelSettings ToolDataStoreToolModalityConfigRewriterConfigModelSettings `pulumi:"modelSettings"`
+	// The prompt definition. If not set, default prompt will be used.
+	Prompt *string `pulumi:"prompt"`
+}
+
+// ToolDataStoreToolModalityConfigRewriterConfigInput is an input type that accepts ToolDataStoreToolModalityConfigRewriterConfigArgs and ToolDataStoreToolModalityConfigRewriterConfigOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigRewriterConfigInput` via:
+//
+//	ToolDataStoreToolModalityConfigRewriterConfigArgs{...}
+type ToolDataStoreToolModalityConfigRewriterConfigInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigRewriterConfigOutput() ToolDataStoreToolModalityConfigRewriterConfigOutput
+	ToToolDataStoreToolModalityConfigRewriterConfigOutputWithContext(context.Context) ToolDataStoreToolModalityConfigRewriterConfigOutput
+}
+
+type ToolDataStoreToolModalityConfigRewriterConfigArgs struct {
+	// Whether the rewriter is disabled.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Model settings contains various configurations for the LLM model.
+	// Structure is documented below.
+	ModelSettings ToolDataStoreToolModalityConfigRewriterConfigModelSettingsInput `pulumi:"modelSettings"`
+	// The prompt definition. If not set, default prompt will be used.
+	Prompt pulumi.StringPtrInput `pulumi:"prompt"`
+}
+
+func (ToolDataStoreToolModalityConfigRewriterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfigRewriterConfig)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolModalityConfigRewriterConfigArgs) ToToolDataStoreToolModalityConfigRewriterConfigOutput() ToolDataStoreToolModalityConfigRewriterConfigOutput {
+	return i.ToToolDataStoreToolModalityConfigRewriterConfigOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigRewriterConfigArgs) ToToolDataStoreToolModalityConfigRewriterConfigOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigRewriterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigRewriterConfigOutput)
+}
+
+func (i ToolDataStoreToolModalityConfigRewriterConfigArgs) ToToolDataStoreToolModalityConfigRewriterConfigPtrOutput() ToolDataStoreToolModalityConfigRewriterConfigPtrOutput {
+	return i.ToToolDataStoreToolModalityConfigRewriterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigRewriterConfigArgs) ToToolDataStoreToolModalityConfigRewriterConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigRewriterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigRewriterConfigOutput).ToToolDataStoreToolModalityConfigRewriterConfigPtrOutputWithContext(ctx)
+}
+
+// ToolDataStoreToolModalityConfigRewriterConfigPtrInput is an input type that accepts ToolDataStoreToolModalityConfigRewriterConfigArgs, ToolDataStoreToolModalityConfigRewriterConfigPtr and ToolDataStoreToolModalityConfigRewriterConfigPtrOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigRewriterConfigPtrInput` via:
+//
+//	        ToolDataStoreToolModalityConfigRewriterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolDataStoreToolModalityConfigRewriterConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigRewriterConfigPtrOutput() ToolDataStoreToolModalityConfigRewriterConfigPtrOutput
+	ToToolDataStoreToolModalityConfigRewriterConfigPtrOutputWithContext(context.Context) ToolDataStoreToolModalityConfigRewriterConfigPtrOutput
+}
+
+type toolDataStoreToolModalityConfigRewriterConfigPtrType ToolDataStoreToolModalityConfigRewriterConfigArgs
+
+func ToolDataStoreToolModalityConfigRewriterConfigPtr(v *ToolDataStoreToolModalityConfigRewriterConfigArgs) ToolDataStoreToolModalityConfigRewriterConfigPtrInput {
+	return (*toolDataStoreToolModalityConfigRewriterConfigPtrType)(v)
+}
+
+func (*toolDataStoreToolModalityConfigRewriterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolModalityConfigRewriterConfig)(nil)).Elem()
+}
+
+func (i *toolDataStoreToolModalityConfigRewriterConfigPtrType) ToToolDataStoreToolModalityConfigRewriterConfigPtrOutput() ToolDataStoreToolModalityConfigRewriterConfigPtrOutput {
+	return i.ToToolDataStoreToolModalityConfigRewriterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolDataStoreToolModalityConfigRewriterConfigPtrType) ToToolDataStoreToolModalityConfigRewriterConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigRewriterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigRewriterConfigPtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigRewriterConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigRewriterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfigRewriterConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigOutput) ToToolDataStoreToolModalityConfigRewriterConfigOutput() ToolDataStoreToolModalityConfigRewriterConfigOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigOutput) ToToolDataStoreToolModalityConfigRewriterConfigOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigRewriterConfigOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigOutput) ToToolDataStoreToolModalityConfigRewriterConfigPtrOutput() ToolDataStoreToolModalityConfigRewriterConfigPtrOutput {
+	return o.ToToolDataStoreToolModalityConfigRewriterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigOutput) ToToolDataStoreToolModalityConfigRewriterConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigRewriterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolDataStoreToolModalityConfigRewriterConfig) *ToolDataStoreToolModalityConfigRewriterConfig {
+		return &v
+	}).(ToolDataStoreToolModalityConfigRewriterConfigPtrOutput)
+}
+
+// Whether the rewriter is disabled.
+func (o ToolDataStoreToolModalityConfigRewriterConfigOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigRewriterConfig) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Model settings contains various configurations for the LLM model.
+// Structure is documented below.
+func (o ToolDataStoreToolModalityConfigRewriterConfigOutput) ModelSettings() ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigRewriterConfig) ToolDataStoreToolModalityConfigRewriterConfigModelSettings {
+		return v.ModelSettings
+	}).(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput)
+}
+
+// The prompt definition. If not set, default prompt will be used.
+func (o ToolDataStoreToolModalityConfigRewriterConfigOutput) Prompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigRewriterConfig) *string { return v.Prompt }).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigRewriterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigRewriterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolModalityConfigRewriterConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigPtrOutput) ToToolDataStoreToolModalityConfigRewriterConfigPtrOutput() ToolDataStoreToolModalityConfigRewriterConfigPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigPtrOutput) ToToolDataStoreToolModalityConfigRewriterConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigRewriterConfigPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigPtrOutput) Elem() ToolDataStoreToolModalityConfigRewriterConfigOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigRewriterConfig) ToolDataStoreToolModalityConfigRewriterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolDataStoreToolModalityConfigRewriterConfig
+		return ret
+	}).(ToolDataStoreToolModalityConfigRewriterConfigOutput)
+}
+
+// Whether the rewriter is disabled.
+func (o ToolDataStoreToolModalityConfigRewriterConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigRewriterConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Model settings contains various configurations for the LLM model.
+// Structure is documented below.
+func (o ToolDataStoreToolModalityConfigRewriterConfigPtrOutput) ModelSettings() ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigRewriterConfig) *ToolDataStoreToolModalityConfigRewriterConfigModelSettings {
+		if v == nil {
+			return nil
+		}
+		return &v.ModelSettings
+	}).(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput)
+}
+
+// The prompt definition. If not set, default prompt will be used.
+func (o ToolDataStoreToolModalityConfigRewriterConfigPtrOutput) Prompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigRewriterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prompt
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigRewriterConfigModelSettings struct {
+	// The LLM model that the agent should use.
+	// If not set, the agent will inherit the model from its parent agent.
+	Model *string `pulumi:"model"`
+	// If set, this temperature will be used for the LLM model. Temperature
+	// controls the randomness of the model's responses. Lower temperatures
+	// produce responses that are more predictable. Higher temperatures produce
+	// responses that are more creative.
+	Temperature *float64 `pulumi:"temperature"`
+}
+
+// ToolDataStoreToolModalityConfigRewriterConfigModelSettingsInput is an input type that accepts ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs and ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigRewriterConfigModelSettingsInput` via:
+//
+//	ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs{...}
+type ToolDataStoreToolModalityConfigRewriterConfigModelSettingsInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput() ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput
+	ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutputWithContext(context.Context) ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput
+}
+
+type ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs struct {
+	// The LLM model that the agent should use.
+	// If not set, the agent will inherit the model from its parent agent.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// If set, this temperature will be used for the LLM model. Temperature
+	// controls the randomness of the model's responses. Lower temperatures
+	// produce responses that are more predictable. Higher temperatures produce
+	// responses that are more creative.
+	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+}
+
+func (ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfigRewriterConfigModelSettings)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs) ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput() ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput {
+	return i.ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs) ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput)
+}
+
+func (i ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs) ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput() ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput {
+	return i.ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs) ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput).ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutputWithContext(ctx)
+}
+
+// ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrInput is an input type that accepts ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs, ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtr and ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrInput` via:
+//
+//	        ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput() ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput
+	ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutputWithContext(context.Context) ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput
+}
+
+type toolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrType ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs
+
+func ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtr(v *ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs) ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrInput {
+	return (*toolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrType)(v)
+}
+
+func (*toolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolModalityConfigRewriterConfigModelSettings)(nil)).Elem()
+}
+
+func (i *toolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrType) ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput() ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput {
+	return i.ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *toolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrType) ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfigRewriterConfigModelSettings)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput) ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput() ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput) ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput) ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput() ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput {
+	return o.ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput) ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolDataStoreToolModalityConfigRewriterConfigModelSettings) *ToolDataStoreToolModalityConfigRewriterConfigModelSettings {
+		return &v
+	}).(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput)
+}
+
+// The LLM model that the agent should use.
+// If not set, the agent will inherit the model from its parent agent.
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigRewriterConfigModelSettings) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// If set, this temperature will be used for the LLM model. Temperature
+// controls the randomness of the model's responses. Lower temperatures
+// produce responses that are more predictable. Higher temperatures produce
+// responses that are more creative.
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigRewriterConfigModelSettings) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolModalityConfigRewriterConfigModelSettings)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput) ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput() ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput) ToToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput) Elem() ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigRewriterConfigModelSettings) ToolDataStoreToolModalityConfigRewriterConfigModelSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ToolDataStoreToolModalityConfigRewriterConfigModelSettings
+		return ret
+	}).(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput)
+}
+
+// The LLM model that the agent should use.
+// If not set, the agent will inherit the model from its parent agent.
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigRewriterConfigModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, this temperature will be used for the LLM model. Temperature
+// controls the randomness of the model's responses. Lower temperatures
+// produce responses that are more predictable. Higher temperatures produce
+// responses that are more creative.
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigRewriterConfigModelSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Temperature
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigSummarizationConfig struct {
+	// Whether summarization is disabled.
+	Disabled *bool `pulumi:"disabled"`
+	// Model settings contains various configurations for the LLM model.
+	// Structure is documented below.
+	ModelSettings *ToolDataStoreToolModalityConfigSummarizationConfigModelSettings `pulumi:"modelSettings"`
+	// The prompt definition. If not set, default prompt will be used.
+	Prompt *string `pulumi:"prompt"`
+}
+
+// ToolDataStoreToolModalityConfigSummarizationConfigInput is an input type that accepts ToolDataStoreToolModalityConfigSummarizationConfigArgs and ToolDataStoreToolModalityConfigSummarizationConfigOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigSummarizationConfigInput` via:
+//
+//	ToolDataStoreToolModalityConfigSummarizationConfigArgs{...}
+type ToolDataStoreToolModalityConfigSummarizationConfigInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigSummarizationConfigOutput() ToolDataStoreToolModalityConfigSummarizationConfigOutput
+	ToToolDataStoreToolModalityConfigSummarizationConfigOutputWithContext(context.Context) ToolDataStoreToolModalityConfigSummarizationConfigOutput
+}
+
+type ToolDataStoreToolModalityConfigSummarizationConfigArgs struct {
+	// Whether summarization is disabled.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Model settings contains various configurations for the LLM model.
+	// Structure is documented below.
+	ModelSettings ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrInput `pulumi:"modelSettings"`
+	// The prompt definition. If not set, default prompt will be used.
+	Prompt pulumi.StringPtrInput `pulumi:"prompt"`
+}
+
+func (ToolDataStoreToolModalityConfigSummarizationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfig)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolModalityConfigSummarizationConfigArgs) ToToolDataStoreToolModalityConfigSummarizationConfigOutput() ToolDataStoreToolModalityConfigSummarizationConfigOutput {
+	return i.ToToolDataStoreToolModalityConfigSummarizationConfigOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigSummarizationConfigArgs) ToToolDataStoreToolModalityConfigSummarizationConfigOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSummarizationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigSummarizationConfigOutput)
+}
+
+func (i ToolDataStoreToolModalityConfigSummarizationConfigArgs) ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutput() ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput {
+	return i.ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigSummarizationConfigArgs) ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigSummarizationConfigOutput).ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutputWithContext(ctx)
+}
+
+// ToolDataStoreToolModalityConfigSummarizationConfigPtrInput is an input type that accepts ToolDataStoreToolModalityConfigSummarizationConfigArgs, ToolDataStoreToolModalityConfigSummarizationConfigPtr and ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigSummarizationConfigPtrInput` via:
+//
+//	        ToolDataStoreToolModalityConfigSummarizationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolDataStoreToolModalityConfigSummarizationConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutput() ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput
+	ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutputWithContext(context.Context) ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput
+}
+
+type toolDataStoreToolModalityConfigSummarizationConfigPtrType ToolDataStoreToolModalityConfigSummarizationConfigArgs
+
+func ToolDataStoreToolModalityConfigSummarizationConfigPtr(v *ToolDataStoreToolModalityConfigSummarizationConfigArgs) ToolDataStoreToolModalityConfigSummarizationConfigPtrInput {
+	return (*toolDataStoreToolModalityConfigSummarizationConfigPtrType)(v)
+}
+
+func (*toolDataStoreToolModalityConfigSummarizationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolModalityConfigSummarizationConfig)(nil)).Elem()
+}
+
+func (i *toolDataStoreToolModalityConfigSummarizationConfigPtrType) ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutput() ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput {
+	return i.ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolDataStoreToolModalityConfigSummarizationConfigPtrType) ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigSummarizationConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigSummarizationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigOutput) ToToolDataStoreToolModalityConfigSummarizationConfigOutput() ToolDataStoreToolModalityConfigSummarizationConfigOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigOutput) ToToolDataStoreToolModalityConfigSummarizationConfigOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSummarizationConfigOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigOutput) ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutput() ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput {
+	return o.ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigOutput) ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolDataStoreToolModalityConfigSummarizationConfig) *ToolDataStoreToolModalityConfigSummarizationConfig {
+		return &v
+	}).(ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput)
+}
+
+// Whether summarization is disabled.
+func (o ToolDataStoreToolModalityConfigSummarizationConfigOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigSummarizationConfig) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Model settings contains various configurations for the LLM model.
+// Structure is documented below.
+func (o ToolDataStoreToolModalityConfigSummarizationConfigOutput) ModelSettings() ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigSummarizationConfig) *ToolDataStoreToolModalityConfigSummarizationConfigModelSettings {
+		return v.ModelSettings
+	}).(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput)
+}
+
+// The prompt definition. If not set, default prompt will be used.
+func (o ToolDataStoreToolModalityConfigSummarizationConfigOutput) Prompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigSummarizationConfig) *string { return v.Prompt }).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolModalityConfigSummarizationConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput) ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutput() ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput) ToToolDataStoreToolModalityConfigSummarizationConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput) Elem() ToolDataStoreToolModalityConfigSummarizationConfigOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigSummarizationConfig) ToolDataStoreToolModalityConfigSummarizationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolDataStoreToolModalityConfigSummarizationConfig
+		return ret
+	}).(ToolDataStoreToolModalityConfigSummarizationConfigOutput)
+}
+
+// Whether summarization is disabled.
+func (o ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigSummarizationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Model settings contains various configurations for the LLM model.
+// Structure is documented below.
+func (o ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput) ModelSettings() ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigSummarizationConfig) *ToolDataStoreToolModalityConfigSummarizationConfigModelSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ModelSettings
+	}).(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput)
+}
+
+// The prompt definition. If not set, default prompt will be used.
+func (o ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput) Prompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigSummarizationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prompt
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigSummarizationConfigModelSettings struct {
+	// The LLM model that the agent should use.
+	// If not set, the agent will inherit the model from its parent agent.
+	Model *string `pulumi:"model"`
+	// If set, this temperature will be used for the LLM model. Temperature
+	// controls the randomness of the model's responses. Lower temperatures
+	// produce responses that are more predictable. Higher temperatures produce
+	// responses that are more creative.
+	Temperature *float64 `pulumi:"temperature"`
+}
+
+// ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsInput is an input type that accepts ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs and ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsInput` via:
+//
+//	ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs{...}
+type ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput() ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput
+	ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutputWithContext(context.Context) ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput
+}
+
+type ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs struct {
+	// The LLM model that the agent should use.
+	// If not set, the agent will inherit the model from its parent agent.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// If set, this temperature will be used for the LLM model. Temperature
+	// controls the randomness of the model's responses. Lower temperatures
+	// produce responses that are more predictable. Higher temperatures produce
+	// responses that are more creative.
+	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+}
+
+func (ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfigModelSettings)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs) ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput() ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput {
+	return i.ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs) ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput)
+}
+
+func (i ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs) ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput() ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput {
+	return i.ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs) ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput).ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutputWithContext(ctx)
+}
+
+// ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrInput is an input type that accepts ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs, ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtr and ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrInput` via:
+//
+//	        ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput() ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput
+	ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutputWithContext(context.Context) ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput
+}
+
+type toolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrType ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs
+
+func ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtr(v *ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs) ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrInput {
+	return (*toolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrType)(v)
+}
+
+func (*toolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolModalityConfigSummarizationConfigModelSettings)(nil)).Elem()
+}
+
+func (i *toolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrType) ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput() ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput {
+	return i.ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *toolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrType) ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfigModelSettings)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput) ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput() ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput) ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput) ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput() ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput {
+	return o.ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput) ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolDataStoreToolModalityConfigSummarizationConfigModelSettings) *ToolDataStoreToolModalityConfigSummarizationConfigModelSettings {
+		return &v
+	}).(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput)
+}
+
+// The LLM model that the agent should use.
+// If not set, the agent will inherit the model from its parent agent.
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigSummarizationConfigModelSettings) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// If set, this temperature will be used for the LLM model. Temperature
+// controls the randomness of the model's responses. Lower temperatures
+// produce responses that are more predictable. Higher temperatures produce
+// responses that are more creative.
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigSummarizationConfigModelSettings) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolModalityConfigSummarizationConfigModelSettings)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput) ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput() ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput) ToToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput) Elem() ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigSummarizationConfigModelSettings) ToolDataStoreToolModalityConfigSummarizationConfigModelSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ToolDataStoreToolModalityConfigSummarizationConfigModelSettings
+		return ret
+	}).(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput)
+}
+
+// The LLM model that the agent should use.
+// If not set, the agent will inherit the model from its parent agent.
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigSummarizationConfigModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, this temperature will be used for the LLM model. Temperature
+// controls the randomness of the model's responses. Lower temperatures
+// produce responses that are more predictable. Higher temperatures produce
+// responses that are more creative.
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigSummarizationConfigModelSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Temperature
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ToolGoogleSearchTool struct {
+	// Description of the tool's purpose.
+	Description *string `pulumi:"description"`
+	// List of domains to be excluded from the search results.
+	// Example: "example.com".
+	// A maximum of 2000 domains can be excluded.
+	ExcludeDomains []string `pulumi:"excludeDomains"`
+	// The name of the tool.
+	Name string `pulumi:"name"`
+}
+
+// ToolGoogleSearchToolInput is an input type that accepts ToolGoogleSearchToolArgs and ToolGoogleSearchToolOutput values.
+// You can construct a concrete instance of `ToolGoogleSearchToolInput` via:
+//
+//	ToolGoogleSearchToolArgs{...}
+type ToolGoogleSearchToolInput interface {
+	pulumi.Input
+
+	ToToolGoogleSearchToolOutput() ToolGoogleSearchToolOutput
+	ToToolGoogleSearchToolOutputWithContext(context.Context) ToolGoogleSearchToolOutput
+}
+
+type ToolGoogleSearchToolArgs struct {
+	// Description of the tool's purpose.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// List of domains to be excluded from the search results.
+	// Example: "example.com".
+	// A maximum of 2000 domains can be excluded.
+	ExcludeDomains pulumi.StringArrayInput `pulumi:"excludeDomains"`
+	// The name of the tool.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ToolGoogleSearchToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolGoogleSearchTool)(nil)).Elem()
+}
+
+func (i ToolGoogleSearchToolArgs) ToToolGoogleSearchToolOutput() ToolGoogleSearchToolOutput {
+	return i.ToToolGoogleSearchToolOutputWithContext(context.Background())
+}
+
+func (i ToolGoogleSearchToolArgs) ToToolGoogleSearchToolOutputWithContext(ctx context.Context) ToolGoogleSearchToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolGoogleSearchToolOutput)
+}
+
+func (i ToolGoogleSearchToolArgs) ToToolGoogleSearchToolPtrOutput() ToolGoogleSearchToolPtrOutput {
+	return i.ToToolGoogleSearchToolPtrOutputWithContext(context.Background())
+}
+
+func (i ToolGoogleSearchToolArgs) ToToolGoogleSearchToolPtrOutputWithContext(ctx context.Context) ToolGoogleSearchToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolGoogleSearchToolOutput).ToToolGoogleSearchToolPtrOutputWithContext(ctx)
+}
+
+// ToolGoogleSearchToolPtrInput is an input type that accepts ToolGoogleSearchToolArgs, ToolGoogleSearchToolPtr and ToolGoogleSearchToolPtrOutput values.
+// You can construct a concrete instance of `ToolGoogleSearchToolPtrInput` via:
+//
+//	        ToolGoogleSearchToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolGoogleSearchToolPtrInput interface {
+	pulumi.Input
+
+	ToToolGoogleSearchToolPtrOutput() ToolGoogleSearchToolPtrOutput
+	ToToolGoogleSearchToolPtrOutputWithContext(context.Context) ToolGoogleSearchToolPtrOutput
+}
+
+type toolGoogleSearchToolPtrType ToolGoogleSearchToolArgs
+
+func ToolGoogleSearchToolPtr(v *ToolGoogleSearchToolArgs) ToolGoogleSearchToolPtrInput {
+	return (*toolGoogleSearchToolPtrType)(v)
+}
+
+func (*toolGoogleSearchToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolGoogleSearchTool)(nil)).Elem()
+}
+
+func (i *toolGoogleSearchToolPtrType) ToToolGoogleSearchToolPtrOutput() ToolGoogleSearchToolPtrOutput {
+	return i.ToToolGoogleSearchToolPtrOutputWithContext(context.Background())
+}
+
+func (i *toolGoogleSearchToolPtrType) ToToolGoogleSearchToolPtrOutputWithContext(ctx context.Context) ToolGoogleSearchToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolGoogleSearchToolPtrOutput)
+}
+
+type ToolGoogleSearchToolOutput struct{ *pulumi.OutputState }
+
+func (ToolGoogleSearchToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolGoogleSearchTool)(nil)).Elem()
+}
+
+func (o ToolGoogleSearchToolOutput) ToToolGoogleSearchToolOutput() ToolGoogleSearchToolOutput {
+	return o
+}
+
+func (o ToolGoogleSearchToolOutput) ToToolGoogleSearchToolOutputWithContext(ctx context.Context) ToolGoogleSearchToolOutput {
+	return o
+}
+
+func (o ToolGoogleSearchToolOutput) ToToolGoogleSearchToolPtrOutput() ToolGoogleSearchToolPtrOutput {
+	return o.ToToolGoogleSearchToolPtrOutputWithContext(context.Background())
+}
+
+func (o ToolGoogleSearchToolOutput) ToToolGoogleSearchToolPtrOutputWithContext(ctx context.Context) ToolGoogleSearchToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolGoogleSearchTool) *ToolGoogleSearchTool {
+		return &v
+	}).(ToolGoogleSearchToolPtrOutput)
+}
+
+// Description of the tool's purpose.
+func (o ToolGoogleSearchToolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolGoogleSearchTool) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of domains to be excluded from the search results.
+// Example: "example.com".
+// A maximum of 2000 domains can be excluded.
+func (o ToolGoogleSearchToolOutput) ExcludeDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolGoogleSearchTool) []string { return v.ExcludeDomains }).(pulumi.StringArrayOutput)
+}
+
+// The name of the tool.
+func (o ToolGoogleSearchToolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolGoogleSearchTool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ToolGoogleSearchToolPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolGoogleSearchToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolGoogleSearchTool)(nil)).Elem()
+}
+
+func (o ToolGoogleSearchToolPtrOutput) ToToolGoogleSearchToolPtrOutput() ToolGoogleSearchToolPtrOutput {
+	return o
+}
+
+func (o ToolGoogleSearchToolPtrOutput) ToToolGoogleSearchToolPtrOutputWithContext(ctx context.Context) ToolGoogleSearchToolPtrOutput {
+	return o
+}
+
+func (o ToolGoogleSearchToolPtrOutput) Elem() ToolGoogleSearchToolOutput {
+	return o.ApplyT(func(v *ToolGoogleSearchTool) ToolGoogleSearchTool {
+		if v != nil {
+			return *v
+		}
+		var ret ToolGoogleSearchTool
+		return ret
+	}).(ToolGoogleSearchToolOutput)
+}
+
+// Description of the tool's purpose.
+func (o ToolGoogleSearchToolPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolGoogleSearchTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of domains to be excluded from the search results.
+// Example: "example.com".
+// A maximum of 2000 domains can be excluded.
+func (o ToolGoogleSearchToolPtrOutput) ExcludeDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ToolGoogleSearchTool) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeDomains
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of the tool.
+func (o ToolGoogleSearchToolPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolGoogleSearchTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiTool struct {
+	// (Output)
+	// Authentication information required for API calls.
+	// Structure is documented below.
+	ApiAuthentications []ToolOpenApiToolApiAuthentication `pulumi:"apiAuthentications"`
+	// (Output)
+	// The description of the system tool.
+	Description *string `pulumi:"description"`
+	// (Output)
+	// If true, the agent will ignore unknown fields in the API response.
+	IgnoreUnknownFields *bool `pulumi:"ignoreUnknownFields"`
+	// (Output)
+	// The name of the system tool.
+	Name *string `pulumi:"name"`
+	// (Output)
+	// The OpenAPI schema in JSON or YAML format.
+	OpenApiSchema *string `pulumi:"openApiSchema"`
+	// (Output)
+	// Configuration for tools using Service Directory.
+	// Structure is documented below.
+	ServiceDirectoryConfigs []ToolOpenApiToolServiceDirectoryConfig `pulumi:"serviceDirectoryConfigs"`
+	// (Output)
+	// The TLS configuration.
+	// Structure is documented below.
+	TlsConfigs []ToolOpenApiToolTlsConfig `pulumi:"tlsConfigs"`
+	// (Output)
+	// The server URL of the Open API schema. This field is only set in tools in the
+	// environment dependencies during the export process if the schema contains a
+	// server url. During the import process, if this url is present in the environment
+	// dependencies and the schema has the $env_var placeholder, it will replace the
+	// placeholder in the schema.
+	Url *string `pulumi:"url"`
+}
+
+// ToolOpenApiToolInput is an input type that accepts ToolOpenApiToolArgs and ToolOpenApiToolOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolInput` via:
+//
+//	ToolOpenApiToolArgs{...}
+type ToolOpenApiToolInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolOutput() ToolOpenApiToolOutput
+	ToToolOpenApiToolOutputWithContext(context.Context) ToolOpenApiToolOutput
+}
+
+type ToolOpenApiToolArgs struct {
+	// (Output)
+	// Authentication information required for API calls.
+	// Structure is documented below.
+	ApiAuthentications ToolOpenApiToolApiAuthenticationArrayInput `pulumi:"apiAuthentications"`
+	// (Output)
+	// The description of the system tool.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
+	// If true, the agent will ignore unknown fields in the API response.
+	IgnoreUnknownFields pulumi.BoolPtrInput `pulumi:"ignoreUnknownFields"`
+	// (Output)
+	// The name of the system tool.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// The OpenAPI schema in JSON or YAML format.
+	OpenApiSchema pulumi.StringPtrInput `pulumi:"openApiSchema"`
+	// (Output)
+	// Configuration for tools using Service Directory.
+	// Structure is documented below.
+	ServiceDirectoryConfigs ToolOpenApiToolServiceDirectoryConfigArrayInput `pulumi:"serviceDirectoryConfigs"`
+	// (Output)
+	// The TLS configuration.
+	// Structure is documented below.
+	TlsConfigs ToolOpenApiToolTlsConfigArrayInput `pulumi:"tlsConfigs"`
+	// (Output)
+	// The server URL of the Open API schema. This field is only set in tools in the
+	// environment dependencies during the export process if the schema contains a
+	// server url. During the import process, if this url is present in the environment
+	// dependencies and the schema has the $env_var placeholder, it will replace the
+	// placeholder in the schema.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ToolOpenApiToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiTool)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolArgs) ToToolOpenApiToolOutput() ToolOpenApiToolOutput {
+	return i.ToToolOpenApiToolOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolArgs) ToToolOpenApiToolOutputWithContext(ctx context.Context) ToolOpenApiToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolOutput)
+}
+
+// ToolOpenApiToolArrayInput is an input type that accepts ToolOpenApiToolArray and ToolOpenApiToolArrayOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolArrayInput` via:
+//
+//	ToolOpenApiToolArray{ ToolOpenApiToolArgs{...} }
+type ToolOpenApiToolArrayInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolArrayOutput() ToolOpenApiToolArrayOutput
+	ToToolOpenApiToolArrayOutputWithContext(context.Context) ToolOpenApiToolArrayOutput
+}
+
+type ToolOpenApiToolArray []ToolOpenApiToolInput
+
+func (ToolOpenApiToolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiTool)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolArray) ToToolOpenApiToolArrayOutput() ToolOpenApiToolArrayOutput {
+	return i.ToToolOpenApiToolArrayOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolArray) ToToolOpenApiToolArrayOutputWithContext(ctx context.Context) ToolOpenApiToolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolArrayOutput)
+}
+
+type ToolOpenApiToolOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiTool)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolOutput) ToToolOpenApiToolOutput() ToolOpenApiToolOutput {
+	return o
+}
+
+func (o ToolOpenApiToolOutput) ToToolOpenApiToolOutputWithContext(ctx context.Context) ToolOpenApiToolOutput {
+	return o
+}
+
+// (Output)
+// Authentication information required for API calls.
+// Structure is documented below.
+func (o ToolOpenApiToolOutput) ApiAuthentications() ToolOpenApiToolApiAuthenticationArrayOutput {
+	return o.ApplyT(func(v ToolOpenApiTool) []ToolOpenApiToolApiAuthentication { return v.ApiAuthentications }).(ToolOpenApiToolApiAuthenticationArrayOutput)
+}
+
+// (Output)
+// The description of the system tool.
+func (o ToolOpenApiToolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiTool) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// If true, the agent will ignore unknown fields in the API response.
+func (o ToolOpenApiToolOutput) IgnoreUnknownFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiTool) *bool { return v.IgnoreUnknownFields }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The name of the system tool.
+func (o ToolOpenApiToolOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiTool) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The OpenAPI schema in JSON or YAML format.
+func (o ToolOpenApiToolOutput) OpenApiSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiTool) *string { return v.OpenApiSchema }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Configuration for tools using Service Directory.
+// Structure is documented below.
+func (o ToolOpenApiToolOutput) ServiceDirectoryConfigs() ToolOpenApiToolServiceDirectoryConfigArrayOutput {
+	return o.ApplyT(func(v ToolOpenApiTool) []ToolOpenApiToolServiceDirectoryConfig { return v.ServiceDirectoryConfigs }).(ToolOpenApiToolServiceDirectoryConfigArrayOutput)
+}
+
+// (Output)
+// The TLS configuration.
+// Structure is documented below.
+func (o ToolOpenApiToolOutput) TlsConfigs() ToolOpenApiToolTlsConfigArrayOutput {
+	return o.ApplyT(func(v ToolOpenApiTool) []ToolOpenApiToolTlsConfig { return v.TlsConfigs }).(ToolOpenApiToolTlsConfigArrayOutput)
+}
+
+// (Output)
+// The server URL of the Open API schema. This field is only set in tools in the
+// environment dependencies during the export process if the schema contains a
+// server url. During the import process, if this url is present in the environment
+// dependencies and the schema has the $env_var placeholder, it will replace the
+// placeholder in the schema.
+func (o ToolOpenApiToolOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiTool) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiToolArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiTool)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolArrayOutput) ToToolOpenApiToolArrayOutput() ToolOpenApiToolArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolArrayOutput) ToToolOpenApiToolArrayOutputWithContext(ctx context.Context) ToolOpenApiToolArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolArrayOutput) Index(i pulumi.IntInput) ToolOpenApiToolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolOpenApiTool {
+		return vs[0].([]ToolOpenApiTool)[vs[1].(int)]
+	}).(ToolOpenApiToolOutput)
+}
+
+type ToolOpenApiToolApiAuthentication struct {
+	// (Output)
+	// Configurations for authentication with API key.
+	// Structure is documented below.
+	ApiKeyConfigs []ToolOpenApiToolApiAuthenticationApiKeyConfig `pulumi:"apiKeyConfigs"`
+	// (Output)
+	// Configurations for authentication with OAuth.
+	// Structure is documented below.
+	OauthConfigs []ToolOpenApiToolApiAuthenticationOauthConfig `pulumi:"oauthConfigs"`
+	// (Output)
+	// Configurations for authentication using a custom service account.
+	// Structure is documented below.
+	ServiceAccountAuthConfigs []ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig `pulumi:"serviceAccountAuthConfigs"`
+	// (Output)
+	// Configurations for authentication with [ID
+	// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+	// from service agent.
+	ServiceAgentIdTokenAuthConfigs []ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig `pulumi:"serviceAgentIdTokenAuthConfigs"`
+}
+
+// ToolOpenApiToolApiAuthenticationInput is an input type that accepts ToolOpenApiToolApiAuthenticationArgs and ToolOpenApiToolApiAuthenticationOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolApiAuthenticationInput` via:
+//
+//	ToolOpenApiToolApiAuthenticationArgs{...}
+type ToolOpenApiToolApiAuthenticationInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolApiAuthenticationOutput() ToolOpenApiToolApiAuthenticationOutput
+	ToToolOpenApiToolApiAuthenticationOutputWithContext(context.Context) ToolOpenApiToolApiAuthenticationOutput
+}
+
+type ToolOpenApiToolApiAuthenticationArgs struct {
+	// (Output)
+	// Configurations for authentication with API key.
+	// Structure is documented below.
+	ApiKeyConfigs ToolOpenApiToolApiAuthenticationApiKeyConfigArrayInput `pulumi:"apiKeyConfigs"`
+	// (Output)
+	// Configurations for authentication with OAuth.
+	// Structure is documented below.
+	OauthConfigs ToolOpenApiToolApiAuthenticationOauthConfigArrayInput `pulumi:"oauthConfigs"`
+	// (Output)
+	// Configurations for authentication using a custom service account.
+	// Structure is documented below.
+	ServiceAccountAuthConfigs ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayInput `pulumi:"serviceAccountAuthConfigs"`
+	// (Output)
+	// Configurations for authentication with [ID
+	// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+	// from service agent.
+	ServiceAgentIdTokenAuthConfigs ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput `pulumi:"serviceAgentIdTokenAuthConfigs"`
+}
+
+func (ToolOpenApiToolApiAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolApiAuthentication)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolApiAuthenticationArgs) ToToolOpenApiToolApiAuthenticationOutput() ToolOpenApiToolApiAuthenticationOutput {
+	return i.ToToolOpenApiToolApiAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolApiAuthenticationArgs) ToToolOpenApiToolApiAuthenticationOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolApiAuthenticationOutput)
+}
+
+// ToolOpenApiToolApiAuthenticationArrayInput is an input type that accepts ToolOpenApiToolApiAuthenticationArray and ToolOpenApiToolApiAuthenticationArrayOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolApiAuthenticationArrayInput` via:
+//
+//	ToolOpenApiToolApiAuthenticationArray{ ToolOpenApiToolApiAuthenticationArgs{...} }
+type ToolOpenApiToolApiAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolApiAuthenticationArrayOutput() ToolOpenApiToolApiAuthenticationArrayOutput
+	ToToolOpenApiToolApiAuthenticationArrayOutputWithContext(context.Context) ToolOpenApiToolApiAuthenticationArrayOutput
+}
+
+type ToolOpenApiToolApiAuthenticationArray []ToolOpenApiToolApiAuthenticationInput
+
+func (ToolOpenApiToolApiAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolApiAuthentication)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolApiAuthenticationArray) ToToolOpenApiToolApiAuthenticationArrayOutput() ToolOpenApiToolApiAuthenticationArrayOutput {
+	return i.ToToolOpenApiToolApiAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolApiAuthenticationArray) ToToolOpenApiToolApiAuthenticationArrayOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolApiAuthenticationArrayOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolApiAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolApiAuthentication)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolApiAuthenticationOutput) ToToolOpenApiToolApiAuthenticationOutput() ToolOpenApiToolApiAuthenticationOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationOutput) ToToolOpenApiToolApiAuthenticationOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationOutput {
+	return o
+}
+
+// (Output)
+// Configurations for authentication with API key.
+// Structure is documented below.
+func (o ToolOpenApiToolApiAuthenticationOutput) ApiKeyConfigs() ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthentication) []ToolOpenApiToolApiAuthenticationApiKeyConfig {
+		return v.ApiKeyConfigs
+	}).(ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput)
+}
+
+// (Output)
+// Configurations for authentication with OAuth.
+// Structure is documented below.
+func (o ToolOpenApiToolApiAuthenticationOutput) OauthConfigs() ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthentication) []ToolOpenApiToolApiAuthenticationOauthConfig {
+		return v.OauthConfigs
+	}).(ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput)
+}
+
+// (Output)
+// Configurations for authentication using a custom service account.
+// Structure is documented below.
+func (o ToolOpenApiToolApiAuthenticationOutput) ServiceAccountAuthConfigs() ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthentication) []ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
+		return v.ServiceAccountAuthConfigs
+	}).(ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput)
+}
+
+// (Output)
+// Configurations for authentication with [ID
+// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+// from service agent.
+func (o ToolOpenApiToolApiAuthenticationOutput) ServiceAgentIdTokenAuthConfigs() ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthentication) []ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig {
+		return v.ServiceAgentIdTokenAuthConfigs
+	}).(ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolApiAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolApiAuthentication)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolApiAuthenticationArrayOutput) ToToolOpenApiToolApiAuthenticationArrayOutput() ToolOpenApiToolApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationArrayOutput) ToToolOpenApiToolApiAuthenticationArrayOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationArrayOutput) Index(i pulumi.IntInput) ToolOpenApiToolApiAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolOpenApiToolApiAuthentication {
+		return vs[0].([]ToolOpenApiToolApiAuthentication)[vs[1].(int)]
+	}).(ToolOpenApiToolApiAuthenticationOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationApiKeyConfig struct {
+	// (Output)
+	// The name of the SecretManager secret version resource storing the API key.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ApiKeySecretVersion *string `pulumi:"apiKeySecretVersion"`
+	// (Output)
+	// The parameter name or the header name of the API key.
+	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+	KeyName *string `pulumi:"keyName"`
+	// (Output)
+	// Key location in the request.
+	// Possible values:
+	// HEADER
+	// QUERY_STRING
+	RequestLocation *string `pulumi:"requestLocation"`
+}
+
+// ToolOpenApiToolApiAuthenticationApiKeyConfigInput is an input type that accepts ToolOpenApiToolApiAuthenticationApiKeyConfigArgs and ToolOpenApiToolApiAuthenticationApiKeyConfigOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolApiAuthenticationApiKeyConfigInput` via:
+//
+//	ToolOpenApiToolApiAuthenticationApiKeyConfigArgs{...}
+type ToolOpenApiToolApiAuthenticationApiKeyConfigInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolApiAuthenticationApiKeyConfigOutput() ToolOpenApiToolApiAuthenticationApiKeyConfigOutput
+	ToToolOpenApiToolApiAuthenticationApiKeyConfigOutputWithContext(context.Context) ToolOpenApiToolApiAuthenticationApiKeyConfigOutput
+}
+
+type ToolOpenApiToolApiAuthenticationApiKeyConfigArgs struct {
+	// (Output)
+	// The name of the SecretManager secret version resource storing the API key.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ApiKeySecretVersion pulumi.StringPtrInput `pulumi:"apiKeySecretVersion"`
+	// (Output)
+	// The parameter name or the header name of the API key.
+	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
+	// (Output)
+	// Key location in the request.
+	// Possible values:
+	// HEADER
+	// QUERY_STRING
+	RequestLocation pulumi.StringPtrInput `pulumi:"requestLocation"`
+}
+
+func (ToolOpenApiToolApiAuthenticationApiKeyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolApiAuthenticationApiKeyConfigArgs) ToToolOpenApiToolApiAuthenticationApiKeyConfigOutput() ToolOpenApiToolApiAuthenticationApiKeyConfigOutput {
+	return i.ToToolOpenApiToolApiAuthenticationApiKeyConfigOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolApiAuthenticationApiKeyConfigArgs) ToToolOpenApiToolApiAuthenticationApiKeyConfigOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationApiKeyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolApiAuthenticationApiKeyConfigOutput)
+}
+
+// ToolOpenApiToolApiAuthenticationApiKeyConfigArrayInput is an input type that accepts ToolOpenApiToolApiAuthenticationApiKeyConfigArray and ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolApiAuthenticationApiKeyConfigArrayInput` via:
+//
+//	ToolOpenApiToolApiAuthenticationApiKeyConfigArray{ ToolOpenApiToolApiAuthenticationApiKeyConfigArgs{...} }
+type ToolOpenApiToolApiAuthenticationApiKeyConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput() ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput
+	ToToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutputWithContext(context.Context) ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput
+}
+
+type ToolOpenApiToolApiAuthenticationApiKeyConfigArray []ToolOpenApiToolApiAuthenticationApiKeyConfigInput
+
+func (ToolOpenApiToolApiAuthenticationApiKeyConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolApiAuthenticationApiKeyConfigArray) ToToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput() ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput {
+	return i.ToToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolApiAuthenticationApiKeyConfigArray) ToToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationApiKeyConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolApiAuthenticationApiKeyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolApiAuthenticationApiKeyConfigOutput) ToToolOpenApiToolApiAuthenticationApiKeyConfigOutput() ToolOpenApiToolApiAuthenticationApiKeyConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationApiKeyConfigOutput) ToToolOpenApiToolApiAuthenticationApiKeyConfigOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationApiKeyConfigOutput {
+	return o
+}
+
+// (Output)
+// The name of the SecretManager secret version resource storing the API key.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+// service agent
+// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolOpenApiToolApiAuthenticationApiKeyConfigOutput) ApiKeySecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthenticationApiKeyConfig) *string { return v.ApiKeySecretVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The parameter name or the header name of the API key.
+// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+func (o ToolOpenApiToolApiAuthenticationApiKeyConfigOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthenticationApiKeyConfig) *string { return v.KeyName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Key location in the request.
+// Possible values:
+// HEADER
+// QUERY_STRING
+func (o ToolOpenApiToolApiAuthenticationApiKeyConfigOutput) RequestLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthenticationApiKeyConfig) *string { return v.RequestLocation }).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput) ToToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput() ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput) ToToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput) Index(i pulumi.IntInput) ToolOpenApiToolApiAuthenticationApiKeyConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolOpenApiToolApiAuthenticationApiKeyConfig {
+		return vs[0].([]ToolOpenApiToolApiAuthenticationApiKeyConfig)[vs[1].(int)]
+	}).(ToolOpenApiToolApiAuthenticationApiKeyConfigOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationOauthConfig struct {
+	// (Output)
+	// The client ID from the OAuth provider.
+	ClientId *string `pulumi:"clientId"`
+	// (Output)
+	// The name of the SecretManager secret version resource storing the
+	// client secret.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ClientSecretVersion *string `pulumi:"clientSecretVersion"`
+	// (Output)
+	// OAuth grant types.
+	// Possible values:
+	// CLIENT_CREDENTIAL
+	OauthGrantType *string `pulumi:"oauthGrantType"`
+	// (Output)
+	// The OAuth scopes to grant.
+	Scopes []string `pulumi:"scopes"`
+	// (Output)
+	// The token endpoint in the OAuth provider to exchange for an access token.
+	TokenEndpoint *string `pulumi:"tokenEndpoint"`
+}
+
+// ToolOpenApiToolApiAuthenticationOauthConfigInput is an input type that accepts ToolOpenApiToolApiAuthenticationOauthConfigArgs and ToolOpenApiToolApiAuthenticationOauthConfigOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolApiAuthenticationOauthConfigInput` via:
+//
+//	ToolOpenApiToolApiAuthenticationOauthConfigArgs{...}
+type ToolOpenApiToolApiAuthenticationOauthConfigInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolApiAuthenticationOauthConfigOutput() ToolOpenApiToolApiAuthenticationOauthConfigOutput
+	ToToolOpenApiToolApiAuthenticationOauthConfigOutputWithContext(context.Context) ToolOpenApiToolApiAuthenticationOauthConfigOutput
+}
+
+type ToolOpenApiToolApiAuthenticationOauthConfigArgs struct {
+	// (Output)
+	// The client ID from the OAuth provider.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// (Output)
+	// The name of the SecretManager secret version resource storing the
+	// client secret.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ClientSecretVersion pulumi.StringPtrInput `pulumi:"clientSecretVersion"`
+	// (Output)
+	// OAuth grant types.
+	// Possible values:
+	// CLIENT_CREDENTIAL
+	OauthGrantType pulumi.StringPtrInput `pulumi:"oauthGrantType"`
+	// (Output)
+	// The OAuth scopes to grant.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// (Output)
+	// The token endpoint in the OAuth provider to exchange for an access token.
+	TokenEndpoint pulumi.StringPtrInput `pulumi:"tokenEndpoint"`
+}
+
+func (ToolOpenApiToolApiAuthenticationOauthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolApiAuthenticationOauthConfigArgs) ToToolOpenApiToolApiAuthenticationOauthConfigOutput() ToolOpenApiToolApiAuthenticationOauthConfigOutput {
+	return i.ToToolOpenApiToolApiAuthenticationOauthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolApiAuthenticationOauthConfigArgs) ToToolOpenApiToolApiAuthenticationOauthConfigOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationOauthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolApiAuthenticationOauthConfigOutput)
+}
+
+// ToolOpenApiToolApiAuthenticationOauthConfigArrayInput is an input type that accepts ToolOpenApiToolApiAuthenticationOauthConfigArray and ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolApiAuthenticationOauthConfigArrayInput` via:
+//
+//	ToolOpenApiToolApiAuthenticationOauthConfigArray{ ToolOpenApiToolApiAuthenticationOauthConfigArgs{...} }
+type ToolOpenApiToolApiAuthenticationOauthConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolApiAuthenticationOauthConfigArrayOutput() ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput
+	ToToolOpenApiToolApiAuthenticationOauthConfigArrayOutputWithContext(context.Context) ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput
+}
+
+type ToolOpenApiToolApiAuthenticationOauthConfigArray []ToolOpenApiToolApiAuthenticationOauthConfigInput
+
+func (ToolOpenApiToolApiAuthenticationOauthConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolApiAuthenticationOauthConfigArray) ToToolOpenApiToolApiAuthenticationOauthConfigArrayOutput() ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput {
+	return i.ToToolOpenApiToolApiAuthenticationOauthConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolApiAuthenticationOauthConfigArray) ToToolOpenApiToolApiAuthenticationOauthConfigArrayOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationOauthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolApiAuthenticationOauthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolApiAuthenticationOauthConfigOutput) ToToolOpenApiToolApiAuthenticationOauthConfigOutput() ToolOpenApiToolApiAuthenticationOauthConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationOauthConfigOutput) ToToolOpenApiToolApiAuthenticationOauthConfigOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationOauthConfigOutput {
+	return o
+}
+
+// (Output)
+// The client ID from the OAuth provider.
+func (o ToolOpenApiToolApiAuthenticationOauthConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthenticationOauthConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the SecretManager secret version resource storing the
+// client secret.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+// service agent
+// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolOpenApiToolApiAuthenticationOauthConfigOutput) ClientSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthenticationOauthConfig) *string { return v.ClientSecretVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// OAuth grant types.
+// Possible values:
+// CLIENT_CREDENTIAL
+func (o ToolOpenApiToolApiAuthenticationOauthConfigOutput) OauthGrantType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthenticationOauthConfig) *string { return v.OauthGrantType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The OAuth scopes to grant.
+func (o ToolOpenApiToolApiAuthenticationOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthenticationOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The token endpoint in the OAuth provider to exchange for an access token.
+func (o ToolOpenApiToolApiAuthenticationOauthConfigOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthenticationOauthConfig) *string { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput) ToToolOpenApiToolApiAuthenticationOauthConfigArrayOutput() ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput) ToToolOpenApiToolApiAuthenticationOauthConfigArrayOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput) Index(i pulumi.IntInput) ToolOpenApiToolApiAuthenticationOauthConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolOpenApiToolApiAuthenticationOauthConfig {
+		return vs[0].([]ToolOpenApiToolApiAuthenticationOauthConfig)[vs[1].(int)]
+	}).(ToolOpenApiToolApiAuthenticationOauthConfigOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig struct {
+	// (Output)
+	// The email address of the service account used for authenticatation. CES
+	// uses this service account to exchange an access token and the access token
+	// is then sent in the `Authorization` header of the request.
+	// The service account must have the
+	// `roles/iam.serviceAccountTokenCreator` role granted to the
+	// CES service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+}
+
+// ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigInput is an input type that accepts ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs and ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigInput` via:
+//
+//	ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs{...}
+type ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput() ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput
+	ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutputWithContext(context.Context) ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput
+}
+
+type ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs struct {
+	// (Output)
+	// The email address of the service account used for authenticatation. CES
+	// uses this service account to exchange an access token and the access token
+	// is then sent in the `Authorization` header of the request.
+	// The service account must have the
+	// `roles/iam.serviceAccountTokenCreator` role granted to the
+	// CES service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+}
+
+func (ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs) ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput() ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return i.ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs) ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput)
+}
+
+// ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayInput is an input type that accepts ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArray and ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayInput` via:
+//
+//	ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArray{ ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs{...} }
+type ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput() ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput
+	ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutputWithContext(context.Context) ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput
+}
+
+type ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArray []ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigInput
+
+func (ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArray) ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput() ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return i.ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArray) ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput) ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput() ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput) ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return o
+}
+
+// (Output)
+// The email address of the service account used for authenticatation. CES
+// uses this service account to exchange an access token and the access token
+// is then sent in the `Authorization` header of the request.
+// The service account must have the
+// `roles/iam.serviceAccountTokenCreator` role granted to the
+// CES service agent
+// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput) ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput() ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput) ToToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput) Index(i pulumi.IntInput) ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
+		return vs[0].([]ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig)[vs[1].(int)]
+	}).(ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig struct {
+}
+
+// ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigInput is an input type that accepts ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs and ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigInput` via:
+//
+//	ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs{...}
+type ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput() ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput
+	ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(context.Context) ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput
+}
+
+type ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs struct {
+}
+
+func (ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput() ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return i.ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput)
+}
+
+// ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput is an input type that accepts ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArray and ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput` via:
+//
+//	ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArray{ ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs{...} }
+type ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput() ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput
+	ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutputWithContext(context.Context) ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput
+}
+
+type ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArray []ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigInput
+
+func (ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArray) ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput() ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return i.ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArray) ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput)
+}
+
+type ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput() ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return o
+}
+
+type ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput() ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) ToToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutputWithContext(ctx context.Context) ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) Index(i pulumi.IntInput) ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig {
+		return vs[0].([]ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig)[vs[1].(int)]
+	}).(ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput)
+}
+
+type ToolOpenApiToolServiceDirectoryConfig struct {
+	// (Output)
+	// The name of [Service
+	// Directory](https://cloud.google.com/service-directory) service.
+	// Format:
+	// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+	// Location of the service directory must be the same as the location of the
+	// app.
+	Service *string `pulumi:"service"`
+}
+
+// ToolOpenApiToolServiceDirectoryConfigInput is an input type that accepts ToolOpenApiToolServiceDirectoryConfigArgs and ToolOpenApiToolServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolServiceDirectoryConfigInput` via:
+//
+//	ToolOpenApiToolServiceDirectoryConfigArgs{...}
+type ToolOpenApiToolServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolServiceDirectoryConfigOutput() ToolOpenApiToolServiceDirectoryConfigOutput
+	ToToolOpenApiToolServiceDirectoryConfigOutputWithContext(context.Context) ToolOpenApiToolServiceDirectoryConfigOutput
+}
+
+type ToolOpenApiToolServiceDirectoryConfigArgs struct {
+	// (Output)
+	// The name of [Service
+	// Directory](https://cloud.google.com/service-directory) service.
+	// Format:
+	// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+	// Location of the service directory must be the same as the location of the
+	// app.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (ToolOpenApiToolServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolServiceDirectoryConfigArgs) ToToolOpenApiToolServiceDirectoryConfigOutput() ToolOpenApiToolServiceDirectoryConfigOutput {
+	return i.ToToolOpenApiToolServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolServiceDirectoryConfigArgs) ToToolOpenApiToolServiceDirectoryConfigOutputWithContext(ctx context.Context) ToolOpenApiToolServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolServiceDirectoryConfigOutput)
+}
+
+// ToolOpenApiToolServiceDirectoryConfigArrayInput is an input type that accepts ToolOpenApiToolServiceDirectoryConfigArray and ToolOpenApiToolServiceDirectoryConfigArrayOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolServiceDirectoryConfigArrayInput` via:
+//
+//	ToolOpenApiToolServiceDirectoryConfigArray{ ToolOpenApiToolServiceDirectoryConfigArgs{...} }
+type ToolOpenApiToolServiceDirectoryConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolServiceDirectoryConfigArrayOutput() ToolOpenApiToolServiceDirectoryConfigArrayOutput
+	ToToolOpenApiToolServiceDirectoryConfigArrayOutputWithContext(context.Context) ToolOpenApiToolServiceDirectoryConfigArrayOutput
+}
+
+type ToolOpenApiToolServiceDirectoryConfigArray []ToolOpenApiToolServiceDirectoryConfigInput
+
+func (ToolOpenApiToolServiceDirectoryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolServiceDirectoryConfigArray) ToToolOpenApiToolServiceDirectoryConfigArrayOutput() ToolOpenApiToolServiceDirectoryConfigArrayOutput {
+	return i.ToToolOpenApiToolServiceDirectoryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolServiceDirectoryConfigArray) ToToolOpenApiToolServiceDirectoryConfigArrayOutputWithContext(ctx context.Context) ToolOpenApiToolServiceDirectoryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolServiceDirectoryConfigArrayOutput)
+}
+
+type ToolOpenApiToolServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolServiceDirectoryConfigOutput) ToToolOpenApiToolServiceDirectoryConfigOutput() ToolOpenApiToolServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiToolServiceDirectoryConfigOutput) ToToolOpenApiToolServiceDirectoryConfigOutputWithContext(ctx context.Context) ToolOpenApiToolServiceDirectoryConfigOutput {
+	return o
+}
+
+// (Output)
+// The name of [Service
+// Directory](https://cloud.google.com/service-directory) service.
+// Format:
+// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+// Location of the service directory must be the same as the location of the
+// app.
+func (o ToolOpenApiToolServiceDirectoryConfigOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiToolServiceDirectoryConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiToolServiceDirectoryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolServiceDirectoryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolServiceDirectoryConfigArrayOutput) ToToolOpenApiToolServiceDirectoryConfigArrayOutput() ToolOpenApiToolServiceDirectoryConfigArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolServiceDirectoryConfigArrayOutput) ToToolOpenApiToolServiceDirectoryConfigArrayOutputWithContext(ctx context.Context) ToolOpenApiToolServiceDirectoryConfigArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolServiceDirectoryConfigArrayOutput) Index(i pulumi.IntInput) ToolOpenApiToolServiceDirectoryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolOpenApiToolServiceDirectoryConfig {
+		return vs[0].([]ToolOpenApiToolServiceDirectoryConfig)[vs[1].(int)]
+	}).(ToolOpenApiToolServiceDirectoryConfigOutput)
+}
+
+type ToolOpenApiToolTlsConfig struct {
+	// Specifies a list of allowed custom CA certificates for HTTPS
+	// verification.
+	// Structure is documented below.
+	CaCerts []ToolOpenApiToolTlsConfigCaCert `pulumi:"caCerts"`
+}
+
+// ToolOpenApiToolTlsConfigInput is an input type that accepts ToolOpenApiToolTlsConfigArgs and ToolOpenApiToolTlsConfigOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolTlsConfigInput` via:
+//
+//	ToolOpenApiToolTlsConfigArgs{...}
+type ToolOpenApiToolTlsConfigInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolTlsConfigOutput() ToolOpenApiToolTlsConfigOutput
+	ToToolOpenApiToolTlsConfigOutputWithContext(context.Context) ToolOpenApiToolTlsConfigOutput
+}
+
+type ToolOpenApiToolTlsConfigArgs struct {
+	// Specifies a list of allowed custom CA certificates for HTTPS
+	// verification.
+	// Structure is documented below.
+	CaCerts ToolOpenApiToolTlsConfigCaCertArrayInput `pulumi:"caCerts"`
+}
+
+func (ToolOpenApiToolTlsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolTlsConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolTlsConfigArgs) ToToolOpenApiToolTlsConfigOutput() ToolOpenApiToolTlsConfigOutput {
+	return i.ToToolOpenApiToolTlsConfigOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolTlsConfigArgs) ToToolOpenApiToolTlsConfigOutputWithContext(ctx context.Context) ToolOpenApiToolTlsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolTlsConfigOutput)
+}
+
+// ToolOpenApiToolTlsConfigArrayInput is an input type that accepts ToolOpenApiToolTlsConfigArray and ToolOpenApiToolTlsConfigArrayOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolTlsConfigArrayInput` via:
+//
+//	ToolOpenApiToolTlsConfigArray{ ToolOpenApiToolTlsConfigArgs{...} }
+type ToolOpenApiToolTlsConfigArrayInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolTlsConfigArrayOutput() ToolOpenApiToolTlsConfigArrayOutput
+	ToToolOpenApiToolTlsConfigArrayOutputWithContext(context.Context) ToolOpenApiToolTlsConfigArrayOutput
+}
+
+type ToolOpenApiToolTlsConfigArray []ToolOpenApiToolTlsConfigInput
+
+func (ToolOpenApiToolTlsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolTlsConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolTlsConfigArray) ToToolOpenApiToolTlsConfigArrayOutput() ToolOpenApiToolTlsConfigArrayOutput {
+	return i.ToToolOpenApiToolTlsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolTlsConfigArray) ToToolOpenApiToolTlsConfigArrayOutputWithContext(ctx context.Context) ToolOpenApiToolTlsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolTlsConfigArrayOutput)
+}
+
+type ToolOpenApiToolTlsConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolTlsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolTlsConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolTlsConfigOutput) ToToolOpenApiToolTlsConfigOutput() ToolOpenApiToolTlsConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiToolTlsConfigOutput) ToToolOpenApiToolTlsConfigOutputWithContext(ctx context.Context) ToolOpenApiToolTlsConfigOutput {
+	return o
+}
+
+// Specifies a list of allowed custom CA certificates for HTTPS
+// verification.
+// Structure is documented below.
+func (o ToolOpenApiToolTlsConfigOutput) CaCerts() ToolOpenApiToolTlsConfigCaCertArrayOutput {
+	return o.ApplyT(func(v ToolOpenApiToolTlsConfig) []ToolOpenApiToolTlsConfigCaCert { return v.CaCerts }).(ToolOpenApiToolTlsConfigCaCertArrayOutput)
+}
+
+type ToolOpenApiToolTlsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolTlsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolTlsConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolTlsConfigArrayOutput) ToToolOpenApiToolTlsConfigArrayOutput() ToolOpenApiToolTlsConfigArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolTlsConfigArrayOutput) ToToolOpenApiToolTlsConfigArrayOutputWithContext(ctx context.Context) ToolOpenApiToolTlsConfigArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolTlsConfigArrayOutput) Index(i pulumi.IntInput) ToolOpenApiToolTlsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolOpenApiToolTlsConfig {
+		return vs[0].([]ToolOpenApiToolTlsConfig)[vs[1].(int)]
+	}).(ToolOpenApiToolTlsConfigOutput)
+}
+
+type ToolOpenApiToolTlsConfigCaCert struct {
+	// (Output)
+	// The allowed custom CA certificates (in DER format) for
+	// HTTPS verification. This overrides the default SSL trust store. If this
+	// is empty or unspecified, CES will use Google's default trust
+	// store to verify certificates. N.B. Make sure the HTTPS server
+	// certificates are signed with "subject alt name". For instance a
+	// certificate can be self-signed using the following command,
+	// openssl x509 -req -days 200 -in example.com.csr\
+	// -signkey example.com.key\
+	// -out example.com.crt\
+	// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	// A base64-encoded string.
+	Cert *string `pulumi:"cert"`
+	// (Output)
+	// The name of the allowed custom CA certificates. This
+	// can be used to disambiguate the custom CA certificates.
+	DisplayName *string `pulumi:"displayName"`
+}
+
+// ToolOpenApiToolTlsConfigCaCertInput is an input type that accepts ToolOpenApiToolTlsConfigCaCertArgs and ToolOpenApiToolTlsConfigCaCertOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolTlsConfigCaCertInput` via:
+//
+//	ToolOpenApiToolTlsConfigCaCertArgs{...}
+type ToolOpenApiToolTlsConfigCaCertInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolTlsConfigCaCertOutput() ToolOpenApiToolTlsConfigCaCertOutput
+	ToToolOpenApiToolTlsConfigCaCertOutputWithContext(context.Context) ToolOpenApiToolTlsConfigCaCertOutput
+}
+
+type ToolOpenApiToolTlsConfigCaCertArgs struct {
+	// (Output)
+	// The allowed custom CA certificates (in DER format) for
+	// HTTPS verification. This overrides the default SSL trust store. If this
+	// is empty or unspecified, CES will use Google's default trust
+	// store to verify certificates. N.B. Make sure the HTTPS server
+	// certificates are signed with "subject alt name". For instance a
+	// certificate can be self-signed using the following command,
+	// openssl x509 -req -days 200 -in example.com.csr\
+	// -signkey example.com.key\
+	// -out example.com.crt\
+	// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	// A base64-encoded string.
+	Cert pulumi.StringPtrInput `pulumi:"cert"`
+	// (Output)
+	// The name of the allowed custom CA certificates. This
+	// can be used to disambiguate the custom CA certificates.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+}
+
+func (ToolOpenApiToolTlsConfigCaCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolTlsConfigCaCert)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolTlsConfigCaCertArgs) ToToolOpenApiToolTlsConfigCaCertOutput() ToolOpenApiToolTlsConfigCaCertOutput {
+	return i.ToToolOpenApiToolTlsConfigCaCertOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolTlsConfigCaCertArgs) ToToolOpenApiToolTlsConfigCaCertOutputWithContext(ctx context.Context) ToolOpenApiToolTlsConfigCaCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolTlsConfigCaCertOutput)
+}
+
+// ToolOpenApiToolTlsConfigCaCertArrayInput is an input type that accepts ToolOpenApiToolTlsConfigCaCertArray and ToolOpenApiToolTlsConfigCaCertArrayOutput values.
+// You can construct a concrete instance of `ToolOpenApiToolTlsConfigCaCertArrayInput` via:
+//
+//	ToolOpenApiToolTlsConfigCaCertArray{ ToolOpenApiToolTlsConfigCaCertArgs{...} }
+type ToolOpenApiToolTlsConfigCaCertArrayInput interface {
+	pulumi.Input
+
+	ToToolOpenApiToolTlsConfigCaCertArrayOutput() ToolOpenApiToolTlsConfigCaCertArrayOutput
+	ToToolOpenApiToolTlsConfigCaCertArrayOutputWithContext(context.Context) ToolOpenApiToolTlsConfigCaCertArrayOutput
+}
+
+type ToolOpenApiToolTlsConfigCaCertArray []ToolOpenApiToolTlsConfigCaCertInput
+
+func (ToolOpenApiToolTlsConfigCaCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolTlsConfigCaCert)(nil)).Elem()
+}
+
+func (i ToolOpenApiToolTlsConfigCaCertArray) ToToolOpenApiToolTlsConfigCaCertArrayOutput() ToolOpenApiToolTlsConfigCaCertArrayOutput {
+	return i.ToToolOpenApiToolTlsConfigCaCertArrayOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiToolTlsConfigCaCertArray) ToToolOpenApiToolTlsConfigCaCertArrayOutputWithContext(ctx context.Context) ToolOpenApiToolTlsConfigCaCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiToolTlsConfigCaCertArrayOutput)
+}
+
+type ToolOpenApiToolTlsConfigCaCertOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolTlsConfigCaCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiToolTlsConfigCaCert)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolTlsConfigCaCertOutput) ToToolOpenApiToolTlsConfigCaCertOutput() ToolOpenApiToolTlsConfigCaCertOutput {
+	return o
+}
+
+func (o ToolOpenApiToolTlsConfigCaCertOutput) ToToolOpenApiToolTlsConfigCaCertOutputWithContext(ctx context.Context) ToolOpenApiToolTlsConfigCaCertOutput {
+	return o
+}
+
+// (Output)
+// The allowed custom CA certificates (in DER format) for
+// HTTPS verification. This overrides the default SSL trust store. If this
+// is empty or unspecified, CES will use Google's default trust
+// store to verify certificates. N.B. Make sure the HTTPS server
+// certificates are signed with "subject alt name". For instance a
+// certificate can be self-signed using the following command,
+// openssl x509 -req -days 200 -in example.com.csr\
+// -signkey example.com.key\
+// -out example.com.crt\
+// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+// A base64-encoded string.
+func (o ToolOpenApiToolTlsConfigCaCertOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiToolTlsConfigCaCert) *string { return v.Cert }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the allowed custom CA certificates. This
+// can be used to disambiguate the custom CA certificates.
+func (o ToolOpenApiToolTlsConfigCaCertOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiToolTlsConfigCaCert) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiToolTlsConfigCaCertArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiToolTlsConfigCaCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiToolTlsConfigCaCert)(nil)).Elem()
+}
+
+func (o ToolOpenApiToolTlsConfigCaCertArrayOutput) ToToolOpenApiToolTlsConfigCaCertArrayOutput() ToolOpenApiToolTlsConfigCaCertArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolTlsConfigCaCertArrayOutput) ToToolOpenApiToolTlsConfigCaCertArrayOutputWithContext(ctx context.Context) ToolOpenApiToolTlsConfigCaCertArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiToolTlsConfigCaCertArrayOutput) Index(i pulumi.IntInput) ToolOpenApiToolTlsConfigCaCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolOpenApiToolTlsConfigCaCert {
+		return vs[0].([]ToolOpenApiToolTlsConfigCaCert)[vs[1].(int)]
+	}).(ToolOpenApiToolTlsConfigCaCertOutput)
+}
+
+type ToolPythonFunction struct {
+	// (Output)
+	// The description of the Python function, parsed from the python code's
+	// docstring.
+	Description *string `pulumi:"description"`
+	// The name of the Python function to execute. Must match a Python function
+	// name defined in the python code. Case sensitive. If the name is not
+	// provided, the first function defined in the python code will be used.
+	Name *string `pulumi:"name"`
+	// The Python code to execute for the tool.
+	PythonCode *string `pulumi:"pythonCode"`
+}
+
+// ToolPythonFunctionInput is an input type that accepts ToolPythonFunctionArgs and ToolPythonFunctionOutput values.
+// You can construct a concrete instance of `ToolPythonFunctionInput` via:
+//
+//	ToolPythonFunctionArgs{...}
+type ToolPythonFunctionInput interface {
+	pulumi.Input
+
+	ToToolPythonFunctionOutput() ToolPythonFunctionOutput
+	ToToolPythonFunctionOutputWithContext(context.Context) ToolPythonFunctionOutput
+}
+
+type ToolPythonFunctionArgs struct {
+	// (Output)
+	// The description of the Python function, parsed from the python code's
+	// docstring.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The name of the Python function to execute. Must match a Python function
+	// name defined in the python code. Case sensitive. If the name is not
+	// provided, the first function defined in the python code will be used.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The Python code to execute for the tool.
+	PythonCode pulumi.StringPtrInput `pulumi:"pythonCode"`
+}
+
+func (ToolPythonFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolPythonFunction)(nil)).Elem()
+}
+
+func (i ToolPythonFunctionArgs) ToToolPythonFunctionOutput() ToolPythonFunctionOutput {
+	return i.ToToolPythonFunctionOutputWithContext(context.Background())
+}
+
+func (i ToolPythonFunctionArgs) ToToolPythonFunctionOutputWithContext(ctx context.Context) ToolPythonFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolPythonFunctionOutput)
+}
+
+func (i ToolPythonFunctionArgs) ToToolPythonFunctionPtrOutput() ToolPythonFunctionPtrOutput {
+	return i.ToToolPythonFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i ToolPythonFunctionArgs) ToToolPythonFunctionPtrOutputWithContext(ctx context.Context) ToolPythonFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolPythonFunctionOutput).ToToolPythonFunctionPtrOutputWithContext(ctx)
+}
+
+// ToolPythonFunctionPtrInput is an input type that accepts ToolPythonFunctionArgs, ToolPythonFunctionPtr and ToolPythonFunctionPtrOutput values.
+// You can construct a concrete instance of `ToolPythonFunctionPtrInput` via:
+//
+//	        ToolPythonFunctionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolPythonFunctionPtrInput interface {
+	pulumi.Input
+
+	ToToolPythonFunctionPtrOutput() ToolPythonFunctionPtrOutput
+	ToToolPythonFunctionPtrOutputWithContext(context.Context) ToolPythonFunctionPtrOutput
+}
+
+type toolPythonFunctionPtrType ToolPythonFunctionArgs
+
+func ToolPythonFunctionPtr(v *ToolPythonFunctionArgs) ToolPythonFunctionPtrInput {
+	return (*toolPythonFunctionPtrType)(v)
+}
+
+func (*toolPythonFunctionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolPythonFunction)(nil)).Elem()
+}
+
+func (i *toolPythonFunctionPtrType) ToToolPythonFunctionPtrOutput() ToolPythonFunctionPtrOutput {
+	return i.ToToolPythonFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i *toolPythonFunctionPtrType) ToToolPythonFunctionPtrOutputWithContext(ctx context.Context) ToolPythonFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolPythonFunctionPtrOutput)
+}
+
+type ToolPythonFunctionOutput struct{ *pulumi.OutputState }
+
+func (ToolPythonFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolPythonFunction)(nil)).Elem()
+}
+
+func (o ToolPythonFunctionOutput) ToToolPythonFunctionOutput() ToolPythonFunctionOutput {
+	return o
+}
+
+func (o ToolPythonFunctionOutput) ToToolPythonFunctionOutputWithContext(ctx context.Context) ToolPythonFunctionOutput {
+	return o
+}
+
+func (o ToolPythonFunctionOutput) ToToolPythonFunctionPtrOutput() ToolPythonFunctionPtrOutput {
+	return o.ToToolPythonFunctionPtrOutputWithContext(context.Background())
+}
+
+func (o ToolPythonFunctionOutput) ToToolPythonFunctionPtrOutputWithContext(ctx context.Context) ToolPythonFunctionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolPythonFunction) *ToolPythonFunction {
+		return &v
+	}).(ToolPythonFunctionPtrOutput)
+}
+
+// (Output)
+// The description of the Python function, parsed from the python code's
+// docstring.
+func (o ToolPythonFunctionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolPythonFunction) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Python function to execute. Must match a Python function
+// name defined in the python code. Case sensitive. If the name is not
+// provided, the first function defined in the python code will be used.
+func (o ToolPythonFunctionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolPythonFunction) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Python code to execute for the tool.
+func (o ToolPythonFunctionOutput) PythonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolPythonFunction) *string { return v.PythonCode }).(pulumi.StringPtrOutput)
+}
+
+type ToolPythonFunctionPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolPythonFunctionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolPythonFunction)(nil)).Elem()
+}
+
+func (o ToolPythonFunctionPtrOutput) ToToolPythonFunctionPtrOutput() ToolPythonFunctionPtrOutput {
+	return o
+}
+
+func (o ToolPythonFunctionPtrOutput) ToToolPythonFunctionPtrOutputWithContext(ctx context.Context) ToolPythonFunctionPtrOutput {
+	return o
+}
+
+func (o ToolPythonFunctionPtrOutput) Elem() ToolPythonFunctionOutput {
+	return o.ApplyT(func(v *ToolPythonFunction) ToolPythonFunction {
+		if v != nil {
+			return *v
+		}
+		var ret ToolPythonFunction
+		return ret
+	}).(ToolPythonFunctionOutput)
+}
+
+// (Output)
+// The description of the Python function, parsed from the python code's
+// docstring.
+func (o ToolPythonFunctionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolPythonFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Python function to execute. Must match a Python function
+// name defined in the python code. Case sensitive. If the name is not
+// provided, the first function defined in the python code will be used.
+func (o ToolPythonFunctionPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolPythonFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Python code to execute for the tool.
+func (o ToolPythonFunctionPtrOutput) PythonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolPythonFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonCode
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolSystemTool struct {
+	// (Output)
+	// The description of the system tool.
+	Description *string `pulumi:"description"`
+	// (Output)
+	// The name of the system tool.
+	Name *string `pulumi:"name"`
+}
+
+// ToolSystemToolInput is an input type that accepts ToolSystemToolArgs and ToolSystemToolOutput values.
+// You can construct a concrete instance of `ToolSystemToolInput` via:
+//
+//	ToolSystemToolArgs{...}
+type ToolSystemToolInput interface {
+	pulumi.Input
+
+	ToToolSystemToolOutput() ToolSystemToolOutput
+	ToToolSystemToolOutputWithContext(context.Context) ToolSystemToolOutput
+}
+
+type ToolSystemToolArgs struct {
+	// (Output)
+	// The description of the system tool.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
+	// The name of the system tool.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ToolSystemToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolSystemTool)(nil)).Elem()
+}
+
+func (i ToolSystemToolArgs) ToToolSystemToolOutput() ToolSystemToolOutput {
+	return i.ToToolSystemToolOutputWithContext(context.Background())
+}
+
+func (i ToolSystemToolArgs) ToToolSystemToolOutputWithContext(ctx context.Context) ToolSystemToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolSystemToolOutput)
+}
+
+// ToolSystemToolArrayInput is an input type that accepts ToolSystemToolArray and ToolSystemToolArrayOutput values.
+// You can construct a concrete instance of `ToolSystemToolArrayInput` via:
+//
+//	ToolSystemToolArray{ ToolSystemToolArgs{...} }
+type ToolSystemToolArrayInput interface {
+	pulumi.Input
+
+	ToToolSystemToolArrayOutput() ToolSystemToolArrayOutput
+	ToToolSystemToolArrayOutputWithContext(context.Context) ToolSystemToolArrayOutput
+}
+
+type ToolSystemToolArray []ToolSystemToolInput
+
+func (ToolSystemToolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolSystemTool)(nil)).Elem()
+}
+
+func (i ToolSystemToolArray) ToToolSystemToolArrayOutput() ToolSystemToolArrayOutput {
+	return i.ToToolSystemToolArrayOutputWithContext(context.Background())
+}
+
+func (i ToolSystemToolArray) ToToolSystemToolArrayOutputWithContext(ctx context.Context) ToolSystemToolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolSystemToolArrayOutput)
+}
+
+type ToolSystemToolOutput struct{ *pulumi.OutputState }
+
+func (ToolSystemToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolSystemTool)(nil)).Elem()
+}
+
+func (o ToolSystemToolOutput) ToToolSystemToolOutput() ToolSystemToolOutput {
+	return o
+}
+
+func (o ToolSystemToolOutput) ToToolSystemToolOutputWithContext(ctx context.Context) ToolSystemToolOutput {
+	return o
+}
+
+// (Output)
+// The description of the system tool.
+func (o ToolSystemToolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolSystemTool) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the system tool.
+func (o ToolSystemToolOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolSystemTool) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ToolSystemToolArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolSystemToolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolSystemTool)(nil)).Elem()
+}
+
+func (o ToolSystemToolArrayOutput) ToToolSystemToolArrayOutput() ToolSystemToolArrayOutput {
+	return o
+}
+
+func (o ToolSystemToolArrayOutput) ToToolSystemToolArrayOutputWithContext(ctx context.Context) ToolSystemToolArrayOutput {
+	return o
+}
+
+func (o ToolSystemToolArrayOutput) Index(i pulumi.IntInput) ToolSystemToolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolSystemTool {
+		return vs[0].([]ToolSystemTool)[vs[1].(int)]
+	}).(ToolSystemToolOutput)
+}
+
 type ToolsetOpenApiToolset struct {
 	// Authentication information required for API calls.
 	// Structure is documented below.
@@ -5668,6 +16421,9 @@ type ToolsetOpenApiToolsetApiAuthentication struct {
 	// Configurations for authentication with API key.
 	// Structure is documented below.
 	ApiKeyConfig *ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig `pulumi:"apiKeyConfig"`
+	// Configurations for authentication with a bearer token.
+	// Structure is documented below.
+	BearerTokenConfig *ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig `pulumi:"bearerTokenConfig"`
 	// Configurations for authentication with OAuth.
 	// Structure is documented below.
 	OauthConfig *ToolsetOpenApiToolsetApiAuthenticationOauthConfig `pulumi:"oauthConfig"`
@@ -5695,6 +16451,9 @@ type ToolsetOpenApiToolsetApiAuthenticationArgs struct {
 	// Configurations for authentication with API key.
 	// Structure is documented below.
 	ApiKeyConfig ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigPtrInput `pulumi:"apiKeyConfig"`
+	// Configurations for authentication with a bearer token.
+	// Structure is documented below.
+	BearerTokenConfig ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrInput `pulumi:"bearerTokenConfig"`
 	// Configurations for authentication with OAuth.
 	// Structure is documented below.
 	OauthConfig ToolsetOpenApiToolsetApiAuthenticationOauthConfigPtrInput `pulumi:"oauthConfig"`
@@ -5792,6 +16551,14 @@ func (o ToolsetOpenApiToolsetApiAuthenticationOutput) ApiKeyConfig() ToolsetOpen
 	}).(ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigPtrOutput)
 }
 
+// Configurations for authentication with a bearer token.
+// Structure is documented below.
+func (o ToolsetOpenApiToolsetApiAuthenticationOutput) BearerTokenConfig() ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return o.ApplyT(func(v ToolsetOpenApiToolsetApiAuthentication) *ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig {
+		return v.BearerTokenConfig
+	}).(ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput)
+}
+
 // Configurations for authentication with OAuth.
 // Structure is documented below.
 func (o ToolsetOpenApiToolsetApiAuthenticationOutput) OauthConfig() ToolsetOpenApiToolsetApiAuthenticationOauthConfigPtrOutput {
@@ -5850,6 +16617,17 @@ func (o ToolsetOpenApiToolsetApiAuthenticationPtrOutput) ApiKeyConfig() ToolsetO
 		}
 		return v.ApiKeyConfig
 	}).(ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigPtrOutput)
+}
+
+// Configurations for authentication with a bearer token.
+// Structure is documented below.
+func (o ToolsetOpenApiToolsetApiAuthenticationPtrOutput) BearerTokenConfig() ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return o.ApplyT(func(v *ToolsetOpenApiToolsetApiAuthentication) *ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BearerTokenConfig
+	}).(ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput)
 }
 
 // Configurations for authentication with OAuth.
@@ -6090,6 +16868,143 @@ func (o ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigPtrOutput) RequestLoca
 			return nil
 		}
 		return &v.RequestLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig struct {
+	// (Optional)
+	Token *string `pulumi:"token"`
+}
+
+// ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigInput is an input type that accepts ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs and ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput values.
+// You can construct a concrete instance of `ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigInput` via:
+//
+//	ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs{...}
+type ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigInput interface {
+	pulumi.Input
+
+	ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput() ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput
+	ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutputWithContext(context.Context) ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput
+}
+
+type ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs struct {
+	// (Optional)
+	Token pulumi.StringPtrInput `pulumi:"token"`
+}
+
+func (ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (i ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs) ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput() ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput {
+	return i.ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutputWithContext(context.Background())
+}
+
+func (i ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs) ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutputWithContext(ctx context.Context) ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput)
+}
+
+func (i ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs) ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput() ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return i.ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs) ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput).ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(ctx)
+}
+
+// ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrInput is an input type that accepts ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs, ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtr and ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput values.
+// You can construct a concrete instance of `ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrInput` via:
+//
+//	        ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput() ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput
+	ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(context.Context) ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput
+}
+
+type toolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrType ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs
+
+func ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtr(v *ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs) ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrInput {
+	return (*toolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrType)(v)
+}
+
+func (*toolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (i *toolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrType) ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput() ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return i.ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrType) ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput)
+}
+
+type ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (o ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput) ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput() ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput {
+	return o
+}
+
+func (o ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput) ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutputWithContext(ctx context.Context) ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput {
+	return o
+}
+
+func (o ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput) ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput() ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return o.ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput) ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig) *ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig {
+		return &v
+	}).(ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput)
+}
+
+// (Optional)
+func (o ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+type ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (o ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput) ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput() ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput) ToToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput) Elem() ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput {
+	return o.ApplyT(func(v *ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig) ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig
+		return ret
+	}).(ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput)
+}
+
+// (Optional)
+func (o ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7052,6 +17967,26 @@ func (o ToolsetOpenApiToolsetTlsConfigCaCertArrayOutput) Index(i pulumi.IntInput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentAfterAgentCallbackInput)(nil)).Elem(), AgentAfterAgentCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentAfterAgentCallbackArrayInput)(nil)).Elem(), AgentAfterAgentCallbackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentAfterModelCallbackInput)(nil)).Elem(), AgentAfterModelCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentAfterModelCallbackArrayInput)(nil)).Elem(), AgentAfterModelCallbackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentAfterToolCallbackInput)(nil)).Elem(), AgentAfterToolCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentAfterToolCallbackArrayInput)(nil)).Elem(), AgentAfterToolCallbackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentBeforeAgentCallbackInput)(nil)).Elem(), AgentBeforeAgentCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentBeforeAgentCallbackArrayInput)(nil)).Elem(), AgentBeforeAgentCallbackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentBeforeModelCallbackInput)(nil)).Elem(), AgentBeforeModelCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentBeforeModelCallbackArrayInput)(nil)).Elem(), AgentBeforeModelCallbackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentBeforeToolCallbackInput)(nil)).Elem(), AgentBeforeToolCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentBeforeToolCallbackArrayInput)(nil)).Elem(), AgentBeforeToolCallbackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentLlmAgentInput)(nil)).Elem(), AgentLlmAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentLlmAgentPtrInput)(nil)).Elem(), AgentLlmAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentModelSettingsInput)(nil)).Elem(), AgentModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentModelSettingsPtrInput)(nil)).Elem(), AgentModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentRemoteDialogflowAgentInput)(nil)).Elem(), AgentRemoteDialogflowAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentRemoteDialogflowAgentPtrInput)(nil)).Elem(), AgentRemoteDialogflowAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentToolsetInput)(nil)).Elem(), AgentToolsetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentToolsetArrayInput)(nil)).Elem(), AgentToolsetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigInput)(nil)).Elem(), AppAudioProcessingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigPtrInput)(nil)).Elem(), AppAudioProcessingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigAmbientSoundConfigInput)(nil)).Elem(), AppAudioProcessingConfigAmbientSoundConfigArgs{})
@@ -7060,6 +17995,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigBargeInConfigPtrInput)(nil)).Elem(), AppAudioProcessingConfigBargeInConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigSynthesizeSpeechConfigInput)(nil)).Elem(), AppAudioProcessingConfigSynthesizeSpeechConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigSynthesizeSpeechConfigArrayInput)(nil)).Elem(), AppAudioProcessingConfigSynthesizeSpeechConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppClientCertificateSettingsInput)(nil)).Elem(), AppClientCertificateSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppClientCertificateSettingsPtrInput)(nil)).Elem(), AppClientCertificateSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDataStoreSettingsInput)(nil)).Elem(), AppDataStoreSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDataStoreSettingsPtrInput)(nil)).Elem(), AppDataStoreSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDataStoreSettingsEngineInput)(nil)).Elem(), AppDataStoreSettingsEngineArgs{})
@@ -7111,12 +18048,114 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExampleMessageChunkArrayInput)(nil)).Elem(), ExampleMessageChunkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExampleMessageChunkImageInput)(nil)).Elem(), ExampleMessageChunkImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExampleMessageChunkImagePtrInput)(nil)).Elem(), ExampleMessageChunkImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailActionInput)(nil)).Elem(), GuardrailActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailActionPtrInput)(nil)).Elem(), GuardrailActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailActionGenerativeAnswerInput)(nil)).Elem(), GuardrailActionGenerativeAnswerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailActionGenerativeAnswerPtrInput)(nil)).Elem(), GuardrailActionGenerativeAnswerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailActionRespondImmediatelyInput)(nil)).Elem(), GuardrailActionRespondImmediatelyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailActionRespondImmediatelyPtrInput)(nil)).Elem(), GuardrailActionRespondImmediatelyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailActionRespondImmediatelyResponseInput)(nil)).Elem(), GuardrailActionRespondImmediatelyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailActionRespondImmediatelyResponseArrayInput)(nil)).Elem(), GuardrailActionRespondImmediatelyResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailActionTransferAgentInput)(nil)).Elem(), GuardrailActionTransferAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailActionTransferAgentPtrInput)(nil)).Elem(), GuardrailActionTransferAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailCodeCallbackInput)(nil)).Elem(), GuardrailCodeCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailCodeCallbackPtrInput)(nil)).Elem(), GuardrailCodeCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailCodeCallbackAfterAgentCallbackInput)(nil)).Elem(), GuardrailCodeCallbackAfterAgentCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailCodeCallbackAfterAgentCallbackPtrInput)(nil)).Elem(), GuardrailCodeCallbackAfterAgentCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailCodeCallbackAfterModelCallbackInput)(nil)).Elem(), GuardrailCodeCallbackAfterModelCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailCodeCallbackAfterModelCallbackPtrInput)(nil)).Elem(), GuardrailCodeCallbackAfterModelCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailCodeCallbackBeforeAgentCallbackInput)(nil)).Elem(), GuardrailCodeCallbackBeforeAgentCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailCodeCallbackBeforeAgentCallbackPtrInput)(nil)).Elem(), GuardrailCodeCallbackBeforeAgentCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailCodeCallbackBeforeModelCallbackInput)(nil)).Elem(), GuardrailCodeCallbackBeforeModelCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailCodeCallbackBeforeModelCallbackPtrInput)(nil)).Elem(), GuardrailCodeCallbackBeforeModelCallbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailContentFilterInput)(nil)).Elem(), GuardrailContentFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailContentFilterPtrInput)(nil)).Elem(), GuardrailContentFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailLlmPolicyInput)(nil)).Elem(), GuardrailLlmPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailLlmPolicyPtrInput)(nil)).Elem(), GuardrailLlmPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailLlmPolicyModelSettingsInput)(nil)).Elem(), GuardrailLlmPolicyModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailLlmPolicyModelSettingsPtrInput)(nil)).Elem(), GuardrailLlmPolicyModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailLlmPromptSecurityInput)(nil)).Elem(), GuardrailLlmPromptSecurityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailLlmPromptSecurityPtrInput)(nil)).Elem(), GuardrailLlmPromptSecurityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailLlmPromptSecurityCustomPolicyInput)(nil)).Elem(), GuardrailLlmPromptSecurityCustomPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailLlmPromptSecurityCustomPolicyPtrInput)(nil)).Elem(), GuardrailLlmPromptSecurityCustomPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailLlmPromptSecurityCustomPolicyModelSettingsInput)(nil)).Elem(), GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrInput)(nil)).Elem(), GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailLlmPromptSecurityDefaultSettingsInput)(nil)).Elem(), GuardrailLlmPromptSecurityDefaultSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailLlmPromptSecurityDefaultSettingsPtrInput)(nil)).Elem(), GuardrailLlmPromptSecurityDefaultSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailModelSafetyInput)(nil)).Elem(), GuardrailModelSafetyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailModelSafetyPtrInput)(nil)).Elem(), GuardrailModelSafetyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailModelSafetySafetySettingInput)(nil)).Elem(), GuardrailModelSafetySafetySettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardrailModelSafetySafetySettingArrayInput)(nil)).Elem(), GuardrailModelSafetySafetySettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionInput)(nil)).Elem(), ToolClientFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionPtrInput)(nil)).Elem(), ToolClientFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionParametersInput)(nil)).Elem(), ToolClientFunctionParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionParametersPtrInput)(nil)).Elem(), ToolClientFunctionParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionResponseInput)(nil)).Elem(), ToolClientFunctionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolClientFunctionResponsePtrInput)(nil)).Elem(), ToolClientFunctionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolInput)(nil)).Elem(), ToolDataStoreToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolPtrInput)(nil)).Elem(), ToolDataStoreToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecInput)(nil)).Elem(), ToolDataStoreToolBoostSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecArrayInput)(nil)).Elem(), ToolDataStoreToolBoostSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecInput)(nil)).Elem(), ToolDataStoreToolBoostSpecSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecArrayInput)(nil)).Elem(), ToolDataStoreToolBoostSpecSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecInput)(nil)).Elem(), ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayInput)(nil)).Elem(), ToolDataStoreToolBoostSpecSpecConditionBoostSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecInput)(nil)).Elem(), ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrInput)(nil)).Elem(), ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointInput)(nil)).Elem(), ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayInput)(nil)).Elem(), ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolEngineSourceInput)(nil)).Elem(), ToolDataStoreToolEngineSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolEngineSourcePtrInput)(nil)).Elem(), ToolDataStoreToolEngineSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSourceInput)(nil)).Elem(), ToolDataStoreToolEngineSourceDataStoreSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSourceArrayInput)(nil)).Elem(), ToolDataStoreToolEngineSourceDataStoreSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSourceDataStoreInput)(nil)).Elem(), ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrInput)(nil)).Elem(), ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigInput)(nil)).Elem(), ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayInput)(nil)).Elem(), ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigInput)(nil)).Elem(), ToolDataStoreToolModalityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigArrayInput)(nil)).Elem(), ToolDataStoreToolModalityConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigGroundingConfigInput)(nil)).Elem(), ToolDataStoreToolModalityConfigGroundingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigGroundingConfigPtrInput)(nil)).Elem(), ToolDataStoreToolModalityConfigGroundingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigRewriterConfigInput)(nil)).Elem(), ToolDataStoreToolModalityConfigRewriterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigRewriterConfigPtrInput)(nil)).Elem(), ToolDataStoreToolModalityConfigRewriterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigRewriterConfigModelSettingsInput)(nil)).Elem(), ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrInput)(nil)).Elem(), ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfigInput)(nil)).Elem(), ToolDataStoreToolModalityConfigSummarizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfigPtrInput)(nil)).Elem(), ToolDataStoreToolModalityConfigSummarizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsInput)(nil)).Elem(), ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrInput)(nil)).Elem(), ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolGoogleSearchToolInput)(nil)).Elem(), ToolGoogleSearchToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolGoogleSearchToolPtrInput)(nil)).Elem(), ToolGoogleSearchToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolInput)(nil)).Elem(), ToolOpenApiToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolArrayInput)(nil)).Elem(), ToolOpenApiToolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolApiAuthenticationInput)(nil)).Elem(), ToolOpenApiToolApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolApiAuthenticationArrayInput)(nil)).Elem(), ToolOpenApiToolApiAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolApiAuthenticationApiKeyConfigInput)(nil)).Elem(), ToolOpenApiToolApiAuthenticationApiKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolApiAuthenticationApiKeyConfigArrayInput)(nil)).Elem(), ToolOpenApiToolApiAuthenticationApiKeyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolApiAuthenticationOauthConfigInput)(nil)).Elem(), ToolOpenApiToolApiAuthenticationOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolApiAuthenticationOauthConfigArrayInput)(nil)).Elem(), ToolOpenApiToolApiAuthenticationOauthConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigInput)(nil)).Elem(), ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayInput)(nil)).Elem(), ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigInput)(nil)).Elem(), ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayInput)(nil)).Elem(), ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolServiceDirectoryConfigInput)(nil)).Elem(), ToolOpenApiToolServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolServiceDirectoryConfigArrayInput)(nil)).Elem(), ToolOpenApiToolServiceDirectoryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolTlsConfigInput)(nil)).Elem(), ToolOpenApiToolTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolTlsConfigArrayInput)(nil)).Elem(), ToolOpenApiToolTlsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolTlsConfigCaCertInput)(nil)).Elem(), ToolOpenApiToolTlsConfigCaCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolTlsConfigCaCertArrayInput)(nil)).Elem(), ToolOpenApiToolTlsConfigCaCertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolPythonFunctionInput)(nil)).Elem(), ToolPythonFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolPythonFunctionPtrInput)(nil)).Elem(), ToolPythonFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolSystemToolInput)(nil)).Elem(), ToolSystemToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolSystemToolArrayInput)(nil)).Elem(), ToolSystemToolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetInput)(nil)).Elem(), ToolsetOpenApiToolsetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetPtrInput)(nil)).Elem(), ToolsetOpenApiToolsetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationInput)(nil)).Elem(), ToolsetOpenApiToolsetApiAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationPtrInput)(nil)).Elem(), ToolsetOpenApiToolsetApiAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigInput)(nil)).Elem(), ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigPtrInput)(nil)).Elem(), ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigInput)(nil)).Elem(), ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrInput)(nil)).Elem(), ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationOauthConfigInput)(nil)).Elem(), ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationOauthConfigPtrInput)(nil)).Elem(), ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigInput)(nil)).Elem(), ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs{})
@@ -7129,6 +18168,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetTlsConfigPtrInput)(nil)).Elem(), ToolsetOpenApiToolsetTlsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetTlsConfigCaCertInput)(nil)).Elem(), ToolsetOpenApiToolsetTlsConfigCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetTlsConfigCaCertArrayInput)(nil)).Elem(), ToolsetOpenApiToolsetTlsConfigCaCertArray{})
+	pulumi.RegisterOutputType(AgentAfterAgentCallbackOutput{})
+	pulumi.RegisterOutputType(AgentAfterAgentCallbackArrayOutput{})
+	pulumi.RegisterOutputType(AgentAfterModelCallbackOutput{})
+	pulumi.RegisterOutputType(AgentAfterModelCallbackArrayOutput{})
+	pulumi.RegisterOutputType(AgentAfterToolCallbackOutput{})
+	pulumi.RegisterOutputType(AgentAfterToolCallbackArrayOutput{})
+	pulumi.RegisterOutputType(AgentBeforeAgentCallbackOutput{})
+	pulumi.RegisterOutputType(AgentBeforeAgentCallbackArrayOutput{})
+	pulumi.RegisterOutputType(AgentBeforeModelCallbackOutput{})
+	pulumi.RegisterOutputType(AgentBeforeModelCallbackArrayOutput{})
+	pulumi.RegisterOutputType(AgentBeforeToolCallbackOutput{})
+	pulumi.RegisterOutputType(AgentBeforeToolCallbackArrayOutput{})
+	pulumi.RegisterOutputType(AgentLlmAgentOutput{})
+	pulumi.RegisterOutputType(AgentLlmAgentPtrOutput{})
+	pulumi.RegisterOutputType(AgentModelSettingsOutput{})
+	pulumi.RegisterOutputType(AgentModelSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AgentRemoteDialogflowAgentOutput{})
+	pulumi.RegisterOutputType(AgentRemoteDialogflowAgentPtrOutput{})
+	pulumi.RegisterOutputType(AgentToolsetOutput{})
+	pulumi.RegisterOutputType(AgentToolsetArrayOutput{})
 	pulumi.RegisterOutputType(AppAudioProcessingConfigOutput{})
 	pulumi.RegisterOutputType(AppAudioProcessingConfigPtrOutput{})
 	pulumi.RegisterOutputType(AppAudioProcessingConfigAmbientSoundConfigOutput{})
@@ -7137,6 +18196,8 @@ func init() {
 	pulumi.RegisterOutputType(AppAudioProcessingConfigBargeInConfigPtrOutput{})
 	pulumi.RegisterOutputType(AppAudioProcessingConfigSynthesizeSpeechConfigOutput{})
 	pulumi.RegisterOutputType(AppAudioProcessingConfigSynthesizeSpeechConfigArrayOutput{})
+	pulumi.RegisterOutputType(AppClientCertificateSettingsOutput{})
+	pulumi.RegisterOutputType(AppClientCertificateSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AppDataStoreSettingsOutput{})
 	pulumi.RegisterOutputType(AppDataStoreSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AppDataStoreSettingsEngineOutput{})
@@ -7188,12 +18249,114 @@ func init() {
 	pulumi.RegisterOutputType(ExampleMessageChunkArrayOutput{})
 	pulumi.RegisterOutputType(ExampleMessageChunkImageOutput{})
 	pulumi.RegisterOutputType(ExampleMessageChunkImagePtrOutput{})
+	pulumi.RegisterOutputType(GuardrailActionOutput{})
+	pulumi.RegisterOutputType(GuardrailActionPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailActionGenerativeAnswerOutput{})
+	pulumi.RegisterOutputType(GuardrailActionGenerativeAnswerPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailActionRespondImmediatelyOutput{})
+	pulumi.RegisterOutputType(GuardrailActionRespondImmediatelyPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailActionRespondImmediatelyResponseOutput{})
+	pulumi.RegisterOutputType(GuardrailActionRespondImmediatelyResponseArrayOutput{})
+	pulumi.RegisterOutputType(GuardrailActionTransferAgentOutput{})
+	pulumi.RegisterOutputType(GuardrailActionTransferAgentPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailCodeCallbackOutput{})
+	pulumi.RegisterOutputType(GuardrailCodeCallbackPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailCodeCallbackAfterAgentCallbackOutput{})
+	pulumi.RegisterOutputType(GuardrailCodeCallbackAfterAgentCallbackPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailCodeCallbackAfterModelCallbackOutput{})
+	pulumi.RegisterOutputType(GuardrailCodeCallbackAfterModelCallbackPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailCodeCallbackBeforeAgentCallbackOutput{})
+	pulumi.RegisterOutputType(GuardrailCodeCallbackBeforeAgentCallbackPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailCodeCallbackBeforeModelCallbackOutput{})
+	pulumi.RegisterOutputType(GuardrailCodeCallbackBeforeModelCallbackPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailContentFilterOutput{})
+	pulumi.RegisterOutputType(GuardrailContentFilterPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailLlmPolicyOutput{})
+	pulumi.RegisterOutputType(GuardrailLlmPolicyPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailLlmPolicyModelSettingsOutput{})
+	pulumi.RegisterOutputType(GuardrailLlmPolicyModelSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailLlmPromptSecurityOutput{})
+	pulumi.RegisterOutputType(GuardrailLlmPromptSecurityPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailLlmPromptSecurityCustomPolicyOutput{})
+	pulumi.RegisterOutputType(GuardrailLlmPromptSecurityCustomPolicyPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput{})
+	pulumi.RegisterOutputType(GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailLlmPromptSecurityDefaultSettingsOutput{})
+	pulumi.RegisterOutputType(GuardrailLlmPromptSecurityDefaultSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailModelSafetyOutput{})
+	pulumi.RegisterOutputType(GuardrailModelSafetyPtrOutput{})
+	pulumi.RegisterOutputType(GuardrailModelSafetySafetySettingOutput{})
+	pulumi.RegisterOutputType(GuardrailModelSafetySafetySettingArrayOutput{})
+	pulumi.RegisterOutputType(ToolClientFunctionOutput{})
+	pulumi.RegisterOutputType(ToolClientFunctionPtrOutput{})
+	pulumi.RegisterOutputType(ToolClientFunctionParametersOutput{})
+	pulumi.RegisterOutputType(ToolClientFunctionParametersPtrOutput{})
+	pulumi.RegisterOutputType(ToolClientFunctionResponseOutput{})
+	pulumi.RegisterOutputType(ToolClientFunctionResponsePtrOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolPtrOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecArrayOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecSpecOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecSpecArrayOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecSpecConditionBoostSpecOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecSpecConditionBoostSpecArrayOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecPtrOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArrayOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolEngineSourceOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolEngineSourcePtrOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolEngineSourceDataStoreSourceOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolEngineSourceDataStoreSourceArrayOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigGroundingConfigOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigGroundingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigRewriterConfigOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigRewriterConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigSummarizationConfigOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ToolGoogleSearchToolOutput{})
+	pulumi.RegisterOutputType(ToolGoogleSearchToolPtrOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolArrayOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolApiAuthenticationOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolApiAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolApiAuthenticationApiKeyConfigOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolApiAuthenticationApiKeyConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolApiAuthenticationOauthConfigOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolApiAuthenticationOauthConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolServiceDirectoryConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolTlsConfigOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolTlsConfigArrayOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolTlsConfigCaCertOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiToolTlsConfigCaCertArrayOutput{})
+	pulumi.RegisterOutputType(ToolPythonFunctionOutput{})
+	pulumi.RegisterOutputType(ToolPythonFunctionPtrOutput{})
+	pulumi.RegisterOutputType(ToolSystemToolOutput{})
+	pulumi.RegisterOutputType(ToolSystemToolArrayOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetPtrOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetApiAuthenticationOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetApiAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigOutput{})
+	pulumi.RegisterOutputType(ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigPtrOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetApiAuthenticationOauthConfigOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetApiAuthenticationOauthConfigPtrOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigOutput{})

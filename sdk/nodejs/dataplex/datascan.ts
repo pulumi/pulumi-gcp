@@ -83,6 +83,7 @@ import * as utilities from "../utilities";
  *                 resultsTable: "//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
  *             },
  *         },
+ *         catalogPublishingEnabled: true,
  *     },
  *     project: "my-project-name",
  * }, {

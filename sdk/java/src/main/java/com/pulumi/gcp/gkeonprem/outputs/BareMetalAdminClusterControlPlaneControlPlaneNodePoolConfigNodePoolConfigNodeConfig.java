@@ -13,46 +13,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig {
     /**
-     * @return The map of Kubernetes labels (key/value pairs) to be applied to
-     * each node. These will added in addition to any default label(s)
-     * that Kubernetes may apply to the node. In case of conflict in
-     * label keys, the applied set may differ depending on the Kubernetes
-     * version -- it&#39;s best to assume the behavior is undefined and
-     * conflicts should be avoided. For more information, including usage
-     * and the valid values, see:
-     * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-     *   An object containing a list of &#34;key&#34;: value pairs.
-     *   For example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * @return The labels assigned to nodes of this node pool.
+     * An object containing a list of key/value pairs.
+     * Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     private @Nullable Map<String,String> labels;
     /**
-     * @return The default IPv4 address for SSH access and Kubernetes node.
-     * Example: 192.168.0.1
+     * @return (Optional)
      * 
      */
     private @Nullable String nodeIp;
 
     private BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig() {}
     /**
-     * @return The map of Kubernetes labels (key/value pairs) to be applied to
-     * each node. These will added in addition to any default label(s)
-     * that Kubernetes may apply to the node. In case of conflict in
-     * label keys, the applied set may differ depending on the Kubernetes
-     * version -- it&#39;s best to assume the behavior is undefined and
-     * conflicts should be avoided. For more information, including usage
-     * and the valid values, see:
-     * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-     *   An object containing a list of &#34;key&#34;: value pairs.
-     *   For example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * @return The labels assigned to nodes of this node pool.
+     * An object containing a list of key/value pairs.
+     * Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
-     * @return The default IPv4 address for SSH access and Kubernetes node.
-     * Example: 192.168.0.1
+     * @return (Optional)
      * 
      */
     public Optional<String> nodeIp() {

@@ -198,6 +198,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('cloudSchedulerCustomEndpoint')
 
     @_builtins.property
+    def cloud_security_compliance_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudSecurityComplianceCustomEndpoint')
+
+    @_builtins.property
     def cloud_tasks_custom_endpoint(self) -> Optional[str]:
         return __config__.get('cloudTasksCustomEndpoint')
 

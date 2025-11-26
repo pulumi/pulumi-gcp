@@ -14,16 +14,15 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
     public sealed class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint
     {
         /// <summary>
-        /// Specifies the nodes operating system (default: LINUX).
-        /// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        /// Available taint effects.
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// Key associated with the effect.
+        /// (Optional)
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// Value associated with the effect.
+        /// (Optional)
         /// </summary>
         public readonly string? Value;
 

@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,7 +17,7 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsA
     public static final ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs Empty = new ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs();
 
     /**
-     * The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+     * The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `endTimeBehavior` and `endTime` should be specified.
      * 
      * Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
      * the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
@@ -25,11 +27,11 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsA
      * Examples:
      * 
      */
-    @Import(name="scope", required=true)
-    private Output<String> scope;
+    @Import(name="endTimeBehavior")
+    private @Nullable Output<String> endTimeBehavior;
 
     /**
-     * @return The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+     * @return The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `endTimeBehavior` and `endTime` should be specified.
      * 
      * Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
      * the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
@@ -37,6 +39,21 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsA
      * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
      * 
      * Examples:
+     * 
+     */
+    public Optional<Output<String>> endTimeBehavior() {
+        return Optional.ofNullable(this.endTimeBehavior);
+    }
+
+    /**
+     * The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+     * 
+     */
+    @Import(name="scope", required=true)
+    private Output<String> scope;
+
+    /**
+     * @return The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
      * 
      */
     public Output<String> scope() {
@@ -46,6 +63,7 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsA
     private ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs() {}
 
     private ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs(ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs $) {
+        this.endTimeBehavior = $.endTimeBehavior;
         this.scope = $.scope;
     }
 
@@ -68,7 +86,7 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsA
         }
 
         /**
-         * @param scope The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+         * @param endTimeBehavior The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `endTimeBehavior` and `endTime` should be specified.
          * 
          * Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
          * the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
@@ -80,13 +98,13 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsA
          * @return builder
          * 
          */
-        public Builder scope(Output<String> scope) {
-            $.scope = scope;
+        public Builder endTimeBehavior(@Nullable Output<String> endTimeBehavior) {
+            $.endTimeBehavior = endTimeBehavior;
             return this;
         }
 
         /**
-         * @param scope The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+         * @param endTimeBehavior The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `endTimeBehavior` and `endTime` should be specified.
          * 
          * Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
          * the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
@@ -94,6 +112,27 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsA
          * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
          * 
          * Examples:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endTimeBehavior(String endTimeBehavior) {
+            return endTimeBehavior(Output.of(endTimeBehavior));
+        }
+
+        /**
+         * @param scope The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scope(Output<String> scope) {
+            $.scope = scope;
+            return this;
+        }
+
+        /**
+         * @param scope The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
          * 
          * @return builder
          * 

@@ -27,7 +27,10 @@ class GetReservationResult:
     """
     A collection of values returned by getReservation.
     """
-    def __init__(__self__, commitment=None, creation_timestamp=None, delete_after_durations=None, delete_at_time=None, description=None, enable_emergent_maintenance=None, id=None, kind=None, linked_commitments=None, name=None, project=None, reservation_block_count=None, reservation_sharing_policies=None, resource_statuses=None, satisfies_pzs=None, self_link=None, share_settings=None, specific_reservation_required=None, specific_reservations=None, status=None, zone=None):
+    def __init__(__self__, block_names=None, commitment=None, creation_timestamp=None, delete_after_durations=None, delete_at_time=None, description=None, enable_emergent_maintenance=None, id=None, kind=None, linked_commitments=None, name=None, project=None, reservation_block_count=None, reservation_sharing_policies=None, resource_statuses=None, satisfies_pzs=None, self_link=None, share_settings=None, specific_reservation_required=None, specific_reservations=None, status=None, zone=None):
+        if block_names and not isinstance(block_names, list):
+            raise TypeError("Expected argument 'block_names' to be a list")
+        pulumi.set(__self__, "block_names", block_names)
         if commitment and not isinstance(commitment, str):
             raise TypeError("Expected argument 'commitment' to be a str")
         pulumi.set(__self__, "commitment", commitment)
@@ -91,6 +94,11 @@ class GetReservationResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter(name="blockNames")
+    def block_names(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "block_names")
 
     @_builtins.property
     @pulumi.getter
@@ -204,6 +212,7 @@ class AwaitableGetReservationResult(GetReservationResult):
         if False:
             yield self
         return GetReservationResult(
+            block_names=self.block_names,
             commitment=self.commitment,
             creation_timestamp=self.creation_timestamp,
             delete_after_durations=self.delete_after_durations,
@@ -256,6 +265,7 @@ def get_reservation(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getReservation:getReservation', __args__, opts=opts, typ=GetReservationResult).value
 
     return AwaitableGetReservationResult(
+        block_names=pulumi.get(__ret__, 'block_names'),
         commitment=pulumi.get(__ret__, 'commitment'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         delete_after_durations=pulumi.get(__ret__, 'delete_after_durations'),
@@ -305,6 +315,7 @@ def get_reservation_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getReservation:getReservation', __args__, opts=opts, typ=GetReservationResult)
     return __ret__.apply(lambda __response__: GetReservationResult(
+        block_names=pulumi.get(__response__, 'block_names'),
         commitment=pulumi.get(__response__, 'commitment'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
         delete_after_durations=pulumi.get(__response__, 'delete_after_durations'),

@@ -25,6 +25,7 @@ class ClusterArgs:
                  cluster_id: pulumi.Input[_builtins.str],
                  gcp_config: pulumi.Input['ClusterGcpConfigArgs'],
                  location: pulumi.Input[_builtins.str],
+                 broker_capacity_config: Optional[pulumi.Input['ClusterBrokerCapacityConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rebalance_config: Optional[pulumi.Input['ClusterRebalanceConfigArgs']] = None,
@@ -37,6 +38,8 @@ class ClusterArgs:
         :param pulumi.Input['ClusterGcpConfigArgs'] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        :param pulumi.Input['ClusterBrokerCapacityConfigArgs'] broker_capacity_config: Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -51,6 +54,8 @@ class ClusterArgs:
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "gcp_config", gcp_config)
         pulumi.set(__self__, "location", location)
+        if broker_capacity_config is not None:
+            pulumi.set(__self__, "broker_capacity_config", broker_capacity_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -111,6 +116,19 @@ class ClusterArgs:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="brokerCapacityConfig")
+    def broker_capacity_config(self) -> Optional[pulumi.Input['ClusterBrokerCapacityConfigArgs']]:
+        """
+        Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "broker_capacity_config")
+
+    @broker_capacity_config.setter
+    def broker_capacity_config(self, value: Optional[pulumi.Input['ClusterBrokerCapacityConfigArgs']]):
+        pulumi.set(self, "broker_capacity_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -167,6 +185,7 @@ class ClusterArgs:
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
+                 broker_capacity_config: Optional[pulumi.Input['ClusterBrokerCapacityConfigArgs']] = None,
                  capacity_config: Optional[pulumi.Input['ClusterCapacityConfigArgs']] = None,
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -183,6 +202,8 @@ class _ClusterState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+        :param pulumi.Input['ClusterBrokerCapacityConfigArgs'] broker_capacity_config: Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+               Structure is documented below.
         :param pulumi.Input['ClusterCapacityConfigArgs'] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster_id: The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
@@ -206,6 +227,8 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The time when the cluster was last updated.
         """
+        if broker_capacity_config is not None:
+            pulumi.set(__self__, "broker_capacity_config", broker_capacity_config)
         if capacity_config is not None:
             pulumi.set(__self__, "capacity_config", capacity_config)
         if cluster_id is not None:
@@ -234,6 +257,19 @@ class _ClusterState:
             pulumi.set(__self__, "tls_config", tls_config)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="brokerCapacityConfig")
+    def broker_capacity_config(self) -> Optional[pulumi.Input['ClusterBrokerCapacityConfigArgs']]:
+        """
+        Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "broker_capacity_config")
+
+    @broker_capacity_config.setter
+    def broker_capacity_config(self, value: Optional[pulumi.Input['ClusterBrokerCapacityConfigArgs']]):
+        pulumi.set(self, "broker_capacity_config", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityConfig")
@@ -418,6 +454,7 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 broker_capacity_config: Optional[pulumi.Input[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict']]] = None,
                  capacity_config: Optional[pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  gcp_config: Optional[pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']]] = None,
@@ -551,6 +588,8 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict']] broker_capacity_config: Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+               Structure is documented below.
         :param pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster_id: The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
@@ -710,6 +749,7 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 broker_capacity_config: Optional[pulumi.Input[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict']]] = None,
                  capacity_config: Optional[pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  gcp_config: Optional[pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']]] = None,
@@ -727,6 +767,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
+            __props__.__dict__["broker_capacity_config"] = broker_capacity_config
             if capacity_config is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_config'")
             __props__.__dict__["capacity_config"] = capacity_config
@@ -761,6 +802,7 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            broker_capacity_config: Optional[pulumi.Input[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict']]] = None,
             capacity_config: Optional[pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']]] = None,
             cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -782,6 +824,8 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict']] broker_capacity_config: Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+               Structure is documented below.
         :param pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster_id: The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
@@ -809,6 +853,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = _ClusterState.__new__(_ClusterState)
 
+        __props__.__dict__["broker_capacity_config"] = broker_capacity_config
         __props__.__dict__["capacity_config"] = capacity_config
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["create_time"] = create_time
@@ -824,6 +869,15 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["tls_config"] = tls_config
         __props__.__dict__["update_time"] = update_time
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="brokerCapacityConfig")
+    def broker_capacity_config(self) -> pulumi.Output[Optional['outputs.ClusterBrokerCapacityConfig']]:
+        """
+        Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "broker_capacity_config")
 
     @_builtins.property
     @pulumi.getter(name="capacityConfig")

@@ -325,6 +325,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/reservation:Reservation")
 public class Reservation extends com.pulumi.resources.CustomResource {
     /**
+     * List of all reservation block names in the parent reservation.
+     * 
+     */
+    @Export(name="blockNames", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> blockNames;
+
+    /**
+     * @return List of all reservation block names in the parent reservation.
+     * 
+     */
+    public Output<List<String>> blockNames() {
+        return this.blockNames;
+    }
+    /**
      * Full or partial URL to a parent commitment. This field displays for
      * reservations that are tied to a commitment.
      * 
@@ -472,6 +486,8 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
+     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
+     * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
@@ -479,6 +495,8 @@ public class Reservation extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
+     * 
+     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
      * 
      */
     public Output<String> project() {

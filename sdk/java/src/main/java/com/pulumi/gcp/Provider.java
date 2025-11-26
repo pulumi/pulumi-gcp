@@ -275,6 +275,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> cloudSchedulerCustomEndpoint() {
         return Codegen.optional(this.cloudSchedulerCustomEndpoint);
     }
+    @Export(name="cloudSecurityComplianceCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> cloudSecurityComplianceCustomEndpoint;
+
+    public Output<Optional<String>> cloudSecurityComplianceCustomEndpoint() {
+        return Codegen.optional(this.cloudSecurityComplianceCustomEndpoint);
+    }
     @Export(name="cloudTasksCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudTasksCustomEndpoint;
 

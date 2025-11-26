@@ -45,6 +45,7 @@ import com.pulumi.gcp.container.inputs.ClusterRbacBindingConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterReleaseChannelArgs;
 import com.pulumi.gcp.container.inputs.ClusterResourceUsageExportConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecretManagerConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterSecretSyncConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecurityPostureConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterServiceExternalIpsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterTpuConfigArgs;
@@ -1421,6 +1422,25 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for the
+     * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="secretSyncConfig")
+    private @Nullable Output<ClusterSecretSyncConfigArgs> secretSyncConfig;
+
+    /**
+     * @return Configuration for the
+     * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterSecretSyncConfigArgs>> secretSyncConfig() {
+        return Optional.ofNullable(this.secretSyncConfig);
+    }
+
+    /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
      * 
      */
@@ -1623,6 +1643,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.resourceLabels = $.resourceLabels;
         this.resourceUsageExportConfig = $.resourceUsageExportConfig;
         this.secretManagerConfig = $.secretManagerConfig;
+        this.secretSyncConfig = $.secretSyncConfig;
         this.securityPostureConfig = $.securityPostureConfig;
         this.serviceExternalIpsConfig = $.serviceExternalIpsConfig;
         this.subnetwork = $.subnetwork;
@@ -3466,6 +3487,31 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder secretManagerConfig(ClusterSecretManagerConfigArgs secretManagerConfig) {
             return secretManagerConfig(Output.of(secretManagerConfig));
+        }
+
+        /**
+         * @param secretSyncConfig Configuration for the
+         * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretSyncConfig(@Nullable Output<ClusterSecretSyncConfigArgs> secretSyncConfig) {
+            $.secretSyncConfig = secretSyncConfig;
+            return this;
+        }
+
+        /**
+         * @param secretSyncConfig Configuration for the
+         * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretSyncConfig(ClusterSecretSyncConfigArgs secretSyncConfig) {
+            return secretSyncConfig(Output.of(secretSyncConfig));
         }
 
         /**

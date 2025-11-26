@@ -205,6 +205,7 @@ var moduleMapping = map[string]string{
 	"cloud_run":                       gcpCloudRun,
 	"cloud_run_v2":                    gcpCloudRunV2,
 	"cloud_scheduler":                 gcpCloudScheduler,
+	"cloud_security_compliance":       "CloudSecurityCompliance",
 	"cloud_tasks":                     gcpCloudTasks,
 	"cloudbuild":                      gcpCloudBuild,
 	"cloudbuildv2":                    gcpCloudBuildV2,

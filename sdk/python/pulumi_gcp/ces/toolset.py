@@ -633,6 +633,61 @@ class Toolset(pulumi.CustomResource):
                 },
             })
         ```
+        ### Ces Toolset Bearer Token Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_toolset = gcp.ces.App("ces_app_for_toolset",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_toolset_bearer_token_config = gcp.ces.Toolset("ces_toolset_bearer_token_config",
+            toolset_id="toolset1",
+            location="us",
+            app=ces_app_for_toolset.app_id,
+            display_name="Basic toolset display name",
+            open_api_toolset={
+                "open_api_schema": \"\"\"openapi: 3.0.0
+        info:
+          title: My Sample API
+          version: 1.0.0
+          description: A simple API example
+        servers:
+          - url: https://api.example.com/v1
+        paths: {}
+        \"\"\",
+                "ignore_unknown_fields": False,
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "bearer_token_config": {
+                        "token": "$context.variables.my_ces_toolset_auth_token",
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -909,6 +964,61 @@ class Toolset(pulumi.CustomResource):
                         "key_name": "ExampleKey",
                         "api_key_secret_version": "projects/fake-project/secrets/fake-secret/versions/version-1",
                         "request_location": "HEADER",
+                    },
+                },
+            })
+        ```
+        ### Ces Toolset Bearer Token Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_toolset = gcp.ces.App("ces_app_for_toolset",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_toolset_bearer_token_config = gcp.ces.Toolset("ces_toolset_bearer_token_config",
+            toolset_id="toolset1",
+            location="us",
+            app=ces_app_for_toolset.app_id,
+            display_name="Basic toolset display name",
+            open_api_toolset={
+                "open_api_schema": \"\"\"openapi: 3.0.0
+        info:
+          title: My Sample API
+          version: 1.0.0
+          description: A simple API example
+        servers:
+          - url: https://api.example.com/v1
+        paths: {}
+        \"\"\",
+                "ignore_unknown_fields": False,
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "bearer_token_config": {
+                        "token": "$context.variables.my_ces_toolset_auth_token",
                     },
                 },
             })

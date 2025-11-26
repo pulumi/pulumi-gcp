@@ -12,6 +12,34 @@ namespace Pulumi.Gcp.Apphub.Inputs
 
     public sealed class ServiceServicePropertyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("extendedMetadatas")]
+        private InputList<Inputs.ServiceServicePropertyExtendedMetadataArgs>? _extendedMetadatas;
+
+        /// <summary>
+        /// (Output)
+        /// Output only. Additional metadata specific to the resource type.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ServiceServicePropertyExtendedMetadataArgs> ExtendedMetadatas
+        {
+            get => _extendedMetadatas ?? (_extendedMetadatas = new InputList<Inputs.ServiceServicePropertyExtendedMetadataArgs>());
+            set => _extendedMetadatas = value;
+        }
+
+        [Input("functionalTypes")]
+        private InputList<Inputs.ServiceServicePropertyFunctionalTypeArgs>? _functionalTypes;
+
+        /// <summary>
+        /// (Output)
+        /// Output only. The type of the service.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ServiceServicePropertyFunctionalTypeArgs> FunctionalTypes
+        {
+            get => _functionalTypes ?? (_functionalTypes = new InputList<Inputs.ServiceServicePropertyFunctionalTypeArgs>());
+            set => _functionalTypes = value;
+        }
+
         /// <summary>
         /// (Output)
         /// Output only. The service project identifier that the underlying cloud resource resides in.
@@ -24,6 +52,20 @@ namespace Pulumi.Gcp.Apphub.Inputs
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        [Input("registrationTypes")]
+        private InputList<Inputs.ServiceServicePropertyRegistrationTypeArgs>? _registrationTypes;
+
+        /// <summary>
+        /// (Output)
+        /// Output only. The registration type of the service.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ServiceServicePropertyRegistrationTypeArgs> RegistrationTypes
+        {
+            get => _registrationTypes ?? (_registrationTypes = new InputList<Inputs.ServiceServicePropertyRegistrationTypeArgs>());
+            set => _registrationTypes = value;
+        }
 
         /// <summary>
         /// (Output)

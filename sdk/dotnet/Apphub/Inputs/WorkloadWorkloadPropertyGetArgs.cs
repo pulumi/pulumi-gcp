@@ -12,6 +12,34 @@ namespace Pulumi.Gcp.Apphub.Inputs
 
     public sealed class WorkloadWorkloadPropertyGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("extendedMetadatas")]
+        private InputList<Inputs.WorkloadWorkloadPropertyExtendedMetadataGetArgs>? _extendedMetadatas;
+
+        /// <summary>
+        /// (Output)
+        /// Output only. Additional metadata specific to the resource type.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.WorkloadWorkloadPropertyExtendedMetadataGetArgs> ExtendedMetadatas
+        {
+            get => _extendedMetadatas ?? (_extendedMetadatas = new InputList<Inputs.WorkloadWorkloadPropertyExtendedMetadataGetArgs>());
+            set => _extendedMetadatas = value;
+        }
+
+        [Input("functionalTypes")]
+        private InputList<Inputs.WorkloadWorkloadPropertyFunctionalTypeGetArgs>? _functionalTypes;
+
+        /// <summary>
+        /// (Output)
+        /// Output only. The functional type of a service or workload.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.WorkloadWorkloadPropertyFunctionalTypeGetArgs> FunctionalTypes
+        {
+            get => _functionalTypes ?? (_functionalTypes = new InputList<Inputs.WorkloadWorkloadPropertyFunctionalTypeGetArgs>());
+            set => _functionalTypes = value;
+        }
+
         /// <summary>
         /// (Output)
         /// Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.

@@ -396,6 +396,8 @@ __all__ = [
     'RegionBackendServiceStrongSessionAffinityCookie',
     'RegionBackendServiceStrongSessionAffinityCookieTtl',
     'RegionBackendServiceSubsetting',
+    'RegionBackendServiceTlsSettings',
+    'RegionBackendServiceTlsSettingsSubjectAltName',
     'RegionCommitmentLicenseResource',
     'RegionCommitmentResource',
     'RegionDiskAsyncPrimaryDisk',
@@ -1006,6 +1008,8 @@ __all__ = [
     'GetRegionBackendServiceStrongSessionAffinityCookyResult',
     'GetRegionBackendServiceStrongSessionAffinityCookyTtlResult',
     'GetRegionBackendServiceSubsettingResult',
+    'GetRegionBackendServiceTlsSettingResult',
+    'GetRegionBackendServiceTlsSettingSubjectAltNameResult',
     'GetRegionDiskAsyncPrimaryDiskResult',
     'GetRegionDiskDiskEncryptionKeyResult',
     'GetRegionDiskGuestOsFeatureResult',
@@ -29877,6 +29881,138 @@ class RegionBackendServiceSubsetting(dict):
         Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
         """
         return pulumi.get(self, "subset_size")
+
+
+@pulumi.output_type
+class RegionBackendServiceTlsSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationConfig":
+            suggest = "authentication_config"
+        elif key == "subjectAltNames":
+            suggest = "subject_alt_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionBackendServiceTlsSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionBackendServiceTlsSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionBackendServiceTlsSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authentication_config: Optional[_builtins.str] = None,
+                 sni: Optional[_builtins.str] = None,
+                 subject_alt_names: Optional[Sequence['outputs.RegionBackendServiceTlsSettingsSubjectAltName']] = None):
+        """
+        :param _builtins.str authentication_config: Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+               Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+               Can only be specified if authenticationMode is not NONE.
+        :param _builtins.str sni: Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+               TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+               server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+               regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+        :param Sequence['RegionBackendServiceTlsSettingsSubjectAltNameArgs'] subject_alt_names: A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+               When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+               and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+               When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+               subjectAltNames.
+               Structure is documented below.
+        """
+        if authentication_config is not None:
+            pulumi.set(__self__, "authentication_config", authentication_config)
+        if sni is not None:
+            pulumi.set(__self__, "sni", sni)
+        if subject_alt_names is not None:
+            pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationConfig")
+    def authentication_config(self) -> Optional[_builtins.str]:
+        """
+        Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+        Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+        Can only be specified if authenticationMode is not NONE.
+        """
+        return pulumi.get(self, "authentication_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def sni(self) -> Optional[_builtins.str]:
+        """
+        Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+        TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+        server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+        regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+        """
+        return pulumi.get(self, "sni")
+
+    @_builtins.property
+    @pulumi.getter(name="subjectAltNames")
+    def subject_alt_names(self) -> Optional[Sequence['outputs.RegionBackendServiceTlsSettingsSubjectAltName']]:
+        """
+        A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+        When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+        and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+        When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+        subjectAltNames.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subject_alt_names")
+
+
+@pulumi.output_type
+class RegionBackendServiceTlsSettingsSubjectAltName(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsName":
+            suggest = "dns_name"
+        elif key == "uniformResourceIdentifier":
+            suggest = "uniform_resource_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionBackendServiceTlsSettingsSubjectAltName. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionBackendServiceTlsSettingsSubjectAltName.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionBackendServiceTlsSettingsSubjectAltName.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dns_name: Optional[_builtins.str] = None,
+                 uniform_resource_identifier: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str dns_name: The SAN specified as a DNS Name.
+        :param _builtins.str uniform_resource_identifier: The SAN specified as a URI.
+        """
+        if dns_name is not None:
+            pulumi.set(__self__, "dns_name", dns_name)
+        if uniform_resource_identifier is not None:
+            pulumi.set(__self__, "uniform_resource_identifier", uniform_resource_identifier)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> Optional[_builtins.str]:
+        """
+        The SAN specified as a DNS Name.
+        """
+        return pulumi.get(self, "dns_name")
+
+    @_builtins.property
+    @pulumi.getter(name="uniformResourceIdentifier")
+    def uniform_resource_identifier(self) -> Optional[_builtins.str]:
+        """
+        The SAN specified as a URI.
+        """
+        return pulumi.get(self, "uniform_resource_identifier")
 
 
 @pulumi.output_type
@@ -72942,6 +73078,93 @@ class GetRegionBackendServiceSubsettingResult(dict):
         Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
         """
         return pulumi.get(self, "subset_size")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceTlsSettingResult(dict):
+    def __init__(__self__, *,
+                 authentication_config: _builtins.str,
+                 sni: _builtins.str,
+                 subject_alt_names: Sequence['outputs.GetRegionBackendServiceTlsSettingSubjectAltNameResult']):
+        """
+        :param _builtins.str authentication_config: Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+               Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+               Can only be specified if authenticationMode is not NONE.
+        :param _builtins.str sni: Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+               TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+               server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+               regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+        :param Sequence['GetRegionBackendServiceTlsSettingSubjectAltNameArgs'] subject_alt_names: A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+               When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+               and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+               When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+               subjectAltNames.
+        """
+        pulumi.set(__self__, "authentication_config", authentication_config)
+        pulumi.set(__self__, "sni", sni)
+        pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationConfig")
+    def authentication_config(self) -> _builtins.str:
+        """
+        Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+        Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+        Can only be specified if authenticationMode is not NONE.
+        """
+        return pulumi.get(self, "authentication_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def sni(self) -> _builtins.str:
+        """
+        Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+        TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+        server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+        regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+        """
+        return pulumi.get(self, "sni")
+
+    @_builtins.property
+    @pulumi.getter(name="subjectAltNames")
+    def subject_alt_names(self) -> Sequence['outputs.GetRegionBackendServiceTlsSettingSubjectAltNameResult']:
+        """
+        A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+        When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+        and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+        When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+        subjectAltNames.
+        """
+        return pulumi.get(self, "subject_alt_names")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceTlsSettingSubjectAltNameResult(dict):
+    def __init__(__self__, *,
+                 dns_name: _builtins.str,
+                 uniform_resource_identifier: _builtins.str):
+        """
+        :param _builtins.str dns_name: The SAN specified as a DNS Name.
+        :param _builtins.str uniform_resource_identifier: The SAN specified as a URI.
+        """
+        pulumi.set(__self__, "dns_name", dns_name)
+        pulumi.set(__self__, "uniform_resource_identifier", uniform_resource_identifier)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> _builtins.str:
+        """
+        The SAN specified as a DNS Name.
+        """
+        return pulumi.get(self, "dns_name")
+
+    @_builtins.property
+    @pulumi.getter(name="uniformResourceIdentifier")
+    def uniform_resource_identifier(self) -> _builtins.str:
+        """
+        The SAN specified as a URI.
+        """
+        return pulumi.get(self, "uniform_resource_identifier")
 
 
 @pulumi.output_type

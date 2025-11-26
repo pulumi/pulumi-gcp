@@ -90,6 +90,11 @@ public final class GetReservationBlockResult {
      * 
      */
     private String status;
+    /**
+     * @return A List of all block sub-block names in the parent block.
+     * 
+     */
+    private List<String> subBlockNames;
     private @Nullable String zone;
 
     private GetReservationBlockResult() {}
@@ -200,6 +205,13 @@ public final class GetReservationBlockResult {
     public String status() {
         return this.status;
     }
+    /**
+     * @return A List of all block sub-block names in the parent block.
+     * 
+     */
+    public List<String> subBlockNames() {
+        return this.subBlockNames;
+    }
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }
@@ -230,6 +242,7 @@ public final class GetReservationBlockResult {
         private String selfLink;
         private String selfLinkWithId;
         private String status;
+        private List<String> subBlockNames;
         private @Nullable String zone;
         public Builder() {}
         public Builder(GetReservationBlockResult defaults) {
@@ -251,6 +264,7 @@ public final class GetReservationBlockResult {
     	      this.selfLink = defaults.selfLink;
     	      this.selfLinkWithId = defaults.selfLinkWithId;
     	      this.status = defaults.status;
+    	      this.subBlockNames = defaults.subBlockNames;
     	      this.zone = defaults.zone;
         }
 
@@ -400,6 +414,17 @@ public final class GetReservationBlockResult {
             return this;
         }
         @CustomType.Setter
+        public Builder subBlockNames(List<String> subBlockNames) {
+            if (subBlockNames == null) {
+              throw new MissingRequiredPropertyException("GetReservationBlockResult", "subBlockNames");
+            }
+            this.subBlockNames = subBlockNames;
+            return this;
+        }
+        public Builder subBlockNames(String... subBlockNames) {
+            return subBlockNames(List.of(subBlockNames));
+        }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
 
             this.zone = zone;
@@ -424,6 +449,7 @@ public final class GetReservationBlockResult {
             _resultValue.selfLink = selfLink;
             _resultValue.selfLinkWithId = selfLinkWithId;
             _resultValue.status = status;
+            _resultValue.subBlockNames = subBlockNames;
             _resultValue.zone = zone;
             return _resultValue;
         }

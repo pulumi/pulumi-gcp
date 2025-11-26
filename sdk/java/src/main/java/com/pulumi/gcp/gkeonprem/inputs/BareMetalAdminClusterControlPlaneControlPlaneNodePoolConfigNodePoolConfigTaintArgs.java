@@ -16,16 +16,14 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
     public static final BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs Empty = new BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs();
 
     /**
-     * Specifies the nodes operating system (default: LINUX).
-     * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+     * Available taint effects.
      * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
     /**
-     * @return Specifies the nodes operating system (default: LINUX).
-     * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+     * @return Available taint effects.
      * 
      */
     public Optional<Output<String>> effect() {
@@ -33,14 +31,14 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
     }
 
     /**
-     * Key associated with the effect.
+     * (Optional)
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return Key associated with the effect.
+     * @return (Optional)
      * 
      */
     public Optional<Output<String>> key() {
@@ -48,14 +46,14 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
     }
 
     /**
-     * Value associated with the effect.
+     * (Optional)
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Value associated with the effect.
+     * @return (Optional)
      * 
      */
     public Optional<Output<String>> value() {
@@ -89,8 +87,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param effect Specifies the nodes operating system (default: LINUX).
-         * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+         * @param effect Available taint effects.
          * 
          * @return builder
          * 
@@ -101,8 +98,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param effect Specifies the nodes operating system (default: LINUX).
-         * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+         * @param effect Available taint effects.
          * 
          * @return builder
          * 
@@ -112,7 +108,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param key Key associated with the effect.
+         * @param key (Optional)
          * 
          * @return builder
          * 
@@ -123,7 +119,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param key Key associated with the effect.
+         * @param key (Optional)
          * 
          * @return builder
          * 
@@ -133,7 +129,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param value Value associated with the effect.
+         * @param value (Optional)
          * 
          * @return builder
          * 
@@ -144,7 +140,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param value Value associated with the effect.
+         * @param value (Optional)
          * 
          * @return builder
          * 

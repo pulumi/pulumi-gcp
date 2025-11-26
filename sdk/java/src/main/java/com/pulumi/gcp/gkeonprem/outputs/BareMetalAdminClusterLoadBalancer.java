@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterLoadBalancerBgpLbConfig;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterLoadBalancerManualLbConfig;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterLoadBalancerPortConfig;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterLoadBalancerVipConfig;
@@ -14,6 +15,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BareMetalAdminClusterLoadBalancer {
+    /**
+     * @return A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable BareMetalAdminClusterLoadBalancerBgpLbConfig bgpLbConfig;
     /**
      * @return A nested object resource.
      * Structure is documented below.
@@ -34,6 +41,14 @@ public final class BareMetalAdminClusterLoadBalancer {
     private BareMetalAdminClusterLoadBalancerVipConfig vipConfig;
 
     private BareMetalAdminClusterLoadBalancer() {}
+    /**
+     * @return A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<BareMetalAdminClusterLoadBalancerBgpLbConfig> bgpLbConfig() {
+        return Optional.ofNullable(this.bgpLbConfig);
+    }
     /**
      * @return A nested object resource.
      * Structure is documented below.
@@ -68,17 +83,25 @@ public final class BareMetalAdminClusterLoadBalancer {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable BareMetalAdminClusterLoadBalancerBgpLbConfig bgpLbConfig;
         private @Nullable BareMetalAdminClusterLoadBalancerManualLbConfig manualLbConfig;
         private BareMetalAdminClusterLoadBalancerPortConfig portConfig;
         private BareMetalAdminClusterLoadBalancerVipConfig vipConfig;
         public Builder() {}
         public Builder(BareMetalAdminClusterLoadBalancer defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bgpLbConfig = defaults.bgpLbConfig;
     	      this.manualLbConfig = defaults.manualLbConfig;
     	      this.portConfig = defaults.portConfig;
     	      this.vipConfig = defaults.vipConfig;
         }
 
+        @CustomType.Setter
+        public Builder bgpLbConfig(@Nullable BareMetalAdminClusterLoadBalancerBgpLbConfig bgpLbConfig) {
+
+            this.bgpLbConfig = bgpLbConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder manualLbConfig(@Nullable BareMetalAdminClusterLoadBalancerManualLbConfig manualLbConfig) {
 
@@ -103,6 +126,7 @@ public final class BareMetalAdminClusterLoadBalancer {
         }
         public BareMetalAdminClusterLoadBalancer build() {
             final var _resultValue = new BareMetalAdminClusterLoadBalancer();
+            _resultValue.bgpLbConfig = bgpLbConfig;
             _resultValue.manualLbConfig = manualLbConfig;
             _resultValue.portConfig = portConfig;
             _resultValue.vipConfig = vipConfig;

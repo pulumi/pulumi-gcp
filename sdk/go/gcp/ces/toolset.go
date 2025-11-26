@@ -352,6 +352,88 @@ import (
 //	}
 //
 // ```
+// ### Ces Toolset Bearer Token Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cesAppForToolset, err := ces.NewApp(ctx, "ces_app_for_toolset", &ces.AppArgs{
+//				AppId:       pulumi.String("app-id"),
+//				Location:    pulumi.String("us"),
+//				Description: pulumi.String("App used as parent for CES Toolset example"),
+//				DisplayName: pulumi.String("my-app"),
+//				LanguageSettings: &ces.AppLanguageSettingsArgs{
+//					DefaultLanguageCode: pulumi.String("en-US"),
+//					SupportedLanguageCodes: pulumi.StringArray{
+//						pulumi.String("es-ES"),
+//						pulumi.String("fr-FR"),
+//					},
+//					EnableMultilingualSupport: pulumi.Bool(true),
+//					FallbackAction:            pulumi.String("escalate"),
+//				},
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewToolset(ctx, "ces_toolset_bearer_token_config", &ces.ToolsetArgs{
+//				ToolsetId:   pulumi.String("toolset1"),
+//				Location:    pulumi.String("us"),
+//				App:         cesAppForToolset.AppId,
+//				DisplayName: pulumi.String("Basic toolset display name"),
+//				OpenApiToolset: &ces.ToolsetOpenApiToolsetArgs{
+//					OpenApiSchema: pulumi.String(`openapi: 3.0.0
+//
+// info:
+//
+//	title: My Sample API
+//	version: 1.0.0
+//	description: A simple API example
+//
+// servers:
+//   - url: https://api.example.com/v1
+//
+// paths: {}
+// `),
+//
+//					IgnoreUnknownFields: pulumi.Bool(false),
+//					TlsConfig: &ces.ToolsetOpenApiToolsetTlsConfigArgs{
+//						CaCerts: ces.ToolsetOpenApiToolsetTlsConfigCaCertArray{
+//							&ces.ToolsetOpenApiToolsetTlsConfigCaCertArgs{
+//								DisplayName: pulumi.String("example"),
+//								Cert:        pulumi.String("ZXhhbXBsZQ=="),
+//							},
+//						},
+//					},
+//					ServiceDirectoryConfig: &ces.ToolsetOpenApiToolsetServiceDirectoryConfigArgs{
+//						Service: pulumi.String("projects/example/locations/us/namespaces/namespace/services/service"),
+//					},
+//					ApiAuthentication: &ces.ToolsetOpenApiToolsetApiAuthenticationArgs{
+//						BearerTokenConfig: &ces.ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs{
+//							Token: pulumi.String("$context.variables.my_ces_toolset_auth_token"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

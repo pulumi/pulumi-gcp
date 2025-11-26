@@ -361,6 +361,23 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * &#39;Configures subnet mask resolution for this subnetwork.&#39;
+     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+     * 
+     */
+    @Import(name="resolveSubnetMask")
+    private @Nullable Output<String> resolveSubnetMask;
+
+    /**
+     * @return &#39;Configures subnet mask resolution for this subnetwork.&#39;
+     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+     * 
+     */
+    public Optional<Output<String>> resolveSubnetMask() {
+        return Optional.ofNullable(this.resolveSubnetMask);
+    }
+
+    /**
      * The role of subnetwork.
      * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
      * The value can be set to `ACTIVE` or `BACKUP`.
@@ -472,6 +489,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
         this.purpose = $.purpose;
         this.region = $.region;
         this.reservedInternalRange = $.reservedInternalRange;
+        this.resolveSubnetMask = $.resolveSubnetMask;
         this.role = $.role;
         this.secondaryIpRanges = $.secondaryIpRanges;
         this.sendSecondaryIpRangeIfEmpty = $.sendSecondaryIpRangeIfEmpty;
@@ -935,6 +953,29 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder reservedInternalRange(String reservedInternalRange) {
             return reservedInternalRange(Output.of(reservedInternalRange));
+        }
+
+        /**
+         * @param resolveSubnetMask &#39;Configures subnet mask resolution for this subnetwork.&#39;
+         * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resolveSubnetMask(@Nullable Output<String> resolveSubnetMask) {
+            $.resolveSubnetMask = resolveSubnetMask;
+            return this;
+        }
+
+        /**
+         * @param resolveSubnetMask &#39;Configures subnet mask resolution for this subnetwork.&#39;
+         * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resolveSubnetMask(String resolveSubnetMask) {
+            return resolveSubnetMask(Output.of(resolveSubnetMask));
         }
 
         /**

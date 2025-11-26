@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -710,7 +710,7 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: false,
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -798,7 +798,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -923,7 +923,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -1015,7 +1015,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -1103,7 +1103,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.RandomPassword("pwd", {
+ * const pwd = new random.index.Password("pwd", {
  *     length: 16,
  *     special: false,
  * });

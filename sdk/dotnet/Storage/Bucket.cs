@@ -218,6 +218,70 @@ namespace Pulumi.Gcp.Storage
     /// });
     /// ```
     /// 
+    /// ### IP Filter Mode Enabled
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hns_enabled = new Gcp.Storage.Bucket("hns-enabled", new()
+    ///     {
+    ///         Name = "hns-enabled-bucket",
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///         IpFilter = new Gcp.Storage.Inputs.BucketIpFilterArgs
+    ///         {
+    ///             Mode = "Enabled",
+    ///             PublicNetworkSource = new Gcp.Storage.Inputs.BucketIpFilterPublicNetworkSourceArgs
+    ///             {
+    ///                 AllowedIpCidrRanges = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### IP Filter Mode Disabled
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hns_enabled = new Gcp.Storage.Bucket("hns-enabled", new()
+    ///     {
+    ///         Name = "hns-enabled-bucket",
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///         IpFilter = new Gcp.Storage.Inputs.BucketIpFilterArgs
+    ///         {
+    ///             Mode = "Disabled",
+    ///             PublicNetworkSource = new Gcp.Storage.Inputs.BucketIpFilterPublicNetworkSourceArgs
+    ///             {
+    ///                 AllowedIpCidrRanges = new[]
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                     "::/0",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Storage buckets can be imported using the `name` or  `project/name`. If the project is not

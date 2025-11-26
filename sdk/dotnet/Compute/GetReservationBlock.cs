@@ -248,6 +248,10 @@ namespace Pulumi.Gcp.Compute
         /// Status of the reservation block.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// A List of all block sub-block names in the parent block.
+        /// </summary>
+        public readonly ImmutableArray<string> SubBlockNames;
         public readonly string? Zone;
 
         [OutputConstructor]
@@ -286,6 +290,8 @@ namespace Pulumi.Gcp.Compute
 
             string status,
 
+            ImmutableArray<string> subBlockNames,
+
             string? zone)
         {
             BlockCount = blockCount;
@@ -305,6 +311,7 @@ namespace Pulumi.Gcp.Compute
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             Status = status;
+            SubBlockNames = subBlockNames;
             Zone = zone;
         }
     }

@@ -475,7 +475,7 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", TypeShape.of(GetBackupPlanAssociationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+     * Provides a list of Backup and DR BackupPlanAssociations.
      * 
      * ## Example Usage
      * 
@@ -501,9 +501,8 @@ public final class BackupdisasterrecoveryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var computeInstanceAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
+     *         final var allAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
      *             .location("us-central1")
-     *             .resourceType("compute.googleapis.com/Instance")
      *             .build());
      * 
      *     }
@@ -516,7 +515,7 @@ public final class BackupdisasterrecoveryFunctions {
         return getBackupPlanAssociations(args, InvokeOptions.Empty);
     }
     /**
-     * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+     * Provides a list of Backup and DR BackupPlanAssociations.
      * 
      * ## Example Usage
      * 
@@ -542,9 +541,8 @@ public final class BackupdisasterrecoveryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var computeInstanceAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
+     *         final var allAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
      *             .location("us-central1")
-     *             .resourceType("compute.googleapis.com/Instance")
      *             .build());
      * 
      *     }
@@ -557,7 +555,7 @@ public final class BackupdisasterrecoveryFunctions {
         return getBackupPlanAssociationsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+     * Provides a list of Backup and DR BackupPlanAssociations.
      * 
      * ## Example Usage
      * 
@@ -583,9 +581,8 @@ public final class BackupdisasterrecoveryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var computeInstanceAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
+     *         final var allAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
      *             .location("us-central1")
-     *             .resourceType("compute.googleapis.com/Instance")
      *             .build());
      * 
      *     }
@@ -598,7 +595,7 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", TypeShape.of(GetBackupPlanAssociationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+     * Provides a list of Backup and DR BackupPlanAssociations.
      * 
      * ## Example Usage
      * 
@@ -624,9 +621,8 @@ public final class BackupdisasterrecoveryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var computeInstanceAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
+     *         final var allAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
      *             .location("us-central1")
-     *             .resourceType("compute.googleapis.com/Instance")
      *             .build());
      * 
      *     }
@@ -639,7 +635,7 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", TypeShape.of(GetBackupPlanAssociationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+     * Provides a list of Backup and DR BackupPlanAssociations.
      * 
      * ## Example Usage
      * 
@@ -665,9 +661,8 @@ public final class BackupdisasterrecoveryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var computeInstanceAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
+     *         final var allAssociations = BackupdisasterrecoveryFunctions.getBackupPlanAssociations(GetBackupPlanAssociationsArgs.builder()
      *             .location("us-central1")
-     *             .resourceType("compute.googleapis.com/Instance")
      *             .build());
      * 
      *     }

@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult
     {
         /// <summary>
+        /// The behavior of the exclusion end time.
+        /// </summary>
+        public readonly string EndTimeBehavior;
+        /// <summary>
         /// The scope of automatic upgrades to restrict in the exclusion window.
         /// </summary>
         public readonly string Scope;
 
         [OutputConstructor]
-        private GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult(string scope)
+        private GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult(
+            string endTimeBehavior,
+
+            string scope)
         {
+            EndTimeBehavior = endTimeBehavior;
             Scope = scope;
         }
     }

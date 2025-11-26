@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerEnv;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerEnvFrom;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerLivenessProbe;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerPort;
+import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerReadinessProbe;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerResource;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerStartupProbe;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerVolumeMount;
@@ -65,6 +66,11 @@ public final class GetServiceTemplateSpecContainer {
      * 
      */
     private List<GetServiceTemplateSpecContainerPort> ports;
+    /**
+     * @return Periodic probe of container readiness.
+     * 
+     */
+    private List<GetServiceTemplateSpecContainerReadinessProbe> readinessProbes;
     /**
      * @return Compute Resources required by this container. Used to set values such as max memory
      * 
@@ -156,6 +162,13 @@ public final class GetServiceTemplateSpecContainer {
         return this.ports;
     }
     /**
+     * @return Periodic probe of container readiness.
+     * 
+     */
+    public List<GetServiceTemplateSpecContainerReadinessProbe> readinessProbes() {
+        return this.readinessProbes;
+    }
+    /**
      * @return Compute Resources required by this container. Used to set values such as max memory
      * 
      */
@@ -206,6 +219,7 @@ public final class GetServiceTemplateSpecContainer {
         private List<GetServiceTemplateSpecContainerLivenessProbe> livenessProbes;
         private String name;
         private List<GetServiceTemplateSpecContainerPort> ports;
+        private List<GetServiceTemplateSpecContainerReadinessProbe> readinessProbes;
         private List<GetServiceTemplateSpecContainerResource> resources;
         private List<GetServiceTemplateSpecContainerStartupProbe> startupProbes;
         private List<GetServiceTemplateSpecContainerVolumeMount> volumeMounts;
@@ -221,6 +235,7 @@ public final class GetServiceTemplateSpecContainer {
     	      this.livenessProbes = defaults.livenessProbes;
     	      this.name = defaults.name;
     	      this.ports = defaults.ports;
+    	      this.readinessProbes = defaults.readinessProbes;
     	      this.resources = defaults.resources;
     	      this.startupProbes = defaults.startupProbes;
     	      this.volumeMounts = defaults.volumeMounts;
@@ -310,6 +325,17 @@ public final class GetServiceTemplateSpecContainer {
             return ports(List.of(ports));
         }
         @CustomType.Setter
+        public Builder readinessProbes(List<GetServiceTemplateSpecContainerReadinessProbe> readinessProbes) {
+            if (readinessProbes == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "readinessProbes");
+            }
+            this.readinessProbes = readinessProbes;
+            return this;
+        }
+        public Builder readinessProbes(GetServiceTemplateSpecContainerReadinessProbe... readinessProbes) {
+            return readinessProbes(List.of(readinessProbes));
+        }
+        @CustomType.Setter
         public Builder resources(List<GetServiceTemplateSpecContainerResource> resources) {
             if (resources == null) {
               throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "resources");
@@ -360,6 +386,7 @@ public final class GetServiceTemplateSpecContainer {
             _resultValue.livenessProbes = livenessProbes;
             _resultValue.name = name;
             _resultValue.ports = ports;
+            _resultValue.readinessProbes = readinessProbes;
             _resultValue.resources = resources;
             _resultValue.startupProbes = startupProbes;
             _resultValue.volumeMounts = volumeMounts;

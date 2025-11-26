@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1073,7 +1073,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DeletionProtection = false,
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1195,7 +1195,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1384,7 +1384,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1511,7 +1511,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -1633,7 +1633,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,

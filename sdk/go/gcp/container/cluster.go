@@ -499,6 +499,10 @@ type Cluster struct {
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
 	SecretManagerConfig ClusterSecretManagerConfigPtrOutput `pulumi:"secretManagerConfig"`
+	// Configuration for the
+	// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+	// Structure is documented below.
+	SecretSyncConfig ClusterSecretSyncConfigPtrOutput `pulumi:"secretSyncConfig"`
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig ClusterSecurityPostureConfigOutput `pulumi:"securityPostureConfig"`
 	// The server-defined URL for the resource.
@@ -862,6 +866,10 @@ type clusterState struct {
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
 	SecretManagerConfig *ClusterSecretManagerConfig `pulumi:"secretManagerConfig"`
+	// Configuration for the
+	// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+	// Structure is documented below.
+	SecretSyncConfig *ClusterSecretSyncConfig `pulumi:"secretSyncConfig"`
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig *ClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
 	// The server-defined URL for the resource.
@@ -1191,6 +1199,10 @@ type ClusterState struct {
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
 	SecretManagerConfig ClusterSecretManagerConfigPtrInput
+	// Configuration for the
+	// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+	// Structure is documented below.
+	SecretSyncConfig ClusterSecretSyncConfigPtrInput
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig ClusterSecurityPostureConfigPtrInput
 	// The server-defined URL for the resource.
@@ -1511,6 +1523,10 @@ type clusterArgs struct {
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
 	SecretManagerConfig *ClusterSecretManagerConfig `pulumi:"secretManagerConfig"`
+	// Configuration for the
+	// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+	// Structure is documented below.
+	SecretSyncConfig *ClusterSecretSyncConfig `pulumi:"secretSyncConfig"`
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig *ClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
 	// Structure is documented below.
@@ -1817,6 +1833,10 @@ type ClusterArgs struct {
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
 	SecretManagerConfig ClusterSecretManagerConfigPtrInput
+	// Configuration for the
+	// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+	// Structure is documented below.
+	SecretSyncConfig ClusterSecretSyncConfigPtrInput
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig ClusterSecurityPostureConfigPtrInput
 	// Structure is documented below.
@@ -2453,6 +2473,13 @@ func (o ClusterOutput) ResourceUsageExportConfig() ClusterResourceUsageExportCon
 // Structure is documented below.
 func (o ClusterOutput) SecretManagerConfig() ClusterSecretManagerConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterSecretManagerConfigPtrOutput { return v.SecretManagerConfig }).(ClusterSecretManagerConfigPtrOutput)
+}
+
+// Configuration for the
+// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
+// Structure is documented below.
+func (o ClusterOutput) SecretSyncConfig() ClusterSecretSyncConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterSecretSyncConfigPtrOutput { return v.SecretSyncConfig }).(ClusterSecretSyncConfigPtrOutput)
 }
 
 // Enable/Disable Security Posture API features for the cluster. Structure is documented below.

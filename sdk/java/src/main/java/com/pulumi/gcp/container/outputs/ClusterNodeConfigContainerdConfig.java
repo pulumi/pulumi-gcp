@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigContainerdConfigWritableCgroups;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,11 @@ public final class ClusterNodeConfigContainerdConfig {
      * 
      */
     private @Nullable ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig privateRegistryAccessConfig;
+    /**
+     * @return Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
+     * 
+     */
+    private @Nullable ClusterNodeConfigContainerdConfigWritableCgroups writableCgroups;
 
     private ClusterNodeConfigContainerdConfig() {}
     /**
@@ -24,6 +30,13 @@ public final class ClusterNodeConfigContainerdConfig {
      */
     public Optional<ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfig() {
         return Optional.ofNullable(this.privateRegistryAccessConfig);
+    }
+    /**
+     * @return Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
+     * 
+     */
+    public Optional<ClusterNodeConfigContainerdConfigWritableCgroups> writableCgroups() {
+        return Optional.ofNullable(this.writableCgroups);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class ClusterNodeConfigContainerdConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig privateRegistryAccessConfig;
+        private @Nullable ClusterNodeConfigContainerdConfigWritableCgroups writableCgroups;
         public Builder() {}
         public Builder(ClusterNodeConfigContainerdConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.privateRegistryAccessConfig = defaults.privateRegistryAccessConfig;
+    	      this.writableCgroups = defaults.writableCgroups;
         }
 
         @CustomType.Setter
@@ -48,9 +63,16 @@ public final class ClusterNodeConfigContainerdConfig {
             this.privateRegistryAccessConfig = privateRegistryAccessConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder writableCgroups(@Nullable ClusterNodeConfigContainerdConfigWritableCgroups writableCgroups) {
+
+            this.writableCgroups = writableCgroups;
+            return this;
+        }
         public ClusterNodeConfigContainerdConfig build() {
             final var _resultValue = new ClusterNodeConfigContainerdConfig();
             _resultValue.privateRegistryAccessConfig = privateRegistryAccessConfig;
+            _resultValue.writableCgroups = writableCgroups;
             return _resultValue;
         }
     }

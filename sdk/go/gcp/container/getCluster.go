@@ -148,6 +148,7 @@ type LookupClusterResult struct {
 	ResourceLabels                  map[string]string                          `pulumi:"resourceLabels"`
 	ResourceUsageExportConfigs      []GetClusterResourceUsageExportConfig      `pulumi:"resourceUsageExportConfigs"`
 	SecretManagerConfigs            []GetClusterSecretManagerConfig            `pulumi:"secretManagerConfigs"`
+	SecretSyncConfigs               []GetClusterSecretSyncConfig               `pulumi:"secretSyncConfigs"`
 	SecurityPostureConfigs          []GetClusterSecurityPostureConfig          `pulumi:"securityPostureConfigs"`
 	SelfLink                        string                                     `pulumi:"selfLink"`
 	ServiceExternalIpsConfigs       []GetClusterServiceExternalIpsConfig       `pulumi:"serviceExternalIpsConfigs"`
@@ -523,6 +524,10 @@ func (o LookupClusterResultOutput) ResourceUsageExportConfigs() GetClusterResour
 
 func (o LookupClusterResultOutput) SecretManagerConfigs() GetClusterSecretManagerConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterSecretManagerConfig { return v.SecretManagerConfigs }).(GetClusterSecretManagerConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) SecretSyncConfigs() GetClusterSecretSyncConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterSecretSyncConfig { return v.SecretSyncConfigs }).(GetClusterSecretSyncConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) SecurityPostureConfigs() GetClusterSecurityPostureConfigArrayOutput {

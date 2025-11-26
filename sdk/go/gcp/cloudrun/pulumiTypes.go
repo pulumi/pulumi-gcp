@@ -3268,6 +3268,9 @@ type ServiceTemplateSpecContainer struct {
 	// List of open ports in the container.
 	// Structure is documented below.
 	Ports []ServiceTemplateSpecContainerPort `pulumi:"ports"`
+	// Periodic probe of container readiness.
+	// Structure is documented below.
+	ReadinessProbe *ServiceTemplateSpecContainerReadinessProbe `pulumi:"readinessProbe"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	// Structure is documented below.
 	Resources *ServiceTemplateSpecContainerResources `pulumi:"resources"`
@@ -3336,6 +3339,9 @@ type ServiceTemplateSpecContainerArgs struct {
 	// List of open ports in the container.
 	// Structure is documented below.
 	Ports ServiceTemplateSpecContainerPortArrayInput `pulumi:"ports"`
+	// Periodic probe of container readiness.
+	// Structure is documented below.
+	ReadinessProbe ServiceTemplateSpecContainerReadinessProbePtrInput `pulumi:"readinessProbe"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	// Structure is documented below.
 	Resources ServiceTemplateSpecContainerResourcesPtrInput `pulumi:"resources"`
@@ -3467,6 +3473,14 @@ func (o ServiceTemplateSpecContainerOutput) Name() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o ServiceTemplateSpecContainerOutput) Ports() ServiceTemplateSpecContainerPortArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) []ServiceTemplateSpecContainerPort { return v.Ports }).(ServiceTemplateSpecContainerPortArrayOutput)
+}
+
+// Periodic probe of container readiness.
+// Structure is documented below.
+func (o ServiceTemplateSpecContainerOutput) ReadinessProbe() ServiceTemplateSpecContainerReadinessProbePtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerReadinessProbe {
+		return v.ReadinessProbe
+	}).(ServiceTemplateSpecContainerReadinessProbePtrOutput)
 }
 
 // Compute Resources required by this container. Used to set values such as max memory
@@ -5526,6 +5540,594 @@ func (o ServiceTemplateSpecContainerPortArrayOutput) Index(i pulumi.IntInput) Se
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateSpecContainerPort {
 		return vs[0].([]ServiceTemplateSpecContainerPort)[vs[1].(int)]
 	}).(ServiceTemplateSpecContainerPortOutput)
+}
+
+type ServiceTemplateSpecContainerReadinessProbe struct {
+	// Minimum consecutive failures for the probe to be considered failed after
+	// having succeeded. Defaults to 3.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	// Structure is documented below.
+	Grpc *ServiceTemplateSpecContainerReadinessProbeGrpc `pulumi:"grpc"`
+	// HttpGet specifies the http request to perform.
+	// Structure is documented below.
+	HttpGet *ServiceTemplateSpecContainerReadinessProbeHttpGet `pulumi:"httpGet"`
+	// How often (in seconds) to perform the probe.
+	// Default to 10 seconds.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Minimum consecutive successes for the probe to be considered successful after having failed.
+	// Defaults to 2.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Must be smaller than period_seconds.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// ServiceTemplateSpecContainerReadinessProbeInput is an input type that accepts ServiceTemplateSpecContainerReadinessProbeArgs and ServiceTemplateSpecContainerReadinessProbeOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerReadinessProbeInput` via:
+//
+//	ServiceTemplateSpecContainerReadinessProbeArgs{...}
+type ServiceTemplateSpecContainerReadinessProbeInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerReadinessProbeOutput() ServiceTemplateSpecContainerReadinessProbeOutput
+	ToServiceTemplateSpecContainerReadinessProbeOutputWithContext(context.Context) ServiceTemplateSpecContainerReadinessProbeOutput
+}
+
+type ServiceTemplateSpecContainerReadinessProbeArgs struct {
+	// Minimum consecutive failures for the probe to be considered failed after
+	// having succeeded. Defaults to 3.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	// Structure is documented below.
+	Grpc ServiceTemplateSpecContainerReadinessProbeGrpcPtrInput `pulumi:"grpc"`
+	// HttpGet specifies the http request to perform.
+	// Structure is documented below.
+	HttpGet ServiceTemplateSpecContainerReadinessProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// How often (in seconds) to perform the probe.
+	// Default to 10 seconds.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Minimum consecutive successes for the probe to be considered successful after having failed.
+	// Defaults to 2.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Must be smaller than period_seconds.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (ServiceTemplateSpecContainerReadinessProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerReadinessProbe)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecContainerReadinessProbeArgs) ToServiceTemplateSpecContainerReadinessProbeOutput() ServiceTemplateSpecContainerReadinessProbeOutput {
+	return i.ToServiceTemplateSpecContainerReadinessProbeOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerReadinessProbeArgs) ToServiceTemplateSpecContainerReadinessProbeOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerReadinessProbeOutput)
+}
+
+func (i ServiceTemplateSpecContainerReadinessProbeArgs) ToServiceTemplateSpecContainerReadinessProbePtrOutput() ServiceTemplateSpecContainerReadinessProbePtrOutput {
+	return i.ToServiceTemplateSpecContainerReadinessProbePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerReadinessProbeArgs) ToServiceTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerReadinessProbeOutput).ToServiceTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateSpecContainerReadinessProbePtrInput is an input type that accepts ServiceTemplateSpecContainerReadinessProbeArgs, ServiceTemplateSpecContainerReadinessProbePtr and ServiceTemplateSpecContainerReadinessProbePtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerReadinessProbePtrInput` via:
+//
+//	        ServiceTemplateSpecContainerReadinessProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateSpecContainerReadinessProbePtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerReadinessProbePtrOutput() ServiceTemplateSpecContainerReadinessProbePtrOutput
+	ToServiceTemplateSpecContainerReadinessProbePtrOutputWithContext(context.Context) ServiceTemplateSpecContainerReadinessProbePtrOutput
+}
+
+type serviceTemplateSpecContainerReadinessProbePtrType ServiceTemplateSpecContainerReadinessProbeArgs
+
+func ServiceTemplateSpecContainerReadinessProbePtr(v *ServiceTemplateSpecContainerReadinessProbeArgs) ServiceTemplateSpecContainerReadinessProbePtrInput {
+	return (*serviceTemplateSpecContainerReadinessProbePtrType)(v)
+}
+
+func (*serviceTemplateSpecContainerReadinessProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecContainerReadinessProbe)(nil)).Elem()
+}
+
+func (i *serviceTemplateSpecContainerReadinessProbePtrType) ToServiceTemplateSpecContainerReadinessProbePtrOutput() ServiceTemplateSpecContainerReadinessProbePtrOutput {
+	return i.ToServiceTemplateSpecContainerReadinessProbePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateSpecContainerReadinessProbePtrType) ToServiceTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerReadinessProbePtrOutput)
+}
+
+type ServiceTemplateSpecContainerReadinessProbeOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerReadinessProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerReadinessProbe)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeOutput) ToServiceTemplateSpecContainerReadinessProbeOutput() ServiceTemplateSpecContainerReadinessProbeOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeOutput) ToServiceTemplateSpecContainerReadinessProbeOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeOutput) ToServiceTemplateSpecContainerReadinessProbePtrOutput() ServiceTemplateSpecContainerReadinessProbePtrOutput {
+	return o.ToServiceTemplateSpecContainerReadinessProbePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeOutput) ToServiceTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerReadinessProbe) *ServiceTemplateSpecContainerReadinessProbe {
+		return &v
+	}).(ServiceTemplateSpecContainerReadinessProbePtrOutput)
+}
+
+// Minimum consecutive failures for the probe to be considered failed after
+// having succeeded. Defaults to 3.
+func (o ServiceTemplateSpecContainerReadinessProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerReadinessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// GRPC specifies an action involving a GRPC port.
+// Structure is documented below.
+func (o ServiceTemplateSpecContainerReadinessProbeOutput) Grpc() ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerReadinessProbe) *ServiceTemplateSpecContainerReadinessProbeGrpc {
+		return v.Grpc
+	}).(ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput)
+}
+
+// HttpGet specifies the http request to perform.
+// Structure is documented below.
+func (o ServiceTemplateSpecContainerReadinessProbeOutput) HttpGet() ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerReadinessProbe) *ServiceTemplateSpecContainerReadinessProbeHttpGet {
+		return v.HttpGet
+	}).(ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput)
+}
+
+// How often (in seconds) to perform the probe.
+// Default to 10 seconds.
+func (o ServiceTemplateSpecContainerReadinessProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerReadinessProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Minimum consecutive successes for the probe to be considered successful after having failed.
+// Defaults to 2.
+func (o ServiceTemplateSpecContainerReadinessProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerReadinessProbe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Number of seconds after which the probe times out.
+// Defaults to 1 second. Must be smaller than period_seconds.
+func (o ServiceTemplateSpecContainerReadinessProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerReadinessProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type ServiceTemplateSpecContainerReadinessProbePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerReadinessProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecContainerReadinessProbe)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbePtrOutput) ToServiceTemplateSpecContainerReadinessProbePtrOutput() ServiceTemplateSpecContainerReadinessProbePtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbePtrOutput) ToServiceTemplateSpecContainerReadinessProbePtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbePtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbePtrOutput) Elem() ServiceTemplateSpecContainerReadinessProbeOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbe) ServiceTemplateSpecContainerReadinessProbe {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerReadinessProbe
+		return ret
+	}).(ServiceTemplateSpecContainerReadinessProbeOutput)
+}
+
+// Minimum consecutive failures for the probe to be considered failed after
+// having succeeded. Defaults to 3.
+func (o ServiceTemplateSpecContainerReadinessProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// GRPC specifies an action involving a GRPC port.
+// Structure is documented below.
+func (o ServiceTemplateSpecContainerReadinessProbePtrOutput) Grpc() ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbe) *ServiceTemplateSpecContainerReadinessProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput)
+}
+
+// HttpGet specifies the http request to perform.
+// Structure is documented below.
+func (o ServiceTemplateSpecContainerReadinessProbePtrOutput) HttpGet() ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbe) *ServiceTemplateSpecContainerReadinessProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput)
+}
+
+// How often (in seconds) to perform the probe.
+// Default to 10 seconds.
+func (o ServiceTemplateSpecContainerReadinessProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum consecutive successes for the probe to be considered successful after having failed.
+// Defaults to 2.
+func (o ServiceTemplateSpecContainerReadinessProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of seconds after which the probe times out.
+// Defaults to 1 second. Must be smaller than period_seconds.
+func (o ServiceTemplateSpecContainerReadinessProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type ServiceTemplateSpecContainerReadinessProbeGrpc struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service *string `pulumi:"service"`
+}
+
+// ServiceTemplateSpecContainerReadinessProbeGrpcInput is an input type that accepts ServiceTemplateSpecContainerReadinessProbeGrpcArgs and ServiceTemplateSpecContainerReadinessProbeGrpcOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerReadinessProbeGrpcInput` via:
+//
+//	ServiceTemplateSpecContainerReadinessProbeGrpcArgs{...}
+type ServiceTemplateSpecContainerReadinessProbeGrpcInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerReadinessProbeGrpcOutput() ServiceTemplateSpecContainerReadinessProbeGrpcOutput
+	ToServiceTemplateSpecContainerReadinessProbeGrpcOutputWithContext(context.Context) ServiceTemplateSpecContainerReadinessProbeGrpcOutput
+}
+
+type ServiceTemplateSpecContainerReadinessProbeGrpcArgs struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (ServiceTemplateSpecContainerReadinessProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecContainerReadinessProbeGrpcArgs) ToServiceTemplateSpecContainerReadinessProbeGrpcOutput() ServiceTemplateSpecContainerReadinessProbeGrpcOutput {
+	return i.ToServiceTemplateSpecContainerReadinessProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerReadinessProbeGrpcArgs) ToServiceTemplateSpecContainerReadinessProbeGrpcOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerReadinessProbeGrpcOutput)
+}
+
+func (i ServiceTemplateSpecContainerReadinessProbeGrpcArgs) ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput() ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput {
+	return i.ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerReadinessProbeGrpcArgs) ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerReadinessProbeGrpcOutput).ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateSpecContainerReadinessProbeGrpcPtrInput is an input type that accepts ServiceTemplateSpecContainerReadinessProbeGrpcArgs, ServiceTemplateSpecContainerReadinessProbeGrpcPtr and ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerReadinessProbeGrpcPtrInput` via:
+//
+//	        ServiceTemplateSpecContainerReadinessProbeGrpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateSpecContainerReadinessProbeGrpcPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput() ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput
+	ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutputWithContext(context.Context) ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput
+}
+
+type serviceTemplateSpecContainerReadinessProbeGrpcPtrType ServiceTemplateSpecContainerReadinessProbeGrpcArgs
+
+func ServiceTemplateSpecContainerReadinessProbeGrpcPtr(v *ServiceTemplateSpecContainerReadinessProbeGrpcArgs) ServiceTemplateSpecContainerReadinessProbeGrpcPtrInput {
+	return (*serviceTemplateSpecContainerReadinessProbeGrpcPtrType)(v)
+}
+
+func (*serviceTemplateSpecContainerReadinessProbeGrpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
+}
+
+func (i *serviceTemplateSpecContainerReadinessProbeGrpcPtrType) ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput() ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput {
+	return i.ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateSpecContainerReadinessProbeGrpcPtrType) ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput)
+}
+
+type ServiceTemplateSpecContainerReadinessProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerReadinessProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeGrpcOutput) ToServiceTemplateSpecContainerReadinessProbeGrpcOutput() ServiceTemplateSpecContainerReadinessProbeGrpcOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeGrpcOutput) ToServiceTemplateSpecContainerReadinessProbeGrpcOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeGrpcOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeGrpcOutput) ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput() ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput {
+	return o.ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeGrpcOutput) ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerReadinessProbeGrpc) *ServiceTemplateSpecContainerReadinessProbeGrpc {
+		return &v
+	}).(ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateSpecContainerReadinessProbeGrpcOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerReadinessProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The name of the service to place in the gRPC HealthCheckRequest
+// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// If this is not specified, the default behavior is defined by gRPC.
+func (o ServiceTemplateSpecContainerReadinessProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerReadinessProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput) ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput() ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput) ToServiceTemplateSpecContainerReadinessProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput) Elem() ServiceTemplateSpecContainerReadinessProbeGrpcOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbeGrpc) ServiceTemplateSpecContainerReadinessProbeGrpc {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerReadinessProbeGrpc
+		return ret
+	}).(ServiceTemplateSpecContainerReadinessProbeGrpcOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbeGrpc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the service to place in the gRPC HealthCheckRequest
+// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// If this is not specified, the default behavior is defined by gRPC.
+func (o ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbeGrpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSpecContainerReadinessProbeHttpGet struct {
+	// Path to access on the HTTP server. If set, it should not be empty string.
+	Path *string `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+}
+
+// ServiceTemplateSpecContainerReadinessProbeHttpGetInput is an input type that accepts ServiceTemplateSpecContainerReadinessProbeHttpGetArgs and ServiceTemplateSpecContainerReadinessProbeHttpGetOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerReadinessProbeHttpGetInput` via:
+//
+//	ServiceTemplateSpecContainerReadinessProbeHttpGetArgs{...}
+type ServiceTemplateSpecContainerReadinessProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerReadinessProbeHttpGetOutput() ServiceTemplateSpecContainerReadinessProbeHttpGetOutput
+	ToServiceTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(context.Context) ServiceTemplateSpecContainerReadinessProbeHttpGetOutput
+}
+
+type ServiceTemplateSpecContainerReadinessProbeHttpGetArgs struct {
+	// Path to access on the HTTP server. If set, it should not be empty string.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (ServiceTemplateSpecContainerReadinessProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecContainerReadinessProbeHttpGetArgs) ToServiceTemplateSpecContainerReadinessProbeHttpGetOutput() ServiceTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return i.ToServiceTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerReadinessProbeHttpGetArgs) ToServiceTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerReadinessProbeHttpGetOutput)
+}
+
+func (i ServiceTemplateSpecContainerReadinessProbeHttpGetArgs) ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput() ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return i.ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerReadinessProbeHttpGetArgs) ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerReadinessProbeHttpGetOutput).ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateSpecContainerReadinessProbeHttpGetPtrInput is an input type that accepts ServiceTemplateSpecContainerReadinessProbeHttpGetArgs, ServiceTemplateSpecContainerReadinessProbeHttpGetPtr and ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerReadinessProbeHttpGetPtrInput` via:
+//
+//	        ServiceTemplateSpecContainerReadinessProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateSpecContainerReadinessProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput() ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput
+	ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(context.Context) ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput
+}
+
+type serviceTemplateSpecContainerReadinessProbeHttpGetPtrType ServiceTemplateSpecContainerReadinessProbeHttpGetArgs
+
+func ServiceTemplateSpecContainerReadinessProbeHttpGetPtr(v *ServiceTemplateSpecContainerReadinessProbeHttpGetArgs) ServiceTemplateSpecContainerReadinessProbeHttpGetPtrInput {
+	return (*serviceTemplateSpecContainerReadinessProbeHttpGetPtrType)(v)
+}
+
+func (*serviceTemplateSpecContainerReadinessProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
+}
+
+func (i *serviceTemplateSpecContainerReadinessProbeHttpGetPtrType) ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput() ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return i.ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateSpecContainerReadinessProbeHttpGetPtrType) ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput)
+}
+
+type ServiceTemplateSpecContainerReadinessProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerReadinessProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeHttpGetOutput) ToServiceTemplateSpecContainerReadinessProbeHttpGetOutput() ServiceTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeHttpGetOutput) ToServiceTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeHttpGetOutput) ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput() ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return o.ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeHttpGetOutput) ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerReadinessProbeHttpGet) *ServiceTemplateSpecContainerReadinessProbeHttpGet {
+		return &v
+	}).(ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput)
+}
+
+// Path to access on the HTTP server. If set, it should not be empty string.
+func (o ServiceTemplateSpecContainerReadinessProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerReadinessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateSpecContainerReadinessProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerReadinessProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput) ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput() ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput) ToServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Elem() ServiceTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbeHttpGet) ServiceTemplateSpecContainerReadinessProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerReadinessProbeHttpGet
+		return ret
+	}).(ServiceTemplateSpecContainerReadinessProbeHttpGetOutput)
+}
+
+// Path to access on the HTTP server. If set, it should not be empty string.
+func (o ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerReadinessProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceTemplateSpecContainerResources struct {
@@ -9097,6 +9699,8 @@ type GetServiceTemplateSpecContainer struct {
 	Name string `pulumi:"name"`
 	// List of open ports in the container.
 	Ports []GetServiceTemplateSpecContainerPort `pulumi:"ports"`
+	// Periodic probe of container readiness.
+	ReadinessProbes []GetServiceTemplateSpecContainerReadinessProbe `pulumi:"readinessProbes"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	Resources []GetServiceTemplateSpecContainerResource `pulumi:"resources"`
 	// Startup probe of application within the container.
@@ -9147,6 +9751,8 @@ type GetServiceTemplateSpecContainerArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// List of open ports in the container.
 	Ports GetServiceTemplateSpecContainerPortArrayInput `pulumi:"ports"`
+	// Periodic probe of container readiness.
+	ReadinessProbes GetServiceTemplateSpecContainerReadinessProbeArrayInput `pulumi:"readinessProbes"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	Resources GetServiceTemplateSpecContainerResourceArrayInput `pulumi:"resources"`
 	// Startup probe of application within the container.
@@ -9260,6 +9866,13 @@ func (o GetServiceTemplateSpecContainerOutput) Name() pulumi.StringOutput {
 // List of open ports in the container.
 func (o GetServiceTemplateSpecContainerOutput) Ports() GetServiceTemplateSpecContainerPortArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainer) []GetServiceTemplateSpecContainerPort { return v.Ports }).(GetServiceTemplateSpecContainerPortArrayOutput)
+}
+
+// Periodic probe of container readiness.
+func (o GetServiceTemplateSpecContainerOutput) ReadinessProbes() GetServiceTemplateSpecContainerReadinessProbeArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainer) []GetServiceTemplateSpecContainerReadinessProbe {
+		return v.ReadinessProbes
+	}).(GetServiceTemplateSpecContainerReadinessProbeArrayOutput)
 }
 
 // Compute Resources required by this container. Used to set values such as max memory
@@ -10783,6 +11396,388 @@ func (o GetServiceTemplateSpecContainerPortArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecContainerPort {
 		return vs[0].([]GetServiceTemplateSpecContainerPort)[vs[1].(int)]
 	}).(GetServiceTemplateSpecContainerPortOutput)
+}
+
+type GetServiceTemplateSpecContainerReadinessProbe struct {
+	// Minimum consecutive failures for the probe to be considered failed after
+	// having succeeded. Defaults to 3.
+	FailureThreshold int `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs []GetServiceTemplateSpecContainerReadinessProbeGrpc `pulumi:"grpcs"`
+	// HttpGet specifies the http request to perform.
+	HttpGets []GetServiceTemplateSpecContainerReadinessProbeHttpGet `pulumi:"httpGets"`
+	// How often (in seconds) to perform the probe.
+	// Default to 10 seconds.
+	PeriodSeconds int `pulumi:"periodSeconds"`
+	// Minimum consecutive successes for the probe to be considered successful after having failed.
+	// Defaults to 2.
+	SuccessThreshold int `pulumi:"successThreshold"`
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Must be smaller than period_seconds.
+	TimeoutSeconds int `pulumi:"timeoutSeconds"`
+}
+
+// GetServiceTemplateSpecContainerReadinessProbeInput is an input type that accepts GetServiceTemplateSpecContainerReadinessProbeArgs and GetServiceTemplateSpecContainerReadinessProbeOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerReadinessProbeInput` via:
+//
+//	GetServiceTemplateSpecContainerReadinessProbeArgs{...}
+type GetServiceTemplateSpecContainerReadinessProbeInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerReadinessProbeOutput() GetServiceTemplateSpecContainerReadinessProbeOutput
+	ToGetServiceTemplateSpecContainerReadinessProbeOutputWithContext(context.Context) GetServiceTemplateSpecContainerReadinessProbeOutput
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeArgs struct {
+	// Minimum consecutive failures for the probe to be considered failed after
+	// having succeeded. Defaults to 3.
+	FailureThreshold pulumi.IntInput `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs GetServiceTemplateSpecContainerReadinessProbeGrpcArrayInput `pulumi:"grpcs"`
+	// HttpGet specifies the http request to perform.
+	HttpGets GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayInput `pulumi:"httpGets"`
+	// How often (in seconds) to perform the probe.
+	// Default to 10 seconds.
+	PeriodSeconds pulumi.IntInput `pulumi:"periodSeconds"`
+	// Minimum consecutive successes for the probe to be considered successful after having failed.
+	// Defaults to 2.
+	SuccessThreshold pulumi.IntInput `pulumi:"successThreshold"`
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Must be smaller than period_seconds.
+	TimeoutSeconds pulumi.IntInput `pulumi:"timeoutSeconds"`
+}
+
+func (GetServiceTemplateSpecContainerReadinessProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerReadinessProbe)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerReadinessProbeArgs) ToGetServiceTemplateSpecContainerReadinessProbeOutput() GetServiceTemplateSpecContainerReadinessProbeOutput {
+	return i.ToGetServiceTemplateSpecContainerReadinessProbeOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerReadinessProbeArgs) ToGetServiceTemplateSpecContainerReadinessProbeOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerReadinessProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerReadinessProbeOutput)
+}
+
+// GetServiceTemplateSpecContainerReadinessProbeArrayInput is an input type that accepts GetServiceTemplateSpecContainerReadinessProbeArray and GetServiceTemplateSpecContainerReadinessProbeArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerReadinessProbeArrayInput` via:
+//
+//	GetServiceTemplateSpecContainerReadinessProbeArray{ GetServiceTemplateSpecContainerReadinessProbeArgs{...} }
+type GetServiceTemplateSpecContainerReadinessProbeArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerReadinessProbeArrayOutput() GetServiceTemplateSpecContainerReadinessProbeArrayOutput
+	ToGetServiceTemplateSpecContainerReadinessProbeArrayOutputWithContext(context.Context) GetServiceTemplateSpecContainerReadinessProbeArrayOutput
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeArray []GetServiceTemplateSpecContainerReadinessProbeInput
+
+func (GetServiceTemplateSpecContainerReadinessProbeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerReadinessProbe)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerReadinessProbeArray) ToGetServiceTemplateSpecContainerReadinessProbeArrayOutput() GetServiceTemplateSpecContainerReadinessProbeArrayOutput {
+	return i.ToGetServiceTemplateSpecContainerReadinessProbeArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerReadinessProbeArray) ToGetServiceTemplateSpecContainerReadinessProbeArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerReadinessProbeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerReadinessProbeArrayOutput)
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerReadinessProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerReadinessProbe)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeOutput) ToGetServiceTemplateSpecContainerReadinessProbeOutput() GetServiceTemplateSpecContainerReadinessProbeOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeOutput) ToGetServiceTemplateSpecContainerReadinessProbeOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerReadinessProbeOutput {
+	return o
+}
+
+// Minimum consecutive failures for the probe to be considered failed after
+// having succeeded. Defaults to 3.
+func (o GetServiceTemplateSpecContainerReadinessProbeOutput) FailureThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerReadinessProbe) int { return v.FailureThreshold }).(pulumi.IntOutput)
+}
+
+// GRPC specifies an action involving a GRPC port.
+func (o GetServiceTemplateSpecContainerReadinessProbeOutput) Grpcs() GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerReadinessProbe) []GetServiceTemplateSpecContainerReadinessProbeGrpc {
+		return v.Grpcs
+	}).(GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput)
+}
+
+// HttpGet specifies the http request to perform.
+func (o GetServiceTemplateSpecContainerReadinessProbeOutput) HttpGets() GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerReadinessProbe) []GetServiceTemplateSpecContainerReadinessProbeHttpGet {
+		return v.HttpGets
+	}).(GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput)
+}
+
+// How often (in seconds) to perform the probe.
+// Default to 10 seconds.
+func (o GetServiceTemplateSpecContainerReadinessProbeOutput) PeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerReadinessProbe) int { return v.PeriodSeconds }).(pulumi.IntOutput)
+}
+
+// Minimum consecutive successes for the probe to be considered successful after having failed.
+// Defaults to 2.
+func (o GetServiceTemplateSpecContainerReadinessProbeOutput) SuccessThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerReadinessProbe) int { return v.SuccessThreshold }).(pulumi.IntOutput)
+}
+
+// Number of seconds after which the probe times out.
+// Defaults to 1 second. Must be smaller than period_seconds.
+func (o GetServiceTemplateSpecContainerReadinessProbeOutput) TimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerReadinessProbe) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerReadinessProbeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerReadinessProbe)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeArrayOutput) ToGetServiceTemplateSpecContainerReadinessProbeArrayOutput() GetServiceTemplateSpecContainerReadinessProbeArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeArrayOutput) ToGetServiceTemplateSpecContainerReadinessProbeArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerReadinessProbeArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSpecContainerReadinessProbeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecContainerReadinessProbe {
+		return vs[0].([]GetServiceTemplateSpecContainerReadinessProbe)[vs[1].(int)]
+	}).(GetServiceTemplateSpecContainerReadinessProbeOutput)
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeGrpc struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service string `pulumi:"service"`
+}
+
+// GetServiceTemplateSpecContainerReadinessProbeGrpcInput is an input type that accepts GetServiceTemplateSpecContainerReadinessProbeGrpcArgs and GetServiceTemplateSpecContainerReadinessProbeGrpcOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerReadinessProbeGrpcInput` via:
+//
+//	GetServiceTemplateSpecContainerReadinessProbeGrpcArgs{...}
+type GetServiceTemplateSpecContainerReadinessProbeGrpcInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerReadinessProbeGrpcOutput() GetServiceTemplateSpecContainerReadinessProbeGrpcOutput
+	ToGetServiceTemplateSpecContainerReadinessProbeGrpcOutputWithContext(context.Context) GetServiceTemplateSpecContainerReadinessProbeGrpcOutput
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeGrpcArgs struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GetServiceTemplateSpecContainerReadinessProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerReadinessProbeGrpcArgs) ToGetServiceTemplateSpecContainerReadinessProbeGrpcOutput() GetServiceTemplateSpecContainerReadinessProbeGrpcOutput {
+	return i.ToGetServiceTemplateSpecContainerReadinessProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerReadinessProbeGrpcArgs) ToGetServiceTemplateSpecContainerReadinessProbeGrpcOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerReadinessProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerReadinessProbeGrpcOutput)
+}
+
+// GetServiceTemplateSpecContainerReadinessProbeGrpcArrayInput is an input type that accepts GetServiceTemplateSpecContainerReadinessProbeGrpcArray and GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerReadinessProbeGrpcArrayInput` via:
+//
+//	GetServiceTemplateSpecContainerReadinessProbeGrpcArray{ GetServiceTemplateSpecContainerReadinessProbeGrpcArgs{...} }
+type GetServiceTemplateSpecContainerReadinessProbeGrpcArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput() GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput
+	ToGetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutputWithContext(context.Context) GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeGrpcArray []GetServiceTemplateSpecContainerReadinessProbeGrpcInput
+
+func (GetServiceTemplateSpecContainerReadinessProbeGrpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerReadinessProbeGrpcArray) ToGetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput() GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput {
+	return i.ToGetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerReadinessProbeGrpcArray) ToGetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput)
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerReadinessProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeGrpcOutput) ToGetServiceTemplateSpecContainerReadinessProbeGrpcOutput() GetServiceTemplateSpecContainerReadinessProbeGrpcOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeGrpcOutput) ToGetServiceTemplateSpecContainerReadinessProbeGrpcOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerReadinessProbeGrpcOutput {
+	return o
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o GetServiceTemplateSpecContainerReadinessProbeGrpcOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerReadinessProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The name of the service to place in the gRPC HealthCheckRequest
+// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// If this is not specified, the default behavior is defined by gRPC.
+func (o GetServiceTemplateSpecContainerReadinessProbeGrpcOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerReadinessProbeGrpc) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerReadinessProbeGrpc)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput) ToGetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput() GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput) ToGetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSpecContainerReadinessProbeGrpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecContainerReadinessProbeGrpc {
+		return vs[0].([]GetServiceTemplateSpecContainerReadinessProbeGrpc)[vs[1].(int)]
+	}).(GetServiceTemplateSpecContainerReadinessProbeGrpcOutput)
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeHttpGet struct {
+	// Path to access on the HTTP server. If set, it should not be empty string.
+	Path string `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+}
+
+// GetServiceTemplateSpecContainerReadinessProbeHttpGetInput is an input type that accepts GetServiceTemplateSpecContainerReadinessProbeHttpGetArgs and GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerReadinessProbeHttpGetInput` via:
+//
+//	GetServiceTemplateSpecContainerReadinessProbeHttpGetArgs{...}
+type GetServiceTemplateSpecContainerReadinessProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerReadinessProbeHttpGetOutput() GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput
+	ToGetServiceTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(context.Context) GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeHttpGetArgs struct {
+	// Path to access on the HTTP server. If set, it should not be empty string.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetServiceTemplateSpecContainerReadinessProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerReadinessProbeHttpGetArgs) ToGetServiceTemplateSpecContainerReadinessProbeHttpGetOutput() GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return i.ToGetServiceTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerReadinessProbeHttpGetArgs) ToGetServiceTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput)
+}
+
+// GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayInput is an input type that accepts GetServiceTemplateSpecContainerReadinessProbeHttpGetArray and GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayInput` via:
+//
+//	GetServiceTemplateSpecContainerReadinessProbeHttpGetArray{ GetServiceTemplateSpecContainerReadinessProbeHttpGetArgs{...} }
+type GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput() GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput
+	ToGetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutputWithContext(context.Context) GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeHttpGetArray []GetServiceTemplateSpecContainerReadinessProbeHttpGetInput
+
+func (GetServiceTemplateSpecContainerReadinessProbeHttpGetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerReadinessProbeHttpGetArray) ToGetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput() GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput {
+	return i.ToGetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerReadinessProbeHttpGetArray) ToGetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput)
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput) ToGetServiceTemplateSpecContainerReadinessProbeHttpGetOutput() GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput) ToGetServiceTemplateSpecContainerReadinessProbeHttpGetOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return o
+}
+
+// Path to access on the HTTP server. If set, it should not be empty string.
+func (o GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerReadinessProbeHttpGet) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerReadinessProbeHttpGet) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerReadinessProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput) ToGetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput() GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput) ToGetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecContainerReadinessProbeHttpGet {
+		return vs[0].([]GetServiceTemplateSpecContainerReadinessProbeHttpGet)[vs[1].(int)]
+	}).(GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput)
 }
 
 type GetServiceTemplateSpecContainerResource struct {
@@ -12646,6 +13641,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerPortInput)(nil)).Elem(), ServiceTemplateSpecContainerPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerPortArrayInput)(nil)).Elem(), ServiceTemplateSpecContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerReadinessProbeInput)(nil)).Elem(), ServiceTemplateSpecContainerReadinessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerReadinessProbePtrInput)(nil)).Elem(), ServiceTemplateSpecContainerReadinessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerReadinessProbeGrpcInput)(nil)).Elem(), ServiceTemplateSpecContainerReadinessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerReadinessProbeGrpcPtrInput)(nil)).Elem(), ServiceTemplateSpecContainerReadinessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerReadinessProbeHttpGetInput)(nil)).Elem(), ServiceTemplateSpecContainerReadinessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerReadinessProbeHttpGetPtrInput)(nil)).Elem(), ServiceTemplateSpecContainerReadinessProbeHttpGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerResourcesInput)(nil)).Elem(), ServiceTemplateSpecContainerResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerResourcesPtrInput)(nil)).Elem(), ServiceTemplateSpecContainerResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeInput)(nil)).Elem(), ServiceTemplateSpecContainerStartupProbeArgs{})
@@ -12716,6 +13717,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerPortInput)(nil)).Elem(), GetServiceTemplateSpecContainerPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerPortArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerReadinessProbeInput)(nil)).Elem(), GetServiceTemplateSpecContainerReadinessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerReadinessProbeArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerReadinessProbeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerReadinessProbeGrpcInput)(nil)).Elem(), GetServiceTemplateSpecContainerReadinessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerReadinessProbeGrpcArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerReadinessProbeGrpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerReadinessProbeHttpGetInput)(nil)).Elem(), GetServiceTemplateSpecContainerReadinessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerReadinessProbeHttpGetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerResourceInput)(nil)).Elem(), GetServiceTemplateSpecContainerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerResourceArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeInput)(nil)).Elem(), GetServiceTemplateSpecContainerStartupProbeArgs{})
@@ -12800,6 +13807,12 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerPortOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerPortArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerReadinessProbeOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerReadinessProbePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerReadinessProbeGrpcOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerReadinessProbeGrpcPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerReadinessProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerReadinessProbeHttpGetPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerResourcesOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerResourcesPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerStartupProbeOutput{})
@@ -12870,6 +13883,12 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerPortOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerPortArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerReadinessProbeOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerReadinessProbeArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerReadinessProbeGrpcOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerReadinessProbeGrpcArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerReadinessProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerReadinessProbeHttpGetArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerResourceOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerStartupProbeOutput{})

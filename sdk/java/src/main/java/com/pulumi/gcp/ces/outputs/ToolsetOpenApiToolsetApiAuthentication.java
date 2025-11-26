@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig;
+import com.pulumi.gcp.ces.outputs.ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig;
 import com.pulumi.gcp.ces.outputs.ToolsetOpenApiToolsetApiAuthenticationOauthConfig;
 import com.pulumi.gcp.ces.outputs.ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig;
 import com.pulumi.gcp.ces.outputs.ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfig;
@@ -20,6 +21,12 @@ public final class ToolsetOpenApiToolsetApiAuthentication {
      * 
      */
     private @Nullable ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig apiKeyConfig;
+    /**
+     * @return Configurations for authentication with a bearer token.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig bearerTokenConfig;
     /**
      * @return Configurations for authentication with OAuth.
      * Structure is documented below.
@@ -48,6 +55,14 @@ public final class ToolsetOpenApiToolsetApiAuthentication {
      */
     public Optional<ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig> apiKeyConfig() {
         return Optional.ofNullable(this.apiKeyConfig);
+    }
+    /**
+     * @return Configurations for authentication with a bearer token.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig> bearerTokenConfig() {
+        return Optional.ofNullable(this.bearerTokenConfig);
     }
     /**
      * @return Configurations for authentication with OAuth.
@@ -85,6 +100,7 @@ public final class ToolsetOpenApiToolsetApiAuthentication {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig apiKeyConfig;
+        private @Nullable ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig bearerTokenConfig;
         private @Nullable ToolsetOpenApiToolsetApiAuthenticationOauthConfig oauthConfig;
         private @Nullable ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig serviceAccountAuthConfig;
         private @Nullable ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfig serviceAgentIdTokenAuthConfig;
@@ -92,6 +108,7 @@ public final class ToolsetOpenApiToolsetApiAuthentication {
         public Builder(ToolsetOpenApiToolsetApiAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKeyConfig = defaults.apiKeyConfig;
+    	      this.bearerTokenConfig = defaults.bearerTokenConfig;
     	      this.oauthConfig = defaults.oauthConfig;
     	      this.serviceAccountAuthConfig = defaults.serviceAccountAuthConfig;
     	      this.serviceAgentIdTokenAuthConfig = defaults.serviceAgentIdTokenAuthConfig;
@@ -101,6 +118,12 @@ public final class ToolsetOpenApiToolsetApiAuthentication {
         public Builder apiKeyConfig(@Nullable ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig apiKeyConfig) {
 
             this.apiKeyConfig = apiKeyConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bearerTokenConfig(@Nullable ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig bearerTokenConfig) {
+
+            this.bearerTokenConfig = bearerTokenConfig;
             return this;
         }
         @CustomType.Setter
@@ -124,6 +147,7 @@ public final class ToolsetOpenApiToolsetApiAuthentication {
         public ToolsetOpenApiToolsetApiAuthentication build() {
             final var _resultValue = new ToolsetOpenApiToolsetApiAuthentication();
             _resultValue.apiKeyConfig = apiKeyConfig;
+            _resultValue.bearerTokenConfig = bearerTokenConfig;
             _resultValue.oauthConfig = oauthConfig;
             _resultValue.serviceAccountAuthConfig = serviceAccountAuthConfig;
             _resultValue.serviceAgentIdTokenAuthConfig = serviceAgentIdTokenAuthConfig;

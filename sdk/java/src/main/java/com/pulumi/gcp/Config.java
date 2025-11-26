@@ -148,6 +148,9 @@ public final class Config {
     public Optional<String> cloudSchedulerCustomEndpoint() {
         return Codegen.stringProp("cloudSchedulerCustomEndpoint").config(config).get();
     }
+    public Optional<String> cloudSecurityComplianceCustomEndpoint() {
+        return Codegen.stringProp("cloudSecurityComplianceCustomEndpoint").config(config).get();
+    }
     public Optional<String> cloudTasksCustomEndpoint() {
         return Codegen.stringProp("cloudTasksCustomEndpoint").config(config).get();
     }

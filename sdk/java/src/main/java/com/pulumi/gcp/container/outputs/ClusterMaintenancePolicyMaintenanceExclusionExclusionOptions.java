@@ -7,11 +7,13 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
     /**
-     * @return The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+     * @return The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `endTimeBehavior` and `endTime` should be specified.
      * 
      * Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
      * the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
@@ -21,11 +23,16 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions 
      * Examples:
      * 
      */
+    private @Nullable String endTimeBehavior;
+    /**
+     * @return The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+     * 
+     */
     private String scope;
 
     private ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions() {}
     /**
-     * @return The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+     * @return The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `endTimeBehavior` and `endTime` should be specified.
      * 
      * Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
      * the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
@@ -33,6 +40,13 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions 
      * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
      * 
      * Examples:
+     * 
+     */
+    public Optional<String> endTimeBehavior() {
+        return Optional.ofNullable(this.endTimeBehavior);
+    }
+    /**
+     * @return The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
      * 
      */
     public String scope() {
@@ -48,13 +62,21 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions 
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String endTimeBehavior;
         private String scope;
         public Builder() {}
         public Builder(ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.endTimeBehavior = defaults.endTimeBehavior;
     	      this.scope = defaults.scope;
         }
 
+        @CustomType.Setter
+        public Builder endTimeBehavior(@Nullable String endTimeBehavior) {
+
+            this.endTimeBehavior = endTimeBehavior;
+            return this;
+        }
         @CustomType.Setter
         public Builder scope(String scope) {
             if (scope == null) {
@@ -65,6 +87,7 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions 
         }
         public ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions build() {
             final var _resultValue = new ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions();
+            _resultValue.endTimeBehavior = endTimeBehavior;
             _resultValue.scope = scope;
             return _resultValue;
         }

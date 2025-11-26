@@ -119,6 +119,7 @@ import (
 //							ResultsTable: pulumi.String("//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export"),
 //						},
 //					},
+//					CatalogPublishingEnabled: pulumi.Bool(true),
 //				},
 //				Project: pulumi.String("my-project-name"),
 //			}, pulumi.DependsOn([]pulumi.Resource{

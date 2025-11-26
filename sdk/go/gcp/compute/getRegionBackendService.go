@@ -102,6 +102,7 @@ type LookupRegionBackendServiceResult struct {
 	StrongSessionAffinityCookies []GetRegionBackendServiceStrongSessionAffinityCooky `pulumi:"strongSessionAffinityCookies"`
 	Subsettings                  []GetRegionBackendServiceSubsetting                 `pulumi:"subsettings"`
 	TimeoutSec                   int                                                 `pulumi:"timeoutSec"`
+	TlsSettings                  []GetRegionBackendServiceTlsSetting                 `pulumi:"tlsSettings"`
 }
 
 func LookupRegionBackendServiceOutput(ctx *pulumi.Context, args LookupRegionBackendServiceOutputArgs, opts ...pulumi.InvokeOption) LookupRegionBackendServiceResultOutput {
@@ -304,6 +305,10 @@ func (o LookupRegionBackendServiceResultOutput) Subsettings() GetRegionBackendSe
 
 func (o LookupRegionBackendServiceResultOutput) TimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) int { return v.TimeoutSec }).(pulumi.IntOutput)
+}
+
+func (o LookupRegionBackendServiceResultOutput) TlsSettings() GetRegionBackendServiceTlsSettingArrayOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) []GetRegionBackendServiceTlsSetting { return v.TlsSettings }).(GetRegionBackendServiceTlsSettingArrayOutput)
 }
 
 func init() {

@@ -4,13 +4,30 @@
 package com.pulumi.gcp.apphub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.apphub.outputs.WorkloadWorkloadPropertyExtendedMetadata;
+import com.pulumi.gcp.apphub.outputs.WorkloadWorkloadPropertyFunctionalType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkloadWorkloadProperty {
+    /**
+     * @return (Output)
+     * Output only. Additional metadata specific to the resource type.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<WorkloadWorkloadPropertyExtendedMetadata> extendedMetadatas;
+    /**
+     * @return (Output)
+     * Output only. The functional type of a service or workload.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<WorkloadWorkloadPropertyFunctionalType> functionalTypes;
     /**
      * @return (Output)
      * Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
@@ -30,6 +47,24 @@ public final class WorkloadWorkloadProperty {
     private @Nullable String zone;
 
     private WorkloadWorkloadProperty() {}
+    /**
+     * @return (Output)
+     * Output only. Additional metadata specific to the resource type.
+     * Structure is documented below.
+     * 
+     */
+    public List<WorkloadWorkloadPropertyExtendedMetadata> extendedMetadatas() {
+        return this.extendedMetadatas == null ? List.of() : this.extendedMetadatas;
+    }
+    /**
+     * @return (Output)
+     * Output only. The functional type of a service or workload.
+     * Structure is documented below.
+     * 
+     */
+    public List<WorkloadWorkloadPropertyFunctionalType> functionalTypes() {
+        return this.functionalTypes == null ? List.of() : this.functionalTypes;
+    }
     /**
      * @return (Output)
      * Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
@@ -63,17 +98,39 @@ public final class WorkloadWorkloadProperty {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<WorkloadWorkloadPropertyExtendedMetadata> extendedMetadatas;
+        private @Nullable List<WorkloadWorkloadPropertyFunctionalType> functionalTypes;
         private @Nullable String gcpProject;
         private @Nullable String location;
         private @Nullable String zone;
         public Builder() {}
         public Builder(WorkloadWorkloadProperty defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.extendedMetadatas = defaults.extendedMetadatas;
+    	      this.functionalTypes = defaults.functionalTypes;
     	      this.gcpProject = defaults.gcpProject;
     	      this.location = defaults.location;
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
+        public Builder extendedMetadatas(@Nullable List<WorkloadWorkloadPropertyExtendedMetadata> extendedMetadatas) {
+
+            this.extendedMetadatas = extendedMetadatas;
+            return this;
+        }
+        public Builder extendedMetadatas(WorkloadWorkloadPropertyExtendedMetadata... extendedMetadatas) {
+            return extendedMetadatas(List.of(extendedMetadatas));
+        }
+        @CustomType.Setter
+        public Builder functionalTypes(@Nullable List<WorkloadWorkloadPropertyFunctionalType> functionalTypes) {
+
+            this.functionalTypes = functionalTypes;
+            return this;
+        }
+        public Builder functionalTypes(WorkloadWorkloadPropertyFunctionalType... functionalTypes) {
+            return functionalTypes(List.of(functionalTypes));
+        }
         @CustomType.Setter
         public Builder gcpProject(@Nullable String gcpProject) {
 
@@ -94,6 +151,8 @@ public final class WorkloadWorkloadProperty {
         }
         public WorkloadWorkloadProperty build() {
             final var _resultValue = new WorkloadWorkloadProperty();
+            _resultValue.extendedMetadatas = extendedMetadatas;
+            _resultValue.functionalTypes = functionalTypes;
             _resultValue.gcpProject = gcpProject;
             _resultValue.location = location;
             _resultValue.zone = zone;

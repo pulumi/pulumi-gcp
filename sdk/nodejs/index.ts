@@ -50,6 +50,7 @@ import * as cloudquota from "./cloudquota";
 import * as cloudrun from "./cloudrun";
 import * as cloudrunv2 from "./cloudrunv2";
 import * as cloudscheduler from "./cloudscheduler";
+import * as cloudsecuritycompliance from "./cloudsecuritycompliance";
 import * as cloudtasks from "./cloudtasks";
 import * as colab from "./colab";
 import * as composer from "./composer";
@@ -188,6 +189,7 @@ export {
     cloudrun,
     cloudrunv2,
     cloudscheduler,
+    cloudsecuritycompliance,
     cloudtasks,
     colab,
     composer,

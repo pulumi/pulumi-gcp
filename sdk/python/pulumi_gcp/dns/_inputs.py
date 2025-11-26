@@ -490,14 +490,22 @@ if not MYPY:
         """
         forwarding_path: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-        decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-        to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+        Forwarding path for this TargetNameServer. If unset or `default`
+        Cloud DNS will make forwarding decision based on address ranges,
+        i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+        to the Internet. When set to `private`, Cloud DNS will always
+        send queries through VPC for this target.
         Possible values are: `default`, `private`.
         """
         ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
         """
         IPv4 address of a target name server.
+        Does not accept both fields (ipv4 & ipv6) being populated.
+        """
+        ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        IPv6 address of a target name server.
+        Does not accept both fields (ipv4 & ipv6) being populated.
         """
 elif False:
     ManagedZoneForwardingConfigTargetNameServerArgsDict: TypeAlias = Mapping[str, Any]
@@ -507,14 +515,20 @@ class ManagedZoneForwardingConfigTargetNameServerArgs:
     def __init__(__self__, *,
                  domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  forwarding_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_address: Optional[pulumi.Input[_builtins.str]] = None):
+                 ipv4_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6_address: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain_name: Fully qualified domain name for the forwarding target.
-        :param pulumi.Input[_builtins.str] forwarding_path: Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-               decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-               to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+        :param pulumi.Input[_builtins.str] forwarding_path: Forwarding path for this TargetNameServer. If unset or `default`
+               Cloud DNS will make forwarding decision based on address ranges,
+               i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+               to the Internet. When set to `private`, Cloud DNS will always
+               send queries through VPC for this target.
                Possible values are: `default`, `private`.
         :param pulumi.Input[_builtins.str] ipv4_address: IPv4 address of a target name server.
+               Does not accept both fields (ipv4 & ipv6) being populated.
+        :param pulumi.Input[_builtins.str] ipv6_address: IPv6 address of a target name server.
+               Does not accept both fields (ipv4 & ipv6) being populated.
         """
         if domain_name is not None:
             pulumi.set(__self__, "domain_name", domain_name)
@@ -522,6 +536,8 @@ class ManagedZoneForwardingConfigTargetNameServerArgs:
             pulumi.set(__self__, "forwarding_path", forwarding_path)
         if ipv4_address is not None:
             pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
@@ -539,9 +555,11 @@ class ManagedZoneForwardingConfigTargetNameServerArgs:
     @pulumi.getter(name="forwardingPath")
     def forwarding_path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-        decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-        to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+        Forwarding path for this TargetNameServer. If unset or `default`
+        Cloud DNS will make forwarding decision based on address ranges,
+        i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+        to the Internet. When set to `private`, Cloud DNS will always
+        send queries through VPC for this target.
         Possible values are: `default`, `private`.
         """
         return pulumi.get(self, "forwarding_path")
@@ -555,12 +573,26 @@ class ManagedZoneForwardingConfigTargetNameServerArgs:
     def ipv4_address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         IPv4 address of a target name server.
+        Does not accept both fields (ipv4 & ipv6) being populated.
         """
         return pulumi.get(self, "ipv4_address")
 
     @ipv4_address.setter
     def ipv4_address(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ipv4_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        IPv6 address of a target name server.
+        Does not accept both fields (ipv4 & ipv6) being populated.
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @ipv6_address.setter
+    def ipv6_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ipv6_address", value)
 
 
 if not MYPY:

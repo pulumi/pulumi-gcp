@@ -5,6 +5,7 @@ package com.pulumi.gcp.managedkafka.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.managedkafka.inputs.ClusterBrokerCapacityConfigArgs;
 import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
 import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
 import com.pulumi.gcp.managedkafka.inputs.ClusterRebalanceConfigArgs;
@@ -19,6 +20,23 @@ import javax.annotation.Nullable;
 public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterState Empty = new ClusterState();
+
+    /**
+     * Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="brokerCapacityConfig")
+    private @Nullable Output<ClusterBrokerCapacityConfigArgs> brokerCapacityConfig;
+
+    /**
+     * @return Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterBrokerCapacityConfigArgs>> brokerCapacityConfig() {
+        return Optional.ofNullable(this.brokerCapacityConfig);
+    }
 
     /**
      * A capacity configuration of a Kafka cluster.
@@ -249,6 +267,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private ClusterState() {}
 
     private ClusterState(ClusterState $) {
+        this.brokerCapacityConfig = $.brokerCapacityConfig;
         this.capacityConfig = $.capacityConfig;
         this.clusterId = $.clusterId;
         this.createTime = $.createTime;
@@ -281,6 +300,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClusterState defaults) {
             $ = new ClusterState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param brokerCapacityConfig Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder brokerCapacityConfig(@Nullable Output<ClusterBrokerCapacityConfigArgs> brokerCapacityConfig) {
+            $.brokerCapacityConfig = brokerCapacityConfig;
+            return this;
+        }
+
+        /**
+         * @param brokerCapacityConfig Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder brokerCapacityConfig(ClusterBrokerCapacityConfigArgs brokerCapacityConfig) {
+            return brokerCapacityConfig(Output.of(brokerCapacityConfig));
         }
 
         /**

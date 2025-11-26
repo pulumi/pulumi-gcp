@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerEnv;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerEnvFrom;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerLivenessProbe;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerPort;
+import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerReadinessProbe;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerResources;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerStartupProbe;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerVolumeMount;
@@ -79,6 +80,12 @@ public final class ServiceTemplateSpecContainer {
      * 
      */
     private @Nullable List<ServiceTemplateSpecContainerPort> ports;
+    /**
+     * @return Periodic probe of container readiness.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateSpecContainerReadinessProbe readinessProbe;
     /**
      * @return Compute Resources required by this container. Used to set values such as max memory
      * Structure is documented below.
@@ -192,6 +199,14 @@ public final class ServiceTemplateSpecContainer {
         return this.ports == null ? List.of() : this.ports;
     }
     /**
+     * @return Periodic probe of container readiness.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateSpecContainerReadinessProbe> readinessProbe() {
+        return Optional.ofNullable(this.readinessProbe);
+    }
+    /**
      * @return Compute Resources required by this container. Used to set values such as max memory
      * Structure is documented below.
      * 
@@ -252,6 +267,7 @@ public final class ServiceTemplateSpecContainer {
         private @Nullable ServiceTemplateSpecContainerLivenessProbe livenessProbe;
         private @Nullable String name;
         private @Nullable List<ServiceTemplateSpecContainerPort> ports;
+        private @Nullable ServiceTemplateSpecContainerReadinessProbe readinessProbe;
         private @Nullable ServiceTemplateSpecContainerResources resources;
         private @Nullable ServiceTemplateSpecContainerStartupProbe startupProbe;
         private @Nullable List<ServiceTemplateSpecContainerVolumeMount> volumeMounts;
@@ -267,6 +283,7 @@ public final class ServiceTemplateSpecContainer {
     	      this.livenessProbe = defaults.livenessProbe;
     	      this.name = defaults.name;
     	      this.ports = defaults.ports;
+    	      this.readinessProbe = defaults.readinessProbe;
     	      this.resources = defaults.resources;
     	      this.startupProbe = defaults.startupProbe;
     	      this.volumeMounts = defaults.volumeMounts;
@@ -339,6 +356,12 @@ public final class ServiceTemplateSpecContainer {
             return ports(List.of(ports));
         }
         @CustomType.Setter
+        public Builder readinessProbe(@Nullable ServiceTemplateSpecContainerReadinessProbe readinessProbe) {
+
+            this.readinessProbe = readinessProbe;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resources(@Nullable ServiceTemplateSpecContainerResources resources) {
 
             this.resources = resources;
@@ -375,6 +398,7 @@ public final class ServiceTemplateSpecContainer {
             _resultValue.livenessProbe = livenessProbe;
             _resultValue.name = name;
             _resultValue.ports = ports;
+            _resultValue.readinessProbe = readinessProbe;
             _resultValue.resources = resources;
             _resultValue.startupProbe = startupProbe;
             _resultValue.volumeMounts = volumeMounts;

@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.Ces.Inputs
         public Input<Inputs.ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs>? ApiKeyConfig { get; set; }
 
         /// <summary>
+        /// Configurations for authentication with a bearer token.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bearerTokenConfig")]
+        public Input<Inputs.ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs>? BearerTokenConfig { get; set; }
+
+        /// <summary>
         /// Configurations for authentication with OAuth.
         /// Structure is documented below.
         /// </summary>

@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Parameters for private container registries configuration.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult> PrivateRegistryAccessConfigs;
+        /// <summary>
+        /// Parameters for writable cgroups configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupResult> WritableCgroups;
 
         [OutputConstructor]
-        private GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult(ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult> privateRegistryAccessConfigs)
+        private GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult(
+            ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult> privateRegistryAccessConfigs,
+
+            ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupResult> writableCgroups)
         {
             PrivateRegistryAccessConfigs = privateRegistryAccessConfigs;
+            WritableCgroups = writableCgroups;
         }
     }
 }

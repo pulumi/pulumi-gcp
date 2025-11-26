@@ -45,6 +45,7 @@ import com.pulumi.gcp.container.outputs.GetClusterRbacBindingConfig;
 import com.pulumi.gcp.container.outputs.GetClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.GetClusterResourceUsageExportConfig;
 import com.pulumi.gcp.container.outputs.GetClusterSecretManagerConfig;
+import com.pulumi.gcp.container.outputs.GetClusterSecretSyncConfig;
 import com.pulumi.gcp.container.outputs.GetClusterSecurityPostureConfig;
 import com.pulumi.gcp.container.outputs.GetClusterServiceExternalIpsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterTpuConfig;
@@ -146,6 +147,7 @@ public final class GetClusterResult {
     private Map<String,String> resourceLabels;
     private List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
     private List<GetClusterSecretManagerConfig> secretManagerConfigs;
+    private List<GetClusterSecretSyncConfig> secretSyncConfigs;
     private List<GetClusterSecurityPostureConfig> securityPostureConfigs;
     private String selfLink;
     private List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs;
@@ -400,6 +402,9 @@ public final class GetClusterResult {
     public List<GetClusterSecretManagerConfig> secretManagerConfigs() {
         return this.secretManagerConfigs;
     }
+    public List<GetClusterSecretSyncConfig> secretSyncConfigs() {
+        return this.secretSyncConfigs;
+    }
     public List<GetClusterSecurityPostureConfig> securityPostureConfigs() {
         return this.securityPostureConfigs;
     }
@@ -522,6 +527,7 @@ public final class GetClusterResult {
         private Map<String,String> resourceLabels;
         private List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
         private List<GetClusterSecretManagerConfig> secretManagerConfigs;
+        private List<GetClusterSecretSyncConfig> secretSyncConfigs;
         private List<GetClusterSecurityPostureConfig> securityPostureConfigs;
         private String selfLink;
         private List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs;
@@ -615,6 +621,7 @@ public final class GetClusterResult {
     	      this.resourceLabels = defaults.resourceLabels;
     	      this.resourceUsageExportConfigs = defaults.resourceUsageExportConfigs;
     	      this.secretManagerConfigs = defaults.secretManagerConfigs;
+    	      this.secretSyncConfigs = defaults.secretSyncConfigs;
     	      this.securityPostureConfigs = defaults.securityPostureConfigs;
     	      this.selfLink = defaults.selfLink;
     	      this.serviceExternalIpsConfigs = defaults.serviceExternalIpsConfigs;
@@ -1380,6 +1387,17 @@ public final class GetClusterResult {
             return secretManagerConfigs(List.of(secretManagerConfigs));
         }
         @CustomType.Setter
+        public Builder secretSyncConfigs(List<GetClusterSecretSyncConfig> secretSyncConfigs) {
+            if (secretSyncConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "secretSyncConfigs");
+            }
+            this.secretSyncConfigs = secretSyncConfigs;
+            return this;
+        }
+        public Builder secretSyncConfigs(GetClusterSecretSyncConfig... secretSyncConfigs) {
+            return secretSyncConfigs(List.of(secretSyncConfigs));
+        }
+        @CustomType.Setter
         public Builder securityPostureConfigs(List<GetClusterSecurityPostureConfig> securityPostureConfigs) {
             if (securityPostureConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "securityPostureConfigs");
@@ -1569,6 +1587,7 @@ public final class GetClusterResult {
             _resultValue.resourceLabels = resourceLabels;
             _resultValue.resourceUsageExportConfigs = resourceUsageExportConfigs;
             _resultValue.secretManagerConfigs = secretManagerConfigs;
+            _resultValue.secretSyncConfigs = secretSyncConfigs;
             _resultValue.securityPostureConfigs = securityPostureConfigs;
             _resultValue.selfLink = selfLink;
             _resultValue.serviceExternalIpsConfigs = serviceExternalIpsConfigs;

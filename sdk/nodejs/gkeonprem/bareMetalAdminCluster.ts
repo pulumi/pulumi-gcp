@@ -101,6 +101,10 @@ import * as utilities from "../utilities";
  *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
  *             podAddressCidrBlocks: ["10.240.0.0/13"],
  *         },
+ *         advancedNetworking: true,
+ *         multipleNetworkInterfacesConfig: {
+ *             enabled: true,
+ *         },
  *     },
  *     nodeConfig: {
  *         maxPodsPerNode: 250,
@@ -143,8 +147,49 @@ import * as utilities from "../utilities";
  *         vipConfig: {
  *             controlPlaneVip: "10.200.0.5",
  *         },
- *         manualLbConfig: {
- *             enabled: true,
+ *         bgpLbConfig: {
+ *             asn: 123456,
+ *             bgpPeerConfigs: [{
+ *                 asn: 123457,
+ *                 ipAddress: "10.0.0.1",
+ *                 controlPlaneNodes: ["test-node"],
+ *             }],
+ *             addressPools: [{
+ *                 pool: "loadBalancerAddressPool-1",
+ *                 addresses: [
+ *                     "10.200.0.14/32",
+ *                     "10.200.0.15/32",
+ *                     "10.200.0.16/32",
+ *                     "10.200.0.17/32",
+ *                     "10.200.0.18/32",
+ *                     "fd00:1::f/128",
+ *                     "fd00:1::10/128",
+ *                     "fd00:1::11/128",
+ *                     "fd00:1::12/128",
+ *                 ],
+ *                 manualAssign: true,
+ *                 avoidBuggyIps: true,
+ *             }],
+ *             loadBalancerNodePoolConfig: {
+ *                 nodePoolConfig: {
+ *                     labels: {},
+ *                     operatingSystem: "LINUX",
+ *                     nodeConfigs: [{
+ *                         labels: {},
+ *                         nodeIp: "10.200.0.9",
+ *                     }],
+ *                     kubeletConfig: {
+ *                         registryBurst: 12,
+ *                         registryPullQps: 10,
+ *                         serializeImagePullsDisabled: true,
+ *                     },
+ *                     taints: [{
+ *                         key: "test-key",
+ *                         value: "test-value",
+ *                         effect: "NO_EXECUTE",
+ *                     }],
+ *                 },
+ *             },
  *         },
  *     },
  *     storage: {

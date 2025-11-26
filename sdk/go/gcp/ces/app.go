@@ -24,14 +24,53 @@ import (
 // import (
 //
 //	"encoding/json"
+//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fakePrivateKeySecret, err := secretmanager.NewSecret(ctx, "fake_private_key_secret", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("fake-pk-secret-app-tf1"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/test.key",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fakeSecretVersion, err := secretmanager.NewSecretVersion(ctx, "fake_secret_version", &secretmanager.SecretVersionArgs{
+//				Secret:     fakePrivateKeySecret.ID(),
+//				SecretData: pulumi.String(invokeFile.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretIamMember(ctx, "private_key_accessor", &secretmanager.SecretIamMemberArgs{
+//				Project:  fakePrivateKeySecret.Project,
+//				SecretId: fakePrivateKeySecret.SecretId,
+//				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+//				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-ces.iam.gserviceaccount.com", project.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"SimpleString": map[string]interface{}{
 //					"type":        "STRING",
@@ -92,6 +131,12 @@ import (
 //				return err
 //			}
 //			json6 := string(tmpJSON6)
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = ces.NewApp(ctx, "ces_app_basic", &ces.AppArgs{
 //				AppId:       pulumi.String("app-id"),
 //				Location:    pulumi.String("us"),
@@ -213,6 +258,11 @@ import (
 //				},
 //				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
 //					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//				ClientCertificateSettings: &ces.AppClientCertificateSettingsArgs{
+//					TlsCertificate: pulumi.String(invokeFile1.Result),
+//					PrivateKey:     fakeSecretVersion.Name,
+//					Passphrase:     pulumi.String("fakepassphrase"),
 //				},
 //			})
 //			if err != nil {
@@ -465,6 +515,9 @@ type App struct {
 	// delivered.
 	// Structure is documented below.
 	AudioProcessingConfig AppAudioProcessingConfigPtrOutput `pulumi:"audioProcessingConfig"`
+	// The default client certificate settings for the app.
+	// Structure is documented below.
+	ClientCertificateSettings AppClientCertificateSettingsPtrOutput `pulumi:"clientCertificateSettings"`
 	// Timestamp when the app was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Data store related settings for the app.
@@ -575,6 +628,9 @@ type appState struct {
 	// delivered.
 	// Structure is documented below.
 	AudioProcessingConfig *AppAudioProcessingConfig `pulumi:"audioProcessingConfig"`
+	// The default client certificate settings for the app.
+	// Structure is documented below.
+	ClientCertificateSettings *AppClientCertificateSettings `pulumi:"clientCertificateSettings"`
 	// Timestamp when the app was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Data store related settings for the app.
@@ -647,6 +703,9 @@ type AppState struct {
 	// delivered.
 	// Structure is documented below.
 	AudioProcessingConfig AppAudioProcessingConfigPtrInput
+	// The default client certificate settings for the app.
+	// Structure is documented below.
+	ClientCertificateSettings AppClientCertificateSettingsPtrInput
 	// Timestamp when the app was created.
 	CreateTime pulumi.StringPtrInput
 	// Data store related settings for the app.
@@ -723,6 +782,9 @@ type appArgs struct {
 	// delivered.
 	// Structure is documented below.
 	AudioProcessingConfig *AppAudioProcessingConfig `pulumi:"audioProcessingConfig"`
+	// The default client certificate settings for the app.
+	// Structure is documented below.
+	ClientCertificateSettings *AppClientCertificateSettings `pulumi:"clientCertificateSettings"`
 	// Data store related settings for the app.
 	// Structure is documented below.
 	DataStoreSettings *AppDataStoreSettings `pulumi:"dataStoreSettings"`
@@ -783,6 +845,9 @@ type AppArgs struct {
 	// delivered.
 	// Structure is documented below.
 	AudioProcessingConfig AppAudioProcessingConfigPtrInput
+	// The default client certificate settings for the app.
+	// Structure is documented below.
+	ClientCertificateSettings AppClientCertificateSettingsPtrInput
 	// Data store related settings for the app.
 	// Structure is documented below.
 	DataStoreSettings AppDataStoreSettingsPtrInput
@@ -932,6 +997,12 @@ func (o AppOutput) AppId() pulumi.StringOutput {
 // Structure is documented below.
 func (o AppOutput) AudioProcessingConfig() AppAudioProcessingConfigPtrOutput {
 	return o.ApplyT(func(v *App) AppAudioProcessingConfigPtrOutput { return v.AudioProcessingConfig }).(AppAudioProcessingConfigPtrOutput)
+}
+
+// The default client certificate settings for the app.
+// Structure is documented below.
+func (o AppOutput) ClientCertificateSettings() AppClientCertificateSettingsPtrOutput {
+	return o.ApplyT(func(v *App) AppClientCertificateSettingsPtrOutput { return v.ClientCertificateSettings }).(AppClientCertificateSettingsPtrOutput)
 }
 
 // Timestamp when the app was created.

@@ -5,7 +5,11 @@ package com.pulumi.gcp.apphub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.apphub.inputs.ServiceServicePropertyExtendedMetadataArgs;
+import com.pulumi.gcp.apphub.inputs.ServiceServicePropertyFunctionalTypeArgs;
+import com.pulumi.gcp.apphub.inputs.ServiceServicePropertyRegistrationTypeArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +18,44 @@ import javax.annotation.Nullable;
 public final class ServiceServicePropertyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceServicePropertyArgs Empty = new ServiceServicePropertyArgs();
+
+    /**
+     * (Output)
+     * Output only. Additional metadata specific to the resource type.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="extendedMetadatas")
+    private @Nullable Output<List<ServiceServicePropertyExtendedMetadataArgs>> extendedMetadatas;
+
+    /**
+     * @return (Output)
+     * Output only. Additional metadata specific to the resource type.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ServiceServicePropertyExtendedMetadataArgs>>> extendedMetadatas() {
+        return Optional.ofNullable(this.extendedMetadatas);
+    }
+
+    /**
+     * (Output)
+     * Output only. The type of the service.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="functionalTypes")
+    private @Nullable Output<List<ServiceServicePropertyFunctionalTypeArgs>> functionalTypes;
+
+    /**
+     * @return (Output)
+     * Output only. The type of the service.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ServiceServicePropertyFunctionalTypeArgs>>> functionalTypes() {
+        return Optional.ofNullable(this.functionalTypes);
+    }
 
     /**
      * (Output)
@@ -49,6 +91,25 @@ public final class ServiceServicePropertyArgs extends com.pulumi.resources.Resou
 
     /**
      * (Output)
+     * Output only. The registration type of the service.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="registrationTypes")
+    private @Nullable Output<List<ServiceServicePropertyRegistrationTypeArgs>> registrationTypes;
+
+    /**
+     * @return (Output)
+     * Output only. The registration type of the service.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ServiceServicePropertyRegistrationTypeArgs>>> registrationTypes() {
+        return Optional.ofNullable(this.registrationTypes);
+    }
+
+    /**
+     * (Output)
      * Output only. The location that the underlying resource resides in if it is zonal, for example, us-west1-a).
      * 
      */
@@ -67,8 +128,11 @@ public final class ServiceServicePropertyArgs extends com.pulumi.resources.Resou
     private ServiceServicePropertyArgs() {}
 
     private ServiceServicePropertyArgs(ServiceServicePropertyArgs $) {
+        this.extendedMetadatas = $.extendedMetadatas;
+        this.functionalTypes = $.functionalTypes;
         this.gcpProject = $.gcpProject;
         this.location = $.location;
+        this.registrationTypes = $.registrationTypes;
         this.zone = $.zone;
     }
 
@@ -88,6 +152,80 @@ public final class ServiceServicePropertyArgs extends com.pulumi.resources.Resou
 
         public Builder(ServiceServicePropertyArgs defaults) {
             $ = new ServiceServicePropertyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param extendedMetadatas (Output)
+         * Output only. Additional metadata specific to the resource type.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedMetadatas(@Nullable Output<List<ServiceServicePropertyExtendedMetadataArgs>> extendedMetadatas) {
+            $.extendedMetadatas = extendedMetadatas;
+            return this;
+        }
+
+        /**
+         * @param extendedMetadatas (Output)
+         * Output only. Additional metadata specific to the resource type.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedMetadatas(List<ServiceServicePropertyExtendedMetadataArgs> extendedMetadatas) {
+            return extendedMetadatas(Output.of(extendedMetadatas));
+        }
+
+        /**
+         * @param extendedMetadatas (Output)
+         * Output only. Additional metadata specific to the resource type.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedMetadatas(ServiceServicePropertyExtendedMetadataArgs... extendedMetadatas) {
+            return extendedMetadatas(List.of(extendedMetadatas));
+        }
+
+        /**
+         * @param functionalTypes (Output)
+         * Output only. The type of the service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalTypes(@Nullable Output<List<ServiceServicePropertyFunctionalTypeArgs>> functionalTypes) {
+            $.functionalTypes = functionalTypes;
+            return this;
+        }
+
+        /**
+         * @param functionalTypes (Output)
+         * Output only. The type of the service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalTypes(List<ServiceServicePropertyFunctionalTypeArgs> functionalTypes) {
+            return functionalTypes(Output.of(functionalTypes));
+        }
+
+        /**
+         * @param functionalTypes (Output)
+         * Output only. The type of the service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalTypes(ServiceServicePropertyFunctionalTypeArgs... functionalTypes) {
+            return functionalTypes(List.of(functionalTypes));
         }
 
         /**
@@ -132,6 +270,43 @@ public final class ServiceServicePropertyArgs extends com.pulumi.resources.Resou
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param registrationTypes (Output)
+         * Output only. The registration type of the service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registrationTypes(@Nullable Output<List<ServiceServicePropertyRegistrationTypeArgs>> registrationTypes) {
+            $.registrationTypes = registrationTypes;
+            return this;
+        }
+
+        /**
+         * @param registrationTypes (Output)
+         * Output only. The registration type of the service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registrationTypes(List<ServiceServicePropertyRegistrationTypeArgs> registrationTypes) {
+            return registrationTypes(Output.of(registrationTypes));
+        }
+
+        /**
+         * @param registrationTypes (Output)
+         * Output only. The registration type of the service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registrationTypes(ServiceServicePropertyRegistrationTypeArgs... registrationTypes) {
+            return registrationTypes(List.of(registrationTypes));
         }
 
         /**

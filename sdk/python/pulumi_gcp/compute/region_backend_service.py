@@ -52,7 +52,8 @@ class RegionBackendServiceArgs:
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
                  strong_session_affinity_cookie: Optional[pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieArgs']] = None,
                  subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
-                 timeout_sec: Optional[pulumi.Input[_builtins.int]] = None):
+                 timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
+                 tls_settings: Optional[pulumi.Input['RegionBackendServiceTlsSettingsArgs']] = None):
         """
         The set of arguments for constructing a RegionBackendService resource.
         :param pulumi.Input[_builtins.int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
@@ -215,6 +216,8 @@ class RegionBackendServiceArgs:
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
                The default is 30 seconds.
                The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
+        :param pulumi.Input['RegionBackendServiceTlsSettingsArgs'] tls_settings: Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+               Structure is documented below.
         """
         if affinity_cookie_ttl_sec is not None:
             pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -280,6 +283,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "subsetting", subsetting)
         if timeout_sec is not None:
             pulumi.set(__self__, "timeout_sec", timeout_sec)
+        if tls_settings is not None:
+            pulumi.set(__self__, "tls_settings", tls_settings)
 
     @_builtins.property
     @pulumi.getter(name="affinityCookieTtlSec")
@@ -793,6 +798,19 @@ class RegionBackendServiceArgs:
     def timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "timeout_sec", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tlsSettings")
+    def tls_settings(self) -> Optional[pulumi.Input['RegionBackendServiceTlsSettingsArgs']]:
+        """
+        Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tls_settings")
+
+    @tls_settings.setter
+    def tls_settings(self, value: Optional[pulumi.Input['RegionBackendServiceTlsSettingsArgs']]):
+        pulumi.set(self, "tls_settings", value)
+
 
 @pulumi.input_type
 class _RegionBackendServiceState:
@@ -832,7 +850,8 @@ class _RegionBackendServiceState:
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
                  strong_session_affinity_cookie: Optional[pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieArgs']] = None,
                  subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
-                 timeout_sec: Optional[pulumi.Input[_builtins.int]] = None):
+                 timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
+                 tls_settings: Optional[pulumi.Input['RegionBackendServiceTlsSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering RegionBackendService resources.
         :param pulumi.Input[_builtins.int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
@@ -1000,6 +1019,8 @@ class _RegionBackendServiceState:
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
                The default is 30 seconds.
                The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
+        :param pulumi.Input['RegionBackendServiceTlsSettingsArgs'] tls_settings: Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+               Structure is documented below.
         """
         if affinity_cookie_ttl_sec is not None:
             pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -1073,6 +1094,8 @@ class _RegionBackendServiceState:
             pulumi.set(__self__, "subsetting", subsetting)
         if timeout_sec is not None:
             pulumi.set(__self__, "timeout_sec", timeout_sec)
+        if tls_settings is not None:
+            pulumi.set(__self__, "tls_settings", tls_settings)
 
     @_builtins.property
     @pulumi.getter(name="affinityCookieTtlSec")
@@ -1635,6 +1658,19 @@ class _RegionBackendServiceState:
     def timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "timeout_sec", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tlsSettings")
+    def tls_settings(self) -> Optional[pulumi.Input['RegionBackendServiceTlsSettingsArgs']]:
+        """
+        Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tls_settings")
+
+    @tls_settings.setter
+    def tls_settings(self, value: Optional[pulumi.Input['RegionBackendServiceTlsSettingsArgs']]):
+        pulumi.set(self, "tls_settings", value)
+
 
 @pulumi.type_token("gcp:compute/regionBackendService:RegionBackendService")
 class RegionBackendService(pulumi.CustomResource):
@@ -1674,6 +1710,7 @@ class RegionBackendService(pulumi.CustomResource):
                  strong_session_affinity_cookie: Optional[pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']]] = None,
                  subsetting: Optional[pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
+                 tls_settings: Optional[pulumi.Input[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict']]] = None,
                  __props__=None):
         """
         A Region Backend Service defines a regionally-scoped group of virtual
@@ -2121,6 +2158,41 @@ class RegionBackendService(pulumi.CustomResource):
             },
             connection_draining_timeout_sec=0)
         ```
+        ### Region Backend Service Tls Settings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="health-check",
+            region="europe-north1",
+            http_health_check={
+                "port": 80,
+            })
+        default_backend_authentication_config = gcp.networksecurity.BackendAuthenticationConfig("default",
+            name="authentication",
+            location="europe-north1",
+            well_known_roots="PUBLIC_ROOTS")
+        default = gcp.compute.RegionBackendService("default",
+            region="europe-north1",
+            name="region-service",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            protocol="HTTPS",
+            tls_settings={
+                "sni": "example.com",
+                "subject_alt_names": [
+                    {
+                        "dns_name": "example.com",
+                    },
+                    {
+                        "uniform_resource_identifier": "https://example.com",
+                    },
+                ],
+                "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
+            })
+        ```
 
         ## Import
 
@@ -2314,6 +2386,8 @@ class RegionBackendService(pulumi.CustomResource):
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
                The default is 30 seconds.
                The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
+        :param pulumi.Input[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict']] tls_settings: Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+               Structure is documented below.
         """
         ...
     @overload
@@ -2767,6 +2841,41 @@ class RegionBackendService(pulumi.CustomResource):
             },
             connection_draining_timeout_sec=0)
         ```
+        ### Region Backend Service Tls Settings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="health-check",
+            region="europe-north1",
+            http_health_check={
+                "port": 80,
+            })
+        default_backend_authentication_config = gcp.networksecurity.BackendAuthenticationConfig("default",
+            name="authentication",
+            location="europe-north1",
+            well_known_roots="PUBLIC_ROOTS")
+        default = gcp.compute.RegionBackendService("default",
+            region="europe-north1",
+            name="region-service",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            protocol="HTTPS",
+            tls_settings={
+                "sni": "example.com",
+                "subject_alt_names": [
+                    {
+                        "dns_name": "example.com",
+                    },
+                    {
+                        "uniform_resource_identifier": "https://example.com",
+                    },
+                ],
+                "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
+            })
+        ```
 
         ## Import
 
@@ -2845,6 +2954,7 @@ class RegionBackendService(pulumi.CustomResource):
                  strong_session_affinity_cookie: Optional[pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']]] = None,
                  subsetting: Optional[pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
+                 tls_settings: Optional[pulumi.Input[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2886,6 +2996,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["strong_session_affinity_cookie"] = strong_session_affinity_cookie
             __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
+            __props__.__dict__["tls_settings"] = tls_settings
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["generated_id"] = None
@@ -2935,7 +3046,8 @@ class RegionBackendService(pulumi.CustomResource):
             session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
             strong_session_affinity_cookie: Optional[pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']]] = None,
             subsetting: Optional[pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']]] = None,
-            timeout_sec: Optional[pulumi.Input[_builtins.int]] = None) -> 'RegionBackendService':
+            timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
+            tls_settings: Optional[pulumi.Input[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict']]] = None) -> 'RegionBackendService':
         """
         Get an existing RegionBackendService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -3108,6 +3220,8 @@ class RegionBackendService(pulumi.CustomResource):
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
                The default is 30 seconds.
                The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
+        :param pulumi.Input[Union['RegionBackendServiceTlsSettingsArgs', 'RegionBackendServiceTlsSettingsArgsDict']] tls_settings: Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3149,6 +3263,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["strong_session_affinity_cookie"] = strong_session_affinity_cookie
         __props__.__dict__["subsetting"] = subsetting
         __props__.__dict__["timeout_sec"] = timeout_sec
+        __props__.__dict__["tls_settings"] = tls_settings
         return RegionBackendService(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -3567,4 +3682,13 @@ class RegionBackendService(pulumi.CustomResource):
         The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         return pulumi.get(self, "timeout_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsSettings")
+    def tls_settings(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceTlsSettings']]:
+        """
+        Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tls_settings")
 

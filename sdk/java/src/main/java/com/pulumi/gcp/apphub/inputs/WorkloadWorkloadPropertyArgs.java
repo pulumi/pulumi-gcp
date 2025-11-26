@@ -5,7 +5,10 @@ package com.pulumi.gcp.apphub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.apphub.inputs.WorkloadWorkloadPropertyExtendedMetadataArgs;
+import com.pulumi.gcp.apphub.inputs.WorkloadWorkloadPropertyFunctionalTypeArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +17,44 @@ import javax.annotation.Nullable;
 public final class WorkloadWorkloadPropertyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkloadWorkloadPropertyArgs Empty = new WorkloadWorkloadPropertyArgs();
+
+    /**
+     * (Output)
+     * Output only. Additional metadata specific to the resource type.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="extendedMetadatas")
+    private @Nullable Output<List<WorkloadWorkloadPropertyExtendedMetadataArgs>> extendedMetadatas;
+
+    /**
+     * @return (Output)
+     * Output only. Additional metadata specific to the resource type.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<WorkloadWorkloadPropertyExtendedMetadataArgs>>> extendedMetadatas() {
+        return Optional.ofNullable(this.extendedMetadatas);
+    }
+
+    /**
+     * (Output)
+     * Output only. The functional type of a service or workload.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="functionalTypes")
+    private @Nullable Output<List<WorkloadWorkloadPropertyFunctionalTypeArgs>> functionalTypes;
+
+    /**
+     * @return (Output)
+     * Output only. The functional type of a service or workload.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<WorkloadWorkloadPropertyFunctionalTypeArgs>>> functionalTypes() {
+        return Optional.ofNullable(this.functionalTypes);
+    }
 
     /**
      * (Output)
@@ -67,6 +108,8 @@ public final class WorkloadWorkloadPropertyArgs extends com.pulumi.resources.Res
     private WorkloadWorkloadPropertyArgs() {}
 
     private WorkloadWorkloadPropertyArgs(WorkloadWorkloadPropertyArgs $) {
+        this.extendedMetadatas = $.extendedMetadatas;
+        this.functionalTypes = $.functionalTypes;
         this.gcpProject = $.gcpProject;
         this.location = $.location;
         this.zone = $.zone;
@@ -88,6 +131,80 @@ public final class WorkloadWorkloadPropertyArgs extends com.pulumi.resources.Res
 
         public Builder(WorkloadWorkloadPropertyArgs defaults) {
             $ = new WorkloadWorkloadPropertyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param extendedMetadatas (Output)
+         * Output only. Additional metadata specific to the resource type.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedMetadatas(@Nullable Output<List<WorkloadWorkloadPropertyExtendedMetadataArgs>> extendedMetadatas) {
+            $.extendedMetadatas = extendedMetadatas;
+            return this;
+        }
+
+        /**
+         * @param extendedMetadatas (Output)
+         * Output only. Additional metadata specific to the resource type.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedMetadatas(List<WorkloadWorkloadPropertyExtendedMetadataArgs> extendedMetadatas) {
+            return extendedMetadatas(Output.of(extendedMetadatas));
+        }
+
+        /**
+         * @param extendedMetadatas (Output)
+         * Output only. Additional metadata specific to the resource type.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedMetadatas(WorkloadWorkloadPropertyExtendedMetadataArgs... extendedMetadatas) {
+            return extendedMetadatas(List.of(extendedMetadatas));
+        }
+
+        /**
+         * @param functionalTypes (Output)
+         * Output only. The functional type of a service or workload.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalTypes(@Nullable Output<List<WorkloadWorkloadPropertyFunctionalTypeArgs>> functionalTypes) {
+            $.functionalTypes = functionalTypes;
+            return this;
+        }
+
+        /**
+         * @param functionalTypes (Output)
+         * Output only. The functional type of a service or workload.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalTypes(List<WorkloadWorkloadPropertyFunctionalTypeArgs> functionalTypes) {
+            return functionalTypes(Output.of(functionalTypes));
+        }
+
+        /**
+         * @param functionalTypes (Output)
+         * Output only. The functional type of a service or workload.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalTypes(WorkloadWorkloadPropertyFunctionalTypeArgs... functionalTypes) {
+            return functionalTypes(List.of(functionalTypes));
         }
 
         /**

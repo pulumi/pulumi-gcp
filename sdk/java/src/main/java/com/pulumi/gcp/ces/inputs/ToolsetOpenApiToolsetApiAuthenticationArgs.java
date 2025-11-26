@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs;
+import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs;
@@ -33,6 +34,23 @@ public final class ToolsetOpenApiToolsetApiAuthenticationArgs extends com.pulumi
      */
     public Optional<Output<ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs>> apiKeyConfig() {
         return Optional.ofNullable(this.apiKeyConfig);
+    }
+
+    /**
+     * Configurations for authentication with a bearer token.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="bearerTokenConfig")
+    private @Nullable Output<ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs> bearerTokenConfig;
+
+    /**
+     * @return Configurations for authentication with a bearer token.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs>> bearerTokenConfig() {
+        return Optional.ofNullable(this.bearerTokenConfig);
     }
 
     /**
@@ -92,6 +110,7 @@ public final class ToolsetOpenApiToolsetApiAuthenticationArgs extends com.pulumi
 
     private ToolsetOpenApiToolsetApiAuthenticationArgs(ToolsetOpenApiToolsetApiAuthenticationArgs $) {
         this.apiKeyConfig = $.apiKeyConfig;
+        this.bearerTokenConfig = $.bearerTokenConfig;
         this.oauthConfig = $.oauthConfig;
         this.serviceAccountAuthConfig = $.serviceAccountAuthConfig;
         this.serviceAgentIdTokenAuthConfig = $.serviceAgentIdTokenAuthConfig;
@@ -136,6 +155,29 @@ public final class ToolsetOpenApiToolsetApiAuthenticationArgs extends com.pulumi
          */
         public Builder apiKeyConfig(ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs apiKeyConfig) {
             return apiKeyConfig(Output.of(apiKeyConfig));
+        }
+
+        /**
+         * @param bearerTokenConfig Configurations for authentication with a bearer token.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bearerTokenConfig(@Nullable Output<ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs> bearerTokenConfig) {
+            $.bearerTokenConfig = bearerTokenConfig;
+            return this;
+        }
+
+        /**
+         * @param bearerTokenConfig Configurations for authentication with a bearer token.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bearerTokenConfig(ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs bearerTokenConfig) {
+            return bearerTokenConfig(Output.of(bearerTokenConfig));
         }
 
         /**

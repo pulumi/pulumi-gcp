@@ -75,7 +75,8 @@ class GetBackupPlanAssociationsResult:
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> _builtins.str:
+    @_utilities.deprecated("""`resource_type` is deprecated and will be removed in a future major release.""")
+    def resource_type(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "resource_type")
 
 
@@ -97,7 +98,7 @@ def get_backup_plan_associations(location: Optional[_builtins.str] = None,
                                  resource_type: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackupPlanAssociationsResult:
     """
-    Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+    Provides a list of Backup and DR BackupPlanAssociations.
 
     ## Example Usage
 
@@ -105,16 +106,14 @@ def get_backup_plan_associations(location: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    compute_instance_associations = gcp.backupdisasterrecovery.get_backup_plan_associations(location="us-central1",
-        resource_type="compute.googleapis.com/Instance")
+    all_associations = gcp.backupdisasterrecovery.get_backup_plan_associations(location="us-central1")
     ```
 
 
     :param _builtins.str location: The location where the Backup Plan Association resources reside.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
-    :param _builtins.str resource_type: The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
-           
+    :param _builtins.str resource_type: The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resource_type` is deprecated and will be removed in a future major release.
            - - -
     """
     __args__ = dict()
@@ -132,10 +131,10 @@ def get_backup_plan_associations(location: Optional[_builtins.str] = None,
         resource_type=pulumi.get(__ret__, 'resource_type'))
 def get_backup_plan_associations_output(location: Optional[pulumi.Input[_builtins.str]] = None,
                                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                                        resource_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlanAssociationsResult]:
     """
-    Provides a list of Backup and DR BackupPlanAssociations for a specific resource type.
+    Provides a list of Backup and DR BackupPlanAssociations.
 
     ## Example Usage
 
@@ -143,16 +142,14 @@ def get_backup_plan_associations_output(location: Optional[pulumi.Input[_builtin
     import pulumi
     import pulumi_gcp as gcp
 
-    compute_instance_associations = gcp.backupdisasterrecovery.get_backup_plan_associations(location="us-central1",
-        resource_type="compute.googleapis.com/Instance")
+    all_associations = gcp.backupdisasterrecovery.get_backup_plan_associations(location="us-central1")
     ```
 
 
     :param _builtins.str location: The location where the Backup Plan Association resources reside.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
-    :param _builtins.str resource_type: The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance.
-           
+    :param _builtins.str resource_type: The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resource_type` is deprecated and will be removed in a future major release.
            - - -
     """
     __args__ = dict()

@@ -20,32 +20,20 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
     public static final BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs Empty = new BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs();
 
     /**
-     * The map of Kubernetes labels (key/value pairs) to be applied to
-     * each node. These will added in addition to any default label(s)
-     * that Kubernetes may apply to the node. In case of conflict in
-     * label keys, the applied set may differ depending on the Kubernetes
-     * version -- it&#39;s best to assume the behavior is undefined and
-     * conflicts should be avoided. For more information, including usage
-     * and the valid values, see:
-     * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-     *   An object containing a list of &#34;key&#34;: value pairs.
-     *   For example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * The labels assigned to nodes of this node pool.
+     * An object containing a list of key/value pairs.
+     * Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return The map of Kubernetes labels (key/value pairs) to be applied to
-     * each node. These will added in addition to any default label(s)
-     * that Kubernetes may apply to the node. In case of conflict in
-     * label keys, the applied set may differ depending on the Kubernetes
-     * version -- it&#39;s best to assume the behavior is undefined and
-     * conflicts should be avoided. For more information, including usage
-     * and the valid values, see:
-     * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-     *   An object containing a list of &#34;key&#34;: value pairs.
-     *   For example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * @return The labels assigned to nodes of this node pool.
+     * An object containing a list of key/value pairs.
+     * Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -53,7 +41,6 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
     }
 
     /**
-     * The list of machine addresses in the Bare Metal Node Pool.
      * Structure is documented below.
      * 
      */
@@ -61,8 +48,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
     private @Nullable Output<List<BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs>> nodeConfigs;
 
     /**
-     * @return The list of machine addresses in the Bare Metal Node Pool.
-     * Structure is documented below.
+     * @return Structure is documented below.
      * 
      */
     public Optional<Output<List<BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs>>> nodeConfigs() {
@@ -70,14 +56,14 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
     }
 
     /**
-     * Specifies the nodes operating system (default: LINUX).
+     * The available Operating Systems to be run in a Node.
      * 
      */
     @Import(name="operatingSystem")
     private @Nullable Output<String> operatingSystem;
 
     /**
-     * @return Specifies the nodes operating system (default: LINUX).
+     * @return The available Operating Systems to be run in a Node.
      * 
      */
     public Optional<Output<String>> operatingSystem() {
@@ -85,7 +71,6 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
     }
 
     /**
-     * The initial taints assigned to nodes of this node pool.
      * Structure is documented below.
      * 
      */
@@ -93,8 +78,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
     private @Nullable Output<List<BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs>> taints;
 
     /**
-     * @return The initial taints assigned to nodes of this node pool.
-     * Structure is documented below.
+     * @return Structure is documented below.
      * 
      */
     public Optional<Output<List<BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs>>> taints() {
@@ -129,16 +113,10 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param labels The map of Kubernetes labels (key/value pairs) to be applied to
-         * each node. These will added in addition to any default label(s)
-         * that Kubernetes may apply to the node. In case of conflict in
-         * label keys, the applied set may differ depending on the Kubernetes
-         * version -- it&#39;s best to assume the behavior is undefined and
-         * conflicts should be avoided. For more information, including usage
-         * and the valid values, see:
-         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-         *   An object containing a list of &#34;key&#34;: value pairs.
-         *   For example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * @param labels The labels assigned to nodes of this node pool.
+         * An object containing a list of key/value pairs.
+         * Example:
+         * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * @return builder
          * 
@@ -149,16 +127,10 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param labels The map of Kubernetes labels (key/value pairs) to be applied to
-         * each node. These will added in addition to any default label(s)
-         * that Kubernetes may apply to the node. In case of conflict in
-         * label keys, the applied set may differ depending on the Kubernetes
-         * version -- it&#39;s best to assume the behavior is undefined and
-         * conflicts should be avoided. For more information, including usage
-         * and the valid values, see:
-         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
-         *   An object containing a list of &#34;key&#34;: value pairs.
-         *   For example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * @param labels The labels assigned to nodes of this node pool.
+         * An object containing a list of key/value pairs.
+         * Example:
+         * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * @return builder
          * 
@@ -168,8 +140,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param nodeConfigs The list of machine addresses in the Bare Metal Node Pool.
-         * Structure is documented below.
+         * @param nodeConfigs Structure is documented below.
          * 
          * @return builder
          * 
@@ -180,8 +151,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param nodeConfigs The list of machine addresses in the Bare Metal Node Pool.
-         * Structure is documented below.
+         * @param nodeConfigs Structure is documented below.
          * 
          * @return builder
          * 
@@ -191,8 +161,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param nodeConfigs The list of machine addresses in the Bare Metal Node Pool.
-         * Structure is documented below.
+         * @param nodeConfigs Structure is documented below.
          * 
          * @return builder
          * 
@@ -202,7 +171,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param operatingSystem Specifies the nodes operating system (default: LINUX).
+         * @param operatingSystem The available Operating Systems to be run in a Node.
          * 
          * @return builder
          * 
@@ -213,7 +182,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param operatingSystem Specifies the nodes operating system (default: LINUX).
+         * @param operatingSystem The available Operating Systems to be run in a Node.
          * 
          * @return builder
          * 
@@ -223,8 +192,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param taints The initial taints assigned to nodes of this node pool.
-         * Structure is documented below.
+         * @param taints Structure is documented below.
          * 
          * @return builder
          * 
@@ -235,8 +203,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param taints The initial taints assigned to nodes of this node pool.
-         * Structure is documented below.
+         * @param taints Structure is documented below.
          * 
          * @return builder
          * 
@@ -246,8 +213,7 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
         }
 
         /**
-         * @param taints The initial taints assigned to nodes of this node pool.
-         * Structure is documented below.
+         * @param taints Structure is documented below.
          * 
          * @return builder
          * 

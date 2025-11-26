@@ -771,6 +771,31 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             })
         ```
+        ### Dns Managed Zone Private Forwarding Ipv6
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network1 = gcp.compute.Network("network_1",
+            name="network-1",
+            auto_create_subnetworks=False)
+        private_zone = gcp.dns.ManagedZone("private-zone",
+            name="private-zone",
+            dns_name="private.example.com.",
+            description="Example private DNS zone",
+            visibility="private",
+            private_visibility_config={
+                "networks": [{
+                    "network_url": network1.id,
+                }],
+            },
+            forwarding_config={
+                "target_name_servers": [{
+                    "ipv6_address": "fd20:3e9:7a70:680d:0:8::",
+                }],
+            })
+        ```
         ### Dns Managed Zone Private Gke
 
         ```python
@@ -1067,6 +1092,31 @@ class ManagedZone(pulumi.CustomResource):
                         "ipv4_address": "172.16.1.20",
                     },
                 ],
+            })
+        ```
+        ### Dns Managed Zone Private Forwarding Ipv6
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network1 = gcp.compute.Network("network_1",
+            name="network-1",
+            auto_create_subnetworks=False)
+        private_zone = gcp.dns.ManagedZone("private-zone",
+            name="private-zone",
+            dns_name="private.example.com.",
+            description="Example private DNS zone",
+            visibility="private",
+            private_visibility_config={
+                "networks": [{
+                    "network_url": network1.id,
+                }],
+            },
+            forwarding_config={
+                "target_name_servers": [{
+                    "ipv6_address": "fd20:3e9:7a70:680d:0:8::",
+                }],
             })
         ```
         ### Dns Managed Zone Private Gke

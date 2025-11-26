@@ -9,6 +9,8 @@ import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanAssociationsAs
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackupPlanAssociationsResult {
@@ -28,7 +30,13 @@ public final class GetBackupPlanAssociationsResult {
      * 
      */
     private String project;
-    private String resourceType;
+    /**
+     * @deprecated
+     * `resourceType` is deprecated and will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
+    private @Nullable String resourceType;
 
     private GetBackupPlanAssociationsResult() {}
     /**
@@ -55,8 +63,14 @@ public final class GetBackupPlanAssociationsResult {
     public String project() {
         return this.project;
     }
-    public String resourceType() {
-        return this.resourceType;
+    /**
+     * @deprecated
+     * `resourceType` is deprecated and will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
+    public Optional<String> resourceType() {
+        return Optional.ofNullable(this.resourceType);
     }
 
     public static Builder builder() {
@@ -72,7 +86,7 @@ public final class GetBackupPlanAssociationsResult {
         private String id;
         private String location;
         private String project;
-        private String resourceType;
+        private @Nullable String resourceType;
         public Builder() {}
         public Builder(GetBackupPlanAssociationsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -119,10 +133,8 @@ public final class GetBackupPlanAssociationsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder resourceType(String resourceType) {
-            if (resourceType == null) {
-              throw new MissingRequiredPropertyException("GetBackupPlanAssociationsResult", "resourceType");
-            }
+        public Builder resourceType(@Nullable String resourceType) {
+
             this.resourceType = resourceType;
             return this;
         }

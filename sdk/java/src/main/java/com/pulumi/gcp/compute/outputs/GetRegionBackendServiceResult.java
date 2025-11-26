@@ -20,6 +20,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceParam;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceStrongSessionAffinityCooky;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceSubsetting;
+import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceTlsSetting;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -71,6 +72,7 @@ public final class GetRegionBackendServiceResult {
     private List<GetRegionBackendServiceStrongSessionAffinityCooky> strongSessionAffinityCookies;
     private List<GetRegionBackendServiceSubsetting> subsettings;
     private Integer timeoutSec;
+    private List<GetRegionBackendServiceTlsSetting> tlsSettings;
 
     private GetRegionBackendServiceResult() {}
     public Integer affinityCookieTtlSec() {
@@ -188,6 +190,9 @@ public final class GetRegionBackendServiceResult {
     public Integer timeoutSec() {
         return this.timeoutSec;
     }
+    public List<GetRegionBackendServiceTlsSetting> tlsSettings() {
+        return this.tlsSettings;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -235,6 +240,7 @@ public final class GetRegionBackendServiceResult {
         private List<GetRegionBackendServiceStrongSessionAffinityCooky> strongSessionAffinityCookies;
         private List<GetRegionBackendServiceSubsetting> subsettings;
         private Integer timeoutSec;
+        private List<GetRegionBackendServiceTlsSetting> tlsSettings;
         public Builder() {}
         public Builder(GetRegionBackendServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -275,6 +281,7 @@ public final class GetRegionBackendServiceResult {
     	      this.strongSessionAffinityCookies = defaults.strongSessionAffinityCookies;
     	      this.subsettings = defaults.subsettings;
     	      this.timeoutSec = defaults.timeoutSec;
+    	      this.tlsSettings = defaults.tlsSettings;
         }
 
         @CustomType.Setter
@@ -617,6 +624,17 @@ public final class GetRegionBackendServiceResult {
             this.timeoutSec = timeoutSec;
             return this;
         }
+        @CustomType.Setter
+        public Builder tlsSettings(List<GetRegionBackendServiceTlsSetting> tlsSettings) {
+            if (tlsSettings == null) {
+              throw new MissingRequiredPropertyException("GetRegionBackendServiceResult", "tlsSettings");
+            }
+            this.tlsSettings = tlsSettings;
+            return this;
+        }
+        public Builder tlsSettings(GetRegionBackendServiceTlsSetting... tlsSettings) {
+            return tlsSettings(List.of(tlsSettings));
+        }
         public GetRegionBackendServiceResult build() {
             final var _resultValue = new GetRegionBackendServiceResult();
             _resultValue.affinityCookieTtlSec = affinityCookieTtlSec;
@@ -656,6 +674,7 @@ public final class GetRegionBackendServiceResult {
             _resultValue.strongSessionAffinityCookies = strongSessionAffinityCookies;
             _resultValue.subsettings = subsettings;
             _resultValue.timeoutSec = timeoutSec;
+            _resultValue.tlsSettings = tlsSettings;
             return _resultValue;
         }
     }

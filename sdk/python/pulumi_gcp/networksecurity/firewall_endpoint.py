@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['FirewallEndpointArgs', 'FirewallEndpoint']
 
@@ -22,6 +24,7 @@ class FirewallEndpointArgs:
                  billing_project_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
+                 endpoint_settings: Optional[pulumi.Input['FirewallEndpointEndpointSettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -30,6 +33,8 @@ class FirewallEndpointArgs:
         :param pulumi.Input[_builtins.str] location: The location (zone) of the firewall endpoint.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this firewall endpoint belongs to.
                Format: organizations/{organization_id}.
+        :param pulumi.Input['FirewallEndpointEndpointSettingsArgs'] endpoint_settings: Settings for the endpoint.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value label pairs to assign to the resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -39,6 +44,8 @@ class FirewallEndpointArgs:
         pulumi.set(__self__, "billing_project_id", billing_project_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "parent", parent)
+        if endpoint_settings is not None:
+            pulumi.set(__self__, "endpoint_settings", endpoint_settings)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -82,6 +89,19 @@ class FirewallEndpointArgs:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
+    @pulumi.getter(name="endpointSettings")
+    def endpoint_settings(self) -> Optional[pulumi.Input['FirewallEndpointEndpointSettingsArgs']]:
+        """
+        Settings for the endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "endpoint_settings")
+
+    @endpoint_settings.setter
+    def endpoint_settings(self, value: Optional[pulumi.Input['FirewallEndpointEndpointSettingsArgs']]):
+        pulumi.set(self, "endpoint_settings", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -116,6 +136,7 @@ class _FirewallEndpointState:
                  billing_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 endpoint_settings: Optional[pulumi.Input['FirewallEndpointEndpointSettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -134,6 +155,8 @@ class _FirewallEndpointState:
         :param pulumi.Input[_builtins.str] billing_project_id: Project to bill on endpoint uptime usage.
         :param pulumi.Input[_builtins.str] create_time: Time the firewall endpoint was created in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input['FirewallEndpointEndpointSettingsArgs'] endpoint_settings: Settings for the endpoint.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value label pairs to assign to the resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -157,6 +180,8 @@ class _FirewallEndpointState:
             pulumi.set(__self__, "create_time", create_time)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if endpoint_settings is not None:
+            pulumi.set(__self__, "endpoint_settings", endpoint_settings)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -226,6 +251,19 @@ class _FirewallEndpointState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endpointSettings")
+    def endpoint_settings(self) -> Optional[pulumi.Input['FirewallEndpointEndpointSettingsArgs']]:
+        """
+        Settings for the endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "endpoint_settings")
+
+    @endpoint_settings.setter
+    def endpoint_settings(self, value: Optional[pulumi.Input['FirewallEndpointEndpointSettingsArgs']]):
+        pulumi.set(self, "endpoint_settings", value)
 
     @_builtins.property
     @pulumi.getter
@@ -348,6 +386,7 @@ class FirewallEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_settings: Optional[pulumi.Input[Union['FirewallEndpointEndpointSettingsArgs', 'FirewallEndpointEndpointSettingsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -404,6 +443,8 @@ class FirewallEndpoint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_project_id: Project to bill on endpoint uptime usage.
+        :param pulumi.Input[Union['FirewallEndpointEndpointSettingsArgs', 'FirewallEndpointEndpointSettingsArgsDict']] endpoint_settings: Settings for the endpoint.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value label pairs to assign to the resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -483,6 +524,7 @@ class FirewallEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_settings: Optional[pulumi.Input[Union['FirewallEndpointEndpointSettingsArgs', 'FirewallEndpointEndpointSettingsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -499,6 +541,7 @@ class FirewallEndpoint(pulumi.CustomResource):
             if billing_project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_project_id'")
             __props__.__dict__["billing_project_id"] = billing_project_id
+            __props__.__dict__["endpoint_settings"] = endpoint_settings
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -531,6 +574,7 @@ class FirewallEndpoint(pulumi.CustomResource):
             billing_project_id: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint_settings: Optional[pulumi.Input[Union['FirewallEndpointEndpointSettingsArgs', 'FirewallEndpointEndpointSettingsArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -554,6 +598,8 @@ class FirewallEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] billing_project_id: Project to bill on endpoint uptime usage.
         :param pulumi.Input[_builtins.str] create_time: Time the firewall endpoint was created in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Union['FirewallEndpointEndpointSettingsArgs', 'FirewallEndpointEndpointSettingsArgsDict']] endpoint_settings: Settings for the endpoint.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value label pairs to assign to the resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -577,6 +623,7 @@ class FirewallEndpoint(pulumi.CustomResource):
         __props__.__dict__["billing_project_id"] = billing_project_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["endpoint_settings"] = endpoint_settings
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -622,6 +669,15 @@ class FirewallEndpoint(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="endpointSettings")
+    def endpoint_settings(self) -> pulumi.Output[Optional['outputs.FirewallEndpointEndpointSettings']]:
+        """
+        Settings for the endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "endpoint_settings")
 
     @_builtins.property
     @pulumi.getter

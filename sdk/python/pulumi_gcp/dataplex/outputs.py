@@ -1193,7 +1193,9 @@ class DatascanDataProfileSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludeFields":
+        if key == "catalogPublishingEnabled":
+            suggest = "catalog_publishing_enabled"
+        elif key == "excludeFields":
             suggest = "exclude_fields"
         elif key == "includeFields":
             suggest = "include_fields"
@@ -1216,12 +1218,14 @@ class DatascanDataProfileSpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 catalog_publishing_enabled: Optional[_builtins.bool] = None,
                  exclude_fields: Optional['outputs.DatascanDataProfileSpecExcludeFields'] = None,
                  include_fields: Optional['outputs.DatascanDataProfileSpecIncludeFields'] = None,
                  post_scan_actions: Optional['outputs.DatascanDataProfileSpecPostScanActions'] = None,
                  row_filter: Optional[_builtins.str] = None,
                  sampling_percent: Optional[_builtins.float] = None):
         """
+        :param _builtins.bool catalog_publishing_enabled: If set, the latest DataScan job result will be published to Dataplex Catalog.
         :param 'DatascanDataProfileSpecExcludeFieldsArgs' exclude_fields: The fields to exclude from data profile.
                If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
                Structure is documented below.
@@ -1235,6 +1239,8 @@ class DatascanDataProfileSpec(dict):
                Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
                Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
         """
+        if catalog_publishing_enabled is not None:
+            pulumi.set(__self__, "catalog_publishing_enabled", catalog_publishing_enabled)
         if exclude_fields is not None:
             pulumi.set(__self__, "exclude_fields", exclude_fields)
         if include_fields is not None:
@@ -1245,6 +1251,14 @@ class DatascanDataProfileSpec(dict):
             pulumi.set(__self__, "row_filter", row_filter)
         if sampling_percent is not None:
             pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogPublishingEnabled")
+    def catalog_publishing_enabled(self) -> Optional[_builtins.bool]:
+        """
+        If set, the latest DataScan job result will be published to Dataplex Catalog.
+        """
+        return pulumi.get(self, "catalog_publishing_enabled")
 
     @_builtins.property
     @pulumi.getter(name="excludeFields")

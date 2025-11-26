@@ -51,6 +51,7 @@ export interface GetReservationArgs {
  * A collection of values returned by getReservation.
  */
 export interface GetReservationResult {
+    readonly blockNames: string[];
     readonly commitment: string;
     readonly creationTimestamp: string;
     readonly deleteAfterDurations: outputs.compute.GetReservationDeleteAfterDuration[];

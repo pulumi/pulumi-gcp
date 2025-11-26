@@ -125,6 +125,10 @@ export interface GetReservationBlockResult {
      * Status of the reservation block.
      */
     readonly status: string;
+    /**
+     * A List of all block sub-block names in the parent block.
+     */
+    readonly subBlockNames: string[];
     readonly zone?: string;
 }
 /**

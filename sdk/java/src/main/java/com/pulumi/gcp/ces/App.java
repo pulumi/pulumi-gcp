@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.ces.AppArgs;
 import com.pulumi.gcp.ces.inputs.AppState;
 import com.pulumi.gcp.ces.outputs.AppAudioProcessingConfig;
+import com.pulumi.gcp.ces.outputs.AppClientCertificateSettings;
 import com.pulumi.gcp.ces.outputs.AppDataStoreSettings;
 import com.pulumi.gcp.ces.outputs.AppDefaultChannelProfile;
 import com.pulumi.gcp.ces.outputs.AppEvaluationMetricsThresholds;
@@ -40,6 +41,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamMember;
+ * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
  * import com.pulumi.gcp.ces.App;
  * import com.pulumi.gcp.ces.AppArgs;
  * import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
@@ -63,6 +76,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfilePersonaPropertyArgs;
  * import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileWebWidgetConfigArgs;
  * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppClientCertificateSettingsArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -71,12 +85,37 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var fakePrivateKeySecret = new Secret("fakePrivateKeySecret", SecretArgs.builder()
+ *             .secretId("fake-pk-secret-app-tf1")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var fakeSecretVersion = new SecretVersion("fakeSecretVersion", SecretVersionArgs.builder()
+ *             .secret(fakePrivateKeySecret.id())
+ *             .secretData(StdFunctions.file(FileArgs.builder()
+ *                 .input("test-fixtures/test.key")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var privateKeyAccessor = new SecretIamMember("privateKeyAccessor", SecretIamMemberArgs.builder()
+ *             .project(fakePrivateKeySecret.project())
+ *             .secretId(fakePrivateKeySecret.secretId())
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-ces.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
  *         var cesAppBasic = new App("cesAppBasic", AppArgs.builder()
  *             .appId("app-id")
  *             .location("us")
@@ -218,10 +257,17 @@ import javax.annotation.Nullable;
  *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
  *                 .timeZone("America/Los_Angeles")
  *                 .build())
+ *             .clientCertificateSettings(AppClientCertificateSettingsArgs.builder()
+ *                 .tlsCertificate(StdFunctions.file(FileArgs.builder()
+ *                     .input("test-fixtures/cert.pem")
+ *                     .build()).result())
+ *                 .privateKey(fakeSecretVersion.name())
+ *                 .passphrase("fakepassphrase")
+ *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### Ces App Ambient Sound Gcs Uri
@@ -480,6 +526,22 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<AppAudioProcessingConfig>> audioProcessingConfig() {
         return Codegen.optional(this.audioProcessingConfig);
+    }
+    /**
+     * The default client certificate settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="clientCertificateSettings", refs={AppClientCertificateSettings.class}, tree="[0]")
+    private Output</* @Nullable */ AppClientCertificateSettings> clientCertificateSettings;
+
+    /**
+     * @return The default client certificate settings for the app.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AppClientCertificateSettings>> clientCertificateSettings() {
+        return Codegen.optional(this.clientCertificateSettings);
     }
     /**
      * Timestamp when the app was created.

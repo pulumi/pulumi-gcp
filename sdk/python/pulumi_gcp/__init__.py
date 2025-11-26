@@ -89,6 +89,8 @@ if typing.TYPE_CHECKING:
     cloudrunv2 = __cloudrunv2
     import pulumi_gcp.cloudscheduler as __cloudscheduler
     cloudscheduler = __cloudscheduler
+    import pulumi_gcp.cloudsecuritycompliance as __cloudsecuritycompliance
+    cloudsecuritycompliance = __cloudsecuritycompliance
     import pulumi_gcp.cloudtasks as __cloudtasks
     cloudtasks = __cloudtasks
     import pulumi_gcp.colab as __colab
@@ -321,6 +323,7 @@ else:
     cloudrun = _utilities.lazy_import('pulumi_gcp.cloudrun')
     cloudrunv2 = _utilities.lazy_import('pulumi_gcp.cloudrunv2')
     cloudscheduler = _utilities.lazy_import('pulumi_gcp.cloudscheduler')
+    cloudsecuritycompliance = _utilities.lazy_import('pulumi_gcp.cloudsecuritycompliance')
     cloudtasks = _utilities.lazy_import('pulumi_gcp.cloudtasks')
     colab = _utilities.lazy_import('pulumi_gcp.colab')
     composer = _utilities.lazy_import('pulumi_gcp.composer')
@@ -2031,6 +2034,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "ces/agent",
+  "fqn": "pulumi_gcp.ces",
+  "classes": {
+   "gcp:ces/agent:Agent": "Agent"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "ces/app",
   "fqn": "pulumi_gcp.ces",
   "classes": {
@@ -2051,6 +2062,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.ces",
   "classes": {
    "gcp:ces/example:Example": "Example"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "ces/guardrail",
+  "fqn": "pulumi_gcp.ces",
+  "classes": {
+   "gcp:ces/guardrail:Guardrail": "Guardrail"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "ces/tool",
+  "fqn": "pulumi_gcp.ces",
+  "classes": {
+   "gcp:ces/tool:Tool": "Tool"
   }
  },
  {
@@ -2571,6 +2598,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudscheduler",
   "classes": {
    "gcp:cloudscheduler/job:Job": "Job"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudsecuritycompliance/cloudControl",
+  "fqn": "pulumi_gcp.cloudsecuritycompliance",
+  "classes": {
+   "gcp:cloudsecuritycompliance/cloudControl:CloudControl": "CloudControl"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudsecuritycompliance/framework",
+  "fqn": "pulumi_gcp.cloudsecuritycompliance",
+  "classes": {
+   "gcp:cloudsecuritycompliance/framework:Framework": "Framework"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudsecuritycompliance/frameworkDeployment",
+  "fqn": "pulumi_gcp.cloudsecuritycompliance",
+  "classes": {
+   "gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment": "FrameworkDeployment"
   }
  },
  {
@@ -5355,6 +5406,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
    "gcp:discoveryengine/searchEngine:SearchEngine": "SearchEngine"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "discoveryengine/servingConfig",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/servingConfig:ServingConfig": "ServingConfig"
   }
  },
  {
@@ -8323,6 +8382,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.oracledatabase",
   "classes": {
    "gcp:oracledatabase/dbSystem:DbSystem": "DbSystem"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "oracledatabase/exascaleDbStorageVault",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault": "ExascaleDbStorageVault"
   }
  },
  {

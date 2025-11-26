@@ -722,6 +722,60 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Backend Service Tls Settings
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         Region = "europe-north1",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultBackendAuthenticationConfig = new Gcp.NetworkSecurity.BackendAuthenticationConfig("default", new()
+    ///     {
+    ///         Name = "authentication",
+    ///         Location = "europe-north1",
+    ///         WellKnownRoots = "PUBLIC_ROOTS",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Region = "europe-north1",
+    ///         Name = "region-service",
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         Protocol = "HTTPS",
+    ///         TlsSettings = new Gcp.Compute.Inputs.RegionBackendServiceTlsSettingsArgs
+    ///         {
+    ///             Sni = "example.com",
+    ///             SubjectAltNames = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionBackendServiceTlsSettingsSubjectAltNameArgs
+    ///                 {
+    ///                     DnsName = "example.com",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.RegionBackendServiceTlsSettingsSubjectAltNameArgs
+    ///                 {
+    ///                     UniformResourceIdentifier = "https://example.com",
+    ///                 },
+    ///             },
+    ///             AuthenticationConfig = defaultBackendAuthenticationConfig.Id.Apply(id =&gt; $"//networksecurity.googleapis.com/{id}"),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -1101,6 +1155,13 @@ namespace Pulumi.Gcp.Compute
         [Output("timeoutSec")]
         public Output<int> TimeoutSec { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("tlsSettings")]
+        public Output<Outputs.RegionBackendServiceTlsSettings?> TlsSettings { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a RegionBackendService resource with the given unique name, arguments, and options.
@@ -1479,6 +1540,13 @@ namespace Pulumi.Gcp.Compute
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
 
+        /// <summary>
+        /// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tlsSettings")]
+        public Input<Inputs.RegionBackendServiceTlsSettingsArgs>? TlsSettings { get; set; }
+
         public RegionBackendServiceArgs()
         {
         }
@@ -1843,6 +1911,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
+
+        /// <summary>
+        /// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tlsSettings")]
+        public Input<Inputs.RegionBackendServiceTlsSettingsGetArgs>? TlsSettings { get; set; }
 
         public RegionBackendServiceState()
         {
