@@ -95,7 +95,7 @@ jobs:
         with:
           dotnet-version: 8.0.x
       - name: Setup Node
-        uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6
+        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6
         with:
           node-version: 20.x
           registry-url: https://registry.npmjs.org
@@ -114,7 +114,7 @@ jobs:
         run: |
           echo "GOTOOLCHAIN=auto" >> "$GITHUB_ENV"
       - name: Install Pulumi CLI
-        uses: pulumi/actions@d7ceb0215da5a14ec84f50b703365ddf0194a9c8 # v6
+        uses: pulumi/actions@8582a9e8cc630786854029b4e09281acd6794b58 # v6
         with:
           pulumi-version: "dev"
       - name: Authenticate to Google Cloud
