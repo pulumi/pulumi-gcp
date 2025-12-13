@@ -1,0 +1,8 @@
+[tools]
+"vfox-pulumi:pulumi/pulumi-random" = "latest"
+"vfox-pulumi:pulumi/pulumi-kubernetes" = "latest"
+"vfox-pulumi:pulumi/pulumi-std" = "latest"
+"vfox-pulumi:pulumi/pulumi-tls" = "latest"
+"vfox-pulumi:pulumi/pulumi-http" = "latest"
+"vfox-pulumi:pulumiverse/pulumi-time" = "latest"
+"vfox-pulumi:pulumi/pulumi-converter-terraform" = "latest"
